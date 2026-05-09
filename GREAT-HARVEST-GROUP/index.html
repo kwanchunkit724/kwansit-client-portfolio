@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Great Harvest Maeta Holdings | Marine Vessel Chartering | Hong Kong</title>
+<meta name="description" content="Great Harvest Maeta Holdings Limited — Hong Kong-listed marine transportation company. Worldwide dry bulk vessel chartering services. Vessel GH GLORY, 74,973 DWT. Wanchai, Hong Kong.">
+<style>
+  :root {
+    --navy: #0c2340;
+    --navy-mid: #1a3a60;
+    --navy-light: #2a5a90;
+    --gold: #c8a84a;
+    --gold-light: #e0c06a;
+    --steel: #3a5060;
+    --silver: #e8eef3;
+    --dark: #080f18;
+    --text: #1a2535;
+    --text-light: #607080;
+    --bg: #f4f7fa;
+    --white: #fff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Arial','Helvetica Neue',sans-serif; color:var(--text); background:var(--bg); }
+  html { scroll-behavior:smooth; }
+
+  nav {
+    position:fixed; top:0; width:100%; z-index:100;
+    background:rgba(8,15,24,0.98); backdrop-filter:blur(10px);
+    padding:0 5%; height:70px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:2px solid var(--gold);
+  }
+  .logo { display:flex; flex-direction:column; }
+  .logo-main { font-size:1.05rem; font-weight:900; color:#fff; letter-spacing:1px; }
+  .logo-zh { font-size:0.62rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); }
+  nav ul { list-style:none; display:flex; gap:1.8rem; }
+  nav ul a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.8rem; letter-spacing:0.5px; transition:color 0.3s; }
+  nav ul a:hover { color:var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height:100vh;
+    background:linear-gradient(160deg, var(--dark) 0%, var(--navy) 50%, #0a1e35 100%);
+    display:flex; align-items:center; padding:100px 5% 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:'';
+    position:absolute; bottom:0; left:0; right:0; height:300px;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200'%3E%3Cpath fill='%23c8a84a' fill-opacity='0.06' d='M0 80C360 140 720 20 1080 80C1260 110 1380 95 1440 80L1440 200L0 200Z'/%3E%3Cpath fill='%230c2340' fill-opacity='0.5' d='M0 120C360 160 720 60 1080 120C1260 140 1380 130 1440 120L1440 200L0 200Z'/%3E%3C/svg%3E") no-repeat bottom;
+    background-size:cover;
+  }
+  .hero::after {
+    content:'⚓'; position:absolute; right:5%; top:50%; transform:translateY(-50%);
+    font-size:20vw; opacity:0.04;
+  }
+  .hero-inner { max-width:700px; position:relative; z-index:1; }
+  .hero-tag {
+    display:inline-flex; align-items:center; gap:0.6rem;
+    background:rgba(200,168,74,0.15); border:1px solid rgba(200,168,74,0.4);
+    padding:8px 18px; border-radius:2px;
+    color:var(--gold); font-size:0.72rem; letter-spacing:2.5px; text-transform:uppercase;
+    margin-bottom:2rem;
+  }
+  .hero h1 { font-size:clamp(2.4rem, 5vw, 4.5rem); color:#fff; line-height:1.15; margin-bottom:0.6rem; font-weight:800; }
+  .hero h1 .gold { color:var(--gold); }
+  .hero p { font-size:1.05rem; color:rgba(255,255,255,0.65); line-height:1.9; margin-bottom:2.5rem; max-width:580px; }
+  .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:4rem; }
+  .btn-gold { display:inline-block; background:var(--gold); color:var(--navy); padding:14px 34px; text-decoration:none; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; font-weight:700; transition:all 0.3s; }
+  .btn-gold:hover { background:var(--gold-light); }
+  .btn-ghost { display:inline-block; border:1.5px solid rgba(255,255,255,0.3); color:#fff; padding:13px 34px; text-decoration:none; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; transition:all 0.3s; }
+  .btn-ghost:hover { border-color:var(--gold); color:var(--gold); }
+  .hero-stats { display:grid; grid-template-columns:repeat(4, 1fr); border:1px solid rgba(255,255,255,0.08); }
+  .hs { padding:1.5rem; border-right:1px solid rgba(255,255,255,0.08); text-align:center; }
+  .hs:last-child { border-right:none; }
+  .hs-num { font-size:2rem; font-weight:900; color:var(--gold); display:block; line-height:1; }
+  .hs-lbl { font-size:0.63rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:4px; display:block; }
+
+  /* TICKER */
+  .ticker { background:var(--gold); padding:12px 0; overflow:hidden; }
+  .tick-inner { display:flex; gap:2.5rem; animation:scroll 22s linear infinite; white-space:nowrap; }
+  .tick-inner span { color:rgba(0,0,0,0.7); font-size:0.75rem; letter-spacing:2.5px; text-transform:uppercase; font-weight:700; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  section { padding:100px 5%; }
+  .tag { color:var(--gold); font-size:0.68rem; letter-spacing:3.5px; text-transform:uppercase; display:block; margin-bottom:0.8rem; }
+  .h2 { font-size:clamp(1.8rem, 3vw, 2.7rem); color:var(--dark); margin-bottom:1rem; font-weight:800; }
+  .lead { font-size:1rem; color:var(--text-light); line-height:1.9; }
+
+  /* VESSEL */
+  .vessel { background:var(--white); }
+  .vessel-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:5rem; align-items:center; margin-top:3.5rem; }
+  .vessel-visual {
+    background:linear-gradient(145deg, var(--dark), var(--navy));
+    padding:3.5rem; border-radius:2px; position:relative; overflow:hidden; text-align:center;
+  }
+  .vessel-visual::before { content:'🚢'; font-size:6rem; display:block; margin-bottom:1.5rem; }
+  .vessel-name { font-size:1.8rem; font-weight:900; color:var(--gold); letter-spacing:3px; text-transform:uppercase; margin-bottom:1rem; }
+  .vessel-specs { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,0.08); margin-top:1.5rem; }
+  .vs-item { background:rgba(255,255,255,0.03); padding:1rem; }
+  .vs-label { font-size:0.65rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem; }
+  .vs-value { font-size:0.95rem; color:#fff; font-weight:600; }
+  .vessel-text h3 { font-size:1.4rem; color:var(--dark); margin-bottom:1rem; font-weight:700; }
+  .vessel-text .lead { margin-bottom:1rem; }
+  .vessel-list { list-style:none; margin-top:1.5rem; }
+  .vessel-list li { padding:0.9rem 0; border-bottom:1px solid var(--silver); font-size:0.9rem; color:var(--text-light); display:flex; gap:1rem; align-items:flex-start; }
+  .vessel-list li::before { content:'▶'; color:var(--gold); font-size:0.6rem; margin-top:4px; flex-shrink:0; }
+
+  /* SERVICES */
+  .services { background:var(--bg); }
+  .svc-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:2rem; margin-top:3rem; }
+  .svc-card { background:var(--white); padding:2.5rem; border-top:4px solid var(--gold); border-radius:0 0 2px 2px; }
+  .svc-icon { font-size:2.5rem; margin-bottom:1rem; display:block; }
+  .svc-card h3 { font-size:1.05rem; color:var(--dark); margin-bottom:0.7rem; font-weight:700; }
+  .svc-card p { font-size:0.87rem; color:var(--text-light); line-height:1.7; }
+
+  /* STRENGTHS */
+  .strengths { background:var(--navy); }
+  .strengths .h2 { color:#fff; }
+  .strengths .lead { color:rgba(255,255,255,0.6); }
+  .str-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:2px; background:rgba(255,255,255,0.05); margin-top:3rem; }
+  .str-card { padding:2.5rem 2rem; transition:background 0.3s; }
+  .str-card:hover { background:rgba(200,168,74,0.1); }
+  .str-num { font-size:3.5rem; font-weight:900; color:rgba(200,168,74,0.2); line-height:1; margin-bottom:0.5rem; }
+  .str-card h3 { font-size:1rem; color:#fff; margin-bottom:0.6rem; font-weight:700; }
+  .str-card p { font-size:0.86rem; color:rgba(255,255,255,0.5); line-height:1.7; }
+
+  /* CONTACT */
+  .contact { background:var(--dark); }
+  .contact .tag { color:var(--gold); }
+  .contact .h2 { color:#fff; }
+  .contact .lead { color:rgba(255,255,255,0.6); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; margin-top:3rem; }
+  .ci { margin-bottom:1.4rem; }
+  .ci-lbl { font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:0.4rem; display:block; }
+  .ci-val { font-size:0.93rem; color:#fff; }
+  .ci-val a { color:var(--gold-light); text-decoration:none; }
+  .form-group { margin-bottom:1.1rem; }
+  label { font-size:0.67rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.45); display:block; margin-bottom:0.45rem; }
+  input, select, textarea { width:100%; border:1px solid rgba(255,255,255,0.1); padding:12px 14px; font-size:0.9rem; color:#fff; background:rgba(255,255,255,0.06); border-radius:2px; transition:border-color 0.3s; font-family:'Arial',sans-serif; }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--gold); }
+  textarea { resize:vertical; min-height:110px; }
+  select option { background:var(--dark); }
+  .sub-btn { width:100%; background:var(--gold); color:var(--navy); border:none; padding:14px; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background 0.3s; font-weight:700; font-family:'Arial',sans-serif; }
+  .sub-btn:hover { background:var(--gold-light); }
+
+  footer { background:#040810; color:rgba(255,255,255,0.45); padding:60px 5% 30px; font-family:'Arial',sans-serif; }
+  .foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+  .foot-logo { font-size:1rem; font-weight:900; color:#fff; letter-spacing:1px; display:block; margin-bottom:0.5rem; }
+  .foot-sub { font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; display:block; }
+  .foot-brand p { font-size:0.84rem; line-height:1.8; }
+  .foot-col h4 { color:var(--gold); font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:1.2rem; }
+  .foot-col ul { list-style:none; }
+  .foot-col li { margin-bottom:0.5rem; font-size:0.84rem; }
+  .foot-col a { color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.3s; }
+  .foot-col a:hover { color:var(--gold); }
+  .foot-bottom { border-top:1px solid rgba(255,255,255,0.07); padding-top:2rem; display:flex; justify-content:space-between; font-size:0.76rem; flex-wrap:wrap; gap:0.5rem; }
+  .designer-credit a { color:var(--gold-light); text-decoration:none; }
+
+  @media (max-width:900px) {
+    nav ul { display:none; }
+    .vessel-grid { grid-template-columns:1fr; }
+    .contact-grid, .foot-grid { grid-template-columns:1fr; }
+    .hero-stats { grid-template-columns:repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <span class="logo-main">Great Harvest Maeta Holdings Limited</span>
+    <span class="logo-zh">HKEX Listed · Marine Transportation · Hong Kong</span>
+  </div>
+  <ul>
+    <li><a href="#vessel">Our Vessel</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#strengths">Strengths</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">HKEX Listed · Worldwide Marine Transportation</div>
+    <h1>Global Dry Bulk<br><span class="gold">Vessel Chartering</span></h1>
+    <p>Great Harvest Maeta Holdings Limited is a Hong Kong-listed marine transportation company providing worldwide dry bulk cargo chartering services. Operating GH GLORY — a 74,973 DWT Panama dry bulk vessel registered under Hong Kong flag.</p>
+    <div class="hero-cta">
+      <a href="#vessel" class="btn-gold">Our Fleet</a>
+      <a href="#contact" class="btn-ghost">Charter Enquiry</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><span class="hs-num">74,973</span><span class="hs-lbl">DWT Capacity</span></div>
+      <div class="hs"><span class="hs-num">HK</span><span class="hs-lbl">Registered Flag</span></div>
+      <div class="hs"><span class="hs-num">HKEX</span><span class="hs-lbl">Listed Company</span></div>
+      <div class="hs"><span class="hs-num">Global</span><span class="hs-lbl">Routes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="tick-inner">
+    <span>Dry Bulk Chartering</span><span>·</span>
+    <span>Time Charters</span><span>·</span>
+    <span>GH GLORY · 74,973 DWT</span><span>·</span>
+    <span>Panama Vessel</span><span>·</span>
+    <span>Hong Kong Flag</span><span>·</span>
+    <span>Worldwide Routes</span><span>·</span>
+    <span>HKEX Listed</span><span>·</span>
+    <span>Dry Bulk Chartering</span><span>·</span>
+    <span>Time Charters</span><span>·</span>
+    <span>GH GLORY · 74,973 DWT</span><span>·</span>
+    <span>Panama Vessel</span><span>·</span>
+    <span>Hong Kong Flag</span><span>·</span>
+    <span>Worldwide Routes</span><span>·</span>
+    <span>HKEX Listed</span><span>·</span>
+  </div>
+</div>
+
+<!-- VESSEL -->
+<section class="vessel" id="vessel">
+  <span class="tag">Our Fleet</span>
+  <h2 class="h2">GH GLORY — Our Flagship Vessel</h2>
+  <div class="vessel-grid">
+    <div class="vessel-visual">
+      <div class="vessel-name">GH GLORY</div>
+      <div class="vessel-specs">
+        <div class="vs-item"><span class="vs-label">Type</span><span class="vs-value">Panama Dry Bulk</span></div>
+        <div class="vs-item"><span class="vs-label">Capacity</span><span class="vs-value">74,973 DWT</span></div>
+        <div class="vs-item"><span class="vs-label">Registration</span><span class="vs-value">Hong Kong Flag</span></div>
+        <div class="vs-item"><span class="vs-label">Ownership</span><span class="vs-value">Group-Owned</span></div>
+        <div class="vs-item"><span class="vs-label">Service</span><span class="vs-value">Time Charter</span></div>
+        <div class="vs-item"><span class="vs-label">Cargo</span><span class="vs-value">Dry Bulk</span></div>
+      </div>
+    </div>
+    <div class="vessel-text">
+      <h3>Reliable Dry Bulk Transportation Worldwide</h3>
+      <p class="lead">GH GLORY is a Panamax-class dry bulk vessel with a carrying capacity of approximately 74,973 DWT, owned and operated by the Group. Registered under the laws and flag of Hong Kong, the vessel provides worldwide marine transportation services for dry bulk cargoes.</p>
+      <p class="lead" style="margin-top:1rem;">The vessel operates under time charters for a contractual period, during which the Group provides and pays for all crew provisions, vessel insurance, and repair and maintenance costs. Charterers bear voyage-specific costs including bunker fees, port charges, and pilotage.</p>
+      <ul class="vessel-list">
+        <li>Panamax dry bulk carrier capable of navigating the Panama Canal</li>
+        <li>Registered under Hong Kong laws and flag</li>
+        <li>Experienced crew with high operational standards</li>
+        <li>Regular maintenance to ensure safe, reliable operations</li>
+        <li>Worldwide route capability for major dry bulk trade lanes</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <span class="tag">Our Services</span>
+  <h2 class="h2">Marine Transportation Services</h2>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <span class="svc-icon">⏱️</span>
+      <h3>Time Charter</h3>
+      <p>GH GLORY is available for time charters for a fixed contractual period. During the charter, the Group provides a fully crewed and maintained vessel ready for charterers' operational requirements.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">🌾</span>
+      <h3>Dry Bulk Cargo</h3>
+      <p>Specialised in the carriage of dry bulk commodities including grain, coal, iron ore, fertilizer, and other major bulk materials across global trade routes.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">🌍</span>
+      <h3>Worldwide Routes</h3>
+      <p>Operating on worldwide routes across major ocean trade lanes connecting Asia, Europe, the Americas, Africa, and Oceania, meeting the diverse trade needs of charterers.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">🔧</span>
+      <h3>Fleet Maintenance</h3>
+      <p>The Group maintains its vessel to the highest standards, ensuring safety, reliability, and compliance with international maritime regulations on behalf of charterers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section class="strengths" id="strengths">
+  <span class="tag">Competitive Strengths</span>
+  <h2 class="h2">Why Great Harvest</h2>
+  <p class="lead" style="max-width:500px;">The Group's success is built on two core competitive strengths that deliver reliable, high-quality marine transportation services to clients worldwide.</p>
+  <div class="str-grid">
+    <div class="str-card">
+      <div class="str-num">01</div>
+      <h3>Experienced Management</h3>
+      <p>A proven track record in marine transportation. The Group's management team brings deep industry expertise ensuring efficient vessel operations and charterer satisfaction.</p>
+    </div>
+    <div class="str-card">
+      <div class="str-num">02</div>
+      <h3>High Maintenance Standards</h3>
+      <p>Rigorous maintenance programmes ensure GH GLORY remains safe, seaworthy, and reliable. Our commitment to vessel quality underpins every charter contract we fulfill.</p>
+    </div>
+    <div class="str-card">
+      <div class="str-num">03</div>
+      <h3>Hong Kong Registration</h3>
+      <p>Vessel registered under Hong Kong flag and laws — providing international credibility and access to established maritime legal and regulatory frameworks.</p>
+    </div>
+    <div class="str-card">
+      <div class="str-num">04</div>
+      <h3>Listed Group Transparency</h3>
+      <p>As an HKEX-listed company, Great Harvest Maeta Holdings provides full corporate governance transparency with regular announcements, annual reports, and shareholder communications.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <span class="tag">Charter Enquiries</span>
+  <h2 class="h2">Contact Us</h2>
+  <p class="lead" style="max-width:480px;">For charter enquiries, investor relations, or general correspondence — please reach out to the Great Harvest Maeta Holdings team.</p>
+  <div class="contact-grid">
+    <div>
+      <div class="ci"><span class="ci-lbl">Address</span><div class="ci-val">12/Floor, The Sun's Group Centre<br>200 Gloucester Road<br>Wanchai, Hong Kong</div></div>
+      <div class="ci"><span class="ci-lbl">Telephone</span><div class="ci-val"><a href="tel:+85228366801">+852 2836 6801</a></div></div>
+      <div class="ci"><span class="ci-lbl">Fax</span><div class="ci-val">+852 2575 6861</div></div>
+      <div class="ci"><span class="ci-lbl">Email</span><div class="ci-val"><a href="mailto:info@greatharvestmg.com">info@greatharvestmg.com</a></div></div>
+      <div class="ci"><span class="ci-lbl">Direct / Mobile</span><div class="ci-val"><a href="tel:+85260983784">+852 6098 3784</a></div></div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('Thank you for your charter enquiry. Our team will respond within one business day.');">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="form-group"><label>Name *</label><input type="text" required placeholder="Your Name"></div>
+        <div class="form-group"><label>Company</label><input type="text" placeholder="Company Name"></div>
+      </div>
+      <div class="form-group"><label>Email *</label><input type="email" required placeholder="you@company.com"></div>
+      <div class="form-group"><label>Phone</label><input type="tel" placeholder="+852 / +xx xxx xxxx xxxx"></div>
+      <div class="form-group">
+        <label>Enquiry Type</label>
+        <select>
+          <option>Time Charter Enquiry</option>
+          <option>Dry Bulk Cargo Transportation</option>
+          <option>Investor Relations</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Details</label><textarea placeholder="Cargo type, tonnage requirements, route, charter period, and other specifications..."></textarea></div>
+      <button type="submit" class="sub-btn">Submit Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <span class="foot-logo">Great Harvest Maeta Holdings Limited</span>
+      <span class="foot-sub">HKEX Listed · Marine Transportation · Hong Kong</span>
+      <p>Hong Kong-listed marine transportation company. Worldwide dry bulk vessel chartering services through our flagship vessel GH GLORY (74,973 DWT, Panama, HK Flag). Headquartered in Wanchai, Hong Kong.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#vessel">Our Fleet</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#strengths">Our Strengths</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+85228366801">+852 2836 6801</a></li>
+        <li><a href="mailto:info@greatharvestmg.com">info@greatharvestmg.com</a></li>
+        <li><a href="http://www.great-harvest.com.hk">Official Website</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 Great Harvest Maeta Holdings Limited. All rights reserved. | Wanchai, Hong Kong</span>
+    <span class="designer-credit">Website by <a href="mailto:kck980724@gmail.com">Kwan's IT</a> · +852 60282297</span>
+  </div>
+</footer>
+
+</body>
+</html>
