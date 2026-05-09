@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>味珍味 AJI-NO-CHINMI | 日式珍饌美味 · 香港</title>
+<style>
+  :root {
+    --primary: #8b1a1a;
+    --secondary: #c0392b;
+    --accent: #c8960a;
+    --sakura: #e8a0b0;
+    --dark: #1a0d0d;
+    --mid: #2d1414;
+    --light: #fdf8f5;
+    --text: #2d1a14;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif; color: var(--text); background: #fff; }
+
+  /* NAV */
+  nav {
+    background: var(--dark);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 72px;
+    border-bottom: 2px solid var(--primary);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; }
+  .nav-logo .crest {
+    width: 44px; height: 44px; border: 2px solid var(--accent);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 20px; color: var(--accent);
+  }
+  .nav-logo .brand { color: #fff; }
+  .nav-logo .brand span { display: block; font-size: 18px; font-weight: 800; letter-spacing: 2px; }
+  .nav-logo .brand small { font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 3px; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: #c0a080; text-decoration: none; font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-contact { color: var(--accent); font-size: 14px; font-weight: 600; }
+  .nav-contact span { display: block; color: #7a5050; font-size: 11px; text-align: right; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, var(--dark) 0%, #3d1414 55%, #6b2020 100%);
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    padding: 80px 5%;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(200,150,10,0.08) 0%, transparent 60%);
+  }
+  /* Decorative Japanese circle pattern */
+  .hero::after {
+    content: '◯';
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 400px;
+    color: rgba(255,255,255,0.02);
+    line-height: 1;
+    font-family: serif;
+  }
+  .hero-content { max-width: 700px; position: relative; z-index: 1; }
+  .hero-jp { font-size: 13px; color: var(--accent); letter-spacing: 4px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .hero-jp::before, .hero-jp::after { content: ''; flex: 1; height: 1px; background: rgba(200,150,10,0.3); max-width: 60px; }
+  .hero h1 { font-size: clamp(2.4rem,5.5vw,4rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero h2 { font-size: clamp(1rem,2.5vw,1.5rem); color: #c0a080; font-weight: 400; letter-spacing: 3px; margin-bottom: 24px; }
+  .hero p { font-size: 17px; color: #c0a080; margin-bottom: 36px; line-height: 1.8; max-width: 560px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-gold { background: var(--accent); color: var(--dark); padding: 14px 36px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 16px; transition: background .2s; }
+  .btn-gold:hover { background: #e0a808; }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.25); color: #fff; padding: 14px 36px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all .2s; }
+  .btn-outline:hover { background: rgba(255,255,255,0.08); }
+
+  /* SECTION */
+  section { padding: 80px 5%; }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-header .jp-title { font-size: 13px; color: var(--accent); letter-spacing: 4px; margin-bottom: 14px; }
+  .section-header h2 { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .section-header h2 em { color: var(--primary); font-style: normal; }
+  .section-header p { color: #6a4030; font-size: 16px; max-width: 620px; margin: 0 auto; line-height: 1.75; }
+
+  /* PRODUCTS */
+  .products-bg { background: var(--light); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .product-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e8d0c8;
+    transition: all .25s;
+    position: relative;
+  }
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(139,26,26,0.12); }
+  .product-card .card-top {
+    background: linear-gradient(135deg, var(--dark), var(--mid));
+    padding: 36px 28px;
+    text-align: center;
+    color: #fff;
+  }
+  .product-card .card-top .emoji { font-size: 60px; margin-bottom: 14px; }
+  .product-card .card-top h3 { font-size: 20px; font-weight: 800; }
+  .product-card .card-top .jp { font-size: 12px; color: var(--accent); margin-top: 6px; letter-spacing: 2px; }
+  .product-card .card-body { padding: 24px 28px; }
+  .product-card .card-body p { font-size: 14px; color: #6a4030; line-height: 1.75; }
+  .product-card .card-body .features { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .feature-tag { background: #fbeaea; color: var(--primary); padding: 4px 11px; border-radius: 10px; font-size: 12px; font-weight: 600; border: 1px solid #f5d0c8; }
+
+  /* PHILOSOPHY */
+  .phil-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .phil-text h2 { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 900; color: var(--dark); margin-bottom: 20px; line-height: 1.3; }
+  .phil-text h2 em { color: var(--primary); font-style: normal; }
+  .phil-text p { font-size: 15px; color: #5a3020; line-height: 1.85; margin-bottom: 18px; }
+  .value-items { margin-top: 28px; }
+  .value-item { display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
+  .value-item .vi-ico { font-size: 28px; min-width: 36px; }
+  .value-item h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+  .value-item p { font-size: 13px; color: #6a4030; line-height: 1.6; }
+  .phil-visual {
+    background: linear-gradient(135deg, var(--dark), #4a1a10);
+    border-radius: 24px;
+    padding: 48px 36px;
+    text-align: center;
+    color: #fff;
+  }
+  .phil-visual .main-char { font-size: 100px; margin-bottom: 20px; line-height: 1; }
+  .phil-visual h3 { font-size: 24px; font-weight: 900; color: var(--accent); margin-bottom: 12px; letter-spacing: 3px; }
+  .phil-visual p { font-size: 14px; color: #c0a080; line-height: 1.75; }
+  .jp-values { display: flex; justify-content: center; gap: 32px; margin-top: 24px; }
+  .jp-val { text-align: center; }
+  .jp-val .kanji { font-size: 36px; font-weight: 900; color: var(--accent); display: block; }
+  .jp-val span { font-size: 11px; color: #a08060; }
+
+  /* WHY */
+  .why-bg { background: var(--primary); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .why-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 28px 24px;
+    color: #fff;
+    text-align: center;
+  }
+  .why-card .ico { font-size: 40px; margin-bottom: 16px; }
+  .why-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .why-card p { font-size: 13px; color: #f0c0c0; line-height: 1.65; }
+
+  /* CONTACT */
+  .contact-section { background: var(--light); }
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .contact-info h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 24px; }
+  .contact-row { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+  .contact-row .ci { font-size: 22px; margin-top: 2px; }
+  .contact-row .ct strong { display: block; font-size: 15px; color: var(--dark); margin-bottom: 4px; }
+  .contact-row .ct span { font-size: 14px; color: #5a3020; line-height: 1.5; }
+  .contact-form { background: #fff; border-radius: 16px; padding: 36px; box-shadow: 0 4px 20px rgba(139,26,26,0.08); }
+  .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: #5a3020; margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 11px 14px; border: 1.5px solid #f0d8c8; border-radius: 8px;
+    font-size: 14px; font-family: inherit; transition: border-color .2s; background: var(--light);
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--primary); background: #fff; }
+  .form-group textarea { height: 90px; resize: vertical; }
+  .btn-submit {
+    width: 100%; background: var(--primary); color: #fff; border: none;
+    padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 700;
+    cursor: pointer; transition: background .2s;
+  }
+  .btn-submit:hover { background: #6b1414; }
+
+  /* FOOTER */
+  footer { background: var(--dark); color: #6a4030; padding: 48px 5% 24px; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand .brand-zh { color: #fff; font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+  .footer-brand .brand-jp { color: var(--accent); font-size: 12px; letter-spacing: 3px; margin-bottom: 14px; }
+  .footer-brand p { font-size: 13px; line-height: 1.7; }
+  footer h4 { color: #9a6040; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; }
+  footer ul li a { color: #6a4030; text-decoration: none; font-size: 14px; transition: color .2s; }
+  footer ul li a:hover { color: #fff; }
+  .footer-bottom { border-top: 1px solid #2d1414; padding-top: 20px; text-align: center; font-size: 13px; }
+
+  @media (max-width: 900px) {
+    .phil-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="crest">✿</div>
+    <div class="brand">
+      <span>味珍味</span>
+      <small>AJI-NO-CHINMI · Hong Kong</small>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#products">Products</a>
+    <a href="#philosophy">Philosophy</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-contact">info@aji-no-chinmi.com.hk <span>查詢電郵</span></div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-jp">AJI-NO-CHINMI · 味珍味</div>
+    <h1>珍饌之<em>味</em><br>正宗日式美食</h1>
+    <h2>Authentic Japanese Delicacies · Hong Kong</h2>
+    <p>味珍味（AJI-NO-CHINMI）精選日本各地珍貴食材，以正宗工藝製作，呈獻地道日式珍饌風味，為香港食客帶來日本的美食藝術。</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-gold">探索珍饌</a>
+      <a href="#contact" class="btn-outline">聯絡我們</a>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products" class="products-bg">
+  <div class="section-header">
+    <div class="jp-title">● PRODUCTS ●</div>
+    <h2>精選<em>珍饌</em>系列</h2>
+    <p>精心搜羅日本各地優質食材，以傳統工藝製作，每一件產品都是日本飲食文化的精粹呈現。</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="card-top">
+        <div class="emoji">🐟</div>
+        <h3>日式海鮮珍饌</h3>
+        <div class="jp">Seafood Delicacies</div>
+      </div>
+      <div class="card-body">
+        <p>精選日本各地優質海鮮，包括鮑魚、海膽、干貝等珍貴食材，以傳統日式工藝精心製作，保留海鮮的鮮甜原味及豐富口感。</p>
+        <div class="features">
+          <span class="feature-tag">🇯🇵 日本進口</span>
+          <span class="feature-tag">天然製作</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <div class="emoji">🫙</div>
+        <h3>醃漬珍味系列</h3>
+        <div class="jp">Pickled & Preserved</div>
+      </div>
+      <div class="card-body">
+        <p>傳承日本千年醃漬工藝，精選各式醃製珍品，包括醬油漬、味噌漬等多種風味，下酒配飯皆宜，滋味豐富令人回味。</p>
+        <div class="features">
+          <span class="feature-tag">傳統工藝</span>
+          <span class="feature-tag">多種口味</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <div class="emoji">🎁</div>
+        <h3>禮品套裝</h3>
+        <div class="jp">Gift Collections</div>
+      </div>
+      <div class="card-body">
+        <p>精心搭配的日式珍饌禮盒，適合節日送禮、商務饋贈及親友祝賀。精美包裝彰顯品味，獻上地道日本滋味的祝福。</p>
+        <div class="features">
+          <span class="feature-tag">精美禮盒</span>
+          <span class="feature-tag">節日送禮</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <div class="emoji">🍣</div>
+        <h3>即食珍品系列</h3>
+        <div class="jp">Ready-to-Eat</div>
+      </div>
+      <div class="card-body">
+        <p>精選方便即食的日式珍品，無需烹調即可品嚐地道日本風味。適合作為餐前小食、下午茶或宴會小點，隨時享用。</p>
+        <div class="features">
+          <span class="feature-tag">即食方便</span>
+          <span class="feature-tag">餐前小食</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <div class="emoji">🍱</div>
+        <h3>企業訂購服務</h3>
+        <div class="jp">Corporate Orders</div>
+      </div>
+      <div class="card-body">
+        <p>為企業客戶提供定制訂購服務，包括商務禮品訂製、活動用品採購及酒店餐廳食材供應，歡迎查詢批發優惠。</p>
+        <div class="features">
+          <span class="feature-tag">企業批發</span>
+          <span class="feature-tag">定制服務</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top">
+        <div class="emoji">🌸</div>
+        <h3>季節限定系列</h3>
+        <div class="jp">Seasonal Specials</div>
+      </div>
+      <div class="card-body">
+        <p>跟隨日本四季節氣，定期推出各地當季珍品，讓您感受日本飲食文化中對自然節令的尊重與品味。</p>
+        <div class="features">
+          <span class="feature-tag">季節限定</span>
+          <span class="feature-tag">日本當季</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="phil-grid">
+    <div class="phil-text">
+      <h2>味珍味的<em>匠心理念</em></h2>
+      <p>「AJI-NO-CHINMI」源自日語，「味」（AJI）是味道，「珍味」（CHINMI）是珍貴美味之意，結合兩字，正是我們所追求的品牌精神——以珍貴的味道，呈獻最高品質的日本飲食體驗。</p>
+      <p>我們深信，真正的飲食藝術在於對食材的尊重、對工藝的堅持，以及對品質的一絲不苟。每一件產品背後，都是日本職人對傳統工藝的傳承與熱忱。</p>
+      <div class="value-items">
+        <div class="value-item">
+          <div class="vi-ico">🇯🇵</div>
+          <div>
+            <h4>正宗日本來源</h4>
+            <p>直接從日本各地優質生產商採購，確保每一件產品的正宗性與品質。</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="vi-ico">⚗️</div>
+          <div>
+            <h4>傳統工藝堅持</h4>
+            <p>保留日本傳統食品製作工藝，以耐心與匠心製作每一件珍品。</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="vi-ico">✨</div>
+          <div>
+            <h4>嚴格品質把關</h4>
+            <p>所有產品均經嚴格品質檢測，確保符合香港及國際食品安全標準。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phil-visual">
+      <div class="main-char">🍱</div>
+      <h3>味 · 珍 · 味</h3>
+      <p>珍貴食材，傳統工藝，匠心烹調。每一口都是日本飲食文化的精粹與驕傲。</p>
+      <div class="jp-values">
+        <div class="jp-val"><span class="kanji">味</span><span>Taste</span></div>
+        <div class="jp-val"><span class="kanji">珍</span><span>Rare</span></div>
+        <div class="jp-val"><span class="kanji">匠</span><span>Craft</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-bg">
+  <div class="section-header">
+    <div class="jp-title" style="color:rgba(255,255,255,0.6);">● WHY AJI-NO-CHINMI ●</div>
+    <h2 style="color:#fff;">為何選擇<em style="color:var(--accent)">味珍味</em></h2>
+    <p style="color:#f0c0c0;">我們對品質、正宗與服務的承諾，是每一位客戶的最佳保證。</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="ico">🇯🇵</div>
+      <h3>直接日本來源</h3>
+      <p>與日本優質生產商建立長期直接合作關係，確保產品的正宗性與新鮮度。</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">🏆</div>
+      <h3>嚴選品質</h3>
+      <p>每件產品均經嚴格篩選，只有符合最高品質標準的產品才能以「味珍味」品牌面世。</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">🎁</div>
+      <h3>精美包裝</h3>
+      <p>精心設計的包裝，融合日本美學，既保護產品品質，亦呈現高雅的送禮形象。</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">🤝</div>
+      <h3>專業服務</h3>
+      <p>專業的客戶服務團隊，為零售、企業及餐飲客戶提供量身訂造的採購建議。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-header">
+    <div class="jp-title">● CONTACT US ●</div>
+    <h2>聯絡<em>味珍味</em></h2>
+    <p>無論是產品查詢、企業訂購還是合作洽談，歡迎與我們聯絡。</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>聯絡資訊</h3>
+      <div class="contact-row">
+        <div class="ci">📧</div>
+        <div class="ct">
+          <strong>電郵</strong>
+          <span>info@aji-no-chinmi.com.hk</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">🌐</div>
+        <div class="ct">
+          <strong>網站</strong>
+          <span>www.aji-no-chinmi.com.hk</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">📍</div>
+        <div class="ct">
+          <strong>地區</strong>
+          <span>香港 Hong Kong</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">🏢</div>
+        <div class="ct">
+          <strong>企業客戶</strong>
+          <span>歡迎查詢批發及企業訂購優惠，我們為企業客戶提供專屬服務。</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>產品查詢</h3>
+      <div class="form-group">
+        <label>姓名 / Name *</label>
+        <input type="text" placeholder="您的姓名">
+      </div>
+      <div class="form-group">
+        <label>電郵 / Email *</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>電話 / Tel</label>
+        <input type="tel" placeholder="+852 XXXX XXXX">
+      </div>
+      <div class="form-group">
+        <label>查詢類別</label>
+        <select>
+          <option>請選擇</option>
+          <option>產品查詢</option>
+          <option>禮品訂購</option>
+          <option>企業批發</option>
+          <option>餐飲業採購</option>
+          <option>合作洽談</option>
+          <option>其他</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>查詢內容</label>
+        <textarea placeholder="請輸入您的查詢..."></textarea>
+      </div>
+      <button class="btn-submit">提交查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-zh">味珍味（AJI-NO-CHINMI CO.）(HK) LTD.</div>
+      <div class="brand-jp">AUTHENTIC JAPANESE DELICACIES · HONG KONG</div>
+      <p>精選日本珍饌，正宗工藝製作，以最高品質呈獻地道日式美食體驗。</p>
+    </div>
+    <div>
+      <h4>產品系列</h4>
+      <ul>
+        <li><a href="#products">海鮮珍饌</a></li>
+        <li><a href="#products">醃漬珍味</a></li>
+        <li><a href="#products">禮品套裝</a></li>
+        <li><a href="#products">即食珍品</a></li>
+        <li><a href="#products">季節限定</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>聯絡</h4>
+      <ul>
+        <li><a href="mailto:info@aji-no-chinmi.com.hk">📧 info@aji-no-chinmi.com.hk</a></li>
+        <li><a href="https://www.aji-no-chinmi.com.hk">🌐 aji-no-chinmi.com.hk</a></li>
+        <li><a href="#contact">📍 香港</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 味珍味 AJI-NO-CHINMI CO. (HK) LTD. All Rights Reserved. | 香港</p>
+  </div>
+</footer>
+
+</body>
+</html>
