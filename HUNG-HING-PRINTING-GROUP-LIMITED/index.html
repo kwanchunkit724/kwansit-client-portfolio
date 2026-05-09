@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hung Hing Printing Group Limited | A Heritage of Making Ideas Matter</title>
+<style>
+  :root {
+    --primary: #c0392b;
+    --secondary: #8b1a1a;
+    --accent: #e8c070;
+    --dark: #1a1a1a;
+    --mid: #2d2d2d;
+    --light: #fafafa;
+    --text: #2d2d2d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: #fff; }
+
+  /* NAV */
+  nav {
+    background: var(--dark);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 72px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; }
+  .nav-logo .logo-mark {
+    width: 46px; height: 46px;
+    background: var(--primary);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 900; color: #fff; letter-spacing: -1px;
+  }
+  .nav-logo .brand { color: #fff; }
+  .nav-logo .brand span { display: block; font-size: 16px; font-weight: 800; }
+  .nav-logo .brand small { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 2px; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: #aaa; text-decoration: none; font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-since { color: #555; font-size: 13px; }
+  .nav-since strong { color: var(--accent); font-size: 15px; font-weight: 700; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, #0d0d0d 0%, #1a0808 50%, #3d1010 100%);
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    padding: 100px 5%;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(192,57,43,0.15) 100%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    border: 2px solid rgba(232,192,112,0.1);
+    box-shadow: 0 0 0 40px rgba(232,192,112,0.04), 0 0 0 80px rgba(232,192,112,0.02);
+  }
+  .hero-content { max-width: 680px; position: relative; z-index: 1; }
+  .hero-year {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-bottom: 28px;
+  }
+  .hero-year .line { width: 40px; height: 2px; background: var(--accent); }
+  .hero-year span { font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 3px; }
+  .hero h1 { font-size: clamp(2.2rem,5vw,3.8rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+  .hero h1 em { color: var(--accent); font-style: normal; display: block; }
+  .hero p { font-size: 18px; color: #a08070; margin-bottom: 40px; line-height: 1.7; max-width: 540px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-red { background: var(--primary); color: #fff; padding: 14px 36px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 16px; transition: background .2s; }
+  .btn-red:hover { background: var(--secondary); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.25); color: #fff; padding: 14px 36px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all .2s; }
+  .btn-outline:hover { background: rgba(255,255,255,0.07); }
+
+  /* STATS */
+  .stats-section {
+    background: var(--primary);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    padding: 32px 5%;
+  }
+  .stat-item { color: #fff; padding: 16px; border-right: 1px solid rgba(255,255,255,0.2); }
+  .stat-item:last-child { border-right: none; }
+  .stat-item .num { font-size: 34px; font-weight: 900; }
+  .stat-item .lbl { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* SECTION */
+  section { padding: 88px 5%; }
+  .section-header { text-align: center; margin-bottom: 60px; }
+  .section-header .eyebrow { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--primary); margin-bottom: 16px; font-weight: 700; }
+  .section-header h2 { font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight: 900; color: var(--dark); margin-bottom: 14px; line-height: 1.2; }
+  .section-header p { color: #666; font-size: 17px; max-width: 620px; margin: 0 auto; line-height: 1.75; }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: #e8e8e8;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .service-panel {
+    background: #fff;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background .2s;
+  }
+  .service-panel:hover { background: #fdf5f5; }
+  .service-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--primary);
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  .service-panel:hover::before { opacity: 1; }
+  .service-panel .number {
+    font-size: 72px; font-weight: 900; color: #f0eeee; line-height: 1;
+    position: absolute; right: 28px; top: 24px;
+  }
+  .service-panel .ico { font-size: 44px; margin-bottom: 20px; position: relative; z-index: 1; }
+  .service-panel h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .service-panel p { font-size: 15px; color: #666; line-height: 1.75; max-width: 420px; }
+  .service-panel .tag { display: inline-block; background: #fceaea; color: var(--primary); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-top: 16px; }
+
+  /* PRESENCE */
+  .presence-bg { background: var(--dark); }
+  .presence-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+  }
+  .presence-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-align: center;
+    color: #fff;
+  }
+  .presence-card .flag { font-size: 36px; margin-bottom: 14px; }
+  .presence-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .presence-card p { font-size: 13px; color: #7a8898; line-height: 1.6; }
+  .presence-card .since { display: inline-block; background: rgba(232,192,112,0.15); color: var(--accent); padding: 3px 10px; border-radius: 10px; font-size: 11px; margin-top: 10px; }
+
+  /* HERITAGE TIMELINE */
+  .timeline-section { background: var(--light); }
+  .timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 110px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: #e8d0d0;
+  }
+  .timeline-item { display: flex; gap: 32px; margin-bottom: 40px; align-items: flex-start; }
+  .timeline-year {
+    min-width: 110px; text-align: right;
+    font-size: 22px; font-weight: 900; color: var(--primary); padding-top: 4px;
+  }
+  .timeline-dot {
+    width: 16px; height: 16px; background: var(--primary); border-radius: 50%;
+    margin-top: 8px; flex-shrink: 0; position: relative; z-index: 1;
+    border: 3px solid #fff; box-shadow: 0 0 0 2px var(--primary);
+  }
+  .timeline-content h4 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+  .timeline-content p { font-size: 14px; color: #666; line-height: 1.65; }
+
+  /* CAPABILITIES */
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .cap-card {
+    border: 1px solid #eee;
+    border-radius: 14px;
+    padding: 28px 24px;
+    background: #fff;
+    transition: all .2s;
+  }
+  .cap-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); border-color: #d0c0c0; }
+  .cap-card h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+  .cap-card p { font-size: 14px; color: #666; line-height: 1.65; }
+
+  /* CONTACT */
+  .contact-section { background: var(--dark); color: #fff; }
+  .contact-inner { max-width: 960px; margin: 0 auto; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .contact-left h2 { font-size: clamp(1.8rem,3vw,2.4rem); font-weight: 900; margin-bottom: 16px; }
+  .contact-left p { font-size: 16px; color: #888; line-height: 1.7; margin-bottom: 36px; }
+  .contact-row { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+  .contact-row .ci { font-size: 22px; margin-top: 2px; }
+  .contact-row .ct strong { display: block; font-size: 15px; color: #fff; margin-bottom: 4px; }
+  .contact-row .ct span { font-size: 14px; color: #888; line-height: 1.5; }
+  .contact-form { background: rgba(255,255,255,0.06); border-radius: 16px; padding: 36px; border: 1px solid rgba(255,255,255,0.08); }
+  .contact-form h3 { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: #888; margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 11px 14px; border: 1.5px solid rgba(255,255,255,0.12); border-radius: 8px;
+    font-size: 14px; font-family: inherit; background: rgba(255,255,255,0.06); color: #fff; transition: border-color .2s;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: #666; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--primary); }
+  .form-group select { color: #888; }
+  .form-group textarea { height: 90px; resize: vertical; }
+  .btn-submit {
+    width: 100%; background: var(--primary); color: #fff; border: none;
+    padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 700;
+    cursor: pointer; transition: background .2s;
+  }
+  .btn-submit:hover { background: var(--secondary); }
+
+  /* FOOTER */
+  footer { background: #0d0d0d; color: #555; padding: 48px 5% 24px; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand .brand-name { color: #fff; font-size: 20px; font-weight: 900; margin-bottom: 8px; }
+  .footer-brand .est { color: var(--accent); font-size: 12px; letter-spacing: 2px; margin-bottom: 14px; }
+  .footer-brand p { font-size: 13px; line-height: 1.7; }
+  footer h4 { color: #777; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; }
+  footer ul li a { color: #555; text-decoration: none; font-size: 14px; transition: color .2s; }
+  footer ul li a:hover { color: #fff; }
+  .footer-bottom { border-top: 1px solid #1a1a1a; padding-top: 20px; text-align: center; font-size: 13px; }
+
+  @media (max-width: 900px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .timeline::before { left: 80px; }
+    .timeline-year { min-width: 80px; font-size: 18px; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-since { display: none; }
+    .stats-section { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="logo-mark">HH</div>
+    <div class="brand">
+      <span>Hung Hing Printing Group</span>
+      <small>Hong Kong · Established 1950</small>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#presence">Global Presence</a>
+    <a href="#heritage">Our Heritage</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-since">Since <strong>1950</strong></div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-year"><div class="line"></div><span>75+ Years of Excellence</span></div>
+    <h1>A Heritage of<br>Making <em>Ideas Matter</em></h1>
+    <p>From a small Hong Kong printing house to one of Asia's largest printing solution platforms — Hung Hing brings your ideas to life with precision, craftsmanship, and global reach.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-red">Our Services</a>
+      <a href="#contact" class="btn-outline">Request a Quote</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stat-item"><div class="num">75+</div><div class="lbl">Years of Experience</div></div>
+  <div class="stat-item"><div class="num">5,000</div><div class="lbl">Employees Worldwide</div></div>
+  <div class="stat-item"><div class="num">12</div><div class="lbl">Warehouses Globally</div></div>
+  <div class="stat-item"><div class="num">US$281M</div><div class="lbl">Sales Revenue (2024)</div></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <div class="eyebrow">What We Do</div>
+    <h2>Comprehensive Printing Solutions</h2>
+    <p>From the pages of books to the boxes on store shelves, Hung Hing delivers end-to-end printing excellence for clients worldwide.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-panel">
+      <div class="number">01</div>
+      <div class="ico">📚</div>
+      <h3>Book Printing</h3>
+      <p>Unleashing the power of words. Whether you're a global publishing house, independent author, or educational institution, our state-of-the-art presses and meticulous attention to detail bring every book to life. Hardcover, softcover, art books, textbooks — we do it all.</p>
+      <div class="tag">Publishing Solutions</div>
+    </div>
+    <div class="service-panel">
+      <div class="number">02</div>
+      <div class="ico">📦</div>
+      <h3>Packaging Printing</h3>
+      <p>Enhancing your brand image from the first glance. Our packaging printing services are tailored to make products stand out. From concept to execution, we deliver packaging that is visually stunning, functional, and durable — capturing consumers at the point of sale.</p>
+      <div class="tag">Retail & FMCG Packaging</div>
+    </div>
+    <div class="service-panel">
+      <div class="number">03</div>
+      <div class="ico">🎁</div>
+      <h3>Premiums & Promotional Products</h3>
+      <p>Elevate your marketing game with customised corporate gifts, branded stationery, and unique promotional products. Our diverse range reflects your brand essence and creates lasting impressions that turn recipients into brand advocates.</p>
+      <div class="tag">Corporate & Marketing</div>
+    </div>
+    <div class="service-panel">
+      <div class="number">04</div>
+      <div class="ico">🗞️</div>
+      <h3>Paper Trading & Stationery</h3>
+      <p>As one of Asia's major paper trading platforms, we source and supply high-quality paper products for commercial and industrial use. Our expertise in paper selection ensures optimal results for every print application.</p>
+      <div class="tag">B2B Supply</div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL PRESENCE -->
+<section id="presence" class="presence-bg">
+  <div class="section-header">
+    <div class="eyebrow" style="color:var(--accent)">Where We Operate</div>
+    <h2 style="color:#fff;">Global Manufacturing Footprint</h2>
+    <p style="color:#888;">Seven plants across Asia, twelve warehouses worldwide — we're wherever you need us to be.</p>
+  </div>
+  <div class="presence-grid">
+    <div class="presence-card">
+      <div class="flag">🇭🇰</div>
+      <h4>Hong Kong</h4>
+      <p>Headquarters at Tai Po Industrial Estate. Our birthplace and primary operations hub.</p>
+      <div class="since">Since 1950</div>
+    </div>
+    <div class="presence-card">
+      <div class="flag">🇨🇳</div>
+      <h4>Mainland China</h4>
+      <p>Five manufacturing plants across strategic locations in mainland China serving Asia-Pacific markets.</p>
+      <div class="since">5 Plants</div>
+    </div>
+    <div class="presence-card">
+      <div class="flag">🇻🇳</div>
+      <h4>Vietnam</h4>
+      <p>Established in 2019, our Vietnam plant extends our Southeast Asia manufacturing capacity.</p>
+      <div class="since">Est. 2019</div>
+    </div>
+    <div class="presence-card">
+      <div class="flag">🌏</div>
+      <h4>Global Distribution</h4>
+      <p>Twelve warehouses strategically positioned worldwide for efficient global fulfillment.</p>
+      <div class="since">12 Warehouses</div>
+    </div>
+  </div>
+</section>
+
+<!-- HERITAGE -->
+<section id="heritage" class="timeline-section">
+  <div class="section-header">
+    <div class="eyebrow">Our Story</div>
+    <h2>75 Years of Printing Excellence</h2>
+    <p>From humble beginnings in Hong Kong to a world-class printing platform — a legacy built on craftsmanship and innovation.</p>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">1950</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h4>Founded in Hong Kong</h4>
+        <p>Hung Hing begins as a small printing house in Hong Kong, serving local businesses with quality offset printing.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1980s</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h4>Expansion into Book Printing</h4>
+        <p>Growing reputation attracts international publishers, establishing Hung Hing as a trusted book printing partner for global markets.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1990s</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h4>Mainland China Operations</h4>
+        <p>Strategic expansion into mainland China with multiple manufacturing plants, significantly scaling production capacity.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2000s</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h4>Asia's Leading Printing Platform</h4>
+        <p>Grows to become one of Asia's major global players in books, packaging, paper trading, and promotional products.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2019</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h4>Vietnam Plant Established</h4>
+        <p>Opening of Vietnam manufacturing facility extends Southeast Asia presence and diversifies production capabilities.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Today</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h4>US$281M Global Enterprise</h4>
+        <p>5,000 employees, 7 plants, 12 warehouses, and US$281M in annual revenues — a true heritage of making ideas matter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section>
+  <div class="section-header">
+    <div class="eyebrow">Production Capabilities</div>
+    <h2>Technical Excellence at Every Stage</h2>
+    <p>World-class equipment, rigorous quality control, and decades of expertise ensure exceptional results for every project.</p>
+  </div>
+  <div class="cap-grid">
+    <div class="cap-card">
+      <h4>🖨️ Offset Printing</h4>
+      <p>High-volume, high-precision offset printing with excellent colour consistency across long print runs.</p>
+    </div>
+    <div class="cap-card">
+      <h4>💻 Digital Printing</h4>
+      <p>Short-run digital printing for fast turnaround, personalised content, and cost-effective small quantities.</p>
+    </div>
+    <div class="cap-card">
+      <h4>✂️ Finishing & Binding</h4>
+      <p>Full range of binding: hardcover, perfect bound, saddle stitch, wire-o, and spiral, with specialty finishes.</p>
+    </div>
+    <div class="cap-card">
+      <h4>✨ Special Finishes</h4>
+      <p>Foil stamping, embossing, spot UV, matte/gloss lamination, and more for premium product presentation.</p>
+    </div>
+    <div class="cap-card">
+      <h4>📋 Pre-Press Services</h4>
+      <p>Comprehensive pre-press including file preparation, colour management, ICC profiling, and digital proofing.</p>
+    </div>
+    <div class="cap-card">
+      <h4>🚚 Logistics & Fulfilment</h4>
+      <p>End-to-end supply chain management from production through warehousing to worldwide door-to-door delivery.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <h2>Let's Bring Your Ideas to Life</h2>
+        <p>Contact us to discuss your printing requirements. Our team is ready to provide expert advice and competitive quotations for projects of any scale.</p>
+        <div class="contact-row">
+          <div class="ci">📍</div>
+          <div class="ct">
+            <strong>Headquarters</strong>
+            <span>Tai Po Industrial Estate, Hong Kong</span>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ci">📱</div>
+          <div class="ct">
+            <strong>Mobile</strong>
+            <span>+852 6996 1473</span>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ci">🌐</div>
+          <div class="ct">
+            <strong>Website</strong>
+            <span>www.hunghingprinting.com</span>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ci">🔗</div>
+          <div class="ct">
+            <strong>Investor Relations</strong>
+            <span>Listed company — visit website for investor information</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Print Enquiry</h3>
+        <div class="form-group">
+          <label>Name *</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" placeholder="Company name">
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select>
+            <option>Select service</option>
+            <option>Book Printing</option>
+            <option>Packaging Printing</option>
+            <option>Premiums & Promotional</option>
+            <option>Paper Trading</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Project Details</label>
+          <textarea placeholder="Describe your project requirements, quantity, specifications..."></textarea>
+        </div>
+        <button class="btn-submit">Submit Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name">Hung Hing Printing Group Limited</div>
+      <div class="est">Established 1950 · Hong Kong</div>
+      <p>One of Asia's largest printing solution platforms. 75+ years of craftsmanship, innovation, and excellence in book printing, packaging, premiums, and paper trading.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Book Printing</a></li>
+        <li><a href="#services">Packaging Printing</a></li>
+        <li><a href="#services">Premiums & Promo</a></li>
+        <li><a href="#services">Paper Trading</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#heritage">Our Heritage</a></li>
+        <li><a href="#presence">Global Presence</a></li>
+        <li><a href="https://www.hunghingprinting.com">Investors</a></li>
+        <li><a href="https://www.hunghingprinting.com">Careers</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+85269961473">📱 +852 6996 1473</a></li>
+        <li><a href="https://www.hunghingprinting.com">🌐 hunghingprinting.com</a></li>
+        <li><a href="#contact">📍 Tai Po, Hong Kong</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Hung Hing Printing Group Limited. All Rights Reserved. | Hong Kong | Est. 1950</p>
+  </div>
+</footer>
+
+</body>
+</html>
