@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海潤食品(亞洲)有限公司 | H.R. Woodward Foods (Asia) Ltd</title>
+<style>
+  :root {
+    --primary: #8b1a1a;
+    --secondary: #c0392b;
+    --accent: #c8960a;
+    --dark: #1a0d0d;
+    --mid: #2d1414;
+    --light: #fdf8f5;
+    --text: #2d1a14;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif; color: var(--text); background: #fff; }
+
+  /* NAV */
+  nav {
+    background: var(--dark);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 68px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; }
+  .nav-logo .brand { color: #fff; }
+  .nav-logo .brand span { display: block; font-size: 17px; font-weight: 800; }
+  .nav-logo .brand small { font-size: 11px; color: #c8960a; text-transform: uppercase; letter-spacing: 2px; }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a { color: #c0a0a0; text-decoration: none; font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-tel { color: var(--accent); font-weight: 700; font-size: 15px; }
+  .nav-tel span { color: #7a5050; font-size: 11px; font-weight: 400; display: block; text-align: right; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, var(--dark) 0%, #3d1010 60%, #6b2020 100%);
+    min-height: 580px;
+    display: flex;
+    align-items: center;
+    padding: 80px 5%;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 75% 50%, rgba(200,150,10,0.1) 0%, transparent 60%);
+  }
+  .hero-content { max-width: 720px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid rgba(200,150,10,0.5); color: var(--accent);
+    padding: 6px 18px; border-radius: 20px; font-size: 12px;
+    margin-bottom: 24px; text-transform: uppercase; letter-spacing: 2px;
+    background: rgba(200,150,10,0.1);
+  }
+  .hero h1 { font-size: clamp(2rem,5vw,3.2rem); font-weight: 900; line-height: 1.2; margin-bottom: 16px; }
+  .hero h2 { font-size: clamp(1rem,2.5vw,1.4rem); color: #c8960a; font-weight: 600; margin-bottom: 20px; letter-spacing: 1px; }
+  .hero p { font-size: 17px; color: #c0a0a0; margin-bottom: 36px; line-height: 1.75; max-width: 580px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+  .btn-red { background: var(--secondary); color: #fff; padding: 13px 32px; border-radius: 7px; text-decoration: none; font-weight: 700; font-size: 15px; transition: background .2s; }
+  .btn-red:hover { background: var(--primary); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.25); color: #fff; padding: 13px 32px; border-radius: 7px; text-decoration: none; font-weight: 600; font-size: 15px; transition: all .2s; }
+  .btn-outline:hover { background: rgba(255,255,255,0.08); }
+  .hero-companies { display: flex; flex-wrap: wrap; gap: 10px; }
+  .company-tag {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+    color: #c0a8a8; padding: 5px 12px; border-radius: 8px; font-size: 12px;
+  }
+
+  /* SECTION */
+  section { padding: 80px 5%; }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-header .eyebrow { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--secondary); margin-bottom: 14px; font-weight: 700; }
+  .section-header h2 { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .section-header p { color: #6a4040; font-size: 16px; max-width: 620px; margin: 0 auto; line-height: 1.7; }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .about-text h2 { font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 800; color: var(--dark); margin-bottom: 16px; }
+  .about-text p { font-size: 15px; color: #5a3030; line-height: 1.8; margin-bottom: 16px; }
+  .subsidiaries { margin-top: 24px; }
+  .subsidiaries h4 { font-size: 14px; font-weight: 700; color: #8b3030; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+  .sub-list { list-style: none; }
+  .sub-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #5a3030; padding: 8px 0; border-bottom: 1px solid #f0e0e0; }
+  .sub-list li:last-child { border-bottom: none; }
+  .sub-list li::before { content: '›'; color: var(--secondary); font-weight: 700; font-size: 16px; }
+  .about-visual {
+    background: linear-gradient(135deg, var(--dark), #5a1414);
+    border-radius: 20px;
+    padding: 48px 36px;
+    color: #fff;
+  }
+  .about-visual h3 { color: var(--accent); font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; }
+  .value-list { list-style: none; }
+  .value-list li { display: flex; gap: 14px; margin-bottom: 20px; }
+  .value-list li .num { font-size: 28px; font-weight: 900; color: var(--accent); line-height: 1; min-width: 32px; }
+  .value-list li .content h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .value-list li .content p { font-size: 13px; color: #c0a0a0; line-height: 1.6; }
+
+  /* PRODUCTS */
+  .products-bg { background: var(--light); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .product-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e8d0d0;
+    transition: all .25s;
+  }
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(139,26,26,0.12); }
+  .product-card .card-header {
+    background: linear-gradient(135deg, var(--dark), var(--primary));
+    padding: 28px 24px;
+    color: #fff;
+  }
+  .product-card .card-header .ico { font-size: 44px; margin-bottom: 12px; }
+  .product-card .card-header h3 { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+  .product-card .card-header h3 small { display: block; font-size: 12px; color: var(--accent); font-weight: 400; margin-top: 4px; }
+  .product-card .card-body { padding: 20px 24px; }
+  .brand-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .brand-tag {
+    background: #fbeaea; color: var(--primary); padding: 4px 12px;
+    border-radius: 12px; font-size: 12px; font-weight: 600; border: 1px solid #f0d0d0;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .service-item {
+    background: var(--light);
+    border: 1px solid #e8d0d0;
+    border-left: 4px solid var(--secondary);
+    border-radius: 10px;
+    padding: 24px 20px;
+    transition: box-shadow .2s;
+  }
+  .service-item:hover { box-shadow: 0 6px 20px rgba(139,26,26,0.1); }
+  .service-item h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .service-item p { font-size: 14px; color: #5a3030; line-height: 1.65; }
+
+  /* CONTACT */
+  .contact-section { background: var(--dark); color: #fff; }
+  .contact-inner { max-width: 960px; margin: 0 auto; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .contact-left h2 { font-size: clamp(1.8rem,3vw,2.4rem); font-weight: 900; margin-bottom: 16px; }
+  .contact-left p { font-size: 16px; color: #a08080; line-height: 1.7; margin-bottom: 36px; }
+  .contact-row { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+  .contact-row .ci { font-size: 22px; margin-top: 2px; }
+  .contact-row .ct strong { display: block; font-size: 15px; color: #fff; margin-bottom: 4px; }
+  .contact-row .ct span { font-size: 14px; color: #a08080; line-height: 1.5; }
+  .contact-form { background: rgba(255,255,255,0.06); border-radius: 16px; padding: 36px; border: 1px solid rgba(255,255,255,0.1); }
+  .contact-form h3 { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: #a08080; margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 11px 14px; border: 1.5px solid rgba(255,255,255,0.12); border-radius: 8px;
+    font-size: 14px; font-family: inherit; background: rgba(255,255,255,0.06); color: #fff; transition: border-color .2s;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: #7a5050; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--secondary); }
+  .form-group select { color: #a08080; }
+  .form-group textarea { height: 90px; resize: vertical; }
+  .btn-submit {
+    width: 100%; background: var(--secondary); color: #fff; border: none;
+    padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 700;
+    cursor: pointer; transition: background .2s;
+  }
+  .btn-submit:hover { background: var(--primary); }
+
+  /* FOOTER */
+  footer { background: #0d0808; color: #6a4040; padding: 48px 5% 24px; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand .brand-zh { color: #fff; font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+  .footer-brand .brand-en { color: var(--accent); font-size: 12px; letter-spacing: 1px; margin-bottom: 14px; }
+  .footer-brand p { font-size: 13px; line-height: 1.7; }
+  footer h4 { color: #9a6060; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; }
+  footer ul li a { color: #6a4040; text-decoration: none; font-size: 14px; transition: color .2s; }
+  footer ul li a:hover { color: #fff; }
+  .footer-bottom { border-top: 1px solid #2d1414; padding-top: 20px; text-align: center; font-size: 13px; }
+
+  @media (max-width: 900px) {
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="brand">
+      <span>海潤食品（亞洲）有限公司</span>
+      <small>H.R. Woodward Foods (Asia) Ltd</small>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#products">產品及品牌</a>
+    <a href="#services">我們的服務</a>
+    <a href="#about">關於我們</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <div class="nav-tel">2583 3688 <span>查詢熱線</span></div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🥩 全球優質肉類 · 香港荃灣</div>
+    <h1>搜羅全球優質肉類<br>專業加工，精心呈獻</h1>
+    <h2>H.R. Woodward Foods — Premium Global Meat & Food Processing</h2>
+    <p>海潤食品搜羅全球高質素的肉類產品及提供卓越加工服務，包括各款肉類的切割、包裝、醃製和烹調。我們以客為先、專業投入，注重食品安全，給予顧客高品質的承諾及保證。</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-red">查閱產品及品牌</a>
+      <a href="#contact" class="btn-outline">聯絡我們</a>
+    </div>
+    <div class="hero-companies">
+      <div class="company-tag">海潤食品(亞洲)有限公司</div>
+      <div class="company-tag">海潤餐飲服務有限公司</div>
+      <div class="company-tag">海潤食品貿易有限公司</div>
+      <div class="company-tag">海潤午餐(香港)有限公司</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <h2>關於海潤食品集團</h2>
+      <p>海潤食品（亞洲）有限公司是香港領先的優質肉類進口及食品加工企業，致力搜羅來自澳洲、美國、歐洲等地的頂級肉類產品，為香港零售及餐飲市場提供最高質素的食材選擇。</p>
+      <p>集團旗下設有多個業務單位，涵蓋食品貿易、餐飲服務及食品加工，配合現代化的食品加工中心，為客戶提供一站式的優質食品解決方案。</p>
+      <div class="subsidiaries">
+        <h4>集團成員</h4>
+        <ul class="sub-list">
+          <li>海潤食品(亞洲)有限公司</li>
+          <li>海潤餐飲服務有限公司</li>
+          <li>海潤食品貿易有限公司</li>
+          <li>海潤午餐(香港)有限公司</li>
+        </ul>
+      </div>
+    </div>
+    <div class="about-visual">
+      <h3>Our Commitment</h3>
+      <ul class="value-list">
+        <li>
+          <div class="num">01</div>
+          <div class="content">
+            <h4>以客為先</h4>
+            <p>一切以客戶需求為依歸，提供靈活、貼心的服務，滿足不同客戶的需要。</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">02</div>
+          <div class="content">
+            <h4>食品安全</h4>
+            <p>嚴格遵守食品安全標準，從採購到配送全程監控，確保每一件產品的品質。</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">03</div>
+          <div class="content">
+            <h4>專業投入</h4>
+            <p>經驗豐富的專業團隊，深入了解每一款肉類產品的特性，提供最專業的建議。</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">04</div>
+          <div class="content">
+            <h4>高品質承諾</h4>
+            <p>嚴格篩選全球優質肉類品牌，只為客戶提供達到最高標準的食品。</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="products-bg">
+  <div class="section-header">
+    <div class="eyebrow">Products & Brands</div>
+    <h2>精選產品及品牌</h2>
+    <p>搜羅來自全球頂級肉類產品，與國際知名品牌合作，為您呈獻最高品質的食材選擇。</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="card-header">
+        <div class="ico">🐄</div>
+        <h3>牛肉 <small>Beef Products</small></h3>
+      </div>
+      <div class="card-body">
+        <div class="brand-tags">
+          <span class="brand-tag">H.R. Woodward Australia</span>
+          <span class="brand-tag">澳洲安格斯牛肉</span>
+          <span class="brand-tag">澳洲穀飼牛肉</span>
+          <span class="brand-tag">澳洲草飼牛肉</span>
+          <span class="brand-tag">GO Meat</span>
+          <span class="brand-tag">Greater OMAHA</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-header">
+        <div class="ico">🐷</div>
+        <h3>豬肉 <small>Pork Products</small></h3>
+      </div>
+      <div class="card-body">
+        <div class="brand-tags">
+          <span class="brand-tag">GO Meat</span>
+          <span class="brand-tag">Smithfield</span>
+          <span class="brand-tag">BEHER</span>
+          <span class="brand-tag">ARTIGAS</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-header">
+        <div class="ico">🐑</div>
+        <h3>羊肉 <small>Lamb & Mutton</small></h3>
+      </div>
+      <div class="card-body">
+        <div class="brand-tags">
+          <span class="brand-tag">H.R. Woodward Australia</span>
+          <span class="brand-tag">GO Meat</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-header">
+        <div class="ico">🐔</div>
+        <h3>家禽 <small>Poultry Products</small></h3>
+      </div>
+      <div class="card-body">
+        <div class="brand-tags">
+          <span class="brand-tag">GO Meat</span>
+          <span class="brand-tag">MHP Qualiko</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-header">
+        <div class="ico">🍱</div>
+        <h3>其他 <small>Other Products</small></h3>
+      </div>
+      <div class="card-body">
+        <div class="brand-tags">
+          <span class="brand-tag">香港味道</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <div class="eyebrow">Our Services</div>
+    <h2>食品加工及服務</h2>
+    <p>配備現代化食品加工中心，提供全面的肉類加工服務，確保每一件產品達到最高品質標準。</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-item">
+      <h4>✂️ 肉類切割服務</h4>
+      <p>專業肉類分割切割，按客戶需求提供各種規格及部位，確保每件產品整齊、精準。</p>
+    </div>
+    <div class="service-item">
+      <h4>📦 包裝服務</h4>
+      <p>衛生、專業的肉類包裝，採用符合食品安全標準的包裝材料，延長保鮮期。</p>
+    </div>
+    <div class="service-item">
+      <h4>🧂 醃製服務</h4>
+      <p>提供多款醃製配方，按客戶要求定制口味，為餐廳及食品業提供即用型醃製肉品。</p>
+    </div>
+    <div class="service-item">
+      <h4>🍳 烹調加工</h4>
+      <p>專業烹調加工服務，提供半製成品及即食食品，方便餐飲業及零售市場使用。</p>
+    </div>
+    <div class="service-item">
+      <h4>🏭 食品加工中心</h4>
+      <p>現代化食品加工設施，符合HACCP及ISO食品安全標準，全面保障產品品質。</p>
+    </div>
+    <div class="service-item">
+      <h4>🚛 配送服務</h4>
+      <p>冷凍物流配送，覆蓋香港各地，確保產品在最佳溫度下安全運抵客戶手中。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <h2>聯絡我們</h2>
+        <p>歡迎查詢產品及服務詳情。我們的專業團隊隨時為您提供報價及諮詢服務。</p>
+        <div class="contact-row">
+          <div class="ci">📍</div>
+          <div class="ct">
+            <strong>地址</strong>
+            <span>香港荃灣青山公路 611-619 號<br>東南工業大廈 16 樓<br>16/F, Tung Nam Industrial Building, 611-619 Castle Peak Road, Tsuen Wan, HK</span>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ci">📞</div>
+          <div class="ct">
+            <strong>查詢電話</strong>
+            <span>2583 3688（落單/一般查詢）<br>2583 3636（一般查詢）</span>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ci">📠</div>
+          <div class="ct">
+            <strong>傳真</strong>
+            <span>2583 3666</span>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ci">📧</div>
+          <div class="ct">
+            <strong>電郵</strong>
+            <span>enquiry@hrwoodwardfoods.com.hk</span>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ci">🌐</div>
+          <div class="ct">
+            <strong>網址</strong>
+            <span>www.hrwoodwardfoods.com.hk</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>產品查詢</h3>
+        <div class="form-group">
+          <label>姓名 / Name *</label>
+          <input type="text" placeholder="您的姓名">
+        </div>
+        <div class="form-group">
+          <label>公司名稱 / Company</label>
+          <input type="text" placeholder="公司名稱">
+        </div>
+        <div class="form-group">
+          <label>電話 / Tel *</label>
+          <input type="tel" placeholder="+852 XXXX XXXX">
+        </div>
+        <div class="form-group">
+          <label>電郵 / Email</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>查詢類別</label>
+          <select>
+            <option>請選擇 / Please select</option>
+            <option>牛肉產品 Beef</option>
+            <option>豬肉產品 Pork</option>
+            <option>羊肉產品 Lamb</option>
+            <option>家禽產品 Poultry</option>
+            <option>食品加工服務</option>
+            <option>其他 Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢內容 / Message</label>
+          <textarea placeholder="請輸入您的查詢..."></textarea>
+        </div>
+        <button class="btn-submit">提交查詢 / Submit</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-zh">海潤食品（亞洲）有限公司</div>
+      <div class="brand-en">H.R. Woodward Foods (Asia) Ltd</div>
+      <p>香港領先的優質肉類進口及食品加工企業，搜羅全球高質素肉類產品，以客為先，注重食品安全。</p>
+    </div>
+    <div>
+      <h4>產品類別</h4>
+      <ul>
+        <li><a href="#products">牛肉 Beef</a></li>
+        <li><a href="#products">豬肉 Pork</a></li>
+        <li><a href="#products">羊肉 Lamb</a></li>
+        <li><a href="#products">家禽 Poultry</a></li>
+        <li><a href="#products">其他 Others</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>服務</h4>
+      <ul>
+        <li><a href="#services">肉類切割</a></li>
+        <li><a href="#services">包裝服務</a></li>
+        <li><a href="#services">醃製加工</a></li>
+        <li><a href="#services">食品加工中心</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>聯絡</h4>
+      <ul>
+        <li><a href="tel:25833688">📞 2583 3688</a></li>
+        <li><a href="mailto:enquiry@hrwoodwardfoods.com.hk">📧 查詢電郵</a></li>
+        <li><a href="https://www.hrwoodwardfoods.com.hk">🌐 官方網站</a></li>
+        <li><a href="#contact">📍 荃灣</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 海潤食品（亞洲）有限公司 H.R. Woodward Foods (Asia) Ltd. All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
