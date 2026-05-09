@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>亞洲旅行社有限公司 | Asia Travel Agency</title>
+<style>
+  :root {
+    --primary: #0066cc;
+    --secondary: #00a86b;
+    --accent: #ff6600;
+    --dark: #1a2540;
+    --light: #f4f8ff;
+    --text: #333;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif; color: var(--text); background: #fff; }
+
+  /* NAV */
+  nav {
+    background: var(--dark);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 68px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; }
+  .nav-logo .icon { width: 42px; height: 42px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .nav-logo .brand { color: #fff; }
+  .nav-logo .brand span { display: block; font-size: 18px; font-weight: 700; letter-spacing: 1px; }
+  .nav-logo .brand small { font-size: 11px; color: #a0b0cc; text-transform: uppercase; letter-spacing: 2px; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: #ccd6e8; text-decoration: none; font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-hotline { color: var(--accent); font-weight: 700; font-size: 15px; }
+  .nav-hotline span { color: #a0b0cc; font-size: 12px; font-weight: 400; display: block; text-align: right; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0a1628 0%, #0d2b5e 50%, #0066cc 100%);
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    padding: 80px 5%;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='1' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E") repeat;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 800px; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(0,168,107,0.2);
+    border: 1px solid var(--secondary);
+    color: #4dd4a0;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-bottom: 24px;
+    letter-spacing: 2px;
+  }
+  .hero h1 { font-size: clamp(2rem,5vw,3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
+  .hero h1 em { color: #5bc4ff; font-style: normal; }
+  .hero .sub { font-size: 18px; color: #90b8e0; margin-bottom: 36px; line-height: 1.6; }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--primary); color: #fff; padding: 14px 36px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; transition: background .2s; }
+  .btn-primary:hover { background: #0052a3; }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: #fff; padding: 14px 36px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all .2s; }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--primary);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    padding: 20px 5%;
+  }
+  .stat-item { color: #fff; padding: 12px; border-right: 1px solid rgba(255,255,255,0.2); }
+  .stat-item:last-child { border-right: none; }
+  .stat-item .num { font-size: 28px; font-weight: 800; }
+  .stat-item .lbl { font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 4px; }
+
+  /* SECTION */
+  section { padding: 80px 5%; }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-header h2 { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .section-header p { color: #666; font-size: 16px; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+  .tag { display: inline-block; background: #e8f0fe; color: var(--primary); padding: 4px 14px; border-radius: 14px; font-size: 13px; margin-bottom: 16px; }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .service-card {
+    border: 1px solid #e0e8f8;
+    border-radius: 16px;
+    padding: 32px 28px;
+    transition: all .25s;
+    background: #fff;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,102,204,0.12); border-color: var(--primary); }
+  .service-card .ico { font-size: 40px; margin-bottom: 18px; }
+  .service-card h3 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .service-card h3 small { display: block; font-size: 13px; font-weight: 400; color: #888; margin-top: 4px; }
+  .service-card p { font-size: 14px; color: #666; line-height: 1.7; }
+
+  /* STUDY TRIPS */
+  .study-section { background: var(--light); }
+  .study-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .study-card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    transition: transform .25s;
+  }
+  .study-card:hover { transform: translateY(-4px); }
+  .study-card .card-header {
+    background: linear-gradient(135deg, var(--primary), #0044aa);
+    color: #fff;
+    padding: 24px 24px 20px;
+  }
+  .study-card .card-header .badge {
+    display: inline-block;
+    background: var(--secondary);
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .study-card .card-header h3 { font-size: 17px; font-weight: 700; line-height: 1.4; }
+  .study-card .card-body { padding: 20px 24px; }
+  .study-card .card-body p { font-size: 14px; color: #666; line-height: 1.65; }
+  .study-card .card-footer { padding: 0 24px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .study-card .card-footer .level { font-size: 12px; color: #888; }
+  .study-card .card-footer a { color: var(--primary); font-size: 13px; font-weight: 600; text-decoration: none; }
+
+  /* LOCAL TOURS */
+  .local-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .local-item {
+    background: #fff;
+    border: 1px solid #e5ecf8;
+    border-left: 4px solid var(--primary);
+    border-radius: 10px;
+    padding: 22px 20px;
+  }
+  .local-item h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .local-item p { font-size: 13px; color: #666; line-height: 1.6; }
+
+  /* WHY US */
+  .why-section { background: var(--dark); color: #fff; }
+  .why-section .section-header h2 { color: #fff; }
+  .why-section .section-header p { color: #8aa0c0; }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .why-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .why-card .ico { font-size: 38px; margin-bottom: 16px; }
+  .why-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .why-card p { font-size: 13px; color: #8aa0c0; line-height: 1.65; }
+
+  /* NEWS */
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .news-card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5ecf8;
+    transition: box-shadow .2s;
+  }
+  .news-card:hover { box-shadow: 0 8px 24px rgba(0,102,204,0.1); }
+  .news-card .news-header {
+    background: linear-gradient(135deg, #e8f0fe, #cdd9f5);
+    padding: 30px 24px;
+    font-size: 28px;
+  }
+  .news-card .news-body { padding: 20px 24px; }
+  .news-card h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; line-height: 1.4; }
+  .news-card p { font-size: 13px; color: #666; line-height: 1.65; }
+
+  /* CONTACT */
+  .contact-section { background: var(--light); }
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: start;
+  }
+  .contact-info h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 24px; }
+  .contact-row { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+  .contact-row .ci { font-size: 22px; margin-top: 2px; }
+  .contact-row .ct strong { display: block; font-size: 15px; color: var(--dark); margin-bottom: 4px; }
+  .contact-row .ct span { font-size: 14px; color: #555; line-height: 1.5; }
+  .contact-form { background: #fff; border-radius: 16px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+  .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 11px 14px; border: 1.5px solid #dde5f5; border-radius: 8px;
+    font-size: 14px; font-family: inherit; transition: border-color .2s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--primary); }
+  .form-group textarea { height: 90px; resize: vertical; }
+  .btn-submit {
+    width: 100%; background: var(--primary); color: #fff; border: none;
+    padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 700;
+    cursor: pointer; transition: background .2s;
+  }
+  .btn-submit:hover { background: #0052a3; }
+
+  /* FOOTER */
+  footer {
+    background: #0d1524;
+    color: #6a80a0;
+    padding: 48px 5% 24px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand .brand-name { color: #fff; font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+  .footer-brand .brand-en { color: #4a90d9; font-size: 13px; letter-spacing: 2px; margin-bottom: 16px; }
+  .footer-brand p { font-size: 13px; line-height: 1.7; }
+  footer h4 { color: #a0b4cc; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; }
+  footer ul li a { color: #6a80a0; text-decoration: none; font-size: 14px; transition: color .2s; }
+  footer ul li a:hover { color: #fff; }
+  .footer-bottom { border-top: 1px solid #1e2d45; padding-top: 20px; text-align: center; font-size: 13px; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="icon">✈</div>
+    <div class="brand">
+      <span>亞洲旅行社</span>
+      <small>Asia Travel Agency</small>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">服務</a>
+    <a href="#study">遊學團</a>
+    <a href="#local">本地遊</a>
+    <a href="#about">關於我們</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <div class="nav-hotline">25110806 <span>服務熱線</span></div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">香港灣仔・成立多年</div>
+    <h1>商務與遊學之旅的<em>最佳選擇</em></h1>
+    <p class="sub">
+      亞洲旅行社有限公司，專業提供遊學團、本地遊、特價機票及定制旅遊服務。<br>
+      教育局中標旅行社，為學校及機構提供全方位旅遊方案。
+    </p>
+    <div class="hero-btns">
+      <a href="#study" class="btn-primary">遊學團計劃</a>
+      <a href="#contact" class="btn-outline">免費咨詢</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="num">20+</div><div class="lbl">年行業經驗</div></div>
+  <div class="stat-item"><div class="num">500+</div><div class="lbl">合作學校及機構</div></div>
+  <div class="stat-item"><div class="num">50+</div><div class="lbl">熱門旅遊目的地</div></div>
+  <div class="stat-item"><div class="num">100%</div><div class="lbl">客戶滿意承諾</div></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <div class="tag">全方位服務</div>
+    <h2>量身定制，網羅最全旅行資訊</h2>
+    <p>一站式旅遊服務平台，滿足個人、學校、企業的各類旅遊需求。</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="ico">🏫</div>
+      <h3>遊學團 <small>Study Tours</small></h3>
+      <p>教育局中標合作機構，為中小學設計內地及海外遊學計劃，融合歷史文化、STEM及藝術教育元素，豐富學生學習體驗。</p>
+    </div>
+    <div class="service-card">
+      <div class="ico">🗺️</div>
+      <h3>本地遊 <small>Local Tours</small></h3>
+      <p>探索香港隱藏瑰寶，包括郊野公園、離島、歷史古蹟及特色社區。商務接待、個性化定制及口岸接送服務一應俱全。</p>
+    </div>
+    <div class="service-card">
+      <div class="ico">✈️</div>
+      <h3>特價機票 <small>Air Tickets</small></h3>
+      <p>提供本地及內地兩地機票預訂服務，多家航空公司特惠票價，並提供機場接送及行程安排配套。</p>
+    </div>
+    <div class="service-card">
+      <div class="ico">🏨</div>
+      <h3>品質酒店 <small>Quality Hotels</small></h3>
+      <p>嚴選各地優質酒店，由五星豪華到精品商務，配合不同預算與行程需要，確保住宿舒適稱心。</p>
+    </div>
+    <div class="service-card">
+      <div class="ico">🎟️</div>
+      <h3>景點門票 <small>Attraction Tickets</small></h3>
+      <p>代訂本港各大景點門票，包括海洋公園、昂坪360、天星小輪等，享受優惠票價及免排隊服務。</p>
+    </div>
+    <div class="service-card">
+      <div class="ico">🏢</div>
+      <h3>機構定制服務 <small>Corporate Customization</small></h3>
+      <p>為企業、社團及政府機構度身訂造商務考察、員工旅遊及訪問交流計劃，提供全程禮賓服務。</p>
+    </div>
+  </div>
+</section>
+
+<!-- STUDY TOURS -->
+<section id="study" class="study-section">
+  <div class="section-header">
+    <div class="tag">教育局中標路線</div>
+    <h2>精選遊學團計劃 2025/26</h2>
+    <p>深度探索內地歷史文化，拓展視野，豐富校園以外的學習體驗。</p>
+  </div>
+  <div class="study-grid">
+    <div class="study-card">
+      <div class="card-header">
+        <div class="badge">文化歷史</div>
+        <h3>重慶、四川的歷史文化及經濟發展探索之旅</h3>
+      </div>
+      <div class="card-body">
+        <p>走訪重慶、成都等地，深入了解巴蜀文化、三峽歷史及現代經濟發展成就，結合歷史遺蹟與當代建設，讓學生全面認識祖國西南地區的發展。</p>
+      </div>
+      <div class="card-footer">
+        <span class="level">中學適用 · 3-5天</span>
+        <a href="#contact">了解詳情 →</a>
+      </div>
+    </div>
+    <div class="study-card">
+      <div class="card-header">
+        <div class="badge">藝術工藝</div>
+        <h3>江西的陶瓷藝術、古建築及古村文化探索之旅</h3>
+      </div>
+      <div class="card-body">
+        <p>探訪景德鎮陶瓷文化及江西古村落，親身體驗千年陶瓷工藝，參觀宏村、西遞等世界文化遺產，感受中國傳統建築之美。</p>
+      </div>
+      <div class="card-footer">
+        <span class="level">中學適用 · 4-6天</span>
+        <a href="#contact">了解詳情 →</a>
+      </div>
+    </div>
+    <div class="study-card">
+      <div class="card-header">
+        <div class="badge">同行萬里</div>
+        <h3>中學生內地交流計劃——杭州紹興</h3>
+      </div>
+      <div class="card-body">
+        <p>「同行萬里」系列計劃，帶領中學生深入杭州、紹興，探訪西湖、烏鎮及魯迅故里，感受江南水鄉文化，加深對內地的認識與情感。</p>
+      </div>
+      <div class="card-footer">
+        <span class="level">中學適用 · 3-5天</span>
+        <a href="#contact">了解詳情 →</a>
+      </div>
+    </div>
+    <div class="study-card">
+      <div class="card-header">
+        <div class="badge">薪火相傳</div>
+        <h3>深圳體育文化及全國運動盛事探索之旅</h3>
+      </div>
+      <div class="card-body">
+        <p>「薪火相傳」系列，赴深圳考察體育文化產業，近距離接觸全國運動盛事，了解香港與大灣區體育發展，激發學生運動熱情與家國情懷。</p>
+      </div>
+      <div class="card-footer">
+        <span class="level">中學適用 · 2-3天</span>
+        <a href="#contact">了解詳情 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL TOURS -->
+<section id="local">
+  <div class="section-header">
+    <div class="tag">本地遊產品</div>
+    <h2>發現香港 · 精彩在本地</h2>
+    <p>探索香港獨特的自然風光、歷史文化及城市魅力，輕鬆享受精彩本地遊。</p>
+  </div>
+  <div class="local-list">
+    <div class="local-item">
+      <h4>🤝 商務接待與交流</h4>
+      <p>專業禮賓接待服務，安排商務訪客參觀香港各界，提升交流效果。</p>
+    </div>
+    <div class="local-item">
+      <h4>🎨 個性化定制之旅</h4>
+      <p>按客人喜好度身訂造行程，無論文化藝術、美食購物或戶外探索均可安排。</p>
+    </div>
+    <div class="local-item">
+      <h4>🎓 兩地遊學團</h4>
+      <p>融合香港與內地的跨境遊學體驗，讓學生同時認識兩地歷史文化及發展。</p>
+    </div>
+    <div class="local-item">
+      <h4>🚌 口岸接送及租車</h4>
+      <p>提供各口岸專車接送及租車服務，讓旅途無縫銜接，省時省心。</p>
+    </div>
+    <div class="local-item">
+      <h4>✈️ 機票與酒店預訂</h4>
+      <p>一站式預訂機票及優質酒店，享受更優惠的套裝組合價格。</p>
+    </div>
+    <div class="local-item">
+      <h4>🏝️ 離島及郊野探索</h4>
+      <p>帶您發現蒲臺島、城門水塘等香港秘境，感受截然不同的自然風光。</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="about" class="why-section">
+  <div class="section-header">
+    <div class="tag" style="background:rgba(0,168,107,0.2);color:#4dd4a0;">為何選擇亞洲旅行社</div>
+    <h2>專業可靠，用心服務</h2>
+    <p>多年深耕香港旅遊市場，我們以專業、誠信與用心服務每一位客戶。</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="ico">🏆</div>
+      <h3>教育局認可</h3>
+      <p>獲教育局遊學計劃中標資格，為香港中小學提供經認可的優質遊學團服務。</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">🎯</div>
+      <h3>全程定制</h3>
+      <p>根據客戶需求量身設計行程，從路線規劃到落地執行，全程專業跟進。</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">🌏</div>
+      <h3>豐富目的地</h3>
+      <p>涵蓋港澳、大灣區、內地各省市及海外熱門目的地，一站式滿足所有旅遊需求。</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">💰</div>
+      <h3>合理價格</h3>
+      <p>憑借廣泛的供應商網絡，提供具競爭力的機票、酒店及套裝旅遊報價。</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">📞</div>
+      <h3>24小時支援</h3>
+      <p>旅途中隨時提供緊急聯絡支援，讓您安心出遊，享受無憂旅程。</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">✅</div>
+      <h3>持牌旅行社</h3>
+      <p>持有香港旅行社牌照，受旅遊業監理局監管，保障客戶旅遊消費權益。</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section>
+  <div class="section-header">
+    <div class="tag">旅遊資訊</div>
+    <h2>最新消息與旅遊攻略</h2>
+    <p>探索香港各地隱藏風景，發現不一樣的本地旅遊體驗。</p>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="news-header">🎉</div>
+      <div class="news-body">
+        <h4>亞旅試玩團首發，精彩行全程回顧！</h4>
+        <p>亞旅精心策劃的香港一日遊免費試玩項目圓滿落幕，活動訊息發出不到半小時名額全數搶光，廣受好評。</p>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-header">🏖️</div>
+      <div class="news-body">
+        <h4>遠離城市塵囂・尋訪香港海邊秘景</h4>
+        <p>在香港這座快節奏的城市中，仍有許多難得清淨安寧的天地，隱藏在大自然裡等待您的發現。</p>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-header">💧</div>
+      <div class="news-body">
+        <h4>下城門水塘遊記</h4>
+        <p>城門水塘一帶歷史悠久，與南明參將李萬榮的故事相連，是集歷史、自然與郊野的絕佳徒步目的地。</p>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-header">🏝️</div>
+      <div class="news-body">
+        <h4>蒲臺島遊記</h4>
+        <p>香港最南端的離島，擁有逾3500年歷史的石刻文化。傳統漁村風貌保存完好，是遠足愛好者的天堂。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-header">
+    <div class="tag">聯絡我們</div>
+    <h2>立即查詢，開始規劃您的旅程</h2>
+    <p>我們的旅遊顧問隨時準備為您提供專業建議，歡迎免費咨詢。</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>聯絡資訊</h3>
+      <div class="contact-row">
+        <div class="ci">📍</div>
+        <div class="ct">
+          <strong>辦公室地址</strong>
+          <span>香港灣仔駱克道 160-174 號越秀大廈 6 樓 603 室<br>6/F, 603, Yue Xiu Bldg, 160-174 Lockhart Road, Wan Chai, HK</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">📞</div>
+        <div class="ct">
+          <strong>總機電話</strong>
+          <span>2511 0806</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">🚗</div>
+        <div class="ct">
+          <strong>租車部（譚經理）</strong>
+          <span>3702 3191</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">🌍</div>
+        <div class="ct">
+          <strong>旅遊部（張經理）</strong>
+          <span>3702 3199</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">📠</div>
+        <div class="ct">
+          <strong>傳真</strong>
+          <span>+852 2507 3289</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">📧</div>
+        <div class="ct">
+          <strong>電郵</strong>
+          <span>studytrip34@yzt.com.hk</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">🌐</div>
+        <div class="ct">
+          <strong>網站</strong>
+          <span>www.yzt.com.hk</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>免費旅遊咨詢</h3>
+      <div class="form-group">
+        <label>姓名 *</label>
+        <input type="text" placeholder="您的姓名">
+      </div>
+      <div class="form-group">
+        <label>電話 *</label>
+        <input type="tel" placeholder="+852 XXXX XXXX">
+      </div>
+      <div class="form-group">
+        <label>電郵</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>服務類型</label>
+        <select>
+          <option>請選擇服務</option>
+          <option>遊學團</option>
+          <option>本地遊</option>
+          <option>特價機票</option>
+          <option>品質酒店</option>
+          <option>機構定制服務</option>
+          <option>其他</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>查詢內容</label>
+        <textarea placeholder="請輸入您的查詢..."></textarea>
+      </div>
+      <button class="btn-submit">立即提交查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name">亞洲旅行社有限公司</div>
+      <div class="brand-en">ASIA TRAVEL AGENCY LIMITED</div>
+      <p>香港領先的旅遊服務提供商，專業提供遊學團、本地遊、機票及定制旅遊服務。教育局認可中標旅行社，用心服務每一趟旅程。</p>
+    </div>
+    <div>
+      <h4>主要服務</h4>
+      <ul>
+        <li><a href="#study">遊學團</a></li>
+        <li><a href="#local">本地遊</a></li>
+        <li><a href="#services">特價機票</a></li>
+        <li><a href="#services">品質酒店</a></li>
+        <li><a href="#services">景點門票</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>機構服務</h4>
+      <ul>
+        <li><a href="#services">機構定制服務</a></li>
+        <li><a href="#services">商務接待</a></li>
+        <li><a href="#services">口岸接送</a></li>
+        <li><a href="#services">租車服務</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>聯絡</h4>
+      <ul>
+        <li><a href="tel:25110806">📞 2511 0806</a></li>
+        <li><a href="mailto:studytrip34@yzt.com.hk">📧 studytrip34@yzt.com.hk</a></li>
+        <li><a href="https://www.yzt.com.hk">🌐 yzt.com.hk</a></li>
+        <li><a href="#contact">📍 灣仔駱克道</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 亞洲旅行社有限公司 Asia Travel Agency Limited. All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
