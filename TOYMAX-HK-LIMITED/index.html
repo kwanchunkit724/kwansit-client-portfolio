@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toymax (HK) Limited | 玩具及遊戲進口分銷</title>
+<style>
+  :root {
+    --blue: #1a6eb5;
+    --blue-dark: #104d85;
+    --blue-light: #3a8ed4;
+    --yellow: #ffd100;
+    --red: #e8302a;
+    --green: #27ae60;
+    --orange: #f39c12;
+    --dark: #0d1f35;
+    --gray: #f3f7fb;
+    --white: #ffffff;
+    --text: #2c3e50;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans TC','Segoe UI',sans-serif; color:var(--text); background:var(--white); }
+
+  /* NAV */
+  nav { background:var(--dark); padding:0 5%; position:sticky; top:0; z-index:100; }
+  .nav-inner { display:flex; align-items:center; justify-content:space-between; height:65px; }
+  .nav-logo { display:flex; align-items:center; gap:10px; }
+  .logo-mark { background:var(--yellow); color:var(--dark); font-size:1.2rem; font-weight:900; padding:4px 12px; border-radius:6px; letter-spacing:-1px; }
+  .logo-text { color:var(--white); font-size:0.9rem; }
+  .logo-text .en { font-weight:700; font-size:1rem; color:var(--white); }
+  .logo-text .zh { font-size:0.72rem; color:rgba(255,255,255,0.5); }
+  .nav-links { display:flex; gap:24px; list-style:none; }
+  .nav-links a { color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.87rem; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--yellow); }
+
+  /* HERO */
+  .hero { background:linear-gradient(135deg,var(--dark) 0%,var(--blue-dark) 50%,var(--blue) 100%); color:var(--white); padding:80px 5% 70px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:-60px; right:-60px; width:350px; height:350px; background:radial-gradient(circle,rgba(255,209,0,0.12) 0%,transparent 70%); }
+  .hero-badges { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
+  .hb { display:inline-block; font-size:0.73rem; font-weight:700; padding:5px 14px; border-radius:20px; }
+  .hb-yellow { background:var(--yellow); color:var(--dark); }
+  .hb-outline { background:rgba(255,255,255,0.1); color:var(--white); }
+  .hero h1 { font-size:2.8rem; font-weight:900; line-height:1.2; margin-bottom:14px; }
+  .hero h1 .hl { color:var(--yellow); }
+  .hero-sub { font-size:1.1rem; color:rgba(255,255,255,0.8); margin-bottom:8px; }
+  .hero-en { font-size:0.85rem; color:rgba(255,255,255,0.45); letter-spacing:1px; margin-bottom:30px; }
+  .hero-stats { display:flex; gap:36px; flex-wrap:wrap; margin-bottom:28px; }
+  .hs { text-align:center; }
+  .hs-n { font-size:1.9rem; font-weight:900; color:var(--yellow); }
+  .hs-l { font-size:0.72rem; color:rgba(255,255,255,0.55); }
+  .hero-cta { display:flex; gap:12px; flex-wrap:wrap; }
+  .btn-yellow { background:var(--yellow); color:var(--dark); padding:12px 28px; border-radius:30px; text-decoration:none; font-weight:800; font-size:0.92rem; }
+  .btn-outline { background:transparent; border:2px solid rgba(255,255,255,0.4); color:var(--white); padding:12px 28px; border-radius:30px; text-decoration:none; font-weight:700; font-size:0.92rem; }
+
+  /* SECTION */
+  section { padding:65px 5%; }
+  .sec-label { font-size:0.72rem; font-weight:700; color:var(--blue); letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+  .sec-title { font-size:1.85rem; font-weight:800; color:var(--dark); margin-bottom:12px; }
+  .sec-desc { color:#666; line-height:1.8; max-width:650px; }
+
+  /* ABOUT */
+  .about { background:var(--gray); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start; margin-top:36px; }
+  .about-text p { color:#555; line-height:1.9; font-size:0.95rem; margin-bottom:14px; }
+  .fact-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .fact-card { background:var(--white); border-left:4px solid var(--blue); padding:14px 16px; border-radius:0 8px 8px 0; }
+  .fact-card h4 { font-size:0.82rem; font-weight:700; color:var(--blue); margin-bottom:3px; }
+  .fact-card p { font-size:0.82rem; color:#666; line-height:1.5; }
+
+  /* CATEGORIES */
+  .categories { background:var(--white); }
+  .cat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:36px; }
+  .cat-card { border-radius:14px; padding:28px 20px; text-align:center; color:var(--white); transition:transform 0.3s; }
+  .cat-card:hover { transform:translateY(-5px); }
+  .cat-card.blue { background:linear-gradient(135deg,var(--blue),var(--blue-dark)); }
+  .cat-card.yellow { background:linear-gradient(135deg,#e6a800,#f39c12); }
+  .cat-card.red { background:linear-gradient(135deg,var(--red),#c0392b); }
+  .cat-card.green { background:linear-gradient(135deg,var(--green),#1e8449); }
+  .cat-card.orange { background:linear-gradient(135deg,#e67e22,#d35400); }
+  .cat-card.purple { background:linear-gradient(135deg,#8e44ad,#6c3483); }
+  .cat-card.teal { background:linear-gradient(135deg,#16a085,#0e6655); }
+  .cat-card.pink { background:linear-gradient(135deg,#e91e8c,#ad1457); }
+  .cat-icon { font-size:2.5rem; margin-bottom:14px; }
+  .cat-card h3 { font-size:0.92rem; font-weight:700; margin-bottom:6px; }
+  .cat-card p { font-size:0.78rem; opacity:0.85; line-height:1.5; }
+
+  /* SERVICES */
+  .services { background:var(--gray); }
+  .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:36px; }
+  .svc-card { background:var(--white); border-radius:12px; padding:28px 24px; border-top:4px solid var(--blue); transition:box-shadow 0.3s; }
+  .svc-card:hover { box-shadow:0 8px 24px rgba(26,110,181,0.12); }
+  .svc-icon { font-size:2rem; margin-bottom:14px; }
+  .svc-card h3 { font-size:1rem; font-weight:700; color:var(--dark); margin-bottom:8px; }
+  .svc-card p { font-size:0.85rem; color:#666; line-height:1.7; }
+
+  /* LOCATION */
+  .location { background:linear-gradient(135deg,var(--dark) 0%,var(--blue-dark) 100%); color:var(--white); }
+  .location .sec-title { color:var(--white); }
+  .loc-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; margin-top:36px; align-items:start; }
+  .loc-text p { color:rgba(255,255,255,0.75); font-size:0.93rem; line-height:1.8; margin-bottom:16px; }
+  .loc-card { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:12px; padding:26px; }
+  .loc-card h4 { color:var(--yellow); font-size:1rem; font-weight:700; margin-bottom:18px; }
+  .loc-item { display:flex; gap:14px; align-items:flex-start; margin-bottom:16px; }
+  .loc-item-icon { font-size:1.3rem; flex-shrink:0; }
+  .loc-item-text span { display:block; font-size:0.72rem; color:rgba(255,255,255,0.5); margin-bottom:2px; }
+  .loc-item-text a, .loc-item-text strong { color:var(--white); font-size:0.9rem; text-decoration:none; font-weight:600; }
+
+  /* CONTACT */
+  .contact { background:var(--gray); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:36px; }
+  .form-wrap { background:var(--white); border-radius:12px; padding:28px; }
+  .form-wrap h3 { font-size:1rem; font-weight:700; color:var(--blue); margin-bottom:18px; }
+  .fg { margin-bottom:12px; }
+  .fg input, .fg textarea, .fg select { width:100%; padding:10px 14px; border:1.5px solid #dde8f0; border-radius:8px; font-size:0.88rem; outline:none; color:var(--text); }
+  .fg input:focus, .fg textarea:focus { border-color:var(--blue); }
+  .fg textarea { height:85px; resize:none; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .btn-submit { width:100%; padding:12px; background:var(--blue); color:var(--white); font-weight:700; font-size:0.93rem; border:none; border-radius:8px; cursor:pointer; }
+
+  /* FOOTER */
+  footer { background:var(--dark); color:rgba(255,255,255,0.45); text-align:center; padding:20px 5%; font-size:0.82rem; }
+  footer a { color:var(--yellow); text-decoration:none; }
+
+  @media(max-width:768px){
+    .hero h1{font-size:2rem;} .about-grid,.loc-grid,.contact-grid{grid-template-columns:1fr;} .cat-grid{grid-template-columns:1fr 1fr;} .svc-grid{grid-template-columns:1fr;} .fact-grid{grid-template-columns:1fr;} .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="logo-mark">TM</div>
+      <div class="logo-text">
+        <div class="en">Toymax (HK) Limited</div>
+        <div class="zh">玩具及遊戲進口分銷</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#categories">產品種類</a></li>
+      <li><a href="#services">服務</a></li>
+      <li><a href="#location">位置</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badges">
+    <span class="hb hb-yellow">🧸 玩具 &amp; 遊戲</span>
+    <span class="hb hb-outline">尖沙咀 新世界中心</span>
+  </div>
+  <h1>玩具<span class="hl">無限</span><br>歡樂無邊</h1>
+  <div class="hero-sub">專業玩具及遊戲進口分銷商</div>
+  <div class="hero-en">TOYMAX (HK) LIMITED · TOYS & GAMES SPECIALIST</div>
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-n">TST</div><div class="hs-l">尖沙咀辦公室</div></div>
+    <div class="hs"><div class="hs-n">全球</div><div class="hs-l">採購網絡</div></div>
+    <div class="hs"><div class="hs-n">多元</div><div class="hs-l">玩具遊戲類別</div></div>
+  </div>
+  <div class="hero-cta">
+    <a href="#categories" class="btn-yellow">🎮 產品種類</a>
+    <a href="#contact" class="btn-outline">商業洽談</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="sec-label">About Us</div>
+  <div class="about-grid">
+    <div>
+      <div class="sec-title">關於 Toymax (HK)</div>
+      <div class="about-text">
+        <p>Toymax (HK) Limited 是一家專注於玩具及遊戲產品進口及分銷的香港公司，辦公室位於尖沙咀新世界中心AIA Tower，地理位置優越，交通便利。</p>
+        <p>公司主要從事各類玩具及遊戲產品的進口、批發及零售業務，為香港市場引進優質的玩具及遊戲產品，以專業服務和多元化的產品線服務各類零售商及企業客戶。</p>
+        <p>憑藉豐富的行業經驗及完善的採購網絡，Toymax (HK) 致力為客戶提供高質素的玩具及遊戲產品，滿足不同年齡層的需求。</p>
+      </div>
+    </div>
+    <div class="fact-grid">
+      <div class="fact-card">
+        <h4>📍 辦公室地址</h4>
+        <p>尖沙咀彌敦道20號新世界中心AIA Tower 718室</p>
+      </div>
+      <div class="fact-card">
+        <h4>📞 聯絡電話</h4>
+        <p>(852) 2311 1386</p>
+      </div>
+      <div class="fact-card">
+        <h4>📠 傳真</h4>
+        <p>(852) 2366 8247</p>
+      </div>
+      <div class="fact-card">
+        <h4>🏪 業務類型</h4>
+        <p>玩具及遊戲進口批發零售</p>
+      </div>
+      <div class="fact-card">
+        <h4>👤 主席</h4>
+        <p>David Chu (朱先生)</p>
+      </div>
+      <div class="fact-card">
+        <h4>🌏 採購範圍</h4>
+        <p>全球玩具及遊戲品牌</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="sec-label">Product Categories</div>
+  <div class="sec-title">產品種類</div>
+  <div class="sec-desc">Toymax (HK) 代理及分銷多元化的玩具及遊戲產品，涵蓋各年齡層及各類型的娛樂需求。</div>
+  <div class="cat-grid">
+    <div class="cat-card blue">
+      <div class="cat-icon">🤖</div>
+      <h3>動作人偶</h3>
+      <p>各類動漫角色及超級英雄動作人偶及配件</p>
+    </div>
+    <div class="cat-card yellow">
+      <div class="cat-icon">🚗</div>
+      <h3>遙控玩具</h3>
+      <p>遙控車、遙控飛機及各類遙控玩具</p>
+    </div>
+    <div class="cat-card red">
+      <div class="cat-icon">🧩</div>
+      <h3>益智玩具</h3>
+      <p>拼圖、積木及各類益智思維遊戲</p>
+    </div>
+    <div class="cat-card green">
+      <div class="cat-icon">🎲</div>
+      <h3>桌上遊戲</h3>
+      <p>家庭及朋友聚會適用的各類桌遊</p>
+    </div>
+    <div class="cat-card orange">
+      <div class="cat-icon">🎮</div>
+      <h3>電子玩具</h3>
+      <p>互動電子玩具及教育科技產品</p>
+    </div>
+    <div class="cat-card purple">
+      <div class="cat-icon">🪆</div>
+      <h3>嬰幼兒玩具</h3>
+      <p>適合嬰兒及幼兒的安全玩具產品</p>
+    </div>
+    <div class="cat-card teal">
+      <div class="cat-icon">🎨</div>
+      <h3>創意美術</h3>
+      <p>繪畫、黏土及各類創意手工藝材料</p>
+    </div>
+    <div class="cat-card pink">
+      <div class="cat-icon">🪀</div>
+      <h3>戶外玩具</h3>
+      <p>戶外活動及運動類玩具及遊戲設備</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sec-label">Our Services</div>
+  <div class="sec-title">業務服務</div>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon">📦</div>
+      <h3>進口採購</h3>
+      <p>憑藉廣泛的全球供應商網絡，專業代理及進口各品牌玩具及遊戲產品，確保貨源穩定，品質有保障。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🚚</div>
+      <h3>批發分銷</h3>
+      <p>為本港各大零售商、玩具店及百貨公司提供批發及分銷服務，配合客戶需求靈活調配庫存。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏪</div>
+      <h3>零售銷售</h3>
+      <p>透過各零售渠道銷售玩具及遊戲產品，為消費者提供豐富的選擇及優質的購物體驗。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🎯</div>
+      <h3>品牌代理</h3>
+      <p>代理海外知名玩具及遊戲品牌在香港的獨家或非獨家銷售，提供全面的品牌支援服務。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🎁</div>
+      <h3>企業禮品</h3>
+      <p>為企業客戶提供定制玩具禮品服務，適合節日送禮、企業活動及市場推廣之用。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">📋</div>
+      <h3>採購顧問</h3>
+      <p>提供專業的玩具採購顧問服務，協助客戶選擇適合目標市場的玩具及遊戲產品組合。</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="sec-label">Our Location</div>
+  <div class="loc-grid">
+    <div class="loc-text">
+      <div class="sec-title">辦公室位置</div>
+      <p>Toymax (HK) 辦公室位於香港尖沙咀核心地帶新世界中心AIA Tower，地理位置優越，交通四通八達，方便商業夥伴及客戶到訪。</p>
+      <p>新世界中心位於尖沙咀彌敦道，毗鄰尖沙咀MTR站，前往九龍半島各區及香港島均極為便利，是香港重要的商業地標之一。</p>
+    </div>
+    <div class="loc-card">
+      <h4>📍 聯絡資料</h4>
+      <div class="loc-item">
+        <div class="loc-item-icon">🏢</div>
+        <div class="loc-item-text">
+          <span>辦公室地址</span>
+          <strong>九龍尖沙咀彌敦道20號<br>新世界中心AIA Tower 718室</strong>
+        </div>
+      </div>
+      <div class="loc-item">
+        <div class="loc-item-icon">📞</div>
+        <div class="loc-item-text">
+          <span>電話</span>
+          <a href="tel:+85223111386">(852) 2311 1386</a>
+        </div>
+      </div>
+      <div class="loc-item">
+        <div class="loc-item-icon">📠</div>
+        <div class="loc-item-text">
+          <span>傳真</span>
+          <strong>(852) 2366 8247</strong>
+        </div>
+      </div>
+      <div class="loc-item">
+        <div class="loc-item-icon">✉️</div>
+        <div class="loc-item-text">
+          <span>電郵</span>
+          <a href="mailto:jacquelinely_tse@tainam.com.hk">jacquelinely_tse@tainam.com.hk</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="sec-label">Contact Us</div>
+  <div class="sec-title">聯絡我們</div>
+  <div class="contact-grid">
+    <div>
+      <p style="color:#666;line-height:1.8;font-size:0.93rem;margin-bottom:24px;">如有產品查詢、批發採購或商業合作，歡迎透過以下方式聯絡我們的專業團隊。</p>
+      <div style="background:var(--white);border-radius:12px;padding:24px;">
+        <div style="display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid #f0f0f0;">
+          <span style="font-size:1.5rem;">📞</span>
+          <div><div style="font-size:0.72rem;color:#aaa;">電話 Phone</div><a href="tel:+85223111386" style="font-size:1rem;font-weight:700;color:var(--dark);text-decoration:none;">(852) 2311 1386</a></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid #f0f0f0;">
+          <span style="font-size:1.5rem;">📠</span>
+          <div><div style="font-size:0.72rem;color:#aaa;">傳真 Fax</div><strong style="font-size:0.9rem;color:var(--dark);">(852) 2366 8247</strong></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid #f0f0f0;">
+          <span style="font-size:1.5rem;">✉️</span>
+          <div><div style="font-size:0.72rem;color:#aaa;">電郵 Email</div><a href="mailto:jacquelinely_tse@tainam.com.hk" style="font-size:0.88rem;font-weight:600;color:var(--blue);text-decoration:none;">jacquelinely_tse@tainam.com.hk</a></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;padding:14px 0;">
+          <span style="font-size:1.5rem;">📍</span>
+          <div><div style="font-size:0.72rem;color:#aaa;">地址 Address</div><strong style="font-size:0.88rem;color:var(--dark);">九龍尖沙咀彌敦道20號新世界中心AIA Tower 718室</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="form-wrap">
+      <h3>📬 產品及採購查詢</h3>
+      <div class="form-row">
+        <div class="fg"><input type="text" placeholder="姓名 Name"></div>
+        <div class="fg"><input type="text" placeholder="公司 Company"></div>
+      </div>
+      <div class="fg"><input type="email" placeholder="電郵 Email"></div>
+      <div class="fg"><input type="tel" placeholder="電話 Phone"></div>
+      <div class="fg">
+        <select>
+          <option value="">查詢類型 Enquiry Type</option>
+          <option>產品採購</option>
+          <option>批發查詢</option>
+          <option>品牌代理</option>
+          <option>企業禮品</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div class="fg"><textarea placeholder="查詢詳情 Details"></textarea></div>
+      <button class="btn-submit">發送查詢 Send Enquiry</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Toymax (HK) Limited · 九龍尖沙咀彌敦道20號新世界中心AIA Tower 718室</p>
+  <p style="margin-top:6px;"><a href="tel:+85223111386">(852) 2311 1386</a> · <a href="mailto:jacquelinely_tse@tainam.com.hk">jacquelinely_tse@tainam.com.hk</a></p>
+</footer>
+
+</body>
+</html>
