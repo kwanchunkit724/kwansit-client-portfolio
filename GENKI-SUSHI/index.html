@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>元気寿司 Genki Sushi | 香港日式迴轉壽司</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--red:#D62828;--red-dark:#A01414;--navy:#0D1B2A;--cream:#FFF8F0;--gold:#D4A017;--white:#fff;--grey:#666}
+  html{scroll-behavior:smooth}
+  body{font-family:'Noto Sans HK',sans-serif;color:var(--navy);overflow-x:hidden}
+
+  nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(13,27,42,.97);padding:0 5%}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:.8rem}
+  .logo-mark{width:42px;height:42px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+  .logo-text{line-height:1.1}
+  .logo-zh{font-size:.95rem;font-weight:800;color:white}
+  .logo-en{font-size:.65rem;color:rgba(255,255,255,.5);letter-spacing:2px}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.85rem;transition:.3s}
+  .nav-links a:hover{color:var(--red)}
+  .nav-cta{background:var(--red);color:white!important;padding:.45rem 1.2rem;border-radius:4px;font-weight:700!important}
+  .nav-cta:hover{background:#B01E1E!important}
+
+  .hero{min-height:100vh;background:linear-gradient(160deg,var(--navy) 0%,#1A0000 60%,var(--red-dark) 100%);display:flex;align-items:center;position:relative;overflow:hidden;padding:0 5%}
+  .hero-wave{position:absolute;bottom:0;left:0;right:0;height:200px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200'%3E%3Cpath fill='%23FFF8F0' fill-opacity='0.05' d='M0,128L48,112C96,96,192,64,288,64C384,64,480,96,576,106.7C672,117,768,107,864,90.7C960,75,1056,53,1152,58.7C1248,64,1344,96,1392,112L1440,128L1440,200L1392,200C1344,200,1248,200,1152,200C1056,200,960,200,864,200C768,200,672,200,576,200C480,200,384,200,288,200C192,200,96,200,48,200L0,200Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;opacity:.3}
+  .jp-pattern{position:absolute;inset:0;opacity:.04;background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:20px 20px}
+  .hero-content{position:relative;z-index:2;max-width:680px;margin-top:68px}
+  .jp-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(214,40,40,.2);border:1px solid rgba(214,40,40,.4);color:#FF8080;font-size:.75rem;padding:.4rem 1rem;border-radius:3px;margin-bottom:1.5rem;letter-spacing:2px;font-weight:600}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;color:white;line-height:1.1;margin-bottom:.5rem}
+  .hero h1 .kanji{color:var(--red);font-size:.75em}
+  .hero-jp{font-size:clamp(.9rem,2vw,1.2rem);color:rgba(255,255,255,.4);letter-spacing:4px;margin-bottom:1.5rem}
+  .hero-desc{font-size:.95rem;color:rgba(255,255,255,.75);line-height:1.9;max-width:540px;margin-bottom:2.5rem}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+  .btn-red{background:var(--red);color:white;padding:.85rem 2rem;border-radius:4px;text-decoration:none;font-weight:700;font-size:.9rem;box-shadow:0 6px 20px rgba(214,40,40,.4);transition:.3s}
+  .btn-red:hover{background:var(--red-dark);transform:translateY(-2px)}
+  .btn-outline{border:2px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8);padding:.85rem 2rem;border-radius:4px;text-decoration:none;font-size:.9rem;transition:.3s}
+  .btn-outline:hover{border-color:var(--red);color:var(--red)}
+  .hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap}
+  .hstat{text-align:center}
+  .hstat strong{display:block;font-size:2rem;font-weight:900;color:var(--red)}
+  .hstat span{font-size:.7rem;color:rgba(255,255,255,.45);letter-spacing:2px;text-transform:uppercase}
+
+  section{padding:80px 5%}
+  .tag{font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:.6rem}
+  .ttl{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;color:var(--navy);margin-bottom:.5rem}
+  .ttl em{color:var(--red);font-style:normal}
+  .divider{width:50px;height:3px;background:linear-gradient(to right,var(--red),var(--gold));border-radius:2px;margin:1rem 0 1.5rem}
+  .sub{font-size:.9rem;color:var(--grey);line-height:1.8;max-width:580px;margin-bottom:3rem}
+
+  /* MENU */
+  .menu-bg{background:var(--cream)}
+  .menu-tabs{display:flex;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap}
+  .tab{padding:.5rem 1.2rem;border-radius:20px;font-size:.85rem;font-weight:600;cursor:pointer;border:2px solid #E5E5E5;color:var(--grey);transition:.3s}
+  .tab.active,.tab:hover{background:var(--red);color:white;border-color:var(--red)}
+  .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+  .menu-item{background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08);transition:.3s;display:flex;flex-direction:column}
+  .menu-item:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(214,40,40,.15)}
+  .menu-img{height:140px;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative}
+  .mi-1{background:linear-gradient(135deg,#D62828,#F87171)}
+  .mi-2{background:linear-gradient(135deg,#0D47A1,#42A5F5)}
+  .mi-3{background:linear-gradient(135deg,#2E7D32,#66BB6A)}
+  .mi-4{background:linear-gradient(135deg,#E65100,#FFA726)}
+  .mi-5{background:linear-gradient(135deg,#6A1B9A,#CE93D8)}
+  .mi-6{background:linear-gradient(135deg,#558B2F,#AED581)}
+  .menu-body{padding:1.2rem;flex:1;display:flex;flex-direction:column}
+  .menu-body h3{font-size:.95rem;font-weight:800;margin-bottom:.2rem}
+  .menu-body .jp{font-size:.7rem;color:var(--grey);letter-spacing:1px;margin-bottom:.6rem}
+  .menu-body p{font-size:.82rem;color:var(--grey);line-height:1.6;flex:1}
+  .price{display:inline-block;background:var(--red);color:white;font-size:.75rem;font-weight:700;padding:.3rem .8rem;border-radius:10px;margin-top:.8rem}
+
+  /* CONVEYOR */
+  .conveyor{background:linear-gradient(160deg,var(--navy),#1A0A0A)}
+  .conveyor-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+  .conveyor-text p{font-size:.92rem;color:rgba(255,255,255,.75);line-height:1.9;margin-bottom:1rem}
+  .feat-list{list-style:none;margin-top:1.5rem}
+  .feat-list li{display:flex;gap:.8rem;align-items:center;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:.87rem;color:rgba(255,255,255,.8)}
+  .feat-list li::before{content:'🍣';font-size:.9rem}
+  .tech-cards{display:flex;flex-direction:column;gap:1rem}
+  .tech-card{background:rgba(255,255,255,.06);border:1px solid rgba(214,40,40,.2);border-radius:10px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem}
+  .tech-icon{font-size:2rem}
+  .tech-text h4{color:var(--red);font-size:.9rem;font-weight:700}
+  .tech-text p{color:rgba(255,255,255,.55);font-size:.8rem;margin-top:.2rem}
+
+  /* LOCATIONS */
+  .locs-bg{background:var(--cream)}
+  .locs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+  .loc-card{background:white;border-radius:10px;padding:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.06);border-left:4px solid var(--red);transition:.3s}
+  .loc-card:hover{transform:translateX(4px);box-shadow:0 6px 25px rgba(214,40,40,.12)}
+  .loc-dist{font-size:.7rem;font-weight:700;color:var(--red);letter-spacing:2px;text-transform:uppercase;margin-bottom:.4rem}
+  .loc-name{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.3rem}
+  .loc-addr{font-size:.82rem;color:var(--grey);line-height:1.5}
+
+  /* CONTACT */
+  .contact-dark{background:var(--navy)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+  .contact-dark .ttl{color:white}
+  .contact-dark .sub{color:rgba(255,255,255,.6)}
+  .c-item{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.2rem}
+  .c-icon{width:44px;height:44px;background:rgba(214,40,40,.15);border:1px solid rgba(214,40,40,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+  .c-det h4{font-size:.75rem;font-weight:700;color:var(--red);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.2rem}
+  .c-det p,.c-det a{font-size:.88rem;color:rgba(255,255,255,.75);text-decoration:none;line-height:1.5}
+  .c-det a:hover{color:var(--red)}
+  .form-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:2rem}
+  .form-box h3{color:var(--gold);font-size:1rem;font-weight:700;margin-bottom:1.5rem}
+  .fg{margin-bottom:1rem}
+  .fg label{color:rgba(255,255,255,.5);font-size:.78rem;display:block;margin-bottom:.35rem}
+  .fg input,.fg textarea{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:.72rem 1rem;color:white;font-size:.88rem;font-family:inherit;outline:none;transition:.3s}
+  .fg input:focus,.fg textarea:focus{border-color:var(--red)}
+  .fg textarea{height:100px;resize:vertical}
+  .submit-btn{width:100%;background:var(--red);color:white;border:none;padding:.85rem;border-radius:6px;font-size:.92rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.3s;letter-spacing:.5px}
+  .submit-btn:hover{background:var(--red-dark);transform:translateY(-1px)}
+  .designer-note{margin-top:1.2rem;padding:.85rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:6px;font-size:.76rem;color:rgba(255,255,255,.35);text-align:center;line-height:1.6}
+  .designer-note a{color:var(--red);text-decoration:none}
+
+  footer{background:#060D14;padding:2rem 5%;text-align:center}
+  footer p{color:rgba(255,255,255,.25);font-size:.8rem}
+  footer span{color:var(--red)}
+
+  .fade-in{opacity:0;transform:translateY(25px);transition:opacity .65s,transform .65s}
+  .fade-in.visible{opacity:1;transform:none}
+  @media(max-width:768px){
+    .nav-links{display:none}
+    .conveyor-grid,.contact-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-mark">🍣</div>
+      <div class="logo-text">
+        <div class="logo-zh">元気寿司 Genki Sushi</div>
+        <div class="logo-en">Fresh · Fun · Japan</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#menu">餐牌</a></li>
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#locations">分店</a></li>
+      <li><a href="#contact" class="nav-cta">會員登入</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="jp-pattern"></div>
+  <div class="hero-wave"></div>
+  <div class="hero-content">
+    <div class="jp-badge">🎌 正宗日本迴轉壽司</div>
+    <h1>元<span class="kanji">気</span><br>寿司</h1>
+    <p class="hero-jp">GENKI SUSHI · 源自日本的新鮮滋味</p>
+    <p class="hero-desc">元気寿司在香港提供最新鮮、最正宗的日式迴轉壽司體驗。每日新鮮食材，創新的傳送科技，讓您在輕鬆愉快的氣氛中享受地道日本美食。</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-red">查看餐牌</a>
+      <a href="#locations" class="btn-outline">尋找分店</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><strong>30+</strong><span>香港分店</span></div>
+      <div class="hstat"><strong>1990</strong><span>年創立</span></div>
+      <div class="hstat"><strong>每日</strong><span>新鮮供應</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-bg" id="menu">
+  <div class="fade-in">
+    <div class="tag">Today's Menu</div>
+    <h2 class="ttl">精選<em>壽司餐牌</em></h2>
+    <div class="divider"></div>
+    <p class="sub">每日新鮮製作，嚴選來自日本及世界各地的優質食材，帶給您最純正的壽司體驗。</p>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-item fade-in">
+      <div class="menu-img mi-1"><span>🐟</span></div>
+      <div class="menu-body">
+        <h3>三文魚系列</h3><div class="jp">Salmon Series · サーモン</div>
+        <p>精選挪威及智利新鮮三文魚，肥美鮮嫩，包括原味、醃製及炙燒多款選擇。</p>
+        <span class="price">HK$14 起</span>
+      </div>
+    </div>
+    <div class="menu-item fade-in">
+      <div class="menu-img mi-2"><span>🦑</span></div>
+      <div class="menu-body">
+        <h3>海鮮刺身系列</h3><div class="jp">Sashimi Series · 刺身</div>
+        <p>每日新鮮直送的吞拿魚、甜蝦、帶子及貝類，入口即化，鮮甜無比。</p>
+        <span class="price">HK$16 起</span>
+      </div>
+    </div>
+    <div class="menu-item fade-in">
+      <div class="menu-img mi-3"><span>🌿</span></div>
+      <div class="menu-body">
+        <h3>素食壽司系列</h3><div class="jp">Vegetarian · ベジタリアン</div>
+        <p>多款精緻素食選擇，包括漬菜、玉子燒及蔬菜壽司，健康美味兼顧。</p>
+        <span class="price">HK$12 起</span>
+      </div>
+    </div>
+    <div class="menu-item fade-in">
+      <div class="menu-img mi-4"><span>🦐</span></div>
+      <div class="menu-body">
+        <h3>炸物系列</h3><div class="jp">Fried Items · 揚げ物</div>
+        <p>外脆內嫩的日式炸物，包括炸蝦天婦羅、炸雞及各款炸壽司，香脆美味。</p>
+        <span class="price">HK$18 起</span>
+      </div>
+    </div>
+    <div class="menu-item fade-in">
+      <div class="menu-img mi-5"><span>🍜</span></div>
+      <div class="menu-body">
+        <h3>熱食主食系列</h3><div class="jp">Hot Mains · 一品料理</div>
+        <p>烏冬、拉麵、茶碗蒸及各款日式熱食，暖胃又飽肚，適合完整一餐。</p>
+        <span class="price">HK$28 起</span>
+      </div>
+    </div>
+    <div class="menu-item fade-in">
+      <div class="menu-img mi-6"><span>🍡</span></div>
+      <div class="menu-body">
+        <h3>甜品系列</h3><div class="jp">Desserts · デザート</div>
+        <p>日式甜點包括抹茶雪糕、麻糬及布甸，為您的用餐體驗畫上完美句號。</p>
+        <span class="price">HK$16 起</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONVEYOR -->
+<section class="conveyor" id="about">
+  <div class="conveyor-grid">
+    <div class="fade-in">
+      <div class="tag" style="color:#FF8080">Our Story</div>
+      <h2 class="ttl" style="color:white">迴轉壽司的<em style="color:var(--red)">先驅</em></h2>
+      <div class="divider"></div>
+      <p style="color:rgba(255,255,255,.7)">元気寿司自1990年創立以來，一直以革新精神引領日式迴轉壽司文化在香港的發展。我們引入日本最先進的「超高速傳送系統」，讓每道菜式以最短時間、最新鮮狀態呈現在您眼前。</p>
+      <p style="color:rgba(255,255,255,.7)">我們相信，美食不只是味道，更是一種體驗。每一家元気寿司分店，都致力為顧客創造輕鬆、愉快、充滿日本文化的用餐環境。</p>
+      <ul class="feat-list">
+        <li>每日新鮮食材，拒絕隔夜供應</li>
+        <li>全港30+分店，方便您隨時享用</li>
+        <li>創新超高速傳送系統，熱食即點即到</li>
+        <li>會員積分計劃，專享優惠及生日禮遇</li>
+        <li>適合家庭、情侶及企業聚餐</li>
+      </ul>
+    </div>
+    <div class="tech-cards fade-in">
+      <div class="tech-card">
+        <div class="tech-icon">🚄</div>
+        <div class="tech-text">
+          <h4>超高速傳送系統</h4>
+          <p>日本尖端科技，點餐後數十秒直達您的座位</p>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">📱</div>
+        <div class="tech-text">
+          <h4>平板點餐系統</h4>
+          <p>觸屏點餐，中英日語介面，輕鬆選擇心儀菜式</p>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🎫</div>
+        <div class="tech-text">
+          <h4>Genki會員計劃</h4>
+          <p>累積積分換取免費壽司，生日月份特別優惠</p>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">♿</div>
+        <div class="tech-text">
+          <h4>無障礙友善設計</h4>
+          <p>多間分店設有無障礙設施，歡迎各類顧客</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="locs-bg" id="locations">
+  <div class="fade-in">
+    <div class="tag">Find Us</div>
+    <h2 class="ttl">全港<em>分店位置</em></h2>
+    <div class="divider"></div>
+    <p class="sub">元気寿司遍佈全港各大商場及購物區，讓您隨時隨地享受新鮮壽司。</p>
+  </div>
+  <div class="locs-grid">
+    <div class="loc-card fade-in"><div class="loc-dist">九龍 · Kowloon</div><div class="loc-name">長沙灣元洲商場</div><div class="loc-addr">元州街303號元洲商場G12 · 2334 3168</div></div>
+    <div class="loc-card fade-in"><div class="loc-dist">港島 · HK Island</div><div class="loc-name">銅鑼灣時代廣場</div><div class="loc-addr">銅鑼灣勿地臣街1號 時代廣場</div></div>
+    <div class="loc-card fade-in"><div class="loc-dist">新界 · NT</div><div class="loc-name">荃灣廣場</div><div class="loc-addr">荃灣青山公路 荃灣廣場</div></div>
+    <div class="loc-card fade-in"><div class="loc-dist">九龍 · Kowloon</div><div class="loc-name">旺角朗豪坊</div><div class="loc-addr">旺角亞皆老街8號 朗豪坊</div></div>
+    <div class="loc-card fade-in"><div class="loc-dist">港島 · HK Island</div><div class="loc-name">太古城中心</div><div class="loc-addr">鰂魚涌英皇道 太古城中心</div></div>
+    <div class="loc-card fade-in"><div class="loc-dist">新界 · NT</div><div class="loc-name">沙田新城市廣場</div><div class="loc-addr">沙田正街18號 新城市廣場</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-dark" id="contact">
+  <div class="contact-grid">
+    <div class="fade-in">
+      <div class="tag">Contact</div>
+      <h2 class="ttl">聯絡<em>元気寿司</em></h2>
+      <div class="divider"></div>
+      <p class="sub">有任何查詢、會員問題或團體訂位需求，歡迎聯絡我們。</p>
+      <div class="c-item"><div class="c-icon">📧</div><div class="c-det"><h4>會員查詢</h4><a href="mailto:member@genki.com.hk">member@genki.com.hk</a></div></div>
+      <div class="c-item"><div class="c-icon">🌐</div><div class="c-det"><h4>官方網站</h4><a href="https://www.genkisushi.com.hk" target="_blank">www.genkisushi.com.hk</a></div></div>
+      <div class="c-item"><div class="c-icon">📍</div><div class="c-det"><h4>分店分佈</h4><p>全港30+分店 · 港九新界均有</p></div></div>
+      <div class="c-item"><div class="c-icon">⏰</div><div class="c-det"><h4>營業時間</h4><p>每日 11:00 – 22:00（各分店或有不同）</p></div></div>
+    </div>
+    <div class="fade-in">
+      <div class="form-box">
+        <h3>🍣 查詢 / 團體訂位</h3>
+        <div class="fg"><label>姓名</label><input type="text" placeholder="您的姓名"></div>
+        <div class="fg"><label>電話</label><input type="tel" placeholder="+852 XXXX XXXX"></div>
+        <div class="fg"><label>電郵</label><input type="email" placeholder="your@email.com"></div>
+        <div class="fg"><label>查詢內容</label><textarea placeholder="請輸入您的問題或訂位需求..."></textarea></div>
+        <button class="submit-btn" onclick="alert('感謝您的查詢！我們將盡快回覆。\nThank you! We will reply shortly.')">提交查詢</button>
+      </div>
+      <div class="designer-note">此示範網站由 <a href="tel:+85260282297">關進杰 (Ken Kwan)</a> 免費設計。如需專業網站服務，歡迎 WhatsApp <a href="https://wa.me/85260282297">+852 6028 2297</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>元気寿司 Genki Sushi Hong Kong</span> · member@genki.com.hk · All Rights Reserved</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.12});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>40?'0 4px 25px rgba(0,0,0,.5)':'none'});
+</script>
+</body>
+</html>
