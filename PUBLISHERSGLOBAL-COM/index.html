@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PublishersGlobal.com | Global Publishing & Print Services — Hong Kong</title>
+<style>
+  :root {
+    --primary: #2c3e7a;
+    --secondary: #e74c3c;
+    --accent: #f39c12;
+    --dark: #1a1f3a;
+    --light: #f5f7fb;
+    --text: #2d3748;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: #fff; }
+
+  /* NAV */
+  nav {
+    background: var(--dark);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 68px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; }
+  .logo-box {
+    background: var(--secondary);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    padding: 7px 12px;
+    border-radius: 6px;
+    line-height: 1;
+  }
+  .logo-box span { display: block; font-size: 9px; font-weight: 400; letter-spacing: 1px; margin-top: 2px; opacity: 0.85; }
+  .nav-tagline { color: #8090b0; font-size: 13px; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: #a0b0cc; text-decoration: none; font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta { background: var(--secondary); color: #fff; padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s; }
+  .nav-cta:hover { background: #c0392b; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #2c3e7a 60%, #1a6b9a 100%);
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    padding: 80px 5%;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -80px;
+    top: -80px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    border: 60px solid rgba(255,255,255,0.04);
+  }
+  .hero-content { max-width: 700px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(231,76,60,0.2);
+    border: 1px solid var(--secondary);
+    color: #ff8070;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .hero h1 { font-size: clamp(2rem,5vw,3.4rem); font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 16px; }
+  .hero h1 em { color: #64b5f6; font-style: normal; }
+  .hero p { font-size: 18px; color: #90a8c8; margin-bottom: 40px; line-height: 1.7; max-width: 560px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-red { background: var(--secondary); color: #fff; padding: 14px 36px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px; transition: background .2s; }
+  .btn-red:hover { background: #c0392b; }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.3); color: #fff; padding: 14px 36px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all .2s; }
+  .btn-outline:hover { background: rgba(255,255,255,0.08); }
+
+  /* STATS */
+  .stats-bar {
+    background: var(--primary);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    padding: 20px 5%;
+  }
+  .stat-item { color: #fff; padding: 12px; border-right: 1px solid rgba(255,255,255,0.15); }
+  .stat-item:last-child { border-right: none; }
+  .stat-item .num { font-size: 28px; font-weight: 800; }
+  .stat-item .lbl { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 4px; }
+
+  /* SECTION */
+  section { padding: 80px 5%; }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-header h2 { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .section-header p { color: #666; font-size: 16px; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+  .tag { display: inline-block; background: #eef1fb; color: var(--primary); padding: 5px 16px; border-radius: 14px; font-size: 12px; margin-bottom: 16px; border: 1px solid #d0d8f0; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .service-card {
+    border: 1px solid #dde5f5;
+    border-radius: 16px;
+    padding: 32px 28px;
+    transition: all .25s;
+    background: #fff;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(44,62,122,0.12); border-color: var(--primary); }
+  .service-card .ico { font-size: 40px; margin-bottom: 18px; }
+  .service-card h3 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+  .service-card p { font-size: 14px; color: #666; line-height: 1.7; }
+  .service-card .features { margin-top: 16px; list-style: none; }
+  .service-card .features li { font-size: 13px; color: #555; padding: 5px 0; border-bottom: 1px solid #f0f0f0; padding-left: 16px; position: relative; }
+  .service-card .features li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
+
+  /* PROCESS */
+  .process-bg { background: var(--light); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .process-step { text-align: center; padding: 0 20px; position: relative; }
+  .process-step::after {
+    content: '→';
+    position: absolute;
+    right: -10px;
+    top: 32px;
+    font-size: 24px;
+    color: #c0cce8;
+  }
+  .process-step:last-child::after { display: none; }
+  .step-circle {
+    width: 64px; height: 64px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 800;
+  }
+  .process-step h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .process-step p { font-size: 13px; color: #666; line-height: 1.6; }
+
+  /* EXPERTISE */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .expertise-item {
+    background: #fff;
+    border: 1px solid #dde5f5;
+    border-left: 4px solid var(--primary);
+    border-radius: 10px;
+    padding: 24px 20px;
+    transition: box-shadow .2s;
+  }
+  .expertise-item:hover { box-shadow: 0 6px 20px rgba(44,62,122,0.1); }
+  .expertise-item h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .expertise-item p { font-size: 13px; color: #666; line-height: 1.6; }
+
+  /* WHY */
+  .why-section { background: var(--dark); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .why-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 28px 24px;
+    color: #fff;
+    text-align: center;
+  }
+  .why-card .ico { font-size: 36px; margin-bottom: 16px; }
+  .why-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .why-card p { font-size: 13px; color: #7090b0; line-height: 1.65; }
+
+  /* CONTACT */
+  .contact-section { background: var(--light); }
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .contact-info h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 24px; }
+  .contact-row { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+  .contact-row .ci { font-size: 22px; margin-top: 2px; }
+  .contact-row .ct strong { display: block; font-size: 15px; color: var(--dark); margin-bottom: 4px; }
+  .contact-row .ct span { font-size: 14px; color: #555; line-height: 1.5; }
+  .contact-form { background: #fff; border-radius: 16px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+  .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 11px 14px; border: 1.5px solid #dde5f5; border-radius: 8px;
+    font-size: 14px; font-family: inherit; transition: border-color .2s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--primary); }
+  .form-group textarea { height: 90px; resize: vertical; }
+  .btn-submit {
+    width: 100%; background: var(--primary); color: #fff; border: none;
+    padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 700;
+    cursor: pointer; transition: background .2s;
+  }
+  .btn-submit:hover { background: #222e5e; }
+
+  /* FOOTER */
+  footer { background: #0f1428; color: #5a6890; padding: 48px 5% 24px; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand .brand-name { color: #fff; font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+  .footer-brand p { font-size: 13px; line-height: 1.7; margin-top: 12px; }
+  footer h4 { color: #8090b0; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; }
+  footer ul li a { color: #5a6890; text-decoration: none; font-size: 14px; transition: color .2s; }
+  footer ul li a:hover { color: #fff; }
+  .footer-bottom { border-top: 1px solid #1e2845; padding-top: 20px; text-align: center; font-size: 13px; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-step::after { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="logo-box">PG<span>GLOBAL</span></div>
+    <div class="nav-tagline">PublishersGlobal.com</div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Hong Kong · Printing & Publishing</div>
+    <h1>World-Class Publishing<br><em>Made in Hong Kong</em></h1>
+    <p>Full-service printing and publishing solutions for businesses, publishers and creators worldwide. From concept to delivery — we bring your content to life with precision and quality.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-red">Our Services</a>
+      <a href="#contact" class="btn-outline">Request a Quote</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="num">15+</div><div class="lbl">Years Experience</div></div>
+  <div class="stat-item"><div class="num">50+</div><div class="lbl">Countries Served</div></div>
+  <div class="stat-item"><div class="num">10K+</div><div class="lbl">Projects Completed</div></div>
+  <div class="stat-item"><div class="num">500+</div><div class="lbl">Publishers & Clients</div></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <div class="tag">Our Services</div>
+    <h2>Complete Printing & Publishing Solutions</h2>
+    <p>From books and magazines to corporate materials and packaging — we deliver exceptional quality at competitive prices.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="ico">📚</div>
+      <h3>Book Printing</h3>
+      <p>Professional offset and digital book printing for publishers, authors, and educational institutions. Hardcover, softcover, perfect binding, and more.</p>
+      <ul class="features">
+        <li>Hardcover & Softcover Binding</li>
+        <li>Full Colour & Black-and-White</li>
+        <li>Short Run & Large Volume</li>
+        <li>Lamination & Special Finishes</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="ico">📰</div>
+      <h3>Magazine & Catalogue Printing</h3>
+      <p>High-quality magazine, brochure, and catalogue printing with vibrant colour reproduction and premium paper options for maximum visual impact.</p>
+      <ul class="features">
+        <li>Saddle Stitch & Perfect Bound</li>
+        <li>Coated & Uncoated Paper</li>
+        <li>Custom Page Counts</li>
+        <li>Spot UV & Foil Stamping</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="ico">📦</div>
+      <h3>Packaging & Label Printing</h3>
+      <p>Custom packaging solutions including boxes, bags, labels, and cartons. Premium finishes available for retail and luxury product packaging.</p>
+      <ul class="features">
+        <li>Rigid & Folding Carton Boxes</li>
+        <li>Custom Labels & Stickers</li>
+        <li>Embossing & Debossing</li>
+        <li>Eco-Friendly Materials Available</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="ico">🖨️</div>
+      <h3>Commercial Print</h3>
+      <p>Business cards, letterheads, posters, banners, and corporate stationery — all produced to exacting standards with fast turnaround times.</p>
+      <ul class="features">
+        <li>Business Cards & Stationery</li>
+        <li>Posters & Large Format</li>
+        <li>Promotional Materials</li>
+        <li>Urgent Same-Day Options</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="ico">🎨</div>
+      <h3>Pre-Press & Design</h3>
+      <p>Expert pre-press services including file preparation, colour management, proofing, and graphic design to ensure your print job is pixel-perfect.</p>
+      <ul class="features">
+        <li>File Check & Preflight</li>
+        <li>Colour Separation & Matching</li>
+        <li>Digital Proofing</li>
+        <li>Layout & Graphic Design</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="ico">🚢</div>
+      <h3>Global Fulfilment</h3>
+      <p>Warehousing, fulfilment, and worldwide shipping services. We handle everything from printing to doorstep delivery across 50+ countries.</p>
+      <ul class="features">
+        <li>Warehousing & Inventory</li>
+        <li>Order Fulfilment</li>
+        <li>Express & Sea Freight</li>
+        <li>Customs Documentation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-bg" id="process">
+  <div class="section-header">
+    <div class="tag">How We Work</div>
+    <h2>Simple, Streamlined Process</h2>
+    <p>From your first inquiry to final delivery, our process is designed to be clear, efficient, and stress-free.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-circle">1</div>
+      <h4>Inquiry & Quote</h4>
+      <p>Submit your print specs. We respond with a detailed, competitive quote within 24 hours.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">2</div>
+      <h4>File Submission</h4>
+      <p>Send your print-ready files. Our pre-press team checks everything for print quality.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">3</div>
+      <h4>Proof Approval</h4>
+      <p>Review digital or physical proofs. We don't proceed until you're 100% satisfied.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">4</div>
+      <h4>Production</h4>
+      <p>Your job enters production with full quality control at every stage of the press run.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">5</div>
+      <h4>Delivery</h4>
+      <p>Packed securely and shipped to your door — locally or anywhere in the world.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-header">
+    <div class="tag">Our Expertise</div>
+    <h2>Publishing Categories We Serve</h2>
+    <p>With extensive experience across diverse publishing sectors, we understand the unique requirements of every type of print project.</p>
+  </div>
+  <div class="expertise-grid">
+    <div class="expertise-item">
+      <h4>📖 Educational Publishing</h4>
+      <p>Textbooks, workbooks, and educational materials for schools, universities, and training institutions worldwide.</p>
+    </div>
+    <div class="expertise-item">
+      <h4>🖼️ Art & Coffee Table Books</h4>
+      <p>Museum-quality fine art printing with superior colour fidelity for galleries, artists, and luxury publishers.</p>
+    </div>
+    <div class="expertise-item">
+      <h4>📊 Corporate Reports</h4>
+      <p>Annual reports, sustainability reports, and corporate brochures printed to professional standards.</p>
+    </div>
+    <div class="expertise-item">
+      <h4>🛍️ Retail Catalogues</h4>
+      <p>Product catalogues and lookbooks for fashion, lifestyle, and retail brands seeking premium print presentation.</p>
+    </div>
+    <div class="expertise-item">
+      <h4>🎉 Event & Marketing</h4>
+      <p>Event programmes, invitations, promotional materials, and marketing collateral for conferences and launches.</p>
+    </div>
+    <div class="expertise-item">
+      <h4>📦 Luxury Packaging</h4>
+      <p>Rigid boxes, special finishes, and premium packaging solutions for luxury goods and gifting.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section">
+  <div class="section-header">
+    <div class="tag" style="background:rgba(100,181,246,0.15);color:#64b5f6;border-color:rgba(100,181,246,0.2);">Why PublishersGlobal</div>
+    <h2 style="color:#fff;">The Global Printing Partner You Can Trust</h2>
+    <p style="color:#7090b0;">Based in Hong Kong, serving clients worldwide with uncompromising quality and service.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="ico">🌏</div>
+      <h3>Global Reach</h3>
+      <p>Shipping capabilities to 50+ countries with established logistics partnerships and competitive freight rates.</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">⚡</div>
+      <h3>Fast Turnaround</h3>
+      <p>Competitive lead times with rush production options available to meet even the tightest deadlines.</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">💎</div>
+      <h3>Premium Quality</h3>
+      <p>State-of-the-art presses, rigorous quality control, and expert craftsmanship in every job we produce.</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">💰</div>
+      <h3>Competitive Pricing</h3>
+      <p>Hong Kong's strategic position enables us to offer world-class printing at highly competitive prices.</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">🌿</div>
+      <h3>Eco-Friendly Options</h3>
+      <p>FSC-certified paper, soy-based inks, and sustainable printing practices for environmentally conscious clients.</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">🤝</div>
+      <h3>Dedicated Support</h3>
+      <p>A dedicated account manager for every client, ensuring seamless communication from order to delivery.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-header">
+    <div class="tag">Contact Us</div>
+    <h2>Get a Free Quote Today</h2>
+    <p>Tell us about your project and we'll provide a detailed quote within 24 hours.</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>Get in Touch</h3>
+      <div class="contact-row">
+        <div class="ci">📍</div>
+        <div class="ct">
+          <strong>Headquarters</strong>
+          <span>Hong Kong</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">🌐</div>
+        <div class="ct">
+          <strong>Website</strong>
+          <span>www.publishersglobal.com</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">⏰</div>
+        <div class="ct">
+          <strong>Business Hours</strong>
+          <span>Monday – Friday: 9:00 AM – 6:00 PM (HKT)<br>Saturday: 9:00 AM – 1:00 PM</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">🚀</div>
+        <div class="ct">
+          <strong>Quote Turnaround</strong>
+          <span>We respond to all quote requests within 24 business hours.</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Request a Print Quote</h3>
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" placeholder="Full name">
+      </div>
+      <div class="form-group">
+        <label>Company</label>
+        <input type="text" placeholder="Company name">
+      </div>
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>Print Product Type</label>
+        <select>
+          <option>Select product type</option>
+          <option>Books</option>
+          <option>Magazines / Catalogues</option>
+          <option>Packaging / Boxes</option>
+          <option>Commercial Print</option>
+          <option>Corporate Reports</option>
+          <option>Labels / Stickers</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Quantity & Specifications</label>
+        <input type="text" placeholder="e.g. 1000 copies, A4, 200pp, full colour">
+      </div>
+      <div class="form-group">
+        <label>Additional Details</label>
+        <textarea placeholder="Describe your project, paper type, finishing requirements, delivery destination..."></textarea>
+      </div>
+      <button class="btn-submit">Send Quote Request</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name">PublishersGlobal.com</div>
+      <p>Hong Kong's trusted printing and publishing partner. Serving publishers, businesses, and creators worldwide with world-class print quality and global delivery.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Book Printing</a></li>
+        <li><a href="#services">Magazine Printing</a></li>
+        <li><a href="#services">Packaging</a></li>
+        <li><a href="#services">Commercial Print</a></li>
+        <li><a href="#services">Global Fulfilment</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Expertise</h4>
+      <ul>
+        <li><a href="#expertise">Educational Publishing</a></li>
+        <li><a href="#expertise">Art Books</a></li>
+        <li><a href="#expertise">Corporate Reports</a></li>
+        <li><a href="#expertise">Retail Catalogues</a></li>
+        <li><a href="#expertise">Luxury Packaging</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#process">How We Work</a></li>
+        <li><a href="#contact">Get a Quote</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="https://www.publishersglobal.com">Website</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 PublishersGlobal.com — Hong Kong. All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
