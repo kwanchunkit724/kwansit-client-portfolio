@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美淇食品有限公司 | Mei Ki Foods Limited · 優質肉食產品</title>
+<style>
+  :root {
+    --red: #b91c1c; --dark-red: #7f1d1d;
+    --warm-dark: #1a1008; --brown: #5c2a0a;
+    --cream: #fdf6ec; --warm: #faf5ee; --white: #fff;
+    --text: #1a1008; --muted: #6a5040;
+    --gold: #c9a44a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Arial',sans-serif; color:var(--text); background:var(--white); }
+  a { text-decoration:none; color:inherit; }
+  header {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(26,16,8,0.97); height:65px;
+    display:flex; align-items:center; justify-content:space-between; padding:0 40px;
+    border-bottom:2px solid var(--red);
+  }
+  .logo { font-size:18px; font-weight:900; color:#fff; letter-spacing:2px; }
+  .logo span { color:var(--red); }
+  nav { display:flex; gap:22px; align-items:center; }
+  nav a { color:rgba(255,255,255,0.65); font-size:12px; letter-spacing:1px; transition:color 0.3s; }
+  nav a:hover { color:var(--gold); }
+  .nav-cta { background:var(--red); color:#fff !important; padding:7px 16px; font-weight:700; }
+
+  .hero {
+    min-height:100vh; background:linear-gradient(135deg,var(--warm-dark) 0%,#2a1008 50%,var(--dark-red) 100%);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:100px 20px 60px; position:relative; overflow:hidden;
+  }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at center, rgba(185,28,28,0.15) 0%, transparent 65%); }
+  .hero-content { position:relative; z-index:1; max-width:800px; color:#fff; }
+  .hero-tag { font-size:11px; letter-spacing:4px; color:var(--gold); text-transform:uppercase; margin-bottom:18px; font-family:'Arial',sans-serif; }
+  .hero-title { font-size:clamp(36px,7vw,72px); font-weight:900; line-height:1.15; margin-bottom:14px; }
+  .hero-en { font-size:15px; color:rgba(255,255,255,0.5); letter-spacing:2px; margin-bottom:28px; }
+  .hero-sub { font-size:16px; color:rgba(255,255,255,0.7); line-height:1.8; margin-bottom:36px; }
+  .hero-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .btn-r { background:var(--red); color:#fff; padding:13px 28px; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; transition:all 0.3s; }
+  .btn-r:hover { background:#dc2626; }
+  .btn-o { border:2px solid rgba(255,255,255,0.3); color:rgba(255,255,255,0.8); padding:13px 28px; font-size:12px; letter-spacing:2px; text-transform:uppercase; transition:all 0.3s; }
+  .btn-o:hover { border-color:var(--gold); color:var(--gold); }
+
+  section { padding:75px 40px; }
+  .container { max-width:1050px; margin:0 auto; }
+  .stag { font-size:11px; letter-spacing:4px; color:var(--red); text-transform:uppercase; margin-bottom:12px; }
+  .stitle { font-size:clamp(24px,4vw,38px); color:var(--text); margin-bottom:14px; font-weight:900; }
+  .ssub { font-size:15px; color:var(--muted); line-height:1.8; max-width:560px; }
+  .rule { width:40px; height:3px; background:var(--red); margin:16px 0; }
+
+  /* PRODUCTS */
+  .products { background:var(--warm); }
+  .prod-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:48px; }
+  .prod-card { background:var(--white); border-radius:8px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.07); transition:all 0.3s; border-top:4px solid transparent; }
+  .prod-card:hover { border-top-color:var(--red); transform:translateY(-4px); }
+  .prod-img { height:140px; display:flex; align-items:center; justify-content:center; font-size:44px; }
+  .prod-img.p1 { background:linear-gradient(135deg,#5c1a0a,#a03010); }
+  .prod-img.p2 { background:linear-gradient(135deg,#3a0a0a,#7a1a1a); }
+  .prod-img.p3 { background:linear-gradient(135deg,#5a3a0a,#9a6a1a); }
+  .prod-img.p4 { background:linear-gradient(135deg,#2a1a0a,#5a3a1a); }
+  .prod-img.p5 { background:linear-gradient(135deg,#1a3a0a,#3a7a1a); }
+  .prod-img.p6 { background:linear-gradient(135deg,#0a2a3a,#1a5a6a); }
+  .prod-body { padding:18px; }
+  .prod-tag { font-size:10px; letter-spacing:2px; color:var(--red); text-transform:uppercase; margin-bottom:5px; }
+  .prod-body h3 { font-size:15px; font-weight:700; margin-bottom:6px; }
+  .prod-body p { font-size:13px; color:var(--muted); line-height:1.6; }
+
+  /* QUALITY */
+  .quality { background:var(--dark-red); color:#fff; }
+  .quality .stitle { color:#fff; }
+  .quality .ssub { color:rgba(255,255,255,0.65); }
+  .q-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:48px; }
+  .q-card { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:26px 16px; text-align:center; }
+  .q-icon { font-size:30px; margin-bottom:12px; }
+  .q-card h4 { font-size:14px; color:var(--gold); margin-bottom:7px; font-weight:700; }
+  .q-card p { font-size:12px; color:rgba(255,255,255,0.6); line-height:1.5; }
+
+  /* ABOUT */
+  .about { background:var(--cream); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:55px; align-items:center; margin-top:48px; }
+  .ab-vis { background:var(--warm-dark); border-radius:8px; height:320px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px; }
+  .ab-icon { font-size:60px; }
+  .ab-label { font-size:13px; letter-spacing:2px; color:var(--gold); text-transform:uppercase; }
+  .ab-sub { font-size:11px; color:rgba(255,255,255,0.35); }
+  .ab-text p { font-size:15px; color:var(--text); line-height:1.9; margin-bottom:16px; }
+
+  /* CONTACT */
+  .contact { background:var(--white); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:48px; }
+  .c-box { background:var(--warm); border-radius:8px; padding:30px; }
+  .c-box h3 { font-size:17px; font-weight:700; margin-bottom:20px; padding-bottom:14px; border-bottom:2px solid var(--red); }
+  .c-item { display:flex; gap:14px; padding:13px 0; border-bottom:1px solid rgba(0,0,0,0.07); }
+  .c-item:last-child { border-bottom:none; }
+  .c-ico { font-size:20px; }
+  .c-d .lbl { font-size:10px; letter-spacing:2px; color:var(--red); text-transform:uppercase; margin-bottom:3px; }
+  .c-d .val { font-size:14px; font-weight:700; }
+  .c-d .note { font-size:12px; color:var(--muted); }
+  .cta-r { background:var(--dark-red); padding:34px; border-radius:8px; color:#fff; }
+  .cta-r h3 { font-size:20px; margin-bottom:10px; }
+  .cta-r p { font-size:14px; color:rgba(255,255,255,0.75); line-height:1.8; margin-bottom:22px; }
+  .cta-btns { display:flex; flex-direction:column; gap:10px; }
+  .cb { display:block; padding:12px 20px; text-align:center; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; transition:all 0.3s; border-radius:3px; }
+  .cb.g { background:var(--gold); color:var(--warm-dark); }
+  .cb.g:hover { background:#e0bf6a; }
+  .cb.ol { border:2px solid rgba(255,255,255,0.35); color:#fff; }
+  .cb.ol:hover { background:rgba(255,255,255,0.1); }
+
+  footer { background:var(--warm-dark); color:rgba(255,255,255,0.4); padding:32px 40px; }
+  .footer-inner { max-width:1050px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .f-name { font-size:15px; font-weight:700; color:rgba(255,255,255,0.7); }
+  .f-info { font-size:12px; color:rgba(255,255,255,0.3); }
+
+  @media(max-width:900px) {
+    header { padding:0 20px; } nav { display:none; }
+    section { padding:55px 20px; }
+    .prod-grid { grid-template-columns:1fr 1fr; }
+    .q-grid { grid-template-columns:1fr 1fr; }
+    .about-grid, .contact-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">美淇<span>食品</span>有限公司</div>
+  <nav>
+    <a href="#products">產品</a>
+    <a href="#about">關於我們</a>
+    <a href="#contact" class="nav-cta">聯絡</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Hong Kong · Quality Meat Products</div>
+    <h1 class="hero-title">美淇食品<br>有限公司</h1>
+    <div class="hero-en">Mei Ki Foods Limited</div>
+    <p class="hero-sub">嚴選優質肉食原料，精工製作，為香港餐飲市場帶來安全美味的優質食品</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-r">探索產品系列</a>
+      <a href="#contact" class="btn-o">查詢訂購</a>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="stag">產品系列 · Product Range</div>
+    <h2 class="stitle">精選優質肉食產品</h2>
+    <div class="rule"></div>
+    <p class="ssub">嚴格挑選上等原料，採用衛生安全的生產工藝，提供多元化的肉食產品</p>
+    <div class="prod-grid">
+      <div class="prod-card"><div class="prod-img p1">🥩</div><div class="prod-body"><div class="prod-tag">豬肉系列</div><h3>豬前腿捲片</h3><p>精選豬前腿部位，採用獨特捲切技術，肉質均勻、口感嫩滑，適合多種烹調方式</p></div></div>
+      <div class="prod-card"><div class="prod-img p2">🍖</div><div class="prod-body"><div class="prod-tag">豬肉加工</div><h3>豬肉切片系列</h3><p>多種規格厚薄的豬肉切片，適合火鍋、燒烤、炒菜等各類烹飪用途，新鮮美味</p></div></div>
+      <div class="prod-card"><div class="prod-img p3">🥓</div><div class="prod-body"><div class="prod-tag">醃製肉品</div><h3>醃製豬肉系列</h3><p>秘製醃料配方，讓每款醃製豬肉產品充滿獨特風味，方便快捷，美味升級</p></div></div>
+      <div class="prod-card"><div class="prod-img p4">🐂</div><div class="prod-body"><div class="prod-tag">牛肉系列</div><h3>牛肉切片系列</h3><p>精選優質牛肉，切片均勻，適合火鍋、燒烤及各類亞洲料理，鮮味十足</p></div></div>
+      <div class="prod-card"><div class="prod-img p5">🌿</div><div class="prod-body"><div class="prod-tag">即食系列</div><h3>即食肉食拼盤</h3><p>精心製作的即食肉食系列，方便快捷，保留肉食原有的鮮美滋味</p></div></div>
+      <div class="prod-card"><div class="prod-img p6">❄️</div><div class="prod-body"><div class="prod-tag">冷藏系列</div><h3>冷藏鮮肉產品</h3><p>採用嚴格冷鏈管理，確保肉食產品從工廠到您手中始終保持最佳新鮮狀態</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALITY -->
+<section class="quality">
+  <div class="container">
+    <div class="stag" style="color:var(--gold)">品質保證 · Quality Assurance</div>
+    <h2 class="stitle">嚴格品質，安全第一</h2>
+    <div class="rule" style="background:var(--gold)"></div>
+    <p class="ssub">從原料採購到成品出貨，每一個環節均嚴格把關，確保產品達到最高安全標準</p>
+    <div class="q-grid">
+      <div class="q-card"><div class="q-icon">🔍</div><h4>嚴格原料把關</h4><p>精選認可供應商，每批原料均經過嚴格質量檢測方可進廠</p></div>
+      <div class="q-card"><div class="q-icon">🏭</div><h4>衛生生產環境</h4><p>符合食品安全標準的生產設施，確保全程衛生安全</p></div>
+      <div class="q-card"><div class="q-icon">❄️</div><h4>冷鏈全程管理</h4><p>完善的冷鏈物流體系，確保產品從生產至配送全程低溫保鮮</p></div>
+      <div class="q-card"><div class="q-icon">✅</div><h4>食品安全認證</h4><p>符合香港及國際食品安全標準，持有相關認證資格</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="ab-vis">
+        <div class="ab-icon">🥩</div>
+        <div class="ab-label">美淇食品有限公司</div>
+        <div class="ab-sub">Mei Ki Foods Limited · Hong Kong</div>
+      </div>
+      <div>
+        <div class="stag">關於我們</div>
+        <h2 class="stitle">香港優質<br>肉食供應商</h2>
+        <div class="rule"></div>
+        <div class="ab-text">
+          <p>美淇食品有限公司（Mei Ki Foods Limited）是香港的專業食品公司，專注於優質肉食產品的生產與供應。公司以「嚴選原料、精工製作、安全美味」為核心理念，為香港餐飲業及零售市場提供多元化的優質肉食產品。</p>
+          <p>主打產品包括豬前腿捲片、多款豬肉及牛肉切片系列，適合火鍋、燒烤、日常烹飪等多種用途，深受香港餐飲業界的信賴與好評。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="stag">聯絡我們</div>
+    <h2 class="stitle">查詢與訂購</h2>
+    <div class="rule"></div>
+    <div class="contact-grid">
+      <div class="c-box">
+        <h3>聯絡資訊</h3>
+        <div class="c-item"><span class="c-ico">🏢</span><div class="c-d"><div class="lbl">公司</div><div class="val">美淇食品有限公司</div><div class="note">Mei Ki Foods Limited</div></div></div>
+        <div class="c-item"><span class="c-ico">📍</span><div class="c-d"><div class="lbl">地區</div><div class="val">香港 Hong Kong</div></div></div>
+        <div class="c-item"><span class="c-ico">🛒</span><div class="c-d"><div class="lbl">服務</div><div class="val">肉食產品供應</div><div class="note">餐廳、食品零售、批發訂購</div></div></div>
+      </div>
+      <div class="cta-r">
+        <h3>立即查詢</h3>
+        <p>美淇食品為香港餐飲業及零售商提供優質肉食產品的批發供應。如需產品報價、訂購或業務合作查詢，歡迎隨時與我們聯絡。</p>
+        <div class="cta-btns">
+          <a href="#products" class="cb g">🥩 查看產品系列</a>
+          <a href="#about" class="cb ol">🏢 了解更多</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="f-name">美淇食品有限公司 · Mei Ki Foods Limited</div>
+      <div class="f-info">Hong Kong · Quality Meat Products</div>
+    </div>
+    <div class="f-info">© 2024 美淇食品有限公司 · All Rights Reserved</div>
+  </div>
+</footer>
+
+</body>
+</html>
