@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carbone Hong Kong | Italian-American Fine Dining</title>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --deep: #111111;
+    --charcoal: #1e1e1e;
+    --red: #b91c1c;
+    --crimson: #dc2626;
+    --gold: #c9a84c;
+    --cream: #f5f0e8;
+    --warm: #faf7f2;
+    --white: #ffffff;
+    --text: #1a1a1a;
+    --muted: #666666;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* HEADER */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,10,0.97); backdrop-filter: blur(8px);
+    padding: 0 50px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Georgia', serif; font-size: 28px; font-weight: 700;
+    color: var(--white); letter-spacing: 4px; text-transform: uppercase;
+  }
+  .logo span { color: var(--gold); }
+  nav { display: flex; gap: 32px; align-items: center; }
+  nav a { color: rgba(255,255,255,0.7); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-family: 'Arial', sans-serif; transition: color 0.3s; }
+  nav a:hover { color: var(--gold); }
+  .nav-reserve { border: 1px solid var(--gold); color: var(--gold) !important; padding: 8px 22px; }
+  .nav-reserve:hover { background: var(--gold) !important; color: var(--black) !important; }
+
+  /* HERO */
+  .hero {
+    height: 100vh; position: relative; overflow: hidden;
+    background: var(--black);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-texture {
+    position: absolute; inset: 0; opacity: 0.04;
+    background: repeating-linear-gradient(0deg, #c9a84c 0px, #c9a84c 1px, transparent 1px, transparent 60px),
+                repeating-linear-gradient(90deg, #c9a84c 0px, #c9a84c 1px, transparent 1px, transparent 60px);
+  }
+  .hero-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(185,28,28,0.15) 0%, transparent 70%); }
+  .hero-content { position: relative; z-index: 2; text-align: center; color: var(--white); padding: 0 20px; }
+  .hero-pre { font-size: 11px; letter-spacing: 6px; color: var(--gold); text-transform: uppercase; font-family: 'Arial', sans-serif; margin-bottom: 28px; }
+  .hero-name { font-size: clamp(60px, 12vw, 120px); font-weight: 700; letter-spacing: 12px; text-transform: uppercase; line-height: 1; margin-bottom: 20px; }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,0.55); letter-spacing: 4px; text-transform: uppercase; font-family: 'Arial', sans-serif; margin-bottom: 50px; }
+  .hero-line { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 50px; }
+  .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+  .btn-gold { background: var(--gold); color: var(--black); padding: 14px 40px; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-family: 'Arial', sans-serif; transition: all 0.3s; }
+  .btn-gold:hover { background: #e0bf6a; }
+  .btn-outline-w { border: 1px solid rgba(255,255,255,0.4); color: var(--white); padding: 14px 40px; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; font-family: 'Arial', sans-serif; transition: all 0.3s; }
+  .btn-outline-w:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.3); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-family: 'Arial', sans-serif; }
+
+  /* SECTIONS */
+  section { padding: 100px 50px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-tag { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); font-family: 'Arial', sans-serif; margin-bottom: 16px; }
+  .section-title { font-size: clamp(30px, 4vw, 48px); color: var(--black); margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.9; max-width: 600px; font-family: 'Arial', sans-serif; }
+  .gold-line { width: 40px; height: 1px; background: var(--gold); margin: 20px 0; }
+
+  /* STORY */
+  .story { background: var(--warm); }
+  .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 60px; }
+  .story-visual {
+    background: var(--black); height: 500px; position: relative;
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .story-visual::before {
+    content: 'CARBONE'; position: absolute;
+    font-size: 52px; font-weight: 700; color: rgba(201,168,76,0.06);
+    letter-spacing: 8px; text-transform: uppercase;
+  }
+  .story-visual .sv-inner { position: relative; z-index: 1; text-align: center; }
+  .sv-icon { font-size: 64px; margin-bottom: 20px; }
+  .sv-year { font-size: 11px; letter-spacing: 4px; color: var(--gold); font-family: 'Arial', sans-serif; }
+  .sv-place { font-size: 15px; color: rgba(255,255,255,0.6); font-family: 'Arial', sans-serif; margin-top: 8px; }
+  .story-text { font-size: 15px; color: var(--text); line-height: 1.9; font-family: 'Arial', sans-serif; }
+  .story-text p { margin-bottom: 20px; }
+  .story-pill {
+    display: inline-block; background: var(--red); color: var(--white);
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 8px 20px; font-family: 'Arial', sans-serif; margin-bottom: 24px;
+  }
+
+  /* MENU */
+  .menu { background: var(--black); }
+  .menu .section-title { color: var(--white); }
+  .menu .gold-line { }
+  .menu .section-sub { color: rgba(255,255,255,0.55); }
+  .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 60px; background: rgba(201,168,76,0.2); }
+  .menu-section { background: var(--black); padding: 40px 32px; }
+  .menu-section h3 { font-size: 13px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; font-family: 'Arial', sans-serif; margin-bottom: 30px; padding-bottom: 16px; border-bottom: 1px solid rgba(201,168,76,0.2); }
+  .menu-item { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .menu-item:last-child { border-bottom: none; }
+  .mi-top { display: flex; justify-content: space-between; align-items: baseline; }
+  .mi-name { font-size: 15px; color: var(--white); }
+  .mi-price { font-size: 13px; color: var(--gold); font-family: 'Arial', sans-serif; white-space: nowrap; margin-left: 12px; }
+  .mi-desc { font-size: 12px; color: rgba(255,255,255,0.4); font-family: 'Arial', sans-serif; margin-top: 4px; line-height: 1.4; }
+
+  /* GROUP DINING */
+  .group { background: var(--cream); }
+  .group-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 60px; }
+  .g-card {
+    background: var(--white); border: 1px solid rgba(0,0,0,0.06);
+    padding: 36px; transition: all 0.3s;
+  }
+  .g-card:hover { border-color: var(--gold); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+  .g-icon { font-size: 32px; margin-bottom: 16px; }
+  .g-card h3 { font-size: 18px; color: var(--black); margin-bottom: 10px; letter-spacing: 1px; }
+  .g-card .cap { font-size: 12px; letter-spacing: 2px; color: var(--gold); font-family: 'Arial', sans-serif; text-transform: uppercase; margin-bottom: 14px; }
+  .g-card p { font-size: 14px; color: var(--muted); line-height: 1.8; font-family: 'Arial', sans-serif; }
+
+  /* ATMOSPHERE */
+  .atmos { background: var(--charcoal); color: var(--white); }
+  .atmos .section-title { color: var(--white); }
+  .atmos .section-sub { color: rgba(255,255,255,0.6); }
+  .atmos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 60px; }
+  .atmos-card { text-align: center; padding: 32px 20px; border: 1px solid rgba(201,168,76,0.15); transition: border-color 0.3s; }
+  .atmos-card:hover { border-color: rgba(201,168,76,0.4); }
+  .atmos-icon { font-size: 36px; margin-bottom: 16px; }
+  .atmos-card h4 { font-size: 14px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; font-family: 'Arial', sans-serif; margin-bottom: 10px; }
+  .atmos-card p { font-size: 13px; color: rgba(255,255,255,0.55); font-family: 'Arial', sans-serif; line-height: 1.6; }
+
+  /* RESERVATIONS */
+  .reservations { background: var(--warm); }
+  .res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 60px; align-items: start; }
+  .res-info h3 { font-size: 22px; color: var(--black); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; padding-bottom: 16px; border-bottom: 1px solid rgba(0,0,0,0.1); }
+  .res-item { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid rgba(0,0,0,0.07); }
+  .res-item:last-child { border-bottom: none; }
+  .r-ico { font-size: 22px; flex-shrink: 0; }
+  .r-detail .r-lbl { font-size: 10px; letter-spacing: 3px; color: var(--gold); font-family: 'Arial', sans-serif; text-transform: uppercase; margin-bottom: 4px; }
+  .r-detail .r-val { font-size: 16px; color: var(--black); font-weight: 600; font-family: 'Arial', sans-serif; }
+  .r-detail .r-val a { color: var(--red); }
+  .r-detail .r-note { font-size: 13px; color: var(--muted); font-family: 'Arial', sans-serif; margin-top: 2px; }
+  .res-cta { background: var(--black); padding: 48px 40px; }
+  .res-cta h3 { font-size: 24px; color: var(--white); margin-bottom: 12px; letter-spacing: 2px; text-transform: uppercase; }
+  .res-cta .gold-bar { width: 40px; height: 2px; background: var(--gold); margin: 16px 0; }
+  .res-cta p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.8; font-family: 'Arial', sans-serif; margin-bottom: 32px; }
+  .res-btns { display: flex; flex-direction: column; gap: 14px; }
+  .res-btn { display: block; padding: 15px 28px; text-align: center; font-family: 'Arial', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s; }
+  .res-btn.gold { background: var(--gold); color: var(--black); }
+  .res-btn.gold:hover { background: #e0bf6a; }
+  .res-btn.red { background: var(--red); color: var(--white); }
+  .res-btn.red:hover { background: var(--crimson); }
+  .res-btn.outline { border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); }
+  .res-btn.outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* FOOTER */
+  footer { background: var(--black); color: rgba(255,255,255,0.4); padding: 50px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .f-logo { font-size: 32px; font-weight: 700; color: var(--white); letter-spacing: 6px; text-transform: uppercase; }
+  .f-logo span { color: var(--gold); }
+  .f-tagline { font-size: 12px; color: rgba(255,255,255,0.3); font-family: 'Arial', sans-serif; margin-top: 8px; letter-spacing: 2px; }
+  .f-addr { font-size: 13px; color: rgba(255,255,255,0.35); font-family: 'Arial', sans-serif; margin-top: 12px; line-height: 1.7; }
+  .footer-links { display: flex; gap: 60px; flex-wrap: wrap; }
+  .fc h5 { color: var(--gold); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-family: 'Arial', sans-serif; margin-bottom: 16px; }
+  .fc a { display: block; color: rgba(255,255,255,0.4); font-size: 13px; font-family: 'Arial', sans-serif; margin-bottom: 10px; transition: color 0.3s; }
+  .fc a:hover { color: rgba(255,255,255,0.8); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 30px; font-size: 12px; font-family: 'Arial', sans-serif; }
+
+  @media (max-width: 900px) {
+    header { padding: 0 20px; }
+    nav { display: none; }
+    section { padding: 70px 20px; }
+    .story-grid, .group-grid, .res-grid { grid-template-columns: 1fr; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .atmos-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { flex-direction: column; }
+    .footer-links { gap: 28px; }
+    .hero-name { letter-spacing: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">C<span>A</span>RBONE</div>
+  <nav>
+    <a href="#story">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#group">Groups</a>
+    <a href="#reservations" class="nav-reserve">Reserve</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-texture"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-pre">Italian-American · Central · Hong Kong</div>
+    <div class="hero-name">CARBONE</div>
+    <div class="hero-sub">Lan Kwai Fong · Hong Kong</div>
+    <div class="hero-line"></div>
+    <div class="hero-btns">
+      <a href="#reservations" class="btn-gold">Make a Reservation</a>
+      <a href="#menu" class="btn-outline-w">Explore Menu</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll to discover</div>
+</div>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-visual">
+        <div class="sv-inner">
+          <div class="sv-icon">🍝</div>
+          <div class="sv-year">SINCE 2012</div>
+          <div class="sv-place">New York · Las Vegas · Hong Kong</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-tag">Our Story</div>
+        <div class="story-pill">Italian-American Fine Dining</div>
+        <h2 class="section-title" style="font-size:36px; text-transform:none; letter-spacing:1px;">The Art of the<br>Italian-American Table</h2>
+        <div class="gold-line"></div>
+        <div class="story-text">
+          <p>Carbone brings the timeless glamour of mid-century Italian-American dining to the heart of Hong Kong. A restaurant where every detail — the tuxedoed service, the lavish red-sauce dishes, the theatrical ambience — conspires to transport guests to a golden era of dining.</p>
+          <p>From its origins in New York's Greenwich Village, Carbone has become one of the world's most celebrated restaurant brands. The Hong Kong outpost, nestled in Lan Kwai Fong, delivers that same singular experience: rich, indulgent Italian-American cuisine served with impeccable style.</p>
+          <p>Whether you're celebrating a milestone, hosting an intimate dinner, or simply seeking the finest pasta and veal in Central, Carbone Hong Kong delivers an evening to remember.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="section-tag">Cucina</div>
+    <h2 class="section-title" style="color:var(--white);">The Menu</h2>
+    <div class="gold-line"></div>
+    <p class="section-sub">Classic Italian-American dishes elevated to an art form</p>
+    <div class="menu-grid">
+      <div class="menu-section">
+        <h3>Antipasti</h3>
+        <div class="menu-item">
+          <div class="mi-top"><span class="mi-name">Spicy Rigatoni Vodka</span><span class="mi-price">HK$298</span></div>
+          <div class="mi-desc">Carbone's signature dish — rich tomato vodka cream sauce</div>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><span class="mi-name">Meatballs Carbone</span><span class="mi-price">HK$248</span></div>
+          <div class="mi-desc">Hand-rolled beef meatballs in Sunday gravy</div>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><span class="mi-name">Calamari Alla Plancha</span><span class="mi-price">HK$268</span></div>
+          <div class="mi-desc">Grilled whole squid, Calabrian chilli, lemon</div>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><span class="mi-name">Carbone Salad</span><span class="mi-price">HK$228</span></div>
+          <div class="mi-desc">Iceberg, garlic dressing, croutons, Parmesan</div>
+        </div>
+      </div>
+      <div class="menu-section">
+        <h3>Pasta &amp; Risotto</h3>
+        <div class="menu-item">
+          <div class="mi-top"><span class="mi-name">Linguine Pescatore</span><span class="mi-price">HK$388</span></div>
+          <div class="mi-desc">Littleneck clams, shrimp, langoustine, white wine</div>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><span class="mi-name">Veal Parmesan</span><span class="mi-price">HK$498</span></div>
+          <div class="mi-desc">Bone-in, San Marzano, aged provolone, basil</div>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><span class="mi-name">Spaghetti &amp; Meatballs</span><span class="mi-price">HK$368</span></div>
+          <div class="mi-desc">House-made pasta, Sunday gravy, ricotta</div>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><span class="mi-name">Lobster Ravioli</span><span class="mi-price">HK$458</span></div>
+          <div class="mi-desc">Maine lobster, saffron, tarragon butter sauce</div>
+        </div>
+      </div>
+      <div class="menu-section">
+        <h3>Secondi &amp; Dolci</h3>
+        <div class="menu-item">
+          <div class="mi-top"><span class="mi-name">Branzino Acqua Pazza</span><span class="mi-price">HK$488</span></div>
+          <div class="mi-desc">Whole roasted sea bass, tomato, olives, herbs</div>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><span class="mi-name">Dry-Aged Côte de Boeuf</span><span class="mi-price">HK$1,280</span></div>
+          <div class="mi-desc">For two, red wine jus, Giardiniera</div>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><span class="mi-name">Carbone Cheesecake</span><span class="mi-price">HK$168</span></div>
+          <div class="mi-desc">New York-style, graham cracker crust, berry compote</div>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><span class="mi-name">Tiramisu</span><span class="mi-price">HK$148</span></div>
+          <div class="mi-desc">Classic preparation, Savoiardi, Kahlúa, espresso</div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center; color:rgba(255,255,255,0.3); font-family:Arial,sans-serif; font-size:12px; margin-top:30px; letter-spacing:2px; text-transform:uppercase;">Sample menu items. Prices and availability may vary.</p>
+  </div>
+</section>
+
+<!-- GROUP DINING -->
+<section class="group" id="group">
+  <div class="container">
+    <div class="section-tag">Gatherings</div>
+    <h2 class="section-title">Group Dining<br>& Private Events</h2>
+    <div class="gold-line"></div>
+    <p class="section-sub">From intimate celebrations to grand occasions, Carbone sets the stage for unforgettable gatherings</p>
+    <div class="group-grid">
+      <div class="g-card">
+        <div class="g-icon">🥂</div>
+        <h3>Birthday & Celebrations</h3>
+        <div class="cap">4–20 Guests</div>
+        <p>Mark life's most meaningful moments with Carbone's signature red-sauce feast. Our team curates every detail — from custom menus to celebratory touches — ensuring an evening that lives long in memory.</p>
+      </div>
+      <div class="g-card">
+        <div class="g-icon">💼</div>
+        <h3>Business Entertaining</h3>
+        <div class="cap">Private Dining Available</div>
+        <p>Impress clients and reward teams with the prestige of Carbone. The restaurant's legendary ambience and impeccable service elevate any business occasion to something truly extraordinary.</p>
+      </div>
+      <div class="g-card">
+        <div class="g-icon">🎊</div>
+        <h3>Private Events</h3>
+        <div class="cap">Full Venue Hire Available</div>
+        <p>Carbone's theatrical dining room can be reserved exclusively for private functions — whether a cocktail reception, a sit-down dinner, or a full-scale gala celebration in the heart of Lan Kwai Fong.</p>
+      </div>
+      <div class="g-card">
+        <div class="g-icon">🍷</div>
+        <h3>Wine Pairing Dinners</h3>
+        <div class="cap">Curated Experiences</div>
+        <p>Curated wine pairing menus featuring selections from Carbone's acclaimed cellar, guided by our sommelier team through an evening of exceptional Italian-American cuisine and fine wine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATMOSPHERE -->
+<section class="atmos" id="atmos">
+  <div class="container">
+    <div class="section-tag">The Experience</div>
+    <h2 class="section-title" style="color:var(--white);">Why Carbone</h2>
+    <div class="gold-line"></div>
+    <p class="section-sub">Every element of the Carbone experience is deliberately crafted</p>
+    <div class="atmos-grid">
+      <div class="atmos-card">
+        <div class="atmos-icon">🎭</div>
+        <h4>Theatrical Ambience</h4>
+        <p>Dark wood panelling, leather banquettes, candlelight — an atmosphere that transports you to mid-century New York</p>
+      </div>
+      <div class="atmos-card">
+        <div class="atmos-icon">🤵</div>
+        <h4>Tuxedoed Service</h4>
+        <p>Classic, attentive tableside service delivered by an expertly trained front-of-house team</p>
+      </div>
+      <div class="atmos-card">
+        <div class="atmos-icon">🍷</div>
+        <h4>Acclaimed Wine List</h4>
+        <p>A curated selection of Italian and international wines to complement every dish on the menu</p>
+      </div>
+      <div class="atmos-card">
+        <div class="atmos-icon">📍</div>
+        <h4>Lan Kwai Fong</h4>
+        <p>Located in the heart of Central's most vibrant dining and nightlife district, steps from LKF Tower</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATIONS -->
+<section class="reservations" id="reservations">
+  <div class="container">
+    <div class="section-tag">Book a Table</div>
+    <h2 class="section-title">Reservations</h2>
+    <div class="gold-line"></div>
+    <div class="res-grid">
+      <div class="res-info">
+        <h3>Contact &amp; Location</h3>
+        <div class="res-item">
+          <span class="r-ico">✉️</span>
+          <div class="r-detail">
+            <div class="r-lbl">Email</div>
+            <div class="r-val"><a href="mailto:reservations@carbone.com.hk">reservations@carbone.com.hk</a></div>
+            <div class="r-note">For reservations, private events &amp; enquiries</div>
+          </div>
+        </div>
+        <div class="res-item">
+          <span class="r-ico">📍</span>
+          <div class="r-detail">
+            <div class="r-lbl">Location</div>
+            <div class="r-val">Lan Kwai Fong, Central</div>
+            <div class="r-note">Hong Kong Island</div>
+          </div>
+        </div>
+        <div class="res-item">
+          <span class="r-ico">🕐</span>
+          <div class="r-detail">
+            <div class="r-lbl">Dinner Service</div>
+            <div class="r-val">Monday – Sunday</div>
+            <div class="r-note">Please contact us for current hours</div>
+          </div>
+        </div>
+        <div class="res-item">
+          <span class="r-ico">👥</span>
+          <div class="r-detail">
+            <div class="r-lbl">Groups</div>
+            <div class="r-val">4–20+ Guests</div>
+            <div class="r-note">Private dining &amp; full venue hire available</div>
+          </div>
+        </div>
+      </div>
+      <div class="res-cta">
+        <h3>Reserve Your Table</h3>
+        <div class="gold-bar"></div>
+        <p>Join us for an evening of Italian-American indulgence in the heart of Central. For large party bookings, private events, or special occasion requests, please contact our reservations team directly.</p>
+        <div class="res-btns">
+          <a href="mailto:reservations@carbone.com.hk" class="res-btn gold">✉ Email Reservations</a>
+          <a href="#group" class="res-btn red">🥂 Group &amp; Private Dining</a>
+          <a href="#menu" class="res-btn outline">🍝 View the Menu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="f-logo">C<span style="color:var(--gold)">A</span>RBONE</div>
+        <div class="f-tagline">Italian-American Fine Dining · Hong Kong</div>
+        <div class="f-addr">Lan Kwai Fong, Central, Hong Kong<br>reservations@carbone.com.hk</div>
+      </div>
+      <div class="footer-links">
+        <div class="fc">
+          <h5>Dining</h5>
+          <a href="#">Antipasti</a>
+          <a href="#">Pasta & Risotto</a>
+          <a href="#">Secondi</a>
+          <a href="#">Desserts</a>
+        </div>
+        <div class="fc">
+          <h5>Events</h5>
+          <a href="#">Private Dining</a>
+          <a href="#">Group Bookings</a>
+          <a href="#">Full Venue Hire</a>
+          <a href="#">Wine Dinners</a>
+        </div>
+        <div class="fc">
+          <h5>Info</h5>
+          <a href="#">Our Story</a>
+          <a href="#">Reservations</a>
+          <a href="#">Location</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2024 Carbone Hong Kong · All Rights Reserved</div>
+      <div>Lan Kwai Fong, Central, Hong Kong</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
