@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Able Engineering Holdings | Build Beyond Expectations | Hong Kong</title>
+<meta name="description" content="Able Engineering Holdings Limited (Stock: 1627) — HKEX-listed Hong Kong construction group since 1976. Building construction, RMAA, foundation, slope upgrading, fitting out and more. Major public works across Hong Kong.">
+<style>
+  :root {
+    --orange: #d45c00;
+    --orange-mid: #e06c10;
+    --orange-light: #f07820;
+    --charcoal: #1c2028;
+    --steel: #2c3540;
+    --silver: #e8edf0;
+    --dark: #0a0d12;
+    --text: #1c2430;
+    --text-light: #607080;
+    --bg: #f5f6f8;
+    --white: #fff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Arial','Helvetica Neue',sans-serif; color:var(--text); background:var(--bg); }
+  html { scroll-behavior:smooth; }
+
+  nav {
+    position:fixed; top:0; width:100%; z-index:100;
+    background:rgba(10,13,18,0.98); backdrop-filter:blur(10px);
+    padding:0 5%; height:70px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:3px solid var(--orange);
+  }
+  .logo { display:flex; flex-direction:column; }
+  .logo-main { font-size:1.1rem; font-weight:900; color:#fff; letter-spacing:1px; }
+  .logo-sub { font-size:0.58rem; letter-spacing:2px; text-transform:uppercase; color:var(--orange); }
+  nav ul { list-style:none; display:flex; gap:1.8rem; }
+  nav ul a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.8rem; letter-spacing:0.5px; transition:color 0.3s; }
+  nav ul a:hover { color:var(--orange-light); }
+
+  /* HERO */
+  .hero {
+    min-height:100vh;
+    background:linear-gradient(135deg, var(--dark) 0%, var(--charcoal) 50%, #1a2030 100%);
+    display:flex; align-items:center; padding:100px 5% 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 60% at 100% 50%, rgba(212,92,0,0.12) 0%, transparent 60%); }
+  .hero::after { content:'1976'; position:absolute; right:3%; bottom:3%; font-size:18vw; font-weight:900; color:rgba(255,255,255,0.03); line-height:1; pointer-events:none; }
+  .hero-inner { max-width:720px; position:relative; z-index:1; }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:0.6rem;
+    background:rgba(212,92,0,0.15); border:1px solid rgba(212,92,0,0.4);
+    padding:8px 18px; border-radius:2px;
+    color:var(--orange-light); font-size:0.72rem; letter-spacing:2.5px; text-transform:uppercase;
+    margin-bottom:2rem;
+  }
+  .hero h1 { font-size:clamp(2.4rem, 5vw, 4.8rem); color:#fff; line-height:1.1; margin-bottom:0.7rem; font-weight:900; }
+  .hero h1 .hl { color:var(--orange); }
+  .hero-slogan { font-size:1.2rem; color:rgba(255,255,255,0.5); font-style:italic; margin-bottom:1.5rem; letter-spacing:1px; }
+  .hero p { font-size:1.05rem; color:rgba(255,255,255,0.65); line-height:1.9; margin-bottom:2.5rem; max-width:600px; }
+  .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:4rem; }
+  .btn-orange { display:inline-block; background:var(--orange); color:#fff; padding:14px 34px; text-decoration:none; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; font-weight:700; transition:all 0.3s; }
+  .btn-orange:hover { background:var(--orange-mid); }
+  .btn-ghost { display:inline-block; border:1.5px solid rgba(255,255,255,0.3); color:#fff; padding:13px 34px; text-decoration:none; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; transition:all 0.3s; }
+  .btn-ghost:hover { border-color:var(--orange-light); color:var(--orange-light); }
+  .hero-stats { display:grid; grid-template-columns:repeat(4, 1fr); border:1px solid rgba(255,255,255,0.08); }
+  .hs { padding:1.5rem; border-right:1px solid rgba(255,255,255,0.08); text-align:center; }
+  .hs:last-child { border-right:none; }
+  .hs-num { font-size:2.2rem; font-weight:900; color:var(--orange); display:block; line-height:1; }
+  .hs-lbl { font-size:0.63rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:4px; display:block; }
+
+  /* TICKER */
+  .ticker { background:var(--orange); padding:12px 0; overflow:hidden; }
+  .tick-inner { display:flex; gap:2.5rem; animation:scroll 25s linear infinite; white-space:nowrap; }
+  .tick-inner span { color:rgba(255,255,255,0.9); font-size:0.75rem; letter-spacing:2.5px; text-transform:uppercase; font-weight:700; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  section { padding:100px 5%; }
+  .tag { color:var(--orange); font-size:0.68rem; letter-spacing:3.5px; text-transform:uppercase; display:block; margin-bottom:0.8rem; }
+  .h2 { font-size:clamp(1.8rem, 3vw, 2.7rem); color:var(--dark); margin-bottom:1rem; font-weight:800; }
+  .lead { font-size:1rem; color:var(--text-light); line-height:1.9; }
+
+  /* SERVICES */
+  .services { background:var(--white); }
+  .svc-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:2px; background:#c8d0d8; margin-top:3.5rem; }
+  .svc-card {
+    background:var(--white); padding:2.5rem 1.8rem;
+    transition:all 0.35s; cursor:default; border-top:4px solid transparent;
+  }
+  .svc-card:hover { background:var(--dark); border-top-color:var(--orange); }
+  .svc-card:hover .svc-ico { background:rgba(212,92,0,0.2); }
+  .svc-card:hover h3 { color:#fff; }
+  .svc-card:hover p { color:rgba(255,255,255,0.6); }
+  .svc-ico { width:52px; height:52px; background:var(--bg); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:1.2rem; transition:background 0.35s; }
+  .svc-card h3 { font-size:0.95rem; color:var(--dark); margin-bottom:0.6rem; font-weight:700; transition:color 0.35s; line-height:1.3; }
+  .svc-card p { font-size:0.82rem; color:var(--text-light); line-height:1.7; transition:color 0.35s; }
+
+  /* PROJECTS */
+  .projects { background:var(--bg); }
+  .proj-intro { display:grid; grid-template-columns:1fr 1fr; gap:4rem; margin-bottom:3.5rem; }
+  .proj-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:1.5px; background:#b0b8c0; }
+  .proj-card {
+    background:var(--white); padding:1.8rem 1.5rem;
+    transition:background 0.3s;
+  }
+  .proj-card:hover { background:var(--charcoal); }
+  .proj-card:hover .proj-name { color:#fff; }
+  .proj-card:hover .proj-type { color:var(--orange); }
+  .proj-num { font-size:2rem; font-weight:900; color:rgba(212,92,0,0.2); line-height:1; margin-bottom:0.3rem; }
+  .proj-name { font-size:0.9rem; color:var(--dark); font-weight:700; margin-bottom:0.2rem; line-height:1.3; transition:color 0.3s; }
+  .proj-type { font-size:0.72rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-light); transition:color 0.3s; }
+
+  /* MILESTONES */
+  .milestones { background:var(--charcoal); }
+  .milestones .h2 { color:#fff; }
+  .milestones .lead { color:rgba(255,255,255,0.6); }
+  .timeline { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:2px; background:rgba(255,255,255,0.05); margin-top:3rem; }
+  .tl-item { padding:2rem; border-bottom:3px solid transparent; transition:border-color 0.3s; }
+  .tl-item:hover { border-color:var(--orange); }
+  .tl-year { font-size:2.2rem; font-weight:900; color:var(--orange); line-height:1; margin-bottom:0.5rem; }
+  .tl-item p { font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.7; }
+
+  /* CONTACT */
+  .contact { background:var(--dark); }
+  .contact .tag { color:var(--orange-light); }
+  .contact .h2 { color:#fff; }
+  .contact .lead { color:rgba(255,255,255,0.6); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; margin-top:3rem; }
+  .ci { margin-bottom:1.4rem; }
+  .ci-lbl { font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--orange); margin-bottom:0.4rem; display:block; }
+  .ci-val { font-size:0.93rem; color:#fff; }
+  .ci-val a { color:var(--orange-light); text-decoration:none; }
+  .form-group { margin-bottom:1.1rem; }
+  label { font-size:0.67rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.45); display:block; margin-bottom:0.45rem; }
+  input, select, textarea { width:100%; border:1px solid rgba(255,255,255,0.1); padding:12px 14px; font-size:0.9rem; color:#fff; background:rgba(255,255,255,0.06); border-radius:2px; transition:border-color 0.3s; font-family:'Arial',sans-serif; }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--orange); }
+  textarea { resize:vertical; min-height:110px; }
+  select option { background:var(--dark); }
+  .sub-btn { width:100%; background:var(--orange); color:#fff; border:none; padding:14px; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background 0.3s; font-weight:700; font-family:'Arial',sans-serif; }
+  .sub-btn:hover { background:var(--orange-mid); }
+
+  footer { background:#06080c; color:rgba(255,255,255,0.45); padding:60px 5% 30px; font-family:'Arial',sans-serif; }
+  .foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+  .foot-logo { font-size:1rem; font-weight:900; color:#fff; letter-spacing:1px; display:block; margin-bottom:0.4rem; }
+  .foot-code { font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--orange); margin-bottom:1rem; display:block; }
+  .foot-brand p { font-size:0.84rem; line-height:1.8; }
+  .foot-col h4 { color:var(--orange); font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:1.2rem; }
+  .foot-col ul { list-style:none; }
+  .foot-col li { margin-bottom:0.5rem; font-size:0.84rem; }
+  .foot-col a { color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.3s; }
+  .foot-col a:hover { color:var(--orange-light); }
+  .foot-bottom { border-top:1px solid rgba(255,255,255,0.07); padding-top:2rem; display:flex; justify-content:space-between; font-size:0.76rem; flex-wrap:wrap; gap:0.5rem; }
+  .designer-credit a { color:var(--orange-light); text-decoration:none; }
+
+  @media (max-width:1100px) { .svc-grid { grid-template-columns:repeat(2, 1fr); } .proj-grid { grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:900px) { nav ul { display:none; } .proj-intro, .contact-grid, .foot-grid { grid-template-columns:1fr; } .hero-stats { grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:600px) { .svc-grid { grid-template-columns:1fr; } .proj-grid { grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <span class="logo-main">Able Engineering Holdings Limited</span>
+    <span class="logo-sub">HKEX: 1627 · Est. 1976 · Hong Kong</span>
+  </div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#milestones">History</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">HKEX: 1627 · Listed Since 2017 · Est. 1976</div>
+    <h1><span class="hl">Build</span> Beyond<br>Your Expectations</h1>
+    <p class="hero-slogan">"Build Beyond Your Expectations"</p>
+    <p>Able Engineering Holdings Limited is a HKEX Main Board listed construction group with over 45 years of experience in Hong Kong. From hospitals and schools to government facilities and public housing, we build the landmarks that define Hong Kong.</p>
+    <div class="hero-cta">
+      <a href="#services" class="btn-orange">Our Services</a>
+      <a href="#projects" class="btn-ghost">Key Projects</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><span class="hs-num">1976</span><span class="hs-lbl">Established</span></div>
+      <div class="hs"><span class="hs-num">45+</span><span class="hs-lbl">Years Experience</span></div>
+      <div class="hs"><span class="hs-num">1627</span><span class="hs-lbl">HKEX Code</span></div>
+      <div class="hs"><span class="hs-num">HK</span><span class="hs-lbl">Based & Licensed</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="tick-inner">
+    <span>Building Construction</span><span>·</span>
+    <span>RMAA Works</span><span>·</span>
+    <span>Foundation & Site Formation</span><span>·</span>
+    <span>Slope Upgrading</span><span>·</span>
+    <span>Fitting Out</span><span>·</span>
+    <span>Demolition</span><span>·</span>
+    <span>HKEX: 1627</span><span>·</span>
+    <span>Est. 1976</span><span>·</span>
+    <span>Building Construction</span><span>·</span>
+    <span>RMAA Works</span><span>·</span>
+    <span>Foundation & Site Formation</span><span>·</span>
+    <span>Slope Upgrading</span><span>·</span>
+    <span>Fitting Out</span><span>·</span>
+    <span>Demolition</span><span>·</span>
+    <span>HKEX: 1627</span><span>·</span>
+    <span>Est. 1976</span><span>·</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <span class="tag">What We Do</span>
+  <h2 class="h2">Construction Services</h2>
+  <p class="lead" style="max-width:600px;">A comprehensive range of construction capabilities, backed by decades of experience, a full complement of licences, and an established track record on major Hong Kong projects.</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-ico">🏗️</div>
+      <h3>Building Construction</h3>
+      <p>Complete building construction for public and private sector clients. Residential, commercial, institutional, and healthcare facilities.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🔨</div>
+      <h3>Repair, Maintenance, Alteration & Addition</h3>
+      <p>RMAA works for existing buildings. Refurbishment, renovation, alterations and additions across all building types in Hong Kong.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🪑</div>
+      <h3>Fitting Out & Interior Design & Build</h3>
+      <p>Complete interior fit-out and design & build services for commercial, institutional, and residential spaces — delivered on time and within budget.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">⛏️</div>
+      <h3>Foundation & Site Formation</h3>
+      <p>Foundation engineering and site formation work, including ground improvement and preparation for new construction on challenging Hong Kong terrain.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🏔️</div>
+      <h3>Slope Upgrading</h3>
+      <p>Slope stabilisation, upgrading, and maintenance work across Hong Kong. Specialist expertise in slope engineering to meet GEO requirements.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">💥</div>
+      <h3>Demolition</h3>
+      <p>Safe and controlled demolition of buildings and structures, fully compliant with Hong Kong regulations and safety standards.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🔍</div>
+      <h3>Ground Investigation</h3>
+      <p>Geotechnical ground investigation services to characterise site conditions prior to construction, supporting informed design and risk management.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🌉</div>
+      <h3>Superstructure & Footbridge</h3>
+      <p>Superstructure construction and pedestrian footbridge works, contributing to Hong Kong's civil infrastructure and connectivity.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="proj-intro">
+    <div>
+      <span class="tag">Track Record</span>
+      <h2 class="h2">Landmark Projects</h2>
+      <p class="lead">Able Engineering has constructed some of Hong Kong's most important public buildings and facilities — hospitals, schools, courts, museums, housing estates, and government buildings.</p>
+    </div>
+    <div>
+      <p class="lead">Our portfolio spans projects awarded by the Architectural Services Department (ArchSD), Housing Authority, Hospital Authority, and other major government and private sector clients, reflecting the breadth of our experience and the trust placed in Able Engineering over four decades.</p>
+    </div>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-num">01</div>
+      <div class="proj-name">Tung Chung Swimming Pool</div>
+      <div class="proj-type">Sports Facility</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">02</div>
+      <div class="proj-name">Dr Sun Yat-sen Museum</div>
+      <div class="proj-type">Cultural · Sheung Wan</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">03</div>
+      <div class="proj-name">North Lantau Hospital</div>
+      <div class="proj-type">Healthcare</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">04</div>
+      <div class="proj-name">Tin Shui Wai Hospital</div>
+      <div class="proj-type">Healthcare</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">05</div>
+      <div class="proj-name">Tai Lam Centre for Women</div>
+      <div class="proj-type">Correctional Facility</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">06</div>
+      <div class="proj-name">St. Paul Co-educational College</div>
+      <div class="proj-type">Education · Integrated Building</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">07</div>
+      <div class="proj-name">CUHK Integrated Teaching Building</div>
+      <div class="proj-type">Higher Education</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">08</div>
+      <div class="proj-name">Lai Tsui Court, Cheung Sha Wan</div>
+      <div class="proj-type">Public Housing</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">09</div>
+      <div class="proj-name">Sheung Man Court, Tsuen Wan</div>
+      <div class="proj-type">Public Housing</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">10</div>
+      <div class="proj-name">Choi Wo Court, Fo Tan</div>
+      <div class="proj-type">Public Housing</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">11</div>
+      <div class="proj-name">Wo Tin Estate, Tuen Mun</div>
+      <div class="proj-type">Public Housing</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">12</div>
+      <div class="proj-name">Joint-user Gov't Office, TKO</div>
+      <div class="proj-type">Government Building</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">13</div>
+      <div class="proj-name">Queen Mary Hospital</div>
+      <div class="proj-type">Healthcare Facility</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">14</div>
+      <div class="proj-name">Columbarium, Kiu Tau Road</div>
+      <div class="proj-type">Public Facility · Wo Hop Shek</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">15</div>
+      <div class="proj-name">APB Centre, Hung Hom</div>
+      <div class="proj-type">Government / Commercial</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">+</div>
+      <div class="proj-name">Many More Projects</div>
+      <div class="proj-type">Across All Districts</div>
+    </div>
+  </div>
+</section>
+
+<!-- MILESTONES -->
+<section class="milestones" id="milestones">
+  <span class="tag">Our History</span>
+  <h2 class="h2">Company Milestones</h2>
+  <p class="lead" style="max-width:540px;">From a small engineering company in 1976 to a HKEX-listed construction group — Able Engineering's journey reflects the growth of Hong Kong's built environment.</p>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">1976</div>
+      <p>Established as Yeu Can Engineering Co., Ltd — laying the foundation for decades of construction excellence in Hong Kong.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1999</div>
+      <p>Built strong industry reputation. Appointed by the Hong Kong Institution of Engineers to provide Scheme "A" Graduate Training to engineering graduates.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2009+</div>
+      <p>Expanded project portfolio under Architectural Services Department — General Outpatient Clinics, Community Mental Health Centres, and Long Stay Care Homes.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2016</div>
+      <p>Received ArchSD Green Contractor Bronze Award — recognising our commitment to green construction practices and sustainable building.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2017</div>
+      <p>Listed on the Main Board of The Stock Exchange of Hong Kong (Stock Code: 1627) on 20 February 2017 — a milestone reflecting our growth and transparency.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">Now</div>
+      <p>Continuing to build landmark projects across Hong Kong, with a commitment to exceeding expectations on every project delivered.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <span class="tag">Get in Touch</span>
+  <h2 class="h2">Contact Able Engineering</h2>
+  <p class="lead" style="max-width:480px;">For project enquiries, tendering information, investor relations, or career opportunities — we're ready to hear from you.</p>
+  <div class="contact-grid">
+    <div>
+      <div class="ci"><span class="ci-lbl">Email</span><div class="ci-val"><a href="mailto:info@ablleeng.com">info@ablleeng.com</a></div></div>
+      <div class="ci"><span class="ci-lbl">Direct / Mobile</span><div class="ci-val"><a href="tel:+85269690148">+852 6969 0148</a></div></div>
+      <div class="ci"><span class="ci-lbl">Website</span><div class="ci-val"><a href="https://www.ableeng.com.hk" target="_blank">www.ableeng.com.hk</a></div></div>
+      <div class="ci"><span class="ci-lbl">HKEX Stock Code</span><div class="ci-val">1627 (Main Board)</div></div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('Thank you for your enquiry. We will respond within one business day.');">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="form-group"><label>Name *</label><input type="text" required placeholder="Your Name"></div>
+        <div class="form-group"><label>Company</label><input type="text" placeholder="Company Name"></div>
+      </div>
+      <div class="form-group"><label>Email *</label><input type="email" required placeholder="you@company.com"></div>
+      <div class="form-group"><label>Phone / Mobile</label><input type="tel" placeholder="+852 xxxx xxxx"></div>
+      <div class="form-group">
+        <label>Enquiry Type</label>
+        <select>
+          <option>Building Construction</option>
+          <option>RMAA Works</option>
+          <option>Fitting Out / Interior Design</option>
+          <option>Foundation & Site Formation</option>
+          <option>Slope Upgrading</option>
+          <option>Demolition</option>
+          <option>Ground Investigation</option>
+          <option>Career Opportunities</option>
+          <option>Investor Relations</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Project Details</label><textarea placeholder="Project location, scope, scale, and any specific requirements..."></textarea></div>
+      <button type="submit" class="sub-btn">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <span class="foot-logo">Able Engineering Holdings Limited</span>
+      <span class="foot-code">HKEX Main Board · Stock Code: 1627 · Est. 1976</span>
+      <p>Hong Kong's trusted construction group with over 45 years of experience. Building construction, RMAA, foundation, slope upgrading, fitting out, and more. Listed on HKEX since 2017.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Building Construction</a></li>
+        <li><a href="#services">RMAA Works</a></li>
+        <li><a href="#services">Fitting Out</a></li>
+        <li><a href="#services">Foundation</a></li>
+        <li><a href="#services">Slope Upgrading</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#projects">Key Projects</a></li>
+        <li><a href="#milestones">Our History</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.ableeng.com.hk/eng/investor-relations">Investor Relations</a></li>
+        <li><a href="mailto:info@ablleeng.com">info@ablleeng.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 Able Engineering Holdings Limited. All rights reserved. | Hong Kong</span>
+    <span class="designer-credit">Website by <a href="mailto:kck980724@gmail.com">Kwan's IT</a> · +852 60282297</span>
+  </div>
+</footer>
+
+</body>
+</html>
