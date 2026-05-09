@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eugina | Curated Lifestyle & Fashion Boutique | Hong Kong</title>
+<meta name="description" content="Eugina Limited — a curated lifestyle and fashion boutique in Hong Kong. Discover handpicked collections of clothing, accessories, and lifestyle products for the modern woman.">
+<style>
+  :root {
+    --blush: #e8c4b8;
+    --rose: #c17a65;
+    --deep: #2d1f1a;
+    --sand: #f5ede7;
+    --cream: #faf6f3;
+    --text: #3a2e2a;
+    --text-light: #8a7570;
+    --white: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; color: var(--text); background: var(--cream); }
+  html { scroll-behavior: smooth; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(250,246,243,0.95); backdrop-filter: blur(10px);
+    padding: 0 6%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+    border-bottom: 1px solid var(--blush);
+  }
+  .logo {
+    font-size: 1.6rem; font-weight: 700; color: var(--deep);
+    letter-spacing: 4px; text-transform: uppercase;
+  }
+  .logo em { color: var(--rose); font-style: normal; }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul a {
+    color: var(--text-light); text-decoration: none;
+    font-family: 'Arial', sans-serif; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  nav ul a:hover { color: var(--rose); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--sand) 0%, var(--blush) 40%, #d4a090 100%);
+    display: flex; align-items: center;
+    padding: 100px 6% 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: 'EUGINA';
+    position: absolute; right: -2%; bottom: -4%;
+    font-size: 18vw; font-weight: 900; letter-spacing: 10px;
+    color: rgba(255,255,255,0.15); line-height: 1;
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 640px; position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-block;
+    color: var(--rose); border: 1px solid var(--rose);
+    padding: 6px 18px; border-radius: 20px;
+    font-family: 'Arial', sans-serif; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.8rem, 5.5vw, 5rem);
+    color: var(--deep); line-height: 1.1;
+    margin-bottom: 1.5rem; font-weight: 400;
+  }
+  .hero h1 em { color: var(--rose); font-style: italic; }
+  .hero p {
+    font-family: 'Arial', sans-serif; font-size: 1.05rem;
+    color: var(--text-light); line-height: 1.8; margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-rose {
+    display: inline-block; background: var(--rose); color: #fff;
+    padding: 14px 36px; text-decoration: none;
+    font-family: 'Arial', sans-serif; font-size: 0.82rem; letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 600; transition: all 0.3s; border-radius: 2px;
+  }
+  .btn-rose:hover { background: var(--deep); }
+  .btn-outline-dark {
+    display: inline-block; border: 1.5px solid var(--deep); color: var(--deep);
+    padding: 13px 36px; text-decoration: none;
+    font-family: 'Arial', sans-serif; font-size: 0.82rem; letter-spacing: 2px; text-transform: uppercase;
+    transition: all 0.3s; border-radius: 2px;
+  }
+  .btn-outline-dark:hover { background: var(--deep); color: #fff; }
+
+  /* BRAND STRIP */
+  .strip {
+    background: var(--deep); padding: 18px 0; overflow: hidden;
+  }
+  .strip-inner { display: flex; gap: 3rem; animation: scroll 20s linear infinite; white-space: nowrap; }
+  .strip-inner span {
+    color: rgba(255,255,255,0.5); font-family: 'Arial', sans-serif;
+    font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+  }
+  .strip-inner span.sep { color: var(--rose); }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTIONS */
+  section { padding: 100px 6%; }
+  .tag { color: var(--rose); font-family: 'Arial', sans-serif; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; display: block; margin-bottom: 0.8rem; }
+  .h2 { font-size: clamp(1.9rem, 3vw, 2.8rem); color: var(--deep); margin-bottom: 1rem; font-weight: 400; }
+  .lead { font-family: 'Arial', sans-serif; font-size: 1rem; color: var(--text-light); line-height: 1.8; }
+
+  /* COLLECTIONS */
+  .collections { background: var(--cream); }
+  .col-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+  .col-header a { font-family: 'Arial', sans-serif; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--rose); text-decoration: none; border-bottom: 1px solid var(--rose); padding-bottom: 2px; }
+  .col-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .col-card {
+    border-radius: 4px; overflow: hidden;
+    background: var(--white);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: default;
+  }
+  .col-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(45,31,26,0.12); }
+  .col-img {
+    height: 260px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+  }
+  .col-img.c1 { background: linear-gradient(145deg, #f5e1da, #e8c4b8); }
+  .col-img.c2 { background: linear-gradient(145deg, #dde8e0, #bcd4c5); }
+  .col-img.c3 { background: linear-gradient(145deg, #e8e0d5, #d4c9b8); }
+  .col-img.c4 { background: linear-gradient(145deg, #e0d8ec, #c9bede); }
+  .col-img.c5 { background: linear-gradient(145deg, #fce8cc, #f2c898); }
+  .col-img.c6 { background: linear-gradient(145deg, #dce8f0, #b8d4e5); }
+  .col-body { padding: 1.5rem; }
+  .col-name { font-size: 1.1rem; color: var(--deep); margin-bottom: 0.4rem; font-weight: 600; font-family: 'Arial', sans-serif; }
+  .col-desc { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; font-family: 'Arial', sans-serif; }
+
+  /* FEATURED - full-width editorial */
+  .featured { background: var(--deep); display: flex; flex-wrap: wrap; padding: 0; gap: 0; }
+  .feat-text {
+    flex: 1 1 400px; padding: 100px 6%;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .feat-text .tag { color: var(--blush); }
+  .feat-text .h2 { color: #fff; }
+  .feat-text .lead { color: rgba(255,255,255,0.65); margin-bottom: 2rem; }
+  .feat-text .btn-rose { align-self: flex-start; }
+  .feat-visual {
+    flex: 1 1 400px; min-height: 500px;
+    background: linear-gradient(145deg, #c17a65, #8a4a35);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8rem;
+  }
+
+  /* VALUES */
+  .values { background: var(--sand); }
+  .val-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2rem; margin-top: 3rem; }
+  .val-card { text-align: center; padding: 2.5rem 1.5rem; background: var(--white); border-radius: 4px; }
+  .val-icon { font-size: 2.4rem; margin-bottom: 1.2rem; display: block; }
+  .val-card h3 { font-size: 1rem; color: var(--deep); margin-bottom: 0.6rem; font-family: 'Arial', sans-serif; font-weight: 700; }
+  .val-card p { font-size: 0.85rem; color: var(--text-light); line-height: 1.7; font-family: 'Arial', sans-serif; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-panel {
+    background: var(--blush); border-radius: 4px; padding: 4rem 3rem;
+    text-align: center;
+  }
+  .ap-quote {
+    font-size: 2rem; color: var(--deep); line-height: 1.4;
+    font-style: italic; margin-bottom: 1.5rem;
+  }
+  .ap-attr { font-family: 'Arial', sans-serif; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--rose); }
+  .about-text .lead { margin-bottom: 1.2rem; }
+  .about-list { list-style: none; margin-top: 1.5rem; }
+  .about-list li {
+    padding: 0.9rem 0; border-bottom: 1px solid #e8ddd5;
+    font-family: 'Arial', sans-serif; font-size: 0.9rem; color: var(--text-light);
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .about-list li::before { content: '♡'; color: var(--rose); flex-shrink: 0; }
+
+  /* CONTACT */
+  .contact { background: var(--sand); }
+  .contact-wrap { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; }
+  .ci { margin-bottom: 1.5rem; }
+  .ci-lbl { font-family: 'Arial', sans-serif; font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--rose); margin-bottom: 0.4rem; display: block; }
+  .ci-val { font-family: 'Arial', sans-serif; font-size: 0.95rem; color: var(--deep); }
+  .form-group { margin-bottom: 1.2rem; }
+  label { font-family: 'Arial', sans-serif; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); display: block; margin-bottom: 0.5rem; }
+  input, select, textarea {
+    width: 100%; border: 1px solid #ddd3ca; padding: 12px 14px;
+    font-family: 'Arial', sans-serif; font-size: 0.9rem; background: var(--white);
+    border-radius: 2px; transition: border-color 0.3s; color: var(--text);
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--rose); }
+  textarea { resize: vertical; min-height: 110px; }
+  .sub-btn {
+    width: 100%; background: var(--rose); color: #fff; border: none;
+    padding: 14px; font-family: 'Arial', sans-serif; font-size: 0.82rem;
+    letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+    transition: background 0.3s; border-radius: 2px;
+  }
+  .sub-btn:hover { background: var(--deep); }
+
+  /* FOOTER */
+  footer {
+    background: var(--deep); color: rgba(255,255,255,0.55);
+    padding: 60px 6% 30px; font-family: 'Arial', sans-serif;
+  }
+  .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .foot-brand p { font-size: 0.87rem; line-height: 1.7; margin-top: 1rem; }
+  .foot-logo { font-family: 'Georgia', serif; font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: 3px; text-transform: uppercase; }
+  .foot-logo em { color: var(--rose); font-style: normal; }
+  .foot-col h4 { color: var(--blush); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.2rem; }
+  .foot-col ul { list-style: none; }
+  .foot-col li { margin-bottom: 0.6rem; font-size: 0.87rem; }
+  .foot-col a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.3s; }
+  .foot-col a:hover { color: var(--blush); }
+  .foot-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.78rem; flex-wrap: wrap; gap: 0.5rem; }
+  .designer-credit a { color: var(--blush); text-decoration: none; }
+
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+    .col-grid { grid-template-columns: 1fr; }
+    .about-grid, .contact-wrap, .foot-grid { grid-template-columns: 1fr; }
+    .feat-visual { min-height: 280px; }
+    .hero::after { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">EUG<em>I</em>NA</div>
+  <ul>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Hong Kong Boutique</div>
+    <h1>Style That<br><em>Speaks</em><br>to You</h1>
+    <p>Eugina Limited is a curated lifestyle and fashion boutique in Hong Kong. We handpick collections that blend timeless elegance with contemporary style — for women who appreciate quality and individuality.</p>
+    <div class="hero-btns">
+      <a href="#collections" class="btn-rose">Explore Collections</a>
+      <a href="#contact" class="btn-outline-dark">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <span>Fashion</span><span class="sep">·</span>
+    <span>Lifestyle</span><span class="sep">·</span>
+    <span>Accessories</span><span class="sep">·</span>
+    <span>Beauty</span><span class="sep">·</span>
+    <span>Home & Living</span><span class="sep">·</span>
+    <span>Hong Kong</span><span class="sep">·</span>
+    <span>Curated with Love</span><span class="sep">·</span>
+    <span>Fashion</span><span class="sep">·</span>
+    <span>Lifestyle</span><span class="sep">·</span>
+    <span>Accessories</span><span class="sep">·</span>
+    <span>Beauty</span><span class="sep">·</span>
+    <span>Home & Living</span><span class="sep">·</span>
+    <span>Hong Kong</span><span class="sep">·</span>
+    <span>Curated with Love</span><span class="sep">·</span>
+  </div>
+</div>
+
+<!-- COLLECTIONS -->
+<section class="collections" id="collections">
+  <div class="col-header">
+    <div>
+      <span class="tag">Our Range</span>
+      <h2 class="h2">Curated Collections</h2>
+      <p class="lead">Every piece in our selection is handpicked for quality, style, and that special something that makes you feel beautiful.</p>
+    </div>
+  </div>
+  <div class="col-grid">
+    <div class="col-card">
+      <div class="col-img c1">👗</div>
+      <div class="col-body">
+        <div class="col-name">Women's Fashion</div>
+        <div class="col-desc">Contemporary clothing that moves from day to evening effortlessly. Carefully selected for cut, fabric quality, and enduring style.</div>
+      </div>
+    </div>
+    <div class="col-card">
+      <div class="col-img c2">👜</div>
+      <div class="col-body">
+        <div class="col-name">Handbags & Accessories</div>
+        <div class="col-desc">From structured totes to evening clutches, our accessories range completes every outfit with elegance and practicality.</div>
+      </div>
+    </div>
+    <div class="col-card">
+      <div class="col-img c4">✨</div>
+      <div class="col-body">
+        <div class="col-name">Jewellery</div>
+        <div class="col-desc">Delicate to statement — fine and fashion jewellery curated to add the perfect finishing touch to any look.</div>
+      </div>
+    </div>
+    <div class="col-card">
+      <div class="col-img c5">🌸</div>
+      <div class="col-body">
+        <div class="col-name">Beauty & Skincare</div>
+        <div class="col-desc">Premium beauty and skincare products selected for their effectiveness and sensorial experience. Look and feel your best.</div>
+      </div>
+    </div>
+    <div class="col-card">
+      <div class="col-img c3">🏠</div>
+      <div class="col-body">
+        <div class="col-name">Home & Living</div>
+        <div class="col-desc">Beautiful homeware and lifestyle accessories that bring warmth, style, and personality to your living spaces.</div>
+      </div>
+    </div>
+    <div class="col-card">
+      <div class="col-img c6">🎁</div>
+      <div class="col-body">
+        <div class="col-name">Gift & Gifting Sets</div>
+        <div class="col-desc">Thoughtfully assembled gift sets for every occasion — birthdays, anniversaries, corporate gifting, and celebrations.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED EDITORIAL -->
+<div class="featured">
+  <div class="feat-text">
+    <span class="tag">New Arrivals</span>
+    <h2 class="h2">Seasonal Collection</h2>
+    <p class="lead">Our latest arrivals bring together the season's most wearable trends with the timeless pieces that never go out of style. Each item is carefully considered for how it fits into a real, busy Hong Kong life.</p>
+    <a href="#contact" class="btn-rose">Enquire Now</a>
+  </div>
+  <div class="feat-visual">🛍️</div>
+</div>
+
+<!-- VALUES -->
+<section class="values">
+  <div style="text-align:center; max-width:560px; margin:0 auto 2rem;">
+    <span class="tag">What We Stand For</span>
+    <h2 class="h2">The Eugina Promise</h2>
+  </div>
+  <div class="val-grid">
+    <div class="val-card">
+      <span class="val-icon">🌿</span>
+      <h3>Carefully Curated</h3>
+      <p>Every product is personally selected by our team. We don't stock for quantity — we curate for quality and genuine style.</p>
+    </div>
+    <div class="val-card">
+      <span class="val-icon">💎</span>
+      <h3>Quality First</h3>
+      <p>We prioritise quality that lasts. Our selections are made to be worn, used, and loved — not discarded after a season.</p>
+    </div>
+    <div class="val-card">
+      <span class="val-icon">🤝</span>
+      <h3>Personal Service</h3>
+      <p>As a boutique, we offer attentive, personalised service — whether shopping in store or consulting online.</p>
+    </div>
+    <div class="val-card">
+      <span class="val-icon">🇭🇰</span>
+      <h3>Hong Kong Heart</h3>
+      <p>Proudly rooted in Hong Kong, we understand our customers and the unique blend of East-meets-West style sensibility.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-panel">
+      <p class="ap-quote">"Fashion is not about what you wear, but how you wear it — and how it makes you feel."</p>
+      <span class="ap-attr">— The Eugina Philosophy</span>
+    </div>
+    <div class="about-text">
+      <span class="tag">Our Story</span>
+      <h2 class="h2">Born in Hong Kong</h2>
+      <p class="lead">Eugina Limited was founded with a simple belief: every woman deserves access to beautiful, well-made products at reasonable prices. Based in Hong Kong, we bridge the best of global fashion with the needs of the modern Asian lifestyle.</p>
+      <p class="lead">We're a boutique — which means we're selective, personal, and genuinely invested in helping you find pieces you'll love. Our team curates continuously, ensuring fresh arrivals and a collection that evolves with the seasons.</p>
+      <ul class="about-list">
+        <li>Handpicked fashion, accessories, and lifestyle products</li>
+        <li>Regular new arrivals across all categories</li>
+        <li>Personalised styling advice available</li>
+        <li>Corporate gifting and bulk orders welcome</li>
+        <li>Hong Kong registered business with dedicated customer service</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div style="text-align:center; max-width:500px; margin:0 auto 3rem;">
+    <span class="tag">Reach Out</span>
+    <h2 class="h2">Get in Touch</h2>
+    <p class="lead">Questions about a product, a custom order, or corporate gifting? We'd love to hear from you.</p>
+  </div>
+  <div class="contact-wrap">
+    <div>
+      <div class="ci">
+        <span class="ci-lbl">Location</span>
+        <div class="ci-val">Hong Kong</div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">Email</span>
+        <div class="ci-val"><a href="mailto:contact@eugina.com" style="color:var(--deep);text-decoration:none;">contact@eugina.com</a></div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">Website</span>
+        <div class="ci-val"><a href="https://www.eugina.com" style="color:var(--rose);text-decoration:none;" target="_blank">www.eugina.com</a></div>
+      </div>
+      <div class="ci" style="margin-top:2rem;">
+        <span class="ci-lbl">Business Hours</span>
+        <div class="ci-val">Mon – Sat: 10am – 8pm<br>Sunday & Public Holidays: 12pm – 7pm</div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('Thank you! We will be in touch shortly.');">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" required placeholder="Jane">
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" required placeholder="Chan">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" required placeholder="jane@example.com">
+      </div>
+      <div class="form-group">
+        <label>Enquiry Type</label>
+        <select>
+          <option>Product Enquiry</option>
+          <option>Custom Order</option>
+          <option>Corporate Gifting</option>
+          <option>Wholesale</option>
+          <option>General</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us what you're looking for..."></textarea>
+      </div>
+      <button type="submit" class="sub-btn">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="foot-logo">EUG<em>I</em>NA</div>
+      <p>A curated fashion and lifestyle boutique based in Hong Kong. We handpick collections for the modern woman who appreciates quality, individuality, and style.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Collections</h4>
+      <ul>
+        <li><a href="#collections">Women's Fashion</a></li>
+        <li><a href="#collections">Handbags</a></li>
+        <li><a href="#collections">Jewellery</a></li>
+        <li><a href="#collections">Beauty</a></li>
+        <li><a href="#collections">Home & Living</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Information</h4>
+      <ul>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="mailto:contact@eugina.com">Email Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 Eugina Limited. All rights reserved. | Hong Kong</span>
+    <span class="designer-credit">Website by <a href="mailto:kck980724@gmail.com">Kwan's IT</a> · +852 60282297</span>
+  </div>
+</footer>
+
+</body>
+</html>
