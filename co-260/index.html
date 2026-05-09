@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>恆安(香港)工程有限公司 | Housewell (HK) Construction</title>
+<style>
+  :root {
+    --yellow: #f5a623;
+    --yellow-dark: #d48c10;
+    --navy: #0f2240;
+    --blue: #1a3560;
+    --blue-mid: #1e4080;
+    --light: #f4f7fb;
+    --white: #fff;
+    --text: #222;
+    --text-light: #666;
+    --border: #dde5f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: var(--white); }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    padding: 0 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 66px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-brand { text-decoration: none; display: flex; flex-direction: column; }
+  .nav-brand-en { font-size: 17px; font-weight: 800; color: var(--white); letter-spacing: 1px; }
+  .nav-brand-en span { color: var(--yellow); }
+  .nav-brand-zh { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 2px; margin-top: 2px; }
+  .nav-links { display: flex; gap: 26px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--yellow); }
+  .nav-cta {
+    background: var(--yellow);
+    color: var(--navy) !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--yellow-dark) !important; }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    min-height: 580px;
+    display: flex;
+    align-items: center;
+    padding: 80px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-stripe {
+    position: absolute;
+    top: 0; right: 0;
+    width: 42%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(245,166,35,0.07) 0%, transparent 100%);
+  }
+  .hero-bottom-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--yellow), transparent 60%);
+  }
+  .hero-content { max-width: 640px; position: relative; z-index: 2; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,166,35,0.15);
+    border: 1px solid rgba(245,166,35,0.3);
+    color: var(--yellow);
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-size: 50px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+  }
+  .hero h1 span { color: var(--yellow); }
+  .hero-zh {
+    font-size: 20px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 4px;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .hero p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.75;
+    max-width: 520px;
+    margin-bottom: 36px;
+  }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
+  .btn-yellow {
+    background: var(--yellow);
+    color: var(--navy);
+    padding: 13px 30px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-yellow:hover { background: var(--yellow-dark); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    padding: 13px 30px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--yellow); color: var(--yellow); }
+  .hero-counts {
+    display: flex;
+    gap: 40px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: wrap;
+  }
+  .hc-item .num { font-size: 32px; font-weight: 800; color: var(--yellow); display: block; }
+  .hc-item .lbl { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+
+  /* SECTION */
+  .section { padding: 72px 70px; }
+  .section-label { font-size: 11px; color: var(--yellow-dark); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: 34px; font-weight: 800; color: var(--navy); line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .section-zh { font-size: 15px; color: var(--text-light); letter-spacing: 3px; margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--text-light); line-height: 1.75; max-width: 580px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .about-content p { font-size: 14px; color: var(--text-light); line-height: 1.8; margin-bottom: 16px; }
+  .about-certs { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--white);
+    border-radius: 6px;
+    padding: 14px 18px;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--yellow);
+  }
+  .cert-icon { font-size: 20px; }
+  .cert-text { font-size: 14px; font-weight: 600; color: var(--navy); }
+  .cert-sub { font-size: 12px; color: var(--text-light); }
+  .about-card {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 44px 36px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-card::before {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -80px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(245,166,35,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .about-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .about-card .sub-en { font-size: 12px; color: var(--yellow); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
+  .about-detail { display: flex; gap: 10px; margin-bottom: 14px; align-items: flex-start; }
+  .ad-lbl { font-size: 11px; color: rgba(255,255,255,0.4); min-width: 52px; }
+  .ad-val { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+  .about-card .found-note {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.65;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
+  .svc-card {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 24px;
+    transition: all 0.3s;
+    border-top: 4px solid var(--yellow);
+  }
+  .svc-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.09); transform: translateY(-3px); }
+  .svc-icon { font-size: 32px; margin-bottom: 16px; }
+  .svc-name { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .svc-zh { font-size: 13px; color: var(--yellow-dark); letter-spacing: 1px; margin-bottom: 12px; }
+  .svc-desc { font-size: 13px; color: var(--text-light); line-height: 1.65; }
+
+  /* LICENSING */
+  .licensing { background: var(--navy); }
+  .licensing .section-title { color: var(--white); }
+  .licensing .section-zh { color: rgba(255,255,255,0.45); }
+  .licensing .section-sub { color: rgba(255,255,255,0.6); }
+  .lic-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; }
+  .lic-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 36px 30px;
+    transition: all 0.3s;
+  }
+  .lic-card:hover { background: rgba(245,166,35,0.08); border-color: rgba(245,166,35,0.3); }
+  .lic-badge {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .lic-name { font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+  .lic-zh { font-size: 14px; color: var(--yellow); letter-spacing: 2px; margin-bottom: 14px; }
+  .lic-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+  /* PROCESS */
+  .process { background: var(--light); }
+  .process-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 48px; position: relative; }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--yellow) 20%, var(--yellow) 80%, transparent);
+    opacity: 0.4;
+  }
+  .ps { padding: 0 12px; text-align: center; }
+  .ps-circle {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--navy);
+    border: 2px solid var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin: 0 auto 16px;
+    position: relative;
+    z-index: 2;
+  }
+  .ps-step { font-size: 10px; color: var(--yellow-dark); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .ps-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .ps-zh { font-size: 11px; color: var(--text-light); letter-spacing: 1px; margin-bottom: 6px; }
+  .ps-desc { font-size: 12px; color: var(--text-light); line-height: 1.6; }
+
+  /* PROJECT TYPES */
+  .projects { background: var(--white); }
+  .proj-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 40px; }
+  .proj-card {
+    background: var(--navy);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s;
+  }
+  .proj-card:hover { transform: translateY(-4px); }
+  .proj-inner {
+    min-height: 180px;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    position: relative;
+  }
+  .proj-inner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15,34,64,0.9) 0%, rgba(15,34,64,0.4) 50%, transparent 100%);
+  }
+  .proj-bg-1 { background: linear-gradient(135deg, #0f2240 0%, #1a3560 100%); }
+  .proj-bg-2 { background: linear-gradient(135deg, #1a0d00 0%, #3d2200 100%); }
+  .proj-bg-3 { background: linear-gradient(135deg, #001a10 0%, #00331f 100%); }
+  .proj-bg-4 { background: linear-gradient(135deg, #0d0a1a 0%, #1a1433 100%); }
+  .proj-bg-5 { background: linear-gradient(135deg, #1a1200 0%, #332400 100%); }
+  .proj-bg-6 { background: linear-gradient(135deg, #001218 0%, #002030 100%); }
+  .proj-bg-7 { background: linear-gradient(135deg, #180808 0%, #300e0e 100%); }
+  .proj-bg-8 { background: linear-gradient(135deg, #0a1800 0%, #142d00 100%); }
+  .proj-icon {
+    position: absolute;
+    top: 16px; right: 16px;
+    font-size: 32px;
+    opacity: 0.3;
+  }
+  .proj-info { position: relative; z-index: 2; }
+  .proj-type { font-size: 10px; color: var(--yellow); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+  .proj-name { font-size: 14px; font-weight: 700; color: var(--white); }
+  .proj-zh { font-size: 12px; color: rgba(255,255,255,0.55); letter-spacing: 1px; margin-top: 2px; }
+
+  /* CONTACT */
+  .contact { background: var(--light); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; }
+  .contact-info h3 { font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 5px; }
+  .contact-info .sub-en { font-size: 12px; color: var(--yellow-dark); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 28px; }
+  .cdet {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .cdet:last-of-type { border-bottom: none; }
+  .cdet-icon { font-size: 18px; margin-top: 2px; flex-shrink: 0; }
+  .cdet-label { font-size: 11px; color: var(--text-light); letter-spacing: 0.5px; margin-bottom: 4px; }
+  .cdet-value { font-size: 15px; font-weight: 700; color: var(--navy); }
+  .cdet-value a { color: var(--navy); text-decoration: none; }
+  .cdet-value a:hover { color: var(--yellow-dark); }
+  .contact-form {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 36px 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  }
+  .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 20px; }
+  .fg { margin-bottom: 16px; }
+  .fg label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-light); margin-bottom: 6px; }
+  .fg input, .fg select, .fg textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 11px 14px;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--light);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--yellow); background: var(--white); }
+  .fg textarea { min-height: 100px; resize: vertical; }
+  .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .submit-btn {
+    width: 100%;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 13px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 6px;
+  }
+  .submit-btn:hover { background: var(--yellow); color: var(--navy); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.4);
+    padding: 36px 70px;
+    border-top: 3px solid var(--yellow);
+  }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .fb-en { font-size: 15px; font-weight: 700; color: var(--white); }
+  .fb-en span { color: var(--yellow); }
+  .fb-zh { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 1px; margin-top: 3px; }
+  .footer-links { display: flex; gap: 22px; list-style: none; }
+  .footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 12px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--yellow); }
+  .footer-copy { font-size: 11px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 60px 20px; }
+    .hero h1 { font-size: 36px; }
+    .section { padding: 56px 20px; }
+    .about-grid, .svc-grid, .lic-grid, .proj-grid, .contact-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .fg-row { grid-template-columns: 1fr; }
+    footer { padding: 28px 20px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <span class="nav-brand-en"><span>Housewell</span> (HK) Construction</span>
+    <span class="nav-brand-zh">恆安(香港)工程有限公司</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#licensing">Licensing</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-stripe"></div>
+  <div class="hero-bottom-bar"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🏗️ Hong Kong Licensed Contractor · Since 2009</div>
+    <h1>Housewell <span>(HK)</span><br>Construction</h1>
+    <span class="hero-zh">恆安(香港)工程有限公司</span>
+    <p>Building surveys, interior design, renovation, and comprehensive engineering services — backed by Hong Kong Government licensing as a Small Works Contractor and Electrical Contractor. Quality and integrity in every project.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-yellow">Our Services</a>
+      <a href="#contact" class="btn-ghost">Free Consultation</a>
+    </div>
+    <div class="hero-counts">
+      <div class="hc-item"><span class="num">1,200+</span><span class="lbl">Projects Completed</span></div>
+      <div class="hc-item"><span class="num">2009</span><span class="lbl">Year Founded</span></div>
+      <div class="hc-item"><span class="num">2</span><span class="lbl">Gov't Licences</span></div>
+      <div class="hc-item"><span class="num">HK</span><span class="lbl">Kwai Chung Based</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">Quality & Integrity<br>in Every Project</h2>
+      <p class="section-zh">誠信為本 · 品質卓越</p>
+      <p>Established in 2009, Housewell (HK) Construction Limited (恆安(香港)工程有限公司) has been dedicated to delivering outstanding building and renovation services throughout Hong Kong. With over 1,200 completed projects spanning residential, commercial, and institutional premises, we bring expertise and precision to every engagement.</p>
+      <p>Our services cover the full spectrum of building works — from structural surveys and inspections through to interior design, renovation, electrical and mechanical installations, and fire safety systems. Our goal in every project is to achieve the ideal result for our clients.</p>
+      <div class="about-certs">
+        <div class="cert-item">
+          <div class="cert-icon">🏛️</div>
+          <div>
+            <div class="cert-text">Small Works Contractor</div>
+            <div class="cert-sub">Hong Kong Government Registered · 香港政府認可小型工程承辦商</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">⚡</div>
+          <div>
+            <div class="cert-text">Electrical Contractor</div>
+            <div class="cert-sub">Hong Kong Government Licensed · 香港政府認可電業承辦商</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-card">
+      <h3>恆安(香港)工程</h3>
+      <p class="sub-en">HOUSEWELL (HK) CONSTRUCTION LIMITED</p>
+      <div class="about-detail">
+        <span class="ad-lbl">地址</span>
+        <span class="ad-val">葵涌葵豐街41號安富工業大廈13樓D室<br>Rm D, 13/F, On Fuk Ind. Bldg.,<br>41 Kwai Fung Crescent, Kwai Chung</span>
+      </div>
+      <div class="about-detail">
+        <span class="ad-lbl">Mobile</span>
+        <span class="ad-val">9851 4382</span>
+      </div>
+      <div class="about-detail">
+        <span class="ad-lbl">Email</span>
+        <span class="ad-val">info@housewell.com.hk</span>
+      </div>
+      <div class="about-detail">
+        <span class="ad-lbl">Web</span>
+        <span class="ad-val">housewell.com.hk</span>
+      </div>
+      <div class="found-note">成立於2009年，恆安工程致力於品質與誠信，以每個項目均追求完美為目標，為客戶提供理想的體驗。</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="section-label">Our Services</div>
+  <h2 class="section-title">Comprehensive Engineering Solutions</h2>
+  <p class="section-zh">全面工程服務</p>
+  <p class="section-sub">From building surveys to full renovation, we offer a complete range of construction and engineering services for residential, commercial, and institutional projects.</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon">🔍</div>
+      <div class="svc-name">Building Survey & Inspection</div>
+      <div class="svc-zh">樓宇勘測及檢驗</div>
+      <div class="svc-desc">Comprehensive building surveys, structural inspections, and condition assessments. We provide testing, evaluation, and design recommendations to improve safety standards and the overall building environment.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏠</div>
+      <div class="svc-name">Building Maintenance</div>
+      <div class="svc-zh">屋宇維修工程</div>
+      <div class="svc-desc">Professional maintenance and repair works for all building types — residential blocks, commercial buildings, and industrial premises. Covering structural, finishes, waterproofing, and general maintenance.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏗️</div>
+      <div class="svc-name">Renovation Works</div>
+      <div class="svc-zh">裝修工程</div>
+      <div class="svc-desc">Full-scope renovation for residential apartments, offices, shops, and Grade A commercial buildings. From preliminary design to project completion — we manage every detail to deliver on time and on budget.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🎨</div>
+      <div class="svc-name">Interior Design</div>
+      <div class="svc-zh">室內設計</div>
+      <div class="svc-desc">Creative and functional interior design solutions tailored to your space, lifestyle, and budget. Residential, commercial, and retail interior design with detailed drawings and 3D visualisation.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">⚡</div>
+      <div class="svc-name">Electrical & Mechanical (E&M)</div>
+      <div class="svc-zh">電氣及機械工程</div>
+      <div class="svc-desc">Licensed electrical contracting, mechanical system installation, and E&M works. From new electrical installations to upgrades, rewiring, and panel work — all fully compliant with HK regulations.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔥</div>
+      <div class="svc-name">Fire Safety Systems</div>
+      <div class="svc-zh">消防安全系統</div>
+      <div class="svc-desc">Installation, testing, and maintenance of fire safety and fire suppression systems for commercial and residential buildings. Ensuring full compliance with HK Fire Services Ordinance requirements.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏘️</div>
+      <div class="svc-name">Home Equipment Installation</div>
+      <div class="svc-zh">家居設備安裝</div>
+      <div class="svc-desc">Professional installation of home equipment, fixtures, fittings, appliances, and smart home systems. Efficient, tidy, and backed by workmanship guarantee for residential clients.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏢</div>
+      <div class="svc-name">Commercial Fit-out</div>
+      <div class="svc-zh">商業裝修工程</div>
+      <div class="svc-desc">Turnkey fit-out for offices, retail shops, restaurants, and Grade A commercial premises. Full project management from concept design through construction to final handover.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">📋</div>
+      <div class="svc-name">Project Management</div>
+      <div class="svc-zh">工程管理</div>
+      <div class="svc-desc">Professional project management services ensuring works are completed on schedule and to the highest quality standards. Coordinating contractors, suppliers, and inspections throughout the project lifecycle.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LICENSING -->
+<section class="section licensing" id="licensing">
+  <div class="section-label">Government Licensing</div>
+  <h2 class="section-title" style="color:var(--white)">Fully Licensed & Certified</h2>
+  <p class="section-zh">政府認可持牌承辦商</p>
+  <p class="section-sub">Housewell (HK) Construction holds official licences from the Hong Kong Government — ensuring all works are legally compliant, professionally executed, and covered by appropriate insurance.</p>
+  <div class="lic-grid">
+    <div class="lic-card">
+      <div class="lic-badge">HK Government</div>
+      <div class="lic-name">Small Works Contractor</div>
+      <div class="lic-zh">小型工程承辦商</div>
+      <div class="lic-desc">Registered with the Buildings Department of Hong Kong as a licensed Small Works Contractor. Authorised to carry out a range of prescribed minor works and alterations for residential and commercial buildings — ensuring full legal compliance for every project.</div>
+    </div>
+    <div class="lic-card">
+      <div class="lic-badge">HK Government</div>
+      <div class="lic-name">Electrical Contractor</div>
+      <div class="lic-zh">電業承辦商</div>
+      <div class="lic-desc">Licenced Electrical Contractor registered under the Electricity Ordinance (Cap. 406) of Hong Kong. Our qualified electrical workers carry out all electrical works in full compliance with the Code of Practice for the Electricity (Wiring) Regulations.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process" id="process">
+  <div class="section-label">How We Work</div>
+  <h2 class="section-title">Our Project Process</h2>
+  <p class="section-zh">工程流程</p>
+  <p class="section-sub">A clear five-stage process ensures your project is completed smoothly, on budget, and to the highest standard.</p>
+  <div class="process-steps">
+    <div class="ps">
+      <div class="ps-circle">💬</div>
+      <div class="ps-step">Step 01</div>
+      <div class="ps-title">Consultation</div>
+      <div class="ps-zh">初步諮詢</div>
+      <div class="ps-desc">Free consultation to understand your needs, scope, and budget.</div>
+    </div>
+    <div class="ps">
+      <div class="ps-circle">🔍</div>
+      <div class="ps-step">Step 02</div>
+      <div class="ps-title">Survey & Assessment</div>
+      <div class="ps-zh">勘測評估</div>
+      <div class="ps-desc">Site survey, building inspection, and detailed assessment of requirements.</div>
+    </div>
+    <div class="ps">
+      <div class="ps-circle">📐</div>
+      <div class="ps-step">Step 03</div>
+      <div class="ps-title">Design & Quote</div>
+      <div class="ps-zh">設計及報價</div>
+      <div class="ps-desc">Design proposals, material selection, and comprehensive quotation submitted.</div>
+    </div>
+    <div class="ps">
+      <div class="ps-circle">🔨</div>
+      <div class="ps-step">Step 04</div>
+      <div class="ps-title">Construction</div>
+      <div class="ps-zh">施工管理</div>
+      <div class="ps-desc">Managed construction with regular updates, inspections, and quality control.</div>
+    </div>
+    <div class="ps">
+      <div class="ps-circle">🎉</div>
+      <div class="ps-step">Step 05</div>
+      <div class="ps-title">Handover</div>
+      <div class="ps-zh">竣工交付</div>
+      <div class="ps-desc">Final inspection, punch list completion, and handover of your completed space.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT TYPES -->
+<section class="section projects">
+  <div class="section-label">Project Types</div>
+  <h2 class="section-title">We Build Across All Sectors</h2>
+  <p class="section-zh">服務各類工程項目</p>
+  <p class="section-sub">Over 1,200 projects completed since 2009 — spanning residential, commercial, industrial, and institutional premises throughout Hong Kong.</p>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-inner proj-bg-1">
+        <span class="proj-icon">🏠</span>
+        <div class="proj-info">
+          <div class="proj-type">Residential</div>
+          <div class="proj-name">Apartments & Homes</div>
+          <div class="proj-zh">住宅</div>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-inner proj-bg-2">
+        <span class="proj-icon">🛍️</span>
+        <div class="proj-info">
+          <div class="proj-type">Retail</div>
+          <div class="proj-name">Shops & Boutiques</div>
+          <div class="proj-zh">商鋪</div>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-inner proj-bg-3">
+        <span class="proj-icon">🏢</span>
+        <div class="proj-info">
+          <div class="proj-type">Commercial</div>
+          <div class="proj-name">Grade A Offices</div>
+          <div class="proj-zh">甲級辦公室</div>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-inner proj-bg-4">
+        <span class="proj-icon">🍽️</span>
+        <div class="proj-info">
+          <div class="proj-type">F&B</div>
+          <div class="proj-name">Restaurants & Cafés</div>
+          <div class="proj-zh">食肆</div>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-inner proj-bg-5">
+        <span class="proj-icon">🏫</span>
+        <div class="proj-info">
+          <div class="proj-type">Institutional</div>
+          <div class="proj-name">Schools & NGOs</div>
+          <div class="proj-zh">學校及機構</div>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-inner proj-bg-6">
+        <span class="proj-icon">🏭</span>
+        <div class="proj-info">
+          <div class="proj-type">Industrial</div>
+          <div class="proj-name">Factories & Warehouses</div>
+          <div class="proj-zh">工廠及貨倉</div>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-inner proj-bg-7">
+        <span class="proj-icon">🏥</span>
+        <div class="proj-info">
+          <div class="proj-type">Medical</div>
+          <div class="proj-name">Clinics & Medical</div>
+          <div class="proj-zh">醫療機構</div>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-inner proj-bg-8">
+        <span class="proj-icon">🔧</span>
+        <div class="proj-info">
+          <div class="proj-type">Maintenance</div>
+          <div class="proj-name">Building Upkeep</div>
+          <div class="proj-zh">樓宇維修</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="section-label">Contact Us</div>
+  <h2 class="section-title">Get a Free Consultation</h2>
+  <p class="section-zh">免費諮詢</p>
+  <br>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>恆安(香港)工程有限公司</h3>
+      <p class="sub-en">HOUSEWELL (HK) CONSTRUCTION LIMITED</p>
+      <div class="cdet">
+        <div class="cdet-icon">📍</div>
+        <div>
+          <div class="cdet-label">Address 地址</div>
+          <div class="cdet-value">葵涌葵豐街41號安富工業大廈13樓D室<br>Rm D, 13/F, On Fuk Industrial Building,<br>41 Kwai Fung Crescent, Kwai Chung, HK</div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">📱</div>
+        <div>
+          <div class="cdet-label">Mobile 手提</div>
+          <div class="cdet-value"><a href="tel:+85298514382">9851 4382</a></div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">✉️</div>
+        <div>
+          <div class="cdet-label">Email 電郵</div>
+          <div class="cdet-value"><a href="mailto:info@housewell.com.hk">info@housewell.com.hk</a></div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">🌐</div>
+        <div>
+          <div class="cdet-label">Website 網站</div>
+          <div class="cdet-value"><a href="https://housewell.com.hk" target="_blank">housewell.com.hk</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Send an Enquiry / 發送查詢</h3>
+      <div class="fg-row">
+        <div class="fg">
+          <label>Name 姓名</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="fg">
+          <label>Phone 電話</label>
+          <input type="tel" placeholder="Contact number">
+        </div>
+      </div>
+      <div class="fg">
+        <label>Email 電郵</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="fg">
+        <label>Service Required 服務類別</label>
+        <select>
+          <option>Building Survey / 樓宇勘測</option>
+          <option>Renovation Works / 裝修工程</option>
+          <option>Interior Design / 室內設計</option>
+          <option>Electrical Works / 電業工程</option>
+          <option>Fire Safety / 消防系統</option>
+          <option>Building Maintenance / 樓宇維修</option>
+          <option>Other / 其他</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Project Details 工程詳情</label>
+        <textarea placeholder="Describe your project, location, and requirements..."></textarea>
+      </div>
+      <button class="submit-btn">Send Enquiry / 提交查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="fb-en"><span>Housewell</span> (HK) Construction Limited</div>
+      <div class="fb-zh">恆安(香港)工程有限公司 · 葵涌葵豐街41號安富工業大廈13樓D室</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#licensing">Licensing</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Housewell (HK) Construction Ltd.</div>
+  </div>
+</footer>
+
+</body>
+</html>
