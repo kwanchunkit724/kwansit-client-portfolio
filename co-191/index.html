@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>立利實業有限公司 | 食品飲料‧廚具餐飲用具‧進出口貿易</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --red:#c0392b;
+    --dark-red:#922b21;
+    --gold:#d4a017;
+    --light-gold:#f0c040;
+    --warm:#fff8f0;
+    --white:#ffffff;
+    --light:#fafafa;
+    --gray:#6b7280;
+    --dark:#1a1a1a;
+    --border:#e5e7eb;
+  }
+  body{font-family:'Microsoft JhengHei','微軟正黑體','Segoe UI',Arial,sans-serif;background:#fff;color:#1a1a1a;}
+  a{text-decoration:none;color:inherit;}
+
+  /* NAV */
+  nav{background:var(--dark-red);padding:0 5%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;height:68px;border-bottom:3px solid var(--gold);}
+  .nav-logo{display:flex;align-items:center;gap:12px;}
+  .nav-logo-icon{width:44px;height:44px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;color:var(--dark-red);}
+  .nav-brand{color:var(--white);}
+  .nav-brand .cn{font-size:1.2rem;font-weight:700;letter-spacing:2px;}
+  .nav-brand .en{font-size:0.68rem;color:#ffccaa;letter-spacing:1.5px;text-transform:uppercase;}
+  .nav-links{display:flex;gap:26px;list-style:none;}
+  .nav-links a{color:#ffe8d8;font-size:0.88rem;font-weight:500;letter-spacing:1px;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:var(--dark-red);padding:9px 20px;border-radius:5px;font-weight:700;font-size:0.85rem;letter-spacing:1px;transition:background 0.2s;}
+  .nav-cta:hover{background:var(--light-gold);}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--dark-red) 0%,var(--red) 55%,#e74c3c 100%);padding:90px 5% 80px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-40px;right:-40px;width:360px;height:360px;background:rgba(212,160,23,0.1);border-radius:50%;}
+  .hero::after{content:'';position:absolute;bottom:-60px;left:5%;width:220px;height:220px;background:rgba(255,255,255,0.04);border-radius:50%;}
+  .hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;background:rgba(212,160,23,0.2);color:var(--gold);border:1px solid var(--gold);padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:700;letter-spacing:2px;margin-bottom:18px;}
+  .hero h1{color:var(--white);font-size:2.4rem;font-weight:900;line-height:1.25;margin-bottom:16px;}
+  .hero h1 .en{display:block;font-size:1.1rem;color:rgba(255,255,255,0.7);font-weight:500;margin-top:6px;letter-spacing:1px;}
+  .hero-desc{color:#ffddd0;font-size:1rem;line-height:1.75;margin-bottom:30px;}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn-primary{background:var(--gold);color:var(--dark-red);padding:12px 26px;border-radius:6px;font-weight:700;font-size:0.92rem;transition:all 0.2s;}
+  .btn-primary:hover{background:var(--light-gold);transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.4);padding:12px 26px;border-radius:6px;font-weight:600;font-size:0.92rem;transition:all 0.2s;}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+  .hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .hero-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:20px;text-align:center;}
+  .hero-card .icon{font-size:2rem;margin-bottom:8px;}
+  .hero-card h3{color:var(--gold);font-size:0.92rem;font-weight:700;margin-bottom:5px;}
+  .hero-card p{color:rgba(255,255,255,0.7);font-size:0.78rem;line-height:1.5;}
+
+  /* SECTIONS */
+  section{padding:76px 5%;}
+  .section-inner{max-width:1100px;margin:0 auto;}
+  .section-label{font-size:0.75rem;font-weight:700;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+  .section-title{font-size:1.9rem;font-weight:800;color:var(--dark);margin-bottom:14px;}
+  .section-title span{color:var(--red);}
+  .section-desc{color:var(--gray);font-size:1rem;line-height:1.75;max-width:660px;}
+
+  /* ABOUT */
+  .about{background:var(--warm);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:36px;}
+  .about-text p{color:#4a4a4a;font-size:0.97rem;line-height:1.85;margin-bottom:14px;}
+  .key-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px;}
+  .fact{background:var(--white);border-left:4px solid var(--gold);padding:14px 16px;border-radius:0 8px 8px 0;box-shadow:0 1px 6px rgba(0,0,0,0.05);}
+  .fact strong{display:block;color:var(--dark-red);font-size:0.88rem;font-weight:700;margin-bottom:3px;}
+  .fact span{color:var(--gray);font-size:0.8rem;}
+  .scope-box{background:linear-gradient(135deg,var(--dark-red),var(--red));border-radius:14px;padding:36px;color:var(--white);}
+  .scope-box h3{color:var(--gold);font-size:1.15rem;font-weight:800;margin-bottom:18px;}
+  .scope-list{list-style:none;}
+  .scope-list li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:0.88rem;color:#ffe8d8;display:flex;align-items:flex-start;gap:10px;line-height:1.5;}
+  .scope-list li:last-child{border-bottom:none;}
+  .scope-list li::before{content:'▸';color:var(--gold);flex-shrink:0;margin-top:1px;}
+
+  /* PRODUCTS */
+  .products{background:var(--white);}
+  .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px;}
+  .product-card{background:var(--light);border-radius:12px;padding:26px;border:1px solid var(--border);transition:all 0.2s;}
+  .product-card:hover{border-color:var(--red);transform:translateY(-3px);box-shadow:0 8px 24px rgba(192,57,43,0.12);}
+  .product-icon{width:52px;height:52px;background:linear-gradient(135deg,var(--dark-red),var(--red));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px;}
+  .product-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
+  .product-card p{font-size:0.83rem;color:var(--gray);line-height:1.6;}
+
+  /* TRADE */
+  .trade{background:linear-gradient(135deg,var(--dark-red),var(--red));padding:76px 5%;}
+  .trade .section-title{color:var(--white);}
+  .trade .section-desc{color:#ffddd0;}
+  .trade-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px;}
+  .trade-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:26px;transition:all 0.2s;}
+  .trade-card:hover{background:rgba(212,160,23,0.12);border-color:var(--gold);transform:translateY(-3px);}
+  .trade-card .trade-icon{font-size:2rem;margin-bottom:12px;}
+  .trade-card h3{color:var(--gold);font-size:1rem;font-weight:700;margin-bottom:8px;}
+  .trade-card p{color:rgba(255,255,255,0.75);font-size:0.83rem;line-height:1.6;}
+
+  /* CONTACT */
+  .contact{background:var(--warm);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:36px;}
+  .contact-card{background:var(--white);border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border-top:3px solid var(--red);}
+  .contact-card h3{color:var(--dark-red);font-size:1rem;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+  .contact-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;}
+  .contact-icon{width:36px;height:36px;background:rgba(192,57,43,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+  .contact-item strong{display:block;color:var(--dark);font-size:0.85rem;margin-bottom:2px;}
+  .contact-item span{color:var(--gray);font-size:0.85rem;line-height:1.5;}
+  .info-box{background:linear-gradient(135deg,var(--dark-red),var(--red));border-radius:14px;padding:30px;color:var(--white);}
+  .info-box h3{color:var(--gold);font-size:1rem;font-weight:700;margin-bottom:18px;}
+  .info-box p{color:#ffddd0;font-size:0.88rem;line-height:1.8;}
+  .info-box strong{color:var(--white);}
+
+  /* FOOTER */
+  footer{background:#1a0505;padding:36px 5%;text-align:center;border-top:1px solid rgba(212,160,23,0.3);}
+  footer .brand{color:var(--gold);font-weight:700;font-size:1rem;margin-bottom:6px;}
+  footer p{color:#6b5050;font-size:0.8rem;}
+
+  @media(max-width:900px){
+    .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr;}
+    .hero-cards,.key-facts{grid-template-columns:repeat(2,1fr);}
+    .product-grid,.trade-grid{grid-template-columns:1fr 1fr;}
+    nav .nav-links,.nav-cta{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">立</div>
+    <div class="nav-brand">
+      <div class="cn">立利實業有限公司</div>
+      <div class="en">Li Li Industrial Co., Ltd.</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#products">業務範疇</a></li>
+    <li><a href="#trade">進出口貿易</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">聯絡我們</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">香港 · 零售與貿易</div>
+      <h1>立利實業有限公司
+        <span class="en">Li Li Industrial Co., Ltd.</span>
+      </h1>
+      <p class="hero-desc">專注食品飲料、餐飲廚具批發零售及進出口貿易業務，為客戶提供優質產品與可靠的貿易服務。</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">業務範疇</a>
+        <a href="#contact" class="btn-outline">聯絡洽詢</a>
+      </div>
+    </div>
+    <div class="hero-cards">
+      <div class="hero-card">
+        <div class="icon">🥫</div>
+        <h3>食品飲料</h3>
+        <p>各種食品、飲料及食品原料批發零售</p>
+      </div>
+      <div class="hero-card">
+        <div class="icon">🍽️</div>
+        <h3>餐飲廚具</h3>
+        <p>餐飲用具及廚房器具經銷買賣</p>
+      </div>
+      <div class="hero-card">
+        <div class="icon">🚢</div>
+        <h3>進出口貿易</h3>
+        <p>產品進出口及國際貿易業務</p>
+      </div>
+      <div class="hero-card">
+        <div class="icon">🤝</div>
+        <h3>代理報價</h3>
+        <p>國內外廠商產品代理報價投標</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">關於我們</div>
+    <h2 class="section-title">立利實業 — <span>專業貿易夥伴</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>立利實業有限公司（Li Li Industrial Co., Ltd.）是一家以香港為基地的零售及貿易公司，專注於食品飲料、什貨及食品原料的批發零售，以及餐飲用具和廚房器具的經銷業務。</p>
+        <p>公司業務涵蓋本地零售及國際進出口貿易，為客戶提供優質的食品及廚具產品。我們亦承接國內外廠商產品的代理報價及投標業務，為廠商開拓市場、建立銷售渠道。</p>
+        <p>憑藉多年的行業經驗及廣泛的供應商網絡，立利實業致力為客戶提供高性價比的產品及可靠的貿易服務，是您理想的業務合作夥伴。</p>
+        <div class="key-facts">
+          <div class="fact">
+            <strong>公司類型</strong>
+            <span>有限公司</span>
+          </div>
+          <div class="fact">
+            <strong>業務地區</strong>
+            <span>香港 / 國際貿易</span>
+          </div>
+          <div class="fact">
+            <strong>主要行業</strong>
+            <span>食品零售及貿易</span>
+          </div>
+          <div class="fact">
+            <strong>聯絡方式</strong>
+            <span>Email 洽詢</span>
+          </div>
+        </div>
+      </div>
+      <div class="scope-box">
+        <h3>📋 業務範圍</h3>
+        <ul class="scope-list">
+          <li>各種食品、飲料、什貨及食品原料之銷售業務</li>
+          <li>各種餐飲用具及廚具之經銷買賣業務</li>
+          <li>前各項產品之進出口貿易業務</li>
+          <li>國內外廠商產品之代理報價投標業務</li>
+          <li>食品原料之採購及供應</li>
+          <li>廚房設備及餐廳用品批發</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-label">業務範疇</div>
+    <h2 class="section-title">主要 <span>產品與服務</span></h2>
+    <p class="section-desc">立利實業提供多元化的食品飲料及廚具產品，滿足零售客戶及商業採購需求。</p>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-icon">🥫</div>
+        <h3>食品及食品原料</h3>
+        <p>各類食品、包裝食品及食品加工原料，適合零售及商業採購，品類齊全，質素有保證。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🧃</div>
+        <h3>飲料</h3>
+        <p>各種飲料產品，包括罐裝、瓶裝飲品，適合超市、便利店及餐飲業批量採購。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🛒</div>
+        <h3>什貨零售</h3>
+        <p>日常生活雜貨及零售商品，涵蓋多個品類，滿足零售商的一站式採購需求。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🍴</div>
+        <h3>餐飲用具</h3>
+        <p>餐廳、酒樓及飲食業所需之餐具、服務器皿及餐飲輔助用具，款式多樣，品質優良。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🔪</div>
+        <h3>廚具設備</h3>
+        <p>家用及商業廚房所需之廚具器皿，包括烹飪工具、廚房用品及相關廚房設備。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">📋</div>
+        <h3>代理報價投標</h3>
+        <p>代國內外廠商進行產品代理、市場報價及投標業務，協助廠商拓展香港及海外市場。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRADE -->
+<section class="trade" id="trade">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--gold);">進出口業務</div>
+    <h2 class="section-title">國際 <span style="color:var(--gold);">貿易服務</span></h2>
+    <p class="section-desc">立利實業提供完善的進出口貿易服務，連接香港與國際市場，為客戶開拓更廣泛的商機。</p>
+    <div class="trade-grid">
+      <div class="trade-card">
+        <div class="trade-icon">📦</div>
+        <h3>進口採購</h3>
+        <p>從海外市場採購優質食品、飲料及廚具產品，引進到香港市場銷售，提供具競爭力的採購方案。</p>
+      </div>
+      <div class="trade-card">
+        <div class="trade-icon">✈️</div>
+        <h3>出口貿易</h3>
+        <p>協助廠商將產品出口至海外市場，提供出口文件、物流協調及市場對接等一站式服務。</p>
+      </div>
+      <div class="trade-card">
+        <div class="trade-icon">🤝</div>
+        <h3>代理服務</h3>
+        <p>承接國內外廠商的香港代理業務，負責市場推廣、客戶開發及銷售網絡建立，擴大品牌影響力。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <h2 class="section-title">歡迎 <span>洽詢合作</span></h2>
+    <p class="section-desc">如有採購查詢、代理業務洽談或其他業務合作，歡迎隨時與我們聯絡。</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>📧 聯絡方式</h3>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <strong>電郵查詢</strong>
+            <span>alltwcompany@gmail.com</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🏢</div>
+          <div>
+            <strong>公司名稱</strong>
+            <span>立利實業有限公司<br>Li Li Industrial Co., Ltd.</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <strong>營業地區</strong>
+            <span>香港 (Hong Kong)</span>
+          </div>
+        </div>
+      </div>
+      <div class="info-box">
+        <h3>💼 業務洽詢</h3>
+        <p><strong>食品飲料採購</strong><br>批發零售採購、OEM代工、食品原料供應</p>
+        <p style="margin-top:14px;"><strong>廚具餐具採購</strong><br>餐廳、酒樓、飲食業廚具及餐飲用具批量採購</p>
+        <p style="margin-top:14px;"><strong>進出口貿易</strong><br>產品進口採購、出口代理、市場開拓</p>
+        <p style="margin-top:14px;"><strong>代理投標</strong><br>代國內外廠商在香港市場進行代理、報價及投標業務</p>
+        <p style="margin-top:16px;background:rgba(212,160,23,0.2);border-radius:8px;padding:10px;font-size:0.85rem;color:var(--gold);">📧 請以電郵聯絡，我們將盡快回覆您的查詢。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">立利實業有限公司 Li Li Industrial Co., Ltd.</div>
+  <p>食品飲料 · 餐飲廚具 · 進出口貿易 · 代理服務 | 香港</p>
+  <p style="margin-top:6px;">&copy; 2025 立利實業有限公司。版權所有。</p>
+</footer>
+
+</body>
+</html>
