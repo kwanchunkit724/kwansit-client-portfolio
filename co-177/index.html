@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>禮品軒 SourceEC | 香港企業禮品定制專家</title>
+<style>
+  :root {
+    --teal: #00796b;
+    --teal-dark: #004d40;
+    --teal-light: #26a69a;
+    --teal-pale: #e0f2f1;
+    --orange: #f4511e;
+    --orange-light: #ff6d3b;
+    --dark: #001a16;
+    --gray: #f5faf9;
+    --white: #ffffff;
+    --text: #1a3330;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans TC','Segoe UI',sans-serif; color:var(--text); background:var(--white); }
+
+  /* NAV */
+  nav { background:var(--dark); padding:0 5%; position:sticky; top:0; z-index:100; }
+  .nav-inner { display:flex; align-items:center; justify-content:space-between; height:65px; }
+  .nav-logo { color:var(--white); }
+  .nav-logo .brand { font-size:1.1rem; font-weight:800; }
+  .nav-logo .brand span { color:var(--teal-light); }
+  .nav-logo .sub { font-size:0.68rem; color:rgba(255,255,255,0.45); letter-spacing:1px; }
+  .nav-links { display:flex; gap:24px; list-style:none; }
+  .nav-links a { color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.87rem; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--teal-light); }
+
+  /* HERO */
+  .hero { background:linear-gradient(135deg,var(--dark) 0%,var(--teal-dark) 60%,var(--teal) 100%); color:var(--white); padding:80px 5% 70px; position:relative; overflow:hidden; }
+  .hero::before { content:'🎁'; position:absolute; right:6%; top:50%; transform:translateY(-50%); font-size:14rem; opacity:0.06; }
+  .hero-badge { display:inline-flex; align-items:center; gap:8px; background:var(--orange); color:var(--white); font-size:0.75rem; font-weight:700; padding:5px 16px; border-radius:20px; margin-bottom:18px; }
+  .hero h1 { font-size:2.8rem; font-weight:900; line-height:1.15; margin-bottom:10px; }
+  .hero h1 .hl { color:#80cbc4; }
+  .hero-tagline { font-size:1.1rem; color:rgba(255,255,255,0.8); margin-bottom:8px; }
+  .hero-en { font-size:0.82rem; color:rgba(255,255,255,0.4); letter-spacing:1.5px; margin-bottom:28px; }
+  .hero-pills { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px; }
+  .pill { background:rgba(255,255,255,0.12); color:var(--white); font-size:0.78rem; padding:5px 14px; border-radius:20px; }
+  .hero-cta { display:flex; gap:12px; flex-wrap:wrap; }
+  .btn-orange { background:var(--orange); color:var(--white); padding:12px 28px; border-radius:30px; text-decoration:none; font-weight:700; font-size:0.92rem; }
+  .btn-outline { background:transparent; border:2px solid rgba(255,255,255,0.4); color:var(--white); padding:12px 28px; border-radius:30px; text-decoration:none; font-weight:700; font-size:0.92rem; }
+
+  /* SECTION */
+  section { padding:65px 5%; }
+  .sec-label { font-size:0.72rem; font-weight:700; color:var(--teal); letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+  .sec-title { font-size:1.85rem; font-weight:800; color:var(--dark); margin-bottom:12px; }
+  .sec-desc { color:#666; line-height:1.8; max-width:650px; }
+
+  /* ABOUT */
+  .about { background:var(--gray); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start; margin-top:36px; }
+  .about-text p { color:#555; line-height:1.9; font-size:0.95rem; margin-bottom:14px; }
+  .fact-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .fact-card { background:var(--white); border-left:4px solid var(--teal); padding:14px 16px; border-radius:0 8px 8px 0; }
+  .fact-card h4 { font-size:0.82rem; font-weight:700; color:var(--teal); margin-bottom:3px; }
+  .fact-card p { font-size:0.82rem; color:#666; line-height:1.5; }
+
+  /* PRODUCTS */
+  .products { background:var(--white); }
+  .prod-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:36px; }
+  .prod-card { background:var(--gray); border-radius:12px; overflow:hidden; transition:all 0.3s; }
+  .prod-card:hover { box-shadow:0 8px 24px rgba(0,121,107,0.15); transform:translateY(-4px); }
+  .prod-img { height:110px; background:linear-gradient(135deg,var(--teal) 0%,var(--teal-light) 100%); display:flex; align-items:center; justify-content:center; font-size:3rem; }
+  .prod-body { padding:14px; }
+  .prod-body h4 { font-size:0.88rem; font-weight:700; color:var(--dark); margin-bottom:4px; }
+  .prod-body p { font-size:0.75rem; color:#888; line-height:1.5; }
+  .prod-tag { display:inline-block; background:var(--teal-pale); color:var(--teal-dark); font-size:0.68rem; font-weight:700; padding:2px 8px; border-radius:10px; margin-bottom:6px; }
+
+  /* CATEGORIES */
+  .categories { background:var(--gray); }
+  .cat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:36px; }
+  .cat-card { background:linear-gradient(135deg,var(--teal-dark) 0%,var(--teal) 100%); color:var(--white); border-radius:12px; padding:24px 18px; text-align:center; transition:transform 0.3s; }
+  .cat-card:hover { transform:translateY(-4px); }
+  .cat-icon { font-size:2.2rem; margin-bottom:12px; }
+  .cat-card h3 { font-size:0.9rem; font-weight:700; margin-bottom:6px; }
+  .cat-card p { font-size:0.75rem; opacity:0.8; line-height:1.5; }
+
+  /* PROCESS */
+  .process { background:var(--white); }
+  .steps { display:flex; gap:0; margin-top:36px; position:relative; }
+  .steps::before { content:''; position:absolute; top:28px; left:5%; right:5%; height:2px; background:linear-gradient(90deg,var(--teal),var(--teal-light)); z-index:0; }
+  .step { flex:1; text-align:center; position:relative; z-index:1; padding:0 10px; }
+  .step-num { width:56px; height:56px; background:linear-gradient(135deg,var(--teal),var(--teal-light)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--white); font-size:1.4rem; font-weight:800; margin:0 auto 14px; border:3px solid var(--white); box-shadow:0 2px 10px rgba(0,121,107,0.3); }
+  .step h4 { font-size:0.88rem; font-weight:700; color:var(--dark); margin-bottom:5px; }
+  .step p { font-size:0.76rem; color:#777; line-height:1.5; }
+
+  /* CLIENTS */
+  .clients { background:var(--gray); }
+  .client-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:36px; }
+  .client-card { background:var(--white); border-radius:10px; padding:20px 18px; }
+  .client-card h4 { font-size:0.88rem; font-weight:700; color:var(--teal-dark); margin-bottom:8px; }
+  .client-product { display:inline-block; background:var(--teal-pale); color:var(--teal-dark); font-size:0.72rem; font-weight:600; padding:3px 10px; border-radius:20px; margin-bottom:8px; }
+  .client-card p { font-size:0.78rem; color:#777; line-height:1.5; }
+
+  /* CONTACT */
+  .contact { background:linear-gradient(135deg,var(--dark) 0%,var(--teal-dark) 100%); color:var(--white); }
+  .contact .sec-title { color:var(--white); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; margin-top:36px; }
+  .ci-item { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+  .ci-icon { width:40px; height:40px; background:rgba(255,255,255,0.1); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+  .ci-text span { display:block; font-size:0.72rem; color:rgba(255,255,255,0.5); margin-bottom:2px; }
+  .ci-text a, .ci-text strong { color:var(--white); font-size:0.9rem; text-decoration:none; font-weight:600; }
+  .form-wrap { background:rgba(255,255,255,0.07); border-radius:12px; padding:28px; }
+  .form-wrap h3 { font-size:1rem; font-weight:700; color:#80cbc4; margin-bottom:18px; }
+  .fg { margin-bottom:11px; }
+  .fg input, .fg textarea, .fg select { width:100%; padding:10px 14px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:8px; color:var(--white); font-size:0.88rem; outline:none; }
+  .fg input::placeholder, .fg textarea::placeholder { color:rgba(255,255,255,0.4); }
+  .fg textarea { height:80px; resize:none; }
+  .btn-sub { width:100%; padding:12px; background:var(--orange); color:var(--white); font-weight:700; font-size:0.93rem; border:none; border-radius:8px; cursor:pointer; }
+
+  /* FOOTER */
+  footer { background:var(--dark); color:rgba(255,255,255,0.4); text-align:center; padding:20px 5%; font-size:0.82rem; }
+  footer a { color:#80cbc4; text-decoration:none; }
+
+  @media(max-width:768px){
+    .hero h1{font-size:2rem;} .about-grid,.contact-grid{grid-template-columns:1fr;} .prod-grid,.cat-grid{grid-template-columns:1fr 1fr;} .client-grid{grid-template-columns:1fr 1fr;} .steps{flex-direction:column;} .steps::before{display:none;} .fact-grid{grid-template-columns:1fr;} .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="brand">禮品軒 <span>SourceEC</span></div>
+      <div class="sub">PROMOTIONAL GIFTS · HONG KONG</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#products">精選產品</a></li>
+      <li><a href="#categories">產品類別</a></li>
+      <li><a href="#process">訂購流程</a></li>
+      <li><a href="#clients">客戶案例</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🎁 企業禮品定制專家</div>
+  <h1>禮品軒<br><span class="hl">SourceEC</span></h1>
+  <div class="hero-tagline">紀念品 · 禮品 · 訂做 · 一站式企業禮品服務</div>
+  <div class="hero-en">SOURCEEC · PROMOTIONAL GIFTS HONG KONG</div>
+  <div class="hero-pills">
+    <span class="pill">🏢 企業禮品</span>
+    <span class="pill">🖨️ Logo印刷</span>
+    <span class="pill">🌿 環保禮品</span>
+    <span class="pill">🖊️ 廣告筆</span>
+    <span class="pill">☕ 廣告杯</span>
+    <span class="pill">💾 USB手指</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#products" class="btn-orange">🎁 瀏覽禮品</a>
+    <a href="#contact" class="btn-outline">立即詢價</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="sec-label">About Us</div>
+  <div class="about-grid">
+    <div>
+      <div class="sec-title">關於禮品軒 SourceEC</div>
+      <div class="about-text">
+        <p>禮品軒（SourceEC）是香港專業的企業禮品及推廣禮品供應商，提供一站式的禮品定制服務，為企業、機構及學校提供各類型的訂製禮品及紀念品。</p>
+        <p>我們的產品種類繁多，包括USB手指、廣告杯、廣告筆、環保禮品、電子產品、家居用品等，並可根據客戶需求印製Logo或個人化訊息，打造獨一無二的品牌推廣禮品。</p>
+        <p>服務客戶遍及各行各業，包括大型企業、政府機構、教育機構及非牟利組織，憑藉豐富經驗及優質服務，成為眾多企業的首選禮品供應商。</p>
+      </div>
+    </div>
+    <div class="fact-grid">
+      <div class="fact-card">
+        <h4>📞 電話</h4>
+        <p>(852) 2713 3484</p>
+      </div>
+      <div class="fact-card">
+        <h4>✉️ 電郵</h4>
+        <p>sales@sourceec.com</p>
+      </div>
+      <div class="fact-card">
+        <h4>🌐 網址</h4>
+        <p>hk.sourceec.com</p>
+      </div>
+      <div class="fact-card">
+        <h4>🏙️ 地區</h4>
+        <p>香港</p>
+      </div>
+      <div class="fact-card">
+        <h4>🎯 專長</h4>
+        <p>企業禮品定制、Logo印刷</p>
+      </div>
+      <div class="fact-card">
+        <h4>👥 服務對象</h4>
+        <p>企業、機構、學校</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="sec-label">Featured Products</div>
+  <div class="sec-title">精選訂製禮品</div>
+  <div class="sec-desc">以下為部分熱門定制禮品，所有產品均可印刷您的公司Logo或個人訊息。</div>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-img">🍵</div>
+      <div class="prod-body">
+        <span class="prod-tag">廣告杯</span>
+        <h4>460ML收納蓋保溫杯</h4>
+        <p>雙層不銹鋼，保溫12小時，蓋附儲物盒</p>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">🍱</div>
+      <div class="prod-body">
+        <span class="prod-tag">環保禮品</span>
+        <h4>折疊矽膠便當盒</h4>
+        <p>食品級矽膠，可折疊省空間，新世界渡輪定制</p>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">🖊️</div>
+      <div class="prod-body">
+        <span class="prod-tag">廣告筆</span>
+        <h4>積木螢光筆文具禮品</h4>
+        <p>四款色彩，書寫順滑，可變積木造型</p>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">🎒</div>
+      <div class="prod-body">
+        <span class="prod-tag">袋類</span>
+        <h4>戶外折疊旅行背囊</h4>
+        <p>牛津布防水，可折疊收納，多色可選</p>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">💡</div>
+      <div class="prod-body">
+        <span class="prod-tag">電子禮品</span>
+        <h4>萬年曆LED檯燈</h4>
+        <p>LED省電，萬年曆/溫度/鬧鐘功能，USB供電</p>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">👜</div>
+      <div class="prod-body">
+        <span class="prod-tag">袋類</span>
+        <h4>數碼印花束口袋</h4>
+        <p>全彩數碼印花，可定制圖案及Logo</p>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">💾</div>
+      <div class="prod-body">
+        <span class="prod-tag">USB手指</span>
+        <h4>定制USB手指</h4>
+        <p>多種造型及容量，印刷公司Logo</p>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">🛍️</div>
+      <div class="prod-body">
+        <span class="prod-tag">更多</span>
+        <h4>更多定制禮品</h4>
+        <p>探索更多企業禮品選擇 →</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="sec-label">Product Categories</div>
+  <div class="sec-title">產品類別</div>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <div class="cat-icon">💾</div>
+      <h3>USB手指</h3>
+      <p>多款造型USB，客製化印刷</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">☕</div>
+      <h3>廣告杯 / 水樽</h3>
+      <p>保溫杯、馬克杯、環保水樽</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🖊️</div>
+      <h3>廣告筆 / 文具</h3>
+      <p>各式廣告筆及文具套裝</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🌿</div>
+      <h3>環保禮品</h3>
+      <p>可持續環保材料定制禮品</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">💡</div>
+      <h3>電子產品</h3>
+      <p>LED燈、充電器、藍牙產品</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🎒</div>
+      <h3>袋類</h3>
+      <p>手提袋、背囊、購物袋</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🏠</div>
+      <h3>家居用品</h3>
+      <p>實用家居禮品及廚具</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🧴</div>
+      <h3>健康美容</h3>
+      <p>口罩、酒精搓手液、護膚品</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="sec-label">How It Works</div>
+  <div class="sec-title">訂製服務流程</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>選擇產品</h4>
+      <p>從我們的禮品目錄中選擇合適的產品</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>提供Logo設計</h4>
+      <p>提供您的公司Logo及客製化要求</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>確認樣辦</h4>
+      <p>確認設計及產品樣辦，確保效果滿意</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>生產製造</h4>
+      <p>確認後正式生產，按時交貨</p>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <h4>送貨上門</h4>
+      <p>準時送貨至您指定地點</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients" id="clients">
+  <div class="sec-label">Client Cases</div>
+  <div class="sec-title">客戶案例</div>
+  <div class="client-grid">
+    <div class="client-card">
+      <h4>信佳集團管理有限公司</h4>
+      <span class="client-product">460ML收納蓋保溫杯</span>
+      <p>英國Hampshire總部的外判管理公司，訂製保溫杯作為活動禮品</p>
+    </div>
+    <div class="client-card">
+      <h4>新世界第一渡輪服務有限公司</h4>
+      <span class="client-product">折疊便當盒</span>
+      <p>香港最大境內渡輪經營者，訂製折疊矽膠便當盒作宣傳品</p>
+    </div>
+    <div class="client-card">
+      <h4>萬鈞匯知中學</h4>
+      <span class="client-product">積木螢光筆文具禮品</span>
+      <p>訂製積木螢光筆，加強師生歸屬感及學校宣傳效果</p>
+    </div>
+    <div class="client-card">
+      <h4>基督教家庭服務中心</h4>
+      <span class="client-product">戶外折疊旅行背囊</span>
+      <p>香港社會服務機構，訂製折疊背囊作機構推廣禮品</p>
+    </div>
+    <div class="client-card">
+      <h4>林德港氧有限公司</h4>
+      <span class="client-product">萬年曆LED檯燈</span>
+      <p>全球工業氣體領導企業，訂製多功能LED檯燈作紀念品</p>
+    </div>
+    <div class="client-card">
+      <h4>香港基督教女青年會</h4>
+      <span class="client-product">數碼印花束口袋</span>
+      <p>香港知名社福機構，訂製束口袋作機構宣傳用品</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="sec-label">Contact Us</div>
+  <div class="sec-title">聯絡我們</div>
+  <div class="contact-grid">
+    <div>
+      <p style="color:rgba(255,255,255,0.7);font-size:0.92rem;line-height:1.8;margin-bottom:24px;">如有任何禮品訂製查詢，歡迎透過以下方式聯絡我們，我們會盡快回覆並提供報價。</p>
+      <div class="ci-item">
+        <div class="ci-icon">📞</div>
+        <div class="ci-text">
+          <span>電話</span>
+          <a href="tel:+85227133484">(852) 2713 3484</a>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">✉️</div>
+        <div class="ci-text">
+          <span>電郵</span>
+          <a href="mailto:sales@sourceec.com">sales@sourceec.com</a>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">🌐</div>
+        <div class="ci-text">
+          <span>網址</span>
+          <a href="https://hk.sourceec.com" target="_blank">hk.sourceec.com</a>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">📝</div>
+        <div class="ci-text">
+          <span>禮品博客</span>
+          <a href="https://blog.promotionalgifts.com.hk" target="_blank">blog.promotionalgifts.com.hk</a>
+        </div>
+      </div>
+    </div>
+    <div class="form-wrap">
+      <h3>🎁 禮品定制查詢</h3>
+      <div class="fg"><input type="text" placeholder="公司名稱 Company Name"></div>
+      <div class="fg"><input type="text" placeholder="聯絡人 Contact Person"></div>
+      <div class="fg"><input type="email" placeholder="電郵 Email"></div>
+      <div class="fg"><input type="tel" placeholder="電話 Phone"></div>
+      <div class="fg">
+        <select style="color:rgba(255,255,255,0.6)">
+          <option value="">產品類別 Category</option>
+          <option>USB手指</option>
+          <option>廣告杯 / 水樽</option>
+          <option>廣告筆 / 文具</option>
+          <option>電子禮品</option>
+          <option>環保禮品</option>
+          <option>袋類</option>
+          <option>其他</option>
+        </select>
+      </div>
+      <div class="fg"><textarea placeholder="查詢詳情（產品、數量、預算、交貨日期）"></textarea></div>
+      <button class="btn-sub">立即詢價 Get Quote</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 禮品軒 SourceEC · 香港企業禮品定制專家</p>
+  <p style="margin-top:6px;"><a href="tel:+85227133484">(852) 2713 3484</a> · <a href="mailto:sales@sourceec.com">sales@sourceec.com</a> · <a href="https://hk.sourceec.com" target="_blank">hk.sourceec.com</a></p>
+</footer>
+
+</body>
+</html>
