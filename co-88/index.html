@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天下深度遊旅行社 | Profound Cultural Tours</title>
+<style>
+  :root {
+    --primary: #8b5e3c;
+    --secondary: #c49a6c;
+    --accent: #d4a843;
+    --dark: #1c1410;
+    --mid: #2d2218;
+    --light: #fdf8f3;
+    --text: #3a2e22;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif; color: var(--text); background: #fff; }
+
+  /* NAV */
+  nav {
+    background: var(--dark);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 68px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; }
+  .nav-logo .icon { width: 42px; height: 42px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .nav-logo .brand { color: #fff; }
+  .nav-logo .brand span { display: block; font-size: 17px; font-weight: 700; letter-spacing: 1px; }
+  .nav-logo .brand small { font-size: 11px; color: var(--secondary); text-transform: uppercase; letter-spacing: 2px; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: #c0a882; text-decoration: none; font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta { background: var(--accent); color: var(--dark); padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; transition: opacity .2s; }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, var(--dark) 0%, #3a2a18 60%, #6b4422 100%);
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 100px 5%;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 40%, rgba(212,168,67,0.12) 0%, transparent 60%);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 820px; }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 6px 22px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 28px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .hero h1 { font-size: clamp(2.2rem,5.5vw,3.8rem); font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero h2 { font-size: clamp(1rem,2vw,1.3rem); font-weight: 400; color: #c4a880; margin-bottom: 36px; letter-spacing: 3px; }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-gold { background: var(--accent); color: var(--dark); padding: 14px 36px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px; transition: background .2s; }
+  .btn-gold:hover { background: #e0b848; }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.3); color: #fff; padding: 14px 36px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all .2s; }
+  .btn-outline:hover { background: rgba(255,255,255,0.08); }
+  .license-badge { margin-top: 32px; color: #8a7560; font-size: 13px; letter-spacing: 1px; }
+  .license-badge strong { color: var(--secondary); }
+
+  /* SECTION */
+  section { padding: 80px 5%; }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-header h2 { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .section-header p { color: #6a5840; font-size: 16px; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+  .tag { display: inline-block; background: #f5e9d6; color: var(--primary); padding: 5px 16px; border-radius: 14px; font-size: 13px; margin-bottom: 16px; border: 1px solid #e0c8a0; }
+
+  /* FEATURES */
+  .features-bg { background: var(--light); }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+  }
+  .feature-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: center;
+    border: 1px solid #e8d8c0;
+    transition: all .25s;
+  }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(139,94,60,0.12); border-color: var(--secondary); }
+  .feature-card .ico { font-size: 44px; margin-bottom: 18px; }
+  .feature-card h3 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+  .feature-card h3 small { display: block; font-size: 12px; color: var(--secondary); font-weight: 400; margin-top: 4px; letter-spacing: 1px; }
+  .feature-card p { font-size: 14px; color: #6a5840; line-height: 1.7; }
+
+  /* FEATURED TRIP */
+  .trip-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .trip-visual {
+    background: linear-gradient(135deg, #1c1410 0%, #4a3020 50%, #8b5e3c 100%);
+    border-radius: 20px;
+    padding: 48px 36px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .trip-visual::before {
+    content: '📸';
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    font-size: 140px;
+    opacity: 0.08;
+    line-height: 1;
+  }
+  .trip-visual .destination { color: var(--accent); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+  .trip-visual h3 { font-size: 26px; font-weight: 800; line-height: 1.3; margin-bottom: 20px; }
+  .trip-visual .detail-list { list-style: none; }
+  .trip-visual .detail-list li { display: flex; gap: 12px; margin-bottom: 14px; font-size: 14px; color: #d0b898; }
+  .trip-visual .detail-list li strong { color: #fff; }
+  .trip-details { }
+  .trip-details h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 20px; }
+  .itinerary-item { display: flex; gap: 16px; margin-bottom: 24px; }
+  .day-badge {
+    background: var(--primary); color: #fff; border-radius: 8px;
+    padding: 8px 12px; font-size: 11px; font-weight: 700; text-align: center;
+    min-width: 52px; height: fit-content; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .itinerary-item .content h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+  .itinerary-item .content p { font-size: 13px; color: #6a5840; line-height: 1.6; }
+  .price-box {
+    background: var(--light);
+    border: 2px solid var(--accent);
+    border-radius: 14px;
+    padding: 24px;
+    margin-top: 28px;
+  }
+  .price-box h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 16px; }
+  .price-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
+  .price-row .label { color: #6a5840; }
+  .price-row .price { font-weight: 700; color: var(--primary); font-size: 16px; }
+  .price-row .price.earlybird { color: var(--accent); }
+  .price-row .price.member { color: var(--secondary); }
+
+  /* PHOTO TOURS */
+  .photo-bg { background: var(--dark); }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .photo-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(212,168,67,0.2);
+    border-radius: 16px;
+    padding: 32px 28px;
+    color: #fff;
+    transition: all .25s;
+  }
+  .photo-card:hover { background: rgba(255,255,255,0.1); border-color: var(--accent); }
+  .photo-card .ico { font-size: 38px; margin-bottom: 18px; }
+  .photo-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .photo-card h3 small { display: block; font-size: 12px; color: var(--secondary); font-weight: 400; margin-top: 3px; }
+  .photo-card p { font-size: 13px; color: #a08060; line-height: 1.7; }
+
+  /* DESTINATIONS */
+  .dest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .dest-card {
+    background: var(--light);
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+    border: 1px solid #e0ccb0;
+    transition: all .2s;
+  }
+  .dest-card:hover { border-color: var(--primary); transform: translateY(-3px); }
+  .dest-card .flag { font-size: 36px; margin-bottom: 12px; }
+  .dest-card h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+  .dest-card p { font-size: 12px; color: #8a7058; }
+
+  /* CONTACT */
+  .contact-section { background: var(--light); }
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: start;
+  }
+  .contact-info h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 24px; }
+  .contact-row { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+  .contact-row .ci { font-size: 22px; margin-top: 2px; }
+  .contact-row .ct strong { display: block; font-size: 15px; color: var(--dark); margin-bottom: 4px; }
+  .contact-row .ct span { font-size: 14px; color: #6a5840; line-height: 1.5; }
+  .license-box {
+    background: #fff;
+    border: 1px solid #e0ccb0;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #8a7058;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .license-box strong { color: var(--primary); }
+  .contact-form { background: #fff; border-radius: 16px; padding: 36px; box-shadow: 0 4px 20px rgba(139,94,60,0.1); }
+  .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: #6a5840; margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 11px 14px; border: 1.5px solid #e0d0b8; border-radius: 8px;
+    font-size: 14px; font-family: inherit; transition: border-color .2s; background: #fdf8f3;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--primary); background: #fff; }
+  .form-group textarea { height: 90px; resize: vertical; }
+  .btn-submit {
+    width: 100%; background: var(--primary); color: #fff; border: none;
+    padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 700;
+    cursor: pointer; transition: background .2s;
+  }
+  .btn-submit:hover { background: #7a4f2e; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: #6a5840;
+    padding: 48px 5% 24px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand .brand-name { color: #fff; font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+  .footer-brand .brand-en { color: var(--secondary); font-size: 12px; letter-spacing: 2px; margin-bottom: 6px; }
+  .footer-brand .license { font-size: 12px; color: #6a5840; margin-bottom: 16px; }
+  .footer-brand p { font-size: 13px; line-height: 1.7; }
+  footer h4 { color: #a08060; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; }
+  footer ul li a { color: #6a5840; text-decoration: none; font-size: 14px; transition: color .2s; }
+  footer ul li a:hover { color: #fff; }
+  .footer-bottom { border-top: 1px solid #2d2218; padding-top: 20px; text-align: center; font-size: 13px; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .trip-showcase { grid-template-columns: 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="icon">🌏</div>
+    <div class="brand">
+      <span>天下深度遊</span>
+      <small>Profound Cultural Tours</small>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#tours">攝影旅遊</a>
+    <a href="#destinations">目的地</a>
+    <a href="#services">服務</a>
+    <a href="#contact">聯絡</a>
+  </div>
+  <a href="#contact" class="nav-cta">WhatsApp 查詢</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">深度文化攝影之旅</div>
+    <h1>用鏡頭記錄<em>天下</em>之美</h1>
+    <h2>Profound Cultural Tours Company Limited</h2>
+    <p style="color:#c4a880;font-size:17px;margin-bottom:36px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto;">
+      專業深度遊旅行社，融合攝影工作坊與文化旅遊，帶領您深入探索各地獨特風貌，以光影留住每一刻珍貴記憶。
+    </p>
+    <div class="hero-btns">
+      <a href="#tours" class="btn-gold">探索旅遊計劃</a>
+      <a href="#contact" class="btn-outline">免費咨詢</a>
+    </div>
+    <div class="license-badge">持牌旅行社 · 牌照號碼 <strong>354699</strong></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features-bg" id="services">
+  <div class="section-header">
+    <div class="tag">我們的特色</div>
+    <h2>深度 · 文化 · 攝影</h2>
+    <p>天下深度遊不只是旅行，是一場結合攝影技術與文化探索的深度體驗之旅。</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="ico">📷</div>
+      <h3>攝影工作坊旅遊 <small>Photography Workshop Tours</small></h3>
+      <p>與知名攝影師同行，在旅途中學習人像攝影、閃光燈技巧及外景拍攝技術，邊遊歷邊提升攝影水平。</p>
+    </div>
+    <div class="feature-card">
+      <div class="ico">🏮</div>
+      <h3>深度文化探索 <small>Cultural Immersion</small></h3>
+      <p>超越一般觀光行程，深入了解當地歷史、文化及生活方式，感受真正的文化底蘊與人文風情。</p>
+    </div>
+    <div class="feature-card">
+      <div class="ico">✂️</div>
+      <h3>私人定制行程 <small>Customized Itineraries</small></h3>
+      <p>根據客人需求及攝影目標度身訂造行程，確保每位參加者獲得最佳的旅遊及攝影體驗。</p>
+    </div>
+    <div class="feature-card">
+      <div class="ico">🤝</div>
+      <h3>機票酒店套餐 <small>Travel Package</small></h3>
+      <p>提供完善的機票及酒店套裝方案，選用便利位置的優質酒店，讓參加者安心專注於旅遊和攝影。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED TRIP -->
+<section id="tours">
+  <div class="section-header">
+    <div class="tag">精選旅遊計劃</div>
+    <h2>上海影城外灘人像攝影之旅</h2>
+    <p>結合上海車墩影視樂園與外灘的獨特攝影體驗，與專業攝影師同行學習外景人像技巧。</p>
+  </div>
+  <div class="trip-showcase">
+    <div class="trip-visual">
+      <div class="destination">🇨🇳 Shanghai, China</div>
+      <h3>上海戶外燈光<br>人像攝影工作坊</h3>
+      <ul class="detail-list">
+        <li><span>📍</span><div><strong>拍攝地點</strong><br>上海車墩影視樂園 & 外灘</div></li>
+        <li><span>🎓</span><div><strong>課程重點</strong><br>閃光燈配合自然光技巧、色片運用、模特兒擺姿</div></li>
+        <li><span>👩‍🎨</span><div><strong>合作攝影師</strong><br>Muse Chan 攝影工作坊</div></li>
+        <li><span>🏨</span><div><strong>酒店建議</strong><br>如家睿柏.云酒店（距車墩影城 250 米）</div></li>
+        <li><span>✈️</span><div><strong>建議航班</strong><br>香港航空 HX246 / HX241</div></li>
+      </ul>
+    </div>
+    <div class="trip-details">
+      <h3>行程安排</h3>
+      <div class="itinerary-item">
+        <div class="day-badge">Day 1</div>
+        <div class="content">
+          <h4>上海車墩影視樂園</h4>
+          <p>集合於車墩影城入口售票處（上午10時），進行全天戶外燈光人像攝影拍攝，10am – 4:30pm。學習閃光燈與自然光配合技巧。</p>
+        </div>
+      </div>
+      <div class="itinerary-item">
+        <div class="day-badge">Day 2</div>
+        <div class="content">
+          <h4>上海車墩影視樂園（下午）</h4>
+          <p>繼續於影視樂園進行外景人像拍攝，10am – 3pm。深化前一天所學技巧，嘗試不同場景構圖。</p>
+        </div>
+      </div>
+      <div class="itinerary-item">
+        <div class="day-badge">Day 3</div>
+        <div class="content">
+          <h4>上海外灘 — 黃昏至夜拍</h4>
+          <p>轉戰上海外灘進行黃昏及夜間人像攝影，3pm – 5pm / 9pm – 11pm。體驗萬國建築群燈光下的絕美拍攝場景。</p>
+        </div>
+      </div>
+      <div class="price-box">
+        <h4>工作坊費用（由 Muse Education 收費）</h4>
+        <div class="price-row">
+          <span class="label">正價報名</span>
+          <span class="price">HKD $12,000</span>
+        </div>
+        <div class="price-row">
+          <span class="label">早鳥優惠</span>
+          <span class="price earlybird">HKD $9,000</span>
+        </div>
+        <div class="price-row">
+          <span class="label">優越會員</span>
+          <span class="price member">HKD $6,000</span>
+        </div>
+        <div style="border-top:1px solid #e0ccb0;margin-top:12px;padding-top:12px;">
+          <div class="price-row">
+            <span class="label">機票 + 4晚酒店套餐</span>
+            <span class="price" style="color:var(--secondary)">HKD $3,000 起</span>
+          </div>
+          <p style="font-size:12px;color:#8a7058;margin-top:6px;">* 套票費用由天下深度遊旅行社另行報價，獨立於工作坊費用。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO TOUR TYPES -->
+<section class="photo-bg">
+  <div class="section-header">
+    <div class="tag" style="background:rgba(212,168,67,0.15);color:var(--accent);border-color:rgba(212,168,67,0.3);">攝影旅遊類型</div>
+    <h2 style="color:#fff;">多元化攝影旅遊體驗</h2>
+    <p style="color:#8a7058;">無論您是入門攝影愛好者還是資深攝影師，我們都有合適的旅遊計劃。</p>
+  </div>
+  <div class="photo-grid">
+    <div class="photo-card">
+      <div class="ico">🏙️</div>
+      <h3>城市人像攝影 <small>Urban Portrait Photography</small></h3>
+      <p>在充滿故事的城市街道、建築景觀及歷史建築中，學習外景人像攝影技巧，捕捉真實人文情懷。</p>
+    </div>
+    <div class="photo-card">
+      <div class="ico">🌆</div>
+      <h3>夜景燈光攝影 <small>Night Light Photography</small></h3>
+      <p>探索城市夜景的獨特魅力，掌握長曝光、燈光運用及夜間人像拍攝技術，創作令人屏息的夜景作品。</p>
+    </div>
+    <div class="photo-card">
+      <div class="ico">🎭</div>
+      <h3>影視場景拍攝 <small>Film Location Shoots</small></h3>
+      <p>走進上海車墩等知名影視樂園，在充滿年代感的佈景中進行精心構圖，打造電影感人像作品。</p>
+    </div>
+    <div class="photo-card">
+      <div class="ico">🗿</div>
+      <h3>文化古蹟探索 <small>Heritage & Culture Tours</small></h3>
+      <p>深入歷史古蹟、古村落及博物館，以鏡頭記錄傳統文化精粹，同時豐富文化知識與人文視野。</p>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations">
+  <div class="section-header">
+    <div class="tag">熱門目的地</div>
+    <h2>精選攝影旅遊目的地</h2>
+    <p>從大灣區到內地各省市，精選最具攝影潛力的旅遊目的地。</p>
+  </div>
+  <div class="dest-grid">
+    <div class="dest-card">
+      <div class="flag">🏙️</div>
+      <h4>上海</h4>
+      <p>外灘 · 車墩影城 · 弄堂文化</p>
+    </div>
+    <div class="dest-card">
+      <div class="flag">🌿</div>
+      <h4>重慶 · 四川</h4>
+      <p>巴蜀文化 · 三峽 · 成都古蹟</p>
+    </div>
+    <div class="dest-card">
+      <div class="flag">🏺</div>
+      <h4>江西</h4>
+      <p>景德鎮陶瓷 · 宏村 · 西遞</p>
+    </div>
+    <div class="dest-card">
+      <div class="flag">🌊</div>
+      <h4>杭州 · 紹興</h4>
+      <p>西湖 · 烏鎮 · 魯迅故里</p>
+    </div>
+    <div class="dest-card">
+      <div class="flag">🏢</div>
+      <h4>深圳</h4>
+      <p>大灣區 · 體育文化 · 現代都市</p>
+    </div>
+    <div class="dest-card">
+      <div class="flag">🏠</div>
+      <h4>香港本地</h4>
+      <p>離島 · 郊野 · 歷史街道</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-header">
+    <div class="tag">聯絡我們</div>
+    <h2>立即查詢，開始您的攝影旅遊</h2>
+    <p>歡迎透過 WhatsApp 聯絡梁小姐，我們為您提供專業旅遊咨詢服務。</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>聯絡資訊</h3>
+      <div class="contact-row">
+        <div class="ci">💬</div>
+        <div class="ct">
+          <strong>WhatsApp（梁小姐）</strong>
+          <span>+852 5575 6027<br><em style="font-size:12px;color:#8a7058;">WhatsApp 查詢為主</em></span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">📧</div>
+        <div class="ct">
+          <strong>電郵</strong>
+          <span>musechan.photography@gmail.com</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">🌐</div>
+        <div class="ct">
+          <strong>旅遊區域</strong>
+          <span>香港 · 內地 · 大灣區</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">💰</div>
+        <div class="ct">
+          <strong>付款方式</strong>
+          <span>銀行轉帳（恒生銀行）<br>戶口名稱：Profound Cultural Tours Company Limited<br>戶口號碼：239-875107-883</span>
+        </div>
+      </div>
+      <div class="license-box">
+        <span>🏛️</span>
+        <span>持牌旅行社 · 旅遊業監理局牌照號碼 <strong>354699</strong></span>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>旅遊行程查詢</h3>
+      <div class="form-group">
+        <label>姓名 *</label>
+        <input type="text" placeholder="您的姓名">
+      </div>
+      <div class="form-group">
+        <label>WhatsApp 電話 *</label>
+        <input type="tel" placeholder="+852 XXXX XXXX">
+      </div>
+      <div class="form-group">
+        <label>電郵</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>感興趣的旅遊類型</label>
+        <select>
+          <option>請選擇類型</option>
+          <option>攝影工作坊旅遊</option>
+          <option>上海攝影之旅</option>
+          <option>內地文化深度遊</option>
+          <option>機票 + 酒店套餐</option>
+          <option>私人定制行程</option>
+          <option>其他</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>人數及出發日期</label>
+        <input type="text" placeholder="例：2人，2025年8月">
+      </div>
+      <div class="form-group">
+        <label>查詢內容</label>
+        <textarea placeholder="請輸入您的查詢或旅遊需求..."></textarea>
+      </div>
+      <button class="btn-submit">提交查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name">天下深度遊旅行社有限公司</div>
+      <div class="brand-en">Profound Cultural Tours Company Limited</div>
+      <div class="license">旅遊業監理局牌照號碼：354699</div>
+      <p>專業深度文化攝影旅遊，融合攝影工作坊與文化探索，帶您以鏡頭記錄天下之美。</p>
+    </div>
+    <div>
+      <h4>旅遊服務</h4>
+      <ul>
+        <li><a href="#tours">攝影工作坊旅遊</a></li>
+        <li><a href="#tours">上海攝影之旅</a></li>
+        <li><a href="#destinations">內地文化深度遊</a></li>
+        <li><a href="#services">機票酒店套餐</a></li>
+        <li><a href="#services">私人定制行程</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>聯絡</h4>
+      <ul>
+        <li><a href="https://wa.me/85255756027">💬 +852 5575 6027</a></li>
+        <li><a href="mailto:musechan.photography@gmail.com">📧 查詢電郵</a></li>
+        <li><a href="#contact">📍 香港</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 天下深度遊旅行社有限公司 Profound Cultural Tours Company Limited. All Rights Reserved. | 牌照 354699</p>
+  </div>
+</footer>
+
+</body>
+</html>
