@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Water Oasis Group | Hong Kong's Leading Beauty Services Provider</title>
+<meta name="description" content="Water Oasis Group (奧思集團有限公司) — Hong Kong's leading one-stop beauty services and skincare product provider since 1998. Listed on HKEX Main Board. Beauty treatments, skincare retail, medical aesthetics, and wellness across Hong Kong and Greater China.">
+<style>
+  :root {
+    --moss: #3d6b4f;
+    --moss-light: #5a9070;
+    --sage: #8fbc8f;
+    --blush: #f5e6e8;
+    --blush-dark: #e8c5c8;
+    --rose: #c06080;
+    --cream: #fdfaf5;
+    --ivory: #f7f3ec;
+    --dark: #1a1a1a;
+    --text: #2c2a28;
+    --text-light: #7a7068;
+    --white: #ffffff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Arial','Helvetica Neue',sans-serif; color:var(--text); background:var(--cream); }
+  html { scroll-behavior:smooth; }
+
+  nav {
+    position:fixed; top:0; width:100%; z-index:100;
+    background:rgba(253,250,245,0.97); backdrop-filter:blur(10px);
+    padding:0 5%; height:72px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:1px solid var(--blush-dark);
+  }
+  .logo { display:flex; flex-direction:column; }
+  .logo-main { font-size:1.2rem; font-weight:700; color:var(--moss); letter-spacing:1px; font-family:'Georgia',serif; }
+  .logo-sub { font-size:0.6rem; letter-spacing:3px; text-transform:uppercase; color:var(--text-light); }
+  nav ul { list-style:none; display:flex; gap:2rem; }
+  nav ul a { color:var(--text-light); text-decoration:none; font-size:0.8rem; letter-spacing:1.5px; text-transform:uppercase; transition:color 0.3s; }
+  nav ul a:hover { color:var(--moss); }
+  .nav-cta { background:var(--moss); color:#fff; padding:8px 20px; border-radius:2px; font-size:0.78rem; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none; transition:background 0.3s; }
+  .nav-cta:hover { background:var(--moss-light); }
+
+  /* HERO */
+  .hero {
+    min-height:100vh;
+    background:linear-gradient(160deg, #f5e6e8 0%, #ead5d8 30%, #c8d8c0 70%, #a8c4a0 100%);
+    display:flex; align-items:center; padding:100px 5% 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero::after {
+    content:'OASIS'; position:absolute; right:-2%; bottom:-5%;
+    font-size:20vw; font-weight:900; color:rgba(255,255,255,0.25);
+    line-height:1; pointer-events:none; font-family:'Georgia',serif; letter-spacing:5px;
+  }
+  .hero-inner { max-width:680px; position:relative; z-index:1; }
+  .hero-since {
+    display:inline-block;
+    color:var(--moss); border:1px solid var(--moss);
+    padding:6px 18px; border-radius:20px;
+    font-size:0.72rem; letter-spacing:3px; text-transform:uppercase;
+    margin-bottom:2rem;
+  }
+  .hero h1 {
+    font-size:clamp(2.4rem, 5vw, 4.8rem); color:var(--dark);
+    line-height:1.15; margin-bottom:1rem; font-weight:400;
+    font-family:'Georgia',serif;
+  }
+  .hero h1 em { color:var(--moss); font-style:italic; }
+  .hero-tagline { font-size:1.05rem; color:var(--text-light); line-height:1.9; margin-bottom:2.5rem; max-width:520px; }
+  .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:4rem; }
+  .btn-moss { display:inline-block; background:var(--moss); color:#fff; padding:14px 36px; text-decoration:none; font-size:0.82rem; letter-spacing:2px; text-transform:uppercase; font-weight:600; transition:all 0.3s; }
+  .btn-moss:hover { background:var(--moss-light); }
+  .btn-outline { display:inline-block; border:1.5px solid var(--dark); color:var(--dark); padding:13px 36px; text-decoration:none; font-size:0.82rem; letter-spacing:2px; text-transform:uppercase; transition:all 0.3s; }
+  .btn-outline:hover { background:var(--dark); color:#fff; }
+  .hero-creds { display:flex; gap:2rem; flex-wrap:wrap; }
+  .cred { display:flex; flex-direction:column; }
+  .cred-num { font-size:2rem; font-weight:900; color:var(--moss); font-family:'Georgia',serif; line-height:1; }
+  .cred-lbl { font-size:0.68rem; letter-spacing:2px; text-transform:uppercase; color:var(--text-light); margin-top:3px; }
+
+  /* STRIP */
+  .strip { background:var(--moss); padding:14px 0; overflow:hidden; }
+  .strip-inner { display:flex; gap:3rem; animation:scroll 26s linear infinite; white-space:nowrap; }
+  .strip-inner span { color:rgba(255,255,255,0.85); font-size:0.75rem; letter-spacing:2.5px; text-transform:uppercase; font-weight:600; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  section { padding:100px 5%; }
+  .tag { color:var(--moss); font-size:0.68rem; letter-spacing:3.5px; text-transform:uppercase; display:block; margin-bottom:0.8rem; }
+  .h2 { font-size:clamp(1.8rem, 3vw, 2.7rem); color:var(--dark); margin-bottom:1rem; font-weight:400; font-family:'Georgia',serif; }
+  .lead { font-size:1rem; color:var(--text-light); line-height:1.9; }
+
+  /* SERVICES */
+  .services { background:var(--ivory); }
+  .svc-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; margin-top:3.5rem; }
+  .svc-card {
+    background:var(--white); padding:2.8rem 2rem;
+    border-radius:2px; overflow:hidden; position:relative;
+    transition:transform 0.3s, box-shadow 0.3s;
+    border-top:4px solid transparent;
+  }
+  .svc-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(61,107,79,0.12); border-top-color:var(--moss); }
+  .svc-icon { font-size:2.5rem; margin-bottom:1.5rem; display:block; }
+  .svc-card h3 { font-size:1.1rem; color:var(--dark); margin-bottom:0.7rem; font-weight:600; font-family:'Georgia',serif; }
+  .svc-card p { font-size:0.87rem; color:var(--text-light); line-height:1.7; }
+
+  /* EDITORIAL */
+  .editorial { background:var(--dark); display:grid; grid-template-columns:1fr 1fr; padding:0; }
+  .ed-visual { background:linear-gradient(145deg, #3d6b4f, #5a9070); display:flex; align-items:center; justify-content:center; font-size:8rem; min-height:500px; }
+  .ed-text { padding:80px 5%; display:flex; flex-direction:column; justify-content:center; }
+  .ed-text .tag { color:var(--sage); }
+  .ed-text .h2 { color:#fff; }
+  .ed-text .lead { color:rgba(255,255,255,0.65); margin-bottom:2rem; }
+  .ed-text .btn-moss { align-self:flex-start; }
+
+  /* BRANDS */
+  .brands { background:var(--cream); }
+  .brands-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:1.5rem; margin-top:3rem; }
+  .brand-card { background:var(--white); padding:2rem; text-align:center; border:1px solid var(--blush-dark); border-radius:2px; transition:all 0.3s; }
+  .brand-card:hover { border-color:var(--moss); transform:translateY(-3px); }
+  .brand-icon { font-size:2.5rem; margin-bottom:0.8rem; display:block; }
+  .brand-name { font-size:0.9rem; font-weight:700; color:var(--dark); margin-bottom:0.3rem; }
+  .brand-type { font-size:0.75rem; color:var(--text-light); letter-spacing:1.5px; text-transform:uppercase; }
+
+  /* ABOUT */
+  .about { background:var(--ivory); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+  .about-visual { background:linear-gradient(145deg, var(--dark), var(--moss)); padding:3rem; border-radius:2px; position:relative; overflow:hidden; }
+  .about-visual::after { content:'98'; position:absolute; bottom:-1.5rem; right:-0.5rem; font-size:18rem; font-weight:900; color:rgba(255,255,255,0.04); line-height:1; font-family:'Georgia',serif; }
+  .av-row { display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.08); padding:1.2rem 0; position:relative; z-index:1; }
+  .av-row:first-child { padding-top:0; }
+  .av-row:last-child { border-bottom:none; }
+  .av-lbl { font-size:0.73rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.4); }
+  .av-val { font-size:0.93rem; color:#fff; font-weight:600; text-align:right; }
+  .about-text .lead { margin-bottom:1rem; }
+
+  /* CONTACT */
+  .contact { background:var(--dark); }
+  .contact .tag { color:var(--sage); }
+  .contact .h2 { color:#fff; font-family:'Georgia',serif; }
+  .contact .lead { color:rgba(255,255,255,0.6); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; margin-top:3rem; }
+  .ci { margin-bottom:1.4rem; }
+  .ci-lbl { font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--sage); margin-bottom:0.4rem; display:block; }
+  .ci-val { font-size:0.93rem; color:#fff; }
+  .ci-val a { color:var(--sage); text-decoration:none; }
+  .form-group { margin-bottom:1.1rem; }
+  label { font-size:0.67rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.45); display:block; margin-bottom:0.45rem; }
+  input, select, textarea { width:100%; border:1px solid rgba(255,255,255,0.1); padding:12px 14px; font-size:0.9rem; color:#fff; background:rgba(255,255,255,0.06); border-radius:2px; transition:border-color 0.3s; font-family:'Arial',sans-serif; }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--moss); }
+  textarea { resize:vertical; min-height:110px; }
+  select option { background:var(--dark); }
+  .sub-btn { width:100%; background:var(--moss); color:#fff; border:none; padding:14px; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background 0.3s; font-weight:700; font-family:'Arial',sans-serif; }
+  .sub-btn:hover { background:var(--moss-light); }
+
+  footer { background:#0f0f0f; color:rgba(255,255,255,0.45); padding:60px 5% 30px; font-family:'Arial',sans-serif; }
+  .foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+  .foot-logo { font-family:'Georgia',serif; font-size:1.2rem; color:#fff; margin-bottom:0.8rem; display:block; }
+  .foot-brand p { font-size:0.84rem; line-height:1.8; }
+  .foot-col h4 { color:var(--sage); font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:1.2rem; }
+  .foot-col ul { list-style:none; }
+  .foot-col li { margin-bottom:0.5rem; font-size:0.84rem; }
+  .foot-col a { color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.3s; }
+  .foot-col a:hover { color:var(--sage); }
+  .foot-bottom { border-top:1px solid rgba(255,255,255,0.07); padding-top:2rem; display:flex; justify-content:space-between; font-size:0.76rem; flex-wrap:wrap; gap:0.5rem; }
+  .designer-credit a { color:var(--sage); text-decoration:none; }
+
+  @media (max-width:900px) {
+    nav ul { display:none; }
+    .svc-grid { grid-template-columns:1fr 1fr; }
+    .editorial { grid-template-columns:1fr; }
+    .about-grid, .contact-grid, .foot-grid { grid-template-columns:1fr; }
+  }
+  @media (max-width:600px) {
+    .svc-grid { grid-template-columns:1fr; }
+    .hero::after { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <span class="logo-main">Water Oasis Group</span>
+    <span class="logo-sub">奧思集團有限公司 · Est. 1998 · HKEX Listed</span>
+  </div>
+  <ul>
+    <li><a href="#services">Beauty Services</a></li>
+    <li><a href="#brands">Brands</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-since">Since 1998 · Hong Kong's Leading Beauty Group</div>
+    <h1>Where Beauty<br>Meets <em>Wellness</em></h1>
+    <p class="hero-tagline">Water Oasis Group is Hong Kong's premier one-stop beauty services and skincare product provider. Listed on the HKEX Main Board since 2002, we have been at the forefront of beauty innovation — offering everything from luxury facials to medical aesthetics under the trusted Oasis brand family.</p>
+    <div class="hero-cta">
+      <a href="#services" class="btn-moss">Explore Services</a>
+      <a href="#contact" class="btn-outline">Book a Treatment</a>
+    </div>
+    <div class="hero-creds">
+      <div class="cred">
+        <span class="cred-num">1998</span>
+        <span class="cred-lbl">Founded</span>
+      </div>
+      <div class="cred">
+        <span class="cred-num">2002</span>
+        <span class="cred-lbl">HKEX Listed</span>
+      </div>
+      <div class="cred">
+        <span class="cred-num">All</span>
+        <span class="cred-lbl">Market Segments</span>
+      </div>
+      <div class="cred">
+        <span class="cred-num">HK+</span>
+        <span class="cred-lbl">Greater China</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <span>Beauty Services</span><span>·</span>
+    <span>Medical Aesthetics</span><span>·</span>
+    <span>Skincare Retail</span><span>·</span>
+    <span>Wellness</span><span>·</span>
+    <span>Hong Kong</span><span>·</span>
+    <span>HKEX Listed Since 2002</span><span>·</span>
+    <span>One-Stop Beauty</span><span>·</span>
+    <span>Beauty Services</span><span>·</span>
+    <span>Medical Aesthetics</span><span>·</span>
+    <span>Skincare Retail</span><span>·</span>
+    <span>Wellness</span><span>·</span>
+    <span>Hong Kong</span><span>·</span>
+    <span>HKEX Listed Since 2002</span><span>·</span>
+    <span>One-Stop Beauty</span><span>·</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <span class="tag">Beauty Services</span>
+  <h2 class="h2">Comprehensive Beauty & Wellness</h2>
+  <p class="lead" style="max-width:580px;">The Oasis brand family delivers a synergistic portfolio of beauty, wellness, and aesthetic services — catering to high-end, mid-range, and mass market clients, both male and female.</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <span class="svc-icon">✨</span>
+      <h3>Facial & Skin Treatments</h3>
+      <p>Premium facial treatments using advanced technologies and professional skincare formulations. Customised for every skin type and concern, from deep cleansing to intensive hydration.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">💆</span>
+      <h3>Body Treatments & Wellness</h3>
+      <p>Relaxing and therapeutic body treatments combining Eastern and Western wellness philosophies. Stress relief, contouring, and rejuvenation programmes tailored to individual needs.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">🩺</span>
+      <h3>Medical Aesthetics</h3>
+      <p>Professional medical beauty services administered by qualified practitioners. Advanced non-invasive and minimally invasive treatments for visible, lasting results.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">💅</span>
+      <h3>Nail & Grooming Services</h3>
+      <p>Professional nail care and grooming services for both women and men. From classic manicures to nail art, and grooming treatments tailored to the modern professional.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">🛁</span>
+      <h3>Specialist Beauty Services</h3>
+      <p>A range of specialist treatments targeting specific beauty concerns — from eyelash extensions and eyebrow sculpting to advanced hair removal and skin resurfacing.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">🌿</span>
+      <h3>Skincare Retail</h3>
+      <p>Curated selection of high-quality, world-renowned skincare brands available for retail purchase. Expert consultants guide you to the right products for your skin's needs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<div class="editorial">
+  <div class="ed-visual">🌿</div>
+  <div class="ed-text">
+    <span class="tag">Our Approach</span>
+    <h2 class="h2">Beauty Innovation Since 1998</h2>
+    <p class="lead">From its founding in 1998, Water Oasis Group has been one of Hong Kong's most innovative companies in the beauty industry — responsible for numerous 'firsts' in the market. Our constant drive for development and transformation has shaped the beauty landscape of Hong Kong.</p>
+    <p class="lead" style="margin-top:1rem;">Coupling clear vision with innovation, we have expanded across Hong Kong and Greater China as the region's most comprehensive beauty services and product provider.</p>
+    <a href="#contact" class="btn-moss" style="margin-top:2rem;">Book a Consultation</a>
+  </div>
+</div>
+
+<!-- BRANDS -->
+<section class="brands" id="brands">
+  <span class="tag">Our Portfolio</span>
+  <h2 class="h2">Brand Family</h2>
+  <p class="lead" style="max-width:560px;">Water Oasis Group operates a portfolio of beauty service brands and distributes premium skincare brands across Hong Kong — catering to every market segment.</p>
+  <div class="brands-grid">
+    <div class="brand-card">
+      <span class="brand-icon">💎</span>
+      <div class="brand-name">Water Oasis</div>
+      <div class="brand-type">Premium Beauty Spa</div>
+    </div>
+    <div class="brand-card">
+      <span class="brand-icon">🌊</span>
+      <div class="brand-name">Oasis</div>
+      <div class="brand-type">Core Beauty Services</div>
+    </div>
+    <div class="brand-card">
+      <span class="brand-icon">🩺</span>
+      <div class="brand-name">Medical Aesthetics</div>
+      <div class="brand-type">Clinical Beauty</div>
+    </div>
+    <div class="brand-card">
+      <span class="brand-icon">🌸</span>
+      <div class="brand-name">Skincare Retail</div>
+      <div class="brand-type">Licensed Brands</div>
+    </div>
+    <div class="brand-card">
+      <span class="brand-icon">💪</span>
+      <div class="brand-name">Men's Grooming</div>
+      <div class="brand-type">Male Segment</div>
+    </div>
+    <div class="brand-card">
+      <span class="brand-icon">🌏</span>
+      <div class="brand-name">Greater China</div>
+      <div class="brand-type">Regional Expansion</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="av-row"><span class="av-lbl">Founded</span><span class="av-val">1998, Hong Kong</span></div>
+      <div class="av-row"><span class="av-lbl">Listed</span><span class="av-val">HKEX Main Board 2002</span></div>
+      <div class="av-row"><span class="av-lbl">Business</span><span class="av-val">Beauty Services &amp; Skincare Retail</span></div>
+      <div class="av-row"><span class="av-lbl">Market</span><span class="av-val">High-end · Mid-range · Mass Market</span></div>
+      <div class="av-row"><span class="av-lbl">Clients</span><span class="av-val">Female &amp; Male</span></div>
+      <div class="av-row"><span class="av-lbl">Region</span><span class="av-val">Hong Kong &amp; Greater China</span></div>
+    </div>
+    <div class="about-text">
+      <span class="tag">About Us</span>
+      <h2 class="h2">A Quarter-Century of Beauty Excellence</h2>
+      <p class="lead">Founded in 1998 and listed on the Main Board of The Stock Exchange of Hong Kong in 2002, Water Oasis Group has built a reputation as one of Hong Kong's most trusted and innovative names in the beauty industry.</p>
+      <p class="lead" style="margin-top:1rem;">The Group has expanded over the years into an esteemed provider of self-owned beauty services, along with a strong product portfolio of self-owned and licensed skincare brands. Serving clients across all major market segments, our Oasis brand family delivers a remarkably comprehensive all-round service offering unlike anything else in the market.</p>
+      <p class="lead" style="margin-top:1rem;">Already a leading player in Hong Kong, the Group is aiming to become a regional leader across Greater China.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <span class="tag">Book a Treatment</span>
+  <h2 class="h2">Get in Touch</h2>
+  <p class="lead" style="max-width:480px;">Whether you're booking a treatment, enquiring about our retail brands, or exploring a partnership — we'd love to hear from you.</p>
+  <div class="contact-grid">
+    <div>
+      <div class="ci"><span class="ci-lbl">Customer Service</span><div class="ci-val"><a href="mailto:cs@wateroasis.com.cn">cs@wateroasis.com.cn</a></div></div>
+      <div class="ci"><span class="ci-lbl">WhatsApp / Direct</span><div class="ci-val"><a href="tel:+85291060617">+852 9106 0617</a></div></div>
+      <div class="ci"><span class="ci-lbl">Website</span><div class="ci-val"><a href="https://www.wateroasis.com.hk" target="_blank">www.wateroasis.com.hk</a></div></div>
+      <div class="ci" style="margin-top:1.5rem;"><span class="ci-lbl">Investor Relations</span><div class="ci-val" style="color:rgba(255,255,255,0.7);">HKEX Main Board Listed Company<br>Providing regular financial reporting and disclosures</div></div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('Thank you for your enquiry. Our team will be in touch shortly.');">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="form-group"><label>Name *</label><input type="text" required placeholder="Your Name"></div>
+        <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+852 xxxx xxxx"></div>
+      </div>
+      <div class="form-group"><label>Email *</label><input type="email" required placeholder="you@example.com"></div>
+      <div class="form-group">
+        <label>Enquiry Type</label>
+        <select>
+          <option>Book a Beauty Treatment</option>
+          <option>Medical Aesthetics Consultation</option>
+          <option>Skincare Product Enquiry</option>
+          <option>Corporate / Group Booking</option>
+          <option>Brand Partnership</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Message</label><textarea placeholder="Tell us what you're looking for..."></textarea></div>
+      <button type="submit" class="sub-btn">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <span class="foot-logo">Water Oasis Group 奧思集團有限公司</span>
+      <p>Hong Kong's leading one-stop beauty services and skincare product provider. Founded 1998, listed on HKEX Main Board 2002. Serving Hong Kong and Greater China with premium beauty, wellness, and aesthetic services.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Facial Treatments</a></li>
+        <li><a href="#services">Body Wellness</a></li>
+        <li><a href="#services">Medical Aesthetics</a></li>
+        <li><a href="#services">Nail & Grooming</a></li>
+        <li><a href="#services">Skincare Retail</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#brands">Our Brands</a></li>
+        <li><a href="https://www.wateroasis.com.hk/investor-relations/">Investor Relations</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="mailto:cs@wateroasis.com.cn">Email Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 奧思集團有限公司 Water Oasis Group Ltd. All rights reserved. | Hong Kong</span>
+    <span class="designer-credit">Website by <a href="mailto:kck980724@gmail.com">Kwan's IT</a> · +852 60282297</span>
+  </div>
+</footer>
+
+</body>
+</html>
