@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新世界建築有限公司 | NW Construction | 香港建築工程</title>
+<meta name="description" content="新世界建築有限公司 (NW Construction) — 香港主要建築承建商，提供建築工程、翻新工程、室內裝修及樓宇維修服務。豐富本地工程經驗，為客戶提供優質建築解決方案。">
+<style>
+  :root {
+    --green: #1a6b3a;
+    --green-dark: #0f4a28;
+    --green-light: #2a8a50;
+    --gold: #d4a030;
+    --charcoal: #1c2028;
+    --dark: #0a0f15;
+    --text: #1a2430;
+    --text-light: #607080;
+    --bg: #f4f7f4;
+    --white: #fff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Arial','Helvetica Neue',sans-serif; color:var(--text); background:var(--bg); }
+  html { scroll-behavior:smooth; }
+
+  nav {
+    position:fixed; top:0; width:100%; z-index:100;
+    background:rgba(10,15,21,0.98); backdrop-filter:blur(10px);
+    padding:0 5%; height:70px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:3px solid var(--green);
+  }
+  .logo { display:flex; flex-direction:column; }
+  .logo-zh { font-size:1rem; font-weight:900; color:#fff; letter-spacing:1px; }
+  .logo-en { font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--green-light); }
+  nav ul { list-style:none; display:flex; gap:1.8rem; }
+  nav ul a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.8rem; transition:color 0.3s; }
+  nav ul a:hover { color:var(--green-light); }
+
+  .hero {
+    min-height:100vh;
+    background:linear-gradient(135deg, var(--dark) 0%, #0f2018 50%, #0a1a10 100%);
+    display:flex; align-items:center; padding:100px 5% 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 60% at 100% 50%, rgba(26,107,58,0.12) 0%, transparent 60%); }
+  .hero-inner { max-width:700px; position:relative; z-index:1; }
+  .hero-badge { display:inline-flex; align-items:center; gap:0.6rem; background:rgba(26,107,58,0.15); border:1px solid rgba(26,107,58,0.4); padding:8px 18px; border-radius:2px; color:var(--green-light); font-size:0.72rem; letter-spacing:2px; text-transform:uppercase; margin-bottom:2rem; }
+  .hero h1 { font-size:clamp(2.4rem, 5vw, 4.5rem); color:#fff; line-height:1.15; margin-bottom:0.7rem; font-weight:900; }
+  .hero h1 .hl { color:var(--green-light); }
+  .hero p { font-size:1.05rem; color:rgba(255,255,255,0.65); line-height:1.9; margin-bottom:2.5rem; max-width:580px; }
+  .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:4rem; }
+  .btn-green { display:inline-block; background:var(--green); color:#fff; padding:14px 34px; text-decoration:none; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; font-weight:700; transition:all 0.3s; }
+  .btn-green:hover { background:var(--green-light); }
+  .btn-ghost { display:inline-block; border:1.5px solid rgba(255,255,255,0.3); color:#fff; padding:13px 34px; text-decoration:none; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; transition:all 0.3s; }
+  .btn-ghost:hover { border-color:var(--green-light); color:var(--green-light); }
+  .hero-stats { display:grid; grid-template-columns:repeat(3, 1fr); border:1px solid rgba(255,255,255,0.08); }
+  .hs { padding:1.5rem; border-right:1px solid rgba(255,255,255,0.08); text-align:center; }
+  .hs:last-child { border-right:none; }
+  .hs-num { font-size:2.2rem; font-weight:900; color:var(--green-light); display:block; line-height:1; }
+  .hs-lbl { font-size:0.63rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:4px; display:block; }
+
+  .ticker { background:var(--green); padding:12px 0; overflow:hidden; }
+  .tick-inner { display:flex; gap:2.5rem; animation:scroll 24s linear infinite; white-space:nowrap; }
+  .tick-inner span { color:rgba(255,255,255,0.9); font-size:0.75rem; letter-spacing:2.5px; text-transform:uppercase; font-weight:700; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  section { padding:100px 5%; }
+  .tag { color:var(--green); font-size:0.68rem; letter-spacing:3.5px; text-transform:uppercase; display:block; margin-bottom:0.8rem; }
+  .h2 { font-size:clamp(1.8rem, 3vw, 2.7rem); color:var(--dark); margin-bottom:1rem; font-weight:800; }
+  .lead { font-size:1rem; color:var(--text-light); line-height:1.9; }
+
+  .services { background:var(--white); }
+  .svc-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:#b8c8b8; margin-top:3.5rem; }
+  .svc-card { background:var(--white); padding:2.5rem 2rem; transition:all 0.35s; border-top:4px solid transparent; }
+  .svc-card:hover { background:var(--dark); border-top-color:var(--green-light); }
+  .svc-card:hover .svc-ico { background:rgba(26,107,58,0.2); }
+  .svc-card:hover h3 { color:#fff; }
+  .svc-card:hover p { color:rgba(255,255,255,0.6); }
+  .svc-ico { width:52px; height:52px; background:var(--bg); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:1.2rem; transition:background 0.35s; }
+  .svc-card h3 { font-size:1rem; color:var(--dark); margin-bottom:0.6rem; font-weight:700; transition:color 0.35s; }
+  .svc-card p { font-size:0.87rem; color:var(--text-light); line-height:1.7; transition:color 0.35s; }
+
+  .advantages { background:var(--bg); }
+  .adv-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:2rem; margin-top:3rem; }
+  .adv-card { background:var(--white); padding:2.5rem 2rem; border-left:4px solid var(--green); }
+  .adv-num { font-size:3rem; font-weight:900; color:rgba(26,107,58,0.15); line-height:1; margin-bottom:0.4rem; }
+  .adv-card h3 { font-size:1rem; color:var(--dark); margin-bottom:0.6rem; font-weight:700; }
+  .adv-card p { font-size:0.87rem; color:var(--text-light); line-height:1.7; }
+
+  .contact { background:var(--dark); }
+  .contact .tag { color:var(--green-light); }
+  .contact .h2 { color:#fff; }
+  .contact .lead { color:rgba(255,255,255,0.6); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; margin-top:3rem; }
+  .ci { margin-bottom:1.4rem; }
+  .ci-lbl { font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--green); margin-bottom:0.4rem; display:block; }
+  .ci-val { font-size:0.93rem; color:#fff; }
+  .ci-val a { color:var(--green-light); text-decoration:none; }
+  .form-group { margin-bottom:1.1rem; }
+  label { font-size:0.67rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.45); display:block; margin-bottom:0.45rem; }
+  input, select, textarea { width:100%; border:1px solid rgba(255,255,255,0.1); padding:12px 14px; font-size:0.9rem; color:#fff; background:rgba(255,255,255,0.06); border-radius:2px; transition:border-color 0.3s; font-family:'Arial',sans-serif; }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--green); }
+  textarea { resize:vertical; min-height:110px; }
+  select option { background:var(--dark); }
+  .sub-btn { width:100%; background:var(--green); color:#fff; border:none; padding:14px; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background 0.3s; font-weight:700; font-family:'Arial',sans-serif; }
+  .sub-btn:hover { background:var(--green-light); }
+
+  footer { background:#06080a; color:rgba(255,255,255,0.45); padding:50px 5% 25px; font-family:'Arial',sans-serif; }
+  .foot-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:3rem; margin-bottom:2.5rem; }
+  .foot-logo-zh { font-size:1rem; font-weight:900; color:#fff; display:block; margin-bottom:0.3rem; }
+  .foot-logo-en { font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--green-light); margin-bottom:1rem; display:block; }
+  .foot-brand p { font-size:0.84rem; line-height:1.8; max-width:360px; }
+  .foot-links { display:flex; gap:3.5rem; flex-wrap:wrap; }
+  .foot-col h4 { color:var(--green); font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:1rem; }
+  .foot-col ul { list-style:none; }
+  .foot-col li { margin-bottom:0.5rem; font-size:0.84rem; }
+  .foot-col a { color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.3s; }
+  .foot-col a:hover { color:var(--green-light); }
+  .foot-bottom { border-top:1px solid rgba(255,255,255,0.07); padding-top:1.5rem; display:flex; justify-content:space-between; font-size:0.76rem; flex-wrap:wrap; gap:0.5rem; }
+  .designer-credit a { color:var(--green-light); text-decoration:none; }
+
+  @media (max-width:900px) { nav ul { display:none; } .svc-grid { grid-template-columns:1fr 1fr; } .contact-grid { grid-template-columns:1fr; } .hero-stats { grid-template-columns:1fr 1fr 1fr; } }
+  @media (max-width:600px) { .svc-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <span class="logo-zh">新世界建築有限公司</span>
+    <span class="logo-en">NW Construction Limited · Hong Kong</span>
+  </div>
+  <ul>
+    <li><a href="#services">服務範疇</a></li>
+    <li><a href="#advantages">優勢</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Hong Kong · Construction Group</div>
+    <h1>精工細作<br><span class="hl">新世界建築</span></h1>
+    <p>新世界建築有限公司 (NW Construction Limited) 是香港主要建築承建商，擁有豐富的本地工程經驗。我們承接建築工程、翻新工程、室內裝修及各類樓宇服務，以優質工藝和專業管理為客戶提供全面的建築解決方案。</p>
+    <div class="hero-cta">
+      <a href="#services" class="btn-green">服務範疇</a>
+      <a href="#contact" class="btn-ghost">聯絡查詢</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><span class="hs-num">HK</span><span class="hs-lbl">主要承建商</span></div>
+      <div class="hs"><span class="hs-num">全面</span><span class="hs-lbl">建築服務</span></div>
+      <div class="hs"><span class="hs-num">優質</span><span class="hs-lbl">工程管理</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="tick-inner">
+    <span>建築工程</span><span>·</span><span>翻新工程</span><span>·</span><span>室內裝修</span><span>·</span><span>樓宇維修</span><span>·</span><span>地基工程</span><span>·</span><span>香港</span><span>·</span>
+    <span>Building Construction</span><span>·</span><span>Renovation</span><span>·</span><span>Interior Fitting Out</span><span>·</span><span>RMAA</span><span>·</span>
+    <span>建築工程</span><span>·</span><span>翻新工程</span><span>·</span><span>室內裝修</span><span>·</span><span>樓宇維修</span><span>·</span><span>地基工程</span><span>·</span><span>香港</span><span>·</span>
+    <span>Building Construction</span><span>·</span><span>Renovation</span><span>·</span><span>Interior Fitting Out</span><span>·</span><span>RMAA</span><span>·</span>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <span class="tag">Service Portfolio</span>
+  <h2 class="h2">服務範疇</h2>
+  <p class="lead" style="max-width:580px;">新世界建築提供全方位建築及工程服務，覆蓋香港住宅、商業、工業及政府等各類項目，確保每項工程均達最高質量標準。</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-ico">🏗️</div>
+      <h3>建築工程</h3>
+      <p>新建樓宇工程，涵蓋住宅、商業、工業及政府設施，提供由設計到竣工的全程項目管理服務。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🔨</div>
+      <h3>翻新及維修工程</h3>
+      <p>現有樓宇的翻新、修葺、改建及加建工程 (RMAA)，提升物業價值及延長使用年期。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🪑</div>
+      <h3>室內裝修及裝潢</h3>
+      <p>辦公室、零售、餐飲及住宅的室內裝修設計及施工，打造實用美觀的居住及工作環境。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">⛏️</div>
+      <h3>地基及土地平整</h3>
+      <p>地基工程及土地平整，配合新建工程的地下結構需求，確保建築基礎穩固安全。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🏠</div>
+      <h3>住宅發展工程</h3>
+      <p>私人及資助房屋的建築工程，包括大型屋苑項目，具豐富與發展商及房屋署合作經驗。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">⚙️</div>
+      <h3>機電及專項工程</h3>
+      <p>機電、水喉、消防及建築設備工程，由專業工程師統籌協調，確保系統穩定可靠。</p>
+    </div>
+  </div>
+</section>
+
+<section class="advantages" id="advantages">
+  <div style="text-align:center; max-width:540px; margin:0 auto 2rem;">
+    <span class="tag">Why Choose Us</span>
+    <h2 class="h2">選擇新世界建築的理由</h2>
+  </div>
+  <div class="adv-grid">
+    <div class="adv-card">
+      <div class="adv-num">01</div>
+      <h3>豐富本地工程經驗</h3>
+      <p>在香港多個區域完成大量工程項目，深入了解本地建築法規、工程標準及施工環境，確保項目順利完成。</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-num">02</div>
+      <h3>專業管理團隊</h3>
+      <p>由資深工程師及項目管理人員組成的專業團隊，提供嚴謹的質量控制、進度監控及安全管理。</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-num">03</div>
+      <h3>持牌及合規</h3>
+      <p>持有香港各類建築工程所需的牌照及資格，確保工程完全符合相關法規及建築條例的要求。</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-num">04</div>
+      <h3>以客為先</h3>
+      <p>與客戶緊密合作，充分理解其需求及期望，提供度身訂造的建築解決方案，追求客戶最高滿意度。</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <span class="tag">聯絡我們</span>
+  <h2 class="h2">歡迎查詢</h2>
+  <p class="lead" style="max-width:480px;">如有任何工程查詢，歡迎隨時與我們聯絡。我們將於一個工作天內回覆。</p>
+  <div class="contact-grid">
+    <div>
+      <div class="ci"><span class="ci-lbl">電郵</span><div class="ci-val"><a href="mailto:janedoe@nwconstruction.com.hk">janedoe@nwconstruction.com.hk</a></div></div>
+      <div class="ci"><span class="ci-lbl">網站</span><div class="ci-val"><a href="https://www.nwconstruction.com.hk" target="_blank">www.nwconstruction.com.hk</a></div></div>
+      <div class="ci" style="margin-top:2rem;"><span class="ci-lbl">服務地區</span><div class="ci-val" style="color:rgba(255,255,255,0.7);">香港島 · 九龍 · 新界<br>全港各區均可服務</div></div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('感謝您的查詢，我們將盡快與您聯絡。');">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="form-group"><label>姓名 *</label><input type="text" required placeholder="您的姓名"></div>
+        <div class="form-group"><label>公司</label><input type="text" placeholder="公司名稱"></div>
+      </div>
+      <div class="form-group"><label>電郵 *</label><input type="email" required placeholder="your@email.com"></div>
+      <div class="form-group"><label>電話</label><input type="tel" placeholder="+852 xxxx xxxx"></div>
+      <div class="form-group">
+        <label>查詢類別</label>
+        <select>
+          <option>建築工程</option>
+          <option>翻新及維修工程</option>
+          <option>室內裝修</option>
+          <option>地基工程</option>
+          <option>住宅發展</option>
+          <option>一般查詢</option>
+        </select>
+      </div>
+      <div class="form-group"><label>工程詳情</label><textarea placeholder="工程地點、範圍、規模及特殊要求..."></textarea></div>
+      <button type="submit" class="sub-btn">提交查詢</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <span class="foot-logo-zh">新世界建築有限公司</span>
+      <span class="foot-logo-en">NW Construction Limited · Hong Kong</span>
+      <p>香港建築承建商，提供建築工程、翻新、室內裝修及各類建築服務。持牌專業，以客為先，確保工程優質完成。</p>
+    </div>
+    <div class="foot-links">
+      <div class="foot-col">
+        <h4>服務</h4>
+        <ul>
+          <li><a href="#services">建築工程</a></li>
+          <li><a href="#services">翻新工程</a></li>
+          <li><a href="#services">室內裝修</a></li>
+          <li><a href="#services">地基工程</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>公司</h4>
+        <ul>
+          <li><a href="#advantages">我們的優勢</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+          <li><a href="mailto:janedoe@nwconstruction.com.hk">電郵查詢</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 新世界建築有限公司 版權所有 | 香港</span>
+    <span class="designer-credit">網頁設計 <a href="mailto:kck980724@gmail.com">Kwan's IT</a> · +852 60282297</span>
+  </div>
+</footer>
+
+</body>
+</html>
