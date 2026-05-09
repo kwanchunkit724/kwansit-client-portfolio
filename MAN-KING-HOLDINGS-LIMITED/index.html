@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Man King Holdings Limited | Construction Excellence | Hong Kong</title>
+<meta name="description" content="Man King Holdings Limited — experienced Hong Kong construction group. Building construction, renovation, fitting out, and infrastructure works across Hong Kong. Quality-driven construction since establishment.">
+<style>
+  :root {
+    --red: #b02020;
+    --red-dark: #8a1818;
+    --red-light: #cc3030;
+    --charcoal: #1c2028;
+    --slate: #2c3548;
+    --silver: #e0e6ec;
+    --dark: #0c1018;
+    --text: #1c2430;
+    --text-light: #607080;
+    --bg: #f4f6f8;
+    --white: #fff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Arial','Helvetica Neue',sans-serif; color:var(--text); background:var(--bg); }
+  html { scroll-behavior:smooth; }
+
+  nav {
+    position:fixed; top:0; width:100%; z-index:100;
+    background:rgba(12,16,24,0.98); backdrop-filter:blur(10px);
+    padding:0 5%; height:70px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:3px solid var(--red);
+  }
+  .logo { display:flex; flex-direction:column; }
+  .logo-main { font-size:1.15rem; font-weight:900; color:#fff; letter-spacing:1px; }
+  .logo-sub { font-size:0.58rem; letter-spacing:2px; text-transform:uppercase; color:var(--red-light); }
+  nav ul { list-style:none; display:flex; gap:1.8rem; }
+  nav ul a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.8rem; letter-spacing:0.5px; transition:color 0.3s; }
+  nav ul a:hover { color:var(--red-light); }
+
+  .hero {
+    min-height:100vh;
+    background:linear-gradient(135deg, var(--dark) 0%, var(--charcoal) 50%, #1e2030 100%);
+    display:flex; align-items:center; padding:100px 5% 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 60% at 100% 50%, rgba(176,32,32,0.1) 0%, transparent 60%); }
+  .hero-inner { max-width:700px; position:relative; z-index:1; }
+  .hero-badge { display:inline-flex; align-items:center; gap:0.6rem; background:rgba(176,32,32,0.15); border:1px solid rgba(176,32,32,0.4); padding:8px 18px; border-radius:2px; color:var(--red-light); font-size:0.72rem; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:2rem; }
+  .hero h1 { font-size:clamp(2.4rem, 5vw, 4.8rem); color:#fff; line-height:1.1; margin-bottom:0.7rem; font-weight:900; }
+  .hero h1 .hl { color:var(--red); }
+  .hero p { font-size:1.05rem; color:rgba(255,255,255,0.65); line-height:1.9; margin-bottom:2.5rem; max-width:580px; }
+  .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:4rem; }
+  .btn-red { display:inline-block; background:var(--red); color:#fff; padding:14px 34px; text-decoration:none; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; font-weight:700; transition:all 0.3s; }
+  .btn-red:hover { background:var(--red-light); }
+  .btn-ghost { display:inline-block; border:1.5px solid rgba(255,255,255,0.3); color:#fff; padding:13px 34px; text-decoration:none; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; transition:all 0.3s; }
+  .btn-ghost:hover { border-color:var(--red-light); color:var(--red-light); }
+  .hero-stats { display:grid; grid-template-columns:repeat(3, 1fr); border:1px solid rgba(255,255,255,0.08); }
+  .hs { padding:1.5rem; border-right:1px solid rgba(255,255,255,0.08); text-align:center; }
+  .hs:last-child { border-right:none; }
+  .hs-num { font-size:2.2rem; font-weight:900; color:var(--red); display:block; line-height:1; }
+  .hs-lbl { font-size:0.63rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:4px; display:block; }
+
+  .ticker { background:var(--red); padding:12px 0; overflow:hidden; }
+  .tick-inner { display:flex; gap:2.5rem; animation:scroll 22s linear infinite; white-space:nowrap; }
+  .tick-inner span { color:rgba(255,255,255,0.9); font-size:0.75rem; letter-spacing:2.5px; text-transform:uppercase; font-weight:700; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  section { padding:100px 5%; }
+  .tag { color:var(--red); font-size:0.68rem; letter-spacing:3.5px; text-transform:uppercase; display:block; margin-bottom:0.8rem; }
+  .h2 { font-size:clamp(1.8rem, 3vw, 2.7rem); color:var(--dark); margin-bottom:1rem; font-weight:800; }
+  .lead { font-size:1rem; color:var(--text-light); line-height:1.9; }
+
+  .services { background:var(--white); }
+  .svc-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:#c0c8d0; margin-top:3.5rem; }
+  .svc-card { background:var(--white); padding:2.5rem 2rem; transition:all 0.35s; cursor:default; border-top:4px solid transparent; }
+  .svc-card:hover { background:var(--dark); border-top-color:var(--red); }
+  .svc-card:hover .svc-ico { background:rgba(176,32,32,0.2); }
+  .svc-card:hover h3 { color:#fff; }
+  .svc-card:hover p { color:rgba(255,255,255,0.6); }
+  .svc-ico { width:52px; height:52px; background:var(--bg); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:1.2rem; transition:background 0.35s; }
+  .svc-card h3 { font-size:1rem; color:var(--dark); margin-bottom:0.6rem; font-weight:700; transition:color 0.35s; }
+  .svc-card p { font-size:0.87rem; color:var(--text-light); line-height:1.7; transition:color 0.35s; }
+
+  .why { background:var(--bg); }
+  .why-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:2rem; margin-top:3rem; }
+  .why-card { background:var(--white); padding:2.5rem 2rem; border-left:4px solid var(--red); }
+  .why-num { font-size:3rem; font-weight:900; color:rgba(176,32,32,0.15); line-height:1; margin-bottom:0.4rem; }
+  .why-card h3 { font-size:1rem; color:var(--dark); margin-bottom:0.6rem; font-weight:700; }
+  .why-card p { font-size:0.87rem; color:var(--text-light); line-height:1.7; }
+
+  .subsidiary { background:var(--slate); }
+  .subsidiary .h2 { color:#fff; }
+  .subsidiary .lead { color:rgba(255,255,255,0.65); }
+  .sub-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); padding:3rem; margin-top:2.5rem; border-radius:2px; display:grid; grid-template-columns:1fr 2fr; gap:3rem; align-items:center; }
+  .sub-logo-area { text-align:center; }
+  .sub-icon { font-size:5rem; display:block; margin-bottom:1rem; }
+  .sub-name { font-size:1.3rem; font-weight:900; color:#fff; letter-spacing:2px; text-transform:uppercase; }
+  .sub-text h3 { font-size:1.1rem; color:var(--red-light); margin-bottom:0.8rem; font-weight:700; }
+  .sub-text p { font-size:0.9rem; color:rgba(255,255,255,0.65); line-height:1.7; }
+
+  .contact { background:var(--dark); }
+  .contact .tag { color:var(--red-light); }
+  .contact .h2 { color:#fff; }
+  .contact .lead { color:rgba(255,255,255,0.6); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; margin-top:3rem; }
+  .ci { margin-bottom:1.4rem; }
+  .ci-lbl { font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--red); margin-bottom:0.4rem; display:block; }
+  .ci-val { font-size:0.93rem; color:#fff; }
+  .ci-val a { color:var(--red-light); text-decoration:none; }
+  .form-group { margin-bottom:1.1rem; }
+  label { font-size:0.67rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.45); display:block; margin-bottom:0.45rem; }
+  input, select, textarea { width:100%; border:1px solid rgba(255,255,255,0.1); padding:12px 14px; font-size:0.9rem; color:#fff; background:rgba(255,255,255,0.06); border-radius:2px; transition:border-color 0.3s; font-family:'Arial',sans-serif; }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--red); }
+  textarea { resize:vertical; min-height:110px; }
+  select option { background:var(--dark); }
+  .sub-btn { width:100%; background:var(--red); color:#fff; border:none; padding:14px; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background 0.3s; font-weight:700; font-family:'Arial',sans-serif; }
+  .sub-btn:hover { background:var(--red-light); }
+
+  footer { background:#06080c; color:rgba(255,255,255,0.45); padding:50px 5% 25px; font-family:'Arial',sans-serif; }
+  .foot-row { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:3rem; margin-bottom:2.5rem; }
+  .foot-logo { font-size:1rem; font-weight:900; color:#fff; letter-spacing:1px; display:block; margin-bottom:0.5rem; }
+  .foot-sub { font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--red-light); margin-bottom:1rem; display:block; }
+  .foot-brand p { font-size:0.84rem; line-height:1.8; max-width:380px; }
+  .foot-links { display:flex; gap:3.5rem; flex-wrap:wrap; }
+  .foot-col h4 { color:var(--red); font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:1rem; }
+  .foot-col ul { list-style:none; }
+  .foot-col li { margin-bottom:0.5rem; font-size:0.84rem; }
+  .foot-col a { color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.3s; }
+  .foot-col a:hover { color:var(--red-light); }
+  .foot-bottom { border-top:1px solid rgba(255,255,255,0.07); padding-top:1.5rem; display:flex; justify-content:space-between; font-size:0.76rem; flex-wrap:wrap; gap:0.5rem; }
+  .designer-credit a { color:var(--red-light); text-decoration:none; }
+
+  @media (max-width:900px) { nav ul { display:none; } .svc-grid { grid-template-columns:1fr 1fr; } .sub-card, .contact-grid { grid-template-columns:1fr; } .hero-stats { grid-template-columns:1fr 1fr 1fr; } }
+  @media (max-width:600px) { .svc-grid { grid-template-columns:1fr; } .hero-stats { grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <span class="logo-main">Man King Holdings Limited</span>
+    <span class="logo-sub">Construction Group · Hong Kong</span>
+  </div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#subsidiary">Concentric</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Construction Group · Hong Kong</div>
+    <h1>Building <span class="hl">Quality</span><br>Across Hong Kong</h1>
+    <p>Man King Holdings Limited is an established Hong Kong construction group, delivering quality building construction, renovation, fitting out, and infrastructure works. From government projects to private developments, we build with precision and professionalism.</p>
+    <div class="hero-cta">
+      <a href="#services" class="btn-red">Our Services</a>
+      <a href="#contact" class="btn-ghost">Contact Us</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><span class="hs-num">HK</span><span class="hs-lbl">Based & Licensed</span></div>
+      <div class="hs"><span class="hs-num">Full</span><span class="hs-lbl">Service Construction</span></div>
+      <div class="hs"><span class="hs-num">Group</span><span class="hs-lbl">Capabilities</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="tick-inner">
+    <span>Building Construction</span><span>·</span><span>Renovation</span><span>·</span><span>Fitting Out</span><span>·</span><span>Infrastructure</span><span>·</span><span>Hong Kong</span><span>·</span><span>Concentric Construction</span><span>·</span>
+    <span>Building Construction</span><span>·</span><span>Renovation</span><span>·</span><span>Fitting Out</span><span>·</span><span>Infrastructure</span><span>·</span><span>Hong Kong</span><span>·</span><span>Concentric Construction</span><span>·</span>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <span class="tag">What We Build</span>
+  <h2 class="h2">Construction Services</h2>
+  <p class="lead" style="max-width:580px;">Man King Holdings delivers a comprehensive suite of construction services across the public and private sectors in Hong Kong, supported by experienced professionals and strong subcontractor networks.</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-ico">🏗️</div>
+      <h3>Building Construction</h3>
+      <p>New build construction for residential, commercial, institutional, and industrial developments. Full project management from tender to handover.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🔨</div>
+      <h3>Repair, Maintenance & Renovation</h3>
+      <p>RMAA works for existing buildings across all sectors. Planned and reactive maintenance, alterations, and additions to maximise asset value.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🪑</div>
+      <h3>Fitting Out & Interior Works</h3>
+      <p>Comprehensive interior fitting out services for offices, retail, hospitality, and institutional spaces. Design and build capability for turnkey delivery.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🏛️</div>
+      <h3>Government & Institutional Works</h3>
+      <p>Experienced in government facility construction including schools, clinics, community centres, and public buildings under Architectural Services Department guidelines.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🏠</div>
+      <h3>Residential Development</h3>
+      <p>Private and public residential construction — from individual units to large housing estate developments in partnership with major Hong Kong developers.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">⚙️</div>
+      <h3>M&E & Specialist Works</h3>
+      <p>Mechanical and electrical, plumbing, fire services, and specialist system installation. Coordinated delivery through experienced subcontractor relationships.</p>
+    </div>
+  </div>
+</section>
+
+<section class="subsidiary" id="subsidiary">
+  <span class="tag">Group Subsidiary</span>
+  <h2 class="h2">Concentric Construction Limited</h2>
+  <div class="sub-card">
+    <div class="sub-logo-area">
+      <span class="sub-icon">🔵</span>
+      <div class="sub-name">CONCENTRIC</div>
+    </div>
+    <div class="sub-text">
+      <h3>Concentric Construction Limited (CCL)</h3>
+      <p>Concentric Construction Limited is a subsidiary of Man King Holdings Limited, providing specialised construction services in Hong Kong. With dedicated project teams and technical expertise, CCL extends the Group's capacity to serve a broader range of projects and clients.</p>
+      <p style="margin-top:1rem; color:rgba(255,255,255,0.6); font-size:0.88rem;">Enquiries: <a href="mailto:concentric@ccl-concentric.com" style="color:var(--red-light);">concentric@ccl-concentric.com</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div style="text-align:center; max-width:520px; margin:0 auto 2rem;">
+    <span class="tag">Why Man King</span>
+    <h2 class="h2">Our Competitive Advantages</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <h3>Experienced Management</h3>
+      <p>Senior management with extensive experience in Hong Kong construction, understanding the regulatory environment, client expectations, and quality standards required.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <h3>Full Licensing</h3>
+      <p>Holding the required construction licences and registrations to undertake all major categories of construction work in Hong Kong, ensuring project compliance from day one.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <h3>Group Capacity</h3>
+      <p>The Man King Group structure — including subsidiary Concentric Construction Limited — provides the depth and resource to handle multiple projects simultaneously.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <h3>Quality Commitment</h3>
+      <p>Quality management systems and experienced site teams ensure every project meets specification. Our reputation is built on delivering what we promise, when we promise it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <span class="tag">Get in Touch</span>
+  <h2 class="h2">Contact Man King Holdings</h2>
+  <p class="lead" style="max-width:480px;">For project enquiries, tendering opportunities, or general correspondence, please reach out to the Man King Holdings team.</p>
+  <div class="contact-grid">
+    <div>
+      <div class="ci"><span class="ci-lbl">Website</span><div class="ci-val"><a href="https://www.manking.com.hk" target="_blank">www.manking.com.hk</a></div></div>
+      <div class="ci"><span class="ci-lbl">Concentric Email</span><div class="ci-val"><a href="mailto:concentric@ccl-concentric.com">concentric@ccl-concentric.com</a></div></div>
+      <div class="ci" style="margin-top:2rem;"><span class="ci-lbl">Coverage</span><div class="ci-val" style="color:rgba(255,255,255,0.7);">All districts across Hong Kong Island, Kowloon, and New Territories</div></div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('Thank you for your enquiry. We will respond within one business day.');">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="form-group"><label>Name *</label><input type="text" required placeholder="Your Name"></div>
+        <div class="form-group"><label>Company</label><input type="text" placeholder="Company Name"></div>
+      </div>
+      <div class="form-group"><label>Email *</label><input type="email" required placeholder="you@company.com"></div>
+      <div class="form-group"><label>Phone</label><input type="tel" placeholder="+852 xxxx xxxx"></div>
+      <div class="form-group">
+        <label>Service Required</label>
+        <select>
+          <option>Building Construction</option>
+          <option>RMAA / Renovation</option>
+          <option>Fitting Out</option>
+          <option>Government / Institutional Works</option>
+          <option>Residential Development</option>
+          <option>M&E / Specialist Works</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Project Details</label><textarea placeholder="Project description, location, scope, timeline..."></textarea></div>
+      <button type="submit" class="sub-btn">Submit Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div class="foot-brand">
+      <span class="foot-logo">Man King Holdings Limited</span>
+      <span class="foot-sub">Construction Group · Hong Kong</span>
+      <p>Established Hong Kong construction group. Building construction, RMAA, fitting out, and infrastructure works across Hong Kong. Group includes Concentric Construction Limited.</p>
+    </div>
+    <div class="foot-links">
+      <div class="foot-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Building Construction</a></li>
+          <li><a href="#services">Renovation / RMAA</a></li>
+          <li><a href="#services">Fitting Out</a></li>
+          <li><a href="#services">Residential</a></li>
+          <li><a href="#services">Gov't Works</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Group</h4>
+        <ul>
+          <li><a href="#subsidiary">Concentric CCL</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://www.manking.com.hk">Official Website</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 Man King Holdings Limited. All rights reserved. | Hong Kong</span>
+    <span class="designer-credit">Website by <a href="mailto:kck980724@gmail.com">Kwan's IT</a> · +852 60282297</span>
+  </div>
+</footer>
+
+</body>
+</html>
