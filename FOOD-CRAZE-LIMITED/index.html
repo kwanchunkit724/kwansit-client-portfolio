@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>潮食派有限公司 | Food Craze Limited | 香港潮流美食</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --orange:#E8500A;--orange-dark:#C2410C;--yellow:#F59E0B;
+    --dark:#1C1917;--cream:#FFFBF5;--white:#fff;--grey:#6B6B6B
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Noto Sans HK',sans-serif;color:var(--dark);overflow-x:hidden}
+
+  nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(28,25,23,.96);backdrop-filter:blur(12px);padding:0 5%}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-size:1.1rem;font-weight:900;color:var(--orange);letter-spacing:.5px}
+  .logo span{color:var(--yellow)}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.85rem;transition:.3s}
+  .nav-links a:hover,.nav-cta{color:var(--orange)!important}
+  .nav-cta{border:1px solid var(--orange);padding:.4rem 1rem;border-radius:20px;font-weight:600!important}
+  .nav-cta:hover{background:var(--orange)!important;color:white!important}
+
+  /* HERO */
+  .hero{min-height:100vh;background:linear-gradient(160deg,#1C0A04 0%,#3D1208 40%,#7C2D12 100%);display:flex;align-items:center;position:relative;overflow:hidden;padding:0 5%}
+  .hero-shapes{position:absolute;inset:0;overflow:hidden}
+  .shape{position:absolute;border-radius:50%;filter:blur(60px);opacity:.3}
+  .s1{width:500px;height:500px;background:var(--orange);top:-100px;right:-100px}
+  .s2{width:300px;height:300px;background:var(--yellow);bottom:-50px;left:10%}
+  .hero-content{position:relative;z-index:2;max-width:680px;margin-top:68px}
+  .hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(232,80,10,.2);border:1px solid rgba(232,80,10,.4);color:var(--orange);font-size:.75rem;padding:.4rem 1rem;border-radius:20px;margin-bottom:1.5rem;letter-spacing:1px}
+  .hero h1{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:900;color:white;line-height:1.15;margin-bottom:.8rem}
+  .hero h1 em{color:var(--orange);font-style:normal}
+  .hero-sub{font-size:1rem;color:rgba(255,255,255,.55);letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5rem}
+  .hero-desc{font-size:.95rem;color:rgba(255,255,255,.75);line-height:1.9;max-width:560px;margin-bottom:2.5rem}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn-fire{background:linear-gradient(135deg,var(--orange),var(--yellow));color:white;padding:.9rem 2rem;border-radius:25px;text-decoration:none;font-weight:700;font-size:.9rem;box-shadow:0 8px 25px rgba(232,80,10,.4);transition:.3s}
+  .btn-fire:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(232,80,10,.5)}
+  .btn-ghost{border:2px solid rgba(255,255,255,.25);color:rgba(255,255,255,.8);padding:.9rem 2rem;border-radius:25px;text-decoration:none;font-weight:500;font-size:.9rem;transition:.3s}
+  .btn-ghost:hover{border-color:var(--orange);color:var(--orange)}
+  .hero-badges{display:flex;gap:1rem;margin-top:3rem;flex-wrap:wrap}
+  .badge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:.6rem 1rem;text-align:center}
+  .badge strong{display:block;color:var(--orange);font-size:1.3rem;font-weight:900}
+  .badge span{color:rgba(255,255,255,.5);font-size:.7rem;letter-spacing:1px}
+
+  section{padding:80px 5%}
+  .section-tag{font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:.6rem}
+  .section-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;color:var(--dark);margin-bottom:.5rem}
+  .section-title em{color:var(--orange);font-style:normal}
+  .divider{width:50px;height:3px;background:linear-gradient(to right,var(--orange),var(--yellow));border-radius:2px;margin:1rem 0 1.5rem}
+  .section-sub{font-size:.9rem;color:var(--grey);line-height:1.8;max-width:600px;margin-bottom:3rem}
+
+  /* MENU */
+  .menu-bg{background:var(--cream)}
+  .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+  .menu-card{background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);transition:.35s}
+  .menu-card:hover{transform:translateY(-8px);box-shadow:0 16px 50px rgba(232,80,10,.18)}
+  .menu-img{height:150px;display:flex;align-items:center;justify-content:center;font-size:4.5rem;position:relative}
+  .cat-a{background:linear-gradient(135deg,#F59E0B,#FBBF24)}
+  .cat-b{background:linear-gradient(135deg,#E8500A,#F97316)}
+  .cat-c{background:linear-gradient(135deg,#DC2626,#EF4444)}
+  .cat-d{background:linear-gradient(135deg,#059669,#10B981)}
+  .cat-e{background:linear-gradient(135deg,#7C3AED,#A78BFA)}
+  .cat-f{background:linear-gradient(135deg,#0369A1,#38BDF8)}
+  .menu-body{padding:1.5rem}
+  .menu-body h3{font-size:1.05rem;font-weight:700;margin-bottom:.3rem}
+  .menu-body .en{font-size:.72rem;color:var(--grey);letter-spacing:1px;margin-bottom:.7rem}
+  .menu-body p{font-size:.83rem;color:var(--grey);line-height:1.7}
+  .price-tag{display:inline-block;background:linear-gradient(135deg,var(--orange),var(--yellow));color:white;font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:10px;margin-top:.8rem}
+
+  /* CATERING */
+  .catering-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+  .catering-text p{font-size:.95rem;color:var(--grey);line-height:1.9;margin-bottom:1rem}
+  .feature-list{list-style:none;margin-top:1.5rem}
+  .feature-list li{display:flex;align-items:center;gap:.8rem;padding:.6rem 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:.88rem;color:var(--dark)}
+  .feature-list li::before{content:'🔥';font-size:1rem}
+  .catering-packages{display:flex;flex-direction:column;gap:1rem}
+  .pkg{border-radius:12px;padding:1.5rem;position:relative;overflow:hidden}
+  .pkg-basic{background:var(--cream);border:2px solid rgba(232,80,10,.2)}
+  .pkg-pro{background:linear-gradient(135deg,var(--orange-dark),var(--orange));color:white}
+  .pkg-corp{background:linear-gradient(135deg,var(--dark),#3D1208);color:white}
+  .pkg h4{font-size:1rem;font-weight:800;margin-bottom:.4rem}
+  .pkg p{font-size:.8rem;opacity:.8;line-height:1.6}
+  .pkg-pro h4,.pkg-corp h4{color:var(--yellow)}
+
+  /* WHY */
+  .why-bg{background:linear-gradient(160deg,#1C0A04,#3D1208)}
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem}
+  .why-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1.8rem 1.5rem;text-align:center;transition:.3s}
+  .why-card:hover{background:rgba(232,80,10,.12);border-color:rgba(232,80,10,.3);transform:translateY(-4px)}
+  .why-icon{font-size:2.5rem;margin-bottom:1rem}
+  .why-card h3{font-size:.95rem;font-weight:700;color:white;margin-bottom:.5rem}
+  .why-card p{font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.7}
+
+  /* CONTACT */
+  .contact-wrap{background:var(--cream)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+  .contact-card{background:white;border-radius:16px;padding:2rem;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+  .contact-card h3{font-size:1.1rem;font-weight:800;color:var(--dark);margin-bottom:1.5rem;padding-bottom:.8rem;border-bottom:2px solid var(--cream)}
+  .contact-row{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.2rem}
+  .c-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--orange),var(--yellow));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;box-shadow:0 4px 12px rgba(232,80,10,.3)}
+  .c-detail h4{font-size:.75rem;font-weight:700;color:var(--orange);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.2rem}
+  .c-detail p,.c-detail a{font-size:.88rem;color:var(--dark);text-decoration:none;line-height:1.5}
+  .c-detail a:hover{color:var(--orange)}
+  .form-card{background:white;border-radius:16px;padding:2rem;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+  .form-card h3{font-size:1.1rem;font-weight:800;margin-bottom:1.5rem;color:var(--dark)}
+  .fg{margin-bottom:1rem}
+  .fg label{font-size:.78rem;color:var(--grey);letter-spacing:.3px;display:block;margin-bottom:.4rem;font-weight:500}
+  .fg input,.fg textarea,.fg select{width:100%;border:1.5px solid #E5E5E5;border-radius:8px;padding:.72rem 1rem;font-size:.88rem;font-family:inherit;transition:.3s;outline:none;background:#FAFAFA}
+  .fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--orange);background:white}
+  .fg textarea{height:100px;resize:vertical}
+  .fg select{cursor:pointer}
+  .form-btn{width:100%;background:linear-gradient(135deg,var(--orange),var(--yellow));color:white;border:none;padding:.9rem;border-radius:25px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.3s;letter-spacing:.5px;margin-top:.3rem;box-shadow:0 6px 20px rgba(232,80,10,.35)}
+  .form-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(232,80,10,.45)}
+  .designer-note{margin-top:1.2rem;padding:.9rem;background:#FFF7ED;border:1px solid rgba(232,80,10,.2);border-radius:8px;font-size:.76rem;color:var(--grey);text-align:center;line-height:1.6}
+  .designer-note a{color:var(--orange);text-decoration:none;font-weight:600}
+
+  footer{background:var(--dark);padding:2rem 5%;text-align:center}
+  footer p{color:rgba(255,255,255,.3);font-size:.8rem}
+  footer span{color:var(--orange)}
+
+  .fade-in{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+  .fade-in.visible{opacity:1;transform:none}
+
+  @media(max-width:768px){
+    .nav-links{display:none}
+    .catering-grid,.contact-grid{grid-template-columns:1fr}
+    .hero-badges{gap:.8rem}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">潮食派 <span>Food Craze</span></div>
+    <ul class="nav-links">
+      <li><a href="#menu">餐單</a></li>
+      <li><a href="#catering">到會服務</a></li>
+      <li><a href="#why">為何選擇我們</a></li>
+      <li><a href="#contact" class="nav-cta">立即訂購</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-shapes"><div class="shape s1"></div><div class="shape s2"></div></div>
+  <div class="hero-content">
+    <div class="hero-tag">🔥 香港潮流美食品牌</div>
+    <h1>讓每一口<br>都成為<em>驚喜</em></h1>
+    <p class="hero-sub">Food Craze Limited · 潮食派有限公司</p>
+    <p class="hero-desc">匯聚香港最潮流的美食體驗，提供精選外賣、到會服務及特色餐飲方案。無論是商務午餐、私人派對還是大型活動，我們都能為您呈現最精彩的味蕾盛宴。</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-fire">瀏覽餐單 🍽️</a>
+      <a href="#contact" class="btn-ghost">立即訂購</a>
+    </div>
+    <div class="hero-badges">
+      <div class="badge"><strong>500+</strong><span>滿意客戶</span></div>
+      <div class="badge"><strong>24h</strong><span>提前預訂</span></div>
+      <div class="badge"><strong>全港</strong><span>送餐服務</span></div>
+      <div class="badge"><strong>100%</strong><span>新鮮食材</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-bg" id="menu">
+  <div class="fade-in">
+    <div class="section-tag">Our Menu</div>
+    <h2 class="section-title">精選<em>餐飲系列</em></h2>
+    <div class="divider"></div>
+    <p class="section-sub">每道菜式均由專業廚師精心烹調，採用新鮮本地及進口食材，帶給您最地道的香港美食體驗。</p>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card fade-in">
+      <div class="menu-img cat-a"><span>🍱</span></div>
+      <div class="menu-body">
+        <h3>潮流便當系列</h3>
+        <div class="en">Trendy Bento Box</div>
+        <p>每日精選配搭，主食 + 配菜 + 湯品，均衡營養，適合商務外賣及企業午膳。</p>
+        <span class="price-tag">HK$68 起</span>
+      </div>
+    </div>
+    <div class="menu-card fade-in">
+      <div class="menu-img cat-b"><span>🥘</span></div>
+      <div class="menu-body">
+        <h3>到會冷盤系列</h3>
+        <div class="en">Catering Cold Platter</div>
+        <p>精選多款精美冷盤，適合雞尾酒會、開幕典禮及各類社交場合，賞心悅目又美味。</p>
+        <span class="price-tag">按人數報價</span>
+      </div>
+    </div>
+    <div class="menu-card fade-in">
+      <div class="menu-img cat-c"><span>🍖</span></div>
+      <div class="menu-body">
+        <h3>熱食到會系列</h3>
+        <div class="en">Hot Catering Buffet</div>
+        <p>多款中西熱食選擇，包括燒烤、炒炒及特色主菜，滿足各類口味及飲食需求。</p>
+        <span class="price-tag">按人數報價</span>
+      </div>
+    </div>
+    <div class="menu-card fade-in">
+      <div class="menu-img cat-d"><span>🥗</span></div>
+      <div class="menu-body">
+        <h3>健康輕食系列</h3>
+        <div class="en">Healthy Light Meals</div>
+        <p>沙拉、三文治及低卡餐盒，適合注重健康的您，新鮮食材每日準備，清爽美味。</p>
+        <span class="price-tag">HK$58 起</span>
+      </div>
+    </div>
+    <div class="menu-card fade-in">
+      <div class="menu-img cat-e"><span>🎂</span></div>
+      <div class="menu-body">
+        <h3>甜點茶點系列</h3>
+        <div class="en">Desserts & Pastries</div>
+        <p>手工蛋糕、精緻茶點及中式糕點，為您的活動增添甜蜜氣氛，可按主題定制。</p>
+        <span class="price-tag">按需定制</span>
+      </div>
+    </div>
+    <div class="menu-card fade-in">
+      <div class="menu-img cat-f"><span>🥂</span></div>
+      <div class="menu-body">
+        <h3>飲品系列</h3>
+        <div class="en">Beverages</div>
+        <p>熱飲、冷飲、果汁及特色飲品，配合到會套餐或獨立訂購，讓派對更完美。</p>
+        <span class="price-tag">HK$15 起</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATERING -->
+<section id="catering">
+  <div class="catering-grid">
+    <div class="catering-text fade-in">
+      <div class="section-tag">Catering Service</div>
+      <h2 class="section-title">專業<em>到會服務</em></h2>
+      <div class="divider"></div>
+      <p>無論是公司活動、私人派對、婚宴或展覽，潮食派提供全方位到會解決方案。我們的專業團隊負責由菜單設計、食物準備到現場佈置，讓您輕鬆舉辦完美活動。</p>
+      <p>服務範圍覆蓋全港九新界，靈活應對各類場地及人數需求，每次活動均由專屬客戶顧問跟進。</p>
+      <ul class="feature-list">
+        <li>企業商務到會 · 10人起接受預訂</li>
+        <li>私人派對到會 · 可提供餐具及佈置</li>
+        <li>大型活動統籌 · 100人以上特別優惠</li>
+        <li>婚宴前菜 · 精緻西式或中式選擇</li>
+        <li>全港免費送餐 · 指定金額以上</li>
+        <li>24小時前預訂 · 緊急訂單可協商</li>
+      </ul>
+    </div>
+    <div class="catering-packages fade-in">
+      <div class="pkg pkg-basic">
+        <h4>🍱 基本套餐</h4>
+        <p>便當 + 飲品<br>10-30人 · 每位 HK$88起</p>
+      </div>
+      <div class="pkg pkg-pro">
+        <h4>🔥 商務套餐</h4>
+        <p>熱食 + 冷盤 + 甜點 + 飲品<br>30-100人 · 每位 HK$168起</p>
+      </div>
+      <div class="pkg pkg-corp">
+        <h4>⭐ 企業定制套餐</h4>
+        <p>全包式到會服務 · 餐具 · 服務員<br>100人以上 · 歡迎查詢特別優惠</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why-bg" id="why">
+  <div class="fade-in">
+    <div class="section-tag">Why Food Craze</div>
+    <h2 class="section-title" style="color:white">選擇<em>潮食派</em>的理由</h2>
+    <div class="divider"></div>
+    <p class="section-sub" style="color:rgba(255,255,255,.6)">我們不只提供食物，更為您創造難忘的美食體驗。</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card fade-in">
+      <div class="why-icon">👨‍🍳</div>
+      <h3>專業廚師團隊</h3>
+      <p>資深廚師主理，融合中西烹調技藝，每道菜式精心研發，品質始終如一。</p>
+    </div>
+    <div class="why-card fade-in">
+      <div class="why-icon">🌿</div>
+      <h3>新鮮優質食材</h3>
+      <p>每日採購新鮮食材，嚴格把關食品安全，拒絕使用不必要的添加劑及防腐劑。</p>
+    </div>
+    <div class="why-card fade-in">
+      <div class="why-icon">⚡</div>
+      <h3>準時可靠服務</h3>
+      <p>承諾準時交貨，全港送餐網絡完善，讓您的活動零延誤、零煩惱。</p>
+    </div>
+    <div class="why-card fade-in">
+      <div class="why-icon">🎨</div>
+      <h3>靈活定制菜單</h3>
+      <p>可按飲食需求定制，包括素食、清真及低敏選擇，確保每位賓客都能盡興享用。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-wrap" id="contact">
+  <div class="fade-in" style="margin-bottom:2.5rem">
+    <div class="section-tag">Order Now</div>
+    <h2 class="section-title">立即<em>訂購或查詢</em></h2>
+    <div class="divider"></div>
+    <p class="section-sub">想了解更多或即時訂購？聯絡我們，我們的客戶顧問會盡快回覆您。</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card fade-in">
+      <h3>📞 聯絡資料</h3>
+      <div class="contact-row">
+        <div class="c-icon">📧</div>
+        <div class="c-detail">
+          <h4>電郵查詢</h4>
+          <a href="mailto:info@foodcraze.com.hk">info@foodcraze.com.hk</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="c-icon">🌐</div>
+        <div class="c-detail">
+          <h4>官方網站</h4>
+          <a href="https://foodcraze.com.hk" target="_blank">foodcraze.com.hk</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="c-icon">📍</div>
+        <div class="c-detail">
+          <h4>服務地區</h4>
+          <p>全港九新界 · 離島地區另議</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="c-icon">⏰</div>
+        <div class="c-detail">
+          <h4>服務時間</h4>
+          <p>星期一至五 09:00 – 19:00<br>星期六 09:00 – 15:00</p>
+        </div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="form-card">
+        <h3>🍽️ 快速訂購 / 查詢</h3>
+        <div class="fg">
+          <label>姓名 / Name</label>
+          <input type="text" placeholder="請輸入您的姓名">
+        </div>
+        <div class="fg">
+          <label>電話 / Phone</label>
+          <input type="tel" placeholder="+852 XXXX XXXX">
+        </div>
+        <div class="fg">
+          <label>服務類型</label>
+          <select>
+            <option>企業外賣 / Corporate Lunch</option>
+            <option>到會服務 / Catering Service</option>
+            <option>私人派對 / Private Party</option>
+            <option>大型活動 / Event Catering</option>
+            <option>其他查詢 / Other Enquiry</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>人數及日期</label>
+          <input type="text" placeholder="例：50人 · 2026年6月15日">
+        </div>
+        <div class="fg">
+          <label>備註 / Remarks</label>
+          <textarea placeholder="請描述您的需求，包括飲食限制、特別要求等..."></textarea>
+        </div>
+        <button class="form-btn" onclick="alert('感謝您的訂購查詢！我們將於24小時內與您聯繫確認詳情。\nThank you! We will confirm your order within 24 hours.')">
+          🔥 立即提交
+        </button>
+      </div>
+      <div class="designer-note">
+        此示範網站由 <a href="tel:+85260282297">關進杰 (Ken Kwan)</a> 免費設計。如有興趣讓您的品牌更專業，歡迎 WhatsApp <a href="https://wa.me/85260282297">+852 6028 2297</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>潮食派有限公司 · Food Craze Limited</span> · 香港 · info@foodcraze.com.hk</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, {threshold:0.12});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 4px 30px rgba(0,0,0,.5)' : 'none';
+});
+</script>
+</body>
+</html>
