@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港語言研究中心 HKLSC | 普通話水平測評機構</title>
+<style>
+  :root {
+    --primary: #1a5fa8;
+    --primary-dark: #0d3d7a;
+    --secondary: #e8f4fd;
+    --accent: #f4a61a;
+    --accent-dark: #d48c10;
+    --text: #1a2540;
+    --text-light: #5a6a8a;
+    --white: #ffffff;
+    --bg: #f7faff;
+    --border: #d0dff0;
+    --success: #2d9c5a;
+    --green: #1a7a4a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Serif TC', '微軟正黑體', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+
+  /* HEADER */
+  header {
+    background: var(--primary-dark);
+    padding: 0 5%;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+  .header-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1200px; margin: 0 auto; padding: 14px 0;
+  }
+  .logo-block { display: flex; align-items: center; gap: 14px; }
+  .logo-icon {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 900; color: var(--primary-dark);
+    letter-spacing: -1px; flex-shrink: 0;
+  }
+  .logo-text { color: var(--white); }
+  .logo-text .en { font-size: 0.78rem; color: rgba(255,255,255,0.75); letter-spacing: 1px; }
+  .logo-text .zh { font-size: 1.15rem; font-weight: 700; }
+  nav { display: flex; gap: 28px; }
+  nav a { color: rgba(255,255,255,0.88); font-size: 0.88rem; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
+  nav a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #1e4fa0 50%, #2a6acd 100%);
+    color: var(--white); padding: 80px 5% 70px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '普'; position: absolute; right: -40px; top: -60px;
+    font-size: 22rem; font-weight: 900; color: rgba(255,255,255,0.04);
+    line-height: 1; pointer-events: none;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .hero-badge {
+    display: inline-block; background: var(--accent); color: var(--primary-dark);
+    font-size: 0.78rem; font-weight: 700; padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 20px; letter-spacing: 0.5px;
+  }
+  .hero h1 { font-size: 2.4rem; font-weight: 800; line-height: 1.3; margin-bottom: 8px; }
+  .hero h1 .en { display: block; font-size: 1.05rem; font-weight: 600; color: rgba(255,255,255,0.8); margin-top: 6px; letter-spacing: 1px; }
+  .hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.82); margin: 18px 0 30px; line-height: 1.8; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: var(--primary-dark);
+    padding: 13px 30px; border-radius: 8px; font-weight: 700; font-size: 0.95rem;
+    transition: all 0.25s; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+  .btn-secondary {
+    background: rgba(255,255,255,0.15); color: var(--white); border: 2px solid rgba(255,255,255,0.5);
+    padding: 11px 26px; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+    transition: all 0.25s; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.25); }
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .stat-card {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 14px; padding: 24px; text-align: center; backdrop-filter: blur(6px);
+  }
+  .stat-card .num { font-size: 2rem; font-weight: 800; color: var(--accent); display: block; }
+  .stat-card .label { font-size: 0.82rem; color: rgba(255,255,255,0.75); margin-top: 4px; }
+
+  /* SECTION COMMON */
+  section { padding: 70px 5%; }
+  .section-header { text-align: center; max-width: 700px; margin: 0 auto 50px; }
+  .section-tag {
+    display: inline-block; background: var(--secondary); color: var(--primary);
+    font-size: 0.78rem; font-weight: 700; padding: 5px 16px; border-radius: 20px;
+    margin-bottom: 14px; border: 1px solid var(--border);
+  }
+  .section-header h2 { font-size: 1.9rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 12px; }
+  .section-header p { color: var(--text-light); font-size: 1rem; line-height: 1.8; }
+  .inner { max-width: 1200px; margin: 0 auto; }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: start; max-width: 1200px; margin: 0 auto; }
+  .about-content h2 { font-size: 1.85rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 18px; }
+  .about-content p { color: var(--text-light); line-height: 1.9; margin-bottom: 14px; font-size: 0.97rem; }
+  .about-list { list-style: none; margin-top: 24px; }
+  .about-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 0.95rem; color: var(--text); }
+  .about-list li::before { content: '✓'; color: var(--success); font-weight: 800; font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+  .about-aside { display: flex; flex-direction: column; gap: 18px; }
+  .mission-card {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white); border-radius: 16px; padding: 28px;
+  }
+  .mission-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--accent); }
+  .mission-card p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.88); }
+  .cert-card {
+    background: var(--secondary); border-radius: 16px; padding: 24px;
+    border: 1px solid var(--border);
+  }
+  .cert-card h3 { font-size: 1rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 14px; }
+  .cert-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+  .badge {
+    background: var(--white); border: 1px solid var(--primary); color: var(--primary);
+    font-size: 0.8rem; font-weight: 600; padding: 5px 12px; border-radius: 20px;
+  }
+
+  /* PROGRAMS */
+  .programs { background: var(--bg); }
+  .programs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 1200px; margin: 0 auto; }
+  .program-card {
+    background: var(--white); border-radius: 20px; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(26,95,168,0.08); border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .program-card:hover { transform: translateY(-6px); box-shadow: 0 12px 35px rgba(26,95,168,0.15); }
+  .program-header {
+    padding: 28px 28px 20px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+  }
+  .program-code {
+    display: inline-block; background: var(--accent); color: var(--primary-dark);
+    font-size: 0.82rem; font-weight: 800; padding: 4px 12px; border-radius: 12px; margin-bottom: 12px;
+  }
+  .program-header h3 { font-size: 1.35rem; font-weight: 800; margin-bottom: 6px; }
+  .program-header .sub { font-size: 0.88rem; color: rgba(255,255,255,0.8); }
+  .program-body { padding: 28px; }
+  .program-desc { color: var(--text-light); font-size: 0.93rem; line-height: 1.8; margin-bottom: 20px; }
+  .feature-list { list-style: none; }
+  .feature-list li {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 0; border-bottom: 1px solid var(--border);
+    font-size: 0.9rem; color: var(--text);
+  }
+  .feature-list li:last-child { border-bottom: none; }
+  .feature-list li .icon { color: var(--primary); font-size: 1rem; flex-shrink: 0; }
+  .feature-list li .en-label { font-size: 0.78rem; color: var(--text-light); margin-left: auto; }
+  .program-cta {
+    display: block; text-align: center; margin-top: 20px;
+    background: var(--secondary); color: var(--primary); border: 1px solid var(--primary);
+    padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  .program-cta:hover { background: var(--primary); color: var(--white); }
+
+  /* REGISTRATION PROCESS */
+  .process { background: var(--white); }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
+    max-width: 1200px; margin: 0 auto;
+    counter-reset: step-counter;
+  }
+  .step {
+    text-align: center; padding: 28px 16px; background: var(--bg);
+    border-radius: 16px; border: 1px solid var(--border); position: relative;
+    transition: all 0.3s;
+  }
+  .step:hover { border-color: var(--primary); background: var(--secondary); }
+  .step-num {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--primary); color: var(--white);
+    font-size: 1.1rem; font-weight: 800; display: flex; align-items: center;
+    justify-content: center; margin: 0 auto 16px;
+  }
+  .step h4 { font-size: 0.93rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 8px; }
+  .step p { font-size: 0.8rem; color: var(--text-light); line-height: 1.6; }
+  .step-arrow {
+    position: absolute; top: 50%; right: -16px; transform: translateY(-50%);
+    color: var(--primary); font-size: 1.2rem; z-index: 1;
+  }
+  .step:last-child .step-arrow { display: none; }
+
+  /* QUICK ACCESS */
+  .quick-access { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: var(--white); }
+  .quick-access .section-header h2 { color: var(--white); }
+  .quick-access .section-tag { background: rgba(255,255,255,0.15); color: var(--white); border-color: rgba(255,255,255,0.25); }
+  .quick-access .section-header p { color: rgba(255,255,255,0.8); }
+  .access-cards {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .access-card {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px; padding: 28px 20px; text-align: center;
+    transition: all 0.3s; cursor: pointer;
+  }
+  .access-card:hover { background: rgba(255,255,255,0.2); transform: translateY(-4px); }
+  .access-icon { font-size: 2.2rem; margin-bottom: 14px; }
+  .access-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .access-card p { font-size: 0.82rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+  /* WHY CHOOSE */
+  .why { background: var(--bg); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+  .why-card {
+    background: var(--white); border-radius: 16px; padding: 30px;
+    border: 1px solid var(--border); transition: all 0.3s;
+  }
+  .why-card:hover { border-color: var(--primary); box-shadow: 0 6px 24px rgba(26,95,168,0.1); }
+  .why-icon { font-size: 2.2rem; margin-bottom: 16px; }
+  .why-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 10px; }
+  .why-card p { color: var(--text-light); font-size: 0.88rem; line-height: 1.8; }
+
+  /* CONTACT */
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: start; }
+  .contact-info h2 { font-size: 1.8rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 10px; }
+  .contact-info p { color: var(--text-light); font-size: 0.95rem; line-height: 1.8; margin-bottom: 28px; }
+  .contact-items { display: flex; flex-direction: column; gap: 16px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; }
+  .contact-icon {
+    width: 46px; height: 46px; border-radius: 12px;
+    background: var(--secondary); color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .contact-detail { flex: 1; }
+  .contact-detail .label { font-size: 0.8rem; color: var(--text-light); font-weight: 600; margin-bottom: 2px; }
+  .contact-detail .value { font-size: 0.97rem; color: var(--text); font-weight: 600; }
+  .contact-cta-box {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: 20px; padding: 36px; color: var(--white);
+  }
+  .contact-cta-box h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+  .contact-cta-box p { font-size: 0.92rem; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 24px; }
+  .cta-buttons { display: flex; flex-direction: column; gap: 12px; }
+  .cta-btn {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white); padding: 13px 20px; border-radius: 10px;
+    font-weight: 600; font-size: 0.93rem; transition: all 0.2s;
+  }
+  .cta-btn:hover { background: rgba(255,255,255,0.25); }
+  .cta-btn.gold { background: var(--accent); color: var(--primary-dark); border-color: var(--accent); }
+  .cta-btn.gold:hover { background: var(--accent-dark); }
+  .cta-btn .icon { font-size: 1.2rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--primary-dark); color: rgba(255,255,255,0.75);
+    padding: 40px 5% 24px;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 30px; }
+  .footer-brand .name { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .footer-brand .en { font-size: 0.78rem; letter-spacing: 1px; color: rgba(255,255,255,0.6); margin-bottom: 14px; }
+  .footer-brand p { font-size: 0.82rem; line-height: 1.8; }
+  .footer-col h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 14px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 8px; font-size: 0.83rem; }
+  .footer-col ul li a { color: rgba(255,255,255,0.65); transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--accent); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px; display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 10px; font-size: 0.8rem;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner, .about-grid, .programs-grid, .contact-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: repeat(3, 1fr); }
+    .access-cards { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+      <div class="logo-icon">語</div>
+      <div class="logo-text">
+        <div class="zh">香港語言研究中心</div>
+        <div class="en">HONG KONG LANGUAGE STUDIES CENTRE (HKLSC)</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#about">中心簡介</a>
+      <a href="#programs">測評項目</a>
+      <a href="#process">報名流程</a>
+      <a href="#quick">快速入口</a>
+      <a href="#contact">聯絡我們</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">🎓 專業普通話水平測評機構</div>
+      <h1>香港語言研究中心
+        <span class="en">Hong Kong Language Studies Centre</span>
+      </h1>
+      <p class="hero-desc">
+        HKLSC 致力為香港幼兒及小學生提供專業、權威的普通話水平測評服務，以科學嚴謹的標準衡量語言能力，助學生確立學習目標，全面提升普通話水平。
+      </p>
+      <div class="hero-btns">
+        <a href="#programs" class="btn-primary">📋 了解測評項目</a>
+        <a href="#contact" class="btn-secondary">📞 聯絡我們</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="num">HKPPDA</span>
+        <span class="label">幼兒普通話能力測評</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">HKPSC-P</span>
+        <span class="label">小學普通話水平測試</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">線上</span>
+        <span class="label">報名及成績查詢系統</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">即時</span>
+        <span class="label">快捷證書查驗服務</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <div class="section-tag">中心簡介</div>
+      <h2>香港語言研究中心<br>致力推動普通話教育</h2>
+      <p>
+        香港語言研究中心（HKLSC）是一所專注於普通話水平測評的專業機構，針對香港幼稚園及小學各階段學生的普通話學習需求，設計系統性評估工具，客觀評量學生的聆聽、說話及理解能力。
+      </p>
+      <p>
+        中心採用標準化測評框架，結合香港本地課程特色，確保測評結果能有效反映學生的實際語言能力，並為教師及家長提供具參考價值的能力報告。
+      </p>
+      <ul class="about-list">
+        <li>專為香港學生設計的普通話水平測評體系</li>
+        <li>涵蓋幼稚園及小學各年級，提供多層級測評</li>
+        <li>完善的線上報名、准考證下載及成績查詢系統</li>
+        <li>發出官方認可之普通話能力等級證書</li>
+        <li>提供豐富備考資源及試題樣本，助學生充分準備</li>
+        <li>快捷證書查驗功能，確保證書真偽可即時核實</li>
+      </ul>
+    </div>
+    <div class="about-aside">
+      <div class="mission-card">
+        <h3>🎯 中心使命</h3>
+        <p>
+          透過嚴謹、科學的普通話測評體系，客觀評估香港學生的普通話能力，協助學校及家長掌握學生語言發展狀況，並提供針對性的學習方向，培育具備優秀普通話溝通能力的新一代。
+        </p>
+      </div>
+      <div class="cert-card">
+        <h3>📜 測評資歷認證</h3>
+        <div class="cert-badges">
+          <span class="badge">普通話水平測試</span>
+          <span class="badge">幼兒語言能力測評</span>
+          <span class="badge">小學普通話測試</span>
+          <span class="badge">官方等級證書</span>
+          <span class="badge">線上成績查驗</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs" id="programs">
+  <div class="section-header">
+    <div class="section-tag">測評項目</div>
+    <h2>兩大核心測評計劃</h2>
+    <p>HKLSC 提供針對不同學習階段的普通話水平測評，系統性評估學生的語言能力，助其建立學習里程碑。</p>
+  </div>
+  <div class="programs-grid">
+
+    <!-- HKPPDA -->
+    <div class="program-card">
+      <div class="program-header">
+        <div class="program-code">HKPPDA</div>
+        <h3>幼兒普通話能力測評</h3>
+        <div class="sub">Hong Kong Pre-Primary Development Assessment</div>
+      </div>
+      <div class="program-body">
+        <p class="program-desc">
+          HKPPDA 專為幼稚園學生而設，以趣味互動的方式評估幼兒的普通話基礎能力，包括聆聽理解、口語表達及聲調掌握，為學前語言發展提供客觀量度。
+        </p>
+        <ul class="feature-list">
+          <li>
+            <span class="icon">📅</span>
+            <span>測評安排／計劃</span>
+            <span class="en-label">Test Arrangement</span>
+          </li>
+          <li>
+            <span class="icon">📖</span>
+            <span>測評介紹與特色</span>
+            <span class="en-label">Introduction & Features</span>
+          </li>
+          <li>
+            <span class="icon">📝</span>
+            <span>試題樣本下載</span>
+            <span class="en-label">Sample Papers</span>
+          </li>
+          <li>
+            <span class="icon">🏆</span>
+            <span>專業能力認證</span>
+            <span class="en-label">Proficiency Certification</span>
+          </li>
+          <li>
+            <span class="icon">📚</span>
+            <span>備考學習資源</span>
+            <span class="en-label">Exam Preparation</span>
+          </li>
+        </ul>
+        <a href="#contact" class="program-cta">查詢 HKPPDA 詳情 →</a>
+      </div>
+    </div>
+
+    <!-- HKPSC-P -->
+    <div class="program-card">
+      <div class="program-header">
+        <div class="program-code">HKPSC-P</div>
+        <h3>小學普通話水平測試</h3>
+        <div class="sub">HK Putonghua Studies Certificate – Primary</div>
+      </div>
+      <div class="program-body">
+        <p class="program-desc">
+          HKPSC-P 為小學階段學生提供全面的普通話水平評估，涵蓋聆聽、閱讀、拼音及口語表達各範疇，有效評量學生在正式學習環境下的普通話語言能力。
+        </p>
+        <ul class="feature-list">
+          <li>
+            <span class="icon">📅</span>
+            <span>測試安排／計劃</span>
+            <span class="en-label">Test Arrangement</span>
+          </li>
+          <li>
+            <span class="icon">📖</span>
+            <span>測試介紹與特色</span>
+            <span class="en-label">Introduction & Features</span>
+          </li>
+          <li>
+            <span class="icon">📝</span>
+            <span>試題樣本下載</span>
+            <span class="en-label">Sample Papers</span>
+          </li>
+          <li>
+            <span class="icon">🏆</span>
+            <span>普通話能力認證</span>
+            <span class="en-label">Proficiency Certification</span>
+          </li>
+          <li>
+            <span class="icon">📚</span>
+            <span>備考資源與練習</span>
+            <span class="en-label">Exam Preparation</span>
+          </li>
+        </ul>
+        <a href="#contact" class="program-cta">查詢 HKPSC-P 詳情 →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REGISTRATION PROCESS -->
+<section class="process" id="process">
+  <div class="section-header">
+    <div class="section-tag">報名流程</div>
+    <h2>簡易五步完成報名</h2>
+    <p>HKLSC 提供全程線上辦理的報名系統，方便家長及學校為學生快速完成測評報名及成績查詢。</p>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>選擇測評項目</h4>
+      <p>選擇 HKPPDA 幼兒測評或 HKPSC-P 小學測試</p>
+      <span class="step-arrow">›</span>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>線上報名</h4>
+      <p>填寫學生資料並選擇測試場次，完成線上報名</p>
+      <span class="step-arrow">›</span>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>下載准考證</h4>
+      <p>報名成功後下載電子准考證，攜同出席考場</p>
+      <span class="step-arrow">›</span>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>參加測評</h4>
+      <p>依准考證指示前往指定考場，按時完成測評</p>
+      <span class="step-arrow">›</span>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <h4>查閱成績及證書</h4>
+      <p>線上查閱成績報告，申請下載官方普通話能力證書</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK ACCESS -->
+<section class="quick-access" id="quick">
+  <div class="section-header">
+    <div class="section-tag">快速入口</div>
+    <h2>報名及查詢服務</h2>
+    <p>HKLSC 一站式線上服務平台，提供從報名到證書查驗的全程支援。</p>
+  </div>
+  <div class="access-cards">
+    <div class="access-card">
+      <div class="access-icon">📋</div>
+      <h3>線上報名</h3>
+      <p>填寫學生資料，選擇測評項目及場次，快速完成報名手續。</p>
+    </div>
+    <div class="access-card">
+      <div class="access-icon">🔍</div>
+      <h3>報名查詢</h3>
+      <p>查閱已提交的報名記錄及狀態，確認報名信息是否正確。</p>
+    </div>
+    <div class="access-card">
+      <div class="access-icon">🎫</div>
+      <h3>准考證下載</h3>
+      <p>下載電子准考證，列印並於考試當日攜同出示。</p>
+    </div>
+    <div class="access-card">
+      <div class="access-icon">📜</div>
+      <h3>成績及證書</h3>
+      <p>查閱測評成績報告，申請下載官方普通話能力等級證書。</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="why" id="why">
+  <div class="section-header">
+    <div class="section-tag">中心優勢</div>
+    <h2>選擇 HKLSC 的理由</h2>
+    <p>我們以專業標準、完善系統及貼心服務，為香港學生的普通話能力提升保駕護航。</p>
+  </div>
+  <div class="why-grid inner">
+    <div class="why-card">
+      <div class="why-icon">🎯</div>
+      <h3>專為香港課程設計</h3>
+      <p>HKLSC 測評體系充分考慮香港本地教育課程特色，測評內容貼合學生實際學習範疇，確保評估結果具高度參考價值。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📊</div>
+      <h3>多層級能力量度</h3>
+      <p>從幼稚園（HKPPDA）到小學（HKPSC-P），提供不同學習階段的系統性測評，清晰追蹤學生的語言發展進程。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🖥️</div>
+      <h3>完善線上管理系統</h3>
+      <p>一站式線上平台涵蓋報名、查詢、准考證下載、成績查閱及證書申請，操作簡便，全程數碼化管理。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📋</div>
+      <h3>詳盡能力分析報告</h3>
+      <p>測評完成後提供詳盡的成績報告，分析學生在各語言能力範疇的表現，為教師和家長提供具體教學參考。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🏅</div>
+      <h3>官方認可等級證書</h3>
+      <p>測評成績達標後可獲發官方普通話能力等級證書，證明學生的普通話水平，作為升學及個人發展的重要憑證。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">✅</div>
+      <h3>即時證書真偽查驗</h3>
+      <p>設有快捷證書查驗功能，任何人可隨時核實 HKLSC 所發證書的真偽，確保證書公信力及防偽保障。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-tag">聯絡我們</div>
+      <h2>香港語言研究中心<br>歡迎查詢</h2>
+      <p>如有任何關於 HKPPDA 幼兒測評、HKPSC-P 小學測試、報名流程、成績查詢或證書申請的問題，歡迎隨時與我們聯繫。</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-detail">
+            <div class="label">電郵 Email</div>
+            <div class="value">info@hklsc.com.hk</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-detail">
+            <div class="label">手機 Mobile</div>
+            <div class="value">6098 3784</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div class="contact-detail">
+            <div class="label">網址 Website</div>
+            <div class="value">www.hklsc.com.hk</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-detail">
+            <div class="label">服務時間</div>
+            <div class="value">週一至五 09:00–18:00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-cta-box">
+      <h3>立即開始報名</h3>
+      <p>
+        HKLSC 線上服務平台全年開放，家長及學校可隨時完成報名、下載准考證及查閱成績。如有查詢，歡迎以下列方式聯絡我們的服務團隊。
+      </p>
+      <div class="cta-buttons">
+        <a href="https://www.hklsc.com.hk" class="cta-btn gold">
+          <span class="icon">🖥️</span>
+          <span>進入 HKLSC 線上平台</span>
+        </a>
+        <a href="mailto:info@hklsc.com.hk" class="cta-btn">
+          <span class="icon">📧</span>
+          <span>發送電郵查詢</span>
+        </a>
+        <a href="tel:60983784" class="cta-btn">
+          <span class="icon">📱</span>
+          <span>致電 6098 3784</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="name">香港語言研究中心</div>
+        <div class="en">HONG KONG LANGUAGE STUDIES CENTRE (HKLSC)</div>
+        <p>致力為香港幼稚園及小學生提供專業普通話水平測評服務，以科學嚴謹標準評估語言能力，助學生全面提升普通話水平。</p>
+      </div>
+      <div class="footer-col">
+        <h4>測評項目</h4>
+        <ul>
+          <li><a href="#programs">HKPPDA 幼兒測評</a></li>
+          <li><a href="#programs">HKPSC-P 小學測試</a></li>
+          <li><a href="#process">測評安排／計劃</a></li>
+          <li><a href="#quick">試題樣本</a></li>
+          <li><a href="#quick">備考資源</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>報名服務</h4>
+        <ul>
+          <li><a href="#quick">線上報名</a></li>
+          <li><a href="#quick">報名查詢</a></li>
+          <li><a href="#quick">准考證下載</a></li>
+          <li><a href="#quick">成績及證書</a></li>
+          <li><a href="#contact">快捷證書查驗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 香港語言研究中心 Hong Kong Language Studies Centre (HKLSC). All rights reserved.</span>
+      <span>info@hklsc.com.hk | 6098 3784</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
