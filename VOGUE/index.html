@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hit The Floor | Hong Kong's Lifestyle, Fashion & Culture Platform</title>
+<style>
+  :root {
+    --primary: #0a0a0a;
+    --secondary: #1a1a1a;
+    --accent: #e8c84a;
+    --pink: #e84a82;
+    --teal: #4acce8;
+    --white: #ffffff;
+    --bg: #f5f5f5;
+    --border: #e0e0e0;
+    --text: #1a1a1a;
+    --text-light: #666666;
+    --card: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+
+  /* HEADER */
+  header {
+    background: var(--primary);
+    padding: 0 5%; position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+  .header-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1200px; margin: 0 auto; padding: 14px 0;
+  }
+  .logo-block { display: flex; align-items: center; gap: 12px; }
+  .logo-text { color: var(--white); }
+  .logo-text .main { font-size: 1.4rem; font-weight: 900; letter-spacing: -1px; }
+  .logo-text .main span { color: var(--accent); }
+  .logo-text .tag { font-size: 0.65rem; letter-spacing: 3px; color: rgba(255,255,255,0.5); text-transform: uppercase; }
+  nav { display: flex; gap: 26px; }
+  nav a { color: rgba(255,255,255,0.75); font-size: 0.85rem; font-weight: 500; transition: color 0.2s; white-space: nowrap; letter-spacing: 0.5px; }
+  nav a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    background: var(--primary); color: var(--white);
+    padding: 80px 5% 70px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent, transparent 50px,
+      rgba(232,200,74,0.02) 50px, rgba(232,200,74,0.02) 100px
+    );
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
+  .hero-pre { font-size: 0.75rem; letter-spacing: 4px; color: var(--accent); font-weight: 700; margin-bottom: 14px; text-transform: uppercase; }
+  .hero h1 { font-size: 3rem; font-weight: 900; line-height: 1.1; margin-bottom: 18px; letter-spacing: -2px; }
+  .hero h1 .accent { color: var(--accent); }
+  .hero-desc { font-size: 1rem; color: rgba(255,255,255,0.75); line-height: 1.85; margin-bottom: 30px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-accent {
+    background: var(--accent); color: var(--primary);
+    padding: 12px 26px; border-radius: 4px; font-weight: 800; font-size: 0.9rem;
+    transition: all 0.25s; display: inline-flex; align-items: center; gap: 7px;
+    letter-spacing: 0.5px;
+  }
+  .btn-accent:hover { background: #d4b430; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.4);
+    padding: 10px 22px; border-radius: 4px; font-weight: 600; font-size: 0.9rem;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+  .hero-categories { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .hero-cat {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px; padding: 18px; transition: all 0.3s;
+  }
+  .hero-cat:hover { background: rgba(232,200,74,0.1); border-color: rgba(232,200,74,0.3); }
+  .hero-cat .icon { font-size: 1.5rem; margin-bottom: 8px; display: block; }
+  .hero-cat h3 { font-size: 0.88rem; font-weight: 700; margin-bottom: 3px; }
+  .hero-cat p { font-size: 0.75rem; color: rgba(255,255,255,0.6); }
+
+  /* SECTION */
+  section { padding: 65px 5%; }
+  .inner { max-width: 1200px; margin: 0 auto; }
+  .section-header { text-align: center; max-width: 680px; margin: 0 auto 46px; }
+  .section-tag {
+    display: inline-block; font-size: 0.7rem; font-weight: 800; padding: 4px 14px;
+    border-radius: 2px; margin-bottom: 12px; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .section-tag.yellow { background: var(--accent); color: var(--primary); }
+  .section-tag.dark { background: var(--primary); color: var(--white); }
+  .section-header h2 { font-size: 1.85rem; font-weight: 900; color: var(--primary); margin-bottom: 12px; letter-spacing: -1px; }
+  .section-header p { color: var(--text-light); font-size: 0.95rem; line-height: 1.8; }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: start; }
+  .about-content h2 { font-size: 1.75rem; font-weight: 900; color: var(--primary); margin-bottom: 16px; letter-spacing: -1px; }
+  .about-content p { color: var(--text-light); line-height: 1.9; margin-bottom: 14px; font-size: 0.95rem; }
+  .topic-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .chip {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 3px;
+    font-size: 0.8rem; font-weight: 600; padding: 5px 12px; color: var(--text);
+    transition: all 0.2s;
+  }
+  .chip:hover { background: var(--primary); color: var(--white); border-color: var(--primary); }
+  .about-aside { display: flex; flex-direction: column; gap: 18px; }
+  .identity-card {
+    background: var(--primary); color: var(--white); border-radius: 14px; padding: 26px;
+  }
+  .identity-card h3 { color: var(--accent); font-size: 1rem; font-weight: 800; margin-bottom: 12px; letter-spacing: 1px; }
+  .identity-card p { font-size: 0.88rem; color: rgba(255,255,255,0.82); line-height: 1.8; }
+  .contact-box {
+    background: var(--bg); border-radius: 14px; padding: 22px; border: 1px solid var(--border);
+  }
+  .contact-box h3 { font-size: 0.92rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+  .contact-row { display: flex; gap: 10px; margin-bottom: 9px; font-size: 0.84rem; }
+  .contact-row .icon { color: var(--pink); flex-shrink: 0; }
+
+  /* CONTENT PILLARS */
+  .pillars { background: var(--primary); }
+  .pillars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
+  .pillar-card {
+    border-radius: 12px; padding: 28px 20px; text-align: center; transition: all 0.3s;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .pillar-card:hover { transform: translateY(-6px); }
+  .pillar-card.fashion { background: rgba(232,200,74,0.12); border-color: rgba(232,200,74,0.25); }
+  .pillar-card.life { background: rgba(232,74,130,0.12); border-color: rgba(232,74,130,0.25); }
+  .pillar-card.culture { background: rgba(74,204,232,0.12); border-color: rgba(74,204,232,0.25); }
+  .pillar-card.nightlife { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); }
+  .pillar-icon { font-size: 2.4rem; margin-bottom: 14px; display: block; }
+  .pillar-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--white); margin-bottom: 8px; letter-spacing: 0.5px; }
+  .pillar-card p { font-size: 0.82rem; color: rgba(255,255,255,0.68); line-height: 1.6; }
+
+  /* CONTENT TYPES */
+  .content-types { background: var(--bg); }
+  .types-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 1200px; margin: 0 auto; }
+  .type-card {
+    background: var(--white); border-radius: 12px; padding: 24px;
+    border: 1px solid var(--border); transition: all 0.3s;
+  }
+  .type-card:hover { border-color: var(--primary); box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
+  .type-num { font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; display: block; }
+  .type-card h4 { font-size: 0.97rem; font-weight: 800; color: var(--primary); margin-bottom: 6px; }
+  .type-card p { font-size: 0.83rem; color: var(--text-light); line-height: 1.7; }
+
+  /* ADVERTISE */
+  .advertise { background: var(--white); }
+  .adv-hero { max-width: 1200px; margin: 0 auto; background: var(--primary); border-radius: 20px; padding: 50px; color: var(--white); }
+  .adv-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .adv-hero h2 { font-size: 2rem; font-weight: 900; line-height: 1.2; letter-spacing: -1px; }
+  .adv-hero h2 .yellow { color: var(--accent); }
+  .adv-hero p { font-size: 0.94rem; color: rgba(255,255,255,0.78); line-height: 1.85; margin: 14px 0 26px; }
+  .adv-options { display: flex; flex-direction: column; gap: 14px; }
+  .adv-option {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px; padding: 16px; display: flex; gap: 14px; align-items: flex-start;
+  }
+  .adv-option .icon { font-size: 1.4rem; flex-shrink: 0; }
+  .adv-option h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; }
+  .adv-option p { font-size: 0.8rem; color: rgba(255,255,255,0.68); line-height: 1.5; }
+
+  /* CONTACT */
+  .contact-section { background: var(--bg); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: start; }
+  .contact-info h2 { font-size: 1.75rem; font-weight: 900; color: var(--primary); margin-bottom: 10px; letter-spacing: -1px; }
+  .contact-info p { color: var(--text-light); font-size: 0.93rem; line-height: 1.8; margin-bottom: 24px; }
+  .ci-items { display: flex; flex-direction: column; gap: 14px; }
+  .ci-item { display: flex; align-items: flex-start; gap: 14px; }
+  .ci-icon {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: var(--primary); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .ci-detail .label { font-size: 0.75rem; color: var(--text-light); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px; }
+  .ci-detail .value { font-size: 0.93rem; color: var(--text); font-weight: 600; }
+  .contact-cta {
+    background: var(--primary); border-radius: 16px; padding: 30px; color: var(--white);
+  }
+  .contact-cta h3 { font-size: 1.25rem; font-weight: 900; margin-bottom: 10px; letter-spacing: -0.5px; }
+  .contact-cta p { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 22px; }
+  .cta-btns { display: flex; flex-direction: column; gap: 12px; }
+  .cta-b {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white); padding: 11px 16px; border-radius: 6px;
+    font-weight: 600; font-size: 0.88rem; transition: all 0.2s;
+  }
+  .cta-b:hover { background: rgba(255,255,255,0.18); }
+  .cta-b.yellow { background: var(--accent); color: var(--primary); border-color: var(--accent); }
+  .cta-b.yellow:hover { background: #d4b430; }
+
+  /* FOOTER */
+  footer {
+    background: var(--primary); color: rgba(255,255,255,0.6);
+    padding: 40px 5% 24px;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 28px; }
+  .footer-brand .name { font-size: 1.3rem; font-weight: 900; color: var(--white); letter-spacing: -1px; margin-bottom: 4px; }
+  .footer-brand .name span { color: var(--accent); }
+  .footer-brand p { font-size: 0.8rem; line-height: 1.8; }
+  .footer-col h4 { color: var(--white); font-size: 0.82rem; font-weight: 800; margin-bottom: 12px; letter-spacing: 2px; text-transform: uppercase; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 8px; font-size: 0.82rem; }
+  .footer-col ul li a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--accent); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 18px; display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 10px; font-size: 0.75rem;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner, .about-grid, .adv-hero-inner, .contact-grid { grid-template-columns: 1fr; }
+    .pillars-grid { grid-template-columns: 1fr 1fr; }
+    .types-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+      <div class="logo-text">
+        <div class="main">HIT THE <span>FLOOR</span></div>
+        <div class="tag">Hong Kong Lifestyle & Culture</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#pillars">Content</a>
+      <a href="#types">Features</a>
+      <a href="#advertise">Advertise</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-pre">✦ Hong Kong's Cultural Pulse</div>
+      <h1>Hit The <span class="accent">Floor</span><br>Hong Kong</h1>
+      <p class="hero-desc">
+        Hit The Floor is Hong Kong's digital lifestyle and culture platform — covering fashion, beauty, arts, nightlife and the stories that define the city's vibrant scene. From the latest fashion drops to Vogue collabs, we have the pulse of HK culture.
+      </p>
+      <div class="hero-btns">
+        <a href="#pillars" class="btn-accent">📖 Explore Content</a>
+        <a href="#advertise" class="btn-outline">🤝 Partner With Us</a>
+      </div>
+    </div>
+    <div class="hero-categories">
+      <div class="hero-cat">
+        <span class="icon">👗</span>
+        <h3>Fashion</h3>
+        <p>Latest trends & drops</p>
+      </div>
+      <div class="hero-cat">
+        <span class="icon">💅</span>
+        <h3>Beauty</h3>
+        <p>Looks & lifestyle</p>
+      </div>
+      <div class="hero-cat">
+        <span class="icon">🎭</span>
+        <h3>Culture</h3>
+        <p>Arts & entertainment</p>
+      </div>
+      <div class="hero-cat">
+        <span class="icon">🌙</span>
+        <h3>Life</h3>
+        <p>HK stories & news</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <div class="section-tag yellow">About Hit The Floor</div>
+      <h2>Hong Kong's Digital<br>Lifestyle Voice</h2>
+      <p>
+        Hit The Floor is a Hong Kong-based digital lifestyle and culture platform that captures the energy, creativity and diversity of the city. We cover everything from the hottest fashion moments and beauty trends to arts, culture, nightlife and the people shaping Hong Kong's vibrant scene.
+      </p>
+      <p>
+        Our editorial team blends global perspectives with deep local knowledge, creating content that resonates with Hong Kong's cosmopolitan audience — expats, locals and culture lovers who demand more from their media diet.
+      </p>
+      <div class="topic-chips">
+        <span class="chip">Fashion</span>
+        <span class="chip">Beauty</span>
+        <span class="chip">Nightlife</span>
+        <span class="chip">Arts & Culture</span>
+        <span class="chip">Lifestyle</span>
+        <span class="chip">Music</span>
+        <span class="chip">Food</span>
+        <span class="chip">Travel</span>
+        <span class="chip">Wellness</span>
+        <span class="chip">Celebrity</span>
+        <span class="chip">Technology</span>
+        <span class="chip">Sustainability</span>
+      </div>
+    </div>
+    <div class="about-aside">
+      <div class="identity-card">
+        <h3>✦ OUR IDENTITY</h3>
+        <p>
+          Hit The Floor exists at the intersection of fashion, beauty and Hong Kong culture. We amplify the voices, stories and trends that make this city one of the most exciting places on earth — and connect brands with the audience that matters.
+        </p>
+      </div>
+      <div class="contact-box">
+        <h3>Contact Hit The Floor</h3>
+        <div class="contact-row">
+          <span class="icon">📧</span>
+          <span>info@hitthefloor.com</span>
+        </div>
+        <div class="contact-row">
+          <span class="icon">🌐</span>
+          <span>hitthefloor.com</span>
+        </div>
+        <div class="contact-row">
+          <span class="icon">📍</span>
+          <span>Hong Kong SAR</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT PILLARS -->
+<section class="pillars" id="pillars">
+  <div class="section-header">
+    <div class="section-tag yellow">Content Pillars</div>
+    <h2 style="color:var(--white)">What We Cover</h2>
+    <p style="color:rgba(255,255,255,0.7)">Hit The Floor's editorial universe spans fashion, beauty, life and culture — bringing you the most relevant stories from Hong Kong and beyond.</p>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-card fashion">
+      <span class="pillar-icon">👗</span>
+      <h3>FASHION</h3>
+      <p>Style news, runway reviews, designer collabs, streetwear drops and Hong Kong fashion scene coverage.</p>
+    </div>
+    <div class="pillar-card life">
+      <span class="pillar-icon">✨</span>
+      <h3>LIFE</h3>
+      <p>Beauty, wellness, relationships, dating, personal stories and the lifestyle content Hong Kong lives by.</p>
+    </div>
+    <div class="pillar-card culture">
+      <span class="pillar-icon">🎭</span>
+      <h3>CULTURE</h3>
+      <p>Art, music, film, exhibitions, collaborations and the creative movements shaping Hong Kong's cultural identity.</p>
+    </div>
+    <div class="pillar-card nightlife">
+      <span class="pillar-icon">🌙</span>
+      <h3>NIGHTLIFE</h3>
+      <p>Bar openings, club nights, event previews, restaurant launches and Hong Kong's hottest after-dark destinations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT TYPES -->
+<section class="content-types" id="types">
+  <div class="section-header">
+    <div class="section-tag dark">Content Formats</div>
+    <h2>The Stories We Tell</h2>
+    <p>From breaking style news to in-depth features, Hit The Floor delivers content in formats that connect with modern Hong Kong audiences.</p>
+  </div>
+  <div class="types-grid inner">
+    <div class="type-card">
+      <span class="type-num">FEATURE ✦</span>
+      <h4>Long-Form Features & Profiles</h4>
+      <p>In-depth interviews and profiles of Hong Kong's most compelling creatives, entrepreneurs and cultural figures.</p>
+    </div>
+    <div class="type-card">
+      <span class="type-num">TRENDING ✦</span>
+      <h4>Trending News & Culture Drops</h4>
+      <p>Fast, punchy coverage of the moments, drops and conversations happening right now in fashion, beauty and culture.</p>
+    </div>
+    <div class="type-card">
+      <span class="type-num">GUIDE ✦</span>
+      <h4>City Guides & Recommendations</h4>
+      <p>Curated Hong Kong guides covering where to go, what to wear, what to buy and who to watch in the city.</p>
+    </div>
+    <div class="type-card">
+      <span class="type-num">REVIEW ✦</span>
+      <h4>Beauty & Product Reviews</h4>
+      <p>Honest, expert reviews of beauty products, treatments, salons and wellness services in Hong Kong and globally.</p>
+    </div>
+    <div class="type-card">
+      <span class="type-num">EVENT ✦</span>
+      <h4>Event Coverage & Previews</h4>
+      <p>Pre and post coverage of Hong Kong's fashion weeks, art events, brand launches and cultural happenings.</p>
+    </div>
+    <div class="type-card">
+      <span class="type-num">COLLAB ✦</span>
+      <h4>Brand Collaborations</h4>
+      <p>Sponsored features and branded content integrations that tell authentic stories for global and local brands in Hong Kong.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ADVERTISE -->
+<section class="advertise" id="advertise">
+  <div class="adv-hero">
+    <div class="adv-hero-inner">
+      <div>
+        <div class="section-tag yellow" style="margin-bottom:16px;">Partner With Us</div>
+        <h2>Reach <span class="yellow">Hong Kong's</span><br>Cultural Audience</h2>
+        <p>Hit The Floor connects brands with Hong Kong's most engaged lifestyle audience — fashion-forward, culturally curious and ready to discover what's next.</p>
+        <a href="#contact" class="btn-accent">Get In Touch →</a>
+      </div>
+      <div class="adv-options">
+        <div class="adv-option">
+          <span class="icon">📝</span>
+          <div>
+            <h4>Branded Content & Sponsored Features</h4>
+            <p>Authentic storytelling that integrates your brand naturally into our editorial flow.</p>
+          </div>
+        </div>
+        <div class="adv-option">
+          <span class="icon">🖼️</span>
+          <div>
+            <h4>Display & Native Advertising</h4>
+            <p>Premium placements across hitthefloor.com with targeted audience reach.</p>
+          </div>
+        </div>
+        <div class="adv-option">
+          <span class="icon">🎤</span>
+          <div>
+            <h4>Event & Campaign Coverage</h4>
+            <p>Editorial coverage of brand events, launches and campaigns in Hong Kong.</p>
+          </div>
+        </div>
+        <div class="adv-option">
+          <span class="icon">📱</span>
+          <div>
+            <h4>Social Media Amplification</h4>
+            <p>Content distribution and amplification across our social media channels.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-tag yellow" style="margin-bottom:16px;">Get In Touch</div>
+      <h2>Contact<br>Hit The Floor</h2>
+      <p>For editorial enquiries, advertising partnerships, event coverage requests or brand collaborations, reach out to the Hit The Floor team directly.</p>
+      <div class="ci-items">
+        <div class="ci-item">
+          <div class="ci-icon">📧</div>
+          <div class="ci-detail">
+            <div class="label">Email</div>
+            <div class="value">info@hitthefloor.com</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">🌐</div>
+          <div class="ci-detail">
+            <div class="label">Website</div>
+            <div class="value">hitthefloor.com</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📍</div>
+          <div class="ci-detail">
+            <div class="label">Location</div>
+            <div class="value">Hong Kong SAR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-cta">
+      <h3>Let's Work Together</h3>
+      <p>
+        Whether you're a fashion brand looking to connect with Hong Kong's style set, a beauty label seeking authentic editorial coverage, or a venue launching a new concept — Hit The Floor is the platform to amplify your story in Hong Kong.
+      </p>
+      <div class="cta-btns">
+        <a href="mailto:info@hitthefloor.com" class="cta-b yellow">
+          <span>📧</span><span>info@hitthefloor.com</span>
+        </a>
+        <a href="https://hitthefloor.com" class="cta-b">
+          <span>🌐</span><span>Visit hitthefloor.com</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="name">HIT THE <span>FLOOR</span></div>
+        <p>Hong Kong's digital lifestyle and culture platform covering fashion, beauty, arts, nightlife and the stories that define the city's most vibrant scene.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Editorial</h4>
+        <ul>
+          <li><a href="#pillars">Fashion</a></li>
+          <li><a href="#pillars">Life & Beauty</a></li>
+          <li><a href="#pillars">Culture</a></li>
+          <li><a href="#pillars">Nightlife</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Partner</h4>
+        <ul>
+          <li><a href="#advertise">Branded Content</a></li>
+          <li><a href="#advertise">Display Advertising</a></li>
+          <li><a href="#advertise">Event Coverage</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Hit The Floor. All rights reserved.</span>
+      <span>info@hitthefloor.com | Hong Kong</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
