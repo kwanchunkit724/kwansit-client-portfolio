@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港置業 Hong Kong Property Services | 買樓‧租樓‧成交資料</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --red:#c0392b;
+    --dark-red:#8e1a0e;
+    --orange:#e67e22;
+    --blue:#1a3d8c;
+    --dark:#1a1a2e;
+    --white:#ffffff;
+    --light:#f5f7fa;
+    --warm:#fffdf8;
+    --gray:#6b7280;
+    --border:#e5e7eb;
+    --gold:#d4a017;
+  }
+  body{font-family:'Microsoft JhengHei','微軟正黑體','Segoe UI',Arial,sans-serif;background:#fff;color:var(--dark);}
+  a{text-decoration:none;color:inherit;}
+
+  /* NAV */
+  nav{background:var(--dark-red);padding:0 5%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;height:66px;border-bottom:3px solid var(--orange);}
+  .nav-logo{display:flex;align-items:center;gap:12px;}
+  .nav-logo-icon{width:42px;height:42px;background:var(--orange);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1rem;color:var(--dark-red);font-style:italic;}
+  .nav-brand .cn{color:var(--white);font-size:1.15rem;font-weight:800;letter-spacing:1px;}
+  .nav-brand .en{color:#ffccaa;font-size:0.66rem;letter-spacing:1.5px;}
+  .nav-links{display:flex;gap:22px;list-style:none;}
+  .nav-links a{color:#ffe8d8;font-size:0.87rem;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--orange);}
+  .nav-tel{color:var(--orange);font-size:0.9rem;font-weight:700;display:flex;align-items:center;gap:5px;}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--dark-red) 0%,var(--red) 55%,#e74c3c 100%);padding:80px 5% 70px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-40px;right:-40px;width:360px;height:360px;background:rgba(230,126,34,0.1);border-radius:50%;}
+  .hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;position:relative;z-index:1;}
+  .hero-badge{display:inline-block;background:rgba(230,126,34,0.2);color:var(--orange);border:1px solid rgba(230,126,34,0.5);padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:700;letter-spacing:2px;margin-bottom:16px;}
+  .hero h1{color:var(--white);font-size:2.4rem;font-weight:900;line-height:1.2;margin-bottom:8px;}
+  .hero h1 .en{display:block;font-size:1rem;color:rgba(255,255,255,0.65);font-weight:500;margin-top:5px;letter-spacing:1px;}
+  .hero-tagline{color:var(--orange);font-size:1rem;font-weight:600;margin-bottom:14px;}
+  .hero-desc{color:#ffd8c8;font-size:0.96rem;line-height:1.75;margin-bottom:28px;}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn-orange{background:var(--orange);color:var(--white);padding:12px 24px;border-radius:6px;font-weight:700;font-size:0.9rem;transition:all 0.2s;}
+  .btn-orange:hover{background:#d35400;transform:translateY(-2px);}
+  .btn-white{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.3);padding:12px 24px;border-radius:6px;font-weight:600;font-size:0.9rem;transition:all 0.2s;}
+  .btn-white:hover{border-color:var(--orange);color:var(--orange);}
+  .hero-services{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .hero-svc{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:16px;text-align:center;}
+  .hero-svc .icon{font-size:1.8rem;display:block;margin-bottom:6px;}
+  .hero-svc h3{color:var(--orange);font-size:0.88rem;font-weight:700;margin-bottom:3px;}
+  .hero-svc p{color:rgba(255,255,255,0.65);font-size:0.75rem;line-height:1.4;}
+
+  /* SECTIONS */
+  section{padding:70px 5%;}
+  .section-inner{max-width:1100px;margin:0 auto;}
+  .section-label{font-size:0.75rem;font-weight:700;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+  .section-title{font-size:1.85rem;font-weight:800;color:var(--dark);margin-bottom:14px;}
+  .section-title span{color:var(--red);}
+  .section-desc{color:var(--gray);font-size:0.97rem;line-height:1.75;max-width:640px;}
+
+  /* ABOUT */
+  .about{background:var(--warm);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;margin-top:32px;}
+  .about-text p{color:#4a4a4a;font-size:0.96rem;line-height:1.85;margin-bottom:14px;}
+  .about-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;}
+  .fact{background:var(--white);border-left:4px solid var(--orange);padding:14px 16px;border-radius:0 8px 8px 0;box-shadow:0 1px 6px rgba(0,0,0,0.05);}
+  .fact strong{display:block;color:var(--dark-red);font-size:0.87rem;font-weight:700;margin-bottom:3px;}
+  .fact span{color:var(--gray);font-size:0.79rem;}
+  .market-box{background:linear-gradient(135deg,var(--dark-red),var(--red));border-radius:14px;padding:32px;color:var(--white);}
+  .market-box h3{color:var(--orange);font-size:1.1rem;font-weight:800;margin-bottom:18px;}
+  .index-list{list-style:none;}
+  .index-item{padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;}
+  .index-item:last-child{border-bottom:none;}
+  .index-name{color:#ffd8c8;font-size:0.85rem;}
+  .index-val{text-align:right;}
+  .index-val .price{color:var(--white);font-weight:700;font-size:0.88rem;}
+  .index-val .change{color:#7effb0;font-size:0.72rem;}
+
+  /* SERVICES */
+  .services{background:var(--white);}
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:32px;}
+  .svc-card{background:var(--light);border-radius:12px;padding:26px;border:1px solid var(--border);transition:all 0.2s;}
+  .svc-card:hover{border-color:var(--red);transform:translateY(-3px);box-shadow:0 8px 24px rgba(192,57,43,0.12);}
+  .svc-icon{width:52px;height:52px;background:linear-gradient(135deg,var(--dark-red),var(--red));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px;}
+  .svc-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
+  .svc-card p{font-size:0.83rem;color:var(--gray);line-height:1.6;}
+
+  /* NEW DEVS */
+  .new-devs{background:linear-gradient(135deg,var(--dark-red),var(--red));padding:70px 5%;}
+  .new-devs .section-title{color:var(--white);}
+  .devs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px;}
+  .dev-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:22px;transition:all 0.2s;}
+  .dev-card:hover{background:rgba(230,126,34,0.12);border-color:var(--orange);transform:translateY(-3px);}
+  .dev-district{font-size:0.72rem;color:var(--orange);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+  .dev-card h3{color:var(--white);font-size:0.95rem;font-weight:700;margin-bottom:5px;}
+  .dev-dev{color:rgba(255,255,255,0.55);font-size:0.75rem;margin-bottom:8px;}
+  .dev-price{color:var(--orange);font-weight:700;font-size:0.9rem;}
+  .dev-units{color:rgba(255,255,255,0.5);font-size:0.72rem;margin-top:3px;}
+
+  /* CONTACT */
+  .contact{background:var(--warm);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:30px;}
+  .contact-card{background:var(--white);border-radius:12px;padding:28px;box-shadow:0 2px 10px rgba(0,0,0,0.06);border-top:3px solid var(--red);}
+  .contact-card h3{color:var(--dark-red);font-size:0.97rem;font-weight:700;margin-bottom:18px;}
+  .contact-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+  .ci-icon{width:35px;height:35px;background:rgba(192,57,43,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+  .contact-item strong{display:block;color:var(--dark);font-size:0.83rem;margin-bottom:2px;}
+  .contact-item span{color:var(--gray);font-size:0.83rem;line-height:1.5;}
+  .agent-card{background:linear-gradient(135deg,var(--dark-red),var(--red));border-radius:12px;padding:28px;color:var(--white);}
+  .agent-card h3{color:var(--orange);font-size:0.97rem;font-weight:700;margin-bottom:16px;}
+  .agent-info p{color:#ffd8c8;font-size:0.88rem;line-height:1.8;}
+  .agent-info strong{color:var(--white);}
+  .license-badge{display:inline-block;background:rgba(230,126,34,0.2);color:var(--orange);border:1px solid rgba(230,126,34,0.4);padding:4px 12px;border-radius:4px;font-size:0.75rem;font-weight:700;margin-top:12px;}
+
+  /* FOOTER */
+  footer{background:#1a0505;padding:32px 5%;text-align:center;border-top:1px solid rgba(230,126,34,0.3);}
+  footer .brand{color:var(--orange);font-weight:700;font-size:0.98rem;margin-bottom:5px;}
+  footer p{color:#6b4040;font-size:0.78rem;}
+
+  @media(max-width:900px){
+    .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr;}
+    .hero-services,.about-facts{grid-template-columns:repeat(2,1fr);}
+    .service-grid,.devs-grid{grid-template-columns:1fr 1fr;}
+    nav .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">港置</div>
+    <div class="nav-brand">
+      <div class="cn">香港置業</div>
+      <div class="en">Hong Kong Property Services</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#services">服務範疇</a></li>
+    <li><a href="#new-devs">一手新盤</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <div class="nav-tel">📞 2316-3088</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">持牌地產代理 · 牌照 C-018893</div>
+      <h1>香港置業
+        <span class="en">Hong Kong Property Services (Agency) Limited</span>
+      </h1>
+      <p class="hero-tagline">買樓 · 租樓 · 一手新盤 · 按揭轉介</p>
+      <p class="hero-desc">香港置業是香港具規模的持牌地產代理公司，提供全面的住宅及工商舖買賣租賃服務，並附設按揭轉介及信貸服務，是您置業安居的信賴夥伴。</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-orange">了解服務</a>
+        <a href="#contact" class="btn-white">聯絡代理</a>
+      </div>
+    </div>
+    <div class="hero-services">
+      <div class="hero-svc">
+        <span class="icon">🏠</span>
+        <h3>二手買樓</h3>
+        <p>全港住宅物業買賣服務</p>
+      </div>
+      <div class="hero-svc">
+        <span class="icon">🔑</span>
+        <h3>租樓服務</h3>
+        <p>住宅及工商舖租賃安排</p>
+      </div>
+      <div class="hero-svc">
+        <span class="icon">🏗️</span>
+        <h3>一手新盤</h3>
+        <p>最新發展項目推介</p>
+      </div>
+      <div class="hero-svc">
+        <span class="icon">💰</span>
+        <h3>按揭轉介</h3>
+        <p>專業按揭及信貸服務</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">關於我們</div>
+    <h2 class="section-title">香港置業 — <span>全面地產服務</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>香港置業（Hong Kong Property Services (Agency) Limited）是香港持牌地產代理公司，持有地產代理牌照 C-018893，為客戶提供全方位的住宅及工商舖物業買賣租賃服務。</p>
+        <p>公司提供完善的物業搜尋平台，整合全港最新盤源、成交資料及市場數據，包括全港、港島、九龍及新界的物業價格指數，讓買家賣家租客業主均可掌握最新市場動態。</p>
+        <p>香港置業在九龍荔枝角設有分行，亦提供AI置能小助手、3D全景睇樓及VR看房等創新服務，協助客戶以更便捷的方式搜尋心水物業。</p>
+        <div class="about-facts">
+          <div class="fact">
+            <strong>代理牌照</strong>
+            <span>C-018893（地產代理）</span>
+          </div>
+          <div class="fact">
+            <strong>分行地址</strong>
+            <span>荔枝角深盛路9號宇晴匯<br>商場2樓87號舖</span>
+          </div>
+          <div class="fact">
+            <strong>服務範圍</strong>
+            <span>全港住宅、工廈、商廈、舖位</span>
+          </div>
+          <div class="fact">
+            <strong>附加服務</strong>
+            <span>按揭轉介、信貸服務</span>
+          </div>
+        </div>
+      </div>
+      <div class="market-box">
+        <h3>📊 全港樓市指數（最新）</h3>
+        <ul class="index-list">
+          <li class="index-item">
+            <span class="index-name">全港指數</span>
+            <div class="index-val">
+              <div class="price">144.5 ｜ $14,342/呎</div>
+              <div class="change">↑+2.1%（月）</div>
+            </div>
+          </li>
+          <li class="index-item">
+            <span class="index-name">港島指數</span>
+            <div class="index-val">
+              <div class="price">151.6 ｜ $17,587/呎</div>
+              <div class="change">↑+1.4%（月）</div>
+            </div>
+          </li>
+          <li class="index-item">
+            <span class="index-name">九龍指數</span>
+            <div class="index-val">
+              <div class="price">150.8 ｜ $14,764/呎</div>
+              <div class="change">↑+1.7%（月）</div>
+            </div>
+          </li>
+          <li class="index-item">
+            <span class="index-name">新界指數</span>
+            <div class="index-val">
+              <div class="price">131.5 ｜ $11,825/呎</div>
+              <div class="change">↑+2.7%（月）</div>
+            </div>
+          </li>
+        </ul>
+        <p style="color:rgba(255,255,255,0.4);font-size:0.72rem;margin-top:12px;">*每週一公佈，最新數字大致反映兩週前的市場情況</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label">服務範疇</div>
+    <h2 class="section-title">全方位<span>物業服務</span></h2>
+    <p class="section-desc">香港置業提供買賣租賃一站式服務，涵蓋住宅、工廈、商廈及舖位，並提供按揭轉介及創新科技看房服務。</p>
+    <div class="service-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🏠</div>
+        <h3>住宅物業買賣</h3>
+        <p>全港各區住宅物業二手市場買賣，提供專業市場分析及成交資料，協助客戶以最合理的價格置業。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔑</div>
+        <h3>住宅租賃</h3>
+        <p>全港住宅租盤配對，協助業主物色優質租客，並為租客搜尋合適居所，提供全程租務服務。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏗️</div>
+        <h3>一手新盤</h3>
+        <p>推介全港最新一手住宅發展項目，提供最新價單及單位資料，協助客戶把握一手市場投資機遇。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏢</div>
+        <h3>工商舖買賣租賃</h3>
+        <p>工廈、商廈及零售舖位的買賣及租賃服務，為企業客戶尋找合適的商業物業。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💰</div>
+        <h3>按揭轉介及信貸</h3>
+        <p>專業按揭計算及轉介服務，協助客戶比較各銀行按揭條件，並提供信貸融資方案。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🤖</div>
+        <h3>AI置能小助手</h3>
+        <p>智能AI助手為您提供個人化物業搜尋建議，結合3D全景及VR看房技術，讓您足不出戶睇靚樓。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEW DEVELOPMENTS -->
+<section class="new-devs" id="new-devs">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--orange);">一手新盤</div>
+    <h2 class="section-title">精選<span style="color:var(--orange);">新盤推介</span></h2>
+    <p class="section-desc" style="color:#ffd8c8;">以下為香港置業最新推介的一手住宅發展項目，如需查詢單位詳情及最新價單，請聯絡我們的代理。</p>
+    <div class="devs-grid">
+      <div class="dev-card">
+        <div class="dev-district">荃灣</div>
+        <h3>形瑨</h3>
+        <div class="dev-dev">新鴻基</div>
+        <div class="dev-price">折實約 $461萬起*</div>
+        <div class="dev-units">462伙 | 呎價 $16,079-$18,578</div>
+      </div>
+      <div class="dev-card">
+        <div class="dev-district">香港仔及鴨脷洲</div>
+        <h3>Porto</h3>
+        <div class="dev-dev">宏安地產</div>
+        <div class="dev-price">折實約 $484萬起*</div>
+        <div class="dev-units">174伙 | 呎價 $19,881-$25,399</div>
+      </div>
+      <div class="dev-card">
+        <div class="dev-district">馬頭角</div>
+        <h3>壹沐 第2期</h3>
+        <div class="dev-dev">恒基兆業</div>
+        <div class="dev-price">折實約 $501萬起*</div>
+        <div class="dev-units">415伙 | 呎價 $18,683-$24,170</div>
+      </div>
+      <div class="dev-card">
+        <div class="dev-district">將軍澳</div>
+        <h3>海瑅灣 I</h3>
+        <div class="dev-dev">信和/嘉里/嘉華/招商/港鐵</div>
+        <div class="dev-price">折實約 $573萬起*</div>
+        <div class="dev-units">1,266伙 | 呎價 $14,697-$19,810</div>
+      </div>
+      <div class="dev-card">
+        <div class="dev-district">紅磡</div>
+        <h3>首岸 第3期</h3>
+        <div class="dev-dev">恒基兆業/希慎/帝國集團</div>
+        <div class="dev-price">折實約 $699萬起*</div>
+        <div class="dev-units">288伙 | 呎價 $20,383-$23,087</div>
+      </div>
+      <div class="dev-card">
+        <div class="dev-district">啟德</div>
+        <h3>啟德海灣 2</h3>
+        <div class="dev-dev">嘉華/會德豐/中國海外</div>
+        <div class="dev-price">折實約 $560萬起*</div>
+        <div class="dev-units">1,121伙 | 呎價 $18,030-$38,000</div>
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.35);font-size:0.75rem;margin-top:20px;text-align:center;">*根據發展項目所有價單列出的最低折實售價，伙數及呎價等資料只供參考，一切以發展商最新公佈為準。</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <h2 class="section-title">歡迎<span>查詢置業服務</span></h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>📞 香港置業聯絡方式</h3>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <strong>總台電話</strong>
+            <span>2316-3088</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <strong>客戶服務電郵</strong>
+            <span>cs@hkp.com.hk</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <strong>網址</strong>
+            <span>www.hkp.com.hk</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <strong>荔枝角分行</strong>
+            <span>九龍荔枝角深盛路9號宇晴匯商場2樓87號舖</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🪪</div>
+          <div>
+            <strong>代理牌照</strong>
+            <span>C-018893（地產代理公司牌照）</span>
+          </div>
+        </div>
+      </div>
+      <div class="agent-card">
+        <h3>👤 聯絡代理</h3>
+        <div class="agent-info">
+          <p><strong>代理姓名</strong><br>Victor Chan（陳先生）</p>
+          <p style="margin-top:12px;"><strong>代理牌照</strong><br>S-392934</p>
+          <p style="margin-top:12px;"><strong>聯絡電話 / WhatsApp</strong><br>6223 6206</p>
+          <p style="margin-top:12px;"><strong>服務範圍</strong><br>全港住宅買賣及租賃，荔枝角/宇晴軒一帶物業</p>
+          <div class="license-badge">持牌代理 S-392934</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">香港置業 Hong Kong Property Services (Agency) Limited | 牌照 C-018893</div>
+  <p>買樓 · 租樓 · 一手新盤 · 按揭轉介 | 荔枝角分行，九龍，香港</p>
+  <p style="margin-top:6px;">&copy; 2025 Hong Kong Property Services (Agency) Limited。版權所有。以上樓市資料僅供參考，一切以最新市場資料為準。</p>
+</footer>
+
+</body>
+</html>
