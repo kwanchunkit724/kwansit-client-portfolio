@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>漢思能源有限公司 | Hans Energy Company Limited</title>
+<style>
+  :root {
+    --navy: #0a1f3d;
+    --blue: #1565c0;
+    --blue-mid: #1976d2;
+    --blue-light: #42a5f5;
+    --orange: #e65100;
+    --orange-light: #ff6d00;
+    --gold: #ffa726;
+    --dark: #051226;
+    --gray: #f0f4f8;
+    --white: #ffffff;
+    --text: #1a2744;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans TC','Segoe UI',sans-serif; color:var(--text); background:var(--white); }
+
+  /* NAV */
+  nav { background:var(--dark); padding:0 5%; position:sticky; top:0; z-index:100; border-bottom:2px solid var(--orange); }
+  .nav-inner { display:flex; align-items:center; justify-content:space-between; height:65px; }
+  .nav-logo { color:var(--white); }
+  .nav-logo .zh { font-size:1.1rem; font-weight:800; }
+  .nav-logo .zh span { color:var(--gold); }
+  .nav-logo .en { font-size:0.67rem; color:rgba(255,255,255,0.45); letter-spacing:1px; }
+  .nav-links { display:flex; gap:24px; list-style:none; }
+  .nav-links a { color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.87rem; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--gold); }
+
+  /* HERO */
+  .hero { background:linear-gradient(135deg,var(--dark) 0%,var(--navy) 60%,var(--blue) 100%); color:var(--white); padding:85px 5% 75px; position:relative; overflow:hidden; }
+  .hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--orange),var(--gold),var(--orange)); }
+  .hero-badges { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+  .hb-orange { background:var(--orange); color:var(--white); font-size:0.73rem; font-weight:700; padding:5px 14px; border-radius:20px; }
+  .hb-blue { background:rgba(255,255,255,0.1); color:var(--white); font-size:0.73rem; font-weight:700; padding:5px 14px; border-radius:20px; }
+  .hero h1 { font-size:2.8rem; font-weight:900; line-height:1.15; margin-bottom:10px; }
+  .hero h1 .hl { color:var(--gold); }
+  .hero-en { font-size:1rem; color:rgba(255,255,255,0.65); margin-bottom:8px; }
+  .hero-sub { font-size:0.8rem; color:rgba(255,255,255,0.4); letter-spacing:1px; margin-bottom:28px; }
+  .hero-stats { display:flex; gap:36px; flex-wrap:wrap; margin-bottom:28px; }
+  .hs { text-align:center; }
+  .hs-n { font-size:1.9rem; font-weight:900; color:var(--gold); }
+  .hs-l { font-size:0.72rem; color:rgba(255,255,255,0.5); }
+  .hero-cta { display:flex; gap:12px; flex-wrap:wrap; }
+  .btn-orange { background:var(--orange); color:var(--white); padding:12px 28px; border-radius:30px; text-decoration:none; font-weight:700; font-size:0.92rem; }
+  .btn-outline { background:transparent; border:2px solid rgba(255,255,255,0.35); color:var(--white); padding:12px 28px; border-radius:30px; text-decoration:none; font-weight:700; font-size:0.92rem; }
+
+  /* SECTION */
+  section { padding:65px 5%; }
+  .sec-label { font-size:0.72rem; font-weight:700; color:var(--orange); letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+  .sec-title { font-size:1.85rem; font-weight:800; color:var(--text); margin-bottom:12px; }
+  .sec-desc { color:#666; line-height:1.8; max-width:650px; }
+
+  /* ABOUT */
+  .about { background:var(--gray); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start; margin-top:36px; }
+  .about-text p { color:#555; line-height:1.9; font-size:0.95rem; margin-bottom:14px; }
+  .about-quote { background:var(--navy); color:var(--white); border-radius:12px; padding:24px 26px; margin-top:20px; border-left:4px solid var(--gold); }
+  .about-quote p { font-size:1rem; font-style:italic; color:rgba(255,255,255,0.85); line-height:1.7; }
+  .about-quote span { font-size:0.78rem; color:var(--gold); margin-top:8px; display:block; }
+  .kv-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .kv-card { background:var(--white); border-left:4px solid var(--blue-mid); padding:14px 16px; border-radius:0 8px 8px 0; }
+  .kv-card h4 { font-size:0.8rem; font-weight:700; color:var(--blue); margin-bottom:3px; }
+  .kv-card p { font-size:0.82rem; color:#555; line-height:1.5; }
+
+  /* FACILITIES */
+  .facilities { background:var(--white); }
+  .fac-grid { display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:36px; }
+  .fac-card { background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%); color:var(--white); border-radius:14px; padding:32px 28px; }
+  .fac-badge { display:inline-block; background:var(--orange); color:var(--white); font-size:0.72rem; font-weight:700; padding:4px 12px; border-radius:20px; margin-bottom:14px; }
+  .fac-card h3 { font-size:1.2rem; font-weight:800; margin-bottom:12px; }
+  .fac-card .fac-sub { font-size:0.85rem; color:rgba(255,255,255,0.65); margin-bottom:16px; }
+  .fac-features { display:flex; flex-direction:column; gap:8px; }
+  .fac-feat { display:flex; align-items:center; gap:10px; font-size:0.85rem; color:rgba(255,255,255,0.85); }
+  .fac-feat::before { content:'▸'; color:var(--gold); flex-shrink:0; }
+
+  /* SERVICES */
+  .services { background:var(--gray); }
+  .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:36px; }
+  .svc-card { background:var(--white); border-radius:12px; padding:26px 22px; border-top:4px solid var(--blue-mid); transition:all 0.3s; }
+  .svc-card:hover { box-shadow:0 8px 24px rgba(21,101,192,0.12); transform:translateY(-4px); }
+  .svc-icon { font-size:2.2rem; margin-bottom:12px; }
+  .svc-card h3 { font-size:0.98rem; font-weight:700; color:var(--text); margin-bottom:8px; }
+  .svc-card p { font-size:0.83rem; color:#666; line-height:1.7; }
+
+  /* CLIENTS */
+  .clients { background:linear-gradient(135deg,var(--dark) 0%,var(--navy) 100%); color:var(--white); }
+  .clients .sec-title { color:var(--white); }
+  .clients-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:36px; }
+  .client-card { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:20px 18px; text-align:center; }
+  .client-card h4 { font-size:0.88rem; font-weight:700; color:var(--gold); margin-bottom:4px; }
+  .client-card p { font-size:0.75rem; color:rgba(255,255,255,0.55); }
+
+  /* INFO */
+  .info { background:var(--white); }
+  .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:36px; }
+  .info-card { background:var(--gray); border-radius:12px; padding:26px; }
+  .info-card h4 { font-size:0.95rem; font-weight:700; color:var(--blue); margin-bottom:16px; padding-bottom:10px; border-bottom:2px solid #dde8f0; }
+  .info-row { display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid #eee; }
+  .info-row:last-child { border-bottom:none; }
+  .info-key { font-size:0.8rem; color:#888; }
+  .info-val { font-size:0.83rem; font-weight:600; color:var(--text); text-align:right; }
+  .contact-items { display:flex; flex-direction:column; gap:12px; margin-top:16px; }
+  .ci { display:flex; gap:12px; align-items:center; }
+  .ci-icon { font-size:1.3rem; }
+  .ci-text span { display:block; font-size:0.7rem; color:#aaa; }
+  .ci-text a, .ci-text strong { font-size:0.88rem; color:var(--text); text-decoration:none; font-weight:600; }
+
+  /* FOOTER */
+  footer { background:var(--dark); color:rgba(255,255,255,0.4); text-align:center; padding:22px 5%; font-size:0.82rem; border-top:2px solid var(--orange); }
+  footer a { color:var(--gold); text-decoration:none; }
+
+  @media(max-width:768px){
+    .hero h1{font-size:2rem;} .about-grid,.fac-grid,.info-grid{grid-template-columns:1fr;} .svc-grid,.clients-grid{grid-template-columns:1fr 1fr;} .kv-grid{grid-template-columns:1fr;} .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="zh">漢思<span>能源</span></div>
+      <div class="en">HANS ENERGY COMPANY LIMITED · HKEx: 0554</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">公司簡介</a></li>
+      <li><a href="#facilities">石化倉庫</a></li>
+      <li><a href="#services">服務</a></li>
+      <li><a href="#clients">主要客戶</a></li>
+      <li><a href="#info">投資者資訊</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badges">
+    <span class="hb-orange">⛽ 石化碼頭倉儲物流</span>
+    <span class="hb-blue">HKEx 主板：0554</span>
+  </div>
+  <h1>漢思<span class="hl">能源</span><br>倉儲物流領航者</h1>
+  <div class="hero-en">Hans Energy Company Limited</div>
+  <div class="hero-sub">HONG KONG LISTED · EST. 1997 · CAYMAN ISLANDS REGISTERED</div>
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-n">1997</div><div class="hs-l">創立年份</div></div>
+    <div class="hs"><div class="hs-n">180</div><div class="hs-l">員工人數</div></div>
+    <div class="hs"><div class="hs-n">2</div><div class="hs-l">主要石化庫</div></div>
+    <div class="hs"><div class="hs-n">0554</div><div class="hs-l">港交所股票代號</div></div>
+  </div>
+  <div class="hero-cta">
+    <a href="#facilities" class="btn-orange">🏭 石化設施</a>
+    <a href="#services" class="btn-outline">了解服務</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="sec-label">About Us</div>
+  <div class="about-grid">
+    <div>
+      <div class="sec-title">公司簡介</div>
+      <div class="about-text">
+        <p>漢思能源有限公司（漢思能源，股份代號：0554）是一家在開曼群島註冊、於香港聯合交易所主板上市的公司，主要業務是在中國境內提供石油、氣體及液體化工產品的綜合碼頭港口及倉儲物流服務。</p>
+        <p>公司自1997年成立以來，一貫秉承務實、誠信、效率和嚴謹的宗旨，嚴格執行高標準的環境、安全與健康保護措施，憑藉完善的配套設施、豐富的經驗及一體化專業技術，為客戶提供最優質、高效與便利的碼頭倉儲物流服務。</p>
+      </div>
+      <div class="about-quote">
+        <p>「客戶需要的，就是我們提供的」</p>
+        <span>— 漢思能源服務理念</span>
+      </div>
+    </div>
+    <div class="kv-grid">
+      <div class="kv-card">
+        <h4>📅 成立年份</h4>
+        <p>1997年5月28日</p>
+      </div>
+      <div class="kv-card">
+        <h4>📊 上市股票</h4>
+        <p>HKEx主板 · 股份代號0554</p>
+      </div>
+      <div class="kv-card">
+        <h4>👥 員工人數</h4>
+        <p>約180名員工</p>
+      </div>
+      <div class="kv-card">
+        <h4>🌍 業務地區</h4>
+        <p>中國境內 · 珠三角及東莞</p>
+      </div>
+      <div class="kv-card">
+        <h4>🏭 核心業務</h4>
+        <p>石化產品碼頭、港口及倉儲物流</p>
+      </div>
+      <div class="kv-card">
+        <h4>📋 登記地點</h4>
+        <p>開曼群島注冊，香港上市</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section class="facilities" id="facilities">
+  <div class="sec-label">Key Facilities</div>
+  <div class="sec-title">主要石化倉儲設施</div>
+  <div class="fac-grid">
+    <div class="fac-card">
+      <span class="fac-badge">⭐ 華南最大</span>
+      <h3>小虎石化庫</h3>
+      <p class="fac-sub">位於珠江三角洲中心 · 華南地區最大的綜合性石化產品公共保稅倉</p>
+      <div class="fac-features">
+        <div class="fac-feat">珠江三角洲核心位置，交通便利</div>
+        <div class="fac-feat">華南最大綜合性石化產品公共保稅倉</div>
+        <div class="fac-feat">提供石油、氣體及液體化工產品倉儲</div>
+        <div class="fac-feat">完善的配套設施及安全系統</div>
+        <div class="fac-feat">專業保稅倉儲服務，支援進出口業務</div>
+      </div>
+    </div>
+    <div class="fac-card">
+      <span class="fac-badge">🚢 大型碼頭</span>
+      <h3>東洲石化庫</h3>
+      <p class="fac-sub">位於東莞市虎門鎮沙田港區 · 大型油氣化工碼頭及配套設施</p>
+      <div class="fac-features">
+        <div class="fac-feat">東莞市虎門鎮沙田港區戰略位置</div>
+        <div class="fac-feat">大型油氣化工碼頭設施</div>
+        <div class="fac-feat">完整配套工程及港口服務</div>
+        <div class="fac-feat">連接珠三角主要物流網絡</div>
+        <div class="fac-feat">高效裝卸及儲運一體化服務</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sec-label">Our Services</div>
+  <div class="sec-title">服務範疇</div>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon">⛽</div>
+      <h3>石油產品碼頭服務</h3>
+      <p>提供各類石油產品的碼頭接卸、儲存及發送服務，確保安全高效的貨物處理，符合國際操作標準。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔬</div>
+      <h3>液體化工品倉儲</h3>
+      <p>專業液體化工品儲罐設施，配備先進的安全系統及環保措施，確保化學品安全儲存及處理。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">💨</div>
+      <h3>氣體產品服務</h3>
+      <p>氣體產品的儲存、處理及分發服務，擁有專業設備及訓練有素的技術團隊，確保安全操作。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🚢</div>
+      <h3>綜合港口物流</h3>
+      <p>一站式港口物流服務，包括船舶代理、貨物調度、海關申報及文件處理，提升供應鏈效率。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏭</div>
+      <h3>保稅倉儲服務</h3>
+      <p>小虎石化庫提供專業保稅倉儲服務，支援跨境貿易，節省稅務成本，提供靈活的物流解決方案。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">📊</div>
+      <h3>供應鏈管理</h3>
+      <p>為國際石化企業提供全面的供應鏈管理服務，整合碼頭、倉儲及物流各環節，實現最優化運營。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients" id="clients">
+  <div class="sec-label">Major Clients</div>
+  <div class="sec-title">主要客戶</div>
+  <p style="color:rgba(255,255,255,0.65);font-size:0.93rem;margin-top:12px;margin-bottom:36px;">漢思能源的服務對象皆是國際知名的大型企業，涵蓋國際石油巨頭及國內大型能源企業。</p>
+  <div class="clients-grid">
+    <div class="client-card">
+      <h4>ExxonMobil 埃克森美孚</h4>
+      <p>全球最大綜合石油天然氣公司</p>
+    </div>
+    <div class="client-card">
+      <h4>Shell 殼牌</h4>
+      <p>全球領先的綜合能源公司</p>
+    </div>
+    <div class="client-card">
+      <h4>Dow Chemical 陶氏化學</h4>
+      <p>全球領先的特種化學品公司</p>
+    </div>
+    <div class="client-card">
+      <h4>Sumitomo 住友商事</h4>
+      <p>日本頂尖綜合商社</p>
+    </div>
+    <div class="client-card">
+      <h4>中石化 Sinopec</h4>
+      <p>中國最大的石油和化工企業</p>
+    </div>
+    <div class="client-card">
+      <h4>中石油 PetroChina</h4>
+      <p>中國最大的油氣生產商之一</p>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="info" id="info">
+  <div class="sec-label">Investor Relations</div>
+  <div class="sec-title">投資者資訊</div>
+  <div class="info-grid">
+    <div class="info-card">
+      <h4>📊 公司基本資料</h4>
+      <div class="info-row"><span class="info-key">公司名稱</span><span class="info-val">漢思能源有限公司</span></div>
+      <div class="info-row"><span class="info-key">英文名稱</span><span class="info-val">Hans Energy Company Limited</span></div>
+      <div class="info-row"><span class="info-key">股份代號</span><span class="info-val">0554 (HKEx主板)</span></div>
+      <div class="info-row"><span class="info-key">成立日期</span><span class="info-val">1997年5月28日</span></div>
+      <div class="info-row"><span class="info-key">員工人數</span><span class="info-val">約180名</span></div>
+      <div class="info-row"><span class="info-key">登記地點</span><span class="info-val">開曼群島</span></div>
+      <div class="info-row"><span class="info-key">主要業務地點</span><span class="info-val">中國大陸（珠三角/東莞）</span></div>
+    </div>
+    <div class="info-card">
+      <h4>📬 聯絡方式</h4>
+      <div class="contact-items">
+        <div class="ci">
+          <div class="ci-icon">✉️</div>
+          <div class="ci-text">
+            <span>投資者關係電郵</span>
+            <a href="mailto:ir@chinasouthcity.com">ir@chinasouthcity.com</a>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">📈</div>
+          <div class="ci-text">
+            <span>股份代號</span>
+            <strong>0554.HK (香港交易所主板)</strong>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">🏢</div>
+          <div class="ci-text">
+            <span>業務地點</span>
+            <strong>珠三角中心 · 東莞虎門沙田港</strong>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">🌐</div>
+          <div class="ci-text">
+            <span>上市平台</span>
+            <strong>香港聯合交易所主板</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 漢思能源有限公司 Hans Energy Company Limited · HKEx: 0554</p>
+  <p style="margin-top:6px;">石油、氣體及液體化工產品綜合碼頭港口及倉儲物流服務 · 珠江三角洲 · 東莞</p>
+</footer>
+
+</body>
+</html>
