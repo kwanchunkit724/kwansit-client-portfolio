@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>e-print Group Limited | Digital Printing & Imaging Solutions — Hong Kong</title>
+<style>
+  :root {
+    --primary: #0072bc;
+    --secondary: #00a651;
+    --accent: #ff6600;
+    --dark: #14213d;
+    --light: #f4f8ff;
+    --text: #2d3748;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: #fff; }
+
+  /* NAV */
+  nav {
+    background: var(--dark);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 68px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; }
+  .logo-text {
+    font-size: 22px; font-weight: 900; color: #fff; letter-spacing: -1px;
+  }
+  .logo-text em { color: var(--accent); font-style: normal; }
+  .logo-text small { display: block; font-size: 10px; font-weight: 400; color: #7090b0; letter-spacing: 2px; text-transform: uppercase; margin-top: 1px; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: #8aa0be; text-decoration: none; font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-listed {
+    background: rgba(0,166,81,0.15);
+    border: 1px solid rgba(0,166,81,0.3);
+    color: #4dd4a0;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #0d2859 60%, #0072bc 100%);
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    padding: 80px 5%;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 0;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 30%, rgba(0,114,188,0.15) 100%);
+  }
+  .hero-content { max-width: 680px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,166,81,0.15); border: 1px solid rgba(0,166,81,0.3);
+    color: #4dd4a0; padding: 6px 16px; border-radius: 20px; font-size: 12px;
+    margin-bottom: 24px; text-transform: uppercase; letter-spacing: 2px;
+  }
+  .hero h1 { font-size: clamp(2rem,5vw,3.4rem); font-weight: 900; color: #fff; line-height: 1.15; margin-bottom: 18px; }
+  .hero h1 em { color: #64b5f6; font-style: normal; }
+  .hero p { font-size: 17px; color: #8aa0be; margin-bottom: 36px; line-height: 1.7; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; }
+  .btn-blue { background: var(--primary); color: #fff; padding: 13px 32px; border-radius: 7px; text-decoration: none; font-weight: 700; font-size: 15px; transition: background .2s; }
+  .btn-blue:hover { background: #005c9e; }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.25); color: #fff; padding: 13px 32px; border-radius: 7px; text-decoration: none; font-weight: 600; font-size: 15px; transition: all .2s; }
+  .btn-outline:hover { background: rgba(255,255,255,0.08); }
+  .hero-group-members { display: flex; flex-wrap: wrap; gap: 10px; }
+  .member-tag {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    color: #a0b8d8; padding: 5px 12px; border-radius: 8px; font-size: 12px;
+  }
+
+  /* SECTION */
+  section { padding: 80px 5%; }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-header .eyebrow { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--primary); margin-bottom: 14px; font-weight: 700; }
+  .section-header h2 { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .section-header p { color: #666; font-size: 16px; max-width: 620px; margin: 0 auto; line-height: 1.7; }
+
+  /* CORE BUSINESSES */
+  .businesses-bg { background: var(--light); }
+  .businesses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .biz-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 28px;
+    border: 1px solid #d0dff0;
+    transition: all .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .biz-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--primary);
+  }
+  .biz-card.green::before { background: var(--secondary); }
+  .biz-card.orange::before { background: var(--accent); }
+  .biz-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,114,188,0.12); }
+  .biz-card .region { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px; color: var(--primary); font-weight: 700; }
+  .biz-card.green .region { color: var(--secondary); }
+  .biz-card.orange .region { color: var(--accent); }
+  .biz-card .ico { font-size: 40px; margin-bottom: 16px; }
+  .biz-card h3 { font-size: 19px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+  .biz-card p { font-size: 14px; color: #666; line-height: 1.7; }
+
+  /* GROUP OVERVIEW */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .overview-text h2 { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 800; color: var(--dark); margin-bottom: 16px; }
+  .overview-text p { font-size: 16px; color: #555; line-height: 1.75; margin-bottom: 20px; }
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+  .stat-box { text-align: center; background: var(--light); border-radius: 12px; padding: 20px; border: 1px solid #d0dff0; }
+  .stat-box .num { font-size: 26px; font-weight: 900; color: var(--primary); }
+  .stat-box .lbl { font-size: 12px; color: #666; margin-top: 4px; }
+  .overview-visual {
+    background: linear-gradient(135deg, var(--dark), var(--primary));
+    border-radius: 20px;
+    padding: 48px 36px;
+    color: #fff;
+  }
+  .overview-visual h3 { font-size: 16px; font-weight: 700; color: #a0c0e0; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; }
+  .member-list { list-style: none; }
+  .member-list li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 15px; color: #d0e4f4; }
+  .member-list li:last-child { border-bottom: none; }
+  .member-list li .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .member-list li .flag { font-size: 16px; }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .service-item {
+    border: 1px solid #d0dff0;
+    border-left: 4px solid var(--primary);
+    border-radius: 10px;
+    padding: 22px 20px;
+    background: #fff;
+    transition: box-shadow .2s;
+  }
+  .service-item:hover { box-shadow: 0 6px 20px rgba(0,114,188,0.1); }
+  .service-item h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .service-item p { font-size: 13px; color: #666; line-height: 1.6; }
+
+  /* INVESTOR */
+  .investor-section { background: var(--dark); }
+  .investor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .investor-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 28px 24px;
+    color: #fff;
+    text-align: center;
+  }
+  .investor-card .ico { font-size: 36px; margin-bottom: 16px; }
+  .investor-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .investor-card p { font-size: 13px; color: #7090b0; line-height: 1.65; }
+  .investor-card a { color: var(--accent); font-size: 13px; text-decoration: none; display: inline-block; margin-top: 10px; font-weight: 600; }
+
+  /* CONTACT */
+  .contact-section { background: var(--light); }
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .contact-info h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 24px; }
+  .contact-row { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+  .contact-row .ci { font-size: 22px; margin-top: 2px; }
+  .contact-row .ct strong { display: block; font-size: 15px; color: var(--dark); margin-bottom: 4px; }
+  .contact-row .ct span { font-size: 14px; color: #555; line-height: 1.5; }
+  .contact-form { background: #fff; border-radius: 16px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+  .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 11px 14px; border: 1.5px solid #d0dff0; border-radius: 8px;
+    font-size: 14px; font-family: inherit; transition: border-color .2s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--primary); }
+  .form-group textarea { height: 90px; resize: vertical; }
+  .btn-submit {
+    width: 100%; background: var(--primary); color: #fff; border: none;
+    padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 700;
+    cursor: pointer; transition: background .2s;
+  }
+  .btn-submit:hover { background: #005c9e; }
+
+  /* FOOTER */
+  footer { background: #0a1428; color: #4a6080; padding: 48px 5% 24px; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand .brand-name { color: #fff; font-size: 18px; font-weight: 900; margin-bottom: 8px; }
+  .footer-brand p { font-size: 13px; line-height: 1.7; margin-top: 10px; }
+  footer h4 { color: #7090b0; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; }
+  footer ul li a { color: #4a6080; text-decoration: none; font-size: 14px; transition: color .2s; }
+  footer ul li a:hover { color: #fff; }
+  .footer-bottom { border-top: 1px solid #1a2a3a; padding-top: 20px; text-align: center; font-size: 13px; }
+
+  @media (max-width: 900px) {
+    .overview-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-listed { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="logo-text"><em>e-print</em> Group <small>Promise Network Printing Limited</small></div>
+  </div>
+  <div class="nav-links">
+    <a href="#businesses">Businesses</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#investors">Investors</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-listed">HKEX Listed</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🇭🇰 Hong Kong · Malaysia · Global</div>
+    <h1>Digital Printing<br><em>Innovation & Excellence</em></h1>
+    <p>e-print Group — a leading digital printing and imaging solutions group listed on HKEX. Serving individuals, businesses, and enterprises across Hong Kong, Malaysia, and beyond.</p>
+    <div class="hero-btns">
+      <a href="#businesses" class="btn-blue">Our Businesses</a>
+      <a href="#contact" class="btn-outline">Contact Us</a>
+    </div>
+    <div class="hero-group-members">
+      <div class="member-tag">e-print HK</div>
+      <div class="member-tag">e-print Malaysia</div>
+      <div class="member-tag">e-banner HK</div>
+      <div class="member-tag">e-banner Malaysia</div>
+      <div class="member-tag">e-print Gift</div>
+      <div class="member-tag">Photobook1010</div>
+      <div class="member-tag">Design Easy</div>
+    </div>
+  </div>
+</div>
+
+<!-- CORE BUSINESSES -->
+<section id="businesses" class="businesses-bg">
+  <div class="section-header">
+    <div class="eyebrow">Our Group</div>
+    <h2>Core Business Divisions</h2>
+    <p>A diversified printing and imaging group with operations spanning digital printing, banners, personalised gifts, and photo products.</p>
+  </div>
+  <div class="businesses-grid">
+    <div class="biz-card">
+      <div class="region">🇭🇰 Hong Kong</div>
+      <div class="ico">🖨️</div>
+      <h3>e-print | Hong Kong</h3>
+      <p>Online digital printing platform serving Hong Kong businesses and consumers with fast, high-quality printing of business cards, flyers, brochures, and marketing collateral.</p>
+    </div>
+    <div class="biz-card">
+      <div class="region">🇲🇾 Malaysia</div>
+      <div class="ico">🖨️</div>
+      <h3>e-print | Malaysia</h3>
+      <p>Digital printing services for the Malaysian market, delivering quality print solutions to businesses and individuals with efficient online ordering and local delivery.</p>
+    </div>
+    <div class="biz-card green">
+      <div class="region">🇭🇰 Hong Kong</div>
+      <div class="ico">🪧</div>
+      <h3>e-banner | Hong Kong</h3>
+      <p>Specialist large-format printing including banners, exhibition displays, signage, and outdoor advertising materials. Vibrant, durable output for events and promotions.</p>
+    </div>
+    <div class="biz-card green">
+      <div class="region">🇲🇾 Malaysia</div>
+      <div class="ico">🪧</div>
+      <h3>e-banner | Malaysia</h3>
+      <p>Large-format and banner printing services in Malaysia, catering to events, retail, and corporate clients with professional quality and competitive pricing.</p>
+    </div>
+    <div class="biz-card orange">
+      <div class="region">🇭🇰 Hong Kong</div>
+      <div class="ico">🎁</div>
+      <h3>e-print Gift | Hong Kong</h3>
+      <p>Personalised gift printing services including customised merchandise, corporate gifts, and branded promotional items with unique personalisation options.</p>
+    </div>
+    <div class="biz-card orange">
+      <div class="region">🇭🇰 Hong Kong</div>
+      <div class="ico">📸</div>
+      <h3>Photobook1010</h3>
+      <p>Premium personalised photobook creation service. Design and print beautiful photo albums, travel books, and memory keepsakes for individuals and families.</p>
+    </div>
+    <div class="biz-card">
+      <div class="region">Digital Services</div>
+      <div class="ico">🎨</div>
+      <h3>Design Easy Limited</h3>
+      <p>User-friendly online design platform enabling customers to create print-ready artwork for their print orders with ease, even without design expertise.</p>
+    </div>
+    <div class="biz-card green">
+      <div class="region">Investment</div>
+      <div class="ico">🏢</div>
+      <h3>Top Success Investment</h3>
+      <p>Investment arm of the Group, exploring strategic opportunities to support the Group's long-term growth and diversification objectives.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GROUP OVERVIEW -->
+<section id="about">
+  <div class="overview-grid">
+    <div class="overview-text">
+      <h2>About e-print Group</h2>
+      <p>e-print Group Limited (Promise Network Printing Limited) is a Hong Kong-listed company dedicated to delivering innovative digital printing and imaging solutions. With a comprehensive suite of brands and platforms, the Group serves a diverse client base spanning individual consumers, SMEs, and large corporations.</p>
+      <p>The Group's multi-brand strategy allows it to address different market segments effectively — from everyday business printing and large-format banners to personalised gifts and photo products — across Hong Kong and Malaysia.</p>
+      <div class="stat-row">
+        <div class="stat-box"><div class="num">2</div><div class="lbl">Markets</div></div>
+        <div class="stat-box"><div class="num">7+</div><div class="lbl">Business Units</div></div>
+        <div class="stat-box"><div class="num">HKEX</div><div class="lbl">Listed Group</div></div>
+      </div>
+    </div>
+    <div class="overview-visual">
+      <h3>Group Members</h3>
+      <ul class="member-list">
+        <li><div class="dot"></div><span class="flag">🇭🇰</span> e-print | Hong Kong</li>
+        <li><div class="dot"></div><span class="flag">🇲🇾</span> e-print | Malaysia</li>
+        <li><div class="dot"></div><span class="flag">🇭🇰</span> e-banner | Hong Kong</li>
+        <li><div class="dot"></div><span class="flag">🇲🇾</span> e-banner | Malaysia</li>
+        <li><div class="dot"></div><span class="flag">🇭🇰</span> e-print Gift | Hong Kong</li>
+        <li><div class="dot"></div><span class="flag">🇭🇰</span> Design Easy Limited</li>
+        <li><div class="dot"></div><span class="flag">🇭🇰</span> Photobook1010</li>
+        <li><div class="dot"></div><span class="flag">🇭🇰</span> Top Success Investment</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:#f4f8ff;">
+  <div class="section-header">
+    <div class="eyebrow">Print Solutions</div>
+    <h2>What We Offer</h2>
+    <p>Comprehensive digital printing services delivered through our innovative online platforms and experienced production teams.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-item">
+      <h4>💼 Business Printing</h4>
+      <p>Business cards, letterheads, envelopes, notepads, and corporate stationery with premium finishes.</p>
+    </div>
+    <div class="service-item">
+      <h4>📋 Marketing Collateral</h4>
+      <p>Flyers, brochures, leaflets, catalogues, and promotional materials to support your marketing campaigns.</p>
+    </div>
+    <div class="service-item">
+      <h4>🪧 Large Format & Banners</h4>
+      <p>Exhibition banners, roller banners, window graphics, and outdoor signage via the e-banner network.</p>
+    </div>
+    <div class="service-item">
+      <h4>📸 Photo Products</h4>
+      <p>Personalised photobooks, photo prints, and memory albums crafted through Photobook1010.</p>
+    </div>
+    <div class="service-item">
+      <h4>🎁 Corporate Gifts</h4>
+      <p>Customised branded gifts, merchandise, and promotional items for corporate events and giveaways.</p>
+    </div>
+    <div class="service-item">
+      <h4>🎨 Online Design Tools</h4>
+      <p>User-friendly Design Easy platform to create professional print-ready artwork with ease.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTOR RELATIONS -->
+<section id="investors" class="investor-section">
+  <div class="section-header">
+    <div class="eyebrow" style="color:#64b5f6;">Investor Relations</div>
+    <h2 style="color:#fff;">Listed on HKEX</h2>
+    <p style="color:#7090b0;">e-print Group Limited (Promise Network Printing Limited) is publicly listed on the Hong Kong Stock Exchange, offering transparency and accountability to all stakeholders.</p>
+  </div>
+  <div class="investor-grid">
+    <div class="investor-card">
+      <div class="ico">📊</div>
+      <h3>Stock Information</h3>
+      <p>View latest share price, trading volume, and historical performance data.</p>
+      <a href="https://eprintgroup.com.hk">View Stock Info →</a>
+    </div>
+    <div class="investor-card">
+      <div class="ico">📁</div>
+      <h3>Financial Reports</h3>
+      <p>Annual reports, interim reports, and financial statements for investor review.</p>
+      <a href="https://eprintgroup.com.hk">View Reports →</a>
+    </div>
+    <div class="investor-card">
+      <div class="ico">📣</div>
+      <h3>Announcements</h3>
+      <p>Corporate announcements, circulars, and regulatory disclosures.</p>
+      <a href="https://eprintgroup.com.hk">View Announcements →</a>
+    </div>
+    <div class="investor-card">
+      <div class="ico">🏛️</div>
+      <h3>Corporate Governance</h3>
+      <p>Board composition, governance policies, and terms of reference.</p>
+      <a href="https://eprintgroup.com.hk">View Governance →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-header">
+    <div class="eyebrow">Get in Touch</div>
+    <h2>Contact e-print Group</h2>
+    <p>Whether you're a customer, investor, or business partner — we welcome your enquiry.</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+      <div class="contact-row">
+        <div class="ci">📧</div>
+        <div class="ct">
+          <strong>Email</strong>
+          <span>info@e-print.com.hk</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">📍</div>
+        <div class="ct">
+          <strong>Headquarters</strong>
+          <span>Hong Kong</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">🌐</div>
+        <div class="ct">
+          <strong>Group Website</strong>
+          <span>eprintgroup.com.hk</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">🖨️</div>
+        <div class="ct">
+          <strong>e-print Hong Kong</strong>
+          <span>www.e-print.com.hk</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Send an Enquiry</h3>
+      <div class="form-group">
+        <label>Name *</label>
+        <input type="text" placeholder="Your full name">
+      </div>
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>Enquiry Type</label>
+        <select>
+          <option>Select type</option>
+          <option>Print Services (HK)</option>
+          <option>Print Services (Malaysia)</option>
+          <option>Banner / Large Format</option>
+          <option>Corporate Gifts</option>
+          <option>Photobook1010</option>
+          <option>Investor Relations</option>
+          <option>Business Partnership</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us about your requirements..."></textarea>
+      </div>
+      <button class="btn-submit">Send Enquiry</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name">e-print Group Limited</div>
+      <p style="font-size:12px;color:#3a5070;margin-bottom:8px;">Promise Network Printing Limited · HKEX Listed</p>
+      <p>A leading digital printing and imaging solutions group with operations in Hong Kong and Malaysia. Serving individuals, businesses, and enterprises worldwide.</p>
+    </div>
+    <div>
+      <h4>Businesses</h4>
+      <ul>
+        <li><a href="#businesses">e-print HK</a></li>
+        <li><a href="#businesses">e-print Malaysia</a></li>
+        <li><a href="#businesses">e-banner</a></li>
+        <li><a href="#businesses">e-print Gift</a></li>
+        <li><a href="#businesses">Photobook1010</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Corporate</h4>
+      <ul>
+        <li><a href="#about">About the Group</a></li>
+        <li><a href="#investors">Investor Relations</a></li>
+        <li><a href="https://eprintgroup.com.hk">Annual Reports</a></li>
+        <li><a href="https://eprintgroup.com.hk">Governance</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@e-print.com.hk">📧 info@e-print.com.hk</a></li>
+        <li><a href="https://eprintgroup.com.hk">🌐 eprintgroup.com.hk</a></li>
+        <li><a href="https://www.e-print.com.hk">🖨️ e-print.com.hk</a></li>
+        <li><a href="#contact">📍 Hong Kong</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 e-print Group Limited (Promise Network Printing Limited). All Rights Reserved. | HKEX Listed | Hong Kong</p>
+  </div>
+</footer>
+
+</body>
+</html>
