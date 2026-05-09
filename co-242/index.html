@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anda Automation (Hong Kong) Limited | Smart Manufacturing & Automation Solutions</title>
+<style>
+  :root {
+    --primary: #0a2540;
+    --primary-mid: #1a3a5c;
+    --accent: #0072c6;
+    --accent-light: #e6f2ff;
+    --steel: #4a6fa5;
+    --silver: #8fa3b8;
+    --white: #ffffff;
+    --bg: #f4f7fb;
+    --border: #d0dce8;
+    --text: #1a2d3f;
+    --text-light: #5a7085;
+    --gold: #e8a820;
+    --success: #1a7a50;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+
+  /* HEADER */
+  header {
+    background: var(--primary);
+    padding: 0 5%; position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .header-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1200px; margin: 0 auto; padding: 14px 0;
+  }
+  .logo-block { display: flex; align-items: center; gap: 14px; }
+  .logo-icon {
+    width: 50px; height: 50px; border-radius: 8px;
+    background: var(--accent); display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 900; color: var(--white); letter-spacing: -0.5px;
+  }
+  .logo-text { color: var(--white); }
+  .logo-text .main { font-size: 1.1rem; font-weight: 700; }
+  .logo-text .sub { font-size: 0.72rem; color: rgba(255,255,255,0.65); letter-spacing: 0.5px; }
+  nav { display: flex; gap: 28px; }
+  nav a { color: rgba(255,255,255,0.82); font-size: 0.87rem; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
+  nav a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-mid) 50%, #1e4f80 100%);
+    color: var(--white); padding: 80px 5% 70px; position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: ''; position: absolute; right: 0; top: 0; bottom: 0;
+    width: 45%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='80' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='30'/%3E%3Ccircle cx='100' cy='100' r='50' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='20'/%3E%3Ccircle cx='100' cy='100' r='20' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E") center/cover no-repeat;
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .hero-tag {
+    display: inline-block; background: var(--accent); color: var(--white);
+    font-size: 0.78rem; font-weight: 700; padding: 5px 14px; border-radius: 4px;
+    margin-bottom: 20px; letter-spacing: 0.5px;
+  }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.25; margin-bottom: 8px; }
+  .hero h1 .light { font-weight: 300; display: block; font-size: 1rem; margin-bottom: 6px; color: rgba(255,255,255,0.7); letter-spacing: 2px; text-transform: uppercase; }
+  .hero-desc { font-size: 0.98rem; color: rgba(255,255,255,0.78); margin: 18px 0 30px; line-height: 1.9; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: var(--white);
+    padding: 12px 28px; border-radius: 6px; font-weight: 700; font-size: 0.93rem;
+    transition: all 0.25s; display: inline-flex; align-items: center; gap: 7px;
+  }
+  .btn-primary:hover { background: #0058a0; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.5);
+    padding: 10px 24px; border-radius: 6px; font-weight: 600; font-size: 0.93rem;
+    transition: all 0.25s; display: inline-flex; align-items: center; gap: 7px;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .stat-card {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px; padding: 22px; text-align: center;
+  }
+  .stat-card .num { font-size: 1.8rem; font-weight: 800; color: var(--gold); display: block; }
+  .stat-card .label { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-top: 4px; line-height: 1.4; }
+
+  /* SECTION */
+  section { padding: 70px 5%; }
+  .inner { max-width: 1200px; margin: 0 auto; }
+  .section-header { text-align: center; max-width: 700px; margin: 0 auto 50px; }
+  .section-tag {
+    display: inline-block; background: var(--accent-light); color: var(--accent);
+    font-size: 0.75rem; font-weight: 700; padding: 5px 16px; border-radius: 4px;
+    margin-bottom: 14px; border: 1px solid rgba(0,114,198,0.2);
+  }
+  .section-header h2 { font-size: 1.85rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; }
+  .section-header p { color: var(--text-light); font-size: 0.96rem; line-height: 1.8; }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: start; }
+  .about-content h2 { font-size: 1.8rem; font-weight: 800; color: var(--primary); margin-bottom: 18px; }
+  .about-content p { color: var(--text-light); line-height: 1.9; margin-bottom: 14px; font-size: 0.95rem; }
+  .fact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 26px; }
+  .fact-item {
+    background: var(--bg); border-radius: 10px; padding: 18px;
+    border: 1px solid var(--border);
+  }
+  .fact-item .f-num { font-size: 1.5rem; font-weight: 800; color: var(--accent); display: block; }
+  .fact-item .f-label { font-size: 0.78rem; color: var(--text-light); }
+  .about-aside { display: flex; flex-direction: column; gap: 18px; }
+  .mission-box {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-mid) 100%);
+    color: var(--white); border-radius: 16px; padding: 28px;
+  }
+  .mission-box h3 { font-size: 1.05rem; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
+  .mission-box p { font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.8; }
+  .hk-office {
+    background: var(--accent-light); border-radius: 16px; padding: 24px;
+    border: 1px solid rgba(0,114,198,0.2);
+  }
+  .hk-office h3 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 14px; }
+  .office-item { display: flex; gap: 10px; margin-bottom: 10px; font-size: 0.85rem; color: var(--text); }
+  .office-item .icon { color: var(--accent); flex-shrink: 0; font-size: 1rem; margin-top: 1px; }
+
+  /* PRODUCTS */
+  .products { background: var(--bg); }
+  .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; max-width: 1200px; margin: 0 auto; }
+  .product-card {
+    background: var(--white); border-radius: 16px; overflow: hidden;
+    box-shadow: 0 3px 15px rgba(10,37,64,0.07); border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(10,37,64,0.13); }
+  .product-icon-wrap {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    padding: 28px 20px; text-align: center;
+  }
+  .product-icon { font-size: 2.8rem; display: block; }
+  .product-body { padding: 22px 18px; }
+  .product-body h3 { font-size: 0.97rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; line-height: 1.4; }
+  .product-body p { font-size: 0.82rem; color: var(--text-light); line-height: 1.7; }
+
+  /* INDUSTRIES */
+  .industries { background: var(--white); }
+  .industries-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; max-width: 1200px; margin: 0 auto; }
+  .industry-chip {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px 14px; text-align: center; transition: all 0.3s;
+  }
+  .industry-chip:hover { border-color: var(--accent); background: var(--accent-light); }
+  .industry-chip .icon { font-size: 1.8rem; display: block; margin-bottom: 8px; }
+  .industry-chip .name { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+
+  /* GLOBAL PRESENCE */
+  .global { background: linear-gradient(135deg, var(--primary) 0%, #1a3f6f 100%); color: var(--white); }
+  .global .section-header h2 { color: var(--white); }
+  .global .section-tag { background: rgba(255,255,255,0.12); color: var(--white); border-color: rgba(255,255,255,0.2); }
+  .global .section-header p { color: rgba(255,255,255,0.75); }
+  .offices-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
+  .office-card {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px; padding: 22px 18px;
+  }
+  .office-flag { font-size: 1.6rem; margin-bottom: 10px; display: block; }
+  .office-card h3 { font-size: 0.93rem; font-weight: 700; margin-bottom: 6px; }
+  .office-card p { font-size: 0.8rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+  .hq-badge {
+    display: inline-block; background: var(--gold); color: var(--primary);
+    font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 3px; margin-left: 6px;
+  }
+
+  /* AWARDS */
+  .awards { background: var(--bg); }
+  .awards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 1200px; margin: 0 auto; }
+  .award-card {
+    background: var(--white); border-radius: 14px; padding: 24px;
+    border: 1px solid var(--border); display: flex; gap: 16px; align-items: flex-start;
+    transition: all 0.3s;
+  }
+  .award-card:hover { border-color: var(--gold); box-shadow: 0 4px 18px rgba(232,168,32,0.1); }
+  .award-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .award-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--primary); line-height: 1.4; }
+
+  /* CONTACT */
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: start; }
+  .contact-info h2 { font-size: 1.8rem; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+  .contact-info p { color: var(--text-light); font-size: 0.95rem; line-height: 1.8; margin-bottom: 28px; }
+  .contact-items { display: flex; flex-direction: column; gap: 16px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--accent-light); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .contact-detail .label { font-size: 0.78rem; color: var(--text-light); font-weight: 600; margin-bottom: 2px; }
+  .contact-detail .value { font-size: 0.95rem; color: var(--text); font-weight: 600; }
+  .contact-cta {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-mid) 100%);
+    border-radius: 18px; padding: 34px; color: var(--white);
+  }
+  .contact-cta h3 { font-size: 1.35rem; font-weight: 800; margin-bottom: 10px; }
+  .contact-cta p { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 24px; }
+  .cta-buttons { display: flex; flex-direction: column; gap: 12px; }
+  .cta-btn {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+    color: var(--white); padding: 12px 18px; border-radius: 8px;
+    font-weight: 600; font-size: 0.9rem; transition: all 0.2s;
+  }
+  .cta-btn:hover { background: rgba(255,255,255,0.2); }
+  .cta-btn.blue { background: var(--accent); border-color: var(--accent); }
+  .cta-btn.blue:hover { background: #0058a0; }
+
+  /* FOOTER */
+  footer {
+    background: var(--primary); color: rgba(255,255,255,0.7);
+    padding: 40px 5% 24px;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 30px; }
+  .footer-brand .name { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .footer-brand .en { font-size: 0.72rem; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+  .footer-brand p { font-size: 0.82rem; line-height: 1.8; }
+  .footer-col h4 { color: var(--white); font-size: 0.88rem; font-weight: 700; margin-bottom: 14px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 8px; font-size: 0.82rem; }
+  .footer-col ul li a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px; display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 10px; font-size: 0.78rem;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .products-grid, .offices-grid { grid-template-columns: 1fr 1fr; }
+    .industries-grid { grid-template-columns: repeat(3, 1fr); }
+    .awards-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+      <div class="logo-icon">Anda</div>
+      <div class="logo-text">
+        <div class="main">Anda Automation (Hong Kong) Limited</div>
+        <div class="sub">SMART MANUFACTURING SOLUTIONS</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#industries">Industries</a>
+      <a href="#global">Global</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🏭 Precision Automation Solutions</div>
+      <h1>
+        <span class="light">Anda Automation</span>
+        Smart Manufacturing<br>for a Connected World
+      </h1>
+      <p class="hero-desc">
+        Anda Automation delivers high-precision dispensing, conformal coating, curing, and plasma treatment equipment for global electronics, automotive, semiconductor, and medical industries — with total solutions from R&amp;D to after-sales service.
+      </p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">⚙️ Explore Products</a>
+        <a href="#contact" class="btn-outline">📞 Contact HK Office</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="num">1999</span>
+        <span class="label">Year Established<br>25+ Years of Innovation</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">1,000+</span>
+        <span class="label">Employees Worldwide</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">20+</span>
+        <span class="label">Global Service Centers</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">4</span>
+        <span class="label">Core Product Series</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <div class="section-tag">About Anda</div>
+      <h2>World-Class Intelligent<br>Equipment Manufacturer</h2>
+      <p>
+        Guangdong Anda Automation Solutions Co., Ltd. is a smart equipment and system manufacturer providing vertical integration of research &amp; development, manufacturing, sales and service — specialising in fluid applications and intelligent automation systems.
+      </p>
+      <p>
+        Founded in 1999 and headquartered in Dongguan, China, Anda has grown into a global leader with offices in Hong Kong (established 2016), the United States, Mexico, Malaysia, and branch offices in Hunan, Shenzhen and Suzhou.
+      </p>
+      <p>
+        Anda is dedicated to delivering smart manufacturing products and services, committed to practicing with leading technologies, continuous innovation, integrity, and diligence — ensuring customer satisfaction is central to everything we do.
+      </p>
+      <div class="fact-grid">
+        <div class="fact-item">
+          <span class="f-num">1999</span>
+          <span class="f-label">Founded in Dongguan, China</span>
+        </div>
+        <div class="fact-item">
+          <span class="f-num">2016</span>
+          <span class="f-label">Hong Kong Office Established</span>
+        </div>
+        <div class="fact-item">
+          <span class="f-num">6+</span>
+          <span class="f-label">Countries with Direct Offices</span>
+        </div>
+        <div class="fact-item">
+          <span class="f-num">10+</span>
+          <span class="f-label">Industries Served Globally</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-aside">
+      <div class="mission-box">
+        <h3>🎯 Our Mission & Vision</h3>
+        <p>
+          <strong>Mission:</strong> Delivering smart manufacturing products and services to our global customers.<br><br>
+          <strong>Vision:</strong> To be a world-class intelligent equipment manufacturer, advancing industry through leading technology and continuous innovation.
+        </p>
+      </div>
+      <div class="hk-office">
+        <h3>🏢 Hong Kong Office</h3>
+        <div class="office-item">
+          <span class="icon">📍</span>
+          <span>Suite 2702, 27/F, 909 Cheung Sha Wan Road, Kowloon, Hong Kong</span>
+        </div>
+        <div class="office-item">
+          <span class="icon">📞</span>
+          <span>+852 2388 6699</span>
+        </div>
+        <div class="office-item">
+          <span class="icon">📱</span>
+          <span>5588 2772</span>
+        </div>
+        <div class="office-item">
+          <span class="icon">📧</span>
+          <span>info@anda.com.hk</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-header">
+    <div class="section-tag">Product Lines</div>
+    <h2>Core Product Series</h2>
+    <p>Anda's precision automation equipment covers the full spectrum of fluid application and intelligent assembly systems for demanding industrial environments.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-icon-wrap">
+        <span class="product-icon">🎯</span>
+      </div>
+      <div class="product-body">
+        <h3>Precision Conformal Coating Machine Series</h3>
+        <p>High-accuracy conformal coating systems for PCB protection in electronics manufacturing, ensuring consistent coverage and optimal circuit board longevity.</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-icon-wrap">
+        <span class="product-icon">💉</span>
+      </div>
+      <div class="product-body">
+        <h3>Dispensing Machine Series</h3>
+        <p>High-precision fluid dispensing equipment for adhesive bonding, potting, encapsulation and underfill applications across electronics and semiconductor manufacturing.</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-icon-wrap">
+        <span class="product-icon">🔥</span>
+      </div>
+      <div class="product-body">
+        <h3>Curing Oven Series</h3>
+        <p>Precision thermal curing ovens engineered for consistent temperature profiles, supporting UV and thermal curing processes in advanced electronics production lines.</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-icon-wrap">
+        <span class="product-icon">⚡</span>
+      </div>
+      <div class="product-body">
+        <h3>Plasma Treatment System Series</h3>
+        <p>Atmospheric and vacuum plasma treatment systems for surface activation, cleaning and etching — enhancing adhesion and material performance in critical processes.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional products row -->
+  <div style="max-width:1200px; margin:22px auto 0; display:grid; grid-template-columns:repeat(4,1fr); gap:22px;">
+    <div class="product-card">
+      <div class="product-body" style="padding:22px 18px;">
+        <div style="font-size:1.6rem; margin-bottom:10px;">🔧</div>
+        <h3>Multi-functional Assembly Systems</h3>
+        <p>Flexible automated assembly platforms integrating multiple process steps for high-efficiency smart manufacturing lines.</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-body" style="padding:22px 18px;">
+        <div style="font-size:1.6rem; margin-bottom:10px;">🔬</div>
+        <h3>Semiconductor Manufacturing Equipment</h3>
+        <p>Specialised equipment for semiconductor packaging and assembly processes, meeting the stringent requirements of the chip industry.</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-body" style="padding:22px 18px;">
+        <div style="font-size:1.6rem; margin-bottom:10px;">🏥</div>
+        <h3>Medical Electronic Dispensing & Assembly</h3>
+        <p>ISO-compliant dispensing and assembly machines for medical electronics, combining ultra-precision with full traceability and quality assurance.</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-body" style="padding:22px 18px;">
+        <div style="font-size:1.6rem; margin-bottom:10px;">🏭</div>
+        <h3>Smart Manufacturing System Solutions</h3>
+        <p>End-to-end Industry 4.0 solutions integrating equipment, software and data analytics for fully connected intelligent factories.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries" id="industries">
+  <div class="section-header">
+    <div class="section-tag">Industries Served</div>
+    <h2>Powering Diverse Industries</h2>
+    <p>Anda automation equipment and smart manufacturing solutions serve 10+ major industries worldwide, delivering precision and reliability at scale.</p>
+  </div>
+  <div class="industries-grid">
+    <div class="industry-chip">
+      <span class="icon">📱</span>
+      <span class="name">Consumer Electronics</span>
+    </div>
+    <div class="industry-chip">
+      <span class="icon">🚗</span>
+      <span class="name">Automotive Electronics</span>
+    </div>
+    <div class="industry-chip">
+      <span class="icon">📡</span>
+      <span class="name">Communication Electronics</span>
+    </div>
+    <div class="industry-chip">
+      <span class="icon">🔬</span>
+      <span class="name">Semiconductor</span>
+    </div>
+    <div class="industry-chip">
+      <span class="icon">🏥</span>
+      <span class="name">Medical Electronics</span>
+    </div>
+    <div class="industry-chip">
+      <span class="icon">🔋</span>
+      <span class="name">New Energy</span>
+    </div>
+    <div class="industry-chip">
+      <span class="icon">💡</span>
+      <span class="name">LED Lighting</span>
+    </div>
+    <div class="industry-chip">
+      <span class="icon">⚡</span>
+      <span class="name">Power Supply</span>
+    </div>
+    <div class="industry-chip">
+      <span class="icon">🔌</span>
+      <span class="name">Electric Appliances</span>
+    </div>
+    <div class="industry-chip">
+      <span class="icon">🛠️</span>
+      <span class="name">Instrument Equipment</span>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL PRESENCE -->
+<section class="global" id="global">
+  <div class="section-header">
+    <div class="section-tag">Global Presence</div>
+    <h2>Worldwide Sales &amp; Service Network</h2>
+    <p>With direct offices on 4 continents and 20+ service centers, Anda delivers local support with global standards wherever you operate.</p>
+  </div>
+  <div class="offices-grid">
+    <div class="office-card">
+      <span class="office-flag">🇨🇳</span>
+      <h3>China <span class="hq-badge">HQ</span></h3>
+      <p>Dongguan (Headquarters)<br>Hunan · Shenzhen · Suzhou<br>Branch Offices</p>
+    </div>
+    <div class="office-card">
+      <span class="office-flag">🇭🇰</span>
+      <h3>Hong Kong</h3>
+      <p>Anda Automation (HK) Ltd.<br>Suite 2702, 27/F<br>909 Cheung Sha Wan Rd, KLN</p>
+    </div>
+    <div class="office-card">
+      <span class="office-flag">🇺🇸</span>
+      <h3>United States</h3>
+      <p>Anda Technologies USA, Inc.<br>47639 Lakeview Blvd.<br>Fremont, CA 94538</p>
+    </div>
+    <div class="office-card">
+      <span class="office-flag">🇲🇽</span>
+      <h3>Mexico</h3>
+      <p>Anda Mexico Operations<br>Manufacturing & Service<br>Regional Support Center</p>
+    </div>
+    <div class="office-card" style="grid-column: span 1;">
+      <span class="office-flag">🇲🇾</span>
+      <h3>Malaysia</h3>
+      <p>Anda Malaysia Subsidiary<br>Regional Sales &amp; Service<br>Southeast Asia Coverage</p>
+    </div>
+    <div class="office-card" style="grid-column: span 3;">
+      <span class="office-flag">🌐</span>
+      <h3>Global Service Network</h3>
+      <p>20+ service centers worldwide providing rapid local support, preventive maintenance, spare parts supply, and technical training to customers across Asia, the Americas, Europe and beyond.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="awards" id="awards">
+  <div class="section-header">
+    <div class="section-tag">Recognition & Awards</div>
+    <h2>Internationally Recognised Excellence</h2>
+    <p>Anda's commitment to innovation, quality and customer satisfaction has been recognised by national and international organisations worldwide.</p>
+  </div>
+  <div class="awards-grid inner">
+    <div class="award-card">
+      <span class="award-icon">🏆</span>
+      <div><h4>National High & New Technology Enterprise</h4></div>
+    </div>
+    <div class="award-card">
+      <span class="award-icon">⭐</span>
+      <div><h4>Chinese National AAA Credit Level Enterprise</h4></div>
+    </div>
+    <div class="award-card">
+      <span class="award-icon">🎖️</span>
+      <div><h4>Chinese National Famous Brand Enterprise</h4></div>
+    </div>
+    <div class="award-card">
+      <span class="award-icon">🌟</span>
+      <div><h4>International Service Excellence Award</h4></div>
+    </div>
+    <div class="award-card">
+      <span class="award-icon">🏅</span>
+      <div><h4>China Top Brand &amp; China Excellent Patent Award</h4></div>
+    </div>
+    <div class="award-card">
+      <span class="award-icon">🌍</span>
+      <div><h4>Global Technology Awards · Mexican Technology Awards · America New Product Innovation Awards</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-tag">Contact Us</div>
+      <h2>Anda Automation<br>Hong Kong Office</h2>
+      <p>For product enquiries, technical consultations, quotation requests or after-sales support, contact our Hong Kong team directly. We are ready to support your smart manufacturing needs.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail">
+            <div class="label">Address</div>
+            <div class="value">Suite 2702, 27/F, 909 Cheung Sha Wan Road, Kowloon, Hong Kong</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail">
+            <div class="label">Telephone</div>
+            <div class="value">+852 2388 6699</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-detail">
+            <div class="label">Mobile</div>
+            <div class="value">5588 2772</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-detail">
+            <div class="label">Email</div>
+            <div class="value">info@anda.com.hk</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div class="contact-detail">
+            <div class="label">Website</div>
+            <div class="value">www.anda.com.hk</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-cta">
+      <h3>Request a Product Demo</h3>
+      <p>
+        Discover how Anda's precision automation solutions can transform your manufacturing processes. Our Hong Kong engineers provide on-site demonstrations, technical consultations, and turnkey solution proposals tailored to your production requirements.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://www.anda.com.hk" class="cta-btn blue">
+          <span>🌐</span><span>Visit anda.com.hk</span>
+        </a>
+        <a href="mailto:info@anda.com.hk" class="cta-btn">
+          <span>📧</span><span>Email HK Office</span>
+        </a>
+        <a href="tel:+85223886699" class="cta-btn">
+          <span>📞</span><span>+852 2388 6699</span>
+        </a>
+        <a href="tel:55882772" class="cta-btn">
+          <span>📱</span><span>5588 2772</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="name">Anda Automation (Hong Kong) Limited</div>
+        <div class="en">A SUBSIDIARY OF GUANGDONG ANDA AUTOMATION SOLUTIONS CO., LTD.</div>
+        <p>Smart equipment and system manufacturer providing vertical integration of R&amp;D, manufacturing, sales and service for fluid applications and intelligent automation systems since 1999.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#products">Conformal Coating Machines</a></li>
+          <li><a href="#products">Dispensing Machines</a></li>
+          <li><a href="#products">Curing Ovens</a></li>
+          <li><a href="#products">Plasma Treatment Systems</a></li>
+          <li><a href="#products">Smart Manufacturing Solutions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Anda</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#global">Global Offices</a></li>
+          <li><a href="#awards">Awards</a></li>
+          <li><a href="#contact">Contact HK</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Anda Automation (Hong Kong) Limited. All rights reserved.</span>
+      <span>+852 2388 6699 | info@anda.com.hk</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
