@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>富康盛地產顧問有限公司 | 香港舊樓收購重建專家</title>
+<meta name="description" content="富康盛地產顧問有限公司 — 香港舊樓收購重建服務。35年以上房地產行業經驗，20+成功案例，深厚公營私營人脈網絡。灣仔商業核心地帶。">
+<style>
+  :root {
+    --gold: #b8963e;
+    --gold-light: #d4af5e;
+    --gold-pale: #f5eed8;
+    --dark: #1a1208;
+    --navy: #0d1b2a;
+    --charcoal: #2c2416;
+    --text: #2a2010;
+    --text-light: #7a6a50;
+    --cream: #faf7f0;
+    --white: #ffffff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Arial', 'Helvetica Neue', sans-serif; color: var(--text); background: var(--cream); }
+  html { scroll-behavior: smooth; }
+
+  /* NAV */
+  nav {
+    position:fixed; top:0; width:100%; z-index:100;
+    background: rgba(26,18,8,0.97); backdrop-filter:blur(10px);
+    padding:0 5%; height:72px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:1px solid rgba(184,150,62,0.3);
+  }
+  .logo { display:flex; flex-direction:column; }
+  .logo-zh { color:#fff; font-size:1rem; font-weight:700; letter-spacing:1px; }
+  .logo-en { color: var(--gold); font-size:0.62rem; letter-spacing:2.5px; text-transform:uppercase; }
+  nav ul { list-style:none; display:flex; gap:1.8rem; }
+  nav ul a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.82rem; letter-spacing:1px; transition:color 0.3s; }
+  nav ul a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height:100vh;
+    background: linear-gradient(150deg, var(--dark) 0%, #2c1a08 40%, #1a0f04 100%);
+    display:flex; align-items:center; padding:110px 5% 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(184,150,62,0.08) 0%, transparent 70%);
+  }
+  .hero-img-bg {
+    position:absolute; right:0; top:0; bottom:0; width:45%;
+    background: linear-gradient(90deg, var(--dark), transparent),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect fill='none' stroke='%23b8963e' stroke-opacity='0.07' stroke-width='1' x='10' y='10' width='80' height='80'/%3E%3Crect fill='none' stroke='%23b8963e' stroke-opacity='0.04' stroke-width='1' x='20' y='20' width='60' height='60'/%3E%3Crect fill='none' stroke='%23b8963e' stroke-opacity='0.03' stroke-width='1' x='30' y='30' width='40' height='40'/%3E%3C/svg%3E") repeat;
+  }
+  .hero-inner { max-width:680px; position:relative; z-index:1; }
+  .hero-award {
+    display:inline-flex; align-items:center; gap:0.6rem;
+    background:rgba(184,150,62,0.15); border:1px solid rgba(184,150,62,0.4);
+    padding:8px 16px; border-radius:2px;
+    color: var(--gold-light); font-size:0.72rem; letter-spacing:2px;
+    margin-bottom:2rem;
+  }
+  .hero-award::before { content:'🏆'; font-size:0.9rem; }
+  .hero h1 {
+    font-size:clamp(2.4rem, 5vw, 4.5rem); color:#fff;
+    line-height:1.2; margin-bottom:1.5rem; font-weight:800;
+    letter-spacing:-0.5px;
+  }
+  .hero h1 .accent { color: var(--gold); }
+  .hero-sub { font-size:1.1rem; color:rgba(255,255,255,0.65); line-height:1.9; margin-bottom:2.5rem; }
+  .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:4rem; }
+  .btn-gold {
+    display:inline-block; background: var(--gold); color: var(--dark);
+    padding:15px 36px; text-decoration:none;
+    font-size:0.85rem; letter-spacing:2px; text-transform:uppercase; font-weight:700;
+    transition:all 0.3s;
+  }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-outline-white {
+    display:inline-block; border:1.5px solid rgba(255,255,255,0.4); color:#fff;
+    padding:14px 36px; text-decoration:none;
+    font-size:0.85rem; letter-spacing:2px; text-transform:uppercase;
+    transition:all 0.3s;
+  }
+  .btn-outline-white:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats {
+    display:flex; gap:3.5rem; flex-wrap:wrap;
+    padding-top:2.5rem; border-top:1px solid rgba(184,150,62,0.25);
+  }
+  .hs { }
+  .hs-num { font-size:2.8rem; font-weight:900; color: var(--gold); display:block; line-height:1; }
+  .hs-lbl { font-size:0.72rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:4px; display:block; }
+
+  /* DIVIDER BAR */
+  .bar { background: var(--gold); padding:12px 0; overflow:hidden; }
+  .bar-inner { display:flex; gap:3rem; animation:scroll 24s linear infinite; white-space:nowrap; }
+  .bar-inner span { color: var(--dark); font-size:0.75rem; letter-spacing:3px; text-transform:uppercase; font-weight:700; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* SECTIONS */
+  section { padding:100px 5%; }
+  .tag { color: var(--gold); font-size:0.68rem; letter-spacing:3.5px; text-transform:uppercase; display:block; margin-bottom:0.8rem; }
+  .h2 { font-size:clamp(1.8rem, 3vw, 2.8rem); color: var(--dark); margin-bottom:1rem; font-weight:800; }
+  .lead { font-size:1rem; color: var(--text-light); line-height:1.9; }
+
+  /* CASES */
+  .cases { background: var(--white); }
+  .cases-header { margin-bottom:3.5rem; }
+  .cases-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:1.5px; background:#e0d5c0; margin-bottom:2.5rem; }
+  .case-card {
+    background: var(--cream); padding:1.8rem 1.5rem;
+    transition:background 0.3s;
+    display:flex; flex-direction:column; gap:0.4rem;
+  }
+  .case-card:hover { background: var(--navy); }
+  .case-card:hover .case-name { color:#fff; }
+  .case-card:hover .case-type { color: var(--gold); }
+  .case-num { font-size:2rem; font-weight:900; color:rgba(184,150,62,0.25); line-height:1; }
+  .case-name { font-size:0.95rem; color: var(--dark); font-weight:700; }
+  .case-type { font-size:0.78rem; color: var(--text-light); letter-spacing:1px; transition:color 0.3s; }
+  .cases-note { font-size:0.85rem; color: var(--text-light); text-align:center; padding:1rem; border:1px dashed #d4c8a8; }
+
+  /* PROCESS */
+  .process { background: var(--navy); }
+  .process .h2 { color:#fff; }
+  .process .lead { color:rgba(255,255,255,0.6); }
+  .proc-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:0; margin-top:3.5rem; }
+  .proc-card {
+    padding:2.5rem 2rem; border-right:1px solid rgba(255,255,255,0.07);
+    position:relative;
+  }
+  .proc-card:last-child { border-right:none; }
+  .proc-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: var(--gold); transform:scaleX(0); transition:transform 0.4s; }
+  .proc-card:hover::before { transform:scaleX(1); }
+  .proc-num { font-size:4rem; font-weight:900; color:rgba(184,150,62,0.2); line-height:1; margin-bottom:0.5rem; }
+  .proc-card h3 { font-size:1rem; color:#fff; margin-bottom:0.7rem; font-weight:700; }
+  .proc-card p { font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.7; }
+
+  /* TEAM */
+  .team { background: var(--cream); }
+  .team-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:2rem; margin-top:3rem; }
+  .team-card {
+    background: var(--white); overflow:hidden; border-radius:2px;
+    transition:transform 0.3s, box-shadow 0.3s;
+  }
+  .team-card:hover { transform:translateY(-5px); box-shadow:0 20px 50px rgba(26,18,8,0.12); }
+  .team-top { height:180px; display:flex; align-items:center; justify-content:center; font-size:5rem; }
+  .tc-1 { background:linear-gradient(145deg, #2c1a08, #4a2e10); }
+  .tc-2 { background:linear-gradient(145deg, #0d1b2a, #1a3550); }
+  .tc-3 { background:linear-gradient(145deg, #1a2408, #2e4210); }
+  .team-body { padding:1.8rem; }
+  .team-name { font-size:1.2rem; font-weight:800; color: var(--dark); margin-bottom:0.3rem; }
+  .team-title { font-size:0.8rem; letter-spacing:1.5px; text-transform:uppercase; color: var(--gold); margin-bottom:0.9rem; }
+  .team-bio { font-size:0.88rem; color: var(--text-light); line-height:1.7; }
+
+  /* ABOUT/WHY */
+  .why { background: var(--white); }
+  .why-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+  .why-panels { display:flex; flex-direction:column; gap:1.5rem; }
+  .why-panel { background: var(--cream); padding:2rem; border-left:4px solid var(--gold); border-radius:2px; }
+  .why-panel h3 { font-size:1rem; color: var(--dark); margin-bottom:0.6rem; font-weight:700; }
+  .why-panel p { font-size:0.88rem; color: var(--text-light); line-height:1.7; }
+  .why-visual {
+    background: linear-gradient(145deg, var(--dark), #2c1a08);
+    padding:3.5rem; border-radius:2px; position:relative; overflow:hidden;
+  }
+  .why-visual::after { content:'富'; position:absolute; bottom:-1rem; right:-0.5rem; font-size:16rem; color:rgba(255,255,255,0.04); line-height:1; }
+  .wv-stat { border-bottom:1px solid rgba(255,255,255,0.08); padding:1.2rem 0; position:relative; z-index:1; }
+  .wv-stat:first-child { padding-top:0; }
+  .wv-stat:last-child { border-bottom:none; }
+  .wv-n { font-size:2.2rem; font-weight:900; color: var(--gold); display:block; line-height:1; }
+  .wv-l { font-size:0.75rem; color:rgba(255,255,255,0.5); letter-spacing:1.5px; text-transform:uppercase; margin-top:3px; display:block; }
+
+  /* CONTACT */
+  .contact { background: var(--dark); }
+  .contact .tag { color: var(--gold-light); }
+  .contact .h2 { color:#fff; }
+  .contact .lead { color:rgba(255,255,255,0.6); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; margin-top:3rem; }
+  .ci { margin-bottom:1.6rem; }
+  .ci-lbl { font-size:0.66rem; letter-spacing:2.5px; text-transform:uppercase; color: var(--gold); margin-bottom:0.4rem; display:block; }
+  .ci-val { font-size:0.95rem; color:#fff; }
+  .ci-val a { color: var(--gold-light); text-decoration:none; }
+  .form-group { margin-bottom:1.1rem; }
+  label { font-size:0.68rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.45); display:block; margin-bottom:0.5rem; }
+  input, select, textarea {
+    width:100%; border:1px solid rgba(255,255,255,0.1); padding:12px 14px;
+    font-size:0.9rem; color:#fff; background:rgba(255,255,255,0.06);
+    border-radius:2px; transition:border-color 0.3s; font-family:'Arial',sans-serif;
+  }
+  input:focus, select:focus, textarea:focus { outline:none; border-color: var(--gold); }
+  textarea { resize:vertical; min-height:110px; }
+  select option { background: var(--dark); }
+  .sub-btn {
+    width:100%; background: var(--gold); color: var(--dark); border:none;
+    padding:14px; font-size:0.85rem; letter-spacing:2px; text-transform:uppercase;
+    cursor:pointer; transition:background 0.3s; font-weight:700;
+    font-family:'Arial',sans-serif;
+  }
+  .sub-btn:hover { background: var(--gold-light); }
+
+  /* FOOTER */
+  footer { background:#0a0803; color:rgba(255,255,255,0.45); padding:60px 5% 30px; font-family:'Arial',sans-serif; }
+  .foot-top { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+  .foot-logo-zh { font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:0.4rem; }
+  .foot-logo-en { font-size:0.6rem; letter-spacing:3px; text-transform:uppercase; color: var(--gold); margin-bottom:1.2rem; display:block; }
+  .foot-top p { font-size:0.86rem; line-height:1.8; }
+  .foot-col h4 { color: var(--gold); font-size:0.68rem; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:1.2rem; }
+  .foot-col ul { list-style:none; }
+  .foot-col li { margin-bottom:0.6rem; font-size:0.86rem; }
+  .foot-col a { color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.3s; }
+  .foot-col a:hover { color: var(--gold); }
+  .foot-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:2rem; display:flex; justify-content:space-between; font-size:0.77rem; flex-wrap:wrap; gap:0.5rem; }
+  .designer-credit a { color: var(--gold-light); text-decoration:none; }
+
+  @media (max-width:900px) {
+    nav ul { display:none; }
+    .cases-grid { grid-template-columns:repeat(2, 1fr); }
+    .proc-grid { grid-template-columns:1fr 1fr; }
+    .proc-card { border-right:none; border-bottom:1px solid rgba(255,255,255,0.07); }
+    .why-grid, .contact-grid, .foot-top { grid-template-columns:1fr; }
+    .team-grid { grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:600px) {
+    .hero-stats { gap:2rem; }
+    .team-grid { grid-template-columns:1fr; }
+    .cases-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <span class="logo-zh">富康盛地產顧問有限公司</span>
+    <span class="logo-en">Fu Hong Shing Real Estate Consulting</span>
+  </div>
+  <ul>
+    <li><a href="#cases">成功案例</a></li>
+    <li><a href="#process">收購流程</a></li>
+    <li><a href="#team">服務團隊</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-award">第十一屆香港星級品牌頒獎禮 2023 得獎機構</div>
+    <h1>香港舊樓<br><span class="accent">收購重建</span><br>專業顧問</h1>
+    <p class="hero-sub">富康盛地產顧問有限公司專注於香港舊樓收購重建服務，擁有35年以上業界經驗、深厚公私營人脈網絡，以及20+個成功完成的重建項目。</p>
+    <div class="hero-cta">
+      <a href="#cases" class="btn-gold">了解成功案例</a>
+      <a href="#contact" class="btn-outline-white">預約洽談</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs">
+        <span class="hs-num">35+</span>
+        <span class="hs-lbl">年行業經驗</span>
+      </div>
+      <div class="hs">
+        <span class="hs-num">20+</span>
+        <span class="hs-lbl">成功案例</span>
+      </div>
+      <div class="hs">
+        <span class="hs-num">2023</span>
+        <span class="hs-lbl">星級品牌獎</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAR -->
+<div class="bar">
+  <div class="bar-inner">
+    <span>舊樓收購</span><span>·</span><span>重建顧問</span><span>·</span><span>項目管理</span><span>·</span><span>物業發展</span><span>·</span><span>土地徵用</span><span>·</span><span>香港地產</span><span>·</span>
+    <span>舊樓收購</span><span>·</span><span>重建顧問</span><span>·</span><span>項目管理</span><span>·</span><span>物業發展</span><span>·</span><span>土地徵用</span><span>·</span><span>香港地產</span><span>·</span>
+  </div>
+</div>
+
+<!-- CASES -->
+<section class="cases" id="cases">
+  <div class="cases-header">
+    <span class="tag">Our Track Record</span>
+    <h2 class="h2">成功重建案例</h2>
+    <p class="lead" style="max-width:580px;">二十多個香港地標性舊樓收購重建項目，涵蓋港島、九龍多個核心地區，見證本公司的專業實力與市場公信力。</p>
+  </div>
+  <div class="cases-grid">
+    <div class="case-card">
+      <div class="case-num">01</div>
+      <div class="case-name">霎東街 The Sharp</div>
+      <div class="case-type">港島 · 灣仔</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">02</div>
+      <div class="case-name">希雲街 㬢巒</div>
+      <div class="case-type">港島 · 銅鑼灣</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">03</div>
+      <div class="case-name">禮頓道 希雲大廈</div>
+      <div class="case-type">港島 · 銅鑼灣</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">04</div>
+      <div class="case-name">耀華街 · 堅拿道東</div>
+      <div class="case-type">港島 · 灣仔</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">05</div>
+      <div class="case-name">書館街重士街</div>
+      <div class="case-type">港島 · 上環</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">06</div>
+      <div class="case-name">登龍街 Midtown</div>
+      <div class="case-type">港島 · 灣仔</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">07</div>
+      <div class="case-name">西邊街5-17號</div>
+      <div class="case-type">港島 · 上環</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">08</div>
+      <div class="case-name">北角皇都戲院</div>
+      <div class="case-type">港島 · 北角</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">09</div>
+      <div class="case-name">薄扶林道31-33A號</div>
+      <div class="case-type">港島 · 薄扶林</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">10</div>
+      <div class="case-name">灣仔道232號</div>
+      <div class="case-type">港島 · 灣仔</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">11</div>
+      <div class="case-name">電器道54,56,58號</div>
+      <div class="case-type">港島 · 北角</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">12</div>
+      <div class="case-name">信德街17,17A號</div>
+      <div class="case-type">港島 · 上環</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">13</div>
+      <div class="case-name">堪富利士道2,2A號</div>
+      <div class="case-type">港島 · 灣仔</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">14</div>
+      <div class="case-name">北角麥連街18號</div>
+      <div class="case-type">富薈炮台山酒店</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">15</div>
+      <div class="case-name">機利士南路57-67號</div>
+      <div class="case-type">港島 · 灣仔</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">16</div>
+      <div class="case-name">譚臣道113-115號</div>
+      <div class="case-type">港島 · 灣仔</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">17</div>
+      <div class="case-name">波斯富街54-76號</div>
+      <div class="case-type">港島 · 銅鑼灣</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">18</div>
+      <div class="case-name">雲地利大廈</div>
+      <div class="case-type">港島</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">19</div>
+      <div class="case-name">繼園街項目</div>
+      <div class="case-type">港島 · 北角</div>
+    </div>
+    <div class="case-card">
+      <div class="case-num">20+</div>
+      <div class="case-name">更多項目</div>
+      <div class="case-type">持續進行中</div>
+    </div>
+  </div>
+  <p class="cases-note">以上為部份代表性成功案例，更多項目詳情歡迎與我們聯絡查詢</p>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <span class="tag">Our Methodology</span>
+  <h2 class="h2">四大收購重建執行流程</h2>
+  <p class="lead" style="max-width:560px;">本公司採用系統化的四步執行流程，確保每個收購重建項目從洽談至完成均達最高效率與成效。</p>
+  <div class="proc-grid">
+    <div class="proc-card">
+      <div class="proc-num">01</div>
+      <h3>市場調研 &amp; 物業識別</h3>
+      <p>深入分析香港各區舊樓市場，識別具重建潛力的優質物業，評估業權結構及重建可行性。</p>
+    </div>
+    <div class="proc-card">
+      <div class="proc-num">02</div>
+      <h3>業主洽談 &amp; 收購協議</h3>
+      <p>憑藉豐富談判經驗及深厚人脈，與業主進行專業溝通，達成公平合理的收購協議。</p>
+    </div>
+    <div class="proc-card">
+      <div class="proc-num">03</div>
+      <h3>規劃申請 &amp; 法律程序</h3>
+      <p>處理所有相關規劃申請、法律文件及政府審批程序，確保項目符合建築條例及相關法規。</p>
+    </div>
+    <div class="proc-card">
+      <div class="proc-num">04</div>
+      <h3>項目管理 &amp; 竣工交付</h3>
+      <p>全程監督施工管理、顧問協調至項目完成交付，確保準時、高質完成每個重建項目。</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <span class="tag">Our People</span>
+  <h2 class="h2">核心服務團隊</h2>
+  <p class="lead">各成員均擁有深厚行業背景，曾主理香港及內地多個地標性發展項目。</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-top tc-1">👨‍💼</div>
+      <div class="team-body">
+        <div class="team-name">Patrick Au 歐沚軒</div>
+        <div class="team-title">董事 · 核心營運成員</div>
+        <div class="team-bio">前美聯物業董事。深厚的舊樓收購重建市場知識，曾接受多家媒體訪問，包括新城電台及星島日報，分析香港物業市場。</div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-top tc-2">👨‍💼</div>
+      <div class="team-body">
+        <div class="team-name">Ken Poon</div>
+        <div class="team-title">核心營運成員</div>
+        <div class="team-bio">前金朝陽及聯安收購部總監。在物業收購、業主談判及重建項目管理方面擁有豐富實戰經驗及廣泛人脈。</div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-top tc-3">👩‍💼</div>
+      <div class="team-body">
+        <div class="team-name">Bunnie Lai</div>
+        <div class="team-title">特許土木工程師 · 專業營運團隊</div>
+        <div class="team-bio">特許土木工程師，為團隊提供專業技術支援。擁有從施工管理到零售設計的全方位工程及項目管理背景。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="why-grid">
+    <div class="why-panels">
+      <span class="tag">Team Advantages</span>
+      <h2 class="h2">團隊優勢</h2>
+      <div class="why-panel">
+        <h3>深厚公營私營人脈網絡</h3>
+        <p>我們的團隊非常了解政府和私人項目的要求和程序，熟悉國際商會、國際金融公司及相關建築條例，有效促進項目推進。</p>
+      </div>
+      <div class="why-panel">
+        <h3>廣泛專業知識</h3>
+        <p>擁有從土地徵用、施工管理到售後服務、零售設計及零售項目的全方位專業技術背景，一站式處理各類需求。</p>
+      </div>
+      <div class="why-panel">
+        <h3>35年+ 地產發展行業經驗</h3>
+        <p>團隊成員曾主理及完成地標性項目，包括ICC、IFC、香港四季酒店、上海麗斯卡爾頓酒店等，經驗底蘊深厚。</p>
+      </div>
+      <div class="why-panel">
+        <h3>盡責項目管理及發展</h3>
+        <p>致力按時交付和管理項目，質量上乘。以強大的建築背景監控項目，代表客戶有效管理顧問及承包商。</p>
+      </div>
+    </div>
+    <div class="why-visual">
+      <div class="wv-stat">
+        <span class="wv-n">35+</span>
+        <span class="wv-l">年房地產發展行業經驗</span>
+      </div>
+      <div class="wv-stat">
+        <span class="wv-n">20+</span>
+        <span class="wv-l">成功完成收購重建案例</span>
+      </div>
+      <div class="wv-stat">
+        <span class="wv-n">ICC</span>
+        <span class="wv-l">曾參與地標性項目</span>
+      </div>
+      <div class="wv-stat">
+        <span class="wv-n">2023</span>
+        <span class="wv-l">香港星級品牌頒獎禮</span>
+      </div>
+      <div class="wv-stat">
+        <span class="wv-n">3</span>
+        <span class="wv-l">核心資深專業成員</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <span class="tag">Get In Touch</span>
+  <h2 class="h2">聯絡我們</h2>
+  <p class="lead" style="max-width:500px;">如您對收購重建項目感到興趣，歡迎隨時與我們的項目負責人預約面洽。</p>
+  <div class="contact-grid">
+    <div>
+      <div class="ci">
+        <span class="ci-lbl">總公司地址</span>
+        <div class="ci-val">灣仔告士打道166至168號<br>信和財務大廈 11樓全層</div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">公司電話</span>
+        <div class="ci-val"><a href="tel:+85223283355">(852) 2328 3355</a></div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">項目負責人直線</span>
+        <div class="ci-val"><a href="tel:+85294833992">(852) 9483 3992</a></div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">電郵</span>
+        <div class="ci-val"><a href="mailto:patrickau@fuhongshing.com">patrickau@fuhongshing.com</a></div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">網站</span>
+        <div class="ci-val"><a href="https://fuhongshing.com" target="_blank">fuhongshing.com</a></div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('感謝您的查詢，我們將盡快與您聯絡。');">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="form-group">
+          <label>姓名 *</label>
+          <input type="text" required placeholder="您的姓名">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="+852 xxxx xxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>電郵地址 *</label>
+        <input type="email" required placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>查詢類別</label>
+        <select>
+          <option>舊樓收購查詢</option>
+          <option>重建顧問服務</option>
+          <option>項目合作洽談</option>
+          <option>物業發展咨詢</option>
+          <option>一般查詢</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>詳情 / 物業地址</label>
+        <textarea placeholder="請提供物業地址或項目詳情，方便我們作初步評估..."></textarea>
+      </div>
+      <button type="submit" class="sub-btn">提交查詢</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-logo-zh">富康盛地產顧問有限公司</div>
+      <span class="foot-logo-en">Fu Hong Shing Real Estate Consulting Limited</span>
+      <p>香港舊樓收購重建服務專家。35年以上行業經驗，20+成功案例，2023年香港星級品牌得獎機構。位於灣仔商業核心。</p>
+    </div>
+    <div class="foot-col">
+      <h4>服務</h4>
+      <ul>
+        <li><a href="#cases">成功案例</a></li>
+        <li><a href="#process">收購重建流程</a></li>
+        <li><a href="#team">服務團隊</a></li>
+        <li><a href="#contact">聯絡我們</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>聯絡</h4>
+      <ul>
+        <li><a href="tel:+85223283355">(852) 2328 3355</a></li>
+        <li><a href="tel:+85294833992">(852) 9483 3992</a></li>
+        <li><a href="mailto:patrickau@fuhongshing.com">電郵查詢</a></li>
+        <li><a href="https://fuhongshing.com">官方網站</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 富康盛地產顧問有限公司 版權所有 | 灣仔，香港</span>
+    <span class="designer-credit">網頁設計 <a href="mailto:kck980724@gmail.com">Kwan's IT</a> · +852 60282297</span>
+  </div>
+</footer>
+
+</body>
+</html>
