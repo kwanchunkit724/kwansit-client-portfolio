@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合興香港有限公司 | 優質急凍冰鮮食品 | Uni Joy HK</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --red:#c0392b;
+    --dark-red:#8e1a0e;
+    --orange:#e67e22;
+    --warm:#fff5f0;
+    --cream:#fffbf5;
+    --white:#ffffff;
+    --light:#fafafa;
+    --gray:#6b7280;
+    --dark:#1a1a1a;
+    --border:#f0e0d8;
+    --green:#27ae60;
+  }
+  body{font-family:'Microsoft JhengHei','微軟正黑體','Segoe UI',Arial,sans-serif;background:#fff;color:var(--dark);}
+  a{text-decoration:none;color:inherit;}
+
+  /* NAV */
+  nav{background:var(--dark-red);padding:0 5%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;height:66px;border-bottom:3px solid var(--orange);}
+  .nav-logo{display:flex;align-items:center;gap:12px;}
+  .nav-logo-icon{width:42px;height:42px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
+  .nav-brand .cn{color:var(--white);font-size:1.1rem;font-weight:700;letter-spacing:2px;}
+  .nav-brand .en{color:#ffccaa;font-size:0.66rem;letter-spacing:1.5px;}
+  .nav-links{display:flex;gap:24px;list-style:none;}
+  .nav-links a{color:#ffe8d8;font-size:0.87rem;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--orange);}
+  .nav-cta{background:var(--orange);color:var(--white);padding:8px 18px;border-radius:5px;font-weight:700;font-size:0.85rem;transition:background 0.2s;}
+  .nav-cta:hover{background:#d35400;}
+
+  /* BANNER */
+  .top-bar{background:var(--orange);padding:8px 5%;text-align:center;font-size:0.82rem;color:var(--white);font-weight:600;}
+  .top-bar a{color:var(--white);text-decoration:underline;}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--dark-red) 0%,var(--red) 60%,#e74c3c 100%);padding:80px 5% 70px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-40px;right:-40px;width:320px;height:320px;background:rgba(230,126,34,0.1);border-radius:50%;}
+  .hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;position:relative;z-index:1;}
+  .hero-badge{display:inline-block;background:rgba(230,126,34,0.25);color:var(--orange);border:1px solid rgba(230,126,34,0.5);padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:700;letter-spacing:2px;margin-bottom:16px;}
+  .hero h1{color:var(--white);font-size:2.3rem;font-weight:900;line-height:1.25;margin-bottom:8px;}
+  .hero h1 .sub{display:block;font-size:1rem;color:rgba(255,255,255,0.65);font-weight:500;margin-top:5px;letter-spacing:1px;}
+  .hero-tagline{color:var(--orange);font-size:1rem;font-weight:600;margin-bottom:14px;}
+  .hero-desc{color:#ffd8c8;font-size:0.95rem;line-height:1.75;margin-bottom:28px;}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn-orange{background:var(--orange);color:var(--white);padding:12px 24px;border-radius:6px;font-weight:700;font-size:0.9rem;transition:all 0.2s;}
+  .btn-orange:hover{background:#d35400;transform:translateY(-2px);}
+  .btn-white{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.35);padding:12px 24px;border-radius:6px;font-weight:600;font-size:0.9rem;transition:all 0.2s;}
+  .btn-white:hover{border-color:var(--orange);color:var(--orange);}
+  .hero-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .hero-cat{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 10px;text-align:center;transition:all 0.2s;}
+  .hero-cat:hover{background:rgba(230,126,34,0.2);border-color:var(--orange);}
+  .hero-cat .cat-icon{font-size:1.8rem;display:block;margin-bottom:6px;}
+  .hero-cat span{color:rgba(255,255,255,0.85);font-size:0.78rem;font-weight:600;}
+
+  /* SECTIONS */
+  section{padding:70px 5%;}
+  .section-inner{max-width:1100px;margin:0 auto;}
+  .section-label{font-size:0.75rem;font-weight:700;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+  .section-title{font-size:1.85rem;font-weight:800;color:var(--dark);margin-bottom:14px;}
+  .section-title span{color:var(--red);}
+  .section-desc{color:var(--gray);font-size:0.97rem;line-height:1.75;max-width:640px;}
+
+  /* ABOUT */
+  .about{background:var(--warm);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;margin-top:34px;}
+  .about-text p{color:#4a4a4a;font-size:0.96rem;line-height:1.85;margin-bottom:14px;}
+  .cert-box{background:var(--white);border:2px solid var(--green);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;margin-top:20px;}
+  .cert-icon{font-size:2rem;}
+  .cert-box strong{display:block;color:var(--green);font-size:0.88rem;font-weight:700;}
+  .cert-box span{color:var(--gray);font-size:0.8rem;}
+  .about-info{background:linear-gradient(135deg,var(--dark-red),var(--red));border-radius:14px;padding:34px;color:var(--white);}
+  .about-info h3{color:var(--orange);font-size:1.1rem;font-weight:800;margin-bottom:18px;}
+  .info-list{list-style:none;}
+  .info-list li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);display:flex;align-items:flex-start;gap:10px;font-size:0.87rem;color:#ffd8c8;line-height:1.5;}
+  .info-list li:last-child{border-bottom:none;}
+  .info-list li::before{content:'▸';color:var(--orange);flex-shrink:0;}
+
+  /* PRODUCTS */
+  .products{background:var(--white);}
+  .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px;}
+  .cat-card{background:var(--cream);border-radius:12px;padding:22px 18px;text-align:center;border:1px solid var(--border);transition:all 0.2s;cursor:pointer;}
+  .cat-card:hover{border-color:var(--red);transform:translateY(-3px);box-shadow:0 6px 20px rgba(192,57,43,0.12);}
+  .cat-card .icon{font-size:2.6rem;display:block;margin-bottom:10px;}
+  .cat-card h3{color:var(--dark);font-size:0.92rem;font-weight:700;margin-bottom:5px;}
+  .cat-card .count{color:var(--gray);font-size:0.75rem;}
+
+  /* FEATURED PRODUCTS */
+  .featured{background:var(--warm);}
+  .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px;}
+  .product-card{background:var(--white);border-radius:12px;overflow:hidden;border:1px solid var(--border);transition:all 0.2s;}
+  .product-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.1);transform:translateY(-3px);}
+  .product-badge{background:var(--red);color:var(--white);font-size:0.7rem;font-weight:700;padding:3px 8px;border-radius:0 0 8px 0;position:absolute;top:0;left:0;}
+  .product-img{height:100px;background:linear-gradient(135deg,#f5e6d8,#ffe0cc);display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;}
+  .product-info{padding:14px;}
+  .product-info h4{font-size:0.85rem;font-weight:700;color:var(--dark);margin-bottom:6px;line-height:1.3;}
+  .product-price{display:flex;align-items:center;gap:8px;}
+  .price-now{color:var(--red);font-weight:800;font-size:1rem;}
+  .price-old{color:var(--gray);font-size:0.78rem;text-decoration:line-through;}
+  .iso-note{font-size:0.7rem;color:var(--green);margin-top:4px;}
+
+  /* SOCIAL */
+  .social-mission{background:linear-gradient(135deg,var(--dark-red),var(--red));padding:70px 5%;}
+  .social-mission .section-title{color:var(--white);}
+  .social-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:34px;}
+  .social-text p{color:#ffd8c8;font-size:0.96rem;line-height:1.8;margin-bottom:14px;}
+  .mission-cards{display:flex;flex-direction:column;gap:14px;}
+  .mission-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 18px;display:flex;align-items:flex-start;gap:12px;}
+  .mission-card .mc-icon{font-size:1.5rem;flex-shrink:0;}
+  .mission-card h4{color:var(--orange);font-size:0.88rem;font-weight:700;margin-bottom:4px;}
+  .mission-card p{color:rgba(255,255,255,0.7);font-size:0.8rem;line-height:1.5;}
+
+  /* DELIVERY */
+  .delivery{background:var(--white);}
+  .delivery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:30px;}
+  .delivery-card{background:var(--cream);border-radius:12px;padding:24px;text-align:center;border:1px solid var(--border);}
+  .delivery-card .d-icon{font-size:2rem;margin-bottom:10px;display:block;}
+  .delivery-card h3{color:var(--dark-red);font-size:0.92rem;font-weight:700;margin-bottom:8px;}
+  .delivery-card p{color:var(--gray);font-size:0.82rem;line-height:1.6;}
+
+  /* CONTACT */
+  .contact{background:var(--warm);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;}
+  .contact-card{background:var(--white);border-radius:12px;padding:28px;box-shadow:0 2px 10px rgba(0,0,0,0.06);border-top:3px solid var(--red);}
+  .contact-card h3{color:var(--dark-red);font-size:0.98rem;font-weight:700;margin-bottom:18px;}
+  .contact-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+  .ci-icon{width:35px;height:35px;background:rgba(192,57,43,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+  .contact-item strong{display:block;color:var(--dark);font-size:0.83rem;margin-bottom:2px;}
+  .contact-item span{color:var(--gray);font-size:0.83rem;line-height:1.5;}
+  .online-box{background:linear-gradient(135deg,var(--orange),#d35400);border-radius:12px;padding:28px;color:var(--white);}
+  .online-box h3{font-size:0.98rem;font-weight:700;margin-bottom:14px;}
+  .online-box p{font-size:0.87rem;line-height:1.7;opacity:0.9;}
+  .online-btn{display:inline-block;background:var(--white);color:var(--orange);padding:10px 22px;border-radius:6px;font-weight:700;font-size:0.85rem;margin-top:14px;transition:all 0.2s;}
+  .online-btn:hover{background:#fff5ee;}
+
+  /* FOOTER */
+  footer{background:#1a0505;padding:32px 5%;text-align:center;border-top:1px solid rgba(230,126,34,0.3);}
+  footer .brand{color:var(--orange);font-weight:700;font-size:0.98rem;margin-bottom:5px;}
+  footer p{color:#6b4040;font-size:0.78rem;}
+
+  @media(max-width:900px){
+    .hero-inner,.about-grid,.social-grid,.contact-grid{grid-template-columns:1fr;}
+    .hero-cats{grid-template-columns:repeat(4,1fr);}
+    .cat-grid{grid-template-columns:repeat(2,1fr);}
+    .product-grid{grid-template-columns:repeat(2,1fr);}
+    .delivery-grid{grid-template-columns:1fr 1fr;}
+    nav .nav-links,.nav-cta{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">📦 網上訂購，送貨上門 ｜ 如需訂購，請前往: <a href="https://unijoyonline.azurewebsites.net" target="_blank">unijoyonline.azurewebsites.net</a></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">🥩</div>
+    <div class="nav-brand">
+      <div class="cn">合興香港有限公司</div>
+      <div class="en">Uni Joy HK Limited</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#products">產品分類</a></li>
+    <li><a href="#social">社會使命</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">立即訂購</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">ISO 22000 認證工場</div>
+      <h1>優質急凍冰鮮食品
+        <span class="sub">Uni Joy HK Limited</span>
+      </h1>
+      <p class="hero-tagline">自設認證工場 · 安全可靠衛生</p>
+      <p class="hero-desc">主要經營基本凍肉及冰鮮食品，如豬、牛、羊、雞、鵝、鴨、海產、野味及半製成品等，品類齊全，品質有保證，送貨上門，方便快捷。</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-orange">瀏覽產品</a>
+        <a href="#contact" class="btn-white">聯絡查詢</a>
+      </div>
+    </div>
+    <div class="hero-cats">
+      <div class="hero-cat">
+        <span class="cat-icon">🐄</span>
+        <span>牛肉類</span>
+      </div>
+      <div class="hero-cat">
+        <span class="cat-icon">🐷</span>
+        <span>豬肉類</span>
+      </div>
+      <div class="hero-cat">
+        <span class="cat-icon">🐔</span>
+        <span>雞肉類</span>
+      </div>
+      <div class="hero-cat">
+        <span class="cat-icon">🐟</span>
+        <span>海產類</span>
+      </div>
+      <div class="hero-cat">
+        <span class="cat-icon">🐑</span>
+        <span>羊肉類</span>
+      </div>
+      <div class="hero-cat">
+        <span class="cat-icon">🍱</span>
+        <span>套餐類</span>
+      </div>
+      <div class="hero-cat">
+        <span class="cat-icon">🍿</span>
+        <span>小食類</span>
+      </div>
+      <div class="hero-cat">
+        <span class="cat-icon">❤️</span>
+        <span>愛心包</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">關於我們</div>
+    <h2 class="section-title">合興 — <span>優質冰鮮肉食專家</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>合興香港有限公司（又稱合興肉食凍肉公司）是一家紮根香港的優質急凍及冰鮮食品供應商，主要經營各類基本凍肉及冰鮮食品，包括豬、牛、羊、雞、鵝、鴨、海產、野味及半製成品等多種品類。</p>
+        <p>公司自設 ISO 22000 認證工場，從源頭把關食品安全，確保每件產品均安全可靠衛生。我們提供網上訂購服務，方便客戶足不出戶即可選購新鮮優質食材，並安排送貨上門。</p>
+        <p>合興香港同時承擔社企使命，致力透過優質食品業務回饋社會，關顧有需要的社群，實踐「愛心包」等社會關懷計劃。</p>
+        <div class="cert-box">
+          <span class="cert-icon">✅</span>
+          <div>
+            <strong>ISO 22000 食品安全管理認證</strong>
+            <span>自設認證工場，全程監控食品安全，保證安全可靠衛生</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-info">
+        <h3>🏢 公司資料</h3>
+        <ul class="info-list">
+          <li>公司名稱：合興香港有限公司 / 合興肉食凍肉公司</li>
+          <li>英文名稱：Uni Joy HK Limited</li>
+          <li>主要業務：急凍冰鮮肉食、海產及食品供應</li>
+          <li>自設 ISO 22000 認證工場</li>
+          <li>網上訂購平台，送貨上門服務</li>
+          <li>香港社企（社會企業）</li>
+          <li>地址：葵涌葵福路26-32號金發工業大廈第二期一字樓B室</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-label">產品分類</div>
+    <h2 class="section-title">齊全<span>品類選擇</span></h2>
+    <p class="section-desc">合興香港提供多元化的急凍冰鮮食品，涵蓋各類肉食、海產及小食，滿足家庭及商業採購需求。</p>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <span class="icon">🐄</span>
+        <h3>牛肉類</h3>
+        <div class="count">24款產品</div>
+      </div>
+      <div class="cat-card">
+        <span class="icon">🐷</span>
+        <h3>豬肉類</h3>
+        <div class="count">28款產品</div>
+      </div>
+      <div class="cat-card">
+        <span class="icon">🐔</span>
+        <h3>雞肉類</h3>
+        <div class="count">19款產品</div>
+      </div>
+      <div class="cat-card">
+        <span class="icon">🐟</span>
+        <h3>海產類</h3>
+        <div class="count">18款產品</div>
+      </div>
+      <div class="cat-card">
+        <span class="icon">🐑</span>
+        <h3>羊肉類</h3>
+        <div class="count">5款產品</div>
+      </div>
+      <div class="cat-card">
+        <span class="icon">🍱</span>
+        <h3>套餐類</h3>
+        <div class="count">5款套餐</div>
+      </div>
+      <div class="cat-card">
+        <span class="icon">🍿</span>
+        <h3>小食類</h3>
+        <div class="count">34款產品</div>
+      </div>
+      <div class="cat-card">
+        <span class="icon">❤️</span>
+        <h3>愛心包</h3>
+        <div class="count">7款愛心包</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="featured" id="featured">
+  <div class="section-inner">
+    <div class="section-label">精選產品</div>
+    <h2 class="section-title">熱門<span>精選商品</span></h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-img">
+          <span class="product-badge">-27%</span>
+          🍗
+        </div>
+        <div class="product-info">
+          <h4>生雞胸原隻1包（約250g）</h4>
+          <div class="product-price">
+            <span class="price-now">HK$16</span>
+            <span class="price-old">HK$22</span>
+          </div>
+          <div class="iso-note">✓ ISO22000認證工場</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <span class="product-badge">-30%</span>
+          🥩
+        </div>
+        <div class="product-info">
+          <h4>紐西蘭PRIME牛柳 – 2100g</h4>
+          <div class="product-price">
+            <span class="price-now">HK$500</span>
+            <span class="price-old">HK$714</span>
+          </div>
+          <div class="iso-note">✓ ISO22000認證工場</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <span class="product-badge">-30%</span>
+          🥩
+        </div>
+        <div class="product-info">
+          <h4>法式羊架 – 1000g</h4>
+          <div class="product-price">
+            <span class="price-now">HK$158</span>
+            <span class="price-old">HK$225</span>
+          </div>
+          <div class="iso-note">✓ ISO22000認證工場</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <span class="product-badge">-30%</span>
+          🦀
+        </div>
+        <div class="product-info">
+          <h4>越南罐裝白蟹身肉</h4>
+          <div class="product-price">
+            <span class="price-now">HK$180</span>
+            <span class="price-old">HK$257</span>
+          </div>
+          <div class="iso-note">✓ ISO22000認證工場</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <span class="product-badge">-25%</span>
+          🥩
+        </div>
+        <div class="product-info">
+          <h4>厚切牛舌芯 500g+/-</h4>
+          <div class="product-price">
+            <span class="price-now">HK$158</span>
+            <span class="price-old">HK$211</span>
+          </div>
+          <div class="iso-note">✓ ISO22000認證工場</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <span class="product-badge">-31%</span>
+          🐷
+        </div>
+        <div class="product-info">
+          <h4>豬腩片 1000g</h4>
+          <div class="product-price">
+            <span class="price-now">HK$90</span>
+            <span class="price-old">HK$130</span>
+          </div>
+          <div class="iso-note">✓ ISO22000認證工場</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <span class="product-badge">-30%</span>
+          🍱
+        </div>
+        <div class="product-info">
+          <h4>日本叉燒(熟)連汁 – 1.5kg</h4>
+          <div class="product-price">
+            <span class="price-now">HK$190</span>
+            <span class="price-old">HK$271</span>
+          </div>
+          <div class="iso-note">✓ 只需翻熱即可食用</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <span class="product-badge">-30%</span>
+          🐚
+        </div>
+        <div class="product-info">
+          <h4>急凍大帶子（1包6-8粒）</h4>
+          <div class="product-price">
+            <span class="price-now">HK$40</span>
+            <span class="price-old">HK$57</span>
+          </div>
+          <div class="iso-note">✓ ISO22000認證工場</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL MISSION -->
+<section class="social-mission" id="social">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--orange);">社會使命</div>
+    <h2 class="section-title">以食品<span style="color:var(--orange);">回饋社會</span></h2>
+    <div class="social-grid">
+      <div class="social-text">
+        <p>合興香港有限公司不僅是一家食品企業，更是一家有心的香港社會企業（社企）。我們相信，優質的食品業務不只是商業行為，更是聯繫社區、關懷有需要人士的重要媒介。</p>
+        <p>透過「愛心包」計劃及其他社會關懷項目，合興香港致力將優質食品帶給社區中有需要的家庭及人士，以實際行動踐行社會責任，共同建構更關愛的香港社區。</p>
+      </div>
+      <div class="mission-cards">
+        <div class="mission-card">
+          <span class="mc-icon">❤️</span>
+          <div>
+            <h4>愛心包計劃</h4>
+            <p>精心設計的愛心食品包，為有需要的家庭提供優質肉食及食材，關顧社區弱勢</p>
+          </div>
+        </div>
+        <div class="mission-card">
+          <span class="mc-icon">🏭</span>
+          <div>
+            <h4>ISO 22000 認證生產</h4>
+            <p>自設認證工場，全程食品安全管理，確保每件產品安全可靠，讓消費者安心</p>
+          </div>
+        </div>
+        <div class="mission-card">
+          <span class="mc-icon">🌏</span>
+          <div>
+            <h4>社企精神</h4>
+            <p>以可持續商業模式支持社會關懷工作，做到商業與社會責任並行，共創社會價值</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY -->
+<section class="delivery" id="delivery">
+  <div class="section-inner">
+    <div class="section-label">送貨安排</div>
+    <h2 class="section-title">方便快捷<span>送貨服務</span></h2>
+    <div class="delivery-grid">
+      <div class="delivery-card">
+        <span class="d-icon">🛒</span>
+        <h3>網上訂購</h3>
+        <p>透過網上訂購平台輕鬆下單，選擇心水產品，足不出戶即可完成採購。</p>
+      </div>
+      <div class="delivery-card">
+        <span class="d-icon">🚚</span>
+        <h3>送貨上門</h3>
+        <p>完成付款後安排送貨上門，將新鮮急凍食品直送到您家門口，新鮮快捷。</p>
+      </div>
+      <div class="delivery-card">
+        <span class="d-icon">❄️</span>
+        <h3>保鮮冷鏈</h3>
+        <p>急凍冰鮮食品全程冷鏈運輸，確保食品安全及新鮮度，放心食用。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <h2 class="section-title">歡迎<span>查詢訂購</span></h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>📞 聯絡方式</h3>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <strong>公司電話</strong>
+            <span>(852) 2558 0094<br>非辦公時間有電話錄音服務</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <strong>手提電話 / WhatsApp</strong>
+            <span>6176 3558 / 9099 8041</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📠</div>
+          <div>
+            <strong>傳真</strong>
+            <span>(852) 2889 5669</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <strong>電郵</strong>
+            <span>unijoyhk@gmail.com</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <strong>地址</strong>
+            <span>香港新界葵涌葵福路26-32號<br>金發工業大廈第二期一字樓B室</span>
+          </div>
+        </div>
+      </div>
+      <div class="online-box">
+        <h3>🛒 網上訂購平台</h3>
+        <p>立即前往我們的網上訂購平台，瀏覽全部產品，輕鬆選購，安排送貨上門。</p>
+        <p style="margin-top:10px;">✅ 品類齊全 · 价格優惠 · ISO22000認證工場 · 安全衛生有保證</p>
+        <a href="https://unijoyonline.azurewebsites.net" class="online-btn" target="_blank">前往訂購 →</a>
+        <p style="margin-top:16px;font-size:0.82rem;opacity:0.85;">🌐 網址：unijoy.com.hk<br>📘 Facebook 專頁：合興香港有限公司</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">合興香港有限公司 | 合興肉食凍肉公司 | Uni Joy HK Limited</div>
+  <p>急凍冰鮮食品 · 豬 · 牛 · 羊 · 雞 · 海產 · 小食 | ISO 22000認證工場 | 葵涌，香港</p>
+  <p style="margin-top:6px;">&copy; 2025 合興香港有限公司。版權所有。以上產品圖片只供參考，一切以實物為準。</p>
+</footer>
+
+</body>
+</html>
