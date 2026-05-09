@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lexington Limited | Premium Furniture & Lifestyle Products | Hong Kong</title>
+<meta name="description" content="Lexington Limited — Hong Kong's trusted sourcing partner for premium furniture, kitchenware, and lifestyle products. Connecting global brands with Asian markets since establishment.">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f8f5ef;
+    --warm-white: #fdfaf5;
+    --text: #2c2c2c;
+    --text-light: #6b6b6b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', 'Times New Roman', serif; color: var(--text); background: var(--warm-white); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(26,39,68,0.97); backdrop-filter: blur(8px);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+  .logo {
+    font-size: 1.4rem; font-weight: 700; color: #fff;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .logo span { color: var(--gold); }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul a { color: rgba(255,255,255,0.85); text-decoration: none; font-family: 'Arial', sans-serif; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
+  nav ul a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    height: 100vh; min-height: 600px;
+    background: linear-gradient(135deg, var(--navy) 0%, #2a3f6f 50%, #1a2744 100%);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 0 5%;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 780px; }
+  .hero-tag {
+    display: inline-block;
+    color: var(--gold); border: 1px solid var(--gold);
+    padding: 6px 20px; border-radius: 2px;
+    font-family: 'Arial', sans-serif; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 4.2rem); color: #fff;
+    line-height: 1.15; margin-bottom: 1.5rem;
+    font-weight: 400; letter-spacing: 1px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p {
+    font-size: 1.1rem; color: rgba(255,255,255,0.75);
+    line-height: 1.8; margin-bottom: 2.5rem; font-family: 'Arial', sans-serif;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold); color: var(--navy);
+    padding: 14px 38px; text-decoration: none;
+    font-family: 'Arial', sans-serif; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 700; transition: all 0.3s;
+    margin-right: 1rem;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.5); color: #fff;
+    padding: 14px 38px; text-decoration: none;
+    font-family: 'Arial', sans-serif; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    margin-top: 4rem; display: flex; justify-content: center; gap: 4rem;
+    padding-top: 2.5rem; border-top: 1px solid rgba(201,168,76,0.3);
+  }
+  .hero-stat-num { font-size: 2.2rem; color: var(--gold); font-weight: 700; display: block; }
+  .hero-stat-lbl { font-family: 'Arial', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.6); letter-spacing: 1.5px; text-transform: uppercase; }
+
+  /* MARQUEE */
+  .marquee-wrap { background: var(--gold); overflow: hidden; padding: 12px 0; }
+  .marquee { display: flex; gap: 3rem; animation: scroll 25s linear infinite; white-space: nowrap; }
+  .marquee span { color: var(--navy); font-family: 'Arial', sans-serif; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+  .marquee span::before { content: '◆ '; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTIONS */
+  section { padding: 100px 5%; }
+  .section-tag { color: var(--gold); font-family: 'Arial', sans-serif; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem; display: block; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.8rem); color: var(--navy); margin-bottom: 1rem; font-weight: 400; }
+  .section-sub { font-size: 1.05rem; color: var(--text-light); line-height: 1.8; font-family: 'Arial', sans-serif; max-width: 560px; }
+
+  /* CATEGORIES */
+  .categories { background: var(--cream); }
+  .categories-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem; }
+  .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5px; background: #d4cbc0; }
+  .cat-card {
+    background: var(--warm-white); padding: 3rem 2.5rem;
+    position: relative; overflow: hidden;
+    transition: all 0.4s;
+    cursor: default;
+  }
+  .cat-card:hover { background: var(--navy); }
+  .cat-card:hover .cat-icon { color: var(--gold); }
+  .cat-card:hover h3 { color: #fff; }
+  .cat-card:hover p { color: rgba(255,255,255,0.7); }
+  .cat-icon { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; transition: color 0.4s; }
+  .cat-card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--navy); font-weight: 400; letter-spacing: 0.5px; transition: color 0.4s; }
+  .cat-card p { font-family: 'Arial', sans-serif; font-size: 0.9rem; color: var(--text-light); line-height: 1.7; transition: color 0.4s; }
+
+  /* ABOUT */
+  .about { background: var(--warm-white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .about-visual {
+    background: linear-gradient(135deg, var(--navy), #2a3f6f);
+    border-radius: 2px;
+    padding: 4rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-visual::before {
+    content: 'L'; font-size: 18rem; font-weight: 900;
+    position: absolute; bottom: -2rem; right: -1rem;
+    color: rgba(255,255,255,0.04); line-height: 1;
+    font-family: Georgia, serif;
+  }
+  .av-number { font-size: 3.5rem; color: var(--gold); font-weight: 700; display: block; margin-bottom: 0.3rem; }
+  .av-label { font-family: 'Arial', sans-serif; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 2rem; display: block; }
+  .av-item { border-top: 1px solid rgba(255,255,255,0.1); padding: 1.2rem 0; }
+  .av-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .av-item-title { color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 0.3rem; }
+  .av-item-desc { font-family: 'Arial', sans-serif; font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+  .about-text .section-sub { margin-bottom: 2rem; }
+  .about-list { list-style: none; margin-top: 2rem; }
+  .about-list li {
+    padding: 1rem 0; border-bottom: 1px solid #e8e0d0;
+    font-family: 'Arial', sans-serif; font-size: 0.9rem; color: var(--text-light);
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .about-list li::before { content: '◆'; color: var(--gold); font-size: 0.6rem; margin-top: 4px; flex-shrink: 0; }
+
+  /* SERVICES */
+  .services { background: var(--navy); }
+  .services .section-title { color: #fff; }
+  .services .section-sub { color: rgba(255,255,255,0.65); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2px; margin-top: 3.5rem; background: rgba(255,255,255,0.05); }
+  .svc-card {
+    padding: 2.5rem;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.3s;
+    background: transparent;
+  }
+  .svc-card:hover { background: rgba(201,168,76,0.1); }
+  .svc-num { font-size: 3rem; font-weight: 700; color: rgba(201,168,76,0.25); display: block; margin-bottom: 0.5rem; line-height: 1; }
+  .svc-card h3 { font-size: 1.1rem; color: #fff; margin-bottom: 0.8rem; font-weight: 400; }
+  .svc-card p { font-family: 'Arial', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+  /* WHY US */
+  .why { background: var(--cream); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 2rem; margin-top: 3.5rem; }
+  .why-card { text-align: center; padding: 2.5rem 1.5rem; }
+  .why-icon {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--navy); margin: 0 auto 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+  }
+  .why-card h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 0.7rem; font-weight: 600; font-family: 'Arial', sans-serif; }
+  .why-card p { font-family: 'Arial', sans-serif; font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact { background: var(--warm-white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+  .contact-info h3 { font-size: 1.3rem; color: var(--navy); margin-bottom: 0.6rem; font-weight: 400; }
+  .contact-info p { font-family: 'Arial', sans-serif; font-size: 0.9rem; color: var(--text-light); line-height: 1.7; margin-bottom: 2rem; }
+  .ci-block { margin-bottom: 1.5rem; }
+  .ci-label { font-family: 'Arial', sans-serif; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; display: block; }
+  .ci-value { font-size: 1rem; color: var(--navy); font-family: 'Arial', sans-serif; }
+  .form-group { margin-bottom: 1.2rem; }
+  label { font-family: 'Arial', sans-serif; font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); display: block; margin-bottom: 0.5rem; }
+  input, select, textarea {
+    width: 100%; border: 1px solid #ddd; border-radius: 0;
+    padding: 12px 16px; font-family: 'Arial', sans-serif; font-size: 0.95rem;
+    background: #fafafa; transition: border-color 0.3s; color: var(--text);
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); background: #fff; }
+  textarea { resize: vertical; min-height: 120px; }
+  .submit-btn {
+    background: var(--navy); color: #fff;
+    border: none; padding: 14px 40px;
+    font-family: 'Arial', sans-serif; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer; transition: background 0.3s; width: 100%; margin-top: 0.5rem;
+  }
+  .submit-btn:hover { background: var(--gold); color: var(--navy); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    padding: 60px 5% 30px;
+    font-family: 'Arial', sans-serif;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand .logo { font-size: 1.3rem; margin-bottom: 1rem; display: block; }
+  .footer-brand p { font-size: 0.88rem; line-height: 1.7; }
+  .footer-col h4 { color: var(--gold); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.2rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.6rem; font-size: 0.88rem; }
+  .footer-col ul a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
+  .footer-col ul a:hover { color: var(--gold); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.8rem; flex-wrap: wrap; gap: 0.5rem; }
+  .designer-credit { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+  .designer-credit a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 768px) {
+    .about-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
+    nav ul { display: none; }
+    .hero-stats { gap: 2rem; flex-wrap: wrap; }
+    .categories-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">LEXINGTON <span>LIMITED</span></div>
+  <ul>
+    <li><a href="#categories">Products</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Hong Kong · Est. International Trade</div>
+    <h1>Premium <em>Furniture</em> &<br>Lifestyle Products</h1>
+    <p>Lexington Limited is a trusted Hong Kong-based international purchaser and trading company, specialising in premium furniture, kitchenware, utensils, and tableware. We bridge quality global suppliers with discerning buyers across Asia.</p>
+    <a href="#categories" class="btn-primary">Explore Products</a>
+    <a href="#contact" class="btn-outline">Get in Touch</a>
+    <div class="hero-stats">
+      <div>
+        <span class="hero-stat-num">3</span>
+        <span class="hero-stat-lbl">Core Categories</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">20+</span>
+        <span class="hero-stat-lbl">Source Markets</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">HK</span>
+        <span class="hero-stat-lbl">Based & Certified</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>Furniture</span><span>Kitchenware</span><span>Tableware</span><span>Utensils</span><span>Home Décor</span><span>International Sourcing</span><span>Quality Assured</span><span>Hong Kong Based</span>
+    <span>Furniture</span><span>Kitchenware</span><span>Tableware</span><span>Utensils</span><span>Home Décor</span><span>International Sourcing</span><span>Quality Assured</span><span>Hong Kong Based</span>
+  </div>
+</div>
+
+<!-- PRODUCT CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="categories-header">
+    <div>
+      <span class="section-tag">Our Portfolio</span>
+      <h2 class="section-title">Product Categories</h2>
+      <p class="section-sub">We source and trade premium quality products across three core categories, serving retailers, distributors, and hospitality businesses throughout Hong Kong and Asia.</p>
+    </div>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <span class="cat-icon">🛋️</span>
+      <h3>Furniture</h3>
+      <p>Residential and commercial furniture sourced from leading manufacturers across Europe, Asia, and North America. From contemporary to classic styles, all pieces meet our rigorous quality standards.</p>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🍳</span>
+      <h3>Kitchenware</h3>
+      <p>Professional and home kitchenware including cookware, bakeware, food preparation tools, and kitchen accessories. Sourced from trusted manufacturers to ensure durability and performance.</p>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🍽️</span>
+      <h3>Tableware & Utensils</h3>
+      <p>Complete tableware collections including dinnerware, serveware, cutlery, and utensil sets. From everyday dining to premium hospitality settings, we supply the full spectrum.</p>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🏨</span>
+      <h3>Hospitality Supply</h3>
+      <p>Specialised procurement for hotels, restaurants, and hospitality venues. Bulk orders, custom specifications, and consistent quality for demanding professional environments.</p>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🏠</span>
+      <h3>Home Décor</h3>
+      <p>Curated home décor accessories that complement furniture collections. Decorative items, accent pieces, and lifestyle products to complete residential and commercial interiors.</p>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">📦</span>
+      <h3>Custom Sourcing</h3>
+      <p>Bespoke sourcing service for specific product requirements. We leverage our global network across 20+ countries to find precisely what your business needs, at competitive pricing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <span class="av-number">20+</span>
+      <span class="av-label">Countries Sourced From</span>
+      <div class="av-item">
+        <div class="av-item-title">Europe &amp; North America</div>
+        <div class="av-item-desc">Italy · France · Germany · UK · USA · Canada</div>
+      </div>
+      <div class="av-item">
+        <div class="av-item-title">Asia Pacific</div>
+        <div class="av-item-desc">China · Japan · Korea · Taiwan · Malaysia · Thailand</div>
+      </div>
+      <div class="av-item">
+        <div class="av-item-title">Certified Partners</div>
+        <div class="av-item-desc">All suppliers verified and quality-audited</div>
+      </div>
+      <div class="av-item">
+        <div class="av-item-title">Hong Kong Registered</div>
+        <div class="av-item-desc">Sai Wan Ho · Hong Kong Island</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="section-tag">Who We Are</span>
+      <h2 class="section-title">A Trusted Name in Hong Kong Trade</h2>
+      <p class="section-sub">Lexington Limited is a Hong Kong-based international trading company specialising in the procurement and distribution of furniture, kitchenware, and tableware. We connect quality global manufacturers with buyers across the Asian market.</p>
+      <p class="section-sub" style="margin-top:1rem;">With our office in Sai Wan Ho, Hong Kong Island, we are strategically positioned at the heart of one of the world's most dynamic trading hubs, enabling efficient transactions with partners across the globe.</p>
+      <ul class="about-list">
+        <li>International purchasing expertise across furniture, kitchen, and lifestyle categories</li>
+        <li>Established relationships with suppliers across Europe, Asia, and North America</li>
+        <li>Quality verification and compliance checks on all products</li>
+        <li>Efficient logistics coordination from source to destination</li>
+        <li>Competitive pricing through volume purchasing and supplier relationships</li>
+        <li>Personalised service with direct access to our experienced team</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <span class="section-tag">What We Do</span>
+  <h2 class="section-title">Our Services</h2>
+  <p class="section-sub">From sourcing to delivery, we provide end-to-end trading and procurement solutions tailored to your business requirements.</p>
+  <div class="services-grid">
+    <div class="svc-card">
+      <span class="svc-num">01</span>
+      <h3>International Procurement</h3>
+      <p>We source products directly from manufacturers and authorised distributors in 20+ countries, ensuring authenticity, compliance, and competitive pricing for our clients.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-num">02</span>
+      <h3>Product Verification</h3>
+      <p>Every product sourced undergoes quality verification against your specifications. We ensure compliance with Hong Kong import standards and your business requirements.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-num">03</span>
+      <h3>Logistics Coordination</h3>
+      <p>We manage shipping, customs clearance, and last-mile delivery coordination, making the import process seamless from supplier warehouse to your door.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-num">04</span>
+      <h3>Bulk &amp; Trade Orders</h3>
+      <p>Specialised service for large-volume orders. Retailers, hospitality groups, and property developers benefit from our ability to handle significant quantities efficiently.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-num">05</span>
+      <h3>Market Research</h3>
+      <p>We provide insights on pricing trends, new product categories, and emerging suppliers to help our clients make informed purchasing decisions in dynamic markets.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-num">06</span>
+      <h3>Supplier Development</h3>
+      <p>Long-term relationship building with verified suppliers ensures consistent product availability, priority allocation during shortages, and negotiated pricing advantages.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why">
+  <div style="text-align:center; max-width:600px; margin:0 auto 3.5rem;">
+    <span class="section-tag">Why Choose Us</span>
+    <h2 class="section-title">The Lexington Advantage</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🌐</div>
+      <h3>Global Network</h3>
+      <p>Access to verified suppliers across 20+ countries, giving you a wider choice and better pricing than domestic-only suppliers.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">✅</div>
+      <h3>Quality Assured</h3>
+      <p>Rigorous supplier audits and product verification before every shipment means you receive exactly what you ordered.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <h3>Efficient Process</h3>
+      <p>Streamlined procurement workflow from enquiry to delivery, minimising lead times and administrative burden for your team.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💼</div>
+      <h3>HK Expertise</h3>
+      <p>Deep knowledge of Hong Kong import regulations, trade procedures, and market dynamics built through years of experience.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title">Contact Us</h2>
+      <p>Whether you have a specific product requirement, want to discuss a bulk order, or simply wish to explore what Lexington Limited can source for your business — we're here to help.</p>
+      <div class="ci-block">
+        <span class="ci-label">Address</span>
+        <div class="ci-value">Room 1607, Hing Man Street<br>Sai Wan Ho, Hong Kong Island<br>Hong Kong</div>
+      </div>
+      <div class="ci-block">
+        <span class="ci-label">Telephone</span>
+        <div class="ci-value">+852 3110 1208</div>
+      </div>
+      <div class="ci-block">
+        <span class="ci-label">Fax</span>
+        <div class="ci-value">+852 3110 1200</div>
+      </div>
+      <div class="ci-block">
+        <span class="ci-label">Email</span>
+        <div class="ci-value"><a href="mailto:hello@lexngo.com" style="color:var(--navy);text-decoration:none;">hello@lexngo.com</a></div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <form onsubmit="event.preventDefault(); alert('Thank you for your enquiry. We will respond within one business day.');">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label for="fname">First Name *</label>
+            <input type="text" id="fname" required placeholder="John">
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name *</label>
+            <input type="text" id="lname" required placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" placeholder="Your Company Ltd">
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" required placeholder="john@company.com">
+        </div>
+        <div class="form-group">
+          <label for="category">Product Category</label>
+          <select id="category">
+            <option value="">Select a category...</option>
+            <option>Furniture</option>
+            <option>Kitchenware</option>
+            <option>Tableware & Utensils</option>
+            <option>Home Décor</option>
+            <option>Hospitality Supply</option>
+            <option>Custom Sourcing</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Your Requirements</label>
+          <textarea id="message" placeholder="Please describe the products you are looking for, quantities, target pricing, and any specific requirements..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">LEXINGTON <span>LIMITED</span></span>
+      <p>Hong Kong-based international trading company specialising in premium furniture, kitchenware, and tableware. Your trusted sourcing partner for quality products from around the world.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#categories">Furniture</a></li>
+        <li><a href="#categories">Kitchenware</a></li>
+        <li><a href="#categories">Tableware</a></li>
+        <li><a href="#categories">Home Décor</a></li>
+        <li><a href="#categories">Custom Sourcing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Lexington Limited. All rights reserved. | Sai Wan Ho, Hong Kong</span>
+    <span class="designer-credit">Website designed by <a href="mailto:kck980724@gmail.com">Kwan's IT</a> · +852 60282297</span>
+  </div>
+</footer>
+
+</body>
+</html>
