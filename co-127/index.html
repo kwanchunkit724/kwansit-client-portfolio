@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>職人咖啡 | 勁香有限公司 Pro Aroma Café</title>
+<style>
+  :root {
+    --espresso: #2c1a0e;
+    --dark: #1a0f07;
+    --roast: #5c3317;
+    --caramel: #c9853a;
+    --cream: #f5ead4;
+    --latte: #d4a96a;
+    --white: #ffffff;
+    --light: #fdf8f2;
+    --muted: #7a6050;
+    --text: #2c1a0e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* HEADER */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(28, 15, 7, 0.96); backdrop-filter: blur(8px);
+    padding: 0 40px; height: 65px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(201,133,58,0.3);
+  }
+  .logo { display: flex; align-items: center; gap: 14px; }
+  .logo-icon { width: 38px; height: 38px; background: var(--caramel); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .logo-text {}
+  .logo-zh { color: var(--cream); font-size: 17px; font-weight: 700; letter-spacing: 2px; }
+  .logo-en { color: var(--latte); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-family: 'Arial', sans-serif; }
+  nav { display: flex; gap: 28px; }
+  nav a { color: rgba(255,255,255,0.8); font-size: 13px; letter-spacing: 1px; font-family: 'Arial', sans-serif; transition: color 0.3s; }
+  nav a:hover { color: var(--latte); }
+  .nav-cta { background: var(--caramel); color: var(--dark) !important; padding: 8px 20px; border-radius: 3px; font-weight: 700; }
+  .nav-cta:hover { background: var(--latte) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--espresso) 50%, var(--roast) 100%);
+  }
+  .hero-beans {
+    position: absolute; inset: 0; opacity: 0.07;
+    background: radial-gradient(circle at 20% 80%, #c9853a 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, #8b5e3c 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #5c3317 0%, transparent 60%);
+  }
+  .hero-content { position: relative; z-index: 2; padding: 120px 40px 80px; max-width: 1200px; margin: 0 auto; width: 100%; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .hero-badge { display: inline-block; border: 1px solid var(--caramel); color: var(--caramel); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; padding: 6px 18px; margin-bottom: 24px; font-family: 'Arial', sans-serif; }
+  .hero-title { font-size: clamp(40px, 5vw, 64px); color: var(--white); line-height: 1.2; margin-bottom: 12px; }
+  .hero-title .kanji { display: block; }
+  .hero-title .en { display: block; font-size: 0.45em; color: var(--latte); letter-spacing: 4px; text-transform: uppercase; font-family: 'Arial', sans-serif; margin-top: 8px; }
+  .hero-desc { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 36px; font-family: 'Arial', sans-serif; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-warm { background: var(--caramel); color: var(--dark); padding: 14px 34px; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 3px; font-family: 'Arial', sans-serif; transition: all 0.3s; }
+  .btn-warm:hover { background: var(--latte); }
+  .btn-ghost { border: 2px solid rgba(255,255,255,0.4); color: var(--white); padding: 14px 34px; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; border-radius: 3px; font-family: 'Arial', sans-serif; transition: all 0.3s; }
+  .btn-ghost:hover { border-color: var(--latte); color: var(--latte); }
+  .hero-visual {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(201,133,58,0.25);
+    border-radius: 12px; padding: 40px; text-align: center;
+  }
+  .hero-visual .cup { font-size: 80px; margin-bottom: 16px; }
+  .hero-tagline { color: var(--latte); font-size: 18px; letter-spacing: 2px; margin-bottom: 24px; }
+  .hero-attrs { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .attr { text-align: center; }
+  .attr .num { font-size: 28px; font-weight: 700; color: var(--caramel); }
+  .attr .lbl { font-size: 11px; color: rgba(255,255,255,0.5); font-family: 'Arial', sans-serif; letter-spacing: 1px; margin-top: 2px; }
+
+  /* SECTION */
+  section { padding: 80px 40px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-tag { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--caramel); font-family: 'Arial', sans-serif; margin-bottom: 12px; }
+  .section-title { font-size: clamp(26px, 4vw, 40px); color: var(--espresso); margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 580px; font-family: 'Arial', sans-serif; }
+  .divider { width: 40px; height: 2px; background: var(--caramel); margin: 18px 0; }
+
+  /* PHILOSOPHY */
+  .philosophy { background: var(--light); }
+  .phil-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 50px; }
+  .phil-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .phil-card {
+    background: var(--white); border-radius: 10px; padding: 28px 20px;
+    text-align: center; box-shadow: 0 4px 20px rgba(44,26,14,0.08);
+    border-top: 3px solid var(--caramel);
+  }
+  .phil-icon { font-size: 36px; margin-bottom: 12px; }
+  .phil-card h4 { font-size: 15px; color: var(--espresso); margin-bottom: 8px; }
+  .phil-card p { font-size: 13px; color: var(--muted); font-family: 'Arial', sans-serif; line-height: 1.6; }
+  .phil-text { font-size: 15px; color: var(--text); line-height: 1.9; font-family: 'Arial', sans-serif; }
+  .phil-text p { margin-bottom: 18px; }
+  .phil-quote {
+    font-size: 20px; font-style: italic; color: var(--roast);
+    border-left: 4px solid var(--caramel); padding-left: 20px;
+    margin: 24px 0; line-height: 1.6;
+  }
+
+  /* MENU */
+  .menu { background: var(--white); }
+  .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
+  .menu-category {
+    background: var(--light); border-radius: 10px; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(44,26,14,0.08); transition: transform 0.3s;
+  }
+  .menu-category:hover { transform: translateY(-5px); }
+  .menu-header { padding: 28px; text-align: center; }
+  .menu-header.espresso { background: linear-gradient(135deg, var(--espresso), var(--roast)); }
+  .menu-header.pour { background: linear-gradient(135deg, var(--roast), var(--caramel)); }
+  .menu-header.special { background: linear-gradient(135deg, #5c4a3a, #8b6b4a); }
+  .menu-icon { font-size: 44px; margin-bottom: 10px; }
+  .menu-header h3 { font-size: 18px; color: var(--white); margin-bottom: 4px; }
+  .menu-header .sub { font-size: 11px; color: rgba(255,255,255,0.65); letter-spacing: 2px; font-family: 'Arial', sans-serif; text-transform: uppercase; }
+  .menu-items { padding: 20px 24px; }
+  .menu-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed rgba(44,26,14,0.1); }
+  .menu-item:last-child { border-bottom: none; }
+  .item-name { font-size: 14px; color: var(--text); font-family: 'Arial', sans-serif; }
+  .item-sub { font-size: 11px; color: var(--muted); font-family: 'Arial', sans-serif; }
+  .item-price { font-size: 14px; color: var(--caramel); font-weight: 700; font-family: 'Arial', sans-serif; white-space: nowrap; }
+
+  /* CRAFT PROCESS */
+  .craft { background: var(--espresso); color: var(--white); }
+  .craft .section-title { color: var(--cream); }
+  .craft .divider { background: var(--caramel); }
+  .craft .section-sub { color: rgba(255,255,255,0.7); }
+  .process-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; margin-top: 50px; position: relative; }
+  .process-steps::before {
+    content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 2px;
+    background: linear-gradient(to right, var(--caramel), var(--latte));
+  }
+  .step { text-align: center; position: relative; }
+  .step-circle {
+    width: 56px; height: 56px; border-radius: 50%; background: var(--caramel);
+    display: flex; align-items: center; justify-content: center; font-size: 22px;
+    margin: 0 auto 16px; position: relative; z-index: 1;
+    border: 3px solid var(--espresso);
+  }
+  .step h4 { font-size: 14px; color: var(--cream); margin-bottom: 6px; }
+  .step p { font-size: 12px; color: rgba(255,255,255,0.55); font-family: 'Arial', sans-serif; line-height: 1.5; }
+
+  /* CONTACT */
+  .contact { background: var(--light); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 50px; align-items: start; }
+  .c-card { background: var(--white); border-radius: 10px; padding: 32px; box-shadow: 0 4px 20px rgba(44,26,14,0.08); }
+  .c-card h3 { font-size: 20px; color: var(--espresso); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--caramel); }
+  .c-item { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(44,26,14,0.08); }
+  .c-item:last-child { border-bottom: none; }
+  .c-ico { font-size: 22px; flex-shrink: 0; }
+  .c-detail .label { font-size: 10px; letter-spacing: 2px; color: var(--caramel); font-family: 'Arial', sans-serif; text-transform: uppercase; margin-bottom: 3px; }
+  .c-detail .val { font-size: 15px; color: var(--espresso); font-weight: 600; font-family: 'Arial', sans-serif; }
+  .c-detail .val a { color: var(--roast); }
+  .c-detail .note { font-size: 12px; color: var(--muted); font-family: 'Arial', sans-serif; margin-top: 2px; }
+  .cta-box { background: var(--espresso); border-radius: 10px; padding: 36px; color: var(--white); }
+  .cta-box h3 { font-size: 22px; color: var(--cream); margin-bottom: 16px; }
+  .cta-box p { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.8; font-family: 'Arial', sans-serif; margin-bottom: 28px; }
+  .cta-box-btns { display: flex; flex-direction: column; gap: 12px; }
+  .cta-b { display: block; padding: 14px 24px; border-radius: 5px; text-align: center; font-family: 'Arial', sans-serif; font-size: 14px; font-weight: 700; transition: all 0.3s; }
+  .cta-b.warm { background: var(--caramel); color: var(--dark); }
+  .cta-b.warm:hover { background: var(--latte); }
+  .cta-b.outline { border: 2px solid rgba(255,255,255,0.35); color: var(--white); }
+  .cta-b.outline:hover { background: rgba(255,255,255,0.1); }
+
+  /* FOOTER */
+  footer { background: var(--dark); color: rgba(255,255,255,0.55); padding: 40px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 30px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .footer-brand .f-name { color: var(--cream); font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+  .footer-brand .f-en { color: var(--caramel); font-size: 11px; letter-spacing: 2px; font-family: 'Arial', sans-serif; margin-top: 4px; }
+  .footer-brand .f-tagline { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 10px; font-family: 'Arial', sans-serif; font-style: italic; }
+  .footer-links { display: flex; gap: 50px; }
+  .footer-col h5 { color: var(--caramel); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-family: 'Arial', sans-serif; margin-bottom: 14px; }
+  .footer-col a { display: block; color: rgba(255,255,255,0.5); font-size: 13px; font-family: 'Arial', sans-serif; margin-bottom: 8px; transition: color 0.3s; }
+  .footer-col a:hover { color: var(--latte); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 22px; font-size: 12px; font-family: 'Arial', sans-serif; }
+
+  @media (max-width: 900px) {
+    header { padding: 0 20px; }
+    nav { display: none; }
+    section { padding: 60px 20px; }
+    .hero-grid, .phil-grid, .contact-grid { grid-template-columns: 1fr; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-steps::before { display: none; }
+    .footer-top { flex-direction: column; }
+    .footer-links { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <div class="logo-icon">☕</div>
+    <div class="logo-text">
+      <div class="logo-zh">職人咖啡 · 勁香</div>
+      <div class="logo-en">Pro Aroma Artisan Café</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#about">理念</a>
+    <a href="#menu">菜單</a>
+    <a href="#craft">製法</a>
+    <a href="#contact" class="nav-cta">聯絡我們</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-beans"></div>
+  <div class="hero-content">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">Hong Kong · Artisan Coffee</div>
+        <h1 class="hero-title">
+          <span class="kanji">職人咖啡</span>
+          <span class="en">Pro Aroma · Artisan Craft</span>
+        </h1>
+        <p class="hero-desc">以職人精神，萃取每一杯咖啡的極致風味<br>勁香有限公司為您帶來純粹、真實的咖啡體驗</p>
+        <div class="hero-btns">
+          <a href="#menu" class="btn-warm">探索菜單</a>
+          <a href="#contact" class="btn-ghost">聯絡我們</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="cup">☕</div>
+        <div class="hero-tagline">勁香 · 職人之道</div>
+        <div class="hero-attrs">
+          <div class="attr"><div class="num">職</div><div class="lbl">職人精神</div></div>
+          <div class="attr"><div class="num">香</div><div class="lbl">香氣濃郁</div></div>
+          <div class="attr"><div class="num">醇</div><div class="lbl">醇厚口感</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="about">
+  <div class="container">
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+      <div>
+        <div class="section-tag">我們的理念 · Philosophy</div>
+        <h2 class="section-title">職人，是一種<br>對完美的執著</h2>
+        <div class="divider"></div>
+        <div class="phil-text">
+          <div class="phil-quote">「每一杯咖啡，都是職人對品質的承諾」</div>
+          <p>勁香有限公司旗下「職人咖啡」，以精益求精的職人精神，從選豆、烘培、研磨到萃取，每一個步驟都精心把關，為香港的咖啡愛好者帶來無與倫比的咖啡體驗。</p>
+          <p>我們相信，好咖啡的背後是對原材料的尊重、對工藝的堅持，以及對顧客的真誠。「勁香」二字，正是我們的承諾——濃郁芬芳的香氣，讓每一口都充滿力量。</p>
+        </div>
+      </div>
+      <div class="phil-grid">
+        <div class="phil-card">
+          <div class="phil-icon">🌱</div>
+          <h4>精選豆源</h4>
+          <p>嚴選來自全球優質莊園的單一產地咖啡豆，把關每一批原料</p>
+        </div>
+        <div class="phil-card">
+          <div class="phil-icon">🔥</div>
+          <h4>精準烘焙</h4>
+          <p>以科學與藝術結合的烘培技術，引出每款咖啡豆的獨特風味</p>
+        </div>
+        <div class="phil-card">
+          <div class="phil-icon">⚖️</div>
+          <h4>精確萃取</h4>
+          <p>嚴格控制每一個萃取參數，確保每杯咖啡都達到最佳狀態</p>
+        </div>
+        <div class="phil-card">
+          <div class="phil-icon">❤️</div>
+          <h4>用心服務</h4>
+          <p>職人的心意不只在咖啡，更在於為每位顧客創造美好體驗</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="section-tag">飲品菜單 · Menu</div>
+    <h2 class="section-title">每杯都是<br>職人之作</h2>
+    <div class="divider"></div>
+    <p class="section-sub">從經典意式到精品手沖，每款飲品均由職人親手製作</p>
+    <div class="menu-grid">
+      <div class="menu-category">
+        <div class="menu-header espresso">
+          <div class="menu-icon">☕</div>
+          <h3>意式咖啡</h3>
+          <div class="sub">Espresso Series</div>
+        </div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div><div class="item-name">職人濃縮</div><div class="item-sub">Espresso</div></div>
+            <div class="item-price">HK$38</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">勁香美式</div><div class="item-sub">Americano</div></div>
+            <div class="item-price">HK$42</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">拿鐵咖啡</div><div class="item-sub">Café Latte</div></div>
+            <div class="item-price">HK$52</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">卡布奇諾</div><div class="item-sub">Cappuccino</div></div>
+            <div class="item-price">HK$52</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">馥列白</div><div class="item-sub">Flat White</div></div>
+            <div class="item-price">HK$55</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">香草拿鐵</div><div class="item-sub">Vanilla Latte</div></div>
+            <div class="item-price">HK$58</div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-category">
+        <div class="menu-header pour">
+          <div class="menu-icon">🫗</div>
+          <h3>手沖精品</h3>
+          <div class="sub">Pour Over Series</div>
+        </div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div><div class="item-name">職人手沖</div><div class="item-sub">Single Origin Pour Over</div></div>
+            <div class="item-price">HK$68</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">衣索比亞</div><div class="item-sub">Ethiopia Yirgacheffe</div></div>
+            <div class="item-price">HK$72</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">哥倫比亞</div><div class="item-sub">Colombia Huila</div></div>
+            <div class="item-price">HK$72</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">巴拿馬藝妓</div><div class="item-sub">Panama Geisha</div></div>
+            <div class="item-price">HK$98</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">冷萃咖啡</div><div class="item-sub">Cold Brew</div></div>
+            <div class="item-price">HK$65</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">氮氣冷萃</div><div class="item-sub">Nitro Cold Brew</div></div>
+            <div class="item-price">HK$75</div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-category">
+        <div class="menu-header special">
+          <div class="menu-icon">✨</div>
+          <h3>特色飲品</h3>
+          <div class="sub">Signature Drinks</div>
+        </div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div><div class="item-name">勁香特調</div><div class="item-sub">Pro Aroma Signature</div></div>
+            <div class="item-price">HK$68</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">燕麥拿鐵</div><div class="item-sub">Oat Milk Latte</div></div>
+            <div class="item-price">HK$58</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">抹茶拿鐵</div><div class="item-sub">Matcha Latte</div></div>
+            <div class="item-price">HK$55</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">焦糖瑪奇朵</div><div class="item-sub">Caramel Macchiato</div></div>
+            <div class="item-price">HK$60</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">熱朱古力</div><div class="item-sub">Hot Chocolate</div></div>
+            <div class="item-price">HK$50</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">季節限定</div><div class="item-sub">Seasonal Special</div></div>
+            <div class="item-price">時價</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRAFT PROCESS -->
+<section class="craft" id="craft">
+  <div class="container">
+    <div class="section-tag">職人工藝 · Craft Process</div>
+    <h2 class="section-title" style="color:var(--cream);">從豆到杯<br>職人之道</h2>
+    <div class="divider"></div>
+    <p class="section-sub">五個精心把關的步驟，成就每一杯完美咖啡</p>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-circle">🌿</div>
+        <h4>選豆</h4>
+        <p>精選全球優質莊園的單一產地豆</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">🔥</div>
+        <h4>烘焙</h4>
+        <p>按豆種特性，精準控制烘焙曲線</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">⚙️</div>
+        <h4>研磨</h4>
+        <p>現點現磨，確保最佳新鮮度與香氣</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">💧</div>
+        <h4>萃取</h4>
+        <p>職人手工萃取，精確掌控每一個參數</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">☕</div>
+        <h4>呈獻</h4>
+        <p>一杯充滿職人心意的完美咖啡</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-tag">聯絡我們 · Contact</div>
+    <h2 class="section-title">與我們連線<br>品嚐職人咖啡</h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="c-card">
+        <h3>聯絡資訊</h3>
+        <div class="c-item">
+          <span class="c-ico">✉️</span>
+          <div class="c-detail">
+            <div class="label">電郵</div>
+            <div class="val"><a href="mailto:pro13391@gmail.com">pro13391@gmail.com</a></div>
+            <div class="note">查詢飲品、採購及合作事宜</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <span class="c-ico">🏢</span>
+          <div class="c-detail">
+            <div class="label">公司</div>
+            <div class="val">勁香有限公司</div>
+            <div class="note">Pro Aroma Co. Ltd</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <span class="c-ico">📍</span>
+          <div class="c-detail">
+            <div class="label">服務地區</div>
+            <div class="val">香港 Hong Kong</div>
+            <div class="note">Restaurants Industry</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <span class="c-ico">🌐</span>
+          <div class="c-detail">
+            <div class="label">品牌</div>
+            <div class="val">職人咖啡 Pro Aroma Café</div>
+            <div class="note">職人手藝 · 香港製造</div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-box">
+        <h3>合作與查詢</h3>
+        <p>無論是飲品菜單查詢、企業採購、咖啡培訓課程，抑或商業合作，歡迎隨時與我們聯絡。勁香職人咖啡團隊將竭誠為您服務。</p>
+        <div class="cta-box-btns">
+          <a href="mailto:pro13391@gmail.com" class="cta-b warm">✉️ 電郵查詢</a>
+          <a href="#menu" class="cta-b outline">☕ 查看菜單</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="f-name">勁香有限公司 · 職人咖啡</div>
+        <div class="f-en">Pro Aroma Co. Ltd · Artisan Café</div>
+        <div class="f-tagline">「職人精神，香港製造」</div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>飲品</h5>
+          <a href="#">意式咖啡</a>
+          <a href="#">手沖精品</a>
+          <a href="#">特色飲品</a>
+          <a href="#">季節限定</a>
+        </div>
+        <div class="footer-col">
+          <h5>資訊</h5>
+          <a href="#">品牌理念</a>
+          <a href="#">職人工藝</a>
+          <a href="#">聯絡我們</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2024 勁香有限公司 Pro Aroma Co. Ltd · 職人咖啡 · All Rights Reserved</div>
+      <div>pro13391@gmail.com · Hong Kong</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
