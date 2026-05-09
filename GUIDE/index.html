@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hong Kong Guide | Dining, Lifestyle & Experiences</title>
+<style>
+  :root {
+    --red: #c0392b; --dark-red: #922b21; --gold: #d4ac0d;
+    --dark: #1a1a1a; --charcoal: #2c2c2c;
+    --cream: #faf8f4; --white: #ffffff; --text: #2a2a2a; --muted: #666;
+    --sky: #2980b9;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Arial',sans-serif; color:var(--text); background:var(--white); }
+  a { text-decoration:none; color:inherit; }
+
+  header {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(26,26,26,0.97); height:65px;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 40px; border-bottom:2px solid var(--red);
+  }
+  .logo { font-size:20px; font-weight:900; color:var(--white); letter-spacing:1px; }
+  .logo span { color:var(--red); }
+  nav { display:flex; gap:24px; }
+  nav a { color:rgba(255,255,255,0.7); font-size:13px; letter-spacing:1px; transition:color 0.2s; }
+  nav a:hover { color:var(--gold); }
+
+  .hero {
+    min-height:100vh; background:linear-gradient(135deg, var(--dark) 0%, #2a0a0a 60%, var(--dark-red) 100%);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:100px 20px 60px; position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:'HK'; position:absolute; font-size:400px; font-weight:900;
+    color:rgba(255,255,255,0.02); top:50%; left:50%; transform:translate(-50%,-50%);
+  }
+  .hero-content { position:relative; z-index:1; color:var(--white); max-width:800px; }
+  .hero-tag { font-size:11px; letter-spacing:5px; color:var(--gold); text-transform:uppercase; margin-bottom:20px; }
+  .hero-title { font-size:clamp(40px,7vw,80px); font-weight:900; line-height:1.1; margin-bottom:16px; }
+  .hero-title span { color:var(--red); }
+  .hero-sub { font-size:17px; color:rgba(255,255,255,0.7); line-height:1.7; margin-bottom:40px; }
+  .hero-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .btn-r { background:var(--red); color:var(--white); padding:13px 32px; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; transition:all 0.3s; }
+  .btn-r:hover { background:var(--dark-red); }
+  .btn-o { border:2px solid rgba(255,255,255,0.35); color:var(--white); padding:13px 32px; font-size:13px; letter-spacing:2px; text-transform:uppercase; transition:all 0.3s; }
+  .btn-o:hover { border-color:var(--gold); color:var(--gold); }
+
+  section { padding:80px 40px; }
+  .container { max-width:1100px; margin:0 auto; }
+  .stag { font-size:11px; letter-spacing:4px; color:var(--red); text-transform:uppercase; margin-bottom:12px; }
+  .stitle { font-size:clamp(26px,4vw,40px); color:var(--text); margin-bottom:16px; }
+  .ssub { font-size:15px; color:var(--muted); line-height:1.8; max-width:560px; }
+  .rule { width:40px; height:2px; background:var(--red); margin:18px 0; }
+
+  /* CATEGORIES */
+  .cats { background:var(--cream); }
+  .cats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:50px; }
+  .cat-card {
+    background:var(--white); border-radius:8px; padding:32px 20px; text-align:center;
+    border-top:4px solid transparent; transition:all 0.3s; box-shadow:0 2px 12px rgba(0,0,0,0.06);
+    cursor:pointer;
+  }
+  .cat-card:hover { border-top-color:var(--red); transform:translateY(-5px); box-shadow:0 12px 32px rgba(0,0,0,0.12); }
+  .cat-icon { font-size:40px; margin-bottom:14px; }
+  .cat-card h3 { font-size:16px; color:var(--text); margin-bottom:6px; font-weight:700; }
+  .cat-card p { font-size:12px; color:var(--muted); line-height:1.5; }
+
+  /* FEATURED */
+  .featured { background:var(--white); }
+  .feat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:50px; }
+  .feat-card {
+    border-radius:8px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);
+    transition:transform 0.3s;
+  }
+  .feat-card:hover { transform:translateY(-5px); }
+  .feat-img { height:160px; display:flex; align-items:center; justify-content:center; font-size:48px; }
+  .feat-img.f1 { background:linear-gradient(135deg,#1a3a6b,#2980b9); }
+  .feat-img.f2 { background:linear-gradient(135deg,#5c1a0a,#c0392b); }
+  .feat-img.f3 { background:linear-gradient(135deg,#1a4a1a,#27ae60); }
+  .feat-img.f4 { background:linear-gradient(135deg,#4a2a0a,#c9a44a); }
+  .feat-img.f5 { background:linear-gradient(135deg,#2a0a4a,#8e44ad); }
+  .feat-img.f6 { background:linear-gradient(135deg,#1a3a4a,#16a085); }
+  .feat-body { padding:20px; }
+  .feat-tag { font-size:10px; letter-spacing:2px; color:var(--red); text-transform:uppercase; margin-bottom:6px; }
+  .feat-body h3 { font-size:16px; color:var(--text); margin-bottom:6px; font-weight:700; }
+  .feat-body p { font-size:13px; color:var(--muted); line-height:1.6; }
+
+  /* DISTRICTS */
+  .districts { background:var(--charcoal); color:var(--white); }
+  .districts .stitle { color:var(--white); }
+  .districts .ssub { color:rgba(255,255,255,0.6); }
+  .dist-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:50px; }
+  .dist-card {
+    background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+    border-radius:6px; padding:24px 16px; text-align:center; transition:background 0.3s;
+    cursor:pointer;
+  }
+  .dist-card:hover { background:rgba(192,57,43,0.2); border-color:rgba(192,57,43,0.4); }
+  .dist-icon { font-size:28px; margin-bottom:10px; }
+  .dist-card h4 { font-size:15px; color:var(--cream); font-weight:700; margin-bottom:4px; }
+  .dist-card p { font-size:12px; color:rgba(255,255,255,0.45); line-height:1.4; }
+
+  /* ABOUT */
+  .about { background:var(--cream); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-top:50px; }
+  .about-visual {
+    background:linear-gradient(135deg,var(--dark),#2a1a0a);
+    border-radius:8px; height:360px; display:flex; align-items:center; justify-content:center; flex-direction:column;
+    gap:12px; text-align:center;
+  }
+  .av-hk { font-size:72px; font-weight:900; color:rgba(192,57,43,0.3); }
+  .av-text { color:var(--gold); font-size:13px; letter-spacing:3px; text-transform:uppercase; }
+  .about-text p { font-size:15px; color:var(--text); line-height:1.9; margin-bottom:18px; }
+  .stats-row { display:flex; gap:24px; margin-top:24px; }
+  .stat { background:var(--white); border-left:4px solid var(--red); padding:16px 20px; flex:1; }
+  .stat .n { font-size:28px; font-weight:900; color:var(--red); }
+  .stat .l { font-size:11px; color:var(--muted); margin-top:4px; }
+
+  /* CONTACT */
+  .contact { background:var(--white); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; margin-top:50px; }
+  .c-info { }
+  .c-item { display:flex; gap:16px; padding:16px 0; border-bottom:1px solid rgba(0,0,0,0.07); }
+  .c-item:last-child { border-bottom:none; }
+  .c-ico { font-size:22px; }
+  .c-d .lbl { font-size:10px; letter-spacing:2px; color:var(--red); text-transform:uppercase; margin-bottom:3px; }
+  .c-d .val { font-size:15px; font-weight:700; }
+  .c-d .val a { color:var(--dark-red); }
+  .c-d .note { font-size:12px; color:var(--muted); }
+  .cta-box { background:var(--red); padding:40px; border-radius:8px; color:var(--white); }
+  .cta-box h3 { font-size:22px; margin-bottom:14px; }
+  .cta-box p { font-size:14px; color:rgba(255,255,255,0.8); line-height:1.8; margin-bottom:28px; }
+  .cta-btns { display:flex; flex-direction:column; gap:12px; }
+  .cb { display:block; padding:13px 22px; text-align:center; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; transition:all 0.3s; border-radius:3px; }
+  .cb.white { background:var(--white); color:var(--red); }
+  .cb.white:hover { background:var(--cream); }
+  .cb.outline { border:2px solid rgba(255,255,255,0.4); color:var(--white); }
+  .cb.outline:hover { background:rgba(255,255,255,0.1); }
+
+  footer { background:var(--dark); color:rgba(255,255,255,0.4); padding:40px; }
+  .footer-inner { max-width:1100px; margin:0 auto; }
+  .footer-top { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:30px; padding-bottom:28px; border-bottom:1px solid rgba(255,255,255,0.07); }
+  .f-logo { font-size:22px; font-weight:900; color:var(--white); }
+  .f-logo span { color:var(--red); }
+  .f-sub { font-size:12px; color:rgba(255,255,255,0.35); margin-top:8px; }
+  .footer-links { display:flex; gap:50px; flex-wrap:wrap; }
+  .fc h5 { color:var(--gold); font-size:10px; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+  .fc a { display:block; color:rgba(255,255,255,0.4); font-size:13px; margin-bottom:8px; transition:color 0.3s; }
+  .fc a:hover { color:rgba(255,255,255,0.75); }
+  .footer-bottom { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:22px; font-size:12px; }
+
+  @media (max-width:900px) {
+    header { padding:0 20px; }
+    nav { display:none; }
+    section { padding:60px 20px; }
+    .cats-grid { grid-template-columns:1fr 1fr; }
+    .feat-grid { grid-template-columns:1fr 1fr; }
+    .dist-grid { grid-template-columns:1fr 1fr; }
+    .about-grid, .contact-grid { grid-template-columns:1fr; }
+    .footer-top { flex-direction:column; }
+    .footer-links { gap:24px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Hong<span>Kong</span>Guide</div>
+  <nav>
+    <a href="#categories">Explore</a>
+    <a href="#featured">Featured</a>
+    <a href="#districts">Districts</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Your Definitive Guide to Hong Kong</div>
+    <h1 class="hero-title">Discover <span>Hong Kong</span></h1>
+    <p class="hero-sub">From Michelin-starred dining to hidden street food gems, luxury hotels to local neighbourhoods — HongKongGuide.com curates the best of Asia's World City.</p>
+    <div class="hero-btns">
+      <a href="#featured" class="btn-r">Explore Dining</a>
+      <a href="#categories" class="btn-o">Browse Categories</a>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="cats" id="categories">
+  <div class="container">
+    <div class="stag">Explore · Browse</div>
+    <h2 class="stitle">What Are You Looking For?</h2>
+    <div class="rule"></div>
+    <p class="ssub">From fine dining to leisure, shopping to culture — everything Hong Kong has to offer in one place</p>
+    <div class="cats-grid">
+      <div class="cat-card">
+        <div class="cat-icon">🍽️</div>
+        <h3>Restaurants</h3>
+        <p>Michelin stars to dai pai dongs — every cuisine, every budget</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🍸</div>
+        <h3>Bars & Nightlife</h3>
+        <p>Rooftop bars, speakeasies, nightclubs across the city</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🏨</div>
+        <h3>Hotels & Stays</h3>
+        <p>Luxury resorts to boutique guesthouses and serviced apartments</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🛍️</div>
+        <h3>Shopping</h3>
+        <p>Luxury malls, street markets, and everything in between</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🎭</div>
+        <h3>Arts & Culture</h3>
+        <p>Galleries, museums, performing arts, and heritage sites</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🌿</div>
+        <h3>Outdoor & Nature</h3>
+        <p>Hiking trails, beaches, country parks, and harbour activities</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">💆</div>
+        <h3>Wellness & Spa</h3>
+        <p>Luxury spas, fitness studios, and wellness retreats</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🎪</div>
+        <h3>Events & Experiences</h3>
+        <p>Festivals, private events, unique Hong Kong experiences</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="featured" id="featured">
+  <div class="container">
+    <div class="stag">Editor's Picks</div>
+    <h2 class="stitle">Featured Dining Experiences</h2>
+    <div class="rule"></div>
+    <p class="ssub">Our editors' selection of the finest dining experiences across Hong Kong</p>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-img f1">🌊</div>
+        <div class="feat-body">
+          <div class="feat-tag">Fine Dining · Tsim Sha Tsui</div>
+          <h3>Harbour View Restaurants</h3>
+          <p>Iconic dining with sweeping Victoria Harbour panoramas — from Chinese banquets to European fine dining</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-img f2">🥢</div>
+        <div class="feat-body">
+          <div class="feat-tag">Cantonese · Hong Kong Island</div>
+          <h3>Dim Sum Masters</h3>
+          <p>From three-Michelin-star teahouses to beloved cha chaan teng — the best yum cha in the city</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-img f3">🌿</div>
+        <div class="feat-body">
+          <div class="feat-tag">Modern · Tai Kwun</div>
+          <h3>Heritage Dining</h3>
+          <p>Exceptional restaurants set in Hong Kong's beautifully restored colonial-era heritage buildings</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-img f4">🥐</div>
+        <div class="feat-body">
+          <div class="feat-tag">Café Culture · Sheung Wan</div>
+          <h3>Artisan Coffee Scenes</h3>
+          <p>Specialty coffee shops, charming bakeries, and brunch spots in Hong Kong's creative neighbourhoods</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-img f5">🍷</div>
+        <div class="feat-body">
+          <div class="feat-tag">Wine & Dine · Central</div>
+          <h3>Wine Bars & Bistros</h3>
+          <p>Intimate wine bars, natural wine lists, and relaxed European bistros in the heart of Central</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-img f6">🦞</div>
+        <div class="feat-body">
+          <div class="feat-tag">Seafood · Sai Kung</div>
+          <h3>Fresh Seafood</h3>
+          <p>Pick-your-own seafood at lively dockside restaurants in Sai Kung — Hong Kong's seafood paradise</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISTRICTS -->
+<section class="districts" id="districts">
+  <div class="container">
+    <div class="stag" style="color:var(--gold);">Hong Kong Neighbourhoods</div>
+    <h2 class="stitle">Explore by District</h2>
+    <div class="rule" style="background:var(--gold);"></div>
+    <p class="ssub">Each district has its own personality — find what fits your style</p>
+    <div class="dist-grid">
+      <div class="dist-card">
+        <div class="dist-icon">🏦</div>
+        <h4>Central</h4>
+        <p>Finance hub, upscale dining, Lan Kwai Fong nightlife</p>
+      </div>
+      <div class="dist-card">
+        <div class="dist-icon">🎨</div>
+        <h4>Sheung Wan</h4>
+        <p>Art galleries, antiques, specialty cafés, creative dining</p>
+      </div>
+      <div class="dist-card">
+        <div class="dist-icon">🌊</div>
+        <h4>Wan Chai</h4>
+        <p>Convention centre, harbour hotels, diverse food scene</p>
+      </div>
+      <div class="dist-card">
+        <div class="dist-icon">🏬</div>
+        <h4>Causeway Bay</h4>
+        <p>Shopping malls, Japanese restaurants, street food</p>
+      </div>
+      <div class="dist-card">
+        <div class="dist-icon">✨</div>
+        <h4>Tsim Sha Tsui</h4>
+        <p>Harbour views, luxury hotels, international restaurants</p>
+      </div>
+      <div class="dist-card">
+        <div class="dist-icon">🍜</div>
+        <h4>Mong Kok</h4>
+        <p>Street markets, local eateries, authentic Hong Kong flavour</p>
+      </div>
+      <div class="dist-card">
+        <div class="dist-icon">🐟</div>
+        <h4>Sai Kung</h4>
+        <p>Fresh seafood, country parks, seaside village charm</p>
+      </div>
+      <div class="dist-card">
+        <div class="dist-icon">⛵</div>
+        <h4>Discovery Bay</h4>
+        <p>Lantau Island escape, resort dining, family-friendly</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="av-hk">HK</div>
+        <div class="av-text">Asia's World City</div>
+      </div>
+      <div>
+        <div class="stag">About Us</div>
+        <h2 class="stitle">Your Trusted Hong Kong Guide</h2>
+        <div class="rule"></div>
+        <div class="about-text">
+          <p>HongKongGuide.com is Hong Kong's definitive online guide to dining, nightlife, hotels, shopping, and experiences. Our editorial team of Hong Kong enthusiasts curates the city's best — from Michelin-starred institutions to beloved local gems that only insiders know.</p>
+          <p>Whether you're a first-time visitor or a long-term resident, we help you discover the perfect restaurant for every occasion, the trendiest new bar, the must-visit cultural site, or the next great adventure across Hong Kong's remarkable landscape.</p>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><div class="n">500+</div><div class="l">Restaurants Listed</div></div>
+          <div class="stat"><div class="n">18</div><div class="l">Districts Covered</div></div>
+          <div class="stat"><div class="n">HK</div><div class="l">Local Experts</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="stag">Get in Touch</div>
+    <h2 class="stitle">Contact Us</h2>
+    <div class="rule"></div>
+    <div class="contact-grid">
+      <div class="c-info">
+        <div class="c-item">
+          <span class="c-ico">✉️</span>
+          <div class="c-d">
+            <div class="lbl">Email</div>
+            <div class="val"><a href="mailto:info@hongkonguide.com">info@hongkonguide.com</a></div>
+            <div class="note">Editorial, advertising & listing enquiries</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <span class="c-ico">🌐</span>
+          <div class="c-d">
+            <div class="lbl">Website</div>
+            <div class="val"><a href="http://hongkonguide.com">hongkonguide.com</a></div>
+            <div class="note">Your guide to Hong Kong's best</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <span class="c-ico">📍</span>
+          <div class="c-d">
+            <div class="lbl">Location</div>
+            <div class="val">Hong Kong</div>
+            <div class="note">Covering all 18 districts across Hong Kong</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <span class="c-ico">📢</span>
+          <div class="c-d">
+            <div class="lbl">Advertising</div>
+            <div class="val">Listing & Sponsorship</div>
+            <div class="note">Feature your restaurant, hotel or venue</div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-box">
+        <h3>List Your Business</h3>
+        <p>Are you a restaurant, bar, hotel, or experience operator in Hong Kong? Get featured on HongKongGuide.com and reach thousands of dining and lifestyle enthusiasts every month. Contact us to discuss listing and advertising options.</p>
+        <div class="cta-btns">
+          <a href="mailto:info@hongkonguide.com" class="cb white">✉ Email info@hongkonguide.com</a>
+          <a href="#categories" class="cb outline">🍽️ Browse Restaurants</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="f-logo">Hong<span>Kong</span>Guide</div>
+        <div class="f-sub">Your Definitive Guide to Asia's World City<br>info@hongkonguide.com · hongkonguide.com</div>
+      </div>
+      <div class="footer-links">
+        <div class="fc">
+          <h5>Explore</h5>
+          <a href="#">Restaurants</a>
+          <a href="#">Hotels</a>
+          <a href="#">Bars</a>
+          <a href="#">Shopping</a>
+        </div>
+        <div class="fc">
+          <h5>Districts</h5>
+          <a href="#">Central</a>
+          <a href="#">Wan Chai</a>
+          <a href="#">Tsim Sha Tsui</a>
+          <a href="#">Sai Kung</a>
+        </div>
+        <div class="fc">
+          <h5>About</h5>
+          <a href="#">Our Story</a>
+          <a href="#">Advertise</a>
+          <a href="#">List Business</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2024 HongKongGuide.com · All Rights Reserved</div>
+      <div>info@hongkonguide.com</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
