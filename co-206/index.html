@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>達力集團有限公司 | Dynamic Holdings Limited | 物業租賃·銷售·發展</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --navy:#0d1e3a;
+    --blue:#1a3d6b;
+    --mid-blue:#2558a0;
+    --gold:#c8962a;
+    --light-gold:#e6b84a;
+    --cream:#fffdf5;
+    --white:#ffffff;
+    --light:#f5f7fa;
+    --gray:#6b7280;
+    --dark:#111827;
+    --border:#e5e7eb;
+  }
+  body{font-family:'Microsoft JhengHei','微軟正黑體','Segoe UI',Arial,sans-serif;background:#fff;color:var(--dark);}
+  a{text-decoration:none;color:inherit;}
+
+  /* NAV */
+  nav{background:var(--navy);padding:0 5%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;height:68px;border-bottom:3px solid var(--gold);}
+  .nav-logo{display:flex;align-items:center;gap:12px;}
+  .nav-logo-mark{width:44px;height:44px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.4rem;color:var(--navy);}
+  .nav-brand .cn{color:var(--white);font-size:1.1rem;font-weight:700;letter-spacing:2px;}
+  .nav-brand .en{color:#aab4c8;font-size:0.66rem;letter-spacing:1.5px;text-transform:uppercase;}
+  .nav-links{display:flex;gap:26px;list-style:none;}
+  .nav-links a{color:#ccd6e8;font-size:0.87rem;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:var(--navy);padding:8px 20px;border-radius:5px;font-weight:700;font-size:0.85rem;transition:background 0.2s;}
+  .nav-cta:hover{background:var(--light-gold);}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 60%,var(--mid-blue) 100%);padding:90px 5% 80px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-50px;right:-50px;width:400px;height:400px;background:rgba(200,150,42,0.07);border-radius:50%;}
+  .hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;position:relative;z-index:1;}
+  .hero-badge{display:inline-block;background:rgba(200,150,42,0.2);color:var(--gold);border:1px solid rgba(200,150,42,0.5);padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;}
+  .hero h1{color:var(--white);font-size:2.4rem;font-weight:900;line-height:1.2;margin-bottom:8px;}
+  .hero h1 .en{display:block;font-size:1.1rem;color:rgba(255,255,255,0.6);font-weight:500;margin-top:6px;letter-spacing:1px;}
+  .hero-tagline{color:var(--gold);font-size:1rem;font-weight:600;margin-bottom:16px;}
+  .hero-desc{color:#b0bfd4;font-size:0.97rem;line-height:1.75;margin-bottom:30px;}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn-gold{background:var(--gold);color:var(--navy);padding:12px 26px;border-radius:6px;font-weight:700;font-size:0.92rem;transition:all 0.2s;}
+  .btn-gold:hover{background:var(--light-gold);transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.3);padding:12px 26px;border-radius:6px;font-weight:600;font-size:0.92rem;transition:all 0.2s;}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .stat-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:20px;text-align:center;}
+  .stat-card .icon{font-size:1.8rem;margin-bottom:8px;display:block;}
+  .stat-card h3{color:var(--gold);font-size:0.9rem;font-weight:700;margin-bottom:4px;}
+  .stat-card p{color:#9aabca;font-size:0.78rem;line-height:1.4;}
+
+  /* SECTIONS */
+  section{padding:76px 5%;}
+  .section-inner{max-width:1100px;margin:0 auto;}
+  .section-label{font-size:0.75rem;font-weight:700;color:var(--mid-blue);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+  .section-title{font-size:1.9rem;font-weight:800;color:var(--dark);margin-bottom:14px;}
+  .section-title span{color:var(--mid-blue);}
+  .section-desc{color:var(--gray);font-size:1rem;line-height:1.75;max-width:660px;}
+
+  /* ABOUT */
+  .about{background:var(--cream);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;margin-top:34px;}
+  .about-text p{color:#4a5568;font-size:0.97rem;line-height:1.85;margin-bottom:14px;}
+  .about-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px;}
+  .fact{background:var(--white);border-left:4px solid var(--gold);padding:14px 16px;border-radius:0 8px 8px 0;box-shadow:0 1px 6px rgba(0,0,0,0.05);}
+  .fact strong{display:block;color:var(--navy);font-size:0.87rem;font-weight:700;margin-bottom:3px;}
+  .fact span{color:var(--gray);font-size:0.79rem;}
+  .about-visual{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:16px;padding:36px;color:var(--white);}
+  .about-visual h3{color:var(--gold);font-size:1.1rem;font-weight:800;margin-bottom:18px;}
+  .biz-list{list-style:none;}
+  .biz-list li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:10px;font-size:0.87rem;color:#c0cfe6;line-height:1.5;}
+  .biz-list li:last-child{border-bottom:none;}
+  .biz-list li::before{content:'▸';color:var(--gold);}
+
+  /* BUSINESS */
+  .business{background:var(--white);}
+  .business-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:34px;}
+  .biz-card{border-radius:14px;overflow:hidden;border:1px solid var(--border);transition:all 0.2s;}
+  .biz-card:hover{box-shadow:0 10px 30px rgba(13,30,58,0.12);transform:translateY(-4px);}
+  .biz-header{background:linear-gradient(135deg,var(--navy),var(--blue));padding:28px 24px 22px;}
+  .biz-icon{font-size:2.2rem;margin-bottom:12px;display:block;}
+  .biz-header h3{color:var(--white);font-size:1.1rem;font-weight:800;margin-bottom:6px;}
+  .biz-header p{color:rgba(255,255,255,0.7);font-size:0.8rem;line-height:1.5;}
+  .biz-body{padding:20px 24px;background:var(--light);}
+  .biz-features{list-style:none;}
+  .biz-features li{font-size:0.82rem;color:#4a5568;padding:6px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
+  .biz-features li:last-child{border-bottom:none;}
+  .biz-features li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
+
+  /* LOCATIONS */
+  .locations{background:linear-gradient(135deg,var(--navy),var(--blue));padding:76px 5%;}
+  .locations .section-title{color:var(--white);}
+  .loc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:34px;}
+  .loc-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:24px;transition:all 0.2s;}
+  .loc-card:hover{background:rgba(200,150,42,0.1);border-color:var(--gold);transform:translateY(-3px);}
+  .loc-flag{font-size:1.8rem;margin-bottom:10px;display:block;}
+  .loc-city{color:var(--gold);font-size:0.9rem;font-weight:700;margin-bottom:6px;}
+  .loc-name{color:var(--white);font-size:0.82rem;margin-bottom:6px;}
+  .loc-addr{color:#9aabca;font-size:0.75rem;line-height:1.5;}
+
+  /* CONTACT */
+  .contact{background:var(--cream);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;}
+  .contact-card{background:var(--white);border-radius:12px;padding:28px;box-shadow:0 2px 10px rgba(0,0,0,0.06);border-top:3px solid var(--gold);}
+  .contact-card h3{color:var(--navy);font-size:0.97rem;font-weight:700;margin-bottom:18px;}
+  .contact-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+  .ci-icon{width:36px;height:36px;background:rgba(13,30,58,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+  .contact-item strong{display:block;color:var(--dark);font-size:0.83rem;margin-bottom:2px;}
+  .contact-item span{color:var(--gray);font-size:0.83rem;line-height:1.5;}
+  .offices-card{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:12px;padding:28px;color:var(--white);}
+  .offices-card h3{color:var(--gold);font-size:0.97rem;font-weight:700;margin-bottom:16px;}
+  .office-item{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.08);}
+  .office-item:last-child{border-bottom:none;}
+  .office-item strong{display:block;color:var(--gold);font-size:0.82rem;margin-bottom:3px;}
+  .office-item span{color:#9aabca;font-size:0.8rem;line-height:1.5;}
+
+  /* FOOTER */
+  footer{background:#080f1c;padding:32px 5%;text-align:center;border-top:1px solid rgba(200,150,42,0.2);}
+  footer .brand-cn{color:var(--gold);font-weight:700;font-size:0.98rem;margin-bottom:4px;}
+  footer .brand-en{color:#4b5a72;font-size:0.78rem;}
+  footer p{color:#4b5a72;font-size:0.76rem;margin-top:6px;}
+
+  @media(max-width:900px){
+    .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr;}
+    .business-grid{grid-template-columns:1fr 1fr;}
+    .loc-grid{grid-template-columns:repeat(2,1fr);}
+    .about-facts{grid-template-columns:repeat(2,1fr);}
+    nav .nav-links,.nav-cta{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-mark">達</div>
+    <div class="nav-brand">
+      <div class="cn">達力集團有限公司</div>
+      <div class="en">Dynamic Holdings Limited</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#business">業務範疇</a></li>
+    <li><a href="#locations">各地辦事處</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">聯絡查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">香港上市房地產集團</div>
+      <h1>達力集團有限公司
+        <span class="en">Dynamic Holdings Limited</span>
+      </h1>
+      <p class="hero-tagline">物業租賃 · 物業銷售 · 發展中物業</p>
+      <p class="hero-desc">達力集團有限公司是一家以香港為基地的房地產集團，業務涵蓋物業租賃、物業銷售及地產發展，在香港、深圳、北京及上海均設有業務據點。</p>
+      <div class="hero-btns">
+        <a href="#business" class="btn-gold">業務詳情</a>
+        <a href="#contact" class="btn-outline">聯絡我們</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="icon">🏢</span>
+        <h3>物業租賃</h3>
+        <p>優質商業及住宅物業出租服務</p>
+      </div>
+      <div class="stat-card">
+        <span class="icon">🏗️</span>
+        <h3>物業銷售</h3>
+        <p>住宅及商業物業買賣業務</p>
+      </div>
+      <div class="stat-card">
+        <span class="icon">📐</span>
+        <h3>發展中物業</h3>
+        <p>大中華區物業發展項目</p>
+      </div>
+      <div class="stat-card">
+        <span class="icon">🌏</span>
+        <h3>大中華業務</h3>
+        <p>港、深、京、滬全面佈局</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">關於我們</div>
+    <h2 class="section-title">達力集團 — <span>大中華地產專家</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>達力集團有限公司（Dynamic Holdings Limited）是一家以香港為總部的房地產集團，業務範疇涵蓋物業租賃、物業銷售及發展中物業，在大中華區主要城市均設有業務及辦事處。</p>
+        <p>集團總部設於香港灣仔希慎道利景商業中心，並在深圳、北京及上海設有辦事處，透過遍布大中華的業務網絡，為投資者和客戶提供全面的物業服務及投資機遇。</p>
+        <p>達力集團致力於創造優質的物業發展項目，並透過專業的物業租賃及銷售服務，為客戶提供最佳的物業投資方案和居住體驗。</p>
+        <div class="about-facts">
+          <div class="fact">
+            <strong>總部</strong>
+            <span>香港灣仔希慎道8號<br>利景商業中心17樓</span>
+          </div>
+          <div class="fact">
+            <strong>主要業務</strong>
+            <span>物業租賃、銷售及發展</span>
+          </div>
+          <div class="fact">
+            <strong>業務地區</strong>
+            <span>香港、深圳、北京、上海</span>
+          </div>
+          <div class="fact">
+            <strong>集團網站</strong>
+            <span>www.dynamic.hk</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <h3>📋 集團業務架構</h3>
+        <ul class="biz-list">
+          <li>物業租賃 — 商業及住宅物業出租服務</li>
+          <li>物業銷售 — 住宅及商業物業買賣</li>
+          <li>發展中物業 — 大中華區地產發展項目</li>
+          <li>投資者關係 — 上市公司透明管治</li>
+          <li>北京利福房地產開發有限公司</li>
+          <li>上海租賃代理辦事處</li>
+          <li>深圳嘉裡中心代表處</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS -->
+<section class="business" id="business">
+  <div class="section-inner">
+    <div class="section-label">業務範疇</div>
+    <h2 class="section-title">三大<span>核心業務</span></h2>
+    <p class="section-desc">達力集團在大中華地產市場深耕多年，為客戶提供全面的物業租賃、銷售及發展服務。</p>
+    <div class="business-grid">
+      <div class="biz-card">
+        <div class="biz-header">
+          <span class="biz-icon">🏢</span>
+          <h3>物業租賃</h3>
+          <p>Property Leasing</p>
+        </div>
+        <div class="biz-body">
+          <ul class="biz-features">
+            <li>商業辦公室租賃服務</li>
+            <li>住宅物業出租管理</li>
+            <li>零售商舖租賃安排</li>
+            <li>專業租賃顧問服務</li>
+            <li>大中華主要城市網絡</li>
+          </ul>
+        </div>
+      </div>
+      <div class="biz-card">
+        <div class="biz-header">
+          <span class="biz-icon">🔑</span>
+          <h3>物業銷售</h3>
+          <p>Property Sales</p>
+        </div>
+        <div class="biz-body">
+          <ul class="biz-features">
+            <li>住宅物業買賣交易</li>
+            <li>商業物業投資銷售</li>
+            <li>一手新盤銷售推廣</li>
+            <li>專業物業估值服務</li>
+            <li>投資顧問及市場分析</li>
+          </ul>
+        </div>
+      </div>
+      <div class="biz-card">
+        <div class="biz-header">
+          <span class="biz-icon">🏗️</span>
+          <h3>發展中物業</h3>
+          <p>Properties under Development</p>
+        </div>
+        <div class="biz-body">
+          <ul class="biz-features">
+            <li>大中華區住宅發展項目</li>
+            <li>商業綜合體開發</li>
+            <li>北京地產發展業務</li>
+            <li>項目規劃及設計</li>
+            <li>與內地合作夥伴協同發展</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="locations" id="locations">
+  <div class="section-inner">
+    <div class="section-label" style="color:#c4b5fd;">各地業務</div>
+    <h2 class="section-title">大中華<span style="color:var(--gold);">業務網絡</span></h2>
+    <p class="section-desc" style="color:#9aabca;">達力集團在香港、深圳、北京及上海設有辦事處，全面覆蓋大中華主要地產市場。</p>
+    <div class="loc-grid">
+      <div class="loc-card">
+        <span class="loc-flag">🇭🇰</span>
+        <div class="loc-city">香港（總部）</div>
+        <div class="loc-name">達力集團有限公司</div>
+        <div class="loc-addr">灣仔希慎道8號<br>利景商業中心17樓<br>Tel: (852) 2881 5221</div>
+      </div>
+      <div class="loc-card">
+        <span class="loc-flag">🇨🇳</span>
+        <div class="loc-city">深圳</div>
+        <div class="loc-name">深圳代表處</div>
+        <div class="loc-addr">深圳市人民南路2008號<br>深圳嘉裡中心1321室<br>Tel: (86755) 2518 5374</div>
+      </div>
+      <div class="loc-card">
+        <span class="loc-flag">🇨🇳</span>
+        <div class="loc-city">北京</div>
+        <div class="loc-name">北京利福房地產開發有限公司</div>
+        <div class="loc-addr">北京朝陽區甘露園南里25號<br>Tel: (8610) 8559 1753</div>
+      </div>
+      <div class="loc-card">
+        <span class="loc-flag">🇨🇳</span>
+        <div class="loc-city">上海</div>
+        <div class="loc-name">上海租賃代理辦公室</div>
+        <div class="loc-addr">上海東方路69號<br>景瑞國際商務廣場西塔樓<br>Tel: (8621) 5882 6508</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <h2 class="section-title">歡迎<span>查詢洽商</span></h2>
+    <p class="section-desc">如有物業租賃、銷售或發展業務查詢，歡迎聯絡達力集團香港總部。</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>📞 香港總部</h3>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <strong>電話</strong>
+            <span>(852) 2881 5221</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <strong>手提 / WhatsApp</strong>
+            <span>5882 6508</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📠</div>
+          <div>
+            <strong>傳真</strong>
+            <span>(852) 2881 5224</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <strong>電郵</strong>
+            <span>info@dynamic-hk.com</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <strong>地址</strong>
+            <span>香港灣仔希慎道8號<br>利景商業中心17樓</span>
+          </div>
+        </div>
+      </div>
+      <div class="offices-card">
+        <h3>🌏 各地辦事處</h3>
+        <div class="office-item">
+          <strong>深圳代表處</strong>
+          <span>深圳市人民南路2008號深圳嘉裡中心1321室<br>Tel: (86755) 2518 5374 | Fax: (86755) 2518 5367</span>
+        </div>
+        <div class="office-item">
+          <strong>北京 — 北京利福房地產開發有限公司</strong>
+          <span>北京朝陽區甘露園南里25號<br>Tel: (8610) 8559 1753 | Fax: (8610) 8577 7534</span>
+        </div>
+        <div class="office-item">
+          <strong>上海 — 租賃代理辦公室</strong>
+          <span>上海東方路69號景瑞國際商務廣場西塔樓<br>Tel: (8621) 5882 6508 | Fax: (8621) 5882 3898</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand-cn">達力集團有限公司</div>
+  <div class="brand-en">Dynamic Holdings Limited | www.dynamic.hk</div>
+  <p>物業租賃 · 物業銷售 · 發展中物業 | 香港、深圳、北京、上海</p>
+  <p>&copy; 2025 達力集團有限公司。版權所有。</p>
+</footer>
+
+</body>
+</html>
