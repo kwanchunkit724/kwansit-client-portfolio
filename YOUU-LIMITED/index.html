@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YOUU Limited | Professional Officers & Staffing Services | Hong Kong</title>
+<meta name="description" content="YOUU Limited provides professional officer and staffing services across Hong Kong — retail, commercial, schools, residential, and events. Reliable, trained, and ready.">
+<style>
+  :root {
+    --teal: #0a7c6e;
+    --teal-dark: #065a50;
+    --teal-light: #12a08f;
+    --silver: #e8edf0;
+    --dark: #0f2027;
+    --text: #2c3e40;
+    --text-light: #6a7c7e;
+    --cream: #f7f9fa;
+    --white: #ffffff;
+    --accent: #f0a500;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Arial', sans-serif; color: var(--text); background: var(--cream); }
+  html { scroll-behavior: smooth; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(15,32,39,0.97); backdrop-filter: blur(8px);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px; border-bottom: 2px solid var(--teal);
+  }
+  .logo {
+    font-size: 1.5rem; font-weight: 900; color: var(--white);
+    letter-spacing: 3px; text-transform: uppercase;
+  }
+  .logo span { color: var(--teal-light); }
+  nav ul { list-style: none; display: flex; gap: 1.8rem; }
+  nav ul a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.82rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
+  nav ul a:hover { color: var(--teal-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--dark) 0%, #1a3540 40%, var(--teal-dark) 100%);
+    display: flex; align-items: center; padding: 100px 5% 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0; width: 50%;
+    height: 100%; background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230a7c6e' fill-opacity='0.06'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+  }
+  .hero-inner { max-width: 720px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: rgba(10,124,110,0.25); border: 1px solid rgba(18,160,143,0.5);
+    padding: 8px 18px; border-radius: 3px;
+    color: var(--teal-light); font-size: 0.75rem; letter-spacing: 2.5px; text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.5rem; color: #4dffb8; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+  .hero h1 {
+    font-size: clamp(2.6rem, 5.5vw, 5rem); color: var(--white);
+    line-height: 1.1; margin-bottom: 1.5rem; font-weight: 800; letter-spacing: -0.5px;
+  }
+  .hero h1 span { color: var(--teal-light); }
+  .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 2.5rem; max-width: 560px; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
+  .btn-teal {
+    display: inline-block; background: var(--teal); color: var(--white);
+    padding: 15px 36px; text-decoration: none;
+    font-size: 0.84rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
+    transition: all 0.3s;
+  }
+  .btn-teal:hover { background: var(--teal-light); }
+  .btn-ghost {
+    display: inline-block; border: 1.5px solid rgba(255,255,255,0.4); color: var(--white);
+    padding: 14px 36px; text-decoration: none;
+    font-size: 0.84rem; letter-spacing: 2px; text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .btn-ghost:hover { border-color: var(--teal-light); color: var(--teal-light); }
+  .hero-stats { display: flex; gap: 3.5rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2.5rem; }
+  .hs-num { font-size: 2.4rem; font-weight: 900; color: var(--teal-light); display: block; line-height: 1; }
+  .hs-lbl { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 4px; display: block; }
+
+  /* TICKER */
+  .ticker { background: var(--teal); padding: 14px 0; overflow: hidden; }
+  .tick-inner { display: flex; gap: 3rem; animation: scroll 22s linear infinite; white-space: nowrap; }
+  .tick-inner span { color: rgba(255,255,255,0.9); font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTIONS */
+  section { padding: 100px 5%; }
+  .tag { color: var(--teal); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; display: block; margin-bottom: 0.8rem; }
+  .h2 { font-size: clamp(1.8rem, 3vw, 2.7rem); color: var(--dark); margin-bottom: 1rem; font-weight: 800; }
+  .lead { font-size: 1rem; color: var(--text-light); line-height: 1.8; }
+
+  /* SECTORS */
+  .sectors { background: var(--white); }
+  .sec-header { margin-bottom: 3.5rem; }
+  .sec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .sec-card {
+    background: var(--cream); border-top: 3px solid transparent;
+    padding: 2.5rem 2rem; border-radius: 2px;
+    transition: all 0.35s; cursor: default; position: relative; overflow: hidden;
+  }
+  .sec-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 0;
+    background: var(--teal); transition: height 0.35s; z-index: 0;
+  }
+  .sec-card:hover::before { height: 3px; }
+  .sec-card:hover { border-top-color: var(--teal); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,124,110,0.12); }
+  .sec-icon { font-size: 2.8rem; margin-bottom: 1.2rem; display: block; position: relative; z-index: 1; }
+  .sec-card h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 0.7rem; font-weight: 700; position: relative; z-index: 1; }
+  .sec-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; position: relative; z-index: 1; }
+  .sec-card ul { list-style: none; margin-top: 0.8rem; position: relative; z-index: 1; }
+  .sec-card ul li { font-size: 0.82rem; color: var(--text-light); padding: 0.3rem 0; display: flex; gap: 0.5rem; }
+  .sec-card ul li::before { content: '✓'; color: var(--teal); font-weight: 700; }
+
+  /* HOW WE WORK */
+  .process { background: var(--dark); }
+  .process .h2 { color: var(--white); }
+  .process .lead { color: rgba(255,255,255,0.6); }
+  .proc-steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0; margin-top: 3.5rem; }
+  .proc-step {
+    padding: 2.5rem 2rem; border-right: 1px solid rgba(255,255,255,0.07);
+    position: relative;
+  }
+  .proc-step:last-child { border-right: none; }
+  .proc-num { font-size: 4rem; font-weight: 900; color: rgba(10,124,110,0.25); line-height: 1; margin-bottom: 0.5rem; }
+  .proc-step h3 { font-size: 1rem; color: var(--white); margin-bottom: 0.7rem; font-weight: 700; }
+  .proc-step p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-visual {
+    background: linear-gradient(145deg, var(--dark), var(--teal-dark));
+    padding: 3.5rem; border-radius: 4px; position: relative; overflow: hidden;
+  }
+  .about-visual::after { content: 'YU'; position: absolute; bottom: -1rem; right: 0; font-size: 14rem; font-weight: 900; color: rgba(255,255,255,0.04); line-height: 1; }
+  .av-row { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1.2rem 0; }
+  .av-row:first-child { padding-top: 0; }
+  .av-row:last-child { border-bottom: none; }
+  .av-label { font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+  .av-value { font-size: 0.95rem; color: var(--white); font-weight: 600; text-align: right; }
+  .about-text .lead { margin-bottom: 1.5rem; }
+  .pill-list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .pill { background: var(--teal); color: var(--white); padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+
+  /* WHY */
+  .why { background: var(--white); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+  .why-card { padding: 2rem; border-left: 3px solid var(--teal); }
+  .why-num { font-size: 2.5rem; font-weight: 900; color: rgba(10,124,110,0.2); line-height: 1; margin-bottom: 0.5rem; }
+  .why-card h3 { font-size: 1rem; color: var(--dark); margin-bottom: 0.6rem; font-weight: 700; }
+  .why-card p { font-size: 0.87rem; color: var(--text-light); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact { background: var(--dark); }
+  .contact .tag { color: var(--teal-light); }
+  .contact .h2 { color: var(--white); }
+  .contact .lead { color: rgba(255,255,255,0.6); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; margin-top: 3rem; }
+  .ci { margin-bottom: 1.5rem; }
+  .ci-lbl { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--teal-light); margin-bottom: 0.4rem; display: block; }
+  .ci-val { font-size: 0.95rem; color: var(--white); }
+  .ci-val a { color: var(--teal-light); text-decoration: none; }
+  .form-group { margin-bottom: 1.1rem; }
+  label { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); display: block; margin-bottom: 0.5rem; }
+  input, select, textarea {
+    width: 100%; border: 1px solid rgba(255,255,255,0.1); padding: 12px 14px;
+    font-family: 'Arial', sans-serif; font-size: 0.9rem; color: var(--white);
+    background: rgba(255,255,255,0.06); border-radius: 2px; transition: border-color 0.3s;
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--teal); }
+  textarea { resize: vertical; min-height: 110px; }
+  select option { background: var(--dark); }
+  .sub-btn {
+    width: 100%; background: var(--teal); color: var(--white); border: none;
+    padding: 14px; font-family: 'Arial', sans-serif; font-size: 0.84rem;
+    letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+    transition: background 0.3s; font-weight: 700; margin-top: 0.3rem;
+  }
+  .sub-btn:hover { background: var(--teal-light); }
+
+  /* FOOTER */
+  footer { background: #070f12; color: rgba(255,255,255,0.5); padding: 50px 5% 25px; font-family: 'Arial', sans-serif; }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 1rem; }
+  .foot-logo { font-size: 1.3rem; font-weight: 900; color: var(--white); letter-spacing: 3px; margin-bottom: 1.5rem; }
+  .foot-logo span { color: var(--teal-light); }
+  footer p { font-size: 0.87rem; line-height: 1.7; margin-bottom: 2rem; max-width: 500px; }
+  .foot-row span { font-size: 0.78rem; }
+  .designer-credit a { color: var(--teal-light); text-decoration: none; }
+
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+    .sec-grid { grid-template-columns: 1fr; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .proc-steps { grid-template-columns: 1fr 1fr; }
+    .proc-step { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .hero-stats { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">YOUU <span>LIMITED</span></div>
+  <ul>
+    <li><a href="#sectors">Services</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Professional Staffing · Hong Kong</div>
+    <h1>Expert Officers<br>for <span>Every Sector</span></h1>
+    <p>YOUU Limited provides professional officer and staffing services across retail, commercial, educational, residential, and events sectors throughout Hong Kong. Reliable, trained personnel delivered when and where you need them.</p>
+    <div class="hero-cta">
+      <a href="#sectors" class="btn-teal">Our Services</a>
+      <a href="#contact" class="btn-ghost">Request Staff</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="hs-num">5+</span>
+        <span class="hs-lbl">Sectors Served</span>
+      </div>
+      <div>
+        <span class="hs-num">HK</span>
+        <span class="hs-lbl">Based & Registered</span>
+      </div>
+      <div>
+        <span class="hs-num">24/7</span>
+        <span class="hs-lbl">Support Available</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="tick-inner">
+    <span>Retail & Shop</span><span>·</span>
+    <span>Office & Commercial</span><span>·</span>
+    <span>School & Community</span><span>·</span>
+    <span>Private & Residential</span><span>·</span>
+    <span>Events & Media</span><span>·</span>
+    <span>Professional Officers</span><span>·</span>
+    <span>Hong Kong</span><span>·</span>
+    <span>Retail & Shop</span><span>·</span>
+    <span>Office & Commercial</span><span>·</span>
+    <span>School & Community</span><span>·</span>
+    <span>Private & Residential</span><span>·</span>
+    <span>Events & Media</span><span>·</span>
+    <span>Professional Officers</span><span>·</span>
+    <span>Hong Kong</span><span>·</span>
+  </div>
+</div>
+
+<!-- SECTORS -->
+<section class="sectors" id="sectors">
+  <div class="sec-header">
+    <span class="tag">What We Cover</span>
+    <h2 class="h2">Professional Officer Services</h2>
+    <p class="lead">From customer-facing retail to private security, our officers are trained and deployed across five key sectors in Hong Kong.</p>
+  </div>
+  <div class="sec-grid">
+    <div class="sec-card">
+      <span class="sec-icon">🛍️</span>
+      <h3>Retail & Shop</h3>
+      <p>Professional officers for retail environments — managing customer flow, entry control, loss prevention, and brand representation.</p>
+      <ul>
+        <li>Customer greeting & guidance</li>
+        <li>Access and crowd management</li>
+        <li>Loss prevention monitoring</li>
+        <li>Mall and shop floor patrols</li>
+      </ul>
+    </div>
+    <div class="sec-card">
+      <span class="sec-icon">🏢</span>
+      <h3>Office & Commercial</h3>
+      <p>Corporate lobby officers, building security, and professional front-of-house personnel for commercial premises.</p>
+      <ul>
+        <li>Reception and visitor management</li>
+        <li>Building access control</li>
+        <li>CCTV monitoring support</li>
+        <li>Corporate escort services</li>
+      </ul>
+    </div>
+    <div class="sec-card">
+      <span class="sec-icon">🏫</span>
+      <h3>School & Community</h3>
+      <p>Campus safety officers and community support personnel, trained for educational environments and public-facing roles.</p>
+      <ul>
+        <li>School gate management</li>
+        <li>Student safe passage support</li>
+        <li>Community venue security</li>
+        <li>Emergency response protocols</li>
+      </ul>
+    </div>
+    <div class="sec-card">
+      <span class="sec-icon">🏠</span>
+      <h3>Private & Residential</h3>
+      <p>Residential building officers and private estate security, ensuring a safe and welcoming environment for residents and guests.</p>
+      <ul>
+        <li>24/7 lobby and entrance duty</li>
+        <li>Resident and visitor screening</li>
+        <li>Parcel and delivery management</li>
+        <li>Emergency escalation procedures</li>
+      </ul>
+    </div>
+    <div class="sec-card">
+      <span class="sec-icon">🎤</span>
+      <h3>Events & Media</h3>
+      <p>Event security, crowd management, and media liaison officers for concerts, exhibitions, corporate events, and productions.</p>
+      <ul>
+        <li>Venue access & perimeter control</li>
+        <li>VIP escort and management</li>
+        <li>Stage and backstage security</li>
+        <li>Emergency evacuation support</li>
+      </ul>
+    </div>
+    <div class="sec-card">
+      <span class="sec-icon">📋</span>
+      <h3>Custom Deployments</h3>
+      <p>Bespoke staffing solutions tailored to your specific operational requirements. We work with you to define roles, schedules, and coverage.</p>
+      <ul>
+        <li>Flexible scheduling (part/full time)</li>
+        <li>Short-notice deployment capability</li>
+        <li>Bilingual officers available</li>
+        <li>Uniformed or plain-clothes options</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div style="max-width:600px;">
+    <span class="tag">How It Works</span>
+    <h2 class="h2">Simple. Fast. Professional.</h2>
+    <p class="lead">Getting the right officers deployed to your site is straightforward with YOUU Limited. Our streamlined process gets your team in place quickly and efficiently.</p>
+  </div>
+  <div class="proc-steps">
+    <div class="proc-step">
+      <div class="proc-num">01</div>
+      <h3>Contact & Briefing</h3>
+      <p>Reach out with your requirements — sector, number of officers, schedule, and any specific skills or certifications needed.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">02</div>
+      <h3>Proposal & Quotation</h3>
+      <p>We provide a tailored proposal with staffing plan, officer profiles, and competitive pricing within one business day.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">03</div>
+      <h3>Confirmation & Preparation</h3>
+      <p>Once agreed, we brief and prepare the assigned officers, ensuring they understand your site requirements and standards.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">04</div>
+      <h3>Deployment & Monitoring</h3>
+      <p>Officers are deployed on schedule. We maintain ongoing communication and performance monitoring throughout the engagement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="av-row">
+        <span class="av-label">Founded</span>
+        <span class="av-value">YOUU Limited, HK</span>
+      </div>
+      <div class="av-row">
+        <span class="av-label">Sectors Covered</span>
+        <span class="av-value">5 Core Sectors</span>
+      </div>
+      <div class="av-row">
+        <span class="av-label">Languages</span>
+        <span class="av-value">Cantonese · Mandarin · English</span>
+      </div>
+      <div class="av-row">
+        <span class="av-label">Coverage</span>
+        <span class="av-value">All Hong Kong Districts</span>
+      </div>
+      <div class="av-row">
+        <span class="av-label">Availability</span>
+        <span class="av-value">Flexible · Short Notice</span>
+      </div>
+      <div class="av-row">
+        <span class="av-label">Registration</span>
+        <span class="av-value">HK Registered Company</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="tag">About Us</span>
+      <h2 class="h2">Professionalism You Can Rely On</h2>
+      <p class="lead">YOUU Limited is a Hong Kong-based professional staffing company specialising in officer deployment across multiple sectors. We understand that every environment has unique requirements — and we tailor our people accordingly.</p>
+      <p class="lead">Our officers are trained, presented professionally, and briefed thoroughly for each assignment. Whether you need one officer for a one-day event or a full team for a long-term commercial contract, YOUU delivers consistently.</p>
+      <div class="pill-list">
+        <span class="pill">Trained Personnel</span>
+        <span class="pill">Flexible Scheduling</span>
+        <span class="pill">All Sectors</span>
+        <span class="pill">HK Registered</span>
+        <span class="pill">Bilingual Officers</span>
+        <span class="pill">Short Notice Available</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div style="text-align:center; max-width:560px; margin:0 auto 2rem;">
+    <span class="tag">Why YOUU</span>
+    <h2 class="h2">What Sets Us Apart</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <h3>Sector Specialists</h3>
+      <p>Our officers are trained and briefed specifically for each sector — from retail customer service to residential concierge and events management.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <h3>Quick Deployment</h3>
+      <p>We can provide officers at short notice for urgent requirements. Our ready roster means minimal lead time between booking and deployment.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <h3>Professional Standards</h3>
+      <p>All officers maintain strict grooming, uniform, and conduct standards. Your premises will be represented to the highest professional level.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <h3>Reliable Management</h3>
+      <p>Dedicated account management with clear communication channels. We're responsive, accountable, and committed to service quality.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <span class="tag">Get Started</span>
+  <h2 class="h2">Request a Staffing Quote</h2>
+  <p class="lead" style="max-width:500px;">Tell us your requirements and we'll respond with a tailored proposal within one business day.</p>
+  <div class="contact-grid">
+    <div>
+      <div class="ci">
+        <span class="ci-lbl">Phone / WhatsApp</span>
+        <div class="ci-val"><a href="tel:+85264081123">+852 6408 1123</a></div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">Email</span>
+        <div class="ci-val"><a href="mailto:info@youulimited.com">info@youulimited.com</a></div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">Website</span>
+        <div class="ci-val"><a href="https://www.youulimited.com" target="_blank">www.youulimited.com</a></div>
+      </div>
+      <div class="ci" style="margin-top:2rem;">
+        <span class="ci-lbl">Coverage</span>
+        <div class="ci-val" style="color:rgba(255,255,255,0.7);">All districts across Hong Kong Island, Kowloon, and New Territories</div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('Thank you for your enquiry. Our team will contact you within one business day.');">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div class="form-group">
+          <label>Name *</label>
+          <input type="text" required placeholder="Your Name">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="+852 xxxx xxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" required placeholder="you@company.com">
+      </div>
+      <div class="form-group">
+        <label>Service Sector</label>
+        <select>
+          <option>Retail & Shop</option>
+          <option>Office & Commercial</option>
+          <option>School & Community</option>
+          <option>Private & Residential</option>
+          <option>Events & Media</option>
+          <option>Custom Deployment</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Requirements & Details</label>
+        <textarea placeholder="Number of officers needed, location, schedule, start date, and any specific requirements..."></textarea>
+      </div>
+      <button type="submit" class="sub-btn">Submit Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">YOUU <span>LIMITED</span></div>
+  <p>Professional officer and staffing services across Hong Kong. Retail, commercial, educational, residential, and events — we provide trained, reliable personnel for every environment.</p>
+  <div class="foot-row">
+    <span>© 2025 YOUU Limited. All rights reserved. | Hong Kong</span>
+    <span class="designer-credit">Website by <a href="mailto:kck980724@gmail.com">Kwan's IT</a> · +852 60282297</span>
+  </div>
+</footer>
+
+</body>
+</html>
