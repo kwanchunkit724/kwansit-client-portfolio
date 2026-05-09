@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wanda Hotel Development Company Limited | SEHK: 169</title>
+<style>
+  :root {
+    --primary: #1a3a5c;
+    --secondary: #2a5a8c;
+    --accent: #c8960a;
+    --dark: #0d1e30;
+    --light: #f0f4f8;
+    --text: #1a2d40;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: #fff; }
+
+  nav {
+    background: var(--dark);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100; height: 68px;
+    border-bottom: 1px solid rgba(200,150,10,0.2);
+  }
+  .nav-logo .brand { color: #fff; }
+  .nav-logo .brand span { font-size: 17px; font-weight: 800; display: block; }
+  .nav-logo .brand small { font-size: 11px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: #8090b0; text-decoration: none; font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-listed { background: rgba(200,150,10,0.15); border: 1px solid rgba(200,150,10,0.3); color: var(--accent); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #1a3050 60%, #1a4a6b 100%);
+    min-height: 520px;
+    display: flex; align-items: center; padding: 80px 5%;
+    position: relative; overflow: hidden; color: #fff;
+  }
+  .hero-content { max-width: 700px; position: relative; z-index: 1; }
+  .hero-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+  .hero-eyebrow .line { width: 40px; height: 1px; background: var(--accent); }
+  .hero-eyebrow span { font-size: 12px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; }
+  .hero h1 { font-size: clamp(2rem,5vw,3.4rem); font-weight: 900; line-height: 1.15; margin-bottom: 16px; }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero p { font-size: 17px; color: #8090b0; margin-bottom: 36px; line-height: 1.7; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-gold { background: var(--accent); color: var(--dark); padding: 13px 32px; border-radius: 7px; text-decoration: none; font-weight: 700; font-size: 15px; transition: background .2s; }
+  .btn-gold:hover { background: #d4a850; }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.25); color: #fff; padding: 13px 32px; border-radius: 7px; text-decoration: none; font-weight: 600; font-size: 15px; }
+  .btn-outline:hover { background: rgba(255,255,255,0.08); }
+
+  .stats-bar { background: var(--primary); display: grid; grid-template-columns: repeat(4,1fr); padding: 20px 5%; text-align: center; }
+  .stat { color: #fff; padding: 14px; border-right: 1px solid rgba(255,255,255,0.15); }
+  .stat:last-child { border-right: none; }
+  .stat .num { font-size: 26px; font-weight: 900; color: var(--accent); }
+  .stat .lbl { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 4px; }
+
+  section { padding: 80px 5%; }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-header .eyebrow { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 14px; font-weight: 700; }
+  .section-header h2 { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .section-header p { color: #555; font-size: 16px; max-width: 620px; margin: 0 auto; line-height: 1.7; }
+
+  .businesses-bg { background: var(--light); }
+  .biz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 24px; }
+  .biz-card { background: #fff; border-radius: 14px; padding: 32px 28px; border: 1px solid #dce8f0; transition: all .25s; }
+  .biz-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(26,58,92,0.1); border-color: var(--secondary); }
+  .biz-card .ico { font-size: 40px; margin-bottom: 18px; }
+  .biz-card h3 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+  .biz-card p { font-size: 14px; color: #555; line-height: 1.7; }
+
+  .presence-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 20px; }
+  .presence-card { background: var(--light); border-radius: 12px; padding: 24px 20px; text-align: center; border: 1px solid #d0dce8; }
+  .presence-card .flag { font-size: 36px; margin-bottom: 12px; }
+  .presence-card h4 { font-size: 16px; font-weight: 700; color: var(--dark); }
+  .presence-card p { font-size: 13px; color: #666; margin-top: 6px; }
+
+  .investor-bg { background: var(--dark); }
+  .investor-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 24px; }
+  .inv-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 28px 24px; color: #fff; text-align: center; }
+  .inv-card .ico { font-size: 36px; margin-bottom: 16px; }
+  .inv-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .inv-card p { font-size: 13px; color: #7090b0; line-height: 1.6; }
+
+  .contact-section { background: var(--light); }
+  .contact-inner { max-width: 700px; margin: 0 auto; }
+  .contact-card { background: #fff; border-radius: 16px; padding: 48px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+  .contact-row { display: flex; gap: 14px; margin-bottom: 20px; }
+  .contact-row .ci { font-size: 22px; margin-top: 2px; }
+  .contact-row .ct strong { display: block; font-size: 15px; color: var(--dark); margin-bottom: 4px; }
+  .contact-row .ct span { font-size: 14px; color: #555; }
+
+  footer { background: var(--dark); color: #4a6080; padding: 48px 5% 24px; }
+  .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+  .fb .bn { color: #fff; font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+  .fb .ls { color: var(--accent); font-size: 12px; letter-spacing: 2px; margin-bottom: 14px; }
+  .fb p { font-size: 13px; line-height: 1.7; }
+  footer h4 { color: #6080a0; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; }
+  footer ul li a { color: #4a6080; text-decoration: none; font-size: 14px; transition: color .2s; }
+  footer ul li a:hover { color: #fff; }
+  .footer-bottom { border-top: 1px solid #1a2d3d; padding-top: 20px; text-align: center; font-size: 13px; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .stats-bar { grid-template-columns: repeat(2,1fr); }
+    .footer-inner { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="brand">
+      <span>Wanda Hotel Development</span>
+      <small>Company Limited</small>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#businesses">Businesses</a>
+    <a href="#presence">Presence</a>
+    <a href="#investors">Investors</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-listed">SEHK: 169</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow"><div class="line"></div><span>SEHK Listed · Stock Code 169</span></div>
+    <h1>Wanda Hotel<br><em>Development</em> Company Limited</h1>
+    <p>An investment holding company engaged in property development, investment, leasing, and management activities across the PRC, United States, BVI, and international markets.</p>
+    <div class="hero-btns">
+      <a href="#businesses" class="btn-gold">Our Businesses</a>
+      <a href="#investors" class="btn-outline">Investor Relations</a>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="num">169</div><div class="lbl">SEHK Stock Code</div></div>
+  <div class="stat"><div class="num">HK$469M</div><div class="lbl">Market Capitalisation</div></div>
+  <div class="stat"><div class="num">HK$62M</div><div class="lbl">Revenue</div></div>
+  <div class="stat"><div class="num">4</div><div class="lbl">Operating Regions</div></div>
+</div>
+
+<section id="businesses" class="businesses-bg">
+  <div class="section-header">
+    <div class="eyebrow">Core Activities</div>
+    <h2>Business Operations</h2>
+    <p>Wanda Hotel Development engages in a comprehensive range of property-related activities across multiple international markets.</p>
+  </div>
+  <div class="biz-grid">
+    <div class="biz-card">
+      <div class="ico">🏗️</div>
+      <h3>Property Development</h3>
+      <p>Development of residential, commercial, and mixed-use properties in strategic locations across the PRC and international markets.</p>
+    </div>
+    <div class="biz-card">
+      <div class="ico">🏨</div>
+      <h3>Hotel Development</h3>
+      <p>Development and management of premium hotel properties, leveraging the Wanda brand to deliver exceptional hospitality experiences.</p>
+    </div>
+    <div class="biz-card">
+      <div class="ico">💼</div>
+      <h3>Property Investment</h3>
+      <p>Strategic investment in income-generating properties including commercial buildings, retail spaces, and hospitality assets.</p>
+    </div>
+    <div class="biz-card">
+      <div class="ico">🤝</div>
+      <h3>Leasing & Management</h3>
+      <p>Professional property leasing and asset management services, optimising returns from the Group's investment property portfolio.</p>
+    </div>
+  </div>
+</section>
+
+<section id="presence">
+  <div class="section-header">
+    <div class="eyebrow">Geographic Presence</div>
+    <h2>International Footprint</h2>
+    <p>Operations spanning multiple regions, providing the Group with diversified exposure across key global property markets.</p>
+  </div>
+  <div class="presence-grid">
+    <div class="presence-card">
+      <div class="flag">🇨🇳</div>
+      <h4>PRC</h4>
+      <p>Primary market with core property development and investment assets.</p>
+    </div>
+    <div class="presence-card">
+      <div class="flag">🇭🇰</div>
+      <h4>Hong Kong</h4>
+      <p>HKEX listed entity with corporate headquarters and investor relations functions.</p>
+    </div>
+    <div class="presence-card">
+      <div class="flag">🇺🇸</div>
+      <h4>United States</h4>
+      <p>International property investment and development presence in the US market.</p>
+    </div>
+    <div class="presence-card">
+      <div class="flag">🌐</div>
+      <h4>BVI & International</h4>
+      <p>Holding structures and international assets across the British Virgin Islands.</p>
+    </div>
+  </div>
+</section>
+
+<section id="investors" class="investor-bg">
+  <div class="section-header">
+    <div class="eyebrow" style="color:var(--accent)">Investor Relations</div>
+    <h2 style="color:#fff;">Stock Exchange: SEHK 169</h2>
+    <p style="color:#7090b0;">Wanda Hotel Development Company Limited is listed on the Stock Exchange of Hong Kong. Access investor information below.</p>
+  </div>
+  <div class="investor-grid">
+    <div class="inv-card">
+      <div class="ico">📊</div>
+      <h3>Stock Code: 169</h3>
+      <p>Listed on the Stock Exchange of Hong Kong (SEHK). Current market capitalisation approximately HK$469.7M.</p>
+    </div>
+    <div class="inv-card">
+      <div class="ico">📋</div>
+      <h3>Annual Reports</h3>
+      <p>Annual and interim financial reports available via HKEX and the Company's registered website.</p>
+    </div>
+    <div class="inv-card">
+      <div class="ico">📣</div>
+      <h3>Announcements</h3>
+      <p>Corporate announcements, AGM notices, and regulatory disclosures published on HKEX.</p>
+    </div>
+    <div class="inv-card">
+      <div class="ico">🏛️</div>
+      <h3>Corporate Governance</h3>
+      <p>Board composition, audit committee, and governance framework in compliance with HKEX requirements.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="section-header">
+    <div class="eyebrow">Contact</div>
+    <h2>Contact Wanda Hotel Development</h2>
+    <p>For investor enquiries, business proposals, or general information.</p>
+  </div>
+  <div class="contact-inner">
+    <div class="contact-card">
+      <div class="contact-row">
+        <div class="ci">📧</div>
+        <div class="ct">
+          <strong>General Enquiries</strong>
+          <span>enquiry@hkdnr.hk</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">📊</div>
+        <div class="ct">
+          <strong>HKEX Listing</strong>
+          <span>Stock Exchange of Hong Kong · Stock Code: 169</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">🌐</div>
+        <div class="ct">
+          <strong>Website</strong>
+          <span>wanda-hotel.com.hk</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">📍</div>
+        <div class="ct">
+          <strong>Registered Location</strong>
+          <span>Hong Kong</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="fb">
+      <div class="bn">Wanda Hotel Development Company Limited</div>
+      <div class="ls">SEHK: 169 · Hong Kong Listed</div>
+      <p>An investment holding company engaged in property development, investment, leasing, and hotel management across PRC, US, BVI, and international markets.</p>
+    </div>
+    <div>
+      <h4>Businesses</h4>
+      <ul>
+        <li><a href="#businesses">Property Development</a></li>
+        <li><a href="#businesses">Hotel Development</a></li>
+        <li><a href="#businesses">Property Investment</a></li>
+        <li><a href="#businesses">Leasing & Management</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Investors</h4>
+      <ul>
+        <li><a href="#investors">Stock: SEHK 169</a></li>
+        <li><a href="#investors">Annual Reports</a></li>
+        <li><a href="#investors">Announcements</a></li>
+        <li><a href="mailto:enquiry@hkdnr.hk">📧 enquiry@hkdnr.hk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Wanda Hotel Development Company Limited. All Rights Reserved. | SEHK: 169 | Hong Kong</p>
+  </div>
+</footer>
+
+</body>
+</html>
