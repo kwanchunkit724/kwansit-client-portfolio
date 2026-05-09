@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LoveHouse 愛家美居 | 香港專業家居裝修設計</title>
+<style>
+  :root {
+    --rose: #c5704a;
+    --rose-light: #d98a64;
+    --rose-pale: #f9ede6;
+    --warm-dark: #2a1810;
+    --dark: #1e1e1e;
+    --charcoal: #333;
+    --light: #faf7f4;
+    --white: #fff;
+    --text: #333;
+    --text-light: #777;
+    --border: #e8ddd5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: var(--white); }
+
+  /* NAV */
+  nav {
+    background: var(--white);
+    padding: 0 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 66px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+  }
+  .nav-brand { text-decoration: none; display: flex; flex-direction: column; }
+  .nav-brand-en { font-size: 20px; font-weight: 800; color: var(--rose); letter-spacing: -0.5px; }
+  .nav-brand-en span { color: var(--warm-dark); }
+  .nav-brand-zh { font-size: 11px; color: var(--text-light); letter-spacing: 2px; margin-top: 1px; }
+  .nav-links { display: flex; gap: 26px; list-style: none; }
+  .nav-links a { color: var(--text-light); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-cta {
+    background: var(--rose);
+    color: var(--white) !important;
+    padding: 9px 22px;
+    border-radius: 22px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--rose-light) !important; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--warm-dark) 0%, #3d2418 40%, #5a3320 100%);
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    padding: 80px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(197,112,74,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 30%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(197,112,74,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-content { max-width: 620px; position: relative; z-index: 2; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(197,112,74,0.2);
+    border: 1px solid rgba(197,112,74,0.4);
+    color: var(--rose-light);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-size: 54px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .hero h1 span { color: var(--rose-light); }
+  .hero-zh {
+    font-size: 24px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 6px;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .hero p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.8;
+    max-width: 510px;
+    margin-bottom: 36px;
+  }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+  .btn-rose {
+    background: var(--rose);
+    color: var(--white);
+    padding: 13px 30px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-rose:hover { background: var(--rose-light); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    padding: 13px 30px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--rose-light); color: var(--rose-light); }
+  .hero-feats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hf-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hf-icon { font-size: 18px; }
+  .hf-text { font-size: 13px; color: rgba(255,255,255,0.65); }
+
+  /* SECTION */
+  .section { padding: 72px 70px; }
+  .section-label { font-size: 12px; color: var(--rose); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: 34px; font-weight: 800; color: var(--warm-dark); line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .section-zh { font-size: 16px; color: var(--text-light); letter-spacing: 3px; margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--text-light); line-height: 1.75; max-width: 560px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .about-content p { font-size: 14px; color: var(--text-light); line-height: 1.8; margin-bottom: 16px; }
+  .about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+  .av-item {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 18px 16px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .av-icon { font-size: 22px; }
+  .av-text { font-size: 13px; font-weight: 600; color: var(--warm-dark); }
+  .av-sub { font-size: 11px; color: var(--text-light); margin-top: 1px; }
+  .about-card {
+    background: linear-gradient(135deg, var(--warm-dark) 0%, #3d2418 100%);
+    border-radius: 16px;
+    padding: 44px 36px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-card::before {
+    content: '❤️';
+    position: absolute;
+    top: 20px; right: 24px;
+    font-size: 80px;
+    opacity: 0.08;
+  }
+  .about-card h3 { font-size: 26px; font-weight: 800; margin-bottom: 6px; }
+  .about-card h3 span { color: var(--rose-light); }
+  .about-card .sub { font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 2px; margin-bottom: 24px; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .as-item { text-align: center; }
+  .as-num { font-size: 36px; font-weight: 800; color: var(--rose-light); }
+  .as-lbl { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+  /* PROPERTY TYPES */
+  .prop-types { background: var(--white); }
+  .prop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .prop-card {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .prop-card:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(0,0,0,0.12); }
+  .prop-card:first-child { grid-column: span 2; }
+  .prop-bg {
+    min-height: 200px;
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+    position: relative;
+  }
+  .prop-card:first-child .prop-bg { min-height: 260px; }
+  .prop-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(42,24,16,0.85) 0%, rgba(42,24,16,0.3) 50%, transparent 100%);
+  }
+  .prop-bg-1 { background: linear-gradient(135deg, #3d2418 0%, #6b3f28 100%); }
+  .prop-bg-2 { background: linear-gradient(135deg, #1a2e1a 0%, #2e4a2e 100%); }
+  .prop-bg-3 { background: linear-gradient(135deg, #1a1a2e 0%, #2e2e50 100%); }
+  .prop-bg-4 { background: linear-gradient(135deg, #1a2830 0%, #2e4452 100%); }
+  .prop-bg-5 { background: linear-gradient(135deg, #281a2e 0%, #442e50 100%); }
+  .prop-icon-lg {
+    position: absolute;
+    top: 20px; right: 20px;
+    font-size: 44px;
+    opacity: 0.25;
+  }
+  .prop-info { position: relative; z-index: 2; }
+  .prop-chip {
+    display: inline-block;
+    background: var(--rose);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .prop-name { font-size: 18px; font-weight: 700; color: var(--white); }
+  .prop-zh { font-size: 13px; color: rgba(255,255,255,0.6); letter-spacing: 1px; margin-top: 3px; }
+
+  /* SERVICES */
+  .services { background: var(--light); }
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .svc-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 28px 24px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .svc-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--rose);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .svc-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.09); transform: translateY(-3px); }
+  .svc-card:hover::after { transform: scaleX(1); }
+  .svc-icon { font-size: 32px; margin-bottom: 16px; }
+  .svc-name { font-size: 16px; font-weight: 700; color: var(--warm-dark); margin-bottom: 4px; }
+  .svc-zh { font-size: 13px; color: var(--rose); letter-spacing: 1px; margin-bottom: 10px; }
+  .svc-desc { font-size: 13px; color: var(--text-light); line-height: 1.65; }
+
+  /* PROCESS */
+  .process { background: linear-gradient(135deg, var(--warm-dark) 0%, #3d2418 100%); }
+  .process .section-title { color: var(--white); }
+  .process .section-zh { color: rgba(255,255,255,0.45); }
+  .process .section-sub { color: rgba(255,255,255,0.6); }
+  .proc-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 48px; position: relative; }
+  .proc-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(197,112,74,0.5) 20%, rgba(197,112,74,0.5) 80%, transparent);
+  }
+  .pst { padding: 0 10px; text-align: center; }
+  .pst-circle {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(197,112,74,0.15);
+    border: 2px solid var(--rose);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin: 0 auto 16px;
+    position: relative;
+    z-index: 2;
+  }
+  .pst-num { font-size: 10px; color: var(--rose-light); font-weight: 700; letter-spacing: 1px; margin-bottom: 6px; }
+  .pst-title { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .pst-zh { font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 1px; margin-bottom: 6px; }
+  .pst-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+  /* PACKAGES */
+  .packages { background: var(--white); }
+  .pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+  .pkg-card {
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .pkg-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.1); transform: translateY(-4px); }
+  .pkg-card.featured { border-color: var(--rose); box-shadow: 0 4px 20px rgba(197,112,74,0.2); }
+  .pkg-header {
+    background: var(--light);
+    padding: 28px 28px 20px;
+    position: relative;
+  }
+  .pkg-card.featured .pkg-header { background: var(--rose); }
+  .pkg-best {
+    position: absolute;
+    top: 14px; right: 16px;
+    background: var(--warm-dark);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 10px;
+  }
+  .pkg-type { font-size: 13px; font-weight: 700; letter-spacing: 1px; color: var(--rose); margin-bottom: 6px; }
+  .pkg-card.featured .pkg-type { color: rgba(255,255,255,0.8); }
+  .pkg-name { font-size: 20px; font-weight: 800; color: var(--warm-dark); margin-bottom: 4px; }
+  .pkg-card.featured .pkg-name { color: var(--white); }
+  .pkg-zh { font-size: 14px; color: var(--text-light); letter-spacing: 2px; }
+  .pkg-card.featured .pkg-zh { color: rgba(255,255,255,0.7); }
+  .pkg-body { padding: 24px 28px 28px; }
+  .pkg-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+  .pkg-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+  .pkg-features li::before { content: '✓'; color: var(--rose); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .pkg-cta {
+    display: block;
+    background: var(--rose);
+    color: var(--white);
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .pkg-cta:hover { background: var(--rose-light); }
+  .pkg-cta-outline {
+    background: transparent;
+    color: var(--rose);
+    border: 1.5px solid var(--rose);
+  }
+  .pkg-cta-outline:hover { background: var(--rose-pale); }
+
+  /* GUARANTEE */
+  .guarantee { background: var(--rose-pale); }
+  .guarantee-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
+  .guar-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .guar-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+  .guar-icon { font-size: 36px; margin-bottom: 12px; }
+  .guar-title { font-size: 15px; font-weight: 700; color: var(--warm-dark); margin-bottom: 6px; }
+  .guar-zh { font-size: 12px; color: var(--rose); letter-spacing: 1px; margin-bottom: 10px; }
+  .guar-desc { font-size: 12px; color: var(--text-light); line-height: 1.6; }
+
+  /* CONTACT */
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; }
+  .contact-info h3 { font-size: 26px; font-weight: 800; color: var(--warm-dark); margin-bottom: 5px; }
+  .contact-info .sub { font-size: 13px; color: var(--text-light); letter-spacing: 2px; margin-bottom: 28px; }
+  .cdet {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .cdet:last-of-type { border-bottom: none; }
+  .cdet-icon { font-size: 18px; margin-top: 2px; flex-shrink: 0; }
+  .cdet-label { font-size: 11px; color: var(--text-light); margin-bottom: 4px; }
+  .cdet-value { font-size: 15px; font-weight: 700; color: var(--warm-dark); }
+  .cdet-value a { color: var(--warm-dark); text-decoration: none; }
+  .cdet-value a:hover { color: var(--rose); }
+  .contact-form {
+    background: var(--light);
+    border-radius: 16px;
+    padding: 36px 32px;
+    border: 1px solid var(--border);
+  }
+  .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--warm-dark); margin-bottom: 20px; }
+  .fg { margin-bottom: 16px; }
+  .fg label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-light); margin-bottom: 6px; }
+  .fg input, .fg select, .fg textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 11px 14px;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--rose); }
+  .fg textarea { min-height: 100px; resize: vertical; }
+  .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .submit-btn {
+    width: 100%;
+    background: var(--rose);
+    color: var(--white);
+    border: none;
+    padding: 13px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 6px;
+  }
+  .submit-btn:hover { background: var(--rose-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--warm-dark);
+    color: rgba(255,255,255,0.45);
+    padding: 36px 70px;
+  }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .fb-name { font-size: 18px; font-weight: 800; color: var(--white); }
+  .fb-name span { color: var(--rose-light); }
+  .fb-zh { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 1px; margin-top: 3px; }
+  .footer-links { display: flex; gap: 22px; list-style: none; }
+  .footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 12px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--rose-light); }
+  .footer-copy { font-size: 11px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 60px 20px; }
+    .hero h1 { font-size: 38px; }
+    .section { padding: 56px 20px; }
+    .about-grid, .prop-grid, .svc-grid, .pkg-grid, .guarantee-grid, .contact-grid { grid-template-columns: 1fr; }
+    .prop-card:first-child { grid-column: span 1; }
+    .proc-steps { grid-template-columns: 1fr 1fr; }
+    .fg-row { grid-template-columns: 1fr; }
+    footer { padding: 28px 20px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <span class="nav-brand-en"><span>Love</span>House</span>
+    <span class="nav-brand-zh">愛家美居 · 香港專業裝修設計</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#property">服務類型</a></li>
+    <li><a href="#services">裝修服務</a></li>
+    <li><a href="#packages">裝修套餐</a></li>
+    <li><a href="#contact" class="nav-cta">免費諮詢</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🏠 香港政府認可裝修承辦商 · 30年經驗</div>
+    <h1><span>Love</span>House<br>愛家美居</h1>
+    <span class="hero-zh">裝修設計 · 家居改造</span>
+    <p>香港專業家居裝修及室內設計服務，一站式由設計到施工，為公屋、居屋、私樓及村屋提供優質裝修解決方案。30年豐富經驗，竣工後一年免費結構維修保養。</p>
+    <div class="hero-btns">
+      <a href="#packages" class="btn-rose">查看裝修套餐</a>
+      <a href="#contact" class="btn-ghost">免費設計諮詢</a>
+    </div>
+    <div class="hero-feats">
+      <div class="hf-item"><span class="hf-icon">✅</span><span class="hf-text">政府認可承辦商</span></div>
+      <div class="hf-item"><span class="hf-icon">🎨</span><span class="hf-text">免費3D設計圖</span></div>
+      <div class="hf-item"><span class="hf-icon">🛡️</span><span class="hf-text">一年保養保證</span></div>
+      <div class="hf-item"><span class="hf-icon">🏆</span><span class="hf-text">30年裝修經驗</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <div class="section-label">About LoveHouse</div>
+      <h2 class="section-title">讓每個家都成為<br>您最愛的地方</h2>
+      <p class="section-zh">愛家美居 · 專業裝修</p>
+      <p>LoveHouse 愛家美居是香港專業的家居裝修及室內設計公司，設計及工程團隊駐紮旺角，以30年豐富經驗為各類型住宅及商業單位提供一站式裝修設計服務。</p>
+      <p>我們深明每位客戶的需要各有不同，設計師團隊因應您的生活習慣和個人風格，量身訂造獨特的家居空間。由免費諮詢、3D設計圖、施工管理到竣工保養，全程一條龍服務，讓您安心交託。</p>
+      <p>廠房設於廣東省東莞市鳳崗鎮，專門製造訂製廚櫃、衣櫃、榻榻米、書架、電視櫃及組合床等，確保產品品質與設計融為一體。</p>
+      <div class="about-values">
+        <div class="av-item"><span class="av-icon">🏛️</span><div><div class="av-text">政府認可</div><div class="av-sub">Government Registered</div></div></div>
+        <div class="av-item"><span class="av-icon">🎨</span><div><div class="av-text">免費設計</div><div class="av-sub">Free Design Service</div></div></div>
+        <div class="av-item"><span class="av-icon">🛡️</span><div><div class="av-text">一年保養</div><div class="av-sub">1-Year Warranty</div></div></div>
+        <div class="av-item"><span class="av-icon">🏭</span><div><div class="av-text">自家廠房</div><div class="av-sub">Own Factory</div></div></div>
+      </div>
+    </div>
+    <div class="about-card">
+      <h3><span>Love</span>House</h3>
+      <p class="sub">愛家美居 · HONG KONG</p>
+      <div class="about-stats">
+        <div class="as-item"><div class="as-num">30+</div><div class="as-lbl">年裝修經驗</div></div>
+        <div class="as-item"><div class="as-num">1,000+</div><div class="as-lbl">完成項目</div></div>
+        <div class="as-item"><div class="as-num">1年</div><div class="as-lbl">免費保養</div></div>
+        <div class="as-item"><div class="as-num">旺角</div><div class="as-lbl">設計團隊駐紮</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPERTY TYPES -->
+<section class="section prop-types" id="property">
+  <div class="section-label">Property Types</div>
+  <h2 class="section-title">各類型單位 全部承接</h2>
+  <p class="section-zh">公屋 · 居屋 · 私樓 · 村屋</p>
+  <p class="section-sub">無論是公共房屋、居屋、私人屋苑還是村屋，LoveHouse 均有豐富經驗，針對不同樓宇類型提供最合適的裝修方案。</p>
+  <div class="prop-grid">
+    <div class="prop-card">
+      <div class="prop-bg prop-bg-1">
+        <span class="prop-icon-lg">🏠</span>
+        <div class="prop-info">
+          <div class="prop-chip">最受歡迎</div>
+          <div class="prop-name">私人屋苑 Private Estate</div>
+          <div class="prop-zh">私人樓宇室內設計裝修</div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card">
+      <div class="prop-bg prop-bg-2">
+        <span class="prop-icon-lg">🏘️</span>
+        <div class="prop-info">
+          <div class="prop-name">公共房屋 Public Housing</div>
+          <div class="prop-zh">公屋裝修套餐</div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card">
+      <div class="prop-bg prop-bg-3">
+        <span class="prop-icon-lg">🏡</span>
+        <div class="prop-info">
+          <div class="prop-name">居屋 HOS Flat</div>
+          <div class="prop-zh">居者有其屋裝修設計</div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card">
+      <div class="prop-bg prop-bg-4">
+        <span class="prop-icon-lg">🌿</span>
+        <div class="prop-info">
+          <div class="prop-name">村屋 Village House</div>
+          <div class="prop-zh">村屋大宅室內設計</div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card">
+      <div class="prop-bg prop-bg-5">
+        <span class="prop-icon-lg">💼</span>
+        <div class="prop-info">
+          <div class="prop-name">商業單位 Commercial</div>
+          <div class="prop-zh">辦公室 · 商舖 · 餐廳</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="section-label">Our Services</div>
+  <h2 class="section-title">一站式裝修服務</h2>
+  <p class="section-zh">設計 · 施工 · 保養</p>
+  <p class="section-sub">從初步諮詢到竣工交樓，我們提供全方位的裝修及室內設計服務，確保每個環節都達到最高標準。</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon">🎨</div>
+      <div class="svc-name">室內設計</div>
+      <div class="svc-zh">Interior Design</div>
+      <div class="svc-desc">專業室內設計師根據您的生活習慣及風格偏好，量身訂造獨特室內設計方案，提供詳細設計圖則及3D效果圖。</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏗️</div>
+      <div class="svc-name">全屋裝修工程</div>
+      <div class="svc-zh">Full Renovation Works</div>
+      <div class="svc-desc">由拆卸、泥水、電力、批盪、地板到油漆，全套裝修工程一手包辦，施工品質嚴格把關，準時完工。</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🪟</div>
+      <div class="svc-name">訂製廚櫃及傢俱</div>
+      <div class="svc-zh">Custom Furniture & Cabinets</div>
+      <div class="svc-desc">自家廠房生產訂製廚櫃、衣櫃、榻榻米、書架、電視櫃及組合床，確保設計與品質完美融合。</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔍</div>
+      <div class="svc-name">免費上門測量</div>
+      <div class="svc-zh">Free Site Survey</div>
+      <div class="svc-desc">提供免費上門測量及專業分析服務，設計師親臨了解您的空間及需求，制定最適合的裝修方案。</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">📐</div>
+      <div class="svc-name">免費3D設計圖</div>
+      <div class="svc-zh">Free 3D Visualisation</div>
+      <div class="svc-desc">提供詳細3D模擬效果圖，讓您在施工前清晰了解完工效果，確保設計完全符合您的期望。</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🛡️</div>
+      <div class="svc-name">竣工後一年保養</div>
+      <div class="svc-zh">1-Year Maintenance Warranty</div>
+      <div class="svc-desc">所有項目完工後提供一年免費結構性維修保養，讓您安心入住，有問題隨時跟進處理。</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process" id="process">
+  <div class="section-label">How We Work</div>
+  <h2 class="section-title" style="color:var(--white)">裝修流程</h2>
+  <p class="section-zh">簡單五步 · 輕鬆起居</p>
+  <p class="section-sub">由初步諮詢到完工交樓，清晰透明的裝修流程，讓每個步驟都在您的掌控之中。</p>
+  <div class="proc-steps">
+    <div class="pst">
+      <div class="pst-circle">☎️</div>
+      <div class="pst-num">STEP 01</div>
+      <div class="pst-title">Free Consultation</div>
+      <div class="pst-zh">免費諮詢</div>
+      <div class="pst-desc">電話或上門初步諮詢，了解您的需求及預算。</div>
+    </div>
+    <div class="pst">
+      <div class="pst-circle">📏</div>
+      <div class="pst-num">STEP 02</div>
+      <div class="pst-title">Site Survey</div>
+      <div class="pst-zh">上門測量</div>
+      <div class="pst-desc">設計師上門測量，分析空間，制定初步方案。</div>
+    </div>
+    <div class="pst">
+      <div class="pst-circle">🎨</div>
+      <div class="pst-num">STEP 03</div>
+      <div class="pst-title">Design & Quote</div>
+      <div class="pst-zh">設計及報價</div>
+      <div class="pst-desc">提交3D設計圖、物料清單及詳細報價單。</div>
+    </div>
+    <div class="pst">
+      <div class="pst-circle">🔨</div>
+      <div class="pst-num">STEP 04</div>
+      <div class="pst-title">Construction</div>
+      <div class="pst-zh">施工管理</div>
+      <div class="pst-desc">按圖施工，定期跟進進度，嚴格品質管控。</div>
+    </div>
+    <div class="pst">
+      <div class="pst-circle">🎉</div>
+      <div class="pst-num">STEP 05</div>
+      <div class="pst-title">Handover</div>
+      <div class="pst-zh">驗收交樓</div>
+      <div class="pst-desc">完工驗收，提供一年免費保養，安心入住。</div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="section packages" id="packages">
+  <div class="section-label">Renovation Packages</div>
+  <h2 class="section-title">裝修套餐</h2>
+  <p class="section-zh">透明報價 · 靈活選擇</p>
+  <p class="section-sub">針對不同類型及規模的單位，提供靈活的裝修套餐選擇，清晰透明，沒有隱藏收費。</p>
+  <div class="pkg-grid">
+    <div class="pkg-card">
+      <div class="pkg-header">
+        <div class="pkg-type">BASIC</div>
+        <div class="pkg-name">基本裝修</div>
+        <div class="pkg-zh">Basic Renovation</div>
+      </div>
+      <div class="pkg-body">
+        <ul class="pkg-features">
+          <li>免費上門測量及諮詢</li>
+          <li>基本泥水及批盪工程</li>
+          <li>電力及水喉更換</li>
+          <li>地板及牆身工程</li>
+          <li>基本油漆工程</li>
+          <li>竣工後保養服務</li>
+        </ul>
+        <a href="#contact" class="pkg-cta pkg-cta-outline">查詢報價</a>
+      </div>
+    </div>
+    <div class="pkg-card featured">
+      <div class="pkg-header">
+        <div class="pkg-best">最受歡迎</div>
+        <div class="pkg-type">FULL</div>
+        <div class="pkg-name">全屋翻新</div>
+        <div class="pkg-zh">Full Home Renovation</div>
+      </div>
+      <div class="pkg-body">
+        <ul class="pkg-features">
+          <li>免費3D室內設計圖</li>
+          <li>全套裝修工程</li>
+          <li>訂製廚櫃及衣櫃</li>
+          <li>冷氣安裝工程</li>
+          <li>衛浴翻新工程</li>
+          <li>智能家居設備安裝</li>
+          <li>一年免費結構保養</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">立即查詢</a>
+      </div>
+    </div>
+    <div class="pkg-card">
+      <div class="pkg-header">
+        <div class="pkg-type">COMMERCIAL</div>
+        <div class="pkg-name">商業裝修</div>
+        <div class="pkg-zh">Commercial Fit-out</div>
+      </div>
+      <div class="pkg-body">
+        <ul class="pkg-features">
+          <li>辦公室設計及裝修</li>
+          <li>零售商舖裝修</li>
+          <li>餐廳及食肆裝修</li>
+          <li>品牌形象設計</li>
+          <li>工程管理服務</li>
+          <li>保養及維修合約</li>
+        </ul>
+        <a href="#contact" class="pkg-cta pkg-cta-outline">查詢報價</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="section guarantee">
+  <div class="section-label">Our Guarantee</div>
+  <h2 class="section-title">愛家保證</h2>
+  <p class="section-zh">LoveHouse Quality Promise</p>
+  <p class="section-sub">我們的承諾不止於裝修完工——而是確保每位客戶對自己的家感到驕傲和滿意。</p>
+  <div class="guarantee-grid">
+    <div class="guar-card">
+      <div class="guar-icon">🏛️</div>
+      <div class="guar-title">政府認可</div>
+      <div class="guar-zh">Gov't Registered</div>
+      <div class="guar-desc">香港政府認可裝修承辦商，所有工程符合本地建築法規及安全標準。</div>
+    </div>
+    <div class="guar-card">
+      <div class="guar-icon">💰</div>
+      <div class="guar-title">透明報價</div>
+      <div class="guar-zh">Transparent Pricing</div>
+      <div class="guar-desc">詳細列明所有物料及工程費用，無隱藏收費，讓您清晰掌握預算。</div>
+    </div>
+    <div class="guar-card">
+      <div class="guar-icon">🛡️</div>
+      <div class="guar-title">一年保養</div>
+      <div class="guar-zh">1-Year Warranty</div>
+      <div class="guar-desc">竣工後提供一年免費結構性維修保養，發現問題即時跟進，安心入住。</div>
+    </div>
+    <div class="guar-card">
+      <div class="guar-icon">⏰</div>
+      <div class="guar-title">準時完工</div>
+      <div class="guar-zh">On-Time Delivery</div>
+      <div class="guar-desc">嚴格按照工程時間表施工，確保如期完工，減少您等待入伙的時間。</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="section-label">Contact Us</div>
+  <h2 class="section-title">免費裝修諮詢</h2>
+  <p class="section-zh">Free Consultation</p>
+  <br>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>LoveHouse 愛家美居</h3>
+      <p class="sub">HONG KONG HOME RENOVATION SPECIALIST</p>
+      <div class="cdet">
+        <div class="cdet-icon">📍</div>
+        <div>
+          <div class="cdet-label">Design Studio 設計工作室</div>
+          <div class="cdet-value">旺角 Mong Kok, Hong Kong</div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">📱</div>
+        <div>
+          <div class="cdet-label">Mobile / WhatsApp</div>
+          <div class="cdet-value"><a href="tel:+85293794810">9379 4810</a></div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">✉️</div>
+        <div>
+          <div class="cdet-label">Email 電郵</div>
+          <div class="cdet-value"><a href="mailto:service@hklovehouse.com">service@hklovehouse.com</a></div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">🌐</div>
+        <div>
+          <div class="cdet-label">Website 網站</div>
+          <div class="cdet-value"><a href="https://hklovehouse.com" target="_blank">hklovehouse.com</a></div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">📘</div>
+        <div>
+          <div class="cdet-label">Facebook</div>
+          <div class="cdet-value"><a href="https://www.facebook.com/lovehousehk/" target="_blank">愛家美居 hklovehouse.com</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>預約免費諮詢</h3>
+      <div class="fg-row">
+        <div class="fg">
+          <label>姓名</label>
+          <input type="text" placeholder="您的姓名">
+        </div>
+        <div class="fg">
+          <label>電話</label>
+          <input type="tel" placeholder="聯絡電話">
+        </div>
+      </div>
+      <div class="fg">
+        <label>電郵</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="fg">
+        <label>單位類型</label>
+        <select>
+          <option>私人屋苑 Private Estate</option>
+          <option>公共房屋 Public Housing</option>
+          <option>居屋 HOS Flat</option>
+          <option>村屋 Village House</option>
+          <option>商業單位 Commercial</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>裝修需求</label>
+        <textarea placeholder="請描述您的裝修需求、單位面積及預算..."></textarea>
+      </div>
+      <button class="submit-btn">提交諮詢 / Send Enquiry</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="fb-name"><span>Love</span>House 愛家美居</div>
+      <div class="fb-zh">香港專業家居裝修室內設計 · 旺角設計工作室</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#property">服務類型</a></li>
+      <li><a href="#services">裝修服務</a></li>
+      <li><a href="#packages">裝修套餐</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 LoveHouse 愛家美居. Hong Kong.</div>
+  </div>
+</footer>
+
+</body>
+</html>
