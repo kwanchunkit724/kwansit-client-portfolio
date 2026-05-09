@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CN Logistics | International Air Freight & Logistics | Hong Kong</title>
+<meta name="description" content="CN Logistics — Hong Kong-based international logistics specialist. Air freight, sea freight, and supply chain solutions connecting China, Hong Kong, Europe, and beyond.">
+<style>
+  :root {
+    --orange: #e85d04;
+    --orange-dark: #c44d00;
+    --orange-light: #ff7b2e;
+    --dark: #0f0f0f;
+    --charcoal: #1c1c1c;
+    --gray: #f0f0f0;
+    --text: #1a1a1a;
+    --text-light: #666;
+    --white: #fff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Arial','Helvetica Neue',sans-serif; color:var(--text); background:#f8f8f8; }
+  html { scroll-behavior:smooth; }
+
+  /* NAV */
+  nav {
+    position:fixed; top:0; width:100%; z-index:100;
+    background:rgba(15,15,15,0.98); backdrop-filter:blur(8px);
+    padding:0 5%; height:68px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:2px solid var(--orange);
+  }
+  .logo { font-size:1.5rem; font-weight:900; color:#fff; letter-spacing:2px; }
+  .logo span { color:var(--orange); }
+  nav ul { list-style:none; display:flex; gap:2rem; }
+  nav ul a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.82rem; letter-spacing:1px; text-transform:uppercase; transition:color 0.3s; }
+  nav ul a:hover { color:var(--orange); }
+
+  /* HERO */
+  .hero {
+    min-height:100vh;
+    background:linear-gradient(135deg, var(--dark) 0%, #1a0f00 50%, #2a1500 100%);
+    display:flex; align-items:center; padding:100px 5% 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse 60% 70% at 100% 50%, rgba(232,93,4,0.12) 0%, transparent 60%);
+  }
+  .hero-dots {
+    position:absolute; right:5%; top:50%; transform:translateY(-50%);
+    display:grid; grid-template-columns:repeat(8, 1fr); gap:20px; opacity:0.15;
+  }
+  .hero-dots span { width:4px; height:4px; border-radius:50%; background:var(--orange); display:block; }
+  .hero-inner { max-width:700px; position:relative; z-index:1; }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:0.6rem;
+    background:rgba(232,93,4,0.15); border:1px solid rgba(232,93,4,0.4);
+    padding:8px 18px; border-radius:2px;
+    color:var(--orange-light); font-size:0.72rem; letter-spacing:2.5px; text-transform:uppercase;
+    margin-bottom:2rem;
+  }
+  .hero h1 {
+    font-size:clamp(2.6rem, 5.5vw, 5rem); color:#fff;
+    line-height:1.1; margin-bottom:1.5rem; font-weight:900;
+  }
+  .hero h1 .hl { color:var(--orange); }
+  .hero p { font-size:1.1rem; color:rgba(255,255,255,0.65); line-height:1.8; margin-bottom:2.5rem; max-width:560px; }
+  .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:4rem; }
+  .btn-orange {
+    display:inline-block; background:var(--orange); color:#fff;
+    padding:14px 34px; text-decoration:none;
+    font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; font-weight:700;
+    transition:all 0.3s;
+  }
+  .btn-orange:hover { background:var(--orange-light); }
+  .btn-outline {
+    display:inline-block; border:1.5px solid rgba(255,255,255,0.35); color:#fff;
+    padding:13px 34px; text-decoration:none;
+    font-size:0.84rem; letter-spacing:2px; text-transform:uppercase;
+    transition:all 0.3s;
+  }
+  .btn-outline:hover { border-color:var(--orange); color:var(--orange); }
+  .hero-stats { display:flex; gap:3rem; flex-wrap:wrap; padding-top:2.5rem; border-top:1px solid rgba(255,255,255,0.08); }
+  .hs-num { font-size:2.5rem; font-weight:900; color:var(--orange); display:block; line-height:1; }
+  .hs-lbl { font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:4px; display:block; }
+
+  /* TICKER */
+  .ticker { background:var(--orange); padding:12px 0; overflow:hidden; }
+  .tick-inner { display:flex; gap:2.5rem; animation:scroll 22s linear infinite; white-space:nowrap; }
+  .tick-inner span { color:rgba(255,255,255,0.9); font-size:0.75rem; letter-spacing:2.5px; text-transform:uppercase; font-weight:700; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* SECTIONS */
+  section { padding:100px 5%; }
+  .tag { color:var(--orange); font-size:0.68rem; letter-spacing:3.5px; text-transform:uppercase; display:block; margin-bottom:0.8rem; }
+  .h2 { font-size:clamp(1.8rem, 3vw, 2.7rem); color:var(--dark); margin-bottom:1rem; font-weight:800; }
+  .lead { font-size:1rem; color:var(--text-light); line-height:1.9; }
+
+  /* SERVICES */
+  .services { background:#fff; }
+  .svc-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:#e0e0e0; margin-top:3.5rem; }
+  .svc-card {
+    background:#fff; padding:2.8rem 2rem;
+    transition:all 0.35s; cursor:default;
+    border-bottom:4px solid transparent;
+  }
+  .svc-card:hover { background:var(--dark); border-bottom-color:var(--orange); }
+  .svc-card:hover .svc-icon { background:rgba(232,93,4,0.2); }
+  .svc-card:hover h3 { color:#fff; }
+  .svc-card:hover p { color:rgba(255,255,255,0.6); }
+  .svc-card:hover .svc-tag { color:var(--orange); }
+  .svc-icon { width:56px; height:56px; background:var(--gray); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin-bottom:1.5rem; transition:background 0.35s; }
+  .svc-tag { font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--text-light); margin-bottom:0.5rem; display:block; transition:color 0.35s; }
+  .svc-card h3 { font-size:1.1rem; color:var(--dark); margin-bottom:0.8rem; font-weight:700; transition:color 0.35s; }
+  .svc-card p { font-size:0.87rem; color:var(--text-light); line-height:1.7; transition:color 0.35s; }
+
+  /* ROUTES */
+  .routes { background:var(--charcoal); }
+  .routes .h2 { color:#fff; }
+  .routes .lead { color:rgba(255,255,255,0.6); }
+  .route-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:1.5rem; margin-top:3.5rem; }
+  .route-card {
+    border:1px solid rgba(255,255,255,0.08); padding:2rem;
+    border-radius:2px; transition:all 0.3s;
+    position:relative; overflow:hidden;
+  }
+  .route-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--orange); transform:scaleX(0); transition:transform 0.4s; }
+  .route-card:hover::before { transform:scaleX(1); }
+  .route-card:hover { border-color:rgba(232,93,4,0.3); background:rgba(232,93,4,0.05); }
+  .route-from { font-size:0.72rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:0.5rem; display:block; }
+  .route-name { font-size:1.1rem; color:#fff; font-weight:700; margin-bottom:0.6rem; }
+  .route-desc { font-size:0.84rem; color:rgba(255,255,255,0.5); line-height:1.7; }
+
+  /* WHY */
+  .why { background:#f8f8f8; }
+  .why-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:2rem; margin-top:3rem; }
+  .why-card { background:#fff; padding:2rem; border-top:3px solid var(--orange); }
+  .why-num { font-size:3rem; font-weight:900; color:rgba(232,93,4,0.15); line-height:1; margin-bottom:0.4rem; }
+  .why-card h3 { font-size:1rem; color:var(--dark); margin-bottom:0.6rem; font-weight:700; }
+  .why-card p { font-size:0.87rem; color:var(--text-light); line-height:1.7; }
+
+  /* CONTACT */
+  .contact { background:var(--dark); }
+  .contact .tag { color:var(--orange-light); }
+  .contact .h2 { color:#fff; }
+  .contact .lead { color:rgba(255,255,255,0.6); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; margin-top:3rem; }
+  .ci { margin-bottom:1.5rem; }
+  .ci-lbl { font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--orange); margin-bottom:0.4rem; display:block; }
+  .ci-val { font-size:0.95rem; color:#fff; }
+  .ci-val a { color:var(--orange-light); text-decoration:none; }
+  .form-group { margin-bottom:1.1rem; }
+  label { font-size:0.67rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.45); display:block; margin-bottom:0.45rem; }
+  input, select, textarea {
+    width:100%; border:1px solid rgba(255,255,255,0.1); padding:12px 14px;
+    font-size:0.9rem; color:#fff; background:rgba(255,255,255,0.06);
+    border-radius:2px; transition:border-color 0.3s; font-family:'Arial',sans-serif;
+  }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--orange); }
+  textarea { resize:vertical; min-height:110px; }
+  select option { background:var(--dark); }
+  .sub-btn {
+    width:100%; background:var(--orange); color:#fff; border:none;
+    padding:14px; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase;
+    cursor:pointer; transition:background 0.3s; font-weight:700; font-family:'Arial',sans-serif;
+  }
+  .sub-btn:hover { background:var(--orange-light); }
+
+  /* FOOTER */
+  footer { background:#080808; color:rgba(255,255,255,0.45); padding:50px 5% 25px; font-family:'Arial',sans-serif; }
+  .foot-inner { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:3rem; margin-bottom:2.5rem; }
+  .foot-brand .logo { display:block; margin-bottom:1rem; font-size:1.3rem; }
+  .foot-brand p { font-size:0.85rem; line-height:1.8; max-width:360px; }
+  .foot-links { display:flex; gap:4rem; }
+  .foot-col h4 { color:var(--orange); font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:1.2rem; }
+  .foot-col ul { list-style:none; }
+  .foot-col li { margin-bottom:0.5rem; font-size:0.85rem; }
+  .foot-col a { color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.3s; }
+  .foot-col a:hover { color:var(--orange); }
+  .foot-bottom { border-top:1px solid rgba(255,255,255,0.07); padding-top:1.5rem; display:flex; justify-content:space-between; font-size:0.76rem; flex-wrap:wrap; gap:0.5rem; }
+  .designer-credit a { color:var(--orange-light); text-decoration:none; }
+
+  @media (max-width:900px) {
+    nav ul { display:none; }
+    .svc-grid { grid-template-columns:1fr 1fr; }
+    .contact-grid { grid-template-columns:1fr; }
+    .foot-inner { flex-direction:column; }
+  }
+  @media (max-width:600px) {
+    .svc-grid { grid-template-columns:1fr; }
+    .hero-dots { display:none; }
+    .hero-stats { gap:1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">CN<span>.</span>LOGISTICS</div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#routes">Routes</a></li>
+    <li><a href="#about">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-dots">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge">Hong Kong · International Freight Solutions</div>
+    <h1>Moving Cargo<br><span class="hl">Across the World</span></h1>
+    <p>CN Logistics is a Hong Kong-based international freight and logistics specialist, offering air freight, sea freight, and integrated supply chain solutions connecting China, Hong Kong, Europe, and global markets.</p>
+    <div class="hero-cta">
+      <a href="#services" class="btn-orange">Our Services</a>
+      <a href="#contact" class="btn-outline">Request a Quote</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="hs-num">Air</span>
+        <span class="hs-lbl">Charter Freight</span>
+      </div>
+      <div>
+        <span class="hs-num">Sea</span>
+        <span class="hs-lbl">Freight Services</span>
+      </div>
+      <div>
+        <span class="hs-num">Global</span>
+        <span class="hs-lbl">Route Network</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="tick-inner">
+    <span>Air Freight</span><span>·</span>
+    <span>Sea Freight</span><span>·</span>
+    <span>Air Charter</span><span>·</span>
+    <span>Supply Chain</span><span>·</span>
+    <span>Hong Kong</span><span>·</span>
+    <span>China – Europe</span><span>·</span>
+    <span>Last Mile Delivery</span><span>·</span>
+    <span>Air Freight</span><span>·</span>
+    <span>Sea Freight</span><span>·</span>
+    <span>Air Charter</span><span>·</span>
+    <span>Supply Chain</span><span>·</span>
+    <span>Hong Kong</span><span>·</span>
+    <span>China – Europe</span><span>·</span>
+    <span>Last Mile Delivery</span><span>·</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <span class="tag">What We Do</span>
+  <h2 class="h2">Freight & Logistics Services</h2>
+  <p class="lead" style="max-width:580px;">From rapid air freight to cost-efficient sea freight, CN Logistics provides end-to-end solutions for businesses that need reliable international cargo movement.</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon">✈️</div>
+      <span class="svc-tag">Air Freight</span>
+      <h3>Standard Air Freight</h3>
+      <p>Scheduled air freight services via major carriers across key global routes. Reliable transit times with full tracking visibility from origin to destination.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🛩️</div>
+      <span class="svc-tag">Air Charter</span>
+      <h3>Air Charter Services</h3>
+      <p>Dedicated air charter flights for urgent, oversized, or high-value cargo. Full aircraft or part-charter options available for China-Europe and other key routes.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🚢</div>
+      <span class="svc-tag">Sea Freight</span>
+      <h3>Ocean Freight</h3>
+      <p>FCL and LCL sea freight solutions for large-volume shipments. Cost-effective routing via Hong Kong with access to global port networks.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">📦</div>
+      <span class="svc-tag">Supply Chain</span>
+      <h3>Supply Chain Solutions</h3>
+      <p>Integrated supply chain management including warehousing, inventory management, and distribution to streamline your logistics operations.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔄</div>
+      <span class="svc-tag">Customs & Compliance</span>
+      <h3>Customs Clearance</h3>
+      <p>Expert customs brokerage and compliance services for Hong Kong, China, and international destinations. Ensuring smooth clearance and regulatory adherence.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏭</div>
+      <span class="svc-tag">Warehousing</span>
+      <h3>Warehousing & Distribution</h3>
+      <p>Flexible warehousing and distribution services in Hong Kong supporting import, export, and cross-border trade operations of all scales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KEY ROUTES -->
+<section class="routes" id="routes">
+  <span class="tag">Route Network</span>
+  <h2 class="h2">Key Trade Corridors</h2>
+  <p class="lead" style="max-width:520px;">CN Logistics operates across the world's major trade corridors, with specialist expertise on China-Europe airfreight connectivity.</p>
+  <div class="route-grid">
+    <div class="route-card">
+      <span class="route-from">Air Charter Route</span>
+      <div class="route-name">China → Italy</div>
+      <div class="route-desc">Dedicated air charter service connecting Chinese manufacturing hubs directly with Italian import centres. Priority handling for fashion, luxury, and industrial goods.</div>
+    </div>
+    <div class="route-card">
+      <span class="route-from">Core Air Hub</span>
+      <div class="route-name">Hong Kong → Europe</div>
+      <div class="route-desc">Hong Kong serves as a premier transhipment and direct air freight hub for China-Europe cargo, with daily connections to major European airports.</div>
+    </div>
+    <div class="route-card">
+      <span class="route-from">Asia Pacific</span>
+      <div class="route-name">China → Southeast Asia</div>
+      <div class="route-desc">Regular air and sea freight services across Southeast Asia including Singapore, Vietnam, Malaysia, Thailand, and Indonesia.</div>
+    </div>
+    <div class="route-card">
+      <span class="route-from">Trans-Pacific</span>
+      <div class="route-name">Hong Kong → Americas</div>
+      <div class="route-desc">Competitive air and sea freight rates to North America, Central America, and South America, leveraging Hong Kong's world-class port infrastructure.</div>
+    </div>
+    <div class="route-card">
+      <span class="route-from">Intra-Asia</span>
+      <div class="route-name">Greater China Network</div>
+      <div class="route-desc">Seamless connectivity across Mainland China, Hong Kong, Macau, and Taiwan for intra-regional freight and distribution requirements.</div>
+    </div>
+    <div class="route-card">
+      <span class="route-from">Middle East &amp; Africa</span>
+      <div class="route-name">Emerging Market Routes</div>
+      <div class="route-desc">Growing freight network serving Middle East, Africa, and South Asian markets through established carrier partnerships and agent networks.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="about">
+  <div style="text-align:center; max-width:540px; margin:0 auto 2rem;">
+    <span class="tag">Why CN Logistics</span>
+    <h2 class="h2">The CN Difference</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <h3>Hong Kong Gateway</h3>
+      <p>Based in Hong Kong — one of the world's busiest cargo airports and container ports — giving you direct access to global trade routes and premium carrier capacity.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <h3>Charter Capability</h3>
+      <p>Dedicated air charter flights for time-critical and oversized cargo, including the specialist China-Italy route. No compromise on timing when it matters most.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <h3>China Expertise</h3>
+      <p>Deep understanding of China's export environment, regulatory requirements, and carrier networks ensures efficient movement of cargo from Chinese origins.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <h3>Responsive Service</h3>
+      <p>Direct communication with experienced logistics professionals. We respond quickly, provide accurate quotes, and keep you informed at every stage of your shipment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <span class="tag">Get a Quote</span>
+  <h2 class="h2">Contact CN Logistics</h2>
+  <p class="lead" style="max-width:480px;">Ready to discuss your freight requirements? Our team is available to provide competitive rates and logistics solutions.</p>
+  <div class="contact-grid">
+    <div>
+      <div class="ci">
+        <span class="ci-lbl">Base</span>
+        <div class="ci-val">Hong Kong</div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">Email</span>
+        <div class="ci-val"><a href="mailto:info@cnlogistics.com.hk">info@cnlogistics.com.hk</a></div>
+      </div>
+      <div class="ci" style="margin-top:2rem;">
+        <span class="ci-lbl">Specialist Routes</span>
+        <div class="ci-val" style="color:rgba(255,255,255,0.7);">China – Italy Air Charter<br>Hong Kong – Europe<br>Asia Pacific Networks<br>Trans-Pacific Routes</div>
+      </div>
+      <div class="ci" style="margin-top:1.5rem;">
+        <span class="ci-lbl">Services</span>
+        <div class="ci-val" style="color:rgba(255,255,255,0.7);">Air Freight · Sea Freight<br>Air Charter · Customs Clearance<br>Warehousing · Supply Chain</div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('Thank you for your freight enquiry. Our team will be in touch within one business day.');">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="form-group">
+          <label>Name *</label>
+          <input type="text" required placeholder="Your Name">
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" placeholder="Company Name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" required placeholder="you@company.com">
+      </div>
+      <div class="form-group">
+        <label>Service Type</label>
+        <select>
+          <option>Air Freight</option>
+          <option>Air Charter</option>
+          <option>Sea Freight</option>
+          <option>Supply Chain / Warehousing</option>
+          <option>Customs Clearance</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Origin & Destination</label>
+        <input type="text" placeholder="e.g. Shenzhen, China → Milan, Italy">
+      </div>
+      <div class="form-group">
+        <label>Cargo Details & Requirements</label>
+        <textarea placeholder="Cargo type, weight/volume, frequency, special requirements..."></textarea>
+      </div>
+      <button type="submit" class="sub-btn">Request Quote</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <span class="logo">CN<span>.</span>LOGISTICS</span>
+      <p>Hong Kong-based international freight and logistics specialist. Air freight, sea freight, air charter, and supply chain solutions connecting China, Hong Kong, and the world.</p>
+    </div>
+    <div class="foot-links">
+      <div class="foot-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Air Freight</a></li>
+          <li><a href="#services">Air Charter</a></li>
+          <li><a href="#services">Sea Freight</a></li>
+          <li><a href="#services">Warehousing</a></li>
+          <li><a href="#services">Customs</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#routes">Routes</a></li>
+          <li><a href="#about">Why Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="mailto:info@cnlogistics.com.hk">Email Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 CN Logistics. All rights reserved. | Hong Kong</span>
+    <span class="designer-credit">Website by <a href="mailto:kck980724@gmail.com">Kwan's IT</a> · +852 60282297</span>
+  </div>
+</footer>
+
+</body>
+</html>
