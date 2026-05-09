@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Mart 360 | 零食物語 香港領先休閒食品零售商</title>
+<style>
+  :root {
+    --red: #e31c2b;
+    --red-dark: #b5151f;
+    --red-light: #ff4d5a;
+    --gold: #ffd700;
+    --dark: #1a0005;
+    --darkgray: #2c2c2c;
+    --lightgray: #f8f8f8;
+    --white: #ffffff;
+    --text: #333;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans TC','Segoe UI',sans-serif; color:var(--text); background:var(--white); }
+
+  /* NAV */
+  nav { background:var(--red); padding:0 5%; position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.2); }
+  .nav-inner { display:flex; align-items:center; justify-content:space-between; height:65px; }
+  .nav-logo { display:flex; align-items:center; gap:10px; }
+  .nav-logo-badge { background:var(--gold); color:var(--red-dark); font-size:1.3rem; font-weight:900; padding:4px 12px; border-radius:6px; }
+  .nav-logo-text { color:var(--white); font-size:0.95rem; font-weight:700; }
+  .nav-links { display:flex; gap:26px; list-style:none; }
+  .nav-links a { color:rgba(255,255,255,0.9); text-decoration:none; font-size:0.87rem; font-weight:500; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--gold); }
+
+  /* HERO */
+  .hero { background:linear-gradient(135deg,var(--dark) 0%,#4a0010 50%,var(--red-dark) 100%); color:var(--white); padding:80px 5% 70px; overflow:hidden; position:relative; }
+  .hero::after { content:'360'; position:absolute; right:-30px; bottom:-40px; font-size:22rem; font-weight:900; color:rgba(255,255,255,0.03); line-height:1; }
+  .hero-top { display:flex; gap:14px; margin-bottom:22px; flex-wrap:wrap; }
+  .hero-badge { background:var(--gold); color:var(--dark); font-size:0.73rem; font-weight:800; padding:5px 14px; border-radius:20px; }
+  .hero-badge-2 { background:rgba(255,255,255,0.15); color:var(--white); font-size:0.73rem; font-weight:700; padding:5px 14px; border-radius:20px; }
+  .hero h1 { font-size:3.2rem; font-weight:900; line-height:1.1; margin-bottom:14px; }
+  .hero h1 .num { color:var(--gold); font-size:4rem; }
+  .hero-tagline { font-size:1.15rem; color:rgba(255,255,255,0.8); margin-bottom:30px; }
+  .hero-stats { display:flex; gap:40px; flex-wrap:wrap; margin-bottom:30px; }
+  .hs { text-align:center; }
+  .hs-n { font-size:2.2rem; font-weight:900; color:var(--gold); }
+  .hs-l { font-size:0.72rem; color:rgba(255,255,255,0.55); }
+  .hero-cta { display:flex; gap:12px; flex-wrap:wrap; }
+  .btn-gold { background:var(--gold); color:var(--dark); padding:13px 30px; border-radius:30px; text-decoration:none; font-weight:800; font-size:0.93rem; }
+  .btn-outline { background:transparent; border:2px solid rgba(255,255,255,0.5); color:var(--white); padding:13px 30px; border-radius:30px; text-decoration:none; font-weight:700; font-size:0.93rem; }
+
+  /* STRIP */
+  .strip { background:var(--gold); padding:10px 5%; display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+  .strip-label { font-size:0.78rem; font-weight:800; color:var(--dark); flex-shrink:0; }
+  .strip-items { display:flex; gap:12px; flex-wrap:wrap; }
+  .strip-tag { background:var(--dark); color:var(--gold); font-size:0.75rem; font-weight:700; padding:4px 12px; border-radius:20px; }
+
+  /* SECTION */
+  section { padding:70px 5%; }
+  .sec-label { font-size:0.72rem; font-weight:700; color:var(--red); letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+  .sec-title { font-size:1.9rem; font-weight:800; color:var(--dark); margin-bottom:12px; }
+  .sec-desc { color:#666; line-height:1.8; max-width:650px; }
+
+  /* ABOUT */
+  .about { background:var(--lightgray); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start; margin-top:36px; }
+  .about-text p { color:#555; line-height:1.9; font-size:0.95rem; margin-bottom:14px; }
+  .about-box { background:var(--white); border-radius:12px; padding:24px; }
+  .about-box h4 { font-size:1rem; font-weight:800; color:var(--red); margin-bottom:16px; }
+  .kv-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #f0f0f0; }
+  .kv-row:last-child { border-bottom:none; }
+  .kv-key { font-size:0.83rem; color:#888; }
+  .kv-val { font-size:0.88rem; font-weight:700; color:var(--dark); text-align:right; }
+
+  /* PRODUCTS */
+  .products { background:var(--white); }
+  .origin-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-top:36px; }
+  .origin-card { background:var(--lightgray); border-radius:12px; padding:22px 16px; text-align:center; border:2px solid transparent; transition:all 0.3s; }
+  .origin-card:hover { border-color:var(--red); background:var(--white); }
+  .origin-flag { font-size:2.4rem; margin-bottom:10px; }
+  .origin-card h3 { font-size:0.9rem; font-weight:700; color:var(--dark); margin-bottom:4px; }
+  .origin-card p { font-size:0.78rem; color:#888; }
+
+  /* CATEGORIES */
+  .cat-section { background:var(--lightgray); }
+  .cat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:36px; }
+  .cat-card { background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%); color:var(--white); border-radius:12px; padding:26px 20px; text-align:center; transition:transform 0.3s; }
+  .cat-card:hover { transform:translateY(-5px); }
+  .cat-icon { font-size:2.5rem; margin-bottom:12px; }
+  .cat-card h3 { font-size:0.92rem; font-weight:700; margin-bottom:6px; }
+  .cat-card p { font-size:0.78rem; opacity:0.8; line-height:1.5; }
+
+  /* STORES */
+  .stores { background:var(--white); }
+  .districts-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:10px; margin-top:36px; }
+  .dist-badge { background:var(--lightgray); border-radius:8px; padding:12px 10px; text-align:center; font-size:0.8rem; font-weight:600; color:var(--dark); border:1.5px solid transparent; transition:all 0.2s; }
+  .dist-badge:hover { border-color:var(--red); color:var(--red); }
+  .store-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:36px; }
+  .store-stat { background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%); color:var(--white); border-radius:12px; padding:28px 24px; text-align:center; }
+  .store-stat .ss-n { font-size:2.5rem; font-weight:900; color:var(--gold); }
+  .store-stat .ss-l { font-size:0.85rem; opacity:0.85; margin-top:4px; }
+
+  /* LISTED */
+  .listed { background:linear-gradient(135deg,var(--dark) 0%,#2a0008 100%); color:var(--white); }
+  .listed .sec-title { color:var(--white); }
+  .listed-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start; margin-top:36px; }
+  .listed-text p { color:rgba(255,255,255,0.75); line-height:1.8; font-size:0.93rem; margin-bottom:14px; }
+  .ipo-box { background:rgba(255,215,0,0.1); border:1px solid rgba(255,215,0,0.3); border-radius:12px; padding:24px; }
+  .ipo-box h4 { color:var(--gold); font-size:1rem; font-weight:700; margin-bottom:16px; }
+  .ipo-row { display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
+  .ipo-row:last-child { border-bottom:none; }
+  .ipo-key { font-size:0.82rem; color:rgba(255,255,255,0.6); }
+  .ipo-val { font-size:0.85rem; font-weight:700; color:var(--gold); }
+
+  /* CONTACT */
+  .contact { background:var(--lightgray); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:36px; }
+  .contact-card { background:var(--white); border-radius:12px; padding:28px; }
+  .contact-card h3 { font-size:1rem; font-weight:700; color:var(--red); margin-bottom:18px; padding-bottom:12px; border-bottom:2px solid var(--lightgray); }
+  .cc-item { display:flex; align-items:flex-start; gap:12px; margin-bottom:14px; }
+  .cc-icon { font-size:1.2rem; flex-shrink:0; margin-top:2px; }
+  .cc-text span { display:block; font-size:0.72rem; color:#aaa; }
+  .cc-text a, .cc-text strong { font-size:0.88rem; font-weight:600; color:var(--dark); text-decoration:none; }
+
+  /* FOOTER */
+  footer { background:var(--dark); color:rgba(255,255,255,0.45); text-align:center; padding:22px 5%; font-size:0.82rem; }
+  footer a { color:var(--gold); text-decoration:none; }
+
+  @media(max-width:768px){
+    .hero h1{font-size:2.2rem;} .hero h1 .num{font-size:3rem;} .about-grid,.listed-grid,.contact-grid{grid-template-columns:1fr;} .origin-grid{grid-template-columns:1fr 1fr 1fr;} .cat-grid{grid-template-columns:1fr 1fr;} .districts-grid{grid-template-columns:repeat(3,1fr);} .store-stats{grid-template-columns:1fr 1fr;} .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-badge">360</div>
+      <div class="nav-logo-text">Best Mart 360<br><span style="font-size:0.72rem;opacity:0.8">零食物語</span></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#products">產品來源</a></li>
+      <li><a href="#stores">門市網絡</a></li>
+      <li><a href="#listed">上市資訊</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top">
+    <span class="hero-badge">🏆 香港第二大休閑食品零售商</span>
+    <span class="hero-badge-2">HKEx: 2360.HK</span>
+  </div>
+  <h1>Best Mart <span class="num">360</span></h1>
+  <div class="hero-tagline">零食物語 · Best Quality · Best Prices</div>
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-n">85+</div><div class="hs-l">香港門市</div></div>
+    <div class="hs"><div class="hs-n">18</div><div class="hs-l">覆蓋地區</div></div>
+    <div class="hs"><div class="hs-n">495</div><div class="hs-l">合作品牌</div></div>
+    <div class="hs"><div class="hs-n">1,960</div><div class="hs-l">SKU 產品</div></div>
+  </div>
+  <div class="hero-cta">
+    <a href="#stores" class="btn-gold">🏪 尋找門市</a>
+    <a href="#products" class="btn-outline">瀏覽產品來源</a>
+  </div>
+</div>
+
+<!-- STRIP -->
+<div class="strip">
+  <span class="strip-label">產品來源地：</span>
+  <div class="strip-items">
+    <span class="strip-tag">🇪🇺 歐洲 Europe</span>
+    <span class="strip-tag">🇺🇸 美國 USA</span>
+    <span class="strip-tag">🇯🇵 日本 Japan</span>
+    <span class="strip-tag">🇰🇷 韓國 Korea</span>
+    <span class="strip-tag">🌏 東南亞 SE Asia</span>
+    <span class="strip-tag">🇭🇰 香港代理商</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="sec-label">About Us</div>
+  <div class="about-grid">
+    <div>
+      <div class="sec-title">關於 Best Mart 360</div>
+      <div class="about-text">
+        <p>Best Mart 360 Holdings Limited（零食物語）是香港領先的連鎖休閑食品零售商，主要透過「Best Mart 360」品牌經營連鎖零售店，提供來自全球各地的進口預包裝休閑食品及其他雜貨產品。</p>
+        <p>公司以提供「最佳品質」（Best Quality）及「最佳價格」（Best Prices）為核心使命，透過持續的全球採購，為顧客帶來舒適愉快的購物體驗。</p>
+        <p>現時全港共有超過85間門市，遍佈全港18個地區，讓香港消費者方便地購買到來自歐洲、美國、日本、韓國及東南亞等地的各類休閑食品。</p>
+      </div>
+    </div>
+    <div class="about-box">
+      <h4>📊 公司概覽</h4>
+      <div class="kv-row"><span class="kv-key">公司全名</span><span class="kv-val">Best Mart 360 Holdings Limited</span></div>
+      <div class="kv-row"><span class="kv-key">股份代號</span><span class="kv-val">2360.HK (主板)</span></div>
+      <div class="kv-row"><span class="kv-key">品牌名稱</span><span class="kv-val">Best Mart 360 / 零食物語</span></div>
+      <div class="kv-row"><span class="kv-key">業務性質</span><span class="kv-val">連鎖休閑食品零售</span></div>
+      <div class="kv-row"><span class="kv-key">香港門市</span><span class="kv-val">85+ 間，遍佈18區</span></div>
+      <div class="kv-row"><span class="kv-key">合作品牌數</span><span class="kv-val">約495個品牌</span></div>
+      <div class="kv-row"><span class="kv-key">產品數量</span><span class="kv-val">約1,960個SKU</span></div>
+      <div class="kv-row"><span class="kv-key">集團主席</span><span class="kv-val">林子豐先生</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS ORIGIN -->
+<section class="products" id="products">
+  <div class="sec-label">Global Sourcing</div>
+  <div class="sec-title">全球採購 · 精選產品</div>
+  <div class="sec-desc">Best Mart 360 從全球各地採購優質休閑食品，涵蓋歐洲、美國、日本、韓國及東南亞各地，為顧客帶來多元化的進口零食體驗。</div>
+  <div class="origin-grid">
+    <div class="origin-card">
+      <div class="origin-flag">🇪🇺</div>
+      <h3>歐洲</h3>
+      <p>精選歐洲特色零食及糖果</p>
+    </div>
+    <div class="origin-card">
+      <div class="origin-flag">🇺🇸</div>
+      <h3>美國</h3>
+      <p>美式經典零食與健康食品</p>
+    </div>
+    <div class="origin-card">
+      <div class="origin-flag">🇯🇵</div>
+      <h3>日本</h3>
+      <p>人氣日本零食與甜品</p>
+    </div>
+    <div class="origin-card">
+      <div class="origin-flag">🇰🇷</div>
+      <h3>韓國</h3>
+      <p>韓系潮流零食與飲品</p>
+    </div>
+    <div class="origin-card">
+      <div class="origin-flag">🌏</div>
+      <h3>東南亞</h3>
+      <p>東南亞特色風味零食</p>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="cat-section">
+  <div class="sec-label">Product Categories</div>
+  <div class="sec-title">產品種類</div>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <div class="cat-icon">🍫</div>
+      <h3>朱古力 &amp; 糖果</h3>
+      <p>來自歐美日韓的頂級朱古力及各式糖果</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🍪</div>
+      <h3>餅乾 &amp; 薯片</h3>
+      <p>各國品牌餅乾、薯片及烘焙零食</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🍜</div>
+      <h3>即食食品</h3>
+      <p>方便即食麵、米飯及各類速食產品</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🧃</div>
+      <h3>飲品</h3>
+      <p>進口果汁、汽水、茶飲及健康飲品</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🍬</div>
+      <h3>橡皮糖 &amp; 軟糖</h3>
+      <p>人氣橡皮糖、軟糖及酸甜零食</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🥜</div>
+      <h3>堅果 &amp; 健康零食</h3>
+      <p>天然健康堅果、果乾及有機零食</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🍵</div>
+      <h3>茶葉 &amp; 沖劑</h3>
+      <p>精選茶葉、咖啡及各類沖劑產品</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🛒</div>
+      <h3>雜貨 &amp; 生活用品</h3>
+      <p>各類日用雜貨及生活必需品</p>
+    </div>
+  </div>
+</section>
+
+<!-- STORES -->
+<section class="stores" id="stores">
+  <div class="sec-label">Store Network</div>
+  <div class="sec-title">門市網絡 · 遍佈全港</div>
+  <div class="sec-desc">Best Mart 360 在全港18個地區設有超過85間門市，方便您就近購買最愛零食。</div>
+  <div class="store-stats">
+    <div class="store-stat">
+      <div class="ss-n">85+</div>
+      <div class="ss-l">全港門市數目</div>
+    </div>
+    <div class="store-stat">
+      <div class="ss-n">18</div>
+      <div class="ss-l">覆蓋地區</div>
+    </div>
+    <div class="store-stat">
+      <div class="ss-n">全港</div>
+      <div class="ss-l">策略性分佈各區</div>
+    </div>
+  </div>
+  <div style="margin-top:30px;">
+    <p style="font-size:0.88rem;color:#888;margin-bottom:14px;">覆蓋地區包括：</p>
+    <div class="districts-grid">
+      <div class="dist-badge">中西區</div>
+      <div class="dist-badge">灣仔</div>
+      <div class="dist-badge">東區</div>
+      <div class="dist-badge">南區</div>
+      <div class="dist-badge">油尖旺</div>
+      <div class="dist-badge">深水埗</div>
+      <div class="dist-badge">九龍城</div>
+      <div class="dist-badge">黃大仙</div>
+      <div class="dist-badge">觀塘</div>
+      <div class="dist-badge">荃灣</div>
+      <div class="dist-badge">屯門</div>
+      <div class="dist-badge">元朗</div>
+      <div class="dist-badge">北區</div>
+      <div class="dist-badge">大埔</div>
+      <div class="dist-badge">沙田</div>
+      <div class="dist-badge">西貢</div>
+      <div class="dist-badge">葵青</div>
+      <div class="dist-badge">離島</div>
+    </div>
+  </div>
+</section>
+
+<!-- LISTED -->
+<section class="listed" id="listed">
+  <div class="sec-label">Listed Company</div>
+  <div class="listed-grid">
+    <div class="listed-text">
+      <div class="sec-title">上市公司資訊</div>
+      <p>Best Mart 360 Holdings Limited 於2019年1月11日成功在香港聯合交易所主板上市（股份代號：2360.HK），標誌著公司發展的重要里程碑。</p>
+      <p>上市首日收市報HK$1.17，較最終發售價HK$1.00高17%，當日最高股價達HK$1.28，成交量達約1.77億股，總成交額逾HK$2.05億。</p>
+      <p>主席林子豐先生表示，成功上市體現了投資者對公司業務發展及未來前景的信心，公司將充分利用香港國際融資平台，進一步提升品牌知名度及擴大市場份額。</p>
+    </div>
+    <div class="ipo-box">
+      <h4>📈 上市資料</h4>
+      <div class="ipo-row"><span class="ipo-key">交易所</span><span class="ipo-val">香港聯合交易所主板</span></div>
+      <div class="ipo-row"><span class="ipo-key">股份代號</span><span class="ipo-val">2360.HK</span></div>
+      <div class="ipo-row"><span class="ipo-key">上市日期</span><span class="ipo-val">2019年1月11日</span></div>
+      <div class="ipo-row"><span class="ipo-key">最終發售價</span><span class="ipo-val">HK$1.00</span></div>
+      <div class="ipo-row"><span class="ipo-key">上市首日收市</span><span class="ipo-val">HK$1.17 (+17%)</span></div>
+      <div class="ipo-row"><span class="ipo-key">首日最高股價</span><span class="ipo-val">HK$1.28</span></div>
+      <div class="ipo-row"><span class="ipo-key">首日成交量</span><span class="ipo-val">約1.77億股</span></div>
+      <div class="ipo-row"><span class="ipo-key">首日總成交額</span><span class="ipo-val">逾HK$2.05億</span></div>
+      <div class="ipo-row"><span class="ipo-key">獨家保薦人</span><span class="ipo-val">Lego Corporate Finance</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="sec-label">Contact Us</div>
+  <div class="sec-title">聯絡我們</div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h3>🏪 公司聯絡方式</h3>
+      <div class="cc-item">
+        <div class="cc-icon">✉️</div>
+        <div class="cc-text">
+          <span>投資者關係 / 股份事宜</span>
+          <a href="mailto:bestmart360.ecom@computershare.com.hk">bestmart360.ecom@computershare.com.hk</a>
+        </div>
+      </div>
+      <div class="cc-item">
+        <div class="cc-icon">📊</div>
+        <div class="cc-text">
+          <span>香港聯交所股份代號</span>
+          <strong>2360.HK（主板）</strong>
+        </div>
+      </div>
+      <div class="cc-item">
+        <div class="cc-icon">🏢</div>
+        <div class="cc-text">
+          <span>地區</span>
+          <strong>香港</strong>
+        </div>
+      </div>
+      <div class="cc-item">
+        <div class="cc-icon">🌐</div>
+        <div class="cc-text">
+          <span>更多資訊</span>
+          <strong>Best Mart 360 Holdings Limited</strong>
+        </div>
+      </div>
+    </div>
+    <div class="contact-card">
+      <h3>💬 商業合作查詢</h3>
+      <p style="font-size:0.88rem;color:#666;line-height:1.7;margin-bottom:16px;">如有品牌合作、供應商洽談或其他商業查詢，歡迎透過以下表格聯絡我們的業務團隊。</p>
+      <div style="margin-bottom:10px;"><input type="text" placeholder="姓名 Name" style="width:100%;padding:10px 14px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:0.88rem;outline:none;"></div>
+      <div style="margin-bottom:10px;"><input type="email" placeholder="電郵 Email" style="width:100%;padding:10px 14px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:0.88rem;outline:none;"></div>
+      <div style="margin-bottom:10px;"><select style="width:100%;padding:10px 14px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:0.88rem;outline:none;color:#555;">
+        <option>查詢類型 Enquiry Type</option>
+        <option>品牌合作</option>
+        <option>供應商洽談</option>
+        <option>加盟查詢</option>
+        <option>投資者關係</option>
+        <option>其他查詢</option>
+      </select></div>
+      <div style="margin-bottom:12px;"><textarea placeholder="查詢內容 Message" style="width:100%;padding:10px 14px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:0.88rem;height:80px;resize:none;outline:none;"></textarea></div>
+      <button style="width:100%;padding:12px;background:var(--red);color:var(--white);font-weight:700;font-size:0.93rem;border:none;border-radius:8px;cursor:pointer;">發送查詢 Send Enquiry</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Best Mart 360 Holdings Limited · 零食物語 · HKEx: 2360.HK</p>
+  <p style="margin-top:6px;"><a href="mailto:bestmart360.ecom@computershare.com.hk">bestmart360.ecom@computershare.com.hk</a></p>
+</footer>
+
+</body>
+</html>
