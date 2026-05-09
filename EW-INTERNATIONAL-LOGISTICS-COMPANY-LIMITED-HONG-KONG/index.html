@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EW International Logistics | Global Container Solutions | Hong Kong</title>
+<meta name="description" content="EW International Logistics — Hong Kong's expert container solutions partner since 2017. Container sales, one-way leasing, empty repositioning, depot services, and NVOCC shipping. 600+ satisfied customers worldwide.">
+<style>
+  :root {
+    --steel: #1e3a5f;
+    --steel-dark: #0f1e35;
+    --steel-light: #2a5080;
+    --teal: #0ca4a5;
+    --teal-light: #0ecbcc;
+    --silver: #e8ecf0;
+    --dark: #080e18;
+    --text: #1a2530;
+    --text-light: #607080;
+    --bg: #f5f7fa;
+    --white: #fff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Arial','Helvetica Neue',sans-serif; color:var(--text); background:var(--bg); }
+  html { scroll-behavior:smooth; }
+
+  /* NAV */
+  nav {
+    position:fixed; top:0; width:100%; z-index:100;
+    background:rgba(8,14,24,0.98); backdrop-filter:blur(10px);
+    padding:0 5%; height:70px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:2px solid var(--teal);
+  }
+  .logo { font-size:1.4rem; font-weight:900; color:#fff; letter-spacing:3px; }
+  .logo span { color:var(--teal); }
+  nav ul { list-style:none; display:flex; gap:1.8rem; }
+  nav ul a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.81rem; letter-spacing:0.5px; transition:color 0.3s; }
+  nav ul a:hover { color:var(--teal-light); }
+
+  /* HERO */
+  .hero {
+    min-height:100vh;
+    background:linear-gradient(135deg, var(--dark) 0%, var(--steel-dark) 50%, #0a1a30 100%);
+    display:flex; align-items:center; padding:100px 5% 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse 70% 60% at 100% 50%, rgba(12,164,165,0.1) 0%, transparent 60%);
+  }
+  .sea-pattern {
+    position:absolute; bottom:0; left:0; right:0; height:200px;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200'%3E%3Cpath fill='%230ca4a5' fill-opacity='0.05' d='M0 100 C360 150 720 50 1080 100 C1260 125 1380 110 1440 100 L1440 200 L0 200Z'/%3E%3Cpath fill='%230ca4a5' fill-opacity='0.03' d='M0 120 C360 170 720 70 1080 120 C1260 145 1380 130 1440 120 L1440 200 L0 200Z'/%3E%3C/svg%3E") no-repeat bottom;
+    background-size:cover;
+  }
+  .hero-inner { max-width:720px; position:relative; z-index:1; }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:0.6rem;
+    background:rgba(12,164,165,0.12); border:1px solid rgba(12,164,165,0.35);
+    padding:8px 18px; border-radius:2px;
+    color:var(--teal-light); font-size:0.72rem; letter-spacing:2.5px; text-transform:uppercase;
+    margin-bottom:2rem;
+  }
+  .hero-badge::before { content:'🌊'; }
+  .hero h1 {
+    font-size:clamp(2.4rem, 5vw, 4.8rem); color:#fff;
+    line-height:1.1; margin-bottom:0.6rem; font-weight:900;
+  }
+  .hero h1 .sub { font-size:clamp(1.4rem, 3vw, 2.4rem); color:var(--teal); display:block; font-weight:600; }
+  .hero p { font-size:1.05rem; color:rgba(255,255,255,0.65); line-height:1.9; margin-bottom:2.5rem; max-width:580px; }
+  .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:4rem; }
+  .btn-teal {
+    display:inline-block; background:var(--teal); color:#fff;
+    padding:14px 34px; text-decoration:none;
+    font-size:0.84rem; letter-spacing:1.5px; text-transform:uppercase; font-weight:700;
+    transition:all 0.3s;
+  }
+  .btn-teal:hover { background:var(--teal-light); }
+  .btn-ghost {
+    display:inline-block; border:1.5px solid rgba(255,255,255,0.3); color:#fff;
+    padding:13px 34px; text-decoration:none;
+    font-size:0.84rem; letter-spacing:1.5px; text-transform:uppercase;
+    transition:all 0.3s;
+  }
+  .btn-ghost:hover { border-color:var(--teal-light); color:var(--teal-light); }
+  .hero-stats { display:grid; grid-template-columns:repeat(5, 1fr); gap:0; border:1px solid rgba(255,255,255,0.08); }
+  .hs { padding:1.5rem 1rem; border-right:1px solid rgba(255,255,255,0.08); text-align:center; }
+  .hs:last-child { border-right:none; }
+  .hs-num { font-size:2rem; font-weight:900; color:var(--teal); display:block; line-height:1; }
+  .hs-lbl { font-size:0.65rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:4px; display:block; }
+
+  /* TICKER */
+  .ticker { background:var(--teal); padding:12px 0; overflow:hidden; }
+  .tick-inner { display:flex; gap:2.5rem; animation:scroll 25s linear infinite; white-space:nowrap; }
+  .tick-inner span { color:rgba(255,255,255,0.9); font-size:0.75rem; letter-spacing:2.5px; text-transform:uppercase; font-weight:700; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* SECTIONS */
+  section { padding:100px 5%; }
+  .tag { color:var(--teal); font-size:0.68rem; letter-spacing:3.5px; text-transform:uppercase; display:block; margin-bottom:0.8rem; }
+  .h2 { font-size:clamp(1.8rem, 3vw, 2.7rem); color:var(--dark); margin-bottom:1rem; font-weight:800; }
+  .lead { font-size:1rem; color:var(--text-light); line-height:1.9; }
+
+  /* SERVICES */
+  .services { background:var(--white); }
+  .svc-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:#d0d8e0; margin-top:3.5rem; }
+  .svc-card {
+    background:var(--white); padding:2.8rem 2rem;
+    transition:all 0.35s; cursor:default;
+    border-top:4px solid transparent;
+  }
+  .svc-card:hover { background:var(--steel-dark); border-top-color:var(--teal); }
+  .svc-card:hover .svc-ico { background:rgba(12,164,165,0.2); }
+  .svc-card:hover h3 { color:#fff; }
+  .svc-card:hover p { color:rgba(255,255,255,0.6); }
+  .svc-ico { width:56px; height:56px; background:var(--silver); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin-bottom:1.5rem; transition:background 0.35s; }
+  .svc-card h3 { font-size:1.05rem; color:var(--dark); margin-bottom:0.7rem; font-weight:700; transition:color 0.35s; }
+  .svc-card p { font-size:0.87rem; color:var(--text-light); line-height:1.7; transition:color 0.35s; }
+
+  /* ROUTE HIGHLIGHT */
+  .route-hl { background:var(--steel-dark); }
+  .route-hl .h2 { color:#fff; }
+  .route-hl .lead { color:rgba(255,255,255,0.65); }
+  .route-card-big {
+    background:rgba(12,164,165,0.1); border:1px solid rgba(12,164,165,0.3);
+    padding:3rem; margin-top:2.5rem; border-radius:2px;
+    display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;
+  }
+  .rc-left h3 { font-size:1.5rem; color:#fff; margin-bottom:1rem; font-weight:700; }
+  .rc-left p { font-size:0.95rem; color:rgba(255,255,255,0.65); line-height:1.8; }
+  .rc-right { display:flex; flex-direction:column; gap:1rem; }
+  .rc-item { display:flex; align-items:center; gap:1rem; }
+  .rc-dot { width:10px; height:10px; border-radius:50%; background:var(--teal); flex-shrink:0; }
+  .rc-text { font-size:0.9rem; color:rgba(255,255,255,0.75); }
+
+  /* ABOUT */
+  .about { background:var(--bg); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+  .about-visual {
+    background:linear-gradient(145deg, var(--dark), var(--steel));
+    padding:3rem; border-radius:2px; position:relative; overflow:hidden;
+  }
+  .about-visual::after { content:'EW'; position:absolute; bottom:-2rem; right:-1rem; font-size:18rem; font-weight:900; color:rgba(255,255,255,0.04); line-height:1; }
+  .av-row { display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.08); padding:1.2rem 0; position:relative; z-index:1; }
+  .av-row:first-child { padding-top:0; }
+  .av-row:last-child { border-bottom:none; }
+  .av-lbl { font-size:0.75rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.4); }
+  .av-val { font-size:0.95rem; color:#fff; font-weight:700; text-align:right; }
+  .about-text .lead { margin-bottom:1.5rem; }
+  .depot-list { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1.5rem; }
+  .depot-tag { background:var(--steel); color:#fff; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600; }
+
+  /* WHY */
+  .why { background:var(--dark); }
+  .why .h2 { color:#fff; }
+  .why .lead { color:rgba(255,255,255,0.6); }
+  .why-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:2px; background:rgba(255,255,255,0.05); margin-top:3rem; }
+  .why-card {
+    padding:2.5rem 2rem; border-right:1px solid rgba(255,255,255,0.05);
+    transition:background 0.3s;
+  }
+  .why-card:hover { background:rgba(12,164,165,0.08); }
+  .why-big { font-size:2.5rem; font-weight:900; color:var(--teal); display:block; line-height:1; margin-bottom:0.5rem; }
+  .why-card h3 { font-size:1rem; color:#fff; margin-bottom:0.6rem; font-weight:700; }
+  .why-card p { font-size:0.86rem; color:rgba(255,255,255,0.5); line-height:1.7; }
+
+  /* CONTACT */
+  .contact { background:var(--steel-dark); }
+  .contact .tag { color:var(--teal-light); }
+  .contact .h2 { color:#fff; }
+  .contact .lead { color:rgba(255,255,255,0.6); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; margin-top:3rem; }
+  .ci { margin-bottom:1.4rem; }
+  .ci-lbl { font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--teal-light); margin-bottom:0.4rem; display:block; }
+  .ci-val { font-size:0.93rem; color:#fff; }
+  .ci-val a { color:var(--teal-light); text-decoration:none; }
+  .form-group { margin-bottom:1.1rem; }
+  label { font-size:0.67rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.45); display:block; margin-bottom:0.45rem; }
+  input, select, textarea {
+    width:100%; border:1px solid rgba(255,255,255,0.1); padding:12px 14px;
+    font-size:0.9rem; color:#fff; background:rgba(255,255,255,0.06);
+    border-radius:2px; transition:border-color 0.3s; font-family:'Arial',sans-serif;
+  }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--teal); }
+  textarea { resize:vertical; min-height:110px; }
+  select option { background:var(--steel-dark); }
+  .sub-btn {
+    width:100%; background:var(--teal); color:#fff; border:none;
+    padding:14px; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase;
+    cursor:pointer; transition:background 0.3s; font-weight:700; font-family:'Arial',sans-serif;
+  }
+  .sub-btn:hover { background:var(--teal-light); }
+
+  /* FOOTER */
+  footer { background:var(--dark); color:rgba(255,255,255,0.45); padding:60px 5% 30px; font-family:'Arial',sans-serif; }
+  .foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+  .foot-logo { font-size:1.4rem; font-weight:900; color:#fff; letter-spacing:3px; margin-bottom:1rem; display:block; }
+  .foot-logo span { color:var(--teal); }
+  .foot-brand p { font-size:0.85rem; line-height:1.8; }
+  .foot-col h4 { color:var(--teal); font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:1.2rem; }
+  .foot-col ul { list-style:none; }
+  .foot-col li { margin-bottom:0.5rem; font-size:0.85rem; }
+  .foot-col a { color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.3s; }
+  .foot-col a:hover { color:var(--teal-light); }
+  .foot-bottom { border-top:1px solid rgba(255,255,255,0.07); padding-top:2rem; display:flex; justify-content:space-between; font-size:0.76rem; flex-wrap:wrap; gap:0.5rem; }
+  .designer-credit a { color:var(--teal-light); text-decoration:none; }
+
+  @media (max-width:900px) {
+    nav ul { display:none; }
+    .svc-grid { grid-template-columns:1fr 1fr; }
+    .about-grid, .contact-grid, .route-card-big { grid-template-columns:1fr; }
+    .foot-grid { grid-template-columns:1fr; }
+    .hero-stats { grid-template-columns:repeat(3, 1fr); }
+  }
+  @media (max-width:600px) {
+    .svc-grid, .hero-stats { grid-template-columns:1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">EW<span>.</span>LOGISTICS</div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#route">New Route</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="sea-pattern"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">Founded 2017 · Tsim Sha Tsui, Hong Kong</div>
+    <h1>Your Global
+      <span class="sub">Container Solutions Partner</span>
+    </h1>
+    <p>EW International Logistics is a Hong Kong-based professional container solutions provider with a global team of 20+ experts. We deliver flexible, reliable, and cost-efficient container solutions across major markets worldwide — from sales and leasing to repositioning and shipping.</p>
+    <div class="hero-cta">
+      <a href="#services" class="btn-teal">Our Services</a>
+      <a href="#contact" class="btn-ghost">Get a Quote</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs">
+        <span class="hs-num">10+</span>
+        <span class="hs-lbl">Years Expertise</span>
+      </div>
+      <div class="hs">
+        <span class="hs-num">20+</span>
+        <span class="hs-lbl">Global Partners</span>
+      </div>
+      <div class="hs">
+        <span class="hs-num">100+</span>
+        <span class="hs-lbl">Depots Worldwide</span>
+      </div>
+      <div class="hs">
+        <span class="hs-num">600+</span>
+        <span class="hs-lbl">Clients Served</span>
+      </div>
+      <div class="hs">
+        <span class="hs-num">10K+</span>
+        <span class="hs-lbl">Containers/Year</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="tick-inner">
+    <span>Container Sales</span><span>·</span>
+    <span>One-Way Leasing</span><span>·</span>
+    <span>Empty Repositioning</span><span>·</span>
+    <span>Depot Services</span><span>·</span>
+    <span>NVOCC Shipping</span><span>·</span>
+    <span>Spare Parts</span><span>·</span>
+    <span>Red Sea Route</span><span>·</span>
+    <span>Container Sales</span><span>·</span>
+    <span>One-Way Leasing</span><span>·</span>
+    <span>Empty Repositioning</span><span>·</span>
+    <span>Depot Services</span><span>·</span>
+    <span>NVOCC Shipping</span><span>·</span>
+    <span>Spare Parts</span><span>·</span>
+    <span>Red Sea Route</span><span>·</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <span class="tag">Our Services</span>
+  <h2 class="h2">Complete Container Solutions</h2>
+  <p class="lead" style="max-width:580px;">EW delivers six core services spanning the full container lifecycle — from purchase and leasing to maintenance, repositioning, and shipping.</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-ico">📦</div>
+      <h3>Container Sales</h3>
+      <p>New and used containers including Dry, Reefer, Open Side, and other special container types. Competitive pricing sourced from our global depot network.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🔄</div>
+      <h3>One Way Leasing</h3>
+      <p>Cost-effective worldwide one-way leasing through our global partner network in China, Southeast Asia, India, Australia, Europe, the UK, and the United States.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🔧</div>
+      <h3>Container Spare Parts & Components</h3>
+      <p>Supply of container parts and accessories for maintenance and repair. Supporting fleet owners and operators to keep their containers in prime condition.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🌍</div>
+      <h3>Empty Repositioning</h3>
+      <p>Efficient empty container repositioning services for standard and special containers worldwide. Optimise your fleet placement and reduce imbalance costs.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🏭</div>
+      <h3>Depot Services</h3>
+      <p>Repair, maintenance, and storage services at depot locations including Hong Kong, China, Vietnam, and Thailand. Full container care in key Asian hubs.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🚢</div>
+      <h3>Ship | NVOCC Agencies</h3>
+      <p>Shipping services from Shanghai, Qingdao, and Shenzhen to India with weekly regular spaces. Operating new routes including the Red Sea corridor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEW ROUTE HIGHLIGHT -->
+<section class="route-hl" id="route">
+  <span class="tag">New Service</span>
+  <h2 class="h2">New Shipping Route</h2>
+  <p class="lead" style="max-width:520px;">EW International Logistics has launched a new shipping route connecting China to the Red Sea region, offering expanded capacity and competitive rates.</p>
+  <div class="route-card-big">
+    <div class="rc-left">
+      <h3>CNNGB / CNSHK / SAJED<br>Red Sea Route</h3>
+      <p>Our new shipping corridor provides regular capacity from Ningbo and Shanghai in China to Jeddah, Saudi Arabia and the wider Red Sea market — a key growth corridor for China-Middle East trade.</p>
+    </div>
+    <div class="rc-right">
+      <div class="rc-item">
+        <div class="rc-dot"></div>
+        <div class="rc-text"><strong style="color:#fff;">Origin:</strong> Ningbo (CNNGB) · Shanghai (CNSHK)</div>
+      </div>
+      <div class="rc-item">
+        <div class="rc-dot"></div>
+        <div class="rc-text"><strong style="color:#fff;">Destination:</strong> Jeddah (SAJED) · Red Sea</div>
+      </div>
+      <div class="rc-item">
+        <div class="rc-dot"></div>
+        <div class="rc-text"><strong style="color:#fff;">Capacity:</strong> 1,600 TEUs per sailing</div>
+      </div>
+      <div class="rc-item">
+        <div class="rc-dot"></div>
+        <div class="rc-text"><strong style="color:#fff;">Service:</strong> Regular scheduled departures</div>
+      </div>
+      <div class="rc-item">
+        <div class="rc-dot"></div>
+        <div class="rc-text"><strong style="color:#fff;">Booking:</strong> Contact info@ew-logistics.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="av-row">
+        <span class="av-lbl">Founded</span>
+        <span class="av-val">2017, Hong Kong</span>
+      </div>
+      <div class="av-row">
+        <span class="av-lbl">Team</span>
+        <span class="av-val">20+ Global Experts</span>
+      </div>
+      <div class="av-row">
+        <span class="av-lbl">Clients</span>
+        <span class="av-val">600+ Worldwide</span>
+      </div>
+      <div class="av-row">
+        <span class="av-lbl">Annual Sales</span>
+        <span class="av-val">10,000+ Containers</span>
+      </div>
+      <div class="av-row">
+        <span class="av-lbl">Depot Network</span>
+        <span class="av-val">100+ Global Depots</span>
+      </div>
+      <div class="av-row">
+        <span class="av-lbl">Partnerships</span>
+        <span class="av-val">20+ Shipping Lines &amp; Leasing Companies</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="tag">About EW</span>
+      <h2 class="h2">Your Trusted Container Partner</h2>
+      <p class="lead">Founded in 2017 and headquartered in Tsim Sha Tsui, Hong Kong, EW International Logistics has rapidly grown into a trusted name in global container solutions. Our team of 20+ experts brings deep expertise in container sales, leasing, repositioning, and shipping.</p>
+      <p class="lead" style="margin-top:1rem;">We combine global reach with personalised service — leveraging 100+ depot locations and strong partnerships with 20+ shipping lines and leasing companies to deliver flexible, reliable solutions for businesses of all sizes.</p>
+      <div>
+        <div class="tag" style="margin-top:2rem; margin-bottom:0.8rem;">Depot Locations</div>
+        <div class="depot-list">
+          <span class="depot-tag">Hong Kong</span>
+          <span class="depot-tag">China</span>
+          <span class="depot-tag">Vietnam</span>
+          <span class="depot-tag">Thailand</span>
+          <span class="depot-tag">Southeast Asia</span>
+          <span class="depot-tag">India</span>
+          <span class="depot-tag">Australia</span>
+          <span class="depot-tag">Europe</span>
+          <span class="depot-tag">United Kingdom</span>
+          <span class="depot-tag">United States</span>
+          <span class="depot-tag">100+ More</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <span class="tag">Why EW</span>
+  <h2 class="h2">The EW Advantage</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <span class="why-big">10+</span>
+      <h3>Years of Shipping Expertise</h3>
+      <p>A decade of shipping and logistics experience across container types, trade routes, and customer requirements.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-big">20+</span>
+      <h3>Trusted Industry Partnerships</h3>
+      <p>Strong relationships with leading shipping lines and leasing companies ensuring access to the best rates and availability.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-big">100+</span>
+      <h3>Global Depot Network</h3>
+      <p>Over 100 depot locations worldwide supporting seamless pickup, delivery, storage, and maintenance operations.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-big">600+</span>
+      <h3>Satisfied Customers Worldwide</h3>
+      <p>An extensive client base across industries trusting EW for reliable, cost-efficient container solutions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <span class="tag">Request a Quote</span>
+  <h2 class="h2">Contact EW Logistics</h2>
+  <p class="lead" style="max-width:480px;">Ready to move your containers? Get in touch for a competitive quote or to discuss your container requirements.</p>
+  <div class="contact-grid">
+    <div>
+      <div class="ci">
+        <span class="ci-lbl">Address</span>
+        <div class="ci-val">Room 710, 7/F., Wing On Plaza<br>62 Mody Road, Tsim Sha Tsui<br>Kowloon, Hong Kong</div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">Telephone</span>
+        <div class="ci-val"><a href="tel:+85236890791">+852 3689 0791</a></div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">Email</span>
+        <div class="ci-val"><a href="mailto:info@ew-logistics.com">info@ew-logistics.com</a></div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">Website</span>
+        <div class="ci-val"><a href="https://www.ew-logistics.com" target="_blank">www.ew-logistics.com</a></div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('Thank you for your enquiry. Our team will respond within one business day.');">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="form-group">
+          <label>Name *</label>
+          <input type="text" required placeholder="Your Name">
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" placeholder="Company Name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" required placeholder="you@company.com">
+      </div>
+      <div class="form-group">
+        <label>Service Required</label>
+        <select>
+          <option>Container Sales (New/Used)</option>
+          <option>One-Way Leasing</option>
+          <option>Empty Repositioning</option>
+          <option>Depot Services</option>
+          <option>NVOCC / Shipping</option>
+          <option>Container Spare Parts</option>
+          <option>New Red Sea Route</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Container Type & Quantity</label>
+        <input type="text" placeholder="e.g. 20ft Dry x 50, Reefer x 10">
+      </div>
+      <div class="form-group">
+        <label>Details & Requirements</label>
+        <textarea placeholder="Origin/destination, timeline, specific requirements..."></textarea>
+      </div>
+      <button type="submit" class="sub-btn">Submit Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <span class="foot-logo">EW<span>.</span>LOGISTICS</span>
+      <p>EW International Logistics Company Limited — Hong Kong's trusted global container solutions partner since 2017. Container sales, leasing, repositioning, depot services, and NVOCC shipping worldwide.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Container Sales</a></li>
+        <li><a href="#services">One-Way Leasing</a></li>
+        <li><a href="#services">Repositioning</a></li>
+        <li><a href="#services">Depot Services</a></li>
+        <li><a href="#services">NVOCC</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#route">New Route</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="mailto:info@ew-logistics.com">Email Us</a></li>
+        <li><a href="tel:+85236890791">+852 3689 0791</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 EW International Logistics Company Limited. All rights reserved. | Tsim Sha Tsui, Hong Kong</span>
+    <span class="designer-credit">Website by <a href="mailto:kck980724@gmail.com">Kwan's IT</a> · +852 60282297</span>
+  </div>
+</footer>
+
+</body>
+</html>
