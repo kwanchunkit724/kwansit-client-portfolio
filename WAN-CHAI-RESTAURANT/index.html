@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Drawing Room | Mediterranean Dining · St. Regis Hong Kong</title>
+<style>
+  :root {
+    --sage: #5a7a5a;
+    --deep-sage: #3a5a3a;
+    --sand: #c4a882;
+    --terra: #8b5e3c;
+    --deep: #1a1a18;
+    --warm-dark: #1e1c18;
+    --cream: #f5f0e4;
+    --light: #faf8f3;
+    --white: #ffffff;
+    --text: #2a2820;
+    --muted: #6b6455;
+    --gold: #b8956a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* HEADER */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,26,24,0.97); backdrop-filter: blur(10px);
+    padding: 0 50px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(196,168,130,0.2);
+  }
+  .logo { }
+  .logo-main { color: var(--cream); font-size: 20px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; }
+  .logo-sub { color: rgba(255,255,255,0.4); font-size: 10px; letter-spacing: 3px; font-family: 'Arial', sans-serif; text-transform: uppercase; margin-top: 2px; }
+  nav { display: flex; gap: 32px; align-items: center; }
+  nav a { color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-family: 'Arial', sans-serif; transition: color 0.3s; }
+  nav a:hover { color: var(--sand); }
+  .nav-book { border: 1px solid rgba(196,168,130,0.5); color: var(--sand) !important; padding: 8px 22px; }
+  .nav-book:hover { background: var(--sand) !important; color: var(--deep) !important; }
+
+  /* HERO */
+  .hero {
+    height: 100vh; position: relative; overflow: hidden;
+    background: var(--warm-dark);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(90,122,90,0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 30%, rgba(196,168,130,0.12) 0%, transparent 50%),
+                linear-gradient(135deg, var(--warm-dark) 0%, #2a2820 100%);
+  }
+  .hero-content { position: relative; z-index: 2; text-align: center; color: var(--white); padding: 0 20px; }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 5px; color: var(--sand); font-family: 'Arial', sans-serif; text-transform: uppercase; margin-bottom: 24px; }
+  .hero-title { font-size: clamp(44px, 8vw, 88px); font-weight: 700; letter-spacing: 8px; text-transform: uppercase; line-height: 1; margin-bottom: 20px; }
+  .hero-rule { display: flex; align-items: center; gap: 20px; justify-content: center; margin: 20px 0; }
+  .hero-rule::before, .hero-rule::after { content: ''; flex: 1; max-width: 80px; height: 1px; background: rgba(196,168,130,0.4); }
+  .hero-rule-icon { color: var(--sand); font-size: 16px; }
+  .hero-sub { font-size: 14px; color: rgba(255,255,255,0.55); letter-spacing: 4px; text-transform: uppercase; font-family: 'Arial', sans-serif; margin-bottom: 16px; }
+  .hero-cuisine { font-size: 16px; color: var(--sand); letter-spacing: 2px; margin-bottom: 50px; font-style: italic; }
+  .hero-btns { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+  .btn-sand { background: var(--sand); color: var(--deep); padding: 14px 38px; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-family: 'Arial', sans-serif; transition: all 0.3s; }
+  .btn-sand:hover { background: #d4b892; }
+  .btn-outline { border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); padding: 14px 38px; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; font-family: 'Arial', sans-serif; transition: all 0.3s; }
+  .btn-outline:hover { border-color: var(--sand); color: var(--sand); }
+  .hero-hours {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.4); font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; font-family: 'Arial', sans-serif; text-align: center;
+  }
+
+  /* INFO BAR */
+  .info-bar { background: var(--sage); padding: 20px 50px; }
+  .info-bar .container { display: flex; gap: 50px; justify-content: center; flex-wrap: wrap; }
+  .ib-item { display: flex; align-items: center; gap: 12px; color: var(--white); }
+  .ib-icon { font-size: 18px; }
+  .ib-text { font-family: 'Arial', sans-serif; }
+  .ib-label { font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,0.65); text-transform: uppercase; }
+  .ib-val { font-size: 14px; font-weight: 600; color: var(--cream); }
+
+  /* SECTIONS */
+  section { padding: 90px 50px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-tag { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--sage); font-family: 'Arial', sans-serif; margin-bottom: 16px; }
+  .section-title { font-size: clamp(28px, 4vw, 44px); color: var(--text); margin-bottom: 20px; letter-spacing: 2px; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.9; max-width: 600px; font-family: 'Arial', sans-serif; }
+  .sage-line { width: 40px; height: 1px; background: var(--sage); margin: 20px 0; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 60px; }
+  .about-visual {
+    background: var(--deep); height: 480px; position: relative;
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .about-visual::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 40% 60%, rgba(90,122,90,0.25) 0%, transparent 60%);
+  }
+  .av-inner { position: relative; z-index: 1; text-align: center; }
+  .av-icon { font-size: 60px; margin-bottom: 16px; }
+  .av-name { font-size: 15px; color: var(--sand); letter-spacing: 4px; font-family: 'Arial', sans-serif; text-transform: uppercase; }
+  .av-hotel { font-size: 12px; color: rgba(255,255,255,0.4); font-family: 'Arial', sans-serif; margin-top: 6px; letter-spacing: 2px; }
+  .av-badge {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    background: var(--sage); color: var(--white); font-size: 11px;
+    letter-spacing: 2px; padding: 8px 20px; font-family: 'Arial', sans-serif;
+    text-transform: uppercase; white-space: nowrap;
+  }
+  .about-text { font-size: 15px; line-height: 1.9; color: var(--text); font-family: 'Arial', sans-serif; }
+  .about-text p { margin-bottom: 20px; }
+  .highlight { font-size: 18px; font-style: italic; color: var(--deep-sage); line-height: 1.6; border-left: 3px solid var(--sage); padding-left: 20px; margin: 28px 0; }
+
+  /* SIGNATURE RITUAL */
+  .ritual { background: var(--white); }
+  .ritual-hero { background: var(--deep); border-radius: 2px; overflow: hidden; margin-top: 60px; }
+  .ritual-inner { display: grid; grid-template-columns: 1fr 1fr; }
+  .ritual-img {
+    background: linear-gradient(135deg, var(--sage) 0%, var(--deep-sage) 100%);
+    min-height: 400px; display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px;
+  }
+  .ritual-icon { font-size: 64px; }
+  .ritual-img-text { color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 3px; font-family: 'Arial', sans-serif; text-transform: uppercase; }
+  .ritual-body { padding: 60px 50px; display: flex; flex-direction: column; justify-content: center; }
+  .ritual-tag { font-size: 10px; letter-spacing: 4px; color: var(--sand); font-family: 'Arial', sans-serif; text-transform: uppercase; margin-bottom: 16px; }
+  .ritual-title { font-size: 32px; color: var(--white); margin-bottom: 16px; }
+  .ritual-sub { font-size: 14px; color: rgba(255,255,255,0.6); font-family: 'Arial', sans-serif; line-height: 1.8; margin-bottom: 28px; }
+  .ritual-time { display: flex; gap: 24px; margin-bottom: 32px; }
+  .rt-pill { background: rgba(90,122,90,0.3); border: 1px solid rgba(90,122,90,0.5); color: var(--cream); font-size: 12px; letter-spacing: 2px; padding: 8px 18px; font-family: 'Arial', sans-serif; text-transform: uppercase; }
+  .ritual-steps { display: flex; flex-direction: column; gap: 14px; }
+  .rs { display: flex; gap: 14px; align-items: flex-start; }
+  .rs-num { font-size: 11px; color: var(--sand); font-family: 'Arial', sans-serif; width: 20px; flex-shrink: 0; font-weight: 700; }
+  .rs-text { font-size: 14px; color: rgba(255,255,255,0.65); font-family: 'Arial', sans-serif; line-height: 1.5; }
+
+  /* MENU HIGHLIGHTS */
+  .menu-sec { background: var(--light); }
+  .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+  .menu-card {
+    background: var(--white); border-top: 3px solid transparent;
+    padding: 32px 26px; transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .menu-card:hover { border-top-color: var(--sage); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+  .menu-card-icon { font-size: 36px; margin-bottom: 16px; }
+  .menu-card h3 { font-size: 17px; color: var(--text); margin-bottom: 8px; letter-spacing: 1px; }
+  .menu-card .tag { font-size: 11px; letter-spacing: 2px; color: var(--sage); text-transform: uppercase; font-family: 'Arial', sans-serif; margin-bottom: 14px; }
+  .menu-card p { font-size: 13px; color: var(--muted); line-height: 1.7; font-family: 'Arial', sans-serif; }
+  .menu-items-list { margin-top: 16px; list-style: none; }
+  .menu-items-list li { font-size: 13px; color: var(--text); font-family: 'Arial', sans-serif; padding: 5px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .menu-items-list li::before { content: '—  '; color: var(--sand); }
+
+  /* EXPERIENCE */
+  .experience { background: var(--deep); color: var(--white); }
+  .experience .section-title { color: var(--white); }
+  .experience .sage-line { background: var(--sand); }
+  .experience .section-sub { color: rgba(255,255,255,0.6); }
+  .exp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); margin-top: 60px; }
+  .exp-card { background: var(--deep); padding: 36px 24px; text-align: center; transition: background 0.3s; }
+  .exp-card:hover { background: rgba(90,122,90,0.15); }
+  .exp-icon { font-size: 32px; margin-bottom: 14px; }
+  .exp-card h4 { font-size: 14px; letter-spacing: 2px; color: var(--sand); text-transform: uppercase; font-family: 'Arial', sans-serif; margin-bottom: 10px; }
+  .exp-card p { font-size: 13px; color: rgba(255,255,255,0.5); font-family: 'Arial', sans-serif; line-height: 1.6; }
+
+  /* RESERVATIONS */
+  .reservations { background: var(--cream); }
+  .res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 60px; align-items: start; }
+  .res-info h3 { font-size: 20px; color: var(--text); margin-bottom: 28px; letter-spacing: 2px; text-transform: uppercase; padding-bottom: 16px; border-bottom: 1px solid rgba(0,0,0,0.1); }
+  .r-item { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid rgba(0,0,0,0.07); }
+  .r-item:last-child { border-bottom: none; }
+  .r-ico { font-size: 22px; flex-shrink: 0; }
+  .r-detail .lbl { font-size: 10px; letter-spacing: 3px; color: var(--sage); font-family: 'Arial', sans-serif; text-transform: uppercase; margin-bottom: 4px; }
+  .r-detail .val { font-size: 15px; color: var(--text); font-weight: 600; font-family: 'Arial', sans-serif; }
+  .r-detail .val a { color: var(--deep-sage); }
+  .r-detail .note { font-size: 13px; color: var(--muted); font-family: 'Arial', sans-serif; margin-top: 2px; }
+  .res-cta { background: var(--sage); padding: 48px 42px; }
+  .res-cta h3 { font-size: 26px; color: var(--white); margin-bottom: 12px; }
+  .res-cta .rule { width: 40px; height: 1px; background: rgba(255,255,255,0.4); margin: 18px 0; }
+  .res-cta p { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.9; font-family: 'Arial', sans-serif; margin-bottom: 32px; }
+  .res-btns { display: flex; flex-direction: column; gap: 14px; }
+  .rb { display: block; padding: 15px 28px; text-align: center; font-family: 'Arial', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s; }
+  .rb.cream { background: var(--cream); color: var(--deep-sage); }
+  .rb.cream:hover { background: var(--white); }
+  .rb.white-outline { border: 1px solid rgba(255,255,255,0.5); color: rgba(255,255,255,0.85); }
+  .rb.white-outline:hover { background: rgba(255,255,255,0.1); }
+
+  /* FAQ */
+  .faq { background: var(--white); }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 50px; }
+  .faq-item { background: var(--light); padding: 28px; border-left: 3px solid var(--sage); }
+  .faq-item h4 { font-size: 15px; color: var(--text); margin-bottom: 10px; }
+  .faq-item p { font-size: 14px; color: var(--muted); font-family: 'Arial', sans-serif; line-height: 1.7; }
+
+  /* FOOTER */
+  footer { background: var(--deep); color: rgba(255,255,255,0.4); padding: 50px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .f-name { font-size: 22px; font-weight: 700; color: var(--cream); letter-spacing: 4px; text-transform: uppercase; }
+  .f-parent { font-size: 11px; color: rgba(255,255,255,0.35); font-family: 'Arial', sans-serif; margin-top: 6px; letter-spacing: 2px; }
+  .f-addr { font-size: 13px; color: rgba(255,255,255,0.3); font-family: 'Arial', sans-serif; margin-top: 12px; line-height: 1.7; }
+  .footer-links { display: flex; gap: 60px; flex-wrap: wrap; }
+  .fc h5 { color: var(--sand); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-family: 'Arial', sans-serif; margin-bottom: 16px; }
+  .fc a { display: block; color: rgba(255,255,255,0.35); font-size: 13px; font-family: 'Arial', sans-serif; margin-bottom: 10px; transition: color 0.3s; }
+  .fc a:hover { color: rgba(255,255,255,0.7); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 28px; font-size: 12px; font-family: 'Arial', sans-serif; }
+
+  @media (max-width: 900px) {
+    header { padding: 0 20px; }
+    nav { display: none; }
+    section { padding: 60px 20px; }
+    .about-grid, .ritual-inner, .res-grid { grid-template-columns: 1fr; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .exp-grid { grid-template-columns: 1fr 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .info-bar { padding: 20px; }
+    .info-bar .container { gap: 24px; }
+    .footer-top { flex-direction: column; }
+    .footer-links { gap: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <div class="logo-main">The Drawing Room</div>
+    <div class="logo-sub">The St. Regis Hong Kong · Wan Chai</div>
+  </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#ritual">Afternoon Tea</a>
+    <a href="#menu-sec">Menu</a>
+    <a href="#reservations" class="nav-book">Book a Table</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">The St. Regis Hong Kong · Wan Chai</div>
+    <div class="hero-title">The Drawing Room</div>
+    <div class="hero-rule"><span class="hero-rule-icon">✦</span></div>
+    <div class="hero-sub">Mediterranean Dining · Harbour Drive</div>
+    <div class="hero-cuisine">Savor Every Bite in Style</div>
+    <div class="hero-btns">
+      <a href="#reservations" class="btn-sand">Make a Reservation</a>
+      <a href="#ritual" class="btn-outline">Afternoon Tea</a>
+    </div>
+  </div>
+  <div class="hero-hours">Open Daily · 7:00 AM – 12:00 AM</div>
+</div>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <div class="container">
+    <div class="ib-item">
+      <span class="ib-icon">🕐</span>
+      <div class="ib-text">
+        <div class="ib-label">Opening Hours</div>
+        <div class="ib-val">Daily 7 AM – 12 AM</div>
+      </div>
+    </div>
+    <div class="ib-item">
+      <span class="ib-icon">📞</span>
+      <div class="ib-text">
+        <div class="ib-label">Reservations</div>
+        <div class="ib-val">+852 2138 6800</div>
+      </div>
+    </div>
+    <div class="ib-item">
+      <span class="ib-icon">🍽️</span>
+      <div class="ib-text">
+        <div class="ib-label">Cuisine</div>
+        <div class="ib-val">Mediterranean</div>
+      </div>
+    </div>
+    <div class="ib-item">
+      <span class="ib-icon">📍</span>
+      <div class="ib-text">
+        <div class="ib-label">Location</div>
+        <div class="ib-val">2/F, St. Regis HK, Wan Chai</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="av-inner">
+          <div class="av-icon">🌿</div>
+          <div class="av-name">The Drawing Room</div>
+          <div class="av-hotel">The St. Regis Hong Kong</div>
+        </div>
+        <div class="av-badge">Mediterranean Dining · Since 2019</div>
+      </div>
+      <div>
+        <div class="section-tag">About</div>
+        <h2 class="section-title">Mediterranean Fare<br>in Wan Chai</h2>
+        <div class="sage-line"></div>
+        <div class="about-text">
+          <div class="highlight">"Enjoy expertly crafted dishes, attentive service, and an inviting atmosphere from one of the best restaurants in Wan Chai."</div>
+          <p>Welcome to The Drawing Room — the signature restaurant of The St. Regis Hong Kong. Perched on the second floor of this iconic luxury hotel at 1 Harbour Drive, Wan Chai, The Drawing Room offers a fresh and seasonal Mediterranean menu served throughout the day.</p>
+          <p>From a full breakfast spread to leisurely lunches and elegant dinners, the kitchen celebrates the vibrant flavours of the Mediterranean — bold olive oils, sun-ripened produce, fresh seafood and herb-infused preparations that evoke the spirit of the region.</p>
+          <p>In the afternoons, the atmosphere transforms entirely as The Drawing Room's celebrated Signature Ritual — a reimagined Afternoon Tea served by dim sum-inspired trolley — takes centre stage.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE RITUAL -->
+<section class="ritual" id="ritual">
+  <div class="container">
+    <div class="section-tag">Signature Experience</div>
+    <h2 class="section-title">The Signature Ritual</h2>
+    <div class="sage-line"></div>
+    <p class="section-sub">A reimagined Afternoon Tea experience — exclusively at The Drawing Room</p>
+    <div class="ritual-hero">
+      <div class="ritual-inner">
+        <div class="ritual-img">
+          <div class="ritual-icon">🫖</div>
+          <div class="ritual-img-text">Afternoon Tea · Daily</div>
+        </div>
+        <div class="ritual-body">
+          <div class="ritual-tag">Daily Afternoon Tea</div>
+          <div class="ritual-title">A Reimagined Tradition</div>
+          <div class="ritual-sub">Our Signature Ritual offers a truly unique Afternoon Tea experience. Served from a dim sum-inspired trolley in three elegant sequences, guests select from both savoury and sweet delicacies — a delightful East-meets-West celebration of teatime.</div>
+          <div class="ritual-time">
+            <div class="rt-pill">⏰ 2:30 PM – 5:30 PM</div>
+            <div class="rt-pill">📅 Daily</div>
+          </div>
+          <div class="ritual-steps">
+            <div class="rs"><div class="rs-num">01</div><div class="rs-text">Served from a beautifully presented dim sum-inspired trolley</div></div>
+            <div class="rs"><div class="rs-num">02</div><div class="rs-text">Three sequences of carefully curated savoury and sweet delicacies</div></div>
+            <div class="rs"><div class="rs-num">03</div><div class="rs-text">Paired with a fine selection of premium teas and accompaniments</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-sec" id="menu-sec">
+  <div class="container">
+    <div class="section-tag">Dining</div>
+    <h2 class="section-title">Full Flavour Menus</h2>
+    <div class="sage-line"></div>
+    <p class="section-sub">Fresh, seasonal Mediterranean cuisine served throughout the day — from sunrise to midnight</p>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-icon">🌅</div>
+        <h3>Breakfast</h3>
+        <div class="tag">7:00 AM – 11:00 AM</div>
+        <p>Begin your day with a lavish Mediterranean-inspired breakfast spread, from freshly baked breads and pastries to nourishing egg dishes and seasonal fruit.</p>
+        <ul class="menu-items-list">
+          <li>Full American Breakfast</li>
+          <li>Eggs Benedict Variations</li>
+          <li>Freshly Baked Pastries</li>
+          <li>Cold Pressed Juices</li>
+        </ul>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-icon">☀️</div>
+        <h3>All-Day Dining</h3>
+        <div class="tag">11:00 AM – 9:15 PM</div>
+        <p>Our Mediterranean menu celebrates bold flavours and seasonal ingredients — vibrant salads, grilled proteins, slow-cooked mains, and fresh seafood preparations.</p>
+        <ul class="menu-items-list">
+          <li>Mediterranean Mezze</li>
+          <li>Grilled Market Fish</li>
+          <li>Seasonal Pasta</li>
+          <li>Sharing Platters</li>
+        </ul>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-icon">🍸</div>
+        <h3>Bar &amp; Beverages</h3>
+        <div class="tag">All Day · Last Order 12 AM</div>
+        <p>A thoughtfully curated cocktail menu featuring Mediterranean-inspired signatures, premium spirits, fine wines, and a selection of artisanal soft beverages.</p>
+        <ul class="menu-items-list">
+          <li>Signature Cocktails</li>
+          <li>Mediterranean Wine List</li>
+          <li>Craft Spirits Selection</li>
+          <li>Non-Alcoholic Creations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="section-tag">The Experience</div>
+    <h2 class="section-title" style="color:var(--cream);">Why The Drawing Room</h2>
+    <div class="sage-line"></div>
+    <p class="section-sub">Every visit is crafted to exceed expectation</p>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="exp-icon">🌊</div>
+        <h4>Harbourside Setting</h4>
+        <p>Located at 1 Harbour Drive, our restaurant is steps from Victoria Harbour in the heart of Wan Chai</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🥗</div>
+        <h4>Seasonal &amp; Fresh</h4>
+        <p>A commitment to using seasonal, fresh ingredients from the Mediterranean and beyond in every dish</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">👨‍👩‍👧</div>
+        <h4>Family Welcome</h4>
+        <p>An expansive children's menu ensures the whole family feels welcome and well catered for</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🏨</div>
+        <h4>St. Regis Luxury</h4>
+        <p>The impeccable St. Regis standard of service and attention to detail in every interaction</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATIONS -->
+<section class="reservations" id="reservations">
+  <div class="container">
+    <div class="section-tag">Plan Your Visit</div>
+    <h2 class="section-title">Reservations &amp; Contact</h2>
+    <div class="sage-line"></div>
+    <div class="res-grid">
+      <div class="res-info">
+        <h3>Visit Information</h3>
+        <div class="r-item">
+          <span class="r-ico">📞</span>
+          <div class="r-detail">
+            <div class="lbl">Telephone</div>
+            <div class="val"><a href="tel:+85221386800">+852 2138 6800</a></div>
+            <div class="note">Reservations & general enquiries</div>
+          </div>
+        </div>
+        <div class="r-item">
+          <span class="r-ico">✉️</span>
+          <div class="r-detail">
+            <div class="lbl">Email</div>
+            <div class="val"><a href="mailto:srhk.drawingroom.bar@stregis.com">srhk.drawingroom.bar@stregis.com</a></div>
+          </div>
+        </div>
+        <div class="r-item">
+          <span class="r-ico">📍</span>
+          <div class="r-detail">
+            <div class="lbl">Address</div>
+            <div class="val">2/F, The St. Regis Hong Kong</div>
+            <div class="note">1 Harbour Drive, Wan Chai, Hong Kong</div>
+          </div>
+        </div>
+        <div class="r-item">
+          <span class="r-ico">🕐</span>
+          <div class="r-detail">
+            <div class="lbl">Opening Hours</div>
+            <div class="val">Monday – Sunday</div>
+            <div class="note">7:00 AM – 12:00 AM (Last order 9:15 PM)</div>
+          </div>
+        </div>
+        <div class="r-item">
+          <span class="r-ico">🫖</span>
+          <div class="r-detail">
+            <div class="lbl">Afternoon Tea</div>
+            <div class="val">Daily 2:30 PM – 5:30 PM</div>
+            <div class="note">The Signature Ritual — dim sum trolley service</div>
+          </div>
+        </div>
+      </div>
+      <div class="res-cta">
+        <h3>Book Your Table</h3>
+        <div class="rule"></div>
+        <p>Reservations are encouraged but not required. For same-day dining or groups of four or more, we recommend calling ahead. Our team at The Drawing Room looks forward to welcoming you.</p>
+        <div class="res-btns">
+          <a href="tel:+85221386800" class="rb cream">📞 Call +852 2138 6800</a>
+          <a href="mailto:srhk.drawingroom.bar@stregis.com" class="rb white-outline">✉ Email Reservations</a>
+          <a href="#ritual" class="rb white-outline">🫖 Afternoon Tea Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-tag">Frequently Asked Questions</div>
+    <h2 class="section-title">Good to Know</h2>
+    <div class="sage-line"></div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>Do I need a reservation?</h4>
+        <p>Reservations are encouraged, but not required. For groups or special occasions, booking ahead is strongly recommended.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is there a children's menu?</h4>
+        <p>Yes — The Drawing Room offers an expansive children's menu, making it a welcoming destination for family dining.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What are your opening hours?</h4>
+        <p>We are open Monday to Sunday from 7:00 AM to 12:00 AM. Last food order is at 9:15 PM.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What cuisine do you serve?</h4>
+        <p>The Drawing Room uses seasonal ingredients to prepare fresh and vibrant Mediterranean cuisine throughout the day.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How do I book for the Afternoon Tea?</h4>
+        <p>The Signature Ritual Afternoon Tea is served daily from 2:30 PM to 5:30 PM. Book via phone (+852 2138 6800) or email.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is private dining available?</h4>
+        <p>The Drawing Room does not offer private dining rooms. For group or event bookings, please contact the team directly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="f-name">The Drawing Room</div>
+        <div class="f-parent">The St. Regis Hong Kong · Marriott International</div>
+        <div class="f-addr">2/F, The St. Regis Hong Kong<br>1 Harbour Drive, Wan Chai, Hong Kong<br>T: +852 2138 6800</div>
+      </div>
+      <div class="footer-links">
+        <div class="fc">
+          <h5>Dining</h5>
+          <a href="#">Breakfast</a>
+          <a href="#">All-Day Dining</a>
+          <a href="#">Mediterranean Menu</a>
+          <a href="#">Children's Menu</a>
+        </div>
+        <div class="fc">
+          <h5>Signature</h5>
+          <a href="#">The Signature Ritual</a>
+          <a href="#">Afternoon Tea</a>
+          <a href="#">Bar Menu</a>
+        </div>
+        <div class="fc">
+          <h5>Info</h5>
+          <a href="#">About</a>
+          <a href="#">Reservations</a>
+          <a href="#">Location</a>
+          <a href="#">FAQs</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2024 The Drawing Room · The St. Regis Hong Kong · All Rights Reserved</div>
+      <div>srhk.drawingroom.bar@stregis.com</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
