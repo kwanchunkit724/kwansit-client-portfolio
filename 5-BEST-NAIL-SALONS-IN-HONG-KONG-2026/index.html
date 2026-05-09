@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The HK Hub | Hong Kong's Premier Lifestyle & Discovery Guide</title>
+<style>
+  :root {
+    --primary: #1a2f52;
+    --primary-mid: #24427a;
+    --accent: #e83a3a;
+    --accent-light: #fff0f0;
+    --gold: #e8a820;
+    --green: #2a7a50;
+    --white: #ffffff;
+    --bg: #f5f8fc;
+    --border: #d8e4f0;
+    --text: #1a2640;
+    --text-light: #5a7090;
+    --card-bg: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+
+  /* HEADER */
+  header {
+    background: var(--primary);
+    padding: 0 5%; position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.25);
+  }
+  .header-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1200px; margin: 0 auto; padding: 13px 0;
+  }
+  .logo-block { display: flex; align-items: center; gap: 12px; }
+  .logo-icon {
+    width: 46px; height: 46px; border-radius: 8px;
+    background: var(--accent); color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 900; letter-spacing: -1px;
+  }
+  .logo-text { color: var(--white); }
+  .logo-text .main { font-size: 1.1rem; font-weight: 700; }
+  .logo-text .tag { font-size: 0.7rem; color: rgba(255,255,255,0.6); }
+  nav { display: flex; gap: 24px; }
+  nav a { color: rgba(255,255,255,0.82); font-size: 0.86rem; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
+  nav a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-mid) 55%, #2e5a9a 100%);
+    color: var(--white); padding: 75px 5% 65px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: 'HK'; position: absolute; right: 5%; bottom: -20px;
+    font-size: 16rem; font-weight: 900; color: rgba(255,255,255,0.04);
+    line-height: 1; pointer-events: none;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: var(--white);
+    font-size: 0.78rem; font-weight: 700; padding: 5px 14px; border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  .hero h1 { font-size: 2.3rem; font-weight: 800; line-height: 1.25; margin-bottom: 16px; }
+  .hero h1 .highlight { color: var(--gold); }
+  .hero-desc { font-size: 1rem; color: rgba(255,255,255,0.82); line-height: 1.85; margin-bottom: 28px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-red {
+    background: var(--accent); color: var(--white);
+    padding: 12px 26px; border-radius: 6px; font-weight: 700; font-size: 0.92rem;
+    transition: all 0.25s; display: inline-flex; align-items: center; gap: 7px;
+  }
+  .btn-red:hover { background: #c82020; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.45);
+    padding: 10px 22px; border-radius: 6px; font-weight: 600; font-size: 0.92rem;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-card {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 12px; padding: 20px; text-align: center;
+  }
+  .stat-card .num { font-size: 1.6rem; font-weight: 800; color: var(--gold); display: block; }
+  .stat-card .label { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-top: 3px; }
+
+  /* SECTION */
+  section { padding: 65px 5%; }
+  .inner { max-width: 1200px; margin: 0 auto; }
+  .section-header { text-align: center; max-width: 680px; margin: 0 auto 46px; }
+  .section-tag {
+    display: inline-block; background: var(--accent-light); color: var(--accent);
+    font-size: 0.76rem; font-weight: 700; padding: 5px 16px; border-radius: 4px;
+    margin-bottom: 12px; border: 1px solid rgba(232,58,58,0.2);
+  }
+  .section-header h2 { font-size: 1.8rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; }
+  .section-header p { color: var(--text-light); font-size: 0.95rem; line-height: 1.8; }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: start; }
+  .about-content h2 { font-size: 1.75rem; font-weight: 800; color: var(--primary); margin-bottom: 16px; }
+  .about-content p { color: var(--text-light); line-height: 1.9; margin-bottom: 14px; font-size: 0.95rem; }
+  .features { list-style: none; margin-top: 22px; }
+  .features li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; font-size: 0.93rem; color: var(--text); }
+  .features li::before { content: '✓'; color: var(--green); font-weight: 800; flex-shrink: 0; }
+  .about-aside { display: flex; flex-direction: column; gap: 18px; }
+  .info-box {
+    background: var(--bg); border-radius: 14px; padding: 24px; border: 1px solid var(--border);
+  }
+  .info-box h3 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 14px; }
+  .info-item { display: flex; gap: 10px; margin-bottom: 10px; font-size: 0.85rem; }
+  .info-item .icon { color: var(--accent); flex-shrink: 0; }
+  .mission-box {
+    background: linear-gradient(135deg, var(--primary), var(--primary-mid));
+    color: var(--white); border-radius: 14px; padding: 24px;
+  }
+  .mission-box h3 { color: var(--gold); font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+  .mission-box p { font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.8; }
+
+  /* CATEGORIES */
+  .categories { background: var(--bg); }
+  .cats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
+  .cat-card {
+    background: var(--white); border-radius: 16px; padding: 26px 20px; text-align: center;
+    border: 1px solid var(--border); transition: all 0.3s; cursor: pointer;
+  }
+  .cat-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 8px 24px rgba(26,47,82,0.1); }
+  .cat-icon { font-size: 2.2rem; display: block; margin-bottom: 12px; }
+  .cat-card h3 { font-size: 0.97rem; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+  .cat-card p { font-size: 0.8rem; color: var(--text-light); line-height: 1.5; }
+
+  /* CONTENT TOPICS */
+  .topics { background: var(--white); }
+  .topics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 1200px; margin: 0 auto; }
+  .topic-card {
+    background: var(--bg); border-radius: 14px; padding: 22px;
+    border: 1px solid var(--border); transition: all 0.3s;
+  }
+  .topic-card:hover { border-color: var(--primary-mid); }
+  .topic-num { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-bottom: 8px; display: block; }
+  .topic-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+  .topic-card p { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; }
+
+  /* ADVERTISE */
+  .advertise { background: var(--primary); color: var(--white); }
+  .advertise .section-header h2 { color: var(--white); }
+  .advertise .section-tag { background: rgba(255,255,255,0.12); color: var(--white); border-color: rgba(255,255,255,0.2); }
+  .advertise .section-header p { color: rgba(255,255,255,0.78); }
+  .adv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 1200px; margin: 0 auto; }
+  .adv-card {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 16px; padding: 26px; transition: all 0.3s;
+  }
+  .adv-card:hover { background: rgba(255,255,255,0.15); }
+  .adv-icon { font-size: 2rem; margin-bottom: 14px; display: block; }
+  .adv-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .adv-card p { font-size: 0.83rem; color: rgba(255,255,255,0.75); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact { background: var(--bg); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: start; }
+  .contact-info h2 { font-size: 1.75rem; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+  .contact-info p { color: var(--text-light); font-size: 0.94rem; line-height: 1.8; margin-bottom: 26px; }
+  .contact-items { display: flex; flex-direction: column; gap: 14px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 14px; }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--accent-light); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .contact-detail .label { font-size: 0.78rem; color: var(--text-light); font-weight: 600; margin-bottom: 2px; }
+  .contact-detail .value { font-size: 0.95rem; color: var(--text); font-weight: 600; }
+  .contact-cta {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-mid) 100%);
+    border-radius: 18px; padding: 32px; color: var(--white);
+  }
+  .contact-cta h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 10px; }
+  .contact-cta p { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 22px; }
+  .cta-buttons { display: flex; flex-direction: column; gap: 12px; }
+  .cta-btn {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+    color: var(--white); padding: 12px 18px; border-radius: 8px;
+    font-weight: 600; font-size: 0.9rem; transition: all 0.2s;
+  }
+  .cta-btn:hover { background: rgba(255,255,255,0.2); }
+  .cta-btn.red { background: var(--accent); border-color: var(--accent); }
+  .cta-btn.red:hover { background: #c82020; }
+
+  /* FOOTER */
+  footer {
+    background: var(--primary); color: rgba(255,255,255,0.7);
+    padding: 40px 5% 24px;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 28px; }
+  .footer-brand .name { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+  .footer-brand p { font-size: 0.82rem; line-height: 1.8; }
+  .footer-col h4 { color: var(--white); font-size: 0.88rem; font-weight: 700; margin-bottom: 12px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 8px; font-size: 0.82rem; }
+  .footer-col ul li a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 18px; display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 10px; font-size: 0.78rem;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .cats-grid { grid-template-columns: 1fr 1fr; }
+    .topics-grid, .adv-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+      <div class="logo-icon">HK</div>
+      <div class="logo-text">
+        <div class="main">The HK Hub</div>
+        <div class="tag">HONG KONG'S LIFESTYLE & DISCOVERY GUIDE</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#categories">Categories</a>
+      <a href="#topics">Content</a>
+      <a href="#advertise">Advertise</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🏙️ Hong Kong's Go-To Digital Guide</div>
+      <h1>Discover the Best of<br><span class="highlight">Hong Kong</span></h1>
+      <p class="hero-desc">
+        The HK Hub is Hong Kong's premier lifestyle and discovery platform — publishing trusted, up-to-date guides on the city's best restaurants, beauty salons, wellness spots, things to do, hotels and more for expats, locals and visitors alike.
+      </p>
+      <div class="hero-btns">
+        <a href="#categories" class="btn-red">🔍 Explore Guides</a>
+        <a href="#advertise" class="btn-outline">📢 Partner With Us</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="num">100+</span>
+        <span class="label">Expert Guides Published</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">10+</span>
+        <span class="label">Content Categories</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">HK</span>
+        <span class="label">Locally Curated for Hong Kong</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">2026</span>
+        <span class="label">Continuously Updated Guides</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <div class="section-tag">About The HK Hub</div>
+      <h2>Your Trusted Guide<br>to Life in Hong Kong</h2>
+      <p>
+        The HK Hub was created by Hong Kong residents who wanted to build the most reliable, up-to-date resource for exploring everything this incredible city has to offer. Whether you're a new expat navigating the city, a long-time resident looking for hidden gems, or a visitor planning the perfect trip, The HK Hub has you covered.
+      </p>
+      <p>
+        Our team of local experts and contributors personally researches and reviews each recommendation, ensuring you get honest, practical advice — not just a recycled listicle. Every guide is regularly updated to reflect the latest openings, closures, and changes in the city.
+      </p>
+      <ul class="features">
+        <li>Expert, locally-researched "Best of Hong Kong" guides across all lifestyle categories</li>
+        <li>Regularly updated content reflecting 2026 recommendations and new openings</li>
+        <li>Covers beauty, dining, wellness, travel, activities, shopping and more</li>
+        <li>Targeted content for expats, locals and visitors to Hong Kong</li>
+        <li>Advertising and partnership opportunities for Hong Kong businesses</li>
+      </ul>
+    </div>
+    <div class="about-aside">
+      <div class="mission-box">
+        <h3>🎯 Our Mission</h3>
+        <p>
+          To be the most trusted, comprehensive and up-to-date digital guide to living and exploring in Hong Kong — connecting residents, expats and visitors with the very best the city has to offer, from world-class nail salons to hidden rooftop bars.
+        </p>
+      </div>
+      <div class="info-box">
+        <h3>📬 Contact Details</h3>
+        <div class="info-item">
+          <span class="icon">📧</span>
+          <span>killian@thehkhub.com</span>
+        </div>
+        <div class="info-item">
+          <span class="icon">📱</span>
+          <span>6738 1868</span>
+        </div>
+        <div class="info-item">
+          <span class="icon">🌐</span>
+          <span>thehkhub.com</span>
+        </div>
+        <div class="info-item">
+          <span class="icon">📍</span>
+          <span>Hong Kong SAR</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="section-header">
+    <div class="section-tag">Content Categories</div>
+    <h2>What We Cover</h2>
+    <p>The HK Hub covers every aspect of life and leisure in Hong Kong, with expert guides across a wide range of lifestyle categories.</p>
+  </div>
+  <div class="cats-grid">
+    <div class="cat-card">
+      <span class="cat-icon">💅</span>
+      <h3>Beauty & Wellness</h3>
+      <p>Best nail salons, spas, massage parlours and beauty treatments in HK</p>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🍜</span>
+      <h3>Food & Dining</h3>
+      <p>Top restaurants, hidden local eateries, rooftop bars and cafes</p>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🏃</span>
+      <h3>Things To Do</h3>
+      <p>Best activities, experiences, outdoor adventures and entertainment</p>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🏨</span>
+      <h3>Hotels & Stays</h3>
+      <p>Top hotels, serviced apartments and accommodation guides for every budget</p>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🛍️</span>
+      <h3>Shopping</h3>
+      <p>Best malls, markets, luxury boutiques and local shopping experiences</p>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🏥</span>
+      <h3>Health & Fitness</h3>
+      <p>Gyms, yoga studios, medical clinics and health services in Hong Kong</p>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">✈️</span>
+      <h3>Travel from HK</h3>
+      <p>Day trips, weekend getaways and travel guides from Hong Kong</p>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🏙️</span>
+      <h3>Expat Life</h3>
+      <p>Essential guides for expats — housing, banking, schooling and relocation tips</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT TOPICS -->
+<section class="topics" id="topics">
+  <div class="section-header">
+    <div class="section-tag">Popular Guides</div>
+    <h2>The Kind of Guides We Publish</h2>
+    <p>In-depth, regularly updated "best of" guides that give you everything you need to make the right choice in Hong Kong.</p>
+  </div>
+  <div class="topics-grid inner">
+    <div class="topic-card">
+      <span class="topic-num">💅 BEAUTY</span>
+      <h4>Best Nail Salons in Hong Kong</h4>
+      <p>Top-rated nail salons across HK Island, Kowloon and NT, reviewed for quality, price and service.</p>
+    </div>
+    <div class="topic-card">
+      <span class="topic-num">🍽️ DINING</span>
+      <h4>Best Dim Sum Restaurants in HK</h4>
+      <p>From authentic yum cha to modern interpretations, the best dim sum spots the city has to offer.</p>
+    </div>
+    <div class="topic-card">
+      <span class="topic-num">🧖 WELLNESS</span>
+      <h4>Best Spas in Hong Kong</h4>
+      <p>Luxury hotel spas to affordable day spas — expert picks for relaxation and rejuvenation in HK.</p>
+    </div>
+    <div class="topic-card">
+      <span class="topic-num">🏃 ACTIVITIES</span>
+      <h4>Best Things To Do in Hong Kong</h4>
+      <p>Curated experiences for first-timers and long-timers alike — from hiking to rooftop bars.</p>
+    </div>
+    <div class="topic-card">
+      <span class="topic-num">🏨 HOTELS</span>
+      <h4>Best Hotels in Hong Kong</h4>
+      <p>Comprehensive hotel guides across all budgets, neighbourhoods and travel styles.</p>
+    </div>
+    <div class="topic-card">
+      <span class="topic-num">🏙️ EXPAT</span>
+      <h4>Moving to Hong Kong Guide</h4>
+      <p>Everything expats need to know before and after moving to Hong Kong — practical and up-to-date.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ADVERTISE -->
+<section class="advertise" id="advertise">
+  <div class="section-header">
+    <div class="section-tag">Partner With The HK Hub</div>
+    <h2>Reach Hong Kong's Discovery Audience</h2>
+    <p>The HK Hub connects Hong Kong businesses with expats, locals and visitors actively seeking the best the city has to offer.</p>
+  </div>
+  <div class="adv-grid">
+    <div class="adv-card">
+      <span class="adv-icon">📝</span>
+      <h3>Sponsored Content</h3>
+      <p>Feature your business in an expertly written guide or review article, reaching readers actively searching for your category in Hong Kong.</p>
+    </div>
+    <div class="adv-card">
+      <span class="adv-icon">📋</span>
+      <h3>Featured Listings</h3>
+      <p>Get your business listed at the top of relevant "Best of" guides, putting your brand in front of the right audience at the right time.</p>
+    </div>
+    <div class="adv-card">
+      <span class="adv-icon">📣</span>
+      <h3>Display Advertising</h3>
+      <p>Targeted banner and display advertising on The HK Hub, reaching our engaged audience of Hong Kong residents, expats and visitors.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-tag">Get In Touch</div>
+      <h2>Contact<br>The HK Hub</h2>
+      <p>For advertising enquiries, business partnerships, content collaborations or any questions about The HK Hub, reach out to our team directly.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-detail">
+            <div class="label">Email</div>
+            <div class="value">killian@thehkhub.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-detail">
+            <div class="label">Mobile</div>
+            <div class="value">6738 1868</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div class="contact-detail">
+            <div class="label">Website</div>
+            <div class="value">thehkhub.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail">
+            <div class="label">Location</div>
+            <div class="value">Hong Kong SAR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-cta">
+      <h3>Advertise Your Business</h3>
+      <p>
+        Looking to get your Hong Kong business featured on The HK Hub? Whether you run a nail salon, restaurant, spa, hotel or any lifestyle business, we can connect you with readers who are actively looking for exactly what you offer.
+      </p>
+      <div class="cta-buttons">
+        <a href="mailto:killian@thehkhub.com" class="cta-btn red">
+          <span>📧</span><span>Email killian@thehkhub.com</span>
+        </a>
+        <a href="tel:67381868" class="cta-btn">
+          <span>📱</span><span>6738 1868</span>
+        </a>
+        <a href="https://thehkhub.com" class="cta-btn">
+          <span>🌐</span><span>Visit thehkhub.com</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="name">The HK Hub</div>
+        <p>Hong Kong's premier lifestyle and discovery platform — publishing trusted, up-to-date guides on the city's best restaurants, beauty salons, wellness spots, hotels and more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="#categories">Beauty & Wellness</a></li>
+          <li><a href="#categories">Food & Dining</a></li>
+          <li><a href="#categories">Things To Do</a></li>
+          <li><a href="#categories">Hotels & Stays</a></li>
+          <li><a href="#categories">Expat Life</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Advertise</h4>
+        <ul>
+          <li><a href="#advertise">Sponsored Content</a></li>
+          <li><a href="#advertise">Featured Listings</a></li>
+          <li><a href="#advertise">Display Advertising</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 The HK Hub. All rights reserved.</span>
+      <span>killian@thehkhub.com | 6738 1868</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
