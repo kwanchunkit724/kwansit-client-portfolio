@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>信佳國際集團有限公司 | SUGA International Holdings | 音響 · 物聯網 · 清潔能源</title>
+<meta name="description" content="信佳國際集團有限公司 (SUGA International Holdings) — 香港上市集團，業務涵蓋音響、物聯網、生活方式及清潔能源。總部設於九龍灣，全球多個生產及銷售基地。">
+<style>
+  :root {
+    --blue: #0050a0;
+    --blue-dark: #003070;
+    --blue-light: #0070d0;
+    --cyan: #00b4d8;
+    --silver: #e8eef5;
+    --dark: #0a1628;
+    --text: #1a2030;
+    --text-light: #607080;
+    --cream: #f5f8fc;
+    --white: #ffffff;
+    --accent: #f0a800;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Arial','Helvetica Neue',sans-serif; color:var(--text); background:var(--cream); }
+  html { scroll-behavior:smooth; }
+
+  /* NAV */
+  nav {
+    position:fixed; top:0; width:100%; z-index:100;
+    background:rgba(10,22,40,0.98); backdrop-filter:blur(10px);
+    padding:0 5%; height:70px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:2px solid var(--blue-light);
+  }
+  .logo { display:flex; align-items:center; gap:1rem; }
+  .logo-text { }
+  .logo-zh { color:#fff; font-size:0.95rem; font-weight:700; letter-spacing:1px; display:block; }
+  .logo-en { color:var(--cyan); font-size:0.62rem; letter-spacing:2px; text-transform:uppercase; }
+  nav ul { list-style:none; display:flex; gap:1.8rem; }
+  nav ul a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.8rem; letter-spacing:0.5px; transition:color 0.3s; }
+  nav ul a:hover { color:var(--cyan); }
+
+  /* HERO */
+  .hero {
+    min-height:100vh;
+    background:linear-gradient(135deg, var(--dark) 0%, #0a1e3a 50%, #021232 100%);
+    display:flex; align-items:center; padding:100px 5% 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero-grid-bg {
+    position:absolute; inset:0;
+    background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h80v80H0z' fill='none'/%3E%3Cpath d='M0 0h1v80H0zM20 0h1v80H20zM40 0h1v80H40zM60 0h1v80H60zM80 0h1v80H80z' fill='%230070d0' fill-opacity='0.05'/%3E%3Cpath d='M0 0v1h80V0zM0 20v1h80V20zM0 40v1h80V40zM0 60v1h80V60zM0 80v1h80V80z' fill='%230070d0' fill-opacity='0.05'/%3E%3C/svg%3E") repeat;
+  }
+  .hero::after {
+    content:'SUGA'; position:absolute; right:-2%; bottom:-5%;
+    font-size:22vw; font-weight:900; color:rgba(0,112,208,0.05);
+    line-height:1; pointer-events:none;
+  }
+  .hero-inner { max-width:760px; position:relative; z-index:1; }
+  .hero-award {
+    display:inline-flex; align-items:center; gap:0.6rem;
+    background:rgba(0,180,216,0.12); border:1px solid rgba(0,180,216,0.35);
+    padding:8px 18px; border-radius:2px;
+    color:var(--cyan); font-size:0.72rem; letter-spacing:2px;
+    margin-bottom:2rem;
+  }
+  .hero-award::before { content:'🏆'; }
+  .hero h1 {
+    font-size:clamp(2.4rem, 5vw, 4.5rem); color:#fff;
+    line-height:1.15; margin-bottom:0.5rem; font-weight:800;
+  }
+  .hero h1 .en { font-size:clamp(1.8rem, 4vw, 3.5rem); color:var(--cyan); display:block; }
+  .hero-tagline { font-size:1.05rem; color:rgba(255,255,255,0.65); line-height:1.9; margin-bottom:2.5rem; max-width:600px; }
+  .hero-tags { display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:2.5rem; }
+  .hero-tag { background:rgba(0,112,208,0.2); border:1px solid rgba(0,112,208,0.4); color:rgba(255,255,255,0.8); padding:6px 16px; border-radius:20px; font-size:0.78rem; }
+  .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:4rem; }
+  .btn-blue {
+    display:inline-block; background:var(--blue); color:#fff;
+    padding:14px 34px; text-decoration:none;
+    font-size:0.84rem; letter-spacing:1.5px; text-transform:uppercase; font-weight:700;
+    transition:all 0.3s;
+  }
+  .btn-blue:hover { background:var(--blue-light); }
+  .btn-cyan {
+    display:inline-block; background:transparent; border:1.5px solid var(--cyan); color:var(--cyan);
+    padding:13px 34px; text-decoration:none;
+    font-size:0.84rem; letter-spacing:1.5px; text-transform:uppercase;
+    transition:all 0.3s;
+  }
+  .btn-cyan:hover { background:var(--cyan); color:var(--dark); }
+  .hero-stats { display:flex; gap:3rem; flex-wrap:wrap; padding-top:2.5rem; border-top:1px solid rgba(255,255,255,0.1); }
+  .hs-num { font-size:2.5rem; font-weight:900; color:var(--cyan); display:block; line-height:1; }
+  .hs-lbl { font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:4px; display:block; }
+
+  /* BAR */
+  .bar { background:var(--blue); padding:12px 0; overflow:hidden; }
+  .bar-inner { display:flex; gap:3rem; animation:scroll 28s linear infinite; white-space:nowrap; }
+  .bar-inner span { color:rgba(255,255,255,0.85); font-size:0.75rem; letter-spacing:2.5px; text-transform:uppercase; font-weight:600; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* SECTIONS */
+  section { padding:100px 5%; }
+  .tag { color:var(--blue-light); font-size:0.68rem; letter-spacing:3.5px; text-transform:uppercase; display:block; margin-bottom:0.8rem; }
+  .h2 { font-size:clamp(1.8rem, 3vw, 2.7rem); color:var(--dark); margin-bottom:1rem; font-weight:800; }
+  .lead { font-size:1rem; color:var(--text-light); line-height:1.9; }
+
+  /* BUSINESS */
+  .business { background:var(--white); }
+  .biz-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:2px; background:#cdd8e4; margin-top:3.5rem; }
+  .biz-card {
+    background:var(--white); padding:3rem 2rem;
+    transition:all 0.35s; cursor:default; position:relative; overflow:hidden;
+    border-top:4px solid transparent;
+  }
+  .biz-card:hover { background:var(--dark); border-top-color:var(--cyan); }
+  .biz-card:hover .biz-icon-wrap { background:rgba(0,180,216,0.15); }
+  .biz-card:hover h3 { color:#fff; }
+  .biz-card:hover p { color:rgba(255,255,255,0.6); }
+  .biz-icon-wrap {
+    width:64px; height:64px; border-radius:50%;
+    background:var(--silver); display:flex; align-items:center; justify-content:center;
+    font-size:1.8rem; margin-bottom:1.5rem; transition:background 0.35s;
+  }
+  .biz-card h3 { font-size:1.1rem; color:var(--dark); margin-bottom:0.7rem; font-weight:700; transition:color 0.35s; }
+  .biz-card p { font-size:0.87rem; color:var(--text-light); line-height:1.7; transition:color 0.35s; }
+
+  /* GLOBAL */
+  .global { background:var(--dark); }
+  .global .h2 { color:#fff; }
+  .global .lead { color:rgba(255,255,255,0.6); }
+  .global-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1.5rem; margin-top:3.5rem; }
+  .glob-card {
+    background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+    padding:2rem; border-radius:2px; transition:border-color 0.3s;
+  }
+  .glob-card:hover { border-color:var(--cyan); }
+  .glob-region { font-size:0.7rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--cyan); margin-bottom:0.8rem; display:block; }
+  .glob-card h3 { font-size:1rem; color:#fff; margin-bottom:0.8rem; font-weight:700; }
+  .glob-card p { font-size:0.84rem; color:rgba(255,255,255,0.5); line-height:1.7; }
+
+  /* SUBSIDIARIES */
+  .subs { background:var(--cream); }
+  .subs-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1.5rem; margin-top:3rem; }
+  .sub-card {
+    background:var(--white); padding:1.8rem 2rem;
+    border-left:4px solid var(--blue); border-radius:0 2px 2px 0;
+    transition:transform 0.3s, box-shadow 0.3s;
+  }
+  .sub-card:hover { transform:translateX(6px); box-shadow:0 10px 30px rgba(0,80,160,0.1); }
+  .sub-card h3 { font-size:1rem; color:var(--dark); margin-bottom:0.3rem; font-weight:700; }
+  .sub-card p { font-size:0.83rem; color:var(--text-light); line-height:1.6; }
+
+  /* NEWS */
+  .news { background:var(--white); }
+  .news-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:2rem; margin-top:3rem; }
+  .news-card { border-bottom:3px solid var(--blue); padding-bottom:1.5rem; }
+  .news-date { font-size:0.72rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-light); margin-bottom:0.6rem; display:block; }
+  .news-card h3 { font-size:0.97rem; color:var(--dark); margin-bottom:0.5rem; font-weight:700; line-height:1.5; }
+  .news-card p { font-size:0.85rem; color:var(--text-light); line-height:1.7; }
+
+  /* CONTACT */
+  .contact { background:var(--dark); }
+  .contact .tag { color:var(--cyan); }
+  .contact .h2 { color:#fff; }
+  .contact .lead { color:rgba(255,255,255,0.6); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1.3fr; gap:5rem; margin-top:3rem; }
+  .ci { margin-bottom:1.4rem; }
+  .ci-lbl { font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--cyan); margin-bottom:0.4rem; display:block; }
+  .ci-val { font-size:0.93rem; color:#fff; }
+  .ci-val a { color:rgba(255,255,255,0.8); text-decoration:none; transition:color 0.3s; }
+  .ci-val a:hover { color:var(--cyan); }
+  .form-group { margin-bottom:1.1rem; }
+  label { font-size:0.67rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.45); display:block; margin-bottom:0.4rem; }
+  input, select, textarea {
+    width:100%; border:1px solid rgba(255,255,255,0.1); padding:11px 14px;
+    font-size:0.9rem; color:#fff; background:rgba(255,255,255,0.06);
+    border-radius:2px; transition:border-color 0.3s; font-family:'Arial',sans-serif;
+  }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--cyan); }
+  textarea { resize:vertical; min-height:100px; }
+  select option { background:var(--dark); }
+  .sub-btn {
+    width:100%; background:var(--blue); color:#fff; border:none;
+    padding:13px; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase;
+    cursor:pointer; transition:background 0.3s; font-weight:700; font-family:'Arial',sans-serif;
+  }
+  .sub-btn:hover { background:var(--blue-light); }
+
+  /* FOOTER */
+  footer { background:#050d1a; color:rgba(255,255,255,0.45); padding:60px 5% 30px; font-family:'Arial',sans-serif; }
+  .foot-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:2.5rem; margin-bottom:3rem; }
+  .foot-logo-zh { font-size:1rem; font-weight:700; color:#fff; margin-bottom:0.3rem; }
+  .foot-logo-en { font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--cyan); margin-bottom:1rem; display:block; }
+  .foot-top p { font-size:0.84rem; line-height:1.8; }
+  .foot-col h4 { color:var(--cyan); font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:1.2rem; }
+  .foot-col ul { list-style:none; }
+  .foot-col li { margin-bottom:0.5rem; font-size:0.84rem; }
+  .foot-col a { color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.3s; }
+  .foot-col a:hover { color:var(--cyan); }
+  .foot-bottom { border-top:1px solid rgba(255,255,255,0.07); padding-top:2rem; display:flex; justify-content:space-between; font-size:0.76rem; flex-wrap:wrap; gap:0.5rem; }
+  .designer-credit a { color:var(--cyan); text-decoration:none; }
+
+  @media (max-width:900px) {
+    nav ul { display:none; }
+    .biz-grid { grid-template-columns:1fr 1fr; }
+    .contact-grid { grid-template-columns:1fr; }
+    .foot-top { grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:600px) {
+    .biz-grid { grid-template-columns:1fr; }
+    .hero::after { display:none; }
+    .hero-stats { gap:1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="logo-text">
+      <span class="logo-zh">信佳國際集團有限公司</span>
+      <span class="logo-en">SUGA International Holdings Limited</span>
+    </div>
+  </div>
+  <ul>
+    <li><a href="#business">業務領域</a></li>
+    <li><a href="#global">全球佈局</a></li>
+    <li><a href="#subs">旗下企業</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-award">2025 香港傑出工業家獎 · 創辦人吳自豪博士榮獲</div>
+    <h1>信佳國際集團
+      <span class="en">SUGA International</span>
+    </h1>
+    <p class="hero-tagline">香港上市國際集團，業務涵蓋音響電子、物聯網技術、生活方式及清潔能源，在香港、內地、東南亞、日本、歐洲及北美擁有完整的生產及銷售網絡。</p>
+    <div class="hero-tags">
+      <span class="hero-tag">🔊 音響</span>
+      <span class="hero-tag">🌐 物聯網</span>
+      <span class="hero-tag">✨ 生活方式</span>
+      <span class="hero-tag">⚡ 清潔能源</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#business" class="btn-blue">了解業務範疇</a>
+      <a href="#contact" class="btn-cyan">業務合作查詢</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="hs-num">4</span>
+        <span class="hs-lbl">核心業務領域</span>
+      </div>
+      <div>
+        <span class="hs-num">7+</span>
+        <span class="hs-lbl">旗下企業</span>
+      </div>
+      <div>
+        <span class="hs-num">全球</span>
+        <span class="hs-lbl">多地生產銷售</span>
+      </div>
+      <div>
+        <span class="hs-num">HK</span>
+        <span class="hs-lbl">香港上市</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAR -->
+<div class="bar">
+  <div class="bar-inner">
+    <span>音響 Acoustics</span><span>·</span>
+    <span>物聯網 IoT</span><span>·</span>
+    <span>生活方式 Lifestyle</span><span>·</span>
+    <span>清潔能源 Clean Energy</span><span>·</span>
+    <span>香港 · 中國 · 越南 · 日本 · 歐洲 · 美洲</span><span>·</span>
+    <span>音響 Acoustics</span><span>·</span>
+    <span>物聯網 IoT</span><span>·</span>
+    <span>生活方式 Lifestyle</span><span>·</span>
+    <span>清潔能源 Clean Energy</span><span>·</span>
+    <span>香港 · 中國 · 越南 · 日本 · 歐洲 · 美洲</span><span>·</span>
+  </div>
+</div>
+
+<!-- BUSINESS SEGMENTS -->
+<section class="business" id="business">
+  <span class="tag">Our Business</span>
+  <h2 class="h2">四大核心業務領域</h2>
+  <p class="lead" style="max-width:600px;">信佳國際集團以多元化業務佈局，在四個重點行業深耕發展，憑藉多年積累的技術與市場優勢持續增長。</p>
+  <div class="biz-grid">
+    <div class="biz-card">
+      <div class="biz-icon-wrap">🔊</div>
+      <h3>音響</h3>
+      <p>擁有深厚音響電子製造背景，為全球客戶提供優質音響產品及解決方案，在音響技術領域保持領先地位。</p>
+    </div>
+    <div class="biz-card">
+      <div class="biz-icon-wrap">🌐</div>
+      <h3>物聯網</h3>
+      <p>積極佈局物聯網技術市場，透過旗下專屬研發團隊開發智能連接設備及解決方案，推動數字化轉型。</p>
+    </div>
+    <div class="biz-card">
+      <div class="biz-icon-wrap">✨</div>
+      <h3>生活方式</h3>
+      <p>透過旗下 HappyPaws（開心寶）等品牌，進軍寵物及生活方式消費市場，觸達廣泛的終端消費者群體。</p>
+    </div>
+    <div class="biz-card">
+      <div class="biz-icon-wrap">⚡</div>
+      <h3>清潔能源</h3>
+      <p>積極投資及發展清潔能源業務，順應全球可持續發展趨勢，為環保能源市場提供創新解決方案。</p>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL FOOTPRINT -->
+<section class="global" id="global">
+  <span class="tag">Global Presence</span>
+  <h2 class="h2">全球業務佈局</h2>
+  <p class="lead" style="max-width:560px;">信佳集團在亞洲、歐洲及美洲建立完整的生產製造及銷售網絡，服務全球市場。</p>
+  <div class="global-grid">
+    <div class="glob-card">
+      <span class="glob-region">總部 · 香港</span>
+      <h3>信佳國際集團有限公司</h3>
+      <p>九龍灣宏光道1號億京中心B座22樓<br>電話：+852-2953 0383 / 2953 1515</p>
+    </div>
+    <div class="glob-card">
+      <span class="glob-region">生產基地 · 中國</span>
+      <h3>信佳高新科技產業園</h3>
+      <p>廣東省東莞市清溪鎮福龍路8號<br>信佳電子（東莞）有限公司 · 東莞信意電子有限公司</p>
+    </div>
+    <div class="glob-card">
+      <span class="glob-region">亞洲 · 越南</span>
+      <h3>信佳國際（越南）有限公司</h3>
+      <p>越南北寧省桂武縣桂新社<br>桂武三工業區 CN11-3</p>
+    </div>
+    <div class="glob-card">
+      <span class="glob-region">亞洲 · 日本</span>
+      <h3>Suga Japan 株式會社</h3>
+      <p>Ueno-Suzuki Bldg. 4F, 3-16-3 Ueno<br>Taito-ku, Tokyo 110-0005, Japan</p>
+    </div>
+    <div class="glob-card">
+      <span class="glob-region">歐洲 · 愛爾蘭</span>
+      <h3>TxWireless · 愛爾蘭銷售辦事處</h3>
+      <p>DCU Alpha Innovation Campus, Glasnevin, Dublin 11<br>Block 3, City East Plaza, Limerick</p>
+    </div>
+    <div class="glob-card">
+      <span class="glob-region">歐洲 · 德國</span>
+      <h3>ElComWorld GmbH</h3>
+      <p>Mathildenstr. 10 A, D-82319 Starnberg<br>Germany</p>
+    </div>
+    <div class="glob-card">
+      <span class="glob-region">北美 · 美國</span>
+      <h3>SUGA USA, Inc.</h3>
+      <p>Thorson Rocky Mountain<br>Colorado, Utah — Murray, UT 84107, USA</p>
+    </div>
+    <div class="glob-card">
+      <span class="glob-region">泛太平洋 · 亞洲區</span>
+      <h3>亞太區業務</h3>
+      <p>覆蓋東南亞、東北亞等主要市場，持續擴展亞太區銷售及服務網絡。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SUBSIDIARIES -->
+<section class="subs" id="subs">
+  <span class="tag">Group Structure</span>
+  <h2 class="h2">旗下企業</h2>
+  <p class="lead">信佳集團旗下多家專業子公司，分別深耕不同業務領域。</p>
+  <div class="subs-grid">
+    <div class="sub-card">
+      <h3>信佳電子有限公司</h3>
+      <p>核心電子製造業務，為集團音響及電子產品業務提供生產支持。</p>
+    </div>
+    <div class="sub-card">
+      <h3>信佳技術香港有限公司</h3>
+      <p>香港技術研發及業務拓展，推動集團科技創新及本地市場發展。</p>
+    </div>
+    <div class="sub-card">
+      <h3>信至有限公司</h3>
+      <p>集團業務支援及資源整合，協助各業務單元高效運作。</p>
+    </div>
+    <div class="sub-card">
+      <h3>信佳環球創新有限公司</h3>
+      <p>全球創新業務及新興技術投資，為集團持續開拓新增長引擎。</p>
+    </div>
+    <div class="sub-card">
+      <h3>佳寵科技有限公司</h3>
+      <p>寵物科技產品研發與生產，服務全球寵物消費市場的技術需求。</p>
+    </div>
+    <div class="sub-card">
+      <h3>開心寶國際有限公司 (HappyPaws)</h3>
+      <p>寵物生活方式品牌，旗下多個消費品牌積極拓展市場，並參與香港寵物節等行業活動。</p>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST NEWS -->
+<section class="news">
+  <span class="tag">Latest News</span>
+  <h2 class="h2">最新消息</h2>
+  <div class="news-grid">
+    <div class="news-card">
+      <span class="news-date">2026年1月30日</span>
+      <h3>信佳旗下 HappyPaws（開心寶）攜眾多品牌亮相香港寵物節 2026</h3>
+      <p>開心寶國際有限公司旗下多個品牌參加香港寵物節，展示集團在寵物生活方式業務的最新成果。</p>
+    </div>
+    <div class="news-card">
+      <span class="news-date">2025年11月27日</span>
+      <h3>信佳公佈 2025/26 年度中期業績　核心業務支柱穩健</h3>
+      <p>集團公佈中期業績，核心業務支柱穩健，創新研發持續精進，多個業務板塊錄得正面增長。</p>
+    </div>
+    <div class="news-card">
+      <span class="news-date">2025年11月14日</span>
+      <h3>創辦人吳自豪博士榮膺「2025 年香港傑出工業家獎」</h3>
+      <p>信佳創辦人、主席兼企業管治委員會主席吳自豪博士榮獲此項重要行業殊榮，肯定其對香港工業的貢獻。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <span class="tag">Get In Touch</span>
+  <h2 class="h2">聯絡我們</h2>
+  <p class="lead" style="max-width:500px;">歡迎就業務合作、投資查詢或一般事項與我們聯絡。</p>
+  <div class="contact-grid">
+    <div>
+      <div class="ci">
+        <span class="ci-lbl">總部地址</span>
+        <div class="ci-val">香港九龍九龍灣宏光道1號<br>億京中心B座22樓</div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">公司電話</span>
+        <div class="ci-val"><a href="tel:+85229530383">+852-2953 0383</a> / <a href="tel:+85229531515">2953 1515</a></div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">傳真</span>
+        <div class="ci-val">+852-2953 0393</div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">一般查詢</span>
+        <div class="ci-val"><a href="mailto:general_inquiry@suga.com.hk">general_inquiry@suga.com.hk</a></div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">業務查詢</span>
+        <div class="ci-val"><a href="mailto:business_inquiry@suga.com.hk">business_inquiry@suga.com.hk</a></div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">官方網站</span>
+        <div class="ci-val"><a href="http://www.suga.com.hk" target="_blank">www.suga.com.hk</a></div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('感謝您的查詢，我們將盡快與您聯絡。');">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="form-group">
+          <label>姓名 *</label>
+          <input type="text" required placeholder="您的姓名">
+        </div>
+        <div class="form-group">
+          <label>公司名稱</label>
+          <input type="text" placeholder="公司名稱">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>電郵地址 *</label>
+        <input type="email" required placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>電話號碼</label>
+        <input type="tel" placeholder="+852 xxxx xxxx">
+      </div>
+      <div class="form-group">
+        <label>感興趣的業務</label>
+        <select>
+          <option>音響業務</option>
+          <option>物聯網方案</option>
+          <option>生活方式 / HappyPaws</option>
+          <option>清潔能源</option>
+          <option>投資合作</option>
+          <option>一般查詢</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>訊息</label>
+        <textarea placeholder="請詳述您的查詢內容..."></textarea>
+      </div>
+      <button type="submit" class="sub-btn">提交查詢</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-logo-zh">信佳國際集團有限公司</div>
+      <span class="foot-logo-en">SUGA International Holdings Limited</span>
+      <p>香港上市國際集團，業務涵蓋音響、物聯網、生活方式及清潔能源。全球多地生產及銷售佈局，持續推動科技創新及可持續發展。</p>
+    </div>
+    <div class="foot-col">
+      <h4>業務領域</h4>
+      <ul>
+        <li><a href="#business">音響</a></li>
+        <li><a href="#business">物聯網</a></li>
+        <li><a href="#business">生活方式</a></li>
+        <li><a href="#business">清潔能源</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>旗下企業</h4>
+      <ul>
+        <li><a href="#subs">信佳電子</a></li>
+        <li><a href="#subs">信佳技術</a></li>
+        <li><a href="#subs">HappyPaws</a></li>
+        <li><a href="#subs">TxWireless</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>聯絡</h4>
+      <ul>
+        <li><a href="tel:+85229530383">+852-2953 0383</a></li>
+        <li><a href="mailto:general_inquiry@suga.com.hk">一般查詢</a></li>
+        <li><a href="mailto:business_inquiry@suga.com.hk">業務查詢</a></li>
+        <li><a href="http://www.suga.com.hk">官方網站</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 信佳國際集團有限公司 版權所有 | 九龍灣，香港</span>
+    <span class="designer-credit">網頁設計 <a href="mailto:kck980724@gmail.com">Kwan's IT</a> · +852 60282297</span>
+  </div>
+</footer>
+
+</body>
+</html>
