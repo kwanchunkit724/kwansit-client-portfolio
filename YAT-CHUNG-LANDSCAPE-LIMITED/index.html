@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日中園藝有限公司 | Yat Chung Landscape Limited</title>
+<style>
+  :root {
+    --green: #2e7d32;
+    --green-mid: #388e3c;
+    --green-light: #66bb6a;
+    --green-pale: #e8f5e9;
+    --brown: #5d4037;
+    --amber: #f59c00;
+    --dark: #1b3a1c;
+    --white: #ffffff;
+    --gray: #f5f9f5;
+    --text: #2c3e28;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans TC','Segoe UI',sans-serif; color:var(--text); background:var(--white); }
+
+  /* NAV */
+  nav { background:var(--dark); padding:0 5%; position:sticky; top:0; z-index:100; }
+  .nav-inner { display:flex; align-items:center; justify-content:space-between; height:65px; }
+  .nav-logo { color:var(--white); }
+  .nav-logo .en { font-size:1rem; font-weight:800; }
+  .nav-logo .en span { color:var(--green-light); }
+  .nav-logo .zh { font-size:0.7rem; color:rgba(255,255,255,0.5); }
+  .nav-links { display:flex; gap:24px; list-style:none; }
+  .nav-links a { color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.87rem; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--green-light); }
+  .nav-shop { background:var(--green-mid); color:var(--white) !important; padding:7px 16px; border-radius:20px; font-weight:700 !important; }
+
+  /* HERO */
+  .hero { background:linear-gradient(135deg,var(--dark) 0%,#2a5a2c 60%,var(--green) 100%); color:var(--white); padding:85px 5% 75px; position:relative; overflow:hidden; }
+  .hero::before { content:'🌿'; position:absolute; right:8%; top:50%; transform:translateY(-50%); font-size:14rem; opacity:0.06; }
+  .hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.15); color:var(--white); font-size:0.75rem; font-weight:600; padding:5px 16px; border-radius:20px; margin-bottom:18px; }
+  .hero h1 { font-size:2.8rem; font-weight:900; line-height:1.2; margin-bottom:10px; }
+  .hero h1 .hl { color:var(--green-light); }
+  .hero-zh { font-size:1.4rem; font-weight:700; color:rgba(255,255,255,0.85); margin-bottom:8px; }
+  .hero-en { font-size:0.82rem; color:rgba(255,255,255,0.4); letter-spacing:1px; margin-bottom:28px; }
+  .hero-pills { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px; }
+  .pill { background:rgba(255,255,255,0.12); color:var(--white); font-size:0.78rem; padding:5px 14px; border-radius:20px; }
+  .hero-cta { display:flex; gap:12px; flex-wrap:wrap; }
+  .btn-green { background:var(--green-light); color:var(--dark); padding:12px 28px; border-radius:30px; text-decoration:none; font-weight:800; font-size:0.92rem; }
+  .btn-wa { background:#25d366; color:var(--white); padding:12px 28px; border-radius:30px; text-decoration:none; font-weight:700; font-size:0.92rem; display:flex; align-items:center; gap:8px; }
+  .btn-outline { background:transparent; border:2px solid rgba(255,255,255,0.4); color:var(--white); padding:12px 28px; border-radius:30px; text-decoration:none; font-weight:700; font-size:0.92rem; }
+
+  /* SECTION */
+  section { padding:65px 5%; }
+  .sec-label { font-size:0.72rem; font-weight:700; color:var(--green); letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+  .sec-title { font-size:1.85rem; font-weight:800; color:var(--dark); margin-bottom:12px; }
+  .sec-desc { color:#666; line-height:1.8; max-width:650px; }
+
+  /* SERVICES */
+  .services { background:var(--gray); }
+  .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:36px; }
+  .svc-card { background:var(--white); border-radius:14px; padding:30px 24px; border-top:4px solid var(--green); transition:all 0.3s; }
+  .svc-card:hover { box-shadow:0 10px 30px rgba(46,125,50,0.12); transform:translateY(-4px); }
+  .svc-icon { font-size:2.4rem; margin-bottom:14px; }
+  .svc-card h3 { font-size:1rem; font-weight:700; color:var(--dark); margin-bottom:8px; }
+  .svc-card p { font-size:0.85rem; color:#666; line-height:1.7; }
+
+  /* PACKAGES */
+  .packages { background:var(--white); }
+  .pkg-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:36px; }
+  .pkg-card { border-radius:14px; overflow:hidden; border:2px solid #dde8dd; transition:all 0.3s; }
+  .pkg-card:hover { border-color:var(--green); box-shadow:0 8px 24px rgba(46,125,50,0.12); }
+  .pkg-card.featured { border-color:var(--green); }
+  .pkg-header { padding:24px 22px; background:var(--gray); }
+  .pkg-header.green-bg { background:linear-gradient(135deg,var(--green),var(--green-mid)); }
+  .pkg-badge { display:inline-block; background:var(--amber); color:var(--dark); font-size:0.7rem; font-weight:800; padding:3px 10px; border-radius:20px; margin-bottom:10px; }
+  .pkg-name { font-size:1.05rem; font-weight:800; color:var(--dark); margin-bottom:4px; }
+  .pkg-name.white { color:var(--white); }
+  .pkg-price { display:flex; align-items:baseline; gap:8px; }
+  .pkg-price .amount { font-size:1.8rem; font-weight:900; color:var(--green); }
+  .pkg-price .amount.white { color:var(--white); }
+  .pkg-price del { font-size:1rem; color:#aaa; }
+  .pkg-price .unit { font-size:0.78rem; color:#888; }
+  .pkg-price .unit.white { color:rgba(255,255,255,0.7); }
+  .pkg-body { padding:22px; }
+  .pkg-feature { display:flex; align-items:center; gap:10px; margin-bottom:10px; font-size:0.85rem; color:#555; }
+  .pkg-feature::before { content:'✓'; color:var(--green); font-weight:800; flex-shrink:0; }
+  .pkg-btn { display:block; text-align:center; padding:11px; background:var(--green); color:var(--white); font-weight:700; font-size:0.9rem; border-radius:8px; text-decoration:none; margin-top:14px; transition:background 0.2s; }
+  .pkg-btn:hover { background:var(--green-mid); }
+
+  /* PRODUCTS */
+  .products { background:var(--gray); }
+  .prod-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:36px; }
+  .prod-card { background:var(--white); border-radius:12px; overflow:hidden; transition:all 0.3s; }
+  .prod-card:hover { box-shadow:0 8px 24px rgba(46,125,50,0.12); transform:translateY(-3px); }
+  .prod-img { height:110px; background:linear-gradient(135deg,var(--green) 0%,var(--green-mid) 100%); display:flex; align-items:center; justify-content:center; font-size:3rem; }
+  .prod-body { padding:14px; }
+  .prod-body h4 { font-size:0.88rem; font-weight:700; color:var(--dark); margin-bottom:6px; }
+  .prod-price { font-size:1rem; font-weight:800; color:var(--green); }
+
+  /* APP */
+  .app-section { background:linear-gradient(135deg,var(--dark) 0%,#2a5a2c 100%); color:var(--white); }
+  .app-section .sec-title { color:var(--white); }
+  .app-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; margin-top:36px; }
+  .app-text p { color:rgba(255,255,255,0.75); font-size:0.93rem; line-height:1.8; margin-bottom:20px; }
+  .app-features { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px; }
+  .app-feat { background:rgba(255,255,255,0.08); border-radius:8px; padding:12px 14px; }
+  .app-feat h4 { font-size:0.82rem; font-weight:700; color:var(--green-light); margin-bottom:3px; }
+  .app-feat p { font-size:0.78rem; color:rgba(255,255,255,0.6); }
+  .app-btns { display:flex; gap:12px; flex-wrap:wrap; }
+  .app-btn { background:rgba(255,255,255,0.15); color:var(--white); padding:10px 22px; border-radius:10px; text-decoration:none; font-weight:600; font-size:0.85rem; border:1px solid rgba(255,255,255,0.2); display:flex; align-items:center; gap:8px; }
+  .app-qr { background:rgba(255,255,255,0.08); border-radius:14px; padding:30px; text-align:center; }
+  .app-qr .qr-box { width:140px; height:140px; background:var(--white); border-radius:10px; margin:0 auto 14px; display:flex; align-items:center; justify-content:center; font-size:4rem; }
+  .app-qr p { color:rgba(255,255,255,0.7); font-size:0.82rem; }
+
+  /* CONTACT */
+  .contact { background:var(--white); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; margin-top:36px; }
+  .contact-info { display:flex; flex-direction:column; gap:16px; }
+  .ci-item { display:flex; align-items:flex-start; gap:14px; background:var(--gray); border-radius:10px; padding:16px; }
+  .ci-icon { font-size:1.5rem; flex-shrink:0; }
+  .ci-text span { display:block; font-size:0.72rem; color:#aaa; font-weight:600; margin-bottom:3px; }
+  .ci-text a, .ci-text strong { color:var(--dark); font-size:0.9rem; text-decoration:none; font-weight:600; }
+  .form-wrap { background:var(--gray); border-radius:12px; padding:28px; }
+  .form-wrap h3 { font-size:1rem; font-weight:700; color:var(--green); margin-bottom:18px; }
+  .fg { margin-bottom:12px; }
+  .fg input, .fg textarea, .fg select { width:100%; padding:10px 14px; background:var(--white); border:1.5px solid #d4e8d4; border-radius:8px; font-size:0.88rem; outline:none; color:var(--text); }
+  .fg input:focus, .fg textarea:focus { border-color:var(--green); }
+  .fg textarea { height:80px; resize:none; }
+  .btn-sub { width:100%; padding:12px; background:var(--green); color:var(--white); font-weight:700; font-size:0.93rem; border:none; border-radius:8px; cursor:pointer; }
+
+  /* FOOTER */
+  footer { background:var(--dark); color:rgba(255,255,255,0.45); text-align:center; padding:20px 5%; font-size:0.82rem; }
+  footer a { color:var(--green-light); text-decoration:none; }
+
+  @media(max-width:768px){
+    .hero h1{font-size:2rem;} .svc-grid,.pkg-grid{grid-template-columns:1fr;} .prod-grid{grid-template-columns:1fr 1fr;} .app-grid,.contact-grid{grid-template-columns:1fr;} .app-features{grid-template-columns:1fr;} .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="en">Yat Chung <span>Landscape</span></div>
+      <div class="zh">日中園藝有限公司</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">服務</a></li>
+      <li><a href="#packages">服務套餐</a></li>
+      <li><a href="#products">園藝產品</a></li>
+      <li><a href="#app">手機App</a></li>
+      <li><a href="#contact">聯絡</a></li>
+      <li><a href="https://yatchunglandscape.com" target="_blank" class="nav-shop">🌿 網店</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🌱 香港本地園藝服務</div>
+  <div class="hero-zh">日中園藝有限公司</div>
+  <h1>讓您的<span class="hl">綠色</span><br>夢想成真</h1>
+  <div class="hero-en">YAT CHUNG LANDSCAPE LIMITED</div>
+  <div class="hero-pills">
+    <span class="pill">🏡 庭院設計</span>
+    <span class="pill">🌿 植物護理</span>
+    <span class="pill">✂️ 修剪維護</span>
+    <span class="pill">🛒 園藝產品</span>
+    <span class="pill">📱 手機App</span>
+  </div>
+  <div class="hero-cta">
+    <a href="https://yatchunglandscape.com" class="btn-green" target="_blank">🌿 立即預約</a>
+    <a href="https://wa.me/85265840969" class="btn-wa" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sec-label">Our Services</div>
+  <div class="sec-title">園藝服務</div>
+  <div class="sec-desc">日中園藝提供全面的香港園藝及景觀服務，由專業團隊為您打造理想的綠色空間。</div>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon">🏡</div>
+      <h3>庭院設計及造景</h3>
+      <p>為住宅及商業客戶提供專業庭院設計服務，配合不同場地規劃最合適的景觀佈局，打造賞心悅目的綠化空間。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">✂️</div>
+      <h3>植物修剪及維護</h3>
+      <p>定期修剪樹木、花草及草坪，維持花園整潔美觀。專業園藝師確保植物健康生長，提供持續的維護服務。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🌱</div>
+      <h3>植物種植及移植</h3>
+      <p>提供各類植物的種植、移植及更換服務，為您的花園引入新的綠色生命，配合季節更換適合的植物品種。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">💧</div>
+      <h3>灌溉系統安裝</h3>
+      <p>設計及安裝自動灌溉系統，確保植物在最適當的時間獲得所需水分，節省時間及用水，保持植物最佳狀態。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🪴</div>
+      <h3>室內植物佈置</h3>
+      <p>為辦公室、住宅及商業空間提供室內植物佈置服務，選擇適合室內環境的植物品種，提升室內空氣質素及美觀。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🌺</div>
+      <h3>節日花藝裝飾</h3>
+      <p>為各類節日及活動提供花藝裝飾服務，包括婚禮、開幕典禮及各類慶典，以鮮花及植物創造獨特的視覺效果。</p>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="packages" id="packages">
+  <div class="sec-label">Service Packages</div>
+  <div class="sec-title">服務套餐</div>
+  <div class="sec-desc">靈活多元的服務套餐，滿足不同規模及需求的園藝服務。預購套餐更可享受優惠折扣。</div>
+  <div class="pkg-grid">
+    <div class="pkg-card">
+      <div class="pkg-header">
+        <div class="pkg-name">基本套餐</div>
+        <div style="font-size:0.82rem;color:#888;margin-bottom:8px;">1次服務預約</div>
+        <div class="pkg-price">
+          <span class="amount">$350</span>
+          <span class="unit">起 / 次</span>
+        </div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-feature">植物修剪及清理</div>
+        <div class="pkg-feature">基本養護施肥</div>
+        <div class="pkg-feature">專業園藝師上門服務</div>
+        <div class="pkg-feature">服務報告</div>
+        <a href="https://yatchunglandscape.com" class="pkg-btn" target="_blank">立即預約</a>
+      </div>
+    </div>
+    <div class="pkg-card featured">
+      <div class="pkg-header green-bg">
+        <div class="pkg-badge">🔥 最受歡迎</div>
+        <div class="pkg-name white">3次套餐</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.7);margin-bottom:8px;">3個預約名額</div>
+        <div class="pkg-price">
+          <span class="amount white">$600</span>
+          <del style="color:rgba(255,255,255,0.5);">$900</del>
+          <span class="unit white">/ 套餐</span>
+        </div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-feature">3次上門服務名額</div>
+        <div class="pkg-feature">植物修剪及全面護理</div>
+        <div class="pkg-feature">施肥及土壤改善</div>
+        <div class="pkg-feature">優先預約服務</div>
+        <div class="pkg-feature">節省$300（33%折扣）</div>
+        <div class="pkg-feature">積分獎賞：賺取600積分</div>
+        <a href="https://yatchunglandscape.com" class="pkg-btn" target="_blank">立即購買</a>
+      </div>
+    </div>
+    <div class="pkg-card">
+      <div class="pkg-header">
+        <div class="pkg-name">禮券</div>
+        <div style="font-size:0.82rem;color:#888;margin-bottom:8px;">送禮自用均適合</div>
+        <div class="pkg-price">
+          <span class="amount">$95</span>
+          <del style="color:#aaa;">$100</del>
+          <span class="unit">/ 張</span>
+        </div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-feature">HK$100面值禮券</div>
+        <div class="pkg-feature">可用於任何服務或產品</div>
+        <div class="pkg-feature">送禮首選</div>
+        <div class="pkg-feature">無使用期限限制</div>
+        <a href="https://yatchunglandscape.com" class="pkg-btn" target="_blank">購買禮券</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="sec-label">Garden Products</div>
+  <div class="sec-title">園藝產品</div>
+  <div class="sec-desc">精選園藝工具及用品，幫助您輕鬆照料心愛的植物，讓花園茁壯成長。</div>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-img">🌿</div>
+      <div class="prod-body">
+        <h4>肥料 Fertilizer</h4>
+        <div class="prod-price">$100</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">🌵</div>
+      <div class="prod-body">
+        <h4>植物支撐杆 Plant Support Stakes</h4>
+        <div class="prod-price">$100</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">🍂</div>
+      <div class="prod-body">
+        <h4>護根物料 Mulch</h4>
+        <div class="prod-price">$100</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">🏷️</div>
+      <div class="prod-body">
+        <h4>植物標籤 Plant Labels</h4>
+        <div class="prod-price">$100</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">⛏️</div>
+      <div class="prod-body">
+        <h4>鋤頭 Garden Hoe</h4>
+        <div class="prod-price">$100</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">🪴</div>
+      <div class="prod-body">
+        <h4>花盆 Planting Pots</h4>
+        <div class="prod-price">$100</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">🎫</div>
+      <div class="prod-body">
+        <h4>禮券 Voucher (100)</h4>
+        <div class="prod-price"><span style="color:#aaa;text-decoration:line-through;font-size:0.82rem;">$100</span> $95</div>
+      </div>
+    </div>
+    <div class="prod-card" style="background:var(--green-pale);border:2px dashed var(--green-light);">
+      <div class="prod-img" style="background:var(--green-pale);">🛒</div>
+      <div class="prod-body">
+        <h4>更多產品盡在網店</h4>
+        <div class="prod-price" style="font-size:0.82rem;color:var(--green);">→ 瀏覽網店</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP -->
+<section class="app-section" id="app">
+  <div class="sec-label">Mobile App</div>
+  <div class="app-grid">
+    <div>
+      <div class="sec-title">手機App · 隨時隨地</div>
+      <div class="app-text">
+        <p>日中園藝推出iOS及Android手機應用程式，讓您隨時隨地預約服務、購買產品及追蹤訂單，更可享受積分獎賞計劃，累積積分換取優惠。</p>
+      </div>
+      <div class="app-features">
+        <div class="app-feat">
+          <h4>📅 服務預約</h4>
+          <p>隨時預約上門服務</p>
+        </div>
+        <div class="app-feat">
+          <h4>🛒 網上購物</h4>
+          <p>一鍵購買園藝產品</p>
+        </div>
+        <div class="app-feat">
+          <h4>⭐ 積分獎賞</h4>
+          <p>購物賺積分換優惠</p>
+        </div>
+        <div class="app-feat">
+          <h4>📷 QR掃碼</h4>
+          <p>掃碼快速購物</p>
+        </div>
+      </div>
+      <div class="app-btns">
+        <a href="https://yatchunglandscape.com" class="app-btn" target="_blank">🍎 iOS App Store</a>
+        <a href="https://yatchunglandscape.com" class="app-btn" target="_blank">🤖 Android Play Store</a>
+      </div>
+    </div>
+    <div class="app-qr">
+      <div class="qr-box">📱</div>
+      <p style="font-size:0.88rem;margin-bottom:8px;">掃描QR碼</p>
+      <p>或瀏覽 yatchunglandscape.com</p>
+      <p style="margin-top:12px;font-size:0.78rem;color:rgba(255,255,255,0.4);">下載App / 購買產品 / 預約服務</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="sec-label">Contact Us</div>
+  <div class="sec-title">聯絡我們</div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="ci-item">
+        <div class="ci-icon">📱</div>
+        <div class="ci-text">
+          <span>WhatsApp / 電話</span>
+          <a href="https://wa.me/85265840969">6584 0969</a>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">✉️</div>
+        <div class="ci-text">
+          <span>電郵 Email</span>
+          <a href="mailto:yatchunglandscape@gmail.com">yatchunglandscape@gmail.com</a>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">🌐</div>
+        <div class="ci-text">
+          <span>網店 / 預約</span>
+          <a href="https://yatchunglandscape.com" target="_blank">yatchunglandscape.com</a>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">🏙️</div>
+        <div class="ci-text">
+          <span>服務地區</span>
+          <strong>香港全港各區</strong>
+        </div>
+      </div>
+      <a href="https://wa.me/85265840969" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#25d366;color:white;padding:14px;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.95rem;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp 立即查詢
+      </a>
+    </div>
+    <div class="form-wrap">
+      <h3>🌱 服務查詢</h3>
+      <div class="fg"><input type="text" placeholder="姓名 Name"></div>
+      <div class="fg"><input type="tel" placeholder="電話 / WhatsApp"></div>
+      <div class="fg"><input type="email" placeholder="電郵 Email"></div>
+      <div class="fg">
+        <select>
+          <option value="">查詢服務 Service Type</option>
+          <option>庭院設計</option>
+          <option>植物修剪維護</option>
+          <option>服務套餐查詢</option>
+          <option>園藝產品</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div class="fg"><textarea placeholder="查詢詳情 Details"></textarea></div>
+      <button class="btn-sub">發送查詢 Send</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 日中園藝有限公司 Yat Chung Landscape Limited</p>
+  <p style="margin-top:6px;"><a href="https://wa.me/85265840969">📱 6584 0969</a> · <a href="mailto:yatchunglandscape@gmail.com">yatchunglandscape@gmail.com</a> · <a href="https://yatchunglandscape.com" target="_blank">yatchunglandscape.com</a></p>
+</footer>
+
+</body>
+</html>
