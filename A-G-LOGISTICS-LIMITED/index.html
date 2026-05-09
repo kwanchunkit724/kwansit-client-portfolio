@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AG Logistics | One-Stop Supply Chain Solutions | Hong Kong</title>
+<meta name="description" content="AG Logistics (Hong Kong) — ISO 9001:2015 &amp; ISO 14001:2015 certified international logistics provider. Sea freight, air freight, warehousing, road freight, and wine storage. End-to-end supply chain management.">
+<style>
+  :root {
+    --blue: #003f7f;
+    --blue-mid: #0056b3;
+    --blue-light: #007bff;
+    --red: #cc2200;
+    --silver: #e8eef5;
+    --dark: #0a1020;
+    --text: #1a2030;
+    --text-light: #607080;
+    --bg: #f4f7fc;
+    --white: #fff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Arial','Helvetica Neue',sans-serif; color:var(--text); background:var(--bg); }
+  html { scroll-behavior:smooth; }
+
+  nav {
+    position:fixed; top:0; width:100%; z-index:100;
+    background:rgba(10,16,32,0.98); backdrop-filter:blur(10px);
+    padding:0 5%; height:70px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:3px solid var(--blue-light);
+  }
+  .logo { display:flex; flex-direction:column; }
+  .logo-main { font-size:1.5rem; font-weight:900; color:#fff; letter-spacing:3px; }
+  .logo-main span { color:var(--blue-light); }
+  .logo-sub { font-size:0.58rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.45); }
+  nav ul { list-style:none; display:flex; gap:1.8rem; }
+  nav ul a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.8rem; letter-spacing:0.5px; transition:color 0.3s; }
+  nav ul a:hover { color:var(--blue-light); }
+
+  /* HERO */
+  .hero {
+    min-height:100vh;
+    background:linear-gradient(135deg, var(--dark) 0%, #0a1e40 50%, #0f2060 100%);
+    display:flex; align-items:center; padding:100px 5% 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 70% at 100% 50%, rgba(0,123,255,0.1) 0%, transparent 60%); }
+  .hero-inner { max-width:720px; position:relative; z-index:1; }
+  .hero-certs {
+    display:flex; gap:0.8rem; flex-wrap:wrap; margin-bottom:2rem;
+  }
+  .cert-badge {
+    display:inline-flex; align-items:center; gap:0.5rem;
+    background:rgba(0,123,255,0.15); border:1px solid rgba(0,123,255,0.35);
+    padding:6px 14px; border-radius:2px;
+    color:rgba(255,255,255,0.85); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;
+  }
+  .cert-badge::before { content:'✓'; color:var(--blue-light); font-weight:900; }
+  .hero h1 {
+    font-size:clamp(2.4rem, 5vw, 4.5rem); color:#fff;
+    line-height:1.15; margin-bottom:0.6rem; font-weight:900;
+  }
+  .hero h1 .sub { font-size:clamp(1.6rem, 3vw, 2.8rem); color:var(--blue-light); display:block; font-weight:700; }
+  .hero p { font-size:1.05rem; color:rgba(255,255,255,0.65); line-height:1.9; margin-bottom:2.5rem; max-width:580px; }
+  .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:4rem; }
+  .btn-blue { display:inline-block; background:var(--blue-light); color:#fff; padding:14px 34px; text-decoration:none; font-size:0.84rem; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; transition:all 0.3s; }
+  .btn-blue:hover { background:var(--blue-mid); }
+  .btn-ghost { display:inline-block; border:1.5px solid rgba(255,255,255,0.3); color:#fff; padding:13px 34px; text-decoration:none; font-size:0.84rem; letter-spacing:1.5px; text-transform:uppercase; transition:all 0.3s; }
+  .btn-ghost:hover { border-color:var(--blue-light); color:var(--blue-light); }
+  .hero-stats { display:grid; grid-template-columns:repeat(4, 1fr); border:1px solid rgba(255,255,255,0.08); }
+  .hs { padding:1.5rem 1rem; border-right:1px solid rgba(255,255,255,0.08); text-align:center; }
+  .hs:last-child { border-right:none; }
+  .hs-num { font-size:2.2rem; font-weight:900; color:var(--blue-light); display:block; line-height:1; }
+  .hs-lbl { font-size:0.64rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:4px; display:block; }
+
+  /* TICKER */
+  .ticker { background:var(--blue); padding:12px 0; overflow:hidden; }
+  .tick-inner { display:flex; gap:2.5rem; animation:scroll 24s linear infinite; white-space:nowrap; }
+  .tick-inner span { color:rgba(255,255,255,0.85); font-size:0.75rem; letter-spacing:2.5px; text-transform:uppercase; font-weight:600; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  section { padding:100px 5%; }
+  .tag { color:var(--blue-light); font-size:0.68rem; letter-spacing:3.5px; text-transform:uppercase; display:block; margin-bottom:0.8rem; }
+  .h2 { font-size:clamp(1.8rem, 3vw, 2.7rem); color:var(--dark); margin-bottom:1rem; font-weight:800; }
+  .lead { font-size:1rem; color:var(--text-light); line-height:1.9; }
+
+  /* SERVICES */
+  .services { background:var(--white); }
+  .svc-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:#d0dcea; margin-top:3.5rem; }
+  .svc-card {
+    background:var(--white); padding:2.8rem 2rem;
+    transition:all 0.35s; cursor:default; border-top:4px solid transparent;
+  }
+  .svc-card:hover { background:var(--dark); border-top-color:var(--blue-light); }
+  .svc-card:hover .svc-ico { background:rgba(0,123,255,0.2); }
+  .svc-card:hover h3 { color:#fff; }
+  .svc-card:hover p { color:rgba(255,255,255,0.6); }
+  .svc-ico { width:56px; height:56px; background:var(--silver); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin-bottom:1.5rem; transition:background 0.35s; }
+  .svc-card h3 { font-size:1.05rem; color:var(--dark); margin-bottom:0.7rem; font-weight:700; transition:color 0.35s; }
+  .svc-card p { font-size:0.87rem; color:var(--text-light); line-height:1.7; transition:color 0.35s; }
+
+  /* VALUES */
+  .values { background:var(--blue); }
+  .values .h2 { color:#fff; }
+  .val-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(160px, 1fr)); gap:1.5rem; margin-top:3rem; }
+  .val-item {
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+    padding:1.5rem; text-align:center; border-radius:2px; transition:background 0.3s;
+  }
+  .val-item:hover { background:rgba(0,123,255,0.2); }
+  .val-icon { font-size:1.8rem; margin-bottom:0.6rem; display:block; }
+  .val-item span:last-child { font-size:0.88rem; color:rgba(255,255,255,0.8); font-weight:600; }
+
+  /* CERTS */
+  .certs { background:var(--bg); }
+  .cert-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:2rem; margin-top:3rem; }
+  .cert-card { background:var(--white); padding:2.5rem; border-left:5px solid var(--blue-light); border-radius:0 2px 2px 0; }
+  .cert-card h3 { font-size:1.1rem; color:var(--dark); margin-bottom:0.5rem; font-weight:700; }
+  .cert-card .cert-id { font-size:0.75rem; letter-spacing:2px; text-transform:uppercase; color:var(--blue-light); margin-bottom:0.8rem; display:block; }
+  .cert-card p { font-size:0.87rem; color:var(--text-light); line-height:1.7; }
+
+  /* TESTIMONIALS */
+  .testi { background:var(--white); }
+  .testi-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:2rem; margin-top:3rem; }
+  .test-card { background:var(--bg); padding:2rem; border-radius:2px; position:relative; }
+  .test-card::before { content:'"'; font-size:4rem; color:var(--blue-light); opacity:0.3; position:absolute; top:0.5rem; left:1rem; line-height:1; font-family:Georgia,serif; }
+  .test-text { font-size:0.9rem; color:var(--text); line-height:1.7; padding-top:1.5rem; margin-bottom:1rem; font-style:italic; }
+  .test-author { font-size:0.8rem; font-weight:700; color:var(--blue); }
+  .test-role { font-size:0.75rem; color:var(--text-light); }
+
+  /* ABOUT */
+  .about { background:var(--bg); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+  .about-visual { background:linear-gradient(145deg, var(--dark), var(--blue)); padding:3rem; border-radius:2px; }
+  .av-row { display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.08); padding:1.2rem 0; }
+  .av-row:first-child { padding-top:0; }
+  .av-row:last-child { border-bottom:none; }
+  .av-lbl { font-size:0.73rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.4); }
+  .av-val { font-size:0.93rem; color:#fff; font-weight:600; text-align:right; }
+  .about-text .lead { margin-bottom:1rem; }
+  .values-pills { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1.5rem; }
+  .pill { background:var(--blue); color:#fff; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600; }
+
+  /* CONTACT */
+  .contact { background:var(--dark); }
+  .contact .tag { color:rgba(0,123,255,0.9); }
+  .contact .h2 { color:#fff; }
+  .contact .lead { color:rgba(255,255,255,0.6); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; margin-top:3rem; }
+  .ci { margin-bottom:1.4rem; }
+  .ci-lbl { font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--blue-light); margin-bottom:0.4rem; display:block; }
+  .ci-val { font-size:0.93rem; color:#fff; }
+  .ci-val a { color:rgba(0,180,255,0.9); text-decoration:none; }
+  .form-group { margin-bottom:1.1rem; }
+  label { font-size:0.67rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.45); display:block; margin-bottom:0.45rem; }
+  input, select, textarea {
+    width:100%; border:1px solid rgba(255,255,255,0.1); padding:12px 14px;
+    font-size:0.9rem; color:#fff; background:rgba(255,255,255,0.06);
+    border-radius:2px; transition:border-color 0.3s; font-family:'Arial',sans-serif;
+  }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--blue-light); }
+  textarea { resize:vertical; min-height:110px; }
+  select option { background:var(--dark); }
+  .sub-btn { width:100%; background:var(--blue-light); color:#fff; border:none; padding:14px; font-size:0.84rem; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background 0.3s; font-weight:700; font-family:'Arial',sans-serif; }
+  .sub-btn:hover { background:var(--blue-mid); }
+
+  footer { background:#050a14; color:rgba(255,255,255,0.45); padding:60px 5% 30px; font-family:'Arial',sans-serif; }
+  .foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+  .foot-logo-main { font-size:1.4rem; font-weight:900; color:#fff; letter-spacing:3px; display:block; margin-bottom:0.3rem; }
+  .foot-logo-main span { color:var(--blue-light); }
+  .foot-logo-sub { font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:1rem; display:block; }
+  .foot-brand p { font-size:0.84rem; line-height:1.8; }
+  .foot-col h4 { color:var(--blue-light); font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:1.2rem; }
+  .foot-col ul { list-style:none; }
+  .foot-col li { margin-bottom:0.5rem; font-size:0.84rem; }
+  .foot-col a { color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.3s; }
+  .foot-col a:hover { color:var(--blue-light); }
+  .foot-bottom { border-top:1px solid rgba(255,255,255,0.07); padding-top:2rem; display:flex; justify-content:space-between; font-size:0.76rem; flex-wrap:wrap; gap:0.5rem; }
+  .designer-credit a { color:var(--blue-light); text-decoration:none; }
+
+  @media (max-width:900px) {
+    nav ul { display:none; }
+    .svc-grid { grid-template-columns:1fr 1fr; }
+    .about-grid, .contact-grid, .foot-grid { grid-template-columns:1fr; }
+    .hero-stats { grid-template-columns:repeat(2, 1fr); }
+  }
+  @media (max-width:600px) {
+    .svc-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <span class="logo-main">AG<span>.</span>LOGISTICS</span>
+    <span class="logo-sub">AG Logistics (Hong Kong) Company Limited</span>
+  </div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#certs">Certifications</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-certs">
+      <span class="cert-badge">ISO 9001:2015 Certified</span>
+      <span class="cert-badge">ISO 14001:2015 Certified</span>
+    </div>
+    <h1>One-Stop Logistics
+      <span class="sub">End-to-End Supply Chain Solutions</span>
+    </h1>
+    <p>AG Logistics (Hong Kong) Company Limited is a certified international third-party logistics provider delivering comprehensive freight, warehousing, and supply chain management services across the globe. Fast, efficient, and trustworthy.</p>
+    <div class="hero-cta">
+      <a href="#services" class="btn-blue">Explore Services</a>
+      <a href="#contact" class="btn-ghost">Contact Us</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs">
+        <span class="hs-num">ISO</span>
+        <span class="hs-lbl">9001 & 14001</span>
+      </div>
+      <div class="hs">
+        <span class="hs-num">3PL</span>
+        <span class="hs-lbl">International Provider</span>
+      </div>
+      <div class="hs">
+        <span class="hs-num">Global</span>
+        <span class="hs-lbl">Agent Network</span>
+      </div>
+      <div class="hs">
+        <span class="hs-num">EDI</span>
+        <span class="hs-lbl">Data Integration</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="tick-inner">
+    <span>Sea Freight</span><span>·</span>
+    <span>Air Freight</span><span>·</span>
+    <span>Road Freight</span><span>·</span>
+    <span>Warehousing</span><span>·</span>
+    <span>Wine Storage</span><span>·</span>
+    <span>Supply Chain</span><span>·</span>
+    <span>ISO 9001 Certified</span><span>·</span>
+    <span>Hong Kong Based</span><span>·</span>
+    <span>Sea Freight</span><span>·</span>
+    <span>Air Freight</span><span>·</span>
+    <span>Road Freight</span><span>·</span>
+    <span>Warehousing</span><span>·</span>
+    <span>Wine Storage</span><span>·</span>
+    <span>Supply Chain</span><span>·</span>
+    <span>ISO 9001 Certified</span><span>·</span>
+    <span>Hong Kong Based</span><span>·</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <span class="tag">What We Offer</span>
+  <h2 class="h2">Comprehensive Logistics Services</h2>
+  <p class="lead" style="max-width:600px;">From sea and air freight to specialist wine storage, we provide a complete portfolio of logistics and supply chain services customised to your business needs.</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-ico">🚢</div>
+      <h3>Ocean Freight</h3>
+      <p>International sea freight services using modern vessels across major shipping lanes. FCL and LCL solutions with reliable schedules and competitive rates.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">✈️</div>
+      <h3>Air Freight</h3>
+      <p>Fast international air freight for time-sensitive cargo. We handle diverse cargo types with full documentation and customs support from origin to destination.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🚛</div>
+      <h3>Road Freight</h3>
+      <p>Transportation and distribution management including last-mile delivery. Client inventory managed and stored in designated warehouse locations for efficient fulfilment.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🏭</div>
+      <h3>Warehousing</h3>
+      <p>Secure cargo storage services ensuring your goods are safe and accessible. Inventory management, pick-and-pack, and distribution centre operations available.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">🍷</div>
+      <h3>Wine Consulting & Storage</h3>
+      <p>Specialist wine storage with meticulously designed cellar facilities, temperature and humidity monitoring. Build and manage your private wine collection with confidence.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-ico">📊</div>
+      <h3>Consulting & Supply Chain</h3>
+      <p>End-to-end supply chain advisory — from freight forwarding to full logistics outsourcing. Our team manages your project from initiation to completion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div style="text-align:center; max-width:540px; margin:0 auto 1rem;">
+    <span class="tag" style="color:rgba(255,255,255,0.7);">Our Principles</span>
+    <h2 class="h2">Our Core Values</h2>
+  </div>
+  <div class="val-grid">
+    <div class="val-item"><span class="val-icon">⭐</span><span>Quality</span></div>
+    <div class="val-item"><span class="val-icon">⚡</span><span>Speed</span></div>
+    <div class="val-item"><span class="val-icon">🤝</span><span>Integrity</span></div>
+    <div class="val-item"><span class="val-icon">💰</span><span>Fair Pricing</span></div>
+    <div class="val-item"><span class="val-icon">🔄</span><span>Efficiency</span></div>
+    <div class="val-item"><span class="val-icon">💡</span><span>Innovation</span></div>
+    <div class="val-item"><span class="val-icon">📌</span><span>Responsibility</span></div>
+    <div class="val-item"><span class="val-icon">🎯</span><span>Precision</span></div>
+    <div class="val-item"><span class="val-icon">😊</span><span>Friendliness</span></div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs" id="certs">
+  <span class="tag">Quality Assurance</span>
+  <h2 class="h2">Industry Certifications</h2>
+  <p class="lead" style="max-width:560px;">Our commitment to quality and environmental responsibility is backed by internationally recognised certifications and ongoing improvement programmes.</p>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <span class="cert-id">Quality Management System</span>
+      <h3>ISO 9001:2015 Certified</h3>
+      <p>AG Logistics (Hong Kong) Company Limited's Quality Management System meets the requirements of ISO 9001:2015 for freight forwarding and logistics services. We maintain established methods, processes, and performance metrics against defined objectives.</p>
+    </div>
+    <div class="cert-card">
+      <span class="cert-id">Environmental Management System</span>
+      <h3>ISO 14001:2015 Certified</h3>
+      <p>Our Environmental Management System complies with ISO 14001:2015 standards. AG Logistics is committed to protecting the environment, including preventing pollution and reducing natural resource consumption associated with our operations.</p>
+    </div>
+    <div class="cert-card">
+      <span class="cert-id">Thailand Operations</span>
+      <h3>AEO Authorised Status</h3>
+      <p>Our Thailand affiliate, AG World Transport Co., Ltd., holds Authorised Economic Operator (AEO) status — delivering enhanced supply chain security, reduced customs inspections, and priority clearance benefits for cross-border shipments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <span class="tag">Client Feedback</span>
+  <h2 class="h2">What Our Clients Say</h2>
+  <div class="testi-grid">
+    <div class="test-card">
+      <p class="test-text">They always remain courteous and ensure deliveries arrive safely. They are professionals with the knowledge to answer any question.</p>
+      <div class="test-author">Berry Feng</div>
+      <div class="test-role">Supervisor · March 2020</div>
+    </div>
+    <div class="test-card">
+      <p class="test-text">AG Logistics is an outstanding freight forwarder! Their capabilities are highlighted by rapid service and a willingness to help and respond to requests.</p>
+      <div class="test-author">Meon Deng</div>
+      <div class="test-role">Manager · March 2020</div>
+    </div>
+    <div class="test-card">
+      <p class="test-text">AG Logistics delivers on their commitments with reliable customer service and delivers within the promised timeframe, every time.</p>
+      <div class="test-author">Shing KS</div>
+      <div class="test-role">Manager · March 2020</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="av-row">
+        <span class="av-lbl">Headquarters</span>
+        <span class="av-val">Hong Kong</span>
+      </div>
+      <div class="av-row">
+        <span class="av-lbl">Type</span>
+        <span class="av-val">International 3PL Provider</span>
+      </div>
+      <div class="av-row">
+        <span class="av-lbl">Quality Cert</span>
+        <span class="av-val">ISO 9001:2015</span>
+      </div>
+      <div class="av-row">
+        <span class="av-lbl">Environmental</span>
+        <span class="av-val">ISO 14001:2015</span>
+      </div>
+      <div class="av-row">
+        <span class="av-lbl">Technology</span>
+        <span class="av-val">EDI Integrated</span>
+      </div>
+      <div class="av-row">
+        <span class="av-lbl">Affiliates</span>
+        <span class="av-val">Thailand · Global Agent Network</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="tag">About AG Logistics</span>
+      <h2 class="h2">Your Trusted Logistics Partner</h2>
+      <p class="lead">AG Logistics (Hong Kong) Company Limited is a professional international third-party logistics provider with a focus on delivering global end-to-end supply chain management. We work closely with clients to understand and customise solutions to their specific needs.</p>
+      <p class="lead" style="margin-top:1rem;">With our global network of reliable and experienced freight agents, ISO-certified quality systems, and Electronic Data Interchange (EDI) integration capabilities, we provide clients and partners with seamless data transmission and transparent logistics management.</p>
+      <p class="lead" style="margin-top:1rem;">Our Thailand affiliate, AG World Transport, holds AEO status — extending our commitment to secure, compliant supply chains into Southeast Asia.</p>
+      <div class="values-pills">
+        <span class="pill">ISO 9001:2015</span>
+        <span class="pill">ISO 14001:2015</span>
+        <span class="pill">AEO Thailand</span>
+        <span class="pill">EDI Enabled</span>
+        <span class="pill">Global Network</span>
+        <span class="pill">Wine Storage</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <span class="tag">Get in Touch</span>
+  <h2 class="h2">Contact AG Logistics</h2>
+  <p class="lead" style="max-width:480px;">Whether you need a freight quote, logistics consultation, or want to discuss wine storage options — we're here to help.</p>
+  <div class="contact-grid">
+    <div>
+      <div class="ci">
+        <span class="ci-lbl">Telephone</span>
+        <div class="ci-val"><a href="tel:+85226260076">+852 2626 0076</a></div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">WhatsApp / Mobile</span>
+        <div class="ci-val"><a href="tel:+85251036336">+852 5103 6336</a></div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">Email</span>
+        <div class="ci-val"><a href="mailto:kam@anghk.com">kam@anghk.com</a></div>
+      </div>
+      <div class="ci">
+        <span class="ci-lbl">Website</span>
+        <div class="ci-val"><a href="http://www.aglogistics.com.hk" target="_blank">www.aglogistics.com.hk</a></div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('Thank you for your enquiry. We will respond within one business day.');">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="form-group">
+          <label>Name *</label>
+          <input type="text" required placeholder="Your Name">
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" placeholder="Company Name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" required placeholder="you@company.com">
+      </div>
+      <div class="form-group">
+        <label>Phone / WhatsApp</label>
+        <input type="tel" placeholder="+852 xxxx xxxx">
+      </div>
+      <div class="form-group">
+        <label>Service Required</label>
+        <select>
+          <option>Ocean Freight</option>
+          <option>Air Freight</option>
+          <option>Road Freight</option>
+          <option>Warehousing</option>
+          <option>Wine Consulting & Storage</option>
+          <option>Supply Chain Consulting</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Details</label>
+        <textarea placeholder="Origin/destination, cargo type, volume, requirements..."></textarea>
+      </div>
+      <button type="submit" class="sub-btn">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <span class="foot-logo-main">AG<span>.</span>LOGISTICS</span>
+      <span class="foot-logo-sub">AG Logistics (Hong Kong) Company Limited</span>
+      <p>ISO 9001:2015 and ISO 14001:2015 certified international 3PL logistics provider. Sea freight, air freight, road, warehousing, wine storage, and end-to-end supply chain management from Hong Kong.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Ocean Freight</a></li>
+        <li><a href="#services">Air Freight</a></li>
+        <li><a href="#services">Road Freight</a></li>
+        <li><a href="#services">Warehousing</a></li>
+        <li><a href="#services">Wine Storage</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#certs">Certifications</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="tel:+85226260076">+852 2626 0076</a></li>
+        <li><a href="mailto:kam@anghk.com">kam@anghk.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 AG Logistics (Hong Kong) Company Limited. All rights reserved. | Hong Kong</span>
+    <span class="designer-credit">Website by <a href="mailto:kck980724@gmail.com">Kwan's IT</a> · +852 60282297</span>
+  </div>
+</footer>
+
+</body>
+</html>
