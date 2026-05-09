@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Honeycombers Hong Kong | City Guide & Lifestyle</title>
+<style>
+  :root {
+    --honey: #f5a623;
+    --honey-dark: #d4890a;
+    --honey-light: #ffd07a;
+    --dark: #1a1208;
+    --charcoal: #2c2c2c;
+    --cream: #fdf9f0;
+    --white: #ffffff;
+    --text: #333;
+    --gray: #f5f5f5;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI','Noto Sans TC',sans-serif; color:var(--text); background:var(--white); }
+
+  /* NAV */
+  nav { background:var(--dark); padding:0 5%; position:sticky; top:0; z-index:100; }
+  .nav-inner { display:flex; align-items:center; justify-content:space-between; height:65px; }
+  .nav-logo { display:flex; align-items:center; gap:10px; }
+  .logo-hex { font-size:1.6rem; }
+  .logo-text { color:var(--white); }
+  .logo-text .en { font-size:1rem; font-weight:800; letter-spacing:0.5px; }
+  .logo-text .en span { color:var(--honey-light); }
+  .logo-text .sub { font-size:0.68rem; color:rgba(255,255,255,0.45); letter-spacing:1px; text-transform:uppercase; }
+  .nav-links { display:flex; gap:24px; list-style:none; }
+  .nav-links a { color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.87rem; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--honey); }
+
+  /* HERO */
+  .hero { background:linear-gradient(135deg,var(--dark) 0%,#3d2a05 50%,#5c3d0a 100%); color:var(--white); padding:80px 5% 70px; position:relative; overflow:hidden; }
+  .hero::before { content:'🍯'; position:absolute; right:6%; top:50%; transform:translateY(-50%); font-size:14rem; opacity:0.06; }
+  .hero-badge { display:inline-flex; align-items:center; gap:8px; background:var(--honey); color:var(--dark); font-size:0.75rem; font-weight:800; padding:5px 16px; border-radius:20px; margin-bottom:18px; }
+  .hero h1 { font-size:2.8rem; font-weight:900; line-height:1.15; margin-bottom:12px; }
+  .hero h1 .hl { color:var(--honey-light); }
+  .hero-tagline { font-size:1.1rem; color:rgba(255,255,255,0.8); margin-bottom:28px; }
+  .hero-pills { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px; }
+  .pill { background:rgba(255,255,255,0.1); color:var(--white); font-size:0.78rem; padding:5px 14px; border-radius:20px; }
+  .hero-cta { display:flex; gap:12px; flex-wrap:wrap; }
+  .btn-honey { background:var(--honey); color:var(--dark); padding:12px 28px; border-radius:30px; text-decoration:none; font-weight:800; font-size:0.92rem; }
+  .btn-outline { background:transparent; border:2px solid rgba(255,255,255,0.35); color:var(--white); padding:12px 28px; border-radius:30px; text-decoration:none; font-weight:700; font-size:0.92rem; }
+
+  /* CATEGORIES STRIP */
+  .cat-strip { background:var(--honey); padding:0 5%; overflow-x:auto; }
+  .cat-strip-inner { display:flex; gap:0; white-space:nowrap; }
+  .cat-tab { padding:14px 22px; font-size:0.85rem; font-weight:700; color:var(--dark); cursor:pointer; border-bottom:3px solid transparent; transition:border-color 0.2s; }
+  .cat-tab:hover, .cat-tab.active { border-bottom-color:var(--dark); }
+
+  /* SECTION */
+  section { padding:65px 5%; }
+  .sec-label { font-size:0.72rem; font-weight:700; color:var(--honey-dark); letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+  .sec-title { font-size:1.85rem; font-weight:800; color:var(--dark); margin-bottom:12px; }
+  .sec-desc { color:#666; line-height:1.8; max-width:650px; }
+
+  /* ABOUT */
+  .about { background:var(--cream); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start; margin-top:36px; }
+  .about-text p { color:#555; line-height:1.9; font-size:0.95rem; margin-bottom:14px; }
+  .fact-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .fact-card { background:var(--white); border-left:4px solid var(--honey); padding:14px 16px; border-radius:0 8px 8px 0; }
+  .fact-card h4 { font-size:0.82rem; font-weight:700; color:var(--honey-dark); margin-bottom:3px; }
+  .fact-card p { font-size:0.82rem; color:#666; line-height:1.5; }
+
+  /* FEATURED GUIDES */
+  .guides { background:var(--white); }
+  .guides-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:36px; }
+  .guide-card { border-radius:12px; overflow:hidden; border:1px solid #e8e0d0; transition:all 0.3s; }
+  .guide-card:hover { box-shadow:0 8px 24px rgba(245,166,35,0.15); transform:translateY(-4px); }
+  .guide-img { height:140px; display:flex; align-items:center; justify-content:center; font-size:3.5rem; }
+  .guide-img.food { background:linear-gradient(135deg,#ff6b35,#f7931e); }
+  .guide-img.drink { background:linear-gradient(135deg,#4ecdc4,#1a535c); }
+  .guide-img.life { background:linear-gradient(135deg,#a8e063,#56ab2f); }
+  .guide-img.fam { background:linear-gradient(135deg,#f093fb,#f5576c); }
+  .guide-img.travel { background:linear-gradient(135deg,#4facfe,#00f2fe); }
+  .guide-img.beauty { background:linear-gradient(135deg,#f857a6,#ff5858); }
+  .guide-body { padding:16px 18px; }
+  .guide-cat { display:inline-block; background:var(--cream); color:var(--honey-dark); font-size:0.7rem; font-weight:700; padding:3px 10px; border-radius:20px; margin-bottom:8px; }
+  .guide-body h3 { font-size:0.95rem; font-weight:700; color:var(--dark); line-height:1.4; margin-bottom:6px; }
+  .guide-body p { font-size:0.78rem; color:#888; }
+
+  /* TOPICS */
+  .topics { background:var(--cream); }
+  .topic-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:36px; }
+  .topic-card { background:var(--white); border-radius:12px; padding:22px 18px; text-align:center; border:2px solid transparent; transition:all 0.3s; cursor:pointer; }
+  .topic-card:hover { border-color:var(--honey); }
+  .topic-icon { font-size:2.2rem; margin-bottom:10px; }
+  .topic-card h3 { font-size:0.88rem; font-weight:700; color:var(--dark); margin-bottom:4px; }
+  .topic-card p { font-size:0.75rem; color:#888; }
+
+  /* ADVERTISING */
+  .advertising { background:linear-gradient(135deg,var(--dark) 0%,#3d2a05 100%); color:var(--white); }
+  .advertising .sec-title { color:var(--white); }
+  .adv-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; margin-top:36px; align-items:start; }
+  .adv-text p { color:rgba(255,255,255,0.75); font-size:0.93rem; line-height:1.8; margin-bottom:16px; }
+  .adv-options { display:flex; flex-direction:column; gap:14px; }
+  .adv-option { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:10px; padding:18px 20px; }
+  .adv-option h4 { color:var(--honey-light); font-size:0.9rem; font-weight:700; margin-bottom:6px; }
+  .adv-option p { color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.6; }
+
+  /* CONTACT */
+  .contact { background:var(--white); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; margin-top:36px; }
+  .ci-item { display:flex; align-items:flex-start; gap:14px; background:var(--cream); border-radius:10px; padding:16px; margin-bottom:14px; }
+  .ci-icon { font-size:1.4rem; flex-shrink:0; }
+  .ci-text span { display:block; font-size:0.72rem; color:#aaa; font-weight:600; margin-bottom:2px; }
+  .ci-text a, .ci-text strong { color:var(--dark); font-size:0.9rem; text-decoration:none; font-weight:600; }
+  .form-wrap { background:var(--cream); border-radius:12px; padding:28px; }
+  .form-wrap h3 { font-size:1rem; font-weight:700; color:var(--honey-dark); margin-bottom:18px; }
+  .fg { margin-bottom:11px; }
+  .fg input, .fg textarea, .fg select { width:100%; padding:10px 14px; background:var(--white); border:1.5px solid #e0d8c8; border-radius:8px; font-size:0.88rem; outline:none; color:var(--text); }
+  .fg textarea { height:80px; resize:none; }
+  .btn-sub { width:100%; padding:12px; background:var(--honey); color:var(--dark); font-weight:800; font-size:0.93rem; border:none; border-radius:8px; cursor:pointer; }
+
+  /* FOOTER */
+  footer { background:var(--dark); color:rgba(255,255,255,0.4); text-align:center; padding:20px 5%; font-size:0.82rem; }
+  footer a { color:var(--honey); text-decoration:none; }
+
+  @media(max-width:768px){
+    .hero h1{font-size:2rem;} .about-grid,.adv-grid,.contact-grid{grid-template-columns:1fr;} .guides-grid{grid-template-columns:1fr 1fr;} .topic-grid{grid-template-columns:1fr 1fr;} .fact-grid{grid-template-columns:1fr;} .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="logo-hex">🍯</div>
+      <div class="logo-text">
+        <div class="en">The <span>Honeycombers</span></div>
+        <div class="sub">Hong Kong City Guide</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#guides">City Guides</a></li>
+      <li><a href="#topics">Topics</a></li>
+      <li><a href="#advertising">Advertise</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🍯 Hong Kong's Favourite City Guide</div>
+  <h1>The <span class="hl">Honeycombers</span><br>Hong Kong</h1>
+  <div class="hero-tagline">Your go-to guide for the best of Hong Kong</div>
+  <div class="hero-pills">
+    <span class="pill">🍽️ Food &amp; Drink</span>
+    <span class="pill">🎭 Things To Do</span>
+    <span class="pill">👨‍👩‍👧 Family</span>
+    <span class="pill">✈️ Travel</span>
+    <span class="pill">💆 Wellness</span>
+    <span class="pill">🛍️ Shopping</span>
+  </div>
+  <div class="hero-cta">
+    <a href="https://thehoneycombers.com/hong-kong/" class="btn-honey" target="_blank">🔍 Explore HK</a>
+    <a href="#advertising" class="btn-outline">📣 Advertise With Us</a>
+  </div>
+</div>
+
+<!-- CATEGORY STRIP -->
+<div class="cat-strip">
+  <div class="cat-strip-inner">
+    <div class="cat-tab active">All</div>
+    <div class="cat-tab">Food &amp; Drink</div>
+    <div class="cat-tab">Things To Do</div>
+    <div class="cat-tab">Family</div>
+    <div class="cat-tab">Travel</div>
+    <div class="cat-tab">Wellness</div>
+    <div class="cat-tab">Shopping</div>
+    <div class="cat-tab">Beauty</div>
+    <div class="cat-tab">Events</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="sec-label">About Us</div>
+  <div class="about-grid">
+    <div>
+      <div class="sec-title">Hong Kong's #1 Lifestyle Guide</div>
+      <div class="about-text">
+        <p>The Honeycombers is Hong Kong's leading lifestyle and city guide platform, delivering the best recommendations for food, drink, things to do, family activities, travel, wellness and more to Hong Kong's vibrant expat and local community.</p>
+        <p>From the best new restaurant openings and hidden bar gems to family-friendly weekend activities and the latest wellness trends, The Honeycombers is your trusted guide to living your best life in Hong Kong.</p>
+        <p>With a passionate team of writers, editors and local experts, we curate only the best recommendations to help you discover, explore and enjoy everything Hong Kong has to offer.</p>
+      </div>
+    </div>
+    <div class="fact-grid">
+      <div class="fact-card">
+        <h4>📰 Content</h4>
+        <p>In-depth guides, reviews and insider tips about Hong Kong</p>
+      </div>
+      <div class="fact-card">
+        <h4>🌍 Audience</h4>
+        <p>Local & expat community across Hong Kong</p>
+      </div>
+      <div class="fact-card">
+        <h4>📱 Platform</h4>
+        <p>Online, social media & newsletter coverage</p>
+      </div>
+      <div class="fact-card">
+        <h4>🗓️ Updates</h4>
+        <p>Daily fresh content, guides & recommendations</p>
+      </div>
+      <div class="fact-card">
+        <h4>🍽️ Speciality</h4>
+        <p>Food, drink, dining guides & restaurant reviews</p>
+      </div>
+      <div class="fact-card">
+        <h4>📣 Reach</h4>
+        <p>Extensive digital reach to HK lifestyle audience</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED GUIDES -->
+<section class="guides" id="guides">
+  <div class="sec-label">Featured Guides</div>
+  <div class="sec-title">City Guides</div>
+  <div class="sec-desc">Expertly curated guides to help you discover the very best Hong Kong has to offer.</div>
+  <div class="guides-grid">
+    <div class="guide-card">
+      <div class="guide-img food">🍜</div>
+      <div class="guide-body">
+        <span class="guide-cat">Food &amp; Drink</span>
+        <h3>Best Restaurants in Hong Kong Right Now</h3>
+        <p>Our constantly updated guide to HK's finest dining experiences</p>
+      </div>
+    </div>
+    <div class="guide-card">
+      <div class="guide-img drink">🍸</div>
+      <div class="guide-body">
+        <span class="guide-cat">Bars &amp; Nightlife</span>
+        <h3>Best Bars in Hong Kong for Every Occasion</h3>
+        <p>From rooftop cocktail bars to hidden speakeasies</p>
+      </div>
+    </div>
+    <div class="guide-card">
+      <div class="guide-img fam">👨‍👩‍👧</div>
+      <div class="guide-body">
+        <span class="guide-cat">Family</span>
+        <h3>Best Family-Friendly Activities in HK</h3>
+        <p>Weekend ideas and activities for kids and families</p>
+      </div>
+    </div>
+    <div class="guide-card">
+      <div class="guide-img life">💆</div>
+      <div class="guide-body">
+        <span class="guide-cat">Wellness</span>
+        <h3>Best Spas &amp; Wellness Retreats in Hong Kong</h3>
+        <p>Relax, recharge and rejuvenate in the city</p>
+      </div>
+    </div>
+    <div class="guide-card">
+      <div class="guide-img travel">✈️</div>
+      <div class="guide-body">
+        <span class="guide-cat">Travel</span>
+        <h3>Best Weekend Getaways from Hong Kong</h3>
+        <p>Easy escapes just a short flight or ferry away</p>
+      </div>
+    </div>
+    <div class="guide-card">
+      <div class="guide-img beauty">💄</div>
+      <div class="guide-body">
+        <span class="guide-cat">Beauty</span>
+        <h3>Best Nail Salons &amp; Beauty in Hong Kong</h3>
+        <p>Where to get pampered across the city</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS -->
+<section class="topics" id="topics">
+  <div class="sec-label">Browse By Topic</div>
+  <div class="sec-title">Explore Hong Kong</div>
+  <div class="topic-grid">
+    <div class="topic-card">
+      <div class="topic-icon">🍽️</div>
+      <h3>Food &amp; Drink</h3>
+      <p>Restaurants, cafes, bars, street food</p>
+    </div>
+    <div class="topic-card">
+      <div class="topic-icon">🎭</div>
+      <h3>Things To Do</h3>
+      <p>Activities, events, experiences, shows</p>
+    </div>
+    <div class="topic-card">
+      <div class="topic-icon">👨‍👩‍👧</div>
+      <h3>Family</h3>
+      <p>Kid-friendly venues, schools, activities</p>
+    </div>
+    <div class="topic-card">
+      <div class="topic-icon">✈️</div>
+      <h3>Travel</h3>
+      <p>Day trips, getaways, travel guides</p>
+    </div>
+    <div class="topic-card">
+      <div class="topic-icon">💆</div>
+      <h3>Wellness</h3>
+      <p>Yoga, spas, fitness, mental wellness</p>
+    </div>
+    <div class="topic-card">
+      <div class="topic-icon">🛍️</div>
+      <h3>Shopping</h3>
+      <p>Boutiques, malls, markets, online shops</p>
+    </div>
+    <div class="topic-card">
+      <div class="topic-icon">💄</div>
+      <h3>Beauty</h3>
+      <p>Salons, clinics, beauty treatments</p>
+    </div>
+    <div class="topic-card">
+      <div class="topic-icon">🏠</div>
+      <h3>Home &amp; Living</h3>
+      <p>Interior design, home décor, services</p>
+    </div>
+  </div>
+</section>
+
+<!-- ADVERTISING -->
+<section class="advertising" id="advertising">
+  <div class="sec-label">Advertise With Us</div>
+  <div class="adv-grid">
+    <div class="adv-text">
+      <div class="sec-title">Reach Hong Kong's Lifestyle Audience</div>
+      <p>The Honeycombers connects brands with Hong Kong's engaged, high-quality lifestyle audience. Whether you're a restaurant, wellness brand, family business or lifestyle service, we offer targeted advertising solutions to amplify your presence in Hong Kong.</p>
+      <p>Our editorial team creates authentic, compelling content that resonates with our readers, driving real engagement and footfall for our partners.</p>
+    </div>
+    <div class="adv-options">
+      <div class="adv-option">
+        <h4>📝 Editorial Features</h4>
+        <p>In-depth restaurant reviews, venue spotlights and brand features written by our expert editorial team</p>
+      </div>
+      <div class="adv-option">
+        <h4>📋 Sponsored Content</h4>
+        <p>Custom content articles, gift guides and listicles promoting your brand to our audience</p>
+      </div>
+      <div class="adv-option">
+        <h4>📱 Social Media</h4>
+        <p>Instagram and social media coverage to extend reach to our engaged followers</p>
+      </div>
+      <div class="adv-option">
+        <h4>📧 Newsletter</h4>
+        <p>Dedicated email features and banner placements in our subscriber newsletter</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="sec-label">Contact Us</div>
+  <div class="sec-title">Get In Touch</div>
+  <div class="contact-grid">
+    <div>
+      <div class="ci-item">
+        <div class="ci-icon">✉️</div>
+        <div class="ci-text">
+          <span>Email</span>
+          <a href="mailto:anshu.rijhwani@thehoneycombers.com">anshu.rijhwani@thehoneycombers.com</a>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">📱</div>
+        <div class="ci-text">
+          <span>WhatsApp / Mobile</span>
+          <a href="https://wa.me/85261281465">6128 1465</a>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">🌐</div>
+        <div class="ci-text">
+          <span>Website</span>
+          <a href="https://thehoneycombers.com/hong-kong/" target="_blank">thehoneycombers.com/hong-kong</a>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">📍</div>
+        <div class="ci-text">
+          <span>Location</span>
+          <strong>Hong Kong</strong>
+        </div>
+      </div>
+    </div>
+    <div class="form-wrap">
+      <h3>🍯 Editorial &amp; Advertising Enquiries</h3>
+      <div class="fg"><input type="text" placeholder="Your Name"></div>
+      <div class="fg"><input type="email" placeholder="Email Address"></div>
+      <div class="fg"><input type="tel" placeholder="Phone / WhatsApp"></div>
+      <div class="fg">
+        <select>
+          <option value="">Enquiry Type</option>
+          <option>Advertising Partnership</option>
+          <option>Editorial Feature</option>
+          <option>Sponsored Content</option>
+          <option>Press / Media</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+      <div class="fg"><textarea placeholder="Your message..."></textarea></div>
+      <button class="btn-sub">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 The Honeycombers Hong Kong · Your City Guide to the Best of HK</p>
+  <p style="margin-top:6px;"><a href="mailto:anshu.rijhwani@thehoneycombers.com">anshu.rijhwani@thehoneycombers.com</a> · <a href="https://thehoneycombers.com/hong-kong/" target="_blank">thehoneycombers.com/hong-kong</a></p>
+</footer>
+
+</body>
+</html>
