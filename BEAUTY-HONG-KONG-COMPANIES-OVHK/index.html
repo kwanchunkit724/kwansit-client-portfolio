@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hong Kong Beauty Press Ltd. | iBeauty 香港美容媒體平台</title>
+<style>
+  :root {
+    --primary: #a0206a;
+    --primary-dark: #7a1550;
+    --rose: #d4608a;
+    --pink-light: #fce8f3;
+    --gold: #c8960a;
+    --white: #ffffff;
+    --bg: #fdf5f9;
+    --border: #f0c8de;
+    --text: #2a1520;
+    --text-light: #7a4a60;
+    --accent: #e8496a;
+    --teal: #2a8a7a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+
+  /* HEADER */
+  header {
+    background: var(--primary-dark);
+    padding: 0 5%; position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 14px rgba(120,15,70,0.3);
+  }
+  .header-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1200px; margin: 0 auto; padding: 13px 0;
+  }
+  .logo-block { display: flex; align-items: center; gap: 14px; }
+  .logo-icon {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--rose), var(--primary));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 900; color: var(--white);
+  }
+  .logo-text { color: var(--white); }
+  .logo-text .main { font-size: 1.05rem; font-weight: 700; }
+  .logo-text .sub { font-size: 0.72rem; color: rgba(255,255,255,0.65); }
+  nav { display: flex; gap: 26px; }
+  nav a { color: rgba(255,255,255,0.85); font-size: 0.86rem; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
+  nav a:hover { color: #ffcce0; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #a02060 50%, #c0407a 100%);
+    color: var(--white); padding: 75px 5% 65px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '美'; position: absolute; right: -30px; top: -50px;
+    font-size: 20rem; font-weight: 900; color: rgba(255,255,255,0.04);
+    line-height: 1; pointer-events: none;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .hero-badge {
+    display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white); font-size: 0.78rem; font-weight: 700; padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 18px;
+  }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.3; margin-bottom: 8px; }
+  .hero h1 .en { display: block; font-size: 0.95rem; font-weight: 400; color: rgba(255,255,255,0.75); margin-top: 4px; letter-spacing: 1px; }
+  .hero-desc { font-size: 0.97rem; color: rgba(255,255,255,0.82); margin: 16px 0 28px; line-height: 1.9; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--white); color: var(--primary);
+    padding: 12px 26px; border-radius: 25px; font-weight: 700; font-size: 0.92rem;
+    transition: all 0.25s; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-primary:hover { background: var(--pink-light); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.5);
+    padding: 10px 22px; border-radius: 25px; font-weight: 600; font-size: 0.92rem;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+  .hero-platforms { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .platform-card {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 14px; padding: 22px 18px; text-align: center;
+  }
+  .platform-card .icon { font-size: 2rem; display: block; margin-bottom: 10px; }
+  .platform-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+  .platform-card p { font-size: 0.78rem; color: rgba(255,255,255,0.72); line-height: 1.5; }
+
+  /* SECTION */
+  section { padding: 65px 5%; }
+  .inner { max-width: 1200px; margin: 0 auto; }
+  .section-header { text-align: center; max-width: 680px; margin: 0 auto 48px; }
+  .section-tag {
+    display: inline-block; background: var(--pink-light); color: var(--primary);
+    font-size: 0.76rem; font-weight: 700; padding: 5px 16px; border-radius: 20px;
+    margin-bottom: 13px; border: 1px solid var(--border);
+  }
+  .section-header h2 { font-size: 1.8rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 12px; }
+  .section-header p { color: var(--text-light); font-size: 0.95rem; line-height: 1.8; }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: start; }
+  .about-content h2 { font-size: 1.75rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 16px; }
+  .about-content p { color: var(--text-light); line-height: 1.9; margin-bottom: 14px; font-size: 0.95rem; }
+  .about-features { list-style: none; margin-top: 22px; }
+  .about-features li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; font-size: 0.93rem; color: var(--text); }
+  .about-features li::before { content: '✦'; color: var(--primary); font-size: 0.75rem; flex-shrink: 0; margin-top: 5px; }
+  .about-aside { display: flex; flex-direction: column; gap: 18px; }
+  .brand-card {
+    border-radius: 16px; padding: 24px; border: 2px solid var(--border);
+    transition: all 0.3s;
+  }
+  .brand-card:hover { border-color: var(--rose); }
+  .brand-card.ibeauty { background: linear-gradient(135deg, var(--primary), var(--rose)); color: var(--white); border: none; }
+  .brand-card.hkbeauty { background: var(--bg); }
+  .brand-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
+  .brand-card .en { font-size: 0.78rem; opacity: 0.7; margin-bottom: 12px; display: block; }
+  .brand-card p { font-size: 0.85rem; line-height: 1.7; }
+  .brand-card p.dark { color: var(--text-light); }
+  .brand-card p.light { color: rgba(255,255,255,0.85); }
+
+  /* PLATFORMS */
+  .platforms { background: var(--bg); }
+  .platforms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1200px; margin: 0 auto; }
+  .plat-card {
+    background: var(--white); border-radius: 20px; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(160,32,106,0.07); border: 1px solid var(--border);
+  }
+  .plat-header {
+    padding: 28px; display: flex; align-items: center; gap: 18px;
+  }
+  .plat-header.ibeauty { background: linear-gradient(135deg, var(--primary-dark), var(--rose)); }
+  .plat-header.hkbeauty { background: linear-gradient(135deg, #c0407a, #e870a0); }
+  .plat-logo { font-size: 2.5rem; }
+  .plat-header-text h3 { font-size: 1.3rem; font-weight: 800; color: var(--white); }
+  .plat-header-text .tagline { font-size: 0.83rem; color: rgba(255,255,255,0.78); }
+  .plat-body { padding: 26px; }
+  .plat-desc { color: var(--text-light); font-size: 0.92rem; line-height: 1.8; margin-bottom: 20px; }
+  .cat-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .cat-tag {
+    background: var(--pink-light); color: var(--primary);
+    font-size: 0.8rem; font-weight: 600; padding: 4px 12px; border-radius: 20px;
+    border: 1px solid var(--border);
+  }
+  .plat-url {
+    display: flex; align-items: center; gap: 8px; margin-top: 20px;
+    background: var(--bg); border-radius: 8px; padding: 10px 14px;
+    font-size: 0.85rem; color: var(--primary); font-weight: 600;
+  }
+
+  /* CONTENT FOCUS */
+  .content-focus { background: var(--white); }
+  .focus-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1200px; margin: 0 auto; }
+  .focus-card {
+    background: var(--bg); border-radius: 14px; padding: 22px 18px;
+    border: 1px solid var(--border); text-align: center; transition: all 0.3s;
+  }
+  .focus-card:hover { border-color: var(--rose); background: var(--pink-light); transform: translateY(-4px); }
+  .focus-card .icon { font-size: 1.8rem; display: block; margin-bottom: 10px; }
+  .focus-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 4px; }
+  .focus-card p { font-size: 0.8rem; color: var(--text-light); line-height: 1.5; }
+
+  /* ADVERTISE */
+  .advertise { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: var(--white); }
+  .advertise .section-header h2 { color: var(--white); }
+  .advertise .section-tag { background: rgba(255,255,255,0.15); color: var(--white); border-color: rgba(255,255,255,0.2); }
+  .advertise .section-header p { color: rgba(255,255,255,0.8); }
+  .adv-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 1200px; margin: 0 auto; }
+  .adv-card {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px; padding: 26px; text-align: center; transition: all 0.3s;
+  }
+  .adv-card:hover { background: rgba(255,255,255,0.18); }
+  .adv-card .icon { font-size: 2rem; margin-bottom: 14px; display: block; }
+  .adv-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .adv-card p { font-size: 0.83rem; color: rgba(255,255,255,0.75); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: start; }
+  .contact-info h2 { font-size: 1.75rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 10px; }
+  .contact-info p { color: var(--text-light); font-size: 0.94rem; line-height: 1.8; margin-bottom: 26px; }
+  .contact-items { display: flex; flex-direction: column; gap: 15px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 15px; }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--pink-light); color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .contact-detail .label { font-size: 0.78rem; color: var(--text-light); font-weight: 600; margin-bottom: 2px; }
+  .contact-detail .value { font-size: 0.95rem; color: var(--text); font-weight: 600; }
+  .contact-cta {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    border-radius: 20px; padding: 34px; color: var(--white);
+  }
+  .contact-cta h3 { font-size: 1.35rem; font-weight: 800; margin-bottom: 10px; }
+  .contact-cta p { font-size: 0.9rem; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 22px; }
+  .cta-buttons { display: flex; flex-direction: column; gap: 12px; }
+  .cta-btn {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+    color: var(--white); padding: 12px 18px; border-radius: 10px;
+    font-weight: 600; font-size: 0.9rem; transition: all 0.2s;
+  }
+  .cta-btn:hover { background: rgba(255,255,255,0.2); }
+  .cta-btn.pink { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.4); }
+
+  /* FOOTER */
+  footer {
+    background: var(--primary-dark); color: rgba(255,255,255,0.7);
+    padding: 40px 5% 24px;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 30px; }
+  .footer-brand .name { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .footer-brand .en { font-size: 0.72rem; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+  .footer-brand p { font-size: 0.82rem; line-height: 1.8; }
+  .footer-col h4 { color: var(--white); font-size: 0.88rem; font-weight: 700; margin-bottom: 12px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 8px; font-size: 0.82rem; }
+  .footer-col ul li a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
+  .footer-col ul li a:hover { color: #ffcce0; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 18px; display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 10px; font-size: 0.78rem;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner, .about-grid, .platforms-grid, .contact-grid { grid-template-columns: 1fr; }
+    .focus-grid { grid-template-columns: 1fr 1fr; }
+    .adv-options { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+      <div class="logo-icon">💄</div>
+      <div class="logo-text">
+        <div class="main">Hong Kong Beauty Press Ltd.</div>
+        <div class="sub">iBeauty 香港美容媒體平台</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#about">關於我們</a>
+      <a href="#platforms">媒體平台</a>
+      <a href="#content">內容範疇</a>
+      <a href="#advertise">廣告合作</a>
+      <a href="#contact">聯絡我們</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">💅 香港美容媒體與資訊平台</div>
+      <h1>香港美容傳媒
+        <span class="en">Hong Kong Beauty Press Ltd.</span>
+      </h1>
+      <p class="hero-desc">
+        Hong Kong Beauty Press Ltd. 旗下經營 <strong>hk-beauty.com.hk</strong> 及 <strong>iBeauty.com.hk</strong> 兩大美容媒體平台，面向消費者及業界提供時尚潮流、醫學美容、美容產品、儀器、課程及業界資訊。
+      </p>
+      <div class="hero-btns">
+        <a href="#platforms" class="btn-primary">💻 了解媒體平台</a>
+        <a href="#advertise" class="btn-outline">📢 廣告合作查詢</a>
+      </div>
+    </div>
+    <div class="hero-platforms">
+      <div class="platform-card">
+        <span class="icon">🌸</span>
+        <h3>HK Beauty</h3>
+        <p>hk-beauty.com.hk<br>消費者生活美容雜誌</p>
+      </div>
+      <div class="platform-card">
+        <span class="icon">💎</span>
+        <h3>iBeauty</h3>
+        <p>ibeauty.com.hk<br>美容業界專業資訊網</p>
+      </div>
+      <div class="platform-card">
+        <span class="icon">📱</span>
+        <h3>數碼媒體</h3>
+        <p>多平台覆蓋<br>網站、社交媒體、視頻</p>
+      </div>
+      <div class="platform-card">
+        <span class="icon">🤝</span>
+        <h3>廣告合作</h3>
+        <p>品牌推廣<br>業界推廣解決方案</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <div class="section-tag">關於香港美容傳媒</div>
+      <h2>香港領先美容媒體機構<br>覆蓋B2C與B2B市場</h2>
+      <p>
+        Hong Kong Beauty Press Ltd. 是香港美容媒體行業的先驅，旗下運營兩大線上媒體品牌，致力為消費者及業界從業員提供最新、最專業的美容資訊，全面覆蓋美容、護膚、化妝、髮型、健康及醫學美容等多個範疇。
+      </p>
+      <p>
+        我們的媒體平台匯聚業界廠商、品牌商、美容師及消費者，以多元化的內容形式包括文章、專訪、活動報道、新品推廣及視頻，持續為用戶提供高質素的資訊服務。
+      </p>
+      <ul class="about-features">
+        <li>旗下兩大平台 hk-beauty.com.hk 及 iBeauty.com.hk 覆蓋消費者及業界讀者</li>
+        <li>內容涵蓋美容、護膚、化妝、髮型、醫學美容、中醫養生等多元範疇</li>
+        <li>提供業界廣告推廣及品牌曝光服務，助企業觸達目標讀者</li>
+        <li>定期報道業界活動、展覽及新品發布，提供及時的行業資訊</li>
+        <li>設有 KOL 合作及模特兒專題，配合品牌數碼行銷需求</li>
+      </ul>
+    </div>
+    <div class="about-aside">
+      <div class="brand-card ibeauty">
+        <h3>iBeauty 專業美容資訊網</h3>
+        <span class="en">ibeauty.com.hk</span>
+        <p class="light">面向美容業界從業員的專業資訊平台，提供美容產品、儀器設備、課程培訓、業界活動及專業知識，助美容師、院所東主及品牌商掌握最新行業動態。</p>
+      </div>
+      <div class="brand-card hkbeauty">
+        <h3>Hong Kong Beauty</h3>
+        <span class="en">hk-beauty.com.hk</span>
+        <p class="dark">面向消費者的生活美容雜誌，提供美容養生、化妝造型、髮型時尚、Spa、按摩、風水養生等貼近日常生活的美容潮流內容。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="platforms" id="platforms">
+  <div class="section-header">
+    <div class="section-tag">媒體平台</div>
+    <h2>兩大旗艦媒體品牌</h2>
+    <p>Hong Kong Beauty Press 透過兩大線上平台，分別服務消費者市場及業界市場，提供度身定制的內容資訊。</p>
+  </div>
+  <div class="platforms-grid">
+
+    <!-- iBeauty -->
+    <div class="plat-card">
+      <div class="plat-header ibeauty">
+        <div class="plat-logo">💎</div>
+        <div class="plat-header-text">
+          <h3>iBeauty 專業美容資訊網</h3>
+          <div class="tagline">業界專業資訊平台 · B2B Beauty Industry Portal</div>
+        </div>
+      </div>
+      <div class="plat-body">
+        <p class="plat-desc">
+          iBeauty 是面向美容業界的專業資訊網絡，內容涵蓋最新美容產品評測、儀器設備資訊、專業技術培訓課程、業界活動報道及醫學美容趨勢，是業界從業員的重要參考平台。
+        </p>
+        <div class="cat-tags">
+          <span class="cat-tag">👔 專訪</span>
+          <span class="cat-tag">🎪 業界活動</span>
+          <span class="cat-tag">🛍️ 產品</span>
+          <span class="cat-tag">⚙️ 儀器</span>
+          <span class="cat-tag">🎁 新品推廣</span>
+          <span class="cat-tag">🏥 醫學美容</span>
+          <span class="cat-tag">🌿 中醫</span>
+          <span class="cat-tag">🎓 課程</span>
+          <span class="cat-tag">💪 按摩</span>
+          <span class="cat-tag">🌸 香薰</span>
+          <span class="cat-tag">🌟 KOL</span>
+          <span class="cat-tag">📚 專業知識</span>
+        </div>
+        <div class="plat-url">🌐 ibeauty.com.hk</div>
+      </div>
+    </div>
+
+    <!-- HK Beauty -->
+    <div class="plat-card">
+      <div class="plat-header hkbeauty">
+        <div class="plat-logo">🌸</div>
+        <div class="plat-header-text">
+          <h3>Hong Kong Beauty</h3>
+          <div class="tagline">消費者美容生活雜誌 · B2C Lifestyle Beauty Magazine</div>
+        </div>
+      </div>
+      <div class="plat-body">
+        <p class="plat-desc">
+          Hong Kong Beauty 是面向廣大消費者的美容生活媒體，以輕鬆易讀的風格介紹最新美容潮流、化妝技巧、髮型造型、護膚心得及Spa美容資訊，讓讀者緊貼潮流趨勢。
+        </p>
+        <div class="cat-tags">
+          <span class="cat-tag">💆 Beauty & Wellness</span>
+          <span class="cat-tag">💫 Fung Shui</span>
+          <span class="cat-tag">💆 Massage</span>
+          <span class="cat-tag">🛁 Spa</span>
+          <span class="cat-tag">💄 Make-Up</span>
+          <span class="cat-tag">⭐ Star</span>
+          <span class="cat-tag">💇 Hair Style</span>
+          <span class="cat-tag">🌿 Chinese Medicine</span>
+          <span class="cat-tag">💅 Nail Art</span>
+          <span class="cat-tag">🛒 New Items</span>
+          <span class="cat-tag">📹 Beauty Video</span>
+          <span class="cat-tag">🌟 KOL</span>
+        </div>
+        <div class="plat-url">🌐 hk-beauty.com.hk</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTENT FOCUS -->
+<section class="content-focus" id="content">
+  <div class="section-header">
+    <div class="section-tag">內容範疇</div>
+    <h2>全方位美容內容覆蓋</h2>
+    <p>我們的專業編輯團隊持續製作橫跨多個美容範疇的高質素內容，服務消費者與業界讀者。</p>
+  </div>
+  <div class="focus-grid inner">
+    <div class="focus-card">
+      <span class="icon">🏥</span>
+      <h4>醫學美容</h4>
+      <p>最新醫美技術、治療項目及業界專家專訪</p>
+    </div>
+    <div class="focus-card">
+      <span class="icon">⚙️</span>
+      <h4>美容儀器</h4>
+      <p>專業美容儀器及設備評測、採購指南</p>
+    </div>
+    <div class="focus-card">
+      <span class="icon">🎓</span>
+      <h4>美容課程</h4>
+      <p>各類美容技術培訓課程資訊及學院推介</p>
+    </div>
+    <div class="focus-card">
+      <span class="icon">💄</span>
+      <h4>化妝與美容</h4>
+      <p>化妝技巧、護膚心得及美容潮流趨勢</p>
+    </div>
+    <div class="focus-card">
+      <span class="icon">💇</span>
+      <h4>髮型造型</h4>
+      <p>最新髮型潮流、造型技巧及產品推薦</p>
+    </div>
+    <div class="focus-card">
+      <span class="icon">💅</span>
+      <h4>美甲美足</h4>
+      <p>指甲藝術設計、美甲潮流及技術分享</p>
+    </div>
+    <div class="focus-card">
+      <span class="icon">🌿</span>
+      <h4>中醫養生</h4>
+      <p>中醫美容養生知識及調理建議</p>
+    </div>
+    <div class="focus-card">
+      <span class="icon">🏆</span>
+      <h4>業界活動</h4>
+      <p>美容展覽、業界頒獎典禮及活動全面報道</p>
+    </div>
+  </div>
+</section>
+
+<!-- ADVERTISE -->
+<section class="advertise" id="advertise">
+  <div class="section-header">
+    <div class="section-tag">廣告合作</div>
+    <h2>與香港美容傳媒攜手推廣</h2>
+    <p>透過我們的兩大平台觸及廣泛的消費者及業界受眾，實現品牌精準推廣與業務增長。</p>
+  </div>
+  <div class="adv-options">
+    <div class="adv-card">
+      <span class="icon">📰</span>
+      <h3>品牌推廣文章</h3>
+      <p>由專業編輯撰寫的品牌故事、產品評測及業界專訪文章，在平台發布並透過社交媒體傳播。</p>
+    </div>
+    <div class="adv-card">
+      <span class="icon">🖼️</span>
+      <h3>橫額廣告位</h3>
+      <p>在 hk-beauty.com.hk 及 iBeauty.com.hk 的顯眼位置刊登橫額廣告，有效提升品牌曝光度。</p>
+    </div>
+    <div class="adv-card">
+      <span class="icon">🎪</span>
+      <h3>活動及新品推廣</h3>
+      <p>業界活動報道、新品發佈推廣及產品資訊推送，協助品牌觸達業界從業員及目標消費者。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-tag">聯絡我們</div>
+      <h2>廣告查詢<br>及合作洽談</h2>
+      <p>如對廣告推廣服務、編輯合作、新品發布或其他業務合作有任何查詢，歡迎隨時與我們的團隊聯絡。</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-detail">
+            <div class="label">電郵 Email</div>
+            <div class="value">info@hk-beauty.com.hk</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-detail">
+            <div class="label">手機 Mobile</div>
+            <div class="value">9414 4993</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div class="contact-detail">
+            <div class="label">消費者平台</div>
+            <div class="value">hk-beauty.com.hk</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💎</div>
+          <div class="contact-detail">
+            <div class="label">業界平台</div>
+            <div class="value">ibeauty.com.hk</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-cta">
+      <h3>廣告合作查詢</h3>
+      <p>
+        Hong Kong Beauty Press Ltd. 歡迎美容品牌、儀器商、院所及課程機構洽談廣告合作，透過我們的媒體平台有效推廣業務，觸達龐大的消費者及業界讀者群。
+      </p>
+      <div class="cta-buttons">
+        <a href="mailto:info@hk-beauty.com.hk" class="cta-btn pink">
+          <span>📧</span><span>發送廣告查詢電郵</span>
+        </a>
+        <a href="tel:94144993" class="cta-btn">
+          <span>📱</span><span>致電 9414 4993</span>
+        </a>
+        <a href="https://hk-beauty.com.hk" class="cta-btn">
+          <span>🌸</span><span>瀏覽 hk-beauty.com.hk</span>
+        </a>
+        <a href="https://ibeauty.com.hk" class="cta-btn">
+          <span>💎</span><span>瀏覽 ibeauty.com.hk</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="name">Hong Kong Beauty Press Ltd.</div>
+        <div class="en">香港美容傳媒有限公司</div>
+        <p>旗下經營 hk-beauty.com.hk 及 ibeauty.com.hk 兩大美容媒體平台，服務消費者及業界讀者，提供全方位的美容資訊與推廣服務。</p>
+      </div>
+      <div class="footer-col">
+        <h4>媒體平台</h4>
+        <ul>
+          <li><a href="https://hk-beauty.com.hk">Hong Kong Beauty</a></li>
+          <li><a href="https://ibeauty.com.hk">iBeauty 專業美容資訊網</a></li>
+          <li><a href="#content">內容範疇</a></li>
+          <li><a href="#advertise">廣告合作</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>服務</h4>
+        <ul>
+          <li><a href="#advertise">品牌推廣</a></li>
+          <li><a href="#advertise">橫額廣告</a></li>
+          <li><a href="#advertise">新品推廣</a></li>
+          <li><a href="#contact">廣告查詢</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Hong Kong Beauty Press Ltd. All rights reserved.</span>
+      <span>info@hk-beauty.com.hk | 9414 4993</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
