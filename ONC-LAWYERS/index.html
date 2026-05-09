@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONC Lawyers | Leading Hong Kong Law Firm | Since 1992</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --navy:#0c1a2e;
+    --dark-navy:#07101d;
+    --blue:#1a3d6b;
+    --gold:#b8902a;
+    --light-gold:#d4a840;
+    --pale-gold:#f0d080;
+    --white:#ffffff;
+    --cream:#fdfaf5;
+    --light:#f5f7fa;
+    --gray:#5a6a7a;
+    --border:#d4c8aa;
+    --text:#2a2a2a;
+  }
+  body{font-family:'Georgia',serif;background:#fff;color:var(--text);}
+  a{text-decoration:none;color:inherit;}
+
+  /* NAV */
+  nav{background:var(--dark-navy);padding:0 5%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;height:72px;border-bottom:2px solid var(--gold);}
+  .nav-logo{display:flex;align-items:center;gap:14px;}
+  .nav-logo-seal{width:46px;height:46px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1rem;color:var(--dark-navy);font-family:serif;letter-spacing:-1px;}
+  .nav-brand .name{color:var(--white);font-size:1.35rem;font-weight:700;letter-spacing:2px;font-family:Georgia,serif;}
+  .nav-brand .sub{color:#8a9ab5;font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{color:#c8d4e0;font-size:0.84rem;font-weight:400;letter-spacing:0.5px;font-family:'Segoe UI',Arial,sans-serif;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-tel{color:var(--gold);font-size:0.9rem;font-weight:600;display:flex;align-items:center;gap:6px;font-family:'Segoe UI',Arial,sans-serif;}
+
+  /* HERO */
+  .hero{background:linear-gradient(160deg,var(--dark-navy) 0%,var(--navy) 50%,var(--blue) 100%);padding:96px 5% 88px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600' viewBox='0 0 400 600'%3E%3Cpath d='M0 0 L400 0 L400 600 L300 600 Z' fill='rgba(26,61,107,0.3)'/%3E%3C/svg%3E") no-repeat center;opacity:0.5;}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
+  .hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 0.8fr;gap:60px;align-items:center;position:relative;z-index:1;}
+  .hero-est{display:inline-block;background:rgba(184,144,42,0.15);color:var(--pale-gold);border:1px solid rgba(184,144,42,0.4);padding:5px 16px;border-radius:20px;font-size:0.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;font-family:'Segoe UI',Arial,sans-serif;}
+  .hero h1{color:var(--white);font-size:3.2rem;font-weight:700;line-height:1.15;margin-bottom:14px;font-family:Georgia,serif;}
+  .hero h1 .firm{display:block;color:var(--pale-gold);font-size:1.1rem;font-weight:400;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;font-family:'Segoe UI',Arial,sans-serif;}
+  .hero-tagline{color:var(--pale-gold);font-size:1rem;font-weight:500;margin-bottom:18px;font-style:italic;font-family:Georgia,serif;}
+  .hero-desc{color:#b0bfd4;font-size:0.97rem;line-height:1.78;margin-bottom:32px;font-family:'Segoe UI',Arial,sans-serif;}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-gold{background:var(--gold);color:var(--dark-navy);padding:13px 28px;border-radius:4px;font-weight:600;font-size:0.9rem;letter-spacing:1px;text-transform:uppercase;transition:all 0.2s;font-family:'Segoe UI',Arial,sans-serif;}
+  .btn-gold:hover{background:var(--light-gold);transform:translateY(-2px);}
+  .btn-border{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.3);padding:13px 28px;border-radius:4px;font-size:0.9rem;letter-spacing:1px;text-transform:uppercase;transition:all 0.2s;font-family:'Segoe UI',Arial,sans-serif;}
+  .btn-border:hover{border-color:var(--gold);color:var(--gold);}
+  .hero-awards{display:flex;flex-direction:column;gap:14px;}
+  .award-card{background:rgba(255,255,255,0.06);border:1px solid rgba(184,144,42,0.3);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:14px 18px;}
+  .award-card .aw-year{font-size:0.68rem;font-weight:600;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;font-family:'Segoe UI',Arial,sans-serif;}
+  .award-card .aw-title{color:var(--white);font-size:0.88rem;font-weight:600;margin-bottom:2px;font-family:'Segoe UI',Arial,sans-serif;}
+  .award-card .aw-org{color:#8a9ab5;font-size:0.76rem;font-family:'Segoe UI',Arial,sans-serif;}
+
+  /* SECTIONS */
+  section{padding:80px 5%;}
+  .section-inner{max-width:1100px;margin:0 auto;}
+  .section-label{font-size:0.7rem;font-weight:600;color:var(--gold);letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;font-family:'Segoe UI',Arial,sans-serif;}
+  .section-title{font-size:2rem;font-weight:700;color:var(--dark-navy);margin-bottom:14px;font-family:Georgia,serif;}
+  .section-title span{color:var(--gold);}
+  .section-desc{color:var(--gray);font-size:0.98rem;line-height:1.78;max-width:680px;font-family:'Segoe UI',Arial,sans-serif;}
+
+  /* ABOUT */
+  .about{background:var(--cream);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:36px;}
+  .about-text p{color:#4a5568;font-size:0.97rem;line-height:1.85;margin-bottom:16px;font-family:'Segoe UI',Arial,sans-serif;}
+  .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;}
+  .stat-box{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:0 0 8px 8px;padding:16px;text-align:center;}
+  .stat-box .num{font-size:2rem;font-weight:700;color:var(--navy);display:block;font-family:Georgia,serif;}
+  .stat-box .lbl{font-size:0.75rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;font-family:'Segoe UI',Arial,sans-serif;}
+  .memberships{background:var(--navy);border-radius:12px;padding:30px;color:var(--white);}
+  .memberships h3{color:var(--pale-gold);font-size:1rem;font-weight:600;margin-bottom:16px;font-family:Georgia,serif;letter-spacing:1px;}
+  .mem-item{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-family:'Segoe UI',Arial,sans-serif;}
+  .mem-item:last-child{border-bottom:none;}
+  .mem-item strong{display:block;color:var(--white);font-size:0.85rem;margin-bottom:3px;}
+  .mem-item span{color:#8a9ab5;font-size:0.78rem;line-height:1.5;}
+
+  /* PRACTICE AREAS */
+  .practice{background:var(--white);}
+  .practice-intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:40px;}
+  .practice-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .pa-card{background:var(--light);border:1px solid var(--border);border-radius:8px;padding:16px 14px;transition:all 0.2s;cursor:pointer;}
+  .pa-card:hover{background:var(--dark-navy);border-color:var(--gold);transform:translateY(-2px);}
+  .pa-card:hover h4{color:var(--white);}
+  .pa-card:hover p{color:#9aabca;}
+  .pa-card h4{color:var(--dark-navy);font-size:0.82rem;font-weight:700;margin-bottom:4px;font-family:'Segoe UI',Arial,sans-serif;line-height:1.3;}
+  .pa-card p{color:var(--gray);font-size:0.7rem;line-height:1.4;font-family:'Segoe UI',Arial,sans-serif;}
+
+  /* PARTNERS */
+  .partners{background:var(--navy);padding:80px 5%;}
+  .partners .section-title{color:var(--white);}
+  .partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px;}
+  .partner-card{background:rgba(255,255,255,0.05);border:1px solid rgba(184,144,42,0.2);border-radius:10px;padding:20px;text-align:center;transition:all 0.2s;}
+  .partner-card:hover{background:rgba(184,144,42,0.08);border-color:var(--gold);}
+  .partner-avatar{width:52px;height:52px;background:linear-gradient(135deg,var(--gold),var(--light-gold));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-weight:700;font-size:1rem;color:var(--dark-navy);font-family:Georgia,serif;}
+  .partner-card h4{color:var(--white);font-size:0.88rem;font-weight:600;margin-bottom:4px;font-family:'Segoe UI',Arial,sans-serif;}
+  .partner-card p{color:var(--gold);font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;font-family:'Segoe UI',Arial,sans-serif;}
+
+  /* RECOGNITION */
+  .recognition{background:var(--cream);}
+  .rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px;}
+  .rec-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:28px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.05);}
+  .rec-icon{font-size:2.4rem;margin-bottom:12px;display:block;}
+  .rec-card h3{color:var(--dark-navy);font-size:1rem;font-weight:700;margin-bottom:8px;font-family:Georgia,serif;}
+  .rec-card p{color:var(--gray);font-size:0.83rem;line-height:1.6;font-family:'Segoe UI',Arial,sans-serif;}
+
+  /* CONTACT */
+  .contact{background:linear-gradient(160deg,var(--dark-navy),var(--navy));padding:80px 5%;}
+  .contact .section-title{color:var(--white);}
+  .contact .section-desc{color:#8a9ab5;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:36px;}
+  .contact-card{background:rgba(184,144,42,0.08);border:1px solid rgba(184,144,42,0.25);border-radius:12px;padding:30px;}
+  .contact-card h3{color:var(--pale-gold);font-size:1rem;font-weight:600;margin-bottom:20px;font-family:Georgia,serif;}
+  .contact-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;}
+  .ci-icon{width:36px;height:36px;background:rgba(184,144,42,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+  .contact-item strong{display:block;color:var(--white);font-size:0.83rem;margin-bottom:2px;font-family:'Segoe UI',Arial,sans-serif;}
+  .contact-item span{color:#8a9ab5;font-size:0.83rem;line-height:1.5;font-family:'Segoe UI',Arial,sans-serif;}
+  .disclaimer-box{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:24px;}
+  .disclaimer-box h3{color:#8a9ab5;font-size:0.85rem;font-weight:600;margin-bottom:12px;letter-spacing:1px;text-transform:uppercase;font-family:'Segoe UI',Arial,sans-serif;}
+  .disclaimer-box p{color:#6a7a8a;font-size:0.8rem;line-height:1.7;font-family:'Segoe UI',Arial,sans-serif;}
+
+  /* FOOTER */
+  footer{background:#040c14;padding:36px 5%;text-align:center;border-top:1px solid rgba(184,144,42,0.2);}
+  footer .brand{color:var(--gold);font-size:1.1rem;font-weight:700;letter-spacing:2px;font-family:Georgia,serif;margin-bottom:6px;}
+  footer p{color:#3a4a5a;font-size:0.76rem;font-family:'Segoe UI',Arial,sans-serif;}
+
+  @media(max-width:900px){
+    .hero-inner,.about-grid,.practice-intro,.contact-grid{grid-template-columns:1fr;}
+    .practice-grid{grid-template-columns:repeat(3,1fr);}
+    .partners-grid{grid-template-columns:repeat(2,1fr);}
+    .rec-grid{grid-template-columns:1fr 1fr;}
+    .stats-row{grid-template-columns:repeat(3,1fr);}
+    nav .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-seal">ONC</div>
+    <div class="nav-brand">
+      <div class="name">ONC Lawyers</div>
+      <div class="sub">Hong Kong · Since 1992</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#practice">Practice Areas</a></li>
+    <li><a href="#partners">Our People</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-tel">📞 (852) 2810 1212</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-est">Established 1992 · Hong Kong</div>
+      <h1><span class="firm">ONC Lawyers</span>Excellence in<br>Legal Practice</h1>
+      <p class="hero-tagline">One of Hong Kong's Largest & Most Recognised Law Firms</p>
+      <p class="hero-desc" style="font-family:'Segoe UI',Arial,sans-serif;">With more than 130 legally-qualified and supporting staff, ONC Lawyers has grown continuously since 1992 to become one of Hong Kong's leading full-service law firms, recognised by AsiaLaw Profiles, Chambers and Partners, and international legal directories.</p>
+      <div class="hero-btns">
+        <a href="#practice" class="btn-gold">Our Practice Areas</a>
+        <a href="#contact" class="btn-border">Contact Us</a>
+      </div>
+    </div>
+    <div class="hero-awards">
+      <div class="award-card">
+        <div class="aw-year">AsiaLaw Profiles</div>
+        <div class="aw-title">Highly Recommended Law Firm</div>
+        <div class="aw-org">Hong Kong — Multi-Year Recognition</div>
+      </div>
+      <div class="award-card">
+        <div class="aw-year">Chambers & Partners</div>
+        <div class="aw-title">Leading Firm</div>
+        <div class="aw-org">Hong Kong Legal Rankings</div>
+      </div>
+      <div class="award-card">
+        <div class="aw-year">ALB HK Law Awards 2018</div>
+        <div class="aw-title">Debt Market Deal of the Year</div>
+        <div class="aw-org">Macallan ALB Hong Kong Law Awards</div>
+      </div>
+      <div class="award-card">
+        <div class="aw-year">Primerus Member</div>
+        <div class="aw-title">International Network</div>
+        <div class="aw-org">200 member firms · 40+ countries</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">About ONC</div>
+    <h2 class="section-title">A Trusted Name in <span>Hong Kong Law</span></h2>
+    <div class="about-grid">
+      <div>
+        <div class="about-text">
+          <p>With continuous growth since our establishment in 1992, ONC Lawyers has become one of the largest local law firms in Hong Kong, with more than 130 members of legally-qualified and supporting staff.</p>
+          <p>Our firm is a member of the International Society of Primerus Law Firms — an international network of the world's finest law firms. With seamless support from 200 member firms in more than 40 countries, we assist our clients and serve their needs in major jurisdictions worldwide.</p>
+          <p>Recognised for excellence across a wide range of practice areas, ONC Lawyers brings together experienced practitioners dedicated to delivering the highest quality legal advice and services to businesses, institutions, and individuals in Hong Kong and across the region.</p>
+        </div>
+        <div class="stats-row">
+          <div class="stat-box">
+            <span class="num">130+</span>
+            <span class="lbl">Staff Members</span>
+          </div>
+          <div class="stat-box">
+            <span class="num">30+</span>
+            <span class="lbl">Years of Service</span>
+          </div>
+          <div class="stat-box">
+            <span class="num">25+</span>
+            <span class="lbl">Practice Areas</span>
+          </div>
+        </div>
+      </div>
+      <div class="memberships">
+        <h3>Memberships & Recognition</h3>
+        <div class="mem-item">
+          <strong>International Society of Primerus Law Firms</strong>
+          <span>International network of the world's finest law firms · 200 member firms in 40+ countries</span>
+        </div>
+        <div class="mem-item">
+          <strong>AsiaLaw Profiles — Highly Recommended</strong>
+          <span>Recognised as a "Highly Recommended Law Firm" in Hong Kong by AsiaLaw Profiles</span>
+        </div>
+        <div class="mem-item">
+          <strong>Chambers and Partners — Leading Firm</strong>
+          <span>Recognised as a "Leading Firm" in Hong Kong by Chambers and Partners</span>
+        </div>
+        <div class="mem-item">
+          <strong>ALB Hong Kong Law Awards 2018</strong>
+          <span>"Debt Market Deal of the Year" Award at the Macallan ALB Hong Kong Law Awards</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE AREAS -->
+<section class="practice" id="practice">
+  <div class="section-inner">
+    <div class="practice-intro">
+      <div>
+        <div class="section-label">Our Services</div>
+        <h2 class="section-title">Comprehensive <span>Practice Areas</span></h2>
+        <p class="section-desc">ONC Lawyers offers a full spectrum of legal services across more than 25 practice areas, serving clients across all industries and sectors in Hong Kong and internationally.</p>
+      </div>
+      <div>
+        <p style="color:var(--gray);font-size:0.97rem;line-height:1.8;font-family:'Segoe UI',Arial,sans-serif;margin-bottom:16px;">Our teams combine deep local knowledge with international expertise to deliver solutions for the most complex legal challenges — from cross-border transactions to contentious disputes and regulatory matters.</p>
+        <p style="color:var(--gray);font-size:0.97rem;line-height:1.8;font-family:'Segoe UI',Arial,sans-serif;">Through our Primerus network, we seamlessly support clients across 40+ countries, ensuring world-class legal service wherever they operate.</p>
+      </div>
+    </div>
+    <div class="practice-grid">
+      <div class="pa-card"><h4>Arbitration</h4><p>International and domestic arbitration proceedings</p></div>
+      <div class="pa-card"><h4>Asset Management & Funds</h4><p>Fund formation, investment regulations</p></div>
+      <div class="pa-card"><h4>Banking & Finance</h4><p>Lending, structured finance, regulatory</p></div>
+      <div class="pa-card"><h4>Capital Markets</h4><p>IPOs, listings, debt capital markets</p></div>
+      <div class="pa-card"><h4>China Practice</h4><p>Cross-border HK-China transactions</p></div>
+      <div class="pa-card"><h4>Commercial Crime</h4><p>Fraud, corporate crime, investigations</p></div>
+      <div class="pa-card"><h4>Competition</h4><p>Competition law and enforcement</p></div>
+      <div class="pa-card"><h4>Construction</h4><p>Construction contracts, disputes</p></div>
+      <div class="pa-card"><h4>Corporate Finance</h4><p>M&A advisory, transaction support</p></div>
+      <div class="pa-card"><h4>Corporate & M&A</h4><p>Mergers, acquisitions, restructuring</p></div>
+      <div class="pa-card"><h4>Employment</h4><p>Employment law, privacy, discrimination</p></div>
+      <div class="pa-card"><h4>Family Office</h4><p>Private clients, wealth management</p></div>
+      <div class="pa-card"><h4>Family & Matrimonial</h4><p>Divorce, children, family disputes</p></div>
+      <div class="pa-card"><h4>Insolvency</h4><p>Insolvency, restructuring, liquidations</p></div>
+      <div class="pa-card"><h4>Insurance & PI</h4><p>Insurance law, personal injury claims</p></div>
+      <div class="pa-card"><h4>Intellectual Property</h4><p>IP protection, enforcement, licensing</p></div>
+      <div class="pa-card"><h4>Litigation</h4><p>Commercial litigation, dispute resolution</p></div>
+      <div class="pa-card"><h4>Notary Services</h4><p>Notarial, China attesting services</p></div>
+      <div class="pa-card"><h4>Private Equity</h4><p>PE & VC investment transactions</p></div>
+      <div class="pa-card"><h4>Real Estate</h4><p>Property transactions, development</p></div>
+      <div class="pa-card"><h4>Regulatory</h4><p>Financial services, SFC, HKMA</p></div>
+      <div class="pa-card"><h4>Shipping & Logistics</h4><p>Maritime law, cargo, logistics</p></div>
+      <div class="pa-card"><h4>Tax Advisory</h4><p>HK and cross-border tax matters</p></div>
+      <div class="pa-card"><h4>Technology</h4><p>Tech law, cyber, data privacy</p></div>
+      <div class="pa-card"><h4>Wills & Trusts</h4><p>Estate planning, probate, trusts</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners" id="partners">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--pale-gold);">Our People</div>
+    <h2 class="section-title">Leadership & <span style="color:var(--pale-gold);">Partners</span></h2>
+    <p class="section-desc" style="color:#8a9ab5;font-family:'Segoe UI',Arial,sans-serif;">Our firm is led by experienced legal professionals with deep expertise across all major practice areas and strong track records in complex, high-value matters.</p>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-avatar">LN</div>
+        <h4>Ludwig Ng</h4>
+        <p>Senior Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">SY</div>
+        <h4>Sherman Yan</h4>
+        <p>Managing Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">RC</div>
+        <h4>Raymond Cheung</h4>
+        <p>Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">RL</div>
+        <h4>Ray Lee</h4>
+        <p>Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">NH</div>
+        <h4>Nelson Ho</h4>
+        <p>Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">AW</div>
+        <h4>Angel Wong</h4>
+        <p>Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">EW</div>
+        <h4>Eric Woo</h4>
+        <p>Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">DW</div>
+        <h4>Dominic Wai</h4>
+        <p>Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">LY</div>
+        <h4>Lawrence Yeung</h4>
+        <p>Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">MS</div>
+        <h4>Michael Szeto</h4>
+        <p>Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">ML</div>
+        <h4>Michael Lau</h4>
+        <p>Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">DZ</div>
+        <h4>David Zhang</h4>
+        <p>Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">MC</div>
+        <h4>Maxwell Chan</h4>
+        <p>Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">EH</div>
+        <h4>Elaine Ho</h4>
+        <p>Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">JL</div>
+        <h4>John Li</h4>
+        <p>Partner</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-avatar">PL</div>
+        <h4>Paul Lam</h4>
+        <p>Partner</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<section class="recognition" id="recognition">
+  <div class="section-inner">
+    <div class="section-label">Awards & Recognition</div>
+    <h2 class="section-title">Industry-Wide <span>Recognition</span></h2>
+    <div class="rec-grid">
+      <div class="rec-card">
+        <span class="rec-icon">🏆</span>
+        <h3>AsiaLaw Profiles</h3>
+        <p>Consistently recognised as a "Highly Recommended Law Firm" in Hong Kong across multiple practice areas and years by AsiaLaw Profiles.</p>
+      </div>
+      <div class="rec-card">
+        <span class="rec-icon">⭐</span>
+        <h3>Chambers & Partners</h3>
+        <p>Recognised as a "Leading Firm" in Hong Kong by Chambers and Partners, one of the world's most respected legal directories.</p>
+      </div>
+      <div class="rec-card">
+        <span class="rec-icon">🥇</span>
+        <h3>ALB HK Law Awards 2018</h3>
+        <p>"Debt Market Deal of the Year" Award at the Macallan ALB Hong Kong Law Awards, recognising excellence in capital markets practice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--pale-gold);">Contact Us</div>
+    <h2 class="section-title">Get in <span style="color:var(--pale-gold);">Touch</span></h2>
+    <p class="section-desc">We welcome your enquiries. Please contact us or visit our website to submit an enquiry form for your specific legal needs.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>📞 ONC Lawyers — Hong Kong</h3>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <strong>Telephone</strong>
+            <span>(852) 2810 1212</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <strong>Email</strong>
+            <span>websiteonc@onc.hk</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <strong>Website</strong>
+            <span>www.onc.hk</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <strong>Address</strong>
+            <span>Hong Kong<br>(Please visit www.onc.hk for full address)</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌏</div>
+          <div>
+            <strong>Language</strong>
+            <span>English · 繁體中文 · 简体中文</span>
+          </div>
+        </div>
+      </div>
+      <div class="disclaimer-box">
+        <h3>⚠️ Scam Email Alert</h3>
+        <p>It has come to our attention that fraudulent emails have been sent in the name of and falsely claiming to be affiliated with ONC Lawyers.</p>
+        <p style="margin-top:12px;">Please be informed that our official email addresses end with the domains <strong style="color:#8a9ab5;">@onc.hk</strong> or <strong style="color:#8a9ab5;">@onc.com.hk</strong>. Fraudulent emails may attempt to deceive you into clicking malicious links. Please exercise caution.</p>
+        <p style="margin-top:12px;">If in doubt about the authenticity of any communication claiming to be from ONC Lawyers, please contact us directly at <strong style="color:#8a9ab5;">(852) 2810 1212</strong>.</p>
+        <p style="margin-top:16px;background:rgba(184,144,42,0.08);border-radius:6px;padding:10px;font-size:0.78rem;color:var(--gold);">💼 ONC Lawyers is a member of International Society of Primerus Law Firms — 200 member firms in 40+ countries</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">ONC Lawyers</div>
+  <p>One of Hong Kong's Largest Local Law Firms | Established 1992 | Primerus Member</p>
+  <p style="margin-top:6px;">&copy; 2025 ONC Lawyers. All Rights Reserved. | www.onc.hk | (852) 2810 1212</p>
+</footer>
+
+</body>
+</html>
