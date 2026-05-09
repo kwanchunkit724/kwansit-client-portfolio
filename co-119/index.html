@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>釘釘 DingTalk | 企業數字化協同辦公平台 · 香港</title>
+<style>
+  :root {
+    --primary: #1677ff;
+    --secondary: #0958d9;
+    --accent: #f5a623;
+    --success: #52c41a;
+    --dark: #0a1429;
+    --mid: #1a2d4a;
+    --light: #f0f6ff;
+    --text: #1a2d4a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif; color: var(--text); background: #fff; }
+
+  nav {
+    background: var(--dark);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100; height: 68px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-logo .dlogo {
+    background: var(--primary); color: #fff; width: 38px; height: 38px;
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 900;
+  }
+  .nav-logo .brand { color: #fff; }
+  .nav-logo .brand span { display: block; font-size: 18px; font-weight: 800; }
+  .nav-logo .brand small { font-size: 10px; color: #6090c0; letter-spacing: 2px; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: #8090b0; text-decoration: none; font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta { background: var(--primary); color: #fff; padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 600; text-decoration: none; }
+
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #0d2050 55%, #1a3a7a 100%);
+    min-height: 560px;
+    display: flex; align-items: center; padding: 80px 5%;
+    position: relative; overflow: hidden; color: #fff;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; right: 0; top: 0;
+    width: 50%; height: 100%;
+    background: radial-gradient(ellipse at 80% 50%, rgba(22,119,255,0.15) 0%, transparent 60%);
+  }
+  .hero-content { max-width: 680px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-block; background: rgba(22,119,255,0.2); border: 1px solid rgba(22,119,255,0.4);
+    color: #64b0ff; padding: 6px 18px; border-radius: 20px; font-size: 12px;
+    margin-bottom: 24px; text-transform: uppercase; letter-spacing: 2px;
+  }
+  .hero h1 { font-size: clamp(2rem,5vw,3.4rem); font-weight: 900; line-height: 1.15; margin-bottom: 18px; }
+  .hero h1 em { color: #64b0ff; font-style: normal; }
+  .hero p { font-size: 17px; color: #8090b0; margin-bottom: 36px; line-height: 1.7; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-blue { background: var(--primary); color: #fff; padding: 13px 32px; border-radius: 7px; text-decoration: none; font-weight: 700; font-size: 15px; transition: background .2s; }
+  .btn-blue:hover { background: var(--secondary); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.25); color: #fff; padding: 13px 32px; border-radius: 7px; text-decoration: none; font-weight: 600; font-size: 15px; }
+  .btn-outline:hover { background: rgba(255,255,255,0.08); }
+
+  .stats-bar { background: var(--primary); display: grid; grid-template-columns: repeat(4,1fr); padding: 20px 5%; text-align: center; }
+  .stat { color: #fff; padding: 12px; border-right: 1px solid rgba(255,255,255,0.2); }
+  .stat:last-child { border-right: none; }
+  .stat .num { font-size: 28px; font-weight: 900; }
+  .stat .lbl { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+
+  section { padding: 80px 5%; }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-header .eyebrow { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--primary); margin-bottom: 14px; font-weight: 700; }
+  .section-header h2 { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .section-header p { color: #555; font-size: 16px; max-width: 620px; margin: 0 auto; line-height: 1.7; }
+
+  .features-bg { background: var(--light); }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 24px; }
+  .feature-card { background: #fff; border-radius: 14px; padding: 32px 28px; border: 1px solid #d0e0f8; transition: all .25s; }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(22,119,255,0.1); border-color: var(--primary); }
+  .feature-card .ico { font-size: 40px; margin-bottom: 18px; }
+  .feature-card h3 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+  .feature-card h3 small { display: block; font-size: 12px; color: var(--primary); font-weight: 400; margin-top: 4px; }
+  .feature-card p { font-size: 14px; color: #555; line-height: 1.7; }
+
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 16px; }
+  .product-chip { background: var(--light); border-radius: 10px; padding: 18px 16px; text-align: center; border: 1px solid #c8d8f0; transition: all .2s; }
+  .product-chip:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+  .product-chip .ico { font-size: 28px; margin-bottom: 8px; }
+  .product-chip h4 { font-size: 13px; font-weight: 700; color: var(--dark); }
+  .product-chip:hover h4 { color: #fff; }
+
+  .why-bg { background: var(--dark); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 24px; }
+  .why-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 28px 24px; color: #fff; text-align: center; }
+  .why-card .ico { font-size: 36px; margin-bottom: 16px; }
+  .why-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .why-card p { font-size: 13px; color: #6080a0; line-height: 1.65; }
+
+  .contact-section { background: var(--light); }
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 980px; margin: 0 auto; }
+  .contact-info h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 24px; }
+  .contact-row { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+  .contact-row .ci { font-size: 22px; margin-top: 2px; }
+  .contact-row .ct strong { display: block; font-size: 15px; color: var(--dark); margin-bottom: 4px; }
+  .contact-row .ct span { font-size: 14px; color: #555; line-height: 1.5; }
+  .contact-form { background: #fff; border-radius: 16px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+  .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 11px 14px; border: 1.5px solid #c8d8f0; border-radius: 8px;
+    font-size: 14px; font-family: inherit; transition: border-color .2s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--primary); }
+  .form-group textarea { height: 90px; resize: vertical; }
+  .btn-submit { width: 100%; background: var(--primary); color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background .2s; }
+  .btn-submit:hover { background: var(--secondary); }
+
+  footer { background: var(--dark); color: #4a6080; padding: 48px 5% 24px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+  .fb .bn { color: #fff; font-size: 18px; font-weight: 900; margin-bottom: 8px; }
+  .fb p { font-size: 13px; line-height: 1.7; }
+  footer h4 { color: #6080a0; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; }
+  footer ul li a { color: #4a6080; text-decoration: none; font-size: 14px; transition: color .2s; }
+  footer ul li a:hover { color: #fff; }
+  .footer-bottom { border-top: 1px solid #1a2d3d; padding-top: 20px; text-align: center; font-size: 13px; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .stats-bar { grid-template-columns: repeat(2,1fr); }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="dlogo">D</div>
+    <div class="brand"><span>釘釘 DingTalk</span><small>Hong Kong</small></div>
+  </div>
+  <div class="nav-links">
+    <a href="#features">產品功能</a>
+    <a href="#products">解決方案</a>
+    <a href="#why">為何選擇</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <a href="#contact" class="nav-cta">免費試用</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">企業數字化協同辦公 · 香港</div>
+    <h1>企業數字化<br><em>協同辦公平台</em></h1>
+    <p>釘釘（DingTalk）是阿里巴巴集團推出的企業數字化協同辦公平台，整合即時通訊、視頻會議、人事管理、OA審批等功能，助力企業實現全面數字化升級。</p>
+    <div class="hero-btns">
+      <a href="https://www.dingtalk.com.hk" class="btn-blue">下載釘釘</a>
+      <a href="#contact" class="btn-outline">立即咨詢</a>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="num">700M+</div><div class="lbl">全球用戶</div></div>
+  <div class="stat"><div class="num">23M+</div><div class="lbl">企業及組織</div></div>
+  <div class="stat"><div class="num">10年+</div><div class="lbl">深耕企業服務</div></div>
+  <div class="stat"><div class="num">AI</div><div class="lbl">智能辦公助理</div></div>
+</div>
+
+<section id="features" class="features-bg">
+  <div class="section-header">
+    <div class="eyebrow">Core Features</div>
+    <h2>全方位數字化辦公功能</h2>
+    <p>從溝通協作到業務管理，釘釘一站式覆蓋企業日常運營的全部需要。</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="ico">💬</div>
+      <h3>AI 溝通協作 <small>AI Communication</small></h3>
+      <p>即時通訊、企業郵箱、AI助理整合，支援文字、語音、視頻多種溝通方式，提升團隊協作效率。</p>
+    </div>
+    <div class="feature-card">
+      <div class="ico">📹</div>
+      <h3>視頻會議 <small>Video Conferencing</small></h3>
+      <p>釘釘會議支援高清視頻通話，配備釘閃會、直播及線上研討等功能，讓遠程溝通如臨其境。</p>
+    </div>
+    <div class="feature-card">
+      <div class="ico">👥</div>
+      <h3>組織數字化 <small>Org Management</small></h3>
+      <p>智慧考勤、智慧人事、智慧招聘、薪酬管理，構建完整的人力資源數字化管理體系。</p>
+    </div>
+    <div class="feature-card">
+      <div class="ico">📋</div>
+      <h3>OA 審批 <small>Workflow Approval</small></h3>
+      <p>靈活配置的OA審批流程，支援請假、報銷、採購等多類型申請，移動端隨時隨地處理審批。</p>
+    </div>
+    <div class="feature-card">
+      <div class="ico">🤖</div>
+      <h3>AI 智能助理 <small>AI Assistant</small></h3>
+      <p>內置多款AI助理，包括行政助理、審批助理、法務助理，智能化處理常見工作事務。</p>
+    </div>
+    <div class="feature-card">
+      <div class="ico">📊</div>
+      <h3>業務數字化 <small>Business Digitalization</small></h3>
+      <p>釘釘宜搭低代碼平台，無需編程即可快速搭建業務應用，靈活滿足企業個性化需求。</p>
+    </div>
+  </div>
+</section>
+
+<section id="products">
+  <div class="section-header">
+    <div class="eyebrow">Solutions</div>
+    <h2>全場景解決方案</h2>
+    <p>覆蓋製造業、金融、醫療、教育、餐飲等多個行業，提供針對性的數字化解決方案。</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-chip"><div class="ico">🏭</div><h4>製造業</h4></div>
+    <div class="product-chip"><div class="ico">🏦</div><h4>金融</h4></div>
+    <div class="product-chip"><div class="ico">🏥</div><h4>醫療</h4></div>
+    <div class="product-chip"><div class="ico">🎓</div><h4>教育</h4></div>
+    <div class="product-chip"><div class="ico">🍽️</div><h4>餐飲</h4></div>
+    <div class="product-chip"><div class="ico">🚛</div><h4>物流</h4></div>
+    <div class="product-chip"><div class="ico">🏛️</div><h4>政府</h4></div>
+    <div class="product-chip"><div class="ico">🛒</div><h4>零售</h4></div>
+    <div class="product-chip"><div class="ico">💻</div><h4>互聯網</h4></div>
+    <div class="product-chip"><div class="ico">🚗</div><h4>汽車</h4></div>
+    <div class="product-chip"><div class="ico">🏠</div><h4>物業</h4></div>
+    <div class="product-chip"><div class="ico">📦</div><h4>電商</h4></div>
+  </div>
+</section>
+
+<section id="why" class="why-bg">
+  <div class="section-header">
+    <div class="eyebrow" style="color:#64b0ff">Why DingTalk</div>
+    <h2 style="color:#fff;">釘釘的優勢</h2>
+    <p style="color:#6080a0;">為何超過 700 萬家企業選擇釘釘作為數字化辦公的首選平台。</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="ico">🤖</div>
+      <h3>AI 原生平台</h3>
+      <p>深度融合人工智能技術，AI助理貫穿辦公全場景，大幅提升個人和團隊的工作效率。</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">🔐</div>
+      <h3>安全合規</h3>
+      <p>符合企業信息安全要求，數據加密傳輸，支援企業自建私有化部署，保障數據安全。</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">🌐</div>
+      <h3>跨境協作</h3>
+      <p>支援香港、中國大陸及海外多地員工無縫協作，是跨境業務企業的理想選擇。</p>
+    </div>
+    <div class="why-card">
+      <div class="ico">💰</div>
+      <h3>永久免費版</h3>
+      <p>基礎功能永久免費，讓中小企業也能享受企業級數字化辦公工具的便利。</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="section-header">
+    <div class="eyebrow">Contact</div>
+    <h2>聯絡釘釘香港</h2>
+    <p>如需了解企業版功能、價格或有任何查詢，歡迎聯絡我們的香港團隊。</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>香港辦公室</h3>
+      <div class="contact-row">
+        <div class="ci">📞</div>
+        <div class="ct">
+          <strong>客戶服務及銷售熱線</strong>
+          <span>(852) 6439-2620</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">📞</div>
+        <div class="ct">
+          <strong>國內銷售支援</strong>
+          <span>(86) 400 155-2158</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">📧</div>
+        <div class="ct">
+          <strong>電郵</strong>
+          <span>cs@dingtalk.com.hk</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">⏰</div>
+        <div class="ct">
+          <strong>辦公時間</strong>
+          <span>星期一至五：上午 9:00 – 下午 6:00 (UTC+8)<br>星期六、日及公眾假期休息</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">🌐</div>
+        <div class="ct">
+          <strong>官方網站</strong>
+          <span>www.dingtalk.com.hk</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>產品咨詢</h3>
+      <div class="form-group">
+        <label>姓名 *</label>
+        <input type="text" placeholder="您的姓名">
+      </div>
+      <div class="form-group">
+        <label>電話 *</label>
+        <input type="tel" placeholder="(852) XXXX XXXX">
+      </div>
+      <div class="form-group">
+        <label>電郵 *</label>
+        <input type="email" placeholder="your@company.com">
+      </div>
+      <div class="form-group">
+        <label>企業名稱</label>
+        <input type="text" placeholder="貴公司名稱">
+      </div>
+      <div class="form-group">
+        <label>咨詢內容</label>
+        <textarea placeholder="請輸入您的咨詢..."></textarea>
+      </div>
+      <button class="btn-submit">提交咨詢</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="fb">
+      <div class="bn">釘釘 DingTalk — 香港</div>
+      <p>阿里巴巴集團旗下企業數字化協同辦公平台，為香港企業提供AI驅動的全方位數字化解決方案。</p>
+    </div>
+    <div>
+      <h4>產品功能</h4>
+      <ul>
+        <li><a href="#features">AI 溝通協作</a></li>
+        <li><a href="#features">視頻會議</a></li>
+        <li><a href="#features">組織數字化</a></li>
+        <li><a href="#features">OA 審批</a></li>
+        <li><a href="#features">業務數字化</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>行業方案</h4>
+      <ul>
+        <li><a href="#products">製造業</a></li>
+        <li><a href="#products">金融</a></li>
+        <li><a href="#products">教育</a></li>
+        <li><a href="#products">零售</a></li>
+        <li><a href="#products">政府</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>聯絡</h4>
+      <ul>
+        <li><a href="tel:+85264392620">📞 6439-2620</a></li>
+        <li><a href="mailto:cs@dingtalk.com.hk">📧 cs@dingtalk.com.hk</a></li>
+        <li><a href="https://www.dingtalk.com.hk">🌐 dingtalk.com.hk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 釘釘（DingTalk）香港. All Rights Reserved. | 阿里巴巴集團旗下產品</p>
+  </div>
+</footer>
+
+</body>
+</html>
