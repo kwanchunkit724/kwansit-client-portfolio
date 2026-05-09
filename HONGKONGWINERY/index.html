@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港製酒 HongKongWinery | 本地精釀酒 · Made in Hong Kong</title>
+<style>
+  :root {
+    --primary: #6b2d6b;
+    --secondary: #9b4d9b;
+    --accent: #e8c070;
+    --wine: #7a1a3a;
+    --gold: #c8960a;
+    --dark: #1a0d1a;
+    --mid: #2d1a2d;
+    --light: #fdf5ff;
+    --text: #2d1a2d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif; color: var(--text); background: #fff; }
+
+  /* NAV */
+  nav {
+    background: var(--dark);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 68px;
+    border-bottom: 1px solid rgba(200,150,10,0.2);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; }
+  .nav-logo .ico { font-size: 26px; }
+  .nav-logo .brand { color: #fff; }
+  .nav-logo .brand span { display: block; font-size: 17px; font-weight: 800; }
+  .nav-logo .brand small { font-size: 10px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: #c0a0d0; text-decoration: none; font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-shop { background: var(--primary); color: #fff; padding: 9px 20px; border-radius: 20px; font-size: 14px; font-weight: 700; text-decoration: none; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, var(--dark) 0%, #3d1a3d 55%, #6b2a6b 100%);
+    min-height: 580px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 5%;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, rgba(200,150,10,0.1) 0%, transparent 60%);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(200,150,10,0.5);
+    color: var(--accent);
+    padding: 6px 22px; border-radius: 20px;
+    font-size: 12px; margin-bottom: 28px; letter-spacing: 3px; text-transform: uppercase;
+    background: rgba(200,150,10,0.1);
+  }
+  .hero-icon { font-size: 80px; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(2.4rem,6vw,4rem); font-weight: 900; line-height: 1.1; margin-bottom: 14px; }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero h2 { font-size: clamp(1rem,2.5vw,1.4rem); color: #c0a0d0; font-weight: 400; margin-bottom: 20px; letter-spacing: 2px; }
+  .hero p { font-size: 17px; color: #c0a0d0; margin-bottom: 36px; line-height: 1.75; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-gold { background: var(--accent); color: var(--dark); padding: 14px 36px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 16px; transition: background .2s; }
+  .btn-gold:hover { background: #d4a850; }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.25); color: #fff; padding: 14px 36px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all .2s; }
+  .btn-outline:hover { background: rgba(255,255,255,0.08); }
+
+  /* SECTION */
+  section { padding: 80px 5%; }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-header .eyebrow { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--primary); margin-bottom: 14px; font-weight: 700; }
+  .section-header h2 { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .section-header h2 em { color: var(--primary); font-style: normal; }
+  .section-header p { color: #5a3a5a; font-size: 16px; max-width: 620px; margin: 0 auto; line-height: 1.75; }
+
+  /* PRODUCTS */
+  .products-bg { background: var(--light); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .product-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #e0c8e8;
+    transition: all .25s;
+    text-align: center;
+  }
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(107,45,107,0.14); }
+  .product-card .prod-top {
+    background: linear-gradient(135deg, var(--dark), var(--mid));
+    padding: 48px 28px 36px;
+    position: relative;
+  }
+  .product-card .prod-top .tag {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--wine); color: #fff;
+    padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 700;
+  }
+  .product-card .prod-top .ico { font-size: 72px; }
+  .product-card .prod-body { padding: 28px 28px 32px; }
+  .product-card .prod-body h3 { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .product-card .prod-body h3 small { display: block; font-size: 13px; color: var(--primary); font-weight: 500; margin-top: 4px; }
+  .product-card .prod-body p { font-size: 14px; color: #5a3a5a; line-height: 1.75; margin-bottom: 20px; }
+  .price-tag { font-size: 26px; font-weight: 900; color: var(--primary); }
+  .price-tag small { font-size: 14px; color: #9a7a9a; font-weight: 400; }
+  .btn-buy { display: inline-block; background: var(--primary); color: #fff; padding: 10px 28px; border-radius: 20px; font-size: 14px; font-weight: 700; text-decoration: none; margin-top: 12px; transition: background .2s; }
+  .btn-buy:hover { background: #5a1a5a; }
+
+  /* STORY */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .story-text h2 { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 900; color: var(--dark); margin-bottom: 20px; }
+  .story-text h2 em { color: var(--primary); font-style: normal; }
+  .story-text p { font-size: 15px; color: #4a2a4a; line-height: 1.85; margin-bottom: 16px; }
+  .values { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  .value-box { background: var(--light); border-radius: 12px; padding: 18px 16px; border: 1px solid #e0c8e8; }
+  .value-box .ico { font-size: 26px; margin-bottom: 8px; }
+  .value-box h4 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+  .value-box p { font-size: 12px; color: #6a4a6a; line-height: 1.6; }
+  .story-visual {
+    background: linear-gradient(135deg, var(--dark), var(--primary));
+    border-radius: 24px;
+    padding: 48px 40px;
+    color: #fff;
+    text-align: center;
+  }
+  .story-visual .main-ico { font-size: 80px; margin-bottom: 24px; display: block; }
+  .story-visual h3 { font-size: 24px; font-weight: 900; color: var(--accent); margin-bottom: 16px; }
+  .story-visual p { font-size: 14px; color: #c0a0d0; line-height: 1.75; }
+  .hk-made { margin-top: 24px; background: rgba(255,255,255,0.1); border-radius: 12px; padding: 16px; }
+  .hk-made .flag { font-size: 32px; margin-bottom: 8px; }
+  .hk-made p { font-size: 13px; color: var(--accent); font-weight: 600; }
+
+  /* PROCESS */
+  .process-bg { background: var(--dark); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .process-step { text-align: center; color: #fff; }
+  .step-circle {
+    width: 70px; height: 70px; border-radius: 50%;
+    background: var(--primary); display: flex; align-items: center; justify-content: center;
+    font-size: 30px; margin: 0 auto 16px; border: 2px solid rgba(200,150,10,0.3);
+  }
+  .process-step h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .process-step p { font-size: 13px; color: #a080c0; line-height: 1.65; }
+
+  /* CONTACT */
+  .contact-section { background: var(--light); }
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .contact-info h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 24px; }
+  .contact-row { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+  .contact-row .ci { font-size: 22px; margin-top: 2px; }
+  .contact-row .ct strong { display: block; font-size: 15px; color: var(--dark); margin-bottom: 4px; }
+  .contact-row .ct span { font-size: 14px; color: #4a2a4a; line-height: 1.5; }
+  .contact-form { background: #fff; border-radius: 16px; padding: 36px; box-shadow: 0 4px 20px rgba(107,45,107,0.08); }
+  .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: #4a2a4a; margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 11px 14px; border: 1.5px solid #e0c8e8; border-radius: 8px;
+    font-size: 14px; font-family: inherit; transition: border-color .2s; background: var(--light);
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--primary); background: #fff; }
+  .form-group textarea { height: 90px; resize: vertical; }
+  .btn-submit {
+    width: 100%; background: var(--primary); color: #fff; border: none;
+    padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 700;
+    cursor: pointer; transition: background .2s;
+  }
+  .btn-submit:hover { background: #5a1a5a; }
+
+  /* FOOTER */
+  footer { background: var(--dark); color: #6a4a6a; padding: 48px 5% 24px; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand .brand-zh { color: #fff; font-size: 20px; font-weight: 900; margin-bottom: 4px; }
+  .footer-brand .brand-en { color: var(--accent); font-size: 12px; letter-spacing: 2px; margin-bottom: 14px; }
+  .footer-brand p { font-size: 13px; line-height: 1.7; }
+  footer h4 { color: #9a6a9a; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; }
+  footer ul li a { color: #6a4a6a; text-decoration: none; font-size: 14px; transition: color .2s; }
+  footer ul li a:hover { color: #fff; }
+  .footer-bottom { border-top: 1px solid #2d1a2d; padding-top: 20px; text-align: center; font-size: 13px; }
+
+  @media (max-width: 900px) {
+    .story-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="ico">🍷</div>
+    <div class="brand">
+      <span>香港製酒</span>
+      <small>HongKongWinery</small>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#products">產品</a>
+    <a href="#story">品牌故事</a>
+    <a href="#process">釀造工藝</a>
+    <a href="#contact">聯絡</a>
+  </div>
+  <a href="https://www.hongkongwinery.com" class="nav-shop">立即選購</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🇭🇰 Made in Hong Kong · 本地精釀</div>
+    <div class="hero-icon">🍷</div>
+    <h1>香港製酒<br><em>HongKongWinery</em></h1>
+    <h2>本地精釀 · 穀物及水果原釀</h2>
+    <p>以香港本土情懷釀造的精品酒，嚴選優質穀物及新鮮水果，以傳統工藝精心發酵，每一瓶都是香港味道的真實呈現。</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-gold">查看產品</a>
+      <a href="#story" class="btn-outline">了解更多</a>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products" class="products-bg">
+  <div class="section-header">
+    <div class="eyebrow">Our Products</div>
+    <h2>精選<em>本地釀製</em>酒品</h2>
+    <p>嚴選優質原料，以匠心工藝釀造，每一款都是香港製酒的用心作品。</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="prod-top">
+        <div class="tag">榖物及水果</div>
+        <div class="ico">🍾</div>
+      </div>
+      <div class="prod-body">
+        <h3>本地精釀酒 <small>Grain & Fruit Wine</small></h3>
+        <p>精選優質穀物及新鮮水果釀製而成，口感圓潤，果香馥郁，是香港製酒的旗艦產品，最能體現本地釀酒師的匠心與熱情。</p>
+        <div class="price-tag">HK$480 <small>/ 瓶</small></div>
+        <a href="https://www.hongkongwinery.com/en/category/all-products" class="btn-buy">立即選購</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="prod-top">
+        <div class="tag">限定精品</div>
+        <div class="ico">🥂</div>
+      </div>
+      <div class="prod-body">
+        <h3>【Silver Bun-斌】限定酒杯 <small>Limited Edition Glass</small></h3>
+        <p>專屬設計的限定版玻璃酒杯，精緻工藝、典雅造型，是品酒愛好者及收藏家的心水之選，亦是極具意義的特別禮品。</p>
+        <div class="price-tag">HK$30 <small>/ 個</small></div>
+        <a href="https://www.hongkongwinery.com/en/category/all-products" class="btn-buy">立即選購</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="story-grid">
+    <div class="story-text">
+      <h2>香港釀造的<em>獨特情懷</em></h2>
+      <p>香港製酒（HongKongWinery）是一家立足香港的本地精釀酒廠，致力於以本地文化和工藝精神，釀造屬於香港的獨特美酒。</p>
+      <p>我們相信，每一瓶好酒背後都是釀酒師對土地與文化的深厚情感。透過嚴選優質穀物和新鮮水果，結合傳統發酵工藝，我們希望讓每一位品嚐者都能感受到香港本土的獨特味道。</p>
+      <div class="values">
+        <div class="value-box">
+          <div class="ico">🇭🇰</div>
+          <h4>香港本土</h4>
+          <p>立足香港，以本地情懷釀造每一瓶酒。</p>
+        </div>
+        <div class="value-box">
+          <div class="ico">🌾</div>
+          <h4>優質原料</h4>
+          <p>嚴選穀物及新鮮水果，品質第一。</p>
+        </div>
+        <div class="value-box">
+          <div class="ico">⚗️</div>
+          <h4>傳統工藝</h4>
+          <p>傳承釀酒工藝，每一步都認真用心。</p>
+        </div>
+        <div class="value-box">
+          <div class="ico">💝</div>
+          <h4>匠心釀造</h4>
+          <p>小批量精心製作，用心在每一滴。</p>
+        </div>
+      </div>
+    </div>
+    <div class="story-visual">
+      <span class="main-ico">🍷</span>
+      <h3>Made in Hong Kong</h3>
+      <p>每一瓶香港製酒，都是對香港本土文化的致敬與珍藏。我們希望透過美酒，讓更多人了解香港的釀酒文化。</p>
+      <div class="hk-made">
+        <div class="flag">🇭🇰</div>
+        <p>100% 香港本地釀製</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="process-bg">
+  <div class="section-header">
+    <div class="eyebrow" style="color:var(--accent)">Craft Process</div>
+    <h2 style="color:#fff;">精釀工藝流程</h2>
+    <p style="color:#a080c0;">每一瓶香港製酒都經過嚴格的釀造程序，確保品質卓越。</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-circle">🌾</div>
+      <h4>精選原料</h4>
+      <p>嚴選優質穀物及新鮮水果，確保原料品質達到最高標準。</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">⚗️</div>
+      <h4>發酵釀造</h4>
+      <p>以傳統工藝控制發酵過程，時間和溫度的精確掌握是關鍵。</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">🎚️</div>
+      <h4>陳釀熟成</h4>
+      <p>經過適當時間的靜置熟成，讓酒液風味圓潤、層次豐富。</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">🔬</div>
+      <h4>品質檢測</h4>
+      <p>每批酒品均經嚴格品質測試，確保達到香港製酒的品質標準。</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">🍾</div>
+      <h4>裝瓶出品</h4>
+      <p>精心裝瓶，每一瓶都代表香港製酒對品質與工藝的承諾。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-header">
+    <div class="eyebrow">Contact</div>
+    <h2>聯絡<em>香港製酒</em></h2>
+    <p>歡迎查詢產品、批發或合作事宜，我們很樂意與您分享香港製酒的故事。</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>聯絡我們</h3>
+      <div class="contact-row">
+        <div class="ci">📱</div>
+        <div class="ct">
+          <strong>手機 / WhatsApp</strong>
+          <span>+852 9012 5532</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">📧</div>
+        <div class="ct">
+          <strong>電郵</strong>
+          <span>hongkong.winery.limited@gmail.com</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">🌐</div>
+        <div class="ct">
+          <strong>網上商店</strong>
+          <span>www.hongkongwinery.com</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ci">📍</div>
+        <div class="ct">
+          <strong>地區</strong>
+          <span>香港 Hong Kong</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>查詢 / 訂購</h3>
+      <div class="form-group">
+        <label>姓名 *</label>
+        <input type="text" placeholder="您的姓名">
+      </div>
+      <div class="form-group">
+        <label>WhatsApp / 電話 *</label>
+        <input type="tel" placeholder="+852 XXXX XXXX">
+      </div>
+      <div class="form-group">
+        <label>電郵</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>查詢類別</label>
+        <select>
+          <option>請選擇</option>
+          <option>購買產品</option>
+          <option>批發查詢</option>
+          <option>禮品訂製</option>
+          <option>合作洽談</option>
+          <option>其他</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>訊息</label>
+        <textarea placeholder="請說明您的查詢..."></textarea>
+      </div>
+      <button class="btn-submit">提交查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-zh">香港製酒有限公司</div>
+      <div class="brand-en">HONGKONGWINERY · Made in Hong Kong</div>
+      <p>香港本土精釀酒，以優質穀物及水果釀製，每一瓶都蘊含香港的本土情懷與匠心工藝。</p>
+    </div>
+    <div>
+      <h4>產品</h4>
+      <ul>
+        <li><a href="#products">本地精釀酒</a></li>
+        <li><a href="#products">穀物及水果原釀</a></li>
+        <li><a href="#products">限定酒杯</a></li>
+        <li><a href="https://www.hongkongwinery.com">網上商店</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>聯絡</h4>
+      <ul>
+        <li><a href="https://wa.me/85290125532">💬 +852 9012 5532</a></li>
+        <li><a href="mailto:hongkong.winery.limited@gmail.com">📧 查詢電郵</a></li>
+        <li><a href="https://www.hongkongwinery.com">🌐 hongkongwinery.com</a></li>
+        <li><a href="#contact">📍 香港</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 香港製酒 HongKongWinery Limited. All Rights Reserved. | 香港本土釀造</p>
+  </div>
+</footer>
+
+</body>
+</html>
