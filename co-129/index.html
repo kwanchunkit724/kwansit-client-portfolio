@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>悠詩詩上島咖啡 | UCC Coffee Shop Hong Kong</title>
+<style>
+  :root {
+    --ucc-red: #c8112a;
+    --ucc-dark: #1a0a0d;
+    --ucc-brown: #3d1a0a;
+    --gold: #c9a84c;
+    --cream: #f5f0e8;
+    --warm: #f9f4ed;
+    --white: #ffffff;
+    --text: #2c1a10;
+    --muted: #7a6555;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* HEADER */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,10,13,0.97); backdrop-filter: blur(8px);
+    padding: 0 40px; height: 65px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 2px solid var(--ucc-red);
+  }
+  .logo { display: flex; align-items: center; gap: 14px; }
+  .logo-badge {
+    background: var(--ucc-red); color: var(--white);
+    font-size: 22px; font-weight: 900; padding: 4px 12px; border-radius: 4px;
+    letter-spacing: 1px; font-family: 'Arial Black', sans-serif;
+  }
+  .logo-text {}
+  .logo-zh { color: var(--cream); font-size: 15px; font-weight: 700; letter-spacing: 2px; }
+  .logo-en { color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 2px; font-family: 'Arial', sans-serif; text-transform: uppercase; }
+  nav { display: flex; gap: 28px; align-items: center; }
+  nav a { color: rgba(255,255,255,0.75); font-size: 13px; letter-spacing: 1px; font-family: 'Arial', sans-serif; transition: color 0.3s; }
+  nav a:hover { color: var(--ucc-red); }
+  .nav-cta { background: var(--ucc-red); color: var(--white) !important; padding: 8px 20px; border-radius: 3px; font-weight: 700; }
+  .nav-cta:hover { background: #e01530 !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; position: relative;
+    background: linear-gradient(135deg, var(--ucc-dark) 0%, var(--ucc-brown) 60%, #5c2a0a 100%);
+    display: flex; align-items: center; overflow: hidden;
+  }
+  .hero-pattern {
+    position: absolute; inset: 0; opacity: 0.06;
+    background: repeating-linear-gradient(45deg, #c8112a 0px, #c8112a 2px, transparent 2px, transparent 20px);
+  }
+  .hero-glow {
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,17,42,0.25) 0%, transparent 70%);
+  }
+  .hero-content { position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto; padding: 120px 40px 80px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .hero-year { font-size: 11px; letter-spacing: 5px; color: var(--ucc-red); font-family: 'Arial', sans-serif; text-transform: uppercase; margin-bottom: 20px; }
+  .hero-title { font-size: clamp(36px, 5vw, 62px); color: var(--white); line-height: 1.2; margin-bottom: 16px; }
+  .hero-title .zh { display: block; }
+  .hero-title .en { display: block; font-size: 0.42em; color: rgba(255,255,255,0.5); letter-spacing: 4px; font-family: 'Arial', sans-serif; margin-top: 8px; text-transform: uppercase; }
+  .hero-sub { font-size: 16px; color: rgba(255,255,255,0.72); line-height: 1.8; margin-bottom: 36px; font-family: 'Arial', sans-serif; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-red { background: var(--ucc-red); color: var(--white); padding: 13px 32px; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 3px; font-family: 'Arial', sans-serif; transition: all 0.3s; }
+  .btn-red:hover { background: #e01530; }
+  .btn-ghost { border: 2px solid rgba(255,255,255,0.35); color: var(--white); padding: 13px 32px; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; border-radius: 3px; font-family: 'Arial', sans-serif; transition: all 0.3s; }
+  .btn-ghost:hover { border-color: var(--ucc-red); color: rgba(255,255,255,0.9); }
+  .hero-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(200,17,42,0.3);
+    border-radius: 12px; padding: 40px 36px; text-align: center;
+  }
+  .hero-logo-big { font-size: 72px; color: var(--ucc-red); font-weight: 900; font-family: 'Arial Black', sans-serif; margin-bottom: 8px; letter-spacing: -2px; }
+  .hero-founded { font-size: 12px; letter-spacing: 3px; color: rgba(255,255,255,0.5); font-family: 'Arial', sans-serif; margin-bottom: 28px; }
+  .hero-stats { display: flex; gap: 32px; justify-content: center; }
+  .h-stat .n { font-size: 30px; font-weight: 700; color: var(--ucc-red); line-height: 1; }
+  .h-stat .l { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 1px; font-family: 'Arial', sans-serif; margin-top: 4px; }
+
+  /* SECTIONS */
+  section { padding: 80px 40px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-tag { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--ucc-red); font-family: 'Arial', sans-serif; margin-bottom: 12px; }
+  .section-title { font-size: clamp(26px, 4vw, 40px); color: var(--text); margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 580px; font-family: 'Arial', sans-serif; }
+  .divider { width: 40px; height: 3px; background: var(--ucc-red); margin: 18px 0; }
+
+  /* BRAND */
+  .brand { background: var(--warm); }
+  .brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 50px; }
+  .brand-visual {
+    background: linear-gradient(135deg, var(--ucc-dark), var(--ucc-brown));
+    border-radius: 10px; height: 380px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; position: relative; overflow: hidden;
+  }
+  .brand-visual::before {
+    content: 'UCC'; position: absolute; font-size: 160px; font-weight: 900;
+    color: rgba(200,17,42,0.08); font-family: 'Arial Black', sans-serif;
+    letter-spacing: -8px;
+  }
+  .bv-inner { position: relative; z-index: 1; text-align: center; }
+  .bv-year { font-size: 11px; letter-spacing: 4px; color: var(--ucc-red); font-family: 'Arial', sans-serif; margin-bottom: 8px; }
+  .bv-name { font-size: 60px; font-weight: 900; color: var(--white); font-family: 'Arial Black', sans-serif; }
+  .bv-tag { font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 2px; font-family: 'Arial', sans-serif; margin-top: 8px; }
+  .brand-text { font-size: 15px; color: var(--text); line-height: 1.9; font-family: 'Arial', sans-serif; }
+  .brand-text p { margin-bottom: 18px; }
+  .brand-quote {
+    font-size: 19px; font-style: italic; color: var(--ucc-red);
+    border-left: 4px solid var(--ucc-red); padding: 12px 20px;
+    background: rgba(200,17,42,0.05); border-radius: 0 6px 6px 0;
+    margin: 24px 0; line-height: 1.6;
+  }
+
+  /* TIMELINE */
+  .timeline { background: var(--white); }
+  .timeline-wrap { position: relative; margin-top: 50px; padding-left: 60px; }
+  .timeline-wrap::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--ucc-red), rgba(200,17,42,0.1)); }
+  .t-item { position: relative; margin-bottom: 36px; }
+  .t-dot {
+    position: absolute; left: -48px; top: 4px;
+    width: 18px; height: 18px; border-radius: 50%; background: var(--ucc-red);
+    border: 3px solid var(--white); box-shadow: 0 0 0 2px var(--ucc-red);
+  }
+  .t-year { font-size: 13px; font-weight: 700; color: var(--ucc-red); font-family: 'Arial', sans-serif; margin-bottom: 4px; }
+  .t-item h4 { font-size: 17px; color: var(--text); margin-bottom: 6px; }
+  .t-item p { font-size: 14px; color: var(--muted); font-family: 'Arial', sans-serif; line-height: 1.6; }
+
+  /* PRODUCTS */
+  .products { background: var(--warm); }
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
+  .prod-card {
+    background: var(--white); border-radius: 10px; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(44,26,16,0.08); transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .prod-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(44,26,16,0.15); }
+  .prod-img { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 52px; }
+  .prod-img.roast { background: linear-gradient(135deg, var(--ucc-dark), #5c2a0a); }
+  .prod-img.instant { background: linear-gradient(135deg, var(--ucc-brown), #8b4a1a); }
+  .prod-img.canned { background: linear-gradient(135deg, #8b1a2a, var(--ucc-red)); }
+  .prod-img.drip { background: linear-gradient(135deg, #3a2a1a, #6b4a2a); }
+  .prod-img.capsule { background: linear-gradient(135deg, #1a3a4a, #2d6a7a); }
+  .prod-img.special { background: linear-gradient(135deg, #3a1a4a, #6b2a8a); }
+  .prod-body { padding: 22px; }
+  .prod-body h3 { font-size: 17px; color: var(--text); margin-bottom: 6px; }
+  .prod-body .en { font-size: 11px; color: var(--ucc-red); letter-spacing: 2px; font-family: 'Arial', sans-serif; text-transform: uppercase; margin-bottom: 10px; }
+  .prod-body p { font-size: 13px; color: var(--muted); line-height: 1.6; font-family: 'Arial', sans-serif; }
+
+  /* CAFE */
+  .cafe { background: var(--ucc-dark); color: var(--white); }
+  .cafe .section-title { color: var(--white); }
+  .cafe .divider { background: var(--ucc-red); }
+  .cafe .section-sub { color: rgba(255,255,255,0.65); }
+  .cafe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 50px; }
+  .cafe-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(200,17,42,0.25);
+    border-radius: 10px; padding: 32px; transition: background 0.3s;
+  }
+  .cafe-card:hover { background: rgba(200,17,42,0.08); }
+  .cafe-icon { font-size: 36px; margin-bottom: 16px; }
+  .cafe-card h3 { font-size: 18px; color: var(--cream); margin-bottom: 10px; }
+  .cafe-card p { font-size: 14px; color: rgba(255,255,255,0.65); font-family: 'Arial', sans-serif; line-height: 1.7; }
+
+  /* CONTACT */
+  .contact { background: var(--warm); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 50px; align-items: start; }
+  .c-box { background: var(--white); border-radius: 10px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+  .c-box h3 { font-size: 20px; color: var(--text); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--ucc-red); }
+  .c-item { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(44,26,16,0.08); }
+  .c-item:last-child { border-bottom: none; }
+  .c-ico { font-size: 22px; flex-shrink: 0; }
+  .c-detail .lbl { font-size: 10px; letter-spacing: 2px; color: var(--ucc-red); font-family: 'Arial', sans-serif; text-transform: uppercase; margin-bottom: 3px; }
+  .c-detail .val { font-size: 15px; color: var(--text); font-weight: 600; font-family: 'Arial', sans-serif; }
+  .c-detail .val a { color: var(--ucc-brown); }
+  .c-detail .note { font-size: 12px; color: var(--muted); font-family: 'Arial', sans-serif; }
+  .cta-red { background: var(--ucc-red); border-radius: 10px; padding: 36px; color: var(--white); }
+  .cta-red h3 { font-size: 22px; margin-bottom: 14px; }
+  .cta-red p { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.8; font-family: 'Arial', sans-serif; margin-bottom: 28px; }
+  .cta-btns { display: flex; flex-direction: column; gap: 12px; }
+  .cta-b { display: block; padding: 13px 24px; border-radius: 5px; text-align: center; font-family: 'Arial', sans-serif; font-size: 14px; font-weight: 700; transition: all 0.3s; }
+  .cta-b.white { background: var(--white); color: var(--ucc-red); }
+  .cta-b.white:hover { background: var(--cream); }
+  .cta-b.outline { border: 2px solid rgba(255,255,255,0.45); color: var(--white); }
+  .cta-b.outline:hover { background: rgba(255,255,255,0.1); }
+
+  /* FOOTER */
+  footer { background: var(--ucc-dark); color: rgba(255,255,255,0.5); padding: 40px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 30px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .f-brand .f-ucc { font-size: 36px; font-weight: 900; color: var(--ucc-red); font-family: 'Arial Black', sans-serif; line-height: 1; }
+  .f-brand .f-name { color: var(--cream); font-size: 14px; letter-spacing: 2px; margin-top: 6px; }
+  .f-brand .f-sub { font-size: 12px; color: rgba(255,255,255,0.35); font-family: 'Arial', sans-serif; margin-top: 8px; }
+  .footer-links { display: flex; gap: 50px; flex-wrap: wrap; }
+  .fc h5 { color: var(--ucc-red); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-family: 'Arial', sans-serif; margin-bottom: 14px; }
+  .fc a { display: block; color: rgba(255,255,255,0.45); font-size: 13px; font-family: 'Arial', sans-serif; margin-bottom: 8px; transition: color 0.3s; }
+  .fc a:hover { color: rgba(255,255,255,0.8); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 22px; font-size: 12px; font-family: 'Arial', sans-serif; }
+
+  @media (max-width: 900px) {
+    header { padding: 0 20px; }
+    nav { display: none; }
+    section { padding: 60px 20px; }
+    .hero-grid, .brand-grid, .cafe-grid, .contact-grid { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { flex-direction: column; }
+    .footer-links { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <div class="logo-badge">UCC</div>
+    <div class="logo-text">
+      <div class="logo-zh">悠詩詩上島咖啡</div>
+      <div class="logo-en">UCC Coffee Shop Hong Kong</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#brand">品牌</a>
+    <a href="#products">產品</a>
+    <a href="#cafe">咖啡店</a>
+    <a href="#contact" class="nav-cta">聯絡我們</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-year">Since 1933 · 上島珈琲 · Hong Kong</div>
+        <h1 class="hero-title">
+          <span class="zh">悠詩詩上島咖啡</span>
+          <span class="en">UCC Coffee Shop HK</span>
+        </h1>
+        <p class="hero-sub">源自日本神戶的百年咖啡世家，以對咖啡的執著與熱情<br>為香港市民帶來一杯又一杯的極致咖啡享受</p>
+        <div class="hero-btns">
+          <a href="#products" class="btn-red">探索產品</a>
+          <a href="#brand" class="btn-ghost">品牌故事</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-logo-big">UCC</div>
+        <div class="hero-founded">UESHIMA COFFEE CO. · EST. 1933</div>
+        <div class="hero-stats">
+          <div class="h-stat"><div class="n">90+</div><div class="l">年品牌歷史</div></div>
+          <div class="h-stat"><div class="n">50+</div><div class="l">個國家市場</div></div>
+          <div class="h-stat"><div class="n">HK</div><div class="l">香港業務</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BRAND -->
+<section class="brand" id="brand">
+  <div class="container">
+    <div class="brand-grid">
+      <div class="brand-visual">
+        <div class="bv-inner">
+          <div class="bv-year">EST. 1933</div>
+          <div class="bv-name">UCC</div>
+          <div class="bv-tag">UESHIMA COFFEE CO.</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-tag">品牌故事 · Brand Story</div>
+        <h2 class="section-title">UCC 代表什麼？</h2>
+        <div class="divider"></div>
+        <div class="brand-text">
+          <div class="brand-quote">「為了提供一杯美味的咖啡，UCC對品質的執著從未改變」</div>
+          <p>UCC（悠詩詩）全名 Ueshima Coffee Co.（上島珈琲），由創辦人上島忠雄於 1933 年在日本神戶創立。憑藉對咖啡品質的無比執著，UCC 發展成為日本最具影響力的咖啡品牌之一。</p>
+          <p>1969 年，UCC 發明了全球首款罐裝咖啡，徹底改變了全世界的飲咖啡習慣。時至今日，UCC 在全球超過 50 個國家和地區設有業務，香港分公司「悠詩詩上島咖啡店（香港）有限公司」持續為本地市場提供高品質的咖啡產品與咖啡店服務。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline" id="history">
+  <div class="container">
+    <div class="section-tag">品牌里程碑 · Milestones</div>
+    <h2 class="section-title">九十年的咖啡傳奇</h2>
+    <div class="divider"></div>
+    <div class="timeline-wrap">
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-year">1933</div>
+        <h4>品牌創立</h4>
+        <p>上島忠雄於日本神戶創立上島珈琲（UCC），以「為世界提供最美味的咖啡」為使命</p>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-year">1969</div>
+        <h4>發明罐裝咖啡</h4>
+        <p>UCC 研發並推出全球第一款罐裝即飲咖啡，革命性地改變了咖啡文化，影響全球</p>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-year">1980s</div>
+        <h4>進軍亞洲市場</h4>
+        <p>UCC 積極拓展亞洲業務，在香港成立「悠詩詩上島咖啡店（香港）有限公司」</p>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-year">2000年代</div>
+        <h4>香港業務擴展</h4>
+        <p>持續擴展香港咖啡店業務，為本地消費者帶來豐富多元的咖啡產品與體驗</p>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-year">至今</div>
+        <h4>精益求精</h4>
+        <p>UCC 持續投資咖啡研究與品質提升，於全球 50+ 個市場提供頂級咖啡體驗</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-tag">產品系列 · Products</div>
+    <h2 class="section-title">專注品質<br>全線咖啡產品</h2>
+    <div class="divider"></div>
+    <p class="section-sub">從精品烘焙豆到即飲咖啡，UCC 滿足每一位咖啡愛好者的需求</p>
+    <div class="products-grid">
+      <div class="prod-card">
+        <div class="prod-img roast">☕</div>
+        <div class="prod-body">
+          <h3>精品烘焙咖啡豆</h3>
+          <div class="en">Roasted Coffee Beans</div>
+          <p>嚴選全球優質咖啡豆，以精準烘焙技術引出每款豆種的獨特風味，供咖啡愛好者親自沖煮</p>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img instant">🫙</div>
+        <div class="prod-body">
+          <h3>即溶咖啡</h3>
+          <div class="en">Instant Coffee</div>
+          <p>採用先進凍乾技術鎖住咖啡精華，方便快捷，隨時享用一杯香濃的 UCC 好咖啡</p>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img canned">🥫</div>
+        <div class="prod-body">
+          <h3>罐裝即飲咖啡</h3>
+          <div class="en">Canned Coffee</div>
+          <p>全球首創的罐裝咖啡，多種口味選擇，隨時隨地享受香濃咖啡，是現代生活的最佳伴侶</p>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img drip">🫗</div>
+        <div class="prod-body">
+          <h3>掛耳式濾泡咖啡</h3>
+          <div class="en">Drip Bag Coffee</div>
+          <p>無需器具，隨時享用手沖風味，方便攜帶，是辦公室及旅行的最佳咖啡選擇</p>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img capsule">💊</div>
+        <div class="prod-body">
+          <h3>咖啡膠囊</h3>
+          <div class="en">Coffee Capsules</div>
+          <p>相容主流膠囊咖啡機，精準萃取，保留咖啡最佳風味，在家即可享受咖啡館級別體驗</p>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img special">🎁</div>
+        <div class="prod-body">
+          <h3>禮品精選系列</h3>
+          <div class="en">Gift Collection</div>
+          <p>精心包裝的咖啡禮盒，適合饋贈親友，商務送禮首選，彰顯對品質的重視與真摯情誼</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAFÉ -->
+<section class="cafe" id="cafe">
+  <div class="container">
+    <div class="section-tag">咖啡店服務 · Café Experience</div>
+    <h2 class="section-title">香港 UCC 咖啡店</h2>
+    <div class="divider"></div>
+    <p class="section-sub">走進 UCC 咖啡店，感受九十年咖啡文化的傳承與創新</p>
+    <div class="cafe-grid">
+      <div class="cafe-card">
+        <div class="cafe-icon">☕</div>
+        <h3>精品咖啡體驗</h3>
+        <p>由受過專業訓練的咖啡師為您沖製每一杯咖啡，從意式濃縮到手沖單品，確保每次都是最佳風味。</p>
+      </div>
+      <div class="cafe-card">
+        <div class="cafe-icon">🏠</div>
+        <h3>舒適用餐環境</h3>
+        <p>精心設計的店內環境，提供輕鬆愜意的空間，適合獨自放空、朋友聚會或商務洽談。</p>
+      </div>
+      <div class="cafe-card">
+        <div class="cafe-icon">🛒</div>
+        <h3>零售產品選購</h3>
+        <p>店內設有精品咖啡零售區，提供全系列 UCC 咖啡豆、即溶咖啡及特色周邊產品供選購。</p>
+      </div>
+      <div class="cafe-card">
+        <div class="cafe-icon">🎓</div>
+        <h3>咖啡文化推廣</h3>
+        <p>UCC 致力於推廣咖啡文化，定期舉辦咖啡知識分享及品鑑活動，讓更多人愛上咖啡。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-tag">聯絡我們 · Contact</div>
+    <h2 class="section-title">與 UCC 香港聯繫</h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="c-box">
+        <h3>聯絡資訊</h3>
+        <div class="c-item">
+          <span class="c-ico">🏢</span>
+          <div class="c-detail">
+            <div class="lbl">公司名稱</div>
+            <div class="val">悠詩詩上島咖啡店（香港）有限公司</div>
+            <div class="note">UCC Coffee Shop Co (Hong Kong) Limited</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <span class="c-ico">📍</span>
+          <div class="c-detail">
+            <div class="lbl">登記地址</div>
+            <div class="val">Way On Commercial Building</div>
+            <div class="note">香港 Hong Kong</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <span class="c-ico">🌐</span>
+          <div class="c-detail">
+            <div class="lbl">官方網站</div>
+            <div class="val"><a href="http://ucc.com.hk">ucc.com.hk</a></div>
+            <div class="note">香港官方網站</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <span class="c-ico">🇯🇵</span>
+          <div class="c-detail">
+            <div class="lbl">品牌總部</div>
+            <div class="val">UCC Ueshima Coffee Co., Ltd.</div>
+            <div class="note">日本神戶 Kobe, Japan · Est. 1933</div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-red">
+        <h3>查詢與合作</h3>
+        <p>無論是零售業務合作、咖啡供應採購、咖啡店加盟，抑或產品批發查詢，歡迎與 UCC 香港聯絡。我們的專業團隊將竭誠為您提供服務。</p>
+        <div class="cta-btns">
+          <a href="http://ucc.com.hk" class="cta-b white">🌐 訪問官方網站</a>
+          <a href="#products" class="cta-b outline">☕ 探索產品系列</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="f-brand">
+        <div class="f-ucc">UCC</div>
+        <div class="f-name">悠詩詩上島咖啡 · 香港</div>
+        <div class="f-sub">UCC Coffee Shop Co (Hong Kong) Limited<br>Way On Commercial Building, Hong Kong</div>
+      </div>
+      <div class="footer-links">
+        <div class="fc">
+          <h5>產品</h5>
+          <a href="#">烘焙咖啡豆</a>
+          <a href="#">即溶咖啡</a>
+          <a href="#">罐裝咖啡</a>
+          <a href="#">咖啡禮品</a>
+        </div>
+        <div class="fc">
+          <h5>服務</h5>
+          <a href="#">咖啡店</a>
+          <a href="#">企業採購</a>
+          <a href="#">品牌授權</a>
+        </div>
+        <div class="fc">
+          <h5>關於</h5>
+          <a href="#">品牌故事</a>
+          <a href="#">香港業務</a>
+          <a href="#">聯絡我們</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2024 悠詩詩上島咖啡店（香港）有限公司 · All Rights Reserved</div>
+      <div>UCC Ueshima Coffee Co., Ltd. · Est. 1933 Japan</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
