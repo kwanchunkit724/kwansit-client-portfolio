@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OASIS | 奧思集團 | 全肌能醫美專家 | Water Oasis Group</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --black:#0a0a0a;
+    --dark:#141414;
+    --charcoal:#1e1e1e;
+    --gold:#c9a84c;
+    --light-gold:#e8c97a;
+    --pale-gold:#f5e8b0;
+    --rose:#c8788a;
+    --white:#ffffff;
+    --cream:#fdf8f2;
+    --light:#f5f0e8;
+    --gray:#8a8a8a;
+    --border:#d4c4a0;
+  }
+  body{font-family:'Microsoft JhengHei','微軟正黑體','Segoe UI',Arial,sans-serif;background:#fff;color:var(--dark);}
+  a{text-decoration:none;color:inherit;}
+
+  /* NAV */
+  nav{background:var(--black);padding:0 5%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;height:72px;border-bottom:1px solid rgba(201,168,76,0.3);}
+  .nav-logo{display:flex;align-items:center;gap:14px;}
+  .nav-logo-wordmark{font-size:1.6rem;font-weight:900;color:var(--white);letter-spacing:4px;font-family:'Segoe UI',Arial,sans-serif;}
+  .nav-logo-wordmark span{color:var(--gold);}
+  .nav-logo-sub{color:#888;font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;margin-top:-2px;}
+  .nav-links{display:flex;gap:26px;list-style:none;}
+  .nav-links a{color:#ccc;font-size:0.85rem;font-weight:400;letter-spacing:0.5px;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-tel{color:var(--gold);font-size:0.9rem;font-weight:600;display:flex;align-items:center;gap:5px;}
+
+  /* HERO */
+  .hero{background:linear-gradient(160deg,var(--black) 0%,var(--dark) 50%,var(--charcoal) 100%);padding:100px 5% 90px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:0;right:0;width:45%;height:100%;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.08) 0%,transparent 70%);}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
+  .hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 0.8fr;gap:60px;align-items:center;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;background:rgba(201,168,76,0.15);color:var(--gold);border:1px solid rgba(201,168,76,0.4);padding:5px 16px;border-radius:20px;font-size:0.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;}
+  .hero h1{font-size:3.2rem;font-weight:900;line-height:1.15;margin-bottom:8px;letter-spacing:2px;}
+  .hero h1 .oasis{color:var(--white);}
+  .hero h1 .sub{display:block;font-size:1rem;color:var(--gold);font-weight:500;letter-spacing:3px;margin-top:8px;text-transform:uppercase;}
+  .hero-tagline{color:#aaa;font-size:1rem;font-style:italic;margin-bottom:18px;}
+  .hero-desc{color:#888;font-size:0.95rem;line-height:1.78;margin-bottom:32px;}
+  .hero-milestones{display:flex;gap:28px;margin-bottom:28px;}
+  .milestone{text-align:center;}
+  .milestone .num{font-size:1.8rem;font-weight:900;color:var(--gold);display:block;}
+  .milestone .lbl{font-size:0.7rem;color:#888;text-transform:uppercase;letter-spacing:1px;}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn-gold{background:var(--gold);color:var(--black);padding:13px 28px;border-radius:3px;font-weight:700;font-size:0.9rem;letter-spacing:1px;text-transform:uppercase;transition:all 0.2s;}
+  .btn-gold:hover{background:var(--light-gold);transform:translateY(-2px);}
+  .btn-border{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);padding:13px 28px;border-radius:3px;font-size:0.9rem;letter-spacing:1px;text-transform:uppercase;transition:all 0.2s;}
+  .btn-border:hover{border-color:var(--gold);color:var(--gold);}
+  .hero-awards{display:flex;flex-direction:column;gap:14px;}
+  .award{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-left:2px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 18px;}
+  .award .aw-icon{font-size:1.3rem;margin-bottom:5px;display:block;}
+  .award h3{color:var(--gold);font-size:0.82rem;font-weight:700;margin-bottom:3px;letter-spacing:0.5px;}
+  .award p{color:#888;font-size:0.72rem;line-height:1.4;}
+
+  /* SECTIONS */
+  section{padding:80px 5%;}
+  .section-inner{max-width:1100px;margin:0 auto;}
+  .section-label{font-size:0.68rem;font-weight:600;color:var(--gold);letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;}
+  .section-title{font-size:2rem;font-weight:800;color:var(--black);margin-bottom:14px;}
+  .section-title span{color:var(--gold);}
+  .section-desc{color:var(--gray);font-size:0.97rem;line-height:1.75;max-width:660px;}
+
+  /* BRANDS */
+  .brands{background:var(--cream);}
+  .brands-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:36px;}
+  .brand-card{background:var(--white);border-radius:12px;overflow:hidden;border:1px solid #e8dcc8;transition:all 0.2s;}
+  .brand-card:hover{box-shadow:0 12px 36px rgba(0,0,0,0.1);transform:translateY(-4px);}
+  .brand-header{background:var(--black);padding:24px 28px 20px;display:flex;align-items:center;gap:16px;}
+  .brand-icon{width:50px;height:50px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+  .brand-header h3{color:var(--white);font-size:1.1rem;font-weight:800;letter-spacing:1px;}
+  .brand-header p{color:var(--gold);font-size:0.72rem;text-transform:uppercase;letter-spacing:2px;margin-top:2px;}
+  .brand-body{padding:22px 28px;}
+  .brand-body p{color:#666;font-size:0.88rem;line-height:1.7;margin-bottom:14px;}
+  .brand-tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .brand-tag{background:var(--light);color:#555;padding:4px 10px;border-radius:4px;font-size:0.72rem;border:1px solid #d4c4a0;}
+
+  /* TREATMENTS */
+  .treatments{background:var(--black);padding:80px 5%;}
+  .treatments .section-title{color:var(--white);}
+  .treatments .section-desc{color:#888;}
+  .treatment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px;}
+  .treatment-card{background:#1e1e1e;border:1px solid rgba(201,168,76,0.2);border-radius:10px;padding:24px;transition:all 0.2s;}
+  .treatment-card:hover{border-color:var(--gold);transform:translateY(-3px);background:#252525;}
+  .t-category{font-size:0.68rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .treatment-card h3{color:var(--white);font-size:0.95rem;font-weight:700;margin-bottom:8px;}
+  .treatment-card p{color:#888;font-size:0.8rem;line-height:1.6;}
+
+  /* BRANCHES */
+  .branches{background:var(--cream);}
+  .branches-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px;}
+  .branch-card{background:var(--white);border-radius:10px;padding:22px;border:1px solid #e8dcc8;border-top:2px solid var(--gold);}
+  .branch-card h3{color:var(--black);font-size:0.95rem;font-weight:700;margin-bottom:4px;}
+  .branch-brand{color:var(--gold);font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+  .branch-addr{color:#666;font-size:0.8rem;line-height:1.6;}
+
+  /* CONTACT */
+  .contact{background:var(--dark);padding:80px 5%;}
+  .contact .section-title{color:var(--white);}
+  .contact .section-desc{color:#888;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:36px;}
+  .contact-card{background:#1e1e1e;border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:32px;}
+  .contact-card h3{color:var(--gold);font-size:1rem;font-weight:700;margin-bottom:22px;letter-spacing:1px;}
+  .contact-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;}
+  .ci-icon{width:36px;height:36px;background:rgba(201,168,76,0.1);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+  .contact-item strong{display:block;color:var(--white);font-size:0.83rem;margin-bottom:2px;}
+  .contact-item span{color:#888;font-size:0.83rem;line-height:1.5;}
+  .promo-card{background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(201,168,76,0.06));border:1px solid rgba(201,168,76,0.35);border-radius:12px;padding:32px;}
+  .promo-card h3{color:var(--gold);font-size:1rem;font-weight:700;margin-bottom:14px;}
+  .promo-card p{color:#aaa;font-size:0.87rem;line-height:1.75;}
+  .promo-card strong{color:var(--white);}
+  .promo-price{display:inline-block;background:var(--gold);color:var(--black);padding:8px 22px;border-radius:4px;font-weight:900;font-size:1.2rem;margin:14px 0 10px;}
+
+  /* FOOTER */
+  footer{background:#060606;padding:36px 5%;text-align:center;border-top:1px solid rgba(201,168,76,0.15);}
+  footer .brand{color:var(--gold);font-size:1.1rem;font-weight:800;letter-spacing:3px;margin-bottom:6px;}
+  footer p{color:#444;font-size:0.76rem;}
+
+  @media(max-width:900px){
+    .hero-inner,.contact-grid{grid-template-columns:1fr;}
+    .brands-grid{grid-template-columns:1fr;}
+    .treatment-grid{grid-template-columns:1fr 1fr;}
+    .branches-grid{grid-template-columns:1fr 1fr;}
+    nav .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div>
+      <div class="nav-logo-wordmark">OA<span>S</span>IS</div>
+      <div class="nav-logo-sub">Water Oasis Group</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#brands">品牌</a></li>
+    <li><a href="#treatments">熱銷療程</a></li>
+    <li><a href="#branches">分店</a></li>
+    <li><a href="#contact">聯絡</a></li>
+  </ul>
+  <div class="nav-tel">📞 3182 7777</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">奧思上市集團 · Hong Kong</div>
+      <h1><span class="oasis">OASIS</span>
+        <span class="sub">全肌能醫美專家</span>
+      </h1>
+      <p class="hero-tagline">您的個人輪廓膚質管理專家</p>
+      <p class="hero-desc">奧思上市集團集合頂尖高端科技、資深美學精英團隊及龐大服務網絡，OASIS 致力為香港醫美客戶度身訂製個人化膚質輪廓管理方案，歡迎您蒞臨 OASIS，感受一趟十全十美的美肌旅程！</p>
+      <div class="hero-milestones">
+        <div class="milestone">
+          <span class="num">600萬+</span>
+          <span class="lbl">服務人次見證</span>
+        </div>
+        <div class="milestone">
+          <span class="num">4</span>
+          <span class="lbl">旗艦品牌</span>
+        </div>
+        <div class="milestone">
+          <span class="num">多年</span>
+          <span class="lbl">醫美服務經驗</span>
+        </div>
+      </div>
+      <div class="hero-btns">
+        <a href="#treatments" class="btn-gold">熱銷療程</a>
+        <a href="#contact" class="btn-border">立即預約</a>
+      </div>
+    </div>
+    <div class="hero-awards">
+      <div class="award">
+        <span class="aw-icon">🏆</span>
+        <h3>榮膺香港《最喜愛醫學美容中心》</h3>
+        <p>以效果著稱，以服務築績，城中名人首選</p>
+      </div>
+      <div class="award">
+        <span class="aw-icon">⭐</span>
+        <h3>香港10大專業醫學美容纖體中心</h3>
+        <p>OASIS beauty 屢獲美容界殊榮</p>
+      </div>
+      <div class="award">
+        <span class="aw-icon">📈</span>
+        <h3>奧思上市集團</h3>
+        <p>Water Oasis Group Limited — 香港上市企業</p>
+      </div>
+      <div class="award">
+        <span class="aw-icon">🌏</span>
+        <h3>北京水磨坊</h3>
+        <p>業務延伸至中國內地，品牌影響力廣泛</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands" id="brands">
+  <div class="section-inner">
+    <div class="section-label">旗艦品牌</div>
+    <h2 class="section-title">OASIS <span>旗下品牌</span></h2>
+    <p class="section-desc">奧思集團旗下設有多個專業美容品牌，涵蓋醫學美容、水療、男士護理及零售產品，全面照顧每位客人的需求。</p>
+    <div class="brands-grid">
+      <div class="brand-card">
+        <div class="brand-header">
+          <div class="brand-icon">⚕️</div>
+          <div>
+            <h3>OASIS Medical</h3>
+            <p>奧思醫學美容中心</p>
+          </div>
+        </div>
+        <div class="brand-body">
+          <p>香港最喜愛醫學美容中心。引進歐美先進儀器，100%原廠正貨醫美產品，採用國際認證先進美容科研技術，由經驗豐富的專業醫療團隊負責，為客戶提供個人化膚質輪廓管理方案。</p>
+          <div class="brand-tags">
+            <span class="brand-tag">醫美塑顏針</span>
+            <span class="brand-tag">Pico4Genius 皮秒激光</span>
+            <span class="brand-tag">HIFU GOLD</span>
+            <span class="brand-tag">SYLFIRM X</span>
+            <span class="brand-tag">Exosome</span>
+            <span class="brand-tag">醫學活髮</span>
+            <span class="brand-tag">美白嫩膚</span>
+            <span class="brand-tag">私密保養</span>
+          </div>
+        </div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-header">
+          <div class="brand-icon">💆</div>
+          <div>
+            <h3>OASIS Beauty</h3>
+            <p>香港10大專業醫學美容纖體中心</p>
+          </div>
+        </div>
+        <div class="brand-body">
+          <p>緊貼美容市場潮流，以全球最先進美容儀器，配合最全面的護膚品，為每位尊貴顧客提供肌膚、身型及私密保養等一站式貼心服務，品牌屢獲美容界殊榮。</p>
+          <div class="brand-tags">
+            <span class="brand-tag">面部護理</span>
+            <span class="brand-tag">纖體塑形</span>
+            <span class="brand-tag">身體護理</span>
+            <span class="brand-tag">私密保養</span>
+            <span class="brand-tag">脫毛</span>
+            <span class="brand-tag">美胸療程</span>
+          </div>
+        </div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-header">
+          <div class="brand-icon">🌿</div>
+          <div>
+            <h3>OASIS Spa</h3>
+            <p>綠洲心靈 · 然養身心</p>
+          </div>
+        </div>
+        <div class="brand-body">
+          <p>深知舒適與放鬆的重要性，透過優雅的裝潢、柔和的燈光及清幽的香薰，讓您彷彿置身綠洲。配備歐洲先進美容設備，由嚴格訓練的專業美容師主理，讓都市人真正享受。</p>
+          <div class="brand-tags">
+            <span class="brand-tag">水療護理</span>
+            <span class="brand-tag">面部療程</span>
+            <span class="brand-tag">身體按摩</span>
+            <span class="brand-tag">香薰治療</span>
+            <span class="brand-tag">放鬆減壓</span>
+          </div>
+        </div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-header">
+          <div class="brand-icon">👔</div>
+          <div>
+            <h3>OASIS Homme</h3>
+            <p>一站式專業男士醫學美容</p>
+          </div>
+        </div>
+        <div class="brand-body">
+          <p>針對男士肌膚護理需求，採用最高效美容儀器及優質護膚產品，配合細心親切的專業醫學美容團隊，讓香港男士於肌膚、身體護理上得到最全面及顯著的效果。</p>
+          <div class="brand-tags">
+            <span class="brand-tag">男士面部護理</span>
+            <span class="brand-tag">修身療程</span>
+            <span class="brand-tag">按摩護理</span>
+            <span class="brand-tag">深層清潔</span>
+            <span class="brand-tag">保濕緊緻</span>
+            <span class="brand-tag">首次體驗 HK$328</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TREATMENTS -->
+<section class="treatments" id="treatments">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--gold);">熱銷醫美療程</div>
+    <h2 class="section-title">殿堂級<span>醫學美容服務</span></h2>
+    <p class="section-desc">OASIS medical 提供多項熱銷醫學美容療程，均經臨床驗證安全有效，結合全球最前沿的創新技術。</p>
+    <div class="treatment-grid">
+      <div class="treatment-card">
+        <div class="t-category">提升緊膚</div>
+        <h3>HIFU GOLD 高強度聚焦超聲波</h3>
+        <p>深層提升緊緻，刺激膠原再生，改善臉部輪廓及下垂問題，效果持久顯著。</p>
+      </div>
+      <div class="treatment-card">
+        <div class="t-category">激光美肌</div>
+        <h3>Pico4Genius 皮秒激光去斑</h3>
+        <p>第4代皮秒激光技術，精準去除色斑、雀斑及膚色不均，同步刺激膠原再生，嫩白肌膚。</p>
+      </div>
+      <div class="treatment-card">
+        <div class="t-category">肌膚修復</div>
+        <h3>SYLFIRM X 射頻微針</h3>
+        <p>雙模射頻微針技術，改善敏感泛紅、毛孔粗大及暗啞膚色，深層修復肌底。</p>
+      </div>
+      <div class="treatment-card">
+        <div class="t-category">填充塑顏</div>
+        <h3>麗珠蘭 (Juvederm) 塑顏針</h3>
+        <p>臨床認證的透明質酸填充劑，即時豐盈輪廓，撫平皺紋，效果自然持久。</p>
+      </div>
+      <div class="treatment-card">
+        <div class="t-category">細胞修復</div>
+        <h3>Exosome 外泌體療程</h3>
+        <p>最新細胞再生科技，促進皮膚自我修復能力，改善暗啞、衰老及受損肌膚。</p>
+      </div>
+      <div class="treatment-card">
+        <div class="t-category">醫學活髮</div>
+        <h3>醫學活髮療程</h3>
+        <p>針對脫髮問題，採用最新醫學技術，促進頭皮血液循環及髮囊活化，有效減少脫髮。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANCHES -->
+<section class="branches" id="branches">
+  <div class="section-inner">
+    <div class="section-label">店舖位置</div>
+    <h2 class="section-title">全港<span>分店網絡</span></h2>
+    <p class="section-desc">OASIS 在香港各主要商圈設有分店，方便顧客隨時享受優質醫美及美容服務。</p>
+    <div class="branches-grid">
+      <div class="branch-card">
+        <div class="branch-brand">OASIS Homme</div>
+        <h3>銅鑼灣旗艦店</h3>
+        <div class="branch-addr">銅鑼灣堅拿道東8號<br>2千年廣場6樓及17樓</div>
+      </div>
+      <div class="branch-card">
+        <div class="branch-brand">OASIS Homme</div>
+        <h3>旺角朗豪坊</h3>
+        <div class="branch-addr">旺角朗豪坊辦公大樓<br>45樓01及15室</div>
+      </div>
+      <div class="branch-card">
+        <div class="branch-brand">OASIS Homme</div>
+        <h3>沙田新城市</h3>
+        <div class="branch-addr">沙田新城市商業大廈<br>13樓1301-1302, 1307-1312室</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--gold);">聯絡我們</div>
+    <h2 class="section-title">預約<span style="color:var(--gold);">諮詢療程</span></h2>
+    <p class="section-desc">歡迎致電或發送電郵預約，我們的美容顧問將為您提供個人化療程方案建議。</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>📞 聯絡奧思集團</h3>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <strong>查詢熱線</strong>
+            <span>+852 3182 7777<br>（服務時間：星期一至五 9:30am-6:30pm）</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <strong>WhatsApp</strong>
+            <span>9856 0483</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <strong>電郵</strong>
+            <span>dm@oasis-group.com.hk</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <strong>集團總部</strong>
+            <span>香港銅鑼灣告士打道280號<br>世界貿易中心18樓</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <strong>網址</strong>
+            <span>oasis-group.com.hk</span>
+          </div>
+        </div>
+      </div>
+      <div class="promo-card">
+        <h3>🎁 OASIS Homme 首次體驗優惠</h3>
+        <p>首次體驗<strong>高活性保濕緊緻療程</strong>，以優惠價立即感受 OASIS Homme 的專業男士醫學美容服務。</p>
+        <div class="promo-price">HK$328</div>
+        <p>首次體驗優惠限年滿18歲或以上、首次體驗之男士新客人，每位客人只可享用一次。</p>
+        <p style="margin-top:14px;font-size:0.8rem;color:#666;">體驗過程中或會使用具微電流、高速超聲波震動及光能之美容儀加強導滲效果。如有疑問，請先諮詢美容顧問。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">OASIS</div>
+  <p>Water Oasis Group Limited 奧思集團有限公司 | 銅鑼灣告士打道280號世界貿易中心18樓</p>
+  <p style="margin-top:6px;">旗下品牌：OASIS Medical · OASIS Beauty · OASIS Spa · OASIS Homme · H2O+ · GLYCEL · 水之屋 · 水磨坊</p>
+  <p style="margin-top:6px;">&copy; 2025 Water Oasis Group Limited. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
