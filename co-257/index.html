@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海斯傢俱工程有限公司 | AMAZE Furniture & Engineering</title>
+<style>
+  :root {
+    --orange: #e85d04;
+    --orange-light: #f48c42;
+    --navy: #0a1628;
+    --dark-blue: #1a2d4a;
+    --mid-blue: #1e3a5f;
+    --light: #f4f6fa;
+    --white: #fff;
+    --text: #222;
+    --text-light: #666;
+    --border: #dde3ed;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: var(--white); }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 66px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-brand {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+  .brand-en {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .brand-en span { color: var(--orange); }
+  .brand-zh { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 2px; margin-top: 1px; }
+  .nav-links { display: flex; gap: 26px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-cta {
+    background: var(--orange);
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 600 !important;
+  }
+  .nav-cta:hover { background: var(--orange-light) !important; }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    padding: 80px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(232,93,4,0.06) 0%, transparent 100%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--orange), transparent);
+  }
+  .hero-content { max-width: 620px; position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(232,93,4,0.15);
+    color: var(--orange);
+    border: 1px solid rgba(232,93,4,0.3);
+    padding: 5px 14px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .hero h1 span { color: var(--orange); }
+  .hero-zh {
+    font-size: 20px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 4px;
+    margin-bottom: 22px;
+    display: block;
+  }
+  .hero p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.75;
+    max-width: 500px;
+    margin-bottom: 36px;
+  }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-orange {
+    background: var(--orange);
+    color: var(--white);
+    padding: 13px 30px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-orange:hover { background: var(--orange-light); }
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    padding: 13px 30px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+  .hero-info-bar {
+    display: flex;
+    gap: 32px;
+    margin-top: 48px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: wrap;
+  }
+  .hero-info-item { display: flex; align-items: center; gap: 8px; }
+  .hii-icon { font-size: 16px; }
+  .hii-text { font-size: 13px; color: rgba(255,255,255,0.6); }
+  .hii-text a { color: rgba(255,255,255,0.6); text-decoration: none; }
+
+  /* SECTION */
+  .section { padding: 72px 70px; }
+  .section-label {
+    font-size: 11px;
+    color: var(--orange);
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+  .section-zh { font-size: 15px; color: var(--text-light); letter-spacing: 3px; margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--text-light); line-height: 1.75; max-width: 580px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .about-content p { font-size: 14px; color: var(--text-light); line-height: 1.8; margin-bottom: 16px; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 32px; }
+  .a-stat {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 6px;
+    padding: 22px 18px;
+    text-align: center;
+  }
+  .a-stat .num { font-size: 28px; font-weight: 800; color: var(--orange); }
+  .a-stat .lbl { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+  .about-card {
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 44px 36px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--orange);
+  }
+  .about-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .about-card .sub-zh { font-size: 13px; color: var(--orange); letter-spacing: 2px; margin-bottom: 20px; }
+  .about-card p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.75; margin-bottom: 20px; }
+  .about-detail { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
+  .ad-label { font-size: 11px; color: rgba(255,255,255,0.4); min-width: 50px; }
+  .ad-value { font-size: 13px; color: rgba(255,255,255,0.8); }
+
+  /* PRODUCTS */
+  .products { background: var(--white); }
+  .products-tabs { display: flex; gap: 8px; margin-bottom: 36px; flex-wrap: wrap; }
+  .tab-btn {
+    background: var(--light);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 9px 20px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--orange);
+    color: var(--white);
+    border-color: var(--orange);
+  }
+  .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .prod-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .prod-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: var(--orange); }
+  .prod-thumb {
+    height: 140px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 54px;
+    position: relative;
+  }
+  .prod-thumb-1 { background: linear-gradient(135deg, #0a1628 0%, #1a2d4a 100%); }
+  .prod-thumb-2 { background: linear-gradient(135deg, #1a0d00 0%, #3d2000 100%); }
+  .prod-thumb-3 { background: linear-gradient(135deg, #001a0d 0%, #003320 100%); }
+  .prod-thumb-4 { background: linear-gradient(135deg, #0d0a1a 0%, #1a1433 100%); }
+  .prod-badge {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: var(--orange);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+  }
+  .prod-info { padding: 18px 16px; }
+  .prod-cat { font-size: 11px; color: var(--orange); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .prod-name { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .prod-zh { font-size: 12px; color: var(--text-light); letter-spacing: 1px; margin-bottom: 10px; }
+  .prod-items { display: flex; flex-wrap: wrap; gap: 5px; }
+  .pi {
+    background: var(--light);
+    color: var(--text-light);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+  }
+
+  /* SERVICES */
+  .services { background: var(--light); }
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .svc-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 28px 24px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    border-left: 4px solid var(--orange);
+  }
+  .svc-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .svc-icon { font-size: 30px; margin-bottom: 14px; }
+  .svc-name { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .svc-zh { font-size: 12px; color: var(--orange); letter-spacing: 1px; margin-bottom: 10px; }
+  .svc-desc { font-size: 13px; color: var(--text-light); line-height: 1.65; }
+
+  /* PRODUCT CATALOGUE */
+  .catalogue { background: var(--navy); }
+  .catalogue .section-title { color: var(--white); }
+  .catalogue .section-zh { color: rgba(255,255,255,0.45); }
+  .catalogue .section-sub { color: rgba(255,255,255,0.6); }
+  .cat-list-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+  .cat-list-col { }
+  .cat-list-col h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .cat-list-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .cat-list-col li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+  }
+  .cat-list-col li::before {
+    content: '›';
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  /* CLIENTS */
+  .clients { background: var(--white); }
+  .clients-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
+  .client-card {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 16px;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .client-card:hover { border-color: var(--orange); box-shadow: 0 4px 12px rgba(0,0,0,0.07); }
+  .client-icon { font-size: 28px; margin-bottom: 10px; }
+  .client-name { font-size: 13px; font-weight: 700; color: var(--navy); }
+  .client-type { font-size: 11px; color: var(--text-light); margin-top: 3px; }
+
+  /* CONTACT */
+  .contact { background: var(--light); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info h3 { font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+  .contact-info .sub-zh { font-size: 13px; color: var(--text-light); letter-spacing: 2px; margin-bottom: 28px; }
+  .cdet {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .cdet:last-of-type { border-bottom: none; }
+  .cdet-icon { font-size: 18px; margin-top: 2px; flex-shrink: 0; }
+  .cdet-label { font-size: 11px; color: var(--text-light); font-weight: 600; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .cdet-value { font-size: 15px; font-weight: 700; color: var(--navy); }
+  .cdet-value a { color: var(--navy); text-decoration: none; }
+  .cdet-value a:hover { color: var(--orange); }
+  .contact-form {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 36px 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  }
+  .contact-form h3 { font-size: 20px; font-weight: 700; margin-bottom: 22px; color: var(--navy); }
+  .fg { margin-bottom: 16px; }
+  .fg label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-light); margin-bottom: 6px; }
+  .fg input,
+  .fg select,
+  .fg textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 11px 14px;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--light);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .fg input:focus,
+  .fg select:focus,
+  .fg textarea:focus { border-color: var(--orange); background: var(--white); }
+  .fg textarea { min-height: 100px; resize: vertical; }
+  .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .submit-btn {
+    width: 100%;
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    padding: 13px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 6px;
+  }
+  .submit-btn:hover { background: var(--orange-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.45);
+    padding: 36px 70px;
+    border-top: 3px solid var(--orange);
+  }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-brand-en { font-size: 15px; font-weight: 700; color: var(--white); }
+  .footer-brand-en span { color: var(--orange); }
+  .footer-brand-zh { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 1px; margin-top: 3px; }
+  .footer-links { display: flex; gap: 22px; list-style: none; }
+  .footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 12px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--orange); }
+  .footer-copy { font-size: 11px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 60px 20px; }
+    .hero h1 { font-size: 36px; }
+    .section { padding: 56px 20px; }
+    .about-grid, .svc-grid, .cat-list-grid, .products-grid, .clients-grid, .contact-grid { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: 1fr 1fr 1fr; }
+    .fg-row { grid-template-columns: 1fr; }
+    footer { padding: 28px 20px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <span class="brand-en"><span>AMAZE</span> Furniture</span>
+    <span class="brand-zh">海斯傢俱工程有限公司</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#services">Engineering</a></li>
+    <li><a href="#catalogue">Catalogue</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Hong Kong · Yuen Long · Since 2000s</div>
+    <h1><span>AMAZE</span> Furniture<br>& Engineering</h1>
+    <span class="hero-zh">海斯傢俱工程有限公司</span>
+    <p>Your trusted supplier of commercial and institutional furniture, combined with comprehensive fit-out and engineering services for schools, offices, restaurants, and businesses across Hong Kong.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-orange">View Products</a>
+      <a href="#contact" class="btn-outline">Get a Quote</a>
+    </div>
+    <div class="hero-info-bar">
+      <div class="hero-info-item">
+        <span class="hii-icon">📞</span>
+        <span class="hii-text"><a href="tel:+85231639398">3163 9398</a></span>
+      </div>
+      <div class="hero-info-item">
+        <span class="hii-icon">💬</span>
+        <span class="hii-text">WhatsApp: 6217 8745</span>
+      </div>
+      <div class="hero-info-item">
+        <span class="hii-icon">✉️</span>
+        <span class="hii-text"><a href="mailto:sales@hkamaze.com">sales@hkamaze.com</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">Quality Furniture &<br>Professional Engineering</h2>
+      <p class="section-zh">優質傢俱 · 專業工程</p>
+      <p>AMAZE Furniture & Engineering Company Limited (海斯傢俱工程有限公司) is a Hong Kong-based supplier of quality commercial furniture and provider of comprehensive renovation engineering services.</p>
+      <p>Based in Yuen Long, we supply premium furniture solutions for schools, kindergartens, offices, restaurants, and commercial premises throughout Hong Kong, combining product excellence with full fit-out engineering capabilities.</p>
+      <p>Our product range encompasses office seating, school furniture, storage systems, soft seating, display solutions, and partition screens — supported by full renovation and engineering services to transform any space.</p>
+      <div class="about-stats">
+        <div class="a-stat"><div class="num">500+</div><div class="lbl">Products</div></div>
+        <div class="a-stat"><div class="num">HK</div><div class="lbl">Based Local</div></div>
+        <div class="a-stat"><div class="num">9</div><div class="lbl">Eng Services</div></div>
+      </div>
+    </div>
+    <div class="about-card">
+      <h3>AMAZE Furniture</h3>
+      <p class="sub-zh">海斯傢俱工程有限公司</p>
+      <p>Supplying schools, kindergartens, offices, restaurants, and institutions with quality furniture at competitive prices. We are committed to creating high-quality working environments for schools and organisations, providing carefully selected products and one-stop service to our customers.</p>
+      <div class="about-detail">
+        <span class="ad-label">地址</span>
+        <span class="ad-value">6/F, Forda Ind. Bldg., 16 Wang Chau Rd., Yuen Long<br>元朗橫洲路16號豐達工業大廈6/F</span>
+      </div>
+      <div class="about-detail">
+        <span class="ad-label">電話</span>
+        <span class="ad-value">3163 9398</span>
+      </div>
+      <div class="about-detail">
+        <span class="ad-label">傳真</span>
+        <span class="ad-value">2120 7476</span>
+      </div>
+      <div class="about-detail">
+        <span class="ad-label">Email</span>
+        <span class="ad-value">info@hkamaze.com</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section products" id="products">
+  <div class="section-label">Our Products</div>
+  <h2 class="section-title">Furniture Solutions</h2>
+  <p class="section-zh">傢俱產品系列</p>
+  <p class="section-sub">A comprehensive range of commercial furniture for offices, schools, institutions, restaurants, and all types of business premises.</p>
+  <div style="margin-top: 36px;">
+    <div class="products-grid">
+      <div class="prod-card">
+        <div class="prod-thumb prod-thumb-1">💼<span class="prod-badge">HOT</span></div>
+        <div class="prod-info">
+          <div class="prod-cat">Office Seating</div>
+          <div class="prod-name">Office Chairs</div>
+          <div class="prod-zh">辦公椅系列</div>
+          <div class="prod-items">
+            <span class="pi">辦公椅</span>
+            <span class="pi">電腦椅</span>
+            <span class="pi">大班椅</span>
+            <span class="pi">折疊椅</span>
+            <span class="pi">會議椅</span>
+            <span class="pi">接待椅</span>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-thumb prod-thumb-2">🎓<span class="prod-badge">SCHOOL</span></div>
+        <div class="prod-info">
+          <div class="prod-cat">School Furniture</div>
+          <div class="prod-name">Student & School Sets</div>
+          <div class="prod-zh">學校傢俱系列</div>
+          <div class="prod-items">
+            <span class="pi">學生椅桌</span>
+            <span class="pi">幼兒椅</span>
+            <span class="pi">圖書館</span>
+            <span class="pi">電腦桌</span>
+            <span class="pi">演講台</span>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-thumb prod-thumb-3">🛋️</div>
+        <div class="prod-info">
+          <div class="prod-cat">Soft Seating</div>
+          <div class="prod-name">Sofas & Lounge Chairs</div>
+          <div class="prod-zh">沙發系列</div>
+          <div class="prod-items">
+            <span class="pi">梳化</span>
+            <span class="pi">BS7176阻燃</span>
+            <span class="pi">吧椅</span>
+            <span class="pi">餐椅</span>
+            <span class="pi">茶几</span>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-thumb prod-thumb-4">📦</div>
+        <div class="prod-info">
+          <div class="prod-cat">Storage Systems</div>
+          <div class="prod-name">Shelving & Cabinets</div>
+          <div class="prod-zh">儲存架系列</div>
+          <div class="prod-items">
+            <span class="pi">文件架</span>
+            <span class="pi">貨架</span>
+            <span class="pi">ABS儲物架</span>
+            <span class="pi">木架</span>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-thumb prod-thumb-1">🪟</div>
+        <div class="prod-info">
+          <div class="prod-cat">Partitions & Screens</div>
+          <div class="prod-name">Partition Screens</div>
+          <div class="prod-zh">屏風/隔板系列</div>
+          <div class="prod-items">
+            <span class="pi">可隔板</span>
+            <span class="pi">辦公屏風</span>
+            <span class="pi">隔板配件</span>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-thumb prod-thumb-2">📋</div>
+        <div class="prod-info">
+          <div class="prod-cat">Display & Boards</div>
+          <div class="prod-name">Notice & Display Boards</div>
+          <div class="prod-zh">展示板/電子白板</div>
+          <div class="prod-items">
+            <span class="pi">黑白板</span>
+            <span class="pi">電子黑板</span>
+            <span class="pi">展示板</span>
+            <span class="pi">指示牌</span>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-thumb prod-thumb-3">🪑</div>
+        <div class="prod-info">
+          <div class="prod-cat">Office Desks</div>
+          <div class="prod-name">Desks & Tables</div>
+          <div class="prod-zh">辦公桌/大班桌</div>
+          <div class="prod-items">
+            <span class="pi">大班桌</span>
+            <span class="pi">會議桌</span>
+            <span class="pi">電腦桌</span>
+            <span class="pi">展示台</span>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-thumb prod-thumb-4">🏫<span class="prod-badge">NEW</span></div>
+        <div class="prod-info">
+          <div class="prod-cat">Signage & Awards</div>
+          <div class="prod-name">Signage & School Items</div>
+          <div class="prod-zh">校徽/水牌/門匾</div>
+          <div class="prod-items">
+            <span class="pi">校徽</span>
+            <span class="pi">水牌</span>
+            <span class="pi">門匾</span>
+            <span class="pi">衣架</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGINEERING SERVICES -->
+<section class="section services" id="services">
+  <div class="section-label">Engineering Works</div>
+  <h2 class="section-title">Renovation & Fit-out Services</h2>
+  <p class="section-zh">裝修及工程服務</p>
+  <p class="section-sub">Comprehensive renovation and fit-out engineering for offices, restaurants, retail stores, schools, and all commercial premises.</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon">🎨</div>
+      <div class="svc-name">Painting Works</div>
+      <div class="svc-zh">油漆工程</div>
+      <div class="svc-desc">Professional painting services including wall painting, ceiling works, decorative finishes, and specialist paint applications for all property types.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🖼️</div>
+      <div class="svc-name">Advertising Graphics & Stickers</div>
+      <div class="svc-zh">廣告貼紙設計工程</div>
+      <div class="svc-desc">Design and installation of advertising graphic films, wall wraps, window graphics, and branded sticker works for commercial spaces.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🪟</div>
+      <div class="svc-name">Curtain & Blind Works</div>
+      <div class="svc-zh">窗簾工程</div>
+      <div class="svc-desc">Supply and installation of all types of curtains, roller blinds, venetian blinds, and window treatment solutions for offices and commercial premises.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏠</div>
+      <div class="svc-name">Flooring Works</div>
+      <div class="svc-zh">地毯/地板工程</div>
+      <div class="svc-desc">Carpet installation, timber flooring, vinyl flooring, and stone/tile flooring works. Complete floor finishing solutions for any commercial environment.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">❄️</div>
+      <div class="svc-name">Air-conditioning Works</div>
+      <div class="svc-zh">冷氣工程</div>
+      <div class="svc-desc">Supply, installation, and maintenance of air-conditioning systems for offices, retail shops, restaurants, and commercial premises of all sizes.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔲</div>
+      <div class="svc-name">Glass & Partition Works</div>
+      <div class="svc-zh">玻璃/隔板工程</div>
+      <div class="svc-desc">Installation of glass partitions, glass boxes, timber partitioning, and custom-designed office division solutions for modern workspaces.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🚪</div>
+      <div class="svc-name">Doors & Carpentry</div>
+      <div class="svc-zh">不鏽鋼門/木工工程</div>
+      <div class="svc-desc">Stainless steel door fabrication and installation, custom carpentry, joinery, and woodwork for commercial and institutional projects.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🧱</div>
+      <div class="svc-name">Tiling Works</div>
+      <div class="svc-zh">地板磁磚工程</div>
+      <div class="svc-desc">Professional ceramic and stone tile installation for floors and walls in offices, restaurants, washrooms, and all commercial premises.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏗️</div>
+      <div class="svc-name">Full Fit-out Services</div>
+      <div class="svc-zh">全套裝修工程</div>
+      <div class="svc-desc">Complete turnkey fit-out and renovation solutions — from design consultation to project management and handover, serving offices, restaurants, retail, and schools.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT CATALOGUE -->
+<section class="section catalogue" id="catalogue">
+  <div class="section-label">Full Product Range</div>
+  <h2 class="section-title" style="color:var(--white)">Complete Product Catalogue</h2>
+  <p class="section-zh">完整產品目錄</p>
+  <p class="section-sub">Browse our full range of furniture products. Custom orders and bulk pricing available — contact us for a quotation.</p>
+  <div class="cat-list-grid">
+    <div class="cat-list-col">
+      <h4>Chairs & Seating 椅子系列</h4>
+      <ul>
+        <li>辦公椅 Office Chair</li>
+        <li>電腦椅 Computer Chair</li>
+        <li>大班椅 Executive Chair</li>
+        <li>折疊椅 Folding Chair</li>
+        <li>會議椅 Conference Chair</li>
+        <li>接待椅 Reception Chair</li>
+        <li>吧椅 Bar Chair</li>
+        <li>木椅 Wooden Chair</li>
+        <li>餐椅 Dining Chair</li>
+        <li>賓客椅 Guest Chair</li>
+        <li>梳化/沙發 Sofa</li>
+        <li>BS7176阻燃梳化 FR Sofa</li>
+      </ul>
+    </div>
+    <div class="cat-list-col">
+      <h4>School & Institution 學校系列</h4>
+      <ul>
+        <li>學生椅桌 Student Chair+Desk</li>
+        <li>幼兒椅 Toddler Chair</li>
+        <li>圖書館傢俱 Library Furniture</li>
+        <li>實驗室傢俱 Lab Furniture</li>
+        <li>電腦室傢俱 Computer Room</li>
+        <li>視聽室傢俱 AV Room</li>
+        <li>音樂室傢俱 Music Room</li>
+        <li>演講台 Podium/Lectern</li>
+        <li>校徽 School Badge</li>
+        <li>展示板 Display Board</li>
+        <li>黑白板/電子黑板 Boards</li>
+        <li>指示牌 Signage</li>
+      </ul>
+    </div>
+    <div class="cat-list-col">
+      <h4>Office & Storage 辦公室系列</h4>
+      <ul>
+        <li>大班桌 Executive Desk</li>
+        <li>電腦桌 Computer Desk</li>
+        <li>會議桌 Conference Table</li>
+        <li>文件展架 Document Rack</li>
+        <li>貨架 Goods Shelf</li>
+        <li>ABS儲物架 ABS Storage Cabinet</li>
+        <li>木架 Wooden Shelf</li>
+        <li>屏風 Partition Screen</li>
+        <li>茶几 Coffee Table</li>
+        <li>衣架 Clothing Rack</li>
+        <li>多用途工作台 Work Desk</li>
+        <li>展示台 Display Podium</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="section clients">
+  <div class="section-label">Serving All Sectors</div>
+  <h2 class="section-title">Who We Serve</h2>
+  <p class="section-zh">服務行業</p>
+  <p class="section-sub">Trusted by schools, kindergartens, offices, restaurants, and institutions throughout Hong Kong for quality furniture and renovation services.</p>
+  <div class="clients-grid">
+    <div class="client-card">
+      <div class="client-icon">🏫</div>
+      <div class="client-name">Schools & Kindergartens</div>
+      <div class="client-type">學校 / 幼稚園</div>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">💼</div>
+      <div class="client-name">Offices</div>
+      <div class="client-type">辦公室</div>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">🍽️</div>
+      <div class="client-name">Restaurants & F&B</div>
+      <div class="client-type">食肆 / 餐廳</div>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">🏛️</div>
+      <div class="client-name">Government & NGOs</div>
+      <div class="client-type">政府 / 機構</div>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">🛍️</div>
+      <div class="client-name">Retail Shops</div>
+      <div class="client-type">零售商店</div>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">🏨</div>
+      <div class="client-name">Hotels & Hospitality</div>
+      <div class="client-type">酒店 / 款待業</div>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">🏥</div>
+      <div class="client-name">Medical Centres</div>
+      <div class="client-type">醫療機構</div>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">🏭</div>
+      <div class="client-name">Industrial & Warehouses</div>
+      <div class="client-type">工業 / 貨倉</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="section-label">Contact Us</div>
+  <h2 class="section-title">Get in Touch</h2>
+  <p class="section-zh">聯絡我們</p>
+  <br>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>AMAZE Furniture & Engineering</h3>
+      <p class="sub-zh">海斯傢俱工程有限公司</p>
+      <div class="cdet">
+        <div class="cdet-icon">📍</div>
+        <div>
+          <div class="cdet-label">Address 地址</div>
+          <div class="cdet-value">6/F, Forda Industrial Building<br>16 Wang Chau Road, Yuen Long, HK<br>元朗橫洲路16號豐達工業大廈6/F</div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">📞</div>
+        <div>
+          <div class="cdet-label">Tel 電話</div>
+          <div class="cdet-value"><a href="tel:+85231639398">3163 9398</a></div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">📠</div>
+        <div>
+          <div class="cdet-label">Fax 傳真</div>
+          <div class="cdet-value">2120 7476</div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">💬</div>
+        <div>
+          <div class="cdet-label">WhatsApp</div>
+          <div class="cdet-value"><a href="https://wa.me/85262178745">6217 8745</a></div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">✉️</div>
+        <div>
+          <div class="cdet-label">Email 電郵</div>
+          <div class="cdet-value"><a href="mailto:info@hkamaze.com">info@hkamaze.com</a><br><a href="mailto:sales@hkamaze.com">sales@hkamaze.com</a></div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">🌐</div>
+        <div>
+          <div class="cdet-label">Website 網站</div>
+          <div class="cdet-value"><a href="https://www.hkamaze.com" target="_blank">www.hkamaze.com</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Send an Enquiry / 發送查詢</h3>
+      <div class="fg-row">
+        <div class="fg">
+          <label>Name 姓名</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="fg">
+          <label>Phone 電話</label>
+          <input type="tel" placeholder="Contact number">
+        </div>
+      </div>
+      <div class="fg">
+        <label>Email 電郵</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="fg">
+        <label>Enquiry Type 查詢類別</label>
+        <select>
+          <option>Furniture Products 傢俱產品</option>
+          <option>School Furniture 學校傢俱</option>
+          <option>Office Furniture 辦公室傢俱</option>
+          <option>Renovation Engineering 裝修工程</option>
+          <option>Fit-out Services 裝修服務</option>
+          <option>Quotation Request 報價</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Message 備註</label>
+        <textarea placeholder="Describe your requirements, quantities, or project details..."></textarea>
+      </div>
+      <button class="submit-btn">Send Enquiry / 提交查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-en"><span>AMAZE</span> FURNITURE & ENGINEERING CO. LTD.</div>
+      <div class="footer-brand-zh">海斯傢俱工程有限公司 · 元朗橫洲路16號豐達工業大廈6/F</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#services">Engineering</a></li>
+      <li><a href="#catalogue">Catalogue</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 AMAZE Furniture & Engineering Co. Ltd.</div>
+  </div>
+</footer>
+
+</body>
+</html>
