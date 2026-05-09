@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>婥絲(香港)美容儀器有限公司 | Motif Equipment HK | 醫美儀器批發‧香港製造</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --purple:#6a3fa0;
+    --dark-purple:#4a1f80;
+    --rose:#c0478a;
+    --light-purple:#9b6bc8;
+    --pink:#f8e8f4;
+    --white:#ffffff;
+    --light:#faf6fc;
+    --gray:#6b7280;
+    --dark:#1a1a2e;
+    --border:#e8d5f0;
+    --gold:#d4a017;
+  }
+  body{font-family:'Microsoft JhengHei','微軟正黑體','Segoe UI',Arial,sans-serif;background:#fff;color:var(--dark);}
+  a{text-decoration:none;color:inherit;}
+
+  /* NAV */
+  nav{background:var(--dark-purple);padding:0 5%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;height:66px;border-bottom:3px solid var(--rose);}
+  .nav-logo{display:flex;align-items:center;gap:12px;}
+  .nav-logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--rose),var(--light-purple));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
+  .nav-brand .cn{color:var(--white);font-size:1rem;font-weight:700;letter-spacing:1px;}
+  .nav-brand .en{color:#d4b0f0;font-size:0.65rem;letter-spacing:1.5px;}
+  .nav-links{display:flex;gap:22px;list-style:none;}
+  .nav-links a{color:#d4b0f0;font-size:0.86rem;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--rose);}
+  .nav-cta{background:var(--rose);color:var(--white);padding:8px 18px;border-radius:5px;font-weight:700;font-size:0.84rem;transition:background 0.2s;}
+  .nav-cta:hover{background:#a03070;}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--dark-purple) 0%,var(--purple) 60%,var(--rose) 100%);padding:84px 5% 74px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-50px;right:-50px;width:380px;height:380px;background:rgba(255,255,255,0.05);border-radius:50%;}
+  .hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;position:relative;z-index:1;}
+  .hero-badge{display:inline-block;background:rgba(255,255,255,0.15);color:var(--white);border:1px solid rgba(255,255,255,0.3);padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:700;letter-spacing:2px;margin-bottom:16px;}
+  .hero h1{color:var(--white);font-size:2.3rem;font-weight:900;line-height:1.2;margin-bottom:8px;}
+  .hero h1 .en{display:block;font-size:0.95rem;color:rgba(255,255,255,0.65);font-weight:500;margin-top:5px;letter-spacing:1px;}
+  .hero-tagline{color:#ffd0ec;font-size:0.97rem;font-weight:600;margin-bottom:14px;}
+  .hero-desc{color:rgba(255,255,255,0.8);font-size:0.94rem;line-height:1.75;margin-bottom:28px;}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn-rose{background:var(--rose);color:var(--white);padding:12px 24px;border-radius:6px;font-weight:700;font-size:0.9rem;transition:all 0.2s;}
+  .btn-rose:hover{background:#a03070;transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.35);padding:12px 24px;border-radius:6px;font-weight:600;font-size:0.9rem;transition:all 0.2s;}
+  .btn-outline:hover{border-color:var(--rose);color:var(--rose);}
+  .hero-features{display:flex;flex-direction:column;gap:12px;}
+  .hero-feat{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-left:3px solid var(--rose);border-radius:0 10px 10px 0;padding:14px 18px;display:flex;align-items:center;gap:14px;}
+  .hero-feat .f-icon{font-size:1.5rem;}
+  .hero-feat h3{color:rgba(255,255,255,0.95);font-size:0.88rem;font-weight:700;margin-bottom:3px;}
+  .hero-feat p{color:rgba(255,255,255,0.6);font-size:0.75rem;line-height:1.4;}
+
+  /* SECTIONS */
+  section{padding:70px 5%;}
+  .section-inner{max-width:1100px;margin:0 auto;}
+  .section-label{font-size:0.75rem;font-weight:700;color:var(--purple);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+  .section-title{font-size:1.85rem;font-weight:800;color:var(--dark);margin-bottom:14px;}
+  .section-title span{color:var(--purple);}
+  .section-desc{color:var(--gray);font-size:0.97rem;line-height:1.75;max-width:640px;}
+
+  /* ABOUT */
+  .about{background:var(--light);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;margin-top:32px;}
+  .about-text p{color:#4a4a4a;font-size:0.96rem;line-height:1.85;margin-bottom:14px;}
+  .about-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;}
+  .fact{background:var(--white);border-left:4px solid var(--rose);padding:14px 16px;border-radius:0 8px 8px 0;box-shadow:0 1px 6px rgba(0,0,0,0.05);}
+  .fact strong{display:block;color:var(--dark-purple);font-size:0.87rem;font-weight:700;margin-bottom:3px;}
+  .fact span{color:var(--gray);font-size:0.79rem;}
+  .why-box{background:linear-gradient(135deg,var(--dark-purple),var(--purple));border-radius:14px;padding:30px;color:var(--white);}
+  .why-box h3{color:#ffd0ec;font-size:1.05rem;font-weight:800;margin-bottom:16px;}
+  .why-list{list-style:none;}
+  .why-list li{padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:flex-start;gap:10px;font-size:0.86rem;color:#d4b0f0;line-height:1.5;}
+  .why-list li:last-child{border-bottom:none;}
+  .why-list li::before{content:'✦';color:var(--rose);flex-shrink:0;}
+
+  /* PRODUCTS */
+  .products{background:var(--white);}
+  .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:32px;}
+  .product-card{background:var(--pink);border-radius:12px;padding:22px 16px;text-align:center;border:1px solid var(--border);transition:all 0.2s;}
+  .product-card:hover{border-color:var(--purple);transform:translateY(-3px);box-shadow:0 8px 24px rgba(106,63,160,0.12);}
+  .product-icon{font-size:2.2rem;margin-bottom:10px;display:block;}
+  .product-card h3{color:var(--dark-purple);font-size:0.88rem;font-weight:700;margin-bottom:5px;}
+  .product-card p{color:var(--gray);font-size:0.76rem;line-height:1.5;}
+
+  /* SERVICE */
+  .service-section{background:linear-gradient(135deg,var(--dark-purple),var(--purple));padding:70px 5%;}
+  .service-section .section-title{color:var(--white);}
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px;}
+  .svc-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:24px;transition:all 0.2s;}
+  .svc-card:hover{background:rgba(192,71,138,0.15);border-color:var(--rose);transform:translateY(-3px);}
+  .svc-card .s-icon{font-size:2rem;margin-bottom:12px;display:block;}
+  .svc-card h3{color:#ffd0ec;font-size:0.95rem;font-weight:700;margin-bottom:8px;}
+  .svc-card p{color:rgba(255,255,255,0.65);font-size:0.82rem;line-height:1.6;}
+
+  /* REPAIR */
+  .repair{background:var(--light);}
+  .repair-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:32px;}
+  .repair-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .repair-item{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:0.82rem;color:var(--dark);display:flex;align-items:center;gap:8px;}
+  .repair-item::before{content:'🔧';font-size:0.9rem;}
+  .repair-info{background:linear-gradient(135deg,var(--dark-purple),var(--purple));border-radius:14px;padding:28px;color:var(--white);}
+  .repair-info h3{color:#ffd0ec;font-size:1.05rem;font-weight:700;margin-bottom:16px;}
+  .repair-info p{color:#d4b0f0;font-size:0.88rem;line-height:1.8;}
+  .repair-info strong{color:var(--white);}
+  .repair-badge{display:inline-block;background:rgba(192,71,138,0.25);color:var(--rose);border:1px solid rgba(192,71,138,0.5);padding:4px 12px;border-radius:4px;font-size:0.8rem;font-weight:700;margin-top:12px;}
+
+  /* NEWS */
+  .news{background:var(--white);}
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:30px;}
+  .news-card{background:var(--pink);border-radius:12px;overflow:hidden;border:1px solid var(--border);transition:all 0.2s;}
+  .news-card:hover{box-shadow:0 8px 24px rgba(106,63,160,0.12);transform:translateY(-3px);}
+  .news-date{background:var(--purple);color:var(--white);padding:8px 14px;font-size:0.72rem;font-weight:700;letter-spacing:1px;}
+  .news-body{padding:18px;}
+  .news-body h3{color:var(--dark-purple);font-size:0.88rem;font-weight:700;line-height:1.4;margin-bottom:8px;}
+  .news-body p{color:var(--gray);font-size:0.78rem;line-height:1.6;}
+
+  /* CONTACT */
+  .contact{background:linear-gradient(135deg,var(--dark-purple),var(--purple));padding:70px 5%;}
+  .contact .section-title{color:var(--white);}
+  .contact .section-desc{color:#d4b0f0;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:30px;}
+  .contact-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:28px;}
+  .contact-card h3{color:#ffd0ec;font-size:0.97rem;font-weight:700;margin-bottom:18px;}
+  .contact-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+  .ci-icon{width:35px;height:35px;background:rgba(192,71,138,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+  .contact-item strong{display:block;color:var(--white);font-size:0.83rem;margin-bottom:2px;}
+  .contact-item span{color:#d4b0f0;font-size:0.83rem;line-height:1.5;}
+  .rental-card{background:rgba(192,71,138,0.12);border:1px solid rgba(192,71,138,0.3);border-radius:12px;padding:28px;}
+  .rental-card h3{color:var(--rose);font-size:0.97rem;font-weight:700;margin-bottom:14px;}
+  .rental-card p{color:#d4b0f0;font-size:0.88rem;line-height:1.75;}
+  .rental-card strong{color:var(--white);}
+
+  /* FOOTER */
+  footer{background:#1a0a28;padding:30px 5%;text-align:center;border-top:1px solid rgba(192,71,138,0.3);}
+  footer .brand{color:var(--rose);font-weight:700;font-size:0.95rem;margin-bottom:5px;}
+  footer p{color:#4b3060;font-size:0.76rem;}
+
+  @media(max-width:900px){
+    .hero-inner,.about-grid,.repair-grid,.contact-grid{grid-template-columns:1fr;}
+    .product-grid{grid-template-columns:repeat(2,1fr);}
+    .service-grid,.news-grid{grid-template-columns:1fr 1fr;}
+    .about-facts,.repair-list{grid-template-columns:repeat(2,1fr);}
+    nav .nav-links,.nav-cta{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">✨</div>
+    <div class="nav-brand">
+      <div class="cn">婥絲(香港)美容儀器有限公司</div>
+      <div class="en">Motif Equipment (HK) Limited</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">公司簡介</a></li>
+    <li><a href="#products">產品及服務</a></li>
+    <li><a href="#repair">維修服務</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">查詢洽談</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">香港本地唯一美容儀器製造商</div>
+      <h1>婥絲(香港)<br>美容儀器有限公司
+        <span class="en">Motif Equipment (HK) Limited</span>
+      </h1>
+      <p class="hero-tagline">醫美儀器批發及供應 · 香港製造 · 3天到修</p>
+      <p class="hero-desc">以科學為基石，香港製造為本。作為本地唯一的美容儀器製造商，我們提供激光、IPL、射頻、HIFU等全系列醫美儀器，配以3天到修售後承諾，保障您的業務運作。</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-rose">產品及服務</a>
+        <a href="#contact" class="btn-outline">查詢報價</a>
+      </div>
+    </div>
+    <div class="hero-features">
+      <div class="hero-feat">
+        <span class="f-icon">🇭🇰</span>
+        <div>
+          <h3>香港本地製造</h3>
+          <p>本地唯一美容儀器製造商，以香港為原點，一手貨源，絕非代理</p>
+        </div>
+      </div>
+      <div class="hero-feat">
+        <span class="f-icon">⚡</span>
+        <div>
+          <h3>3天到修承諾</h3>
+          <p>支持3天到修及即時零件更換，並設非辦公時間緊急維修服務</p>
+        </div>
+      </div>
+      <div class="hero-feat">
+        <span class="f-icon">🔬</span>
+        <div>
+          <h3>信科學、忠於本地</h3>
+          <p>以可驗證的物理定律為基礎，非"玄學"，讓效果有據可依</p>
+        </div>
+      </div>
+      <div class="hero-feat">
+        <span class="f-icon">🎓</span>
+        <div>
+          <h3>上門培訓 + 光學證書課程</h3>
+          <p>2次上門培訓共6小時，及16小時光學證書課程</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">公司簡介</div>
+    <h2 class="section-title">信科學，<span>忠於本地</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>婥絲(香港)美容儀器有限公司（Motif Equipment HK）是香港本地唯一的美容儀器製造商，專注醫美儀器批發及供應，服務對象涵蓋美容院、醫療美容診所及相關專業機構。</p>
+        <p>我們深信，真正的效能並非「玄學」，而是清晰、可驗證的物理定律。因此，公司不遺餘力將資源投入更耐用的元件，以降低長期維修成本；更敏捷的回應，以最大化設備運作時間；及更深入的洞察，讓硬體與軟體完美配合。</p>
+        <p>公司採用大廠優質零件：LG 顯示屏、日立電容、明煒供電裝置、樂聲射頻裝置等，確保儀器可靠性高，減少不必要的維修時間。</p>
+        <div class="about-facts">
+          <div class="fact">
+            <strong>公司定位</strong>
+            <span>香港本地唯一<br>美容儀器製造商</span>
+          </div>
+          <div class="fact">
+            <strong>核心優勢</strong>
+            <span>香港製造 · 一手貨源<br>絕非代理</span>
+          </div>
+          <div class="fact">
+            <strong>售後服務</strong>
+            <span>3天到修 · 即時零件更換<br>緊急維修服務</span>
+          </div>
+          <div class="fact">
+            <strong>培訓支援</strong>
+            <span>2次上門培訓 + 光學<br>證書課程16小時</span>
+          </div>
+        </div>
+      </div>
+      <div class="why-box">
+        <h3>🏆 為何選擇婥絲</h3>
+        <ul class="why-list">
+          <li>香港本地唯一美容儀器製造商，非代理商</li>
+          <li>支持3天到修及即時零件更換</li>
+          <li>非辦公時間緊急維修服務</li>
+          <li>優質大廠零件：LG顯示屏、日立電容</li>
+          <li>2次上門培訓（每次3小時）</li>
+          <li>16小時光學證書課程</li>
+          <li>提供租機易靈活方案</li>
+          <li>非本公司儀器亦可承接維修</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-label">產品及服務</div>
+    <h2 class="section-title">全系列<span>醫美儀器</span></h2>
+    <p class="section-desc">婥絲香港提供多元化的醫美儀器，涵蓋激光、光療、超聲波及射頻等主流醫美技術。</p>
+    <div class="product-grid">
+      <div class="product-card">
+        <span class="product-icon">⚡</span>
+        <h3>鐳射激光</h3>
+        <p>多種激光技術，針對不同皮膚問題，包括色斑、毛孔及嫩膚</p>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">💡</span>
+        <h3>強光 IPL</h3>
+        <p>強脈衝光技術，適用於脫毛、嫩膚及光子嫩膚治療</p>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">🔵</span>
+        <h3>半導體激光</h3>
+        <p>808/810nm半導體激光，脫毛效果卓越，適合不同膚色</p>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">🌡️</span>
+        <h3>二氧化碳激光</h3>
+        <p>CO2激光，適用於皮膚重塑、疤痕治療及磨皮嫩膚</p>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">🔊</span>
+        <h3>聚焦超聲波</h3>
+        <p>HIFU高強度聚焦超聲波，深層提升緊膚，減淡皺紋</p>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">📡</span>
+        <h3>射頻</h3>
+        <p>RF射頻技術，溫和緊膚提升，促進膠原蛋白再生</p>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">💆</span>
+        <h3>生髮治療</h3>
+        <p>專業生髮儀器，改善脫髮問題，促進頭皮健康及髮絲生長</p>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">🎁</span>
+        <h3>配套用品 / 消痛槍</h3>
+        <p>配套耗材、消痛槍及Clear Up儀器，提升整體美容服務</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE SECTION -->
+<section class="service-section" id="service">
+  <div class="section-inner">
+    <div class="section-label" style="color:#ffd0ec;">增值服務</div>
+    <h2 class="section-title">三大<span style="color:#ffd0ec;">增值支援</span></h2>
+    <div class="service-grid">
+      <div class="svc-card">
+        <span class="s-icon">🚗</span>
+        <h3>租機易</h3>
+        <p>靈活租機方案，以較低的初始投資使用高端醫美儀器，適合初創美容院及希望擴充服務的美容機構。</p>
+      </div>
+      <div class="svc-card">
+        <span class="s-icon">🎓</span>
+        <h3>儀器操作教學</h3>
+        <p>提供2次上門培訓各3小時，確保操作員充分掌握儀器使用技術；另設16小時光學證書課程，提升專業水平。</p>
+      </div>
+      <div class="svc-card">
+        <span class="s-icon">📚</span>
+        <h3>醫美冷知識學院</h3>
+        <p>透過靚靚影院、醫美冷知識學院及新城電台「靚靚陪審團」節目，提供最新醫美資訊，協助美容師持續進修。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPAIR -->
+<section class="repair" id="repair">
+  <div class="section-inner">
+    <div class="section-label">維修服務</div>
+    <h2 class="section-title">專業<span>儀器維修</span></h2>
+    <p class="section-desc">婥絲香港承接本公司及非本公司儀器維修，覆蓋多種醫美設備故障，3天到修，緊急維修可安排非辦公時間上門服務。</p>
+    <div class="repair-grid">
+      <div>
+        <h3 style="color:var(--dark-purple);font-size:1rem;font-weight:700;margin-bottom:16px;">🔧 維修項目</h3>
+        <div class="repair-list">
+          <div class="repair-item">彩光 / E-Light / OPT 換燈換槍</div>
+          <div class="repair-item">皮秒激光換燈 / 換棒</div>
+          <div class="repair-item">Yag激光換燈 / 換槍</div>
+          <div class="repair-item">安全檢查及加裝安全裝置</div>
+          <div class="repair-item">808/810 換燈</div>
+          <div class="repair-item">儀器制冷系統維修</div>
+          <div class="repair-item">儀器唔著 / 漏電</div>
+          <div class="repair-item">負壓系統維修</div>
+          <div class="repair-item">儀器硬件升級</div>
+          <div class="repair-item">漏水 / 漏電修復</div>
+          <div class="repair-item">射頻失靈</div>
+          <div class="repair-item">水流問題</div>
+          <div class="repair-item">溫度問題</div>
+          <div class="repair-item">腳踏失靈</div>
+        </div>
+      </div>
+      <div class="repair-info">
+        <h3>⚡ 維修服務承諾</h3>
+        <p><strong>3天到修</strong><br>即時零件更換，確保業界保持工作效率，最大化設備運作時間。</p>
+        <p style="margin-top:14px;"><strong>緊急維修服務</strong><br>非辦公時間緊急維修服務，令美容院運作更暢通，不怕突發故障影響生意。</p>
+        <p style="margin-top:14px;"><strong>非本公司儀器維修</strong><br>本公司亦承接其他品牌醫美儀器的維修服務，如需查詢可先致電陳先生。</p>
+        <p style="margin-top:14px;"><strong>維修查詢熱線</strong><br>陳先生：97299403</p>
+        <div class="repair-badge">3天到修 · 即時零件更換</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news" id="news">
+  <div class="section-inner">
+    <div class="section-label">最新消息</div>
+    <h2 class="section-title">醫美<span>最新資訊</span></h2>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-date">2025年5月5日</div>
+        <div class="news-body">
+          <h3>不是所有皮秒都叫「第4代」</h3>
+          <p>深入了解皮秒激光技術世代之分，為您拆解市場上不同聲稱「第4代」的產品，從科學角度分析真正的技術差異。</p>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-date">2025年5月2日</div>
+        <div class="news-body">
+          <h3>用醫學證實最有效的 1064nm 長脈衝激光 直擊灰甲</h3>
+          <p>探討1064nm長脈衝激光在治療甲下甲癬（灰甲）的醫學實證，了解其治療原理及有效性。</p>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-date">2025年4月24日</div>
+        <div class="news-body">
+          <h3>鄒重璂醫生教你拆解荷爾蒙失調！骨膠原補充飲品的迷思</h3>
+          <p>鄒重璂醫生講解荷爾蒙失調的影響，並分析坊間流行的骨膠原補充飲品究竟有無科學根據。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label" style="color:#ffd0ec;">聯絡我們</div>
+    <h2 class="section-title">查詢<span style="color:#ffd0ec;">儀器及服務</span></h2>
+    <p class="section-desc">歡迎查詢儀器購買、租賃方案、維修服務及培訓課程。</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>📞 聯絡方式</h3>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <strong>手提 / WhatsApp</strong>
+            <span>9080 2896</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <strong>電郵</strong>
+            <span>info@motifequipment.com.hk</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <strong>網址</strong>
+            <span>motifequipment.com.hk</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🔧</div>
+          <div>
+            <strong>維修查詢（陳先生）</strong>
+            <span>9729 9403</span>
+          </div>
+        </div>
+      </div>
+      <div class="rental-card">
+        <h3>🏷️ 租機易 — 靈活租機方案</h3>
+        <p>不想一次過大額投資？婥絲香港提供<strong>租機易</strong>方案，以靈活月租形式使用高端醫美儀器，適合：</p>
+        <p style="margin-top:10px;">✦ <strong>初創美容院</strong> — 降低開業成本</p>
+        <p style="margin-top:8px;">✦ <strong>現有美容院</strong> — 擴充服務類別</p>
+        <p style="margin-top:8px;">✦ <strong>試用新技術</strong> — 評估市場反應</p>
+        <p style="margin-top:14px;">如需查詢租機易方案詳情及報價，歡迎致電或WhatsApp查詢。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">婥絲(香港)美容儀器有限公司 Motif Equipment (HK) Limited</div>
+  <p>醫美儀器批發供應 · 香港製造 · 維修服務 · 租機易 | motifequipment.com.hk</p>
+  <p style="margin-top:5px;">&copy; 2025 Motif Equipment (HK) Limited. 版權所有。</p>
+</footer>
+
+</body>
+</html>
