@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>勁亮工程有限公司 Kingline Contracts | 香港認可建築承建商</title>
+<meta name="description" content="勁亮工程有限公司 Kingline Contracts Co. Ltd. — 香港認可一般建築承建商，ISO 9001/14001/45001認證，提供外牆翻新、石屎維修、防水隔熱、室內裝修等一站式建築工程服務。">
+<style>
+:root {
+  --bg:       #04060e;
+  --bg2:      #080c18;
+  --bg3:      #0c1220;
+  --blue:     #2870c8;
+  --blue-lt:  #4898e8;
+  --amber:    #e08028;
+  --amber-lt: #f8a040;
+  --text:     #e8eef8;
+  --muted:    #7090b8;
+  --border:   rgba(40,112,200,0.18);
+  --card-bg:  rgba(255,255,255,0.03);
+  --radius:   10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans HK','PingFang HK','Microsoft JhengHei',sans-serif;line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,6,14,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;flex-direction:column;line-height:1.2}
+.nav-logo-en{font-size:1rem;font-weight:800;color:var(--blue-lt);letter-spacing:.04em}
+.nav-logo-zh{font-size:.75rem;color:var(--muted);letter-spacing:.04em}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--blue),var(--blue-lt));color:#fff;border:none;padding:9px 22px;border-radius:6px;font-size:.88rem;cursor:pointer;font-weight:700;text-decoration:none;transition:opacity .2s;white-space:nowrap}
+.nav-cta:hover{opacity:.88}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 65% 35%,rgba(40,112,200,0.12) 0%,transparent 65%),radial-gradient(ellipse 50% 50% at 15% 70%,rgba(224,128,40,0.07) 0%,transparent 55%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;border-radius:4px;padding:5px 12px;font-size:.78rem;letter-spacing:.04em;font-weight:600}
+.tag-gbc{background:rgba(40,112,200,0.12);border:1px solid rgba(40,112,200,0.28);color:var(--blue-lt)}
+.tag-iso{background:rgba(32,192,80,0.1);border:1px solid rgba(32,192,80,0.25);color:#40e880}
+h1{font-size:clamp(2rem,4.5vw,3.3rem);font-weight:900;line-height:1.12;margin-bottom:10px}
+h1 .en{display:block;font-size:clamp(.95rem,2vw,1.35rem);font-weight:400;color:var(--blue-lt);letter-spacing:.05em;margin-top:8px}
+.hero-desc{color:var(--muted);font-size:.97rem;max-width:440px;margin:18px 0 30px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--blue-lt));color:#fff;padding:13px 28px;border-radius:6px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}
+.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 26px;border-radius:6px;font-size:.93rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue-lt)}
+
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:16px}
+.card-logo-row{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+.card-logo-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--blue),var(--blue-lt));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.card-company-zh{font-size:1.05rem;font-weight:800;line-height:1.3}
+.card-company-en{font-size:.78rem;color:var(--muted);letter-spacing:.03em}
+.cert-strip{display:flex;flex-wrap:wrap;gap:6px}
+.cert-badge{font-size:.73rem;border-radius:4px;padding:3px 9px;font-weight:600;letter-spacing:.04em}
+.cert-gbc{background:rgba(40,112,200,0.12);border:1px solid rgba(40,112,200,0.25);color:var(--blue-lt)}
+.cert-iso{background:rgba(32,160,80,0.1);border:1px solid rgba(32,160,80,0.22);color:#40c878}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--blue-lt);flex-shrink:0;margin-top:2px;text-align:center;font-size:.95rem}
+.card-row-text{font-size:.88rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block}
+
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:28px}
+.stat-item{text-align:center}
+.stat-num{font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--blue-lt),var(--amber-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.83rem;margin-top:6px;line-height:1.4}
+
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(40,112,200,0.08);border:1px solid rgba(40,112,200,0.2);border-radius:4px;padding:4px 12px;font-size:.76rem;color:var(--blue-lt);letter-spacing:.06em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--blue-lt)}
+h2 .amber{color:var(--amber-lt)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-body p{color:var(--muted);font-size:.97rem;margin-bottom:16px;line-height:1.8}
+.highlight-box{background:rgba(40,112,200,0.07);border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;padding:18px 22px;margin:24px 0}
+.highlight-box p{color:var(--text);font-size:.95rem;line-height:1.75;margin:0}
+.cert-list{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.cert-item{display:flex;align-items:flex-start;gap:12px;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px}
+.cert-item-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px}
+.cert-item-text{font-size:.88rem;color:var(--muted);line-height:1.55}
+.cert-item-text strong{color:var(--text);display:block;margin-bottom:2px}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s;overflow:hidden;position:relative}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--amber));opacity:0;transition:opacity .25s}
+.svc-card:hover{border-color:var(--blue);transform:translateY(-4px)}
+.svc-card:hover::before{opacity:1}
+.sc-icon{width:50px;height:50px;background:rgba(40,112,200,0.1);border:1px solid rgba(40,112,200,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.sc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.sc-tag{display:inline-block;margin-top:12px;font-size:.76rem;color:var(--amber-lt);background:rgba(224,128,40,0.1);border:1px solid rgba(224,128,40,0.2);border-radius:4px;padding:3px 10px;font-weight:600}
+
+.clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.client-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:22px;display:flex;align-items:center;gap:14px;transition:border-color .25s}
+.client-card:hover{border-color:var(--blue)}
+.client-icon{font-size:1.8rem;flex-shrink:0}
+.client-name{font-size:.93rem;font-weight:700;margin-bottom:4px}
+.client-desc{font-size:.8rem;color:var(--muted);line-height:1.5}
+
+.history-timeline{display:flex;flex-direction:column;gap:0;position:relative}
+.history-timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:1px;background:var(--border)}
+.timeline-item{display:flex;gap:24px;align-items:flex-start;padding-bottom:28px;position:relative}
+.tl-dot{width:40px;height:40px;background:var(--bg2);border:2px solid var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;color:var(--blue-lt);flex-shrink:0;position:relative;z-index:1}
+.tl-content{padding-top:8px}
+.tl-year{font-size:.78rem;color:var(--blue-lt);font-weight:600;margin-bottom:4px;letter-spacing:.04em}
+.tl-event{font-size:.93rem;color:var(--text);font-weight:600;margin-bottom:4px}
+.tl-detail{font-size:.85rem;color:var(--muted);line-height:1.6}
+
+.contact-section{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(40,112,200,0.1);border:1px solid rgba(40,112,200,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.75rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.95rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--blue-lt);text-decoration:none}
+.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:34px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--blue)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#080c18}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--blue),var(--blue-lt));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}
+.form-submit:hover{opacity:.88}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo-en{font-size:.95rem;font-weight:800;color:var(--blue-lt)}
+.footer-logo-zh{font-size:.8rem;color:var(--muted)}
+.footer-copy{font-size:.78rem;color:var(--muted);text-align:center;line-height:1.6}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(3,1fr)}
+  .services-grid,.clients-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .services-grid,.clients-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .form-row{grid-template-columns:1fr}
+  .footer-inner{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-en">Kingline Contracts Co. Ltd.</div>
+      <div class="nav-logo-zh">勁亮工程有限公司</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">關於</a></li>
+      <li><a href="#services">服務</a></li>
+      <li><a href="#clients">客戶類型</a></li>
+      <li><a href="#history">歷程</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+    <a href="tel:+85225811618" class="nav-cta">聯絡查詢</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tags">
+        <span class="hero-tag tag-gbc">✓ 認可一般建築承建商 GBC 13/2009</span>
+        <span class="hero-tag tag-iso">ISO 9001 · 14001 · 45001</span>
+      </div>
+      <h1>
+        勁亮工程有限公司
+        <span class="en">Kingline Contracts Co. Ltd.</span>
+      </h1>
+      <p class="hero-desc">超過20年專業建築及裝修工程經驗，持有香港屋宇署及機電署多項認可牌照，承接外牆翻新、石屎維修、防水隔熱、室內裝修等一站式工程服務。</p>
+      <div class="hero-btns">
+        <a href="tel:+85225811618" class="btn-primary">立即致電查詢</a>
+        <a href="#services" class="btn-outline">了解服務範疇</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-logo-row">
+        <div class="card-logo-icon">🏗</div>
+        <div>
+          <div class="card-company-zh">勁亮工程有限公司</div>
+          <div class="card-company-en">Kingline Contracts Co. Ltd.</div>
+        </div>
+      </div>
+      <div class="cert-strip">
+        <span class="cert-badge cert-gbc">GBC 13/2009</span>
+        <span class="cert-badge cert-iso">ISO 9001</span>
+        <span class="cert-badge cert-iso">ISO 14001</span>
+        <span class="cert-badge cert-iso">ISO 45001</span>
+      </div>
+      <hr class="card-divider">
+      <div class="card-row">
+        <div class="card-row-icon">📍</div>
+        <div class="card-row-text">
+          <strong>地址</strong>
+          新界粉嶺安居街30號新寧中心4樓405室
+        </div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-icon">📞</div>
+        <div class="card-row-text">
+          <strong>電話</strong>
+          (852) 2581 1618
+        </div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-icon">📠</div>
+        <div class="card-row-text">
+          <strong>傳真</strong>
+          (852) 2581 1606
+        </div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-icon">✉</div>
+        <div class="card-row-text">
+          <strong>電郵</strong>
+          kinglinejc@yahoo.com.hk
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">年工程經驗</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">GBC</div>
+      <div class="stat-label">認可建築承建商</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">ISO<br style="line-height:.5">×3</div>
+      <div class="stat-label">國際認證</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">牌照認可<br>（屋宇署×2, 機電署）</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">80s</div>
+      <div class="stat-label">年代開始<br>港澳工程</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="section-tag">關於勁亮</div>
+        <h2>香港<span class="accent">認可建築</span>承建商</h2>
+        <p>勁亮工程有限公司（Kingline Contracts Co. Ltd.）是一間專業裝修及維修工程公司，於80年代初已在中國內地和香港兩地參與各大酒店等裝修工程，並在90年代中開始集中參與香港裝飾及維修工程。</p>
+        <p>公司持有由香港屋宇署發出的「一般建築承建商註冊承建商證明書」及「註冊小型工程承建商證明書」，以及由香港機電署發出的「電業承辦商註冊證明書」。亦為屋宇署「強制性驗窗計劃」及「強制性驗樓計劃」的合資格承建商工程公司。</p>
+        <div class="highlight-box">
+          <p>超過20年的工程經驗，擁有專業及豐富經驗的工作團隊，尤其專注於整棟物業外牆石屎維修、天台隔熱防水及一站式室內翻新改建工程。</p>
+        </div>
+        <div class="cert-list">
+          <div class="cert-item">
+            <div class="cert-item-icon">🏛</div>
+            <div class="cert-item-text">
+              <strong>一般建築承建商 (GBC 13/2009)</strong>
+              由香港屋宇署發出，認可承接各類一般建築工程
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-item-icon">🔧</div>
+            <div class="cert-item-text">
+              <strong>註冊小型工程承建商</strong>
+              由香港屋宇署發出，承接各類小型工程項目
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-item-icon">⚡</div>
+            <div class="cert-item-text">
+              <strong>電業承辦商（機電署）</strong>
+              由香港機電工程署發出，承接電氣工程安裝
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-item-icon">✓</div>
+            <div class="cert-item-text">
+              <strong>ISO 9001 · ISO 14001 · ISO 45001</strong>
+              品質管理、環境管理及職業安全健康管理國際認證
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:30px">
+          <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:20px;color:var(--blue-lt)">認可計劃資格</h3>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="background:rgba(40,112,200,0.07);border:1px solid rgba(40,112,200,0.15);border-radius:var(--radius);padding:16px">
+              <div style="font-size:.9rem;font-weight:700;margin-bottom:6px">🪟 強制性驗窗計劃</div>
+              <div style="font-size:.84rem;color:var(--muted);line-height:1.6">屋宇署強制性驗窗計劃合資格承建商，為物業業主提供窗戶安全檢驗及維修服務，確保符合法例要求。</div>
+            </div>
+            <div style="background:rgba(40,112,200,0.07);border:1px solid rgba(40,112,200,0.15);border-radius:var(--radius);padding:16px">
+              <div style="font-size:.9rem;font-weight:700;margin-bottom:6px">🏢 強制性驗樓計劃</div>
+              <div style="font-size:.84rem;color:var(--muted);line-height:1.6">屋宇署強制性驗樓計劃合資格承建商，為大廈業主立案法團提供樓宇安全檢驗及維修工程服務。</div>
+            </div>
+            <div style="background:rgba(224,128,40,0.07);border:1px solid rgba(224,128,40,0.15);border-radius:var(--radius);padding:16px">
+              <div style="font-size:.9rem;font-weight:700;margin-bottom:6px">🌿 ISO 環保管理認證</div>
+              <div style="font-size:.84rem;color:var(--muted);line-height:1.6">持有 ISO 14001 環境管理體系認證，施工過程中嚴格遵守環保法規，減少對環境的影響。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="section-tag">服務範疇</div>
+    <h2>一站式<span class="accent">建築工程</span>服務</h2>
+    <p class="section-lead">勁亮工程提供全面的建築維修及室內裝修服務，從外牆翻新到室內改裝，由持牌專業工程人員主理。</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="sc-icon">🏢</div>
+        <div class="sc-title">外牆翻新及石屎維修</div>
+        <div class="sc-desc">承接整棟物業及大廈外牆翻新工程，包括石屎剝落修補、外牆批盪、防水塗料噴塗及外牆清潔工程，恢復建築外觀及結構安全。</div>
+        <span class="sc-tag">認可承建商</span>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🌧</div>
+        <div class="sc-title">天台隔熱及防水工程</div>
+        <div class="sc-desc">提供天台防水層鋪設、隔熱工程及天台花園施工，採用優質防水材料，有效防止天台滲漏，改善頂層單位溫度及隔音效果。</div>
+        <span class="sc-tag">防漏保障</span>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">❄</div>
+        <div class="sc-title">冷氣機去水喉及簷蓬</div>
+        <div class="sc-desc">為住宅及商業單位安裝冷氣機排水管道及外機托架，以及各類型簷蓬安裝工程。持電業承辦商牌照，確保工程安全合規。</div>
+        <span class="sc-tag">機電署認可</span>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🎨</div>
+        <div class="sc-title">外牆及樓梯油漆工程</div>
+        <div class="sc-desc">為商業及住宅物業提供外牆及公共地方（包括樓梯、走廊）的油漆翻新工程，採用高品質工程塗料，煥然一新提升物業形象。</div>
+        <span class="sc-tag">商業住宅</span>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🔨</div>
+        <div class="sc-title">整體室內翻新改建</div>
+        <div class="sc-desc">提供商業及住宅物業的室內全面翻新、改建及增建工程。包括間隔改動、木工製作、水電工程及地板鋪設，一站式服務由設計至完工。</div>
+        <span class="sc-tag">一站式服務</span>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🪟</div>
+        <div class="sc-title">驗窗驗樓檢驗維修</div>
+        <div class="sc-desc">為大廈業主立案法團及物業業主提供屋宇署「強制性驗窗計劃」及「強制性驗樓計劃」的合資格檢驗及修葺工程服務，確保符合法規要求。</div>
+        <span class="sc-tag">屋宇署認可</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT TYPES -->
+<section id="clients">
+  <div class="section-inner">
+    <div class="section-tag">服務客戶</div>
+    <h2>服務<span class="amber">各類型</span>物業客戶</h2>
+    <p class="section-lead">勁亮工程為廣泛的客戶群提供專業建築工程服務，涵蓋社會服務機構、商業物業至私人住宅。</p>
+    <div class="clients-grid">
+      <div class="client-card">
+        <div class="client-icon">🏥</div>
+        <div>
+          <div class="client-name">醫院及教會</div>
+          <div class="client-desc">為醫院、診所及宗教場所提供建築裝修及維修服務</div>
+        </div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🎓</div>
+        <div>
+          <div class="client-name">學校及教育機構</div>
+          <div class="client-desc">中小學、大學及各類教育場所的翻新及維修工程</div>
+        </div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🤝</div>
+        <div>
+          <div class="client-name">社會服務中心</div>
+          <div class="client-desc">社福機構、老人中心及社區設施的裝修工程</div>
+        </div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🏨</div>
+        <div>
+          <div class="client-name">酒店</div>
+          <div class="client-desc">酒店客房及公共地方翻新，80年代起已參與酒店工程</div>
+        </div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🏢</div>
+        <div>
+          <div class="client-name">工商業大廈</div>
+          <div class="client-desc">辦公室、商業大廈外牆、公共地方及整體翻新</div>
+        </div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🏠</div>
+        <div>
+          <div class="client-name">私人住宅</div>
+          <div class="client-desc">私人屋苑及獨立洋房的室內裝修及外牆維修</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section id="history" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="section-tag">發展歷程</div>
+    <h2>四十年<span class="accent">工程</span>歷程</h2>
+    <p class="section-lead" style="margin-bottom:40px">由80年代初至今，勁亮工程見證香港建築業的發展，不斷提升服務質量及業務範疇。</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px">
+      <div class="history-timeline">
+        <div class="timeline-item">
+          <div class="tl-dot">80s</div>
+          <div class="tl-content">
+            <div class="tl-year">1980年代初</div>
+            <div class="tl-event">業務創立 · 港澳酒店工程</div>
+            <div class="tl-detail">公司前身成立，在中國內地及香港兩地參與各大酒店裝修工程，建立豐富工程經驗</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot">90s</div>
+          <div class="tl-content">
+            <div class="tl-year">1990年代中</div>
+            <div class="tl-event">集中香港裝飾及維修工程</div>
+            <div class="tl-detail">轉型專注香港本地裝飾及維修工程市場，服務多元化客戶群體</div>
+          </div>
+        </div>
+      </div>
+      <div class="history-timeline">
+        <div class="timeline-item">
+          <div class="tl-dot">09</div>
+          <div class="tl-content">
+            <div class="tl-year">2009年</div>
+            <div class="tl-event">正式更名為勁亮工程有限公司</div>
+            <div class="tl-detail">由「勁亮發展有限公司」更名為「勁亮工程有限公司」（Kingline Contracts Co. Ltd.），取得一般建築承建商牌照 GBC 13/2009</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot">今</div>
+          <div class="tl-content">
+            <div class="tl-year">現在</div>
+            <div class="tl-event">ISO三重認證 · 持續發展</div>
+            <div class="tl-detail">持有 ISO 9001、ISO 14001 及 ISO 45001 三重國際認證，成為屋宇署強制驗窗驗樓計劃合資格承建商</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡查詢</div>
+    <h2>聯絡<span class="accent">勁亮工程</span></h2>
+    <p class="section-lead">歡迎致電或電郵查詢，我們的工程顧問將為您提供專業的工程建議及報價。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">公司地址</div>
+            <div class="ci-value">新界粉嶺安居街30號新寧中心4樓405室<br><span style="font-size:.85rem;color:var(--muted)">Unit 405, 4/F, Sun Ling Plaza, 30 On Kui Street, Fanling, NT, HK</span></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">電話</div>
+            <div class="ci-value"><a href="tel:+85225811618">(852) 2581 1618</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📠</div>
+          <div>
+            <div class="ci-label">傳真</div>
+            <div class="ci-value">(852) 2581 1606</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉</div>
+          <div>
+            <div class="ci-label">電郵</div>
+            <div class="ci-value"><a href="mailto:kinglinejc@yahoo.com.hk">kinglinejc@yahoo.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">網站</div>
+            <div class="ci-value"><a href="http://www.kingline.com.hk" target="_blank" rel="noopener">www.kingline.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🏗</div>
+          <div>
+            <div class="ci-label">牌照號碼</div>
+            <div class="ci-value">GBC 13/2009（一般建築承建商）<br>ISO 9001 · ISO 14001 · ISO 45001</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>工程查詢 / 報價</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label>姓名 / 公司名稱</label>
+              <input type="text" placeholder="您的姓名或公司">
+            </div>
+            <div class="form-group">
+              <label>聯絡電話</label>
+              <input type="tel" placeholder="2XXX XXXX">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>電郵</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>工程類別</label>
+            <select>
+              <option value="">請選擇工程類別</option>
+              <option>外牆翻新及石屎維修</option>
+              <option>天台隔熱及防水工程</option>
+              <option>冷氣機去水喉及簷蓬</option>
+              <option>外牆及樓梯油漆工程</option>
+              <option>整體室內翻新改建</option>
+              <option>驗窗驗樓檢驗維修</option>
+              <option>電氣工程</option>
+              <option>其他工程查詢</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>工程詳情及要求</label>
+            <textarea placeholder="請簡述工程範圍、物業類型、地址等資料..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">提交工程查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo-en">Kingline Contracts Co. Ltd.</div>
+      <div class="footer-logo-zh">勁亮工程有限公司</div>
+    </div>
+    <div class="footer-copy">
+      © 2025 勁亮工程有限公司 · GBC 13/2009 · ISO 9001/14001/45001<br>
+      Unit 405, 4/F, Sun Ling Plaza, Fanling, NT, HK · Tel: (852) 2581 1618
+    </div>
+    <div class="footer-links">
+      <a href="#about">關於</a>
+      <a href="#services">服務</a>
+      <a href="#contact">聯絡</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
