@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bingo Time Catering Services Limited | Hong Kong Premium Catering</title>
+<style>
+:root {
+  --primary: #0c0e18;
+  --secondary: #111420;
+  --accent: #d4a020;
+  --accent2: #e8c060;
+  --accent-red: #c03030;
+  --text: #f0ede0;
+  --text-muted: #9a9480;
+  --card-bg: #161824;
+  --border: #1e2230;
+  --hero-overlay: rgba(12,14,24,0.80);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Georgia','Times New Roman',serif;background:var(--primary);color:var(--text);line-height:1.7;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(12,14,24,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),#b88010);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;}
+.nav-logo-text{display:flex;flex-direction:column;}
+.nav-logo-en{font-size:1rem;font-weight:700;color:var(--text);line-height:1.2;font-family:'Georgia',serif;}
+.nav-logo-sub{font-size:0.62rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;font-family:sans-serif;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.88rem;transition:color 0.2s;font-family:sans-serif;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#0c0e18;padding:0.5rem 1.4rem;border-radius:4px;text-decoration:none;font-size:0.88rem;font-weight:700;transition:background 0.2s;font-family:sans-serif;}
+.nav-cta:hover{background:var(--accent2);}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(160deg,#0c0e18 0%,#141020 40%,#100e18 100%);display:flex;align-items:center;padding-top:70px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 60%,rgba(212,160,32,0.1) 0%,transparent 55%);}
+.hero::after{content:'';position:absolute;top:10%;right:5%;width:500px;height:500px;background:radial-gradient(circle,rgba(212,160,32,0.06) 0%,transparent 70%);pointer-events:none;}
+.hero-grid{max-width:1200px;margin:0 auto;padding:5rem 2rem;display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center;position:relative;z-index:1;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(212,160,32,0.12);border:1px solid rgba(212,160,32,0.3);border-radius:3px;padding:0.45rem 1.1rem;margin-bottom:1.8rem;font-size:0.8rem;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;font-family:sans-serif;}
+.hero h1{font-size:3.4rem;font-weight:700;line-height:1.15;margin-bottom:0.5rem;font-family:'Georgia',serif;}
+.hero h1 .gold{color:var(--accent);}
+.hero-tagline{font-size:1.1rem;color:var(--text-muted);margin-bottom:0.8rem;font-style:italic;}
+.hero-desc{font-size:0.98rem;color:var(--text-muted);margin-bottom:2.2rem;max-width:540px;line-height:1.8;font-family:sans-serif;}
+.hero-awards{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;}
+.award-badge{background:rgba(212,160,32,0.1);border:1px solid rgba(212,160,32,0.25);border-radius:4px;padding:0.5rem 1rem;font-size:0.8rem;color:var(--accent2);font-family:sans-serif;display:flex;align-items:center;gap:6px;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#0c0e18;padding:0.9rem 2.2rem;border-radius:4px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;font-family:sans-serif;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid rgba(240,237,224,0.25);padding:0.9rem 2.2rem;border-radius:4px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;font-family:sans-serif;}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+.hero-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin-bottom:1.4rem;font-family:sans-serif;}
+.info-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1.1rem;}
+.info-row:last-child{margin-bottom:0;}
+.info-icon{width:36px;height:36px;border-radius:6px;background:rgba(212,160,32,0.1);border:1px solid rgba(212,160,32,0.2);display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+.info-label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:2px;font-family:sans-serif;}
+.info-value{font-size:0.88rem;color:var(--text);font-family:sans-serif;}
+.info-value a{color:var(--accent);text-decoration:none;}
+
+/* SIGNATURE STRIP */
+.signature-strip{background:linear-gradient(90deg,var(--accent) 0%,#b88010 100%);padding:2rem;text-align:center;}
+.sig-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.sig-item{color:#0c0e18;}
+.sig-num{font-size:2.4rem;font-weight:700;font-family:'Georgia',serif;line-height:1;}
+.sig-label{font-size:0.8rem;margin-top:4px;opacity:0.8;font-family:sans-serif;}
+
+/* STATS */
+.stats{background:var(--secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+.stat-num{font-size:2.4rem;font-weight:700;color:var(--accent);line-height:1;font-family:'Georgia',serif;}
+.stat-label{font-size:0.82rem;color:var(--text-muted);margin-top:6px;font-family:sans-serif;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent);margin-bottom:0.6rem;font-family:sans-serif;}
+.section-title{font-size:2.2rem;font-weight:700;margin-bottom:1rem;line-height:1.2;font-family:'Georgia',serif;}
+.section-sub{font-size:0.95rem;color:var(--text-muted);max-width:600px;margin-bottom:3rem;font-family:sans-serif;line-height:1.8;}
+
+/* ABOUT */
+.about{background:var(--secondary);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(212,160,32,0.1),rgba(212,160,32,0.04));border:1px solid rgba(212,160,32,0.25);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight h3{font-size:1rem;font-weight:700;color:var(--accent);margin-bottom:0.8rem;font-family:sans-serif;text-transform:uppercase;letter-spacing:0.06em;}
+.about-highlight p{color:var(--text-muted);font-size:0.92rem;line-height:1.8;font-family:sans-serif;}
+.about-body p{color:var(--text-muted);margin-bottom:1rem;font-size:0.92rem;line-height:1.8;font-family:sans-serif;}
+.pillars{display:grid;grid-template-columns:1fr;gap:1rem;}
+.pillar{display:flex;align-items:flex-start;gap:14px;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;}
+.pillar-icon{font-size:1.6rem;flex-shrink:0;}
+.pillar-title{font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:3px;font-family:sans-serif;}
+.pillar-desc{font-size:0.8rem;color:var(--text-muted);font-family:sans-serif;}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.service-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.service-card:hover{border-color:rgba(212,160,32,0.35);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.4);}
+.service-card:hover::before{opacity:1;}
+.service-icon{font-size:2.6rem;margin-bottom:1rem;}
+.service-name{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;font-family:sans-serif;}
+.service-desc{font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.7;font-family:sans-serif;}
+.service-features{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.service-features li{font-size:0.8rem;color:var(--text-muted);display:flex;align-items:center;gap:8px;font-family:sans-serif;}
+.service-features li::before{content:'✦';color:var(--accent);font-size:0.6rem;}
+
+/* SIGNATURE SERVICE HIGHLIGHT */
+.hkex-banner{background:linear-gradient(135deg,rgba(212,160,32,0.12),rgba(192,48,48,0.08));border:1px solid rgba(212,160,32,0.3);border-radius:16px;padding:3rem;margin-bottom:3rem;display:grid;grid-template-columns:1fr 280px;gap:3rem;align-items:center;}
+.hkex-content h3{font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:0.8rem;font-family:'Georgia',serif;}
+.hkex-content p{color:var(--text-muted);font-size:0.92rem;line-height:1.8;font-family:sans-serif;}
+.hkex-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.hkex-stat{background:rgba(212,160,32,0.08);border:1px solid rgba(212,160,32,0.2);border-radius:8px;padding:1rem;text-align:center;}
+.hkex-stat-num{font-size:1.8rem;font-weight:700;color:var(--accent);font-family:'Georgia',serif;line-height:1;}
+.hkex-stat-label{font-size:0.72rem;color:var(--text-muted);margin-top:4px;font-family:sans-serif;}
+
+/* APPROACH */
+.approach{background:var(--secondary);}
+.approach-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.approach-step{text-align:center;}
+.step-num{width:60px;height:60px;background:linear-gradient(135deg,var(--accent),#b88010);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:700;color:#0c0e18;margin:0 auto 1rem;font-family:'Georgia',serif;}
+.step-title{font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:4px;font-family:sans-serif;}
+.step-desc{font-size:0.78rem;color:var(--text-muted);font-family:sans-serif;}
+
+/* TESTIMONIALS / CLIENTS */
+.clients{background:var(--card-bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.clients-inner{max-width:1200px;margin:0 auto;}
+.clients-label{text-align:center;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);margin-bottom:1.5rem;font-family:sans-serif;}
+.clients-logos{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;align-items:center;}
+.client-logo{background:var(--primary);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center;transition:border-color 0.2s;}
+.client-logo:hover{border-color:rgba(212,160,32,0.3);}
+.client-logo-icon{font-size:1.5rem;margin-bottom:0.4rem;}
+.client-logo-name{font-size:0.75rem;color:var(--text-muted);font-family:sans-serif;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.contact-info-block{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:2rem;}
+.contact-info-block h3{font-size:1.05rem;font-weight:700;margin-bottom:1.5rem;color:var(--text);font-family:sans-serif;}
+.cinfo-row{display:flex;align-items:flex-start;gap:14px;margin-bottom:1.3rem;padding-bottom:1.3rem;border-bottom:1px solid var(--border);}
+.cinfo-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.cinfo-icon{width:40px;height:40px;background:rgba(212,160,32,0.1);border:1px solid rgba(212,160,32,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.cinfo-label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:3px;font-family:sans-serif;}
+.cinfo-value{font-size:0.9rem;color:var(--text);font-family:sans-serif;}
+.cinfo-value a{color:var(--accent);text-decoration:none;}
+.social-links{display:flex;gap:10px;margin-top:1rem;}
+.social-btn{display:flex;align-items:center;gap:8px;background:var(--primary);border:1px solid var(--border);border-radius:6px;padding:0.6rem 1rem;text-decoration:none;color:var(--text-muted);font-size:0.8rem;font-family:sans-serif;transition:all 0.2s;}
+.social-btn:hover{border-color:var(--accent);color:var(--accent);}
+.contact-form-block{background:var(--secondary);border:1px solid var(--border);border-radius:14px;padding:2rem;}
+.contact-form-block h3{font-size:1.05rem;font-weight:700;margin-bottom:1.5rem;color:var(--text);font-family:sans-serif;}
+.form-group{margin-bottom:1.2rem;}
+.form-group label{display:block;font-size:0.75rem;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em;font-family:sans-serif;}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--primary);border:1px solid var(--border);border-radius:6px;padding:0.8rem 1rem;color:var(--text);font-family:sans-serif;font-size:0.9rem;transition:border-color 0.2s;resize:vertical;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);}
+.form-group select option{background:var(--primary);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.submit-btn{width:100%;background:var(--accent);color:#0c0e18;border:none;padding:0.9rem;border-radius:6px;font-family:sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.submit-btn:hover{background:var(--accent2);}
+
+/* FOOTER */
+footer{background:var(--primary);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;margin-bottom:2rem;}
+.footer-brand p{font-size:0.84rem;color:var(--text-muted);line-height:1.7;margin-top:1rem;font-family:sans-serif;}
+.footer-col h4{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1rem;font-family:sans-serif;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:0.6rem;}
+.footer-col ul li a{color:var(--text-muted);text-decoration:none;font-size:0.84rem;transition:color 0.2s;font-family:sans-serif;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.78rem;color:var(--text-muted);font-family:sans-serif;}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid,.hkex-banner{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .sig-inner{grid-template-columns:1fr;}
+  .approach-steps{grid-template-columns:1fr 1fr;}
+  .clients-logos{grid-template-columns:repeat(3,1fr);}
+  .footer-top{grid-template-columns:1fr;}
+  nav .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">🍽️</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-en">Bingo Time Catering</span>
+        <span class="nav-logo-sub">賓果時間餐飲服務有限公司</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#hkex">HKEX Events</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span>✦</span>
+        <span>Hong Kong's Premier Corporate Event Caterer</span>
+      </div>
+      <h1>Exquisite Food.<br><span class="gold">Gracious</span> Service.<br>Expert Coordination.</h1>
+      <p class="hero-tagline">賓果時間餐飲服務有限公司 · Since 2014</p>
+      <p class="hero-desc">From HKEX listing ceremonies to intimate private dinners, Bingo Time Catering brings professional culinary excellence and seamless event management to every occasion. Trusted by over 1,300 companies for their most important moments.</p>
+      <div class="hero-awards">
+        <div class="award-badge">🏛️ HKEX Designated Supplier Since 2015</div>
+        <div class="award-badge">🏆 1,300+ Listing Ceremonies</div>
+      </div>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Explore Our Services →</a>
+        <a href="#contact" class="btn-secondary">📩 Request a Quote</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">Contact & Location</div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Address</div>
+          <div class="info-value">Flat W2, 3/F, Block 1<br>Kwun Tong Industrial Centre<br>Kwun Tong, Kowloon</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">Phone</div>
+          <div class="info-value"><a href="tel:+85235250197">3525 0197</a><br><a href="tel:+85252875954">5287 5954</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:info@bingotime-catering.com">info@bingotime-catering.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📅</div>
+        <div>
+          <div class="info-label">Established</div>
+          <div class="info-value">2014 · Hong Kong</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE STRIP -->
+<div class="signature-strip">
+  <div class="sig-inner">
+    <div class="sig-item">
+      <div class="sig-num">1,300+</div>
+      <div class="sig-label">Companies' Listing Ceremonies Served</div>
+    </div>
+    <div class="sig-item">
+      <div class="sig-num">150+</div>
+      <div class="sig-label">HKEX Listing Ceremonies Hosted</div>
+    </div>
+    <div class="sig-item">
+      <div class="sig-num">800+</div>
+      <div class="sig-label">Guests at Stock Connect Opening</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">2014</div>
+      <div class="stat-label">Founded in Hong Kong</div>
+    </div>
+    <div>
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years of Excellence</div>
+    </div>
+    <div>
+      <div class="stat-num">6</div>
+      <div class="stat-label">Event Service Categories</div>
+    </div>
+    <div>
+      <div class="stat-num">HK</div>
+      <div class="stat-label">Exchange Designated Supplier</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">About Us</div>
+        <h2 class="section-title">Crafting Memorable<br>Dining Experiences</h2>
+        <div class="about-highlight">
+          <h3>✦ Trusted by Hong Kong's Corporate Leaders</h3>
+          <p>Since 2014, Bingo Time Catering has been the go-to choice for Hong Kong's most prestigious corporate events. As a designated supplier for HKEX listing ceremonies since 2015, we have been privileged to celebrate milestones with over 1,300 companies on their most important days.</p>
+        </div>
+        <div class="about-body">
+          <p>Our philosophy is simple: every event, large or small, deserves exceptional food, gracious service, and meticulous coordination. Whether it's a landmark stock exchange listing attended by hundreds, or an intimate birthday gathering, we bring the same level of passion and professionalism.</p>
+          <p>Located in Kwun Tong, our dedicated team of culinary professionals and event coordinators work hand-in-hand to craft customized menus that reflect your vision, budget, and style — ensuring every guest leaves impressed.</p>
+        </div>
+      </div>
+      <div>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon">👨‍🍳</div>
+            <div>
+              <div class="pillar-title">Exquisite Food</div>
+              <div class="pillar-desc">Carefully curated menus featuring premium ingredients and professional culinary preparation, tailored to your event's theme and guest preferences.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🎩</div>
+            <div>
+              <div class="pillar-title">Gracious Service</div>
+              <div class="pillar-desc">Our hospitality team ensures every guest feels valued and attended to, creating a warm and welcoming atmosphere from arrival to farewell.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">📋</div>
+            <div>
+              <div class="pillar-title">Expert Coordination</div>
+              <div class="pillar-desc">Seamless event management from initial planning to final clean-up, so you can focus on your guests while we handle every detail.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">✂️</div>
+            <div>
+              <div class="pillar-title">Tailor-Made Menus</div>
+              <div class="pillar-desc">Every menu is crafted to match your taste, budget, dietary requirements and event style — no two events are alike.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HKEX SIGNATURE -->
+<section id="hkex">
+  <div class="section-inner">
+    <div class="section-label">Signature Expertise</div>
+    <div class="hkex-banner">
+      <div class="hkex-content">
+        <h3>🏛️ Hong Kong Stock Exchange Listing Ceremonies</h3>
+        <p>Since 2015, Bingo Time Catering has been a designated catering supplier for HKEX listing ceremonies — one of Hong Kong's most prestigious corporate milestones. We have proudly served the celebrations of 1,300+ companies as they rang the bell on their historic listing days, and successfully catered landmark events including the Shenzhen-Hong Kong and Shanghai-Hong Kong Stock Connect opening ceremonies for over 800 guests.</p>
+        <p style="margin-top:1rem;">Our HKEX listing ceremony catering service is designed to be seamless, elegant, and perfectly timed — ensuring every executive, investor, and guest enjoys a world-class experience on this momentous occasion.</p>
+      </div>
+      <div class="hkex-stats">
+        <div class="hkex-stat">
+          <div class="hkex-stat-num">2015</div>
+          <div class="hkex-stat-label">HKEX Designated Supplier Since</div>
+        </div>
+        <div class="hkex-stat">
+          <div class="hkex-stat-num">150+</div>
+          <div class="hkex-stat-label">Ceremonies Hosted</div>
+        </div>
+        <div class="hkex-stat">
+          <div class="hkex-stat-num">1,300+</div>
+          <div class="hkex-stat-label">Companies Served</div>
+        </div>
+        <div class="hkex-stat">
+          <div class="hkex-stat-num">800+</div>
+          <div class="hkex-stat-label">Guests at Major Events</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--secondary);padding:5rem 2rem;">
+  <div class="section-inner">
+    <div class="section-label">Our Services</div>
+    <h2 class="section-title">Catering for Every Occasion</h2>
+    <p class="section-sub">From Hong Kong's most prestigious corporate events to your most personal celebrations, we bring the same standard of excellence.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏛️</div>
+        <div class="service-name">HKEX Listing Ceremonies</div>
+        <div class="service-desc">Hong Kong's most prestigious corporate milestone. As HKEX's designated catering supplier since 2015, we know exactly how to make your listing day perfect.</div>
+        <ul class="service-features">
+          <li>Designated HKEX supplier since 2015</li>
+          <li>1,300+ ceremonies served</li>
+          <li>Elegant reception-style catering</li>
+          <li>Full event coordination</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <div class="service-name">Corporate Events</div>
+        <div class="service-desc">Professional catering for all corporate occasions — product launches, shareholder meetings, company anniversaries, team celebrations, and VIP receptions.</div>
+        <ul class="service-features">
+          <li>Product launches & receptions</li>
+          <li>Annual dinners & gala events</li>
+          <li>Conference & seminar catering</li>
+          <li>Customized corporate menus</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💍</div>
+        <div class="service-name">Wedding Catering</div>
+        <div class="service-desc">Make your wedding day as unforgettable as your love story. We create personalised menus that reflect your preferences, dietary needs, and celebration style.</div>
+        <ul class="service-features">
+          <li>Custom bridal menus</li>
+          <li>Multi-course dinner service</li>
+          <li>Cocktail reception catering</li>
+          <li>Dietary accommodations</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎉</div>
+        <div class="service-name">Private Parties</div>
+        <div class="service-desc">Whether it's a birthday bash, a home gathering, or a BBQ with friends and family, our team brings professional catering right to your venue.</div>
+        <ul class="service-features">
+          <li>Birthday celebrations</li>
+          <li>Home & rooftop gatherings</li>
+          <li>BBQ parties</li>
+          <li>Family banquets</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎓</div>
+        <div class="service-name">School & Community Events</div>
+        <div class="service-desc">Catering for teacher appreciation banquets, school celebrations, community gatherings, and non-profit events — bringing warmth and gratitude to every table.</div>
+        <ul class="service-features">
+          <li>Teacher appreciation banquets</li>
+          <li>School award ceremonies</li>
+          <li>Community fundraisers</li>
+          <li>Graduation celebrations</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🥡</div>
+        <div class="service-name">Food Delivery</div>
+        <div class="service-desc">Premium quality meal delivery for office lunches, outdoor events, and special occasions. Freshly prepared and thoughtfully packaged for convenience.</div>
+        <ul class="service-features">
+          <li>Corporate lunch boxes</li>
+          <li>Picnic boxes</li>
+          <li>Group meal delivery</li>
+          <li>Custom dietary packages</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach">
+  <div class="section-inner">
+    <div class="section-label">Our Approach</div>
+    <h2 class="section-title">How We Work</h2>
+    <p class="section-sub">A streamlined process designed to make event catering effortless for you.</p>
+    <div class="approach-steps">
+      <div class="approach-step">
+        <div class="step-num">1</div>
+        <div class="step-title">Consult & Plan</div>
+        <div class="step-desc">Share your event vision, budget, and requirements — we listen and advise on the best approach</div>
+      </div>
+      <div class="approach-step">
+        <div class="step-num">2</div>
+        <div class="step-title">Design Your Menu</div>
+        <div class="step-desc">Our chefs craft a customized menu tailored to your taste, theme, and dietary preferences</div>
+      </div>
+      <div class="approach-step">
+        <div class="step-num">3</div>
+        <div class="step-title">Coordinate & Prepare</div>
+        <div class="step-desc">Our logistics team handles all setup, timing, and staffing for a seamless event</div>
+      </div>
+      <div class="approach-step">
+        <div class="step-num">4</div>
+        <div class="step-title">Deliver Excellence</div>
+        <div class="step-desc">From first course to final farewell, we ensure every guest has an exceptional experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<div class="clients">
+  <div class="clients-inner">
+    <div class="clients-label">Trusted by organizations across sectors</div>
+    <div class="clients-logos">
+      <div class="client-logo">
+        <div class="client-logo-icon">🏦</div>
+        <div class="client-logo-name">Financial Institutions</div>
+      </div>
+      <div class="client-logo">
+        <div class="client-logo-icon">🏢</div>
+        <div class="client-logo-name">Listed Companies</div>
+      </div>
+      <div class="client-logo">
+        <div class="client-logo-icon">🏛️</div>
+        <div class="client-logo-name">HKEX Events</div>
+      </div>
+      <div class="client-logo">
+        <div class="client-logo-icon">🎓</div>
+        <div class="client-logo-name">Educational Institutions</div>
+      </div>
+      <div class="client-logo">
+        <div class="client-logo-icon">💒</div>
+        <div class="client-logo-name">Wedding Venues</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:5rem 2rem;">
+  <div class="section-inner">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Book Your Event</h2>
+    <p class="section-sub">Ready to plan your next event? Tell us about your occasion and we'll craft the perfect catering experience for you.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-block">
+          <h3>Contact Information</h3>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📍</div>
+            <div>
+              <div class="cinfo-label">Address</div>
+              <div class="cinfo-value">Flat W2, 3/F, Block 1<br>Kwun Tong Industrial Centre<br>Kwun Tong, Kowloon, Hong Kong</div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📞</div>
+            <div>
+              <div class="cinfo-label">Phone</div>
+              <div class="cinfo-value">
+                <a href="tel:+85235250197">3525 0197</a><br>
+                <a href="tel:+85252875954">5287 5954</a>
+              </div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📧</div>
+            <div>
+              <div class="cinfo-label">Email</div>
+              <div class="cinfo-value"><a href="mailto:info@bingotime-catering.com">info@bingotime-catering.com</a></div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">🌐</div>
+            <div>
+              <div class="cinfo-label">Website</div>
+              <div class="cinfo-value"><a href="https://bingotime-catering.com" target="_blank">bingotime-catering.com</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://www.facebook.com/Bingo-Time-Catering-Services-Limited" target="_blank" class="social-btn">👍 Facebook</a>
+          <a href="https://www.instagram.com/bingotime2020" target="_blank" class="social-btn">📸 @bingotime2020</a>
+        </div>
+      </div>
+      <div class="contact-form-block">
+        <h3>Event Enquiry</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Company name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="Contact number">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Event Type</label>
+          <select>
+            <option value="">Select event type...</option>
+            <option>HKEX Listing Ceremony</option>
+            <option>Corporate Event</option>
+            <option>Wedding</option>
+            <option>Birthday / Private Party</option>
+            <option>BBQ Party</option>
+            <option>School / Community Event</option>
+            <option>Lunch Box / Food Delivery</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Event Date</label>
+            <input type="date">
+          </div>
+          <div class="form-group">
+            <label>No. of Guests</label>
+            <input type="number" placeholder="Estimated guests">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Event Details</label>
+          <textarea rows="3" placeholder="Tell us about your event, venue, and any special requirements..."></textarea>
+        </div>
+        <button class="submit-btn">✦ Submit Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="display:inline-flex;margin-bottom:0.8rem;">
+          <div class="nav-logo-icon">🍽️</div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-en">Bingo Time Catering</span>
+            <span class="nav-logo-sub">賓果時間餐飲服務有限公司</span>
+          </div>
+        </a>
+        <p>Hong Kong's trusted corporate event caterer since 2014. HKEX designated supplier since 2015, serving 1,300+ companies with exquisite food, gracious service and expert coordination.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#hkex">HKEX Listing Ceremonies</a></li>
+          <li><a href="#services">Corporate Events</a></li>
+          <li><a href="#services">Wedding Catering</a></li>
+          <li><a href="#services">Private Parties</a></li>
+          <li><a href="#services">School Events</a></li>
+          <li><a href="#services">Food Delivery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#hkex">HKEX Expertise</a></li>
+          <li><a href="#contact">Book an Event</a></li>
+          <li><a href="https://bingotime-catering.com" target="_blank">Official Website</a></li>
+          <li><a href="https://www.instagram.com/bingotime2020" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2014–2025 Bingo Time Catering Services Limited 賓果時間餐飲服務有限公司. All rights reserved.</div>
+      <div class="footer-copy">Kwun Tong Industrial Centre, Kwun Tong, Kowloon, Hong Kong</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
