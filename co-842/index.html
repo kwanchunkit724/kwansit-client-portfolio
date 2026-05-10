@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>萬智商標印刷有限公司 | 商標・標籤・條碼・印刷批發</title>
+<meta name="description" content="萬智商標印刷有限公司 — 香港專業商標標籤印刷廠，提供商標設計、標籤印刷、條碼貼紙、吊牌及各類包裝印刷批發服務，品質保證，快速交貨。">
+<style>
+  :root {
+    --bg:       #06080e;
+    --bg2:      #0c1018;
+    --bg3:      #101620;
+    --accent:   #1858c0;
+    --accent2:  #4090f8;
+    --silver:   #a0b0c8;
+    --silver2:  #c8d8f0;
+    --text:     #e8edf8;
+    --muted:    #6878a0;
+    --border:   rgba(64,144,248,0.16);
+    --card:     rgba(255,255,255,0.03);
+    --radius:   12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', 'PingFang HK', 'Noto Sans HK', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(6,8,14,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo { font-size: 1.15rem; font-weight: 800; color: var(--accent2); text-decoration: none; }
+  .nav-logo span { color: var(--silver2); font-weight: 500; font-size: 0.82rem; margin-left: 0.4rem; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.92rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-cta {
+    background: var(--accent); color: #fff; border: none; padding: 0.55rem 1.3rem;
+    border-radius: 6px; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 70% 55% at 60% 40%, rgba(24,88,192,0.14) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 40% at 5% 80%, rgba(64,144,248,0.07) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(64,144,248,0.1); border: 1px solid rgba(64,144,248,0.28);
+    color: var(--accent2); border-radius: 50px; padding: 0.38rem 1rem;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.55rem; }
+  .hero h1 { font-size: clamp(2.1rem, 4.2vw, 3.2rem); font-weight: 900; line-height: 1.25; margin-bottom: 1.4rem; }
+  .hero h1 .hl { color: var(--accent2); }
+  .hero h1 .hl-s { color: var(--silver2); }
+  .hero p { font-size: 1.05rem; color: var(--muted); max-width: 530px; margin-bottom: 2rem; line-height: 1.8; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-weight: 800; font-size: 1rem;
+    padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(24,88,192,0.4);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(64,144,248,0.5); }
+  .btn-outline {
+    background: transparent; color: var(--text); border: 1.5px solid rgba(255,255,255,0.2);
+    font-size: 1rem; padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 18px; padding: 2rem;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .info-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--accent2); margin-bottom: 1.4rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+  .info-row { display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: flex-start; }
+  .info-icon { font-size: 1.1rem; min-width: 28px; margin-top: 0.1rem; }
+  .info-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.18rem; }
+  .info-val { font-size: 0.92rem; color: var(--text); font-weight: 600; }
+  .info-val a { color: var(--accent2); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .info-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+
+  /* STATS */
+  .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3.5rem 5%; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 2.4rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-num sup { font-size: 1.1rem; vertical-align: super; }
+  .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+
+  /* SECTION */
+  .section { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.7rem; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; line-height: 1.25; margin-bottom: 1rem; }
+  .section-title .hl { color: var(--accent2); }
+  .section-desc { color: var(--muted); max-width: 600px; margin-bottom: 3rem; font-size: 1rem; line-height: 1.8; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .service-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2rem;
+    transition: border-color 0.25s, transform 0.2s; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .service-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon { font-size: 2.6rem; margin-bottom: 1rem; }
+  .service-card h3 { font-size: 1.1rem; font-weight: 800; color: var(--accent2); margin-bottom: 0.5rem; }
+  .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+  .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+  .stag {
+    background: rgba(64,144,248,0.1); border: 1px solid rgba(64,144,248,0.22);
+    color: var(--accent2); padding: 0.2rem 0.6rem; border-radius: 50px; font-size: 0.76rem; font-weight: 700;
+  }
+
+  /* MATERIALS */
+  .materials-wrap { background: var(--bg2); padding: 6rem 5%; }
+  .materials-inner { max-width: 1200px; margin: 0 auto; }
+  .materials-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .material-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem; text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .material-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
+  .material-icon { font-size: 2.2rem; margin-bottom: 0.8rem; }
+  .material-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+  .material-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+  /* PROCESS */
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+  .process-grid::before {
+    content: ''; position: absolute; top: 36px; left: 12.5%; right: 12.5%; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--silver));
+  }
+  .process-step { text-align: center; padding: 0 1rem; position: relative; }
+  .step-num {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-size: 1.5rem; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.4rem; position: relative; z-index: 1;
+    box-shadow: 0 0 0 8px var(--bg), 0 4px 20px rgba(24,88,192,0.4);
+  }
+  .process-step h4 { font-size: 0.98rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .process-step p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* WHY */
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .why-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.8rem; display: flex; gap: 1.2rem; align-items: flex-start; }
+  .why-icon { font-size: 2rem; min-width: 44px; }
+  .why-item h4 { font-size: 1rem; font-weight: 700; color: var(--accent2); margin-bottom: 0.4rem; }
+  .why-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact-wrap {
+    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(24,88,192,0.07) 0%, transparent 65%), var(--bg);
+    padding: 6rem 5%;
+  }
+  .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; margin-bottom: 1rem; }
+  .contact-info p { color: var(--muted); font-size: 0.98rem; margin-bottom: 2rem; line-height: 1.8; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.1rem; }
+  .c-row { display: flex; gap: 1rem; align-items: flex-start; }
+  .c-icon { font-size: 1.3rem; min-width: 34px; }
+  .c-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.2rem; }
+  .c-val { font-size: 0.95rem; font-weight: 600; }
+  .c-val a { color: var(--accent2); text-decoration: none; }
+  .c-val a:hover { text-decoration: underline; }
+  form { display: flex; flex-direction: column; gap: 1.2rem; }
+  form label { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.3rem; display: block; }
+  form input, form textarea, form select {
+    width: 100%; background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.8rem 1rem; color: var(--text); font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s;
+  }
+  form input:focus, form textarea:focus, form select:focus { outline: none; border-color: var(--accent2); }
+  form textarea { min-height: 110px; resize: vertical; }
+  form select option { background: #0c1018; }
+  .form-submit {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-weight: 800; font-size: 1rem;
+    border: none; padding: 0.95rem; border-radius: 8px; cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(24,88,192,0.4);
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(64,144,248,0.5); }
+
+  /* FOOTER */
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4rem 5% 2rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand .logo-text { font-size: 1.1rem; font-weight: 800; color: var(--accent2); margin-bottom: 0.8rem; }
+  .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  footer h5 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  footer ul li a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  footer ul li a:hover { color: var(--accent2); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .info-card { max-width: 480px; }
+    .services-grid, .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .materials-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .process-grid::before { display: none; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .services-grid, .materials-grid, .why-grid, .process-grid, .contact-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">萬智商標印刷<span>Label Printing</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">服務範疇</a></li>
+    <li><a href="#materials">物料選擇</a></li>
+    <li><a href="#process">生產流程</a></li>
+    <li><a href="#why">選擇我們</a></li>
+    <li><a href="#contact">聯絡報價</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">即時報價</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">香港商標標籤印刷批發專家</div>
+      <h1>
+        專業商標印刷<br>
+        <span class="hl">標籤・條碼・吊牌</span><br>
+        <span class="hl-s">品質保證・快速交貨</span>
+      </h1>
+      <p>
+        萬智商標印刷有限公司是香港專業商標及標籤印刷廠，
+        為各行各業提供高品質商標印刷、標籤製作、條碼貼紙及包裝印刷批發服務，
+        專業設備配合快速生產，滿足客戶各類印刷需求。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#services">查看服務</a>
+        <a class="btn-outline" href="#contact">即時報價</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>📋 聯絡資料</h3>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">地區</div>
+          <div class="info-val">香港</div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">📱</div>
+        <div>
+          <div class="info-label">手機 / WhatsApp</div>
+          <div class="info-val"><a href="https://wa.me/85251888228">5188 8228</a></div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">🏭</div>
+        <div>
+          <div class="info-label">業務類別</div>
+          <div class="info-val">商標・標籤印刷批發</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📦</div>
+        <div>
+          <div class="info-label">最低起訂</div>
+          <div class="info-val">可接散單，歡迎查詢</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">⚡</div>
+        <div>
+          <div class="info-label">交貨時間</div>
+          <div class="info-val">快速生產，準時交貨</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">20<sup>+</sup></div>
+      <div class="stat-label">年印刷行業經驗</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">500<sup>+</sup></div>
+      <div class="stat-label">服務客戶數量</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100<sup>+</sup></div>
+      <div class="stat-label">印刷物料選擇</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">48<sup>h</sup></div>
+      <div class="stat-label">快速打樣服務</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div id="services">
+  <div class="section">
+    <div class="section-label">Our Services</div>
+    <h2 class="section-title">全面<span class="hl">印刷服務</span></h2>
+    <p class="section-desc">
+      萬智提供多元化的商標及印刷服務，覆蓋零售、食品、服裝、電子、物流等各個行業，
+      一站式滿足您所有印刷需求。
+    </p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏷️</div>
+        <h3>商標 / 標籤印刷</h3>
+        <p>
+          各類產品商標及標籤印刷，包括銅版紙、PVC、PE、PP及特種材料，
+          支援多色印刷、燙金燙銀、UV光油等各種後加工工藝。
+        </p>
+        <div class="service-tags">
+          <span class="stag">銅版紙</span>
+          <span class="stag">PVC</span>
+          <span class="stag">燙金</span>
+          <span class="stag">UV光油</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>條碼 / 二維碼貼紙</h3>
+        <p>
+          各規格條碼貼紙印刷，支援 EAN-13、UPC、QR Code、DataMatrix 等各類條碼格式，
+          可配合掃描器使用，精確清晰，適合零售及物流標示。
+        </p>
+        <div class="service-tags">
+          <span class="stag">EAN-13</span>
+          <span class="stag">QR Code</span>
+          <span class="stag">物流條碼</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🪧</div>
+        <h3>吊牌 / 紙牌印刷</h3>
+        <p>
+          服裝、配飾、禮品等行業專用吊牌印刷，支援各種形狀及規格，
+          可配合打孔、穿繩、覆膜等加工，設計精美，彰顯品牌形象。
+        </p>
+        <div class="service-tags">
+          <span class="stag">服裝吊牌</span>
+          <span class="stag">禮品牌</span>
+          <span class="stag">覆膜</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <h3>包裝標籤印刷</h3>
+        <p>
+          食品、藥品、化妝品等包裝標籤印刷，符合香港及國際包裝標籤法規要求，
+          防水、耐油、耐磨，確保標籤在各種環境下保持清晰。
+        </p>
+        <div class="service-tags">
+          <span class="stag">食品包裝</span>
+          <span class="stag">防水材料</span>
+          <span class="stag">法規合規</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔖</div>
+        <h3>不乾膠貼紙</h3>
+        <p>
+          各類不乾膠貼紙印刷，可選擇不同黏性強度，
+          適合玻璃、金屬、塑膠等各種表面，
+          支援個性化圖案設計及大批量生產。
+        </p>
+        <div class="service-tags">
+          <span class="stag">高黏性</span>
+          <span class="stag">可移除</span>
+          <span class="stag">個人化設計</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <h3>設計及打樣服務</h3>
+        <p>
+          提供專業商標設計服務，並可於確認設計後快速打樣，
+          讓您在大量生產前確認效果，確保最終成品完全符合要求。
+        </p>
+        <div class="service-tags">
+          <span class="stag">平面設計</span>
+          <span class="stag">48h打樣</span>
+          <span class="stag">免費修改</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MATERIALS -->
+<div class="materials-wrap" id="materials">
+  <div class="materials-inner">
+    <div class="section-label">Materials</div>
+    <h2 class="section-title" style="margin-bottom:0.8rem;">多樣化<span class="hl">印刷物料</span></h2>
+    <p class="section-desc" style="margin-bottom: 2.5rem;">
+      提供多種標籤物料選擇，適合不同行業及使用環境的需要。
+    </p>
+    <div class="materials-grid">
+      <div class="material-card">
+        <div class="material-icon">📄</div>
+        <h4>銅版紙標籤</h4>
+        <p>常規標籤首選，表面光滑，印刷效果鮮豔，適合一般室內使用。</p>
+      </div>
+      <div class="material-card">
+        <div class="material-icon">💧</div>
+        <h4>防水PP / PE材料</h4>
+        <p>耐水、耐油，適合食品飲料、化妝品、清潔用品等包裝標籤。</p>
+      </div>
+      <div class="material-card">
+        <div class="material-icon">✨</div>
+        <h4>透明PVC標籤</h4>
+        <p>透明底材，貼上後幾乎隱形，適合玻璃瓶及高端產品包裝。</p>
+      </div>
+      <div class="material-card">
+        <div class="material-icon">🔮</div>
+        <h4>鋁箔 / 電化鋁</h4>
+        <p>金屬質感效果，適合高端品牌及精品包裝，彰顯豪華品牌形象。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div style="padding: 1px 0;" id="process">
+  <div class="section">
+    <div class="section-label">Production Process</div>
+    <h2 class="section-title">生產流程<br><span class="hl">高效順暢</span></h2>
+    <p class="section-desc" style="margin-bottom: 4rem;">
+      從接單到交貨，每個環節嚴格把關，確保品質及準時交付。
+    </p>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>提交設計及規格</h4>
+        <p>提供印刷文件、尺寸規格及數量要求，我們將即時跟進並報價。</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>確認打樣</h4>
+        <p>生產樣品供您確認顏色、尺寸及效果，確保符合要求後方開始大量生產。</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>品質監控生產</h4>
+        <p>嚴格品質控制，確保每批貨品顏色一致、印刷清晰、無瑕疵。</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4>準時交貨</h4>
+        <p>妥善包裝，按時送達，可選擇自取或安排送貨到指定地點。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY -->
+<div style="background: var(--bg2); padding: 1px 0;" id="why">
+  <div class="section">
+    <div class="section-label">Why Choose Us</div>
+    <h2 class="section-title">選擇萬智的<span class="hl">六大優勢</span></h2>
+    <p class="section-desc">多年香港印刷業經驗，以品質與服務贏得客戶長期信賴。</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🖨️</div>
+        <div>
+          <h4>先進印刷設備</h4>
+          <p>配備現代化印刷機械，確保每批產品的色彩準確度及印刷精度達到最高水準。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💰</div>
+        <div>
+          <h4>批發優惠價格</h4>
+          <p>直接廠家報價，省卻中間人費用，為客戶提供市場上最具競爭力的印刷批發價格。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <div>
+          <h4>快速交貨能力</h4>
+          <p>靈活的生產排程，即使急單亦可配合安排，以最短時間完成生產並準時交貨。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🎨</div>
+        <div>
+          <h4>專業設計支援</h4>
+          <p>提供標籤設計服務，如需修改可全程配合，確保最終設計完美呈現品牌形象。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔍</div>
+        <div>
+          <h4>嚴格品質管控</h4>
+          <p>每批貨品出廠前均經過嚴格品質檢查，確保顏色、尺寸及印刷效果完全符合規格。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🤝</div>
+        <div>
+          <h4>一對一客戶服務</h4>
+          <p>專屬客戶服務人員全程跟進訂單，確保每個細節均按客戶要求執行，令您安心放心。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">即時<span class="hl">報價查詢</span></h2>
+      <p>
+        請提供您的印刷需求及數量，我們將於最短時間內回覆報價。
+        歡迎大量批發查詢，亦接受各種特殊規格訂制。
+      </p>
+      <div class="contact-details">
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">地區</div>
+            <div class="c-val">香港</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📱</div>
+          <div>
+            <div class="c-label">手機 / WhatsApp</div>
+            <div class="c-val"><a href="https://wa.me/85251888228">+852 5188 8228</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">💬</div>
+          <div>
+            <div class="c-label">WhatsApp 報價</div>
+            <div class="c-val">可直接 WhatsApp 發送尺寸及設計稿</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📦</div>
+          <div>
+            <div class="c-label">服務範圍</div>
+            <div class="c-val">香港本地 ｜ 澳門 ｜ 大陸發貨</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form onsubmit="return false;">
+      <div>
+        <label>您的姓名 / 公司名稱 *</label>
+        <input type="text" placeholder="例：陳生 / ABC Company">
+      </div>
+      <div>
+        <label>聯絡電話 *</label>
+        <input type="tel" placeholder="例：9000 0000">
+      </div>
+      <div>
+        <label>電郵地址</label>
+        <input type="email" placeholder="example@email.com">
+      </div>
+      <div>
+        <label>印刷服務類別</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>商標 / 標籤印刷</option>
+          <option>條碼 / QR Code 貼紙</option>
+          <option>服裝吊牌</option>
+          <option>食品 / 藥品包裝標籤</option>
+          <option>不乾膠貼紙</option>
+          <option>其他印刷需求</option>
+        </select>
+      </div>
+      <div>
+        <label>預計數量</label>
+        <select>
+          <option value="">請選擇（可選）</option>
+          <option>1,000 件以下</option>
+          <option>1,000 – 5,000 件</option>
+          <option>5,000 – 20,000 件</option>
+          <option>20,000 – 100,000 件</option>
+          <option>100,000 件以上</option>
+        </select>
+      </div>
+      <div>
+        <label>詳細需求</label>
+        <textarea placeholder="請描述您的印刷需求，例如：尺寸、顏色、物料、特別要求等..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">📩 立即發送查詢</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-text">萬智商標印刷有限公司</div>
+      <p>
+        香港專業商標及標籤印刷廠，提供商標印刷、條碼貼紙、吊牌及各類印刷批發服務，
+        品質保證，快速交貨。
+      </p>
+    </div>
+    <div>
+      <h5>印刷服務</h5>
+      <ul>
+        <li><a href="#services">商標標籤</a></li>
+        <li><a href="#services">條碼貼紙</a></li>
+        <li><a href="#services">服裝吊牌</a></li>
+        <li><a href="#services">包裝標籤</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>物料及流程</h5>
+      <ul>
+        <li><a href="#materials">物料選擇</a></li>
+        <li><a href="#process">生產流程</a></li>
+        <li><a href="#why">品質保證</a></li>
+        <li><a href="#contact">打樣服務</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>聯絡資料</h5>
+      <ul>
+        <li><a href="https://wa.me/85251888228">WhatsApp: 5188 8228</a></li>
+        <li><a href="#contact">即時報價查詢</a></li>
+        <li><a href="#contact">批量採購優惠</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 萬智商標印刷有限公司. All rights reserved.</span>
+    <span>香港專業商標標籤印刷批發</span>
+  </div>
+</footer>
+
+</body>
+</html>
