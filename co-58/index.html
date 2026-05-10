@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>廣州瑞時信息科技有限公司 — 健康美容產品</title>
+<style>
+  :root {
+    --bg:       #0d080c;
+    --surface:  #160c14;
+    --card:     #1e1020;
+    --border:   #361830;
+    --accent1:  #7a1850;
+    --accent2:  #b02878;
+    --accent3:  #e040a0;
+    --rose:     #f060b8;
+    --gold:     #c89040;
+    --gold2:    #e8b060;
+    --text:     #f4eaf2;
+    --muted:    #987090;
+    --cream:    #f8f0f4;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif; line-height: 1.7; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,8,12,0.97); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .nav-logo {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent1), var(--rose));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.85rem; color: #fff;
+  }
+  .nav-name { font-size: 0.9rem; font-weight: 700; color: var(--text); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 0.5rem 1.2rem; border-radius: 20px;
+    font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  .hero {
+    min-height: 100vh; padding: 100px 2.5rem 60px;
+    background:
+      radial-gradient(ellipse 80% 55% at 65% 35%, rgba(122,24,80,0.28) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(200,144,64,0.1) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(122,24,80,0.2); border: 1px solid rgba(224,64,160,0.3);
+    color: var(--rose); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.5rem;
+  }
+  .hero h1 { font-size: clamp(1.9rem, 3.8vw, 3rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  .hero h1 span { color: var(--rose); }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); margin-bottom: 2rem; max-width: 520px; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 0.8rem 1.8rem; border-radius: 20px;
+    font-size: 0.95rem; font-weight: 700; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(122,24,80,0.4); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 2px solid var(--border); color: var(--text); padding: 0.75rem 1.8rem;
+    border-radius: 20px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: border-color .2s, color .2s;
+  }
+  .btn-outline:hover { border-color: var(--rose); color: var(--rose); }
+
+  .info-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 2rem; box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  }
+  .info-card h3 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold2); margin-bottom: 1.2rem; }
+  .info-row { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(54,24,48,0.8); }
+  .info-row:last-child { border-bottom: none; }
+  .info-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .info-label { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; }
+  .info-val { font-size: 0.9rem; color: var(--text); }
+
+  .stats { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2.5rem; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { text-align: center; padding: 1.5rem 1rem; position: relative; }
+  .stat:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 25%; height: 50%; width: 1px; background: var(--border); }
+  .stat-num { font-size: 2rem; font-weight: 900; color: var(--rose); }
+  .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.3rem; }
+
+  section { padding: 80px 2.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; background: rgba(122,24,80,0.15); border: 1px solid rgba(224,64,160,0.25);
+    color: var(--rose); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.8rem; border-radius: 20px; margin-bottom: 0.8rem;
+  }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 1rem; }
+  .section-title span { color: var(--rose); }
+  .section-sub { font-size: 1rem; color: var(--muted); max-width: 600px; margin-bottom: 3rem; }
+
+  .products-bg { background: var(--bg); }
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .product-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 2rem; transition: border-color .25s, transform .25s;
+  }
+  .product-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+  .product-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .product-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .product-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.65; }
+  .product-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+  .ptag { background: rgba(122,24,80,0.15); border: 1px solid rgba(224,64,160,0.2); color: var(--rose); font-size: 0.7rem; padding: 0.15rem 0.55rem; border-radius: 20px; }
+
+  .wellness-bg { background: var(--surface); }
+  .wellness-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .wellness-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 2rem; text-align: center; transition: border-color .25s;
+  }
+  .wellness-card:hover { border-color: var(--gold); }
+  .wellness-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .wellness-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--gold2); }
+  .wellness-card p { font-size: 0.87rem; color: var(--muted); }
+
+  .contact-bg { background: var(--bg); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .ci-list { display: flex; flex-direction: column; gap: 1.2rem; }
+  .ci-item { display: flex; gap: 0.9rem; }
+  .ci-icon {
+    width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(122,24,80,0.2); border: 1px solid rgba(224,64,160,0.25);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .ci-label { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
+  .ci-val { font-size: 0.9rem; color: var(--text); }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; }
+  .contact-form h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.76rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); border-radius: 12px; padding: 0.7rem 0.9rem; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent2); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select option { background: var(--surface); }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 0.85rem; border-radius: 20px;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.85; }
+
+  footer { background: var(--surface); border-top: 1px solid var(--border); padding: 60px 2.5rem 30px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.8rem; color: var(--rose); }
+  .footer-brand p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; }
+  footer h4 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  footer ul li a { color: var(--text); text-decoration: none; font-size: 0.87rem; transition: color .2s; }
+  footer ul li a:hover { color: var(--rose); }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  .footer-bottom p { font-size: 0.78rem; color: var(--muted); }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .info-card { display: none; }
+    .products-grid, .wellness-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .products-grid, .wellness-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">瑞時</div>
+    <span class="nav-name">廣州瑞時信息科技有限公司</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products">健康產品</a></li>
+    <li><a href="#wellness">美容護理</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">立即查詢</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">✨ 健康 · 美容 · 科技</div>
+      <h1>科技賦能<br><span>健康美麗生活</span></h1>
+      <p class="hero-sub">廣州瑞時信息科技有限公司致力以科技創新為基礎，為客戶提供優質的健康美容產品及解決方案，融合現代科技與天然成分，幫助您實現由內而外的健康美麗。</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#products">瀏覽產品</a>
+        <a class="btn-outline" href="#contact">聯絡我們</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>公司資料</h3>
+      <div class="info-row">
+        <span class="info-icon">🏢</span>
+        <div>
+          <div class="info-label">公司名稱</div>
+          <div class="info-val">廣州瑞時信息科技有限公司</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div>
+          <div class="info-label">地區</div>
+          <div class="info-val">廣州 · 香港</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">💄</span>
+        <div>
+          <div class="info-label">業務範疇</div>
+          <div class="info-val">健康美容產品 · 科技應用</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🌸</span>
+        <div>
+          <div class="info-label">服務</div>
+          <div class="info-val">健康補充品 · 護膚 · 美容科技</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">科技</div>
+      <div class="stat-label">驅動創新</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">天然</div>
+      <div class="stat-label">成分配方</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">粵港</div>
+      <div class="stat-label">服務地區</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">B2C</div>
+      <div class="stat-label">直接服務</div>
+    </div>
+  </div>
+</div>
+
+<section class="products-bg" id="products">
+  <div class="section-inner">
+    <div class="section-tag">健康產品系列</div>
+    <h2 class="section-title">由內而外的<span>健康方案</span></h2>
+    <p class="section-sub">精選優質健康補充品及功能性產品，以科學配方結合天然成分，助您維持最佳身心狀態，由內而外煥發健康光彩。</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">💊</div>
+        <h3>健康補充品</h3>
+        <p>維他命、礦物質及植物提取物配方，針對現代都市人的健康需求，科學配比，有效補充日常所需營養。</p>
+        <div class="product-tags">
+          <span class="ptag">維他命</span>
+          <span class="ptag">礦物質</span>
+          <span class="ptag">植物萃取</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🌿</div>
+        <h3>排毒淨化系列</h3>
+        <p>天然植物成分排毒飲品及膠囊，助身體排走積累毒素，促進新陳代謝，讓您感受由內到外的輕盈暢快。</p>
+        <div class="product-tags">
+          <span class="ptag">排毒</span>
+          <span class="ptag">新陳代謝</span>
+          <span class="ptag">天然</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">⚡</div>
+        <h3>能量活力產品</h3>
+        <p>專為忙碌都市人設計的能量補充方案，提升精力、改善體能表現，讓您全天保持最佳活力狀態。</p>
+        <div class="product-tags">
+          <span class="ptag">能量提升</span>
+          <span class="ptag">體能</span>
+          <span class="ptag">活力</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🌺</div>
+        <h3>護膚美容系列</h3>
+        <p>結合先進護膚科技與天然植萃成分，針對保濕、亮白、抗老等肌膚需求，呈現健康水潤透亮肌膚。</p>
+        <div class="product-tags">
+          <span class="ptag">保濕</span>
+          <span class="ptag">亮白</span>
+          <span class="ptag">抗老</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🏋️</div>
+        <h3>塑形纖體方案</h3>
+        <p>科學設計的體重管理及塑形產品，配合健康飲食及運動，有效幫助達成理想體態目標。</p>
+        <div class="product-tags">
+          <span class="ptag">纖體</span>
+          <span class="ptag">體重管理</span>
+          <span class="ptag">塑形</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">😴</div>
+        <h3>睡眠身心放鬆</h3>
+        <p>舒緩壓力、改善睡眠質素的天然配方產品，助您放鬆身心，享受高質量睡眠，恢復充沛精力。</p>
+        <div class="product-tags">
+          <span class="ptag">助眠</span>
+          <span class="ptag">舒壓</span>
+          <span class="ptag">放鬆</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wellness-bg" id="wellness">
+  <div class="section-inner">
+    <div class="section-tag">全面健康理念</div>
+    <h2 class="section-title">我們的<span>健康承諾</span></h2>
+    <p class="section-sub">瑞時信息科技以科技為基礎，融合全面健康理念，為客戶提供可持續的健康美麗生活方案。</p>
+    <div class="wellness-grid">
+      <div class="wellness-card">
+        <div class="wellness-icon">🔬</div>
+        <h3>科學研究基礎</h3>
+        <p>所有產品均以嚴謹的科學研究為依據，確保配方的安全性、有效性及品質符合最高標準。</p>
+      </div>
+      <div class="wellness-card">
+        <div class="wellness-icon">🌱</div>
+        <h3>天然成分優先</h3>
+        <p>優先採用天然植物萃取成分，避免不必要的人工添加劑，為您提供更安心、更健康的產品選擇。</p>
+      </div>
+      <div class="wellness-card">
+        <div class="wellness-icon">✅</div>
+        <h3>品質安全保障</h3>
+        <p>嚴格的品質管控體系確保每件產品符合相關法規及安全標準，讓您使用每件產品都安心無憂。</p>
+      </div>
+      <div class="wellness-card">
+        <div class="wellness-icon">📱</div>
+        <h3>科技整合應用</h3>
+        <p>結合信息科技，提供智能健康追蹤及個性化產品推薦，幫助您更科學地管理健康狀況。</p>
+      </div>
+      <div class="wellness-card">
+        <div class="wellness-icon">🤝</div>
+        <h3>專業顧問支援</h3>
+        <p>專業健康美容顧問團隊提供一對一個人化諮詢，根據您的身體狀況及目標制定最適合的健康方案。</p>
+      </div>
+      <div class="wellness-card">
+        <div class="wellness-icon">♻️</div>
+        <h3>可持續健康</h3>
+        <p>不追求短期效果，而是協助您建立持續的健康生活習慣，實現長期、可持續的健康美麗目標。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-bg" id="contact">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2 class="section-title">開始您的<span>健康之旅</span></h2>
+    <p class="section-sub">歡迎與我們的健康美容顧問聯絡，了解更多產品資訊及個人化健康方案。</p>
+    <div class="contact-grid">
+      <div>
+        <div class="ci-list">
+          <div class="ci-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">服務地區</div>
+              <div class="ci-val">廣州 · 香港 · 大灣區</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">💄</div>
+            <div>
+              <div class="ci-label">產品系列</div>
+              <div class="ci-val">健康補充品 · 護膚美容 · 纖體塑形</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🎯</div>
+            <div>
+              <div class="ci-label">服務對象</div>
+              <div class="ci-val">個人消費者 · 健康美容愛好者</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>產品查詢</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>電話</label>
+            <input type="tel" placeholder="聯絡電話">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>感興趣的產品</label>
+          <select>
+            <option value="">請選擇</option>
+            <option>健康補充品</option>
+            <option>排毒淨化系列</option>
+            <option>能量活力產品</option>
+            <option>護膚美容系列</option>
+            <option>塑形纖體方案</option>
+            <option>睡眠身心放鬆</option>
+            <option>全線產品查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea placeholder="請描述您的健康目標或需求，我們的顧問將為您提供個性化建議。"></textarea>
+        </div>
+        <button class="form-submit">提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>廣州瑞時信息科技有限公司</h3>
+        <p>以科技創新為核心，提供優質健康美容產品及個性化健康解決方案，服務廣州、香港及大灣區客戶，協助每位客戶實現由內而外的健康美麗。</p>
+      </div>
+      <div>
+        <h4>產品系列</h4>
+        <ul>
+          <li><a href="#products">健康補充品</a></li>
+          <li><a href="#products">護膚美容</a></li>
+          <li><a href="#products">纖體塑形</a></li>
+          <li><a href="#products">能量活力</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>快速連結</h4>
+        <ul>
+          <li><a href="#wellness">健康理念</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 廣州瑞時信息科技有限公司 版權所有</p>
+      <p>廣州 · 香港 · 健康美容產品</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
