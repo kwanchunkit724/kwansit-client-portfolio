@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>時興隆(香港)有限公司 | 香港品牌 · 美食零食網店</title>
+<meta name="description" content="時興隆(香港)有限公司 — 香港本土品牌，網上零食精品店，提供台式糕點、日本零食、MMF橡皮糖、時興隆自家品牌蛋卷及寵物用品，會員享優惠獎賞。"/>
+<style>
+:root{
+  --bg:#080604;
+  --surface:#100c08;
+  --card:#181008;
+  --border:#281808;
+  --accent:#d07818;
+  --accent2:#c82820;
+  --text:#f0ede8;
+  --muted:#8a8074;
+  --radius:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,6,4,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{display:flex;flex-direction:column;line-height:1.2;}
+.nav-logo-cn{font-size:1.1rem;font-weight:800;color:var(--accent);}
+.nav-logo-tag{font-size:0.65rem;letter-spacing:0.1em;color:var(--muted);}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:0.85rem;color:var(--muted);transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:700;transition:opacity 0.2s;}
+.nav-cta:hover{opacity:0.85;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:64px;}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 60% at 20% 40%,rgba(208,120,24,0.12) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 50% at 80% 60%,rgba(200,40,32,0.08) 0%,transparent 60%),
+  linear-gradient(160deg,#080604 0%,#100c06 60%,#080604 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(208,120,24,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(208,120,24,0.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 400px;gap:5rem;align-items:center;position:relative;z-index:2;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(208,120,24,0.12);border:1px solid rgba(208,120,24,0.25);border-radius:20px;padding:0.3rem 1rem;font-size:0.78rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.5rem;}
+.hero h1{font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:900;line-height:1.1;margin-bottom:0.75rem;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-tagline{font-size:1rem;color:var(--muted);margin-bottom:1.5rem;font-style:italic;border-left:3px solid var(--accent);padding-left:1rem;}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin-bottom:2.5rem;line-height:1.7;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 2rem;border-radius:8px;font-weight:700;font-size:0.95rem;transition:opacity 0.2s;}
+.btn-primary:hover{opacity:0.85;}
+.btn-secondary{border:1px solid var(--border);color:var(--text);padding:0.75rem 2rem;border-radius:8px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s;}
+.btn-secondary:hover{border-color:var(--accent);}
+.hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.72rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.7rem 0;border-bottom:1px solid var(--border);}
+.info-row:last-child{border-bottom:none;}
+.info-icon{width:32px;height:32px;border-radius:7px;background:rgba(208,120,24,0.12);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;}
+.info-val{font-size:0.9rem;font-weight:600;}
+.info-val a{color:var(--accent);}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stats-inner{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:1.9rem;font-weight:800;color:var(--accent);line-height:1;}
+.stat-label{font-size:0.78rem;color:var(--muted);margin-top:0.4rem;}
+
+/* SECTIONS */
+section{padding:5rem 0;}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.section-tag{display:inline-block;background:rgba(208,120,24,0.12);border:1px solid rgba(208,120,24,0.2);border-radius:20px;padding:0.3rem 1rem;font-size:0.75rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1rem;}
+.section-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;line-height:1.2;margin-bottom:0.75rem;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:640px;line-height:1.7;}
+.section-header{margin-bottom:3rem;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(208,120,24,0.08),rgba(200,40,32,0.06));border:1px solid rgba(208,120,24,0.18);border-radius:12px;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:1.05rem;line-height:1.8;}
+.about-body p{color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+.prop-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-name{font-size:0.82rem;font-weight:700;color:var(--accent);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+
+/* PRODUCT CARDS */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.25s;}
+.prod-card:hover{border-color:rgba(208,120,24,0.35);transform:translateY(-3px);}
+.prod-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.prod-card:hover::after{opacity:1;}
+.prod-cat{display:inline-block;background:rgba(208,120,24,0.12);border:1px solid rgba(208,120,24,0.2);border-radius:20px;padding:0.2rem 0.75rem;font-size:0.7rem;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.75rem;}
+.prod-emoji{font-size:2rem;margin-bottom:0.5rem;}
+.prod-name{font-size:1.15rem;font-weight:800;margin-bottom:0.4rem;}
+.prod-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;margin-bottom:0.75rem;}
+.prod-items{list-style:none;display:flex;flex-direction:column;gap:0.3rem;}
+.prod-items li{font-size:0.8rem;color:var(--muted);display:flex;align-items:center;gap:0.4rem;}
+.prod-items li::before{content:'·';color:var(--accent);}
+.own-badge{display:inline-block;background:rgba(200,40,32,0.12);border:1px solid rgba(200,40,32,0.2);border-radius:4px;padding:0.15rem 0.5rem;font-size:0.68rem;color:var(--accent2);margin-top:0.5rem;}
+
+/* FEATURED PRODUCTS */
+.featured-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.featured-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;text-align:center;transition:border-color 0.25s;}
+.featured-item:hover{border-color:rgba(208,120,24,0.35);}
+.fi-emoji{font-size:1.8rem;margin-bottom:0.5rem;}
+.fi-name{font-size:0.88rem;font-weight:700;margin-bottom:0.3rem;}
+.fi-price{font-size:0.82rem;color:var(--accent);font-weight:700;}
+.fi-orig{font-size:0.72rem;color:var(--muted);text-decoration:line-through;}
+
+/* MEMBER SECTION */
+.member-card{background:linear-gradient(135deg,rgba(208,120,24,0.10),rgba(200,40,32,0.08));border:1px solid rgba(208,120,24,0.25);border-radius:16px;padding:3rem;text-align:center;}
+.member-icon{font-size:3rem;margin-bottom:1rem;}
+.member-title{font-size:1.6rem;font-weight:800;margin-bottom:0.75rem;}
+.member-sub{color:var(--muted);max-width:500px;margin:0 auto 2rem;line-height:1.7;}
+.member-perks{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:2rem;}
+.perk{display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;}
+.perk-icon{font-size:1.2rem;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-block{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-title{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;}
+.contact-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 0;border-bottom:1px solid var(--border);}
+.contact-item:last-child{border-bottom:none;}
+.contact-icon{width:38px;height:38px;border-radius:8px;background:rgba(208,120,24,0.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.contact-type{font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;}
+.contact-val{font-size:0.95rem;font-weight:600;}
+.contact-val a{color:var(--accent);}
+.social-row{display:flex;gap:0.75rem;margin-top:1rem;}
+.soc-btn{display:flex;align-items:center;gap:0.5rem;background:rgba(208,120,24,0.10);border:1px solid rgba(208,120,24,0.2);border-radius:8px;padding:0.5rem 1rem;font-size:0.85rem;transition:border-color 0.2s;}
+.soc-btn:hover{border-color:var(--accent);}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem 0 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-logo-cn{font-size:1.1rem;font-weight:800;color:var(--accent);margin-bottom:0.2rem;}
+.footer-logo-tag{font-size:0.72rem;color:var(--muted);font-style:italic;margin-bottom:0.75rem;}
+.footer-desc{font-size:0.85rem;color:var(--muted);line-height:1.7;max-width:300px;}
+.footer-col h4{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col ul li a{font-size:0.88rem;color:var(--muted);transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+.hk-badge{display:inline-flex;align-items:center;gap:0.3rem;font-size:0.8rem;color:var(--accent);background:rgba(208,120,24,0.10);border:1px solid rgba(208,120,24,0.2);border-radius:4px;padding:0.2rem 0.6rem;}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.prod-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .stats-inner,.featured-grid{grid-template-columns:repeat(2,1fr);}
+  .prop-cards{grid-template-columns:1fr;}
+  .member-perks{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-cn">時興隆(香港)有限公司</div>
+      <div class="nav-logo-tag">香港品牌 · 美食盡在不言中</div>
+    </div>
+    <div class="nav-links">
+      <a href="#products">精選產品</a>
+      <a href="#featured">熱賣商品</a>
+      <a href="#member">會員優惠</a>
+      <a href="#contact">聯絡</a>
+    </div>
+    <a href="https://www.shlhk.com" target="_blank" class="nav-cta">進入網店</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🏷️ 香港品牌 · 網上零食精品店</div>
+      <h1><em>時興隆</em><br/>伴您成長</h1>
+      <div class="hero-tagline">美食盡在不言中</div>
+      <p class="hero-sub">時興隆(香港)有限公司是本地品牌網上零食精品店，精選台式糕點、日本零食、MMF橡皮糖、自家品牌時興隆蛋卷及寵物用品，為香港家庭帶來多元化的優質產品選擇。</p>
+      <div class="hero-btns">
+        <a href="https://www.shlhk.com" target="_blank" class="btn-primary">進入網店 Shop Now</a>
+        <a href="#products" class="btn-secondary">瀏覽產品</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">📋 聯絡資料</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">公司名稱</div>
+          <div class="info-val">時興隆(香港)有限公司</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">電話</div>
+          <div class="info-val"><a href="tel:+85227988993">+852 2798 8993</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-val"><a href="mailto:enquiry@shlhk.com">enquiry@shlhk.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網站</div>
+          <div class="info-val"><a href="https://www.shlhk.com" target="_blank">shlhk.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🚚</div>
+        <div>
+          <div class="info-label">免費送貨</div>
+          <div class="info-val">消費滿HK$500 免費送貨上門</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">主要產品類別</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">$500</div>
+      <div class="stat-label">免費送貨門檻</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">🏷️</div>
+      <div class="stat-label">香港品牌</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">👥</div>
+      <div class="stat-label">會員優惠計劃</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">關於我們</div>
+        <h2 class="section-title">香港本土<br/>零食精品品牌</h2>
+        <div class="about-highlight">
+          <p>時興隆(香港)有限公司是香港本地零食網上零售品牌，以「伴您成長時興隆，美食盡在不言中」為品牌理念，精心搜羅台灣、日本及本地優質食品，並推出自家品牌產品，為香港消費者帶來既便捷又豐富的美食購物體驗。</p>
+        </div>
+        <div class="about-body">
+          <p>品牌旗下設有完整網上商店，顧客可輕鬆選購各類零食、飲品、寵物用品及節日特選商品，並享有免費送貨服務（消費滿HK$500），為繁忙的香港家庭提供省時方便的購物方式。</p>
+          <p>時興隆自推出自家品牌「時興隆原味蛋卷」及多款特選商品以來，深受香港消費者喜愛，建立了忠誠的會員客群，並持續推出限時優惠及會員獨享獎賞。</p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">🎁</div>
+            <div class="prop-name">自家品牌</div>
+            <div class="prop-desc">時興隆原味蛋卷 — 香港製造，純正傳統風味，送禮自用皆宜</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🛒</div>
+            <div class="prop-name">網上購物</div>
+            <div class="prop-desc">完整網上商店及購物車，方便快捷下單，全港免費送貨</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🌏</div>
+            <div class="prop-name">精選進口</div>
+            <div class="prop-desc">台灣、日本及韓國優質食品精選進口，品質保證，貨真價實</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💰</div>
+            <div class="prop-name">定期優惠</div>
+            <div class="prop-desc">季節特惠、節日促銷及每期精選優惠產品，物超所值</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">產品系列</div>
+      <h2 class="section-title">多元化精選產品</h2>
+      <p class="section-sub">時興隆精選多類優質產品，由台式傳統糕點、日本零食到自家品牌，滿足不同口味與需要。</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-emoji">🥚</div>
+        <div class="prod-cat">自家品牌</div>
+        <div class="prod-name">時興隆蛋卷</div>
+        <div class="prod-desc">時興隆原味蛋卷 — 香港自家品牌出品，以傳統手工工藝製作，香脆可口，送禮自用皆宜，是時興隆的招牌產品。</div>
+        <ul class="prod-items">
+          <li>時興隆原味蛋卷</li>
+          <li>傳統製作工藝</li>
+          <li>送禮精選之選</li>
+        </ul>
+        <div class="own-badge">🏷️ 香港品牌</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🍰</div>
+        <div class="prod-cat">台灣傳統糕點</div>
+        <div class="prod-name">台式糕點精選</div>
+        <div class="prod-desc">精選台灣傳統糕點，包括鳳梨酥及古早味桃酥，以純正台灣食材製作，承傳傳統風味，深受港台兩地消費者喜愛。</div>
+        <ul class="prod-items">
+          <li>鳳梨酥 X 2包裝 HK$11</li>
+          <li>古早味桃酥 HK$12.50</li>
+          <li>台灣原裝進口</li>
+        </ul>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🐻</div>
+        <div class="prod-cat">MMF橡皮糖</div>
+        <div class="prod-name">MMF特色橡皮糖</div>
+        <div class="prod-desc">精選多款MMF品牌橡皮糖，造型趣緻、口味多樣，老少咸宜，是親子零食的首選。72克裝，多款口味供選擇。</div>
+        <ul class="prod-items">
+          <li>森林之友、恐龍、可樂瓶</li>
+          <li>什果酸沙、桃餅甜沙</li>
+          <li>芝士塊、酸沙毛毛蟲</li>
+          <li>夾心可頌橡皮糖</li>
+        </ul>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🦑</div>
+        <div class="prod-cat">日本精選</div>
+        <div class="prod-name">日本零食系列</div>
+        <div class="prod-desc">嚴選日本優質零食，包括北海道魷魚絲等海鮮零食，以及日本進口寵物用品，帶給您及毛孩最好的品質保證。</div>
+        <ul class="prod-items">
+          <li>北海道魷魚絲 67g 四包 HK$50</li>
+          <li>日本活性炭除臭尿墊</li>
+          <li>日本寵物用品精選</li>
+        </ul>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🍮</div>
+        <div class="prod-cat">果凍布丁</div>
+        <div class="prod-name">蒟蒻果凍系列</div>
+        <div class="prod-desc">精選高柔系列蒟蒻果凍及布丁，300克大包裝，口感QQ嫩滑，什果風味，清爽消暑，是夏日最受歡迎的零食之一。</div>
+        <ul class="prod-items">
+          <li>高柔什果味蒟蒻果凍 300g</li>
+          <li>高柔什果味布丁 300g</li>
+          <li>多種口味可選</li>
+        </ul>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🎄</div>
+        <div class="prod-cat">節日特選</div>
+        <div class="prod-name">季節限定系列</div>
+        <div class="prod-desc">配合不同節日及季節推出限定優惠產品，包括聖誕節特別版、新年禮盒等，讓您在節日與家人分享美味驚喜。</div>
+        <ul class="prod-items">
+          <li>聖誕節特價商品</li>
+          <li>節日禮品裝</li>
+          <li>限量特別版零食</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section id="featured">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">熱賣商品</div>
+      <h2 class="section-title">人氣精選產品</h2>
+    </div>
+    <div class="featured-grid">
+      <div class="featured-item">
+        <div class="fi-emoji">🍰</div>
+        <div class="fi-name">鳳梨酥 X 2包裝</div>
+        <div class="fi-price">HK$11.00</div>
+      </div>
+      <div class="featured-item">
+        <div class="fi-emoji">🥧</div>
+        <div class="fi-name">古早味桃酥</div>
+        <div class="fi-price">HK$12.50</div>
+      </div>
+      <div class="featured-item">
+        <div class="fi-emoji">🥚</div>
+        <div class="fi-name">時興隆原味蛋卷</div>
+        <div class="fi-price">HK$8.50</div>
+        <div class="fi-orig">原價 HK$10.00</div>
+      </div>
+      <div class="featured-item">
+        <div class="fi-emoji">🦑</div>
+        <div class="fi-name">北海道魷魚絲 四包</div>
+        <div class="fi-price">HK$50.00</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="https://www.shlhk.com" target="_blank" class="btn-primary">查看更多產品 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBER -->
+<section id="member" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="member-card">
+      <div class="member-icon">👑</div>
+      <div class="member-title">登入成為會員 · 享更多優惠獎賞</div>
+      <div class="member-sub">立即成為時興隆會員，享受專屬折扣、積分獎賞及會員限定優惠，讓每次購物更划算！</div>
+      <div class="member-perks">
+        <div class="perk">
+          <div class="perk-icon">💰</div>
+          <span>會員專屬折扣</span>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">⭐</div>
+          <span>積分獎賞計劃</span>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">🔔</div>
+          <span>新品優先通知</span>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">🚚</div>
+          <span>$500免費送貨</span>
+        </div>
+      </div>
+      <a href="https://www.shlhk.com" target="_blank" class="btn-primary">立即登入 / 註冊</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">與時興隆聯繫</h2>
+      <p class="section-sub">如有產品查詢、訂單問題或合作意向，歡迎隨時與我們聯絡。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <div class="contact-title">📞 聯絡方式</div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-type">電話</div>
+            <div class="contact-val"><a href="tel:+85227988993">+852 2798 8993</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-type">電郵</div>
+            <div class="contact-val"><a href="mailto:enquiry@shlhk.com">enquiry@shlhk.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-type">網站</div>
+            <div class="contact-val"><a href="https://www.shlhk.com" target="_blank">www.shlhk.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🚚</div>
+          <div>
+            <div class="contact-type">送貨安排</div>
+            <div class="contact-val">消費滿HK$500 全港免費送貨</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-title">🌐 社交媒體</div>
+        <div class="contact-item">
+          <div class="contact-icon">📷</div>
+          <div>
+            <div class="contact-type">Instagram</div>
+            <div class="contact-val"><a href="https://instagram.com/shl_hk" target="_blank">@shl_hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💙</div>
+          <div>
+            <div class="contact-type">Facebook</div>
+            <div class="contact-val"><a href="https://facebook.com/shlhk" target="_blank">facebook.com/shlhk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">▶️</div>
+          <div>
+            <div class="contact-type">YouTube</div>
+            <div class="contact-val">時興隆官方頻道</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🏷️</div>
+          <div>
+            <div class="contact-type">品牌標籤</div>
+            <div class="contact-val">香港品牌 · 香港製造</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-cn">時興隆(香港)有限公司</div>
+        <div class="footer-logo-tag">伴您成長時興隆，美食盡在不言中</div>
+        <p class="footer-desc">香港本土零食精品品牌，精選台式糕點、日本零食及自家品牌蛋卷，以便捷的網上購物體驗及免費送貨服務，帶給香港家庭最優質的美食選擇。</p>
+      </div>
+      <div class="footer-col">
+        <h4>產品</h4>
+        <ul>
+          <li><a href="#products">時興隆蛋卷</a></li>
+          <li><a href="#products">台式糕點</a></li>
+          <li><a href="#products">MMF橡皮糖</a></li>
+          <li><a href="#products">日本零食</a></li>
+          <li><a href="#products">節日特選</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡</h4>
+        <ul>
+          <li><a href="tel:+85227988993">+852 2798 8993</a></li>
+          <li><a href="mailto:enquiry@shlhk.com">enquiry@shlhk.com</a></li>
+          <li><a href="https://www.shlhk.com" target="_blank">shlhk.com</a></li>
+          <li><a href="https://instagram.com/shl_hk" target="_blank">@shl_hk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2022–2025 時興隆(香港)有限公司 · 版權所有</div>
+      <div class="hk-badge">🏷️ 香港品牌</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
