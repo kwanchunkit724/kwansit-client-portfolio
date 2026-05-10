@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitLine Hong Kong | 健康美麗 · 全面保健營養</title>
+  <meta name="description" content="FitLine香港 — 全球頂尖保健營養品牌，提供最佳補充系列、健身營養、美容護膚及體重管理產品。超過10億件產品銷往全球，ATP巡迴賽官方供應商。" />
+  <style>
+    :root {
+      --bg:       #060810;
+      --bg2:      #0c0e18;
+      --bg3:      #131520;
+      --border:   #1e2030;
+      --acc:      #20a8d0;
+      --acc2:     #40c8f0;
+      --acc3:     #1080a8;
+      --acc-r:    #d04080;
+      --text:     #e0e8f0;
+      --muted:    #7888a8;
+      --card:     #0e1018;
+      --radius:   10px;
+      --nav-h:    64px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+      background: rgba(6,8,16,0.96); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-mark {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--acc3), var(--acc), var(--acc2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; color: #fff; letter-spacing: -0.5px;
+    }
+    .nav-logo-text { font-size: 15px; font-weight: 700; color: var(--text); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color .2s; }
+    .nav-links a:hover { color: var(--acc2); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 9px 22px; border-radius: 6px;
+      font-size: 12px; cursor: pointer; font-family: inherit; font-weight: 600;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; padding-top: var(--nav-h);
+      background: linear-gradient(155deg, var(--bg) 0%, #080c18 55%, var(--bg) 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 15% 50%, rgba(32,168,208,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 85% 30%, rgba(208,64,128,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1180px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 420px; gap: 72px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(32,168,208,0.1); border: 1px solid rgba(32,168,208,0.3);
+      border-radius: 20px; padding: 6px 16px; margin-bottom: 24px;
+      font-size: 12px; color: var(--acc2); letter-spacing: 0.8px;
+    }
+    .hero h1 { font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 700; line-height: 1.25; margin-bottom: 18px; }
+    .hero h1 .hl { color: var(--acc2); }
+    .hero h1 .hl2 { color: var(--acc-r); }
+    .hero-sub { font-size: 1rem; color: var(--muted); margin-bottom: 36px; line-height: 1.8; max-width: 500px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 13px 28px; border-radius: 7px;
+      font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 600;
+      text-decoration: none; transition: opacity .2s; display: inline-block;
+    }
+    .btn-primary:hover { opacity: .85; }
+    .btn-ghost {
+      background: transparent; color: var(--acc2);
+      border: 1.5px solid rgba(32,168,208,0.4); padding: 12px 26px; border-radius: 7px;
+      font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 500;
+      text-decoration: none; transition: all .2s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--acc2); background: rgba(32,168,208,0.06); }
+    .hero-trust { display: flex; gap: 20px; flex-wrap: wrap; }
+    .trust-badge {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(30,32,48,0.5); border: 1px solid var(--border);
+      border-radius: 8px; padding: 8px 14px; font-size: 12px; color: var(--muted);
+    }
+    .trust-badge span { font-size: 16px; }
+
+    /* HERO CARD */
+    .hero-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .hero-card-top {
+      background: linear-gradient(135deg, #10141e, #0c1018);
+      padding: 22px 26px; border-bottom: 1px solid var(--border);
+    }
+    .hero-card-top h3 { font-size: 15px; color: var(--acc2); font-weight: 700; margin-bottom: 4px; }
+    .hero-card-top p { font-size: 12px; color: var(--muted); }
+    .fl-badge {
+      display: inline-flex; gap: 6px; align-items: center;
+      background: rgba(32,168,208,0.12); border: 1px solid rgba(32,168,208,0.3);
+      border-radius: 6px; padding: 4px 12px; margin-top: 10px;
+      font-size: 11px; color: var(--acc); letter-spacing: 0.5px;
+    }
+    .hero-card-body { padding: 22px 26px; }
+    .info-row { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(30,32,48,0.7); align-items: flex-start; }
+    .info-row:last-child { border-bottom: none; }
+    .info-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+    .info-label { font-size: 11px; color: var(--muted); }
+    .info-val { font-size: 13px; color: var(--text); margin-top: 1px; }
+
+    /* STATS */
+    .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 40px; }
+    .stats-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+    .stat { text-align: center; padding: 0 20px; }
+    .stat-num { font-size: 2rem; font-weight: 700; color: var(--acc2); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 12px; color: var(--muted); }
+
+    /* SECTIONS */
+    section { padding: 84px 40px; }
+    .section-inner { max-width: 1180px; margin: 0 auto; }
+    .section-label { font-size: 11px; color: var(--acc); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+    .section-title { font-size: clamp(1.6rem, 2.5vw, 2.3rem); font-weight: 700; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+    .section-title em { font-style: normal; color: var(--acc2); }
+    .section-desc { font-size: 1rem; color: var(--muted); max-width: 600px; line-height: 1.8; }
+
+    /* ABOUT */
+    .about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; align-items: start; }
+    .about-highlight {
+      background: linear-gradient(135deg, rgba(32,168,208,0.07), rgba(16,128,168,0.03));
+      border: 1px solid rgba(32,168,208,0.2); border-radius: 14px; padding: 30px;
+    }
+    .about-highlight h3 { font-size: 1.1rem; color: var(--acc2); margin-bottom: 14px; font-weight: 600; }
+    .about-highlight p { font-size: 0.94rem; color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
+    .about-highlight p:last-child { margin-bottom: 0; }
+    .about-highlight strong { color: var(--text); }
+    .about-props { display: flex; flex-direction: column; gap: 16px; }
+    .prop-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .prop-icon { font-size: 22px; flex-shrink: 0; }
+    .prop-card h4 { font-size: 14px; color: var(--acc2); margin-bottom: 5px; font-weight: 600; }
+    .prop-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* PRODUCTS */
+    .products { background: var(--bg2); }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
+    .product-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px;
+      transition: border-color .2s, transform .2s;
+    }
+    .product-card:hover { border-color: rgba(32,168,208,0.4); transform: translateY(-3px); }
+    .product-cat { font-size: 11px; color: var(--acc); letter-spacing: 0.8px; margin-bottom: 10px; text-transform: uppercase; }
+    .product-icon { font-size: 32px; margin-bottom: 14px; }
+    .product-card h3 { font-size: 15px; color: var(--text); margin-bottom: 10px; font-weight: 700; }
+    .product-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .product-items { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .product-item {
+      background: rgba(30,32,48,0.7); border: 1px solid var(--border);
+      color: var(--muted); font-size: 11px; padding: 3px 10px; border-radius: 4px;
+    }
+
+    /* SPORTS */
+    .sports { background: var(--bg); }
+    .sports-inner {
+      background: linear-gradient(135deg, rgba(32,168,208,0.08), rgba(208,64,128,0.04));
+      border: 1px solid rgba(32,168,208,0.2); border-radius: 20px; padding: 56px;
+      text-align: center;
+    }
+    .sports-inner h2 { font-size: 1.8rem; color: var(--text); font-weight: 700; margin-bottom: 12px; }
+    .sports-inner p { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 640px; margin: 0 auto 36px; }
+    .sports-tags { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .sports-tag {
+      background: rgba(32,168,208,0.1); border: 1px solid rgba(32,168,208,0.25);
+      color: var(--acc2); font-size: 12px; padding: 6px 16px; border-radius: 20px; letter-spacing: 0.3px;
+    }
+    .atp-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(32,168,208,0.12); border: 1px solid rgba(32,168,208,0.3);
+      border-radius: 8px; padding: 10px 20px; margin-bottom: 28px;
+      font-size: 13px; color: var(--acc); font-weight: 600;
+    }
+
+    /* LIFESTYLE */
+    .lifestyle { background: var(--bg2); }
+    .lifestyle-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+    .lifestyle-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px;
+      display: flex; gap: 20px; align-items: flex-start;
+    }
+    .lifestyle-icon { font-size: 28px; flex-shrink: 0; }
+    .lifestyle-card h3 { font-size: 14px; color: var(--acc2); margin-bottom: 8px; font-weight: 600; }
+    .lifestyle-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    /* CONTACT */
+    .contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; }
+    .contact-info h3 { font-size: 1.1rem; color: var(--acc2); font-weight: 600; margin-bottom: 24px; }
+    .contact-item { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+    .contact-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .contact-label { font-size: 11px; color: var(--muted); }
+    .contact-val { font-size: 14px; color: var(--text); margin-top: 2px; }
+    .contact-val a { color: var(--acc2); text-decoration: none; }
+    .contact-val a:hover { text-decoration: underline; }
+    .contact-form {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 32px;
+    }
+    .contact-form h3 { font-size: 1.05rem; color: var(--text); margin-bottom: 6px; font-weight: 600; }
+    .contact-form p { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+    .form-row { margin-bottom: 16px; }
+    .form-row label { display: block; font-size: 11px; color: var(--muted); letter-spacing: 0.5px; margin-bottom: 6px; }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; background: rgba(30,32,48,0.5); border: 1px solid var(--border);
+      border-radius: 7px; padding: 10px 14px; color: var(--text); font-size: 13px;
+      font-family: inherit; outline: none; transition: border-color .2s;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--acc); }
+    .form-row textarea { resize: vertical; min-height: 88px; }
+    .form-row select option { background: var(--bg2); }
+    .form-submit {
+      width: 100%; background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 12px; border-radius: 7px; font-size: 14px;
+      cursor: pointer; font-family: inherit; font-weight: 600; transition: opacity .2s;
+    }
+    .form-submit:hover { opacity: .85; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg2); border-top: 1px solid var(--border); padding: 44px 40px 28px; text-align: center;
+    }
+    .footer-inner { max-width: 1180px; margin: 0 auto; }
+    .footer-brand { font-size: 18px; color: var(--acc2); font-weight: 700; margin-bottom: 6px; }
+    .footer-tagline { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 24px; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--acc2); }
+    .footer-copy { font-size: 12px; color: rgba(120,136,168,0.5); }
+
+    @media (max-width: 1024px) {
+      .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .lifestyle-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 60px 20px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .sports-inner { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">FL</div>
+    <span class="nav-logo-text">FitLine Hong Kong</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">關於品牌</a></li>
+    <li><a href="#products">產品系列</a></li>
+    <li><a href="#sports">運動夥伴</a></li>
+    <li><a href="#lifestyle">健康生活</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">立即購買</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🌟 全球頂尖保健營養品牌</div>
+      <h1>健康由內而外<br><span class="hl">FitLine</span> 為你<br>打造<span class="hl2">活力生活</span></h1>
+      <p class="hero-sub">
+        FitLine香港 — PM International旗下旗艦品牌，以先進的NTC®營養傳輸概念，為您提供最佳保健補充、健身營養、美容護膚及體重管理全方位解決方案。
+      </p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">探索產品</a>
+        <a href="#contact" class="btn-ghost">諮詢顧問</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-badge"><span>🏆</span> 全球逾10億件銷售</div>
+        <div class="trust-badge"><span>🎾</span> ATP巡迴賽官方供應商</div>
+        <div class="trust-badge"><span>🌍</span> 全球多國銷售</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-top">
+        <h3>FitLine Hong Kong</h3>
+        <p>PM International · 保健美容品牌</p>
+        <div class="fl-badge">✦ NTC® 營養傳輸概念</div>
+      </div>
+      <div class="hero-card-body">
+        <div class="info-row">
+          <div class="info-icon">💊</div>
+          <div>
+            <div class="info-label">核心技術</div>
+            <div class="info-val">NTC® 營養傳輸概念</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📦</div>
+          <div>
+            <div class="info-label">產品系列</div>
+            <div class="info-val">最佳補充 · 健身 · 美容 · 體重管理</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">💳</div>
+          <div>
+            <div class="info-label">付款方式</div>
+            <div class="info-val">Visa · Mastercard · PayPal</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🌐</div>
+          <div>
+            <div class="info-label">官方網站</div>
+            <div class="info-val"><a href="https://www.fitline.com/hk/en/" target="_blank" style="color:var(--acc2);text-decoration:none;">fitline.com/hk</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📱</div>
+          <div>
+            <div class="info-label">社交媒體</div>
+            <div class="info-val">Instagram · Facebook · WeChat</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">10億+</div>
+      <div class="stat-label">全球產品銷售數量</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1,000+</div>
+      <div class="stat-label">合作運動專業人士</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">ATP</div>
+      <div class="stat-label">網球巡迴賽官方供應商</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">多國</div>
+      <div class="stat-label">全球銷售網絡</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">NTC®</div>
+      <div class="stat-label">專利營養傳輸技術</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">關於品牌</div>
+    <div class="section-title">科學研發 · <em>全面健康</em></div>
+    <p class="section-desc">FitLine是PM International旗下頂尖保健品牌，以科學研究為基礎，為您提供全面的健康及美容解決方案。</p>
+    <div class="about-grid">
+      <div class="about-highlight">
+        <h3>品牌故事</h3>
+        <p>
+          FitLine是由PM International AG研發的頂尖保健品牌，以先進的<strong>NTC®（Nutrient Transport Concept）營養傳輸概念</strong>為核心技術，確保每一種營養素能被人體最有效地吸收利用。
+        </p>
+        <p>
+          品牌強調<strong>整體健康生活方式</strong>（Holistic Approach），產品線涵蓋日常保健補充、運動表現提升、美容護膚及體重管理，全方位照顧現代人的健康需求。
+        </p>
+        <p>
+          FitLine在全球已銷售超過<strong>10億件產品</strong>，並與逾1,000位運動專業人士建立合作，是ATP網球巡迴賽等多個國際頂級賽事的官方營養供應商。
+        </p>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">🔬</div>
+          <div>
+            <h4>NTC® 科技</h4>
+            <p>專利營養傳輸技術，確保活性成份精準到達目標細胞，最大化吸收效率。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">✅</div>
+          <div>
+            <h4>品質認證</h4>
+            <p>所有產品均通過嚴格品質檢測，符合國際標準，運動員可放心使用。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🌿</div>
+          <div>
+            <h4>天然成份</h4>
+            <p>精選天然優質原料，不含違禁成份，適合追求健康純淨生活的您。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🏆</div>
+          <div>
+            <h4>國際認可</h4>
+            <p>獲多個國際運動組織認可，是眾多世界級運動員信賴的營養夥伴。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-label">產品系列</div>
+    <div class="section-title">六大<em>產品系列</em></div>
+    <p class="section-desc">FitLine提供六大核心產品線，由日常補充到美容護膚，全面支援您的健康生活。</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-cat">核心系列</div>
+        <div class="product-icon">⭐</div>
+        <h3>最佳補充系列</h3>
+        <p>FitLine的旗艦產品系列，以NTC®科技提供全面的日常維生素、礦物質及微量元素補充，為健康打好基礎。</p>
+        <div class="product-items">
+          <span class="product-item">維生素</span>
+          <span class="product-item">礦物質</span>
+          <span class="product-item">微量元素</span>
+          <span class="product-item">抗氧化</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-cat">運動系列</div>
+        <div class="product-icon">💪</div>
+        <h3>健身營養系列</h3>
+        <p>專為運動人士設計，提升運動表現、加速恢復、增肌減脂，幫助您突破體能極限，達到最佳狀態。</p>
+        <div class="product-items">
+          <span class="product-item">運動前補充</span>
+          <span class="product-item">蛋白質</span>
+          <span class="product-item">恢復配方</span>
+          <span class="product-item">耐力提升</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-cat">美容系列</div>
+        <div class="product-icon">✨</div>
+        <h3>美容護膚系列</h3>
+        <p>由內而外的美容方案，結合口服保健品與護膚品，提供肌膚所需的全面滋養，煥發健康光澤。</p>
+        <div class="product-items">
+          <span class="product-item">膠原蛋白</span>
+          <span class="product-item">抗衰老</span>
+          <span class="product-item">護膚品</span>
+          <span class="product-item">美白配方</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-cat">體重管理</div>
+        <div class="product-icon">⚖️</div>
+        <h3>體重管理系列</h3>
+        <p>科學配方幫助控制體重，健康減脂而不減肌，結合均衡飲食與運動，達到理想身材目標。</p>
+        <div class="product-items">
+          <span class="product-item">代餐配方</span>
+          <span class="product-item">脂肪燃燒</span>
+          <span class="product-item">食慾控制</span>
+          <span class="product-item">新陳代謝</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-cat">特殊功效</div>
+        <div class="product-icon">🎯</div>
+        <h3>特殊功效系列</h3>
+        <p>針對特定健康需求而設計的專門產品，包括關節保護、免疫強化、腸道健康等精準功效配方。</p>
+        <div class="product-items">
+          <span class="product-item">關節保護</span>
+          <span class="product-item">免疫提升</span>
+          <span class="product-item">腸道健康</span>
+          <span class="product-item">心血管保護</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-cat">品牌精品</div>
+        <div class="product-icon">👕</div>
+        <h3>FitLine Club</h3>
+        <p>加入FitLine Club會員計劃，享受專屬優惠、健康資訊及社群支援，與志同道合的健康達人共同進步。</p>
+        <div class="product-items">
+          <span class="product-item">會員專屬</span>
+          <span class="product-item">推薦計劃</span>
+          <span class="product-item">健康社群</span>
+          <span class="product-item">品牌精品</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPORTS PARTNERSHIP -->
+<section class="sports" id="sports">
+  <div class="section-inner">
+    <div class="sports-inner">
+      <div class="atp-badge">🎾 ATP巡迴賽 · 官方營養供應商</div>
+      <h2>頂尖運動員的信賴選擇</h2>
+      <p>
+        FitLine是多個國際頂級運動組織的官方營養供應商，與逾1,000位世界級運動專業人士建立合作。從網球、單車到冰球、滑雪，頂尖運動員以FitLine支撐最高水平的競技表現。
+      </p>
+      <div class="sports-tags">
+        <span class="sports-tag">🎾 ATP網球巡迴賽</span>
+        <span class="sports-tag">🚴 德國單車聯合會</span>
+        <span class="sports-tag">🏒 德國冰球聯合會</span>
+        <span class="sports-tag">⛷ 滑雪聯合會</span>
+        <span class="sports-tag">🤸 香港運動員</span>
+        <span class="sports-tag">🥋 武術代表</span>
+        <span class="sports-tag">🎿 冬季運動</span>
+        <span class="sports-tag">🏸 羽毛球</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE -->
+<section class="lifestyle" id="lifestyle">
+  <div class="section-inner">
+    <div class="section-label">健康生活</div>
+    <div class="section-title">全面<em>健康生活方式</em></div>
+    <p class="section-desc">FitLine不只是產品，更是一個完整的健康生活概念，為您提供飲食、運動及保健的全方位支援。</p>
+    <div class="lifestyle-grid">
+      <div class="lifestyle-card">
+        <div class="lifestyle-icon">🥗</div>
+        <div>
+          <h3>健康食譜</h3>
+          <p>FitLine提供大量健康食譜及飲食建議，幫助您將保健產品融入日常飲食，享受美味又健康的生活。</p>
+        </div>
+      </div>
+      <div class="lifestyle-card">
+        <div class="lifestyle-icon">🏃</div>
+        <div>
+          <h3>訓練計劃</h3>
+          <p>由專業運動員設計的訓練計劃，配合FitLine產品，無論健身新手或專業運動員均能找到合適的訓練方案。</p>
+        </div>
+      </div>
+      <div class="lifestyle-card">
+        <div class="lifestyle-icon">📖</div>
+        <div>
+          <h3>健康資訊</h3>
+          <p>定期更新健康及保健資訊、最新研究成果及產品使用指南，讓您掌握最新的健康資訊。</p>
+        </div>
+      </div>
+      <div class="lifestyle-card">
+        <div class="lifestyle-icon">👥</div>
+        <div>
+          <h3>FitLine社群</h3>
+          <p>加入FitLine社群，與世界各地的健康達人分享心得，互相激勵，共同邁向更健康的生活目標。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <div class="section-title">開啟您的<em>健康之旅</em></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>查詢及購買</h3>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-label">官方網站</div>
+            <div class="contact-val"><a href="https://www.fitline.com/hk/en/" target="_blank">fitline.com/hk/en</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📦</div>
+          <div>
+            <div class="contact-label">產品系列</div>
+            <div class="contact-val">最佳補充 · 健身 · 美容 · 體重管理 · 特殊功效</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💳</div>
+          <div>
+            <div class="contact-label">付款方式</div>
+            <div class="contact-val">Visa · Mastercard · PayPal</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🚚</div>
+          <div>
+            <div class="contact-label">配送服務</div>
+            <div class="contact-val">香港全境配送</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌏</div>
+          <div>
+            <div class="contact-label">語言支援</div>
+            <div class="contact-val">繁體中文 · 簡體中文 · English</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>產品諮詢</h3>
+        <p>填寫以下表格，我們的健康顧問將為您提供個人化的產品建議。</p>
+        <form onsubmit="event.preventDefault()">
+          <div class="form-row">
+            <label>您的姓名</label>
+            <input type="text" placeholder="請輸入姓名" />
+          </div>
+          <div class="form-row">
+            <label>聯絡電話 / WhatsApp</label>
+            <input type="tel" placeholder="香港電話號碼" />
+          </div>
+          <div class="form-row">
+            <label>電子郵件</label>
+            <input type="email" placeholder="您的電郵地址" />
+          </div>
+          <div class="form-row">
+            <label>感興趣的產品系列</label>
+            <select>
+              <option>最佳補充系列（日常保健）</option>
+              <option>健身營養系列（運動員）</option>
+              <option>美容護膚系列</option>
+              <option>體重管理系列</option>
+              <option>特殊功效系列</option>
+              <option>FitLine Club 會員計劃</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>您的主要健康目標</label>
+            <select>
+              <option>日常保健補充</option>
+              <option>提升運動表現</option>
+              <option>美容護膚</option>
+              <option>體重管理</option>
+              <option>增強免疫力</option>
+              <option>改善特定健康狀況</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>備註</label>
+            <textarea placeholder="請說明您的具體需求或問題..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">提交諮詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">FitLine Hong Kong · PM International</div>
+    <div class="footer-tagline">健康由內而外 · NTC® 營養傳輸科技 · 全球逾10億件銷售</div>
+    <div class="footer-links">
+      <a href="#about">關於品牌</a>
+      <a href="#products">產品系列</a>
+      <a href="#sports">運動夥伴</a>
+      <a href="#lifestyle">健康生活</a>
+      <a href="#contact">聯絡我們</a>
+      <a href="https://www.fitline.com/hk/en/" target="_blank">官方網站</a>
+    </div>
+    <div class="footer-copy">&copy; 2024 FitLine Hong Kong. 版權所有。FitLine是PM International AG的旗艦品牌。</div>
+  </div>
+</footer>
+
+</body>
+</html>
