@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>勁香有限公司 | 職人咖啡 Pro Aroma Cafe · 台中精品咖啡</title>
+<style>
+:root {
+  --bg: #080504;
+  --bg2: #0e0906;
+  --bg3: #160d08;
+  --accent: #c87820;
+  --accent2: #e09030;
+  --cream: #e0c898;
+  --brown: #6a3a18;
+  --text: #f0e8d0;
+  --muted: #8a6848;
+  --border: rgba(200,120,32,0.15);
+  --card: #0e0906;
+  --radius: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI','Microsoft JhengHei',system-ui,sans-serif;line-height:1.6;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,5,4,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:1.1rem;font-weight:900;color:var(--accent);text-decoration:none;letter-spacing:1px;}
+.nav-logo span{color:var(--muted);font-size:0.78rem;font-weight:400;margin-left:0.5rem;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:600;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent2);}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 2rem 60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 55% 40%,rgba(200,120,32,0.10) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 10% 85%,rgba(106,58,24,0.08) 0%,transparent 60%);}
+.hero-steam{position:absolute;top:15%;right:8%;opacity:0.06;font-size:10rem;animation:steam 4s ease-in-out infinite;}
+@keyframes steam{0%,100%{transform:translateY(0) rotate(-5deg);}50%{transform:translateY(-20px) rotate(5deg);}}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center;position:relative;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(200,120,32,0.12);border:1px solid rgba(200,120,32,0.25);color:var(--accent);padding:0.35rem 0.9rem;border-radius:20px;font-size:0.8rem;font-weight:600;margin-bottom:1.5rem;}
+.badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero h1{font-size:2.8rem;font-weight:900;line-height:1.2;margin-bottom:0.5rem;letter-spacing:2px;}
+.hero h1 span{color:var(--accent);}
+.hero-en{font-size:1rem;color:var(--muted);font-weight:600;letter-spacing:2px;margin-bottom:1.2rem;text-transform:uppercase;}
+.hero-desc{font-size:0.95rem;color:var(--muted);max-width:480px;margin-bottom:2rem;line-height:1.9;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:all 0.2s;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--accent);padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;border:1px solid rgba(200,120,32,0.3);transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--accent);background:rgba(200,120,32,0.08);}
+
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--brown),var(--accent),var(--cream));}
+.info-card-title{font-size:0.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(200,120,32,0.08);}
+.info-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.info-icon{width:32px;height:32px;background:rgba(200,120,32,0.12);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;color:var(--text);font-weight:500;line-height:1.4;}
+.info-val a{color:var(--accent);text-decoration:none;}
+
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.stat-item{text-align:center;}
+.stat-num{font-size:2.2rem;font-weight:900;color:var(--accent);line-height:1;margin-bottom:0.3rem;}
+.stat-label{font-size:0.8rem;color:var(--muted);}
+
+section{padding:5rem 2rem;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-tag{font-size:0.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:0.8rem;}
+.section-title{font-size:2.1rem;font-weight:800;line-height:1.2;margin-bottom:1rem;letter-spacing:1px;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.9;}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+.about-highlight{background:var(--bg3);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:1.5rem 1.8rem;margin-bottom:1.5rem;}
+.about-highlight p{color:var(--text);font-size:0.95rem;line-height:1.9;font-style:italic;}
+.about-text{color:var(--muted);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color 0.2s;}
+.prop-card:hover{border-color:var(--accent);}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.78rem;color:var(--muted);line-height:1.5;}
+.philosophy-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.philosophy-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--brown),var(--accent));}
+.philosophy-title{font-size:0.85rem;font-weight:700;color:var(--accent);letter-spacing:1px;margin-bottom:1.2rem;}
+.philosophy-items{display:flex;flex-direction:column;gap:0.8rem;}
+.philosophy-item{display:flex;align-items:flex-start;gap:0.8rem;padding:0.8rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;}
+.phi-icon{font-size:1.1rem;flex-shrink:0;}
+.phi-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:0.2rem;}
+.phi-desc{font-size:0.78rem;color:var(--muted);line-height:1.4;}
+
+.origins-bg{background:var(--bg2);}
+.origins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem;}
+.origin-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.origin-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--c,var(--accent));opacity:0;transition:opacity 0.25s;}
+.origin-card:hover{border-color:rgba(200,120,32,0.35);transform:translateY(-3px);}
+.origin-card:hover::before{opacity:1;}
+.origin-card:nth-child(1){--c:#c87820;}
+.origin-card:nth-child(2){--c:#18a870;}
+.origin-card:nth-child(3){--c:#e03030;}
+.origin-card:nth-child(4){--c:#0c78d0;}
+.origin-card:nth-child(5){--c:#9830d8;}
+.origin-card:nth-child(6){--c:#e09020;}
+.origin-flag{font-size:1.8rem;margin-bottom:0.5rem;}
+.origin-country{font-size:0.95rem;font-weight:800;color:var(--text);margin-bottom:0.3rem;}
+.origin-region{font-size:0.78rem;color:var(--accent);margin-bottom:0.5rem;font-weight:600;}
+.origin-notes{font-size:0.78rem;color:var(--muted);line-height:1.5;}
+.origin-tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.5rem;}
+.origin-tag{font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(200,120,32,0.1);color:var(--cream);border-radius:4px;}
+
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.process-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;text-align:center;transition:all 0.2s;}
+.process-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.process-icon{font-size:2.2rem;margin-bottom:0.8rem;}
+.process-title{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.process-desc{font-size:0.82rem;color:var(--muted);line-height:1.6;}
+
+.products-bg{background:var(--bg2);}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.product-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.product-card.featured{border-color:rgba(200,120,32,0.35);}
+.product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--c,var(--accent));opacity:0;transition:opacity 0.25s;}
+.product-card.featured::before{opacity:1;}
+.product-card:hover{transform:translateY(-3px);}
+.product-card:nth-child(1){--c:#c87820;}
+.product-card:nth-child(2){--c:#9830d8;}
+.product-card:nth-child(3){--c:#18a870;}
+.product-icon{font-size:2rem;margin-bottom:0.8rem;}
+.product-name{font-size:1rem;font-weight:800;color:var(--accent);margin-bottom:0.3rem;}
+.product-sub{font-size:0.78rem;color:var(--muted);margin-bottom:0.6rem;}
+.product-desc{font-size:0.83rem;color:var(--muted);line-height:1.6;}
+.product-price{font-size:0.85rem;color:var(--cream);font-weight:700;margin-top:0.6rem;}
+.limited-badge{display:inline-block;font-size:0.68rem;font-weight:700;padding:0.15rem 0.5rem;background:rgba(200,32,32,0.15);color:#e04040;border-radius:4px;margin-left:0.4rem;}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;}
+.contact-info{display:flex;flex-direction:column;gap:1.2rem;}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem;background:var(--card);border:1px solid var(--border);border-radius:10px;transition:border-color 0.2s;}
+.contact-item:hover{border-color:var(--accent);}
+.c-icon{width:40px;height:40px;background:rgba(200,120,32,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.3rem;}
+.c-val{font-size:0.9rem;color:var(--text);font-weight:500;line-height:1.5;}
+.c-val a{color:var(--accent);text-decoration:none;}
+.store-card{background:var(--card);border:1px solid rgba(200,120,32,0.25);border-radius:var(--radius);padding:2.5rem;position:relative;overflow:hidden;}
+.store-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--brown),var(--accent),var(--cream));}
+.store-badge{display:inline-block;font-size:0.72rem;font-weight:700;padding:0.25rem 0.7rem;background:rgba(200,120,32,0.15);color:var(--accent);border-radius:4px;margin-bottom:1rem;text-transform:uppercase;}
+.store-name{font-size:1.4rem;font-weight:800;color:var(--text);margin-bottom:0.3rem;letter-spacing:1px;}
+.store-en{font-size:0.82rem;color:var(--muted);margin-bottom:1rem;}
+.store-addr{font-size:0.95rem;color:var(--text);line-height:1.8;margin-bottom:0.8rem;}
+.store-note{font-size:0.82rem;color:var(--muted);line-height:1.6;padding:0.8rem 1rem;background:rgba(200,120,32,0.06);border-radius:8px;border:1px solid rgba(200,120,32,0.1);}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1100px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-brand p{color:var(--muted);font-size:0.85rem;line-height:1.7;margin-top:0.8rem;}
+.footer-logo{font-size:1.1rem;font-weight:900;color:var(--accent);letter-spacing:1px;}
+.footer-col h4{font-size:0.75rem;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col li a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+.footer-loc{font-size:0.8rem;color:var(--muted);}
+.footer-loc span{color:var(--accent);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero h1{font-size:2.1rem;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .origins-grid,.products-grid,.process-grid{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+  .hero-steam{display:none;}
+}
+@media(max-width:600px){
+  .origins-grid,.process-grid,.about-props{grid-template-columns:1fr;}
+  .hero h1{font-size:1.7rem;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">☕ 職人咖啡 <span>Pro Aroma Cafe</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">品牌理念</a></li>
+      <li><a href="#origins">產地豆源</a></li>
+      <li><a href="#products">精品商品</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">立即訂購</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-steam">☕</div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="badge-dot"></span> 職人堅持 · 精選好咖 · 台中大雅</div>
+      <h1>勁香有限公司<br><span>職人咖啡</span></h1>
+      <div class="hero-en">Pro Aroma Cafe · Specialty Coffee Taiwan</div>
+      <p class="hero-desc">堅守職人精神，嚴選全球精品咖啡產地豆源，從衣索比亞到哥倫比亞、巴拿馬到牙買加，帶給您最純粹、最深刻的咖啡風味體驗。</p>
+      <div class="hero-btns">
+        <a href="tel:04-25660268" class="btn-primary">📞 立即洽詢</a>
+        <a href="#origins" class="btn-secondary">探索產地</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">☕ 聯絡資料</div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">地址</div>
+          <div class="info-val">台灣台中市大雅區<br>中清路四段460號</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">電話</div>
+          <div class="info-val"><a href="tel:04-25660268">04-2566 0268</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📠</div>
+        <div>
+          <div class="info-label">傳真</div>
+          <div class="info-val">04-2569 3313</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-val"><a href="mailto:pro13391@gmail.com">pro13391@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網站</div>
+          <div class="info-val"><a href="https://proaromacafe.com.tw" target="_blank">proaromacafe.com.tw</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">精品咖啡產地</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">XLVI</div>
+      <div class="stat-label">專業設備品牌</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">精品</div>
+      <div class="stat-label">精選莊園批次</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">職人</div>
+      <div class="stat-label">堅守咖啡職人精神</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-tag">Our Philosophy</div>
+    <h2 class="section-title">職人堅持・精選好咖</h2>
+    <p class="section-sub">勁香有限公司以「職人堅持」為核心，嚴選全球優質咖啡產地，為台灣咖啡愛好者帶來最純粹的精品咖啡體驗。</p>
+    <div class="about-grid">
+      <div>
+        <div class="about-highlight">
+          <p>我們相信，一杯好咖啡源自於對每一個細節的堅持——從產地到烘焙，從選豆到沖煮，每一步驟都體現職人對品質的執著與熱情。</p>
+        </div>
+        <p class="about-text">勁香有限公司 Pro Aroma Cafe 座落於台中市大雅區，以職人精神深耕台灣精品咖啡市場。我們不僅提供全球頂尖產區的精品咖啡豆，更透過專業的選豆標準與嚴謹的品質把關，讓每一位咖啡愛好者都能享受到最真實的咖啡風土風味。</p>
+        <p class="about-text">從衣索比亞的耶加雪菲、哥倫比亞的酵素處理批次，到巴拿馬的頂級日曬豆與牙買加藍山，我們的豆單橫跨全球十多個精品咖啡產區，滿足不同口感偏好的咖啡愛好者。</p>
+        <div class="about-props">
+          <div class="prop-card">
+            <div class="prop-icon">🌍</div>
+            <div class="prop-title">全球精品產地</div>
+            <div class="prop-desc">嚴選非洲、中南美洲及亞洲頂尖咖啡產區</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">⚗️</div>
+            <div class="prop-title">多元處理工藝</div>
+            <div class="prop-desc">日曬、水洗、蜜處理、酵素發酵等多元精製法</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🔬</div>
+            <div class="prop-title">XLVI專業設備</div>
+            <div class="prop-desc">採用XLVI頂級咖啡設備確保最佳萃取品質</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📦</div>
+            <div class="prop-title">零售至批量供應</div>
+            <div class="prop-desc">提供個人零售至5kg以上專業批量採購服務</div>
+          </div>
+        </div>
+      </div>
+      <div class="philosophy-box">
+        <div class="philosophy-title">☕ 職人三大堅持</div>
+        <div class="philosophy-items">
+          <div class="philosophy-item">
+            <span class="phi-icon">🌱</span>
+            <div>
+              <div class="phi-title">職人堅持（Artisan Commitment）</div>
+              <div class="phi-desc">從莊園選豆到烘焙出豆，每一個環節都堅守職人精神，絕不妥協於品質。</div>
+            </div>
+          </div>
+          <div class="philosophy-item">
+            <span class="phi-icon">🏆</span>
+            <div>
+              <div class="phi-title">精選好咖（Premium Selection）</div>
+              <div class="phi-desc">嚴格篩選全球頂尖莊園批次，確保每一款豆子都達到精品咖啡標準。</div>
+            </div>
+          </div>
+          <div class="philosophy-item">
+            <span class="phi-icon">📚</span>
+            <div>
+              <div class="phi-title">咖啡新知（Coffee Knowledge）</div>
+              <div class="phi-desc">持續追蹤全球咖啡產業最新動態，與咖啡愛好者分享最新的咖啡知識與趨勢。</div>
+            </div>
+          </div>
+          <div class="philosophy-item">
+            <span class="phi-icon">⚙️</span>
+            <div>
+              <div class="phi-title">XLVI專業設備</div>
+              <div class="phi-desc">配備XLVI品牌專業設備，以頂尖器材支撐最優秀的咖啡萃取工藝。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGINS -->
+<section id="origins" class="origins-bg">
+  <div class="section-inner">
+    <div class="section-tag">Coffee Origins</div>
+    <h2 class="section-title">精品咖啡產地豆源</h2>
+    <p class="section-sub">嚴選來自全球十多個頂尖咖啡產區的精品豆，每一款都承載著獨特的產地風土與職人心血。</p>
+    <div class="origins-grid">
+      <div class="origin-card">
+        <div class="origin-flag">🇪🇹</div>
+        <div class="origin-country">衣索比亞 Ethiopia</div>
+        <div class="origin-region">Sidamo · Yirgacheffe · Guji · Zege Peninsula</div>
+        <div class="origin-notes">非洲咖啡發源地，以花香、果香及酸甜複雜風味著稱，耶加雪菲與吉吉為精品市場最受矚目產區。</div>
+        <div class="origin-tags"><span class="origin-tag">日曬</span><span class="origin-tag">水洗</span><span class="origin-tag">花果香</span></div>
+      </div>
+      <div class="origin-card">
+        <div class="origin-flag">🇨🇴</div>
+        <div class="origin-country">哥倫比亞 Colombia</div>
+        <div class="origin-region">精品批次 · 酵素處理</div>
+        <div class="origin-notes">南美洲精品咖啡重鎮，採用酵素發酵等前衛處理技術，風味層次豐富，口感滑順均衡。</div>
+        <div class="origin-tags"><span class="origin-tag">酵素處理</span><span class="origin-tag">莊園批次</span></div>
+      </div>
+      <div class="origin-card">
+        <div class="origin-flag">🇧🇷</div>
+        <div class="origin-country">巴西 Brazil</div>
+        <div class="origin-region">Natural · Sun-Dried Processing</div>
+        <div class="origin-notes">世界最大咖啡產國，日曬自然處理法帶出巧克力、堅果等醇厚風味，是義式濃縮的經典基底。</div>
+        <div class="origin-tags"><span class="origin-tag">日曬</span><span class="origin-tag">堅果巧克力</span></div>
+      </div>
+      <div class="origin-card">
+        <div class="origin-flag">🇵🇦</div>
+        <div class="origin-country">巴拿馬 Panama</div>
+        <div class="origin-region">頂級精品批次</div>
+        <div class="origin-notes">以藝妓（Geisha）品種享譽全球，獨特的茶感、花香與柑橘風味讓其成為精品咖啡中的傳奇。</div>
+        <div class="origin-tags"><span class="origin-tag">藝妓</span><span class="origin-tag">高端精品</span></div>
+      </div>
+      <div class="origin-card">
+        <div class="origin-flag">🇯🇲</div>
+        <div class="origin-country">牙買加 Jamaica</div>
+        <div class="origin-region">Blue Mountain 藍山</div>
+        <div class="origin-notes">牙買加藍山咖啡是世界最著名的精品咖啡之一，以溫和、均衡、無苦味的絕佳風味聞名全球。</div>
+        <div class="origin-tags"><span class="origin-tag">藍山</span><span class="origin-tag">頂級珍稀</span></div>
+      </div>
+      <div class="origin-card">
+        <div class="origin-flag">🌎</div>
+        <div class="origin-country">更多產地</div>
+        <div class="origin-region">Hawaii · Nicaragua · Guatemala · Ecuador</div>
+        <div class="origin-notes">另有夏威夷可那、尼加拉瓜、瓜地馬拉及厄瓜多爾等產區精品豆，多元選擇滿足不同咖啡風味偏好。</div>
+        <div class="origin-tags"><span class="origin-tag">夏威夷可那</span><span class="origin-tag">中南美洲</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag">Processing Methods</div>
+    <h2 class="section-title">精製處理工藝</h2>
+    <p class="section-sub">不同的咖啡處理方式造就截然不同的風味輪廓，勁香咖啡提供多元處理法精品豆，滿足各種口感探索需求。</p>
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="process-icon">☀️</div>
+        <div class="process-title">日曬自然處理法</div>
+        <div class="process-desc">帶果肉日曬，充分發酵帶出豐富果香、莓果與酒香風味，甜度高、body飽滿，適合喜愛濃郁風格的咖啡愛好者。</div>
+      </div>
+      <div class="process-card">
+        <div class="process-icon">💧</div>
+        <div class="process-title">水洗處理法</div>
+        <div class="process-desc">去除果肉後以清水發酵水洗，風味乾淨明亮、酸質鮮明，最能呈現咖啡豆本身的風土特色與地域香氣。</div>
+      </div>
+      <div class="process-card">
+        <div class="process-icon">⚗️</div>
+        <div class="process-title">酵素發酵處理</div>
+        <div class="process-desc">前衛的酵素控制發酵技術，精準調控發酵參數，創造出獨特的酒香、熱帶水果及複雜層次等前所未有的風味體驗。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="products-bg">
+  <div class="section-inner">
+    <div class="section-tag">Products</div>
+    <h2 class="section-title">精品咖啡商品</h2>
+    <p class="section-sub">從日常享用的精選豆單到限量珍稀批次，滿足個人零售及專業批量採購需求。</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🫘</div>
+        <div class="product-name">單品精品咖啡豆</div>
+        <div class="product-sub">Single Origin Specialty Coffee Beans</div>
+        <div class="product-desc">精選衣索比亞、哥倫比亞、巴西、巴拿馬、牙買加等全球頂尖產區咖啡豆，每款都有完整的莊園資訊與風味描述。</div>
+        <div class="product-price">NT$300 起</div>
+      </div>
+      <div class="product-card featured">
+        <div class="product-icon">🔮</div>
+        <div class="product-name">限量珍稀批次 <span class="limited-badge">限量</span></div>
+        <div class="product-sub">Limited Edition — Red Witch & Premium Series</div>
+        <div class="product-desc">包含「Red Witch紅女巫」等限量特色批次，以稀有處理法或絕版莊園原料製作，是咖啡收藏家不可錯過的珍品。</div>
+        <div class="product-price">NT$1,200 起</div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">📦</div>
+        <div class="product-name">5KG+ 專業批量採購</div>
+        <div class="product-sub">Professional Bulk Supply</div>
+        <div class="product-desc">為咖啡館、烘焙師及企業客戶提供5kg以上的批量採購服務，享有專屬優惠價格，並提供穩定供應保障。</div>
+        <div class="product-price">批量優惠價格，請洽詢</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg3);border-top:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-tag">Contact Us</div>
+    <h2 class="section-title">聯絡勁香職人咖啡</h2>
+    <p class="section-sub">無論是個人購豆、批量採購或咖啡諮詢，歡迎透過以下方式與我們聯繫。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">聯絡電話</div>
+            <div class="c-val"><a href="tel:04-25660268">04-2566 0268</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">📠</div>
+          <div>
+            <div class="c-label">傳真</div>
+            <div class="c-val">04-2569 3313</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">電郵</div>
+            <div class="c-val"><a href="mailto:pro13391@gmail.com">pro13391@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">官方網站</div>
+            <div class="c-val"><a href="https://proaromacafe.com.tw" target="_blank">proaromacafe.com.tw</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="store-card">
+        <span class="store-badge">📍 門市地址</span>
+        <div class="store-name">勁香有限公司</div>
+        <div class="store-en">Pro Aroma Cafe · 職人咖啡</div>
+        <div class="store-addr">
+          台灣台中市大雅區<br>
+          中清路四段460號
+        </div>
+        <div class="store-note">
+          ☕ 提供零售購豆、批量採購及咖啡設備諮詢服務。如有大量採購（5KG以上）或企業合作需求，歡迎致電或電郵洽詢，我們將提供專屬報價與服務方案。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">☕ 職人咖啡 Pro Aroma Cafe</div>
+        <p>台中大雅精品咖啡專門店，職人堅持嚴選全球產地豆源，從衣索比亞到牙買加藍山，帶給您最純粹的精品咖啡體驗。</p>
+      </div>
+      <div class="footer-col">
+        <h4>精品豆源</h4>
+        <ul>
+          <li><a href="#origins">衣索比亞</a></li>
+          <li><a href="#origins">哥倫比亞</a></li>
+          <li><a href="#origins">巴拿馬</a></li>
+          <li><a href="#origins">牙買加藍山</a></li>
+          <li><a href="#origins">更多產地</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>服務項目</h4>
+        <ul>
+          <li><a href="#products">單品精品豆</a></li>
+          <li><a href="#products">限量珍稀批次</a></li>
+          <li><a href="#products">批量採購</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 勁香有限公司 Pro Aroma Cafe。版權所有。</div>
+      <div class="footer-loc">台中市大雅區 · <span>中清路四段460號</span></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
