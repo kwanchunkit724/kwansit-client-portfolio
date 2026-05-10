@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guoco Group Limited | International Conglomerate · HKEX Listed</title>
+<style>
+:root {
+  --bg: #040608;
+  --bg2: #060a10;
+  --bg3: #0a0e18;
+  --accent: #1840a0;
+  --accent2: #2860c8;
+  --gold: #c89020;
+  --gold2: #e0b030;
+  --text: #e8eef8;
+  --muted: #5870a0;
+  --border: rgba(200,144,32,0.13);
+  --card: #060a10;
+  --radius: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,6,8,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:1.15rem;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:1px;}
+.nav-logo span{color:var(--gold);font-size:0.72rem;font-weight:400;margin-left:0.5rem;letter-spacing:0.5px;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:600;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent2);}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 2rem 60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 55% 40%,rgba(24,64,160,0.12) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 10% 85%,rgba(200,144,32,0.07) 0%,transparent 60%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(24,64,160,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(24,64,160,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;}
+.hero-eyebrow{font-size:0.72rem;font-weight:600;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5rem;}
+.hero h1{font-size:3.2rem;font-weight:900;line-height:1.1;margin-bottom:0.8rem;letter-spacing:-1px;}
+.hero h1 em{font-style:normal;color:var(--gold);}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin-bottom:2rem;line-height:1.8;}
+.hero-badges{display:flex;gap:0.8rem;margin-bottom:2rem;flex-wrap:wrap;}
+.hero-badge{display:flex;align-items:center;gap:0.4rem;padding:0.35rem 0.9rem;background:rgba(200,144,32,0.08);border:1px solid rgba(200,144,32,0.2);border-radius:4px;font-size:0.75rem;color:var(--gold);font-weight:600;letter-spacing:0.5px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.9rem;transition:all 0.2s;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--gold);padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;border:1px solid rgba(200,144,32,0.25);transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--gold);background:rgba(200,144,32,0.08);}
+
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));}
+.info-card-title{font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(200,144,32,0.07);}
+.info-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.info-icon{width:32px;height:32px;background:rgba(24,64,160,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;}
+.info-label{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;color:var(--text);font-weight:400;line-height:1.4;}
+.info-val a{color:var(--gold);text-decoration:none;}
+
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2rem;}
+.stat-item{text-align:center;padding:1rem;}
+.stat-num{font-size:2.1rem;font-weight:900;color:var(--gold);line-height:1;margin-bottom:0.3rem;letter-spacing:-0.5px;}
+.stat-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;}
+
+section{padding:5.5rem 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-eyebrow{font-size:0.68rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:0.8rem;}
+.section-title{font-size:2.2rem;font-weight:800;line-height:1.2;margin-bottom:1rem;letter-spacing:-0.5px;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.8;}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3.5rem;}
+.about-highlight{background:var(--bg3);border-left:3px solid var(--gold);padding:1.5rem 1.8rem;margin-bottom:1.5rem;border-radius:0 8px 8px 0;}
+.about-highlight p{color:var(--text);font-size:0.95rem;line-height:1.9;}
+.about-text{color:var(--muted);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;}
+.group-structure{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.group-structure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));}
+.gs-title{font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1.2rem;}
+.gs-item{display:flex;align-items:flex-start;gap:0.8rem;padding:0.8rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;margin-bottom:0.6rem;transition:border-color 0.2s;}
+.gs-item:hover{border-color:var(--gold);}
+.gs-icon{font-size:1rem;flex-shrink:0;margin-top:0.1rem;}
+.gs-name{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:0.2rem;}
+.gs-desc{font-size:0.75rem;color:var(--muted);line-height:1.4;}
+.gs-exchange{font-size:0.7rem;font-weight:700;padding:0.1rem 0.4rem;background:rgba(200,144,32,0.1);color:var(--gold);border-radius:3px;margin-left:0.3rem;}
+
+.segments-bg{background:var(--bg2);}
+.segments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem;}
+.segment-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.segment-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--c,var(--gold));opacity:0;transition:opacity 0.25s;}
+.segment-card:hover{border-color:rgba(200,144,32,0.3);transform:translateY(-3px);}
+.segment-card:hover::before{opacity:1;}
+.segment-card:nth-child(1){--c:#c89020;}
+.segment-card:nth-child(2){--c:#1840a0;}
+.segment-card:nth-child(3){--c:#18a870;}
+.segment-card:nth-child(4){--c:#9030d8;}
+.segment-card:nth-child(5){--c:#e07820;}
+.segment-card:nth-child(6){--c:#c82020;}
+.seg-icon{width:48px;height:48px;background:rgba(200,144,32,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem;}
+.seg-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.seg-desc{font-size:0.83rem;color:var(--muted);line-height:1.7;}
+.seg-sub{font-size:0.78rem;color:var(--gold);font-weight:600;margin-top:0.5rem;}
+
+.properties-bg{background:var(--bg3);}
+.properties-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3.5rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:all 0.2s;}
+.prop-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.prop-flag{font-size:1.5rem;margin-bottom:0.6rem;}
+.prop-name{font-size:1.1rem;font-weight:800;color:var(--text);margin-bottom:0.3rem;}
+.prop-location{font-size:0.78rem;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.6rem;}
+.prop-desc{font-size:0.83rem;color:var(--muted);line-height:1.7;}
+.prop-tag{display:inline-block;font-size:0.7rem;font-weight:700;padding:0.2rem 0.6rem;background:rgba(24,64,160,0.15);color:var(--accent2);border-radius:4px;margin-top:0.5rem;}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3.5rem;}
+.contact-info{display:flex;flex-direction:column;gap:1.2rem;}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem;background:var(--card);border:1px solid var(--border);border-radius:10px;transition:border-color 0.2s;}
+.contact-item:hover{border-color:var(--gold);}
+.c-icon{width:40px;height:40px;background:rgba(24,64,160,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.c-val{font-size:0.88rem;color:var(--text);font-weight:400;line-height:1.5;}
+.c-val a{color:var(--gold);text-decoration:none;}
+.hq-card{background:var(--card);border:1px solid rgba(200,144,32,0.2);border-radius:var(--radius);padding:2.5rem;position:relative;overflow:hidden;}
+.hq-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));}
+.hq-eyebrow{font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:1rem;}
+.hq-name{font-size:1.4rem;font-weight:900;color:var(--text);letter-spacing:1px;margin-bottom:0.5rem;}
+.hq-listed{display:flex;align-items:center;gap:0.6rem;margin-bottom:1.5rem;}
+.listed-badge{font-size:0.75rem;font-weight:700;padding:0.25rem 0.7rem;background:rgba(200,144,32,0.1);color:var(--gold);border:1px solid rgba(200,144,32,0.2);border-radius:4px;}
+.hq-block{padding:1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;margin-bottom:0.7rem;}
+.hq-block-label{font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.4rem;}
+.hq-block-val{font-size:0.88rem;color:var(--text);line-height:1.6;}
+.hq-block-val a{color:var(--gold);text-decoration:none;}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:4rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-brand p{color:var(--muted);font-size:0.85rem;line-height:1.7;margin-top:0.8rem;}
+.footer-logo{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:1px;}
+.footer-logo span{color:var(--gold);}
+.footer-col h4{font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col li a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col li a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.footer-copy{font-size:0.78rem;color:var(--muted);}
+.footer-stock{font-size:0.78rem;color:var(--muted);}
+.footer-stock span{color:var(--gold);}
+
+@media(max-width:1000px){.stats-inner{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero h1{font-size:2.4rem;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .segments-grid{grid-template-columns:1fr 1fr;}
+  .properties-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+}
+@media(max-width:600px){
+  .segments-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:2rem;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Guoco Group <span>Limited · HKEX: 53</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#segments">Business</a></li>
+      <li><a href="#properties">Properties</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Investor Relations</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">HKEX Listed · Stock Code 53 · Hong Kong</div>
+      <h1>Guoco <em>Group</em><br>Limited</h1>
+      <p class="hero-sub">A leading international conglomerate listed on the Hong Kong Stock Exchange, with diversified interests spanning property development, hospitality, gaming, financial services and investments across Asia, the UK and beyond.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">📈 HKEX: 0053.HK</span>
+        <span class="hero-badge">🌏 Pan-Asian Operations</span>
+        <span class="hero-badge">🏗️ GuocoLand (SGX Listed)</span>
+        <span class="hero-badge">🎰 Rank Group (LSE Listed)</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#segments" class="btn-primary">Business Overview</a>
+        <a href="#contact" class="btn-secondary">Contact Us</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">Corporate Contact</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">Headquarters</div>
+          <div class="info-val">Hong Kong</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">Company Secretary</div>
+          <div class="info-val"><a href="mailto:comsec@guoco.com">comsec@guoco.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">Phone</div>
+          <div class="info-val"><a href="tel:+6561001380">+65 6100 1380</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📈</div>
+        <div>
+          <div class="info-label">HKEX Listing</div>
+          <div class="info-val">Stock Code: <strong style="color:var(--gold)">0053.HK</strong></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">Website</div>
+          <div class="info-val"><a href="https://www.guoco.com" target="_blank">www.guoco.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">53</div>
+      <div class="stat-label">HKEX Stock Code</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Listed Subsidiaries</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Pan</div>
+      <div class="stat-label">Asian Operations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">Headquarters</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Global</div>
+      <div class="stat-label">Diversified Portfolio</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-eyebrow">About Guoco Group</div>
+    <h2 class="section-title">A Diversified International Conglomerate</h2>
+    <p class="section-sub">Guoco Group Limited is a Hong Kong-listed investment holding company with diversified business interests spanning multiple sectors and geographies across Asia and internationally.</p>
+    <div class="about-grid">
+      <div>
+        <div class="about-highlight">
+          <p>Guoco Group Limited is a member of the Hong Leong Group (Malaysia), one of Southeast Asia's most established conglomerates. With a portfolio of publicly listed subsidiaries and strategic investments, Guoco Group operates across property development, hospitality, gaming and leisure, and financial services.</p>
+        </div>
+        <p class="about-text">Listed on the Hong Kong Stock Exchange under stock code 53, Guoco Group has built a reputation for identifying and growing businesses with strong long-term fundamentals across Asia and major international markets.</p>
+        <p class="about-text">The group's strategy focuses on creating shareholder value through disciplined capital allocation, active portfolio management, and the development of landmark property and hospitality assets across Singapore, Malaysia, China, and internationally.</p>
+      </div>
+      <div class="group-structure">
+        <div class="gs-title">Group Structure & Listed Entities</div>
+        <div class="gs-item">
+          <span class="gs-icon">🏦</span>
+          <div>
+            <div class="gs-name">Guoco Group Limited <span class="gs-exchange">HKEX: 53</span></div>
+            <div class="gs-desc">Parent holding company listed on the Hong Kong Stock Exchange. Subsidiary of Hong Leong Company (Malaysia).</div>
+          </div>
+        </div>
+        <div class="gs-item">
+          <span class="gs-icon">🏗️</span>
+          <div>
+            <div class="gs-name">GuocoLand Limited <span class="gs-exchange">SGX Listed</span></div>
+            <div class="gs-desc">Major property developer in Singapore, China, Malaysia and Vietnam. Developer of Guoco Tower and Guoco Midtown.</div>
+          </div>
+        </div>
+        <div class="gs-item">
+          <span class="gs-icon">🎰</span>
+          <div>
+            <div class="gs-name">Rank Group PLC <span class="gs-exchange">LSE Listed</span></div>
+            <div class="gs-desc">UK-listed gaming and leisure operator. Owns Grosvenor Casinos and Mecca Bingo across the United Kingdom.</div>
+          </div>
+        </div>
+        <div class="gs-item">
+          <span class="gs-icon">💼</span>
+          <div>
+            <div class="gs-name">Hong Leong Financial Group <span class="gs-exchange">Bursa Listed</span></div>
+            <div class="gs-desc">Financial services arm providing banking, insurance and investment services across Asia.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEGMENTS -->
+<section id="segments" class="segments-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow">Business Segments</div>
+    <h2 class="section-title">Diversified Business Portfolio</h2>
+    <p class="section-sub">Guoco Group's diversified operations span four core business segments, providing resilience and multiple engines of growth.</p>
+    <div class="segments-grid">
+      <div class="segment-card">
+        <div class="seg-icon">🏗️</div>
+        <div class="seg-title">Property Development</div>
+        <div class="seg-desc">Through GuocoLand (SGX-listed), the group develops landmark integrated developments in Singapore, China and Malaysia — including the iconic Guoco Tower and Guoco Midtown in Singapore.</div>
+        <div class="seg-sub">GuocoLand · Singapore · China · Malaysia</div>
+      </div>
+      <div class="segment-card">
+        <div class="seg-icon">🏨</div>
+        <div class="seg-title">Hospitality & Hotels</div>
+        <div class="seg-desc">Premium hotel and hospitality operations integrated within major mixed-use developments, delivering exceptional guest experiences at landmark urban destinations across Asia.</div>
+        <div class="seg-sub">Integrated Mixed-Use Developments</div>
+      </div>
+      <div class="segment-card">
+        <div class="seg-icon">🎰</div>
+        <div class="seg-title">Gaming & Leisure</div>
+        <div class="seg-desc">Through the London Stock Exchange-listed Rank Group PLC, the group operates Grosvenor Casinos and Mecca Bingo brands across the United Kingdom — one of Europe's leading gaming operators.</div>
+        <div class="seg-sub">Rank Group PLC · UK · LSE Listed</div>
+      </div>
+      <div class="segment-card">
+        <div class="seg-icon">💹</div>
+        <div class="seg-title">Financial Services</div>
+        <div class="seg-desc">Banking, insurance and investment services through Hong Leong Financial Group and associated companies, serving retail and corporate clients across Southeast Asia's major financial markets.</div>
+        <div class="seg-sub">Hong Leong Financial Group · SEA</div>
+      </div>
+      <div class="segment-card">
+        <div class="seg-icon">💼</div>
+        <div class="seg-title">Strategic Investments</div>
+        <div class="seg-desc">A disciplined treasury and investment portfolio spanning equities, bonds, and strategic stakes in growth businesses — providing additional returns and portfolio diversification for shareholders.</div>
+        <div class="seg-sub">Treasury · Equity Portfolio · Bonds</div>
+      </div>
+      <div class="segment-card">
+        <div class="seg-icon">🌏</div>
+        <div class="seg-title">Pan-Asian Operations</div>
+        <div class="seg-desc">Operating across Hong Kong, Singapore, Malaysia, China and internationally — with a presence in key financial hubs and growth markets across the Asia Pacific region and United Kingdom.</div>
+        <div class="seg-sub">HK · SG · MY · CN · UK</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPERTIES -->
+<section id="properties" class="properties-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow">Landmark Developments</div>
+    <h2 class="section-title">Iconic Property Portfolio</h2>
+    <p class="section-sub">GuocoLand, Guoco Group's listed property arm, has delivered some of Asia's most celebrated integrated mixed-use developments.</p>
+    <div class="properties-grid">
+      <div class="prop-card">
+        <div class="prop-flag">🇸🇬</div>
+        <div class="prop-name">Guoco Tower</div>
+        <div class="prop-location">Singapore · Tanjong Pagar</div>
+        <div class="prop-desc">Singapore's tallest building at 290 metres, anchoring the Tanjong Pagar Centre mixed-use development. Features Grade A office space, the Sofitel Singapore City Centre hotel, premium residences, retail and public spaces.</div>
+        <span class="prop-tag">290m · Singapore's Tallest</span>
+      </div>
+      <div class="prop-card">
+        <div class="prop-flag">🇸🇬</div>
+        <div class="prop-name">Guoco Midtown</div>
+        <div class="prop-location">Singapore · Beach Road · Bugis</div>
+        <div class="prop-desc">A transformative mixed-use district at Beach Road featuring Grade A offices, premium residences (Midtown Modern & Midtown Bay), a hotel, retail, and extensive public green spaces — redefining urban living in Singapore.</div>
+        <span class="prop-tag">Mixed-Use · Beach Road</span>
+      </div>
+      <div class="prop-card">
+        <div class="prop-flag">🇲🇾</div>
+        <div class="prop-name">Malaysia Developments</div>
+        <div class="prop-location">Malaysia · Multiple Locations</div>
+        <div class="prop-desc">GuocoLand Malaysia has developed a portfolio of residential, commercial and integrated properties across Malaysia, contributing to GuocoLand's diversified regional property development platform.</div>
+        <span class="prop-tag">Residential · Commercial</span>
+      </div>
+      <div class="prop-card">
+        <div class="prop-flag">🇨🇳</div>
+        <div class="prop-name">China Portfolio</div>
+        <div class="prop-location">China · Multiple Cities</div>
+        <div class="prop-desc">Strategic property investments and developments across major Chinese cities, capitalising on the growth of China's urbanisation and rising demand for premium residential and commercial properties.</div>
+        <span class="prop-tag">China Urban Development</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg2);border-top:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-eyebrow">Contact</div>
+    <h2 class="section-title">Investor Relations & Enquiries</h2>
+    <p class="section-sub">For corporate enquiries, investor relations and company secretariat matters, please contact Guoco Group's Hong Kong office.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">Company Secretariat</div>
+            <div class="c-val"><a href="mailto:comsec@guoco.com">comsec@guoco.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">Phone</div>
+            <div class="c-val"><a href="tel:+6561001380">+65 6100 1380</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">📈</div>
+          <div>
+            <div class="c-label">Stock Exchange Listing</div>
+            <div class="c-val">Hong Kong Stock Exchange<br>Stock Code: <strong style="color:var(--gold)">0053.HK</strong></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">Corporate Website</div>
+            <div class="c-val"><a href="https://www.guoco.com" target="_blank">www.guoco.com</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="hq-card">
+        <div class="hq-eyebrow">Corporate Information</div>
+        <div class="hq-name">Guoco Group Limited</div>
+        <div class="hq-listed">
+          <span class="listed-badge">HKEX: 0053.HK</span>
+          <span class="listed-badge">Member · Hong Leong Group</span>
+        </div>
+        <div class="hq-block">
+          <div class="hq-block-label">Headquarters</div>
+          <div class="hq-block-val">Hong Kong</div>
+        </div>
+        <div class="hq-block">
+          <div class="hq-block-label">Company Secretariat</div>
+          <div class="hq-block-val"><a href="mailto:comsec@guoco.com">comsec@guoco.com</a></div>
+        </div>
+        <div class="hq-block">
+          <div class="hq-block-label">Listed Subsidiaries</div>
+          <div class="hq-block-val">GuocoLand (SGX) · Rank Group (LSE)<br>Hong Leong Financial Group (Bursa)</div>
+        </div>
+        <div class="hq-block">
+          <div class="hq-block-label">Group Affiliation</div>
+          <div class="hq-block-val">Hong Leong Company (Malaysia) Group</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Guoco <span>Group</span></div>
+        <p>Guoco Group Limited (HKEX: 53) is a leading international conglomerate with diversified interests in property development, hospitality, gaming, financial services and strategic investments across Asia and internationally.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Business</h4>
+        <ul>
+          <li><a href="#segments">Property Development</a></li>
+          <li><a href="#segments">Hospitality</a></li>
+          <li><a href="#segments">Gaming & Leisure</a></li>
+          <li><a href="#segments">Financial Services</a></li>
+          <li><a href="#segments">Investments</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Subsidiaries</h4>
+        <ul>
+          <li><a href="#about">GuocoLand (SGX)</a></li>
+          <li><a href="#about">Rank Group (LSE)</a></li>
+          <li><a href="#about">Hong Leong Financial</a></li>
+          <li><a href="#properties">Guoco Tower</a></li>
+          <li><a href="#properties">Guoco Midtown</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Investors</h4>
+        <ul>
+          <li><a href="mailto:comsec@guoco.com">Company Secretary</a></li>
+          <li><a href="#contact">Investor Relations</a></li>
+          <li><a href="https://www.guoco.com" target="_blank">Corporate Website</a></li>
+          <li><a href="https://www.hkex.com.hk" target="_blank">HKEX: 0053</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 Guoco Group Limited. All rights reserved.</div>
+      <div class="footer-stock">HKEX Listed · Stock Code <span>0053.HK</span></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
