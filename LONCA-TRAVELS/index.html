@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>樂嘉旅遊 Lonca Travels | 香港旅行社 · 機票 · 套票 · 簽證</title>
+<style>
+  :root {
+    --blue: #0066b3;
+    --blue-dark: #004d8c;
+    --blue-light: #e8f4ff;
+    --orange: #f57c00;
+    --orange-dark: #d06800;
+    --white: #ffffff;
+    --light: #f5f8fc;
+    --text: #2c3445;
+    --muted: #6b7280;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', '微軟正黑體', Arial, sans-serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--white);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
+  .nav-logo {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--blue), var(--orange));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .nav-name { font-weight: 800; font-size: 17px; color: var(--blue); }
+  .nav-name span { color: var(--orange); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--text); font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta {
+    background: var(--orange); color: var(--white);
+    padding: 9px 22px; border-radius: 6px; font-size: 14px; font-weight: 700;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--orange-dark); }
+
+  /* HERO */
+  .hero {
+    margin-top: 64px;
+    background: linear-gradient(160deg, var(--blue-dark) 0%, var(--blue) 50%, #0088d0 100%);
+    min-height: 580px; display: flex; align-items: center;
+    padding: 72px 48px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '✈️';
+    position: absolute; right: 120px; top: 50%; transform: translateY(-50%) rotate(-20deg);
+    font-size: 200px; opacity: 0.06;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -100px; left: -100px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,124,0,0.15) 0%, transparent 70%);
+  }
+  .hero-content { max-width: 640px; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white); padding: 6px 16px; border-radius: 20px;
+    font-size: 13px; font-weight: 600; margin-bottom: 24px;
+  }
+  .hero h1 { font-size: 44px; font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 8px; }
+  .hero h1 span { color: #ffd54f; }
+  .hero-en { font-size: 18px; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+  .hero-desc { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 36px; max-width: 540px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-orange { background: var(--orange); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700; transition: background .2s, transform .2s; }
+  .btn-orange:hover { background: var(--orange-dark); transform: translateY(-2px); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600; transition: border-color .2s; }
+  .btn-outline:hover { border-color: var(--white); }
+  .hero-info {
+    position: absolute; right: 56px; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px); border-radius: 16px;
+    padding: 30px 32px; min-width: 260px; z-index: 1;
+  }
+  .hero-info-title { color: #ffd54f; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; }
+  .hero-info-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .hero-info-row:last-child { margin-bottom: 0; }
+  .hero-info-icon { font-size: 18px; }
+  .hero-info-text { font-size: 13px; color: rgba(255,255,255,0.9); }
+  .hero-info-text strong { color: var(--white); display: block; }
+
+  /* STRIP */
+  .strip { background: var(--orange); display: flex; justify-content: center; flex-wrap: wrap; }
+  .strip-item { padding: 20px 44px; text-align: center; border-right: 1px solid rgba(255,255,255,0.25); }
+  .strip-item:last-child { border-right: none; }
+  .strip-num { font-size: 24px; font-weight: 800; color: var(--white); }
+  .strip-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 2px; font-weight: 500; }
+
+  /* SECTION */
+  section { padding: 80px 48px; }
+  .section-label { display: inline-block; color: var(--orange); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  h2 { font-size: 34px; font-weight: 800; color: var(--blue-dark); margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 640px; margin-bottom: 48px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .office-box {
+    background: var(--white); border-radius: 14px; padding: 28px;
+    border-left: 4px solid var(--blue); margin-bottom: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .office-box h3 { font-size: 14px; color: var(--blue); font-weight: 700; margin-bottom: 12px; }
+  .office-box .row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; font-size: 14px; color: var(--text); }
+  .office-box .row span { font-size: 16px; flex-shrink: 0; }
+  .about-desc p { font-size: 15px; color: var(--text); line-height: 1.8; margin-bottom: 16px; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .about-prop { background: var(--white); border-radius: 12px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-top: 3px solid var(--orange); }
+  .about-prop-icon { font-size: 26px; margin-bottom: 10px; }
+  .about-prop h4 { font-size: 14px; font-weight: 700; color: var(--blue-dark); margin-bottom: 6px; }
+  .about-prop p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    background: var(--white); border-radius: 14px; padding: 30px 24px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    border-top: 4px solid var(--blue);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+  .service-icon { width: 52px; height: 52px; border-radius: 12px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 18px; }
+  .service-card h3 { font-size: 17px; font-weight: 700; color: var(--blue-dark); margin-bottom: 6px; }
+  .service-card h3 small { font-size: 12px; color: var(--muted); font-weight: 400; display: block; margin-top: 2px; }
+  .service-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .service-tag { display: inline-block; margin-top: 12px; background: var(--blue-light); color: var(--blue); padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+
+  /* DESTINATIONS */
+  .dest { background: var(--light); }
+  .dest-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .dest-card {
+    background: var(--white); border-radius: 14px; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    transition: transform .25s;
+  }
+  .dest-card:hover { transform: translateY(-4px); }
+  .dest-flag { font-size: 54px; padding: 28px; text-align: center; background: linear-gradient(135deg, var(--blue-light), var(--white)); }
+  .dest-info { padding: 16px; }
+  .dest-info h4 { font-size: 15px; font-weight: 700; color: var(--blue-dark); margin-bottom: 4px; }
+  .dest-info p { font-size: 12px; color: var(--muted); }
+  .dest-badge { display: inline-block; margin-top: 8px; background: rgba(245,124,0,0.1); color: var(--orange-dark); padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+
+  /* WHY US */
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .why-card { background: var(--blue-dark); border-radius: 14px; padding: 30px 22px; text-align: center; transition: transform .25s; }
+  .why-card:hover { transform: translateY(-4px); }
+  .why-icon { font-size: 36px; margin-bottom: 14px; }
+  .why-card h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .why-card p { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+  /* CONTACT */
+  .contact { background: var(--blue-dark); }
+  .contact h2 { color: var(--white); }
+  .contact .section-label { color: #ffd54f; }
+  .contact .section-sub { color: rgba(255,255,255,0.65); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 22px; }
+  .contact-row { display: flex; align-items: flex-start; gap: 16px; }
+  .contact-row-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .contact-row-text h4 { font-size: 13px; color: #ffd54f; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .contact-row-text p, .contact-row-text a { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.6; }
+  .contact-row-text a:hover { color: #ffd54f; }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .contact-form input, .contact-form select, .contact-form textarea {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px; padding: 13px 16px; color: var(--white);
+    font-size: 14px; font-family: inherit; outline: none; transition: border-color .2s;
+  }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form select option { background: var(--blue-dark); }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: #ffd54f; }
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+  .contact-form button { background: var(--orange); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .2s; }
+  .contact-form button:hover { background: var(--orange-dark); }
+
+  /* FOOTER */
+  footer { background: #002b5c; color: rgba(255,255,255,0.5); text-align: center; padding: 28px 48px; font-size: 13px; }
+  footer span { color: #ffd54f; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 48px 24px; }
+    .hero h1 { font-size: 30px; }
+    .hero-info { display: none; }
+    section { padding: 56px 24px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .dest-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .about-props { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">✈️</div>
+    <div class="nav-name">樂嘉旅遊 <span>Lonca Travels</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">關於我們</a>
+    <a href="#services">旅遊服務</a>
+    <a href="#destinations">熱門目的地</a>
+    <a href="#why">為何選擇我們</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <a href="#contact" class="nav-cta">立即查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✈️ 香港持牌旅行社 · Licensed Travel Agent</div>
+    <h1>開啟您的<span>夢想旅程</span></h1>
+    <div class="hero-en">Lonca Travels 樂嘉旅遊 · Hong Kong Travel Agency</div>
+    <p class="hero-desc">
+      樂嘉旅遊為您提供專業的旅遊套票、機票預訂、酒店安排及簽證服務。無論是亞洲短途旅遊還是歐洲長途旅程，我們都為您度身設計最合適的行程，讓您輕鬆出發、盡興而歸。
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-orange">立即查詢行程</a>
+      <a href="#services" class="btn-outline">了解服務</a>
+    </div>
+  </div>
+  <div class="hero-info">
+    <div class="hero-info-title">📍 辦公室資訊</div>
+    <div class="hero-info-row">
+      <div class="hero-info-icon">📞</div>
+      <div class="hero-info-text"><strong>+852 2381-0330</strong>辦公室電話</div>
+    </div>
+    <div class="hero-info-row">
+      <div class="hero-info-icon">💬</div>
+      <div class="hero-info-text"><strong>+852 9414-1513</strong>WhatsApp查詢</div>
+    </div>
+    <div class="hero-info-row">
+      <div class="hero-info-icon">🕐</div>
+      <div class="hero-info-text"><strong>週一至五 9am–6pm</strong>辦公時間</div>
+    </div>
+    <div class="hero-info-row">
+      <div class="hero-info-icon">📍</div>
+      <div class="hero-info-text"><strong>油麻地彌敦道328號</strong>儉德大廈15樓A室</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">
+    <div class="strip-num">全球</div>
+    <div class="strip-label">旅遊目的地</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">一站式</div>
+    <div class="strip-label">旅遊服務</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">專業</div>
+    <div class="strip-label">持牌旅行顧問</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">度身</div>
+    <div class="strip-label">訂製行程</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">關於我們</div>
+    <h2>樂嘉旅遊 · 您的旅遊夥伴</h2>
+    <p class="section-sub" style="margin: 0 auto;">位於油麻地的專業旅行社，提供個人化的旅遊顧問服務，為每一位客戶度身設計最適合的行程。</p>
+  </div>
+  <div class="about-grid">
+    <div>
+      <div class="office-box">
+        <h3>📍 辦公室地址</h3>
+        <div class="row"><span>🏢</span><span>香港油麻地彌敦道328-342A號儉德大廈15樓A室<br>Flat A, 15/F, Kim Tak Building, 328-342A Nathan Road, Yau Ma Tei</span></div>
+        <div class="row"><span>📞</span><span>+852 2381-0330</span></div>
+        <div class="row"><span>💬</span><span>WhatsApp: +852 9414-1513 / +852 5406-5005</span></div>
+        <div class="row"><span>📧</span><span>loncatravels@yahoo.com.hk</span></div>
+        <div class="row"><span>📸</span><span>Instagram: @loncatravels</span></div>
+        <div class="row"><span>⏰</span><span>週一至週五：上午9時至下午6時<br>週六、日及公眾假期：休息</span></div>
+      </div>
+      <div class="about-desc">
+        <p>（可安排預約會面）如需親身到訪辦公室，歡迎預先聯絡安排，我們的旅遊顧問將親身為您提供諮詢服務。</p>
+      </div>
+    </div>
+    <div class="about-props">
+      <div class="about-prop">
+        <div class="about-prop-icon">✈️</div>
+        <h4>機票專家</h4>
+        <p>全球主要航空公司機票，為您比較最優惠票價及航班選擇。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🏨</div>
+        <h4>酒店預訂</h4>
+        <p>遍佈全球的優質酒店網絡，由經濟型至豪華酒店一應俱全。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🗺️</div>
+        <h4>度身行程</h4>
+        <p>根據您的預算、喜好及時間，設計最適合您的個人化旅遊路線。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">📋</div>
+        <h4>簽證協助</h4>
+        <p>提供各國簽證申請指引及協助，確保您的出行順暢無憂。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background: var(--white);">
+  <div class="section-label">旅遊服務</div>
+  <h2>全面旅遊解決方案</h2>
+  <p class="section-sub">從機票到酒店，從套票到簽證，樂嘉旅遊提供一站式旅遊服務，讓您無後顧之憂地出發。</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✈️</div>
+      <h3>機票預訂<small>Flight Booking</small></h3>
+      <p>提供全球主要航空公司機票預訂服務，包括經濟艙、商務艙及頭等艙，為您尋找最優惠票價。</p>
+      <span class="service-tag">全球航線</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏖️</div>
+      <h3>旅遊套票<small>Holiday Packages</small></h3>
+      <p>精心設計的旅遊套票，包括機票、酒店、接送及精選景點，物有所值，輕鬆出遊。</p>
+      <span class="service-tag">機+酒套票</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏨</div>
+      <h3>酒店預訂<small>Hotel Booking</small></h3>
+      <p>精選全球優質酒店，由舒適的商務酒店到度假村，按您的預算及喜好提供最佳選擇。</p>
+      <span class="service-tag">全球酒店</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛳️</div>
+      <h3>郵輪假期<small>Cruise Packages</small></h3>
+      <p>多款郵輪假期套票，以香港為出發點，暢遊亞洲各港口，享受豪華郵輪上的悠閒時光。</p>
+      <span class="service-tag">郵輪套餐</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📄</div>
+      <h3>簽證申請<small>Visa Services</small></h3>
+      <p>提供各主要旅遊國家的簽證申請諮詢及協助服務，確保您的旅遊文件齊備，順利出行。</p>
+      <span class="service-tag">多國簽證</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🗺️</div>
+      <h3>訂製旅遊<small>Tailor-made Tours</small></h3>
+      <p>根據您的個人喜好、預算及行程要求，度身訂製獨一無二的旅遊計劃，尊享私人化服務。</p>
+      <span class="service-tag">私人訂製</span>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section class="dest" id="destinations">
+  <div style="text-align: center; margin-bottom: 48px;">
+    <div class="section-label">熱門目的地</div>
+    <h2>精選旅遊目的地</h2>
+    <p class="section-sub" style="margin: 0 auto;">從亞洲近程到歐美遠途，為您呈獻世界各地精彩目的地。</p>
+  </div>
+  <div class="dest-grid">
+    <div class="dest-card">
+      <div class="dest-flag">🇯🇵</div>
+      <div class="dest-info">
+        <h4>日本 Japan</h4>
+        <p>東京、大阪、京都、北海道</p>
+        <span class="dest-badge">🔥 最受歡迎</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇰🇷</div>
+      <div class="dest-info">
+        <h4>韓國 Korea</h4>
+        <p>首爾、釜山、濟州島</p>
+        <span class="dest-badge">⭐ 熱門之選</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇹🇼</div>
+      <div class="dest-info">
+        <h4>台灣 Taiwan</h4>
+        <p>台北、台中、高雄、墾丁</p>
+        <span class="dest-badge">✈️ 短途首選</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇹🇭</div>
+      <div class="dest-info">
+        <h4>泰國 Thailand</h4>
+        <p>曼谷、清邁、普吉島、蘇梅島</p>
+        <span class="dest-badge">🏖️ 陽光海灘</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇬🇧</div>
+      <div class="dest-info">
+        <h4>英國 United Kingdom</h4>
+        <p>倫敦、愛丁堡、曼徹斯特</p>
+        <span class="dest-badge">🏰 歐洲精選</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇫🇷</div>
+      <div class="dest-info">
+        <h4>法國 France</h4>
+        <p>巴黎、尼斯、里昂、波爾多</p>
+        <span class="dest-badge">🗼 浪漫之都</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇦🇺</div>
+      <div class="dest-info">
+        <h4>澳洲 Australia</h4>
+        <p>悉尼、墨爾本、黃金海岸</p>
+        <span class="dest-badge">🦘 南半球</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🌍</div>
+      <div class="dest-info">
+        <h4>更多目的地</h4>
+        <p>全球各地，按您要求定制</p>
+        <span class="dest-badge">🗺️ 全球覆蓋</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" style="background: var(--white);">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">為何選擇我們</div>
+    <h2>樂嘉旅遊的優勢</h2>
+    <p class="section-sub" style="margin: 0 auto;">我們以專業、貼心的服務，讓您每一次旅行都成為美好回憶。</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">👨‍💼</div>
+      <h4>專業旅遊顧問</h4>
+      <p>持牌旅遊顧問親身服務，掌握各地最新旅遊資訊及優惠。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💰</div>
+      <h4>優惠價格保證</h4>
+      <p>與各大航空公司及酒店集團建立長期合作，為您爭取最佳價格。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🎯</div>
+      <h4>個人化服務</h4>
+      <p>根據您的個人喜好及預算度身設計行程，每個細節悉心安排。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🤝</div>
+      <h4>全程支援</h4>
+      <p>從行程規劃到出發後的支援，全程陪伴，讓您旅途無憂。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">聯絡我們</div>
+  <h2>立即查詢旅遊服務</h2>
+  <p class="section-sub">歡迎電話、WhatsApp或親臨辦公室（請預約），我們的旅遊顧問將為您提供專業建議。</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-row-icon">📍</div>
+        <div class="contact-row-text">
+          <h4>地址</h4>
+          <p>油麻地彌敦道328-342A號儉德大廈15樓A室<br>（可安排預約會面）</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📞</div>
+        <div class="contact-row-text">
+          <h4>辦公室電話</h4>
+          <a href="tel:+85223810330">+852 2381-0330</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">💬</div>
+        <div class="contact-row-text">
+          <h4>WhatsApp</h4>
+          <a href="https://wa.me/85294141513">+852 9414-1513</a><br>
+          <a href="https://wa.me/85254065005">+852 5406-5005</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📧</div>
+        <div class="contact-row-text">
+          <h4>電郵</h4>
+          <a href="mailto:loncatravels@yahoo.com.hk">loncatravels@yahoo.com.hk</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">⏰</div>
+        <div class="contact-row-text">
+          <h4>營業時間</h4>
+          <p>週一至五：上午9時至下午6時<br>週六、日及公眾假期：休息</p>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <input type="text" placeholder="您的姓名 Your Name" />
+      <input type="tel" placeholder="聯絡電話 Phone / WhatsApp" />
+      <input type="email" placeholder="電郵地址 Email" />
+      <select>
+        <option value="" disabled selected>查詢類別 Enquiry Type</option>
+        <option>機票預訂 Flight Booking</option>
+        <option>旅遊套票 Holiday Package</option>
+        <option>酒店預訂 Hotel Booking</option>
+        <option>郵輪假期 Cruise Package</option>
+        <option>簽證申請 Visa Application</option>
+        <option>訂製行程 Tailor-made Tour</option>
+        <option>其他查詢 General Enquiry</option>
+      </select>
+      <textarea placeholder="請描述您的旅遊需求（目的地、日期、人數等）…"></textarea>
+      <button type="submit">提交查詢 / Send Enquiry ✈️</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 <span>樂嘉旅遊 Lonca Travels</span> · 香港持牌旅行社 · 油麻地彌敦道328號儉德大廈15樓A室 · All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
