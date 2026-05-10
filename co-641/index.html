@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>禮品軒 · 香港讀經會有限公司</title>
+<meta name="description" content="禮品軒 香港讀經會有限公司 — 基督教書籍、靈修用品及精選禮品零售，服務香港教會與信徒。"/>
+<style>
+:root{
+  --bg:#06050a;
+  --surface:#0d0b12;
+  --card:#131118;
+  --border:#211e2e;
+  --accent:#c8a858;
+  --accent2:#e8cc80;
+  --soft:#7a6a40;
+  --text:#f0ece0;
+  --muted:#908870;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(6,5,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-size:1rem;font-weight:700;color:var(--accent);letter-spacing:.04em;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.nav-links a:hover{color:var(--accent);}
+
+/* HERO */
+.hero{min-height:88vh;display:flex;align-items:center;justify-content:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 35%,rgba(200,168,88,.08) 0%,transparent 70%);}
+.hero-cross{position:absolute;right:10%;top:50%;transform:translateY(-50%);font-size:12rem;opacity:.04;user-select:none;}
+.hero-inner{max-width:1200px;width:100%;display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:center;position:relative;}
+.hero-badge{display:inline-block;background:rgba(200,168,88,.12);border:1px solid rgba(200,168,88,.3);color:var(--accent);font-size:.75rem;padding:.35rem .9rem;border-radius:20px;letter-spacing:.1em;margin-bottom:1.5rem;text-transform:uppercase;}
+.hero h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.2;margin-bottom:1rem;}
+.hero h1 span{color:var(--accent);}
+.hero-verse{background:rgba(200,168,88,.07);border-left:3px solid var(--accent);padding:1rem 1.2rem;border-radius:0 8px 8px 0;margin-bottom:2rem;font-style:italic;font-size:.92rem;color:var(--muted);}
+.hero-verse cite{display:block;font-size:.78rem;color:var(--soft);margin-top:.4rem;font-style:normal;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:#06050a;padding:.8rem 1.8rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;transition:background .2s;}
+.hero-cta:hover{background:var(--accent2);}
+.hero-cta-out{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);color:var(--muted);padding:.8rem 1.8rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .2s;}
+.hero-cta-out:hover{border-color:var(--accent);color:var(--accent);}
+
+/* INFO CARD */
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.8rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.info-card h3{font-size:.78rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.2rem;}
+.info-row{display:flex;gap:.8rem;margin-bottom:.9rem;align-items:flex-start;}
+.info-icon{width:20px;color:var(--accent);flex-shrink:0;margin-top:.1rem;font-size:.9rem;}
+.info-text{font-size:.85rem;color:var(--muted);}
+.info-text strong{color:var(--text);display:block;font-size:.8rem;font-weight:600;}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:1.9rem;font-weight:800;color:var(--accent);display:block;}
+.stat-label{font-size:.78rem;color:var(--muted);margin-top:.2rem;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-label{font-size:.72rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem;}
+.sec-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:1rem;}
+.sec-desc{color:var(--muted);max-width:620px;margin-bottom:3rem;line-height:1.7;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.about-highlight{background:linear-gradient(135deg,rgba(200,168,88,.08),rgba(200,168,88,.03));border:1px solid rgba(200,168,88,.2);border-radius:12px;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:1rem;line-height:1.75;color:var(--text);}
+.about-highlight cite{display:block;font-size:.78rem;color:var(--accent);margin-top:.8rem;font-style:normal;}
+.prop-cards{display:grid;gap:1rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;gap:1rem;align-items:flex-start;}
+.prop-icon{width:36px;height:36px;background:rgba(200,168,88,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.prop-card h4{font-size:.9rem;font-weight:600;margin-bottom:.2rem;}
+.prop-card p{font-size:.82rem;color:var(--muted);}
+
+/* PRODUCTS */
+.products{background:var(--surface);}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s,transform .2s;}
+.prod-card:hover{border-color:rgba(200,168,88,.4);transform:translateY(-4px);}
+.prod-top{background:rgba(200,168,88,.06);padding:2rem;text-align:center;font-size:2.5rem;border-bottom:1px solid var(--border);}
+.prod-body{padding:1.4rem;}
+.prod-body h3{font-size:1rem;font-weight:700;margin-bottom:.5rem;}
+.prod-body p{font-size:.83rem;color:var(--muted);line-height:1.6;}
+.prod-tag{display:inline-block;background:rgba(200,168,88,.12);color:var(--accent);font-size:.7rem;padding:.2rem .6rem;border-radius:4px;margin-top:.8rem;}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.6rem;text-align:center;}
+.svc-icon{font-size:2rem;margin-bottom:1rem;}
+.svc-card h3{font-size:.95rem;font-weight:700;margin-bottom:.5rem;}
+.svc-card p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+
+/* CONTACT */
+.contact{background:var(--surface);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-info h3{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;}
+.c-item{display:flex;gap:1rem;margin-bottom:1.2rem;align-items:flex-start;}
+.c-icon{width:40px;height:40px;background:rgba(200,168,88,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:.75rem;color:var(--muted);margin-bottom:.1rem;}
+.c-val{font-size:.9rem;font-weight:500;}
+.c-val a{color:var(--text);text-decoration:none;}
+.c-val a:hover{color:var(--accent);}
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;}
+.contact-card p{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;}
+.c-form-row{margin-bottom:1rem;}
+.c-form-row label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:.4rem;}
+.c-form-row input,.c-form-row textarea{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;color:var(--text);font-size:.88rem;}
+.c-form-row textarea{height:90px;resize:vertical;}
+.c-btn{width:100%;background:var(--accent);color:#06050a;border:none;padding:.85rem;border-radius:8px;font-weight:700;font-size:.95rem;cursor:pointer;transition:background .2s;}
+.c-btn:hover{background:var(--accent2);}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2rem;text-align:center;}
+.foot-logo{font-size:1.05rem;font-weight:700;color:var(--accent);margin-bottom:.4rem;}
+.foot-copy{font-size:.78rem;color:var(--muted);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .grid-3,.services-grid,.stats-inner{grid-template-columns:1fr 1fr;}
+  .hero-cross{display:none;}
+}
+@media(max-width:600px){
+  .grid-3,.services-grid,.stats-inner{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">禮品軒 · 香港讀經會</div>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#products">精選商品</a></li>
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-cross">✝</div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">基督教書籍 &amp; 禮品 · Hong Kong</div>
+      <h1><span>禮品軒</span><br/>香港讀經會<br/>有限公司</h1>
+      <div class="hero-verse">
+        「你的話是我腳前的燈，是我路上的光。」
+        <cite>— 詩篇 119:105</cite>
+      </div>
+      <div class="hero-ctas">
+        <a href="#products" class="hero-cta">瀏覽商品 →</a>
+        <a href="#contact" class="hero-cta-out">聯絡我們</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>機構資料</h3>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div class="info-text"><strong>地區</strong>香港 Hong Kong SAR</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🏪</span>
+        <div class="info-text"><strong>業務</strong>基督教書籍 · 靈修用品 · 禮品零售</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📧</span>
+        <div class="info-text"><strong>電郵</strong>info@hklsc.com.hk</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📱</span>
+        <div class="info-text"><strong>電話</strong>8480 1898</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">✝</span>
+        <div class="info-text"><strong>使命</strong>以書籍與禮品傳揚信仰，滋養靈命</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num">📖</span><div class="stat-label">聖經及靈修書籍</div></div>
+    <div class="stat"><span class="stat-num">🎁</span><div class="stat-label">精選基督教禮品</div></div>
+    <div class="stat"><span class="stat-num">⛪</span><div class="stat-label">服務香港教會</div></div>
+    <div class="stat"><span class="stat-num">🇭🇰</span><div class="stat-label">香港本地機構</div></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div>
+        <div class="sec-label">關於我們</div>
+        <h2 class="sec-title">以書育人，<br/>以禮傳愛</h2>
+        <div class="about-highlight">
+          <p>禮品軒 香港讀經會有限公司，是香港一間以基督教信仰為核心的零售機構，致力為本地教會、信徒及慕道朋友提供優質的聖經、靈修書籍、崇拜用品及精選禮品，藉文字與禮物傳遞上主的愛。</p>
+          <cite>— 禮品軒 香港讀經會</cite>
+        </div>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.7;">
+          「讀經」是基督徒靈命成長的基石。本機構深信透過推廣聖經閱讀、提供優質靈修材料，能幫助信徒在信仰旅途上走得更穩、更深。禮品軒的成立，更讓信仰的美好透過有意義的禮品，在生命中留下印記。
+        </p>
+      </div>
+      <div class="prop-cards">
+        <div class="prop-card">
+          <div class="prop-icon">📚</div>
+          <div>
+            <h4>聖經與書籍</h4>
+            <p>精選各類版本聖經、靈修書籍、神學著作，滿足不同信仰需求。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🎁</div>
+          <div>
+            <h4>基督教禮品</h4>
+            <p>精緻十字架、信仰擺設、主題卡片、紀念品，送禮自用皆宜。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">⛪</div>
+          <div>
+            <h4>教會服務</h4>
+            <p>批量供應崇拜用品及詩歌樂譜，支援香港各教會日常運作。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">✉️</div>
+          <div>
+            <h4>讀經推廣</h4>
+            <p>提供系統性讀經計劃材料，鼓勵信徒每日讀經，靈命成長。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products" class="products">
+  <div class="sec-inner">
+    <div class="sec-label">精選商品</div>
+    <h2 class="sec-title">書籍與禮品系列</h2>
+    <p class="sec-desc">精心挑選，品質保證，涵蓋聖經、靈修、崇拜用品及各類基督教主題禮品。</p>
+    <div class="grid-3">
+      <div class="prod-card">
+        <div class="prod-top">📖</div>
+        <div class="prod-body">
+          <h3>聖經系列</h3>
+          <p>各類版本聖經：和合本、新譯本、現代中文譯本，軟硬皮、拇指索引、大字版等多種選擇。</p>
+          <span class="prod-tag">核心商品</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">📝</div>
+        <div class="prod-body">
+          <h3>靈修書籍</h3>
+          <p>靈修日程、信仰成長、神學讀物、禱告手冊，豐富您的靈命生活。</p>
+          <span class="prod-tag">靈命滋養</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">🎵</div>
+        <div class="prod-body">
+          <h3>詩歌與樂譜</h3>
+          <p>教會詩歌集、敬拜讚美樂譜、兒童詩歌，配合教會崇拜及音樂事工所需。</p>
+          <span class="prod-tag">敬拜事工</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">✝️</div>
+        <div class="prod-body">
+          <h3>信仰擺設</h3>
+          <p>精緻十字架、信仰主題掛飾、聖經金句藝術品，讓信仰融入生活空間。</p>
+          <span class="prod-tag">家居禮品</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">💌</div>
+        <div class="prod-body">
+          <h3>賀卡與文具</h3>
+          <p>聖誕、復活節、生日、婚禮等主題賀卡，信仰主題筆記本、書籤，傳遞祝福。</p>
+          <span class="prod-tag">節日禮品</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">🎁</div>
+        <div class="prod-body">
+          <h3>禮品套裝</h3>
+          <p>精心配搭的禮品套裝，適合洗禮、婚禮、感恩節、聖誕節等特別場合饋贈。</p>
+          <span class="prod-tag">特別禮品</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="sec-inner">
+    <div class="sec-label">服務項目</div>
+    <h2 class="sec-title">我們如何服務您</h2>
+    <p class="sec-desc">禮品軒提供多元化服務，支援個人信徒、家庭教會及各大宗派教會的需要。</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🏪</div>
+        <h3>門市零售</h3>
+        <p>香港本地門市，歡迎親臨選購，專業人員為您推薦合適的書籍與禮品。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📦</div>
+        <h3>教會批量採購</h3>
+        <p>為教會及機構提供批量採購優惠，支援崇拜用品、主日學材料等大批訂單。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🎀</div>
+        <h3>禮品訂制包裝</h3>
+        <p>提供精美包裝服務，可加印信仰金句或個人化祝福語，令禮物更具意義。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📖</div>
+        <h3>讀經計劃推廣</h3>
+        <p>提供年度讀經計劃材料及追蹤工具，幫助信徒建立每日讀經的良好習慣。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🚚</div>
+        <h3>本地送貨</h3>
+        <p>提供香港本地送貨服務，讓您足不出戶亦能購得所需書籍及禮品。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💬</div>
+        <h3>專業推薦</h3>
+        <p>根據您的信仰需要、年齡及場合，為您推薦最合適的書籍與禮品選擇。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="sec-inner">
+    <div class="sec-label">聯絡我們</div>
+    <h2 class="sec-title">歡迎查詢</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>聯絡資料</h3>
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">地址</div>
+            <div class="c-val">香港 Hong Kong</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📱</div>
+          <div>
+            <div class="c-label">電話 / WhatsApp</div>
+            <div class="c-val"><a href="tel:84801898">8480 1898</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📧</div>
+          <div>
+            <div class="c-label">電郵</div>
+            <div class="c-val"><a href="mailto:info@hklsc.com.hk">info@hklsc.com.hk</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🕐</div>
+          <div>
+            <div class="c-label">辦公時間</div>
+            <div class="c-val">星期一至六 10:00–18:00<br/><span style="font-size:.82rem;color:var(--muted)">主日及公眾假期休息</span></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">✝</div>
+          <div>
+            <div class="c-label">服務對象</div>
+            <div class="c-val">個人信徒、教會、基督教機構</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>發送查詢</h3>
+        <p>歡迎查詢商品資料、批量採購或禮品訂制服務，我們將盡快回覆。</p>
+        <div class="c-form-row">
+          <label>您的姓名</label>
+          <input type="text" placeholder="請輸入姓名"/>
+        </div>
+        <div class="c-form-row">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com"/>
+        </div>
+        <div class="c-form-row">
+          <label>查詢內容</label>
+          <textarea placeholder="請輸入您的查詢，例如書籍推薦、批量採購、禮品訂制等..."></textarea>
+        </div>
+        <button class="c-btn">發送查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">禮品軒 · 香港讀經會有限公司</div>
+  <div class="foot-copy">© 2025 禮品軒 香港讀經會有限公司 · 香港基督教零售 · 版權所有</div>
+</footer>
+
+</body>
+</html>
