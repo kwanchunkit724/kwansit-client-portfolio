@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港睿致誠咨詢有限公司 | 公司註冊 · 會計稅務 · 商標註冊</title>
+<style>
+  :root {
+    --navy: #1a2e5c;
+    --navy-dark: #0e1c3c;
+    --gold: #c8920a;
+    --gold-light: #dfa800;
+    --white: #ffffff;
+    --light-bg: #f5f7fa;
+    --text: #1a1a2e;
+    --text-light: #4a5568;
+    --border: #dde2ea;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif; color: var(--text); background: var(--white); }
+
+  nav {
+    background: var(--navy-dark);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px; position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; }
+  .nav-logo {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: 900; color: var(--navy-dark);
+  }
+  .nav-name .zh { font-size: 16px; font-weight: 700; color: var(--white); display: block; }
+  .nav-name .en { font-size: 11px; color: rgba(255,255,255,0.5); display: block; }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy-dark); padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 800; text-decoration: none; }
+  .nav-cta:hover { opacity: 0.9; }
+
+  .hero {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, #1e3a7a 100%);
+    padding: 80px 40px; min-height: 530px;
+    display: flex; align-items: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 75% 50%, rgba(200,146,10,0.12) 0%, transparent 60%);
+  }
+  .hero-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 50px; width: 100%; position: relative; z-index: 1; }
+  .hero-text { flex: 1; }
+  .hero-badge { display: inline-block; background: rgba(200,146,10,0.18); border: 1px solid rgba(223,168,0,0.4); color: var(--gold-light); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+  .hero-text h1 { font-size: 50px; font-weight: 900; color: var(--white); line-height: 1.1; margin-bottom: 12px; }
+  .hero-text h1 span { color: var(--gold-light); }
+  .hero-text h2 { font-size: 19px; font-weight: 400; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+  .hero-text p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 490px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy-dark); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 800; text-decoration: none; }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  .hero-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(200,146,10,0.25); backdrop-filter: blur(10px); border-radius: 16px; padding: 32px 28px; min-width: 280px; flex-shrink: 0; }
+  .hero-card h3 { color: var(--gold-light); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+  .hc-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+  .hc-item:last-child { margin-bottom: 0; }
+  .hc-icon { width: 36px; height: 36px; background: rgba(200,146,10,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+  .hc-info .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+  .hc-info .value { font-size: 13px; color: var(--white); font-weight: 600; }
+
+  .stats-strip { background: linear-gradient(90deg, var(--gold), var(--gold-light)); padding: 22px 40px; display: flex; justify-content: center; }
+  .stat-item { text-align: center; padding: 0 44px; position: relative; }
+  .stat-item + .stat-item::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 40px; background: rgba(14,28,60,0.25); }
+  .stat-num { font-size: 30px; font-weight: 900; color: var(--navy-dark); line-height: 1; }
+  .stat-label { font-size: 12px; color: rgba(14,28,60,0.7); margin-top: 4px; font-weight: 600; }
+
+  section { padding: 80px 40px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .section-title { font-size: 36px; font-weight: 900; color: var(--navy); margin-bottom: 16px; line-height: 1.2; }
+  .section-sub { font-size: 16px; color: var(--text-light); line-height: 1.7; max-width: 620px; }
+  .section-header { margin-bottom: 52px; }
+
+  .about { background: var(--light-bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .about-box { background: var(--navy); border-radius: 16px; padding: 40px; color: var(--white); position: relative; overflow: hidden; }
+  .about-box::after { content: '睿'; position: absolute; right: -10px; bottom: -20px; font-size: 130px; font-weight: 900; color: rgba(200,146,10,0.08); line-height: 1; }
+  .about-box h3 { font-size: 22px; font-weight: 800; color: var(--gold-light); margin-bottom: 16px; }
+  .about-box p { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.82); margin-bottom: 14px; }
+  .advantages { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .adv-tag { background: rgba(200,146,10,0.18); border: 1px solid rgba(200,146,10,0.3); color: var(--gold-light); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .prop-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 22px; border-top: 3px solid var(--gold); }
+  .prop-icon { font-size: 28px; margin-bottom: 12px; }
+  .prop-card h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .prop-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--navy), var(--gold)); }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(26,46,92,0.12); }
+  .service-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--navy), #2a4888); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+  .service-card h3 { font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+  .service-card .en { font-size: 11px; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .service-card p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+  .service-tag { display: inline-block; background: rgba(200,146,10,0.1); color: var(--gold); padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-top: 10px; }
+
+  .offshore { background: var(--navy); }
+  .offshore .section-title { color: var(--white); }
+  .offshore .section-tag { color: var(--gold-light); }
+  .offshore .section-sub { color: rgba(255,255,255,0.7); }
+  .off-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .off-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(200,146,10,0.2); border-radius: 14px; padding: 30px 24px; transition: background 0.2s; }
+  .off-card:hover { background: rgba(200,146,10,0.1); }
+  .off-icon { font-size: 36px; margin-bottom: 14px; }
+  .off-card h3 { font-size: 17px; font-weight: 800; color: var(--gold-light); margin-bottom: 8px; }
+  .off-card p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7; }
+  .off-list { margin-top: 12px; padding-left: 0; list-style: none; }
+  .off-list li { font-size: 13px; color: rgba(255,255,255,0.7); padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .off-list li::before { content: '✓ '; color: var(--gold-light); }
+
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .contact-info h3 { font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+  .contact-info > p { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 32px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+  .ci-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--navy), #2a4888); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .ci-label { font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .ci-val { font-size: 14px; font-weight: 600; color: var(--navy); }
+  .ci-val a { color: var(--navy); text-decoration: none; }
+  .ci-val a:hover { color: var(--gold); }
+
+  .contact-form { background: var(--light-bg); border-radius: 16px; padding: 36px; }
+  .contact-form h3 { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .form-group label { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .form-group input, .form-group select, .form-group textarea { padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; color: var(--text); background: var(--white); outline: none; font-family: inherit; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit { width: 100%; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy-dark); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 800; cursor: pointer; font-family: inherit; }
+  .form-submit:hover { opacity: 0.9; }
+
+  footer { background: var(--navy-dark); padding: 40px; text-align: center; }
+  .footer-brand { font-size: 18px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 14px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  @media (max-width: 900px) {
+    .hero-content { flex-direction: column; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid, .off-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">睿</div>
+    <div class="nav-name">
+      <span class="zh">香港睿致誠咨詢有限公司</span>
+      <span class="en">HK Top Rights Consulting · Corporate Services</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">關於我們</a>
+    <a href="#services">服務項目</a>
+    <a href="#offshore">離岸公司</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <a href="#contact" class="nav-cta">免費咨詢</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">🏆 專業企業服務 · 香港</div>
+      <h1>香港<span>睿致誠</span><br>咨詢有限公司</h1>
+      <h2>HK Top Rights Consulting Limited</h2>
+      <p>香港專業企業咨詢機構，提供公司註冊、會計稅務、商標申請、銀行開戶等全方位企業服務。立足香港，服務本地及海外客戶，多年經驗，品格可靠。</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">查看服務項目</a>
+        <a href="#contact" class="btn-outline">免費咨詢</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>📋 聯絡資訊</h3>
+      <div class="hc-item">
+        <div class="hc-icon">📞</div>
+        <div class="hc-info">
+          <div class="label">電話 Tel</div>
+          <div class="value">(852) 2772 6112</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">📠</div>
+        <div class="hc-info">
+          <div class="label">傳真 Fax</div>
+          <div class="value">(852) 2772 6026</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">✉️</div>
+        <div class="hc-info">
+          <div class="label">電郵 Email</div>
+          <div class="value">info@hktoprights.com</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🕐</div>
+        <div class="hc-info">
+          <div class="label">辦公時間</div>
+          <div class="value">週一至五 9:00 – 18:30</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">全程</div>
+    <div class="stat-label">一站式企業服務</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">HK + 海外</div>
+    <div class="stat-label">公司註冊服務</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">專業</div>
+    <div class="stat-label">會計稅務顧問</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">誠信</div>
+    <div class="stat-label">服務理念</div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-box">
+        <h3>🏛️ 專業企業咨詢服務</h3>
+        <p>香港睿致誠咨詢有限公司（HK Top Rights Consulting Limited）是一間立足香港的專業企業咨詢機構，為本地及海外客戶提供公司註冊、會計稅務、商標申請及銀行開戶等全方位企業服務。</p>
+        <p>辦公室位於九龍旺角東海商業中心，交通便利，服務本地企業家及海外投資者在香港開展業務的各項需要。</p>
+        <div class="advantages">
+          <span class="adv-tag">立足香港</span>
+          <span class="adv-tag">快速便捷</span>
+          <span class="adv-tag">專業顧問</span>
+          <span class="adv-tag">幫格合理</span>
+          <span class="adv-tag">多年經驗</span>
+          <span class="adv-tag">行業認可</span>
+          <span class="adv-tag">全程跟蹤</span>
+          <span class="adv-tag">品質優良</span>
+        </div>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">🎯</div>
+          <h4>一站式企業服務</h4>
+          <p>從公司成立到日常營運，提供全程一站式企業服務，省時省力。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🌏</div>
+          <h4>海外業務網絡</h4>
+          <p>協助香港及海外客戶在不同司法管轄區設立公司，拓展國際業務。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🔐</div>
+          <h4>誠信可靠</h4>
+          <p>以誠信為本，保護客戶資料，提供可靠、透明的專業服務。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">💡</div>
+          <h4>專業建議</h4>
+          <p>資深顧問提供量身訂製的企業架構及稅務規劃建議，協助企業持續發展。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Services</div>
+      <h2 class="section-title">服務項目</h2>
+      <p class="section-sub">全面的企業咨詢服務，涵蓋公司成立、稅務會計、商標保護及銀行業務，支援企業全面發展。</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3>香港公司註冊</h3>
+        <div class="en">HK Company Formation</div>
+        <p>全程代辦香港有限公司註冊，包括核名查詢、製作文件、印鑑刻製、公司秘書服務，快速完成開業。</p>
+        <span class="service-tag">全程代辦</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>公司年審及續期</h3>
+        <div class="en">Annual Return &amp; Renewal</div>
+        <p>香港公司年審、週年申報表、商業登記更新及重要人員登記，確保公司合規運作。</p>
+        <span class="service-tag">合規保障</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💼</div>
+        <h3>會計 · 審計 · 稅務</h3>
+        <div class="en">Accounting &amp; Tax</div>
+        <p>企業會計記賬、財務報告、核數審計及稅務報表申報，確保財務合規，為企業稅務規劃。</p>
+        <span class="service-tag">專業會計師</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">®️</div>
+        <h3>商標申請</h3>
+        <div class="en">Trademark Registration</div>
+        <p>提供香港、中國內地及海外商標申請服務，保護品牌知識產權，提供全程跟進及法律意見。</p>
+        <span class="service-tag">香港 · 中國 · 海外</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏦</div>
+        <h3>銀行開戶</h3>
+        <div class="en">Bank Account Opening</div>
+        <p>協助本地及離岸公司在香港及海外銀行開立公司帳戶，提供文件準備及申請指導。</p>
+        <span class="service-tag">多間銀行</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📜</div>
+        <h3>公證 · 認證 · 核實</h3>
+        <div class="en">Notarisation &amp; Certification</div>
+        <p>商業文件公證、認證、海牙認證（Apostille）及領事認證服務，用於海外業務用途。</p>
+        <span class="service-tag">海外認可</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="offshore" id="offshore">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Offshore Company</div>
+      <h2 class="section-title">離岸公司註冊</h2>
+      <p class="section-sub">在主要離岸司法管轄區設立公司，優化企業架構，拓展國際業務。</p>
+    </div>
+    <div class="off-grid">
+      <div class="off-card">
+        <div class="off-icon">🇻🇬</div>
+        <h3>BVI 英屬維京群島</h3>
+        <p>全球最受歡迎的離岸公司司法管轄區之一，適合持股架構、資產保護及國際貿易。</p>
+        <ul class="off-list">
+          <li>無須公開股東資料</li>
+          <li>免除公司稅及資本利得稅</li>
+          <li>股份轉讓靈活方便</li>
+          <li>維護成本低廉</li>
+        </ul>
+      </div>
+      <div class="off-card">
+        <div class="off-icon">🇰🇾</div>
+        <h3>開曼群島</h3>
+        <p>全球最大的共同基金及私募基金中心，適合基金設立、上市架構及跨國集團。</p>
+        <ul class="off-list">
+          <li>知名度高，獲國際投資者認可</li>
+          <li>靈活的法律架構</li>
+          <li>無資本利得稅或遺產稅</li>
+          <li>適合上市前準備</li>
+        </ul>
+      </div>
+      <div class="off-card">
+        <div class="off-icon">🌏</div>
+        <h3>其他離岸地區</h3>
+        <p>根據客戶需求及業務目標，提供塞舌爾、薩摩亞、馬紹爾群島等其他離岸地區公司設立服務。</p>
+        <ul class="off-list">
+          <li>塞舌爾（Seychelles）</li>
+          <li>薩摩亞（Samoa）</li>
+          <li>馬紹爾群島（Marshall Islands）</li>
+          <li>英國 / 新加坡公司</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Contact Us</div>
+      <h2 class="section-title">聯絡我們</h2>
+      <p class="section-sub">歡迎就您的企業需求聯絡我們，我們提供免費初步咨詢，協助您了解最適合的服務方案。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>聯絡資訊</h3>
+        <p>我們的專業顧問隨時準備為您解答任何企業設立及咨詢問題，歡迎致電或發送電郵預約咨詢。</p>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">電話 Tel</div>
+            <div class="ci-val"><a href="tel:+85227726112">(852) 2772 6112</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📠</div>
+          <div>
+            <div class="ci-label">傳真 Fax</div>
+            <div class="ci-val">(852) 2772 6026</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">電郵 Email</div>
+            <div class="ci-val"><a href="mailto:info@hktoprights.com">info@hktoprights.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">辦公室地址</div>
+            <div class="ci-val">九龍旺角彌敦道165-171號<br>東海商業中心15樓1512室</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🕐</div>
+          <div>
+            <div class="ci-label">辦公時間</div>
+            <div class="ci-val">週一至五 9:00AM – 18:30PM<br>（週六、日及公眾假期休息）</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>📋 服務咨詢表格</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名 *</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>電話 *</label>
+            <input type="tel" placeholder="聯絡電話">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>咨詢服務</label>
+          <select>
+            <option>-- 請選擇服務 --</option>
+            <option>香港公司註冊</option>
+            <option>BVI / 離岸公司註冊</option>
+            <option>公司年審及續期</option>
+            <option>會計 / 審計 / 稅務</option>
+            <option>商標申請（香港/中國/海外）</option>
+            <option>銀行開戶服務</option>
+            <option>公證 / 認證</option>
+            <option>其他咨詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>咨詢詳情</label>
+          <textarea placeholder="請描述您的需求及問題，我們將盡快安排顧問跟進..."></textarea>
+        </div>
+        <button class="form-submit">提交咨詢 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">香港睿致誠咨詢有限公司</div>
+  <div class="footer-sub">HK Top Rights Consulting Limited · 公司註冊 · 會計稅務 · 商標申請 · 銀行開戶</div>
+  <div class="footer-copy">© 2024 香港睿致誠咨詢有限公司. All Rights Reserved. · info@hktoprights.com</div>
+</footer>
+
+</body>
+</html>
