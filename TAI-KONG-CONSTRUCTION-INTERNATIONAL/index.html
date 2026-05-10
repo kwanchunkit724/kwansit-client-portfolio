@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tai Kong Construction (International) | Building Across Borders</title>
+<style>
+:root {
+  --bg:       #050809;
+  --surface:  #080e10;
+  --card:     #0e1618;
+  --border:   #162028;
+  --acc1:     #0a4858;
+  --acc2:     #107888;
+  --acc3:     #18b0c8;
+  --gold:     #d8a028;
+  --text:     #deeef4;
+  --muted:    #5888a0;
+  --radius:   8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;font-size:16px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,8,9,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--acc1),var(--acc3));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.logo-text{font-size:1.15rem;font-weight:700;color:var(--text)}
+.logo-sub{font-size:.7rem;color:var(--muted);letter-spacing:.06em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
+.nav-links a:hover{color:var(--acc3)}
+.nav-cta{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:9px 22px;border-radius:5px;font-size:.88rem;font-weight:600;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;background:radial-gradient(ellipse 80% 55% at 30% 45%,rgba(10,72,88,.16) 0%,transparent 65%),var(--bg)}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(24,176,200,.1);border:1px solid rgba(24,176,200,.3);border-radius:20px;padding:6px 16px;font-size:.8rem;color:var(--acc3);margin-bottom:24px;letter-spacing:.06em}
+.hero h1{font-size:2.9rem;font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:var(--acc3)}
+.hero-desc{font-size:1.02rem;color:var(--muted);margin-bottom:36px;max-width:540px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:13px 30px;border-radius:6px;font-size:.95rem;font-weight:700;text-decoration:none;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:13px 30px;border-radius:6px;font-size:.95rem;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--acc2);color:var(--acc2)}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hero-card h3{font-size:.9rem;color:var(--acc3);margin-bottom:18px;text-transform:uppercase;letter-spacing:.1em}
+.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.info-row:last-child{border-bottom:none}
+.info-label{color:var(--muted)}
+.info-val{color:var(--text);font-weight:600;text-align:right;max-width:60%}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-box{text-align:center}
+.stat-num{font-size:2.1rem;font-weight:800;color:var(--acc3);display:block}
+.stat-label{font-size:.83rem;color:var(--muted);margin-top:4px}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(16,120,136,.12);border:1px solid rgba(16,120,136,.3);border-radius:4px;padding:4px 12px;font-size:.76rem;color:var(--acc2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:1.9rem;font-weight:800;margin-bottom:12px}
+.section-sub{color:var(--muted);font-size:.98rem;max-width:620px}
+.section-head{margin-bottom:48px}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* SERVICES */
+.services{background:var(--bg)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .25s,transform .25s}
+.svc-card:hover{border-color:var(--acc2);transform:translateY(-3px)}
+.svc-icon{font-size:2.2rem;margin-bottom:16px}
+.svc-name{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.svc-desc{font-size:.88rem;color:var(--muted);line-height:1.7}
+.svc-tag{display:inline-block;background:rgba(16,120,136,.1);border:1px solid rgba(16,120,136,.28);border-radius:4px;padding:3px 9px;font-size:.74rem;color:var(--acc2);margin-top:12px}
+
+/* INTERNATIONAL */
+.international{background:var(--surface)}
+.intl-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.intl-content p{color:var(--muted);line-height:1.8;margin-bottom:16px}
+.market-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.market-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;align-items:center;gap:12px;transition:border-color .2s}
+.market-item:hover{border-color:var(--acc2)}
+.market-flag{font-size:1.5rem}
+.market-name{font-size:.9rem;font-weight:600;color:var(--text)}
+.market-desc{font-size:.78rem;color:var(--muted)}
+
+/* CAPABILITIES */
+.capabilities{background:var(--bg)}
+.cap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.cap-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;display:flex;gap:16px;align-items:flex-start;transition:border-color .25s}
+.cap-card:hover{border-color:var(--acc2)}
+.cap-icon{width:46px;height:46px;background:linear-gradient(135deg,var(--acc1),var(--acc2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.cap-body h3{font-size:.97rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.cap-body p{font-size:.86rem;color:var(--muted);line-height:1.6}
+
+/* PROJECTS */
+.projects{background:var(--surface)}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:border-color .25s}
+.proj-card:hover{border-color:var(--acc3)}
+.proj-region{font-size:.74rem;color:var(--acc3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.proj-name{font-size:.97rem;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.4}
+.proj-type{font-size:.82rem;color:var(--muted)}
+.proj-badge{display:inline-block;margin-top:10px;background:rgba(24,176,200,.1);border:1px solid rgba(24,176,200,.28);border-radius:4px;padding:3px 9px;font-size:.74rem;color:var(--acc3)}
+
+/* CONTACT */
+.contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h2{font-size:1.8rem;font-weight:800;margin-bottom:16px}
+.contact-info p{color:var(--muted);margin-bottom:28px;line-height:1.7}
+.contact-items{display:flex;flex-direction:column;gap:16px}
+.contact-item{display:flex;align-items:flex-start;gap:14px}
+.contact-icon{width:40px;height:40px;background:rgba(10,72,88,.3);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-detail strong{display:block;color:var(--text);font-size:.9rem;margin-bottom:2px}
+.contact-detail span{color:var(--muted);font-size:.85rem}
+form{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:18px}
+form label{font-size:.84rem;color:var(--muted);margin-bottom:4px;display:block}
+form input,form select,form textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.91rem;outline:none;transition:border-color .2s;font-family:inherit}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--acc2)}
+form textarea{resize:vertical;min-height:110px}
+form button{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s}
+form button:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 5% 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-top:12px}
+.footer-col h4{font-size:.87rem;font-weight:700;color:var(--text);margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col a{color:var(--muted);text-decoration:none;font-size:.86rem;transition:color .2s}
+.footer-col a:hover{color:var(--acc3)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{color:var(--muted);font-size:.82rem}
+.footer-hk{color:var(--muted);font-size:.82rem}
+
+@media(max-width:900px){
+  .hero-inner,.intl-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .hero h1{font-size:2.1rem}
+  .svc-grid,.proj-grid{grid-template-columns:1fr 1fr}
+  .cap-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  .svc-grid,.proj-grid,.market-grid{grid-template-columns:1fr}
+  .hero h1{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">🌏</div>
+      <div>
+        <div class="logo-text">Tai Kong Construction</div>
+        <div class="logo-sub">Tai Kong Construction (International)</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#international">International</a></li>
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Enquire Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🌏 International Construction · Based in Hong Kong</div>
+      <h1>Construction Without<br><span>Borders</span></h1>
+      <p class="hero-desc">
+        Tai Kong Construction (International) is a Hong Kong–based construction group
+        delivering civil engineering, building works, and infrastructure projects locally
+        and across international markets. Our cross-border capability, technical depth,
+        and project management expertise make us the partner of choice for clients with
+        regional ambitions.
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#services">Our Services</a>
+        <a class="btn-outline" href="#international">International Reach</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Company Profile</h3>
+      <div class="info-row">
+        <span class="info-label">Company</span>
+        <span class="info-val">Tai Kong Construction (Intl)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Headquarters</span>
+        <span class="info-val">Hong Kong SAR</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Scope</span>
+        <span class="info-val">HK · Mainland China · GBA</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Industry</span>
+        <span class="info-val">Construction &amp; Civil Engineering</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Clients</span>
+        <span class="info-val">Government · Private · Developer</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Languages</span>
+        <span class="info-val">English · 中文 · 普通話</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-box">
+      <span class="stat-num">Intl</span>
+      <div class="stat-label">Cross-Border Operations</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">3+</span>
+      <div class="stat-label">Regional Markets</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">Full</span>
+      <div class="stat-label">Project Lifecycle Coverage</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">GBA</span>
+      <div class="stat-label">Greater Bay Area Presence</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Our Services</div>
+      <h2 class="section-title">Construction Services</h2>
+      <p class="section-sub">End-to-end construction and civil engineering capabilities for projects of all scales</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🏗️</div>
+        <div class="svc-name">Civil Engineering</div>
+        <p class="svc-desc">
+          Earthworks, foundations, retaining structures, drainage systems, road construction, and site formation — the backbone of every successful development project.
+        </p>
+        <span class="svc-tag">Civil Works</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏢</div>
+        <div class="svc-name">Building Construction</div>
+        <p class="svc-desc">
+          Residential, commercial, industrial, and mixed-use buildings from ground-breaking to final handover — structural, architectural, M&amp;E, and fit-out works.
+        </p>
+        <span class="svc-tag">New Build</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🛣️</div>
+        <div class="svc-name">Infrastructure Works</div>
+        <p class="svc-desc">
+          Transportation infrastructure, utility networks, water and drainage systems, and public realm improvements for government and institutional clients.
+        </p>
+        <span class="svc-tag">Infrastructure</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔧</div>
+        <div class="svc-name">Renovation &amp; RMAA</div>
+        <p class="svc-desc">
+          Repair, maintenance, alteration, and addition works for existing buildings — from planned maintenance programmes to complex structural alterations.
+        </p>
+        <span class="svc-tag">RMAA</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏭</div>
+        <div class="svc-name">Industrial Construction</div>
+        <p class="svc-desc">
+          Factories, logistics centres, warehouses, and industrial parks — designed and built to meet operational requirements and industrial safety standards.
+        </p>
+        <span class="svc-tag">Industrial</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📊</div>
+        <div class="svc-name">Project Management</div>
+        <p class="svc-desc">
+          Comprehensive project management and construction management services — planning, procurement, programme control, QA, and stakeholder coordination.
+        </p>
+        <span class="svc-tag">PM / CM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- INTERNATIONAL -->
+<section class="international" id="international">
+  <div class="section-inner">
+    <div class="intl-grid">
+      <div class="intl-content">
+        <div class="section-tag">International Operations</div>
+        <h2 class="section-title">Building Across<br>the Greater Bay Area</h2>
+        <p>
+          Tai Kong Construction (International) is built for cross-border project delivery.
+          Headquartered in Hong Kong, we operate seamlessly across the Greater Bay Area
+          and beyond — leveraging our deep understanding of local regulations, procurement
+          environments, and construction practices in each market we serve.
+        </p>
+        <p>
+          Our international team brings multilingual capability, regional relationship networks,
+          and the financial and technical strength needed to execute complex projects in
+          multiple jurisdictions simultaneously. We manage currency, logistics, regulatory,
+          and cultural challenges so our clients don't have to.
+        </p>
+        <p>
+          Whether your project is in Hong Kong, Shenzhen, Guangzhou, Macau, or elsewhere
+          in the region, Tai Kong has the presence, experience, and partners to deliver.
+        </p>
+      </div>
+      <div>
+        <div class="market-grid">
+          <div class="market-item">
+            <div class="market-flag">🇭🇰</div>
+            <div>
+              <div class="market-name">Hong Kong SAR</div>
+              <div class="market-desc">Primary base of operations</div>
+            </div>
+          </div>
+          <div class="market-item">
+            <div class="market-flag">🇨🇳</div>
+            <div>
+              <div class="market-name">Shenzhen</div>
+              <div class="market-desc">GBA gateway operations</div>
+            </div>
+          </div>
+          <div class="market-item">
+            <div class="market-flag">🇨🇳</div>
+            <div>
+              <div class="market-name">Guangzhou</div>
+              <div class="market-desc">Southern China projects</div>
+            </div>
+          </div>
+          <div class="market-item">
+            <div class="market-flag">🇲🇴</div>
+            <div>
+              <div class="market-name">Macau SAR</div>
+              <div class="market-desc">Hospitality &amp; infrastructure</div>
+            </div>
+          </div>
+          <div class="market-item">
+            <div class="market-flag">🇨🇳</div>
+            <div>
+              <div class="market-name">Mainland China</div>
+              <div class="market-desc">Major urban centre projects</div>
+            </div>
+          </div>
+          <div class="market-item">
+            <div class="market-flag">🌏</div>
+            <div>
+              <div class="market-name">Asia Pacific</div>
+              <div class="market-desc">Selective regional opportunities</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CAPABILITIES -->
+<section class="capabilities" id="capabilities">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Core Capabilities</div>
+      <h2 class="section-title">What Makes Us Different</h2>
+      <p class="section-sub">The technical, commercial, and operational strengths that set Tai Kong apart in competitive international markets</p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-icon">🌐</div>
+        <div class="cap-body">
+          <h3>Cross-Border Expertise</h3>
+          <p>Proven experience navigating the regulatory, procurement, and operational differences between Hong Kong, Macau, and Mainland China construction environments.</p>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">👷</div>
+        <div class="cap-body">
+          <h3>Experienced Management Team</h3>
+          <p>Senior project directors and site managers with decades of combined experience delivering large-scale construction projects across multiple markets and disciplines.</p>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">📐</div>
+        <div class="cap-body">
+          <h3>Design-Build Capability</h3>
+          <p>In-house design coordination capability enabling seamless design-build contracts — a single point of responsibility from concept through to completion.</p>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🔩</div>
+        <div class="cap-body">
+          <h3>Supply Chain Strength</h3>
+          <p>Established relationships with materials suppliers, specialist subcontractors, and equipment providers across HK, GBA, and regional markets.</p>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">📋</div>
+        <div class="cap-body">
+          <h3>Quality Systems</h3>
+          <p>Robust quality management systems aligned to ISO 9001, with project-specific Quality Plans, inspection protocols, and independent testing programmes.</p>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🛡️</div>
+        <div class="cap-body">
+          <h3>Safety &amp; Compliance</h3>
+          <p>Zero-harm safety culture with documented SMS, rigorous site safety supervision, and full compliance with the safety requirements of every jurisdiction we operate in.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Project Portfolio</div>
+      <h2 class="section-title">Selected Projects</h2>
+      <p class="section-sub">A cross-section of Tai Kong's construction project experience across Hong Kong and the Greater Bay Area</p>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-region">🇭🇰 Hong Kong</div>
+        <div class="proj-name">Commercial Tower — Kowloon Business District</div>
+        <div class="proj-type">Building Construction · 35 Storeys</div>
+        <span class="proj-badge">Completed</span>
+      </div>
+      <div class="proj-card">
+        <div class="proj-region">🇨🇳 Shenzhen</div>
+        <div class="proj-name">Mixed-Use Development — Nanshan District</div>
+        <div class="proj-type">Residential + Retail · GBA Project</div>
+        <span class="proj-badge">Completed</span>
+      </div>
+      <div class="proj-card">
+        <div class="proj-region">🇭🇰 Hong Kong</div>
+        <div class="proj-name">Public Housing Estate Rehabilitation</div>
+        <div class="proj-type">RMAA Works · Government Contract</div>
+        <span class="proj-badge">Completed</span>
+      </div>
+      <div class="proj-card">
+        <div class="proj-region">🇲🇴 Macau</div>
+        <div class="proj-name">Hotel &amp; Entertainment Facility</div>
+        <div class="proj-type">Hospitality Construction</div>
+        <span class="proj-badge">Completed</span>
+      </div>
+      <div class="proj-card">
+        <div class="proj-region">🇨🇳 Guangzhou</div>
+        <div class="proj-name">Industrial Logistics Park</div>
+        <div class="proj-type">Industrial Construction · 3-Phase</div>
+        <span class="proj-badge">Ongoing</span>
+      </div>
+      <div class="proj-card">
+        <div class="proj-region">🇭🇰 Hong Kong</div>
+        <div class="proj-name">Infrastructure Upgrade — New Territories</div>
+        <div class="proj-type">Civil Engineering · Drainage &amp; Roads</div>
+        <span class="proj-badge">Ongoing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-tag">Contact Us</div>
+        <h2>Discuss Your Project</h2>
+        <p>
+          Whether your project is in Hong Kong, across the Greater Bay Area, or further afield,
+          our team is ready to discuss how Tai Kong Construction can deliver it. Submit an enquiry
+          and we'll be in touch to arrange a project briefing.
+        </p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>Headquarters</strong>
+              <span>Hong Kong SAR</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌏</div>
+            <div class="contact-detail">
+              <strong>Regional Offices</strong>
+              <span>Shenzhen · Guangzhou · Macau</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-detail">
+              <strong>Business Hours</strong>
+              <span>Monday – Friday: 09:00 – 18:00 HKT</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div class="contact-detail">
+              <strong>Languages</strong>
+              <span>English · 廣東話 · 普通話</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form>
+        <div>
+          <label>Full Name *</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div>
+          <label>Company / Organisation</label>
+          <input type="text" placeholder="Your company or development entity">
+        </div>
+        <div>
+          <label>Email Address *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div>
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+852 / +86 xxxx xxxx">
+        </div>
+        <div>
+          <label>Project Location</label>
+          <select>
+            <option>Hong Kong SAR</option>
+            <option>Shenzhen</option>
+            <option>Guangzhou</option>
+            <option>Macau SAR</option>
+            <option>Other Mainland China</option>
+            <option>Asia Pacific</option>
+          </select>
+        </div>
+        <div>
+          <label>Project Description *</label>
+          <textarea placeholder="Tell us about your project — type, scale, location, timeline, and key requirements…"></textarea>
+        </div>
+        <button type="submit">Send Enquiry →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">🌏</div>
+          <div>
+            <div class="logo-text">Tai Kong Construction</div>
+            <div class="logo-sub">Tai Kong Construction (International)</div>
+          </div>
+        </div>
+        <p>A Hong Kong–based international construction group delivering civil engineering, building works, and infrastructure projects across Hong Kong, the Greater Bay Area, and Asia Pacific.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Civil Engineering</a></li>
+          <li><a href="#services">Building Construction</a></li>
+          <li><a href="#services">Infrastructure Works</a></li>
+          <li><a href="#services">RMAA</a></li>
+          <li><a href="#services">Project Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#international">International Reach</a></li>
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Tai Kong Construction (International). All Rights Reserved.</div>
+      <div class="footer-hk">🇭🇰 Hong Kong · Greater Bay Area · Asia Pacific</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
