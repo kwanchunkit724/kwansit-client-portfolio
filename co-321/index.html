@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>東南西北旅遊有限公司 | Tung Nam Sai Pak Travel — 1973年創立</title>
+<style>
+  :root {
+    --navy: #1a3a5c;
+    --navy-mid: #254e7a;
+    --red: #e85c20;
+    --red-dark: #c84a14;
+    --red-light: #fff0ea;
+    --white: #ffffff;
+    --light: #f5f8fc;
+    --text: #2c3445;
+    --muted: #6b7280;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', '微軟正黑體', Arial, sans-serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
+  .nav-logo { width: 42px; height: 42px; border-radius: 8px; background: var(--red); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .nav-name { color: var(--white); font-weight: 700; font-size: 15px; line-height: 1.2; }
+  .nav-name span { color: #ffd54f; font-size: 12px; }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a { color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: #ffd54f; }
+  .nav-cta { background: var(--red); color: var(--white); padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 700; transition: background .2s; }
+  .nav-cta:hover { background: var(--red-dark); }
+
+  /* HERO */
+  .hero {
+    margin-top: 64px;
+    background: linear-gradient(150deg, var(--navy) 0%, var(--navy-mid) 55%, #1e4e8a 100%);
+    min-height: 580px; display: flex; align-items: center;
+    padding: 72px 48px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '✈';
+    position: absolute; right: 80px; top: 40%; transform: rotate(-20deg);
+    font-size: 260px; color: rgba(255,255,255,0.04);
+  }
+  .hero-content { max-width: 640px; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(232,92,32,0.25); border: 1px solid rgba(232,92,32,0.5);
+    color: #ffb380; padding: 6px 16px; border-radius: 20px;
+    font-size: 13px; font-weight: 700; margin-bottom: 24px;
+  }
+  .hero h1 { font-size: 44px; font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 8px; }
+  .hero h1 span { color: #ffd54f; }
+  .hero-en { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 20px; }
+  .hero-desc { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 36px; max-width: 560px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-red { background: var(--red); color: var(--white); padding: 13px 30px; border-radius: 8px; font-size: 15px; font-weight: 700; transition: background .2s, transform .2s; }
+  .btn-red:hover { background: var(--red-dark); transform: translateY(-2px); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.35); color: var(--white); padding: 13px 30px; border-radius: 8px; font-size: 15px; font-weight: 600; transition: border-color .2s; }
+  .btn-outline:hover { border-color: var(--white); }
+  .hero-card {
+    position: absolute; right: 56px; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px); border-radius: 16px;
+    padding: 30px 34px; min-width: 270px; z-index: 1;
+  }
+  .hero-card-title { color: #ffd54f; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; }
+  .hero-stat { margin-bottom: 14px; }
+  .hero-stat-num { font-size: 30px; font-weight: 900; color: var(--white); line-height: 1; }
+  .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 3px; }
+  .hero-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 14px 0; }
+
+  /* STRIP */
+  .strip { background: var(--red); display: flex; justify-content: center; flex-wrap: wrap; }
+  .strip-item { padding: 20px 44px; text-align: center; border-right: 1px solid rgba(255,255,255,0.25); }
+  .strip-item:last-child { border-right: none; }
+  .strip-num { font-size: 24px; font-weight: 800; color: var(--white); }
+  .strip-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 2px; font-weight: 500; }
+
+  /* SECTION */
+  section { padding: 80px 48px; }
+  .section-label { display: inline-block; color: var(--red); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  h2 { font-size: 34px; font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 640px; margin-bottom: 48px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .legacy-box { background: var(--white); border-radius: 14px; padding: 28px; border-left: 4px solid var(--red); margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .legacy-box h3 { font-size: 14px; color: var(--red); font-weight: 700; margin-bottom: 10px; }
+  .legacy-box p { font-size: 14px; color: var(--text); line-height: 1.75; }
+  .about-desc p { font-size: 15px; color: var(--text); line-height: 1.8; margin-bottom: 16px; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .about-prop { background: var(--white); border-radius: 12px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-top: 3px solid var(--red); }
+  .about-prop-icon { font-size: 26px; margin-bottom: 10px; }
+  .about-prop h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .about-prop p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: var(--white); border-radius: 14px; padding: 28px 22px; box-shadow: 0 4px 18px rgba(0,0,0,0.07); border-top: 4px solid var(--red); transition: transform .25s, box-shadow .25s; }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+  .service-icon { width: 50px; height: 50px; border-radius: 12px; background: var(--red-light); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+  .service-card h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .service-card h3 small { font-size: 12px; color: var(--muted); font-weight: 400; display: block; margin-top: 2px; }
+  .service-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .service-tag { display: inline-block; margin-top: 12px; background: var(--red-light); color: var(--red-dark); padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+
+  /* PLATFORM */
+  .platform { background: var(--light); }
+  .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .platform-card { background: var(--white); border-radius: 14px; padding: 36px 30px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); }
+  .platform-card h3 { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+  .platform-card .plat-label { font-size: 12px; color: var(--red); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+  .platform-card p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 14px; }
+  .plat-stat { display: flex; gap: 24px; margin-top: 20px; }
+  .plat-stat-item { text-align: center; }
+  .plat-stat-num { font-size: 22px; font-weight: 800; color: var(--navy); }
+  .plat-stat-label { font-size: 11px; color: var(--muted); }
+  .plat-badge { display: inline-block; background: rgba(26,58,92,0.08); color: var(--navy); padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; margin-top: 12px; }
+
+  /* DIGITAL */
+  .digital-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .digital-card { background: var(--navy); border-radius: 14px; padding: 28px 22px; transition: transform .25s; }
+  .digital-card:hover { transform: translateY(-4px); }
+  .digital-icon { font-size: 30px; margin-bottom: 14px; }
+  .digital-card h3 { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .digital-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+  /* CONTACT */
+  .contact { background: var(--navy); }
+  .contact h2 { color: var(--white); }
+  .contact .section-label { color: #ffd54f; }
+  .contact .section-sub { color: rgba(255,255,255,0.65); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+  .contact-row { display: flex; align-items: flex-start; gap: 14px; }
+  .contact-row-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(232,92,32,0.15); border: 1px solid rgba(232,92,32,0.3); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .contact-row-text h4 { font-size: 12px; color: #ffd54f; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .contact-row-text p, .contact-row-text a { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.55; }
+  .contact-row-text a:hover { color: #ffd54f; }
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .contact-form input, .contact-form select, .contact-form textarea { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 12px 15px; color: var(--white); font-size: 14px; font-family: inherit; outline: none; transition: border-color .2s; }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form select option { background: var(--navy); }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: #ffd54f; }
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+  .contact-form button { background: var(--red); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .2s; }
+  .contact-form button:hover { background: var(--red-dark); }
+
+  /* FOOTER */
+  footer { background: #0f2035; color: rgba(255,255,255,0.5); text-align: center; padding: 26px 48px; font-size: 13px; }
+  footer span { color: #ffd54f; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 48px 24px; }
+    .hero h1 { font-size: 30px; }
+    .hero-card { display: none; }
+    section { padding: 56px 24px; }
+    .about-grid, .contact-grid, .platform-grid { grid-template-columns: 1fr; }
+    .services-grid, .digital-grid { grid-template-columns: 1fr 1fr; }
+    .about-props { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">🌏</div>
+    <div class="nav-name">東南西北旅遊<br><span>Tung Nam Sai Pak Travel Ltd.</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">關於我們</a>
+    <a href="#services">旅遊服務</a>
+    <a href="#platform">旅遊平台</a>
+    <a href="#digital">數碼服務</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <a href="#contact" class="nav-cta">立即查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🏆 1973年創立 · 超過50年旅遊信譽</div>
+    <h1>香港領先的<span>旅遊及數碼</span>服務公司</h1>
+    <div class="hero-en">Tung Nam Sai Pak Travel Limited · Est. 1973</div>
+    <p class="hero-desc">
+      東南西北旅遊有限公司自1973年創立，以客為本、服務卓越，在香港旅遊業享有逾半世紀的口碑。旗下設有iWantToTravel.cc線上訂票平台及GoGoAdvise社區，提供全方位旅遊及數碼營銷服務。
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-red">立即查詢行程</a>
+      <a href="#services" class="btn-outline">了解服務</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-title">📊 集團實力</div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">1973</div>
+      <div class="hero-stat-label">創業年份</div>
+    </div>
+    <hr class="hero-divider">
+    <div class="hero-stat">
+      <div class="hero-stat-num">400+</div>
+      <div class="hero-stat-label">合作航空公司</div>
+    </div>
+    <hr class="hero-divider">
+    <div class="hero-stat">
+      <div class="hero-stat-num">330,000+</div>
+      <div class="hero-stat-label">全球酒店</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">
+    <div class="strip-num">50+</div>
+    <div class="strip-label">年旅遊經驗</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">400+</div>
+    <div class="strip-label">合作航空公司</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">210萬</div>
+    <div class="strip-label">社交媒體追蹤者</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">20+</div>
+    <div class="strip-label">合作KOL/YouTuber</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">關於我們</div>
+    <h2>五十年旅遊先驅</h2>
+    <p class="section-sub" style="margin: 0 auto;">東南西北旅遊有限公司自1973年在香港成立，數十年來在旅遊行業享有業界人士的認可，以佔據市場重要地位著稱。</p>
+  </div>
+  <div class="about-grid">
+    <div>
+      <div class="legacy-box">
+        <h3>🏅 半世紀輝煌歷史</h3>
+        <p>東南西北旅遊有限公司於1973年在香港創立，多年來在旅遊行業已享有業界人士的讚譽。自創業以來，公司一直秉承以客人為主之服務精神，讓數以百萬計的客戶獲得滿意的服務。</p>
+      </div>
+      <div class="about-desc">
+        <p>自2009年起，公司積極開拓數碼服務，研發多個社交媒體平台，至今服務人數已超過百萬人次。結合傳統旅遊優勢與現代數碼技術，為客戶提供更全面的服務。</p>
+        <p>公司旗下iWantToTravel.cc（旅行牌照：351079）為亞太區其中一大網上旅遊預訂平台，代訂超過400間航空公司機票及330,000家全球旅館，每次查詢平均時間在5秒內完成。</p>
+      </div>
+    </div>
+    <div class="about-props">
+      <div class="about-prop">
+        <div class="about-prop-icon">✈️</div>
+        <h4>持牌旅行社</h4>
+        <p>香港旅行社牌照編號351079，服務有保障。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">💻</div>
+        <h4>線上旅遊平台</h4>
+        <p>iWantToTravel.cc — 快速搜尋、即時預訂。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">📱</div>
+        <h4>數碼社群先驅</h4>
+        <p>GoGoAdvise社群，管理逾210萬追蹤者。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🌟</div>
+        <h4>KOL合作網絡</h4>
+        <p>20+位涵蓋旅遊、美容、飲食等領域KOL。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background: var(--white);">
+  <div class="section-label">旅遊服務</div>
+  <h2>一站式旅遊產品</h2>
+  <p class="section-sub">無論是機票、旅館、套票還是郵輪假期，東南西北旅遊為您提供全面的旅遊預訂服務。</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✈️</div>
+      <h3>機票預訂<small>Flight Tickets</small></h3>
+      <p>代訂逾400間航空公司機票，涵蓋全球主要航線，以最優惠價格為您選取最合適的航班。</p>
+      <span class="service-tag">400+ 航空公司</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏨</div>
+      <h3>旅館預訂<small>Hotel Booking</small></h3>
+      <p>全球超過330,000家酒店及旅館供選擇，由經濟型到五星豪華，按您預算提供最佳方案。</p>
+      <span class="service-tag">330,000+ 旅館</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏖️</div>
+      <h3>旅遊套票<small>Tour Packages</small></h3>
+      <p>精心設計的旅遊套票，機+酒+遊，物有所值，讓您輕鬆預訂全包旅程，省時省力。</p>
+      <span class="service-tag">機+酒套票</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛳️</div>
+      <h3>郵輪套票<small>Cruise Packages</small></h3>
+      <p>多款郵輪假期套票選擇，亞洲及環球航線，享受豪華郵輪上的悠閒假期。</p>
+      <span class="service-tag">郵輪專家</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛡️</div>
+      <h3>旅遊保險<small>Travel Insurance</small></h3>
+      <p>提供各類旅遊保險，保障您在旅途中的人身安全及財物損失，讓您出行無憂。</p>
+      <span class="service-tag">全面保障</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎎</div>
+      <h3>旅遊婚禮<small>Destination Wedding</small></h3>
+      <p>專業旅遊婚禮定制服務，從場地挑選到行程安排，打造您的夢想海外婚禮體驗。</p>
+      <span class="service-tag">婚禮定制</span>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section class="platform" id="platform">
+  <div style="text-align: center; margin-bottom: 48px;">
+    <div class="section-label">旅遊平台</div>
+    <h2>數碼旅遊生態系統</h2>
+    <p class="section-sub" style="margin: 0 auto;">東南西北旅遊旗下兩大數碼平台，提供即時預訂服務及豐富的旅遊資訊社群。</p>
+  </div>
+  <div class="platform-grid">
+    <div class="platform-card">
+      <div class="plat-label">🌐 線上訂票平台</div>
+      <h3>iWantToTravel.cc</h3>
+      <p>亞太區領先網上旅遊預訂平台（牌照編號：351079），代訂超過400間航空公司機票及330,000家全球旅館。每次查詢平均時間在5秒內完成，讓您能第一時間搜尋並購買到最平價的機票旅館。</p>
+      <div class="plat-stat">
+        <div class="plat-stat-item">
+          <div class="plat-stat-num">400+</div>
+          <div class="plat-stat-label">航空公司</div>
+        </div>
+        <div class="plat-stat-item">
+          <div class="plat-stat-num">330K+</div>
+          <div class="plat-stat-label">全球旅館</div>
+        </div>
+        <div class="plat-stat-item">
+          <div class="plat-stat-num">5秒</div>
+          <div class="plat-stat-label">平均查詢時間</div>
+        </div>
+      </div>
+      <div class="plat-badge">🏷️ 牌照編號：351079</div>
+    </div>
+    <div class="platform-card">
+      <div class="plat-label">💬 開放式網絡社群</div>
+      <h3>GoGoAdvise</h3>
+      <p>GoGoAdvise是一個開放式網絡社區，由擁有各方面知識的用戶提供優質文章，發現內容廣泛，包括旅遊、美食、女士/男士話題、寵物、科技、攝影等主題，為讀者帶來實用資訊及靈感。</p>
+      <div class="plat-stat">
+        <div class="plat-stat-item">
+          <div class="plat-stat-num">多類</div>
+          <div class="plat-stat-label">主題內容</div>
+        </div>
+        <div class="plat-stat-item">
+          <div class="plat-stat-num">用戶</div>
+          <div class="plat-stat-label">共建社區</div>
+        </div>
+        <div class="plat-stat-item">
+          <div class="plat-stat-num">免費</div>
+          <div class="plat-stat-label">開放閱讀</div>
+        </div>
+      </div>
+      <div class="plat-badge">📝 開放式社區平台</div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL SERVICES -->
+<section id="digital" style="background: var(--white);">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">數碼服務</div>
+    <h2>全方位數碼營銷方案</h2>
+    <p class="section-sub" style="margin: 0 auto;">自2009年起，東南西北旅遊積極發展數碼業務，旗下管理的大型社交平台追蹤者總數已超過210萬人。</p>
+  </div>
+  <div class="digital-grid">
+    <div class="digital-card">
+      <div class="digital-icon">📱</div>
+      <h3>社交平台管理</h3>
+      <p>代管Facebook、Instagram、YouTube、WeChat等大型社交平台，為不同類型企業發布適合各渠道的資訊及宣傳內容。管理賬號總追蹤人數超過210萬。</p>
+    </div>
+    <div class="digital-card">
+      <div class="digital-icon">⭐</div>
+      <h3>KOL / 網紅合作</h3>
+      <p>合作超過20位涵蓋旅遊、美容、飲食、藝術、科技、寵物、專業等各領域的KOL、YouTuber及網絡紅人，助客戶達到最大的品牌曝光率。</p>
+    </div>
+    <div class="digital-card">
+      <div class="digital-icon">🌐</div>
+      <h3>網站設計 &amp; 內容管理</h3>
+      <p>提供專業企業網站設計服務，以及持續的網站內容更新管理，確保您的品牌在網絡上保持最新、最吸引的形象。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">聯絡我們</div>
+  <h2>立即與我們聯絡</h2>
+  <p class="section-sub">無論是旅遊查詢、廣告合作或數碼服務，歡迎以電話、WhatsApp或親臨辦公室洽談。</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-row-icon">📍</div>
+        <div class="contact-row-text">
+          <h4>地址</h4>
+          <p>九龍荔枝角青山道15號<br>集利工業大廈20樓AB座</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📞</div>
+        <div class="contact-row-text">
+          <h4>辦公室電話</h4>
+          <a href="tel:+85227830881">+852 2783-0881</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">💬</div>
+        <div class="contact-row-text">
+          <h4>WhatsApp</h4>
+          <a href="https://wa.me/85265574001">+852 6557-4001</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📧</div>
+        <div class="contact-row-text">
+          <h4>電郵</h4>
+          <a href="mailto:Tntours@tungnam.com.hk">Tntours@tungnam.com.hk</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">💬</div>
+        <div class="contact-row-text">
+          <h4>Line / WeChat</h4>
+          <p>Line ID: TNT27830881<br>WeChat ID: TNT27830881</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">🌐</div>
+        <div class="contact-row-text">
+          <h4>網站</h4>
+          <a href="https://www.tungnam.com.hk" target="_blank">www.tungnam.com.hk</a>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <input type="text" placeholder="您的姓名 Your Name" />
+      <input type="tel" placeholder="聯絡電話 Phone / WhatsApp" />
+      <input type="email" placeholder="電郵地址 Email" />
+      <select>
+        <option value="" disabled selected>查詢類別 Enquiry Type</option>
+        <option>機票預訂 Flight Booking</option>
+        <option>旅館預訂 Hotel Booking</option>
+        <option>旅遊套票 Tour Package</option>
+        <option>郵輪套票 Cruise Package</option>
+        <option>旅遊婚禮 Destination Wedding</option>
+        <option>廣告 / KOL合作 Advertising / KOL</option>
+        <option>社交平台管理 Social Media Management</option>
+        <option>網站設計 Website Design</option>
+        <option>其他查詢 General Enquiry</option>
+      </select>
+      <textarea placeholder="請描述您的查詢內容…"></textarea>
+      <button type="submit">提交查詢 / Submit ✈️</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 1973–2024 <span>東南西北旅遊有限公司 Tung Nam Sai Pak Travel Limited</span> · 旅行社牌照：351079 · All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
