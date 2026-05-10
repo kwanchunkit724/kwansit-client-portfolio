@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>華高達建材有限公司 — 香港建築材料供應商</title>
+<style>
+  :root {
+    --bg:       #080909;
+    --surface:  #0e1010;
+    --card:     #141616;
+    --border:   #242828;
+    --accent1:  #7a3808;
+    --accent2:  #b05010;
+    --accent3:  #e07020;
+    --steel:    #304858;
+    --steel2:   #486880;
+    --text:     #eceae4;
+    --muted:    #788070;
+    --light:    #c8c4b8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif; line-height: 1.7; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(8,9,9,0.97); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .nav-logo {
+    width: 38px; height: 38px; border-radius: 6px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent3));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.85rem; color: #fff;
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent3); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 0.5rem 1.2rem; border-radius: 5px;
+    font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  .hero {
+    min-height: 100vh; padding: 100px 2.5rem 60px;
+    background:
+      radial-gradient(ellipse 70% 55% at 65% 40%, rgba(122,56,8,0.22) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 45% at 15% 75%, rgba(48,72,88,0.15) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(122,56,8,0.2); border: 1px solid rgba(224,112,32,0.3);
+    color: var(--accent3); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.5rem;
+  }
+  .hero h1 { font-size: clamp(1.9rem, 3.8vw, 3rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  .hero h1 span { color: var(--accent3); }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); margin-bottom: 2rem; max-width: 520px; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 0.8rem 1.8rem; border-radius: 6px;
+    font-size: 0.95rem; font-weight: 700; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(122,56,8,0.4); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 2px solid var(--border); color: var(--text); padding: 0.75rem 1.8rem;
+    border-radius: 6px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: border-color .2s, color .2s;
+  }
+  .btn-outline:hover { border-color: var(--accent3); color: var(--accent3); }
+
+  .info-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 2rem; box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  }
+  .info-card h3 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
+  .info-row { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(36,40,40,0.8); }
+  .info-row:last-child { border-bottom: none; }
+  .info-icon { font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0; }
+  .info-label { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; }
+  .info-val { font-size: 0.9rem; color: var(--text); }
+
+  .stats { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2.5rem; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { text-align: center; padding: 1.5rem 1rem; position: relative; }
+  .stat:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 25%; height: 50%; width: 1px; background: var(--border); }
+  .stat-num { font-size: 2rem; font-weight: 900; color: var(--accent3); }
+  .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.3rem; }
+
+  section { padding: 80px 2.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; background: rgba(122,56,8,0.15); border: 1px solid rgba(224,112,32,0.25);
+    color: var(--accent3); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.8rem; border-radius: 20px; margin-bottom: 0.8rem;
+  }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 1rem; }
+  .section-title span { color: var(--accent3); }
+  .section-sub { font-size: 1rem; color: var(--muted); max-width: 600px; margin-bottom: 3rem; }
+
+  .products-bg { background: var(--bg); }
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .product-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1.8rem; transition: border-color .25s, transform .25s;
+  }
+  .product-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+  .product-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .product-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .product-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.6; }
+  .product-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+  .tag { background: rgba(122,56,8,0.15); border: 1px solid rgba(224,112,32,0.2); color: var(--accent3); font-size: 0.7rem; padding: 0.15rem 0.55rem; border-radius: 4px; }
+
+  .services-bg { background: var(--surface); }
+  .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .service-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 2rem; display: flex; gap: 1.2rem; transition: border-color .25s;
+  }
+  .service-card:hover { border-color: var(--accent2); }
+  .service-num {
+    width: 44px; height: 44px; border-radius: 8px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    display: flex; align-items: center; justify-content: center; font-weight: 900; color: #fff;
+  }
+  .service-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .service-card p { font-size: 0.87rem; color: var(--muted); }
+
+  .why-bg { background: var(--bg); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .why-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 2rem; text-align: center; transition: border-color .25s;
+  }
+  .why-card:hover { border-color: var(--steel2); }
+  .why-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--light); }
+  .why-card p { font-size: 0.87rem; color: var(--muted); }
+
+  .contact-bg { background: var(--surface); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .ci-list { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; }
+  .ci-item { display: flex; gap: 0.9rem; }
+  .ci-icon {
+    width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0;
+    background: rgba(122,56,8,0.2); border: 1px solid rgba(224,112,32,0.25);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .ci-label { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
+  .ci-val { font-size: 0.9rem; color: var(--text); }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem; }
+  .contact-form h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.76rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); border-radius: 6px; padding: 0.7rem 0.9rem; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent2); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select option { background: var(--surface); }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 0.85rem; border-radius: 6px;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.85; }
+
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 60px 2.5rem 30px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.8rem; }
+  .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  footer h4 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  footer ul li a { color: var(--text); text-decoration: none; font-size: 0.88rem; transition: color .2s; }
+  footer ul li a:hover { color: var(--accent3); }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  .footer-bottom p { font-size: 0.8rem; color: var(--muted); }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .info-card { display: none; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .products-grid, .why-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">華達</div>
+    <span class="nav-name">華高達建材有限公司</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products">建材產品</a></li>
+    <li><a href="#services">服務</a></li>
+    <li><a href="#why">我們的優勢</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">立即查詢</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🏗️ 香港 · 建築材料供應</div>
+      <h1>專業可靠的<br><span>建築材料供應商</span></h1>
+      <p class="hero-sub">華高達建材有限公司為香港建造業提供優質建築材料，服務範圍涵蓋住宅、商業及工業項目，以穩定的貨源及專業的服務支援各類工程需求。</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#products">瀏覽建材</a>
+        <a class="btn-outline" href="#contact">查詢報價</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>公司資料</h3>
+      <div class="info-row">
+        <span class="info-icon">🏢</span>
+        <div>
+          <div class="info-label">公司名稱</div>
+          <div class="info-val">華高達建材有限公司</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div>
+          <div class="info-label">地區</div>
+          <div class="info-val">香港</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🏭</span>
+        <div>
+          <div class="info-label">行業</div>
+          <div class="info-val">建築材料供應 · 批發貿易</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🎯</span>
+        <div>
+          <div class="info-label">服務對象</div>
+          <div class="info-val">地產發展商 · 承建商 · 裝修公司</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">多年</div>
+      <div class="stat-label">行業經驗</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">多款</div>
+      <div class="stat-label">建材種類</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">全港</div>
+      <div class="stat-label">送貨服務</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">B2B</div>
+      <div class="stat-label">批發供應</div>
+    </div>
+  </div>
+</div>
+
+<section class="products-bg" id="products">
+  <div class="section-inner">
+    <div class="section-tag">建材產品</div>
+    <h2 class="section-title">全面的<span>建材種類</span></h2>
+    <p class="section-sub">提供多元化建築材料，涵蓋結構工程、裝飾裝修及機電配套所需物料，一站式滿足各類工程採購需求。</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🧱</div>
+        <h3>磚塊及砌築材料</h3>
+        <p>各類紅磚、空心磚、輕質磚及混凝土磚塊，適用於牆身、隔牆及各類砌築工程。</p>
+        <div class="product-tags"><span class="tag">紅磚</span><span class="tag">空心磚</span><span class="tag">輕質磚</span></div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🪨</div>
+        <h3>水泥及混凝土製品</h3>
+        <p>優質卜特蘭水泥、預拌混凝土配料及各類砂石骨料，確保工程結構強度達標。</p>
+        <div class="product-tags"><span class="tag">水泥</span><span class="tag">砂石</span><span class="tag">骨料</span></div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🪵</div>
+        <h3>木材及木製品</h3>
+        <p>建築用實木、合板、防火板及裝飾木材，適合地板、天花及室內裝修工程使用。</p>
+        <div class="product-tags"><span class="tag">合板</span><span class="tag">實木</span><span class="tag">防火板</span></div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🔩</div>
+        <h3>鋼鐵及金屬材料</h3>
+        <p>螺紋鋼筋、角鐵、鋼管及各類金屬配件，為鋼筋混凝土結構及鋼結構工程提供材料支援。</p>
+        <div class="product-tags"><span class="tag">鋼筋</span><span class="tag">角鐵</span><span class="tag">鋼管</span></div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🪟</div>
+        <h3>玻璃及幕牆材料</h3>
+        <p>平板玻璃、強化玻璃、隔音玻璃及鋁合金門窗框架，適用於商業及住宅建築的幕牆工程。</p>
+        <div class="product-tags"><span class="tag">強化玻璃</span><span class="tag">鋁框</span><span class="tag">幕牆</span></div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🎨</div>
+        <h3>裝飾裝修材料</h3>
+        <p>地磚、牆磚、油漆、批盪材料及防水塗料，為住宅、商業及工業裝修工程提供全面支援。</p>
+        <div class="product-tags"><span class="tag">地磚</span><span class="tag">油漆</span><span class="tag">防水材料</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-bg" id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務項目</div>
+    <h2 class="section-title">專業的<span>建材服務</span></h2>
+    <p class="section-sub">除供應建材外，我們亦提供一系列配套服務，協助客戶高效完成採購及物料管理。</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div>
+          <h3>批發供應</h3>
+          <p>向地產發展商、主要承建商及裝修公司提供大量建材批發，提供具競爭力的批量採購價格。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div>
+          <h3>現場送貨</h3>
+          <p>提供全港各區工地及項目現場的建材送貨服務，彈性安排配送時間，確保工程進度不受影響。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div>
+          <h3>材料採購顧問</h3>
+          <p>為客戶提供專業的建材採購意見，包括物料規格選擇、品質比對及成本優化建議。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div>
+          <h3>倉儲及庫存管理</h3>
+          <p>提供短期建材倉儲服務，協助客戶管理工程物料庫存，按工程進度分批供貨，減少現場積壓。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-bg" id="why">
+  <div class="section-inner">
+    <div class="section-tag">我們的優勢</div>
+    <h2 class="section-title">選擇<span>華高達</span>的理由</h2>
+    <p class="section-sub">憑藉豐富的行業經驗及廣泛的供應商網絡，我們為客戶提供穩定、高效的建材採購解決方案。</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">✅</div>
+        <h3>品質保證</h3>
+        <p>嚴格把關所有建材品質，確保符合香港建築標準及客戶規格要求，讓工程安心上馬。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3>快速響應</h3>
+        <p>迅速回應客戶查詢及緊急訂單需求，靈活調配庫存，確保工程物料供應不中斷。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <h3>具競爭力價格</h3>
+        <p>與多家優質供應商保持長期合作關係，提供具競爭力的批發價格，助客戶控制工程成本。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🚚</div>
+        <h3>可靠送貨</h3>
+        <p>覆蓋全港的送貨服務，準時按工程進度送達指定工地，減少工程延誤風險。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h3>長期夥伴關係</h3>
+        <p>致力與客戶建立長期穩定的合作關係，了解客戶工程需求，提供個性化的採購支援。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📦</div>
+        <h3>一站式採購</h3>
+        <p>提供多元化建材種類，客戶可一站式完成不同類型工程的材料採購，節省時間及行政成本。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-bg" id="contact">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2 class="section-title">查詢<span>建材報價</span></h2>
+    <p class="section-sub">歡迎地產發展商、承建商及裝修公司與我們聯絡，了解更多建材供應詳情及獲取報價。</p>
+    <div class="contact-grid">
+      <div>
+        <div class="ci-list">
+          <div class="ci-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">地區</div>
+              <div class="ci-val">香港</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🏭</div>
+            <div>
+              <div class="ci-label">業務類型</div>
+              <div class="ci-val">建築材料批發供應</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🎯</div>
+            <div>
+              <div class="ci-label">主要客戶</div>
+              <div class="ci-val">地產發展商 · 承建商 · 裝修公司 · 工程顧問</div>
+            </div>
+          </div>
+        </div>
+        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem;">
+          <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 0.7rem;">主要建材類別</h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            <span class="tag">磚塊</span><span class="tag">水泥</span><span class="tag">鋼筋</span>
+            <span class="tag">木材</span><span class="tag">玻璃</span><span class="tag">地磚</span>
+            <span class="tag">防水材料</span><span class="tag">油漆</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>發送查詢</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>公司</label>
+            <input type="text" placeholder="公司名稱">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>查詢建材</label>
+          <select>
+            <option value="">請選擇建材類別</option>
+            <option>磚塊及砌築材料</option>
+            <option>水泥及混凝土</option>
+            <option>鋼鐵及金屬</option>
+            <option>木材及木製品</option>
+            <option>玻璃及幕牆</option>
+            <option>裝飾裝修材料</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea placeholder="請說明所需建材規格、數量及工程地點等資料，以便我們提供準確報價。"></textarea>
+        </div>
+        <button class="form-submit">提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>華高達建材有限公司</h3>
+        <p>香港專業建築材料批發供應商，提供磚塊、水泥、鋼鐵、木材、玻璃及裝修材料等多元建材，服務地產發展商、承建商及裝修公司，全港送貨。</p>
+      </div>
+      <div>
+        <h4>建材種類</h4>
+        <ul>
+          <li><a href="#products">磚塊及砌築材料</a></li>
+          <li><a href="#products">水泥及混凝土</a></li>
+          <li><a href="#products">鋼鐵及金屬</a></li>
+          <li><a href="#products">裝飾裝修材料</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>快速連結</h4>
+        <ul>
+          <li><a href="#services">服務項目</a></li>
+          <li><a href="#why">我們的優勢</a></li>
+          <li><a href="#contact">查詢報價</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 華高達建材有限公司 版權所有</p>
+      <p>香港 · 建築材料批發供應</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
