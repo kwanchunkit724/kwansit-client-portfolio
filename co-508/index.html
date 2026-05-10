@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>領瀚貿易有限公司 | 香港批發貿易</title>
+<style>
+:root {
+  --primary: #0a1830;
+  --primary-mid: #0e2240;
+  --accent: #c89020;
+  --accent-light: #e0aa28;
+  --blue: #1a6ab8;
+  --blue-light: #2882d8;
+  --white: #ffffff;
+  --off-white: #f5f7fa;
+  --light-grey: #e4e8f0;
+  --mid-grey: #7a8898;
+  --text: #1a2030;
+  --text-light: #526078;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 20px rgba(10,24,48,0.10);
+  --shadow-md: 0 8px 36px rgba(10,24,48,0.14);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.3s ease;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', 'Microsoft JhengHei', 'Noto Sans TC', system-ui, sans-serif; color: var(--text); background: var(--white); line-height: 1.7; }
+a { text-decoration: none; color: inherit; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,24,48,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200,144,32,0.20);
+  padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px;
+}
+.nav-logo { font-size: 1.3rem; font-weight: 800; color: var(--white); }
+.nav-logo span { color: var(--accent-light); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.78); font-size: 0.9rem; font-weight: 500; transition: var(--transition); }
+.nav-links a:hover { color: var(--accent-light); }
+.nav-cta { background: var(--accent); color: var(--primary); padding: 0.5rem 1.3rem; border-radius: 50px; font-size: 0.88rem; font-weight: 700; transition: var(--transition); }
+.nav-cta:hover { background: var(--accent-light); }
+
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary) 0%, #0e2040 40%, #102448 70%, #0e2050 100%);
+  display: flex; align-items: center; padding: 100px 5% 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(200,144,32,0.13) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 15% 72%, rgba(26,106,184,0.08) 0%, transparent 65%);
+}
+.hero-inner {
+  max-width: 1200px; width: 100%; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(200,144,32,0.15); border: 1px solid rgba(200,144,32,0.38);
+  color: var(--accent-light); padding: 0.4rem 1rem; border-radius: 50px;
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 1.5rem;
+}
+.hero h1 { font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 900; line-height: 1.2; color: var(--white); margin-bottom: 0.5rem; }
+.hero h1 .accent { color: var(--accent-light); }
+.hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.68); margin-bottom: 1.8rem; }
+.hero-desc { font-size: 1rem; color: rgba(255,255,255,0.66); line-height: 1.80; margin-bottom: 2.2rem; max-width: 520px; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary { background: var(--accent); color: var(--primary); padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; transition: var(--transition); box-shadow: 0 4px 20px rgba(200,144,32,0.38); }
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+.btn-outline { border: 2px solid rgba(255,255,255,0.32); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: var(--transition); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+.hero-card { background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 2rem; }
+.hero-card-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.8rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.10); }
+.hero-card-icon { width: 50px; height: 50px; border-radius: 14px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+.hero-card-head h3 { color: var(--white); font-size: 1rem; font-weight: 700; }
+.hero-card-head p { color: rgba(255,255,255,0.50); font-size: 0.78rem; }
+.hero-info-row { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+.hero-info-icon { width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0; background: rgba(200,144,32,0.18); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+.hero-info-label { font-size: 0.70rem; color: rgba(255,255,255,0.42); text-transform: uppercase; letter-spacing: 0.06em; }
+.hero-info-val { font-size: 0.88rem; color: rgba(255,255,255,0.90); font-weight: 500; }
+
+.stats-strip { background: linear-gradient(90deg, var(--primary) 0%, var(--primary-mid) 100%); padding: 3rem 5%; }
+.stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.stat-item { text-align: center; }
+.stat-num { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--accent-light); letter-spacing: -0.02em; line-height: 1; }
+.stat-label { color: rgba(255,255,255,0.60); font-size: 0.85rem; margin-top: 0.4rem; }
+
+section { padding: 90px 5%; }
+.section-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(200,144,32,0.08); border: 1px solid rgba(200,144,32,0.25); color: var(--accent); padding: 0.35rem 1rem; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 1rem; }
+.section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: var(--primary); line-height: 1.25; }
+.section-subtitle { font-size: 1.02rem; color: var(--text-light); line-height: 1.75; margin-top: 0.8rem; max-width: 620px; }
+.section-header { margin-bottom: 3rem; }
+.max-w { max-width: 1200px; margin: 0 auto; }
+
+.about { background: var(--off-white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-highlight { background: linear-gradient(135deg, var(--primary) 0%, #0e2040 100%); border-radius: 18px; padding: 2.2rem; border-left: 4px solid var(--accent); margin-bottom: 2rem; }
+.about-highlight blockquote { font-size: 1.15rem; font-weight: 700; color: var(--white); line-height: 1.6; }
+.about-highlight cite { display: block; margin-top: 0.8rem; font-size: 0.8rem; color: var(--accent-light); font-style: normal; }
+.about-body p { font-size: 0.98rem; color: var(--text-light); line-height: 1.85; margin-bottom: 1.2rem; }
+.prop-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.prop-card { background: var(--white); border-radius: var(--radius); padding: 1.4rem; border: 1px solid var(--light-grey); transition: var(--transition); }
+.prop-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.prop-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.prop-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem; }
+.prop-card p { font-size: 0.8rem; color: var(--text-light); line-height: 1.55; }
+
+.services { background: var(--white); }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+.service-card { background: var(--card-bg); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--light-grey); transition: var(--transition); position: relative; overflow: hidden; }
+.service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); transform: scaleX(0); transform-origin: left; transition: var(--transition); }
+.service-card:hover { border-color: rgba(200,144,32,0.3); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.service-card:hover::before { transform: scaleX(1); }
+.service-icon { width: 54px; height: 54px; border-radius: 14px; background: linear-gradient(135deg, rgba(200,144,32,0.12), rgba(200,144,32,0.05)); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.2rem; }
+.service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.7rem; }
+.service-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.70; }
+
+.advantages {
+  background: linear-gradient(135deg, var(--primary) 0%, #0e2040 55%, #102448 100%);
+  position: relative; overflow: hidden;
+}
+.advantages::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 65% 55% at 78% 45%, rgba(200,144,32,0.12) 0%, transparent 70%); }
+.advantages .section-tag { background: rgba(26,106,184,0.15); border-color: rgba(26,106,184,0.35); color: var(--blue-light); }
+.advantages .section-title { color: var(--white); }
+.advantages .section-subtitle { color: rgba(255,255,255,0.62); }
+.adv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; z-index: 1; }
+.adv-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: 16px; padding: 2rem; transition: var(--transition); }
+.adv-card:hover { background: rgba(255,255,255,0.10); border-color: rgba(200,144,32,0.4); transform: translateY(-3px); }
+.adv-num { font-size: 2.5rem; font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 0.8rem; }
+.adv-card h4 { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.6rem; }
+.adv-card p { font-size: 0.88rem; color: rgba(255,255,255,0.60); line-height: 1.65; }
+
+.contact { background: linear-gradient(135deg, var(--primary) 0%, #0e2040 100%); }
+.contact .section-title { color: var(--white); }
+.contact .section-subtitle { color: rgba(255,255,255,0.62); }
+.contact .section-tag { background: rgba(200,144,32,0.15); border-color: rgba(200,144,32,0.35); color: var(--accent-light); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
+.contact-item { display: flex; align-items: flex-start; gap: 1rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: var(--radius); padding: 1.3rem; }
+.contact-item-icon { width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0; background: rgba(200,144,32,0.18); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.contact-item-label { font-size: 0.70rem; color: rgba(255,255,255,0.40); text-transform: uppercase; letter-spacing: 0.07em; }
+.contact-item-val { font-size: 0.92rem; color: rgba(255,255,255,0.90); font-weight: 500; margin-top: 0.15rem; }
+.contact-form { background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.10); border-radius: 20px; padding: 2.4rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.58); margin-bottom: 0.4rem; font-weight: 500; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-sm); padding: 0.75rem 1rem; color: var(--white); font-size: 0.9rem; transition: var(--transition); outline: none; font-family: inherit; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); background: rgba(255,255,255,0.12); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.28); }
+.form-group select option { background: var(--primary); color: var(--white); }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-submit { width: 100%; background: var(--accent); color: var(--primary); border: none; border-radius: 50px; padding: 1rem; font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition); }
+.form-submit:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+footer { background: #050d18; padding: 2.5rem 5%; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-size: 1.2rem; font-weight: 800; color: var(--white); }
+.footer-logo span { color: var(--accent-light); }
+.footer-copy { font-size: 0.80rem; color: rgba(255,255,255,0.38); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.80rem; color: rgba(255,255,255,0.42); transition: var(--transition); }
+.footer-links a:hover { color: var(--accent-light); }
+
+@media (max-width: 960px) {
+  .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero-card { display: none; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .services-grid, .adv-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .services-grid, .adv-grid, .prop-cards { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">領瀚<span>貿易</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#services">服務範疇</a></li>
+    <li><a href="#advantages">我們優勢</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">立即查詢</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">🌐 香港批發貿易 · 多元商品 · 誠信經營</div>
+      <h1>領先市場，<br><span class="accent">廣瀚商貿。</span></h1>
+      <p class="hero-sub">領瀚貿易 — 您在香港值得信賴的批發貿易夥伴</p>
+      <p class="hero-desc">
+        領瀚貿易有限公司是一家立足香港的專業批發貿易公司。我們憑藉豐富的行業經驗、廣泛的供應商網絡及對客戶需求的深度了解，為各類型企業客戶提供可靠、高效的商品採購及批發服務。
+      </p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">了解我們服務</a>
+        <a href="#contact" class="btn-outline">提交採購查詢</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hero-card-icon">🏢</div>
+        <div>
+          <h3>領瀚貿易有限公司</h3>
+          <p>香港 · 批發貿易</p>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">📍</div>
+        <div>
+          <div class="hero-info-label">地區</div>
+          <div class="hero-info-val">香港</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">✉️</div>
+        <div>
+          <div class="hero-info-label">電郵</div>
+          <div class="hero-info-val">request@linghan.hk</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">🌐</div>
+        <div>
+          <div class="hero-info-label">網站</div>
+          <div class="hero-info-val">linghan.hk</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">🚢</div>
+        <div>
+          <div class="hero-info-label">服務</div>
+          <div class="hero-info-val">香港本地及國際批發貿易</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">香港本地基地</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">B2B</div>
+      <div class="stat-label">企業批發專門</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">🌏</div>
+      <div class="stat-label">國際供應商網絡</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24h</div>
+      <div class="stat-label">快速回覆查詢</div>
+    </div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="max-w">
+    <div class="about-grid">
+      <div>
+        <div class="section-header">
+          <div class="section-tag">關於我們</div>
+          <h2 class="section-title">誠信為本，廣開商路</h2>
+        </div>
+        <div class="about-highlight">
+          <blockquote>「以誠信立業，以服務創價，以合作共贏，做客戶最值得信賴的貿易夥伴。」</blockquote>
+          <cite>— 領瀚貿易有限公司</cite>
+        </div>
+        <div class="about-body">
+          <p>
+            領瀚貿易有限公司是一家在香港成立的批發貿易公司，專注為企業客戶提供專業、可靠的採購及貿易服務。憑藉香港作為國際貿易中心的優勢，我們連接全球供應商與本地及區域買家，創造雙贏的商業機遇。
+          </p>
+          <p>
+            我們的業務涵蓋多元化的商品類別，從消費品到工業物料，靈活滿足客戶的不同需求。我們重視每一個合作關係，致力以長期夥伴的態度服務每一位客戶。
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">🤝</div>
+            <h4>誠信合作</h4>
+            <p>以誠信為業務基礎，透明報價，可靠交期，建立長期信任關係。</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🌐</div>
+            <h4>廣泛網絡</h4>
+            <p>與國內外多家優質供應商建立穩固合作，確保貨源穩定可靠。</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">⚡</div>
+            <h4>高效執行</h4>
+            <p>快速處理採購查詢，精簡貿易流程，縮短訂單到交貨的時間。</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💡</div>
+            <h4>靈活配套</h4>
+            <p>按客戶需求提供定製化採購方案，靈活應對市場變化。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">服務範疇</div>
+      <h2 class="section-title">全方位批發貿易服務</h2>
+      <p class="section-subtitle">從採購到交貨，我們提供完整的貿易支援服務。</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <h3>商品批發供應</h3>
+        <p>多元化商品類別批發，包括消費品、工業品、電子產品及各類生活用品。大量採購，享受批發優惠價格。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>採購代理服務</h3>
+        <p>代客戶在內地及亞洲市場尋找合適供應商，負責品質核查、議價及訂單跟進，降低採購風險。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚢</div>
+        <h3>進出口貿易</h3>
+        <p>處理香港進出口業務，包括報關文件、物流協調及清關安排，確保貨物順利送達目的地。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✅</div>
+        <h3>品質管理</h3>
+        <p>出貨前品質檢驗，確保所有貨物符合客戶規格及相關標準，降低退貨及糾紛風險。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>市場分析建議</h3>
+        <p>提供香港及區域市場的商品價格走勢、供求分析及採購時機建議，助客戶制定最優採購策略。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🗂️</div>
+        <h3>貿易文件處理</h3>
+        <p>準備及跟進各類貿易文件，包括合約、發票、裝箱單、產地來源證等，確保合規及順暢結款。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="advantages" id="advantages">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">為何選擇領瀚</div>
+      <h2 class="section-title">我們的優勢</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">選擇領瀚貿易，讓您的採購業務更輕鬆、更可靠、更具成本效益。</p>
+    </div>
+    <div class="adv-grid">
+      <div class="adv-card">
+        <div class="adv-num">01</div>
+        <h4>香港優越位置</h4>
+        <p>依託香港自由貿易港地位，進出口稅務優惠，物流基建完善，輕鬆連接全球市場。</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-num">02</div>
+        <h4>靈活最低訂量</h4>
+        <p>接受中小批量訂單，讓不同規模的企業都能享受批發採購的優惠。彈性配合客戶實際需要。</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-num">03</div>
+        <h4>多幣種結算</h4>
+        <p>支援港幣、人民幣、美元等多種貨幣結算，配合不同客戶及供應商的財務安排。</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-num">04</div>
+        <h4>可靠貨期承諾</h4>
+        <p>嚴格執行交貨期承諾，實時更新訂單進度，讓客戶隨時掌握採購狀況。</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-num">05</div>
+        <h4>專業團隊服務</h4>
+        <p>經驗豐富的貿易團隊提供全程跟進，從詢價到收貨，確保每個環節順暢無阻。</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-num">06</div>
+        <h4>長期夥伴關係</h4>
+        <p>以長遠合作為目標，提供持續穩定的採購服務，成為客戶業務發展的可靠後盾。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">提交採購查詢</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">
+        歡迎告訴我們您的採購需求，我們的團隊將在一個工作天內聯絡您，提供最合適的解決方案。
+      </p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">地區</div>
+              <div class="contact-item-val">香港</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">電郵</div>
+              <div class="contact-item-val">request@linghan.hk</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🌐</div>
+            <div>
+              <div class="contact-item-label">網站</div>
+              <div class="contact-item-val">linghan.hk</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">⏱️</div>
+            <div>
+              <div class="contact-item-label">回覆時間</div>
+              <div class="contact-item-val">一個工作天內回覆</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 style="color:var(--white);font-size:1.15rem;font-weight:700;margin-bottom:1.5rem;">採購 / 貿易查詢</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>聯絡人姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>公司名稱</label>
+            <input type="text" placeholder="公司名稱">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>電郵地址</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>聯絡電話</label>
+            <input type="tel" placeholder="+852">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>服務類別</label>
+          <select>
+            <option value="">請選擇...</option>
+            <option>商品批發採購</option>
+            <option>採購代理服務</option>
+            <option>進出口貿易</option>
+            <option>品質管理服務</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea placeholder="請描述您的採購需求、商品類別、數量、目標價格及其他要求..."></textarea>
+        </div>
+        <button class="form-submit">提交查詢 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">領瀚<span>貿易</span></div>
+    <div class="footer-copy">© 2024 領瀚貿易有限公司 版權所有</div>
+    <div class="footer-links">
+      <a href="#about">關於</a>
+      <a href="#services">服務</a>
+      <a href="#contact">聯絡</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
