@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KKday Hong Kong | Tours, Activities & Experiences</title>
+<style>
+:root {
+  --primary: #0a1228;
+  --accent: #e8305a;
+  --accent2: #c02040;
+  --orange: #f07828;
+  --light: #fff5f7;
+  --mid: #fce8ed;
+  --text: #1a1a2e;
+  --text-light: #606080;
+  --white: #ffffff;
+  --card-bg: #fffbfc;
+  --border: #f0d0da;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text);background:var(--white);line-height:1.7;}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,18,40,0.97);backdrop-filter:blur(8px);border-bottom:2px solid var(--accent);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-logo{display:flex;align-items:center;gap:12px;}
+.nav-logo-mark{background:var(--accent);color:var(--white);font-size:1.1rem;font-weight:900;padding:4px 10px;border-radius:8px;letter-spacing:-0.02em;}
+.nav-brand{display:flex;flex-direction:column;}
+.nav-brand-main{font-size:1rem;font-weight:700;color:var(--white);}
+.nav-brand-sub{font-size:0.62rem;color:rgba(255,255,255,0.45);letter-spacing:0.08em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.9rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:var(--white);padding:0.45rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent2);}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(135deg,var(--primary) 0%,#1a0830 55%,#0e1c38 100%);display:flex;align-items:center;padding-top:68px;position:relative;overflow:hidden;}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(232,48,90,0.12) 1px,transparent 1px);background-size:30px 30px;}
+.hero-glow{position:absolute;top:15%;right:10%;width:500px;height:500px;background:radial-gradient(circle,rgba(232,48,90,0.12),transparent 65%);border-radius:50%;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,48,90,0.12);border:1px solid rgba(232,48,90,0.35);color:var(--accent);padding:0.4rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:600;letter-spacing:0.04em;margin-bottom:1.5rem;}
+.hero h1{font-size:3rem;font-weight:800;color:var(--white);line-height:1.2;margin-bottom:1rem;}
+.hero h1 span{color:var(--accent);}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.65);margin-bottom:2rem;max-width:480px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2.5rem;}
+.hero-tag{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.8rem;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:var(--white);padding:0.9rem 2rem;border-radius:8px;font-size:0.95rem;font-weight:700;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(232,48,90,0.3);}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);}
+.btn-outline{border:2px solid rgba(255,255,255,0.25);color:var(--white);padding:0.9rem 2rem;border-radius:8px;font-size:0.95rem;font-weight:600;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+
+/* INFO CARD */
+.info-card{background:rgba(255,255,255,0.05);border:1px solid rgba(232,48,90,0.3);border-radius:16px;padding:2rem;backdrop-filter:blur(12px);}
+.info-card h3{font-size:0.82rem;color:var(--accent);font-weight:700;margin-bottom:1.2rem;letter-spacing:0.08em;text-transform:uppercase;}
+.info-item{display:flex;gap:12px;margin-bottom:1rem;align-items:flex-start;}
+.info-icon{width:36px;height:36px;background:rgba(232,48,90,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.info-icon svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:2;}
+.info-label{font-size:0.68rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.06em;}
+.info-value{font-size:0.88rem;color:var(--white);font-weight:600;}
+.info-value a{color:var(--white);text-decoration:none;}
+.info-value a:hover{color:var(--accent);}
+.info-divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:1rem 0;}
+.hours-badge{background:linear-gradient(135deg,rgba(232,48,90,0.2),rgba(240,120,40,0.1));border:1px solid rgba(232,48,90,0.3);border-radius:10px;padding:0.9rem;text-align:center;}
+.hours-badge .hb-icon{font-size:1.2rem;margin-bottom:4px;}
+.hours-badge .hb-time{font-size:0.9rem;font-weight:700;color:var(--white);}
+.hours-badge .hb-sub{font-size:0.72rem;color:rgba(255,255,255,0.55);}
+
+/* STATS */
+.stats{background:var(--primary);padding:3rem 0;}
+.stats-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.stat-item{text-align:center;padding:1.5rem;border:1px solid rgba(232,48,90,0.2);border-radius:12px;background:rgba(232,48,90,0.04);}
+.stat-num{font-size:2.2rem;font-weight:800;color:var(--accent);}
+.stat-lbl{font-size:0.8rem;color:rgba(255,255,255,0.55);margin-top:4px;}
+
+/* ABOUT */
+.about{padding:6rem 0;background:var(--light);}
+.about-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.section-label{font-size:0.75rem;font-weight:700;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.8rem;}
+.section-title{font-size:2.2rem;font-weight:800;color:var(--primary);line-height:1.25;margin-bottom:1rem;}
+.section-title span{color:var(--accent);}
+.about-text{color:var(--text-light);line-height:1.9;margin-bottom:1.5rem;}
+.highlight-box{background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:12px;padding:1.8rem;color:var(--white);margin-bottom:2rem;}
+.highlight-box h4{font-size:1rem;font-weight:700;margin-bottom:0.6rem;}
+.highlight-box p{font-size:0.88rem;opacity:0.92;line-height:1.7;}
+.prop-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color 0.2s;}
+.prop-card:hover{border-color:var(--accent);}
+.prop-icon{font-size:1.5rem;margin-bottom:0.6rem;}
+.prop-card h5{font-size:0.85rem;font-weight:700;color:var(--primary);margin-bottom:0.3rem;}
+.prop-card p{font-size:0.78rem;color:var(--text-light);line-height:1.5;}
+
+/* EXPERIENCES */
+.experiences{padding:6rem 0;background:var(--white);}
+.experiences-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.experiences-header{text-align:center;margin-bottom:3.5rem;}
+.experiences-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.exp-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.25s;}
+.exp-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(232,48,90,0.1);transform:translateY(-4px);}
+.exp-header{background:linear-gradient(135deg,var(--accent),var(--orange));padding:2rem;text-align:center;}
+.exp-header-icon{font-size:2.5rem;margin-bottom:0.5rem;}
+.exp-header h3{font-size:1rem;font-weight:700;color:var(--white);}
+.exp-body{padding:1.5rem;}
+.exp-body p{font-size:0.85rem;color:var(--text-light);line-height:1.7;margin-bottom:1rem;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.exp-tag{background:rgba(232,48,90,0.08);color:var(--accent2);font-size:0.72rem;padding:0.2rem 0.6rem;border-radius:4px;font-weight:600;}
+
+/* DESTINATIONS */
+.destinations{padding:5rem 0;background:var(--light);}
+.destinations-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.destinations-header{text-align:center;margin-bottom:3rem;}
+.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.dest-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;transition:all 0.2s;}
+.dest-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 6px 20px rgba(232,48,90,0.1);}
+.dest-flag{font-size:2rem;margin-bottom:0.6rem;}
+.dest-name{font-size:0.9rem;font-weight:700;color:var(--primary);}
+.dest-count{font-size:0.75rem;color:var(--text-light);margin-top:3px;}
+
+/* APP */
+.app-section{padding:5rem 0;background:linear-gradient(135deg,var(--primary),#1a0830);}
+.app-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.app-text h2{font-size:2rem;font-weight:800;color:var(--white);margin-bottom:1rem;}
+.app-text h2 span{color:var(--accent);}
+.app-text p{color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:2rem;}
+.app-features{display:flex;flex-direction:column;gap:1rem;}
+.app-feat{display:flex;gap:12px;align-items:flex-start;}
+.app-feat-icon{width:36px;height:36px;background:rgba(232,48,90,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;}
+.app-feat-content h4{font-size:0.85rem;font-weight:700;color:var(--white);}
+.app-feat-content p{font-size:0.78rem;color:rgba(255,255,255,0.55);line-height:1.4;}
+.app-contact{background:rgba(255,255,255,0.05);border:1px solid rgba(232,48,90,0.3);border-radius:14px;padding:2rem;}
+.app-contact h3{font-size:1rem;font-weight:700;color:var(--accent);margin-bottom:1.2rem;}
+.app-contact-row{display:flex;gap:10px;align-items:center;margin-bottom:1rem;padding:0.8rem;background:rgba(255,255,255,0.04);border-radius:8px;}
+.app-contact-row span{font-size:1.1rem;}
+.app-contact-row div .ac-label{font-size:0.68rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.05em;}
+.app-contact-row div .ac-val{font-size:0.88rem;color:var(--white);font-weight:600;}
+.app-contact-row div .ac-val a{color:var(--white);text-decoration:none;}
+
+/* CONTACT */
+.contact{padding:6rem 0;background:var(--white);}
+.contact-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
+.contact-info h2{font-size:2rem;font-weight:800;color:var(--primary);margin-bottom:1rem;}
+.contact-info p{color:var(--text-light);margin-bottom:2rem;line-height:1.8;}
+.contact-details{display:flex;flex-direction:column;gap:1.2rem;}
+.cdetail{display:flex;gap:1rem;align-items:flex-start;}
+.cdetail-icon{width:44px;height:44px;background:rgba(232,48,90,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.cdetail-label{font-size:0.72rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.06em;}
+.cdetail-value{font-size:0.95rem;font-weight:600;color:var(--primary);}
+.cdetail-value a{color:var(--primary);text-decoration:none;}
+.cdetail-value a:hover{color:var(--accent);}
+.contact-form{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:2.5rem;box-shadow:0 4px 24px rgba(232,48,90,0.06);}
+.contact-form h3{font-size:1.2rem;font-weight:700;color:var(--primary);margin-bottom:1.5rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-group{margin-bottom:1rem;}
+.form-group label{display:block;font-size:0.8rem;font-weight:600;color:var(--text-light);margin-bottom:0.4rem;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:8px;font-size:0.9rem;color:var(--text);background:var(--white);outline:none;transition:border-color 0.2s;font-family:inherit;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent);}
+.form-group textarea{resize:vertical;min-height:100px;}
+.form-submit{width:100%;background:var(--accent);color:var(--white);border:none;padding:0.9rem;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;font-family:inherit;}
+.form-submit:hover{background:var(--accent2);}
+
+/* FOOTER */
+footer{background:var(--primary);padding:3rem 0 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:0.8rem;}
+.footer-logo-mark{background:var(--accent);color:var(--white);font-size:1rem;font-weight:900;padding:3px 9px;border-radius:6px;}
+.footer-logo-text{font-size:0.9rem;font-weight:700;color:var(--white);}
+.footer-tagline{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.7;}
+.footer-col h4{font-size:0.8rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;}
+.footer-col ul{list-style:none;padding:0;}
+.footer-col ul li{margin-bottom:0.6rem;}
+.footer-col ul li a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:0.78rem;color:rgba(255,255,255,0.3);}
+.footer-web{font-size:0.78rem;color:rgba(255,255,255,0.3);}
+
+@media(max-width:1024px){
+  .hero-inner,.about-inner,.app-inner,.contact-inner{grid-template-columns:1fr;gap:2.5rem;}
+  .dest-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .hero h1{font-size:2rem;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .experiences-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-mark">KK</div>
+      <div class="nav-brand">
+        <span class="nav-brand-main">KKday Hong Kong</span>
+        <span class="nav-brand-sub">Tours, Activities & Experiences</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experiences">Experiences</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#experiences" class="nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        🌏 Asia's Leading Travel Experiences Platform
+      </div>
+      <h1>Explore More<br><span>Experience Everything</span></h1>
+      <p class="hero-sub">KKday is Asia's largest online travel experiences marketplace, offering thousands of tours, activities, attraction tickets and unique local experiences across 100+ destinations worldwide.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Tours & Sightseeing</span>
+        <span class="hero-tag">Attraction Tickets</span>
+        <span class="hero-tag">Day Trips</span>
+        <span class="hero-tag">Adventure Sports</span>
+        <span class="hero-tag">Food & Culture</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#experiences" class="btn-primary">
+          🎫 Browse Experiences
+        </a>
+        <a href="#contact" class="btn-outline">
+          📞 Contact Us
+        </a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>Contact KKday Hong Kong</h3>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 9.11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.01 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.11 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">HK Hotline</div>
+          <div class="info-value"><a href="tel:+85230081724">+852 3008-1724</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 9.11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.01 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.11 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">Macau Line</div>
+          <div class="info-value"><a href="tel:+85362621494">+853 6262-1494</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:service@kkday.com">service@kkday.com</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="info-label">HK Office</div>
+          <div class="info-value">Unit 02, 5/F, The Eastmark<br>21 Sheung Yuet Road, Kowloon Bay</div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="hours-badge">
+        <div class="hb-icon">⏰</div>
+        <div class="hb-time">06:30 – 22:00 (GMT+8)</div>
+        <div class="hb-sub">Customer Service Hours · 7 Days a Week</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">10K+</div>
+      <div class="stat-lbl">Experiences & Activities</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100+</div>
+      <div class="stat-lbl">Destinations Worldwide</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5M+</div>
+      <div class="stat-lbl">Happy Travellers</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-lbl">Customer Support</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="section-label">About KKday</div>
+      <h2 class="section-title">Asia's Largest<br><span>Travel Experiences Marketplace</span></h2>
+      <p class="about-text">KKday is Asia's leading online travel experiences marketplace, connecting travellers with unique local activities, tours, and attraction tickets across 100+ destinations worldwide. Since our founding in 2014, we've helped millions of travellers discover the world beyond hotel rooms and tourist traps.</p>
+      <div class="highlight-box">
+        <h4>🌟 Our Mission</h4>
+        <p>We believe every journey should be an adventure. KKday curates authentic local experiences — from street food tours and cultural workshops to adrenaline-fuelled adventures — so you can truly immerse yourself in every destination you visit.</p>
+      </div>
+      <p class="about-text">KKday's Hong Kong office, located in Kowloon Bay, serves Greater China and Asia-Pacific, offering curated experiences in Hong Kong, Macau, mainland China, Southeast Asia, Japan, Korea, and beyond.</p>
+    </div>
+    <div>
+      <div class="prop-cards">
+        <div class="prop-card">
+          <div class="prop-icon">✅</div>
+          <h5>Verified Operators</h5>
+          <p>All experience providers are vetted for safety, quality and value for money.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">💰</div>
+          <h5>Best Price Guarantee</h5>
+          <p>Competitive pricing with exclusive online discounts and promo codes.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">📱</div>
+          <h5>Mobile-First Booking</h5>
+          <p>Book instantly via app or website with e-tickets for seamless entry.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🔄</div>
+          <h5>Flexible Cancellation</h5>
+          <p>Most experiences offer free cancellation up to 24-48 hours before start.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="experiences" id="experiences">
+  <div class="experiences-inner">
+    <div class="experiences-header">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Discover Unique <span>Experiences</span></h2>
+    </div>
+    <div class="experiences-grid">
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-header-icon">🗺️</div>
+          <h3>Tours & Sightseeing</h3>
+        </div>
+        <div class="exp-body">
+          <p>From guided city tours to private day trips, explore iconic landmarks and hidden gems with expert local guides who bring destinations to life with insider knowledge.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">City Tours</span>
+            <span class="exp-tag">Day Trips</span>
+            <span class="exp-tag">Private Tours</span>
+            <span class="exp-tag">Night Tours</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-header-icon">🎭</div>
+          <h3>Attraction Tickets</h3>
+        </div>
+        <div class="exp-body">
+          <p>Skip the queues with instant e-tickets to theme parks, museums, observation decks and world-famous attractions at the best available online prices.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Theme Parks</span>
+            <span class="exp-tag">Museums</span>
+            <span class="exp-tag">Observation Decks</span>
+            <span class="exp-tag">Shows</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-header-icon">🍜</div>
+          <h3>Food & Culture</h3>
+        </div>
+        <div class="exp-body">
+          <p>Taste your way through destinations with curated food tours, cooking classes and cultural workshops. Discover authentic cuisines and time-honoured traditions.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Food Tours</span>
+            <span class="exp-tag">Cooking Classes</span>
+            <span class="exp-tag">Cultural Workshops</span>
+            <span class="exp-tag">Tea Ceremonies</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-header-icon">🧗</div>
+          <h3>Adventure & Outdoor</h3>
+        </div>
+        <div class="exp-body">
+          <p>Get your heart pumping with thrilling outdoor adventures — hiking, kayaking, ziplines, scuba diving, hot air ballooning and more across Asia's most dramatic landscapes.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Hiking</span>
+            <span class="exp-tag">Water Sports</span>
+            <span class="exp-tag">Ziplines</span>
+            <span class="exp-tag">Cycling</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-header-icon">🚂</div>
+          <h3>Transportation & Passes</h3>
+        </div>
+        <div class="exp-body">
+          <p>Hassle-free travel with airport transfers, JR rail passes, city day passes, sim cards and tourist transport solutions across Asia's most popular destinations.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Airport Transfer</span>
+            <span class="exp-tag">Rail Passes</span>
+            <span class="exp-tag">SIM Cards</span>
+            <span class="exp-tag">Day Passes</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-header-icon">🎉</div>
+          <h3>Special & Private Events</h3>
+        </div>
+        <div class="exp-body">
+          <p>Create unforgettable memories with bespoke private tours, honeymoon experiences, team-building activities and specially curated itineraries for groups and families.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Private Tours</span>
+            <span class="exp-tag">Honeymoon</span>
+            <span class="exp-tag">Team Building</span>
+            <span class="exp-tag">Family Packages</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section class="destinations" id="destinations">
+  <div class="destinations-inner">
+    <div class="destinations-header">
+      <div class="section-label">Popular Destinations</div>
+      <h2 class="section-title">Explore <span>The World</span></h2>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <div class="dest-flag">🇭🇰</div>
+        <div class="dest-name">Hong Kong</div>
+        <div class="dest-count">500+ experiences</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🇯🇵</div>
+        <div class="dest-name">Japan</div>
+        <div class="dest-count">2,000+ experiences</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🇰🇷</div>
+        <div class="dest-name">South Korea</div>
+        <div class="dest-count">800+ experiences</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🇹🇭</div>
+        <div class="dest-name">Thailand</div>
+        <div class="dest-count">1,200+ experiences</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🇸🇬</div>
+        <div class="dest-name">Singapore</div>
+        <div class="dest-count">400+ experiences</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🇹🇼</div>
+        <div class="dest-name">Taiwan</div>
+        <div class="dest-count">600+ experiences</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🇲🇴</div>
+        <div class="dest-name">Macau</div>
+        <div class="dest-count">200+ experiences</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🌏</div>
+        <div class="dest-name">+ More</div>
+        <div class="dest-count">100+ destinations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP SECTION -->
+<section class="app-section">
+  <div class="app-inner">
+    <div class="app-text">
+      <h2>Book Smarter<br><span>with the KKday App</span></h2>
+      <p>Download the KKday app for the best travel planning experience. Browse thousands of activities, get exclusive app-only deals, manage your bookings and access e-tickets offline.</p>
+      <div class="app-features">
+        <div class="app-feat">
+          <div class="app-feat-icon">📱</div>
+          <div class="app-feat-content">
+            <h4>Instant E-Tickets</h4>
+            <p>Get your tickets delivered instantly to the app — no printing required.</p>
+          </div>
+        </div>
+        <div class="app-feat">
+          <div class="app-feat-icon">💬</div>
+          <div class="app-feat-content">
+            <h4>In-App Customer Support</h4>
+            <p>Chat directly with our support team or call our VoIP hotline for free.</p>
+          </div>
+        </div>
+        <div class="app-feat">
+          <div class="app-feat-icon">🔔</div>
+          <div class="app-feat-content">
+            <h4>Real-Time Updates</h4>
+            <p>Get booking confirmations, reminders and itinerary updates instantly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app-contact">
+      <h3>📞 Customer Service</h3>
+      <div class="app-contact-row">
+        <span>🇭🇰</span>
+        <div>
+          <div class="ac-label">Hong Kong Hotline</div>
+          <div class="ac-val"><a href="tel:+85230081724">+852 3008-1724</a></div>
+        </div>
+      </div>
+      <div class="app-contact-row">
+        <span>🇲🇴</span>
+        <div>
+          <div class="ac-label">Macau Hotline</div>
+          <div class="ac-val"><a href="tel:+85362621494">+853 6262-1494</a></div>
+        </div>
+      </div>
+      <div class="app-contact-row">
+        <span>📧</span>
+        <div>
+          <div class="ac-label">Email Support</div>
+          <div class="ac-val"><a href="mailto:service@kkday.com">service@kkday.com</a></div>
+        </div>
+      </div>
+      <div class="app-contact-row">
+        <span>⏰</span>
+        <div>
+          <div class="ac-label">Service Hours</div>
+          <div class="ac-val">06:30 – 22:00 (GMT+8)</div>
+        </div>
+      </div>
+      <div class="app-contact-row">
+        <span>📍</span>
+        <div>
+          <div class="ac-label">HK Office</div>
+          <div class="ac-val">Unit 02, 5/F, The Eastmark, 21 Sheung Yuet Rd, Kowloon Bay</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">Contact KKday HK</div>
+      <h2>We're Here<br>to Help You Travel</h2>
+      <p>Have questions about a booking, need help choosing an experience, or want to partner with KKday? Our customer service team is available 7 days a week to assist you.</p>
+      <div class="contact-details">
+        <div class="cdetail">
+          <div class="cdetail-icon">📞</div>
+          <div>
+            <div class="cdetail-label">HK Customer Hotline</div>
+            <div class="cdetail-value"><a href="tel:+85230081724">+852 3008-1724</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">📞</div>
+          <div>
+            <div class="cdetail-label">Macau Hotline</div>
+            <div class="cdetail-value"><a href="tel:+85362621494">+853 6262-1494</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">✉️</div>
+          <div>
+            <div class="cdetail-label">Email</div>
+            <div class="cdetail-value"><a href="mailto:service@kkday.com">service@kkday.com</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">🌐</div>
+          <div>
+            <div class="cdetail-label">Website</div>
+            <div class="cdetail-value"><a href="https://www.kkday.com" target="_blank">www.kkday.com</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">📍</div>
+          <div>
+            <div class="cdetail-label">HK Office Address</div>
+            <div class="cdetail-value">Unit 02, 5/F, The Eastmark<br>21 Sheung Yuet Road, Kowloon Bay, HK</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>🎫 Enquiry / Booking Support</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+852 XXXX XXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>Enquiry Type</label>
+        <select>
+          <option>Booking Enquiry</option>
+          <option>Cancellation / Refund</option>
+          <option>Activity Recommendation</option>
+          <option>Partner / Supplier Enquiry</option>
+          <option>Corporate / Group Booking</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Please describe your enquiry (include booking reference if applicable)..."></textarea>
+      </div>
+      <button class="form-submit">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-mark">KK</div>
+          <span class="footer-logo-text">KKday Hong Kong</span>
+        </div>
+        <p class="footer-tagline">Asia's largest travel experiences marketplace.<br>Tours · Attractions · Activities · Adventure · Culture</p>
+      </div>
+      <div class="footer-col">
+        <h4>Experiences</h4>
+        <ul>
+          <li><a href="#experiences">Tours & Sightseeing</a></li>
+          <li><a href="#experiences">Attraction Tickets</a></li>
+          <li><a href="#experiences">Food & Culture</a></li>
+          <li><a href="#experiences">Adventure & Outdoor</a></li>
+          <li><a href="#experiences">Transportation</a></li>
+          <li><a href="#experiences">Private Events</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+85230081724">HK: +852 3008-1724</a></li>
+          <li><a href="tel:+85362621494">MO: +853 6262-1494</a></li>
+          <li><a href="mailto:service@kkday.com">service@kkday.com</a></li>
+          <li><a href="https://www.kkday.com" target="_blank">www.kkday.com</a></li>
+          <li><a href="#contact">Kowloon Bay Office</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 KKday Hong Kong. All rights reserved.</div>
+      <div class="footer-web">service@kkday.com · www.kkday.com</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
