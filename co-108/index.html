@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港茶水攤 港式茶餐廳 | 地道港味 · 情懷早餐</title>
+<style>
+:root {
+  --bg-deep: #040507;
+  --bg-card: #080c12;
+  --bg-section: #0c1018;
+  --accent-primary: #1858a0;
+  --accent-hover: #2070c8;
+  --accent-gold: #d8a010;
+  --accent-gold-light: #f0bc30;
+  --accent-milk: #f0e0b8;
+  --text-primary: #eef2f8;
+  --text-secondary: #b0bcd0;
+  --text-muted: #6880a0;
+  --border-subtle: rgba(24,88,160,0.18);
+  --border-gold: rgba(216,160,16,0.25);
+  --shadow-blue: 0 8px 40px rgba(24,88,160,0.2);
+  --radius: 12px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg-deep);color:var(--text-primary);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(4,5,7,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border-subtle)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
+.nav-logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--accent-primary),var(--accent-gold));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
+.nav-logo-zh{font-size:1rem;font-weight:700;color:var(--text-primary)}
+.nav-logo-en{font-size:0.68rem;color:var(--accent-gold);letter-spacing:0.06em;text-transform:uppercase}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.9rem;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent-gold)}
+.nav-cta{background:var(--accent-primary);color:#fff;padding:0.5rem 1.3rem;border-radius:6px;text-decoration:none;font-size:0.88rem;font-weight:600;transition:background 0.2s}
+.nav-cta:hover{background:var(--accent-hover)}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:64px;position:relative;overflow:hidden;background:linear-gradient(160deg,#030408 0%,#060a14 40%,#040608 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='9' width='100' height='2' fill='rgba(24,88,160,0.04)'/%3E%3C/svg%3E") repeat;opacity:1}
+.hero::after{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(24,88,160,0.1) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(216,160,16,0.12);border:1px solid var(--border-gold);border-radius:20px;padding:0.35rem 1rem;font-size:0.78rem;color:var(--accent-gold);letter-spacing:0.04em;margin-bottom:1.5rem}
+.hero-title{font-size:2.8rem;font-weight:800;line-height:1.15;margin-bottom:0.5rem}
+.hero-title-zh{font-size:2.3rem;color:var(--accent-gold);font-weight:700;display:block;margin-bottom:0.8rem}
+.hero-sub{font-size:1rem;color:var(--text-secondary);margin-bottom:2rem;line-height:1.8}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--accent-primary),var(--accent-hover));color:#fff;padding:0.85rem 2rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:transform 0.2s,box-shadow 0.2s;box-shadow:var(--shadow-blue)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(24,88,160,0.4)}
+.btn-secondary{background:transparent;color:var(--accent-gold);padding:0.85rem 2rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;border:1px solid var(--border-gold);transition:all 0.2s}
+.btn-secondary:hover{background:rgba(216,160,16,0.08)}
+.hero-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow-blue)}
+.hero-card-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border-subtle)}
+.hero-card-icon{width:52px;height:52px;background:linear-gradient(135deg,var(--accent-primary),var(--accent-gold));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
+.hero-card-title{font-size:1.05rem;font-weight:700;color:var(--text-primary);line-height:1.3}
+.hero-card-sub{font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.65rem 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.info-row:last-child{border-bottom:none}
+.info-icon{width:28px;height:28px;background:rgba(24,88,160,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;margin-top:2px}
+.info-label{font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em}
+.info-value{font-size:0.9rem;color:var(--text-primary);margin-top:0.1rem}
+
+.stats-strip{background:linear-gradient(90deg,var(--bg-card) 0%,var(--bg-section) 100%);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:2.5rem 2rem}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat-num{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--accent-primary),var(--accent-gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{font-size:0.78rem;color:var(--text-muted);margin-top:0.4rem;letter-spacing:0.04em}
+
+section{padding:5rem 2rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-size:0.75rem;color:var(--accent-gold);letter-spacing:0.12em;text-transform:uppercase;font-weight:600;margin-bottom:0.75rem}
+.section-title{font-size:2.2rem;font-weight:800;margin-bottom:1rem;line-height:1.3}
+.section-desc{font-size:1rem;color:var(--text-secondary);max-width:640px;line-height:1.8;margin-bottom:3rem}
+
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.menu-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:1.8rem;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;position:relative;overflow:hidden}
+.menu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent-primary),var(--accent-gold));opacity:0;transition:opacity 0.2s}
+.menu-card:hover{transform:translateY(-4px);border-color:rgba(24,88,160,0.4);box-shadow:var(--shadow-blue)}
+.menu-card:hover::before{opacity:1}
+.menu-card-icon{font-size:2rem;margin-bottom:1rem}
+.menu-card-title{font-size:1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem}
+.menu-card-desc{font-size:0.85rem;color:var(--text-secondary);line-height:1.7}
+.dish-tag{display:inline-block;background:rgba(24,88,160,0.12);border:1px solid var(--border-subtle);border-radius:4px;padding:0.2rem 0.6rem;font-size:0.75rem;color:var(--text-secondary);margin:0.2rem 0.15rem}
+
+.drinks-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.drink-card{background:var(--bg-card);border:1px solid var(--border-gold);border-radius:var(--radius);padding:1.5rem;text-align:center;transition:transform 0.2s}
+.drink-card:hover{transform:translateY(-3px)}
+.drink-emoji{font-size:2rem;margin-bottom:0.6rem}
+.drink-name{font-size:0.9rem;font-weight:700;color:var(--accent-gold);margin-bottom:0.3rem}
+.drink-desc{font-size:0.78rem;color:var(--text-secondary);line-height:1.6}
+
+.culture-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.culture-text h3{font-size:1.8rem;font-weight:800;margin-bottom:1rem;line-height:1.4}
+.culture-text p{color:var(--text-secondary);line-height:1.9;margin-bottom:1rem;font-size:0.95rem}
+.highlight-box{background:var(--bg-card);border-left:4px solid var(--accent-primary);border-radius:0 var(--radius) var(--radius) 0;padding:1.5rem;margin-top:1.5rem}
+.highlight-box p{color:var(--text-secondary);font-size:0.92rem;line-height:1.8;margin:0}
+.culture-items{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cult-item{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:1.5rem}
+.cult-icon{font-size:1.5rem;margin-bottom:0.75rem}
+.cult-title{font-size:0.9rem;font-weight:700;color:var(--text-primary);margin-bottom:0.4rem}
+.cult-desc{font-size:0.8rem;color:var(--text-muted);line-height:1.6}
+
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.why-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:1.8rem;text-align:center;transition:transform 0.2s,border-color 0.2s}
+.why-card:hover{transform:translateY(-4px);border-color:rgba(24,88,160,0.35)}
+.why-icon{font-size:2rem;margin-bottom:1rem}
+.why-title{font-size:0.95rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem}
+.why-desc{font-size:0.82rem;color:var(--text-secondary);line-height:1.7}
+
+.hours-section{background:var(--bg-section)}
+.hours-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.hours-table{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius);overflow:hidden}
+.hours-table-header{background:linear-gradient(135deg,var(--accent-primary),var(--accent-hover));padding:1rem 1.5rem;font-weight:700;font-size:0.9rem}
+.hours-row{display:flex;justify-content:space-between;padding:0.9rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.88rem}
+.hours-row:last-child{border-bottom:none}
+.hours-day{color:var(--text-secondary)}
+.hours-time{color:var(--accent-gold);font-weight:600}
+.info-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:2rem}
+.info-card h3{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border-subtle)}
+
+.cta-banner{background:linear-gradient(135deg,#030508 0%,#060914 50%,#040508 100%);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);text-align:center;padding:5rem 2rem}
+.cta-banner h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
+.cta-banner p{color:var(--text-secondary);font-size:1rem;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.8}
+
+footer{background:var(--bg-card);border-top:1px solid var(--border-subtle);padding:3rem 2rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+.footer-brand p{color:var(--text-muted);font-size:0.85rem;line-height:1.8;margin-top:0.75rem}
+.footer-col h4{font-size:0.85rem;font-weight:700;color:var(--text-primary);margin-bottom:1rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:0.5rem}
+.footer-col a{color:var(--text-muted);text-decoration:none;font-size:0.83rem;transition:color 0.2s}
+.footer-col a:hover{color:var(--accent-gold)}
+.footer-bottom{border-top:1px solid var(--border-subtle);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:0.78rem;color:var(--text-muted)}
+
+@media(max-width:900px){
+  .hero-inner,.culture-grid,.hours-wrap{grid-template-columns:1fr}
+  .menu-grid,.why-grid{grid-template-columns:1fr 1fr}
+  .drinks-grid{grid-template-columns:1fr 1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .hero-title{font-size:2rem}
+}
+@media(max-width:600px){
+  .menu-grid,.why-grid,.culture-items{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .hero-title{font-size:1.7rem}
+  .stats-inner,.drinks-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">☕</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-zh">香港茶水攤</span>
+        <span class="nav-logo-en">HK Cha Chaan Teng · 港式茶餐廳</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#menu">早餐 / 午市</a></li>
+      <li><a href="#drinks">飲品</a></li>
+      <li><a href="#culture">茶餐廳文化</a></li>
+      <li><a href="#why">為何選擇我們</a></li>
+      <li><a href="#hours">營業時間</a></li>
+    </ul>
+    <a href="#hours" class="nav-cta">立即光顧</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">☕ 正宗港式茶餐廳 · 情懷早餐</div>
+      <h1 class="hero-title">
+        <span class="hero-title-zh">香港茶水攤</span>
+        港式茶餐廳
+      </h1>
+      <p class="hero-sub">
+        重現最道地的<strong style="color:var(--accent-gold)">香港茶餐廳</strong>風味。
+        從一杯濃香<strong style="color:var(--accent-gold)">絲襪奶茶</strong>到熱烘烘的<strong style="color:var(--accent-gold)">菠蘿油</strong>，
+        每一口都是最純粹的香港記憶與情懷。
+      </p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-primary">瀏覽餐牌</a>
+        <a href="#culture" class="btn-secondary">茶餐廳文化</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <div class="hero-card-icon">🍳</div>
+        <div>
+          <div class="hero-card-title">香港茶水攤 · 港式茶餐廳</div>
+          <div class="hero-card-sub">Hong Kong Cha Chaan Teng</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">地區</div>
+          <div class="info-value">香港 Hong Kong</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">☕</div>
+        <div>
+          <div class="info-label">餐廳類型</div>
+          <div class="info-value">港式茶餐廳 · Cha Chaan Teng</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🍳</div>
+        <div>
+          <div class="info-label">招牌出品</div>
+          <div class="info-value">絲襪奶茶 · 菠蘿油 · 公仔麵 · 西多士</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🕐</div>
+        <div>
+          <div class="info-label">服務時段</div>
+          <div class="info-value">早市 · 午市 · 下午茶 · 晚市</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🏮</div>
+        <div>
+          <div class="info-label">特色</div>
+          <div class="info-value">快捷 · 親民 · 地道 · 情懷</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">全日</div>
+      <div class="stat-label">四個時段服務</div>
+    </div>
+    <div>
+      <div class="stat-num">100+</div>
+      <div class="stat-label">精選菜式飲品</div>
+    </div>
+    <div>
+      <div class="stat-num">HK</div>
+      <div class="stat-label">正宗港式風味</div>
+    </div>
+    <div>
+      <div class="stat-num">No.1</div>
+      <div class="stat-label">絲襪奶茶首選</div>
+    </div>
+  </div>
+</div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="section-inner">
+    <div class="section-label">Menu · 餐牌</div>
+    <h2 class="section-title">四個時段 · 全日供應</h2>
+    <p class="section-desc">由清晨早市到夜晚消夜，香港茶水攤全日供應最地道的港式茶餐廳料理，讓您隨時享用最道地的香港味道。</p>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-icon">🌅</div>
+        <div class="menu-card-title">早市套餐</div>
+        <div class="menu-card-desc">香港人最愛的早餐組合，由濃香奶茶、熱咖啡配搭各款早點，快捷方便，讓您精力充沛地開始每一天。</div>
+        <div style="margin-top:0.8rem">
+          <span class="dish-tag">菠蘿油</span>
+          <span class="dish-tag">奶油多士</span>
+          <span class="dish-tag">炒蛋三文治</span>
+          <span class="dish-tag">腸仔包</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-icon">🍳</div>
+        <div class="menu-card-title">午市炒粉麵飯</div>
+        <div class="menu-card-desc">以大火猛炒製成的各款炒粉麵飯，鑊氣十足，配料豐富，是午市時段最受香港人歡迎的快餐選擇。</div>
+        <div style="margin-top:0.8rem">
+          <span class="dish-tag">干炒牛河</span>
+          <span class="dish-tag">福建炒飯</span>
+          <span class="dish-tag">星洲炒米</span>
+          <span class="dish-tag">鮮茄牛肉意粉</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-icon">🍜</div>
+        <div class="menu-card-title">湯粉麵</div>
+        <div class="menu-card-desc">以豬骨或雞骨熬製的清甜湯底，配以各款粉麵，是港式茶餐廳中最經典的湯粉麵料理，清淡鮮美。</div>
+        <div style="margin-top:0.8rem">
+          <span class="dish-tag">雲吞麵</span>
+          <span class="dish-tag">車仔麵</span>
+          <span class="dish-tag">魚蛋米線</span>
+          <span class="dish-tag">牛腩麵</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-icon">☕</div>
+        <div class="menu-card-title">下午茶時段</div>
+        <div class="menu-card-desc">香港茶餐廳的標誌性文化——下午茶時段，享用即叫即做的各款小食，配以熱飲，是最輕鬆的港式午後時光。</div>
+        <div style="margin-top:0.8rem">
+          <span class="dish-tag">西多士</span>
+          <span class="dish-tag">煎蛋治</span>
+          <span class="dish-tag">沙爹牛肉串</span>
+          <span class="dish-tag">咖哩魚蛋</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-icon">🍽️</div>
+        <div class="menu-card-title">碟頭飯</div>
+        <div class="menu-card-desc">港式茶餐廳最具代表性的料理之一，以豐富的配料鋪在白飯上，淋上濃郁醬汁，快捷美味，份量十足。</div>
+        <div style="margin-top:0.8rem">
+          <span class="dish-tag">豬扒飯</span>
+          <span class="dish-tag">雞腿飯</span>
+          <span class="dish-tag">叉燒飯</span>
+          <span class="dish-tag">咖哩牛腩飯</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-icon">🌙</div>
+        <div class="menu-card-title">消夜小食</div>
+        <div class="menu-card-desc">夜深肚餓時的最佳拍檔。各款香港地道街頭小食，配以冷飲或熱飲，是香港獨特夜生活飲食文化的重要一環。</div>
+        <div style="margin-top:0.8rem">
+          <span class="dish-tag">公仔麵</span>
+          <span class="dish-tag">即食麵</span>
+          <span class="dish-tag">魚蛋粉</span>
+          <span class="dish-tag">煎釀三寶</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DRINKS -->
+<section id="drinks" style="background:var(--bg-section)">
+  <div class="section-inner">
+    <div class="section-label">Drinks · 飲品</div>
+    <h2 class="section-title">港式經典飲品</h2>
+    <p class="section-desc">一杯正宗的港式飲品，是茶餐廳文化中最不可或缺的靈魂。從濃香絲滑的奶茶到清爽冰涼的凍飲，每一杯都是最純粹的香港味道。</p>
+    <div class="drinks-grid">
+      <div class="drink-card">
+        <div class="drink-emoji">🧋</div>
+        <div class="drink-name">絲襪奶茶</div>
+        <div class="drink-desc">以錫蘭紅茶配以淡奶，經細密茶袋反覆沖製，茶香濃郁絲滑，是香港茶餐廳最具代表性的飲品</div>
+      </div>
+      <div class="drink-card">
+        <div class="drink-emoji">☕</div>
+        <div class="drink-name">鴛鴦</div>
+        <div class="drink-desc">咖啡與奶茶的完美結合，香濃咖啡的苦澀與奶茶的絲滑完美融合，是香港獨有的創意飲品</div>
+      </div>
+      <div class="drink-card">
+        <div class="drink-emoji">🍋</div>
+        <div class="drink-name">凍檸茶</div>
+        <div class="drink-desc">以新鮮檸檬片配以清爽港式紅茶，加入大量冰塊，清新怡人，是香港炎熱夏日的最佳解暑飲品</div>
+      </div>
+      <div class="drink-card">
+        <div class="drink-emoji">🥤</div>
+        <div class="drink-name">熱阿華田</div>
+        <div class="drink-desc">經典麥芽飲品，熱飲時香氣四溢，甜而不膩，是陪伴香港幾代人成長的最熟悉童年味道之一</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CULTURE -->
+<section id="culture">
+  <div class="section-inner">
+    <div class="culture-grid">
+      <div class="culture-text">
+        <div class="section-label">Culture · 茶餐廳文化</div>
+        <h3>香港茶餐廳<br>一個時代的記憶</h3>
+        <p>
+          茶餐廳（Cha Chaan Teng）是香港最獨特的飲食文化符號，誕生於1950年代，融合了東西方飲食文化，創造出獨一無二的「港式」飲食體驗，已被聯合國教科文組織列為非物質文化遺產。
+        </p>
+        <p>
+          茶餐廳是香港社會的縮影——快節奏、多元化、充滿活力。一杯熱騰騰的<strong style="color:var(--accent-gold)">絲襪奶茶</strong>、一份新鮮出爐的<strong style="color:var(--accent-gold)">菠蘿油</strong>，就是無數香港人每天清晨最溫暖的開始。
+        </p>
+        <p>
+          香港茶水攤以最真實的態度，守護這份珍貴的港式飲食文化，讓每一位食客都能感受到最道地的香港情懷。
+        </p>
+        <div class="highlight-box">
+          <p>「茶餐廳是香港的靈魂所在。在這裡，你可以見到香港最真實的面貌——忙碌、溫暖、充滿人情味。」</p>
+        </div>
+      </div>
+      <div class="culture-items">
+        <div class="cult-item">
+          <div class="cult-icon">🕐</div>
+          <div class="cult-title">快捷服務</div>
+          <div class="cult-desc">港式茶餐廳以快捷聞名，從落單到上桌，一切講求效率，符合香港人快節奏的生活方式</div>
+        </div>
+        <div class="cult-item">
+          <div class="cult-icon">💰</div>
+          <div class="cult-title">親民價格</div>
+          <div class="cult-desc">以最實惠的價格提供豐盛美味的港式料理，讓每一位市民都能輕鬆享用地道港味</div>
+        </div>
+        <div class="cult-item">
+          <div class="cult-icon">🌏</div>
+          <div class="cult-title">中西合璧</div>
+          <div class="cult-desc">融合廣東飲食與西方食品文化，創造出「港式西餐」這一獨特的香港飲食文化現象</div>
+        </div>
+        <div class="cult-item">
+          <div class="cult-icon">🏮</div>
+          <div class="cult-title">鄰里情懷</div>
+          <div class="cult-desc">茶餐廳是街坊鄰里相聚、交流的重要場所，承載著香港社區生活的溫暖與人情味</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" style="background:var(--bg-section)">
+  <div class="section-inner">
+    <div class="section-label">Why Us · 為何選擇我們</div>
+    <h2 class="section-title">六大理由 · 地道港味首選</h2>
+    <p class="section-desc">從一杯正宗絲襪奶茶到香脆金黃的菠蘿油，香港茶水攤以最用心的態度，呈現最道地的港式茶餐廳體驗。</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🧋</div>
+        <div class="why-title">正宗絲襪奶茶</div>
+        <div class="why-desc">以傳統方法沖製，選用優質錫蘭紅茶配以淡奶，茶香濃郁，口感絲滑，是最正宗的港式奶茶</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🍞</div>
+        <div class="why-title">即製港式麵包</div>
+        <div class="why-desc">菠蘿包、奶油多士每日新鮮出爐，外脆內軟，趁熱享用，是最令人難以抗拒的港式早點</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔥</div>
+        <div class="why-title">鑊氣炒粉麵</div>
+        <div class="why-desc">以猛火大鑊翻炒，鑊氣十足，每一份炒粉麵都保留著最地道的香港街頭美食風味</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🕐</div>
+        <div class="why-title">全日四個時段</div>
+        <div class="why-desc">早市、午市、下午茶、晚市四個時段全日供應，隨時滿足您對地道港式料理的渴望</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💛</div>
+        <div class="why-title">香港情懷</div>
+        <div class="why-desc">以最真實的港式茶餐廳環境與氛圍，重現香港70至90年代街頭飲食文化的獨特情懷</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <div class="why-title">親民實惠</div>
+        <div class="why-desc">秉承茶餐廳親民傳統，以最合理的價格提供豐盛美味的港式料理，讓人人都能享用地道港味</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section id="hours" class="hours-section">
+  <div class="section-inner">
+    <div class="section-label">Hours · 營業時間</div>
+    <h2 class="section-title">全日供應 · 歡迎光臨</h2>
+    <p class="section-desc">香港茶水攤全日四個時段供應最道地的港式茶餐廳料理與飲品，隨時恭候您的光臨。</p>
+    <div class="hours-wrap">
+      <div>
+        <div class="hours-table" style="margin-bottom:1.5rem">
+          <div class="hours-table-header">🕐 每日營業時間</div>
+          <div class="hours-row">
+            <span class="hours-day">早市</span>
+            <span class="hours-time">07:00 – 11:30</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">午市</span>
+            <span class="hours-time">11:30 – 15:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">下午茶</span>
+            <span class="hours-time">15:00 – 17:30</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">晚市</span>
+            <span class="hours-time">17:30 – 23:00</span>
+          </div>
+        </div>
+        <div class="hours-table">
+          <div class="hours-table-header">☕ 飲品供應時間</div>
+          <div class="hours-row">
+            <span class="hours-day">熱飲（奶茶 / 咖啡）</span>
+            <span class="hours-time">全日供應</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">凍飲（凍檸茶等）</span>
+            <span class="hours-time">全日供應</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">特飲（鴛鴦等）</span>
+            <span class="hours-time">全日供應</span>
+          </div>
+        </div>
+      </div>
+      <div class="info-card">
+        <h3>📍 到訪資訊</h3>
+        <div style="margin-bottom:1.2rem">
+          <div style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem">地區</div>
+          <div style="font-size:0.9rem;color:var(--text-primary)">香港 Hong Kong</div>
+        </div>
+        <div style="margin-bottom:1.2rem">
+          <div style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem">餐廳特色</div>
+          <div style="font-size:0.9rem;color:var(--text-primary)">正宗港式茶餐廳體驗</div>
+        </div>
+        <div style="background:rgba(24,88,160,0.08);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:1.2rem;margin-top:1.5rem">
+          <div style="font-size:0.85rem;font-weight:700;color:var(--accent-gold);margin-bottom:0.75rem">🌟 特色服務</div>
+          <ul style="list-style:none;font-size:0.84rem;color:var(--text-secondary);line-height:2">
+            <li>✓ 全日四個時段餐單</li>
+            <li>✓ 即沖正宗絲襪奶茶</li>
+            <li>✓ 即製港式麵包早點</li>
+            <li>✓ 快捷外賣自取服務</li>
+            <li>✓ 堂食輕鬆用餐環境</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2>感受正宗香港茶餐廳<br><span style="color:var(--accent-gold)">歡迎光臨</span></h2>
+  <p>一杯絲襪奶茶、一份菠蘿油，就是最純粹的香港情懷。香港茶水攤，讓您每天都能享受地道港式早餐的美好時光。</p>
+  <a href="#menu" class="btn-primary">🍳 立即查閱餐牌</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem">
+        <div style="width:38px;height:38px;background:linear-gradient(135deg,var(--accent-primary),var(--accent-gold));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem">☕</div>
+        <div>
+          <div style="font-weight:700;font-size:1rem">香港茶水攤</div>
+          <div style="font-size:0.72rem;color:var(--accent-gold)">港式茶餐廳 · HK Cha Chaan Teng</div>
+        </div>
+      </div>
+      <p>香港最地道的港式茶餐廳體驗。以正宗配方、新鮮食材和最用心的服務，守護香港飲食文化中最珍貴的情懷與記憶。</p>
+    </div>
+    <div class="footer-col">
+      <h4>餐牌分類</h4>
+      <ul>
+        <li><a href="#menu">早市套餐</a></li>
+        <li><a href="#menu">午市炒粉麵飯</a></li>
+        <li><a href="#menu">下午茶小食</a></li>
+        <li><a href="#drinks">港式飲品</a></li>
+        <li><a href="#menu">消夜小食</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>快速連結</h4>
+      <ul>
+        <li><a href="#culture">茶餐廳文化</a></li>
+        <li><a href="#why">為何選擇我們</a></li>
+        <li><a href="#hours">營業時間</a></li>
+        <li><a href="#home">回到頂部</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 香港茶水攤 · 港式茶餐廳. 版權所有。</p>
+    <p>香港 Hong Kong · 正宗港式料理</p>
+  </div>
+</footer>
+
+</body>
+</html>
