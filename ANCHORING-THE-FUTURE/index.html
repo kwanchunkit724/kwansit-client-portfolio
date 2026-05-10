@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anchoring The Future 國際事務有限公司 | 國際法律及顧問服務</title>
+  <meta name="description" content="Anchoring The Future 國際事務有限公司 — 香港專業國際事務法律顧問，提供跨境法律諮詢、國際商業顧問及合規服務。" />
+  <style>
+    :root {
+      --bg:      #0d1218;
+      --surface: #131a22;
+      --card:    #192230;
+      --accent:  #1878d8;
+      --accent2: #38c0f0;
+      --accent3: #f0c840;
+      --text:    #e0ecf8;
+      --muted:   #6888a8;
+      --border:  rgba(24,120,216,0.18);
+      --radius:  12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Helvetica Neue', Arial, 'PingFang HK', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,18,24,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 64px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), #1050a0);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 800; color: #fff; letter-spacing: -0.5px;
+      text-align: center; line-height: 1.2;
+    }
+    .nav-name { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+    .nav-name span { color: var(--accent2); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent2); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--accent), #1050a0);
+      color: #fff; padding: 8px 22px; border-radius: 24px;
+      font-weight: 700; font-size: 0.85rem; text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(24,120,216,0.4); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 100px 5% 60px;
+      background:
+        radial-gradient(ellipse at 70% 25%, rgba(24,120,216,0.14) 0%, transparent 55%),
+        radial-gradient(ellipse at 8% 75%, rgba(56,192,240,0.08) 0%, transparent 50%),
+        var(--bg);
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(24,120,216,0.05) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 360px; gap: 60px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(24,120,216,0.1); border: 1px solid rgba(24,120,216,0.3);
+      color: var(--accent2); padding: 6px 16px; border-radius: 24px;
+      font-size: 0.8rem; font-weight: 600; margin-bottom: 24px; letter-spacing: 0.04em;
+    }
+    h1 { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 900; line-height: 1.2; margin-bottom: 12px; }
+    h1 .en { font-size: 0.52em; color: var(--accent2); display: block; margin-bottom: 8px; letter-spacing: 0.06em; }
+    h1 .cn { background: linear-gradient(135deg, var(--text), rgba(224,236,248,0.75)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-tagline { font-size: 1rem; color: var(--muted); margin: 16px 0 32px; max-width: 500px; line-height: 1.85; }
+    .hero-tagline strong { color: var(--accent3); -webkit-text-fill-color: var(--accent3); }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #1050a0);
+      color: #fff; padding: 14px 32px; border-radius: 28px;
+      font-weight: 800; font-size: 0.92rem; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(24,120,216,0.4); }
+    .btn-secondary {
+      border: 2px solid rgba(56,192,240,0.35); color: var(--accent2);
+      padding: 12px 26px; border-radius: 28px;
+      font-weight: 700; font-size: 0.92rem; text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-secondary:hover { background: rgba(56,192,240,0.08); }
+
+    /* HERO CARD */
+    .hero-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      position: relative;
+    }
+    .hero-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+      border-radius: 16px 16px 0 0;
+    }
+    .hc-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+    .hc-icon { font-size: 1.05rem; flex-shrink: 0; margin-top: 2px; }
+    .hc-label { color: var(--muted); font-size: 0.74rem; margin-bottom: 2px; letter-spacing: 0.04em; }
+    .hc-val { color: var(--text); font-weight: 500; font-size: 0.88rem; }
+    .hc-val a { color: var(--accent2); text-decoration: none; }
+    .hc-tag { display: inline-block; background: rgba(24,120,216,0.15); color: var(--accent2); border-radius: 5px; padding: 2px 10px; font-size: 0.74rem; font-weight: 600; }
+    .hc-divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+
+    /* STATS */
+    #stats {
+      background: var(--surface);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 44px 5%;
+    }
+    .stats-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 2.2rem; font-weight: 900; background: linear-gradient(135deg, var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-label { color: var(--muted); font-size: 0.84rem; margin-top: 5px; }
+
+    /* SECTIONS */
+    section { padding: 88px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { color: var(--accent2); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 800; margin-bottom: 16px; }
+    .section-desc { color: var(--muted); font-size: 0.96rem; max-width: 620px; line-height: 1.85; }
+
+    /* SERVICES */
+    #services { background: var(--bg); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 46px; }
+    .service-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 30px 24px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0); transform-origin: left; transition: transform .3s;
+    }
+    .service-card:hover { transform: translateY(-4px); border-color: rgba(24,120,216,0.4); box-shadow: 0 12px 40px rgba(24,120,216,0.1); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .sc-icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .sc-title { font-size: 1rem; font-weight: 700; margin-bottom: 10px; color: var(--accent2); }
+    .sc-desc { color: var(--muted); font-size: 0.86rem; line-height: 1.75; }
+
+    /* ABOUT */
+    #about { background: var(--surface); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 48px; }
+    .about-text p { color: var(--muted); font-size: 0.94rem; line-height: 1.9; margin-bottom: 18px; }
+    .about-text p strong { color: var(--accent2); }
+    .about-pillars { display: flex; flex-direction: column; gap: 16px; }
+    .pillar-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px 22px;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .pillar-title { font-weight: 700; margin-bottom: 4px; font-size: 0.92rem; }
+    .pillar-desc { color: var(--muted); font-size: 0.84rem; line-height: 1.6; }
+
+    /* CONTACT */
+    #contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 48px; }
+    .contact-info { display: flex; flex-direction: column; gap: 18px; }
+    .ci-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 20px;
+    }
+    .ci-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .ci-label { color: var(--muted); font-size: 0.74rem; margin-bottom: 2px; letter-spacing: 0.04em; }
+    .ci-val { font-weight: 600; font-size: 0.9rem; }
+    .ci-val a { color: var(--accent2); text-decoration: none; }
+    .ci-val a:hover { text-decoration: underline; }
+    .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 34px; }
+    .form-row { margin-bottom: 18px; }
+    .form-row label { display: block; color: var(--muted); font-size: 0.78rem; font-weight: 600; margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); border-radius: 8px; padding: 11px 14px; font-size: 0.88rem;
+      outline: none; transition: border-color .2s; font-family: inherit;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--accent); }
+    .form-row textarea { min-height: 100px; resize: vertical; }
+    .form-submit {
+      width: 100%; padding: 13px; border-radius: 10px; border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), #1050a0);
+      color: #fff; font-weight: 800; font-size: 0.95rem; font-family: inherit;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(24,120,216,0.35); }
+
+    /* FOOTER */
+    footer {
+      background: #090d12; border-top: 1px solid var(--border);
+      padding: 48px 5% 28px; text-align: center;
+    }
+    .footer-brand { font-size: 1.15rem; font-weight: 800; margin-bottom: 6px; }
+    .footer-brand span { color: var(--accent2); }
+    .footer-sub { color: var(--muted); font-size: 0.83rem; margin-bottom: 24px; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 22px; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.83rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--accent2); }
+    .footer-copy { color: #182030; font-size: 0.75rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 4%; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#hero">
+    <div class="nav-logo">ATF</div>
+    <span class="nav-name"><span>Anchoring The Future</span> 國際事務</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">服務</a></li>
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#contact">聯絡</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">立即諮詢</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🌐 香港專業國際事務法律顧問</div>
+      <h1>
+        <span class="en">Anchoring The Future</span>
+        <span class="cn">國際事務有限公司<br/>跨境法律 · 國際顧問</span>
+      </h1>
+      <p class="hero-tagline">
+        Anchoring The Future 國際事務有限公司是香港的<strong>跨境法律及國際顧問機構</strong>，
+        為企業及個人提供國際商業法律諮詢、合規服務及跨境事務解決方案，
+        協助客戶在複雜的國際環境中穩步前行。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#contact">🌐 立即預約諮詢</a>
+        <a class="btn-secondary" href="#services">了解服務項目</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-row">
+        <span class="hc-icon">🏢</span>
+        <div>
+          <div class="hc-label">公司名稱</div>
+          <div class="hc-val">Anchoring The Future 國際事務有限公司</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">📱</span>
+        <div>
+          <div class="hc-label">聯絡電話</div>
+          <div class="hc-val"><a href="tel:+85265110101">+852 6511 0101</a></div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">📍</span>
+        <div>
+          <div class="hc-label">服務地區</div>
+          <div class="hc-val">Hong Kong · 國際業務</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">⚖️</span>
+        <div>
+          <div class="hc-label">專業領域</div>
+          <div class="hc-val"><span class="hc-tag">法律顧問 · 國際事務</span></div>
+        </div>
+      </div>
+      <div class="hc-divider"></div>
+      <div class="hc-row">
+        <span class="hc-icon">🌐</span>
+        <div>
+          <div class="hc-label">業務範圍</div>
+          <div class="hc-val">跨境法律 · 商業合規 · 國際諮詢</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num">國際</div>
+      <div class="stat-label">跨境法律事務專家</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">合規</div>
+      <div class="stat-label">專業商業合規諮詢</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">全面</div>
+      <div class="stat-label">一站式法律顧問服務</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">專業</div>
+      <div class="stat-label">豐富跨境事務經驗</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">服務項目</div>
+    <h2 class="section-title">全面國際法律及顧問服務</h2>
+    <p class="section-desc">我們提供涵蓋國際商業、跨境法律及合規諮詢的完整服務，協助客戶在全球市場中穩健營運。</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="sc-icon">🌐</div>
+        <div class="sc-title">國際商業法律</div>
+        <div class="sc-desc">為跨國業務提供全面法律支援，包括國際合約草擬、跨境交易法律顧問及國際商業糾紛處理。</div>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">📋</div>
+        <div class="sc-title">合規諮詢服務</div>
+        <div class="sc-desc">協助企業符合香港及國際監管要求，提供合規政策制定、盡職審查及監管申報的專業指引。</div>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">🤝</div>
+        <div class="sc-title">跨境事務顧問</div>
+        <div class="sc-desc">處理兩岸三地及國際業務的法律事宜，包括外商投資法律架構、跨境資產配置及企業架構規劃。</div>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">⚖️</div>
+        <div class="sc-title">國際仲裁及調解</div>
+        <div class="sc-desc">代理國際商業仲裁及調解程序，為跨境商業糾紛提供高效、保密的解決途徑。</div>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">🏢</div>
+        <div class="sc-title">企業架構規劃</div>
+        <div class="sc-desc">協助企業在香港及海外設立最優化的公司架構，結合稅務規劃、股權安排及法律保護的整體方案。</div>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">🔍</div>
+        <div class="sc-title">盡職調查服務</div>
+        <div class="sc-desc">為企業并購、投資及合作項目提供全面的法律及商業盡職調查，識別潛在風險及保障客戶利益。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">關於我們</div>
+    <h2 class="section-title">為您的未來奠定穩固基礎</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          <strong>Anchoring The Future 國際事務有限公司</strong>是一家立足香港的國際法律及顧問機構，
+          專注於為企業及個人提供跨境法律諮詢及國際事務解決方案。
+        </p>
+        <p>
+          公司名稱「Anchoring The Future」體現了我們的核心理念：以<strong>專業的法律服務</strong>
+          為客戶的未來發展奠定穩固的基礎，協助他們在瞬息萬變的國際環境中保持競爭優勢。
+        </p>
+        <p>
+          我們深明每個客戶的需求各有不同，因此提供<strong>個人化的法律顧問服務</strong>，
+          從初步諮詢到全程跟進，確保客戶在每個關鍵決策中均獲得最專業的法律支援。
+        </p>
+      </div>
+      <div class="about-pillars">
+        <div class="pillar-item">
+          <div class="pillar-icon">🎯</div>
+          <div>
+            <div class="pillar-title">精準定位</div>
+            <div class="pillar-desc">深入分析每個案件的法律及商業面向，提供精準且切實可行的法律策略建議。</div>
+          </div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-icon">🌏</div>
+          <div>
+            <div class="pillar-title">國際視野</div>
+            <div class="pillar-desc">具備豐富的跨境業務處理經驗，熟悉香港、大陸及國際法律體系，為客戶提供全球化的法律支援。</div>
+          </div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-icon">🔒</div>
+          <div>
+            <div class="pillar-title">嚴格保密</div>
+            <div class="pillar-desc">嚴守專業保密原則，確保客戶的商業機密及個人資料受到最高程度的保護。</div>
+          </div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-icon">⚡</div>
+          <div>
+            <div class="pillar-title">效率優先</div>
+            <div class="pillar-desc">以高效率的工作方式處理法律事務，在緊迫的時間框架內為客戶提供準確的法律意見。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <h2 class="section-title">開始您的國際法律諮詢</h2>
+    <p class="section-desc">歡迎致電或填寫表格預約諮詢，我們的顧問團隊將盡快與您聯絡，了解您的需求並提供專業建議。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="ci-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">電話 / WhatsApp</div>
+            <div class="ci-val"><a href="https://wa.me/85265110101">+852 6511 0101</a></div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">服務地區</div>
+            <div class="ci-val">Hong Kong · 國際業務</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">⚖️</div>
+          <div>
+            <div class="ci-label">專業服務</div>
+            <div class="ci-val">國際法律顧問 · 跨境事務 · 合規諮詢</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">🕐</div>
+          <div>
+            <div class="ci-label">辦公時間</div>
+            <div class="ci-val">星期一至五 9:00 – 18:00</div>
+          </div>
+        </div>
+        <a href="https://wa.me/85265110101" class="btn-primary" style="justify-content:center; margin-top:8px;">
+          💬 WhatsApp 立即諮詢
+        </a>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <label>姓名 / 公司名稱</label>
+          <input type="text" placeholder="您的姓名或公司名稱" />
+        </div>
+        <div class="form-row">
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="+852 xxxx xxxx" />
+        </div>
+        <div class="form-row">
+          <label>電郵 Email</label>
+          <input type="email" placeholder="your@email.com" />
+        </div>
+        <div class="form-row">
+          <label>諮詢類別</label>
+          <select>
+            <option value="">— 請選擇 —</option>
+            <option>國際商業法律</option>
+            <option>合規諮詢服務</option>
+            <option>跨境事務顧問</option>
+            <option>國際仲裁及調解</option>
+            <option>企業架構規劃</option>
+            <option>盡職調查服務</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>查詢詳情</label>
+          <textarea placeholder="請簡述您的法律需求或業務情況..."></textarea>
+        </div>
+        <button class="form-submit" type="button">🌐 提交諮詢申請</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><span>Anchoring The Future</span> 國際事務有限公司</div>
+  <div class="footer-sub">International Affairs Limited · 跨境法律及國際顧問 · Hong Kong</div>
+  <div class="footer-links">
+    <a href="#services">服務項目</a>
+    <a href="#about">關於我們</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <div class="footer-copy">© 2025 Anchoring The Future 國際事務有限公司. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
