@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gammon Construction Limited | Building Hong Kong for Over 100 Years</title>
+<meta name="description" content="Gammon Construction Limited — Hong Kong's premier contractor since 1919. A Balfour Beatty and Jardine Matheson joint venture delivering building, civil engineering, foundations, M&E and tunnelling across Hong Kong and Greater Bay Area.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red:        #c8102e;
+    --red-dark:   #9c0d23;
+    --navy:       #0e2340;
+    --navy-mid:   #1a3a5c;
+    --steel:      #4a6278;
+    --light:      #f4f6f8;
+    --border:     #d8dde2;
+    --white:      #ffffff;
+    --text:       #1a1a1a;
+    --text-mid:   #4a4a4a;
+    --shadow:     0 4px 20px rgba(0,0,0,0.10);
+    --amber:      #f5a623;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color: var(--text); background: var(--white); line-height: 1.65; }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    position: sticky; top: 0; z-index: 100;
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo-mark {
+    width: 44px; height: 44px; background: var(--red);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 900; color: var(--white);
+    letter-spacing: -1px; flex-shrink: 0;
+  }
+  .nav-logo-text strong { display: block; color: var(--white); font-size: 1rem; font-weight: 700; line-height: 1.2; }
+  .nav-logo-text span { font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.88rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--red); color: var(--white);
+    border: none; border-radius: 6px;
+    padding: 9px 20px; font-size: 0.88rem; font-weight: 600;
+    cursor: pointer; text-decoration: none;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--red-dark); }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 100px 5% 90px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0e2340 0%, #1a3a5c 60%, #0e2340 100%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute; right: 0; top: 0; bottom: 0;
+    width: 45%;
+    background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    opacity: 0.12;
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 340px; gap: 60px; align-items: center; position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(200,16,46,0.2); border: 1px solid rgba(200,16,46,0.4);
+    color: #ff6b7a; font-size: 0.8rem; font-weight: 600;
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 20px;
+    letter-spacing: 0.05em;
+  }
+  .hero h1 { font-size: 3.2rem; font-weight: 800; color: var(--white); line-height: 1.18; margin-bottom: 16px; }
+  .hero h1 em { color: var(--red); font-style: normal; display: block; }
+  .hero-sub { color: rgba(255,255,255,0.75); font-size: 1.05rem; margin-bottom: 36px; max-width: 540px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-red {
+    background: var(--red); color: var(--white);
+    padding: 14px 32px; border-radius: 7px; font-weight: 700; font-size: 0.98rem;
+    text-decoration: none; transition: background .2s, transform .15s;
+    display: inline-block;
+  }
+  .btn-red:hover { background: var(--red-dark); transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent; color: var(--white);
+    border: 2px solid rgba(255,255,255,0.4);
+    padding: 12px 28px; border-radius: 7px; font-weight: 600; font-size: 0.98rem;
+    text-decoration: none; transition: border-color .2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.8); }
+
+  .hero-card {
+    background: rgba(255,255,255,0.07); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px; padding: 30px 26px;
+  }
+  .hc-title { color: var(--red); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .hc-stat { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .hc-stat:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .hc-num { font-size: 2rem; font-weight: 800; color: var(--white); line-height: 1; }
+  .hc-label { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 3px; }
+
+  /* LEGACY STRIP */
+  .legacy-strip {
+    background: var(--red);
+    padding: 0 5%;
+    display: flex; align-items: stretch; overflow: hidden;
+  }
+  .ls-item {
+    flex: 1; padding: 20px 24px; text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+  .ls-item:last-child { border-right: none; }
+  .ls-num { font-size: 1.8rem; font-weight: 800; color: var(--white); line-height: 1; }
+  .ls-label { font-size: 0.77rem; color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 3px; }
+
+  /* SECTIONS */
+  section { padding: 86px 5%; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+  .section-title { font-size: 2.1rem; font-weight: 800; color: var(--text); margin-bottom: 16px; line-height: 1.28; }
+  .section-title em { color: var(--red); font-style: normal; }
+  .section-lead { color: var(--text-mid); font-size: 1rem; max-width: 640px; line-height: 1.75; }
+  .divider { width: 52px; height: 4px; background: var(--red); border-radius: 2px; margin: 18px 0 44px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .about-body p { color: var(--text-mid); margin-bottom: 16px; line-height: 1.78; font-size: 0.96rem; }
+  .about-jv {
+    background: var(--navy); color: var(--white);
+    border-radius: 14px; padding: 28px 26px; margin-top: 28px;
+  }
+  .jv-title { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+  .jv-partners { display: flex; gap: 0; }
+  .jv-partner {
+    flex: 1; padding: 14px 16px; text-align: center;
+    background: rgba(255,255,255,0.07);
+    border-radius: 8px;
+  }
+  .jv-partner:first-child { margin-right: 8px; }
+  .jv-partner .name { font-size: 1rem; font-weight: 700; color: var(--white); }
+  .jv-partner .role { font-size: 0.75rem; color: rgba(255,255,255,0.55); margin-top: 3px; }
+  .jv-share { text-align: center; padding: 12px 0 0; font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+  .about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .fact-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 18px;
+    border-top: 3px solid var(--red);
+  }
+  .fact-card .fc-icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .fact-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .fact-card p { font-size: 0.82rem; color: var(--text-mid); line-height: 1.55; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s;
+  }
+  .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 36px rgba(0,0,0,0.14); }
+  .sc-head {
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    padding: 28px 24px 22px; position: relative;
+  }
+  .sc-num { position: absolute; top: 16px; right: 20px; font-size: 2.5rem; font-weight: 800; color: rgba(255,255,255,0.06); line-height: 1; }
+  .sc-icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .sc-head h3 { font-size: 1.05rem; font-weight: 700; color: var(--white); }
+  .sc-head .cn { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 3px; }
+  .sc-body { padding: 20px 24px; }
+  .sc-body p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 14px; }
+  .sc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .sc-tag { background: #f0f3f7; color: var(--navy); font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
+
+  /* PROJECTS */
+  .projects { background: var(--light); }
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .proj-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden; box-shadow: var(--shadow);
+    transition: transform .2s;
+  }
+  .proj-card:hover { transform: translateY(-3px); }
+  .proj-top {
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    padding: 24px; position: relative; overflow: hidden;
+  }
+  .proj-top::after {
+    content: '';
+    position: absolute; bottom: -20px; right: -20px;
+    width: 80px; height: 80px;
+    background: var(--red); border-radius: 50%; opacity: 0.2;
+  }
+  .proj-category { font-size: 0.72rem; font-weight: 700; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; background: rgba(200,16,46,0.12); display: inline-block; padding: 3px 10px; border-radius: 10px; }
+  .proj-top h3 { font-size: 1rem; font-weight: 700; color: var(--white); line-height: 1.3; }
+  .proj-body { padding: 20px 24px; }
+  .proj-body p { font-size: 0.84rem; color: var(--text-mid); line-height: 1.6; }
+  .proj-meta { display: flex; gap: 16px; margin-top: 14px; flex-wrap: wrap; }
+  .proj-meta span { font-size: 0.77rem; color: var(--steel); font-weight: 600; }
+  .proj-meta span::before { margin-right: 4px; }
+
+  /* SUSTAINABILITY */
+  .sustain { background: var(--navy); }
+  .sustain .eyebrow { color: rgba(245,166,35,0.9); }
+  .sustain .section-title { color: var(--white); }
+  .sustain .divider { background: var(--amber); }
+  .sustain .section-lead { color: rgba(255,255,255,0.75); }
+  .sust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 44px; }
+  .sust-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 24px 20px; text-align: center;
+    transition: background .2s;
+  }
+  .sust-card:hover { background: rgba(255,255,255,0.10); }
+  .sust-icon { font-size: 2.2rem; margin-bottom: 12px; }
+  .sust-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .sust-card p { font-size: 0.8rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+
+  /* CERTIFICATIONS */
+  .certs { background: var(--white); }
+  .cert-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 44px; }
+  .cert-card {
+    background: var(--light); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px 20px; text-align: center;
+  }
+  .cert-icon { font-size: 2rem; margin-bottom: 10px; }
+  .cert-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+  .cert-card p { font-size: 0.78rem; color: var(--text-mid); }
+
+  /* CONTACT */
+  .contact { background: var(--light); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+  .contact-info h3 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 20px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .ci-row { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+  .ci-icon { width: 40px; height: 40px; background: rgba(14,35,64,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .ci-label { font-size: 0.72rem; color: var(--steel); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+  .ci-value { color: var(--text); font-size: 0.92rem; font-weight: 600; }
+  .ci-value a { color: var(--red); text-decoration: none; }
+  .ci-value a:hover { text-decoration: underline; }
+  .contact-form {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; padding: 30px;
+    box-shadow: var(--shadow);
+  }
+  .contact-form h3 { color: var(--navy); font-size: 1rem; font-weight: 700; margin-bottom: 22px; }
+  .form-row { margin-bottom: 16px; }
+  .form-row label { display: block; font-size: 0.8rem; color: var(--text-mid); margin-bottom: 6px; font-weight: 500; }
+  .form-row input, .form-row textarea, .form-row select {
+    width: 100%; background: var(--light);
+    border: 1px solid var(--border); border-radius: 7px;
+    color: var(--text); padding: 10px 14px; font-size: 0.9rem;
+    outline: none; transition: border-color .2s;
+    font-family: inherit;
+  }
+  .form-row input:focus, .form-row textarea:focus, .form-row select:focus { border-color: var(--red); background: var(--white); }
+  .form-row textarea { height: 110px; resize: vertical; }
+  .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-submit {
+    width: 100%; background: var(--red); color: var(--white);
+    border: none; border-radius: 8px; padding: 13px; font-size: 1rem; font-weight: 700;
+    cursor: pointer; transition: background .2s;
+    font-family: inherit;
+  }
+  .form-submit:hover { background: var(--red-dark); }
+
+  /* FOOTER */
+  footer { background: var(--navy); padding: 32px 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { display: flex; align-items: center; gap: 12px; }
+  .footer-logo-mark { width: 36px; height: 36px; background: var(--red); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 900; color: var(--white); }
+  .footer-logo-text { color: rgba(255,255,255,0.7); font-size: 0.88rem; }
+  .footer-copy { color: rgba(255,255,255,0.35); font-size: 0.78rem; text-align: center; }
+  .footer-contact { color: rgba(255,255,255,0.6); font-size: 0.82rem; text-align: right; }
+  .footer-contact a { color: #ff6b7a; text-decoration: none; }
+
+  @media (max-width: 960px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-card { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .proj-grid { grid-template-columns: 1fr; }
+    .sust-grid, .cert-grid { grid-template-columns: 1fr 1fr; }
+    .about-facts { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 2.2rem; }
+    .nav-links { display: none; }
+    .legacy-strip { flex-wrap: wrap; }
+    .ls-item { min-width: 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
+  }
+  @media (max-width: 600px) {
+    .services-grid, .sust-grid, .cert-grid, .about-facts { grid-template-columns: 1fr; }
+    .form-2col { grid-template-columns: 1fr; }
+    .ls-item { min-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-mark">G</div>
+    <div class="nav-logo-text">
+      <strong>Gammon Construction</strong>
+      <span>BUILDING HONG KONG SINCE 1919</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#sustainability">Sustainability</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🏗️ Over 100 Years Building Hong Kong</div>
+      <h1>Hong Kong's Premier<em>Construction Partner</em></h1>
+      <p class="hero-sub">Gammon Construction has been shaping Hong Kong's skyline and infrastructure since 1919. A Balfour Beatty and Jardine Matheson joint venture delivering world-class building, civil, and engineering solutions.</p>
+      <div class="hero-actions">
+        <a class="btn-red" href="#services">Our Services</a>
+        <a class="btn-ghost" href="#projects">Landmark Projects</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-title">Company at a Glance</div>
+      <div class="hc-stat">
+        <div class="hc-num">1919</div>
+        <div class="hc-label">Founded in Hong Kong</div>
+      </div>
+      <div class="hc-stat">
+        <div class="hc-num">100+</div>
+        <div class="hc-label">Years of excellence</div>
+      </div>
+      <div class="hc-stat">
+        <div class="hc-num">10,000+</div>
+        <div class="hc-label">Workforce</div>
+      </div>
+      <div class="hc-stat">
+        <div class="hc-num">Quarry Bay</div>
+        <div class="hc-label">Headquarters, Hong Kong</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEGACY STRIP -->
+<div class="legacy-strip">
+  <div class="ls-item">
+    <div class="ls-num">1919</div>
+    <div class="ls-label">Established in HK</div>
+  </div>
+  <div class="ls-item">
+    <div class="ls-num">100+</div>
+    <div class="ls-label">Years of building</div>
+  </div>
+  <div class="ls-item">
+    <div class="ls-num">6</div>
+    <div class="ls-label">Core service divisions</div>
+  </div>
+  <div class="ls-item">
+    <div class="ls-num">10,000+</div>
+    <div class="ls-label">Strong workforce</div>
+  </div>
+  <div class="ls-item">
+    <div class="ls-num">GBA</div>
+    <div class="ls-label">Greater Bay Area reach</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="eyebrow">About Us</div>
+        <h2 class="section-title">A Century of <em>Building Excellence</em></h2>
+        <div class="divider"></div>
+        <p>Gammon Construction Limited is one of Hong Kong's most established and respected contractors, with roots stretching back to 1919. From the earliest days of Hong Kong's development to today's mega-infrastructure projects, Gammon has played a central role in shaping the city's built environment.</p>
+        <p>As a joint venture between Balfour Beatty plc — one of the world's leading infrastructure groups — and Jardine Matheson, one of Asia's most influential conglomerates, Gammon combines international expertise with deep local knowledge to deliver exceptional outcomes for clients across the public and private sectors.</p>
+        <p>Our integrated capabilities span building construction, civil and structural engineering, foundations and geotechnics, mechanical and electrical services, tunnelling, and virtual design and construction — making us a true one-stop solution for Hong Kong's most complex and demanding projects.</p>
+        <div class="about-jv">
+          <div class="jv-title">🤝 Joint Venture Partners</div>
+          <div class="jv-partners">
+            <div class="jv-partner">
+              <div class="name">Balfour Beatty</div>
+              <div class="role">Global infrastructure group</div>
+            </div>
+            <div class="jv-partner">
+              <div class="name">Jardine Matheson</div>
+              <div class="role">Asian conglomerate</div>
+            </div>
+          </div>
+          <div class="jv-share">50 / 50 equal partnership</div>
+        </div>
+      </div>
+      <div class="about-facts">
+        <div class="fact-card">
+          <div class="fc-icon">🏙️</div>
+          <h4>Hong Kong Heritage</h4>
+          <p>Over a century of continuous operation in Hong Kong, helping build the city's most iconic structures and infrastructure.</p>
+        </div>
+        <div class="fact-card">
+          <div class="fc-icon">🌏</div>
+          <h4>GBA Presence</h4>
+          <p>Operations and project delivery across Hong Kong and into the wider Greater Bay Area, supporting regional development.</p>
+        </div>
+        <div class="fact-card">
+          <div class="fc-icon">🔧</div>
+          <h4>Integrated Capability</h4>
+          <p>Full spectrum from design-and-build to specialist substructure works, enabling seamless project delivery.</p>
+        </div>
+        <div class="fact-card">
+          <div class="fc-icon">👷</div>
+          <h4>Safety Leadership</h4>
+          <p>Industry-leading safety standards with zero-harm ambition, protecting our 10,000+ workforce on every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="eyebrow">Our Services</div>
+    <h2 class="section-title">Six Core <em>Divisions</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">Comprehensive construction and engineering services covering every phase of your project, from ground to sky.</p>
+
+    <div class="services-grid" style="margin-top:44px;">
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">01</div>
+          <div class="sc-icon">🏢</div>
+          <h3>Building Construction</h3>
+          <div class="cn">樓宇建造</div>
+        </div>
+        <div class="sc-body">
+          <p>From commercial towers and residential developments to hotels, hospitals and government buildings — Gammon's building division is Hong Kong's most experienced.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">Commercial</span>
+            <span class="sc-tag">Residential</span>
+            <span class="sc-tag">Healthcare</span>
+            <span class="sc-tag">Hospitality</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">02</div>
+          <div class="sc-icon">🌉</div>
+          <h3>Civil Engineering</h3>
+          <div class="cn">土木工程</div>
+        </div>
+        <div class="sc-body">
+          <p>Major infrastructure including roads, bridges, reclamation, drainage and water supply schemes, delivered with proven civil engineering expertise.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">Highways</span>
+            <span class="sc-tag">Bridges</span>
+            <span class="sc-tag">Reclamation</span>
+            <span class="sc-tag">Drainage</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">03</div>
+          <div class="sc-icon">⚙️</div>
+          <h3>Foundations & Geotechnics</h3>
+          <div class="cn">地基及岩土工程</div>
+        </div>
+        <div class="sc-body">
+          <p>Specialist deep foundation works including piling, caissons, earth-retaining systems and geotechnical engineering for Hong Kong's challenging terrain.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">Bored Piling</span>
+            <span class="sc-tag">Caissons</span>
+            <span class="sc-tag">ELS</span>
+            <span class="sc-tag">Geotechnics</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">04</div>
+          <div class="sc-icon">⚡</div>
+          <h3>Mechanical & Electrical</h3>
+          <div class="cn">機電工程</div>
+        </div>
+        <div class="sc-body">
+          <p>Full M&E services encompassing HVAC, electrical, plumbing, fire services and building management systems for complex commercial and infrastructure projects.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">HVAC</span>
+            <span class="sc-tag">Electrical</span>
+            <span class="sc-tag">Fire Services</span>
+            <span class="sc-tag">BMS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">05</div>
+          <div class="sc-icon">🚇</div>
+          <h3>Tunnelling</h3>
+          <div class="cn">隧道工程</div>
+        </div>
+        <div class="sc-body">
+          <p>Specialist tunnelling solutions for rail, road and utility tunnels using TBM and drill-and-blast methods, with extensive MTR and cross-harbour experience.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">TBM</span>
+            <span class="sc-tag">Rail Tunnels</span>
+            <span class="sc-tag">Road Tunnels</span>
+            <span class="sc-tag">Utility Tunnels</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">06</div>
+          <div class="sc-icon">💻</div>
+          <h3>Virtual Design & Construction</h3>
+          <div class="cn">虛擬設計建造</div>
+        </div>
+        <div class="sc-body">
+          <p>Advanced BIM, digital twins and VDC technologies driving efficiency, reducing risk and improving delivery accuracy on our most complex projects.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">BIM</span>
+            <span class="sc-tag">Digital Twin</span>
+            <span class="sc-tag">4D Planning</span>
+            <span class="sc-tag">Clash Detection</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-inner">
+    <div class="eyebrow">Landmark Projects</div>
+    <h2 class="section-title">Shaping <em>Hong Kong's Skyline</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">A legacy of landmark projects across Hong Kong's most iconic institutions, infrastructure and districts.</p>
+
+    <div class="proj-grid" style="margin-top:44px;">
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-category">🛫 Aviation</span>
+          <h3>Hong Kong International Airport</h3>
+        </div>
+        <div class="proj-body">
+          <p>Major construction packages at Chek Lap Kok, one of the world's busiest airports. Gammon delivered critical terminal and airside infrastructure works for HKIA over multiple phases of expansion.</p>
+          <div class="proj-meta">
+            <span>✈️ Chek Lap Kok, Lantau</span>
+            <span>🏗️ Civil & Building</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-category">🚇 Rail</span>
+          <h3>MTR Line Extensions</h3>
+        </div>
+        <div class="proj-body">
+          <p>Long-standing partner to the MTR Corporation, delivering tunnels, stations and civil works across multiple MTR line extensions including cross-harbour and overground routes.</p>
+          <div class="proj-meta">
+            <span>🚇 Multiple Lines</span>
+            <span>🔩 Tunnelling & Civil</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-category">🎨 Culture</span>
+          <h3>West Kowloon Cultural District</h3>
+        </div>
+        <div class="proj-body">
+          <p>Construction works at Hong Kong's ambitious West Kowloon Cultural District, one of the world's largest cultural development projects on reclaimed land in Kowloon.</p>
+          <div class="proj-meta">
+            <span>🏙️ West Kowloon</span>
+            <span>🏗️ Building Construction</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-category">🏥 Healthcare</span>
+          <h3>Public Hospital Developments</h3>
+        </div>
+        <div class="proj-body">
+          <p>Major public hospital projects for the Hospital Authority, combining complex M&E installations with stringent infection-control requirements and continuous operational constraints.</p>
+          <div class="proj-meta">
+            <span>🏥 Multiple Hospitals</span>
+            <span>⚡ Building & M&E</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-category">🏘️ Residential</span>
+          <h3>Chinachem Residential Development</h3>
+        </div>
+        <div class="proj-body">
+          <p>Awarded contract by Chinachem Group for a major residential development in Hong Kong, showcasing Gammon's enduring relationships with Hong Kong's leading property developers.</p>
+          <div class="proj-meta">
+            <span>🏘️ Hong Kong</span>
+            <span>🏗️ Building Construction</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-category">⚽ Sport</span>
+          <h3>Hong Kong Stadium Redevelopment</h3>
+        </div>
+        <div class="proj-body">
+          <p>Redevelopment works at Hong Kong Stadium in So Kon Po, delivering one of Hong Kong's landmark sporting venues with complex structural and civil engineering requirements.</p>
+          <div class="proj-meta">
+            <span>🏟️ So Kon Po</span>
+            <span>🔧 Civil & Structural</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SUSTAINABILITY -->
+<section class="sustain" id="sustainability">
+  <div class="section-inner">
+    <div class="eyebrow">Sustainability</div>
+    <h2 class="section-title">Building a <em>Greener Tomorrow</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">Gammon is committed to embedding sustainability across every aspect of our operations — from zero-waste sites to net-zero targets.</p>
+    <div class="sust-grid">
+      <div class="sust-card">
+        <div class="sust-icon">🌱</div>
+        <h4>Net Zero Target</h4>
+        <p>Committed to reducing carbon emissions across our operations and supply chain to achieve net-zero targets.</p>
+      </div>
+      <div class="sust-card">
+        <div class="sust-icon">♻️</div>
+        <h4>Waste Reduction</h4>
+        <p>Minimising construction waste through off-site manufacturing, modular construction and aggressive material recycling.</p>
+      </div>
+      <div class="sust-card">
+        <div class="sust-icon">🛡️</div>
+        <h4>Zero Harm</h4>
+        <p>Unwavering commitment to the safety of our workforce and the public, with industry-leading safety management systems.</p>
+      </div>
+      <div class="sust-card">
+        <div class="sust-icon">🤝</div>
+        <h4>Community Impact</h4>
+        <p>Investing in local communities through employment, training and social initiatives that benefit Hong Kong society.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs">
+  <div class="section-inner">
+    <div class="eyebrow">Accreditations</div>
+    <h2 class="section-title">Quality <em>You Can Trust</em></h2>
+    <div class="divider"></div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon">🏆</div>
+        <h4>ISO 9001</h4>
+        <p>Quality Management System — international standard for consistent quality delivery</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🌿</div>
+        <h4>ISO 14001</h4>
+        <p>Environmental Management System — systematic approach to environmental performance</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🛡️</div>
+        <h4>ISO 45001</h4>
+        <p>Occupational Health & Safety Management — protecting our people on every site</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🇭🇰</div>
+        <h4>DEVB Registered</h4>
+        <p>Registered with Development Bureau of HKSAR Government for public works contracts</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="eyebrow">Contact Us</div>
+    <h2 class="section-title">Let's Build <em>Together</em></h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <div class="ci-row">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Headquarters</div>
+            <div class="ci-value">Quarry Bay, Hong Kong</div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value"><a href="mailto:hongkong@gammonconstruction.com">hongkong@gammonconstruction.com</a></div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Website</div>
+            <div class="ci-value"><a href="https://www.gammonconstruction.com" target="_blank">www.gammonconstruction.com</a></div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">🏗️</div>
+          <div>
+            <div class="ci-label">Services</div>
+            <div class="ci-value">Building · Civil · Foundations · M&E · Tunnelling · VDC</div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">🤝</div>
+          <div>
+            <div class="ci-label">Ownership</div>
+            <div class="ci-value">Balfour Beatty & Jardine Matheson JV</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>📋 Project Enquiry</h3>
+        <div class="form-2col">
+          <div class="form-row">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-row">
+            <label>Company *</label>
+            <input type="text" placeholder="Organisation">
+          </div>
+        </div>
+        <div class="form-2col">
+          <div class="form-row">
+            <label>Email Address *</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-row">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+852 xxxx xxxx">
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Service Required</label>
+          <select>
+            <option value="">Select a service</option>
+            <option>Building Construction</option>
+            <option>Civil Engineering</option>
+            <option>Foundations & Geotechnics</option>
+            <option>Mechanical & Electrical</option>
+            <option>Tunnelling</option>
+            <option>Virtual Design & Construction</option>
+            <option>Other / General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Project Details *</label>
+          <textarea placeholder="Please describe your project scope, location, programme, and any specific requirements."></textarea>
+        </div>
+        <button class="form-submit" type="button">Submit Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark">G</div>
+    <div class="footer-logo-text">Gammon Construction Limited<br><span style="font-size:0.75rem;opacity:.5;">Building Hong Kong Since 1919</span></div>
+  </div>
+  <div class="footer-copy">
+    © 2024 Gammon Construction Limited · A Balfour Beatty & Jardine Matheson Joint Venture · Quarry Bay, Hong Kong
+  </div>
+  <div class="footer-contact">
+    ✉ <a href="mailto:hongkong@gammonconstruction.com">hongkong@gammonconstruction.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
