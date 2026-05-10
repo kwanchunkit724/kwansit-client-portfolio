@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港的士有限公司 | 的士牌照買賣代理 · 的士管理服務</title>
+<style>
+  :root {
+    --primary: #0a1422;
+    --accent: #cc1920;
+    --accent2: #e83030;
+    --gold: #d4a020;
+    --light: #f5f2f0;
+    --white: #ffffff;
+    --text: #1a1614;
+    --muted: #5e5650;
+    --border: #e0d8d0;
+    --card-bg: #faf7f4;
+    --hero-overlay: rgba(10,20,34,0.76);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI','Microsoft JhengHei','Noto Sans TC',sans-serif; color:var(--text); background:#fff; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+
+  nav {
+    background:var(--primary);
+    padding:0 2rem;
+    display:flex; align-items:center; justify-content:space-between;
+    height:66px; position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 14px rgba(0,0,0,0.4);
+    border-bottom:2px solid var(--accent);
+  }
+  .nav-brand { display:flex; align-items:center; gap:12px; }
+  .nav-logo {
+    width:46px; height:46px; background:var(--accent);
+    border-radius:6px; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:1.2rem; color:#fff;
+  }
+  .nav-brand-text .line1 { font-size:1.05rem; font-weight:700; color:#fff; }
+  .nav-brand-text .line2 { font-size:0.68rem; color:rgba(255,255,255,0.55); letter-spacing:0.5px; }
+  .nav-links { display:flex; gap:1.6rem; }
+  .nav-links a { color:rgba(255,255,255,0.78); font-size:0.88rem; font-weight:500; transition:color 0.2s; }
+  .nav-links a:hover { color:#fff; text-decoration:none; }
+  .nav-cta {
+    background:var(--accent); color:#fff !important; padding:8px 20px;
+    border-radius:5px; font-size:0.86rem !important; font-weight:700 !important; transition:background 0.2s !important;
+  }
+  .nav-cta:hover { background:var(--accent2) !important; }
+
+  .hero {
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+      url('https://images.unsplash.com/photo-1597914379882-0de58ae75c45?w=1600&q=80') center/cover no-repeat;
+    min-height:520px; display:flex; align-items:center; padding:4rem 2rem;
+  }
+  .hero-inner { max-width:1100px; margin:0 auto; width:100%; display:flex; align-items:center; gap:3rem; }
+  .hero-text { flex:1; }
+  .hero-badge {
+    display:inline-block; background:rgba(204,25,32,0.2); border:1px solid rgba(204,25,32,0.5);
+    color:#ff9090; font-size:0.76rem; font-weight:600; padding:5px 14px;
+    border-radius:20px; letter-spacing:1px; margin-bottom:1.2rem;
+  }
+  .hero-text h1 { font-size:2.6rem; font-weight:800; color:#fff; line-height:1.15; margin-bottom:0.7rem; }
+  .hero-text h1 span { color:#ff9090; }
+  .hero-text .subtitle { font-size:1.05rem; color:rgba(255,255,255,0.78); margin-bottom:2rem; line-height:1.7; max-width:520px; }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--accent); color:#fff; padding:13px 28px; border-radius:5px;
+    font-weight:700; font-size:0.95rem; border:2px solid var(--accent); transition:all 0.2s; display:inline-block;
+  }
+  .btn-primary:hover { background:var(--accent2); border-color:var(--accent2); text-decoration:none; }
+  .btn-outline {
+    background:transparent; color:#fff; padding:13px 28px; border-radius:5px;
+    font-weight:600; font-size:0.95rem; border:2px solid rgba(255,255,255,0.45); transition:all 0.2s; display:inline-block;
+  }
+  .btn-outline:hover { border-color:#fff; background:rgba(255,255,255,0.1); text-decoration:none; }
+  .hero-card {
+    background:rgba(255,255,255,0.08); backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.16); border-radius:14px;
+    padding:2rem 1.6rem; min-width:280px; color:#fff;
+  }
+  .hero-card h3 { font-size:0.8rem; color:#ff9090; letter-spacing:1px; margin-bottom:1.2rem; }
+  .info-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:0.9rem; font-size:0.88rem; color:rgba(255,255,255,0.86); line-height:1.55; }
+  .info-icon { color:#ff9090; flex-shrink:0; margin-top:1px; }
+
+  .stats-strip { background:var(--accent); padding:1.4rem 2rem; }
+  .stats-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-around; flex-wrap:wrap; }
+  .stat-item { text-align:center; padding:0.4rem 1.2rem; }
+  .stat-num { font-size:2rem; font-weight:800; color:#fff; }
+  .stat-label { font-size:0.72rem; color:rgba(255,255,255,0.8); letter-spacing:0.5px; margin-top:2px; }
+
+  section { padding:4rem 2rem; }
+  .section-inner { max-width:1100px; margin:0 auto; }
+  .section-tag { font-size:0.72rem; font-weight:700; letter-spacing:2px; color:var(--accent); margin-bottom:0.5rem; }
+  .section-title { font-size:2rem; font-weight:800; color:var(--primary); margin-bottom:0.8rem; }
+  .section-sub { font-size:1rem; color:var(--muted); line-height:1.8; max-width:640px; }
+
+  .about { background:#fff; }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:start; margin-top:2.5rem; }
+  .about-text p { color:var(--muted); line-height:1.9; margin-bottom:1rem; font-size:0.97rem; }
+  .highlight-box {
+    background:var(--primary); color:#fff; border-radius:12px; padding:2rem;
+    border-left:4px solid var(--accent);
+  }
+  .highlight-box h4 { font-size:0.82rem; color:#ff9090; letter-spacing:1px; margin-bottom:1.2rem; }
+  .highlight-box ul { list-style:none; }
+  .highlight-box ul li { padding:0.55rem 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:0.9rem; color:rgba(255,255,255,0.86); display:flex; align-items:center; gap:10px; }
+  .highlight-box ul li:last-child { border-bottom:none; }
+  .highlight-box ul li::before { content:'▸'; color:#ff9090; flex-shrink:0; }
+
+  .services { background:var(--light); }
+  .services-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.8rem; margin-top:2.5rem; }
+  .service-card {
+    background:#fff; border:1px solid var(--border); border-radius:12px;
+    padding:2rem; border-top:3px solid var(--accent); transition:all 0.2s;
+  }
+  .service-card:hover { box-shadow:0 6px 24px rgba(204,25,32,0.12); transform:translateY(-3px); }
+  .service-icon { font-size:2.2rem; margin-bottom:1rem; }
+  .service-card h4 { font-size:1.1rem; font-weight:700; color:var(--primary); margin-bottom:0.7rem; }
+  .service-card p { font-size:0.9rem; color:var(--muted); line-height:1.8; }
+
+  .features { background:#fff; }
+  .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.5rem; }
+  .feature-card { background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:1.5rem; text-align:center; }
+  .feature-icon { font-size:2rem; margin-bottom:0.7rem; }
+  .feature-card h5 { font-size:0.95rem; font-weight:700; color:var(--primary); margin-bottom:0.4rem; }
+  .feature-card p { font-size:0.83rem; color:var(--muted); line-height:1.6; }
+
+  .market { background:var(--light); }
+  .market-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.5rem; }
+  .market-card { background:#fff; border:1px solid var(--border); border-radius:10px; padding:1.5rem; }
+  .market-card h4 { font-size:1rem; font-weight:700; color:var(--primary); margin-bottom:0.6rem; }
+  .market-card p { font-size:0.87rem; color:var(--muted); line-height:1.7; }
+
+  .mission-strip {
+    background:var(--primary); padding:3rem 2rem; text-align:center;
+    border-top:2px solid var(--accent); border-bottom:2px solid var(--accent);
+  }
+  .mission-inner { max-width:700px; margin:0 auto; }
+  .mission-icon { font-size:2.5rem; margin-bottom:1rem; }
+  .mission-strip h3 { font-size:1.5rem; font-weight:800; color:#fff; margin-bottom:1rem; }
+  .mission-strip p { font-size:0.97rem; color:rgba(255,255,255,0.78); line-height:1.9; }
+
+  .contact { background:var(--primary); }
+  .contact .section-title { color:#fff; }
+  .contact .section-sub { color:rgba(255,255,255,0.65); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; }
+  .contact-info h4 { font-size:0.8rem; color:#ff9090; letter-spacing:1px; margin-bottom:1.5rem; }
+  .contact-detail { display:flex; align-items:flex-start; gap:14px; margin-bottom:1.4rem; }
+  .contact-icon { width:42px; height:42px; background:rgba(204,25,32,0.2); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+  .contact-detail-text .label { font-size:0.72rem; color:rgba(255,255,255,0.45); letter-spacing:0.5px; }
+  .contact-detail-text .value { font-size:0.92rem; color:#fff; font-weight:500; margin-top:2px; }
+  .contact-detail-text .value a { color:#ff9090; }
+  .contact-form { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:2rem; }
+  .contact-form h4 { font-size:1rem; font-weight:700; color:#fff; margin-bottom:1.5rem; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .form-group { margin-bottom:1rem; }
+  .form-group label { font-size:0.8rem; color:rgba(255,255,255,0.55); margin-bottom:5px; display:block; }
+  .form-group input, .form-group select, .form-group textarea {
+    width:100%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
+    border-radius:7px; padding:10px 14px; color:#fff; font-size:0.9rem; transition:border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:#ff9090; }
+  .form-group select option { background:var(--primary); }
+  .form-group textarea { resize:vertical; min-height:90px; }
+  .form-submit {
+    width:100%; background:var(--accent); color:#fff; border:none; border-radius:7px;
+    padding:13px; font-size:0.95rem; font-weight:700; cursor:pointer; transition:background 0.2s; margin-top:0.5rem;
+  }
+  .form-submit:hover { background:var(--accent2); }
+
+  footer { background:#050d18; padding:2.5rem 2rem; text-align:center; color:rgba(255,255,255,0.38); font-size:0.8rem; border-top:1px solid rgba(204,25,32,0.2); }
+  footer a { color:#ff9090; }
+
+  @media(max-width:900px) {
+    .hero-inner { flex-direction:column; }
+    .hero-card { min-width:unset; width:100%; }
+    .about-grid, .contact-grid { grid-template-columns:1fr; }
+    .services-grid { grid-template-columns:1fr; }
+    .features-grid, .market-grid { grid-template-columns:1fr 1fr; }
+    .nav-links { display:none; }
+    .hero-text h1 { font-size:2rem; }
+  }
+  @media(max-width:600px) {
+    .features-grid, .market-grid, .form-row { grid-template-columns:1fr; }
+    .stats-inner { flex-direction:column; gap:1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">的士</div>
+    <div class="nav-brand-text">
+      <div class="line1">香港的士有限公司</div>
+      <div class="line2">Hong Kong Taxi Limited · 牌照買賣 · 的士管理</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">關於我們</a>
+    <a href="#services">服務</a>
+    <a href="#features">特色</a>
+    <a href="#market">市場資訊</a>
+    <a href="#contact" class="nav-cta">立即查詢</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">🚖 全港規模最大的的士交易集團之一</div>
+      <h1>香港的士<span>牌照投資</span><br>專業管理服務</h1>
+      <p class="subtitle">香港的士有限公司致力提供一站式的士牌照買賣及管理服務，以誠信、透明、專業的態度，助您把握香港的士牌照投資機遇，享受穩定回報。</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">立即查詢</a>
+        <a href="#services" class="btn-outline">服務介紹</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>聯絡資訊</h3>
+      <div class="info-row"><span class="info-icon">📞</span><span><strong>電話 / WhatsApp：</strong><br>+852 9872 3232</span></div>
+      <div class="info-row"><span class="info-icon">✉️</span><span><strong>電郵：</strong><br>info@hongkongtaxi.com.hk</span></div>
+      <div class="info-row"><span class="info-icon">🌐</span><span><strong>網站：</strong><br>hongkongtaxi.com.hk</span></div>
+      <div class="info-row"><span class="info-icon">🚖</span><span><strong>服務：</strong> 的士牌照買賣 · 的士管理 · 投資顧問</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">18,000+</div>
+      <div class="stat-label">香港的士數量</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100萬</div>
+      <div class="stat-label">每日平均載客</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">一站式</div>
+      <div class="stat-label">牌照買賣服務</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">全程</div>
+      <div class="stat-label">專屬經理跟進</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">穩定</div>
+      <div class="stat-label">租金回報</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-tag">關於香港的士有限公司</div>
+    <h2 class="section-title">大中華地區的士牌照買賣領軍企業</h2>
+    <p class="section-sub">香港的士有限公司一直勇於創新，致力於提供優質服務，是全港規模最大的的士交易集團之一。</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>的士是香港主要的公共交通工具之一。目前，本港擁有超過一萬八千輛的士，每日平均載客量接近一百萬人次，形成龐大而穩定的市場。</p>
+        <p>香港的士有限公司致力於採用先進的管理模式、創新的營運理念和貼心的服務，為客戶提供全面的一站式汽車牌照投資和管理服務。我們的目標是成為大中華地區汽車牌照買賣和管理服務的領軍企業。</p>
+        <p>我們的企業文化以誠信為本，與客戶共同發展，讓客戶在牌照買賣投資的過程中感受到賓至如歸的服務。</p>
+      </div>
+      <div>
+        <div class="highlight-box">
+          <h4>我們的優勢</h4>
+          <ul>
+            <li>全港規模最大的的士交易集團之一</li>
+            <li>以誠信、公開、透明和專業的態度服務客戶</li>
+            <li>創新服務：個性化牌照信托買賣方案</li>
+            <li>月供的士首期計劃，降低入市門檻</li>
+            <li>專屬經理跟進，全程個性化服務</li>
+            <li>的士管理服務，讓車主無憂享收益</li>
+            <li>免費的士牌照買賣投資講座</li>
+            <li>網上提供按揭資訊、成交記錄及市場動態</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務介紹</div>
+    <h2 class="section-title">一站式的士牌照投資及管理服務</h2>
+    <p class="section-sub">從的士牌照買賣代理到的士管理服務，香港的士有限公司為您提供完整的投資及管理解決方案。</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔄</div>
+        <h4>的士牌照買賣代理</h4>
+        <p>我們為香港的士牌照及車輛買賣市場提供可靠的平台，以誠信、公開、透明和專業的態度，提供一站式的士牌照買賣中介服務。我們嚴格監管每筆交易，確保細節公平有序，審慎管理風險，保障買賣雙方權益，推動市場健康發展。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💼</div>
+        <h4>專業投資顧問</h4>
+        <p>我們的專業顧問團隊均經過專業培訓，能根據客戶的財務計劃和目標，量身定制合適的牌照買賣投資方案。創新服務包括個性化的買賣合約、創新的汽車牌照信托買賣方案、月供的士首期計劃，以及由專屬經理跟進的個性化服務。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚖</div>
+        <h4>的士管理服務</h4>
+        <p>香港的士有限公司致力提供優質的的士管理服務，讓車主無需擔心尋找司機的煩惱。我們的專業團隊將全程跟進管理的士的各項瑣碎事務，從維護保養到司機招聘，悉心打理每一個細節。車主只需安心等待穩定的租金回報。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <h4>線上線下一站式平台</h4>
+        <p>透過我們的平台，您可以自助尋找和發佈出租，訂金、成交價和成交期均由您自行決定。網站提供按揭資訊、成交記錄和最新市場動態等全面資訊。更可免費參加我們的的士牌照買賣投資講座，深入了解詳情。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="section-tag">服務特色</div>
+    <h2 class="section-title">創新服務，全方位保障您的投資</h2>
+    <p class="section-sub">香港的士有限公司率先推出多項創新服務，讓的士牌照投資更便捷、更透明、更有保障。</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h5>個性化買賣合約</h5>
+        <p>根據客戶需求設計個性化的買賣合約，確保交易條款清晰合理，保障雙方權益。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏦</div>
+        <h5>牌照信托買賣方案</h5>
+        <p>創新的汽車牌照信托買賣方案，為買賣雙方提供更安全、更有保障的交易結構。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💳</div>
+        <h5>月供首期計劃</h5>
+        <p>提供月供的士首期計劃，降低入市門檻，讓更多投資者能把握的士牌照投資機遇。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👨‍💼</div>
+        <h5>專屬經理跟進</h5>
+        <p>由專屬客戶經理全程跟進，提供個性化的服務，確保您在每個步驟都得到專業支援。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎓</div>
+        <h5>免費投資講座</h5>
+        <p>定期舉辦免費的士牌照買賣投資講座，讓您深入了解市場動態，作出明智的投資決策。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h5>市場資訊透明</h5>
+        <p>網站提供按揭資訊、成交記錄及最新市場動態，讓投資者掌握第一手市場資訊。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section class="market" id="market">
+  <div class="section-inner">
+    <div class="section-tag">市場資訊</div>
+    <h2 class="section-title">香港的士牌照市場概覽</h2>
+    <p class="section-sub">了解香港的士牌照市場基本狀況，為您的投資決策提供參考。</p>
+    <div class="market-grid">
+      <div class="market-card">
+        <h4>🔴 市區的士</h4>
+        <p>市區的士（紅色）覆蓋香港大部分地區，是香港的士牌照投資市場最主要的類別，流通量最高，市場需求持續穩定。</p>
+      </div>
+      <div class="market-card">
+        <h4>🟢 新界的士</h4>
+        <p>新界的士（綠色）主要在新界運作，牌照數量較市區的士少，特定地區內的載客需求保持平穩。</p>
+      </div>
+      <div class="market-card">
+        <h4>🔵 大嶼山的士</h4>
+        <p>大嶼山的士（藍色）服務大嶼山部分地區，隨著大嶼山發展，市場前景受到關注。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<div class="mission-strip">
+  <div class="mission-inner">
+    <div class="mission-icon">🎯</div>
+    <h3>公司使命</h3>
+    <p>我們致力於建立一個系統化、專業且貼心的汽車牌照買賣投資平台，制定行業的優良服務和運作標準，為香港汽車牌照買賣投資市場的繁榮作出貢獻。以誠信為本，與客戶共同發展。</p>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-tag" style="color:#ff9090;">聯絡我們</div>
+    <h2 class="section-title">立即查詢的士牌照投資</h2>
+    <p class="section-sub">如有意購買或出售的士牌照，或需要的士管理服務，請即聯絡我們的專業顧問團隊，為您提供更專業、更全面的服務。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h4>聯絡資訊</h4>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail-text">
+            <div class="label">電話 / WhatsApp</div>
+            <div class="value"><a href="https://wa.me/85298723232">+852 9872 3232</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-detail-text">
+            <div class="label">電郵</div>
+            <div class="value"><a href="mailto:info@hongkongtaxi.com.hk">info@hongkongtaxi.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🌐</div>
+          <div class="contact-detail-text">
+            <div class="label">網站</div>
+            <div class="value"><a href="https://www.hongkongtaxi.com.hk" target="_blank">hongkongtaxi.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🚖</div>
+          <div class="contact-detail-text">
+            <div class="label">服務範圍</div>
+            <div class="value">的士牌照買賣代理<br>的士管理服務<br>專業投資顧問</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🎓</div>
+          <div class="contact-detail-text">
+            <div class="label">免費講座</div>
+            <div class="value">定期舉辦免費<br>的士牌照投資講座</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h4>查詢表格</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>聯絡電話</label>
+            <input type="tel" placeholder="+852 XXXX XXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>查詢類別</label>
+          <select>
+            <option>購買的士牌照</option>
+            <option>出售的士牌照</option>
+            <option>的士管理服務</option>
+            <option>出租的士</option>
+            <option>尋找的士司機</option>
+            <option>的士按揭查詢</option>
+            <option>一般查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea placeholder="請簡述您的查詢內容或投資需求…"></textarea>
+        </div>
+        <button class="form-submit">提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="margin-bottom:0.5rem;"><strong style="color:rgba(255,255,255,0.65);">香港的士有限公司 Hong Kong Taxi Limited</strong></p>
+  <p>
+    WhatsApp: <a href="https://wa.me/85298723232">+852 9872 3232</a> &nbsp;|&nbsp;
+    <a href="mailto:info@hongkongtaxi.com.hk">info@hongkongtaxi.com.hk</a> &nbsp;|&nbsp;
+    <a href="https://www.hongkongtaxi.com.hk" target="_blank">hongkongtaxi.com.hk</a>
+  </p>
+  <p style="margin-top:0.8rem; font-size:0.74rem;">© 2025 香港的士有限公司。版權所有。</p>
+</footer>
+
+</body>
+</html>
