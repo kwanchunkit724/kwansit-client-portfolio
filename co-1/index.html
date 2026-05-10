@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日新食品貿易(香港)有限公司 — 優質食品進出口批發</title>
+<style>
+  :root {
+    --bg:       #060c08;
+    --surface:  #0c1810;
+    --card:     #122016;
+    --border:   #1e3824;
+    --accent1:  #1a6030;
+    --accent2:  #228840;
+    --accent3:  #38b860;
+    --amber:    #d07820;
+    --amber2:   #f09030;
+    --text:     #e8f2ec;
+    --muted:    #70a080;
+    --cream:    #f4ead8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif; line-height: 1.7; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(6,12,8,0.96); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .nav-logo {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent3));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 1rem; color: #fff;
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent3); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 0.5rem 1.2rem;
+    border-radius: 6px; font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; text-decoration: none; transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding: 100px 2.5rem 60px;
+    background:
+      radial-gradient(ellipse 80% 60% at 65% 40%, rgba(26,96,48,0.25) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 50% at 20% 70%, rgba(208,120,32,0.12) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(26,96,48,0.2); border: 1px solid rgba(56,184,96,0.3);
+    color: var(--accent3); font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.5rem;
+  }
+  .hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  .hero h1 span { color: var(--accent3); }
+  .hero-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 520px; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 0.8rem 1.8rem; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(26,96,48,0.4); transition: transform .2s, box-shadow .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,96,48,0.5); }
+  .btn-outline {
+    border: 2px solid var(--border); color: var(--text);
+    padding: 0.75rem 1.8rem; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: border-color .2s, color .2s;
+  }
+  .btn-outline:hover { border-color: var(--accent3); color: var(--accent3); }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem; box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  }
+  .info-card h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
+  .info-row { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(30,56,36,0.6); }
+  .info-row:last-child { border-bottom: none; }
+  .info-icon { font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0; }
+  .info-label { font-size: 0.72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; }
+  .info-val { font-size: 0.92rem; color: var(--text); }
+
+  /* STATS */
+  .stats { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2.5rem; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .stat { text-align: center; padding: 1.5rem 1rem; }
+  .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--accent3); }
+  .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.3rem; }
+
+  /* SECTION COMMON */
+  section { padding: 80px 2.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; background: rgba(26,96,48,0.15); border: 1px solid rgba(56,184,96,0.25);
+    color: var(--accent3); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem;
+    border-radius: 20px; margin-bottom: 0.8rem;
+  }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 1rem; }
+  .section-title span { color: var(--accent3); }
+  .section-sub { font-size: 1rem; color: var(--muted); max-width: 600px; margin-bottom: 3rem; }
+
+  /* PRODUCTS */
+  .products-bg { background: var(--bg); }
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .product-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.8rem; transition: border-color .25s, transform .25s;
+  }
+  .product-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+  .product-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .product-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .product-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.6; }
+  .product-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+  .tag { background: rgba(26,96,48,0.15); border: 1px solid rgba(56,184,96,0.2); color: var(--accent3); font-size: 0.7rem; padding: 0.2rem 0.55rem; border-radius: 4px; }
+
+  /* SERVICES */
+  .services-bg { background: var(--surface); }
+  .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .service-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 2rem; display: flex; gap: 1.2rem; align-items: flex-start;
+    transition: border-color .25s;
+  }
+  .service-card:hover { border-color: var(--accent2); }
+  .service-num {
+    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 1rem; color: #fff;
+  }
+  .service-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .service-card p { font-size: 0.87rem; color: var(--muted); }
+
+  /* WHY US */
+  .why-bg { background: var(--bg); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .why-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 2rem; text-align: center; transition: border-color .25s;
+  }
+  .why-card:hover { border-color: var(--amber); }
+  .why-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .why-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--amber2); }
+  .why-card p { font-size: 0.87rem; color: var(--muted); }
+
+  /* CONTACT */
+  .contact-bg { background: var(--surface); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info-list { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; }
+  .ci-item { display: flex; align-items: flex-start; gap: 0.9rem; }
+  .ci-icon {
+    width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(26,96,48,0.2); border: 1px solid rgba(56,184,96,0.25);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .ci-label { font-size: 0.72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
+  .ci-val { font-size: 0.92rem; color: var(--text); }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; }
+  .contact-form h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.78rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); border-radius: 8px; padding: 0.7rem 0.9rem; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent2); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select option { background: var(--surface); }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 0.85rem; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.85; }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg); border-top: 1px solid var(--border);
+    padding: 60px 2.5rem 30px;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.8rem; }
+  .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  footer h4 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  footer ul li a { color: var(--text); text-decoration: none; font-size: 0.88rem; transition: color .2s; }
+  footer ul li a:hover { color: var(--accent3); }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom p { font-size: 0.8rem; color: var(--muted); }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .info-card { display: none; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .products-grid, .why-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">日新</div>
+    <span class="nav-name">日新食品貿易(香港)</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products">食品系列</a></li>
+    <li><a href="#services">服務</a></li>
+    <li><a href="#why">我們的優勢</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">立即查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">🍱 香港 · 食品貿易</div>
+      <h1>優質食品進出口<br><span>批發貿易專家</span></h1>
+      <p class="hero-sub">日新食品貿易(香港)有限公司專注於優質食品的進出口及批發業務，嚴選世界各地優質食材，為餐飲業及零售業提供可靠的食品供應鏈解決方案。</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#products">瀏覽食品系列</a>
+        <a class="btn-outline" href="#contact">聯絡我們</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>公司資料</h3>
+      <div class="info-row">
+        <span class="info-icon">🏢</span>
+        <div>
+          <div class="info-label">公司名稱</div>
+          <div class="info-val">日新食品貿易(香港)有限公司</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div>
+          <div class="info-label">地區</div>
+          <div class="info-val">香港</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🏭</span>
+        <div>
+          <div class="info-label">行業</div>
+          <div class="info-val">食品進出口 · 批發貿易</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🌏</span>
+        <div>
+          <div class="info-label">業務範圍</div>
+          <div class="info-val">香港 · 中國大陸 · 亞太地區</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🍽️</span>
+        <div>
+          <div class="info-label">客戶群</div>
+          <div class="info-val">餐廳 · 酒店 · 食品零售商</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">食品類別</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">多國</div>
+      <div class="stat-label">採購來源地</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">B2B</div>
+      <div class="stat-label">批發貿易</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">香港總部</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products-bg" id="products">
+  <div class="section-inner">
+    <div class="section-tag">食品系列</div>
+    <h2 class="section-title">我們的<span>食品種類</span></h2>
+    <p class="section-sub">嚴選來自世界各地的優質食材，涵蓋乾貨、冷凍、調味品及特色食品，滿足餐飲及零售業的多元需求。</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🥩</div>
+        <h3>肉類及海鮮</h3>
+        <p>進口優質肉類及海產品，包括牛肉、豬肉、雞肉及各類海鮮，適合酒店及餐廳的大量採購需求。</p>
+        <div class="product-tags">
+          <span class="tag">冷凍肉類</span>
+          <span class="tag">海鮮</span>
+          <span class="tag">加工肉品</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🌾</div>
+        <h3>米糧及雜糧</h3>
+        <p>泰國香米、日本米、各類雜糧及豆類，提供散裝及零售包裝，滿足批發及零售分銷需求。</p>
+        <div class="product-tags">
+          <span class="tag">香米</span>
+          <span class="tag">雜糧</span>
+          <span class="tag">豆類</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🧂</div>
+        <h3>調味料及醬汁</h3>
+        <p>來自中國、日本、東南亞的各類調味品及醬汁，包括醬油、蠔油、魚露、辣醬等，適合餐廳批量使用。</p>
+        <div class="product-tags">
+          <span class="tag">醬油</span>
+          <span class="tag">蠔油</span>
+          <span class="tag">特色醬料</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🥫</div>
+        <h3>罐頭及乾貨</h3>
+        <p>各類進口罐頭食品、乾貨食材，包括蘑菇、蝦米、乾貝、豆製品等，食材多元，品質穩定。</p>
+        <div class="product-tags">
+          <span class="tag">乾貨</span>
+          <span class="tag">罐頭</span>
+          <span class="tag">豆製品</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🍜</div>
+        <h3>麵食及麵條</h3>
+        <p>即食麵、乾麵、米粉等各類麵食產品，涵蓋亞洲各地不同風味，適合零售店及餐廳批量供應。</p>
+        <div class="product-tags">
+          <span class="tag">麵條</span>
+          <span class="tag">米粉</span>
+          <span class="tag">即食麵</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🛒</div>
+        <h3>特色食品</h3>
+        <p>亞洲特色食材及地方風味產品，配合市場需求靈活採購，為客戶提供個性化食品貿易方案。</p>
+        <div class="product-tags">
+          <span class="tag">亞洲特色</span>
+          <span class="tag">地方風味</span>
+          <span class="tag">OEM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-bg" id="services">
+  <div class="section-inner">
+    <div class="section-tag">業務服務</div>
+    <h2 class="section-title">我們的<span>貿易服務</span></h2>
+    <p class="section-sub">從採購、進出口通關到倉儲配送，日新為客戶提供一站式食品貿易解決方案。</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div>
+          <h3>食品進口採購</h3>
+          <p>從世界各地採購優質食材，嚴格把關品質及食品安全標準，確保符合香港及目標市場的法規要求。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div>
+          <h3>批發分銷</h3>
+          <p>為餐廳、酒店、超市及食品零售商提供批量供應，靈活訂貨量，支援大型及中小型客戶的採購需求。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div>
+          <h3>出口貿易</h3>
+          <p>協助將香港及中國大陸食品出口至亞太區各地市場，處理文件、報關及物流安排，確保順利交付。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div>
+          <h3>倉儲及配送</h3>
+          <p>配備合適倉儲設施，提供常溫及低溫食品儲存服務，並安排本地配送，滿足客戶時效要求。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-bg" id="why">
+  <div class="section-inner">
+    <div class="section-tag">我們的優勢</div>
+    <h2 class="section-title">選擇<span>日新</span>的理由</h2>
+    <p class="section-sub">憑藉多年食品貿易經驗與廣泛的供應商網絡，日新為客戶提供穩定、高效的食品供應鏈服務。</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">✅</div>
+        <h3>嚴格品質把關</h3>
+        <p>所有食品均嚴格符合香港及國際食品安全標準，確保每批貨品品質穩定，客戶安心採購。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌏</div>
+        <h3>廣泛採購網絡</h3>
+        <p>與中國大陸、東南亞、日本、韓國等地優質供應商建立長期合作關係，貨源穩定多樣。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3>靈活高效服務</h3>
+        <p>快速響應客戶需求，靈活調整訂單規模及交期，為客戶提供個性化的食品採購方案。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💼</div>
+        <h3>專業貿易團隊</h3>
+        <p>經驗豐富的食品貿易專業團隊，熟悉本地及國際食品市場動態，為客戶提供市場資訊與採購建議。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔄</div>
+        <h3>穩定供應保障</h3>
+        <p>多元化供應商基礎確保貨源充足，即使面對市場波動，亦能維持穩定的食品供應鏈。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h3>長期夥伴關係</h3>
+        <p>致力與每位客戶建立長期互信的合作關係，提供持續支援與售後服務，共同發展業務。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-bg" id="contact">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2 class="section-title">立即<span>查詢</span></h2>
+    <p class="section-sub">歡迎餐廳、酒店及食品零售商與我們聯絡，了解更多食品批發及進出口服務詳情。</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-list">
+          <div class="ci-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">地區</div>
+              <div class="ci-val">香港</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🏭</div>
+            <div>
+              <div class="ci-label">業務性質</div>
+              <div class="ci-val">食品進出口及批發貿易</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🎯</div>
+            <div>
+              <div class="ci-label">服務對象</div>
+              <div class="ci-val">餐廳 · 酒店 · 超市 · 食品零售商</div>
+            </div>
+          </div>
+        </div>
+        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem;">
+          <h4 style="font-size: 0.85rem; font-weight: 700; color: var(--text); margin-bottom: 0.7rem;">主要食品類別</h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            <span style="background: rgba(26,96,48,0.15); border: 1px solid rgba(56,184,96,0.2); color: var(--accent3); font-size: 0.75rem; padding: 0.25rem 0.7rem; border-radius: 20px;">肉類海鮮</span>
+            <span style="background: rgba(26,96,48,0.15); border: 1px solid rgba(56,184,96,0.2); color: var(--accent3); font-size: 0.75rem; padding: 0.25rem 0.7rem; border-radius: 20px;">米糧雜糧</span>
+            <span style="background: rgba(26,96,48,0.15); border: 1px solid rgba(56,184,96,0.2); color: var(--accent3); font-size: 0.75rem; padding: 0.25rem 0.7rem; border-radius: 20px;">調味醬汁</span>
+            <span style="background: rgba(26,96,48,0.15); border: 1px solid rgba(56,184,96,0.2); color: var(--accent3); font-size: 0.75rem; padding: 0.25rem 0.7rem; border-radius: 20px;">乾貨罐頭</span>
+            <span style="background: rgba(26,96,48,0.15); border: 1px solid rgba(56,184,96,0.2); color: var(--accent3); font-size: 0.75rem; padding: 0.25rem 0.7rem; border-radius: 20px;">麵食製品</span>
+            <span style="background: rgba(26,96,48,0.15); border: 1px solid rgba(56,184,96,0.2); color: var(--accent3); font-size: 0.75rem; padding: 0.25rem 0.7rem; border-radius: 20px;">特色食品</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>發送查詢</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>公司</label>
+            <input type="text" placeholder="公司名稱">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>查詢類別</label>
+          <select>
+            <option value="">請選擇查詢類別</option>
+            <option>食品批發採購</option>
+            <option>進口食品查詢</option>
+            <option>出口貿易合作</option>
+            <option>倉儲配送服務</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea placeholder="請描述您的需求，包括食品種類、數量及其他具體要求。"></textarea>
+        </div>
+        <button class="form-submit">提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>日新食品貿易(香港)有限公司</h3>
+        <p>專注食品進出口及批發貿易，嚴選世界各地優質食材，為香港及亞太地區的餐飲業及零售業提供可靠的食品供應鏈服務。</p>
+      </div>
+      <div>
+        <h4>食品系列</h4>
+        <ul>
+          <li><a href="#products">肉類及海鮮</a></li>
+          <li><a href="#products">米糧及雜糧</a></li>
+          <li><a href="#products">調味料及醬汁</a></li>
+          <li><a href="#products">罐頭及乾貨</a></li>
+          <li><a href="#products">麵食及麵條</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>快速連結</h4>
+        <ul>
+          <li><a href="#services">業務服務</a></li>
+          <li><a href="#why">我們的優勢</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 日新食品貿易(香港)有限公司 版權所有</p>
+      <p>香港 · 食品進出口批發貿易</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
