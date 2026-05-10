@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HKBIZ Horizons Limited | 香港生意買賣・加盟創業・AI營銷</title>
+<meta name="description" content="HKBIZ Horizons Limited — 香港專業生意買賣平台，提供生意頂讓、加盟特許經營及AI數碼營銷課程服務。佐敦彌敦道辦事處，歡迎預約咨詢。">
+<style>
+  :root {
+    --bg:       #060c08;
+    --bg2:      #0c1610;
+    --bg3:      #101e14;
+    --accent:   #18c060;
+    --accent2:  #10e870;
+    --gold:     #d4a820;
+    --gold2:    #f0cc40;
+    --text:     #e8f0eb;
+    --muted:    #7a9882;
+    --border:   rgba(24,192,96,0.18);
+    --card:     rgba(255,255,255,0.03);
+    --radius:   12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', 'PingFang HK', 'Noto Sans HK', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(6,12,8,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo {
+    font-size: 1.35rem; font-weight: 800; letter-spacing: 0.04em;
+    color: var(--accent2); text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold2); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.92rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-cta {
+    background: var(--accent); color: #fff; border: none; padding: 0.55rem 1.3rem;
+    border-radius: 6px; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--accent2); color: #060c08; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 70% 60% at 60% 40%, rgba(24,192,96,0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 10% 80%, rgba(212,168,32,0.08) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(24,192,96,0.12); border: 1px solid rgba(24,192,96,0.3);
+    color: var(--accent2); border-radius: 50px; padding: 0.38rem 1rem;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.55rem; }
+  .hero h1 {
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    font-weight: 900; line-height: 1.2; margin-bottom: 1.4rem;
+  }
+  .hero h1 .hl { color: var(--accent2); }
+  .hero h1 .hl-gold { color: var(--gold2); }
+  .hero p { font-size: 1.08rem; color: var(--muted); max-width: 540px; margin-bottom: 2rem; line-height: 1.8; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #060c08; font-weight: 800; font-size: 1rem;
+    padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(24,192,96,0.35);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(24,192,96,0.5); }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    font-size: 1rem; padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent2); }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 18px; padding: 2rem;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .info-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--accent2); margin-bottom: 1.4rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+  .info-row { display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: flex-start; }
+  .info-icon { font-size: 1.1rem; min-width: 28px; margin-top: 0.1rem; }
+  .info-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.18rem; }
+  .info-val { font-size: 0.92rem; color: var(--text); font-weight: 600; }
+  .info-val a { color: var(--accent2); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .info-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+
+  /* STATS */
+  .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3.5rem 5%; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 2.4rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-num sup { font-size: 1.2rem; vertical-align: super; }
+  .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+
+  /* SECTION BASE */
+  .section { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.7rem; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; line-height: 1.25; margin-bottom: 1rem; }
+  .section-title .hl { color: var(--accent2); }
+  .section-title .hl-gold { color: var(--gold2); }
+  .section-desc { color: var(--muted); max-width: 600px; margin-bottom: 3rem; font-size: 1rem; line-height: 1.8; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .service-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2.2rem;
+    transition: border-color 0.25s, transform 0.2s; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity 0.25s;
+  }
+  .service-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon { font-size: 2.6rem; margin-bottom: 1.2rem; }
+  .service-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--accent2); margin-bottom: 0.6rem; }
+  .service-card p { color: var(--muted); font-size: 0.92rem; line-height: 1.7; }
+  .service-tag {
+    display: inline-block; margin-top: 1.2rem;
+    background: rgba(24,192,96,0.1); border: 1px solid rgba(24,192,96,0.25);
+    color: var(--accent2); padding: 0.28rem 0.75rem; border-radius: 50px; font-size: 0.78rem; font-weight: 700;
+  }
+
+  /* LISTINGS */
+  .listings-wrap { background: var(--bg2); padding: 6rem 5%; }
+  .listings-inner { max-width: 1200px; margin: 0 auto; }
+  .listings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+  .listing-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.6rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .listing-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .listing-type {
+    font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; color: var(--accent);
+    background: rgba(24,192,96,0.1); padding: 0.2rem 0.6rem; border-radius: 4px;
+    display: inline-block; margin-bottom: 0.8rem;
+  }
+  .listing-type.franchise { color: var(--gold2); background: rgba(212,168,32,0.12); }
+  .listing-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text); }
+  .listing-card p { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.6; }
+  .listing-price { font-size: 1.15rem; font-weight: 900; color: var(--gold2); }
+  .listing-price span { font-size: 0.75rem; font-weight: 500; color: var(--muted); }
+
+  /* PROCESS */
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+  .process-grid::before {
+    content: ''; position: absolute; top: 36px; left: 12.5%; right: 12.5%; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--gold));
+  }
+  .process-step { text-align: center; padding: 0 1rem; position: relative; }
+  .step-num {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #060c08; font-size: 1.5rem; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.4rem; position: relative; z-index: 1;
+    box-shadow: 0 0 0 8px var(--bg), 0 4px 20px rgba(24,192,96,0.4);
+  }
+  .process-step h4 { font-size: 0.98rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .process-step p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* TESTIMONIALS */
+  .testimonials-wrap { background: var(--bg2); padding: 6rem 5%; }
+  .testimonials-inner { max-width: 1200px; margin: 0 auto; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .testi-card { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; }
+  .testi-quote { font-size: 3rem; color: var(--accent); opacity: 0.3; font-family: Georgia, serif; line-height: 1; margin-bottom: 0.5rem; }
+  .testi-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 1rem; }
+  .testi-avatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 800; color: #060c08;
+  }
+  .testi-name { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+  .testi-role { font-size: 0.78rem; color: var(--muted); }
+  .testi-stars { color: var(--gold2); font-size: 0.9rem; margin-top: 0.2rem; }
+
+  /* WHY US */
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .why-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.8rem; display: flex; gap: 1.2rem; align-items: flex-start; }
+  .why-icon { font-size: 2rem; min-width: 44px; }
+  .why-item h4 { font-size: 1rem; font-weight: 700; color: var(--accent2); margin-bottom: 0.4rem; }
+  .why-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact-wrap {
+    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(24,192,96,0.07) 0%, transparent 65%), var(--bg);
+    padding: 6rem 5%;
+  }
+  .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; margin-bottom: 1rem; }
+  .contact-info p { color: var(--muted); font-size: 0.98rem; margin-bottom: 2rem; line-height: 1.8; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.1rem; }
+  .c-row { display: flex; gap: 1rem; align-items: flex-start; }
+  .c-icon { font-size: 1.3rem; min-width: 34px; }
+  .c-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.2rem; }
+  .c-val { font-size: 0.95rem; font-weight: 600; }
+  .c-val a { color: var(--accent2); text-decoration: none; }
+  .c-val a:hover { text-decoration: underline; }
+  form { display: flex; flex-direction: column; gap: 1.2rem; }
+  form label { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.3rem; display: block; }
+  form input, form textarea, form select {
+    width: 100%; background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.8rem 1rem; color: var(--text); font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s;
+  }
+  form input:focus, form textarea:focus, form select:focus { outline: none; border-color: var(--accent); }
+  form textarea { min-height: 120px; resize: vertical; }
+  form select option { background: #1a2a1e; }
+  .form-submit {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #060c08; font-weight: 800; font-size: 1rem;
+    border: none; padding: 0.95rem; border-radius: 8px; cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(24,192,96,0.35);
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(24,192,96,0.5); }
+
+  /* FOOTER */
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4rem 5% 2rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand .logo-text { font-size: 1.3rem; font-weight: 800; color: var(--accent2); margin-bottom: 0.8rem; }
+  .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  footer h5 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  footer ul li a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  footer ul li a:hover { color: var(--accent2); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .info-card { max-width: 480px; }
+    .services-grid, .listings-grid, .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .process-grid::before { display: none; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .services-grid, .listings-grid, .why-grid,
+    .process-grid, .testimonials-grid, .contact-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">HKBIZ<span>HORIZONS</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">服務</a></li>
+    <li><a href="#listings">盤源一覽</a></li>
+    <li><a href="#franchise">加盟機會</a></li>
+    <li><a href="#process">咨詢流程</a></li>
+    <li><a href="#testimonials">客戶評價</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">免費咨詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">香港專業生意買賣平台</div>
+      <h1>
+        頂讓・加盟・創業<br>
+        <span class="hl">一站式</span>商業配對<br>
+        <span class="hl-gold">成就您的事業夢想</span>
+      </h1>
+      <p>
+        HKBIZ Horizons 是香港領先的生意轉讓及加盟顧問機構，
+        提供精準的買賣配對、品牌加盟對接及 AI 數碼營銷課程，
+        協助創業者及經營者把握最佳商機。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#listings">瀏覽盤源</a>
+        <a class="btn-outline" href="#contact">預約免費咨詢</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>📍 辦事處資料</h3>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">地址</div>
+          <div class="info-val">九龍佐敦彌敦道200號<br>二百昊6樓全層</div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">電話</div>
+          <div class="info-val"><a href="tel:+85266176932">(852) 6617 6932</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📱</div>
+        <div>
+          <div class="info-label">手機 / WhatsApp</div>
+          <div class="info-val"><a href="https://wa.me/85292932932">9293 2932</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-val"><a href="mailto:enquiry@hkbiz.com.hk">enquiry@hkbiz.com.hk</a></div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">🕐</div>
+        <div>
+          <div class="info-label">辦公時間</div>
+          <div class="info-val">星期一至五 9:30 – 18:30</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網站</div>
+          <div class="info-val"><a href="https://hkbiz.com.hk" target="_blank" rel="noopener">hkbiz.com.hk</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">500<sup>+</sup></div>
+      <div class="stat-label">成功配對個案</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">300<sup>+</sup></div>
+      <div class="stat-label">活躍盤源</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">50<sup>+</sup></div>
+      <div class="stat-label">加盟品牌合作</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">95<sup>%</sup></div>
+      <div class="stat-label">客戶滿意度</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div id="services">
+  <div class="section">
+    <div class="section-label">Core Services</div>
+    <h2 class="section-title">三大核心服務<br><span class="hl">助您商業成功</span></h2>
+    <p class="section-desc">
+      無論您是希望退出現有生意、尋找優質加盟機會，或是提升企業數碼營銷能力，
+      HKBIZ Horizons 均為您提供全方位的專業支援。
+    </p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🤝</div>
+        <h3>生意頂讓 / 買賣配對</h3>
+        <p>
+          專業代理香港各區生意轉讓，涵蓋飲食、零售、服務業等各類行業。
+          為買家精確篩選優質盤源，為賣家快速配對合適買家，全程保密並提供法律文件支援。
+        </p>
+        <span class="service-tag">Business Transfer</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏷️</div>
+        <h3>加盟特許經營</h3>
+        <p>
+          代理多個知名本地及海外品牌的香港加盟權，
+          投資額由 HKD 100K 起，門檻低、回報穩定。
+          提供從品牌選擇、資金規劃、選址審查到開業支援的完整顧問服務。
+        </p>
+        <span class="service-tag">Franchise Consulting</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3>AI 數碼營銷課程</h3>
+        <p>
+          專為中小企業主設計的 AI 營銷實戰課程，涵蓋社交媒體 AI 內容生成、
+          廣告投放優化、客戶關係管理及數據分析，
+          助您以最低成本實現最大營銷效益。
+        </p>
+        <span class="service-tag">AI Marketing Course</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LISTINGS -->
+<div class="listings-wrap" id="listings">
+  <div class="listings-inner">
+    <div class="section-label">Featured Listings</div>
+    <h2 class="section-title">精選<span class="hl-gold">頂讓盤源</span></h2>
+    <p class="section-desc" style="margin-bottom:2.5rem;">
+      以下為部分精選生意頂讓盤源，更多詳情及完整盤源請聯絡我們或瀏覽官網。
+    </p>
+    <div class="listings-grid">
+      <div class="listing-card">
+        <span class="listing-type">頂讓</span>
+        <h4>銅鑼灣西式餐廳</h4>
+        <p>旺區地段，裝修完善，即頂即做，適合有意進軍餐飲業的創業者。</p>
+        <div class="listing-price">HKD 100,000 <span>起</span></div>
+      </div>
+      <div class="listing-card">
+        <span class="listing-type">頂讓</span>
+        <h4>九龍東露營用品店</h4>
+        <p>近年露營熱潮帶動業務增長，貨源充足，社交媒體粉絲基礎穩定。</p>
+        <div class="listing-price">HKD 170,000 <span>起</span></div>
+      </div>
+      <div class="listing-card">
+        <span class="listing-type">頂讓</span>
+        <h4>尖沙咀健身室</h4>
+        <p>設備齊全，會員基礎穩定，地處旅遊及商業核心地帶，人流充沛。</p>
+        <div class="listing-price">HKD 150,000 <span>起</span></div>
+      </div>
+      <div class="listing-card">
+        <span class="listing-type">頂讓</span>
+        <h4>新界冰室茶餐廳</h4>
+        <p>本地傳統老店，街坊熟客多，生意穩定，廚房設備及牌照齊全。</p>
+        <div class="listing-price">HKD 1,300,000 <span>起</span></div>
+      </div>
+      <div class="listing-card">
+        <span class="listing-type">頂讓</span>
+        <h4>老字號烘焙用品店</h4>
+        <p>經營多年，忠實客戶群龐大，涵蓋零售及批發業務，貨源穩定。</p>
+        <div class="listing-price">HKD 330,000 <span>起</span></div>
+      </div>
+      <div class="listing-card" style="border-color: rgba(212,168,32,0.3); background: rgba(212,168,32,0.04);">
+        <span class="listing-type" style="color: var(--gold2); background: rgba(212,168,32,0.12);">查詢</span>
+        <h4>更多盤源待披露</h4>
+        <p>我們每週更新最新頂讓盤，請聯絡顧問以獲取完整盤源資料及不公開盤源推介。</p>
+        <div class="listing-price" style="color: var(--accent2);">聯絡查詢</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FRANCHISE -->
+<div id="franchise">
+  <div class="section">
+    <div class="section-label">Franchise Opportunities</div>
+    <h2 class="section-title">熱門<span class="hl">加盟品牌</span></h2>
+    <p class="section-desc">
+      精選本地及內地知名品牌加盟機會，投資門檻清晰，總部支援完善，
+      讓您以最低風險開展自己的事業。
+    </p>
+    <div class="listings-grid">
+      <div class="listing-card">
+        <span class="listing-type franchise">加盟</span>
+        <h4>爆辣冷麵</h4>
+        <p>近年港人熱捧的韓式辣味冷麵品牌，年輕消費群廣泛，標準化作業易於管理。</p>
+        <div class="listing-price">HKD 158,000 <span>起</span></div>
+      </div>
+      <div class="listing-card">
+        <span class="listing-type franchise">加盟</span>
+        <h4>鍋爸爸</h4>
+        <p>特色火鍋品牌，食材新鮮，湯底多元，深受家庭及朋友聚餐客群歡迎。</p>
+        <div class="listing-price">HKD 180,000 <span>起</span></div>
+      </div>
+      <div class="listing-card">
+        <span class="listing-type franchise">加盟</span>
+        <h4>冰雪時光</h4>
+        <p>台灣知名雪花冰及甜品品牌，視覺效果佳，社交媒體傳播力強，回頭率高。</p>
+        <div class="listing-price">HKD 200,000 <span>起</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div style="background: var(--bg2); padding: 1px 0;" id="process">
+  <div class="section">
+    <div class="section-label">Our Process</div>
+    <h2 class="section-title">咨詢流程<br><span class="hl">簡單四步完成</span></h2>
+    <p class="section-desc" style="margin-bottom: 4rem;">
+      從初次咨詢到成功交易，我們全程陪伴，確保每一個環節順暢透明。
+    </p>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>免費初步咨詢</h4>
+        <p>電話或面談了解您的需求、預算及目標行業，初步配對適合方向。</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>精準盤源配對</h4>
+        <p>根據您的條件篩選合適盤源或加盟品牌，提供詳細資料及財務分析。</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>實地視察洽談</h4>
+        <p>安排實地視察及與賣方/品牌方直接溝通，確保資料真實透明。</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4>文件簽署交接</h4>
+        <p>協助準備相關法律文件，確保交易合規安全，完成業務交接。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<div>
+  <div class="section">
+    <div class="section-label">Why Choose Us</div>
+    <h2 class="section-title">為何選擇<span class="hl">HKBIZ Horizons</span></h2>
+    <p class="section-desc">專業、保密、高效——我們以客戶成功為首要目標。</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🔐</div>
+        <div>
+          <h4>全程保密處理</h4>
+          <p>所有買賣資料均受嚴格保密協議保護，確保交易過程不影響現有業務運作。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📊</div>
+        <div>
+          <h4>專業財務分析</h4>
+          <p>提供獨立財務審查及估值報告，幫助您以合理價格做出明智的投資決定。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⚖️</div>
+        <div>
+          <h4>法律合規支援</h4>
+          <p>合作律師團隊協助擬定轉讓協議、租約轉讓及加盟合約，保障您的法律權益。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🎯</div>
+        <div>
+          <h4>精準行業配對</h4>
+          <p>深入了解各行業特性，根據您的背景及技能推薦最適合的生意類型或加盟品牌。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🤖</div>
+        <div>
+          <h4>AI 營銷增值服務</h4>
+          <p>為購入生意的客戶提供 AI 數碼營銷課程，助您快速掌握現代營銷手法，提升業績。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📞</div>
+        <div>
+          <h4>全程顧問跟進</h4>
+          <p>專屬顧問全程跟進，從查詢到交易完成後的業務支援，讓您買賣無後顧之憂。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testimonials-wrap" id="testimonials">
+  <div class="testimonials-inner">
+    <div class="section-label">Client Testimonials</div>
+    <h2 class="section-title">客戶真實評價<br><span class="hl-gold">成功個案分享</span></h2>
+    <p class="section-desc" style="margin-bottom: 2.5rem;">
+      他們曾與我們同行，現在正享受自己事業帶來的成果。
+    </p>
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p>
+          透過 HKBIZ Horizons 成功頂讓了一間旺角茶飲店，顧問非常專業，
+          幫我審查了所有財務記錄，又協助談判至合理價格。整個過程保密又透明，非常滿意。
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar">周</div>
+          <div>
+            <div class="testi-name">周先生</div>
+            <div class="testi-role">茶飲店東主</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p>
+          原本自己找了幾個月都找不到合適的茶餐廳盤，聯絡 HKBIZ 後不到兩個月就成功頂讓，
+          顧問幫我分析每個盤的優缺點，令我做到最好的決定。
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar">袁</div>
+          <div>
+            <div class="testi-name">袁生</div>
+            <div class="testi-role">茶餐廳創業者</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p>
+          作為旅行社東主，疫情後想要轉型，HKBIZ 幫我找到了一個服務業的加盟機會，
+          培訓支援充足，現在生意已步上軌道，非常感謝。
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar">黎</div>
+          <div>
+            <div class="testi-name">黎先生</div>
+            <div class="testi-role">旅行社轉型創業者</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p>
+          一直想開寵物美容店但不知從何入手，HKBIZ 幫我評估了多個加盟方案，
+          最後選到最適合自己的品牌，現在生意非常旺，AI 營銷課程亦幫了我很多。
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar">何</div>
+          <div>
+            <div class="testi-name">何先生</div>
+            <div class="testi-role">寵物美容店加盟者</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">立即<span class="hl">免費咨詢</span></h2>
+      <p>
+        無論您是有意頂讓生意、尋找加盟機會，還是希望了解我們的 AI 營銷課程，
+        歡迎隨時聯絡我們的專業顧問，免費初步咨詢，無任何附加收費。
+      </p>
+      <div class="contact-details">
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">辦事處地址</div>
+            <div class="c-val">九龍佐敦彌敦道200號二百昊6樓全層</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">辦公室電話</div>
+            <div class="c-val"><a href="tel:+85266176932">(852) 6617 6932</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">💬</div>
+          <div>
+            <div class="c-label">WhatsApp</div>
+            <div class="c-val"><a href="https://wa.me/85292932932">+852 9293 2932</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">電郵</div>
+            <div class="c-val"><a href="mailto:enquiry@hkbiz.com.hk">enquiry@hkbiz.com.hk</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🕐</div>
+          <div>
+            <div class="c-label">辦公時間</div>
+            <div class="c-val">星期一至五　9:30 – 18:30</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">網站</div>
+            <div class="c-val"><a href="https://hkbiz.com.hk" target="_blank" rel="noopener">www.hkbiz.com.hk</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form onsubmit="return false;">
+      <div>
+        <label>您的姓名 *</label>
+        <input type="text" placeholder="例：陳大文">
+      </div>
+      <div>
+        <label>聯絡電話 *</label>
+        <input type="tel" placeholder="例：9000 0000">
+      </div>
+      <div>
+        <label>電郵地址</label>
+        <input type="email" placeholder="example@email.com">
+      </div>
+      <div>
+        <label>咨詢類別 *</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>生意頂讓 — 我想買入生意</option>
+          <option>生意頂讓 — 我想出售生意</option>
+          <option>加盟特許經營咨詢</option>
+          <option>AI 數碼營銷課程</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div>
+        <label>預算範圍</label>
+        <select>
+          <option value="">請選擇（可選）</option>
+          <option>HKD 100,000 以下</option>
+          <option>HKD 100,000 – 300,000</option>
+          <option>HKD 300,000 – 500,000</option>
+          <option>HKD 500,000 – 1,000,000</option>
+          <option>HKD 1,000,000 以上</option>
+        </select>
+      </div>
+      <div>
+        <label>詳細查詢內容</label>
+        <textarea placeholder="請簡述您的需求或問題，我們將盡快回覆..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">📩 立即提交咨詢</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-text">HKBIZ HORIZONS</div>
+      <p>
+        香港專業生意買賣及加盟顧問平台，致力為創業者及企業主提供精準配對、保密高效的一站式商業服務。
+      </p>
+    </div>
+    <div>
+      <h5>核心服務</h5>
+      <ul>
+        <li><a href="#listings">生意頂讓</a></li>
+        <li><a href="#franchise">加盟特許經營</a></li>
+        <li><a href="#services">AI 數碼營銷課程</a></li>
+        <li><a href="#process">咨詢流程</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>關於我們</h5>
+      <ul>
+        <li><a href="#testimonials">客戶評價</a></li>
+        <li><a href="#contact">聯絡我們</a></li>
+        <li><a href="https://hkbiz.com.hk" target="_blank" rel="noopener">官方網站</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>聯絡資料</h5>
+      <ul>
+        <li><a href="tel:+85266176932">(852) 6617 6932</a></li>
+        <li><a href="https://wa.me/85292932932">WhatsApp: 9293 2932</a></li>
+        <li><a href="mailto:enquiry@hkbiz.com.hk">enquiry@hkbiz.com.hk</a></li>
+        <li><a href="https://hkbiz.com.hk" target="_blank" rel="noopener">hkbiz.com.hk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 HKBIZ Horizons Limited. All rights reserved.</span>
+    <span>九龍佐敦彌敦道200號二百昊6樓全層</span>
+  </div>
+</footer>
+
+</body>
+</html>
