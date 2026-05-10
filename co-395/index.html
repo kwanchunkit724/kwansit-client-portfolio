@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>亞達科技策略有限公司 Asian TAT | IT Services Hong Kong</title>
+<style>
+:root{
+  --dark:#0c1e38;
+  --dark2:#122640;
+  --green:#007a5e;
+  --green2:#009570;
+  --light:#f2f7fb;
+  --white:#ffffff;
+  --text:#1a2533;
+  --muted:#56687a;
+  --border:#ccd8e5;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI','PingFang HK','Microsoft JhengHei',Arial,sans-serif;color:var(--text);background:var(--white);line-height:1.65;}
+a{color:inherit;text-decoration:none;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--dark);border-bottom:2px solid var(--green);padding:0 6%;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
+.nav-logo{font-size:1.1rem;font-weight:800;color:var(--white);}
+.nav-logo span{color:var(--green2);}
+.nav-links{display:flex;gap:26px;}
+.nav-links a{color:rgba(255,255,255,0.82);font-size:0.87rem;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--green2);}
+.nav-cta{background:var(--green);color:var(--white)!important;padding:8px 20px;border-radius:4px;font-weight:700!important;}
+
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--dark2) 55%,#0a1a30 100%);padding:120px 6% 80px;min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:480px;height:480px;border-radius:50%;background:rgba(0,122,94,0.07);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;width:100%;max-width:1200px;margin:0 auto;}
+.hero-label{display:inline-block;background:rgba(0,122,94,0.15);color:var(--green2);font-size:0.78rem;font-weight:700;letter-spacing:2px;padding:5px 14px;border-radius:20px;border:1px solid rgba(0,122,94,0.3);margin-bottom:18px;text-transform:uppercase;}
+.hero h1{font-size:2.5rem;font-weight:900;color:var(--white);line-height:1.2;margin-bottom:10px;}
+.hero h1 span{color:var(--green2);}
+.hero-en{font-size:1.05rem;color:rgba(255,255,255,0.5);margin-bottom:14px;letter-spacing:0.5px;}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.68);max-width:520px;margin-bottom:34px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-gr{background:var(--green);color:var(--white);padding:13px 28px;border-radius:5px;font-weight:700;font-size:0.95rem;transition:background 0.2s,transform 0.2s;}
+.btn-gr:hover{background:var(--green2);transform:translateY(-2px);}
+.btn-out{border:2px solid rgba(255,255,255,0.3);color:var(--white);padding:13px 28px;border-radius:5px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s,transform 0.2s;}
+.btn-out:hover{border-color:var(--green2);transform:translateY(-2px);}
+.hero-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:28px 24px;}
+.hero-card h3{color:var(--green2);font-size:0.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;}
+.hc-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+.hc-icon{width:34px;height:34px;border-radius:8px;background:rgba(0,122,94,0.15);border:1px solid rgba(0,122,94,0.3);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.hc-label{font-size:0.73rem;color:rgba(255,255,255,0.45);margin-bottom:2px;}
+.hc-val{color:var(--white);font-size:0.88rem;font-weight:600;}
+.hc-divider{border:none;border-top:1px solid rgba(255,255,255,0.1);margin:14px 0;}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;}
+.badge{background:rgba(0,122,94,0.15);border:1px solid rgba(0,122,94,0.3);color:var(--green2);font-size:0.68rem;font-weight:700;padding:4px 10px;border-radius:20px;}
+
+.stats{background:var(--green);padding:26px 6%;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1100px;margin:0 auto;}
+.stat{text-align:center;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--white);}
+.stat-lbl{font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.78);text-transform:uppercase;letter-spacing:0.5px;}
+
+section{padding:80px 6%;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-tag{display:inline-block;background:rgba(0,122,94,0.1);color:var(--green);font-size:0.75rem;font-weight:700;letter-spacing:2px;padding:4px 14px;border-radius:20px;border:1px solid rgba(0,122,94,0.25);text-transform:uppercase;margin-bottom:12px;}
+.sec-title{font-size:2rem;font-weight:800;color:var(--dark);margin-bottom:10px;}
+.sec-sub{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:44px;}
+
+.about{background:var(--light);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.about-text p{color:var(--muted);margin-bottom:16px;line-height:1.75;}
+.highlight-box{background:var(--dark);border-radius:12px;padding:26px 24px;margin-bottom:22px;}
+.highlight-box h3{color:var(--green2);font-size:1rem;font-weight:700;margin-bottom:8px;}
+.highlight-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.prop-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px 16px;border-top:3px solid var(--green);}
+.prop-card h4{color:var(--dark);font-size:0.9rem;font-weight:700;margin-bottom:6px;}
+.prop-card p{color:var(--muted);font-size:0.8rem;line-height:1.55;}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.svc-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:26px 20px;transition:box-shadow 0.2s,transform 0.2s;border-top:4px solid transparent;}
+.svc-card:hover{box-shadow:0 8px 24px rgba(0,122,94,0.1);transform:translateY(-4px);border-top-color:var(--green);}
+.svc-icon{width:46px;height:46px;border-radius:10px;background:rgba(0,122,94,0.08);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;}
+.svc-card h3{color:var(--dark);font-size:0.98rem;font-weight:700;margin-bottom:8px;}
+.svc-card p{color:var(--muted);font-size:0.84rem;line-height:1.6;}
+
+.support{background:var(--dark);}
+.support .sec-title{color:var(--white);}
+.support .sec-sub{color:rgba(255,255,255,0.6);}
+.support-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.sup-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:26px 20px;text-align:center;}
+.sup-icon{font-size:2.2rem;margin-bottom:12px;}
+.sup-card h3{color:var(--white);font-size:1rem;font-weight:700;margin-bottom:10px;}
+.sup-card p{color:rgba(255,255,255,0.6);font-size:0.84rem;line-height:1.6;}
+
+.contact-s{background:var(--light);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.contact-info h3{color:var(--dark);font-size:1.25rem;font-weight:700;margin-bottom:6px;}
+.contact-info p{color:var(--muted);font-size:0.92rem;margin-bottom:26px;}
+.ci-block{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
+.ci-icon{width:40px;height:40px;border-radius:8px;background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ci-label{font-size:0.74rem;color:var(--muted);margin-bottom:2px;}
+.ci-val{color:var(--dark);font-size:0.93rem;font-weight:600;}
+.whatsapp-btn{display:flex;align-items:center;gap:10px;background:#25d366;color:var(--white);padding:12px 22px;border-radius:8px;font-weight:700;font-size:0.92rem;width:fit-content;margin-top:8px;transition:opacity 0.2s;}
+.whatsapp-btn:hover{opacity:0.9;}
+.cform{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:32px 28px;}
+.cform h3{color:var(--dark);font-size:1.1rem;font-weight:700;margin-bottom:22px;}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.form-group label{font-size:0.8rem;font-weight:600;color:var(--dark);}
+.form-group label span{color:var(--green);margin-left:2px;}
+.form-group input,.form-group select,.form-group textarea{border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-size:0.9rem;color:var(--text);background:var(--light);font-family:inherit;outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--green);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.btn-submit{width:100%;background:var(--dark);color:var(--white);border:none;border-radius:6px;padding:13px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.btn-submit:hover{background:var(--dark2);}
+
+footer{background:var(--dark);padding:50px 6% 28px;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;margin-bottom:36px;}
+.footer-brand h3{color:var(--white);font-size:1.1rem;font-weight:800;margin-bottom:8px;}
+.footer-brand h3 span{color:var(--green2);}
+.footer-brand p{color:rgba(255,255,255,0.5);font-size:0.84rem;line-height:1.65;}
+.footer-col h4{color:var(--green2);font-size:0.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-col ul li a{color:rgba(255,255,255,0.55);font-size:0.84rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--green2);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;align-items:center;justify-content:space-between;}
+.footer-bottom p{color:rgba(255,255,255,0.38);font-size:0.78rem;}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .stats-grid,.services-grid,.support-grid{grid-template-columns:repeat(2,1fr);}
+  .about-props{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">亞達科技策略 <span>Asian TAT</span></div>
+    <div class="nav-links">
+      <a href="#about">關於我們</a>
+      <a href="#services">服務範疇</a>
+      <a href="#support">支援服務</a>
+      <a href="#contact" class="nav-cta">聯絡我們</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-label">IT Services · Causeway Bay · Hong Kong</div>
+      <h1>亞達科技策略<br><span>全方位 IT 解決方案</span></h1>
+      <p class="hero-en">Asian TAT Technology Strategy Limited</p>
+      <p class="hero-sub">為香港企業提供全面的資訊科技服務與策略方案，從基礎架構到雲端服務，助您的業務數位化轉型。</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-gr">免費諮詢</a>
+        <a href="#services" class="btn-out">服務範疇</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>聯絡資料</h3>
+      <div class="hc-row">
+        <div class="hc-icon">✉</div>
+        <div>
+          <div class="hc-label">電郵</div>
+          <div class="hc-val">sales@asiantat.com</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📞</div>
+        <div>
+          <div class="hc-label">電話</div>
+          <div class="hc-val">(852) 2893 6893 / 2893 6863</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📠</div>
+        <div>
+          <div class="hc-label">傳真</div>
+          <div class="hc-val">(852) 2893 6966</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📍</div>
+        <div>
+          <div class="hc-label">地址</div>
+          <div class="hc-val">銅鑼灣軒尼詩道438號金鵝商業大廈20樓</div>
+        </div>
+      </div>
+      <hr class="hc-divider">
+      <div class="badge-row">
+        <span class="badge">WhatsApp IT Support</span>
+        <span class="badge">IT Services</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num">銅鑼灣</div><div class="stat-lbl">中心地帶辦公室</div></div>
+    <div class="stat"><div class="stat-num">全面</div><div class="stat-lbl">IT 解決方案</div></div>
+    <div class="stat"><div class="stat-num">快速</div><div class="stat-lbl">IT 技術支援</div></div>
+    <div class="stat"><div class="stat-num">專業</div><div class="stat-lbl">科技策略顧問</div></div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="sec-tag">關於亞達科技</div>
+        <h2 class="sec-title">您的香港 IT 策略夥伴</h2>
+        <p>亞達科技策略有限公司（Asian TAT Technology Strategy Limited）是一家立足香港銅鑼灣的專業資訊科技服務公司，專為香港各行各業的企業提供全方位的 IT 基礎架構、雲端服務、網絡安全及技術支援方案。</p>
+        <p>我們的專業團隊深明香港企業的 IT 需求，以靈活、高效的服務模式，協助客戶建立穩健的科技基礎，讓您可以專注於核心業務發展，無後顧之憂。</p>
+        <div class="highlight-box">
+          <h3>我們的服務理念</h3>
+          <p>科技是推動業務增長的動力。我們致力於提供切合企業實際需求的 IT 解決方案，並以迅速的 WhatsApp 技術支援，確保您的業務系統全天候穩定運作。</p>
+        </div>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <h4>本地專業團隊</h4>
+          <p>由資深 IT 專業人員組成的香港本地團隊，熟悉本地企業環境，提供貼身服務。</p>
+        </div>
+        <div class="prop-card">
+          <h4>快速響應支援</h4>
+          <p>WhatsApp IT 技術支援，確保 IT 問題得到快速處理，減少業務停頓時間。</p>
+        </div>
+        <div class="prop-card">
+          <h4>全面解決方案</h4>
+          <p>從硬件採購、網絡架設到雲端服務，提供一站式 IT 服務，省時省力。</p>
+        </div>
+        <div class="prop-card">
+          <h4>策略科技顧問</h4>
+          <p>不只解決眼前問題，更為企業提供長遠的 IT 策略規劃，助您掌握數位化商機。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="sec-inner">
+    <div class="sec-tag">服務範疇</div>
+    <h2 class="sec-title">全方位 IT 服務</h2>
+    <p class="sec-sub">為香港企業提供完整的資訊科技解決方案，助您提升生產效率，強化競爭優勢。</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🖥️</div>
+        <h3>IT 基礎架構</h3>
+        <p>伺服器規劃與部署、儲存方案、UPS 電源管理及資料中心服務，為您的業務建立穩健的 IT 基礎。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">☁️</div>
+        <h3>雲端服務</h3>
+        <p>Microsoft 365、Azure 雲端遷移、混合雲架構及雲端備份，助企業靈活擴展 IT 資源。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🌐</div>
+        <h3>網絡架設</h3>
+        <p>企業網絡設計、Wi-Fi 部署、VPN 配置及防火牆設定，確保穩定可靠的業務連線。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔐</div>
+        <h3>資訊保安</h3>
+        <p>端點防護、網絡安全審計、防病毒管理及員工安全意識培訓，全面保護企業數據資產。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🛠️</div>
+        <h3>IT 維護及支援</h3>
+        <p>全面的 IT 管理服務、電腦維修、系統監控及 WhatsApp 快速技術支援，確保業務不間斷運作。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📊</div>
+        <h3>IT 策略顧問</h3>
+        <p>業務流程分析、數位化轉型規劃、IT 預算優化及科技採購顧問，為企業長遠發展制定 IT 藍圖。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="support" id="support">
+  <div class="sec-inner">
+    <div class="sec-tag">技術支援</div>
+    <h2 class="sec-title">多元化支援渠道</h2>
+    <p class="sec-sub">多種靈活的技術支援方式，確保您的業務問題得到及時解決。</p>
+    <div class="support-grid">
+      <div class="sup-card">
+        <div class="sup-icon">💬</div>
+        <h3>WhatsApp 即時支援</h3>
+        <p>透過 WhatsApp 隨時聯絡我們的技術團隊，快速解決突發 IT 問題，減少業務中斷。</p>
+      </div>
+      <div class="sup-card">
+        <div class="sup-icon">📞</div>
+        <h3>電話技術支援</h3>
+        <p>直撥 (852) 2893 6893 或 (852) 2893 6863，即時與我們的技術顧問溝通，獲得專業指導。</p>
+      </div>
+      <div class="sup-card">
+        <div class="sup-icon">🏃</div>
+        <h3>上門現場支援</h3>
+        <p>需要現場技術協助？我們的工程師可快速抵達您的辦公室提供即場解決方案。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-s" id="contact">
+  <div class="sec-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="sec-tag">聯絡我們</div>
+        <h3>立即與我們聯繫</h3>
+        <p>如有 IT 服務查詢、技術支援需求或合作洽談，歡迎透過以下方式聯絡我們的團隊。</p>
+        <div class="ci-block">
+          <div class="ci-icon">✉</div>
+          <div>
+            <div class="ci-label">電郵</div>
+            <div class="ci-val">sales@asiantat.com</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">電話</div>
+            <div class="ci-val">(852) 2893 6893<br>(852) 2893 6863</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">📠</div>
+          <div>
+            <div class="ci-label">傳真</div>
+            <div class="ci-val">(852) 2893 6966</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">地址</div>
+            <div class="ci-val">香港銅鑼灣軒尼詩道438號<br>金鵝商業大廈20樓</div>
+          </div>
+        </div>
+        <a class="whatsapp-btn" href="https://wa.me/" target="_blank">
+          <span>💬</span> WhatsApp IT Support
+        </a>
+      </div>
+      <div class="cform">
+        <h3>發送查詢</h3>
+        <div class="form-group">
+          <label>公司名稱 <span>*</span></label>
+          <input type="text" placeholder="貴公司名稱">
+        </div>
+        <div class="form-group">
+          <label>聯絡人姓名 <span>*</span></label>
+          <input type="text" placeholder="您的姓名">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話 <span>*</span></label>
+          <input type="tel" placeholder="電話號碼">
+        </div>
+        <div class="form-group">
+          <label>電郵地址 <span>*</span></label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>主題 <span>*</span></label>
+          <select>
+            <option value="">請選擇...</option>
+            <option>IT 基礎架構</option>
+            <option>雲端服務</option>
+            <option>網絡架設</option>
+            <option>資訊保安</option>
+            <option>IT 維護合約</option>
+            <option>IT 策略顧問</option>
+            <option>緊急技術支援</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>您的信息</label>
+          <textarea placeholder="請描述您的 IT 需求或問題..."></textarea>
+        </div>
+        <button class="btn-submit">發送查詢 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>亞達科技策略 <span>Asian TAT</span></h3>
+        <p>亞達科技策略有限公司 — 香港銅鑼灣資訊科技服務公司，提供全方位 IT 基礎架構、雲端服務、網絡安全及技術支援，助企業實現數位化轉型。</p>
+      </div>
+      <div class="footer-col">
+        <h4>服務</h4>
+        <ul>
+          <li><a href="#services">IT 基礎架構</a></li>
+          <li><a href="#services">雲端服務</a></li>
+          <li><a href="#services">網絡架設</a></li>
+          <li><a href="#services">資訊保安</a></li>
+          <li><a href="#services">IT 策略顧問</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡</h4>
+        <ul>
+          <li><a href="mailto:sales@asiantat.com">sales@asiantat.com</a></li>
+          <li><a href="tel:+85228936893">(852) 2893 6893</a></li>
+          <li><a href="https://asiantat.com">www.asiantat.com</a></li>
+          <li><a href="#contact">發送查詢</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 亞達科技策略有限公司 Asian TAT Technology Strategy Limited. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
