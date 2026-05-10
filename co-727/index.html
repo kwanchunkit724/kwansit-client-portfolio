@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西敏旅行社 | Westminster Travel Limited | 香港</title>
+<meta name="description" content="西敏旅行社 Westminster Travel Limited — 香港專業旅遊代理，提供休閒旅遊套票、會議獎賞旅遊(MICE)及入境旅遊服務，總部位於荃灣，設有廣州、上海、台灣及新加坡辦事處。">
+<style>
+:root{--bg:#04060e;--bg2:#060a18;--bg3:#080e20;--blue:#1050b8;--blue-lt:#2070d8;--teal:#1888c8;--gold:#c8a030;--gold-lt:#e8c050;--text:#e8eef8;--muted:#6880a8;--border:rgba(16,80,184,0.2);--card-bg:rgba(255,255,255,0.03);--radius:10px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans HK','PingFang HK',sans-serif;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,6,14,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1.05rem;font-weight:800;color:var(--blue-lt)}
+.nav-logo span{color:var(--gold-lt);font-weight:400;font-size:.78rem;margin-left:8px}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--blue),var(--blue-lt));color:#fff;padding:9px 22px;border-radius:6px;font-size:.88rem;font-weight:700;text-decoration:none;transition:opacity .2s}.nav-cta:hover{opacity:.88}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 60% 40%,rgba(16,80,184,0.12) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(16,80,184,0.1);border:1px solid rgba(16,80,184,0.28);border-radius:6px;padding:6px 14px;font-size:.8rem;color:var(--blue-lt);margin-bottom:20px}
+h1{font-size:clamp(1.9rem,4vw,3rem);font-weight:900;line-height:1.12;margin-bottom:12px}
+h1 .en{display:block;font-size:clamp(.85rem,1.7vw,1.05rem);font-weight:400;color:var(--blue-lt);letter-spacing:.04em;margin-top:8px}
+.hero-desc{color:var(--muted);font-size:1rem;max-width:440px;margin:18px 0 22px;line-height:1.8}
+.svc-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.sb{display:inline-flex;align-items:center;gap:6px;background:rgba(200,160,48,0.1);border:1px solid rgba(200,160,48,0.3);border-radius:6px;padding:5px 12px;font-size:.78rem;color:var(--gold-lt);font-weight:600}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--blue-lt));color:#fff;padding:13px 28px;border-radius:6px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 26px;border-radius:6px;font-size:.93rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}.btn-outline:hover{border-color:var(--blue-lt);color:var(--blue-lt)}
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:14px}
+.card-badge{display:flex;align-items:center;gap:12px}
+.badge-emblem{width:48px;height:48px;background:linear-gradient(135deg,var(--blue),var(--blue-lt));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;color:#fff;text-align:center;line-height:1.2}
+.badge-name{font-size:.97rem;font-weight:700}.badge-label{font-size:.76rem;color:var(--muted)}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--blue-lt);flex-shrink:0;margin-top:2px;text-align:center}
+.card-row-text{font-size:.88rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block;font-size:.9rem}
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+.stat-item{text-align:center}
+.stat-num{font-size:1.9rem;font-weight:900;background:linear-gradient(135deg,var(--blue-lt),var(--gold-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.82rem;margin-top:6px}
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(16,80,184,0.08);border:1px solid rgba(16,80,184,0.2);border-radius:6px;padding:4px 12px;font-size:.75rem;color:var(--blue-lt);letter-spacing:.05em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--blue-lt)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .25s,transform .25s}.svc-card:hover{border-color:var(--blue-lt);transform:translateY(-4px)}
+.sc-icon{width:52px;height:52px;background:rgba(16,80,184,0.1);border:1px solid rgba(16,80,184,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:14px}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:6px}
+.sc-en{font-size:.8rem;color:var(--blue-lt);margin-bottom:10px;font-style:italic}
+.sc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.sc-contacts{margin-top:14px;display:flex;flex-direction:column;gap:5px}
+.sc-contact{font-size:.82rem;color:var(--muted)}
+.sc-contact a{color:var(--blue-lt);text-decoration:none}.sc-contact a:hover{text-decoration:underline}
+.dest-section{background:var(--bg2)}
+.dest-pills{display:flex;flex-wrap:wrap;gap:10px}
+.dest-pill{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:.88rem;color:var(--text);transition:border-color .2s;cursor:default}.dest-pill:hover{border-color:var(--gold-lt)}
+.network-section{}
+.network-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.net-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+.nc-flag{font-size:1.4rem;margin-bottom:8px}
+.nc-city{font-size:.75rem;color:var(--gold-lt);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-bottom:4px}
+.nc-name{font-size:.95rem;font-weight:700;margin-bottom:8px}
+.nc-detail{font-size:.83rem;color:var(--muted);line-height:1.65}
+.contact-section{background:var(--bg3)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:16px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(16,80,184,0.1);border:1px solid rgba(16,80,184,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.75rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.93rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--blue-lt);text-decoration:none}.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:34px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--blue-lt)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#060a18}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--blue),var(--blue-lt));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}.form-submit:hover{opacity:.88}
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:.95rem;font-weight:800;color:var(--blue-lt)}
+.footer-copy{font-size:.8rem;color:var(--muted);text-align:center}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}.footer-links a:hover{color:var(--text)}
+@media(max-width:900px){.hero-inner,.contact-grid{grid-template-columns:1fr}.stats-inner,.svc-grid,.network-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav-links{display:none}.stats-inner,.svc-grid,.network-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">西敏旅行社<span>Westminster Travel</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">服務</a></li>
+      <li><a href="#destinations">目的地</a></li>
+      <li><a href="#network">地區網絡</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+    <a href="tel:+85223139800" class="nav-cta">立即致電</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">✈️ 香港專業旅遊代理</div>
+      <h1>西敏旅行社<span class="en">Westminster Travel Limited · Hong Kong</span></h1>
+      <div class="svc-badges">
+        <span class="sb">🏖 休閒旅遊</span>
+        <span class="sb">🎯 MICE獎賞旅遊</span>
+        <span class="sb">🌏 入境旅遊</span>
+        <span class="sb">🌐 多地辦事處</span>
+      </div>
+      <p class="hero-desc">香港資深專業旅遊代理，總部位於荃灣，提供休閒旅遊套票、會議及獎賞旅遊（MICE）及入境香港旅遊服務，並設有廣州、上海、台灣及新加坡辦事處。</p>
+      <div class="hero-btns">
+        <a href="tel:+85223139800" class="btn-primary">致電查詢</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-emblem">WTL</div>
+        <div>
+          <div class="badge-label">香港專業旅遊代理</div>
+          <div class="badge-name">西敏旅行社</div>
+        </div>
+      </div>
+      <hr class="card-divider">
+      <div class="card-row"><div class="card-row-icon">📞</div><div class="card-row-text"><strong>休閒旅遊查詢</strong>+852 2313 9800</div></div>
+      <div class="card-row"><div class="card-row-icon">📞</div><div class="card-row-text"><strong>MICE / 海外活動</strong>+852 2731 3122</div></div>
+      <div class="card-row"><div class="card-row-icon">📧</div><div class="card-row-text"><strong>MICE 電郵</strong>MICE@hkwtl.com</div></div>
+      <div class="card-row"><div class="card-row-icon">📍</div><div class="card-row-text"><strong>香港總公司</strong>荃灣青山公路388號中染大廈18樓02室</div></div>
+      <div class="card-row"><div class="card-row-icon">🕐</div><div class="card-row-text"><strong>辦公時間</strong>週一至五 09:00–17:30</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">主要服務類別</div></div>
+    <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">地區辦事處</div></div>
+    <div class="stat-item"><div class="stat-num">全球</div><div class="stat-label">旅遊目的地覆蓋</div></div>
+    <div class="stat-item"><div class="stat-num">MICE</div><div class="stat-label">獎賞旅遊專家</div></div>
+    <div class="stat-item"><div class="stat-num">Club Med</div><div class="stat-label">一價全包假期</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務範疇</div>
+    <h2>專業<span class="accent">旅遊</span>服務</h2>
+    <p class="section-lead">西敏旅行社提供三大核心旅遊服務，無論休閒度假、企業會議獎賞或入境旅遊安排，均可為您提供全面支援。</p>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="sc-icon">🏖</div>
+        <div class="sc-title">休閒旅遊</div>
+        <div class="sc-en">Leisure Travel</div>
+        <div class="sc-desc">提供全面的休閒旅遊服務，包括旅遊套票、機票預訂、酒店安排及旅行團，覆蓋亞洲、歐洲、美洲、澳紐等熱門目的地。特設Club Med一價全包假期及新加坡航空精選套票。</div>
+        <div class="sc-contacts">
+          <div class="sc-contact">📞 <a href="tel:+85223139800">+852 2313 9800</a></div>
+          <div class="sc-contact">📧 <a href="mailto:itravel@hkwtl.com">itravel@hkwtl.com</a></div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🎯</div>
+        <div class="sc-title">會議及獎賞旅遊</div>
+        <div class="sc-en">MICE Travel</div>
+        <div class="sc-desc">專業的會議、獎勵、會展及活動旅遊服務，承辦香港及海外各類企業活動安排，提供目的地管理、場地搜尋、活動策劃及全程協調服務。</div>
+        <div class="sc-contacts">
+          <div class="sc-contact">📞 <a href="tel:+85227313122">+852 2731 3122</a> （海外活動）</div>
+          <div class="sc-contact">📧 <a href="mailto:MICE@hkwtl.com">MICE@hkwtl.com</a></div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🇭🇰</div>
+        <div class="sc-title">入境旅遊</div>
+        <div class="sc-en">Inbound Tourism</div>
+        <div class="sc-desc">專業的香港入境旅遊活動安排服務，為海外訪港旅客及企業提供香港本地活動策劃、接待安排、交通協調及導覽服務。</div>
+        <div class="sc-contacts">
+          <div class="sc-contact">📞 <a href="tel:+85227313108">+852 2731 3108</a></div>
+          <div class="sc-contact">📧 <a href="mailto:Inbound@hkwtl.com">Inbound@hkwtl.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="destinations" class="dest-section">
+  <div class="section-inner">
+    <div class="section-tag">熱門目的地</div>
+    <h2>探索<span class="accent">全球</span>目的地</h2>
+    <p class="section-lead">覆蓋亞洲、澳紐及太平洋島國、歐美加等全球熱門旅遊目的地，為您帶來豐富多彩的旅遊選擇。</p>
+    <div class="dest-pills">
+      <div class="dest-pill">🗼 台北</div>
+      <div class="dest-pill">🐼 成都</div>
+      <div class="dest-pill">🦁 新加坡</div>
+      <div class="dest-pill">🌺 曼谷</div>
+      <div class="dest-pill">🏝 布吉</div>
+      <div class="dest-pill">🕌 杜拜</div>
+      <div class="dest-pill">⛩ 東京</div>
+      <div class="dest-pill">❄️ 北海道</div>
+      <div class="dest-pill">🦘 布里斯本</div>
+      <div class="dest-pill">🦘 珀斯</div>
+      <div class="dest-pill">🏄 馬爾代夫</div>
+      <div class="dest-pill">🌋 峇里</div>
+      <div class="dest-pill">🦁 悉尼</div>
+      <div class="dest-pill">☕ 墨爾本</div>
+      <div class="dest-pill">🏔 四國</div>
+      <div class="dest-pill">⛷ 北大壺</div>
+      <div class="dest-pill">🌍 歐洲各地</div>
+      <div class="dest-pill">🗽 北美洲</div>
+    </div>
+  </div>
+</section>
+
+<section id="network" class="network-section">
+  <div class="section-inner">
+    <div class="section-tag">地區網絡</div>
+    <h2>跨越<span class="accent">亞太</span>的辦事處網絡</h2>
+    <p class="section-lead">西敏旅行社在香港、中國內地、台灣及新加坡均設有辦事處，為亞太地區客戶提供本地化服務。</p>
+    <div class="network-grid">
+      <div class="net-card">
+        <div class="nc-flag">🇭🇰</div>
+        <div class="nc-city">香港總公司</div>
+        <div class="nc-name">Westminster Travel Limited</div>
+        <div class="nc-detail">荃灣青山公路388號中染大廈18樓02室<br>📞 +852 2313 9700<br>週一至五 09:00–17:30</div>
+      </div>
+      <div class="net-card">
+        <div class="nc-flag">🇨🇳</div>
+        <div class="nc-city">廣州辦事處</div>
+        <div class="nc-name">西敏旅遊咨詢（廣州）有限公司</div>
+        <div class="nc-detail">廣州市荔灣區花地大道中64號荔勝廣場北塔23樓<br>📞 +86 (20) 3811 4000</div>
+      </div>
+      <div class="net-card">
+        <div class="nc-flag">🇨🇳</div>
+        <div class="nc-city">上海辦事處</div>
+        <div class="nc-name">西敏旅遊咨詢（廣州）有限公司 — 上海分公司</div>
+        <div class="nc-detail">上海市靜安區恆豐路436號環智國際大廈27樓<br>📞 +86 (21) 2356 5000</div>
+      </div>
+      <div class="net-card">
+        <div class="nc-flag">🇹🇼</div>
+        <div class="nc-city">台灣辦事處</div>
+        <div class="nc-name">台灣西敏旅行社有限公司</div>
+        <div class="nc-detail">台北市中山區松江路237號4樓之1<br>📞 +886 (2) 2502 7988</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2>旅遊<span class="accent">查詢報價</span></h2>
+    <p class="section-lead">歡迎致電或電郵查詢，我們的旅遊顧問將為您提供專業建議及最新報價。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">🏖</div>
+          <div>
+            <div class="ci-label">休閒旅遊查詢</div>
+            <div class="ci-value"><a href="tel:+85223139800">+852 2313 9800</a><br><a href="mailto:itravel@hkwtl.com">itravel@hkwtl.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🎯</div>
+          <div>
+            <div class="ci-label">MICE / 海外活動</div>
+            <div class="ci-value"><a href="tel:+85227313122">+852 2731 3122</a><br><a href="mailto:MICE@hkwtl.com">MICE@hkwtl.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🇭🇰</div>
+          <div>
+            <div class="ci-label">入境旅遊 (Inbound)</div>
+            <div class="ci-value"><a href="tel:+85227313108">+852 2731 3108</a><br><a href="mailto:Inbound@hkwtl.com">Inbound@hkwtl.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">香港總公司地址</div>
+            <div class="ci-value">荃灣青山公路388號<br>中染大廈18樓02室</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>旅遊查詢 / 報價</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group"><label>姓名</label><input type="text" placeholder="您的姓名"></div>
+            <div class="form-group"><label>聯絡電話</label><input type="tel" placeholder="+852 XXXX XXXX"></div>
+          </div>
+          <div class="form-group"><label>查詢類別</label>
+            <select>
+              <option value="">請選擇</option>
+              <option>休閒旅遊套票</option>
+              <option>機票預訂</option>
+              <option>酒店預訂</option>
+              <option>Club Med 一價全包</option>
+              <option>MICE 會議獎賞旅遊</option>
+              <option>入境旅遊 (Inbound)</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group"><label>查詢詳情</label><textarea placeholder="請描述您的旅遊需求、目的地、出發日期及人數..."></textarea></div>
+          <button type="submit" class="form-submit">提交查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">西敏旅行社 Westminster Travel · 香港荃灣</div>
+    <div class="footer-copy">© 2025 Westminster Travel Limited · 荃灣 · Tel: +852 2313 9800</div>
+    <div class="footer-links"><a href="#services">服務</a><a href="#destinations">目的地</a><a href="#network">網絡</a><a href="#contact">聯絡</a></div>
+  </div>
+</footer>
+</body>
+</html>
