@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沙田區醫院院牧事工 | 靈性關顧服務</title>
+<style>
+  :root {
+    --bg-primary: #060810;
+    --bg-secondary: #0c1020;
+    --bg-card: #121828;
+    --bg-card2: #1a2235;
+    --accent1: #1a4888;
+    --accent2: #2870c0;
+    --accent3: #50a0e8;
+    --gold1: #b88820;
+    --gold2: #e0b840;
+    --gold3: #f8d870;
+    --text-main: #eef4fc;
+    --text-muted: #8aa8cc;
+    --text-dim: #4a6888;
+    --border: rgba(40,112,192,0.22);
+    --gold-border: rgba(184,136,32,0.25);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg-primary);color:var(--text-main);font-family:'Noto Sans HK','Microsoft JhengHei','Segoe UI',sans-serif;line-height:1.7;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,8,16,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+  .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--accent1),var(--accent2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;}
+  .nav-logo-text{font-size:15px;font-weight:700;color:var(--text-main);}
+  .nav-logo-sub{font-size:11px;color:var(--text-dim);}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{text-decoration:none;color:var(--text-muted);font-size:14px;transition:color .2s;}
+  .nav-links a:hover{color:var(--gold2);}
+  .nav-cta{background:linear-gradient(135deg,var(--gold1),var(--gold2));color:#060810;padding:9px 22px;border-radius:6px;text-decoration:none;font-size:14px;font-weight:700;transition:opacity .2s;}
+  .nav-cta:hover{opacity:.85;}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden;}
+  .hero-glow1{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(26,72,136,0.18) 0%,transparent 70%);top:-100px;right:0;border-radius:50%;}
+  .hero-glow2{position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(184,136,32,0.08) 0%,transparent 70%);bottom:80px;left:5%;border-radius:50%;}
+  .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;position:relative;z-index:1;}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(40,112,192,0.15);border:1px solid rgba(40,112,192,0.35);border-radius:20px;padding:6px 16px;font-size:13px;color:var(--accent3);margin-bottom:24px;}
+  .hero-dot{width:7px;height:7px;background:var(--gold2);border-radius:50%;animation:glow 2.5s infinite;}
+  @keyframes glow{0%,100%{opacity:1;box-shadow:0 0 0 rgba(224,184,64,0);}50%{opacity:.6;box-shadow:0 0 8px rgba(224,184,64,0.6);}}
+  h1{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;line-height:1.25;margin-bottom:20px;}
+  h1 span{background:linear-gradient(135deg,var(--gold1),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero-desc{font-size:16px;color:var(--text-muted);max-width:540px;margin-bottom:36px;line-height:1.85;}
+  .hero-verse{background:rgba(26,72,136,0.15);border-left:3px solid var(--gold2);border-radius:0 8px 8px 0;padding:16px 20px;margin-bottom:32px;font-style:italic;color:var(--text-muted);font-size:14px;line-height:1.8;}
+  .hero-verse cite{display:block;margin-top:6px;font-size:12px;color:var(--text-dim);font-style:normal;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-gold{background:linear-gradient(135deg,var(--gold1),var(--gold2));color:#060810;padding:13px 30px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;transition:all .2s;}
+  .btn-gold:hover{opacity:.85;transform:translateY(-2px);}
+  .btn-outline{border:1px solid var(--border);color:var(--text-muted);padding:13px 30px;border-radius:8px;text-decoration:none;font-size:15px;transition:all .2s;}
+  .btn-outline:hover{border-color:var(--accent3);color:var(--accent3);}
+
+  /* INFO CARD */
+  .info-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:0 24px 64px rgba(0,0,0,.6);}
+  .info-card-title{font-size:12px;color:var(--gold2);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;margin-bottom:20px;}
+  .info-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+  .info-row:last-child{border-bottom:none;}
+  .i-icon{width:36px;height:36px;background:rgba(40,112,192,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+  .i-label{font-size:11px;color:var(--text-dim);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;}
+  .i-val{font-size:14px;color:var(--text-main);font-weight:600;}
+  .i-val a{color:var(--accent3);text-decoration:none;}
+  .i-val a:hover{text-decoration:underline;}
+
+  /* STATS */
+  .stats{background:var(--bg-secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%;}
+  .stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;}
+  .stat-item{text-align:center;}
+  .stat-num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--gold1),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .stat-label{font-size:13px;color:var(--text-muted);margin-top:4px;}
+
+  /* SECTIONS */
+  section{padding:80px 5%;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-tag{font-size:12px;color:var(--gold2);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:12px;}
+  .section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:16px;}
+  .section-title span{background:linear-gradient(135deg,var(--gold1),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .section-sub{color:var(--text-muted);font-size:15px;max-width:620px;margin-bottom:48px;line-height:1.8;}
+
+  /* SERVICES */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .svc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:30px;transition:all .3s;}
+  .svc-card:hover{border-color:rgba(224,184,64,0.35);transform:translateY(-4px);background:var(--bg-card2);}
+  .svc-icon{font-size:36px;margin-bottom:16px;}
+  .svc-title{font-size:17px;font-weight:700;margin-bottom:10px;}
+  .svc-desc{font-size:14px;color:var(--text-muted);line-height:1.8;}
+
+  /* TEAM */
+  .team-section{background:var(--bg-secondary);}
+  .team-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  .team-group{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px;}
+  .tg-title{font-size:14px;font-weight:700;color:var(--gold2);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+  .tg-badge{background:rgba(184,136,32,0.15);border:1px solid var(--gold-border);border-radius:4px;padding:2px 10px;font-size:11px;color:var(--gold2);}
+  .team-names{display:flex;flex-wrap:wrap;gap:8px;}
+  .name-chip{background:rgba(40,112,192,0.12);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:13px;color:var(--text-muted);}
+  .name-chip.lead{background:rgba(184,136,32,0.12);border-color:var(--gold-border);color:var(--gold2);font-weight:600;}
+  .name-chip.phone{font-size:12px;}
+
+  /* VALUES */
+  .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .val-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center;transition:all .3s;}
+  .val-card:hover{border-color:rgba(224,184,64,0.3);transform:translateY(-3px);}
+  .val-icon{font-size:36px;margin-bottom:14px;}
+  .val-title{font-size:16px;font-weight:700;margin-bottom:10px;}
+  .val-desc{font-size:14px;color:var(--text-muted);line-height:1.7;}
+
+  /* CONTACT */
+  .contact-section{background:var(--bg-secondary);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .c-list{display:flex;flex-direction:column;gap:20px;}
+  .c-item{display:flex;gap:14px;align-items:flex-start;}
+  .ci-icon{width:44px;height:44px;background:rgba(40,112,192,0.15);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+  .ci-label{font-size:12px;color:var(--text-dim);margin-bottom:4px;}
+  .ci-val{font-size:15px;color:var(--text-main);font-weight:600;}
+  .ci-val a{color:var(--accent3);text-decoration:none;}
+  .ci-val a:hover{text-decoration:underline;}
+  .contact-note{background:var(--bg-card);border:1px solid var(--gold-border);border-radius:12px;padding:24px;margin-top:28px;}
+  .cn-title{font-size:13px;color:var(--gold2);font-weight:700;margin-bottom:8px;}
+  .cn-text{font-size:14px;color:var(--text-muted);line-height:1.8;}
+
+  /* FORM */
+  .cform{display:flex;flex-direction:column;gap:16px;}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .fg{display:flex;flex-direction:column;gap:8px;}
+  .fg label{font-size:13px;color:var(--text-muted);font-weight:600;}
+  .fg input,.fg select,.fg textarea{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text-main);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;}
+  .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--accent2);}
+  .fg textarea{resize:vertical;min-height:110px;}
+  .fg select option{background:#121828;}
+  .fsub{background:linear-gradient(135deg,var(--gold1),var(--gold2));color:#060810;border:none;padding:13px 30px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+  .fsub:hover{opacity:.85;}
+
+  /* FOOTER */
+  footer{background:#040609;border-top:1px solid var(--border);padding:48px 5% 28px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;margin-bottom:40px;}
+  .fb-name{font-size:17px;font-weight:800;margin-bottom:6px;}
+  .fb-desc{font-size:14px;color:var(--text-dim);line-height:1.7;}
+  .fc-title{font-size:12px;color:var(--gold2);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;}
+  .fc-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .fc-links a{text-decoration:none;color:var(--text-dim);font-size:14px;transition:color .2s;}
+  .fc-links a:hover{color:var(--gold2);}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;}
+  .footer-copy{font-size:13px;color:var(--text-dim);}
+
+  @media(max-width:960px){
+    .svc-grid,.values-grid{grid-template-columns:1fr 1fr;}
+    .team-layout{grid-template-columns:1fr;}
+  }
+  @media(max-width:768px){
+    .hero-inner,.contact-grid,.footer-top{grid-template-columns:1fr;}
+    .info-card{display:none;}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .svc-grid,.values-grid{grid-template-columns:1fr;}
+    .frow{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon">✝</div>
+      <div>
+        <div class="nav-logo-text">沙田區醫院院牧事工</div>
+        <div class="nav-logo-sub">威爾斯親王醫院</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#team">院牧同工</a></li>
+      <li><a href="#values">事工理念</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">聯絡院牧</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow1"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">
+        <span class="hero-dot"></span>
+        威爾斯親王醫院 · 靈性關顧
+      </div>
+      <h1>陪伴同行<br><span>靈性關顧</span><br>愛心服侍</h1>
+      <p class="hero-desc">沙田區醫院院牧事工植根於威爾斯親王醫院，由專業院牧同工為病患者、家屬及醫護人員提供靈性關顧、情緒支援及心靈輔導，陪伴每一位有需要的人走過人生的艱難時刻。</p>
+      <div class="hero-verse">
+        「耶和華是我的牧者，我必不至缺乏。」
+        <cite>— 詩篇 23:1</cite>
+      </div>
+      <div class="hero-btns">
+        <a class="btn-gold" href="#contact">聯絡院牧辦公室</a>
+        <a class="btn-outline" href="#services">了解服務詳情</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">院牧辦公室</div>
+      <div class="info-row">
+        <div class="i-icon">📞</div>
+        <div>
+          <div class="i-label">電話</div>
+          <div class="i-val"><a href="tel:+85235053275">3505 3275</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">📠</div>
+        <div>
+          <div class="i-label">傳真</div>
+          <div class="i-val">3505 4554</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">✉️</div>
+        <div>
+          <div class="i-label">電郵</div>
+          <div class="i-val"><a href="mailto:shatin@hospitalchap.org.hk">shatin@hospitalchap.org.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">📍</div>
+        <div>
+          <div class="i-label">地址</div>
+          <div class="i-val">沙田威爾斯親王醫院<br>職員宿舍B座423室</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">⏰</div>
+        <div>
+          <div class="i-label">辦公時間</div>
+          <div class="i-val">星期一至六<br>9:00am – 5:00pm</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">6</div>
+      <div class="stat-label">全職院牧</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">兼職院牧</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">9</div>
+      <div class="stat-label">義務院牧</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">全年</div>
+      <div class="stat-label">服侍病患家屬</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務項目</div>
+    <h2 class="section-title">全面的<span>靈性關顧</span>服務</h2>
+    <p class="section-sub">院牧同工為威爾斯親王醫院的病患者、家屬及醫護人員提供多元化的靈性支援及牧養服務。</p>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🙏</div>
+        <div class="svc-title">病房靈性關顧</div>
+        <div class="svc-desc">院牧定期巡訪各病房，為住院病人提供探訪關懷、祈禱代禱及靈性陪伴，聆聽患者的心聲與憂慮，給予精神支持。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💙</div>
+        <div class="svc-title">情緒支援輔導</div>
+        <div class="svc-desc">為患者及家屬提供情緒支援及輔導服務，協助他們面對疾病、手術及失去的焦慮與恐懼，陪伴渡過人生難關。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">👨‍👩‍👧</div>
+        <div class="svc-title">家屬牧養關顧</div>
+        <div class="svc-desc">關懷照顧住院患者的家屬，特別在危急及臨終關懷情況下，為家屬提供心靈陪伴、哀傷輔導及喪親支援。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">⛪</div>
+        <div class="svc-title">宗教儀式及禮儀</div>
+        <div class="svc-desc">按患者宗教信仰提供祈禱、聖事及宗教儀式服務，包括彌撒、聖餐、洗禮及告別儀式，尊重不同宗教背景。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏥</div>
+        <div class="svc-title">醫護人員支援</div>
+        <div class="svc-desc">關顧醫院前線醫護人員的身心靈健康，提供情緒減壓支援，協助醫護同工面對工作壓力及悲傷情緒。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🕊️</div>
+        <div class="svc-title">臨終關懷服務</div>
+        <div class="svc-desc">為臨終病患及其家屬提供全人關顧，協助患者安詳離世，並在喪失後繼續為家屬提供哀傷關顧及跟進服務。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="team-section">
+  <div class="section-inner">
+    <div class="section-tag">院牧同工</div>
+    <h2 class="section-title">專業的<span>院牧團隊</span></h2>
+    <p class="section-sub">沙田區醫院院牧事工擁有一支專業、充滿愛心的院牧團隊，全心服侍威爾斯親王醫院的每一位有需要人士。</p>
+    <div class="team-layout">
+      <div>
+        <div class="team-group">
+          <div class="tg-title">
+            主任院牧
+            <span class="tg-badge">全職</span>
+          </div>
+          <div class="team-names">
+            <span class="name-chip lead">張麗碧 <span class="phone">3505 3275</span></span>
+          </div>
+        </div>
+        <div class="team-group" style="margin-top:20px;">
+          <div class="tg-title">
+            院牧同工
+            <span class="tg-badge">全職</span>
+          </div>
+          <div class="team-names">
+            <span class="name-chip">吳秀兒</span>
+            <span class="name-chip">鍾沛嫦</span>
+            <span class="name-chip">雷海倫</span>
+            <span class="name-chip">陳秀芬</span>
+            <span class="name-chip">李芷茵</span>
+            <span class="name-chip">郭世聰</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="team-group">
+          <div class="tg-title">
+            院牧同工
+            <span class="tg-badge">部分時間</span>
+          </div>
+          <div class="team-names">
+            <span class="name-chip">周愛弟</span>
+            <span class="name-chip">馮景明</span>
+            <span class="name-chip">楊柳青</span>
+          </div>
+        </div>
+        <div class="team-group" style="margin-top:20px;">
+          <div class="tg-title">
+            義務院牧
+            <span class="tg-badge">義務</span>
+          </div>
+          <div class="team-names">
+            <span class="name-chip">楊偉權</span>
+            <span class="name-chip">李力</span>
+            <span class="name-chip">蘇玉蘭</span>
+            <span class="name-chip">鮑李麗貞師母</span>
+            <span class="name-chip">陳靄玲</span>
+            <span class="name-chip">黃月嫦</span>
+            <span class="name-chip">杜魯華</span>
+            <span class="name-chip">楊素卿</span>
+            <span class="name-chip">曾麗桃</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section id="values">
+  <div class="section-inner">
+    <div class="section-tag">事工理念</div>
+    <h2 class="section-title">我們的<span>核心價值</span></h2>
+    <p class="section-sub">院牧事工以基督信仰為根基，以愛心、尊重及謙遜的態度，陪伴每一位身處困境的人。</p>
+    <div class="values-grid">
+      <div class="val-card">
+        <div class="val-icon">❤️</div>
+        <div class="val-title">愛心關顧</div>
+        <div class="val-desc">以無條件的愛心關顧每一位病患者及家屬，不論宗教信仰、種族及背景，給予真誠的陪伴與支持。</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">🕊️</div>
+        <div class="val-title">全人關懷</div>
+        <div class="val-desc">關注患者靈、魂、體的全人需要，從靈性、情緒、心理各方面提供支援，讓患者感受到整全的關顧。</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">🌟</div>
+        <div class="val-title">尊重多元</div>
+        <div class="val-desc">尊重不同宗教信仰及文化背景，以開放包容的態度提供靈性服務，讓每一位患者都感到被尊重接納。</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">🤝</div>
+        <div class="val-title">跨專業協作</div>
+        <div class="val-desc">與醫院醫護、社工及各部門緊密合作，共同為患者提供全面的身心靈照顧，發揮跨專業團隊的協同效益。</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">📖</div>
+        <div class="val-title">專業培訓</div>
+        <div class="val-desc">持續進修及專業培訓，確保院牧同工掌握最新的靈性關顧知識及技能，為有需要人士提供最優質的服務。</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">🌱</div>
+        <div class="val-title">生命成長</div>
+        <div class="val-desc">相信每一個生命都有尊嚴及價值，陪伴患者在苦難中尋找意義與盼望，支持生命的成長與蛻變。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2 class="section-title">與<span>院牧辦公室</span>聯絡</h2>
+    <p class="section-sub">如需院牧探訪服務、靈性關顧或有任何查詢，歡迎致電或電郵聯絡院牧辦公室。</p>
+    <div class="contact-grid">
+      <div>
+        <div class="c-list">
+          <div class="c-item">
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-label">辦公室電話</div>
+              <div class="ci-val"><a href="tel:+85235053275">3505 3275</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">📠</div>
+            <div>
+              <div class="ci-label">傳真</div>
+              <div class="ci-val">3505 4554</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">✉️</div>
+            <div>
+              <div class="ci-label">電郵</div>
+              <div class="ci-val"><a href="mailto:shatin@hospitalchap.org.hk">shatin@hospitalchap.org.hk</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">地址</div>
+              <div class="ci-val">新界沙田威爾斯親王醫院<br>職員宿舍B座423室院牧部</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">⏰</div>
+            <div>
+              <div class="ci-label">辦公時間</div>
+              <div class="ci-val">星期一至六 9:00am – 5:00pm</div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-note">
+          <div class="cn-title">如需緊急靈性關顧</div>
+          <div class="cn-text">如在辦公時間以外需要緊急院牧服務，請通知病房護士，護士可代為聯絡當值院牧安排探訪。</div>
+        </div>
+      </div>
+      <form class="cform" onsubmit="return false;">
+        <div class="frow">
+          <div class="fg">
+            <label>姓名 *</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="fg">
+            <label>聯絡電話 *</label>
+            <input type="tel" placeholder="電話號碼">
+          </div>
+        </div>
+        <div class="fg">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="fg">
+          <label>查詢類別</label>
+          <select>
+            <option>申請院牧探訪</option>
+            <option>靈性關顧查詢</option>
+            <option>臨終關懷服務</option>
+            <option>哀傷輔導</option>
+            <option>義工申請</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>病房號碼 / 患者姓名（如適用）</label>
+          <input type="text" placeholder="病房及床位或患者姓名">
+        </div>
+        <div class="fg">
+          <label>查詢內容 *</label>
+          <textarea placeholder="請說明所需服務或查詢事項..."></textarea>
+        </div>
+        <button type="submit" class="fsub">提交查詢</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="fb-name">沙田區醫院院牧事工</div>
+        <div class="fb-desc" style="margin-top:6px;">植根於威爾斯親王醫院，為病患者、家屬及醫護人員提供靈性關顧、情緒支援及心靈牧養服務，以愛心陪伴每一位有需要的人。</div>
+      </div>
+      <div>
+        <div class="fc-title">服務項目</div>
+        <ul class="fc-links">
+          <li><a href="#services">病房靈性關顧</a></li>
+          <li><a href="#services">情緒支援輔導</a></li>
+          <li><a href="#services">家屬牧養關顧</a></li>
+          <li><a href="#services">臨終關懷服務</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fc-title">聯絡資料</div>
+        <ul class="fc-links">
+          <li><a href="tel:+85235053275">電話: 3505 3275</a></li>
+          <li><a href="mailto:shatin@hospitalchap.org.hk">shatin@hospitalchap.org.hk</a></li>
+          <li><a href="https://chapoffice.hospitalchap.org.hk/shatin/" target="_blank">院牧事工網站</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 沙田區醫院院牧事工有限公司. All rights reserved.</div>
+      <div style="font-size:12px;color:var(--text-dim);">靈性關顧 | 威爾斯親王醫院</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
