@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JIA Group | Award-Winning Hospitality · Hong Kong</title>
+<style>
+:root {
+  --bg: #060406;
+  --bg2: #0c080c;
+  --bg3: #120e14;
+  --accent: #c89820;
+  --accent2: #e0b030;
+  --wine: #881040;
+  --wine2: #a81850;
+  --text: #f0e8f0;
+  --muted: #786880;
+  --border: rgba(200,152,32,0.14);
+  --card: #0c080c;
+  --radius: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Georgia,system-ui,sans-serif;line-height:1.6;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,4,6,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:1.4rem;font-weight:900;color:var(--accent);text-decoration:none;letter-spacing:3px;text-transform:uppercase;}
+.nav-logo span{font-weight:300;color:var(--muted);font-size:0.7rem;margin-left:0.5rem;letter-spacing:2px;text-transform:uppercase;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{border:1px solid var(--accent);color:var(--accent);padding:0.4rem 1.2rem;border-radius:4px;text-decoration:none;font-size:0.78rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:all 0.2s;}
+.nav-cta:hover{background:var(--accent);color:#000;}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 2rem 60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 45%,rgba(136,16,64,0.08) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 15% 90%,rgba(200,152,32,0.06) 0%,transparent 60%);}
+.hero-divider{position:absolute;top:0;left:50%;width:1px;height:100%;background:linear-gradient(180deg,transparent,rgba(200,152,32,0.1),transparent);pointer-events:none;}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center;position:relative;}
+.hero-eyebrow{font-size:0.72rem;font-weight:600;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:1.5rem;}
+.hero h1{font-size:4rem;font-weight:900;line-height:1.05;margin-bottom:0.8rem;letter-spacing:-1px;}
+.hero h1 em{font-style:italic;color:var(--accent);font-weight:300;}
+.hero-tagline{font-size:0.9rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5rem;}
+.hero-desc{font-size:1rem;color:var(--muted);max-width:500px;margin-bottom:2.5rem;line-height:1.9;}
+.hero-stars{display:flex;align-items:center;gap:1.2rem;margin-bottom:2rem;flex-wrap:wrap;}
+.star-badge{display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.9rem;background:rgba(200,152,32,0.1);border:1px solid rgba(200,152,32,0.2);border-radius:4px;font-size:0.75rem;color:var(--accent);font-weight:600;letter-spacing:0.5px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#000;padding:0.8rem 2rem;border-radius:4px;text-decoration:none;font-weight:700;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase;transition:all 0.2s;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--text);padding:0.8rem 2rem;border-radius:4px;text-decoration:none;font-weight:600;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(240,232,240,0.2);transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--wine),var(--accent));}
+.info-card-title{font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:1.5rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(200,152,32,0.07);}
+.info-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.info-icon{width:32px;height:32px;background:rgba(200,152,32,0.08);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;}
+.info-label{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;color:var(--text);font-weight:400;line-height:1.5;}
+.info-val a{color:var(--accent);text-decoration:none;}
+
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2rem;}
+.stat-item{text-align:center;padding:1rem;}
+.stat-num{font-size:2.2rem;font-weight:900;color:var(--accent);line-height:1;margin-bottom:0.3rem;letter-spacing:-1px;}
+.stat-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+
+section{padding:6rem 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-eyebrow{font-size:0.68rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:3px;margin-bottom:0.8rem;}
+.section-title{font-size:2.4rem;font-weight:800;line-height:1.2;margin-bottom:1rem;letter-spacing:-0.5px;}
+.section-title em{font-style:italic;font-weight:300;color:var(--accent);}
+.section-sub{font-size:1rem;color:var(--muted);max-width:620px;line-height:1.9;}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3.5rem;}
+.about-highlight{background:var(--bg3);border-left:2px solid var(--accent);padding:1.8rem 2rem;margin-bottom:2rem;}
+.about-highlight p{color:var(--text);font-size:1rem;line-height:1.9;font-style:italic;font-family:Georgia,serif;}
+.about-text{color:var(--muted);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;}
+.founder-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;margin-top:1.5rem;}
+.founder-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--wine),var(--accent));}
+.founder-label{font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:0.8rem;}
+.founder-name{font-size:1.3rem;font-weight:800;color:var(--text);margin-bottom:0.2rem;letter-spacing:1px;}
+.founder-title{font-size:0.82rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.8rem;}
+.founder-awards{display:flex;flex-direction:column;gap:0.4rem;margin-top:0.8rem;}
+.award-row{font-size:0.8rem;color:var(--muted);display:flex;gap:0.8rem;align-items:baseline;}
+.award-year{color:var(--accent);font-weight:700;flex-shrink:0;font-size:0.75rem;}
+.vision-box{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;}
+.vision-box::before{content:'"';font-size:4rem;color:rgba(200,152,32,0.15);line-height:1;display:block;margin-bottom:-1.5rem;font-family:Georgia,serif;}
+.vision-text{font-size:0.95rem;color:var(--muted);line-height:1.9;font-style:italic;font-family:Georgia,serif;}
+
+.restaurants-bg{background:var(--bg2);}
+.restaurants-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem;}
+.rest-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.rest-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--c,var(--accent));opacity:0;transition:opacity 0.25s;}
+.rest-card:hover{border-color:rgba(200,152,32,0.3);transform:translateY(-3px);}
+.rest-card:hover::before{opacity:1;}
+.rest-card:nth-child(1){--c:#c89820;}
+.rest-card:nth-child(2){--c:#881040;}
+.rest-card:nth-child(3){--c:#c89820;}
+.rest-card:nth-child(4){--c:#a81850;}
+.rest-card:nth-child(5){--c:#c89820;}
+.rest-card:nth-child(6){--c:#881040;}
+.rest-card:nth-child(7){--c:#c89820;}
+.rest-card:nth-child(8){--c:#e0b030;}
+.rest-card:nth-child(9){--c:#a81850;}
+.rest-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.8rem;}
+.rest-name{font-size:1.1rem;font-weight:800;color:var(--text);letter-spacing:1px;}
+.michelin-badge{display:flex;align-items:center;gap:0.3rem;font-size:0.7rem;font-weight:700;color:var(--accent);background:rgba(200,152,32,0.1);border:1px solid rgba(200,152,32,0.2);padding:0.2rem 0.6rem;border-radius:4px;white-space:nowrap;}
+.rest-cuisine{font-size:0.75rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.6rem;}
+.rest-desc{font-size:0.83rem;color:var(--muted);line-height:1.7;}
+.rest-awards{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.8rem;}
+.rest-award-tag{font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(136,16,64,0.1);color:var(--wine2);border:1px solid rgba(136,16,64,0.15);border-radius:3px;}
+
+.awards-bg{background:var(--bg3);}
+.awards-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem;}
+.award-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:border-color 0.2s;}
+.award-card:hover{border-color:var(--accent);}
+.award-year-big{font-size:1.8rem;font-weight:900;color:rgba(200,152,32,0.25);margin-bottom:0.5rem;line-height:1;}
+.award-title{font-size:0.88rem;font-weight:700;color:var(--text);margin-bottom:0.3rem;}
+.award-org{font-size:0.75rem;color:var(--muted);font-style:italic;}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:3.5rem;}
+.contact-info{display:flex;flex-direction:column;gap:1.2rem;}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem;background:var(--card);border:1px solid var(--border);border-radius:8px;transition:border-color 0.2s;}
+.contact-item:hover{border-color:var(--accent);}
+.c-icon{width:38px;height:38px;background:rgba(200,152,32,0.08);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.c-label{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.c-val{font-size:0.88rem;color:var(--text);font-weight:400;line-height:1.5;}
+.c-val a{color:var(--accent);text-decoration:none;}
+.hq-card{background:var(--card);border:1px solid rgba(200,152,32,0.2);border-radius:var(--radius);padding:2.5rem;position:relative;overflow:hidden;}
+.hq-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--wine),var(--accent));}
+.hq-eyebrow{font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:1rem;}
+.hq-name{font-size:1.5rem;font-weight:900;color:var(--text);letter-spacing:2px;margin-bottom:0.4rem;text-transform:uppercase;}
+.hq-sub{font-size:0.8rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5rem;}
+.hq-addr{font-size:0.92rem;color:var(--text);line-height:1.9;margin-bottom:1.5rem;}
+.hq-divider{height:1px;background:var(--border);margin:1.2rem 0;}
+.hq-note{font-size:0.82rem;color:var(--muted);line-height:1.7;font-style:italic;}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:4rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand p{color:var(--muted);font-size:0.85rem;line-height:1.8;margin-top:0.8rem;}
+.footer-logo{font-size:1.3rem;font-weight:900;color:var(--accent);letter-spacing:4px;text-transform:uppercase;}
+.footer-col h4{font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-col li a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.footer-copy{font-size:0.78rem;color:var(--muted);}
+.footer-note{font-size:0.78rem;color:var(--muted);}
+.footer-note span{color:var(--accent);}
+
+@media(max-width:1000px){
+  .stats-inner{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero h1{font-size:2.8rem;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .restaurants-grid{grid-template-columns:1fr 1fr;}
+  .awards-timeline{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+}
+@media(max-width:600px){
+  .restaurants-grid,.awards-timeline{grid-template-columns:1fr;}
+  .hero h1{font-size:2rem;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">JIA <span>Group · Hong Kong</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#restaurants">Restaurants</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Reservations</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-divider"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">★ Award-Winning Hong Kong Hospitality Group</div>
+      <h1>Where <em>Home</em><br>Meets the<br>World's Table</h1>
+      <div class="hero-tagline">JIA — 家 — Home · Est. 2010 · Hong Kong</div>
+      <p class="hero-desc">JIA Group is Hong Kong's internationally acclaimed food and beverage operator — home to two Michelin-starred restaurants and a portfolio of iconic dining destinations that define the city's culinary landscape.</p>
+      <div class="hero-stars">
+        <span class="star-badge">⭐ Duddell's · 1 Michelin Star</span>
+        <span class="star-badge">⭐ Louise · 1 Michelin Star</span>
+        <span class="star-badge">🏆 Asia's 50 Best</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#restaurants" class="btn-primary">Explore Restaurants</a>
+        <a href="#about" class="btn-secondary">Our Story</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">Contact JIA Group</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">Headquarters</div>
+          <div class="info-val">2205 Universal Trade Centre<br>3 Arbuthnot Road, Central<br>Hong Kong</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">General Enquiries</div>
+          <div class="info-val"><a href="mailto:info@jiagroup.co">info@jiagroup.co</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🎉</div>
+        <div>
+          <div class="info-label">Events & Catering</div>
+          <div class="info-val"><a href="mailto:events@jiagroup.co">events@jiagroup.co</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💬</div>
+        <div>
+          <div class="info-label">WhatsApp</div>
+          <div class="info-val"><a href="https://wa.me/85297230459">+852 9723 0459</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">Website</div>
+          <div class="info-val"><a href="https://www.jiagroup.co" target="_blank">www.jiagroup.co</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">2010</div>
+      <div class="stat-label">Founded</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">9+</div>
+      <div class="stat-label">Restaurants & Bars</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2★</div>
+      <div class="stat-label">Michelin Stars</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">50</div>
+      <div class="stat-label">Asia's Best Listed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">家</div>
+      <div class="stat-label">JIA Means Home</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-eyebrow">Our Story</div>
+    <h2 class="section-title">Building <em>Homes</em> Around the World's Table</h2>
+    <p class="section-sub">JIA Group is a Hong Kong-based food and beverage operator that has earned a reputation internationally as an award-winning trendsetter in the hospitality industry.</p>
+    <div class="about-grid">
+      <div>
+        <div class="about-highlight">
+          <p>"As the world becomes more fractured, particularly in this digital age, we believe in the importance of spending more face to face quality time together with friends, family and people in general. Our vision is to build spaces in cities around the world that allow people to connect over a table."</p>
+        </div>
+        <p class="about-text">With the opening of 208 Duecento Otto in 2010, JIA Group created a number of restaurants that led the dining trend in Hong Kong — one of the most competitive food and beverage markets in the world. Today, the group's portfolio includes iconic venues spanning Chinese, Thai, Italian, French, Spanish and contemporary cuisines.</p>
+        <p class="about-text">JIA — the Chinese word for "home" — reflects the group's philosophy of creating spaces where guests feel a genuine sense of belonging, warmth, and connection. Every venue is crafted with style, substance and authenticity at its core.</p>
+        <div class="vision-box" style="margin-top:2rem;">
+          <div class="vision-text">Our vision is to build spaces in cities around the world that allow people to connect over a table and to add enjoyment into people's lives by allowing them to build a sense of home.</div>
+        </div>
+      </div>
+      <div>
+        <div class="founder-card">
+          <div class="founder-label">Founder & Chief Executive</div>
+          <div class="founder-name">Yenn Wong</div>
+          <div class="founder-title">Founder · JIA Group</div>
+          <div class="founder-awards">
+            <div class="award-row"><span class="award-year">2022</span>Restaurateur of the Year — The Tatler Dining Awards</div>
+            <div class="award-row"><span class="award-year">2016</span>Restauranteur of the Year — Hong Kong Tatler</div>
+            <div class="award-row"><span class="award-year">2014</span>Restaurateur of the Year — WOM Guide</div>
+            <div class="award-row"><span class="award-year">2013</span>Women of Our Time — South China Morning Post</div>
+            <div class="award-row"><span class="award-year">2009</span>Top 3 'Rising Star Award' — Financial Times</div>
+            <div class="award-row"><span class="award-year">2008</span>Asia's Best Young Entrepreneurs — Businessweek</div>
+            <div class="award-row"><span class="award-year">2006</span>Innovative Entrepreneur of the Year — HK Junior Chamber</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTAURANTS -->
+<section id="restaurants" class="restaurants-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow">Eat & Drink</div>
+    <h2 class="section-title">Our <em>Portfolio</em></h2>
+    <p class="section-sub">Nine distinctive venues spanning Chinese, French, Thai, Italian, Spanish and contemporary cuisines — each a world unto itself.</p>
+    <div class="restaurants-grid">
+      <div class="rest-card">
+        <div class="rest-header">
+          <div class="rest-name">Duddell's</div>
+          <span class="michelin-badge">⭐ 1 Michelin Star</span>
+        </div>
+        <div class="rest-cuisine">Chinese · Contemporary</div>
+        <div class="rest-desc">Hong Kong's celebrated cultural dining destination fusing exceptional Cantonese cuisine with an acclaimed art programme. A beacon of refined Chinese dining in the heart of Central.</div>
+        <div class="rest-awards">
+          <span class="rest-award-tag">Michelin ⭐ 2020–2025</span>
+          <span class="rest-award-tag">Asia's 50 Best #32</span>
+          <span class="rest-award-tag">OAD Asian Top</span>
+        </div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-header">
+          <div class="rest-name">Louise</div>
+          <span class="michelin-badge">⭐ 1 Michelin Star</span>
+        </div>
+        <div class="rest-cuisine">French · Contemporary</div>
+        <div class="rest-desc">A love letter to modern French cuisine — bright, playful and deeply delicious. Louise has earned acclaim for its imaginative seasonal menus and impeccable service.</div>
+        <div class="rest-awards">
+          <span class="rest-award-tag">Michelin ⭐ 2022–2025</span>
+          <span class="rest-award-tag">Asia's 50 Best</span>
+          <span class="rest-award-tag">Restaurant of Year 2023</span>
+        </div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-header">
+          <div class="rest-name">ESTRO</div>
+        </div>
+        <div class="rest-cuisine">Italian · Contemporary</div>
+        <div class="rest-desc">Rising star Loïc Portalier leads this celebrated Italian fine dining destination, earning the Bazaar Taste Elite Rising Star award in 2025 for his outstanding modern Italian cuisine.</div>
+        <div class="rest-awards">
+          <span class="rest-award-tag">Bazaar Rising Star 2025</span>
+          <span class="rest-award-tag">Foodie Forks Best French 2024</span>
+        </div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-header">
+          <div class="rest-name">MONO</div>
+        </div>
+        <div class="rest-cuisine">Latin American · Contemporary</div>
+        <div class="rest-desc">A pioneering single-ingredient dining concept celebrating Latin American flavours with technical precision. MONO has captured Hong Kong's imagination with its bold, inventive approach.</div>
+        <div class="rest-awards">
+          <span class="rest-award-tag">Foodie Forks Best Latin 2024</span>
+          <span class="rest-award-tag">Tatler Dining 20</span>
+        </div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-header">
+          <div class="rest-name">Andō</div>
+        </div>
+        <div class="rest-cuisine">Japanese · Contemporary</div>
+        <div class="rest-desc">A sophisticated Japanese-inspired dining experience that honours the precision and seasonal philosophy of Japanese cuisine within a luxuriously intimate setting.</div>
+        <div class="rest-awards">
+          <span class="rest-award-tag">50 Best Discovery</span>
+          <span class="rest-award-tag">La Liste Outstanding</span>
+        </div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-header">
+          <div class="rest-name">Chachawan</div>
+        </div>
+        <div class="rest-cuisine">Thai · Isaan</div>
+        <div class="rest-desc">Hong Kong's beloved destination for vibrant, bold Isaan Thai cuisine. Chachawan's fiery flavours, communal spirit and authentic recipes have made it a perennial favourite.</div>
+        <div class="rest-awards">
+          <span class="rest-award-tag">Time Out HK Recommended</span>
+          <span class="rest-award-tag">Tatler Dining</span>
+        </div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-header">
+          <div class="rest-name">22 Ships</div>
+        </div>
+        <div class="rest-cuisine">Spanish · Tapas</div>
+        <div class="rest-desc">A lively Spanish tapas bar and restaurant — casual, convivial and full of flavour. 22 Ships captures the spirit of Spanish dining culture with a distinctly Hong Kong energy.</div>
+        <div class="rest-awards">
+          <span class="rest-award-tag">SCMP Top Tables</span>
+        </div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-header">
+          <div class="rest-name">Leela</div>
+        </div>
+        <div class="rest-cuisine">Thai · Fine Dining</div>
+        <div class="rest-desc">An elevated Thai dining experience that showcases the depth, complexity and elegance of Thai royal cuisine through refined techniques and exceptional ingredients.</div>
+        <div class="rest-awards">
+          <span class="rest-award-tag">Hong Kong Tatler</span>
+        </div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-header">
+          <div class="rest-name">Duddell's · HKIA</div>
+        </div>
+        <div class="rest-cuisine">Chinese · Airport Dining</div>
+        <div class="rest-desc">Bringing Duddell's celebrated Cantonese cuisine to Hong Kong International Airport — a world-class Chinese dining experience for travellers passing through Asia's aviation hub.</div>
+        <div class="rest-awards">
+          <span class="rest-award-tag">Airport Fine Dining</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards" class="awards-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow">Recognition</div>
+    <h2 class="section-title">Awards & <em>Acclaim</em></h2>
+    <p class="section-sub">An edit of awards and recognition that JIA Group has amassed over the years — spanning Michelin stars, global rankings and industry honours.</p>
+    <div class="awards-timeline">
+      <div class="award-card">
+        <div class="award-year-big">2025</div>
+        <div class="award-title">Michelin Stars — Duddell's & Louise</div>
+        <div class="award-org">Michelin Guide Hong Kong & Macau</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year-big">2025</div>
+        <div class="award-title">SCMP 100 Top Tables</div>
+        <div class="award-org">South China Morning Post</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year-big">2024</div>
+        <div class="award-title">Asia's 50 Best Restaurants</div>
+        <div class="award-org">World's 50 Best · Duddell's #32</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year-big">2023</div>
+        <div class="award-title">Restaurant of the Year</div>
+        <div class="award-org">Tatler Dining Awards — Louise</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year-big">2022</div>
+        <div class="award-title">Restaurateur of the Year</div>
+        <div class="award-org">The Tatler Dining Awards — Yenn Wong</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year-big">2022</div>
+        <div class="award-title">50 Best Discovery</div>
+        <div class="award-org">World's 50 Best Restaurants</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year-big">2022</div>
+        <div class="award-title">La Liste Outstanding Restaurant</div>
+        <div class="award-org">La Liste Global Rankings</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year-big">2017</div>
+        <div class="award-title">Restaurant Group of the Year</div>
+        <div class="award-org">APAC Businesswoman Awards</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year-big">2016</div>
+        <div class="award-title">Restauranteur of the Year</div>
+        <div class="award-org">Hong Kong Tatler</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg2);border-top:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-eyebrow">Get In Touch</div>
+    <h2 class="section-title">Contact <em>JIA Group</em></h2>
+    <p class="section-sub">For reservations, events, private dining and group enquiries, contact our team directly or visit the individual venue pages on our website.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">General Enquiries</div>
+            <div class="c-val"><a href="mailto:info@jiagroup.co">info@jiagroup.co</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">🎉</div>
+          <div>
+            <div class="c-label">Events & Private Dining</div>
+            <div class="c-val"><a href="mailto:events@jiagroup.co">events@jiagroup.co</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">💬</div>
+          <div>
+            <div class="c-label">WhatsApp</div>
+            <div class="c-val"><a href="https://wa.me/85297230459">+852 9723 0459</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">Website</div>
+            <div class="c-val"><a href="https://www.jiagroup.co" target="_blank">www.jiagroup.co</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="hq-card">
+        <div class="hq-eyebrow">Corporate Headquarters</div>
+        <div class="hq-name">JIA Group</div>
+        <div class="hq-sub">Hong Kong · Est. 2010</div>
+        <div class="hq-addr">
+          2205 Universal Trade Centre<br>
+          3 Arbuthnot Road, Central<br>
+          Hong Kong
+        </div>
+        <div class="hq-divider"></div>
+        <div class="hq-note">For restaurant reservations, please visit the individual venue pages at jiagroup.co or contact each restaurant directly. For group bookings of 10+ guests, events and private dining enquiries, please reach our events team.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">JIA</div>
+        <p>JIA Group — Hong Kong's internationally acclaimed food and beverage operator. Home to Michelin-starred Duddell's and Louise, with a portfolio of iconic dining destinations across Central, Wan Chai, and Hong Kong International Airport.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Our Venues</h4>
+        <ul>
+          <li><a href="#restaurants">Duddell's ⭐</a></li>
+          <li><a href="#restaurants">Louise ⭐</a></li>
+          <li><a href="#restaurants">ESTRO</a></li>
+          <li><a href="#restaurants">MONO</a></li>
+          <li><a href="#restaurants">Andō</a></li>
+          <li><a href="#restaurants">Chachawan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>More Venues</h4>
+        <ul>
+          <li><a href="#restaurants">22 Ships</a></li>
+          <li><a href="#restaurants">Leela</a></li>
+          <li><a href="#restaurants">Duddell's HKIA</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#awards">Awards</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="mailto:events@jiagroup.co">Private Dining</a></li>
+          <li><a href="https://www.jiagroup.co" target="_blank">jiagroup.co</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 JIA Group. All rights reserved. 家.</div>
+      <div class="footer-note">Central, <span>Hong Kong</span> · Founded 2010</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
