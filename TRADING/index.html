@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hong Kong Online Trading Limited | B2B Wholesale &amp; Global Trade</title>
+<style>
+:root {
+  --primary: #0a1828;
+  --primary-mid: #0e2038;
+  --accent: #0890b8;
+  --accent-light: #10aad8;
+  --green: #18a060;
+  --green-light: #22c070;
+  --white: #ffffff;
+  --off-white: #f4f7fa;
+  --light-grey: #e2e8f0;
+  --mid-grey: #7a8898;
+  --dark-grey: #384858;
+  --text: #1a2030;
+  --text-light: #526070;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 20px rgba(10,24,40,0.10);
+  --shadow-md: 0 8px 36px rgba(10,24,40,0.14);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.3s ease;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,24,40,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(8,144,184,0.20);
+  padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px;
+}
+.nav-logo { font-size: 1.2rem; font-weight: 800; color: var(--white); letter-spacing: 0.03em; }
+.nav-logo span { color: var(--accent-light); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.78); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: var(--transition); }
+.nav-links a:hover { color: var(--accent-light); }
+.nav-cta { background: var(--accent); color: var(--white); padding: 0.5rem 1.3rem; border-radius: 50px; font-size: 0.88rem; font-weight: 600; transition: var(--transition); }
+.nav-cta:hover { background: var(--accent-light); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary) 0%, #0c2040 45%, #0e2850 70%, #0c2858 100%);
+  display: flex; align-items: center; padding: 100px 5% 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(8,144,184,0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 15% 70%, rgba(24,160,96,0.08) 0%, transparent 65%);
+}
+.hero-inner {
+  max-width: 1200px; width: 100%; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(8,144,184,0.15); border: 1px solid rgba(8,144,184,0.35);
+  color: var(--accent-light); padding: 0.4rem 1rem; border-radius: 50px;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1.5rem;
+}
+.hero h1 { font-size: clamp(2rem, 4.2vw, 3.6rem); font-weight: 800; line-height: 1.13; color: var(--white); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+.hero h1 .accent { color: var(--accent-light); }
+.hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.68); margin-bottom: 1.8rem; }
+.hero-desc { font-size: 1rem; color: rgba(255,255,255,0.64); line-height: 1.78; margin-bottom: 2.2rem; max-width: 520px; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary { background: var(--accent); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; transition: var(--transition); box-shadow: 0 4px 20px rgba(8,144,184,0.38); }
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+.btn-outline { border: 2px solid rgba(255,255,255,0.32); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: var(--transition); }
+.btn-outline:hover { border-color: var(--accent-light); color: var(--accent-light); }
+.hero-card {
+  background: rgba(255,255,255,0.06); backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 2rem;
+}
+.hero-card-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.8rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.10); }
+.hero-card-icon { width: 50px; height: 50px; border-radius: 14px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+.hero-card-head h3 { color: var(--white); font-size: 1rem; font-weight: 700; }
+.hero-card-head p { color: rgba(255,255,255,0.50); font-size: 0.78rem; }
+.hero-info-row { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+.hero-info-icon { width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0; background: rgba(8,144,184,0.18); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+.hero-info-label { font-size: 0.70rem; color: rgba(255,255,255,0.40); text-transform: uppercase; letter-spacing: 0.06em; }
+.hero-info-val { font-size: 0.88rem; color: rgba(255,255,255,0.88); font-weight: 500; }
+
+/* STATS */
+.stats-strip { background: linear-gradient(90deg, var(--primary) 0%, var(--primary-mid) 100%); padding: 3rem 5%; }
+.stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.stat-item { text-align: center; }
+.stat-num { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--accent-light); letter-spacing: -0.02em; line-height: 1; }
+.stat-unit { font-size: 1.3rem; }
+.stat-label { color: rgba(255,255,255,0.58); font-size: 0.85rem; margin-top: 0.4rem; }
+
+/* SHARED */
+section { padding: 90px 5%; }
+.section-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(8,144,184,0.08); border: 1px solid rgba(8,144,184,0.25); color: var(--accent); padding: 0.35rem 1rem; border-radius: 50px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 1rem; }
+.section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: var(--primary); line-height: 1.2; letter-spacing: -0.02em; }
+.section-subtitle { font-size: 1.02rem; color: var(--text-light); line-height: 1.7; margin-top: 0.8rem; max-width: 620px; }
+.section-header { margin-bottom: 3rem; }
+.max-w { max-width: 1200px; margin: 0 auto; }
+
+/* ABOUT */
+.about { background: var(--off-white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-highlight { background: linear-gradient(135deg, var(--primary) 0%, #0e2040 100%); border-radius: 18px; padding: 2.2rem; border-left: 4px solid var(--accent); margin-bottom: 2rem; }
+.about-highlight blockquote { font-size: 1.15rem; font-style: italic; font-weight: 600; color: var(--white); line-height: 1.6; }
+.about-highlight cite { display: block; margin-top: 0.8rem; font-size: 0.8rem; color: var(--accent-light); font-style: normal; letter-spacing: 0.05em; }
+.about-body p { font-size: 0.98rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.2rem; }
+.prop-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.prop-card { background: var(--white); border-radius: var(--radius); padding: 1.3rem; border: 1px solid var(--light-grey); transition: var(--transition); }
+.prop-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.prop-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.prop-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem; }
+.prop-card p { font-size: 0.8rem; color: var(--text-light); line-height: 1.5; }
+
+/* CATEGORIES */
+.categories { background: var(--white); }
+.cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+.cat-card { background: var(--card-bg); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--light-grey); transition: var(--transition); position: relative; overflow: hidden; }
+.cat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); transform: scaleX(0); transform-origin: left; transition: var(--transition); }
+.cat-card:hover { border-color: rgba(8,144,184,0.3); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.cat-card:hover::before { transform: scaleX(1); }
+.cat-icon { width: 54px; height: 54px; border-radius: 14px; background: linear-gradient(135deg, rgba(8,144,184,0.12), rgba(8,144,184,0.05)); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.2rem; }
+.cat-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.7rem; }
+.cat-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
+.cat-items { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.cat-item { background: rgba(8,144,184,0.06); border: 1px solid rgba(8,144,184,0.18); color: var(--accent); font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.65rem; border-radius: 50px; }
+
+/* PLATFORM */
+.platform {
+  background: linear-gradient(135deg, var(--primary) 0%, #0c2040 60%, #0e2848 100%);
+  position: relative; overflow: hidden;
+}
+.platform::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 65% 55% at 78% 45%, rgba(8,144,184,0.14) 0%, transparent 70%); }
+.platform .section-tag { background: rgba(24,160,96,0.15); border-color: rgba(24,160,96,0.35); color: var(--green-light); }
+.platform .section-title { color: var(--white); }
+.platform .section-subtitle { color: rgba(255,255,255,0.62); }
+.platform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; z-index: 1; }
+.platform-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: 16px; padding: 2rem; transition: var(--transition); }
+.platform-card:hover { background: rgba(255,255,255,0.10); border-color: rgba(8,144,184,0.4); transform: translateY(-3px); }
+.platform-card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+.platform-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.7rem; }
+.platform-card p { font-size: 0.88rem; color: rgba(255,255,255,0.62); line-height: 1.65; }
+
+/* WHY HK */
+.why-hk { background: var(--off-white); }
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.why-text p { font-size: 0.98rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.2rem; }
+.advantages { display: flex; flex-direction: column; gap: 1.2rem; }
+.adv-item { display: flex; align-items: flex-start; gap: 1rem; background: var(--white); border-radius: var(--radius); padding: 1.4rem; border: 1px solid var(--light-grey); transition: var(--transition); }
+.adv-item:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.adv-icon { width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0; background: linear-gradient(135deg, var(--accent), var(--accent-light)); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+.adv-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem; }
+.adv-content p { font-size: 0.85rem; color: var(--text-light); line-height: 1.5; }
+
+/* CONTACT */
+.contact { background: linear-gradient(135deg, var(--primary) 0%, #0e2040 100%); }
+.contact .section-title { color: var(--white); }
+.contact .section-subtitle { color: rgba(255,255,255,0.62); }
+.contact .section-tag { background: rgba(8,144,184,0.15); border-color: rgba(8,144,184,0.35); color: var(--accent-light); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
+.contact-item { display: flex; align-items: flex-start; gap: 1rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: var(--radius); padding: 1.3rem; }
+.contact-item-icon { width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0; background: rgba(8,144,184,0.18); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.contact-item-label { font-size: 0.70rem; color: rgba(255,255,255,0.40); text-transform: uppercase; letter-spacing: 0.07em; }
+.contact-item-val { font-size: 0.92rem; color: rgba(255,255,255,0.88); font-weight: 500; margin-top: 0.15rem; }
+.contact-form { background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.10); border-radius: 20px; padding: 2.4rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.56); margin-bottom: 0.4rem; font-weight: 500; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-sm); padding: 0.75rem 1rem; color: var(--white); font-size: 0.9rem; transition: var(--transition); outline: none; font-family: inherit; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent-light); background: rgba(255,255,255,0.12); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.28); }
+.form-group select option { background: var(--primary); color: var(--white); }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-submit { width: 100%; background: var(--accent); color: var(--white); border: none; border-radius: 50px; padding: 1rem; font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition); }
+.form-submit:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+/* FOOTER */
+footer { background: #040c18; padding: 2.5rem 5%; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-size: 1.1rem; font-weight: 800; color: var(--white); letter-spacing: 0.04em; }
+.footer-logo span { color: var(--accent-light); }
+.footer-copy { font-size: 0.80rem; color: rgba(255,255,255,0.38); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.80rem; color: rgba(255,255,255,0.42); transition: var(--transition); }
+.footer-links a:hover { color: var(--accent-light); }
+
+@media (max-width: 960px) {
+  .hero-inner, .about-grid, .contact-grid, .why-grid { grid-template-columns: 1fr; }
+  .hero-card { display: none; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .cat-grid, .platform-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .cat-grid, .platform-grid, .prop-cards { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">HK Online<span> Trading</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#categories">Products</a></li>
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#why">Why HK</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Enquire Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">B2B Wholesale · Online Trading · Hong Kong</div>
+      <h1>Trade Smarter<br>from <span class="accent">Hong Kong.</span></h1>
+      <p class="hero-sub">Your digital gateway to global wholesale trading.</p>
+      <p class="hero-desc">
+        Hong Kong Online Trading Limited is a Hong Kong-registered B2B trading company operating at the intersection of digital commerce and international wholesale. We connect buyers and suppliers worldwide, leveraging Hong Kong's world-class logistics infrastructure, free trade status, and deep manufacturing connections across China and Asia.
+      </p>
+      <div class="hero-actions">
+        <a href="#categories" class="btn-primary">Browse Products</a>
+        <a href="#contact" class="btn-outline">Start Trading</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hero-card-icon">🌐</div>
+        <div>
+          <h3>Hong Kong Online Trading Limited</h3>
+          <p>Hong Kong · Global B2B Trading</p>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">📍</div>
+        <div>
+          <div class="hero-info-label">Registered</div>
+          <div class="hero-info-val">Hong Kong SAR, China</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">✉️</div>
+        <div>
+          <div class="hero-info-label">Email</div>
+          <div class="hero-info-val">contact@hongkongonlinetradinglimited.com</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">🚢</div>
+        <div>
+          <div class="hero-info-label">Trade Hub</div>
+          <div class="hero-info-val">Hong Kong Free Port · No import duties</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">🌏</div>
+        <div>
+          <div class="hero-info-label">Markets Served</div>
+          <div class="hero-info-val">Asia-Pacific, Middle East, Europe, Americas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">Asia's Premier Free Port</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">180<span class="stat-unit">+</span></div>
+      <div class="stat-label">Countries Reachable</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24<span class="stat-unit">/7</span></div>
+      <div class="stat-label">Online Trading Platform</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0<span class="stat-unit">%</span></div>
+      <div class="stat-label">HK Import Duty (Most Goods)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="max-w">
+    <div class="about-grid">
+      <div>
+        <div class="section-header">
+          <div class="section-tag">About Us</div>
+          <h2 class="section-title">Online Trading, Rooted in Hong Kong</h2>
+        </div>
+        <div class="about-highlight">
+          <blockquote>"Hong Kong's unique position as Asia's trading gateway makes it the ideal base for connecting global buyers and sellers in the digital age."</blockquote>
+          <cite>— Hong Kong Online Trading Limited</cite>
+        </div>
+        <div class="about-body">
+          <p>
+            Hong Kong Online Trading Limited is a professional B2B wholesale and import-export trading company established in Hong Kong. We leverage Hong Kong's exceptional advantages — free port status, world-class container port, stable legal framework, and geographic proximity to mainland China — to facilitate seamless international trade.
+          </p>
+          <p>
+            Our online trading model combines digital efficiency with deep supply chain expertise. Whether you are a buyer seeking reliable product sources or a supplier looking for international distribution, our platform and expertise connect you with the right partners.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">⚡</div>
+            <h4>Digital-First</h4>
+            <p>Streamlined online processes from RFQ to order fulfilment — less paperwork, faster deals.</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🔒</div>
+            <h4>Trusted Framework</h4>
+            <p>Hong Kong's common law system and robust regulatory environment protect all transactions.</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🌏</div>
+            <h4>China Gateway</h4>
+            <p>Direct access to China's manufacturing base with Hong Kong's international connectivity.</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🔍</div>
+            <h4>Verified Suppliers</h4>
+            <p>All suppliers in our network are vetted for quality, compliance, and reliability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Product Categories</div>
+      <h2 class="section-title">Wide-Ranging Wholesale Product Portfolio</h2>
+      <p class="section-subtitle">We source and trade across multiple product categories to serve diverse buyer needs globally.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-icon">👕</div>
+        <h3>Apparel &amp; Textiles</h3>
+        <p>Ready-made garments, fabrics, fashion accessories, and textile raw materials sourced from Asia's leading manufacturing hubs.</p>
+        <div class="cat-items">
+          <span class="cat-item">Garments</span>
+          <span class="cat-item">Fabrics</span>
+          <span class="cat-item">Accessories</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🔌</div>
+        <h3>Electronics &amp; Technology</h3>
+        <p>Consumer electronics, components, smart devices, and technology accessories. Sourced from China's electronics manufacturing centres.</p>
+        <div class="cat-items">
+          <span class="cat-item">Consumer Electronics</span>
+          <span class="cat-item">Components</span>
+          <span class="cat-item">Smart Devices</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🏠</div>
+        <h3>Home &amp; Living</h3>
+        <p>Furniture, homeware, kitchenware, décor items, and household goods for retail buyers, distributors, and e-commerce operators.</p>
+        <div class="cat-items">
+          <span class="cat-item">Homeware</span>
+          <span class="cat-item">Kitchenware</span>
+          <span class="cat-item">Décor</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">⚙️</div>
+        <h3>Industrial &amp; Machinery</h3>
+        <p>Industrial components, machinery parts, tools, and equipment for manufacturers across diverse sectors in Asia and beyond.</p>
+        <div class="cat-items">
+          <span class="cat-item">Machinery Parts</span>
+          <span class="cat-item">Tools</span>
+          <span class="cat-item">Industrial Equipment</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🧴</div>
+        <h3>Health &amp; Beauty</h3>
+        <p>Personal care products, cosmetics, health supplements, and wellness goods for retail chains, pharmacies, and online resellers.</p>
+        <div class="cat-items">
+          <span class="cat-item">Cosmetics</span>
+          <span class="cat-item">Supplements</span>
+          <span class="cat-item">Personal Care</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">📦</div>
+        <h3>Packaging &amp; Materials</h3>
+        <p>Industrial packaging materials, custom boxes, protective packaging, and packaging accessories for manufacturers and e-commerce fulfillment.</p>
+        <div class="cat-items">
+          <span class="cat-item">Custom Boxes</span>
+          <span class="cat-item">Protective Packaging</span>
+          <span class="cat-item">Materials</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section class="platform" id="platform">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Trading Platform</div>
+      <h2 class="section-title">How We Make International Trade Simple</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">Our online trading model removes friction from B2B trade.</p>
+    </div>
+    <div class="platform-grid">
+      <div class="platform-card">
+        <div class="platform-card-icon">🔍</div>
+        <h3>Source &amp; Match</h3>
+        <p>Share your product requirements and target pricing. We identify verified suppliers from our network who can fulfil your specification, quantity, and quality requirements.</p>
+      </div>
+      <div class="platform-card">
+        <div class="platform-card-icon">💬</div>
+        <h3>Negotiate &amp; Confirm</h3>
+        <p>We handle supplier negotiations, sample coordination, and contract finalisation. Transparent pricing, clear delivery terms, and no hidden costs — all confirmed before you commit.</p>
+      </div>
+      <div class="platform-card">
+        <div class="platform-card-icon">📋</div>
+        <h3>Quality &amp; Compliance</h3>
+        <p>Pre-shipment quality inspection, product certification support, and compliance documentation — ensuring your goods meet destination market requirements.</p>
+      </div>
+      <div class="platform-card">
+        <div class="platform-card-icon">🚢</div>
+        <h3>Ship &amp; Track</h3>
+        <p>Freight booking, export customs clearance from Hong Kong, and real-time shipment tracking. Sea, air, and express options available to over 180 countries.</p>
+      </div>
+      <div class="platform-card">
+        <div class="platform-card-icon">💳</div>
+        <h3>Secure Payment</h3>
+        <p>Multiple payment options including T/T, L/C, and trade finance solutions. Hong Kong's banking infrastructure ensures safe, efficient international payments.</p>
+      </div>
+      <div class="platform-card">
+        <div class="platform-card-icon">🔄</div>
+        <h3>After-Sales Support</h3>
+        <p>Dedicated account management and after-sales coordination. Dispute resolution, warranty handling, and supplier follow-up — we stay with you throughout.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY HK -->
+<section class="why-hk" id="why">
+  <div class="max-w">
+    <div class="why-grid">
+      <div>
+        <div class="section-header">
+          <div class="section-tag">Why Hong Kong</div>
+          <h2 class="section-title">The World's Freest Economy at Your Service</h2>
+        </div>
+        <div class="why-text">
+          <p>Hong Kong has consistently ranked among the world's freest economies and leading trade hubs. Its unique position as a gateway between China and the world makes it the ideal base for international trading operations.</p>
+          <p>For buyers and suppliers alike, partnering with a Hong Kong-registered trading company brings access to unmatched logistics, legal protection, and financial infrastructure.</p>
+        </div>
+      </div>
+      <div class="advantages">
+        <div class="adv-item">
+          <div class="adv-icon">🚢</div>
+          <div class="adv-content">
+            <h4>World's Busiest Container Port</h4>
+            <p>Hong Kong's port connects to over 470 destinations worldwide with daily sailings across all major trade routes.</p>
+          </div>
+        </div>
+        <div class="adv-item">
+          <div class="adv-icon">⚖️</div>
+          <div class="adv-content">
+            <h4>Common Law Legal System</h4>
+            <p>English-based common law provides robust contract enforcement and transparent dispute resolution for international trade.</p>
+          </div>
+        </div>
+        <div class="adv-item">
+          <div class="adv-icon">🏦</div>
+          <div class="adv-content">
+            <h4>International Banking Hub</h4>
+            <p>All major global banks operate in HK. USD freely convertible. Trade finance readily available for qualified buyers.</p>
+          </div>
+        </div>
+        <div class="adv-item">
+          <div class="adv-icon">0️⃣</div>
+          <div class="adv-content">
+            <h4>Zero Import Duties</h4>
+            <p>Hong Kong levies no import duties on most goods — making it Asia's most cost-effective re-export and trade hub.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Contact Us</div>
+      <h2 class="section-title">Ready to Start Trading?</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">
+        Send us your product requirements or supplier inquiry. Our team responds within one business day.
+      </p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Registered Location</div>
+              <div class="contact-item-val">Hong Kong SAR, China</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-val">contact@hongkongonlinetradinglimited.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🌐</div>
+            <div>
+              <div class="contact-item-label">Website</div>
+              <div class="contact-item-val">hongkongonlinetradinglimited.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">⏱️</div>
+            <div>
+              <div class="contact-item-label">Business Hours</div>
+              <div class="contact-item-val">Mon–Fri, 9:00 am – 6:00 pm HKT (UTC+8)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 style="color:var(--white);font-size:1.15rem;font-weight:700;margin-bottom:1.5rem;">Trading Enquiry Form</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Your company">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@company.com">
+          </div>
+          <div class="form-group">
+            <label>Phone / WhatsApp</label>
+            <input type="tel" placeholder="+country code">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>I am a...</label>
+          <select>
+            <option value="">Select your role...</option>
+            <option>Buyer — looking for products</option>
+            <option>Supplier — looking for distribution</option>
+            <option>Distributor — seeking supply partnerships</option>
+            <option>Retailer / E-commerce Seller</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Enquiry Details</label>
+          <textarea placeholder="Products you need, target quantity, destination country, any specific requirements..."></textarea>
+        </div>
+        <button class="form-submit">Send Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">HK Online<span> Trading</span></div>
+    <div class="footer-copy">© 2024 Hong Kong Online Trading Limited. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#categories">Products</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
