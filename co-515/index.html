@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>明通網絡有限公司 | MT Networks Limited</title>
+<style>
+:root {
+  --primary: #060e1e;
+  --accent: #0c6ef0;
+  --accent2: #0850c0;
+  --neon: #18d4f8;
+  --light: #f0f4fc;
+  --mid: #dce6f8;
+  --text: #1a2840;
+  --text-light: #5870a0;
+  --white: #ffffff;
+  --card-bg: #f8fafe;
+  --border: #c8d8f0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans TC',sans-serif;color:var(--text);background:var(--white);line-height:1.7;}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,14,30,0.97);backdrop-filter:blur(10px);border-bottom:1px solid rgba(12,110,240,0.3);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-logo{display:flex;align-items:center;gap:12px;}
+.nav-logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--accent),var(--neon));border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.nav-logo-icon svg{width:22px;height:22px;fill:var(--white);}
+.nav-brand{display:flex;flex-direction:column;}
+.nav-brand-cn{font-size:1rem;font-weight:700;color:var(--white);letter-spacing:0.04em;}
+.nav-brand-en{font-size:0.62rem;color:rgba(255,255,255,0.45);letter-spacing:0.1em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.9rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--neon);}
+.nav-cta{background:var(--accent);color:var(--white);padding:0.45rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent2);}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(135deg,var(--primary) 0%,#0a1430 55%,#081828 100%);display:flex;align-items:center;padding-top:68px;position:relative;overflow:hidden;}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(12,110,240,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(12,110,240,0.07) 1px,transparent 1px);background-size:50px 50px;}
+.hero-glow{position:absolute;top:20%;right:15%;width:500px;height:500px;background:radial-gradient(circle,rgba(12,110,240,0.15),transparent 70%);border-radius:50%;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(12,110,240,0.15);border:1px solid rgba(12,110,240,0.4);color:var(--neon);padding:0.4rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:600;letter-spacing:0.06em;margin-bottom:1.5rem;}
+.hero h1{font-size:2.8rem;font-weight:800;color:var(--white);line-height:1.2;margin-bottom:1rem;}
+.hero h1 span{background:linear-gradient(135deg,var(--accent),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.65);margin-bottom:2rem;max-width:480px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2.5rem;}
+.hero-tag{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.8rem;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--white);padding:0.9rem 2rem;border-radius:8px;font-size:0.95rem;font-weight:700;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(12,110,240,0.3);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(12,110,240,0.45);}
+.btn-outline{border:2px solid rgba(255,255,255,0.25);color:var(--white);padding:0.9rem 2rem;border-radius:8px;font-size:0.95rem;font-weight:600;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-outline:hover{border-color:var(--neon);color:var(--neon);}
+
+/* INFO CARD */
+.info-card{background:rgba(255,255,255,0.05);border:1px solid rgba(12,110,240,0.3);border-radius:16px;padding:2rem;backdrop-filter:blur(12px);}
+.info-card h3{font-size:0.85rem;color:var(--neon);font-weight:700;margin-bottom:1.2rem;letter-spacing:0.08em;text-transform:uppercase;}
+.info-item{display:flex;gap:12px;margin-bottom:1rem;align-items:flex-start;}
+.info-icon{width:36px;height:36px;background:rgba(12,110,240,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.info-icon svg{width:18px;height:18px;stroke:var(--neon);fill:none;stroke-width:2;}
+.info-label{font-size:0.68rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.06em;}
+.info-value{font-size:0.88rem;color:var(--white);font-weight:600;}
+.info-value a{color:var(--white);text-decoration:none;}
+.info-divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:1.2rem 0;}
+.uptime-badge{background:linear-gradient(135deg,rgba(12,110,240,0.25),rgba(24,212,248,0.1));border:1px solid rgba(24,212,248,0.3);border-radius:12px;padding:1rem;margin-top:0.5rem;}
+.uptime-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;}
+.uptime-label{font-size:0.72rem;color:rgba(255,255,255,0.55);}
+.uptime-val{font-size:0.85rem;font-weight:700;color:var(--neon);}
+.uptime-bar{height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;}
+.uptime-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--neon));border-radius:2px;}
+
+/* STATS */
+.stats{background:var(--primary);padding:3rem 0;border-top:1px solid rgba(12,110,240,0.2);}
+.stats-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.stat-item{text-align:center;padding:1.5rem;border:1px solid rgba(12,110,240,0.2);border-radius:12px;background:rgba(12,110,240,0.05);}
+.stat-num{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat-lbl{font-size:0.8rem;color:rgba(255,255,255,0.55);margin-top:4px;}
+
+/* ABOUT */
+.about{padding:6rem 0;background:var(--light);}
+.about-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.section-label{font-size:0.75rem;font-weight:700;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.8rem;}
+.section-title{font-size:2.2rem;font-weight:800;color:var(--primary);line-height:1.25;margin-bottom:1rem;}
+.section-title span{color:var(--accent);}
+.about-text{color:var(--text-light);line-height:1.9;margin-bottom:1.5rem;}
+.highlight-box{background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:12px;padding:1.8rem;color:var(--white);margin-bottom:2rem;}
+.highlight-box h4{font-size:1rem;font-weight:700;margin-bottom:0.6rem;}
+.highlight-box p{font-size:0.88rem;opacity:0.9;line-height:1.7;}
+.prop-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color 0.2s;}
+.prop-card:hover{border-color:var(--accent);}
+.prop-icon{width:36px;height:36px;background:rgba(12,110,240,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:0.7rem;}
+.prop-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:2;}
+.prop-card h5{font-size:0.85rem;font-weight:700;color:var(--primary);margin-bottom:0.3rem;}
+.prop-card p{font-size:0.78rem;color:var(--text-light);line-height:1.5;}
+
+/* SERVICES */
+.services{padding:6rem 0;background:var(--white);}
+.services-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.services-header{text-align:center;margin-bottom:3.5rem;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--neon));transform:scaleX(0);transition:transform 0.25s;}
+.svc-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(12,110,240,0.12);transform:translateY(-4px);}
+.svc-card:hover::before{transform:scaleX(1);}
+.svc-num{font-size:0.7rem;font-weight:700;color:var(--accent);letter-spacing:0.1em;margin-bottom:1rem;}
+.svc-icon{width:52px;height:52px;background:rgba(12,110,240,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;}
+.svc-icon svg{width:28px;height:28px;stroke:var(--accent);fill:none;stroke-width:1.8;}
+.svc-card h3{font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:0.7rem;}
+.svc-card p{font-size:0.85rem;color:var(--text-light);line-height:1.7;margin-bottom:1rem;}
+.svc-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.svc-tag{background:rgba(12,110,240,0.08);color:var(--accent2);font-size:0.72rem;padding:0.2rem 0.6rem;border-radius:4px;font-weight:600;}
+
+/* SOLUTIONS */
+.solutions{padding:5rem 0;background:linear-gradient(135deg,var(--primary),#0a1428);}
+.solutions-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.solutions-header{text-align:center;margin-bottom:3.5rem;}
+.solutions-header .section-label{color:var(--neon);}
+.solutions-header .section-title{color:var(--white);}
+.solutions-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.sol-card{background:rgba(255,255,255,0.04);border:1px solid rgba(12,110,240,0.2);border-radius:12px;padding:1.5rem;text-align:center;transition:all 0.2s;}
+.sol-card:hover{border-color:var(--neon);background:rgba(12,110,240,0.08);}
+.sol-icon{width:52px;height:52px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;}
+.sol-icon svg{width:26px;height:26px;fill:var(--white);}
+.sol-name{font-size:0.9rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;}
+.sol-desc{font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.5;}
+
+/* CONTACT */
+.contact{padding:6rem 0;background:var(--light);}
+.contact-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
+.contact-info h2{font-size:2rem;font-weight:800;color:var(--primary);margin-bottom:1rem;}
+.contact-info p{color:var(--text-light);margin-bottom:2rem;line-height:1.8;}
+.contact-details{display:flex;flex-direction:column;gap:1.2rem;}
+.cdetail{display:flex;gap:1rem;align-items:flex-start;}
+.cdetail-icon{width:44px;height:44px;background:rgba(12,110,240,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cdetail-icon svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:2;}
+.cdetail-label{font-size:0.72rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.06em;}
+.cdetail-value{font-size:0.95rem;font-weight:600;color:var(--primary);}
+.cdetail-value a{color:var(--primary);text-decoration:none;}
+.cdetail-value a:hover{color:var(--accent);}
+.contact-form{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2.5rem;box-shadow:0 4px 24px rgba(12,110,240,0.06);}
+.contact-form h3{font-size:1.2rem;font-weight:700;color:var(--primary);margin-bottom:1.5rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-group{margin-bottom:1rem;}
+.form-group label{display:block;font-size:0.8rem;font-weight:600;color:var(--text-light);margin-bottom:0.4rem;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:8px;font-size:0.9rem;color:var(--text);background:var(--card-bg);outline:none;transition:border-color 0.2s;font-family:inherit;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent);}
+.form-group textarea{resize:vertical;min-height:100px;}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--white);border:none;padding:0.9rem;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:inherit;}
+.form-submit:hover{box-shadow:0 4px 20px rgba(12,110,240,0.3);}
+
+/* FOOTER */
+footer{background:var(--primary);padding:3rem 0 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-brand-cn{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.3rem;}
+.footer-brand-en{font-size:0.72rem;color:rgba(255,255,255,0.35);margin-bottom:1rem;letter-spacing:0.08em;}
+.footer-tagline{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.7;}
+.footer-col h4{font-size:0.8rem;font-weight:700;color:var(--neon);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;}
+.footer-col ul{list-style:none;padding:0;}
+.footer-col ul li{margin-bottom:0.6rem;}
+.footer-col ul li a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--neon);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:0.78rem;color:rgba(255,255,255,0.3);}
+.footer-web{font-size:0.78rem;color:rgba(255,255,255,0.3);}
+
+@media(max-width:1024px){
+  .hero-inner,.about-inner,.contact-inner{grid-template-columns:1fr;gap:2.5rem;}
+  .solutions-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .hero h1{font-size:2rem;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .services-grid{grid-template-columns:1fr;}
+  .solutions-grid{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <div class="nav-brand">
+        <span class="nav-brand-cn">明通網絡有限公司</span>
+        <span class="nav-brand-en">MT Networks Limited</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#about">關於我們</a>
+      <a href="#services">產品服務</a>
+      <a href="#solutions">解決方案</a>
+      <a href="#contact">聯絡我們</a>
+    </div>
+    <a href="#contact" class="nav-cta">免費諮詢</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        企業網絡及數字化服務專家
+      </div>
+      <h1>連接未來<br><span>數字化網絡解決方案</span></h1>
+      <p class="hero-sub">為企業提供全面的網絡基礎設施、數字化轉型及互聯網服務，助您在數字時代保持競爭優勢，實現業務持續增長。</p>
+      <div class="hero-tags">
+        <span class="hero-tag">企業網絡</span>
+        <span class="hero-tag">雲端服務</span>
+        <span class="hero-tag">數字化轉型</span>
+        <span class="hero-tag">網絡安全</span>
+        <span class="hero-tag">B2B平台</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 9.11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.01 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.11 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          立即諮詢
+        </a>
+        <a href="#services" class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          了解服務
+        </a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>聯絡資訊 Contact Info</h3>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="info-label">電郵 Email</div>
+          <div class="info-value"><a href="mailto:ask@mtnets.com">ask@mtnets.com</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">網站 Website</div>
+          <div class="info-value"><a href="https://www.mtnets.com" target="_blank">www.mtnets.com</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="info-label">地區 Region</div>
+          <div class="info-value">香港 Hong Kong</div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="uptime-badge">
+        <div class="uptime-row">
+          <span class="uptime-label">網絡服務可用性</span>
+          <span class="uptime-val">99.9%</span>
+        </div>
+        <div class="uptime-bar"><div class="uptime-fill" style="width:99.9%"></div></div>
+        <div class="uptime-row" style="margin-top:0.8rem;">
+          <span class="uptime-label">技術支援回應</span>
+          <span class="uptime-val">24/7</span>
+        </div>
+        <div class="uptime-bar"><div class="uptime-fill" style="width:100%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">99.9%</div>
+      <div class="stat-lbl">服務可用率</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-lbl">技術支援</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">企業級</div>
+      <div class="stat-lbl">安全防護</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">全面</div>
+      <div class="stat-lbl">數字化方案</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="section-label">關於我們 About Us</div>
+      <h2 class="section-title">專業網絡服務<span>數字化領航者</span></h2>
+      <p class="about-text">明通網絡有限公司（MT Networks Limited）是一家專注企業網絡及數字化服務的科技公司，依托浙江及香港兩地優勢，為客戶提供覆蓋企業網絡基礎設施、雲端服務、數字化平台及互聯網解決方案的一站式服務。</p>
+      <div class="highlight-box">
+        <h4>🌐 我們的使命</h4>
+        <p>以專業技術與卓越服務，為企業搭建穩固可靠的數字化橋樑，連接內地與香港市場，助力客戶實現業務升級與可持續增長。</p>
+      </div>
+      <p class="about-text">公司匯聚豐富的互聯網及企業服務經驗，服務涵蓋商貿、零售、製造、物流等多個行業，協助企業在數字化浪潮中把握機遇，搶佔市場先機。</p>
+    </div>
+    <div>
+      <div class="prop-cards">
+        <div class="prop-card">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h5>安全可靠</h5>
+          <p>企業級網絡安全架構，保護數據資產，確保業務連續性。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h5>高效穩定</h5>
+          <p>99.9%服務可用率，專業技術支援，確保業務不中斷運作。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <h5>跨境服務</h5>
+          <p>連接內地與香港市場，協助企業拓展跨境業務網絡。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h5>專業團隊</h5>
+          <p>資深網絡工程師及數字化顧問，提供量身訂造的解決方案。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="section-label">產品與服務 Products & Services</div>
+      <h2 class="section-title">全面的<span>網絡與數字化服務</span></h2>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        </div>
+        <h3>企業網絡基礎設施</h3>
+        <p>規劃、部署及管理企業級網絡基礎設施，包括LAN/WAN架構、路由交換設備、無線網絡及數據中心互聯，確保網絡穩定高效運行。</p>
+        <div class="svc-tags">
+          <span class="svc-tag">LAN/WAN</span>
+          <span class="svc-tag">SDN</span>
+          <span class="svc-tag">數據中心</span>
+          <span class="svc-tag">Wi-Fi 6</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+        </div>
+        <h3>雲端服務及託管</h3>
+        <p>提供雲端運算、虛擬化及混合雲解決方案，協助企業遷移上雲，降低IT基礎設施成本，提升業務靈活性與擴展能力。</p>
+        <div class="svc-tags">
+          <span class="svc-tag">公有雲</span>
+          <span class="svc-tag">私有雲</span>
+          <span class="svc-tag">混合雲</span>
+          <span class="svc-tag">SaaS</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>網絡安全服務</h3>
+        <p>全面的網絡安全防護方案，涵蓋防火牆、入侵偵測、端點保護及安全審計，保護企業敏感數據免受網絡威脅侵害。</p>
+        <div class="svc-tags">
+          <span class="svc-tag">防火牆</span>
+          <span class="svc-tag">IDS/IPS</span>
+          <span class="svc-tag">數據加密</span>
+          <span class="svc-tag">安全審計</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>B2B數字化平台</h3>
+        <p>為製造商、貿易商及零售商搭建B2B電子商務平台及供應鏈數字化系統，提升採購效率，拓展線上商貿渠道。</p>
+        <div class="svc-tags">
+          <span class="svc-tag">B2B電商</span>
+          <span class="svc-tag">供應鏈</span>
+          <span class="svc-tag">ERP整合</span>
+          <span class="svc-tag">API對接</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">05</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <h3>互聯網接入服務</h3>
+        <p>提供企業級寬頻、光纖及專線互聯網接入服務，保障穩定高速的網絡連接，支持企業日常運營及數字化業務需求。</p>
+        <div class="svc-tags">
+          <span class="svc-tag">光纖專線</span>
+          <span class="svc-tag">企業寬頻</span>
+          <span class="svc-tag">SD-WAN</span>
+          <span class="svc-tag">備援線路</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">06</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        </div>
+        <h3>數字化轉型諮詢</h3>
+        <p>為企業提供數字化轉型策略諮詢及實施支持，從流程自動化、數據分析到智能化升級，全方位提升企業數字競爭力。</p>
+        <div class="svc-tags">
+          <span class="svc-tag">戰略規劃</span>
+          <span class="svc-tag">流程自動化</span>
+          <span class="svc-tag">數據分析</span>
+          <span class="svc-tag">AI應用</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section class="solutions" id="solutions">
+  <div class="solutions-inner">
+    <div class="solutions-header">
+      <div class="section-label">行業解決方案 Industry Solutions</div>
+      <h2 class="section-title">為各行業<span style="background:linear-gradient(135deg,#0c6ef0,#18d4f8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">量身打造</span></h2>
+    </div>
+    <div class="solutions-grid">
+      <div class="sol-card">
+        <div class="sol-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" fill="white"/></svg>
+        </div>
+        <div class="sol-name">零售業</div>
+        <div class="sol-desc">電商平台、POS系統整合及客戶數據分析</div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" fill="white"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" fill="rgba(12,110,240,0.4)"/></svg>
+        </div>
+        <div class="sol-name">製造業</div>
+        <div class="sol-desc">工業物聯網、ERP整合及智能製造升級</div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="white" fill="none" stroke-width="2"/></svg>
+        </div>
+        <div class="sol-name">貿易物流</div>
+        <div class="sol-desc">供應鏈可視化、跨境數據對接及追蹤系統</div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" fill="white"/></svg>
+        </div>
+        <div class="sol-name">中小企業</div>
+        <div class="sol-desc">靈活可擴展的IT服務，按需使用，快速部署</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">聯絡我們 Contact Us</div>
+      <h2>立即諮詢<br>免費評估方案</h2>
+      <p>如有任何網絡服務或數字化轉型需求，歡迎通過電郵或網上表格與我們聯絡，專業顧問將為您提供免費評估及方案建議。</p>
+      <div class="contact-details">
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">電郵 Email</div>
+            <div class="cdetail-value"><a href="mailto:ask@mtnets.com">ask@mtnets.com</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">網站 Website</div>
+            <div class="cdetail-value"><a href="https://www.mtnets.com" target="_blank">www.mtnets.com</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">服務地區</div>
+            <div class="cdetail-value">香港 · 浙江 · 大中華區</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>💬 免費諮詢 / 方案評估</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>姓名 Name</label>
+          <input type="text" placeholder="您的姓名">
+        </div>
+        <div class="form-group">
+          <label>公司 Company</label>
+          <input type="text" placeholder="公司名稱">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>電郵 Email</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>諮詢類別 Enquiry Type</label>
+        <select>
+          <option>企業網絡基礎設施</option>
+          <option>雲端服務及託管</option>
+          <option>網絡安全服務</option>
+          <option>B2B數字化平台</option>
+          <option>互聯網接入服務</option>
+          <option>數字化轉型諮詢</option>
+          <option>其他 Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>訊息 Message</label>
+        <textarea placeholder="請描述您的業務需求或查詢詳情..."></textarea>
+      </div>
+      <button class="form-submit">發送諮詢 Send Enquiry</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-cn">明通網絡有限公司</div>
+        <div class="footer-brand-en">MT NETWORKS LIMITED · mtnets.com</div>
+        <p class="footer-tagline">連接企業與數字未來，以專業技術驅動業務增長。<br>企業網絡 · 雲端服務 · 數字化轉型 · 網絡安全</p>
+      </div>
+      <div class="footer-col">
+        <h4>產品服務</h4>
+        <ul>
+          <li><a href="#services">企業網絡基礎設施</a></li>
+          <li><a href="#services">雲端服務及託管</a></li>
+          <li><a href="#services">網絡安全服務</a></li>
+          <li><a href="#services">B2B數字化平台</a></li>
+          <li><a href="#services">互聯網接入</a></li>
+          <li><a href="#services">數字化轉型諮詢</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡資訊</h4>
+        <ul>
+          <li><a href="mailto:ask@mtnets.com">ask@mtnets.com</a></li>
+          <li><a href="https://www.mtnets.com" target="_blank">www.mtnets.com</a></li>
+          <li><a href="#contact">香港辦事處</a></li>
+          <li><a href="#solutions">行業解決方案</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 明通網絡有限公司 MT Networks Limited. All rights reserved.</div>
+      <div class="footer-web">ask@mtnets.com · www.mtnets.com</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
