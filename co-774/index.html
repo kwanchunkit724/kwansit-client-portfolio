@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>香港空運貨站有限公司 HACTL | 航空貨運地勤服務</title>
+<meta name="description" content="香港空運貨站有限公司（HACTL）是香港最具規模的獨立航空貨運站，於香港國際機場超級一號貨站提供全方位航空貨運地勤服務。"/>
+<style>
+:root{
+  --primary:#0d1f3c;
+  --primary-mid:#162f58;
+  --primary-light:#1e4080;
+  --accent:#c01818;
+  --accent-light:#e02828;
+  --accent2:#e87020;
+  --dark:#060f1e;
+  --surface:#f4f6fa;
+  --surface2:#e8ecf4;
+  --text:#0d1a2e;
+  --text-muted:#566080;
+  --white:#ffffff;
+  --radius:10px;
+  --shadow:0 4px 24px rgba(13,31,60,0.12);
+  --shadow-lg:0 8px 48px rgba(13,31,60,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.7}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,15,30,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(192,24,24,0.25)}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--accent),#a01010);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:var(--white);letter-spacing:.5px}
+.nav-logo-text{font-size:15px;font-weight:700;color:var(--white);line-height:1.2}
+.nav-logo-sub{font-size:11px;color:rgba(255,255,255,0.5);font-weight:400}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--accent)!important;color:var(--white)!important;padding:8px 20px;border-radius:6px;font-weight:700!important;font-size:13px!important;transition:background .2s!important}
+.nav-cta:hover{background:var(--accent-light)!important}
+@media(max-width:780px){.nav-links{display:none}}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(160deg,var(--dark) 0%,var(--primary) 50%,#1a2e50 100%);display:flex;align-items:center;padding-top:66px;position:relative;overflow:hidden}
+.hero-bg-lines{position:absolute;inset:0;opacity:.06;background:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.5) 60px,rgba(255,255,255,.5) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.5) 60px,rgba(255,255,255,.5) 61px)}
+.hero-glow{position:absolute;top:-100px;right:-100px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,24,24,0.14) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1240px;margin:0 auto;padding:80px 24px;width:100%;display:grid;grid-template-columns:1fr 440px;gap:60px;align-items:center;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(192,24,24,0.2);border:1px solid rgba(192,24,24,0.4);border-radius:20px;padding:6px 16px;margin-bottom:18px}
+.hero-tag-dot{width:7px;height:7px;background:var(--accent-light);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-tag-text{font-size:12px;color:rgba(255,255,255,0.85);font-weight:600;letter-spacing:.5px}
+.hero h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:var(--white);line-height:1.12;margin-bottom:8px}
+.hero h1 span{color:#f08040}
+.hero-en{font-size:1rem;color:rgba(255,255,255,0.5);margin-bottom:18px;letter-spacing:.5px}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:34px;max-width:540px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--white);padding:14px 28px;border-radius:var(--radius);font-weight:700;font-size:15px;text-decoration:none;transition:all .2s;box-shadow:0 4px 20px rgba(192,24,24,0.4)}
+.btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(192,24,24,0.45)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(255,255,255,0.3);color:var(--white);padding:14px 28px;border-radius:var(--radius);font-weight:600;font-size:15px;text-decoration:none;transition:all .2s}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08)}
+.hero-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:32px;color:var(--white);border-top:3px solid var(--accent)}
+.hero-card-label{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.hero-card-label::before{content:'';width:14px;height:2px;background:var(--accent)}
+.info-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.info-icon{width:34px;height:34px;min-width:34px;background:rgba(192,24,24,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.info-lbl{font-size:11px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.info-val{font-size:13.5px;color:var(--white);font-weight:500;line-height:1.45}
+.info-val a{color:#f08040;text-decoration:none}
+.hero-divider{height:1px;background:rgba(255,255,255,0.1);margin:16px 0}
+.world-first-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(232,112,32,0.2);border:1px solid rgba(232,112,32,0.4);border-radius:12px;padding:5px 12px;font-size:11px;color:#f08040;font-weight:700;margin-top:4px}
+@media(max-width:940px){.hero-inner{grid-template-columns:1fr}.hero-card{max-width:500px}}
+
+/* STATS STRIP */
+.stats{background:var(--accent);padding:0}
+.stats-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+.stat-item{padding:28px 16px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);transition:background .2s}
+.stat-item:last-child{border-right:none}
+.stat-item:hover{background:rgba(255,255,255,0.1)}
+.stat-num{font-size:1.7rem;font-weight:900;color:var(--white);line-height:1;margin-bottom:4px}
+.stat-label{font-size:12px;color:rgba(255,255,255,0.8);font-weight:500}
+@media(max-width:760px){.stats-inner{grid-template-columns:repeat(3,1fr)}.stat-item:nth-child(3){border-right:none}}
+
+/* SECTIONS */
+section{padding:88px 24px}
+.section-inner{max-width:1240px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(13,31,60,0.07);color:var(--primary);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px;border:1px solid rgba(13,31,60,0.14)}
+.section-title{font-size:clamp(1.7rem,3vw,2.5rem);font-weight:800;color:var(--dark);line-height:1.2;margin-bottom:14px}
+.section-title span{color:var(--accent)}
+.section-sub{font-size:1rem;color:var(--text-muted);max-width:600px;line-height:1.8}
+.section-header{margin-bottom:52px}
+.bg-alt{background:var(--surface)}
+.bg-dark{background:var(--primary);color:var(--white)}
+.bg-dark .section-tag{background:rgba(192,24,24,0.2);color:#f08040;border-color:rgba(192,24,24,0.3)}
+.bg-dark .section-title{color:var(--white)}
+.bg-dark .section-sub{color:rgba(255,255,255,0.65)}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{background:var(--white);border:1px solid rgba(13,31,60,0.1);border-radius:14px;padding:28px;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+.svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.svc-icon{width:50px;height:50px;background:linear-gradient(135deg,rgba(13,31,60,0.08),rgba(30,64,128,0.12));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.svc-title{font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:5px}
+.svc-en{font-size:12px;color:var(--text-muted);margin-bottom:10px}
+.svc-desc{font-size:13.5px;color:var(--text-muted);line-height:1.75}
+@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.svc-grid{grid-template-columns:1fr}}
+
+/* INNOVATION */
+.innovation-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.innovation-content .section-tag{background:rgba(192,24,24,0.12);color:var(--accent);border-color:rgba(192,24,24,0.2)}
+.innovation-body p{font-size:1rem;color:rgba(255,255,255,0.72);line-height:1.85;margin-bottom:16px}
+.innovation-highlights{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+.inno-item{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.06);border-radius:12px;padding:18px;border-left:3px solid var(--accent)}
+.inno-icon{font-size:1.5rem;flex-shrink:0}
+.inno-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px}
+.inno-desc{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+.phase-cards{display:flex;flex-direction:column;gap:16px}
+.phase-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:24px;position:relative;overflow:hidden}
+.phase-card.active{border-color:rgba(240,128,64,0.4);background:rgba(232,112,32,0.1)}
+.phase-num{font-size:11px;font-weight:700;color:var(--accent-light);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.phase-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:6px}
+.phase-desc{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+.phase-date{font-size:11px;color:rgba(255,255,255,0.4);margin-top:8px}
+.live-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(240,128,64,0.25);border-radius:10px;padding:3px 10px;font-size:11px;color:#f08040;font-weight:700;margin-top:6px}
+.live-dot{width:6px;height:6px;background:#f08040;border-radius:50%;animation:blink 1.5s infinite}
+@media(max-width:860px){.innovation-grid{grid-template-columns:1fr}}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-body p{font-size:1rem;color:var(--text-muted);line-height:1.85;margin-bottom:16px}
+.about-facts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.fact-item{background:var(--surface2);border-radius:10px;padding:18px;border-top:2px solid var(--accent)}
+.fact-title{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:4px}
+.fact-desc{font-size:12.5px;color:var(--text-muted);line-height:1.6}
+.about-vis{background:linear-gradient(135deg,var(--dark),var(--primary));border-radius:18px;padding:36px;color:var(--white)}
+.about-vis-title{font-size:1rem;font-weight:700;color:#f08040;margin-bottom:20px}
+.cert-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
+.cert-icon{width:36px;height:36px;min-width:36px;background:rgba(192,24,24,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.cert-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px}
+.cert-desc{font-size:12.5px;color:rgba(255,255,255,0.6);line-height:1.5}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr}.about-facts{grid-template-columns:1fr}}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:start}
+.contact-card{background:linear-gradient(135deg,var(--dark),var(--primary));border-radius:16px;padding:34px;color:var(--white)}
+.contact-title{font-size:17px;font-weight:700;color:#f08040;margin-bottom:22px}
+.c-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+.c-icon{width:38px;height:38px;min-width:38px;background:rgba(192,24,24,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.c-lbl{font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:.5px;text-transform:uppercase;margin-bottom:3px}
+.c-val{font-size:13.5px;color:var(--white);font-weight:500;line-height:1.5}
+.c-val a{color:#f08040;text-decoration:none}
+.form-card{background:var(--surface);border-radius:16px;padding:34px;border:1px solid rgba(13,31,60,0.1)}
+.form-title{font-size:17px;font-weight:700;color:var(--primary);margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid rgba(13,31,60,0.15);border-radius:8px;font-size:14px;color:var(--text);background:var(--white);transition:border-color .2s;outline:none;font-family:inherit}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary-light)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.submit-btn{width:100%;background:var(--accent);color:var(--white);padding:14px;border:none;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;transition:background .2s,transform .2s}
+.submit-btn:hover{background:var(--accent-light);transform:translateY(-1px)}
+@media(max-width:800px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:var(--dark);padding:48px 24px 28px}
+.footer-inner{max-width:1240px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:36px;margin-bottom:34px}
+.footer-brand-name{font-size:16px;font-weight:800;color:var(--white);margin-bottom:4px}
+.footer-brand-en{font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:12px}
+.footer-brand-desc{font-size:12.5px;color:rgba(255,255,255,0.45);line-height:1.75}
+.footer-heading{font-size:11px;font-weight:700;color:rgba(192,24,24,0.9);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.35)}
+@media(max-width:800px){.footer-top{grid-template-columns:1fr 1fr}.footer-bottom{flex-direction:column;align-items:flex-start}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr}}
+.divider{width:44px;height:3px;background:linear-gradient(90deg,var(--accent),#e87020);border-radius:2px;margin-bottom:18px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">HACTL</div>
+      <div>
+        <div class="nav-logo-text">香港空運貨站有限公司</div>
+        <div class="nav-logo-sub">Hong Kong Air Cargo Terminals Limited</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">服務</a></li>
+      <li><a href="#innovation">創新科技</a></li>
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#contact" class="nav-cta">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        <span class="hero-tag-text">香港國際機場 · 超級一號貨站</span>
+      </div>
+      <h1>香港最具規模<br/>獨立<span>航空貨運站</span></h1>
+      <div class="hero-en">Hong Kong Air Cargo Terminals Limited (Hactl)</div>
+      <p class="hero-desc">Hactl 於香港國際機場超級一號貨站提供全方位航空貨運地勤服務，以先進科技及嚴謹的安全標準，處理進口、出口及轉口貨物，引領行業邁向更安全、可持續的未來。</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">了解服務 →</a>
+        <a href="#contact" class="btn-outline">聯絡我們</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">公司資訊</div>
+      <div class="info-row">
+        <div class="info-icon">✈️</div>
+        <div>
+          <div class="info-lbl">全名</div>
+          <div class="info-val">香港空運貨站有限公司<br/>Hong Kong Air Cargo Terminals Limited</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-lbl">地址</div>
+          <div class="info-val">超級一號貨站<br/>香港國際機場, 大嶼山</div>
+        </div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-lbl">電郵</div>
+          <div class="info-val"><a href="mailto:jessica.chong@flyking.com.hk">jessica.chong@flyking.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🏆</div>
+        <div>
+          <div class="info-lbl">地位</div>
+          <div class="info-val">香港最具規模獨立航空貨運站</div>
+        </div>
+      </div>
+      <div class="world-first-badge">
+        <span>🌍</span>
+        <span>全球首創 · 智能熱能檢測系統</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">ST1</div>
+      <div class="stat-label">超級一號貨站</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">全天候貨運服務</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">AI</div>
+      <div class="stat-label">人工智能安全系統</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HKIA</div>
+      <div class="stat-label">香港國際機場</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1976</div>
+      <div class="stat-label">創立年份</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">服務範疇</div>
+      <h2 class="section-title">全方位<span>航空貨運地勤服務</span></h2>
+      <p class="section-sub">Hactl 於超級一號貨站提供涵蓋進出口的完整航空貨運地勤解決方案，確保每批貨物安全、準時送達。</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">📦</div>
+        <div class="svc-title">貨物處理服務</div>
+        <div class="svc-en">Cargo Handling</div>
+        <div class="svc-desc">提供進口、出口及轉口貨物的全面地勤處理服務，包括貨物接收、倉儲、分撿及裝載，確保高效率的貨物流程管理。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">❄️</div>
+        <div class="svc-title">溫控貨物處理</div>
+        <div class="svc-en">Temperature-Controlled Cargo</div>
+        <div class="svc-desc">設有先進的冷鏈設施，為醫藥品、生鮮食品及其他對溫度敏感的貨物提供全程溫控倉儲及處理服務。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">⚠️</div>
+        <div class="svc-title">危險品處理</div>
+        <div class="svc-en">Dangerous Goods Handling</div>
+        <div class="svc-desc">嚴格遵照國際航空運輸協會（IATA）規定，為危險品貨物提供專業的分類、包裝、標籤及安全處理服務。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔒</div>
+        <div class="svc-title">航空安全保障</div>
+        <div class="svc-en">Aviation Security</div>
+        <div class="svc-desc">採用多層次安全措施，包括智能熱能檢測、X光掃描及嚴格的貨物安全審查，確保貨物及人員安全。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🐾</div>
+        <div class="svc-title">活生動物處理</div>
+        <div class="svc-en">Live Animal Handling</div>
+        <div class="svc-desc">設有專業的活生動物處理中心，提供符合國際航空運輸協會（IATA）標準的活生動物接收、倉儲及運輸服務。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💎</div>
+        <div class="svc-title">貴重品及快遞處理</div>
+        <div class="svc-en">Valuables & Express</div>
+        <div class="svc-desc">為珠寶、現金、電子產品等貴重貨物及時間敏感的快遞貨物提供高度安全的專屬處理及保管服務。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INNOVATION -->
+<section id="innovation" class="bg-dark">
+  <div class="section-inner">
+    <div class="innovation-grid">
+      <div class="innovation-content">
+        <div class="section-tag">創新科技</div>
+        <h2 class="section-title" style="color:var(--white)">全球首創<span style="color:#f08040">智能貨物熱能檢測系統</span></h2>
+        <div class="innovation-body">
+          <p>Hactl 矢志運用先進科技持續提升航空安全水平。我們研發並實施全球首創的智能貨物熱能檢測系統，結合熱成像技術、熱能力學、流體力學、數據分析及人工智能，實時監測貨物溫度，識別潛在火患風險。</p>
+          <p>系統能即時偵測鋰電池貨物等高風險貨物的異常溫度，觸發警報機制，大幅減低航班、貨運站及機場所面臨的安全風險。</p>
+        </div>
+        <div class="innovation-highlights">
+          <div class="inno-item">
+            <div class="inno-icon">🔥</div>
+            <div>
+              <div class="inno-title">實時溫度監測</div>
+              <div class="inno-desc">連續監測不同種類貨物的溫度，即時識別異常狀況</div>
+            </div>
+          </div>
+          <div class="inno-item">
+            <div class="inno-icon">🤖</div>
+            <div>
+              <div class="inno-title">人工智能分析</div>
+              <div class="inno-desc">結合 AI 技術克服傳統熱能監測的局限，提升檢測準確度</div>
+            </div>
+          </div>
+          <div class="inno-item">
+            <div class="inno-icon">🛡️</div>
+            <div>
+              <div class="inno-title">雙重安全保障</div>
+              <div class="inno-desc">於貨物接收及裝載飛機前進行雙重掃描，提供全面保護</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="phase-cards">
+          <div class="phase-card">
+            <div class="phase-num">第一期 Phase 1</div>
+            <div class="phase-title">裝載前貨物掃描</div>
+            <div class="phase-desc">於貨物裝載上飛機前進行熱能掃描，識別溫度異常貨物，防止潛在火患上機。</div>
+            <div class="phase-date">✓ 推行日期：2023年12月</div>
+          </div>
+          <div class="phase-card active">
+            <div class="phase-num">第二期 Phase 2 — 最新</div>
+            <div class="phase-title">接收時散裝貨物掃描</div>
+            <div class="phase-desc">全球首創於接收付運散裝貨物時即時掃描，提供雙層安全保障，進一步降低貨站及人員風險。</div>
+            <div class="phase-date">推行日期：2025年5月</div>
+            <div class="live-badge"><span class="live-dot"></span>現正運作</div>
+          </div>
+          <div class="phase-card">
+            <div class="phase-num">下一步 Next Phase</div>
+            <div class="phase-title">出口預包裝貨物掃描</div>
+            <div class="phase-desc">計劃將智能熱能檢測系統擴展至出口預包裝貨物的接收環節，實現全面覆蓋。</div>
+            <div class="phase-date">🔮 即將推行</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="bg-alt">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">關於我們</div>
+        <h2 class="section-title">香港航空貨運<span>業界先驅</span></h2>
+        <div class="divider"></div>
+        <div class="about-body">
+          <p>香港空運貨站有限公司（Hactl）是香港最具規模的獨立航空貨運站營運商，自1976年成立以來，一直是香港國際航空貨運業的重要支柱。</p>
+          <p>公司在香港國際機場超級一號貨站（SuperTerminal 1）設有全面的航空貨運地勤設施，具備處理各類貨物的專業能力，包括一般貨物、溫控貨物、危險品、活生動物及貴重品等。</p>
+          <p>Hactl 持續投入資源研發創新技術，是全球首家實施智能貨物熱能檢測系統的航空貨運站，以科技推動安全、效率及可持續發展。</p>
+        </div>
+        <div class="about-facts">
+          <div class="fact-item">
+            <div class="fact-title">🏗️ 超級一號貨站</div>
+            <div class="fact-desc">設於香港國際機場，是全球最大型的航空貨運設施之一</div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-title">🌍 世界首創</div>
+            <div class="fact-desc">率先推行多項全球首創的航空安全及貨運科技方案</div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-title">✅ 安全認證</div>
+            <div class="fact-desc">持有多項國際航空安全及貨運處理相關認證</div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-title">♻️ 可持續發展</div>
+            <div class="fact-desc">致力以科技打造更安全、可持續的航空貨運業</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-vis">
+        <div class="about-vis-title">專業資質與認證</div>
+        <div class="cert-item">
+          <div class="cert-icon">🏅</div>
+          <div>
+            <div class="cert-title">IATA CEIV認證</div>
+            <div class="cert-desc">符合國際航空運輸協會貨物電子交接驗証標準</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">❄️</div>
+          <div>
+            <div class="cert-title">IATA CEIV Pharma</div>
+            <div class="cert-desc">醫藥冷鏈物流專業認證，確保藥品全程溫控品質</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🛡️</div>
+          <div>
+            <div class="cert-title">Regulated Agent</div>
+            <div class="cert-desc">香港民航處認可的航空安保受管代理人</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🌿</div>
+          <div>
+            <div class="cert-title">可持續發展承諾</div>
+            <div class="cert-desc">持續推進環境友善措施，減少航空貨運業的碳足跡</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">與 Hactl <span>取得聯繫</span></h2>
+      <p class="section-sub">如需查詢航空貨運地勤服務或了解更多資訊，歡迎與我們聯絡。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-title">聯絡資訊</div>
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-lbl">地址</div>
+            <div class="c-val">超級一號貨站<br/>香港國際機場<br/>大嶼山, 香港</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📧</div>
+          <div>
+            <div class="c-lbl">電郵</div>
+            <div class="c-val"><a href="mailto:jessica.chong@flyking.com.hk">jessica.chong@flyking.com.hk</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-lbl">網址</div>
+            <div class="c-val"><a href="https://www.hactl.com" target="_blank" rel="noopener">www.hactl.com</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">✈️</div>
+          <div>
+            <div class="c-lbl">服務範疇</div>
+            <div class="c-val">進口 · 出口 · 轉口<br/>冷鏈 · 危險品 · 貴重品</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <div class="form-title">發送查詢</div>
+        <form onsubmit="return false">
+          <div class="form-row">
+            <div class="form-group">
+              <label>姓名 *</label>
+              <input type="text" placeholder="您的姓名"/>
+            </div>
+            <div class="form-group">
+              <label>公司名稱</label>
+              <input type="text" placeholder="公司名稱"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>電郵地址 *</label>
+              <input type="email" placeholder="your@email.com"/>
+            </div>
+            <div class="form-group">
+              <label>電話號碼</label>
+              <input type="tel" placeholder="+852 XXXX XXXX"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>查詢服務類型</label>
+            <select>
+              <option value="">-- 請選擇服務 --</option>
+              <option>一般貨物處理</option>
+              <option>溫控 / 冷鏈貨物</option>
+              <option>危險品貨物處理</option>
+              <option>活生動物處理</option>
+              <option>貴重品 / 快遞</option>
+              <option>航空安全查詢</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>查詢詳情 *</label>
+            <textarea placeholder="請描述您的航空貨運需求…"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">提交查詢 →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">香港空運貨站有限公司</div>
+        <div class="footer-brand-en">Hong Kong Air Cargo Terminals Limited (Hactl)</div>
+        <div class="footer-brand-desc">香港最具規模的獨立航空貨運站，於香港國際機場超級一號貨站提供全方位航空貨運地勤服務，引領行業邁向更安全、可持續的未來。</div>
+      </div>
+      <div>
+        <div class="footer-heading">服務</div>
+        <ul class="footer-links">
+          <li><a href="#services">貨物處理</a></li>
+          <li><a href="#services">溫控貨物</a></li>
+          <li><a href="#services">危險品處理</a></li>
+          <li><a href="#services">航空安全</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">創新</div>
+        <ul class="footer-links">
+          <li><a href="#innovation">熱能檢測系統</a></li>
+          <li><a href="#innovation">第一期實施</a></li>
+          <li><a href="#innovation">第二期實施</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">公司</div>
+        <ul class="footer-links">
+          <li><a href="#about">關於我們</a></li>
+          <li><a href="#about">專業資質</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 香港空運貨站有限公司. 版權所有。</div>
+      <div class="footer-copy">SuperTerminal 1, Hong Kong International Airport</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
