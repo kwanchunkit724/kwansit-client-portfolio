@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parlee Enterprises HK | 栢利貿易香港有限公司 | Pallets &amp; Logistics Equipment</title>
+<style>
+:root {
+  --primary: #0a1828;
+  --primary-mid: #0e2038;
+  --accent: #d06810;
+  --accent-light: #e88020;
+  --grey-blue: #2a4060;
+  --white: #ffffff;
+  --off-white: #f5f6f4;
+  --light-grey: #e2e6e0;
+  --mid-grey: #7a8880;
+  --text: #1a201a;
+  --text-light: #527050;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 20px rgba(10,24,40,0.10);
+  --shadow-md: 0 8px 36px rgba(10,24,40,0.14);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.3s ease;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,24,40,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(208,104,16,0.22);
+  padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px;
+}
+.nav-logo { font-size: 1.2rem; font-weight: 800; color: var(--white); letter-spacing: 0.03em; }
+.nav-logo span { color: var(--accent-light); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.78); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: var(--transition); }
+.nav-links a:hover { color: var(--accent-light); }
+.nav-cta { background: var(--accent); color: var(--white); padding: 0.5rem 1.3rem; border-radius: 50px; font-size: 0.88rem; font-weight: 700; transition: var(--transition); }
+.nav-cta:hover { background: var(--accent-light); }
+
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary) 0%, #0e2038 40%, #102440 70%, #0e2848 100%);
+  display: flex; align-items: center; padding: 100px 5% 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(208,104,16,0.13) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 15% 72%, rgba(42,64,96,0.15) 0%, transparent 65%);
+}
+.hero-inner { max-width: 1200px; width: 100%; margin: 0 auto; display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+.hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(208,104,16,0.15); border: 1px solid rgba(208,104,16,0.38); color: var(--accent-light); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1.5rem; }
+.hero h1 { font-size: clamp(2rem, 4.2vw, 3.6rem); font-weight: 800; line-height: 1.14; color: var(--white); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+.hero h1 .accent { color: var(--accent-light); }
+.hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.68); margin-bottom: 1.8rem; }
+.hero-desc { font-size: 1rem; color: rgba(255,255,255,0.66); line-height: 1.78; margin-bottom: 2.2rem; max-width: 520px; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary { background: var(--accent); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; transition: var(--transition); box-shadow: 0 4px 20px rgba(208,104,16,0.38); }
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+.btn-outline { border: 2px solid rgba(255,255,255,0.32); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: var(--transition); }
+.btn-outline:hover { border-color: var(--accent-light); color: var(--accent-light); }
+.hero-card { background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 2rem; }
+.hero-card-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.8rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.10); }
+.hero-card-icon { width: 50px; height: 50px; border-radius: 14px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+.hero-card-head h3 { color: var(--white); font-size: 1rem; font-weight: 700; }
+.hero-card-head p { color: rgba(255,255,255,0.50); font-size: 0.78rem; }
+.hero-info-row { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+.hero-info-icon { width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0; background: rgba(208,104,16,0.18); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+.hero-info-label { font-size: 0.70rem; color: rgba(255,255,255,0.42); text-transform: uppercase; letter-spacing: 0.06em; }
+.hero-info-val { font-size: 0.88rem; color: rgba(255,255,255,0.90); font-weight: 500; }
+
+.stats-strip { background: linear-gradient(90deg, var(--primary) 0%, var(--primary-mid) 100%); padding: 3rem 5%; }
+.stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.stat-item { text-align: center; }
+.stat-num { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--accent-light); letter-spacing: -0.02em; line-height: 1; }
+.stat-unit { font-size: 1.3rem; }
+.stat-label { color: rgba(255,255,255,0.60); font-size: 0.85rem; margin-top: 0.4rem; }
+
+section { padding: 90px 5%; }
+.section-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(208,104,16,0.08); border: 1px solid rgba(208,104,16,0.25); color: var(--accent); padding: 0.35rem 1rem; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 1rem; }
+.section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: var(--primary); line-height: 1.2; letter-spacing: -0.02em; }
+.section-subtitle { font-size: 1.02rem; color: var(--text-light); line-height: 1.7; margin-top: 0.8rem; max-width: 620px; }
+.section-header { margin-bottom: 3rem; }
+.max-w { max-width: 1200px; margin: 0 auto; }
+
+.about { background: var(--off-white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-highlight { background: linear-gradient(135deg, var(--primary) 0%, #0e2038 100%); border-radius: 18px; padding: 2.2rem; border-left: 4px solid var(--accent); margin-bottom: 2rem; }
+.about-highlight blockquote { font-size: 1.1rem; font-weight: 700; color: var(--white); line-height: 1.6; }
+.about-highlight cite { display: block; margin-top: 0.8rem; font-size: 0.8rem; color: var(--accent-light); font-style: normal; }
+.about-body p { font-size: 0.98rem; color: var(--text-light); line-height: 1.80; margin-bottom: 1.2rem; }
+.prop-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.prop-card { background: var(--white); border-radius: var(--radius); padding: 1.4rem; border: 1px solid var(--light-grey); transition: var(--transition); }
+.prop-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.prop-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.prop-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem; }
+.prop-card p { font-size: 0.8rem; color: var(--text-light); line-height: 1.55; }
+
+.products { background: var(--white); }
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+.product-card { background: var(--card-bg); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--light-grey); transition: var(--transition); position: relative; overflow: hidden; }
+.product-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); transform: scaleX(0); transform-origin: left; transition: var(--transition); }
+.product-card:hover { border-color: rgba(208,104,16,0.3); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.product-card:hover::before { transform: scaleX(1); }
+.product-icon { width: 54px; height: 54px; border-radius: 14px; background: linear-gradient(135deg, rgba(208,104,16,0.12), rgba(208,104,16,0.05)); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.2rem; }
+.product-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.7rem; }
+.product-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.70; }
+.spec-table { margin-top: 1rem; border: 1px solid var(--light-grey); border-radius: 8px; overflow: hidden; }
+.spec-row { display: flex; font-size: 0.78rem; }
+.spec-row:not(:last-child) { border-bottom: 1px solid var(--light-grey); }
+.spec-key { background: var(--off-white); padding: 0.45rem 0.75rem; font-weight: 600; color: var(--grey-blue); width: 45%; flex-shrink: 0; }
+.spec-val { padding: 0.45rem 0.75rem; color: var(--text-light); }
+
+.industries {
+  background: linear-gradient(135deg, var(--primary) 0%, #0e2038 55%, #102440 100%);
+  position: relative; overflow: hidden;
+}
+.industries::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 65% 55% at 78% 45%, rgba(208,104,16,0.12) 0%, transparent 70%); }
+.industries .section-tag { background: rgba(208,104,16,0.15); border-color: rgba(208,104,16,0.35); color: var(--accent-light); }
+.industries .section-title { color: var(--white); }
+.industries .section-subtitle { color: rgba(255,255,255,0.62); }
+.ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; z-index: 1; }
+.ind-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: 14px; padding: 1.6rem 1.2rem; text-align: center; transition: var(--transition); }
+.ind-card:hover { background: rgba(255,255,255,0.10); border-color: rgba(208,104,16,0.4); transform: translateY(-3px); }
+.ind-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+.ind-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 0.4rem; }
+.ind-card p { font-size: 0.78rem; color: rgba(255,255,255,0.52); }
+
+.contact { background: linear-gradient(135deg, var(--primary) 0%, #0e2038 100%); }
+.contact .section-title { color: var(--white); }
+.contact .section-subtitle { color: rgba(255,255,255,0.62); }
+.contact .section-tag { background: rgba(208,104,16,0.15); border-color: rgba(208,104,16,0.35); color: var(--accent-light); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
+.contact-item { display: flex; align-items: flex-start; gap: 1rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: var(--radius); padding: 1.3rem; }
+.contact-item-icon { width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0; background: rgba(208,104,16,0.18); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.contact-item-label { font-size: 0.70rem; color: rgba(255,255,255,0.40); text-transform: uppercase; letter-spacing: 0.07em; }
+.contact-item-val { font-size: 0.92rem; color: rgba(255,255,255,0.90); font-weight: 500; margin-top: 0.15rem; }
+.contact-form { background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.10); border-radius: 20px; padding: 2.4rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.58); margin-bottom: 0.4rem; font-weight: 500; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-sm); padding: 0.75rem 1rem; color: var(--white); font-size: 0.9rem; transition: var(--transition); outline: none; font-family: inherit; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); background: rgba(255,255,255,0.12); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.28); }
+.form-group select option { background: var(--primary); color: var(--white); }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-submit { width: 100%; background: var(--accent); color: var(--white); border: none; border-radius: 50px; padding: 1rem; font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition); }
+.form-submit:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+footer { background: #050d1a; padding: 2.5rem 5%; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-size: 1.1rem; font-weight: 800; color: var(--white); letter-spacing: 0.04em; }
+.footer-logo span { color: var(--accent-light); }
+.footer-copy { font-size: 0.80rem; color: rgba(255,255,255,0.38); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.80rem; color: rgba(255,255,255,0.42); transition: var(--transition); }
+.footer-links a:hover { color: var(--accent-light); }
+
+@media (max-width: 960px) {
+  .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero-card { display: none; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .ind-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .products-grid, .ind-grid, .prop-cards { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Parlee<span> Enterprises</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">Pallets · Logistics Equipment · Hong Kong</div>
+      <h1>Industrial Pallets<br>&amp; <span class="accent">Logistics Solutions.</span></h1>
+      <p class="hero-sub">栢利貿易香港有限公司 — Your Hong Kong Pallet Specialist</p>
+      <p class="hero-desc">
+        Parlee Enterprises (HK) Co., Ltd. is a Hong Kong-based wholesale supplier of industrial pallets and logistics handling equipment. We supply American Standard, Euro Standard, and custom-spec pallets to warehouses, manufacturers, freight forwarders, and logistics operators across Hong Kong and the region.
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">View Products</a>
+        <a href="#contact" class="btn-outline">Request a Quote</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hero-card-icon">📦</div>
+        <div>
+          <h3>Parlee Enterprises (HK) Co., Ltd.</h3>
+          <p>栢利貿易香港有限公司</p>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">📍</div>
+        <div>
+          <div class="hero-info-label">Location</div>
+          <div class="hero-info-val">Hong Kong</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">📞</div>
+        <div>
+          <div class="hero-info-label">WhatsApp / Phone</div>
+          <div class="hero-info-val">+852 5399 5259</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">✉️</div>
+        <div>
+          <div class="hero-info-label">Email</div>
+          <div class="hero-info-val">info@parlee-ent.com.hk</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">🌐</div>
+        <div>
+          <div class="hero-info-label">Website</div>
+          <div class="hero-info-val">parlee-ent.com.hk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">3<span class="stat-unit">+</span></div>
+      <div class="stat-label">Pallet Standards Stocked</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">Local Stock &amp; Delivery</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">B2B</div>
+      <div class="stat-label">Wholesale Supply Only</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24h</div>
+      <div class="stat-label">Quote Response Time</div>
+    </div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="max-w">
+    <div class="about-grid">
+      <div>
+        <div class="section-header">
+          <div class="section-tag">About Us</div>
+          <h2 class="section-title">Hong Kong's Pallet &amp; Logistics Equipment Specialist</h2>
+        </div>
+        <div class="about-highlight">
+          <blockquote>"Supplying reliable, standards-compliant pallets and logistics equipment to keep Hong Kong's supply chains moving efficiently."</blockquote>
+          <cite>— Parlee Enterprises (HK) Co., Ltd.</cite>
+        </div>
+        <div class="about-body">
+          <p>
+            Parlee Enterprises (HK) Co., Ltd. (栢利貿易香港有限公司) is a professional wholesale supplier of industrial pallets and material handling equipment in Hong Kong. We serve warehouses, manufacturers, freight forwarders, importers/exporters, and logistics operators who require reliable pallet supply.
+          </p>
+          <p>
+            Our product range includes American Standard pallets, Euro Standard pallets, plastic pallets, and custom-specification wooden pallets. With local Hong Kong stock, we offer fast delivery and competitive bulk pricing — ensuring your operations are never held up by pallet availability.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">📦</div>
+            <h4>Multiple Standards</h4>
+            <p>American, Euro, and Asia-Pacific standard pallets — plus custom sizing on request.</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🏭</div>
+            <h4>HK Local Stock</h4>
+            <p>Ready stock in Hong Kong for fast delivery without long lead times or import delays.</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💰</div>
+            <h4>Bulk Pricing</h4>
+            <p>Competitive wholesale pricing for medium and large volume orders with flexible payment terms.</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">✅</div>
+            <h4>Quality Assured</h4>
+            <p>Load-tested pallets meeting international handling standards for safe warehouse and transport use.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Products</div>
+      <h2 class="section-title">Pallet &amp; Logistics Equipment Range</h2>
+      <p class="section-subtitle">Standard and custom pallet solutions for every industry and supply chain requirement.</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🇺🇸</div>
+        <h3>American Standard Pallet<br><span style="font-size:0.82rem;color:var(--text-light);font-weight:400">美國標準卡板</span></h3>
+        <p>The North American standard pallet, widely used for international freight, container loading, and warehouse racking. Compatible with most US-spec racking and forklift systems.</p>
+        <div class="spec-table">
+          <div class="spec-row"><div class="spec-key">Size</div><div class="spec-val">1219mm × 1016mm (48" × 40")</div></div>
+          <div class="spec-row"><div class="spec-key">Load Cap.</div><div class="spec-val">Up to 1,500 kg dynamic</div></div>
+          <div class="spec-row"><div class="spec-key">Entry</div><div class="spec-val">4-way forklift entry</div></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🇪🇺</div>
+        <h3>Euro Pallet (EPAL)<br><span style="font-size:0.82rem;color:var(--text-light);font-weight:400">歐洲標準卡板</span></h3>
+        <p>The European standard pallet used globally for international shipping and warehouse logistics. Standardised dimensions ensure compatibility with Euro-spec racking and automated systems.</p>
+        <div class="spec-table">
+          <div class="spec-row"><div class="spec-key">Size</div><div class="spec-val">1200mm × 800mm</div></div>
+          <div class="spec-row"><div class="spec-key">Load Cap.</div><div class="spec-val">Up to 1,500 kg dynamic</div></div>
+          <div class="spec-row"><div class="spec-key">Entry</div><div class="spec-val">4-way forklift entry</div></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🌏</div>
+        <h3>Asia-Pacific Standard Pallet<br><span style="font-size:0.82rem;color:var(--text-light);font-weight:400">亞太標準卡板</span></h3>
+        <p>Optimised for Asian market container dimensions and warehouse configurations. Ideal for intra-Asia trade routes, retail distribution, and cross-docking operations in HK and Greater China.</p>
+        <div class="spec-table">
+          <div class="spec-row"><div class="spec-key">Size</div><div class="spec-val">1100mm × 1100mm</div></div>
+          <div class="spec-row"><div class="spec-key">Load Cap.</div><div class="spec-val">Up to 1,200 kg dynamic</div></div>
+          <div class="spec-row"><div class="spec-key">Entry</div><div class="spec-val">4-way forklift entry</div></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">♻️</div>
+        <h3>Plastic Pallet<br><span style="font-size:0.82rem;color:var(--text-light);font-weight:400">膠卡板</span></h3>
+        <p>Hygienic, durable, and weather-resistant plastic pallets for food, pharmaceutical, and cleanroom applications. Washable, non-absorbent, and free from splinters or nails — meeting strict hygiene standards.</p>
+        <div class="spec-table">
+          <div class="spec-row"><div class="spec-key">Material</div><div class="spec-val">HDPE / PP virgin / recycled</div></div>
+          <div class="spec-row"><div class="spec-key">Load Cap.</div><div class="spec-val">Up to 1,000–2,000 kg</div></div>
+          <div class="spec-row"><div class="spec-key">Hygiene</div><div class="spec-val">Washable, mould-resistant</div></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🪵</div>
+        <h3>Custom Wooden Pallet<br><span style="font-size:0.82rem;color:var(--text-light);font-weight:400">客製木卡板</span></h3>
+        <p>Made-to-specification wooden pallets for non-standard load sizes, heavy machinery, and export crating requirements. Heat-treated (HT) ISPM 15 compliance available for international export shipments.</p>
+        <div class="spec-table">
+          <div class="spec-row"><div class="spec-key">Spec</div><div class="spec-val">Custom size per order</div></div>
+          <div class="spec-row"><div class="spec-key">Compliance</div><div class="spec-val">ISPM 15 HT available</div></div>
+          <div class="spec-row"><div class="spec-key">Lead Time</div><div class="spec-val">5–10 business days</div></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🔧</div>
+        <h3>Pallet Accessories &amp; Repair<br><span style="font-size:0.82rem;color:var(--text-light);font-weight:400">卡板配件及維修</span></h3>
+        <p>Pallet collars, corner boards, stretch wrap, and strapping accessories. Pallet repair and reconditioning service to extend pallet lifespan and reduce replacement costs for fleet operators.</p>
+        <div class="spec-table">
+          <div class="spec-row"><div class="spec-key">Accessories</div><div class="spec-val">Collars, boards, wraps</div></div>
+          <div class="spec-row"><div class="spec-key">Repair</div><div class="spec-val">Reconditioning service</div></div>
+          <div class="spec-row"><div class="spec-key">Bulk</div><div class="spec-val">Bulk accessory pricing</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="industries" id="industries">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Industries Served</div>
+      <h2 class="section-title">Pallets for Every Industry</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">We supply to a broad range of sectors — wherever goods need to be stored, moved, or shipped.</p>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card">
+        <div class="ind-icon">🏭</div>
+        <h4>Manufacturing &amp;<br>Industrial</h4>
+        <p>Heavy-duty pallets for production lines and factory floors</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-icon">🚢</div>
+        <h4>Freight &amp;<br>Logistics</h4>
+        <p>Container-compatible pallets for sea, air, and land freight</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-icon">🏬</div>
+        <h4>Retail &amp;<br>Distribution</h4>
+        <p>Retail-compliant pallets for distribution centre and store delivery</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-icon">🍎</div>
+        <h4>Food &amp;<br>Beverage</h4>
+        <p>Hygienic plastic pallets for food-grade storage and cold chain</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-icon">💊</div>
+        <h4>Pharmaceutical &amp;<br>Healthcare</h4>
+        <p>Clean, compliant pallets for pharmaceutical warehousing</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-icon">🏗️</div>
+        <h4>Construction &amp;<br>Materials</h4>
+        <p>Heavy-load pallets for building materials and construction goods</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-icon">📦</div>
+        <h4>E-Commerce &amp;<br>Fulfilment</h4>
+        <p>Fast-turnaround pallets for fulfilment centres and last-mile ops</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-icon">🌡️</div>
+        <h4>Cold Chain &amp;<br>Storage</h4>
+        <p>Temperature-tolerant plastic pallets for refrigerated storage</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Contact Us</div>
+      <h2 class="section-title">Request a Quote</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">
+        Tell us your pallet type, quantity, and delivery requirements. We'll respond within 24 hours with competitive pricing.
+      </p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Location</div>
+              <div class="contact-item-val">Hong Kong</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Phone / WhatsApp</div>
+              <div class="contact-item-val">+852 5399 5259</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-val">info@parlee-ent.com.hk</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🌐</div>
+            <div>
+              <div class="contact-item-label">Website</div>
+              <div class="contact-item-val">parlee-ent.com.hk</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 style="color:var(--white);font-size:1.15rem;font-weight:700;margin-bottom:1.5rem;">Pallet Enquiry / RFQ</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" placeholder="Your company">
+          </div>
+          <div class="form-group">
+            <label>Contact Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@company.com">
+          </div>
+          <div class="form-group">
+            <label>Phone / WhatsApp</label>
+            <input type="tel" placeholder="+852">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Pallet Type Required</label>
+          <select>
+            <option value="">Select pallet type...</option>
+            <option>American Standard Pallet (1219×1016mm)</option>
+            <option>Euro Pallet / EPAL (1200×800mm)</option>
+            <option>Asia-Pacific Standard (1100×1100mm)</option>
+            <option>Plastic Pallet</option>
+            <option>Custom Wooden Pallet</option>
+            <option>Multiple Types</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Enquiry Details</label>
+          <textarea placeholder="Quantity required, frequency of order, delivery address, any special requirements (ISPM 15 HT, load capacity, etc.)..."></textarea>
+        </div>
+        <button class="form-submit">Send Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Parlee<span> Enterprises</span></div>
+    <div class="footer-copy">© 2024 Parlee Enterprises (HK) Co., Ltd. 栢利貿易香港有限公司. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
