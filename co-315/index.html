@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>迦南搬屋公司 | Canaan Moving Co. — 香港專業搬運 · 倉存 · 搬琴</title>
+<style>
+  :root {
+    --navy: #1e3a5f;
+    --navy-mid: #2a4e7c;
+    --gold: #c8970a;
+    --gold-light: #f5f0e0;
+    --white: #ffffff;
+    --light: #f6f8fb;
+    --text: #2c3445;
+    --muted: #6b7280;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', '微軟正黑體', Arial, sans-serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; }
+  .nav-logo {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 15px; color: var(--white);
+  }
+  .nav-name { color: var(--white); font-weight: 700; font-size: 16px; line-height: 1.2; }
+  .nav-name span { color: var(--gold); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--white);
+    padding: 9px 22px; border-radius: 6px; font-size: 14px; font-weight: 700;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: #a87a06; }
+
+  /* HERO */
+  .hero {
+    margin-top: 64px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, #1a3560 100%);
+    min-height: 580px; display: flex; align-items: center;
+    padding: 72px 48px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,151,10,0.15) 0%, transparent 70%);
+  }
+  .hero-content { max-width: 640px; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(200,151,10,0.2); border: 1px solid rgba(200,151,10,0.4);
+    color: var(--gold); padding: 6px 16px; border-radius: 20px;
+    font-size: 13px; font-weight: 700; margin-bottom: 24px;
+  }
+  .hero h1 { font-size: 44px; font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 8px; }
+  .hero h1 span { color: var(--gold); }
+  .hero-en { font-size: 18px; color: rgba(255,255,255,0.55); margin-bottom: 20px; }
+  .hero-desc { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 36px; max-width: 560px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--gold); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700; transition: background .2s, transform .2s; }
+  .btn-primary:hover { background: #a87a06; transform: translateY(-2px); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.35); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600; transition: border-color .2s; }
+  .btn-outline:hover { border-color: var(--white); }
+  .hero-card {
+    position: absolute; right: 72px; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px); border-radius: 16px;
+    padding: 32px 36px; min-width: 260px; z-index: 1;
+  }
+  .hero-card-title { color: var(--gold); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+  .hero-stat { margin-bottom: 16px; }
+  .hero-stat-num { font-size: 32px; font-weight: 900; color: var(--white); line-height: 1; }
+  .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 3px; }
+  .hero-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 16px 0; }
+
+  /* STATS STRIP */
+  .stats-strip { background: var(--gold); display: flex; justify-content: center; flex-wrap: wrap; }
+  .stat-item { padding: 22px 44px; text-align: center; border-right: 1px solid rgba(255,255,255,0.25); }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-size: 26px; font-weight: 800; color: var(--white); }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 3px; font-weight: 500; }
+
+  /* SECTION */
+  section { padding: 80px 48px; }
+  .section-label { display: inline-block; color: var(--gold); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  h2 { font-size: 34px; font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 640px; margin-bottom: 48px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .history-box {
+    background: var(--white); border-radius: 14px; padding: 28px;
+    border-left: 4px solid var(--gold); margin-bottom: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .history-box h3 { font-size: 15px; color: var(--gold); font-weight: 700; margin-bottom: 8px; }
+  .history-box p { font-size: 14px; color: var(--text); line-height: 1.75; }
+  .about-desc p { font-size: 15px; color: var(--text); line-height: 1.8; margin-bottom: 16px; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .about-prop { background: var(--white); border-radius: 12px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-top: 3px solid var(--gold); }
+  .about-prop-icon { font-size: 26px; margin-bottom: 10px; }
+  .about-prop h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .about-prop p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    background: var(--white); border-radius: 14px; padding: 30px 24px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    border-top: 4px solid var(--gold);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+  .service-icon { width: 52px; height: 52px; border-radius: 12px; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 18px; }
+  .service-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .service-card h3 small { font-size: 13px; color: var(--muted); font-weight: 400; display: block; margin-top: 2px; }
+  .service-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .service-tag { display: inline-block; margin-top: 12px; background: var(--gold-light); color: #8a6200; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+  /* STORAGE */
+  .storage { background: var(--light); }
+  .storage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .storage-card {
+    background: var(--white); border-radius: 14px; padding: 28px 22px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+    border-bottom: 4px solid var(--navy);
+    transition: transform .25s;
+  }
+  .storage-card:hover { transform: translateY(-4px); }
+  .storage-card-icon { font-size: 32px; margin-bottom: 14px; }
+  .storage-card h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .storage-card h3 small { font-size: 12px; color: var(--muted); font-weight: 400; }
+  .storage-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .storage-badge { display: inline-flex; align-items: center; gap: 5px; margin-top: 12px; background: rgba(30,58,95,0.08); color: var(--navy); padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; }
+
+  /* PACKING */
+  .packing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .packing-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .packing-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: var(--light); border-radius: 10px; padding: 14px;
+    font-size: 13px; color: var(--text);
+  }
+  .packing-list li span { font-size: 20px; flex-shrink: 0; }
+  .packing-highlight {
+    background: var(--navy); border-radius: 14px; padding: 32px;
+    color: var(--white);
+  }
+  .packing-highlight h3 { font-size: 18px; font-weight: 700; color: var(--gold); margin-bottom: 16px; }
+  .packing-highlight p { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.75; margin-bottom: 14px; }
+  .packing-highlight .tick { color: var(--gold); font-size: 14px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 8px; }
+
+  /* CONTACT */
+  .contact { background: var(--navy); }
+  .contact h2 { color: var(--white); }
+  .contact .section-label { color: var(--gold); }
+  .contact .section-sub { color: rgba(255,255,255,0.65); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 22px; }
+  .contact-row { display: flex; align-items: flex-start; gap: 16px; }
+  .contact-row-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(200,151,10,0.15); border: 1px solid rgba(200,151,10,0.3); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .contact-row-text h4 { font-size: 13px; color: var(--gold); font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .contact-row-text p, .contact-row-text a { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .contact-row-text a:hover { color: var(--gold); }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .contact-form input, .contact-form select, .contact-form textarea {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px; padding: 13px 16px; color: var(--white);
+    font-size: 14px; font-family: inherit; outline: none; transition: border-color .2s;
+  }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form select option { background: var(--navy); }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--gold); }
+  .contact-form textarea { resize: vertical; min-height: 110px; }
+  .contact-form button { background: var(--gold); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .2s; }
+  .contact-form button:hover { background: #a87a06; }
+
+  /* FOOTER */
+  footer { background: #0f1c30; color: rgba(255,255,255,0.5); text-align: center; padding: 28px 48px; font-size: 13px; }
+  footer span { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 48px 24px; }
+    .hero h1 { font-size: 30px; }
+    .hero-card { display: none; }
+    section { padding: 56px 24px; }
+    .about-grid, .contact-grid, .packing-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .storage-grid { grid-template-columns: 1fr 1fr; }
+    .about-props { grid-template-columns: 1fr; }
+    .packing-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">迦南</div>
+    <div class="nav-name">迦南搬屋公司 <span>Canaan Moving</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">關於我們</a>
+    <a href="#services">服務項目</a>
+    <a href="#storage">倉存服務</a>
+    <a href="#packing">包裝服務</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <a href="#contact" class="nav-cta">免費報價</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">⭐ 1964年創業 · 六十年信譽保證</div>
+    <h1>香港專業<span>搬運</span>服務</h1>
+    <div class="hero-en">Canaan Moving Co., Ltd. · Professional Relocation &amp; Storage Since 1964</div>
+    <p class="hero-desc">
+      迦南搬屋公司自1964年創立，六十年來以專業服務、完善包裝及誠實收費，深獲香港市民信賴。搬屋、搬琴、移民搬運、倉存服務一應俱全，提供免費上門估價。
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">免費上門估價</a>
+      <a href="#services" class="btn-outline">查看服務</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-title">🏆 服務優勢</div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">60+</div>
+      <div class="hero-stat-label">年豐富搬運經驗</div>
+    </div>
+    <hr class="hero-divider">
+    <div class="hero-stat">
+      <div class="hero-stat-num">6</div>
+      <div class="hero-stat-label">種倉存服務選擇</div>
+    </div>
+    <hr class="hero-divider">
+    <div class="hero-stat">
+      <div class="hero-stat-num">免費</div>
+      <div class="hero-stat-label">上門估價服務</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">1964</div>
+    <div class="stat-label">創業年份</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">60+</div>
+    <div class="stat-label">年服務經驗</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">6種</div>
+    <div class="stat-label">倉存服務</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">免費</div>
+    <div class="stat-label">上門報價</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">關於我們</div>
+    <h2>六十年誠信服務</h2>
+    <p class="section-sub" style="margin: 0 auto;">迦南搬屋公司自1964年創立，以誠信、專業及貼心的態度，為香港市民提供全面的搬屋、倉存及搬琴服務。</p>
+  </div>
+  <div class="about-grid">
+    <div>
+      <div class="history-box">
+        <h3>🏅 六十年品牌歷史</h3>
+        <p>迦南搬屋公司於1964年在香港創立，超過六十年的豐富經驗使我們成為香港最具公信力的搬運公司之一。我們以車價計算方式收費，以達公平交易原則，並提供免費上門估價服務，令客戶安心無憂。</p>
+      </div>
+      <div class="about-desc">
+        <p>我們明白每次搬屋都是客戶人生的一個重要里程碑，因此我們以謹慎、細心的態度對待每一件物品，無論是珍貴家俬、精密電器，還是珍貴的鋼琴。</p>
+        <p>公司採用特製搬運車輪（由外地訂製，橡膠較軟有彈性，減低括花地板機會），以及各類專業包裝物料，確保物品完好無損地送達目的地。</p>
+      </div>
+    </div>
+    <div class="about-props">
+      <div class="about-prop">
+        <div class="about-prop-icon">💰</div>
+        <h4>以車價收費</h4>
+        <p>按車輛大小計算費用，公平透明，不多收一分。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🚗</div>
+        <h4>免費上門估價</h4>
+        <p>安排專人上門免費評估，減少不必要糾紛。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">📦</div>
+        <h4>專業包裝工具</h4>
+        <p>特製搬運車及各類包裝材料，保護您的每件財物。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🎹</div>
+        <h4>搬琴專家</h4>
+        <p>多年搬琴經驗，鋼琴倉存服務，恆溫保護。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background: var(--white);">
+  <div class="section-label">服務項目</div>
+  <h2>全面搬運服務</h2>
+  <p class="section-sub">從本地搬屋到海外移民搬運，迦南提供全方位解決方案，照顧您搬遷的每個細節。</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <h3>住宅搬屋服務<small>Residential Moving</small></h3>
+      <p>專業搬屋團隊處理一切搬運事宜，包括包裝、搬運、上落貨及重新擺放，確保搬屋過程順暢輕鬆。</p>
+      <span class="service-tag">本地搬屋</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎹</div>
+      <h3>搬琴服務<small>Piano Moving</small></h3>
+      <p>鋼琴搬運需要特殊技巧與工具。我們的專業搬琴團隊擁有豐富經驗，安全搬運各類型鋼琴，包括直立式及平台鋼琴。</p>
+      <span class="service-tag">搬琴專家</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✈️</div>
+      <h3>移民搬運服務<small>Immigration Moving</small></h3>
+      <p>為移民客戶提供全面搬運方案，包括海外包裝運送、移民程序指引及行李托運安排，輕鬆踏上新旅程。</p>
+      <span class="service-tag">移民首選</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>寫字樓搬遷<small>Office Relocation</small></h3>
+      <p>辦公室搬遷需要高度組織及保密。我們提供週末搬遷服務，減少對業務運作的影響，確保文件及設備妥善處理。</p>
+      <span class="service-tag">商業搬遷</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📦</div>
+      <h3>專業包裝服務<small>Packing Services</small></h3>
+      <p>提供免費基本包裝工具（紙箱、膠袋等），並有多種特製包裝材料供選用，確保易碎品、家電及貴重物品獲得最佳保護。</p>
+      <span class="service-tag">免費基本包裝</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏬</div>
+      <h3>倉存服務<small>Storage Solutions</small></h3>
+      <p>提供六種不同類型的倉存方案，由家居經濟倉至恆溫冷氣豪華倉，包括鋼琴專用恆溫倉及流動文件櫃，靈活配合各種需要。</p>
+      <span class="service-tag">6種倉存</span>
+    </div>
+  </div>
+</section>
+
+<!-- STORAGE -->
+<section class="storage" id="storage">
+  <div style="text-align: center; margin-bottom: 48px;">
+    <div class="section-label">倉存服務</div>
+    <h2>六種倉存方案</h2>
+    <p class="section-sub" style="margin: 0 auto;">無論您需要短期或長期儲存，家居雜物或珍貴鋼琴，迦南均有合適的倉存方案為您服務。</p>
+  </div>
+  <div class="storage-grid">
+    <div class="storage-card">
+      <div class="storage-card-icon">🏠</div>
+      <h3>家居經濟倉<small> Home Economy Storage</small></h3>
+      <p>適合家居雜物、傢俱及日常用品的經濟型儲存方案，靈活租期，方便搬屋過渡期使用。</p>
+      <div class="storage-badge">💲 經濟實惠</div>
+    </div>
+    <div class="storage-card">
+      <div class="storage-card-icon">🚐</div>
+      <h3>迷你經濟流動倉<small> Mini Mobile Storage</small></h3>
+      <p>迷你流動倉直接送到您家門口，裝滿後由我們收回存放，取用時再送回，靈活方便。</p>
+      <div class="storage-badge">🚗 上門服務</div>
+    </div>
+    <div class="storage-card">
+      <div class="storage-card-icon">❄️</div>
+      <h3>恆溫冷氣迷你倉<small> A/C Mini Storage</small></h3>
+      <p>恆溫冷氣環境，適合存放對溫濕度敏感的物品，如名牌手袋、貴重衣物及精密電子產品。</p>
+      <div class="storage-badge">🌡️ 恆溫保護</div>
+    </div>
+    <div class="storage-card">
+      <div class="storage-card-icon">👑</div>
+      <h3>恆溫冷氣豪華倉<small> A/C Premium Storage</small></h3>
+      <p>豪華倉存設施，提供更大空間及更優質的存放環境，適合高端傢俱、藝術品及珍貴收藏。</p>
+      <div class="storage-badge">⭐ 高端設施</div>
+    </div>
+    <div class="storage-card">
+      <div class="storage-card-icon">📁</div>
+      <h3>流動文件櫃<small> Mobile Document Cabinet</small></h3>
+      <p>專為商業文件設計的流動儲存方案，確保機密文件安全存放，按需取用，省卻辦公室空間。</p>
+      <div class="storage-badge">🔒 安全保密</div>
+    </div>
+    <div class="storage-card">
+      <div class="storage-card-icon">🎹</div>
+      <h3>恆溫鋼琴倉<small> Piano Climate Storage</small></h3>
+      <p>專為鋼琴設計的恆溫恆濕倉存服務，防止溫濕度變化影響音色及損壞琴鍵，保護您的珍貴樂器。</p>
+      <div class="storage-badge">🌡️ 鋼琴專用</div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKING -->
+<section id="packing" style="background: var(--white);">
+  <div class="section-label">包裝服務</div>
+  <h2>專業包裝材料</h2>
+  <p class="section-sub">迦南提供多種免費基本包裝工具，並備有特製包裝物料保護您的貴重物品，確保一切安全無損。</p>
+  <div class="packing-grid">
+    <ul class="packing-list">
+      <li><span>🛍️</span><div><strong>膠袋</strong><br>存放衣物、枕被等</div></li>
+      <li><span>📦</span><div><strong>紙箱</strong><br>存放書本及雜物</div></li>
+      <li><span>🫧</span><div><strong>氣珠紙</strong><br>包裝玻璃及易碎物</div></li>
+      <li><span>🎁</span><div><strong>珍珠棉</strong><br>保護物件及包裝家具</div></li>
+      <li><span>🧥</span><div><strong>西裝箱</strong><br>西裝或禮服專用</div></li>
+      <li><span>🛡️</span><div><strong>特製搬運氈</strong><br>保護家俬及電器</div></li>
+      <li><span>🪢</span><div><strong>搬運繩</strong><br>固定車上物件防移位</div></li>
+      <li><span>✈️</span><div><strong>飛機帶</strong><br>吊運重型物件用</div></li>
+    </ul>
+    <div class="packing-highlight">
+      <h3>🚛 特製搬運車輪</h3>
+      <p>迦南搬屋公司採用由外地特製訂製的搬運車輪，與一般搬運車輪相比：</p>
+      <div class="tick">✅ 橡膠更軟更有彈性</div>
+      <div class="tick">✅ 大幅減低括花地板風險</div>
+      <div class="tick">✅ 靜音設計，不影響鄰居</div>
+      <div class="tick">✅ 適合各類型地板材質</div>
+      <p style="margin-top: 16px;">所有免費基本包裝工具包括紙箱及膠袋均免費提供。特製包裝物料按需收費，詳情請致電查詢或預約免費上門估價。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">聯絡我們</div>
+  <h2>免費上門估價</h2>
+  <p class="section-sub">歡迎致電、WhatsApp或填寫表格，我們將安排專人為您免費上門估價，報價透明，絕不多收。</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-row-icon">🏢</div>
+        <div class="contact-row-text">
+          <h4>公司名稱</h4>
+          <p>迦南搬屋公司<br>Canaan Moving Co., Ltd.</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📱</div>
+        <div class="contact-row-text">
+          <h4>手機 / WhatsApp</h4>
+          <a href="https://wa.me/85294492716">+852 9449 2716</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📧</div>
+        <div class="contact-row-text">
+          <h4>電郵</h4>
+          <a href="mailto:info@canaanmovinghk.com">info@canaanmovinghk.com</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">🌐</div>
+        <div class="contact-row-text">
+          <h4>網站</h4>
+          <a href="https://www.canaan.hk" target="_blank">www.canaan.hk</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">⏰</div>
+        <div class="contact-row-text">
+          <h4>服務年資</h4>
+          <p>自1964年，服務香港逾60年</p>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <input type="text" placeholder="您的姓名 Your Name" />
+      <input type="tel" placeholder="聯絡電話 Phone / WhatsApp" />
+      <input type="email" placeholder="電郵地址 Email" />
+      <select>
+        <option value="" disabled selected>服務類別 Service Type</option>
+        <option>住宅搬屋 Residential Moving</option>
+        <option>搬琴服務 Piano Moving</option>
+        <option>移民搬運 Immigration Moving</option>
+        <option>寫字樓搬遷 Office Relocation</option>
+        <option>倉存服務 Storage Solutions</option>
+        <option>鋼琴倉存 Piano Storage</option>
+        <option>其他查詢 Other Enquiry</option>
+      </select>
+      <textarea placeholder="請描述您的搬運需求（搬出/搬入地點、大約物品數量等）…"></textarea>
+      <button type="submit">提交查詢 / Submit Enquiry 📨</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 1964–2024 <span>迦南搬屋公司 Canaan Moving Co., Ltd.</span> · 香港專業搬運倉存服務 · All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
