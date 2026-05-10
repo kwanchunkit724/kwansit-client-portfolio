@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>永健會計師事務所 Flexkin & Co. CPA | 香港認可會計師 · 審計 · 稅務 · 公司成立</title>
+<style>
+  :root {
+    --navy: #0a1e40;
+    --navy-mid: #143060;
+    --teal: #007878;
+    --teal-light: #009898;
+    --white: #ffffff;
+    --light-bg: #f4f7fa;
+    --text: #1a1a2e;
+    --text-light: #4a5568;
+    --border: #dde2ea;
+    --green: #008060;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif; color: var(--text); background: var(--white); }
+
+  nav {
+    background: var(--navy);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px; position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; }
+  .nav-logo { width: 42px; height: 42px; background: var(--teal); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; color: var(--white); }
+  .nav-name .zh { font-size: 16px; font-weight: 700; color: var(--white); display: block; }
+  .nav-name .en { font-size: 11px; color: rgba(255,255,255,0.5); display: block; }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal-light); }
+  .nav-cta { background: var(--teal); color: var(--white); padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--teal-light); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1a3878 100%);
+    padding: 80px 40px; min-height: 530px;
+    display: flex; align-items: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 75% 50%, rgba(0,152,152,0.14) 0%, transparent 60%);
+  }
+  .hero-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 50px; width: 100%; position: relative; z-index: 1; }
+  .hero-text { flex: 1; }
+  .hero-badge { display: inline-block; background: rgba(0,120,120,0.2); border: 1px solid rgba(0,152,152,0.4); color: var(--teal-light); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+  .hero-text h1 { font-size: 50px; font-weight: 900; color: var(--white); line-height: 1.1; margin-bottom: 12px; }
+  .hero-text h1 span { color: var(--teal-light); }
+  .hero-text h2 { font-size: 20px; font-weight: 400; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+  .hero-text p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 490px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: var(--teal); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--teal-light); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  .hero-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(0,152,152,0.25); backdrop-filter: blur(10px); border-radius: 16px; padding: 32px 28px; min-width: 280px; flex-shrink: 0; }
+  .hero-card h3 { color: var(--teal-light); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+  .hc-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+  .hc-item:last-child { margin-bottom: 0; }
+  .hc-icon { width: 36px; height: 36px; background: rgba(0,152,152,0.22); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+  .hc-info .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+  .hc-info .value { font-size: 13px; color: var(--white); font-weight: 600; }
+
+  .stats-strip { background: var(--teal); padding: 22px 40px; display: flex; justify-content: center; }
+  .stat-item { text-align: center; padding: 0 44px; position: relative; }
+  .stat-item + .stat-item::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 40px; background: rgba(255,255,255,0.35); }
+  .stat-num { font-size: 30px; font-weight: 900; color: var(--white); line-height: 1; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 4px; font-weight: 500; }
+
+  section { padding: 80px 40px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  .section-title { font-size: 36px; font-weight: 900; color: var(--navy); margin-bottom: 16px; line-height: 1.2; }
+  .section-sub { font-size: 16px; color: var(--text-light); line-height: 1.7; max-width: 620px; }
+  .section-header { margin-bottom: 52px; }
+
+  .about { background: var(--light-bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .about-box { background: var(--navy); border-radius: 16px; padding: 40px; color: var(--white); position: relative; overflow: hidden; }
+  .about-box::after { content: 'CPA'; position: absolute; right: -8px; bottom: -20px; font-size: 90px; font-weight: 900; color: rgba(255,255,255,0.04); line-height: 1; }
+  .about-box h3 { font-size: 22px; font-weight: 800; color: var(--teal-light); margin-bottom: 16px; }
+  .about-box p { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.82); margin-bottom: 14px; }
+  .cpa-cert { margin-top: 20px; padding: 14px 16px; background: rgba(0,152,152,0.15); border: 1px solid rgba(0,152,152,0.3); border-radius: 8px; }
+  .cpa-cert p { font-size: 13px; color: var(--teal-light); margin: 0; font-weight: 600; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .prop-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 22px; border-top: 3px solid var(--teal); }
+  .prop-icon { font-size: 28px; margin-bottom: 12px; }
+  .prop-card h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .prop-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--navy), var(--teal)); }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(10,30,64,0.12); }
+  .service-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--navy), var(--navy-mid)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+  .service-card h3 { font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+  .service-card .en { font-size: 11px; color: var(--teal); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .service-card p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+  .service-tag { display: inline-block; background: rgba(0,120,120,0.1); color: var(--teal); padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-top: 10px; }
+
+  .immigration { background: var(--navy); }
+  .immigration .section-title { color: var(--white); }
+  .immigration .section-tag { color: var(--teal-light); }
+  .immigration .section-sub { color: rgba(255,255,255,0.7); }
+  .imm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .imm-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(0,152,152,0.2); border-radius: 14px; padding: 30px 24px; transition: background 0.2s; }
+  .imm-card:hover { background: rgba(0,152,152,0.1); }
+  .imm-icon { font-size: 36px; margin-bottom: 14px; }
+  .imm-card h3 { font-size: 17px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+  .imm-card p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7; }
+  .imm-list { margin-top: 12px; }
+  .imm-list li { font-size: 13px; color: rgba(255,255,255,0.7); padding: 3px 0; list-style: none; }
+  .imm-list li::before { content: '→ '; color: var(--teal-light); }
+
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .contact-info h3 { font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+  .contact-info > p { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 32px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+  .ci-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--navy), var(--navy-mid)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .ci-label { font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .ci-val { font-size: 14px; font-weight: 600; color: var(--navy); }
+  .ci-val a { color: var(--navy); text-decoration: none; }
+  .ci-val a:hover { color: var(--teal); }
+
+  .contact-form { background: var(--light-bg); border-radius: 16px; padding: 36px; }
+  .contact-form h3 { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .form-group label { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .form-group input, .form-group select, .form-group textarea { padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; color: var(--text); background: var(--white); outline: none; font-family: inherit; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit { width: 100%; background: var(--teal); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+  .form-submit:hover { background: var(--teal-light); }
+
+  footer { background: var(--navy); padding: 40px; text-align: center; }
+  .footer-brand { font-size: 18px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 14px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  @media (max-width: 900px) {
+    .hero-content { flex-direction: column; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid, .imm-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">永</div>
+    <div class="nav-name">
+      <span class="zh">永健會計師事務所</span>
+      <span class="en">Flexkin &amp; Co. CPA · Hong Kong</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">關於我們</a>
+    <a href="#services">服務項目</a>
+    <a href="#immigration">移民及簽證</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <a href="#contact" class="nav-cta">預約咨詢</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">🏆 香港會計師公會認可 CPA</div>
+      <h1>永健<span>會計師</span><br>事務所</h1>
+      <h2>Flexkin &amp; Co. Certified Public Accountants</h2>
+      <p>香港會計師公會（HKICPA）認可執業會計師事務所，提供審計核數、會計理帳、稅務規劃、公司成立、投資移民及商標申請等全面專業服務。</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">查看服務</a>
+        <a href="#contact" class="btn-outline">免費咨詢</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>📋 事務所資訊</h3>
+      <div class="hc-item">
+        <div class="hc-icon">🌐</div>
+        <div class="hc-info">
+          <div class="label">網址 Website</div>
+          <div class="value">flexkin.com</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">📍</div>
+        <div class="hc-info">
+          <div class="label">地區 District</div>
+          <div class="value">香港 Hong Kong</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🏆</div>
+        <div class="hc-info">
+          <div class="label">認證資格</div>
+          <div class="value">HKICPA 認可執業會計師</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🔐</div>
+        <div class="hc-info">
+          <div class="label">業務範圍</div>
+          <div class="value">會計 · 審計 · 稅務 · 移民</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">CPA</div>
+    <div class="stat-label">認可執業會計師</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">7+</div>
+    <div class="stat-label">核心服務範疇</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">1-Stop</div>
+    <div class="stat-label">一站式企業服務</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">HK</div>
+    <div class="stat-label">本地認可資格</div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-box">
+        <h3>🏛️ 香港認可執業會計師</h3>
+        <p>永健會計師事務所（Flexkin &amp; Co. CPA）是香港會計師公會認可的持牌執業會計師事務所，擁有提供合符法定要求審計服務的執業資格。</p>
+        <p>我們為企業及個人提供多元化的會計、稅務、審計及企業咨詢服務，並在某些情況下（如新股東加入）可提供財務資料驗證及核查服務。</p>
+        <p>除傳統會計及審計服務外，我們亦提供投資移民、工作簽證及商標申請服務，為客戶提供全面的企業及個人解決方案。</p>
+        <div class="cpa-cert">
+          <p>✅ 香港會計師公會（HKICPA）認可執業會計師 · 持有合法執業證書</p>
+        </div>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">🎓</div>
+          <h4>專業資格認可</h4>
+          <p>HKICPA認可執業資格，可提供合符香港公司條例要求的審計及核數服務。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🔄</div>
+          <h4>一站式服務</h4>
+          <p>從公司成立、會計記帳到稅務申報，以及移民咨詢，全部服務一手包辦。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🔐</div>
+          <h4>保密可靠</h4>
+          <p>嚴格保護客戶財務及個人資料，維持高度保密性及職業操守。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">💼</div>
+          <h4>量身訂製建議</h4>
+          <p>深入了解客戶業務需求，提供切合實際的財務及稅務規劃建議。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Services</div>
+      <h2 class="section-title">服務項目</h2>
+      <p class="section-sub">全方位會計師事務所服務，涵蓋企業及個人所需的各類專業服務。</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>審計核數服務</h3>
+        <div class="en">Audit Services</div>
+        <p>由HKICPA認可會計師執行的年度審計及核數服務，確保企業財務報表符合香港會計準則及《公司條例》要求。</p>
+        <span class="service-tag">HKICPA認可</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>會計理帳服務</h3>
+        <div class="en">Accounting &amp; Bookkeeping</div>
+        <p>日常帳目記錄、財務報表編制及管理賬目服務，協助企業掌握財務狀況，作出正確業務決策。</p>
+        <span class="service-tag">月結服務</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📝</div>
+        <h3>報稅及稅務安排</h3>
+        <div class="en">Tax Filing &amp; Planning</div>
+        <p>企業利得稅、薪俸稅及物業稅申報服務，並提供合法稅務規劃，在符合法規前提下降低稅務負擔。</p>
+        <span class="service-tag">稅務規劃</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3>成立有限公司</h3>
+        <div class="en">Company Formation</div>
+        <p>香港私人有限公司成立服務，包括核名、文件準備、公司秘書及商業登記，快速完成公司成立程序。</p>
+        <span class="service-tag">快速成立</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">®️</div>
+        <h3>商標及專利申請</h3>
+        <div class="en">Trademark &amp; Patent</div>
+        <p>香港商標申請及專利申請服務，保護企業知識產權，並提供商標查詢及維護等後續服務。</p>
+        <span class="service-tag">知識產權保護</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>財務驗證服務</h3>
+        <div class="en">Financial Verification</div>
+        <p>在特定情況下（如新股東加入、企業融資、銀行申請等）提供企業財務資料驗證及核查服務。</p>
+        <span class="service-tag">股東及融資需求</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="immigration" id="immigration">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Immigration &amp; Visa</div>
+      <h2 class="section-title">投資移民及簽證服務</h2>
+      <p class="section-sub">除傳統會計服務外，我們亦提供投資移民及工作簽證服務，協助客戶在香港取得居留及工作資格。</p>
+    </div>
+    <div class="imm-grid">
+      <div class="imm-card">
+        <div class="imm-icon">🛂</div>
+        <h3>投資移民服務</h3>
+        <p>協助有意透過投資途徑獲得香港居留權的客戶，提供投資計劃建議、申請文件準備及全程跟進。</p>
+        <ul class="imm-list">
+          <li>資本投資者入境計劃</li>
+          <li>優秀人才入境計劃</li>
+          <li>投資架構規劃</li>
+          <li>申請文件籌備</li>
+        </ul>
+      </div>
+      <div class="imm-card">
+        <div class="imm-icon">💼</div>
+        <h3>工作簽證服務</h3>
+        <p>為海外人才申請香港工作簽證提供支援，包括一般就業政策、輸入內地人才計劃等申請服務。</p>
+        <ul class="imm-list">
+          <li>一般就業政策申請</li>
+          <li>輸入內地人才計劃</li>
+          <li>專業及技術人員申請</li>
+          <li>雇主申請支援</li>
+        </ul>
+      </div>
+      <div class="imm-card">
+        <div class="imm-icon">🏠</div>
+        <h3>居留及定居服務</h3>
+        <p>提供香港定居、永久居留及相關行政手續的咨詢及代辦服務，協助客戶順利取得居留資格。</p>
+        <ul class="imm-list">
+          <li>永久居留申請</li>
+          <li>家庭成員申請</li>
+          <li>入籍咨詢</li>
+          <li>文件核實及公證</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Contact Us</div>
+      <h2 class="section-title">聯絡我們</h2>
+      <p class="section-sub">歡迎預約咨詢，我們的專業會計師及顧問將為您提供量身訂製的服務建議。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>聯絡資訊</h3>
+        <p>我們的專業團隊隨時準備解答您的問題，歡迎致電或填寫咨詢表格，我們將盡快聯絡您。</p>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">網址 Website</div>
+            <div class="ci-val"><a href="https://www.flexkin.com" target="_blank">www.flexkin.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">地區 Location</div>
+            <div class="ci-val">香港 Hong Kong</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🏆</div>
+          <div>
+            <div class="ci-label">資格認可</div>
+            <div class="ci-val">香港會計師公會（HKICPA）認可</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📋</div>
+          <div>
+            <div class="ci-label">咨詢方式</div>
+            <div class="ci-val">免費初步咨詢</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>📋 專業咨詢表格</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名 *</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>電話 *</label>
+            <input type="tel" placeholder="聯絡電話">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>咨詢服務</label>
+          <select>
+            <option>-- 請選擇服務 --</option>
+            <option>審計核數服務</option>
+            <option>會計理帳服務</option>
+            <option>報稅及稅務安排</option>
+            <option>成立有限公司</option>
+            <option>商標及專利申請</option>
+            <option>投資移民服務</option>
+            <option>工作簽證服務</option>
+            <option>其他咨詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>咨詢詳情</label>
+          <textarea placeholder="請描述您的具體需求，我們將為您提供最適合的服務方案..."></textarea>
+        </div>
+        <button class="form-submit">提交咨詢 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">永健會計師事務所 Flexkin &amp; Co. CPA</div>
+  <div class="footer-sub">香港會計師公會認可執業會計師 · 審計 · 會計 · 稅務 · 公司成立 · 移民簽證</div>
+  <div class="footer-copy">© 2024 永健會計師事務所 Flexkin &amp; Co. All Rights Reserved.</div>
+</footer>
+
+</body>
+</html>
