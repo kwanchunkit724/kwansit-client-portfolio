@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>農耕記湖南土菜 | 正宗湘菜・香港店</title>
+<meta name="description" content="農耕記（Nonggengji）— 由烹飪大師馮國華創立，以正宗湖南土菜為核心，傳承湘菜技藝。全球100+直營門店，香港亦有分店，品嚐道地湘味。">
+<style>
+  :root {
+    --bg:       #0a0804;
+    --bg2:      #141008;
+    --bg3:      #1c160a;
+    --accent:   #8a6010;
+    --accent2:  #d4902a;
+    --gold:     #f0c050;
+    --green:    #607820;
+    --green2:   #90b830;
+    --red:      #c83020;
+    --text:     #f0ece4;
+    --muted:    #8a8070;
+    --border:   rgba(212,144,42,0.18);
+    --card:     rgba(255,255,255,0.03);
+    --radius:   12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', 'PingFang HK', 'Noto Sans HK', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(10,8,4,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo { font-size: 1.4rem; font-weight: 900; color: var(--gold); text-decoration: none; letter-spacing: 0.06em; }
+  .nav-logo span { color: var(--green2); font-size: 0.85rem; font-weight: 600; margin-left: 0.4rem; letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.92rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--red); color: #fff; border: none; padding: 0.55rem 1.3rem;
+    border-radius: 6px; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: #e04030; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 70% 55% at 55% 40%, rgba(212,144,42,0.13) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 40% at 5% 80%, rgba(96,120,32,0.10) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(212,144,42,0.12); border: 1px solid rgba(212,144,42,0.3);
+    color: var(--gold); border-radius: 50px; padding: 0.38rem 1rem;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.55rem; }
+  .hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 900; line-height: 1.25; margin-bottom: 1.4rem; }
+  .hero h1 .hl { color: var(--gold); }
+  .hero h1 .hl-red { color: #f05040; }
+  .hero p { font-size: 1.05rem; color: var(--muted); max-width: 530px; margin-bottom: 2rem; line-height: 1.8; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #0a0804; font-weight: 800; font-size: 1rem;
+    padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(212,144,42,0.35);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,144,42,0.5); }
+  .btn-outline {
+    background: transparent; color: var(--text); border: 1.5px solid rgba(255,255,255,0.2);
+    font-size: 1rem; padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 18px; padding: 2rem;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  }
+  .info-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--gold); margin-bottom: 1.4rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+  .info-row { display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: flex-start; }
+  .info-icon { font-size: 1.1rem; min-width: 28px; margin-top: 0.1rem; }
+  .info-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.18rem; }
+  .info-val { font-size: 0.92rem; color: var(--text); font-weight: 600; }
+  .info-val a { color: var(--gold); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .info-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+
+  /* STATS */
+  .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3.5rem 5%; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 2.4rem; font-weight: 900; color: var(--gold); line-height: 1; }
+  .stat-num sup { font-size: 1.1rem; vertical-align: super; }
+  .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+
+  /* SECTION */
+  .section { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; color: var(--accent2); text-transform: uppercase; margin-bottom: 0.7rem; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; line-height: 1.25; margin-bottom: 1rem; }
+  .section-title .hl { color: var(--gold); }
+  .section-title .hl-red { color: #f05040; }
+  .section-desc { color: var(--muted); max-width: 600px; margin-bottom: 3rem; font-size: 1rem; line-height: 1.8; }
+
+  /* SIGNATURE DISHES */
+  .dishes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .dish-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2rem;
+    transition: border-color 0.25s, transform 0.2s; position: relative; overflow: hidden;
+  }
+  .dish-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--accent2), var(--gold));
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .dish-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+  .dish-card:hover::before { opacity: 1; }
+  .dish-emoji { font-size: 3rem; margin-bottom: 1rem; }
+  .dish-card h3 { font-size: 1.1rem; font-weight: 800; color: var(--gold); margin-bottom: 0.5rem; }
+  .dish-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+  .spice-level {
+    display: flex; align-items: center; gap: 0.3rem; margin-top: 1rem;
+    font-size: 0.8rem; color: #f05040;
+  }
+
+  /* BRAND STORY */
+  .story-wrap { background: var(--bg2); padding: 6rem 5%; }
+  .story-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .story-text h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; margin-bottom: 1.5rem; }
+  .story-text p { color: var(--muted); font-size: 0.98rem; line-height: 1.9; margin-bottom: 1.2rem; }
+  .story-timeline { display: flex; flex-direction: column; gap: 1.2rem; }
+  .timeline-item { display: flex; gap: 1.2rem; align-items: flex-start; }
+  .timeline-year {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #0a0804; font-weight: 900; font-size: 0.88rem;
+    padding: 0.3rem 0.7rem; border-radius: 6px; min-width: 60px; text-align: center;
+    flex-shrink: 0;
+  }
+  .timeline-item p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+  /* LOCATIONS */
+  .locations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .location-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.8rem;
+    transition: border-color 0.2s, transform 0.2s; text-align: center;
+  }
+  .location-card:hover { border-color: var(--green2); transform: translateY(-3px); }
+  .location-flag { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .location-card h4 { font-size: 1rem; font-weight: 700; color: var(--gold); margin-bottom: 0.4rem; }
+  .location-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+  .store-count {
+    display: inline-block; margin-top: 0.8rem;
+    background: rgba(96,120,32,0.15); border: 1px solid rgba(144,184,48,0.3);
+    color: var(--green2); padding: 0.22rem 0.7rem; border-radius: 50px;
+    font-size: 0.8rem; font-weight: 700;
+  }
+
+  /* WHY */
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .why-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.8rem; display: flex; gap: 1.2rem; align-items: flex-start; }
+  .why-icon { font-size: 2rem; min-width: 44px; }
+  .why-item h4 { font-size: 1rem; font-weight: 700; color: var(--gold); margin-bottom: 0.4rem; }
+  .why-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact-wrap {
+    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(212,144,42,0.07) 0%, transparent 65%), var(--bg);
+    padding: 6rem 5%;
+  }
+  .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; margin-bottom: 1rem; }
+  .contact-info p { color: var(--muted); font-size: 0.98rem; margin-bottom: 2rem; line-height: 1.8; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.1rem; }
+  .c-row { display: flex; gap: 1rem; align-items: flex-start; }
+  .c-icon { font-size: 1.3rem; min-width: 34px; }
+  .c-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.2rem; }
+  .c-val { font-size: 0.95rem; font-weight: 600; }
+  .c-val a { color: var(--gold); text-decoration: none; }
+  .c-val a:hover { text-decoration: underline; }
+  form { display: flex; flex-direction: column; gap: 1.2rem; }
+  form label { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.3rem; display: block; }
+  form input, form textarea, form select {
+    width: 100%; background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.8rem 1rem; color: var(--text); font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s;
+  }
+  form input:focus, form textarea:focus, form select:focus { outline: none; border-color: var(--accent2); }
+  form textarea { min-height: 110px; resize: vertical; }
+  form select option { background: #141008; }
+  .form-submit {
+    background: linear-gradient(135deg, var(--red), #e04030);
+    color: #fff; font-weight: 800; font-size: 1rem;
+    border: none; padding: 0.95rem; border-radius: 8px; cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(200,48,32,0.35);
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,48,32,0.5); }
+
+  /* FOOTER */
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4rem 5% 2rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand .logo-text { font-size: 1.3rem; font-weight: 900; color: var(--gold); margin-bottom: 0.8rem; }
+  .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  footer h5 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  footer ul li a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  footer ul li a:hover { color: var(--gold); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .info-card { max-width: 480px; }
+    .dishes-grid, .locations-grid, .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .story-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .dishes-grid, .locations-grid, .why-grid, .contact-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">農耕記<span>湖南土菜</span></a>
+  <ul class="nav-links">
+    <li><a href="#dishes">招牌菜式</a></li>
+    <li><a href="#story">品牌故事</a></li>
+    <li><a href="#locations">全球門店</a></li>
+    <li><a href="#why">品牌優勢</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">預訂座位</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">正宗湖南土菜・全球100+直營門店</div>
+      <h1>
+        傳承湘味精髓<br>
+        <span class="hl">農耕記</span>湖南土菜<br>
+        <span class="hl-red">道地鄉土・香辣正宗</span>
+      </h1>
+      <p>
+        農耕記由烹飪大師馮國華於2017年創立，以推廣正宗湖南土菜及湖湘飲食文化為使命。
+        七年間，從深圳出發，走向香港、新加坡、馬來西亞，
+        以嚴選食材和傳承技藝，征服無數食客的味蕾。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#dishes">查看招牌菜式</a>
+        <a class="btn-outline" href="#story">品牌故事</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>🏮 香港門店資訊</h3>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">地區</div>
+          <div class="info-val">香港（分店地址請查詢）</div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電郵查詢</div>
+          <div class="info-val"><a href="mailto:295887858@qq.com">295887858@qq.com</a></div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">🍽️</div>
+        <div>
+          <div class="info-label">菜系</div>
+          <div class="info-val">湖南土菜（湘菜）</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌍</div>
+        <div>
+          <div class="info-label">直營門店</div>
+          <div class="info-val">全球 100+ 間</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🏆</div>
+        <div>
+          <div class="info-label">創辦人</div>
+          <div class="info-val">烹飪大師 馮國華</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📅</div>
+        <div>
+          <div class="info-label">創立年份</div>
+          <div class="info-val">2017年（深圳）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">100<sup>+</sup></div>
+      <div class="stat-label">全球直營門店</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7</div>
+      <div class="stat-label">年品牌歷史</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6</div>
+      <div class="stat-label">個城市及地區</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1000<sup>+</sup></div>
+      <div class="stat-label">員工團隊規模</div>
+    </div>
+  </div>
+</div>
+
+<!-- DISHES -->
+<div id="dishes">
+  <div class="section">
+    <div class="section-label">Signature Dishes</div>
+    <h2 class="section-title">農耕記<span class="hl">招牌菜式</span></h2>
+    <p class="section-desc">
+      以湖南土菜傳統技法烹製，精選本地優質食材，
+      每道菜式均承載著湖湘飲食文化的精粹與烹飪大師的心血。
+    </p>
+    <div class="dishes-grid">
+      <div class="dish-card">
+        <div class="dish-emoji">🐟</div>
+        <h3>剁椒魚頭</h3>
+        <p>
+          農耕記鎮店招牌。選用新鮮大魚頭，配以自製剁椒，大火蒸製而成，
+          鮮辣入味，魚肉嫩滑，剁椒香辣微酸，湘菜經典之作。
+        </p>
+        <div class="spice-level">🌶️🌶️🌶️ 辣度：中辣</div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-emoji">🥩</div>
+        <h3>農家小炒肉</h3>
+        <p>
+          採用農場直供走地豬五花肉，配青紅椒大火翻炒，
+          肉香濃郁、口感豐富，是湖南家常菜的代表，
+          佐飯一流，令人念念不忘。
+        </p>
+        <div class="spice-level">🌶️🌶️ 辣度：微辣</div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-emoji">🫕</div>
+        <h3>毛氏紅燒肉</h3>
+        <p>
+          傳承毛氏家傳做法，以五花腩肉慢火紅燒至酥爛入味，
+          色澤紅亮，肥而不膩，入口即化，
+          是農耕記最受歡迎的菜式之一。
+        </p>
+        <div class="spice-level">🌶️ 辣度：不辣</div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-emoji">🫙</div>
+        <h3>外婆菜炒臘肉</h3>
+        <p>
+          以湖南傳統外婆菜配自製煙燻臘肉翻炒，
+          臘肉香氣四溢，外婆菜酸辣鮮香，
+          是正宗湘菜農家風味的最佳詮釋。
+        </p>
+        <div class="spice-level">🌶️🌶️ 辣度：微辣</div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-emoji">🧀</div>
+        <h3>臭豆腐</h3>
+        <p>
+          正宗湖南長沙臭豆腐，外脆內嫩，
+          獨特發酵香氣令人著迷，搭配秘製辣醬，
+          是每桌必點的湘菜靈魂小食。
+        </p>
+        <div class="spice-level">🌶️🌶️ 辣度：微辣</div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-emoji">🥬</div>
+        <h3>農耕特色時蔬</h3>
+        <p>
+          精選農場直供新鮮時令蔬菜，以湘菜炒法大火烹製，
+          保留蔬菜的天然清甜，是平衡整桌菜式的必備清新之選。
+        </p>
+        <div class="spice-level">🌿 清淡爽口</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BRAND STORY -->
+<div class="story-wrap" id="story">
+  <div class="story-inner">
+    <div class="story-text">
+      <div class="section-label">Brand Story</div>
+      <h2 class="section-title" style="margin-bottom:1.2rem;">
+        從農耕記憶<br><span class="hl">到全球湘味</span>
+      </h2>
+      <p>
+        2017年，烹飪大師馮國華懷著對湖南家鄉味道的深厚情感，
+        在深圳創立了農耕記。「農耕記」三字，承載著對農耕文化的記憶，
+        對鄉土味道的堅守，更是對湖湘飲食文化的深情傳承。
+      </p>
+      <p>
+        農耕記以「嚴選食材、傳承技藝」為核心理念，
+        每一道菜式均堅持使用優質食材，依循傳統湘菜技法烹製，
+        讓身在異地的湖南人吃到家鄉的味道，也讓更多人認識和愛上湘菜。
+      </p>
+      <p>
+        七年間，農耕記從深圳出發，逐步走向廣州、北京、上海、
+        香港、新加坡及馬來西亞，成為深圳最具代表性的湘菜連鎖品牌，
+        以超過100間直營門店的規模，持續傳遞湖湘飲食文化的魅力。
+      </p>
+    </div>
+    <div>
+      <div class="section-label" style="margin-bottom: 1.5rem;">品牌發展歷程</div>
+      <div class="story-timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">2017</span>
+          <p>烹飪大師馮國華創立農耕記，首間門店於深圳開業，主打正宗湖南土菜。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2018–19</span>
+          <p>農耕記迅速擴張至廣州及北京，品牌知名度大幅提升，深受湖南鄉親喜愛。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2020–21</span>
+          <p>成功進駐上海市場，正式確立全國性湘菜連鎖品牌地位，門店超過50間。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2022–23</span>
+          <p>跨越國際，農耕記進軍香港、新加坡及馬來西亞，正式邁向全球化布局。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2024</span>
+          <p>全球直營門店突破100間，持續以品質與傳承推廣湖湘飲食文化。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOCATIONS -->
+<div id="locations">
+  <div class="section">
+    <div class="section-label">Global Presence</div>
+    <h2 class="section-title">遍布全球的<span class="hl">農耕記</span></h2>
+    <p class="section-desc">從中國內地出發，農耕記的湘味已傳遍亞洲各大城市。</p>
+    <div class="locations-grid">
+      <div class="location-card">
+        <div class="location-flag">🇨🇳</div>
+        <h4>深圳（總部）</h4>
+        <p>農耕記發源地，深圳湘菜連鎖代表，擁有最多直營門店。</p>
+        <span class="store-count">多間門店</span>
+      </div>
+      <div class="location-card">
+        <div class="location-flag">🇨🇳</div>
+        <h4>廣州 · 北京 · 上海</h4>
+        <p>布局中國一線城市，讓全國食客品嚐道地湖南土菜。</p>
+        <span class="store-count">三城多店</span>
+      </div>
+      <div class="location-card">
+        <div class="location-flag">🇭🇰</div>
+        <h4>香港</h4>
+        <p>農耕記香港分店，讓港人近距離體驗正宗湖南土菜文化饗宴。</p>
+        <span class="store-count">香港分店</span>
+      </div>
+      <div class="location-card">
+        <div class="location-flag">🇸🇬</div>
+        <h4>新加坡</h4>
+        <p>進軍東南亞核心市場，以湘菜魅力征服新加坡多元飲食文化。</p>
+        <span class="store-count">獅城分店</span>
+      </div>
+      <div class="location-card">
+        <div class="location-flag">🇲🇾</div>
+        <h4>馬來西亞</h4>
+        <p>東南亞擴張的重要一環，農耕記在馬來西亞持續深耕湘菜市場。</p>
+        <span class="store-count">馬來西亞分店</span>
+      </div>
+      <div class="location-card" style="border-color: rgba(212,144,42,0.3); background: rgba(212,144,42,0.04);">
+        <div class="location-flag">🌏</div>
+        <h4>持續擴張中</h4>
+        <p>農耕記將繼續拓展全球版圖，讓更多人品嚐湖湘飲食文化的精髓。</p>
+        <span class="store-count" style="color: var(--gold); border-color: rgba(212,144,42,0.3); background: rgba(212,144,42,0.1);">敬請期待</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY -->
+<div style="background: var(--bg2); padding: 1px 0;" id="why">
+  <div class="section">
+    <div class="section-label">Brand Values</div>
+    <h2 class="section-title">農耕記的<span class="hl">品牌優勢</span></h2>
+    <p class="section-desc">七年如一日，農耕記以匠心精神為每位食客呈現最道地的湖南土菜。</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🌾</div>
+        <div>
+          <h4>嚴選農場直供食材</h4>
+          <p>與優質農場建立長期合作，確保食材新鮮天然，從源頭把關每道菜式的品質。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">👨‍🍳</div>
+        <div>
+          <h4>大師傳承廚藝</h4>
+          <p>烹飪大師馮國華親自督導菜式研發及廚師培訓，確保每間分店菜式口味高度一致。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🏮</div>
+        <div>
+          <h4>湖湘文化用餐體驗</h4>
+          <p>餐廳設計融入湖湘傳統文化元素，打造沉浸式的湘味文化用餐空間，超越純粹飲食體驗。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔁</div>
+        <div>
+          <h4>標準化直營管理</h4>
+          <p>全球100+間均為直營門店，嚴格執行統一品質標準，無論在哪裡用餐均享有相同品質。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🌶️</div>
+        <div>
+          <h4>正宗湖南辣味</h4>
+          <p>堅持使用正宗湖南辣椒及醬料，以地道的湘辣風味征服全球各地湘菜愛好者。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🌍</div>
+        <div>
+          <h4>國際化視野</h4>
+          <p>在保留傳統湘菜精髓的同時，因應各地飲食文化作適度調整，讓湘味在全球各地落地生根。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">聯絡<span class="hl">農耕記</span></h2>
+      <p>
+        如有訂座、包場宴席、商務合作或加盟查詢，
+        歡迎透過以下方式與我們聯絡，我們將盡快為您安排。
+      </p>
+      <div class="contact-details">
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">香港分店</div>
+            <div class="c-val">香港（具體地址請電郵查詢）</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">電郵</div>
+            <div class="c-val"><a href="mailto:295887858@qq.com">295887858@qq.com</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🏢</div>
+          <div>
+            <div class="c-label">總部</div>
+            <div class="c-val">深圳市（中國大陸）</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">品牌覆蓋</div>
+            <div class="c-val">中國 · 香港 · 新加坡 · 馬來西亞</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form onsubmit="return false;">
+      <div>
+        <label>您的姓名 *</label>
+        <input type="text" placeholder="例：陳大文">
+      </div>
+      <div>
+        <label>聯絡電話 *</label>
+        <input type="tel" placeholder="例：9000 0000">
+      </div>
+      <div>
+        <label>電郵地址</label>
+        <input type="email" placeholder="example@email.com">
+      </div>
+      <div>
+        <label>查詢類別</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>香港分店訂座</option>
+          <option>包場 / 宴席查詢</option>
+          <option>商務合作</option>
+          <option>加盟查詢</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div>
+        <label>查詢詳情</label>
+        <textarea placeholder="請詳述您的查詢或需求..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">📩 立即發送查詢</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-text">農耕記湖南土菜</div>
+      <p>
+        由烹飪大師馮國華創立，以傳承湖南土菜及湖湘文化飲食為使命，
+        全球100+直營門店，香港亦有分店。
+      </p>
+    </div>
+    <div>
+      <h5>菜式</h5>
+      <ul>
+        <li><a href="#dishes">剁椒魚頭</a></li>
+        <li><a href="#dishes">農家小炒肉</a></li>
+        <li><a href="#dishes">毛氏紅燒肉</a></li>
+        <li><a href="#dishes">更多招牌菜</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>關於品牌</h5>
+      <ul>
+        <li><a href="#story">品牌故事</a></li>
+        <li><a href="#locations">全球門店</a></li>
+        <li><a href="#why">品牌優勢</a></li>
+        <li><a href="#contact">加盟查詢</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>聯絡</h5>
+      <ul>
+        <li><a href="mailto:295887858@qq.com">295887858@qq.com</a></li>
+        <li><a href="#contact">香港分店查詢</a></li>
+        <li><a href="#contact">包場宴席</a></li>
+        <li><a href="#contact">商務合作</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 深圳市農耕記餐飲有限公司. All rights reserved.</span>
+    <span>香港 · 深圳 · 廣州 · 北京 · 上海 · 新加坡 · 馬來西亞</span>
+  </div>
+</footer>
+
+</body>
+</html>
