@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港財經時報 HKBT | 香港財富資訊第一平台</title>
+<style>
+:root{
+  --dark:#0d1824;
+  --dark2:#142030;
+  --gold:#c09500;
+  --gold2:#e0b000;
+  --red:#c8250a;
+  --light:#f3f6fa;
+  --white:#ffffff;
+  --text:#1a2533;
+  --muted:#55677a;
+  --border:#cdd8e6;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI','PingFang HK','Microsoft JhengHei',Arial,sans-serif;color:var(--text);background:var(--white);line-height:1.65;}
+a{color:inherit;text-decoration:none;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--dark);border-bottom:3px solid var(--gold);padding:0 6%;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.logo-zh{font-size:1.15rem;font-weight:900;color:var(--white);}
+.logo-en{font-size:1rem;font-weight:800;color:var(--gold);letter-spacing:1px;}
+.nav-links{display:flex;gap:24px;}
+.nav-links a{color:rgba(255,255,255,0.82);font-size:0.87rem;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold2);}
+.nav-cta{background:var(--red);color:var(--white)!important;padding:7px 18px;border-radius:4px;font-weight:700!important;}
+
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--dark2) 55%,#0a1620 100%);padding:120px 6% 80px;min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:480px;height:480px;border-radius:50%;background:rgba(192,149,0,0.06);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;width:100%;max-width:1200px;margin:0 auto;}
+.hero-tag{display:inline-block;background:rgba(192,149,0,0.15);color:var(--gold2);font-size:0.78rem;font-weight:700;letter-spacing:2px;padding:5px 14px;border-radius:20px;border:1px solid rgba(192,149,0,0.3);margin-bottom:18px;text-transform:uppercase;}
+.hero h1{font-size:2.9rem;font-weight:900;color:var(--white);line-height:1.2;margin-bottom:12px;}
+.hero h1 span{color:var(--gold2);}
+.hero-en{font-size:1.1rem;color:rgba(255,255,255,0.5);margin-bottom:14px;letter-spacing:1px;}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.68);max-width:520px;margin-bottom:34px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-gold{background:var(--gold);color:var(--dark);padding:13px 28px;border-radius:5px;font-weight:700;font-size:0.95rem;transition:background 0.2s,transform 0.2s;}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);}
+.btn-red{background:var(--red);color:var(--white);padding:13px 28px;border-radius:5px;font-weight:700;font-size:0.95rem;transition:opacity 0.2s,transform 0.2s;}
+.btn-red:hover{opacity:0.9;transform:translateY(-2px);}
+.hero-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:28px 24px;}
+.hero-card h3{color:var(--gold2);font-size:0.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;}
+.hc-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+.hc-icon{width:34px;height:34px;border-radius:8px;background:rgba(192,149,0,0.15);border:1px solid rgba(192,149,0,0.3);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.hc-label{font-size:0.73rem;color:rgba(255,255,255,0.45);margin-bottom:2px;}
+.hc-val{color:var(--white);font-size:0.9rem;font-weight:600;}
+.hc-divider{border:none;border-top:1px solid rgba(255,255,255,0.1);margin:14px 0;}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;}
+.badge{background:rgba(192,149,0,0.15);border:1px solid rgba(192,149,0,0.3);color:var(--gold2);font-size:0.68rem;font-weight:700;padding:4px 10px;border-radius:20px;}
+
+.stats{background:var(--gold);padding:26px 6%;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1100px;margin:0 auto;}
+.stat{text-align:center;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--dark);}
+.stat-lbl{font-size:0.78rem;font-weight:600;color:rgba(13,24,36,0.7);text-transform:uppercase;letter-spacing:0.5px;}
+
+section{padding:80px 6%;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-tag{display:inline-block;background:rgba(192,149,0,0.1);color:var(--gold);font-size:0.75rem;font-weight:700;letter-spacing:2px;padding:4px 14px;border-radius:20px;border:1px solid rgba(192,149,0,0.25);text-transform:uppercase;margin-bottom:12px;}
+.sec-title{font-size:2rem;font-weight:800;color:var(--dark);margin-bottom:10px;}
+.sec-sub{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:44px;}
+
+.about{background:var(--light);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.about-text p{color:var(--muted);margin-bottom:16px;line-height:1.75;}
+.highlight-box{background:var(--dark);border-radius:12px;padding:26px 24px;margin-bottom:22px;}
+.highlight-box h3{color:var(--gold2);font-size:1rem;font-weight:700;margin-bottom:8px;}
+.highlight-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.prop-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px 16px;border-top:3px solid var(--gold);}
+.prop-card h4{color:var(--dark);font-size:0.9rem;font-weight:700;margin-bottom:6px;}
+.prop-card p{color:var(--muted);font-size:0.8rem;line-height:1.55;}
+
+.channels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.ch-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:26px 20px;transition:box-shadow 0.2s,transform 0.2s;border-top:4px solid transparent;}
+.ch-card:hover{box-shadow:0 8px 24px rgba(13,24,36,0.1);transform:translateY(-4px);border-top-color:var(--gold);}
+.ch-icon{width:46px;height:46px;border-radius:10px;background:rgba(13,24,36,0.06);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;}
+.ch-card h3{color:var(--dark);font-size:1rem;font-weight:700;margin-bottom:8px;}
+.ch-card p{color:var(--muted);font-size:0.84rem;line-height:1.6;}
+.ch-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.ch-tag{background:var(--light);color:var(--muted);font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:12px;border:1px solid var(--border);}
+
+.news-section{background:var(--dark);}
+.news-section .sec-title{color:var(--white);}
+.news-section .sec-sub{color:rgba(255,255,255,0.6);}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.news-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:22px 18px;}
+.news-cat{color:var(--gold2);font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+.news-card h3{color:var(--white);font-size:0.95rem;font-weight:700;margin-bottom:8px;line-height:1.45;}
+.news-card p{color:rgba(255,255,255,0.6);font-size:0.82rem;line-height:1.55;}
+.news-date{color:rgba(255,255,255,0.35);font-size:0.73rem;margin-top:12px;}
+
+.contact-s{background:var(--light);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.contact-info h3{color:var(--dark);font-size:1.25rem;font-weight:700;margin-bottom:6px;}
+.contact-info p{color:var(--muted);font-size:0.92rem;margin-bottom:26px;}
+.ci-block{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
+.ci-icon{width:40px;height:40px;border-radius:8px;background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ci-label{font-size:0.74rem;color:var(--muted);margin-bottom:2px;}
+.ci-val{color:var(--dark);font-size:0.93rem;font-weight:600;}
+.cform{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:32px 28px;}
+.cform h3{color:var(--dark);font-size:1.1rem;font-weight:700;margin-bottom:22px;}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.form-group label{font-size:0.8rem;font-weight:600;color:var(--dark);}
+.form-group input,.form-group select,.form-group textarea{border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-size:0.9rem;color:var(--text);background:var(--light);font-family:inherit;outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.btn-submit{width:100%;background:var(--dark);color:var(--white);border:none;border-radius:6px;padding:13px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.btn-submit:hover{background:var(--dark2);}
+
+footer{background:var(--dark);padding:50px 6% 28px;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;margin-bottom:36px;}
+.footer-brand .logo-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.footer-brand .logo-zh{font-size:1.1rem;font-weight:900;color:var(--white);}
+.footer-brand .logo-en{font-size:1rem;font-weight:800;color:var(--gold);}
+.footer-brand p{color:rgba(255,255,255,0.5);font-size:0.84rem;line-height:1.65;}
+.footer-col h4{color:var(--gold2);font-size:0.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-col ul li a{color:rgba(255,255,255,0.55);font-size:0.84rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--gold2);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;align-items:center;justify-content:space-between;}
+.footer-bottom p{color:rgba(255,255,255,0.38);font-size:0.78rem;}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .stats-grid,.channels-grid,.news-grid{grid-template-columns:repeat(2,1fr);}
+  .about-props{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="logo-zh">香港財經時報</span>
+      <span class="logo-en">HKBT</span>
+    </div>
+    <div class="nav-links">
+      <a href="#about">關於我們</a>
+      <a href="#channels">內容頻道</a>
+      <a href="#news">最新資訊</a>
+      <a href="#contact" class="nav-cta">廣告合作</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-tag">香港財富資訊第一平台</div>
+      <h1>香港<span>財富投資</span><br>資訊領航者</h1>
+      <p class="hero-en">Hong Kong Business Times · HKBT</p>
+      <p class="hero-sub">涵蓋股票、樓市、基金、MPF、外匯、保險及生活理財，全方位陪伴香港人守護財富、智慧投資。</p>
+      <div class="hero-btns">
+        <a href="#channels" class="btn-gold">探索內容頻道</a>
+        <a href="#contact" class="btn-red">廣告合作</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Contact HKBT</h3>
+      <div class="hc-row">
+        <div class="hc-icon">✉</div>
+        <div>
+          <div class="hc-label">Email</div>
+          <div class="hc-val">info@businesstimes.com.hk</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">🌐</div>
+        <div>
+          <div class="hc-label">Website</div>
+          <div class="hc-val">businesstimes.com.hk</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📍</div>
+        <div>
+          <div class="hc-label">總部</div>
+          <div class="hc-val">香港</div>
+        </div>
+      </div>
+      <hr class="hc-divider">
+      <div class="badge-row">
+        <span class="badge">財富投資</span>
+        <span class="badge">香港樓市</span>
+        <span class="badge">港股分析</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num">全方位</div><div class="stat-lbl">財經資訊覆蓋</div></div>
+    <div class="stat"><div class="stat-num">即時</div><div class="stat-lbl">新聞更新</div></div>
+    <div class="stat"><div class="stat-num">10+</div><div class="stat-lbl">核心內容頻道</div></div>
+    <div class="stat"><div class="stat-num">HK#1</div><div class="stat-lbl">財富資訊平台</div></div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="sec-tag">關於香港財經時報</div>
+        <h2 class="sec-title">香港財富資訊第一媒體</h2>
+        <p>香港財經時報（HKBT）是香港領先的財經新聞及財富資訊媒體平台，專為香港投資者提供全面、深度的財富管理資訊，涵蓋股票投資、物業市場、基金、外匯、保險及個人理財等核心領域。</p>
+        <p>我們的編輯團隊匯聚資深財經記者與行業分析師，為讀者提供最新市場動態、獨家專訪及深度分析，協助讀者在瞬息萬變的市場環境中作出更明智的投資決策。</p>
+        <div class="highlight-box">
+          <h3>我們的使命</h3>
+          <p>讓每一位香港人都能獲取高質、準確的財富投資資訊，無論是初學者還是資深投資者，都能在 HKBT 找到所需的市場情報與理財指引。</p>
+        </div>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <h4>即時財經新聞</h4>
+          <p>24小時不間斷的即時財經資訊更新，確保讀者掌握最新市場動態，把握每一個投資時機。</p>
+        </div>
+        <div class="prop-card">
+          <h4>深度市場分析</h4>
+          <p>專業分析師團隊提供股票、樓市、基金的深度研究報告，協助投資者理解市場走勢。</p>
+        </div>
+        <div class="prop-card">
+          <h4>理財個案教室</h4>
+          <p>真實讀者個案分析，提供實用的個人理財建議，協助讀者規劃儲蓄、投資與退休方案。</p>
+        </div>
+        <div class="prop-card">
+          <h4>名家專欄</h4>
+          <p>邀請業界知名投資顧問、基金經理及分析師撰寫獨家專欄，分享前瞻性市場見解。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="channels">
+  <div class="sec-inner">
+    <div class="sec-tag">內容頻道</div>
+    <h2 class="sec-title">全方位財富資訊頻道</h2>
+    <p class="sec-sub">覆蓋投資理財、物業市場、生活健康等多元主題，為讀者提供一站式資訊服務。</p>
+    <div class="channels-grid">
+      <div class="ch-card">
+        <div class="ch-icon">📈</div>
+        <h3>財富投資</h3>
+        <p>港股分析、新股解碼、基金ETF焦點、MPF攻略、窩輪牛熊證、外匯及另類投資，助讀者全面管理投資組合。</p>
+        <div class="ch-tags">
+          <span class="ch-tag">港股</span>
+          <span class="ch-tag">基金ETF</span>
+          <span class="ch-tag">MPF</span>
+          <span class="ch-tag">外匯</span>
+        </div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-icon">🏠</div>
+        <h3>香港樓市</h3>
+        <p>樓市走勢、成交分析、租金動態、買樓攻略、新盤資訊、居屋及公屋最新消息，為置業者提供全面指引。</p>
+        <div class="ch-tags">
+          <span class="ch-tag">樓市走勢</span>
+          <span class="ch-tag">新盤</span>
+          <span class="ch-tag">居屋</span>
+          <span class="ch-tag">買樓攻略</span>
+        </div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-icon">🌏</div>
+        <h3>內地 · 國際</h3>
+        <p>中國內地經濟動態、大灣區機遇、深圳資訊、跨境理財及國際金融市場分析，緊貼環球投資趨勢。</p>
+        <div class="ch-tags">
+          <span class="ch-tag">大灣區</span>
+          <span class="ch-tag">內地樓市</span>
+          <span class="ch-tag">跨境理財</span>
+        </div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-icon">🛡️</div>
+        <h3>財富管理 · 保險</h3>
+        <p>財富管理策略、保險專區、海外投資、移民規劃及跨境理財通，協助讀者全面保護及增值財富。</p>
+        <div class="ch-tags">
+          <span class="ch-tag">保險</span>
+          <span class="ch-tag">海外投資</span>
+          <span class="ch-tag">移民</span>
+        </div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-icon">💊</div>
+        <h3>健康 · 生活</h3>
+        <p>均衡飲食、綠色生活、常見疾病防治、健康熱話，兼顧讀者財富與健康，實現全人生活品質提升。</p>
+        <div class="ch-tags">
+          <span class="ch-tag">健康資訊</span>
+          <span class="ch-tag">均衡飲食</span>
+          <span class="ch-tag">綠色生活</span>
+        </div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-icon">👶</div>
+        <h3>親子 · 教育</h3>
+        <p>親子好去處、成長教育、新手爸媽指南，以及香港教育最新資訊，全面支援家庭生活與子女成長。</p>
+        <div class="ch-tags">
+          <span class="ch-tag">親子活動</span>
+          <span class="ch-tag">成長教育</span>
+          <span class="ch-tag">新手爸媽</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="news-section" id="news">
+  <div class="sec-inner">
+    <div class="sec-tag">最新資訊</div>
+    <h2 class="sec-title">即時財經動態</h2>
+    <p class="sec-sub">持續更新的香港財經新聞，緊貼市場脈搏。</p>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-cat">財富投資</div>
+        <h3>第二季AI與多元配置成關鍵｜三大布局策略強化投資韌性</h3>
+        <p>基金經理指出，第二季市場挑戰在於多重風險同時發酵，投資策略需從方向判斷轉向結構配置。</p>
+        <div class="news-date">2026.05.10</div>
+      </div>
+      <div class="news-card">
+        <div class="news-cat">香港樓市</div>
+        <h3>新股爆發資金湧港 4月一、二手私樓成交增14.3%</h3>
+        <p>首季香港IPO市場迎來爆發式增長，新股集資額錄得近1,100億港元，重登全球榜首，財富效應有利樓市。</p>
+        <div class="news-date">2026.05.10</div>
+      </div>
+      <div class="news-card">
+        <div class="news-cat">數碼科技</div>
+        <h3>83%企業領袖視AI為升職條件 科技實力超越學位價值</h3>
+        <p>企業發現單憑薪資已不足以吸引具備高階技術的下一代領袖，混合工作模式成爭奪頂尖科技人才首要策略。</p>
+        <div class="news-date">2026.05.10</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-s" id="contact">
+  <div class="sec-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="sec-tag">聯絡我們</div>
+        <h3>廣告合作及媒體查詢</h3>
+        <p>歡迎品牌廣告投放、內容合作、媒體採訪及讀者投稿等各類查詢，我們的團隊樂意為您提供協助。</p>
+        <div class="ci-block">
+          <div class="ci-icon">✉</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val">info@businesstimes.com.hk</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Website</div>
+            <div class="ci-val">businesstimes.com.hk</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">總部</div>
+            <div class="ci-val">香港特別行政區</div>
+          </div>
+        </div>
+      </div>
+      <div class="cform">
+        <h3>發送合作查詢</h3>
+        <div class="form-group">
+          <label>姓名</label>
+          <input type="text" placeholder="您的姓名">
+        </div>
+        <div class="form-group">
+          <label>公司/品牌名稱</label>
+          <input type="text" placeholder="公司或品牌名稱">
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>查詢類別</label>
+          <select>
+            <option value="">請選擇...</option>
+            <option>廣告投放合作</option>
+            <option>內容行銷合作</option>
+            <option>媒體採訪申請</option>
+            <option>讀者投稿</option>
+            <option>專欄合作</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>訊息內容</label>
+          <textarea placeholder="請描述您的查詢內容..."></textarea>
+        </div>
+        <button class="btn-submit">發送查詢 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-row">
+          <span class="logo-zh">香港財經時報</span>
+          <span class="logo-en">HKBT</span>
+        </div>
+        <p>香港領先的財富投資資訊媒體平台，涵蓋股票、樓市、基金、MPF、外匯、保險及個人理財，全方位陪伴香港人守護及增值財富。</p>
+      </div>
+      <div class="footer-col">
+        <h4>內容頻道</h4>
+        <ul>
+          <li><a href="#channels">財富投資</a></li>
+          <li><a href="#channels">香港樓市</a></li>
+          <li><a href="#channels">港股分析</a></li>
+          <li><a href="#channels">基金ETF</a></li>
+          <li><a href="#channels">健康生活</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡</h4>
+        <ul>
+          <li><a href="mailto:info@businesstimes.com.hk">info@businesstimes.com.hk</a></li>
+          <li><a href="https://businesstimes.com.hk">businesstimes.com.hk</a></li>
+          <li><a href="#contact">廣告合作</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 香港財經時報 HKBT. All rights reserved. Hong Kong SAR.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
