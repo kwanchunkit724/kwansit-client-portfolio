@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高美怡輝（香港）有限公司 | 冷氣製冷工程設備</title>
+  <meta name="description" content="高美怡輝（香港）有限公司（Cold Magic Efatar HK）— 專業空調及製冷工程設備供應商及製造商，產品包括AHU空氣處理機組、FCU風機盤管、冷水機、熱泵及冷凝器等，服務潔淨室、實驗室及食品加工等多種場所。" />
+  <style>
+    :root {
+      --bg:       #060810;
+      --bg2:      #080c14;
+      --bg3:      #0e1220;
+      --border:   #141c2e;
+      --acc:      #2870c8;
+      --acc2:     #4898e8;
+      --acc3:     #1850a8;
+      --acc-c:    #28c0d8;
+      --text:     #d0dcea;
+      --muted:    #5878a8;
+      --card:     #0a0e18;
+      --radius:   8px;
+      --nav-h:    64px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+      background: rgba(6,8,16,0.96); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+    .nav-logo-mark {
+      width: 38px; height: 38px; border-radius: 6px;
+      background: linear-gradient(135deg, var(--acc3), var(--acc), var(--acc2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700; color: #fff;
+    }
+    .nav-logo-text { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nav-links { display: flex; gap: 26px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color .2s; }
+    .nav-links a:hover { color: var(--acc2); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 9px 20px; border-radius: 6px;
+      font-size: 12px; cursor: pointer; font-family: inherit; font-weight: 600;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; padding-top: var(--nav-h);
+      background: linear-gradient(155deg, var(--bg) 0%, #080c1c 55%, var(--bg) 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 12% 55%, rgba(40,112,200,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 88% 30%, rgba(40,192,216,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1180px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 420px; gap: 72px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(40,112,200,0.1); border: 1px solid rgba(40,112,200,0.3);
+      border-radius: 6px; padding: 6px 16px; margin-bottom: 24px;
+      font-size: 12px; color: var(--acc2); letter-spacing: 0.8px;
+    }
+    .hero h1 { font-size: clamp(1.9rem, 3.3vw, 3.1rem); font-weight: 700; line-height: 1.25; margin-bottom: 18px; }
+    .hero h1 .hl { color: var(--acc2); }
+    .hero h1 .hl2 { color: var(--acc-c); }
+    .hero-sub { font-size: 0.98rem; color: var(--muted); margin-bottom: 36px; line-height: 1.8; max-width: 530px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 13px 28px; border-radius: 6px;
+      font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 600;
+      text-decoration: none; transition: opacity .2s; display: inline-block;
+    }
+    .btn-primary:hover { opacity: .85; }
+    .btn-ghost {
+      background: transparent; color: var(--acc2);
+      border: 1.5px solid rgba(40,112,200,0.4); padding: 12px 26px; border-radius: 6px;
+      font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 500;
+      text-decoration: none; transition: all .2s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--acc2); background: rgba(40,112,200,0.06); }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .hero-tag {
+      background: rgba(20,28,46,0.7); border: 1px solid var(--border);
+      color: var(--muted); font-size: 12px; padding: 5px 12px; border-radius: 5px;
+    }
+
+    /* HERO CARD */
+    .hero-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .hero-card-top {
+      background: linear-gradient(135deg, #0e1422, #0a101c);
+      padding: 22px 26px; border-bottom: 1px solid var(--border);
+    }
+    .hero-card-top h3 { font-size: 13px; color: var(--acc2); font-weight: 700; margin-bottom: 3px; }
+    .hero-card-top p { font-size: 12px; color: var(--muted); }
+    .cm-badge {
+      display: inline-flex; gap: 6px; align-items: center;
+      background: rgba(40,112,200,0.12); border: 1px solid rgba(40,112,200,0.3);
+      border-radius: 5px; padding: 4px 12px; margin-top: 10px;
+      font-size: 11px; color: var(--acc); letter-spacing: 0.5px;
+    }
+    .hero-card-body { padding: 20px 26px; }
+    .info-row { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(20,28,46,0.8); align-items: flex-start; }
+    .info-row:last-child { border-bottom: none; }
+    .info-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+    .info-label { font-size: 11px; color: var(--muted); }
+    .info-val { font-size: 13px; color: var(--text); margin-top: 1px; }
+    .info-val a { color: var(--acc2); text-decoration: none; }
+
+    /* STATS */
+    .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 40px; }
+    .stats-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 700; color: var(--acc2); line-height: 1; margin-bottom: 5px; }
+    .stat-label { font-size: 12px; color: var(--muted); }
+
+    /* SECTIONS */
+    section { padding: 84px 40px; }
+    .section-inner { max-width: 1180px; margin: 0 auto; }
+    .section-label { font-size: 11px; color: var(--acc); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+    .section-title { font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 700; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+    .section-title em { font-style: normal; color: var(--acc2); }
+    .section-desc { font-size: 1rem; color: var(--muted); max-width: 620px; line-height: 1.8; }
+
+    /* ABOUT */
+    .about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; align-items: start; }
+    .about-highlight {
+      background: linear-gradient(135deg, rgba(40,112,200,0.07), rgba(24,80,168,0.03));
+      border: 1px solid rgba(40,112,200,0.18); border-radius: 12px; padding: 30px;
+    }
+    .about-highlight h3 { font-size: 1.05rem; color: var(--acc2); margin-bottom: 14px; font-weight: 600; }
+    .about-highlight p { font-size: 0.94rem; color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
+    .about-highlight p:last-child { margin-bottom: 0; }
+    .about-highlight strong { color: var(--text); }
+    .about-props { display: flex; flex-direction: column; gap: 14px; }
+    .prop-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 9px; padding: 18px 20px;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .prop-icon { font-size: 20px; flex-shrink: 0; }
+    .prop-card h4 { font-size: 13px; color: var(--acc2); margin-bottom: 5px; font-weight: 600; }
+    .prop-card p { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+    /* PRODUCTS */
+    .products { background: var(--bg2); }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+    .product-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 24px;
+      transition: border-color .2s, transform .2s;
+    }
+    .product-card:hover { border-color: rgba(40,112,200,0.4); transform: translateY(-2px); }
+    .product-icon { font-size: 28px; margin-bottom: 12px; }
+    .product-card h3 { font-size: 14px; color: var(--text); margin-bottom: 8px; font-weight: 600; }
+    .product-card p { font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+    .product-tag {
+      display: inline-block; margin-top: 10px;
+      background: rgba(40,112,200,0.08); border: 1px solid rgba(40,112,200,0.2);
+      color: var(--acc); font-size: 11px; padding: 3px 10px; border-radius: 4px;
+    }
+
+    /* APPLICATIONS */
+    .applications { background: var(--bg); }
+    .app-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+    .app-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 24px;
+      text-align: center; transition: border-color .2s;
+    }
+    .app-card:hover { border-color: rgba(40,192,216,0.35); }
+    .app-icon { font-size: 30px; margin-bottom: 10px; }
+    .app-card h3 { font-size: 13px; color: var(--acc-c); margin-bottom: 8px; font-weight: 600; }
+    .app-card p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+    /* SPEC TABLE */
+    .spec-section { background: var(--bg2); }
+    .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+    .spec-block {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 28px;
+    }
+    .spec-block h3 { font-size: 14px; color: var(--acc2); margin-bottom: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .spec-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid rgba(20,28,46,0.6); }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-label { font-size: 12.5px; color: var(--muted); }
+    .spec-val { font-size: 12px; color: var(--text); background: rgba(40,112,200,0.08); border: 1px solid rgba(40,112,200,0.18); padding: 2px 10px; border-radius: 4px; }
+
+    /* CONTACT */
+    .contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; }
+    .contact-info h3 { font-size: 1.05rem; color: var(--acc2); font-weight: 600; margin-bottom: 24px; }
+    .contact-item { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+    .ci-icon { font-size: 19px; flex-shrink: 0; margin-top: 2px; }
+    .ci-label { font-size: 11px; color: var(--muted); }
+    .ci-val { font-size: 13.5px; color: var(--text); margin-top: 2px; }
+    .ci-val a { color: var(--acc2); text-decoration: none; }
+    .ci-val a:hover { text-decoration: underline; }
+    .contact-form {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 30px;
+    }
+    .contact-form h3 { font-size: 1rem; color: var(--text); margin-bottom: 6px; font-weight: 600; }
+    .contact-form p { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .form-row { margin-bottom: 15px; }
+    .form-row label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 5px; }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; background: rgba(20,28,46,0.5); border: 1px solid var(--border);
+      border-radius: 6px; padding: 9px 13px; color: var(--text); font-size: 13px;
+      font-family: inherit; outline: none; transition: border-color .2s;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--acc); }
+    .form-row textarea { resize: vertical; min-height: 86px; }
+    .form-row select option { background: var(--bg2); }
+    .form-submit {
+      width: 100%; background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 11px; border-radius: 6px; font-size: 14px;
+      cursor: pointer; font-family: inherit; font-weight: 600; transition: opacity .2s;
+    }
+    .form-submit:hover { opacity: .85; }
+
+    /* FOOTER */
+    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 40px 40px 26px; text-align: center; }
+    .footer-inner { max-width: 1180px; margin: 0 auto; }
+    .footer-brand { font-size: 15px; color: var(--acc2); font-weight: 700; margin-bottom: 4px; }
+    .footer-tagline { font-size: 12px; color: var(--muted); margin-bottom: 22px; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 22px; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--acc2); }
+    .footer-copy { font-size: 12px; color: rgba(88,120,168,0.5); }
+
+    @media (max-width: 1024px) {
+      .hero-inner, .about-grid, .contact-grid, .spec-grid { grid-template-columns: 1fr; gap: 40px; }
+      .products-grid, .app-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 56px 20px; }
+      .products-grid, .app-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">❄</div>
+    <span class="nav-logo-text">高美怡輝（香港）有限公司</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#products">產品系列</a></li>
+    <li><a href="#applications">應用範疇</a></li>
+    <li><a href="#spec">技術規格</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">業務查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">❄ 專業空調製冷工程設備供應商</div>
+      <h1>空調製冷<br><span class="hl">工程設備</span><br>專業<span class="hl2">供應製造</span></h1>
+      <p class="hero-sub">
+        高美怡輝（香港）有限公司（Cold Magic Efatar HK Co., Ltd.）— 專業空調及製冷工程設備供應商及製造商，深厚行業經驗，產品廣泛應用於潔淨室、實驗室、冷藏庫、食品加工等各類專業場所。
+      </p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">查看產品系列</a>
+        <a href="#contact" class="btn-ghost">技術查詢</a>
+      </div>
+      <div class="hero-tags">
+        <span class="hero-tag">🏭 工業製冷</span>
+        <span class="hero-tag">❄ 空氣處理機組</span>
+        <span class="hero-tag">💧 冷水機系統</span>
+        <span class="hero-tag">♻ 熱泵設備</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-top">
+        <h3>高美怡輝（香港）有限公司</h3>
+        <p>Cold Magic Efatar (HK) Co., Ltd.</p>
+        <div class="cm-badge">🏭 空調及製冷工程設備</div>
+      </div>
+      <div class="hero-card-body">
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">地址</div>
+            <div class="info-val">沙田火炭坳背灣街26-28號<br>富騰工業中心11樓1105-1106室</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">電話</div>
+            <div class="info-val"><a href="tel:+85226066922">2606 6922</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🖨️</div>
+          <div>
+            <div class="info-label">傳真</div>
+            <div class="info-val">2693 1321</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📧</div>
+          <div>
+            <div class="info-label">電郵</div>
+            <div class="info-val"><a href="mailto:coldmagic@cold-magic.com">coldmagic@cold-magic.com</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🏢</div>
+          <div>
+            <div class="info-label">所在地</div>
+            <div class="info-val">沙田 · 新界 · 香港</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">AHU</div>
+      <div class="stat-label">空氣處理機組</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">FCU</div>
+      <div class="stat-label">風機盤管單元</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">冷/熱</div>
+      <div class="stat-label">風冷水冷雙系統</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">潔淨室</div>
+      <div class="stat-label">專業場所應用</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">供造雙能</div>
+      <div class="stat-label">供應商兼製造商</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">關於我們</div>
+    <div class="section-title">專業空調製冷<em>工程設備專家</em></div>
+    <p class="section-desc">高美怡輝（香港）有限公司在空調及製冷工程領域積累深厚經驗，為各類工業及商業場所提供可靠的設備解決方案。</p>
+    <div class="about-grid">
+      <div class="about-highlight">
+        <h3>公司簡介</h3>
+        <p>
+          高美怡輝（香港）有限公司（Cold Magic Efatar (HK) Co., Ltd.）是一間專業的<strong>空調及製冷工程設備供應商及製造商</strong>，總部設於香港沙田火炭，憑藉豐富的行業經驗，在業界建立了卓越聲譽。
+        </p>
+        <p>
+          我們的業務涵蓋多種專業設施的空調製冷系統設計及安裝，包括<strong>潔淨室（Cleanroom）、實驗室、冷藏庫、速凍室（Blast Freezer）、電子生產車間及食品加工場所</strong>等高要求應用環境。
+        </p>
+        <p>
+          公司提供多樣化的產品線，包括各類線圈、除濕機、風機盤管、單/雙蒙皮空氣處理機組、中央空調、熱泵、冷水機、冷凝器、散熱器及板式熱交換器等，為客戶提供<strong>一站式工程設備解決方案</strong>。
+        </p>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">🔧</div>
+          <div>
+            <h4>設計及安裝</h4>
+            <p>提供專業的空調製冷系統設計方案，並由技術團隊負責系統安裝及調試，確保達到最優運行效果。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🏭</div>
+          <div>
+            <h4>自主製造</h4>
+            <p>除代理國際品牌外，公司亦自主製造部分設備，確保產品質量可控，並可根據客戶需求定制規格。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">⚙️</div>
+          <div>
+            <h4>技術支援</h4>
+            <p>提供完善的售前技術諮詢及售後維護保養服務，確保設備穩定運行，延長使用壽命。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">📐</div>
+          <div>
+            <h4>定制方案</h4>
+            <p>根據客戶的具體場地要求及環境條件，提供個性化的系統設計及設備配置建議。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-label">產品系列</div>
+    <div class="section-title">全面的<em>空調製冷設備</em>系列</div>
+    <p class="section-desc">高美怡輝提供多種專業空調及製冷工程設備，涵蓋空氣處理、製冷系統、熱泵及熱交換器等完整產品線。</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🌬️</div>
+        <h3>空氣處理機組（AHU）</h3>
+        <p>單/雙蒙皮空氣處理機組（Single/Double Skin Air Handling Unit），適用於各類商業及工業建築的集中空調系統，提供高效過濾及溫濕度控制。</p>
+        <span class="product-tag">Air Handling Unit</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">💨</div>
+        <h3>風機盤管（FCU）</h3>
+        <p>Fan Coil Units（FCU）風機盤管，適用於辦公室、酒店及住宅的末端空調設備，靈活安裝，高效節能，提供舒適的室內環境控制。</p>
+        <span class="product-tag">Fan Coil Unit</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">❄️</div>
+        <h3>冷水機組</h3>
+        <p>風冷（Air Cooled）及水冷（Water Cooled）冷水機組，適用於大型商業及工業設施的中央空調冷凍水系統，穩定可靠。</p>
+        <span class="product-tag">Chiller Systems</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">♻️</div>
+        <h3>多源熱泵</h3>
+        <p>Multi Source Heat Pump，高效能熱泵系統，可同時提供冷暖空調效果，節能環保，適用於各種氣候環境，全年高效運行。</p>
+        <span class="product-tag">Heat Pump</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🔄</div>
+        <h3>冷凝器及散熱器</h3>
+        <p>風冷冷凝器（Air Cooled Condenser）及散熱器（Radiator），為製冷系統提供高效散熱解決方案，適用於各種工業製冷應用。</p>
+        <span class="product-tag">Condenser & Radiator</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">💧</div>
+        <h3>除濕機及熱交換器</h3>
+        <p>工業級除濕機（Dehumidifier）及殼管式熱交換器（Shell & Tube Heat Exchanger），應用於需嚴格控制濕度及溫度的專業場所。</p>
+        <span class="product-tag">Dehumidifier & HEX</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATIONS -->
+<section class="applications" id="applications">
+  <div class="section-inner">
+    <div class="section-label">應用範疇</div>
+    <div class="section-title">多元化<em>專業應用</em>場所</div>
+    <p class="section-desc">高美怡輝的設備廣泛應用於各類需要精確溫濕度控制的工業及商業場所。</p>
+    <div class="app-grid">
+      <div class="app-card">
+        <div class="app-icon">🧪</div>
+        <h3>潔淨室 Cleanroom</h3>
+        <p>為半導體、製藥、醫療器械等行業的潔淨室提供精密空調系統，嚴格控制溫濕度及潔淨度。</p>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">🔬</div>
+        <h3>實驗室 Laboratory</h3>
+        <p>為各類科研實驗室提供穩定的溫濕度環境控制，確保實驗結果準確可靠。</p>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">🏪</div>
+        <h3>冷藏庫 Cold Storage</h3>
+        <p>為食品冷藏庫及冷鏈物流設施提供高效製冷系統，確保儲存物品的品質及安全。</p>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">❄️</div>
+        <h3>速凍室 Blast Freezer</h3>
+        <p>食品加工行業的急速冷凍設備，快速降溫鎖鮮，保持食品的最佳品質及口感。</p>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">💻</div>
+        <h3>電子生產車間</h3>
+        <p>為電子產品生產車間提供精確的溫濕度控制，防止靜電及潮濕對電子元件的損害。</p>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">🍽️</div>
+        <h3>食品加工場所</h3>
+        <p>符合食品衛生標準的空調製冷系統，為食品加工及包裝廠房提供適宜的工作環境。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPEC -->
+<section class="spec-section" id="spec">
+  <div class="section-inner">
+    <div class="section-label">技術規格</div>
+    <div class="section-title">完善的<em>產品技術參數</em></div>
+    <p class="section-desc">我們提供詳細的技術規格及工程資料，助您選擇最合適的設備型號及配置方案。</p>
+    <div class="spec-grid">
+      <div class="spec-block">
+        <h3>📋 空氣處理機組規格</h3>
+        <div class="spec-row">
+          <span class="spec-label">類型</span>
+          <span class="spec-val">單/雙蒙皮 AHU</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">應用</span>
+          <span class="spec-val">工業及商業建築</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">功能</span>
+          <span class="spec-val">過濾 / 溫濕度控制</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">定制</span>
+          <span class="spec-val">可按需定制規格</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">認證</span>
+          <span class="spec-val">國際工程標準</span>
+        </div>
+      </div>
+      <div class="spec-block">
+        <h3>📋 冷水機組規格</h3>
+        <div class="spec-row">
+          <span class="spec-label">冷卻方式</span>
+          <span class="spec-val">風冷 / 水冷</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">系統類型</span>
+          <span class="spec-val">中央製冷水系統</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">應用場所</span>
+          <span class="spec-val">商業及工業設施</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">效能</span>
+          <span class="spec-val">高效節能配置</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">服務</span>
+          <span class="spec-val">設計 / 安裝 / 維保</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <div class="section-title">技術查詢<em>歡迎聯絡</em></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>聯絡資料</h3>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">地址</div>
+            <div class="ci-val">香港沙田火炭坳背灣街26-28號<br>富騰工業中心11樓1105-1106室</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">電話</div>
+            <div class="ci-val"><a href="tel:+85226066922">2606 6922</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🖨️</div>
+          <div>
+            <div class="ci-label">傳真</div>
+            <div class="ci-val">2693 1321</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">電郵</div>
+            <div class="ci-val"><a href="mailto:coldmagic@cold-magic.com">coldmagic@cold-magic.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">⏰</div>
+          <div>
+            <div class="ci-label">辦公時間</div>
+            <div class="ci-val">星期一至五：上午9時至下午6時</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>工程技術查詢</h3>
+        <p>請填寫查詢表格，我們的工程師將盡快為您提供技術方案建議。</p>
+        <form onsubmit="event.preventDefault()">
+          <div class="form-row">
+            <label>公司名稱</label>
+            <input type="text" placeholder="請輸入公司名稱" />
+          </div>
+          <div class="form-row">
+            <label>聯絡人</label>
+            <input type="text" placeholder="姓名及職位" />
+          </div>
+          <div class="form-row">
+            <label>聯絡電話</label>
+            <input type="tel" placeholder="+852 xxxx xxxx" />
+          </div>
+          <div class="form-row">
+            <label>電郵地址</label>
+            <input type="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-row">
+            <label>查詢產品</label>
+            <select>
+              <option>空氣處理機組（AHU）</option>
+              <option>風機盤管（FCU）</option>
+              <option>冷水機組（Chiller）</option>
+              <option>熱泵系統（Heat Pump）</option>
+              <option>冷凝器及散熱器</option>
+              <option>除濕機</option>
+              <option>熱交換器</option>
+              <option>整體工程方案</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>應用場所及技術要求</label>
+            <textarea placeholder="請說明應用場所類型、所需容量及其他技術要求..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">提交查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">高美怡輝（香港）有限公司 · Cold Magic Efatar (HK) Co., Ltd.</div>
+    <div class="footer-tagline">專業空調製冷工程設備供應商及製造商 · 沙田火炭 · 香港</div>
+    <div class="footer-links">
+      <a href="#about">關於我們</a>
+      <a href="#products">產品系列</a>
+      <a href="#applications">應用範疇</a>
+      <a href="#spec">技術規格</a>
+      <a href="#contact">聯絡我們</a>
+    </div>
+    <div class="footer-copy">&copy; 2024 高美怡輝（香港）有限公司. 版權所有。空調及製冷工程設備，香港。</div>
+  </div>
+</footer>
+
+</body>
+</html>
