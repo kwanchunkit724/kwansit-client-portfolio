@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>聯鴻貿易有限公司 | Lian Hung Trade Co. Ltd. | 冷凍海鮮進出口</title>
+<style>
+  :root {
+    --bg:        #040c12;
+    --surface:   #081420;
+    --card:      #0e1e2c;
+    --accent1:   #008ab0;
+    --accent2:   #00c8e8;
+    --accent3:   #40e8c0;
+    --text:      #d0ecf8;
+    --muted:     #5880a0;
+    --border:    rgba(0,138,176,0.22);
+    --glow:      rgba(0,138,176,0.2);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', sans-serif; line-height: 1.7; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(4,12,18,0.95); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.9rem; color: #040c12;
+    box-shadow: 0 0 18px var(--glow);
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-name span { color: var(--accent2); font-weight: 400; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #040c12; border: none; padding: 9px 22px; border-radius: 6px;
+    font-size: 0.88rem; font-weight: 800; cursor: pointer; text-decoration: none;
+    box-shadow: 0 4px 16px var(--glow); transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; padding: 120px 5% 80px;
+    background:
+      radial-gradient(ellipse 70% 55% at 88% 45%, rgba(0,138,176,0.15) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 50% at 8% 75%, rgba(0,200,232,0.07) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
+  }
+  .hero-text { flex: 1 1 480px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,138,176,0.12); border: 1px solid rgba(0,138,176,0.3);
+    padding: 6px 16px; border-radius: 20px; font-size: 0.82rem;
+    color: var(--accent2); margin-bottom: 24px; letter-spacing: 0.04em;
+  }
+  .hero-badge::before { content: '🦐'; font-size: 0.9rem; }
+  .hero-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.18; margin-bottom: 8px; }
+  .hero-title .cyan { color: var(--accent2); }
+  .hero-title .teal { color: var(--accent3); }
+  .hero-en { font-size: 1.05rem; color: var(--muted); font-weight: 500; margin-bottom: 20px; letter-spacing: 0.04em; }
+  .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 520px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #040c12; padding: 13px 28px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 800; text-decoration: none;
+    box-shadow: 0 6px 24px var(--glow); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid var(--accent1); color: var(--accent2);
+    padding: 13px 28px; border-radius: 8px; font-size: 0.95rem;
+    font-weight: 600; text-decoration: none; transition: background .2s;
+  }
+  .btn-outline:hover { background: rgba(0,138,176,0.1); }
+
+  /* info card */
+  .hero-card {
+    flex: 0 0 300px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .hero-card h3 { font-size: 0.78rem; color: var(--accent2); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+  .info-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .info-icon { font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+  .info-label { font-size: 0.73rem; color: var(--muted); margin-bottom: 2px; }
+  .info-val { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+  .info-val a { color: var(--accent3); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .divider-card { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+
+  /* trade direction badges */
+  .trade-badges { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .trade-badge {
+    padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em;
+  }
+  .badge-exp { background: rgba(64,232,192,0.12); border: 1px solid rgba(64,232,192,0.3); color: var(--accent3); }
+  .badge-imp { background: rgba(0,200,232,0.12); border: 1px solid rgba(0,200,232,0.3); color: var(--accent2); }
+
+  /* ── STATS ── */
+  .stats-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 44px 5%;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; text-align: center;
+  }
+  .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 88px 5%; }
+  .section-label { font-size: 0.78rem; color: var(--accent1); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 800; margin-bottom: 14px; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 600px; margin-bottom: 48px; }
+
+  /* ── TRADE CARDS ── */
+  .trade-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .trade-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 36px 32px; position: relative; overflow: hidden;
+  }
+  .trade-card.exp::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent3), var(--accent2)); }
+  .trade-card.imp::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent2), var(--accent1)); }
+  .trade-direction { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .trade-direction.exp { color: var(--accent3); }
+  .trade-direction.imp { color: var(--accent2); }
+  .trade-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 16px; }
+  .trade-items { display: flex; flex-direction: column; gap: 12px; }
+  .trade-item { display: flex; gap: 10px; align-items: flex-start; }
+  .trade-item-icon { font-size: 1.2rem; flex-shrink: 0; }
+  .trade-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+  .trade-item p { font-size: 0.85rem; color: var(--muted); }
+
+  /* ── PRODUCTS ── */
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 18px; }
+  .prod-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 22px 18px; text-align: center; transition: transform .25s, border-color .25s;
+  }
+  .prod-card:hover { transform: translateY(-3px); border-color: var(--accent2); }
+  .prod-icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .prod-card h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 4px; }
+  .prod-card p { font-size: 0.8rem; color: var(--muted); }
+
+  /* ── HIGHLIGHT ── */
+  .highlight {
+    background: linear-gradient(135deg, rgba(0,138,176,0.12), rgba(64,232,192,0.07));
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 56px 48px; margin: 0 5% 80px; text-align: center;
+  }
+  .highlight h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: 14px; }
+  .highlight p { color: var(--muted); max-width: 640px; margin: 0 auto 28px; font-size: 0.98rem; }
+
+  /* ── WHY ── */
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
+  .why-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px 24px; display: flex; gap: 16px; align-items: flex-start;
+  }
+  .why-num { font-size: 2rem; font-weight: 900; color: var(--accent1); opacity: 0.65; line-height: 1; flex-shrink: 0; }
+  .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .why-card p { font-size: 0.88rem; color: var(--muted); }
+
+  /* ── CONTACT ── */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info { display: flex; flex-direction: column; gap: 18px; }
+  .c-item { display: flex; gap: 14px; align-items: flex-start; }
+  .c-icon {
+    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(0,138,176,0.1); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .c-item h4 { font-size: 0.8rem; color: var(--muted); margin-bottom: 2px; }
+  .c-item p, .c-item a { font-size: 0.9rem; color: var(--text); text-decoration: none; }
+  .c-item a:hover { color: var(--accent2); }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); padding: 11px 14px; border-radius: 8px; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent1); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #040c12; border: none; padding: 13px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 800; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.88; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 44px 5% 28px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center;
+  }
+  .footer-brand { font-size: 1rem; font-weight: 700; }
+  .footer-brand span { color: var(--accent2); font-weight: 400; }
+  .footer-copy { font-size: 0.8rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; }
+  .footer-links a:hover { color: var(--accent2); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero { flex-direction: column; }
+    .hero-card { flex: 1 1 100%; }
+    .highlight { padding: 36px 24px; margin: 0 0 60px; }
+    .trade-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#home">
+    <div class="nav-logo">聯鴻</div>
+    <div class="nav-name">聯鴻貿易 <span>| Lian Hung Trade</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#trade">進出口業務</a></li>
+    <li><a href="#products">海鮮品項</a></li>
+    <li><a href="#why">公司優勢</a></li>
+    <li><a href="#contact">業務查詢</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">業務查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-badge">台南 · 冷凍海鮮進出口貿易商</div>
+    <h1 class="hero-title">
+      <span class="cyan">聯鴻</span>貿易有限公司<br>
+      <span class="teal">Lian Hung Trade Co. Ltd.</span>
+    </h1>
+    <p class="hero-en">Frozen Seafood Import &amp; Export · Tainan, Taiwan</p>
+    <p class="hero-desc">
+      總部位於台灣台南，專業從事冷凍海鮮進出口貿易。
+      出口優質冷凍海鮮至全球市場，同時進口貝類及軟體類海產，
+      為食品加工業、零售商及餐飲業提供穩定可靠的海鮮供應鏈。
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#contact">業務查詢</a>
+      <a class="btn-outline" href="#trade">了解進出口業務</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <h3>聯絡資訊</h3>
+    <div class="info-row">
+      <div class="info-icon">✉️</div>
+      <div>
+        <div class="info-label">電郵</div>
+        <div class="info-val"><a href="mailto:angela@lianhung.com.tw">angela@lianhung.com.tw</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">☎️</div>
+      <div>
+        <div class="info-label">電話（台灣）</div>
+        <div class="info-val"><a href="tel:+886622662228">+886-6-2266228</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">📠</div>
+      <div>
+        <div class="info-label">傳真</div>
+        <div class="info-val">+886-6-2260685</div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">📍</div>
+      <div>
+        <div class="info-label">地址</div>
+        <div class="info-val">台南市新美街 145 號<br>No.145, Shin Mei St, Tainan, Taiwan</div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">🌊</div>
+      <div>
+        <div class="info-label">業務方向</div>
+        <div class="info-val">
+          <div class="trade-badges">
+            <span class="trade-badge badge-exp">EXP 出口</span>
+            <span class="trade-badge badge-imp">IMP 進口</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div>
+    <div class="stat-num">台南</div>
+    <div class="stat-label">台灣台南市總部</div>
+  </div>
+  <div>
+    <div class="stat-num">出口</div>
+    <div class="stat-label">冷凍海鮮全球出口</div>
+  </div>
+  <div>
+    <div class="stat-num">進口</div>
+    <div class="stat-label">貝類及軟體類海產進口</div>
+  </div>
+  <div>
+    <div class="stat-num">全球</div>
+    <div class="stat-label">國際海鮮貿易網絡</div>
+  </div>
+</div>
+
+<!-- TRADE DIRECTIONS -->
+<section id="trade">
+  <p class="section-label">進出口業務</p>
+  <h2 class="section-title">冷凍海鮮進出口貿易</h2>
+  <p class="section-sub">聯鴻貿易專注冷凍海鮮進出口業務，憑藉穩定的供應網絡與優質貨源，服務全球買家與供應商。</p>
+
+  <div class="trade-grid">
+    <div class="trade-card exp">
+      <div class="trade-direction exp">▲ EXPORT 出口</div>
+      <h3>🦐 冷凍海鮮出口</h3>
+      <div class="trade-items">
+        <div class="trade-item">
+          <div class="trade-item-icon">🌊</div>
+          <div>
+            <h4>Frozen Seafood</h4>
+            <p>出口優質冷凍海鮮產品至全球各地市場，品質穩定，供應持續。</p>
+          </div>
+        </div>
+        <div class="trade-item">
+          <div class="trade-item-icon">📦</div>
+          <div>
+            <h4>專業冷凍包裝</h4>
+            <p>符合國際出口標準的冷凍包裝，確保產品在運輸過程中保持最佳品質。</p>
+          </div>
+        </div>
+        <div class="trade-item">
+          <div class="trade-item-icon">📋</div>
+          <div>
+            <h4>出口文件齊備</h4>
+            <p>提供完整的出口許可、衛生證書及相關貿易文件，確保清關順暢。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trade-card imp">
+      <div class="trade-direction imp">▼ IMPORT 進口</div>
+      <h3>🐚 冷凍貝類及軟體類海產</h3>
+      <div class="trade-items">
+        <div class="trade-item">
+          <div class="trade-item-icon">🦪</div>
+          <div>
+            <h4>Mollusca 軟體類</h4>
+            <p>進口各類冷凍軟體海鮮，包括魷魚、章魚等軟體動物，貨源穩定。</p>
+          </div>
+        </div>
+        <div class="trade-item">
+          <div class="trade-item-icon">🐌</div>
+          <div>
+            <h4>Clams 蛤蜊 / 貝類</h4>
+            <p>專業進口各種蛤蜊及貝類海產，供應台灣食品加工廠及零售市場。</p>
+          </div>
+        </div>
+        <div class="trade-item">
+          <div class="trade-item-icon">🌡️</div>
+          <div>
+            <h4>全程冷鏈管理</h4>
+            <p>從產地到目的地全程冷鏈物流管理，確保進口海鮮的新鮮度與安全。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background: var(--surface);">
+  <p class="section-label">主要海鮮品項</p>
+  <h2 class="section-title">冷凍海鮮產品種類</h2>
+  <p class="section-sub" style="margin-bottom: 36px">提供豐富的冷凍海鮮品種，滿足食品加工業、餐飲業及零售市場的多元需求。</p>
+
+  <div class="products-grid">
+    <div class="prod-card">
+      <div class="prod-icon">🦐</div>
+      <h3>冷凍蝦類</h3>
+      <p>各規格白蝦、草蝦等凍蝦</p>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">🦑</div>
+      <h3>冷凍魷魚</h3>
+      <p>整條、切圈及去皮魷魚</p>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">🐙</div>
+      <h3>冷凍章魚</h3>
+      <p>各規格章魚及章魚腳</p>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">🦪</div>
+      <h3>冷凍蛤蜊</h3>
+      <p>帶殼、去殼蛤蜊肉</p>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">🐚</div>
+      <h3>冷凍貝類</h3>
+      <p>扇貝、淡菜等各類貝類</p>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">🐟</div>
+      <h3>冷凍魚類</h3>
+      <p>各類冷凍魚片及整條魚</p>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">🦞</div>
+      <h3>冷凍龍蝦 / 螃蟹</h3>
+      <p>各規格冷凍甲殼類海產</p>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">🌊</div>
+      <h3>其他海鮮</h3>
+      <p>多種冷凍海鮮，歡迎查詢</p>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHT -->
+<div class="highlight">
+  <h2>台南在地貿易商<br><span style="color:var(--accent2)">穩定供應 · 品質保證</span></h2>
+  <p>
+    聯鴻貿易在台南深耕多年，憑藉豐富的海鮮貿易經驗及廣泛的供應商網絡，
+    為客戶提供穩定、高品質的冷凍海鮮貨源，支持食品加工、餐飲及零售業的採購需求。
+  </p>
+  <a class="btn-primary" href="#contact">立即詢價</a>
+</div>
+
+<!-- WHY -->
+<section id="why">
+  <p class="section-label">公司優勢</p>
+  <h2 class="section-title">選擇聯鴻貿易的理由</h2>
+  <p class="section-sub">憑藉多年冷凍海鮮貿易經驗，聯鴻貿易為客戶提供專業、可靠的進出口服務。</p>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <div>
+        <h3>專注冷凍海鮮</h3>
+        <p>多年專注冷凍海鮮進出口業務，深入了解市場需求及產品特性。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <div>
+        <h3>穩定貨源供應</h3>
+        <p>與多個優質海鮮產地建立長期合作關係，確保貨源穩定充足。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <div>
+        <h3>嚴格品質控管</h3>
+        <p>全程冷鏈物流管理，從捕撈、加工、儲存到運輸，嚴格把關品質。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <div>
+        <h3>完整貿易文件</h3>
+        <p>熟悉國際貿易文件及出口合規要求，提供完整的進出口文件服務。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">05</div>
+      <div>
+        <h3>靈活訂單處理</h3>
+        <p>接受整櫃及拼箱訂單，靈活配合不同規模客戶的採購需求。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">06</div>
+      <div>
+        <h3>台南在地優勢</h3>
+        <p>扎根台南，緊鄰各大漁港，在地採購網絡完善，具備成本競爭優勢。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background: var(--surface);">
+  <p class="section-label">業務查詢</p>
+  <h2 class="section-title">聯絡我們</h2>
+  <p class="section-sub">歡迎進口商、食品廠及買家查詢冷凍海鮮進出口業務，我們將提供專業報價及貨源諮詢。</p>
+
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="c-item">
+        <div class="c-icon">✉️</div>
+        <div>
+          <h4>電郵</h4>
+          <a href="mailto:angela@lianhung.com.tw">angela@lianhung.com.tw</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">☎️</div>
+        <div>
+          <h4>電話（台灣）</h4>
+          <a href="tel:+88662266228">+886-6-2266228</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📠</div>
+        <div>
+          <h4>傳真</h4>
+          <p>+886-6-2260685</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <h4>地址</h4>
+          <p>台南市新美街 145 號<br>No.145, Shin Mei St, Tainan, Taiwan</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>公司 / 姓名</label>
+          <input type="text" placeholder="公司名稱或負責人姓名">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="+852 / +886 xxxx xxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>電郵地址</label>
+        <input type="email" placeholder="your@company.com">
+      </div>
+      <div class="form-group">
+        <label>業務類別</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>冷凍海鮮出口查詢</option>
+          <option>冷凍貝類 / 軟體類進口</option>
+          <option>整櫃訂購報價</option>
+          <option>拼箱訂購報價</option>
+          <option>產品規格查詢</option>
+          <option>其他業務合作</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>查詢詳情</label>
+        <textarea placeholder="請說明所需海鮮品種、規格、數量及目的地…"></textarea>
+      </div>
+      <button class="form-submit">發送業務查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">聯鴻貿易有限公司 <span>| Lian Hung Trade Co. Ltd.</span></div>
+  <div class="footer-copy">© 2025 Lian Hung Trade Co. Ltd. 版權所有</div>
+  <div class="footer-links">
+    <a href="#trade">進出口業務</a>
+    <a href="#products">海鮮品項</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+</footer>
+
+</body>
+</html>
