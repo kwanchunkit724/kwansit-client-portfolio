@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ng &amp; Shum | Premier Hong Kong Law Firm | Hong Kong Roots · Global Reach</title>
+<style>
+  :root {
+    --primary: #0c1428;
+    --accent: #9a7a2c;
+    --accent2: #c9a84c;
+    --light: #f5f3ee;
+    --white: #ffffff;
+    --text: #1a1e2a;
+    --muted: #5a6070;
+    --border: #ddd8c8;
+    --card-bg: #faf8f2;
+    --hero-overlay: rgba(12,20,40,0.76);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Georgia',serif; color:var(--text); background:#fff; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .sans { font-family:'Segoe UI',Arial,sans-serif; }
+
+  nav {
+    background:var(--primary);
+    padding:0 2rem;
+    display:flex; align-items:center; justify-content:space-between;
+    height:66px; position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 14px rgba(0,0,0,0.4);
+    border-bottom:1px solid rgba(201,168,76,0.25);
+  }
+  .nav-brand { display:flex; align-items:center; gap:14px; }
+  .nav-logo {
+    width:44px; height:44px; background:transparent;
+    border:2px solid var(--accent2); border-radius:4px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:0.95rem; color:var(--accent2); letter-spacing:-0.5px;
+    font-family:'Georgia',serif;
+  }
+  .nav-brand-text { color:#fff; }
+  .nav-brand-text .line1 { font-size:1.1rem; font-weight:700; font-family:'Georgia',serif; letter-spacing:0.5px; }
+  .nav-brand-text .line2 { font-size:0.7rem; color:var(--accent2); letter-spacing:1.5px; text-transform:uppercase; font-family:'Segoe UI',Arial,sans-serif; }
+  .nav-links { display:flex; gap:1.8rem; }
+  .nav-links a { color:rgba(255,255,255,0.80); font-size:0.85rem; font-family:'Segoe UI',Arial,sans-serif; font-weight:500; letter-spacing:0.3px; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--accent2); text-decoration:none; }
+  .nav-cta {
+    background:transparent; color:var(--accent2) !important; padding:7px 18px;
+    border-radius:3px; font-size:0.82rem !important; font-weight:600 !important;
+    border:1px solid var(--accent2); transition:all 0.2s !important;
+  }
+  .nav-cta:hover { background:var(--accent2) !important; color:var(--primary) !important; }
+
+  .hero {
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+      url('https://images.unsplash.com/photo-1453945619913-79ec89a82c51?w=1600&q=80') center/cover no-repeat;
+    min-height:520px; display:flex; align-items:center; padding:4rem 2rem;
+  }
+  .hero-inner { max-width:1100px; margin:0 auto; width:100%; display:flex; align-items:center; gap:3rem; }
+  .hero-text { flex:1; }
+  .hero-badge {
+    display:inline-block; background:rgba(154,122,44,0.2); border:1px solid var(--accent2);
+    color:var(--accent2); font-size:0.75rem; font-weight:600; padding:5px 14px;
+    border-radius:2px; letter-spacing:2px; text-transform:uppercase; margin-bottom:1.2rem;
+    font-family:'Segoe UI',Arial,sans-serif;
+  }
+  .hero-text h1 { font-size:2.9rem; font-weight:700; color:#fff; line-height:1.15; margin-bottom:0.5rem; font-family:'Georgia',serif; }
+  .hero-text .tagline { font-size:1.2rem; color:var(--accent2); margin-bottom:1rem; font-style:italic; font-family:'Georgia',serif; }
+  .hero-text .subtitle { font-size:1rem; color:rgba(255,255,255,0.78); margin-bottom:2rem; line-height:1.7; max-width:520px; font-family:'Segoe UI',Arial,sans-serif; }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--accent); color:#fff; padding:12px 28px; border-radius:3px;
+    font-weight:600; font-size:0.9rem; border:2px solid var(--accent); transition:all 0.2s;
+    display:inline-block; font-family:'Segoe UI',Arial,sans-serif; letter-spacing:0.3px;
+  }
+  .btn-primary:hover { background:var(--accent2); border-color:var(--accent2); color:var(--primary); text-decoration:none; }
+  .btn-outline {
+    background:transparent; color:#fff; padding:12px 28px; border-radius:3px;
+    font-weight:600; font-size:0.9rem; border:2px solid rgba(255,255,255,0.45); transition:all 0.2s;
+    display:inline-block; font-family:'Segoe UI',Arial,sans-serif;
+  }
+  .btn-outline:hover { border-color:#fff; background:rgba(255,255,255,0.1); text-decoration:none; }
+  .hero-card {
+    background:rgba(255,255,255,0.07); backdrop-filter:blur(10px);
+    border:1px solid rgba(201,168,76,0.25); border-radius:8px;
+    padding:2rem 1.6rem; min-width:280px; color:#fff;
+  }
+  .hero-card h3 { font-size:0.78rem; color:var(--accent2); letter-spacing:2px; text-transform:uppercase; margin-bottom:1.2rem; font-family:'Segoe UI',Arial,sans-serif; }
+  .info-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:0.9rem; font-size:0.87rem; color:rgba(255,255,255,0.86); font-family:'Segoe UI',Arial,sans-serif; line-height:1.5; }
+  .info-icon { color:var(--accent2); flex-shrink:0; margin-top:1px; }
+
+  .stats-strip { background:var(--primary); padding:1.4rem 2rem; border-top:1px solid rgba(201,168,76,0.3); border-bottom:1px solid rgba(201,168,76,0.3); }
+  .stats-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-around; flex-wrap:wrap; }
+  .stat-item { text-align:center; padding:0.4rem 1.5rem; }
+  .stat-num { font-size:2rem; font-weight:700; color:var(--accent2); font-family:'Georgia',serif; }
+  .stat-label { font-size:0.72rem; color:rgba(255,255,255,0.65); letter-spacing:1px; text-transform:uppercase; margin-top:2px; font-family:'Segoe UI',Arial,sans-serif; }
+
+  section { padding:4rem 2rem; }
+  .section-inner { max-width:1100px; margin:0 auto; }
+  .section-tag { font-size:0.72rem; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--accent); margin-bottom:0.5rem; font-family:'Segoe UI',Arial,sans-serif; }
+  .section-title { font-size:2rem; font-weight:700; color:var(--primary); margin-bottom:0.8rem; font-family:'Georgia',serif; }
+  .section-sub { font-size:0.97rem; color:var(--muted); line-height:1.8; max-width:640px; font-family:'Segoe UI',Arial,sans-serif; }
+
+  .about { background:#fff; }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:start; margin-top:2.5rem; }
+  .about-text p { color:var(--muted); line-height:1.9; margin-bottom:1.1rem; font-size:0.96rem; font-family:'Segoe UI',Arial,sans-serif; }
+  .highlight-box {
+    background:var(--primary); color:#fff; border-radius:6px; padding:2rem;
+    border-left:3px solid var(--accent2);
+  }
+  .highlight-box h4 { font-size:0.82rem; color:var(--accent2); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:1.2rem; font-family:'Segoe UI',Arial,sans-serif; }
+  .highlight-box ul { list-style:none; }
+  .highlight-box ul li { padding:0.55rem 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:0.9rem; color:rgba(255,255,255,0.86); display:flex; align-items:center; gap:10px; font-family:'Segoe UI',Arial,sans-serif; }
+  .highlight-box ul li:last-child { border-bottom:none; }
+  .highlight-box ul li::before { content:'—'; color:var(--accent2); flex-shrink:0; }
+  .timeline { margin-top:1.5rem; }
+  .timeline-item { display:flex; gap:1.2rem; margin-bottom:1.2rem; }
+  .timeline-year { min-width:46px; font-size:0.82rem; font-weight:700; color:var(--accent); font-family:'Segoe UI',Arial,sans-serif; padding-top:2px; }
+  .timeline-content { font-size:0.88rem; color:var(--muted); line-height:1.65; font-family:'Segoe UI',Arial,sans-serif; border-left:1px solid var(--border); padding-left:1rem; }
+
+  .practice { background:var(--light); }
+  .practice-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.8rem; margin-top:2.5rem; }
+  .practice-card {
+    background:#fff; border:1px solid var(--border); border-radius:6px;
+    padding:2rem 1.8rem; border-top:3px solid var(--accent);
+    transition:box-shadow 0.2s;
+  }
+  .practice-card:hover { box-shadow:0 6px 24px rgba(154,122,44,0.1); }
+  .practice-icon { font-size:2rem; margin-bottom:1rem; }
+  .practice-card h4 { font-size:1.05rem; font-weight:700; color:var(--primary); margin-bottom:0.7rem; font-family:'Georgia',serif; }
+  .practice-card p { font-size:0.87rem; color:var(--muted); line-height:1.7; font-family:'Segoe UI',Arial,sans-serif; margin-bottom:0.8rem; }
+  .practice-card ul { list-style:none; padding:0; }
+  .practice-card ul li { font-size:0.83rem; color:var(--muted); padding:0.3rem 0; font-family:'Segoe UI',Arial,sans-serif; display:flex; align-items:center; gap:8px; }
+  .practice-card ul li::before { content:'·'; color:var(--accent2); font-size:1.2rem; }
+
+  .team { background:#fff; }
+  .founder-card { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:2.5rem; margin-top:2.5rem; display:flex; gap:2.5rem; align-items:start; border-left:4px solid var(--accent2); }
+  .founder-avatar { width:80px; height:80px; background:var(--primary); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.8rem; flex-shrink:0; }
+  .founder-info h3 { font-size:1.3rem; font-weight:700; color:var(--primary); margin-bottom:0.3rem; font-family:'Georgia',serif; }
+  .founder-info .title { font-size:0.82rem; color:var(--accent); letter-spacing:1px; text-transform:uppercase; margin-bottom:1rem; font-family:'Segoe UI',Arial,sans-serif; }
+  .founder-info p { font-size:0.9rem; color:var(--muted); line-height:1.75; margin-bottom:0.8rem; font-family:'Segoe UI',Arial,sans-serif; }
+  .qual-tags { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem; }
+  .qual-tag { background:rgba(154,122,44,0.1); border:1px solid rgba(154,122,44,0.3); color:var(--accent); font-size:0.75rem; padding:3px 10px; border-radius:3px; font-family:'Segoe UI',Arial,sans-serif; font-weight:600; }
+
+  .network { background:var(--light); }
+  .network-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.5rem; }
+  .network-card { background:#fff; border:1px solid var(--border); border-radius:6px; padding:1.5rem; text-align:center; }
+  .network-icon { font-size:2rem; margin-bottom:0.8rem; }
+  .network-card h4 { font-size:0.95rem; font-weight:700; color:var(--primary); margin-bottom:0.5rem; font-family:'Georgia',serif; }
+  .network-card p { font-size:0.85rem; color:var(--muted); line-height:1.65; font-family:'Segoe UI',Arial,sans-serif; }
+
+  .contact { background:var(--primary); }
+  .contact .section-title { color:#fff; }
+  .contact .section-sub { color:rgba(255,255,255,0.65); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; }
+  .contact-info h4 { font-size:0.78rem; color:var(--accent2); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:1.5rem; font-family:'Segoe UI',Arial,sans-serif; }
+  .office-block { margin-bottom:2rem; }
+  .office-block h5 { font-size:0.92rem; font-weight:700; color:var(--accent2); margin-bottom:0.8rem; font-family:'Georgia',serif; }
+  .contact-detail { display:flex; align-items:flex-start; gap:12px; margin-bottom:1rem; }
+  .contact-icon { width:38px; height:38px; background:rgba(154,122,44,0.2); border-radius:5px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+  .contact-detail-text .label { font-size:0.72rem; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:0.5px; font-family:'Segoe UI',Arial,sans-serif; }
+  .contact-detail-text .value { font-size:0.9rem; color:#fff; font-weight:500; margin-top:2px; font-family:'Segoe UI',Arial,sans-serif; }
+  .contact-detail-text .value a { color:var(--accent2); }
+  .contact-form { background:rgba(255,255,255,0.06); border:1px solid rgba(201,168,76,0.15); border-radius:8px; padding:2rem; }
+  .contact-form h4 { font-size:1rem; font-weight:700; color:#fff; margin-bottom:1.5rem; font-family:'Georgia',serif; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .form-group { margin-bottom:1rem; }
+  .form-group label { font-size:0.78rem; color:rgba(255,255,255,0.55); margin-bottom:5px; display:block; font-family:'Segoe UI',Arial,sans-serif; letter-spacing:0.3px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width:100%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14);
+    border-radius:4px; padding:10px 14px; color:#fff; font-size:0.88rem; font-family:'Segoe UI',Arial,sans-serif; transition:border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:var(--accent2); }
+  .form-group select option { background:var(--primary); }
+  .form-group textarea { resize:vertical; min-height:90px; }
+  .form-submit {
+    width:100%; background:var(--accent); color:#fff; border:none; border-radius:4px;
+    padding:13px; font-size:0.9rem; font-weight:600; cursor:pointer; transition:background 0.2s;
+    margin-top:0.5rem; font-family:'Segoe UI',Arial,sans-serif; letter-spacing:0.5px;
+  }
+  .form-submit:hover { background:var(--accent2); color:var(--primary); }
+
+  footer { background:#060a14; padding:2.5rem 2rem; text-align:center; color:rgba(255,255,255,0.4); font-size:0.8rem; font-family:'Segoe UI',Arial,sans-serif; border-top:1px solid rgba(201,168,76,0.15); }
+  footer a { color:var(--accent2); }
+  .footer-logo { font-size:1.2rem; font-family:'Georgia',serif; color:rgba(255,255,255,0.7); margin-bottom:0.8rem; }
+
+  @media(max-width:900px) {
+    .hero-inner { flex-direction:column; }
+    .hero-card { min-width:unset; width:100%; }
+    .about-grid, .contact-grid, .founder-card { flex-direction:column; grid-template-columns:1fr; }
+    .practice-grid, .network-grid { grid-template-columns:1fr; }
+    .nav-links { display:none; }
+    .hero-text h1 { font-size:2.1rem; }
+  }
+  @media(max-width:600px) {
+    .form-row { grid-template-columns:1fr; }
+    .stats-inner { flex-direction:column; gap:1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">N&S</div>
+    <div class="nav-brand-text">
+      <div class="line1">Ng &amp; Shum</div>
+      <div class="line2">Solicitors &amp; Notaries · Est. 1984</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#practice">Practice Areas</a>
+    <a href="#team">Founder</a>
+    <a href="#network">Network</a>
+    <a href="#contact" class="nav-cta">Contact Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">Established 1984 · 40 Years of Excellence</div>
+      <h1>Ng &amp; Shum</h1>
+      <p class="tagline">Hong Kong Roots | Global Reach</p>
+      <p class="subtitle">A premier Hong Kong law firm combining four decades of common law expertise with cross-border capabilities spanning Hong Kong, Mainland China, England &amp; Wales, and a global network of 40+ overseas firms.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Contact Our Team</a>
+        <a href="#practice" class="btn-outline">Our Practice Areas</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Hong Kong Office</h3>
+      <div class="info-row"><span class="info-icon">📍</span><span>21/F, United Centre<br>95 Queensway, Hong Kong</span></div>
+      <div class="info-row"><span class="info-icon">📞</span><span>(852) 2523 9155</span></div>
+      <div class="info-row"><span class="info-icon">✉️</span><span>info@ngnshum.com</span></div>
+      <div class="info-row"><span class="info-icon">💬</span><span>WeChat: ngnshum</span></div>
+      <div class="info-row"><span class="info-icon">📱</span><span>Notary: sarah@ngnshum.com</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">1984</div>
+      <div class="stat-label">Year Founded</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">40+</div>
+      <div class="stat-label">Years in Practice</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">40+</div>
+      <div class="stat-label">Overseas Firm Network</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Jurisdictions Qualified</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Offices — HK &amp; Shenzhen</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-tag">About Ng &amp; Shum</div>
+    <h2 class="section-title">Premier Hong Kong Law Firm Since 1984</h2>
+    <p class="section-sub">A full-service law firm with deep Hong Kong roots and an extensive global network, offering expert legal advice across dispute resolution, corporate law, and notarial services.</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Ng & Shum was established in Hong Kong in 1984, celebrating its 40th anniversary in April 2024. Over four decades, the firm has built a reputation as a premier Hong Kong law firm that leverages its common law heritage with cross-border capabilities.</p>
+        <p>The firm combines deep local knowledge with an international perspective, advising clients on matters ranging from complex commercial disputes and arbitration to corporate transactions, China attestation, and international notarial services.</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-year">1984</span>
+            <span class="timeline-content">Founded in Hong Kong by Steve Ng (Ng Siu Pang)</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">1992</span>
+            <span class="timeline-content">Opened representative office in Guangzhou — among the first Hong Kong lawyers in mainland China</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">1994</span>
+            <span class="timeline-content">Established the YangTze Law Network of affiliated overseas firms</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2015</span>
+            <span class="timeline-content">Founder established "YangTze Law," an England &amp; Wales firm with Alternative Business Structure status</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2017</span>
+            <span class="timeline-content">Relocated mainland branch to Shenzhen to serve the Greater Bay Area</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="highlight-box">
+          <h4>Our Core Values</h4>
+          <ul>
+            <li>Responsibility — commitment to clients and the law</li>
+            <li>Integration — bridging HK, China, and international markets</li>
+            <li>Openness — transparent, client-centric approach</li>
+            <li>Professionalism — the highest standards of legal practice</li>
+          </ul>
+        </div>
+        <div style="margin-top:1.5rem; background:var(--card-bg); border:1px solid var(--border); border-radius:6px; padding:1.5rem;">
+          <h4 style="font-family:'Georgia',serif; font-size:1rem; color:var(--primary); margin-bottom:0.8rem;">Shenzhen Office</h4>
+          <p style="font-size:0.88rem; color:var(--muted); line-height:1.7; font-family:'Segoe UI',Arial,sans-serif;">
+            E1, 19/F, Building 1, Phoenix Building<br>
+            2008 Shennan Avenue, Futian District<br>
+            Shenzhen, PRC<br><br>
+            <strong>Tel:</strong> +86 (0) 755 8273 3895<br>
+            <strong>Email:</strong> info@ngnshum.com
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE AREAS -->
+<section class="practice" id="practice">
+  <div class="section-inner">
+    <div class="section-tag">Practice Areas</div>
+    <h2 class="section-title">Comprehensive Legal Services</h2>
+    <p class="section-sub">Ng & Shum offers a full spectrum of legal services across four core practice areas, serving individuals, businesses, and institutions in Hong Kong and across borders.</p>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <div class="practice-icon">⚖️</div>
+        <h4>Dispute Resolution</h4>
+        <p>Experienced representation in litigation, arbitration, and all forms of dispute resolution before Hong Kong courts and international tribunals.</p>
+        <ul>
+          <li>Commercial litigation</li>
+          <li>International &amp; domestic arbitration</li>
+          <li>Shareholder disputes</li>
+          <li>Matrimonial matters</li>
+          <li>Criminal cases</li>
+          <li>Immigration matters</li>
+          <li>ICAC cases</li>
+        </ul>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">🏢</div>
+        <h4>Commercial Advisory</h4>
+        <p>Non-contentious corporate and commercial legal advisory for businesses operating in or through Hong Kong, including cross-border transactions.</p>
+        <ul>
+          <li>Corporate law</li>
+          <li>Mergers &amp; Acquisitions</li>
+          <li>Foreign Direct Investment (FDI)</li>
+          <li>Competition law</li>
+          <li>Joint ventures</li>
+          <li>Contract drafting &amp; review</li>
+        </ul>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">🇨🇳</div>
+        <h4>China Attestation</h4>
+        <p>Specialist China-Appointed Attesting Officer services for legal documents intended for use in Mainland China, covering personal and corporate matters.</p>
+        <ul>
+          <li>Marriage applications</li>
+          <li>Succession matters</li>
+          <li>Property transactions</li>
+          <li>Corporate documentation</li>
+          <li>Identity document authentication</li>
+          <li>Contact: huanghl@ngnshum.com</li>
+        </ul>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">📜</div>
+        <h4>International Notary Public</h4>
+        <p>Full notarial services for documents required in international jurisdictions — apostilles, legalisation, and affidavits by our qualified Notary Public.</p>
+        <ul>
+          <li>Notarial certificates</li>
+          <li>Affidavits &amp; statutory declarations</li>
+          <li>Apostille certification</li>
+          <li>Legalisation services</li>
+          <li>International document authentication</li>
+          <li>Contact: sarah@ngnshum.com</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM / FOUNDER -->
+<section class="team" id="team">
+  <div class="section-inner">
+    <div class="section-tag">Our Founder</div>
+    <h2 class="section-title">Multi-Jurisdictional Legal Leadership</h2>
+    <p class="section-sub">Ng & Shum is led by its founder, a uniquely qualified practitioner holding concurrent legal qualifications across four jurisdictions.</p>
+    <div class="founder-card">
+      <div class="founder-avatar">⚖️</div>
+      <div class="founder-info">
+        <h3>Steve Ng (Ng Siu Pang)</h3>
+        <p class="title">Founding Partner · Solicitor · Notary Public · China-Appointed Attesting Officer</p>
+        <p>Educated at the University of Liverpool, Steve Ng has built one of Hong Kong's most distinguished multi-jurisdictional legal careers. Admitted as a Hong Kong solicitor in 1981, he has since accumulated qualifications across four major common law and civil law jurisdictions, enabling Ng & Shum to advise clients with cross-border legal needs.</p>
+        <p>Beyond his legal practice, Steve Ng has made significant contributions to public life in Hong Kong, serving as a District Board member and participating in the Basic Law Consultative Committee and the Central Policy Unit — demonstrating the firm's deep commitment to the Hong Kong community.</p>
+        <div class="qual-tags">
+          <span class="qual-tag">HK Solicitor · 1981</span>
+          <span class="qual-tag">UK Solicitor · 1985</span>
+          <span class="qual-tag">Notary Public · 1992</span>
+          <span class="qual-tag">China Attesting Officer · 1992</span>
+          <span class="qual-tag">Singapore Lawyer · 1995</span>
+          <span class="qual-tag">University of Liverpool</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORK -->
+<section class="network" id="network">
+  <div class="section-inner">
+    <div class="section-tag">Our Network</div>
+    <h2 class="section-title">YangTze Law Network: Global Reach</h2>
+    <p class="section-sub">Since 1994, Ng & Shum has operated the YangTze Law Network, connecting clients to trusted legal partners across the globe.</p>
+    <div class="network-grid">
+      <div class="network-card">
+        <div class="network-icon">🌏</div>
+        <h4>40+ Overseas Firms</h4>
+        <p>The YangTze Law Network includes 40+ carefully selected overseas law firms, enabling Ng & Shum to seamlessly support clients' cross-border legal matters worldwide.</p>
+      </div>
+      <div class="network-card">
+        <div class="network-icon">🇬🇧</div>
+        <h4>YangTze Law UK</h4>
+        <p>Established in 2015 as an England &amp; Wales law firm with Alternative Business Structure (ABS) status, providing direct legal services in the United Kingdom.</p>
+      </div>
+      <div class="network-card">
+        <div class="network-icon">🇨🇳</div>
+        <h4>Mainland China Network</h4>
+        <p>Relationships with hundreds of mainland China law firms, supported by our Shenzhen office in the Greater Bay Area — one of the earliest HK firms with a PRC presence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--accent2);">Contact Us</div>
+    <h2 class="section-title">Get in Touch with Ng &amp; Shum</h2>
+    <p class="section-sub">Our team is ready to assist with your legal enquiries. Contact our Hong Kong or Shenzhen offices, or submit an enquiry using the form below.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h4>Our Offices</h4>
+        <div class="office-block">
+          <h5>🏢 Hong Kong Office</h5>
+          <div class="contact-detail">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail-text">
+              <div class="label">Address</div>
+              <div class="value">21/F, United Centre<br>95 Queensway, Hong Kong</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">📞</div>
+            <div class="contact-detail-text">
+              <div class="label">Telephone</div>
+              <div class="value"><a href="tel:+85225239155">(852) 2523 9155</a></div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-detail-text">
+              <div class="label">General Email</div>
+              <div class="value"><a href="mailto:info@ngnshum.com">info@ngnshum.com</a></div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">📜</div>
+            <div class="contact-detail-text">
+              <div class="label">International Notary</div>
+              <div class="value"><a href="mailto:sarah@ngnshum.com">sarah@ngnshum.com</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="office-block">
+          <h5>🏢 Shenzhen Office</h5>
+          <div class="contact-detail">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail-text">
+              <div class="label">Address</div>
+              <div class="value">E1, 19/F, Building 1, Phoenix Building<br>2008 Shennan Ave, Futian, Shenzhen</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">📞</div>
+            <div class="contact-detail-text">
+              <div class="label">Telephone</div>
+              <div class="value"><a href="tel:+8675582733895">+86 755 8273 3895</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h4>Legal Enquiry Form</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Your first name">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Your last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+852 XXXX XXXX">
+        </div>
+        <div class="form-group">
+          <label>Area of Enquiry</label>
+          <select>
+            <option>Dispute Resolution &amp; Litigation</option>
+            <option>Arbitration</option>
+            <option>Corporate &amp; Commercial Advisory</option>
+            <option>China Attestation</option>
+            <option>International Notary Public</option>
+            <option>General Legal Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Brief Description of Matter</label>
+          <textarea placeholder="Please briefly describe your legal matter or enquiry..."></textarea>
+        </div>
+        <button class="form-submit">Send Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Ng &amp; Shum</div>
+  <p style="margin-bottom:0.5rem; font-style:italic; color:rgba(255,255,255,0.5);">Hong Kong Roots | Global Reach</p>
+  <p style="margin-bottom:0.5rem;">
+    21/F United Centre, 95 Queensway, Hong Kong &nbsp;|&nbsp; Tel: (852) 2523 9155 &nbsp;|&nbsp;
+    <a href="mailto:info@ngnshum.com">info@ngnshum.com</a>
+  </p>
+  <p style="margin-top:0.8rem; font-size:0.74rem;">© 2025 Ng &amp; Shum · Solicitors &amp; Notaries. All rights reserved. Established in Hong Kong 1984.</p>
+</footer>
+
+</body>
+</html>
