@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CR Construction Company Limited | Building Hong Kong's Future</title>
+<style>
+:root {
+  --bg:       #060809;
+  --surface:  #0d1318;
+  --card:     #121c24;
+  --border:   #1e3040;
+  --acc1:     #0a4870;
+  --acc2:     #1070a8;
+  --acc3:     #1898d8;
+  --amber:    #e09030;
+  --text:     #e8f0f8;
+  --muted:    #7090a8;
+  --radius:   8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;font-size:16px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,8,9,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--acc1),var(--acc3));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.logo-text{font-size:1.15rem;font-weight:700;color:var(--text)}
+.logo-sub{font-size:.7rem;color:var(--muted);letter-spacing:.05em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
+.nav-links a:hover{color:var(--acc3)}
+.nav-cta{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:9px 22px;border-radius:5px;font-size:.88rem;font-weight:600;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;background:radial-gradient(ellipse 80% 60% at 30% 50%,rgba(10,72,112,.14) 0%,transparent 65%),var(--bg)}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(24,152,216,.12);border:1px solid rgba(24,152,216,.35);border-radius:20px;padding:6px 16px;font-size:.8rem;color:var(--acc3);margin-bottom:24px;letter-spacing:.05em}
+.hero h1{font-size:2.9rem;font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:var(--acc3)}
+.hero-desc{font-size:1.02rem;color:var(--muted);margin-bottom:36px;max-width:540px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:13px 30px;border-radius:6px;font-size:.95rem;font-weight:700;text-decoration:none;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:13px 30px;border-radius:6px;font-size:.95rem;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--acc2);color:var(--acc2)}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hero-card h3{font-size:.9rem;color:var(--acc3);margin-bottom:18px;text-transform:uppercase;letter-spacing:.1em}
+.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.info-row:last-child{border-bottom:none}
+.info-label{color:var(--muted)}
+.info-val{color:var(--text);font-weight:600;text-align:right;max-width:58%}
+.listed-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(224,144,48,.15);border:1px solid rgba(224,144,48,.4);border-radius:4px;padding:2px 9px;font-size:.75rem;color:var(--amber)}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-box{text-align:center}
+.stat-num{font-size:2.1rem;font-weight:800;color:var(--acc3);display:block}
+.stat-label{font-size:.83rem;color:var(--muted);margin-top:4px}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(24,152,216,.12);border:1px solid rgba(24,152,216,.3);border-radius:4px;padding:4px 12px;font-size:.76rem;color:var(--acc3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:1.9rem;font-weight:800;margin-bottom:12px}
+.section-sub{color:var(--muted);font-size:.98rem;max-width:620px}
+.section-head{margin-bottom:48px}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* SERVICES */
+.services{background:var(--bg)}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:border-color .25s,transform .25s}
+.svc-card:hover{border-color:var(--acc2);transform:translateY(-3px)}
+.svc-icon{width:56px;height:56px;background:linear-gradient(135deg,var(--acc1),var(--acc2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:20px}
+.svc-name{font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.svc-desc{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.svc-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{background:rgba(16,112,168,.12);border:1px solid rgba(16,112,168,.3);border-radius:4px;padding:3px 10px;font-size:.76rem;color:var(--acc3)}
+
+/* PROJECTS */
+.projects{background:var(--surface)}
+.proj-tabs{display:flex;gap:12px;margin-bottom:32px}
+.proj-tab{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:8px 20px;font-size:.88rem;color:var(--muted);cursor:default}
+.proj-tab.active{background:rgba(24,152,216,.15);border-color:var(--acc3);color:var(--acc3)}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:border-color .25s}
+.proj-card:hover{border-color:var(--acc2)}
+.proj-type{font-size:.75rem;color:var(--acc3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.proj-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.4}
+.proj-client{font-size:.83rem;color:var(--muted);margin-bottom:10px}
+.proj-status{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;padding:3px 10px;border-radius:4px}
+.proj-status.ongoing{background:rgba(24,152,216,.15);border:1px solid rgba(24,152,216,.3);color:var(--acc3)}
+.proj-status.done{background:rgba(224,144,48,.12);border:1px solid rgba(224,144,48,.3);color:var(--amber)}
+
+/* ABOUT */
+.about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.about-content p{color:var(--muted);line-height:1.8;margin-bottom:16px}
+.milestones{display:flex;flex-direction:column;gap:0}
+.milestone{display:flex;gap:20px;padding-bottom:28px;position:relative}
+.milestone::before{content:'';position:absolute;left:19px;top:36px;bottom:0;width:1px;background:var(--border)}
+.milestone:last-child::before{display:none}
+.ms-dot{width:38px;height:38px;background:linear-gradient(135deg,var(--acc1),var(--acc2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff;flex-shrink:0}
+.ms-year{font-size:.82rem;color:var(--acc3);font-weight:700;margin-bottom:4px}
+.ms-text{font-size:.9rem;color:var(--muted);line-height:1.6}
+
+/* ACCREDITATION */
+.accreditation{background:var(--surface)}
+.acc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.acc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;transition:border-color .25s}
+.acc-card:hover{border-color:var(--acc2)}
+.acc-icon{font-size:2.2rem;margin-bottom:14px}
+.acc-name{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.acc-body{font-size:.84rem;color:var(--muted);line-height:1.6}
+
+/* CSR */
+.csr{background:var(--bg)}
+.csr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.csr-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;display:flex;gap:18px;align-items:flex-start;transition:border-color .25s}
+.csr-card:hover{border-color:var(--acc2)}
+.csr-icon{width:48px;height:48px;background:rgba(24,152,216,.12);border:1px solid rgba(24,152,216,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.csr-body h3{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.csr-body p{font-size:.88rem;color:var(--muted);line-height:1.65}
+
+/* CONTACT */
+.contact{background:var(--surface)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h2{font-size:1.8rem;font-weight:800;margin-bottom:16px}
+.contact-info p{color:var(--muted);margin-bottom:28px;line-height:1.7}
+.contact-items{display:flex;flex-direction:column;gap:16px}
+.contact-item{display:flex;align-items:flex-start;gap:14px}
+.contact-icon{width:40px;height:40px;background:rgba(10,72,112,.3);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-detail strong{display:block;color:var(--text);font-size:.9rem;margin-bottom:2px}
+.contact-detail span{color:var(--muted);font-size:.85rem}
+form{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:18px}
+form label{font-size:.84rem;color:var(--muted);margin-bottom:4px;display:block}
+form input,form select,form textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.91rem;outline:none;transition:border-color .2s;font-family:inherit}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--acc2)}
+form textarea{resize:vertical;min-height:110px}
+form button{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s}
+form button:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 5% 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-top:12px}
+.footer-col h4{font-size:.87rem;font-weight:700;color:var(--text);margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col a{color:var(--muted);text-decoration:none;font-size:.86rem;transition:color .2s}
+.footer-col a:hover{color:var(--acc3)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{color:var(--muted);font-size:.82rem}
+.footer-hk{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:.82rem}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .hero h1{font-size:2.1rem}
+  .svc-grid,.csr-grid{grid-template-columns:1fr}
+  .proj-grid,.acc-grid{grid-template-columns:1fr 1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  .proj-grid,.acc-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">🏗️</div>
+      <div>
+        <div class="logo-text">CR Construction</div>
+        <div class="logo-sub">CR Construction Company Limited</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#accreditation">Accreditation</a></li>
+      <li><a href="#csr">CSR</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Get in Touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🏢 HKEX Listed · Hong Kong Construction</div>
+      <h1>Building Hong Kong's<br><span>Future, Brick by Brick</span></h1>
+      <p class="hero-desc">
+        CR Construction Company Limited is a listed Hong Kong construction firm delivering
+        excellence in building construction works and RMAA (Repair, Maintenance, Alteration
+        &amp; Addition) services. With decades of experience and a commitment to quality,
+        safety, and sustainability, we shape the city's built environment.
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#services">Our Services</a>
+        <a class="btn-outline" href="#projects">View Projects</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Company Profile</h3>
+      <div class="info-row">
+        <span class="info-label">Company</span>
+        <span class="info-val">CR Construction Co. Ltd</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Stock Listing</span>
+        <span class="info-val"><span class="listed-badge">📈 HKEX Listed</span></span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Industry</span>
+        <span class="info-val">Construction</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Core Services</span>
+        <span class="info-val">RMAA · Building Works</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Location</span>
+        <span class="info-val">Hong Kong</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Website</span>
+        <span class="info-val">cr-construction.com.hk</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-box">
+      <span class="stat-num">HKEX</span>
+      <div class="stat-label">Stock Exchange Listed</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">2</span>
+      <div class="stat-label">Core Service Divisions</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">HK</span>
+      <div class="stat-label">Base of Operations</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">ISO</span>
+      <div class="stat-label">Accredited Quality Systems</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Our Services</div>
+      <h2 class="section-title">Core Construction Services</h2>
+      <p class="section-sub">Two principal service lines covering the full lifecycle of Hong Kong's built environment</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🔧</div>
+        <div class="svc-name">RMAA Works</div>
+        <p class="svc-desc">
+          Comprehensive Repair, Maintenance, Alteration and Addition (RMAA) services for
+          residential, commercial, and institutional buildings across Hong Kong. We handle
+          everything from routine maintenance to major alteration works, ensuring buildings
+          remain safe, functional, and compliant with current codes.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">Repair Works</span>
+          <span class="tag">Maintenance</span>
+          <span class="tag">Alteration</span>
+          <span class="tag">Addition Works</span>
+          <span class="tag">Building Rehabilitation</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏢</div>
+        <div class="svc-name">Building Construction Works</div>
+        <p class="svc-desc">
+          Full-spectrum building construction capabilities from foundations to fit-out.
+          We deliver residential towers, commercial complexes, and public facilities
+          with rigorous quality control, strict adherence to safety standards, and
+          on-time project delivery.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">Residential</span>
+          <span class="tag">Commercial</span>
+          <span class="tag">Institutional</span>
+          <span class="tag">Public Works</span>
+          <span class="tag">Project Management</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Projects</div>
+      <h2 class="section-title">Our Project Portfolio</h2>
+      <p class="section-sub">A track record of successful delivery across Hong Kong's diverse construction landscape</p>
+    </div>
+    <div class="proj-tabs">
+      <div class="proj-tab active">Current Projects</div>
+      <div class="proj-tab">Completed Projects</div>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-type">Building Construction</div>
+        <div class="proj-name">Residential Development — New Territories</div>
+        <div class="proj-client">Private Developer</div>
+        <span class="proj-status ongoing">● Ongoing</span>
+      </div>
+      <div class="proj-card">
+        <div class="proj-type">RMAA Works</div>
+        <div class="proj-name">Public Housing Estate Rehabilitation</div>
+        <div class="proj-client">Hong Kong Housing Authority</div>
+        <span class="proj-status ongoing">● Ongoing</span>
+      </div>
+      <div class="proj-card">
+        <div class="proj-type">Building Construction</div>
+        <div class="proj-name">Commercial Complex — Kowloon</div>
+        <div class="proj-client">Commercial Developer</div>
+        <span class="proj-status ongoing">● Ongoing</span>
+      </div>
+      <div class="proj-card">
+        <div class="proj-type">RMAA Works</div>
+        <div class="proj-name">Government Building Alteration Works</div>
+        <div class="proj-client">Government Department</div>
+        <span class="proj-status done">✓ Completed</span>
+      </div>
+      <div class="proj-card">
+        <div class="proj-type">Building Construction</div>
+        <div class="proj-name">Institutional Facility — Hong Kong Island</div>
+        <div class="proj-client">Public Institution</div>
+        <span class="proj-status done">✓ Completed</span>
+      </div>
+      <div class="proj-card">
+        <div class="proj-type">RMAA Works</div>
+        <div class="proj-name">Commercial Tower Maintenance Programme</div>
+        <div class="proj-client">Property Management Group</div>
+        <span class="proj-status done">✓ Completed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-content">
+        <div class="section-tag">About Us</div>
+        <h2 class="section-title">Who We Are</h2>
+        <p>
+          CR Construction Company Limited is a Hong Kong–listed construction enterprise
+          with a proven track record in both new building construction and RMAA works.
+          As a publicly listed company on the Hong Kong Stock Exchange, we are held to the
+          highest standards of corporate governance, transparency, and accountability.
+        </p>
+        <p>
+          Our dedicated teams of engineers, project managers, and skilled tradespeople
+          work in concert to deliver projects on schedule, within budget, and to the
+          exacting quality standards our clients expect. Our safety culture is embedded
+          at every level of the organisation.
+        </p>
+        <p>
+          CR Construction's strength lies in our people — an experienced, multi-disciplinary
+          workforce committed to continuous professional development, innovation in
+          construction methods, and sustainable building practices that contribute to
+          Hong Kong's long-term urban resilience.
+        </p>
+      </div>
+      <div>
+        <h3 style="font-size:1rem;color:var(--acc3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:24px">Company Milestones</h3>
+        <div class="milestones">
+          <div class="milestone">
+            <div class="ms-dot">🏗️</div>
+            <div>
+              <div class="ms-year">Founding</div>
+              <div class="ms-text">CR Construction Company Limited established in Hong Kong, commencing operations in building construction and maintenance works.</div>
+            </div>
+          </div>
+          <div class="milestone">
+            <div class="ms-dot">📋</div>
+            <div>
+              <div class="ms-year">Accreditation</div>
+              <div class="ms-text">Achieved key industry accreditations in quality management, safety systems, and environmental management — cementing our professional standing.</div>
+            </div>
+          </div>
+          <div class="milestone">
+            <div class="ms-dot">📈</div>
+            <div>
+              <div class="ms-year">HKEX Listing</div>
+              <div class="ms-text">Successfully listed on the Hong Kong Stock Exchange, enhancing corporate governance and opening new avenues for growth.</div>
+            </div>
+          </div>
+          <div class="milestone">
+            <div class="ms-dot">🌿</div>
+            <div>
+              <div class="ms-year">Sustainability Focus</div>
+              <div class="ms-text">Launched dedicated CSR and sustainability initiatives covering environmental stewardship, community engagement, and employee welfare programmes.</div>
+            </div>
+          </div>
+          <div class="milestone">
+            <div class="ms-dot">🚀</div>
+            <div>
+              <div class="ms-year">Today</div>
+              <div class="ms-text">Continuing to win major contracts across RMAA and new build sectors, with a growing team and expanding project portfolio across Hong Kong.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ACCREDITATION -->
+<section class="accreditation" id="accreditation">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Accreditation &amp; Awards</div>
+      <h2 class="section-title">Quality, Safety &amp; Recognition</h2>
+      <p class="section-sub">Our accreditations reflect a deep commitment to excellence across every dimension of our operations</p>
+    </div>
+    <div class="acc-grid">
+      <div class="acc-card">
+        <div class="acc-icon">🏆</div>
+        <div class="acc-name">ISO 9001 Quality Management</div>
+        <p class="acc-body">Certified quality management systems ensuring consistent, client-focused delivery across all construction projects.</p>
+      </div>
+      <div class="acc-card">
+        <div class="acc-icon">🛡️</div>
+        <div class="acc-name">OHSAS 18001 / ISO 45001</div>
+        <p class="acc-body">Occupational health and safety management certification demonstrating our unwavering commitment to zero-harm on site.</p>
+      </div>
+      <div class="acc-card">
+        <div class="acc-icon">🌿</div>
+        <div class="acc-name">ISO 14001 Environmental</div>
+        <p class="acc-body">Environmental management system certification reflecting our active steps to minimise construction's environmental footprint.</p>
+      </div>
+      <div class="acc-card">
+        <div class="acc-icon">🏅</div>
+        <div class="acc-name">Industry Awards</div>
+        <p class="acc-body">Recipient of multiple industry recognitions for construction quality, safety excellence, and innovation in project execution.</p>
+      </div>
+      <div class="acc-card">
+        <div class="acc-icon">🔑</div>
+        <div class="acc-name">Registered Contractor</div>
+        <p class="acc-body">Fully registered general building contractor with the HKSAR Government's Buildings Department, eligible for public and private sector works.</p>
+      </div>
+      <div class="acc-card">
+        <div class="acc-icon">📊</div>
+        <div class="acc-name">HKEX Listed Company</div>
+        <p class="acc-body">Listed on the Hong Kong Stock Exchange, subject to rigorous corporate governance, financial disclosure, and investor protection requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CSR -->
+<section class="csr" id="csr">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Corporate Social Responsibility</div>
+      <h2 class="section-title">Building Beyond Structures</h2>
+      <p class="section-sub">We invest in our people, communities, and environment — because great companies build more than buildings</p>
+    </div>
+    <div class="csr-grid">
+      <div class="csr-card">
+        <div class="csr-icon">🌱</div>
+        <div class="csr-body">
+          <h3>Environmental Stewardship</h3>
+          <p>Implementing green construction practices, waste reduction, dust and noise control measures, and responsible resource use on every project site.</p>
+        </div>
+      </div>
+      <div class="csr-card">
+        <div class="csr-icon">🤝</div>
+        <div class="csr-body">
+          <h3>Community Services</h3>
+          <p>Engaging with local communities through volunteer programmes, charitable donations, and participation in social welfare initiatives across Hong Kong.</p>
+        </div>
+      </div>
+      <div class="csr-card">
+        <div class="csr-icon">👷</div>
+        <div class="csr-body">
+          <h3>Employee Welfare</h3>
+          <p>Fostering a safe, inclusive, and rewarding workplace with competitive compensation, comprehensive benefits, and clear career advancement pathways.</p>
+        </div>
+      </div>
+      <div class="csr-card">
+        <div class="csr-icon">📚</div>
+        <div class="csr-body">
+          <h3>Training &amp; Development</h3>
+          <p>Investing in continuous professional development through structured training programmes, skills certification, and leadership development initiatives.</p>
+        </div>
+      </div>
+      <div class="csr-card">
+        <div class="csr-icon">⚡</div>
+        <div class="csr-body">
+          <h3>Sustainability Commitment</h3>
+          <p>Setting measurable ESG targets and reporting transparently on our progress towards reducing carbon footprint and advancing sustainable construction methods.</p>
+        </div>
+      </div>
+      <div class="csr-card">
+        <div class="csr-icon">🎓</div>
+        <div class="csr-body">
+          <h3>Industry Development</h3>
+          <p>Supporting the next generation of construction professionals through apprenticeship programmes, industry partnerships, and academic collaborations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-tag">Contact Us</div>
+        <h2>Get in Touch</h2>
+        <p>
+          Whether you have a project enquiry, are interested in tendering opportunities,
+          or want to learn more about CR Construction's services and investor relations,
+          our team is ready to assist.
+        </p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div class="contact-detail">
+              <strong>Website</strong>
+              <span>www.cr-construction.com.hk</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>Location</strong>
+              <span>Hong Kong</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📈</div>
+            <div class="contact-detail">
+              <strong>Investor Relations</strong>
+              <span>Announcements, Reports &amp; Circulars available via HKEX</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">💼</div>
+            <div class="contact-detail">
+              <strong>Career Opportunities</strong>
+              <span>Visit our website for current vacancies and CR Intranet access</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form>
+        <div>
+          <label>Full Name *</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div>
+          <label>Company / Organisation</label>
+          <input type="text" placeholder="Your company or organisation">
+        </div>
+        <div>
+          <label>Email Address *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div>
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+852 xxxx xxxx">
+        </div>
+        <div>
+          <label>Enquiry Type</label>
+          <select>
+            <option>Project / Tender Enquiry</option>
+            <option>RMAA Services</option>
+            <option>Building Construction</option>
+            <option>Investor Relations</option>
+            <option>Career Opportunities</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div>
+          <label>Message *</label>
+          <textarea placeholder="Please describe your project or enquiry in detail…"></textarea>
+        </div>
+        <button type="submit">Send Enquiry →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">🏗️</div>
+          <div>
+            <div class="logo-text">CR Construction</div>
+            <div class="logo-sub">CR Construction Company Limited</div>
+          </div>
+        </div>
+        <p>A HKEX-listed construction company delivering quality building works and RMAA services across Hong Kong, underpinned by strong corporate governance and a commitment to safety and sustainability.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">RMAA Works</a></li>
+          <li><a href="#services">Building Construction</a></li>
+          <li><a href="#projects">Current Projects</a></li>
+          <li><a href="#projects">Completed Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#accreditation">Accreditation</a></li>
+          <li><a href="#csr">CSR</a></li>
+          <li><a href="#contact">Investor Relations</a></li>
+          <li><a href="#contact">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 CR Construction Company Limited. All Rights Reserved.</div>
+      <div class="footer-hk">🇭🇰 Hong Kong · HKEX Listed</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
