@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鋒特科技有限公司 | 香港灣仔 IT 科技服務</title>
+<meta name="description" content="鋒特科技有限公司 — 香港灣仔資訊科技公司，提供IT解決方案、系統整合及科技服務。地址：灣仔軒尼詩道145號安康商業大廈21樓2117室。">
+<style>
+:root{--bg:#04060e;--bg2:#06091a;--bg3:#080e20;--cyan:#1098b8;--cyan-lt:#18b8d8;--amber:#c89030;--amber-lt:#e8b040;--text:#e8eef8;--muted:#6880a8;--border:rgba(16,152,184,0.2);--card-bg:rgba(255,255,255,0.03);--radius:10px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans HK','PingFang HK',sans-serif;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,6,14,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1.05rem;font-weight:800;color:var(--cyan-lt)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--cyan),var(--cyan-lt));color:#fff;padding:9px 22px;border-radius:6px;font-size:.88rem;font-weight:700;text-decoration:none;transition:opacity .2s}.nav-cta:hover{opacity:.88}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 60% 40%,rgba(16,152,184,0.1) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(16,152,184,0.1);border:1px solid rgba(16,152,184,0.28);border-radius:6px;padding:6px 14px;font-size:.8rem;color:var(--cyan-lt);margin-bottom:20px}
+h1{font-size:clamp(1.9rem,4.5vw,3rem);font-weight:900;line-height:1.12;margin-bottom:12px}
+h1 .en{display:block;font-size:clamp(.85rem,1.7vw,1rem);font-weight:400;color:var(--cyan-lt);letter-spacing:.04em;margin-top:8px}
+.hero-desc{color:var(--muted);font-size:1rem;max-width:440px;margin:18px 0 26px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--cyan),var(--cyan-lt));color:#fff;padding:13px 28px;border-radius:6px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 26px;border-radius:6px;font-size:.93rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}.btn-outline:hover{border-color:var(--cyan-lt);color:var(--cyan-lt)}
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:16px}
+.card-badge{display:flex;align-items:center;gap:12px}
+.badge-emblem{width:48px;height:48px;background:linear-gradient(135deg,var(--cyan),var(--cyan-lt));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.badge-name{font-size:.95rem;font-weight:700}.badge-label{font-size:.76rem;color:var(--muted)}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--cyan-lt);flex-shrink:0;margin-top:2px;text-align:center}
+.card-row-text{font-size:.88rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block;font-size:.9rem}
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.stat-item{text-align:center}
+.stat-num{font-size:1.9rem;font-weight:900;background:linear-gradient(135deg,var(--cyan-lt),var(--amber-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.82rem;margin-top:6px}
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(16,152,184,0.08);border:1px solid rgba(16,152,184,0.2);border-radius:6px;padding:4px 12px;font-size:.75rem;color:var(--cyan-lt);letter-spacing:.05em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--cyan-lt)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s}.svc-card:hover{border-color:var(--cyan-lt);transform:translateY(-4px)}
+.sc-icon{width:50px;height:50px;background:rgba(16,152,184,0.1);border:1px solid rgba(16,152,184,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.sc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.contact-section{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(16,152,184,0.1);border:1px solid rgba(16,152,184,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.75rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.93rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--cyan-lt);text-decoration:none}.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:34px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--cyan-lt)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#06091a}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--cyan),var(--cyan-lt));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}.form-submit:hover{opacity:.88}
+footer{background:var(--bg3);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:.95rem;font-weight:800;color:var(--cyan-lt)}
+.footer-copy{font-size:.8rem;color:var(--muted);text-align:center}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}.footer-links a:hover{color:var(--text)}
+@media(max-width:900px){.hero-inner,.contact-grid{grid-template-columns:1fr}.stats-inner,.cards-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav-links{display:none}.cards-grid,.stats-inner{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">鋒特科技有限公司</div>
+    <ul class="nav-links">
+      <li><a href="#services">服務</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+    <a href="mailto:jobs@bondwest.com.hk" class="nav-cta">即時查詢</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">💻 香港資訊科技服務</div>
+      <h1>鋒特科技有限公司<span class="en">IT Technology Solutions · Hong Kong</span></h1>
+      <p class="hero-desc">香港灣仔資訊科技公司，專業提供IT解決方案、系統整合及科技服務，為企業客戶提供可靠高效的資訊科技支援，助力業務數位化發展。</p>
+      <div class="hero-btns">
+        <a href="mailto:jobs@bondwest.com.hk" class="btn-primary">電郵查詢</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-emblem">💻</div>
+        <div>
+          <div class="badge-label">香港資訊科技公司</div>
+          <div class="badge-name">鋒特科技有限公司</div>
+        </div>
+      </div>
+      <hr class="card-divider">
+      <div class="card-row"><div class="card-row-icon">📧</div><div class="card-row-text"><strong>電郵</strong>jobs@bondwest.com.hk</div></div>
+      <div class="card-row"><div class="card-row-icon">📍</div><div class="card-row-text"><strong>地址</strong>香港灣仔軒尼詩道145號<br>安康商業大廈21樓2117室</div></div>
+      <div class="card-row"><div class="card-row-icon">💻</div><div class="card-row-text"><strong>服務範疇</strong>資訊科技 · 系統整合 · IT支援</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">灣仔</div><div class="stat-label">香港辦公室地點</div></div>
+    <div class="stat-item"><div class="stat-num">IT</div><div class="stat-label">資訊科技專業</div></div>
+    <div class="stat-item"><div class="stat-num">專業</div><div class="stat-label">技術支援團隊</div></div>
+    <div class="stat-item"><div class="stat-num">全面</div><div class="stat-label">企業IT解決方案</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務範疇</div>
+    <h2>專業<span class="accent">資訊科技</span>服務</h2>
+    <p class="section-lead">鋒特科技為香港企業提供全面的資訊科技解決方案，從系統規劃、部署到日常維護，全程支援企業IT需求。</p>
+    <div class="cards-grid">
+      <div class="svc-card">
+        <div class="sc-icon">🖥️</div>
+        <div class="sc-title">IT系統整合</div>
+        <div class="sc-desc">提供企業IT系統整合服務，包括伺服器架設、網絡配置、硬體部署及系統遷移，為企業建立穩健的IT基礎架構。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🔧</div>
+        <div class="sc-title">IT技術支援</div>
+        <div class="sc-desc">專業IT技術支援及維護服務，包括桌面支援、故障排除、系統更新及定期維護，確保企業IT環境穩定運行。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">☁️</div>
+        <div class="sc-title">雲端服務</div>
+        <div class="sc-desc">企業雲端解決方案規劃與部署，包括雲端儲存、雲端辦公室及混合雲架構，協助企業實現數位轉型。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🔐</div>
+        <div class="sc-title">網絡安全</div>
+        <div class="sc-desc">企業資訊安全解決方案，包括防火牆配置、端點防護、資料備份及災難復原計劃，保護企業數據資產。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🌐</div>
+        <div class="sc-title">網絡基礎架構</div>
+        <div class="sc-desc">企業網絡規劃及建設，包括LAN/WAN設計、Wi-Fi部署、VPN配置及網絡監控，確保企業通訊暢通無阻。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📊</div>
+        <div class="sc-title">IT顧問諮詢</div>
+        <div class="sc-desc">為企業提供IT策略規劃及顧問服務，評估現有IT環境，制定符合業務需求的技術路線圖及優化方案。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2>IT服務<span class="accent">查詢</span></h2>
+    <p class="section-lead">歡迎電郵查詢，我們的IT專業團隊將為您提供詳細方案及報價。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">電郵</div>
+            <div class="ci-value"><a href="mailto:jobs@bondwest.com.hk">jobs@bondwest.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">辦公室地址</div>
+            <div class="ci-value">香港灣仔軒尼詩道145號<br>安康商業大廈21樓2117室</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">💻</div>
+          <div>
+            <div class="ci-label">服務範疇</div>
+            <div class="ci-value">資訊科技 · 系統整合<br>IT支援 · 網絡安全 · 雲端服務</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>IT服務查詢</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group"><label>姓名</label><input type="text" placeholder="您的姓名"></div>
+            <div class="form-group"><label>聯絡電話</label><input type="tel" placeholder="9XXX XXXX"></div>
+          </div>
+          <div class="form-group"><label>電郵地址</label><input type="email" placeholder="your@email.com"></div>
+          <div class="form-group"><label>查詢類別</label>
+            <select>
+              <option value="">請選擇</option>
+              <option>IT系統整合</option>
+              <option>IT技術支援</option>
+              <option>雲端服務</option>
+              <option>網絡安全</option>
+              <option>網絡基礎架構</option>
+              <option>IT顧問諮詢</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group"><label>查詢詳情</label><textarea placeholder="請描述您的IT需求..."></textarea></div>
+          <button type="submit" class="form-submit">提交查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">鋒特科技有限公司 · 香港灣仔</div>
+    <div class="footer-copy">© 2025 鋒特科技有限公司 · 香港灣仔</div>
+    <div class="footer-links"><a href="#services">服務</a><a href="#contact">聯絡</a></div>
+  </div>
+</footer>
+</body>
+</html>
