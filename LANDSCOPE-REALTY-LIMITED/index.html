@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landscope Realty Limited | Luxury Property Hong Kong</title>
+  <meta name="description" content="Landscope Realty Limited — Hong Kong's premier luxury property specialist. Christie's International Real Estate affiliate. Sales, rentals and investment advisory across The Peak, Repulse Bay, Midlevels and beyond." />
+  <style>
+    :root {
+      --bg:       #07060a;
+      --bg2:      #0e0c14;
+      --bg3:      #15121e;
+      --border:   #251f35;
+      --acc:      #b89858;
+      --acc2:     #d4b878;
+      --acc3:     #8c7040;
+      --text:     #e8e4d8;
+      --muted:    #9088a0;
+      --card:     #110f1a;
+      --radius:   10px;
+      --nav-h:    64px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: Georgia, 'Times New Roman', serif; line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+      background: rgba(7,6,10,0.96); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-logo-icon {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--acc3), var(--acc), var(--acc2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700; color: var(--bg);
+    }
+    .nav-logo-text { font-size: 15px; font-weight: 400; color: var(--text); letter-spacing: 1.5px; text-transform: uppercase; font-family: 'Trebuchet MS', sans-serif; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; letter-spacing: 0.8px; text-transform: uppercase; font-family: 'Trebuchet MS', sans-serif; transition: color .2s; }
+    .nav-links a:hover { color: var(--acc2); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: var(--bg); border: none; padding: 9px 22px; border-radius: 6px;
+      font-size: 12px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer;
+      font-family: 'Trebuchet MS', sans-serif; font-weight: 600; text-decoration: none;
+      transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; padding-top: var(--nav-h);
+      background: linear-gradient(160deg, var(--bg) 0%, #100d18 50%, var(--bg) 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 20% 40%, rgba(184,152,88,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 80% 60%, rgba(140,112,64,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      max-width: 1180px; margin: 0 auto; padding: 80px 40px;
+      display: grid; grid-template-columns: 1fr 420px; gap: 80px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(184,152,88,0.12); border: 1px solid rgba(184,152,88,0.3);
+      border-radius: 20px; padding: 6px 16px; margin-bottom: 28px;
+      font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--acc2);
+      font-family: 'Trebuchet MS', sans-serif;
+    }
+    .hero-badge span { color: var(--acc); font-size: 14px; }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 400; line-height: 1.2;
+      color: var(--text); margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    .hero h1 em { font-style: italic; color: var(--acc2); }
+    .hero-sub {
+      font-size: 1.15rem; color: var(--muted); margin: 20px 0 36px;
+      font-family: 'Trebuchet MS', sans-serif; font-weight: 400; line-height: 1.6;
+      max-width: 520px;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: var(--bg); border: none; padding: 14px 30px; border-radius: 7px;
+      font-size: 13px; letter-spacing: 0.8px; text-transform: uppercase;
+      cursor: pointer; font-family: 'Trebuchet MS', sans-serif; font-weight: 700;
+      text-decoration: none; transition: opacity .2s; display: inline-block;
+    }
+    .btn-primary:hover { opacity: .85; }
+    .btn-ghost {
+      background: transparent; color: var(--acc2);
+      border: 1.5px solid rgba(184,152,88,0.4); padding: 13px 28px; border-radius: 7px;
+      font-size: 13px; letter-spacing: 0.8px; text-transform: uppercase;
+      cursor: pointer; font-family: 'Trebuchet MS', sans-serif; font-weight: 600;
+      text-decoration: none; transition: all .2s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--acc2); background: rgba(184,152,88,0.06); }
+
+    /* HERO CARD */
+    .hero-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .hero-card-header {
+      background: linear-gradient(135deg, #1a1528, #120f1c);
+      padding: 24px 28px; border-bottom: 1px solid var(--border);
+    }
+    .hero-card-header h3 { font-size: 14px; color: var(--acc2); letter-spacing: 1px; text-transform: uppercase; font-family: 'Trebuchet MS', sans-serif; margin-bottom: 4px; }
+    .hero-card-header p { font-size: 12px; color: var(--muted); font-family: 'Trebuchet MS', sans-serif; }
+    .christies-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(184,152,88,0.15); border: 1px solid rgba(184,152,88,0.4);
+      border-radius: 6px; padding: 5px 12px; margin-top: 12px;
+      font-size: 11px; color: var(--acc); letter-spacing: 0.8px;
+      font-family: 'Trebuchet MS', sans-serif; text-transform: uppercase;
+    }
+    .hero-card-body { padding: 24px 28px; }
+    .info-row {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid rgba(37,31,53,0.6);
+    }
+    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-icon { font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+    .info-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.7px; font-family: 'Trebuchet MS', sans-serif; }
+    .info-val { font-size: 13.5px; color: var(--text); margin-top: 1px; font-family: 'Trebuchet MS', sans-serif; }
+
+    /* STATS */
+    .stats {
+      background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 40px 40px;
+    }
+    .stats-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px; }
+    .stat { text-align: center; padding: 0 24px; }
+    .stat-num { font-size: 2.2rem; font-weight: 400; color: var(--acc2); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; font-family: 'Trebuchet MS', sans-serif; }
+
+    /* SECTION COMMON */
+    section { padding: 88px 40px; }
+    .section-inner { max-width: 1180px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; color: var(--acc); text-transform: uppercase; letter-spacing: 2px;
+      font-family: 'Trebuchet MS', sans-serif; margin-bottom: 12px;
+    }
+    .section-title { font-size: clamp(1.7rem, 2.5vw, 2.4rem); font-weight: 400; color: var(--text); margin-bottom: 16px; line-height: 1.3; }
+    .section-title em { font-style: italic; color: var(--acc2); }
+    .section-desc { font-size: 1rem; color: var(--muted); max-width: 620px; line-height: 1.8; font-family: 'Trebuchet MS', sans-serif; }
+
+    /* ABOUT */
+    .about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-top: 48px; }
+    .about-highlight {
+      background: linear-gradient(135deg, rgba(184,152,88,0.08), rgba(140,112,64,0.04));
+      border: 1px solid rgba(184,152,88,0.25); border-radius: 14px; padding: 32px;
+    }
+    .about-highlight h3 { font-size: 1.2rem; color: var(--acc2); margin-bottom: 16px; font-weight: 400; }
+    .about-highlight p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; font-family: 'Trebuchet MS', sans-serif; margin-bottom: 14px; }
+    .about-highlight p:last-child { margin-bottom: 0; }
+    .about-highlight strong { color: var(--text); }
+    .about-pillars { display: flex; flex-direction: column; gap: 20px; }
+    .pillar {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 22px 24px;
+      display: flex; align-items: flex-start; gap: 18px;
+    }
+    .pillar-icon { font-size: 24px; flex-shrink: 0; }
+    .pillar h4 { font-size: 14px; color: var(--acc2); margin-bottom: 6px; letter-spacing: 0.5px; font-family: 'Trebuchet MS', sans-serif; }
+    .pillar p { font-size: 13px; color: var(--muted); line-height: 1.6; font-family: 'Trebuchet MS', sans-serif; }
+
+    /* SERVICES */
+    .services { background: var(--bg2); }
+    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 28px; transition: border-color .2s, transform .2s;
+    }
+    .card:hover { border-color: rgba(184,152,88,0.4); transform: translateY(-3px); }
+    .card-icon { font-size: 28px; margin-bottom: 16px; }
+    .card h3 { font-size: 15px; color: var(--text); margin-bottom: 10px; font-family: 'Trebuchet MS', sans-serif; font-weight: 600; }
+    .card p { font-size: 13px; color: var(--muted); line-height: 1.7; font-family: 'Trebuchet MS', sans-serif; }
+    .card-tag {
+      display: inline-block; margin-top: 14px;
+      background: rgba(184,152,88,0.1); border: 1px solid rgba(184,152,88,0.25);
+      color: var(--acc); font-size: 11px; padding: 3px 10px; border-radius: 4px;
+      font-family: 'Trebuchet MS', sans-serif; letter-spacing: 0.5px;
+    }
+
+    /* AREAS */
+    .areas { background: var(--bg); }
+    .areas-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 48px; }
+    .area-block {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px;
+    }
+    .area-block h3 { font-size: 14px; color: var(--acc2); margin-bottom: 16px; letter-spacing: 0.8px; text-transform: uppercase; font-family: 'Trebuchet MS', sans-serif; }
+    .area-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .area-tag {
+      background: rgba(37,31,53,0.8); border: 1px solid var(--border);
+      color: var(--muted); font-size: 12px; padding: 5px 12px; border-radius: 6px;
+      font-family: 'Trebuchet MS', sans-serif; transition: color .2s, border-color .2s;
+    }
+    .area-tag:hover { color: var(--acc2); border-color: rgba(184,152,88,0.3); }
+
+    /* PRICE RANGE */
+    .price-range-section { background: var(--bg2); }
+    .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+    .price-block {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 32px;
+    }
+    .price-block h3 { font-size: 14px; color: var(--acc2); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.8px; font-family: 'Trebuchet MS', sans-serif; }
+    .price-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(37,31,53,0.5); }
+    .price-row:last-child { border-bottom: none; }
+    .price-label { font-size: 13px; color: var(--muted); font-family: 'Trebuchet MS', sans-serif; }
+    .price-badge {
+      background: rgba(184,152,88,0.1); border: 1px solid rgba(184,152,88,0.2);
+      color: var(--acc2); font-size: 11px; padding: 3px 10px; border-radius: 4px;
+      font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* CHRISTIES */
+    .christies { background: var(--bg); }
+    .christies-inner {
+      background: linear-gradient(135deg, rgba(184,152,88,0.08), rgba(140,112,64,0.04));
+      border: 1px solid rgba(184,152,88,0.3); border-radius: 20px; padding: 64px;
+      text-align: center; max-width: 860px; margin: 0 auto;
+    }
+    .christies-logo {
+      font-size: 2rem; color: var(--acc2); margin-bottom: 8px; letter-spacing: 3px;
+      text-transform: uppercase; font-family: Georgia, serif;
+    }
+    .christies-subtitle { font-size: 12px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; font-family: 'Trebuchet MS', sans-serif; margin-bottom: 32px; }
+    .christies-inner h2 { font-size: 1.8rem; color: var(--text); font-weight: 400; margin-bottom: 20px; line-height: 1.4; }
+    .christies-inner p { font-size: 1rem; color: var(--muted); line-height: 1.8; font-family: 'Trebuchet MS', sans-serif; max-width: 600px; margin: 0 auto 28px; }
+    .christies-features { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .cf-item { text-align: center; }
+    .cf-icon { font-size: 22px; margin-bottom: 6px; }
+    .cf-label { font-size: 12px; color: var(--muted); font-family: 'Trebuchet MS', sans-serif; letter-spacing: 0.5px; }
+
+    /* CONTACT */
+    .contact { background: var(--bg2); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px; }
+    .contact-info h3 { font-size: 1.2rem; color: var(--acc2); font-weight: 400; margin-bottom: 24px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+    .contact-item-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .contact-item-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.7px; font-family: 'Trebuchet MS', sans-serif; }
+    .contact-item-val { font-size: 14px; color: var(--text); margin-top: 2px; font-family: 'Trebuchet MS', sans-serif; }
+    .contact-item-val a { color: var(--acc2); text-decoration: none; }
+    .contact-item-val a:hover { text-decoration: underline; }
+    .contact-form-block {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 36px;
+    }
+    .contact-form-block h3 { font-size: 1.1rem; color: var(--text); font-weight: 400; margin-bottom: 8px; }
+    .contact-form-block p { font-size: 13px; color: var(--muted); margin-bottom: 24px; font-family: 'Trebuchet MS', sans-serif; }
+    .form-row { margin-bottom: 18px; }
+    .form-row label { display: block; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 6px; font-family: 'Trebuchet MS', sans-serif; }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; background: rgba(37,31,53,0.5); border: 1px solid var(--border);
+      border-radius: 7px; padding: 10px 14px; color: var(--text); font-size: 14px;
+      font-family: 'Trebuchet MS', sans-serif; outline: none; transition: border-color .2s;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--acc); }
+    .form-row textarea { resize: vertical; min-height: 90px; }
+    .form-row select option { background: var(--bg2); }
+    .form-submit {
+      width: 100%; background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: var(--bg); border: none; padding: 13px; border-radius: 7px;
+      font-size: 13px; letter-spacing: 0.8px; text-transform: uppercase;
+      cursor: pointer; font-family: 'Trebuchet MS', sans-serif; font-weight: 700;
+      transition: opacity .2s;
+    }
+    .form-submit:hover { opacity: .85; }
+    .social-row { display: flex; gap: 12px; margin-top: 28px; }
+    .social-btn {
+      background: rgba(37,31,53,0.6); border: 1px solid var(--border);
+      color: var(--muted); font-size: 12px; padding: 8px 16px; border-radius: 6px;
+      text-decoration: none; font-family: 'Trebuchet MS', sans-serif; letter-spacing: 0.5px;
+      transition: all .2s;
+    }
+    .social-btn:hover { color: var(--acc2); border-color: rgba(184,152,88,0.3); }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 48px 40px 32px; text-align: center;
+    }
+    .footer-inner { max-width: 1180px; margin: 0 auto; }
+    .footer-logo { font-size: 18px; color: var(--acc2); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .footer-tagline { font-size: 12px; color: var(--muted); letter-spacing: 1px; font-family: 'Trebuchet MS', sans-serif; margin-bottom: 28px; }
+    .footer-links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 28px; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; font-family: 'Trebuchet MS', sans-serif; letter-spacing: 0.5px; transition: color .2s; }
+    .footer-links a:hover { color: var(--acc2); }
+    .footer-copy { font-size: 12px; color: rgba(144,136,160,0.5); font-family: 'Trebuchet MS', sans-serif; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-grid, .about-grid, .contact-grid, .price-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .areas-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 64px 20px; }
+      .stats { padding: 32px 20px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .christies-inner { padding: 40px 24px; }
+      .christies-features { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">L</div>
+    <span class="nav-logo-text">Landscope Realty</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#areas">Areas</a></li>
+    <li><a href="#christies">Christie's</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Enquire Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>✦</span> Hong Kong's Premier Luxury Property Specialist
+      </div>
+      <h1>Where <em>Prestige</em><br>Meets Property</h1>
+      <p class="hero-sub">
+        Landscope Realty Limited — trusted by Hong Kong's most discerning buyers and investors for luxury residential sales, premium rentals, and global property investment advisory.
+      </p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Explore Our Services</a>
+        <a href="#contact" class="btn-ghost">Book Consultation</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <h3>Landscope Realty Limited</h3>
+        <p>Licensed Estate Agency · Hong Kong</p>
+        <div class="christies-badge">✦ Christie's International Real Estate Affiliate</div>
+      </div>
+      <div class="hero-card-body">
+        <div class="info-row">
+          <div class="info-icon">📧</div>
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-val"><a href="mailto:info@landscope.com" style="color:var(--acc2);text-decoration:none;">info@landscope.com</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🌐</div>
+          <div>
+            <div class="info-label">Website</div>
+            <div class="info-val"><a href="https://www.landscope.com" target="_blank" style="color:var(--acc2);text-decoration:none;">www.landscope.com</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Base</div>
+            <div class="info-val">Hong Kong</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🏆</div>
+          <div>
+            <div class="info-label">Achievement</div>
+            <div class="info-val">HK$728.88M — Highest Residential Sale</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">💬</div>
+          <div>
+            <div class="info-label">Social</div>
+            <div class="info-val">Instagram · LinkedIn · WeChat · WhatsApp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">HK$728M+</div>
+      <div class="stat-label">Highest Single Residential Sale</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1st</div>
+      <div class="stat-label">Christie's Affiliate in SE Asia</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">HK$400M+</div>
+      <div class="stat-label">Ultra-Luxury Sales Tier</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Premium Districts Covered</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Languages Supported</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">About Us</div>
+    <div class="section-title">Hong Kong's Leader in <em>Luxury Real Estate</em></div>
+    <p class="section-desc">
+      Landscope Realty Limited has established itself as the foremost name in Hong Kong's luxury property market, combining local expertise with a world-class global network.
+    </p>
+    <div class="about-grid">
+      <div class="about-highlight">
+        <h3>Our Story &amp; Values</h3>
+        <p>
+          Landscope Realty Limited is <strong>Hong Kong's leading luxury property brokerage</strong>, known for its unrivalled track record in the city's most prestigious addresses — from The Peak and Repulse Bay to the Midlevels and Deep Water Bay.
+        </p>
+        <p>
+          Having brokered Hong Kong's <strong>highest residential sale at HK$728.88 million</strong>, our expertise in the ultra-luxury segment is unmatched. Our team specialises in connecting ultra-high-net-worth clients with the finest properties Hong Kong has to offer — as well as premium opportunities worldwide through our Christie's International Real Estate network.
+        </p>
+        <p>
+          Under the leadership of <strong>Managing Director K.S. Koh</strong>, our firm operates on three core principles: <em>integrity, professionalism, and discretion</em> — the hallmarks of every transaction we handle.
+        </p>
+      </div>
+      <div class="about-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🎯</div>
+          <div>
+            <h4>Integrity</h4>
+            <p>Every transaction is handled with complete transparency and honesty. We build relationships for life, not just for a single deal.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🏅</div>
+          <div>
+            <h4>Professionalism</h4>
+            <p>Our licensed team brings deep market knowledge, meticulous due diligence, and seamless execution to every assignment.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🔒</div>
+          <div>
+            <h4>Discretion</h4>
+            <p>Your privacy is our priority. Ultra-high-net-worth clients trust us to handle sensitive transactions with the utmost confidentiality.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🌍</div>
+          <div>
+            <h4>Global Reach</h4>
+            <p>As Christie's International Real Estate's first Southeast Asia affiliate, we provide clients access to premium property worldwide.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label">Our Services</div>
+    <div class="section-title">Expert Property <em>Solutions</em></div>
+    <p class="section-desc">From one-bedroom city apartments to ultra-luxury hilltop mansions, Landscope provides a full spectrum of property services for buyers, sellers, landlords and tenants.</p>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🏡</div>
+        <h3>Luxury Sales</h3>
+        <p>Expert guidance through Hong Kong's most exclusive property transactions. We specialise in prestige residential sales from HK$10M to above HK$400M.</p>
+        <span class="card-tag">Sales Advisory</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔑</div>
+        <h3>Premium Rentals</h3>
+        <p>Curated selection of rental properties for discerning tenants, from sophisticated apartments to sprawling luxury villas. Monthly rentals from HK$50K to HK$300K+.</p>
+        <span class="card-tag">Rental Management</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>International Property</h3>
+        <p>Access premium properties worldwide through our Christie's International Real Estate network. Serving clients seeking opportunities across the Americas, Europe, Asia and beyond.</p>
+        <span class="card-tag">Global Network</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <h3>Investment Advisory</h3>
+        <p>Strategic property investment advice for ultra-high-net-worth individuals. Portfolio diversification, market analysis and acquisition planning tailored to your goals.</p>
+        <span class="card-tag">Investment</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <h3>Property Search</h3>
+        <p>Bespoke property search service with advanced multi-criteria filtering — by district, price, size, and property type. Bookmark and compare listings effortlessly.</p>
+        <span class="card-tag">Search &amp; Match</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Transaction Records</h3>
+        <p>Comprehensive property transaction data and market analytics. Make informed decisions backed by verified Hong Kong property market records and price trend analysis.</p>
+        <span class="card-tag">Market Data</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas" id="areas">
+  <div class="section-inner">
+    <div class="section-label">Areas Covered</div>
+    <div class="section-title">Prestige Addresses Across <em>Hong Kong</em></div>
+    <p class="section-desc">Landscope specialises in Hong Kong's most sought-after residential addresses — from iconic hilltops and southern bays to vibrant urban neighbourhoods.</p>
+    <div class="areas-grid">
+      <div class="area-block">
+        <h3>🏝 Hong Kong Island</h3>
+        <div class="area-list">
+          <span class="area-tag">The Peak</span>
+          <span class="area-tag">Repulse Bay</span>
+          <span class="area-tag">Deep Water Bay</span>
+          <span class="area-tag">Shouson Hill</span>
+          <span class="area-tag">Stanley</span>
+          <span class="area-tag">Tai Tam</span>
+          <span class="area-tag">Happy Valley</span>
+          <span class="area-tag">Midlevels Central</span>
+          <span class="area-tag">Midlevels East</span>
+          <span class="area-tag">Midlevels West</span>
+          <span class="area-tag">Pokfulam</span>
+          <span class="area-tag">Jardine's Lookout</span>
+          <span class="area-tag">Aberdeen / Ap Lei Chau</span>
+          <span class="area-tag">Chung Hom Kok</span>
+          <span class="area-tag">North Point Midlevels</span>
+          <span class="area-tag">Wan Chai</span>
+        </div>
+      </div>
+      <div class="area-block">
+        <h3>🏙 Kowloon &amp; New Territories</h3>
+        <div class="area-list">
+          <span class="area-tag">Tsim Sha Tsui</span>
+          <span class="area-tag">Kowloon Tong</span>
+          <span class="area-tag">Hung Hom</span>
+          <span class="area-tag">Sai Kung</span>
+          <span class="area-tag">Clear Water Bay</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE RANGE -->
+<section class="price-range-section" id="pricing">
+  <div class="section-inner">
+    <div class="section-label">Price Guide</div>
+    <div class="section-title">Properties for Every <em>Tier of Luxury</em></div>
+    <p class="section-desc">From prime apartments to trophy estates, Landscope handles transactions across Hong Kong's full luxury property spectrum.</p>
+    <div class="price-grid">
+      <div class="price-block">
+        <h3>🏠 Sales — Price Ranges</h3>
+        <div class="price-row">
+          <span class="price-label">Entry Luxury</span>
+          <span class="price-badge">Under HK$10M</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">Mid Luxury</span>
+          <span class="price-badge">HK$10M – HK$50M</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">High Luxury</span>
+          <span class="price-badge">HK$50M – HK$100M</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">Premium Luxury</span>
+          <span class="price-badge">HK$100M – HK$400M</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">Ultra Luxury</span>
+          <span class="price-badge">Above HK$400M</span>
+        </div>
+      </div>
+      <div class="price-block">
+        <h3>🏘 Rentals — Monthly Ranges</h3>
+        <div class="price-row">
+          <span class="price-label">Entry Prestige</span>
+          <span class="price-badge">Under HK$50K / mo</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">Mid Prestige</span>
+          <span class="price-badge">HK$50K – HK$100K / mo</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">High Prestige</span>
+          <span class="price-badge">HK$100K – HK$200K / mo</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">Top Tier</span>
+          <span class="price-badge">HK$200K – HK$300K / mo</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">Trophy Rentals</span>
+          <span class="price-badge">Above HK$300K / mo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHRISTIE'S -->
+<section class="christies" id="christies">
+  <div class="section-inner">
+    <div class="christies-inner">
+      <div class="christies-logo">Christie's</div>
+      <div class="christies-subtitle">International Real Estate Network</div>
+      <h2>Southeast Asia's First Christie's International Real Estate Affiliate</h2>
+      <p>
+        Landscope Realty Limited is proud to be the <strong style="color:var(--acc2)">first real estate affiliate in Southeast Asia</strong> for Christie's International Real Estate — the world's most prestigious luxury property network, associated with Christie's auction house.
+      </p>
+      <p>
+        This exclusive affiliation grants our clients seamless access to pre-qualified real estate specialists worldwide, enabling the acquisition and disposal of luxury properties across global markets — with the added benefit of Christie's art advisory for ultra-high-net-worth clientele with diverse investment interests.
+      </p>
+      <div class="christies-features">
+        <div class="cf-item">
+          <div class="cf-icon">🌍</div>
+          <div class="cf-label">Global Network</div>
+        </div>
+        <div class="cf-item">
+          <div class="cf-icon">🎨</div>
+          <div class="cf-label">Art Advisory</div>
+        </div>
+        <div class="cf-item">
+          <div class="cf-icon">💎</div>
+          <div class="cf-label">Luxury Focus</div>
+        </div>
+        <div class="cf-item">
+          <div class="cf-icon">🤝</div>
+          <div class="cf-label">Pre-Qualified Clients</div>
+        </div>
+        <div class="cf-item">
+          <div class="cf-icon">🔒</div>
+          <div class="cf-label">Full Discretion</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact Us</div>
+    <div class="section-title">Start Your <em>Property Journey</em></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-val"><a href="mailto:info@landscope.com">info@landscope.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🌐</div>
+          <div>
+            <div class="contact-item-label">Website</div>
+            <div class="contact-item-val"><a href="https://www.landscope.com" target="_blank">www.landscope.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Location</div>
+            <div class="contact-item-val">Hong Kong</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">💱</div>
+          <div>
+            <div class="contact-item-label">Currencies Accepted</div>
+            <div class="contact-item-val">HKD · USD · EUR · CNY · GBP</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🗣</div>
+          <div>
+            <div class="contact-item-label">Languages</div>
+            <div class="contact-item-val">English · Traditional Chinese · Simplified Chinese</div>
+          </div>
+        </div>
+        <div class="social-row">
+          <a href="https://www.instagram.com/landscope_hk" target="_blank" class="social-btn">📸 Instagram</a>
+          <a href="https://www.linkedin.com/company/landscope-realty" target="_blank" class="social-btn">💼 LinkedIn</a>
+          <a href="#contact" class="social-btn">💬 WeChat</a>
+          <a href="#contact" class="social-btn">📱 WhatsApp</a>
+        </div>
+      </div>
+      <div class="contact-form-block">
+        <h3>Property Enquiry</h3>
+        <p>Tell us what you're looking for and our team will be in touch.</p>
+        <form onsubmit="event.preventDefault()">
+          <div class="form-row">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name" />
+          </div>
+          <div class="form-row">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-row">
+            <label>Enquiry Type</label>
+            <select>
+              <option>Sales — Buying a Property</option>
+              <option>Sales — Selling a Property</option>
+              <option>Rental — Looking to Rent</option>
+              <option>Rental — Listing for Rent</option>
+              <option>International Property</option>
+              <option>Investment Advisory</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Budget / Price Range</label>
+            <select>
+              <option>Under HK$10M</option>
+              <option>HK$10M – HK$50M</option>
+              <option>HK$50M – HK$100M</option>
+              <option>HK$100M – HK$400M</option>
+              <option>Above HK$400M</option>
+              <option>Rental — HK$50K–HK$100K/mo</option>
+              <option>Rental — Above HK$100K/mo</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Message</label>
+            <textarea placeholder="Describe the property you're looking for, preferred areas, or any other details..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Landscope Realty Limited</div>
+    <div class="footer-tagline">Integrity · Professionalism · Discretion — Christie's International Real Estate Affiliate</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#areas">Areas</a>
+      <a href="#christies">Christie's</a>
+      <a href="#pricing">Price Guide</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.landscope.com" target="_blank">Website</a>
+    </div>
+    <div class="footer-copy">&copy; 2024 Landscope Realty Limited. All rights reserved. Licensed Estate Agent, Hong Kong.</div>
+  </div>
+</footer>
+
+</body>
+</html>
