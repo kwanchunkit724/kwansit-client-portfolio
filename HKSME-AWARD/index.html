@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HKSME Award | Hong Kong SME Award Programme</title>
+<style>
+:root {
+  --primary: #080e1a;
+  --secondary: #0c1428;
+  --accent: #c8202c;
+  --accent2: #c89020;
+  --accent-gold: #e0aa30;
+  --accent-blue: #1050c8;
+  --text: #e4e8f0;
+  --text-muted: #788098;
+  --card-bg: #101c30;
+  --border: #182438;
+  --hero-overlay: rgba(8,14,26,0.85);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI','Arial',sans-serif;background:var(--primary);color:var(--text);line-height:1.7;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,14,26,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-icon{width:46px;height:46px;background:linear-gradient(135deg,var(--accent),#900c18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;}
+.nav-logo-text{display:flex;flex-direction:column;}
+.nav-logo-en{font-size:0.95rem;font-weight:700;color:var(--text);line-height:1.2;letter-spacing:0.04em;}
+.nav-logo-sub{font-size:0.6rem;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.88rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent-gold);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:5px;text-decoration:none;font-size:0.88rem;font-weight:700;transition:background 0.2s;}
+.nav-cta:hover{background:#a01820;}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(160deg,#080e1a 0%,#0c1428 45%,#081020 100%);display:flex;align-items:center;padding-top:70px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 55%,rgba(200,32,44,0.1) 0%,transparent 55%);}
+.hero::after{content:'';position:absolute;top:5%;right:5%;width:400px;height:400px;background:radial-gradient(circle,rgba(200,144,32,0.05) 0%,transparent 70%);}
+.hero-grid{max-width:1200px;margin:0 auto;padding:5rem 2rem;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;z-index:1;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(200,32,44,0.1);border:1px solid rgba(200,32,44,0.3);border-radius:4px;padding:0.4rem 1rem;margin-bottom:1.5rem;font-size:0.75rem;color:#f08090;letter-spacing:0.1em;text-transform:uppercase;}
+.hero h1{font-size:3rem;font-weight:800;line-height:1.15;margin-bottom:0.5rem;}
+.hero h1 .red{color:var(--accent);}
+.hero h1 .gold{color:var(--accent-gold);}
+.hero-sub{font-size:0.95rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;}
+.hero-desc{font-size:0.98rem;color:var(--text-muted);margin-bottom:2rem;max-width:540px;line-height:1.8;}
+.hero-sponsors{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:2rem;}
+.sponsor-tag{background:rgba(200,144,32,0.1);border:1px solid rgba(200,144,32,0.25);border-radius:4px;padding:0.3rem 0.8rem;font-size:0.75rem;color:var(--accent-gold);display:flex;align-items:center;gap:5px;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.85rem 2rem;border-radius:5px;text-decoration:none;font-weight:700;font-size:0.93rem;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{background:#a01820;transform:translateY(-2px);}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid rgba(228,232,240,0.2);padding:0.85rem 2rem;border-radius:5px;text-decoration:none;font-weight:700;font-size:0.93rem;transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--accent-gold);color:var(--accent-gold);}
+.hero-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent-gold);margin-bottom:1.3rem;}
+.info-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1rem;}
+.info-row:last-child{margin-bottom:0;}
+.info-icon{width:34px;height:34px;border-radius:6px;background:rgba(200,32,44,0.1);border:1px solid rgba(200,32,44,0.2);display:flex;align-items:center;justify-content:center;font-size:0.88rem;flex-shrink:0;}
+.info-label{font-size:0.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:2px;}
+.info-value{font-size:0.86rem;color:var(--text);}
+.info-value a{color:var(--accent-gold);text-decoration:none;}
+
+/* STATS */
+.stats{background:linear-gradient(90deg,var(--accent),#900c18);padding:2.5rem 2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+.stat-num{font-size:2.2rem;font-weight:800;color:#fff;line-height:1;}
+.stat-label{font-size:0.8rem;color:rgba(255,255,255,0.8);margin-top:6px;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:0.73rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent-gold);margin-bottom:0.6rem;}
+.section-title{font-size:2.2rem;font-weight:800;margin-bottom:1rem;line-height:1.2;}
+.section-sub{font-size:0.95rem;color:var(--text-muted);max-width:600px;margin-bottom:3rem;line-height:1.8;}
+
+/* ABOUT */
+.about{background:var(--secondary);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(200,32,44,0.1),rgba(200,144,32,0.06));border:1px solid rgba(200,32,44,0.25);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:1.8rem;margin-bottom:1.8rem;}
+.about-highlight h3{font-size:0.9rem;font-weight:700;color:#f08090;margin-bottom:0.7rem;text-transform:uppercase;letter-spacing:0.05em;}
+.about-highlight p{color:var(--text-muted);font-size:0.92rem;line-height:1.8;}
+.about-body p{color:var(--text-muted);margin-bottom:1rem;font-size:0.92rem;line-height:1.8;}
+.quote-block{background:rgba(200,144,32,0.05);border:1px solid rgba(200,144,32,0.15);border-radius:10px;padding:1.4rem;margin-top:1rem;font-style:italic;}
+.quote-text{font-size:0.9rem;color:var(--text-muted);line-height:1.8;margin-bottom:0.8rem;}
+.quote-author{font-size:0.78rem;color:var(--accent-gold);font-weight:600;}
+.objectives-grid{display:grid;grid-template-columns:1fr;gap:1rem;}
+.objective{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;align-items:flex-start;gap:12px;}
+.objective-num{width:32px;height:32px;background:linear-gradient(135deg,var(--accent),#900c18);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:#fff;flex-shrink:0;}
+.objective-text{font-size:0.85rem;color:var(--text-muted);}
+
+/* CATEGORIES */
+.categories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.cat-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.cat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.cat-card:hover{border-color:rgba(200,32,44,0.35);transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,0.5);}
+.cat-card:hover::before{opacity:1;}
+.cat-icon{font-size:2.4rem;margin-bottom:0.8rem;}
+.cat-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.cat-desc{font-size:0.84rem;color:var(--text-muted);line-height:1.7;}
+
+/* CRITERIA */
+.criteria{background:var(--secondary);}
+.criteria-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.crit-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.4rem;text-align:center;}
+.crit-icon{font-size:1.8rem;margin-bottom:0.6rem;}
+.crit-title{font-size:0.88rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+.crit-desc{font-size:0.76rem;color:var(--text-muted);}
+
+/* ORGANIZERS */
+.org-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.org-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;text-align:center;}
+.org-icon{font-size:2rem;margin-bottom:0.8rem;}
+.org-role{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent-gold);margin-bottom:0.4rem;}
+.org-name{font-size:0.92rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.org-desc{font-size:0.78rem;color:var(--text-muted);}
+
+/* CONTACT */
+.contact{background:var(--primary);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.contact-info-block{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem;}
+.contact-info-block h3{font-size:1rem;font-weight:700;margin-bottom:1.4rem;color:var(--text);}
+.cinfo-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border);}
+.cinfo-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.cinfo-icon{width:38px;height:38px;background:rgba(200,32,44,0.1);border:1px solid rgba(200,32,44,0.2);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+.cinfo-label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;}
+.cinfo-value{font-size:0.88rem;color:var(--text);}
+.cinfo-value a{color:var(--accent-gold);text-decoration:none;}
+.contact-form-block{background:var(--secondary);border:1px solid var(--border);border-radius:12px;padding:2rem;}
+.contact-form-block h3{font-size:1rem;font-weight:700;margin-bottom:1.4rem;color:var(--text);}
+.form-group{margin-bottom:1.1rem;}
+.form-group label{display:block;font-size:0.73rem;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--primary);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;color:var(--text);font-family:inherit;font-size:0.9rem;transition:border-color 0.2s;resize:vertical;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);}
+.form-group select option{background:var(--primary);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.submit-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:0.85rem;border-radius:6px;font-family:inherit;font-size:0.93rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.submit-btn:hover{background:#a01820;}
+
+/* FOOTER */
+footer{background:var(--secondary);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:2rem;}
+.footer-brand p{font-size:0.83rem;color:var(--text-muted);line-height:1.7;margin-top:1rem;}
+.footer-col h4{font-size:0.73rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent-gold);margin-bottom:1rem;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:0.6rem;}
+.footer-col ul li a{color:var(--text-muted);text-decoration:none;font-size:0.83rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent-gold);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.78rem;color:var(--text-muted);}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .categories-grid,.org-grid{grid-template-columns:1fr 1fr;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .criteria-grid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  nav .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">🏆</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-en">HKSME Award</span>
+        <span class="nav-logo-sub">Hong Kong SME Award Programme</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#criteria">Criteria</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Enquire Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span>🏆</span>
+        <span>Hong Kong's Premier SME Recognition Programme</span>
+      </div>
+      <h1>Hong Kong<br><span class="red">SME</span> <span class="gold">Award</span></h1>
+      <p class="hero-sub">Recognising Outstanding Hong Kong Small & Medium Enterprises</p>
+      <p class="hero-desc">The Hong Kong SME Award highlights and commends outstanding local small and medium enterprises (SMEs). The Award provides SMEs with an opportunity to learn from each other and motivates them to contribute further to the development of the Hong Kong economy.</p>
+      <div class="hero-sponsors">
+        <div class="sponsor-tag">🏛️ HK General Chamber of Commerce</div>
+        <div class="sponsor-tag">⚙️ HK Productivity Council</div>
+        <div class="sponsor-tag">🏢 TID · Trade & Industry Dept</div>
+      </div>
+      <div class="hero-actions">
+        <a href="#categories" class="btn-primary">Award Categories →</a>
+        <a href="#contact" class="btn-secondary">📧 Enquire</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">Programme Contact</div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-label">SMELink Enquiry</div>
+          <div class="info-value"><a href="mailto:smelink_enquiry@tid.gov.hk">smelink_enquiry@tid.gov.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">Official Website</div>
+          <div class="info-value"><a href="https://www.chamber.org.hk/SMEAWARD/" target="_blank">chamber.org.hk/SMEAWARD</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🏛️</div>
+        <div>
+          <div class="info-label">Organiser</div>
+          <div class="info-value">HK General Chamber of Commerce</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">⚙️</div>
+        <div>
+          <div class="info-label">Co-organiser</div>
+          <div class="info-value">HK Productivity Council</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">Support</div>
+          <div class="info-value">Trade & Industry Department, HKSAR</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">98%</div>
+      <div class="stat-label">of HK Businesses Are SMEs</div>
+    </div>
+    <div>
+      <div class="stat-num">🏆</div>
+      <div class="stat-label">Annual Award Programme</div>
+    </div>
+    <div>
+      <div class="stat-num">3</div>
+      <div class="stat-label">Organising Bodies</div>
+    </div>
+    <div>
+      <div class="stat-num">HK</div>
+      <div class="stat-label">Pearl of the Orient</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">About The Award</div>
+        <h2 class="section-title">Celebrating Hong Kong's<br>Business Champions</h2>
+        <div class="about-highlight">
+          <h3>🇭🇰 Hong Kong SMEs — The Pearl's Lustre</h3>
+          <p>"Hong Kong SMEs are the lustre of pearl. Although small, they are bright and they make Hong Kong, the Pearl of the Orient, shine." The HKSME Award exists to celebrate these unsung champions of the Hong Kong economy.</p>
+        </div>
+        <div class="about-body">
+          <p>The Hong Kong SME Award (HKSME Award) is a prestigious annual recognition programme jointly organised by the Hong Kong General Chamber of Commerce and the Hong Kong Productivity Council, with support from the Trade and Industry Department of the HKSAR Government.</p>
+          <p>SMEs in Hong Kong make up 98% of all corporations and are the major driving force of the city's economy. The Award recognises outstanding achievements, sets examples for other entrepreneurs, and motivates SMEs to continue contributing to Hong Kong's economic growth.</p>
+        </div>
+        <div class="quote-block">
+          <p class="quote-text">"SMEs in Hong Kong have always occupied an important place in our economy and have contributed significantly to the development of the industrial and services sectors. As engines powering the creation of employment, SMEs have increasingly been recognised as the linchpin of any productive economy."</p>
+          <p class="quote-author">— The Honourable Donald Tsang, Financial Secretary, HKSAR</p>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">Programme Objectives</div>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1.2rem;">The HKSME Award programme serves multiple important objectives for Hong Kong's business community:</p>
+        <div class="objectives-grid">
+          <div class="objective">
+            <div class="objective-num">1</div>
+            <div class="objective-text">Recognise and commend outstanding SMEs that demonstrate excellence in business operations, innovation, and competitiveness</div>
+          </div>
+          <div class="objective">
+            <div class="objective-num">2</div>
+            <div class="objective-text">Set successful business models as examples for other entrepreneurs and SMEs to benchmark and learn from</div>
+          </div>
+          <div class="objective">
+            <div class="objective-num">3</div>
+            <div class="objective-text">Create opportunities for SMEs to share knowledge, network, and learn from each other's experiences</div>
+          </div>
+          <div class="objective">
+            <div class="objective-num">4</div>
+            <div class="objective-text">Motivate SMEs to innovate, improve productivity, and contribute further to Hong Kong's economic development</div>
+          </div>
+          <div class="objective">
+            <div class="objective-num">5</div>
+            <div class="objective-text">Promote the importance of SMEs and raise public awareness of their vital contribution to the Hong Kong economy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="section-inner">
+    <div class="section-label">Award Categories</div>
+    <h2 class="section-title">Recognition Across All Sectors</h2>
+    <p class="section-sub">The HKSME Award recognises excellence across key dimensions of SME performance and operation.</p>
+    <div class="categories-grid">
+      <div class="cat-card">
+        <div class="cat-icon">💡</div>
+        <div class="cat-name">Innovation Excellence</div>
+        <div class="cat-desc">Recognising SMEs that have embraced innovation as a core productivity strategy across all aspects of their business operations, driving competitive advantage in the marketplace.</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">📈</div>
+        <div class="cat-name">Business Growth</div>
+        <div class="cat-desc">Honouring enterprises that have achieved outstanding business growth, demonstrating strong financial performance, market expansion, and sustainable development strategies.</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🌿</div>
+        <div class="cat-name">Sustainability & ESG</div>
+        <div class="cat-desc">Celebrating SMEs that have integrated environmental, social, and governance principles into their business practices, contributing to a more sustainable Hong Kong economy.</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">👥</div>
+        <div class="cat-name">People Development</div>
+        <div class="cat-desc">Recognising outstanding human resources management, employee development programmes, workplace culture, and talent retention strategies that make SMEs great places to work.</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🌐</div>
+        <div class="cat-name">Market Expansion</div>
+        <div class="cat-desc">Honouring SMEs that have successfully expanded into new markets, particularly those that have leveraged Hong Kong's position as a gateway to the mainland and international business.</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">⭐</div>
+        <div class="cat-name">Overall Excellence</div>
+        <div class="cat-desc">The Grand Award for SMEs demonstrating outstanding all-round performance across multiple business dimensions, setting the highest standard of entrepreneurial achievement in Hong Kong.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRITERIA -->
+<section id="criteria" class="criteria">
+  <div class="section-inner">
+    <div class="section-label">Award Criteria</div>
+    <h2 class="section-title">What We Look For</h2>
+    <p class="section-sub">Winners are evaluated against rigorous criteria covering all aspects of business excellence.</p>
+    <div class="criteria-grid">
+      <div class="crit-card">
+        <div class="crit-icon">💡</div>
+        <div class="crit-title">Innovation</div>
+        <div class="crit-desc">Adoption of innovative practices and technologies to drive productivity</div>
+      </div>
+      <div class="crit-card">
+        <div class="crit-icon">📊</div>
+        <div class="crit-title">Financial Performance</div>
+        <div class="crit-desc">Sound financial management, sustainable growth, and profitability</div>
+      </div>
+      <div class="crit-card">
+        <div class="crit-icon">🎯</div>
+        <div class="crit-title">Strategy</div>
+        <div class="crit-desc">Clear business vision, strategy, and execution capability</div>
+      </div>
+      <div class="crit-card">
+        <div class="crit-icon">🤝</div>
+        <div class="crit-title">Customer Focus</div>
+        <div class="crit-desc">Commitment to quality service and customer satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORGANIZERS -->
+<section>
+  <div class="section-inner">
+    <div class="section-label">Organising Bodies</div>
+    <h2 class="section-title">The Award's Foundation</h2>
+    <p class="section-sub">The HKSME Award is supported by Hong Kong's most respected business institutions.</p>
+    <div class="org-grid">
+      <div class="org-card">
+        <div class="org-icon">🏛️</div>
+        <div class="org-role">Organiser</div>
+        <div class="org-name">Hong Kong General Chamber of Commerce</div>
+        <div class="org-desc">Hong Kong's premier business organisation, representing and serving the commercial interests of the business community since 1861.</div>
+      </div>
+      <div class="org-card">
+        <div class="org-icon">⚙️</div>
+        <div class="org-role">Co-organiser</div>
+        <div class="org-name">Hong Kong Productivity Council</div>
+        <div class="org-desc">A multi-disciplinary organisation supporting enterprises in achieving productivity excellence and adopting innovation for sustainable business growth.</div>
+      </div>
+      <div class="org-card">
+        <div class="org-icon">🏢</div>
+        <div class="org-role">Government Support</div>
+        <div class="org-name">Trade & Industry Department, HKSAR</div>
+        <div class="org-desc">The principal advisory body to the HKSAR Government on matters relating to trade and industry, providing SMELink services and support.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact & Enquiries</div>
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="section-sub">For enquiries about the HKSME Award programme, nominations, or SMELink services, please reach out to us.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-block">
+          <h3>Programme Contact</h3>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📧</div>
+            <div>
+              <div class="cinfo-label">SMELink Enquiry</div>
+              <div class="cinfo-value"><a href="mailto:smelink_enquiry@tid.gov.hk">smelink_enquiry@tid.gov.hk</a></div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">🌐</div>
+            <div>
+              <div class="cinfo-label">HKSME Award Website</div>
+              <div class="cinfo-value"><a href="https://www.chamber.org.hk/SMEAWARD/" target="_blank">chamber.org.hk/SMEAWARD</a></div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">🏛️</div>
+            <div>
+              <div class="cinfo-label">Chamber of Commerce</div>
+              <div class="cinfo-value"><a href="https://www.chamber.org.hk" target="_blank">chamber.org.hk</a></div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">🏢</div>
+            <div>
+              <div class="cinfo-label">Trade & Industry Dept</div>
+              <div class="cinfo-value"><a href="https://www.tid.gov.hk" target="_blank">tid.gov.hk</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-block">
+        <h3>Programme Enquiry</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" placeholder="SME company name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@company.com">
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="Contact number">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Enquiry Type</label>
+          <select>
+            <option value="">Select enquiry type...</option>
+            <option>Award Nomination / Application</option>
+            <option>Award Categories & Criteria</option>
+            <option>SMELink Services</option>
+            <option>Partnership / Sponsorship</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="4" placeholder="Describe your enquiry or how we can assist your SME..."></textarea>
+        </div>
+        <button class="submit-btn">📩 Submit Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="display:inline-flex;margin-bottom:0.8rem;">
+          <div class="nav-logo-icon">🏆</div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-en">HKSME Award</span>
+            <span class="nav-logo-sub">Hong Kong SME Award Programme</span>
+          </div>
+        </a>
+        <p>The Hong Kong SME Award recognises outstanding local small and medium enterprises, celebrating excellence, innovation, and contribution to Hong Kong's economy. Organised by the HK General Chamber of Commerce and HK Productivity Council.</p>
+      </div>
+      <div class="footer-col">
+        <h4>The Award</h4>
+        <ul>
+          <li><a href="#about">About the Award</a></li>
+          <li><a href="#categories">Award Categories</a></li>
+          <li><a href="#criteria">Evaluation Criteria</a></li>
+          <li><a href="#contact">Enquire / Nominate</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Organising Bodies</h4>
+        <ul>
+          <li><a href="https://www.chamber.org.hk" target="_blank">HK General Chamber</a></li>
+          <li><a href="https://www.hkpc.org" target="_blank">HK Productivity Council</a></li>
+          <li><a href="https://www.tid.gov.hk" target="_blank">Trade & Industry Dept</a></li>
+          <li><a href="https://www.chamber.org.hk/SMEAWARD/" target="_blank">HKSME Award Site</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© HKSME Award · Hong Kong SME Award Programme. All rights reserved.</div>
+      <div class="footer-copy">smelink_enquiry@tid.gov.hk</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
