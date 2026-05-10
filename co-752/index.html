@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>easyCorp | 香港公司成立 · 公司秘書 · 會計審計服務</title>
+<meta name="description" content="easyCorp — 成立於2007年，香港專業公司成立及商業服務機構，提供成立香港公司、離岸公司、公司秘書、虛擬辦公室、會計審計、商標及銀行開戶服務。恆生銀行最佳業務合作夥伴。">
+<style>
+:root{--bg:#030a08;--bg2:#050e0a;--bg3:#07120e;--green:#1a7848;--green-lt:#24a065;--green-bright:#2ec87e;--teal:#0e8878;--teal-lt:#14a890;--text:#e8f4f0;--muted:#689888;--border:rgba(26,120,72,0.22);--card-bg:rgba(255,255,255,0.03);--radius:10px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans HK','PingFang HK',sans-serif;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(3,10,8,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1.1rem;font-weight:900;color:var(--green-bright);letter-spacing:-.01em}
+.nav-logo span{color:var(--teal-lt);font-weight:400;font-size:.78rem;margin-left:8px;letter-spacing:.02em}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--green),var(--green-lt));color:#fff;padding:9px 22px;border-radius:6px;font-size:.88rem;font-weight:700;text-decoration:none;transition:opacity .2s}.nav-cta:hover{opacity:.88}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 60% 40%,rgba(26,120,72,0.11) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(26,120,72,0.1);border:1px solid rgba(26,120,72,0.3);border-radius:6px;padding:6px 14px;font-size:.8rem;color:var(--green-lt);margin-bottom:20px}
+h1{font-size:clamp(2rem,4.5vw,3.1rem);font-weight:900;line-height:1.1;margin-bottom:12px}
+h1 .easy{color:var(--green-bright)}
+h1 .sub{display:block;font-size:clamp(.85rem,1.7vw,1rem);font-weight:400;color:var(--teal-lt);letter-spacing:.04em;margin-top:8px}
+.award-strip{display:inline-flex;align-items:center;gap:8px;background:rgba(46,200,126,0.07);border:1px solid rgba(46,200,126,0.2);border-radius:6px;padding:8px 14px;font-size:.82rem;color:var(--green-bright);font-weight:700;margin:14px 0 18px}
+.hero-desc{color:var(--muted);font-size:1rem;max-width:440px;margin-bottom:22px;line-height:1.8}
+.svc-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.st{display:inline-flex;align-items:center;gap:5px;background:rgba(20,168,144,0.08);border:1px solid rgba(20,168,144,0.22);border-radius:6px;padding:4px 10px;font-size:.75rem;color:var(--teal-lt);font-weight:600}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--green),var(--green-lt));color:#fff;padding:13px 28px;border-radius:6px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 26px;border-radius:6px;font-size:.93rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}.btn-outline:hover{border-color:var(--green-lt);color:var(--green-lt)}
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:15px}
+.card-badge{display:flex;align-items:center;gap:12px}
+.badge-emblem{width:48px;height:48px;background:linear-gradient(135deg,var(--green),var(--green-bright));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;color:#fff;text-align:center;line-height:1.3}
+.badge-name{font-size:.95rem;font-weight:700}.badge-label{font-size:.76rem;color:var(--muted)}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--green-lt);flex-shrink:0;margin-top:2px;text-align:center}
+.card-row-text{font-size:.88rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block;font-size:.9rem}
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.stat-item{text-align:center}
+.stat-num{font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--green-lt),var(--green-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.82rem;margin-top:6px}
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(26,120,72,0.08);border:1px solid rgba(26,120,72,0.2);border-radius:6px;padding:4px 12px;font-size:.75rem;color:var(--green-lt);letter-spacing:.05em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--green-lt)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s}.svc-card:hover{border-color:var(--green-lt);transform:translateY(-4px)}
+.sc-icon{width:50px;height:50px;background:rgba(26,120,72,0.1);border:1px solid rgba(26,120,72,0.22);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.sc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.why-section{background:var(--bg2)}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.why-item{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:22px;display:flex;gap:16px;align-items:flex-start}
+.why-icon{width:44px;height:44px;background:rgba(26,120,72,0.1);border:1px solid rgba(26,120,72,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.why-title{font-size:.95rem;font-weight:700;margin-bottom:5px}
+.why-desc{font-size:.86rem;color:var(--muted);line-height:1.6}
+.contact-section{background:var(--bg3)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(26,120,72,0.1);border:1px solid rgba(26,120,72,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.75rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.93rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--green-lt);text-decoration:none}.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:34px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--green-lt)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#050e0a}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--green),var(--green-lt));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}.form-submit:hover{opacity:.88}
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:.95rem;font-weight:800;color:var(--green-bright)}
+.footer-copy{font-size:.8rem;color:var(--muted);text-align:center}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}.footer-links a:hover{color:var(--text)}
+@media(max-width:900px){.hero-inner,.contact-grid{grid-template-columns:1fr}.stats-inner,.cards-grid,.why-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav-links{display:none}.cards-grid,.stats-inner,.why-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">easyCorp<span>香港商業服務</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#why">為何選我們</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a href="mailto:cs@easycorp.com.hk" class="nav-cta">即時查詢</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🏢 香港公司成立 · 公司秘書 · 會計服務</div>
+      <h1><span class="easy">easy</span>Corp<span class="sub">easycorp.com.hk · 成立 2007 年</span></h1>
+      <div class="award-strip">🏅 恆生銀行最佳業務合作夥伴獎</div>
+      <p class="hero-desc">easyCorp 是香港領先的商業服務機構，自2007年起協助全球客戶成立香港及離岸公司，服務涵蓋公司秘書、會計審計、虛擬辦公室及銀行開戶，一站式滿足所有商業需求。</p>
+      <div class="svc-tags">
+        <span class="st">🏢 成立香港公司</span>
+        <span class="st">🌐 離岸公司</span>
+        <span class="st">📋 公司秘書</span>
+        <span class="st">📊 會計審計</span>
+        <span class="st">🏦 銀行開戶</span>
+      </div>
+      <div class="hero-btns">
+        <a href="mailto:cs@easycorp.com.hk" class="btn-primary">即時查詢</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-emblem">easy<br>Corp</div>
+        <div>
+          <div class="badge-label">香港商業服務 · 成立2007年</div>
+          <div class="badge-name">easyCorp 香港商業服務</div>
+        </div>
+      </div>
+      <hr class="card-divider">
+      <div class="card-row"><div class="card-row-icon">📧</div><div class="card-row-text"><strong>電郵</strong>cs@easycorp.com.hk</div></div>
+      <div class="card-row"><div class="card-row-icon">📱</div><div class="card-row-text"><strong>WhatsApp / 手機</strong>6622 0497</div></div>
+      <div class="card-row"><div class="card-row-icon">🌐</div><div class="card-row-text"><strong>網站</strong>easycorp.com.hk</div></div>
+      <div class="card-row"><div class="card-row-icon">📍</div><div class="card-row-text"><strong>地區</strong>香港</div></div>
+      <div class="card-row"><div class="card-row-icon">🏅</div><div class="card-row-text"><strong>獎項</strong>恆生銀行最佳業務合作夥伴</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">2007</div><div class="stat-label">成立年份</div></div>
+    <div class="stat-item"><div class="stat-num">全球</div><div class="stat-label">服務客戶遍及各洲</div></div>
+    <div class="stat-item"><div class="stat-num">10+</div><div class="stat-label">商業服務項目</div></div>
+    <div class="stat-item"><div class="stat-num">一站式</div><div class="stat-label">公司成立及秘書服務</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務項目</div>
+    <h2>全方位<span class="accent">商業支援</span>服務</h2>
+    <p class="section-lead">easyCorp 提供一站式商業服務，從公司成立到日常運營支援，協助本地及海外客戶輕鬆拓展香港及全球業務。</p>
+    <div class="cards-grid">
+      <div class="svc-card">
+        <div class="sc-icon">🏢</div>
+        <div class="sc-title">成立香港公司</div>
+        <div class="sc-desc">快速高效的香港有限公司成立服務，處理公司名稱查冊、文件準備及公司註冊處申請，讓您的業務在最短時間內合法運營。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🌐</div>
+        <div class="sc-title">成立離岸公司</div>
+        <div class="sc-desc">協助在英屬維爾京群島（BVI）、開曼群島、薩摩亞等主要離岸司法管轄區成立公司，為全球業務架構提供靈活的法律架構。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📋</div>
+        <div class="sc-title">公司秘書服務</div>
+        <div class="sc-desc">專業公司秘書服務，包括董事及股東會議記錄、法定申報、公司章程管理及年度法定申報，確保公司合規運作。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🏠</div>
+        <div class="sc-title">註冊地址 · 虛擬辦公室</div>
+        <div class="sc-desc">提供香港商業地址作公司注冊地址，並提供虛擬辦公室服務，包括郵件收發轉寄，讓初創企業以最低成本建立專業形象。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📊</div>
+        <div class="sc-title">會計 · 審計服務</div>
+        <div class="sc-desc">專業會計及審計服務，包括日常簿記、財務報表編製及法定審計，協助企業符合香港稅務及公司法規要求。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🏦</div>
+        <div class="sc-title">銀行開戶協助</div>
+        <div class="sc-desc">協助本地及海外客戶在香港各大銀行開設公司戶口，提供文件準備及開戶指導，提高開戶成功率。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">✅</div>
+        <div class="sc-title">申請撤銷註冊</div>
+        <div class="sc-desc">為不再運營的公司辦理撤銷公司登記手續，處理所有相關文件及法定程序，確保程序符合法律要求。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🌍</div>
+        <div class="sc-title">經濟實質 · 稅務號碼</div>
+        <div class="sc-desc">協助離岸公司符合經濟實質要求，辦理各地稅務識別號碼（TIN）申請，確保企業符合國際稅務合規標準。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">™️</div>
+        <div class="sc-title">商標及公證服務</div>
+        <div class="sc-desc">香港及內地商標注冊申請，以及各類商業文件的公證及認證服務，保護您的知識產權及確認文件的法律效力。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="why-section">
+  <div class="section-inner">
+    <div class="section-tag">為何選擇 easyCorp</div>
+    <h2>值得信賴的<span class="accent">商業夥伴</span></h2>
+    <p class="section-lead">自2007年起，easyCorp 憑藉專業知識及貼心服務，協助全球成千上萬家中小企業在香港成功開展業務。</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🏅</div>
+        <div>
+          <div class="why-title">恆生銀行認可合作夥伴</div>
+          <div class="why-desc">榮獲恆生銀行頒發最佳業務合作夥伴獎，充分體現我們在協助客戶銀行開戶方面的卓越專業表現。</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <div>
+          <div class="why-title">快速高效處理</div>
+          <div class="why-desc">以高效率完成公司成立及各類商業手續，讓您的業務盡快投入運作，節省寶貴時間與資源。</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🌏</div>
+        <div>
+          <div class="why-title">服務全球客戶</div>
+          <div class="why-desc">服務來自歐洲、美洲、東南亞、非洲等地的客戶，深諳跨境商業需求，提供切合不同地區的專業方案。</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔒</div>
+        <div>
+          <div class="why-title">合規專業保障</div>
+          <div class="why-desc">嚴格遵守香港法律法規，確保所有服務符合最新合規要求，為客戶的商業利益提供最可靠的法律保障。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2>商業服務<span class="accent">即時查詢</span></h2>
+    <p class="section-lead">無論您是初創企業、中小企業或海外投資者，easyCorp 的專業團隊隨時為您提供免費諮詢，協助您輕鬆開拓香港業務。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">電郵查詢</div>
+            <div class="ci-value"><a href="mailto:cs@easycorp.com.hk">cs@easycorp.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">WhatsApp / 手機</div>
+            <div class="ci-value"><a href="tel:+85266220497">6622 0497</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">官方網站</div>
+            <div class="ci-value">easycorp.com.hk</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🏢</div>
+          <div>
+            <div class="ci-label">主要服務</div>
+            <div class="ci-value">成立香港公司 · 離岸公司<br>公司秘書 · 會計審計 · 銀行開戶</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>商業服務查詢</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group"><label>姓名 / 公司名稱</label><input type="text" placeholder="您的姓名或公司名稱"></div>
+            <div class="form-group"><label>聯絡電話</label><input type="tel" placeholder="+852 XXXX XXXX"></div>
+          </div>
+          <div class="form-group"><label>電郵地址</label><input type="email" placeholder="your@email.com"></div>
+          <div class="form-group"><label>查詢服務</label>
+            <select>
+              <option value="">請選擇</option>
+              <option>成立香港公司</option>
+              <option>成立離岸公司</option>
+              <option>公司秘書服務</option>
+              <option>註冊地址 / 虛擬辦公室</option>
+              <option>會計 / 審計服務</option>
+              <option>銀行開戶協助</option>
+              <option>申請撤銷註冊</option>
+              <option>商標 / 公證服務</option>
+              <option>經濟實質 / 稅務號碼</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group"><label>查詢詳情</label><textarea placeholder="請描述您的業務需求及查詢，我們將盡快回覆..."></textarea></div>
+          <button type="submit" class="form-submit">提交查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">easyCorp · 香港商業服務</div>
+    <div class="footer-copy">© 2025 easyCorp · cs@easycorp.com.hk · 恆生銀行最佳業務合作夥伴</div>
+    <div class="footer-links"><a href="#services">服務</a><a href="#why">關於</a><a href="#contact">聯絡</a></div>
+  </div>
+</footer>
+</body>
+</html>
