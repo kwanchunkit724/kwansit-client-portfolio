@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emma Global (HK) Limited | Mobile Marketing Platform — SMS, MMS & WhatsApp Business API</title>
+<style>
+:root {
+  --primary: #080e18;
+  --secondary: #0c1224;
+  --accent: #6830d8;
+  --accent2: #18c870;
+  --accent-light: #8850f0;
+  --accent-wa: #25d366;
+  --text: #e4e8f8;
+  --text-muted: #7888a8;
+  --card-bg: #101828;
+  --border: #182038;
+  --hero-overlay: rgba(8,14,24,0.85);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI','Arial',sans-serif;background:var(--primary);color:var(--text);line-height:1.7;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,14,24,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),#4810a8);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;}
+.nav-logo-text{display:flex;flex-direction:column;}
+.nav-logo-en{font-size:1rem;font-weight:700;color:var(--text);line-height:1.2;}
+.nav-logo-sub{font-size:0.6rem;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.88rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent-light);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:7px;text-decoration:none;font-size:0.88rem;font-weight:700;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent-light);}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(160deg,#080e18 0%,#0c1428 45%,#0a0e20 100%);display:flex;align-items:center;padding-top:70px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 55%,rgba(104,48,216,0.15) 0%,transparent 55%);}
+.hero::after{content:'';position:absolute;top:20%;right:5%;width:300px;height:300px;background:radial-gradient(circle,rgba(24,200,112,0.08) 0%,transparent 70%);}
+.hero-grid{max-width:1200px;margin:0 auto;padding:5rem 2rem;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;z-index:1;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(104,48,216,0.12);border:1px solid rgba(104,48,216,0.3);border-radius:20px;padding:0.4rem 1rem;margin-bottom:1.5rem;font-size:0.78rem;color:var(--accent-light);letter-spacing:0.08em;}
+.hero h1{font-size:3.2rem;font-weight:800;line-height:1.15;margin-bottom:0.5rem;}
+.hero h1 .purple{color:var(--accent-light);}
+.hero h1 .green{color:var(--accent2);}
+.hero-tagline{font-size:1rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;}
+.hero-desc{font-size:0.98rem;color:var(--text-muted);margin-bottom:2rem;max-width:540px;line-height:1.8;}
+.hero-channels{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:2rem;}
+.channel-tag{border-radius:20px;padding:0.35rem 0.9rem;font-size:0.8rem;font-weight:600;display:flex;align-items:center;gap:5px;}
+.tag-sms{background:rgba(104,48,216,0.15);border:1px solid rgba(104,48,216,0.3);color:var(--accent-light);}
+.tag-mms{background:rgba(24,200,112,0.12);border:1px solid rgba(24,200,112,0.3);color:#50e090;}
+.tag-wa{background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);color:var(--accent-wa);}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.85rem 2rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.93rem;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);}
+.btn-wa{background:var(--accent-wa);color:#fff;padding:0.85rem 2rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.93rem;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-wa:hover{background:#1da851;transform:translateY(-2px);}
+.hero-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent-light);margin-bottom:1.3rem;}
+.info-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1rem;}
+.info-row:last-child{margin-bottom:0;}
+.info-icon{width:36px;height:36px;border-radius:8px;background:rgba(104,48,216,0.12);border:1px solid rgba(104,48,216,0.2);display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+.info-label{font-size:0.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:2px;}
+.info-value{font-size:0.86rem;color:var(--text);}
+.info-value a{color:var(--accent-light);text-decoration:none;}
+
+/* STATS */
+.stats{background:var(--secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+.stat-num{font-size:2.2rem;font-weight:800;color:var(--accent-light);line-height:1;}
+.stat-label{font-size:0.82rem;color:var(--text-muted);margin-top:6px;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:0.73rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent-light);margin-bottom:0.6rem;}
+.section-title{font-size:2.2rem;font-weight:800;margin-bottom:1rem;line-height:1.2;}
+.section-sub{font-size:0.95rem;color:var(--text-muted);max-width:600px;margin-bottom:3rem;line-height:1.8;}
+
+/* ABOUT */
+.about{background:var(--secondary);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(104,48,216,0.1),rgba(24,200,112,0.06));border:1px solid rgba(104,48,216,0.25);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:1.8rem;margin-bottom:1.8rem;}
+.about-highlight h3{font-size:0.93rem;font-weight:700;color:var(--accent-light);margin-bottom:0.7rem;text-transform:uppercase;letter-spacing:0.05em;}
+.about-highlight p{color:var(--text-muted);font-size:0.92rem;line-height:1.8;}
+.about-body p{color:var(--text-muted);margin-bottom:1rem;font-size:0.92rem;line-height:1.8;}
+.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;align-items:flex-start;gap:10px;}
+.prop-icon{font-size:1.4rem;flex-shrink:0;}
+.prop-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.prop-desc{font-size:0.76rem;color:var(--text-muted);}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.service-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:2rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;opacity:0;transition:opacity 0.25s;}
+.service-card.s1::before{background:linear-gradient(90deg,var(--accent),#8050f0);}
+.service-card.s2::before{background:linear-gradient(90deg,#2080e8,var(--accent));}
+.service-card.s3::before{background:linear-gradient(90deg,var(--accent-wa),#1da851);}
+.service-card.s4::before{background:linear-gradient(90deg,#e83060,var(--accent));}
+.service-card.s5::before{background:linear-gradient(90deg,var(--accent2),#10a850);}
+.service-card.s6::before{background:linear-gradient(90deg,#e07020,var(--accent2));}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,0.5);}
+.service-card.s1:hover{border-color:rgba(104,48,216,0.35);}
+.service-card.s2:hover{border-color:rgba(32,128,232,0.35);}
+.service-card.s3:hover{border-color:rgba(37,211,102,0.35);}
+.service-card.s4:hover{border-color:rgba(232,48,96,0.35);}
+.service-card.s5:hover{border-color:rgba(24,200,112,0.35);}
+.service-card.s6:hover{border-color:rgba(224,112,32,0.35);}
+.service-card:hover::before{opacity:1;}
+.service-icon{font-size:2.4rem;margin-bottom:0.8rem;}
+.service-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.service-desc{font-size:0.84rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.7;}
+.service-features{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.service-features li{font-size:0.78rem;color:var(--text-muted);display:flex;align-items:center;gap:8px;}
+.service-features li::before{content:'→';color:var(--accent-light);font-size:0.75rem;}
+
+/* HOW IT WORKS */
+.how{background:var(--secondary);}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.step{text-align:center;}
+.step-num{width:60px;height:60px;background:linear-gradient(135deg,var(--accent),#4810a8);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;color:#fff;margin:0 auto 0.8rem;}
+.step-title{font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+.step-desc{font-size:0.78rem;color:var(--text-muted);}
+
+/* USE CASES */
+.use-cases-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.use-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.4rem;text-align:center;transition:border-color 0.2s;}
+.use-card:hover{border-color:rgba(104,48,216,0.3);}
+.use-icon{font-size:1.8rem;margin-bottom:0.5rem;}
+.use-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.use-desc{font-size:0.75rem;color:var(--text-muted);}
+
+/* CONTACT */
+.contact{background:var(--secondary);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.contact-info-block{background:var(--primary);border:1px solid var(--border);border-radius:14px;padding:2rem;}
+.contact-info-block h3{font-size:1rem;font-weight:700;margin-bottom:1.4rem;color:var(--text);}
+.cinfo-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border);}
+.cinfo-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.cinfo-icon{width:38px;height:38px;background:rgba(104,48,216,0.1);border:1px solid rgba(104,48,216,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+.cinfo-label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;}
+.cinfo-value{font-size:0.88rem;color:var(--text);}
+.cinfo-value a{color:var(--accent-light);text-decoration:none;}
+.contact-form-block{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:2rem;}
+.contact-form-block h3{font-size:1rem;font-weight:700;margin-bottom:1.4rem;color:var(--text);}
+.form-group{margin-bottom:1.1rem;}
+.form-group label{display:block;font-size:0.73rem;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--primary);border:1px solid var(--border);border-radius:7px;padding:0.75rem 1rem;color:var(--text);font-family:inherit;font-size:0.9rem;transition:border-color 0.2s;resize:vertical;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);}
+.form-group select option{background:var(--primary);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.submit-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:0.85rem;border-radius:7px;font-family:inherit;font-size:0.93rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.submit-btn:hover{background:var(--accent-light);}
+
+/* FOOTER */
+footer{background:var(--primary);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:2rem;}
+.footer-brand p{font-size:0.83rem;color:var(--text-muted);line-height:1.7;margin-top:1rem;}
+.footer-col h4{font-size:0.73rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent-light);margin-bottom:1rem;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:0.6rem;}
+.footer-col ul li a{color:var(--text-muted);text-decoration:none;font-size:0.83rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent-light);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.78rem;color:var(--text-muted);}
+.meta-badge{background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.2);border-radius:4px;padding:4px 10px;font-size:0.75rem;color:var(--accent-wa);}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .steps{grid-template-columns:1fr 1fr;}
+  .use-cases-grid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  nav .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">💬</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-en">Emma Global (HK) Limited</span>
+        <span class="nav-logo-sub">Mobile Marketing Platform · emma.hk</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#use-cases">Use Cases</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span>📱</span>
+        <span>Hong Kong's Leading Mobile Marketing Platform</span>
+      </div>
+      <h1>Reach Every<br><span class="purple">Mobile</span><br><span class="green">Customer</span></h1>
+      <p class="hero-tagline">Emma Global (HK) Limited · Since 2005</p>
+      <p class="hero-desc">Emma Global provides a proven mobile marketing platform helping businesses connect with their customers through SMS, MMS, and WhatsApp Business API. 100% reachability. Maximum ROI. Trusted by marketers across Hong Kong.</p>
+      <div class="hero-channels">
+        <div class="channel-tag tag-sms">📩 SMS Business</div>
+        <div class="channel-tag tag-mms">🎬 MMS Multimedia</div>
+        <div class="channel-tag tag-wa">💬 WhatsApp Business API</div>
+      </div>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Explore Our Platform →</a>
+        <a href="https://wa.me/85263345265" target="_blank" class="btn-wa">💬 WhatsApp Us</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">Contact Emma Global</div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Address</div>
+          <div class="info-value">Room 305, Sino Industrial Plaza<br>9 Kai Cheung Road<br>Kowloon Bay, Kowloon</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">Phone</div>
+          <div class="info-value"><a href="tel:+85221392460">+852 2139 2460</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💬</div>
+        <div>
+          <div class="info-label">WhatsApp</div>
+          <div class="info-value"><a href="https://wa.me/85263345265">+852 6334 5265</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:team@emma.hk">team@emma.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🕐</div>
+        <div>
+          <div class="info-label">Business Hours</div>
+          <div class="info-value">Mon–Fri: 10am – 6pm<br>Closed weekends & public holidays</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">2005</div>
+      <div class="stat-label">Founded in Hong Kong</div>
+    </div>
+    <div>
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Years Telecom & IT Experience</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Mobile Reachability via SMS</div>
+    </div>
+    <div>
+      <div class="stat-num">3</div>
+      <div class="stat-label">Messaging Channels</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">About Emma Global</div>
+        <h2 class="section-title">Your Best Partner<br>in Mobile Marketing</h2>
+        <div class="about-highlight">
+          <h3>📱 20+ Years of Mobile Marketing Excellence</h3>
+          <p>Founded in 2005, Emma Global (Hong Kong) Limited has been at the forefront of mobile marketing in Hong Kong. With more than 20 years of experience in the Telecom and IT industry, we bridge technological capabilities with marketing objectives to help businesses achieve maximum ROI.</p>
+        </div>
+        <div class="about-body">
+          <p>Our platform is trusted by marketers across industries for its reliability, reach, and ease of use. Whether you're sending transaction notifications, promotional campaigns, or engaging customers through WhatsApp, Emma Global has the proven platform, software, and support to make your mobile marketing campaigns succeed.</p>
+          <p>Based in Kowloon Bay, our dedicated team provides expert consultation and hands-on support, ensuring your messaging strategy delivers results from day one.</p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-grid">
+          <div class="prop-card">
+            <div class="prop-icon">📡</div>
+            <div>
+              <div class="prop-title">100% Reachability</div>
+              <div class="prop-desc">SMS reaches every mobile user regardless of internet connectivity or app installation</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💬</div>
+            <div>
+              <div class="prop-title">WhatsApp Business API</div>
+              <div class="prop-desc">Official Meta Business verification for enterprise WhatsApp messaging at scale</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🎬</div>
+            <div>
+              <div class="prop-title">Multimedia MMS</div>
+              <div class="prop-desc">Deliver rich content with images, video, and audio for powerful brand building</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🔧</div>
+            <div>
+              <div class="prop-title">DIY Platform</div>
+              <div class="prop-desc">Self-service batch messaging platform for fast and flexible campaign management</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📊</div>
+            <div>
+              <div class="prop-title">High ROI</div>
+              <div class="prop-desc">Proven track record of achieving maximum marketing ROI for clients across industries</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🏆</div>
+            <div>
+              <div class="prop-title">20 Years Experience</div>
+              <div class="prop-desc">Two decades of Telecom and IT expertise serving Hong Kong's business community</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">Our Services</div>
+    <h2 class="section-title">Mobile Marketing Platform</h2>
+    <p class="section-sub">Comprehensive messaging solutions to reach, engage, and convert your customers across every mobile channel.</p>
+    <div class="services-grid">
+      <div class="service-card s1">
+        <div class="service-icon">📩</div>
+        <div class="service-name">SMS Business Messaging</div>
+        <div class="service-desc">Reach every mobile user instantly with business SMS. With 100% reachability and industry-leading open rates, SMS remains the most effective direct communication channel for businesses.</div>
+        <ul class="service-features">
+          <li>Promotional & marketing campaigns</li>
+          <li>Notifications & alerts</li>
+          <li>Reminders & confirmations</li>
+          <li>Bulk SMS delivery</li>
+        </ul>
+      </div>
+      <div class="service-card s2">
+        <div class="service-icon">🎬</div>
+        <div class="service-name">MMS Multimedia Messaging</div>
+        <div class="service-desc">Go beyond text with rich multimedia messages. Distribute images, music, and video content to engage your audience and build powerful, memorable brand experiences.</div>
+        <ul class="service-features">
+          <li>Image & video distribution</li>
+          <li>Brand content delivery</li>
+          <li>Rich promotional messages</li>
+          <li>Audio & multimedia content</li>
+        </ul>
+      </div>
+      <div class="service-card s3">
+        <div class="service-icon">💬</div>
+        <div class="service-name">WhatsApp Business API</div>
+        <div class="service-desc">Leverage WhatsApp's 1.5 billion users for enterprise messaging. With official Meta business verification, deliver branded messages, notifications, and customer support at scale.</div>
+        <ul class="service-features">
+          <li>Meta Business verification</li>
+          <li>Branded enterprise messaging</li>
+          <li>Customer service automation</li>
+          <li>Location sharing support</li>
+        </ul>
+      </div>
+      <div class="service-card s4">
+        <div class="service-icon">🔐</div>
+        <div class="service-name">OTP & Authentication</div>
+        <div class="service-desc">Secure your applications and transactions with reliable one-time password delivery via SMS. Fast, dependable OTP service with global delivery capability for user authentication.</div>
+        <ul class="service-features">
+          <li>One-time password delivery</li>
+          <li>Two-factor authentication</li>
+          <li>Account verification</li>
+          <li>Transaction authorization</li>
+        </ul>
+      </div>
+      <div class="service-card s5">
+        <div class="service-icon">🚀</div>
+        <div class="service-name">Batch Messaging Platform</div>
+        <div class="service-desc">A powerful DIY platform for managing large-scale messaging campaigns. Schedule, target, and send bulk messages with ease, tracking performance in real time.</div>
+        <ul class="service-features">
+          <li>DIY self-service platform</li>
+          <li>Batch message scheduling</li>
+          <li>Contact list management</li>
+          <li>Campaign performance tracking</li>
+        </ul>
+      </div>
+      <div class="service-card s6">
+        <div class="service-icon">📈</div>
+        <div class="service-name">Mobile Marketing Consulting</div>
+        <div class="service-desc">Expert guidance on mobile marketing strategy from our experienced team. We help you select the right channels, craft effective messages, and optimise campaigns for maximum ROI.</div>
+        <ul class="service-features">
+          <li>Channel strategy advice</li>
+          <li>Campaign optimisation</li>
+          <li>ROI measurement</li>
+          <li>Ongoing technical support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="section-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Get Started in 4 Steps</h2>
+    <p class="section-sub">From onboarding to campaign launch — our streamlined process gets you messaging in no time.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Consultation</div>
+        <div class="step-desc">Discuss your marketing goals and choose the right messaging channels for your business</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Setup & Integration</div>
+        <div class="step-desc">We set up your account, configure the platform, and integrate with your existing systems</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Create & Launch</div>
+        <div class="step-desc">Build your campaign using our DIY platform or let our team create and send it for you</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Measure & Optimise</div>
+        <div class="step-desc">Track performance, measure ROI, and continuously optimise for better results</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section id="use-cases">
+  <div class="section-inner">
+    <div class="section-label">Use Cases</div>
+    <h2 class="section-title">Who Uses Emma Global</h2>
+    <p class="section-sub">Our mobile marketing platform serves businesses across diverse industries in Hong Kong.</p>
+    <div class="use-cases-grid">
+      <div class="use-card">
+        <div class="use-icon">🏦</div>
+        <div class="use-title">Banking & Finance</div>
+        <div class="use-desc">OTP, transaction alerts, account notifications</div>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">🛍️</div>
+        <div class="use-title">Retail & E-commerce</div>
+        <div class="use-desc">Promotions, order updates, loyalty rewards</div>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">🏥</div>
+        <div class="use-title">Healthcare</div>
+        <div class="use-desc">Appointment reminders, health notifications</div>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">✈️</div>
+        <div class="use-title">Travel & Hospitality</div>
+        <div class="use-desc">Booking confirmations, check-in reminders</div>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">🍔</div>
+        <div class="use-title">Food & Beverage</div>
+        <div class="use-desc">Promotions, delivery updates, loyalty rewards</div>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">🏢</div>
+        <div class="use-title">Property & Real Estate</div>
+        <div class="use-desc">Property alerts, client communications</div>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">🎓</div>
+        <div class="use-title">Education</div>
+        <div class="use-desc">Course reminders, institutional updates</div>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">⚡</div>
+        <div class="use-title">All Industries</div>
+        <div class="use-desc">Any business needing reliable mobile reach</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="section-inner">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Start Your Mobile Marketing Journey</h2>
+    <p class="section-sub">Contact our team for a consultation, demo, or to discuss how Emma Global can help you reach your customers more effectively.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-block">
+          <h3>Contact Information</h3>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📍</div>
+            <div>
+              <div class="cinfo-label">Address</div>
+              <div class="cinfo-value">Room 305, Sino Industrial Plaza<br>9 Kai Cheung Road<br>Kowloon Bay, Kowloon, Hong Kong</div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📞</div>
+            <div>
+              <div class="cinfo-label">Phone</div>
+              <div class="cinfo-value"><a href="tel:+85221392460">+852 2139 2460</a></div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">💬</div>
+            <div>
+              <div class="cinfo-label">WhatsApp</div>
+              <div class="cinfo-value"><a href="https://wa.me/85263345265">+852 6334 5265</a></div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📧</div>
+            <div>
+              <div class="cinfo-label">Email</div>
+              <div class="cinfo-value">
+                <a href="mailto:team@emma.hk">team@emma.hk</a><br>
+                <a href="mailto:all@emma.hk">all@emma.hk</a>
+              </div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">🕐</div>
+            <div>
+              <div class="cinfo-label">Office Hours</div>
+              <div class="cinfo-value">Mon–Fri: 10:00am – 6:00pm<br>Closed weekends & public holidays</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-block">
+        <h3>Request a Demo</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Company name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@company.com">
+          </div>
+          <div class="form-group">
+            <label>Phone / WhatsApp</label>
+            <input type="tel" placeholder="Contact number">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Service Interest</label>
+          <select>
+            <option value="">Select service...</option>
+            <option>SMS Business Messaging</option>
+            <option>MMS Multimedia Messaging</option>
+            <option>WhatsApp Business API</option>
+            <option>OTP & Authentication</option>
+            <option>Batch Messaging Platform</option>
+            <option>Mobile Marketing Consulting</option>
+            <option>All Services / General Demo</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Needs</label>
+          <textarea rows="3" placeholder="Describe your mobile marketing goals or requirements..."></textarea>
+        </div>
+        <button class="submit-btn">📩 Request Demo / Enquire</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="display:inline-flex;margin-bottom:0.8rem;">
+          <div class="nav-logo-icon">💬</div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-en">Emma Global (HK) Limited</span>
+            <span class="nav-logo-sub">Mobile Marketing Platform · emma.hk</span>
+          </div>
+        </a>
+        <p>Hong Kong's trusted mobile marketing platform since 2005. Specialising in SMS, MMS, and WhatsApp Business API solutions to help marketers achieve maximum ROI through proven mobile messaging technology.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#services">SMS Business Messaging</a></li>
+          <li><a href="#services">MMS Multimedia</a></li>
+          <li><a href="#services">WhatsApp Business API</a></li>
+          <li><a href="#services">OTP & Authentication</a></li>
+          <li><a href="#services">Batch Messaging</a></li>
+          <li><a href="#services">Consulting</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Emma Global</a></li>
+          <li><a href="#use-cases">Use Cases</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="https://www.emma.hk" target="_blank">Official Website</a></li>
+          <li><a href="https://wa.me/85263345265" target="_blank">💬 WhatsApp Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2005–2025 Emma Global (Hong Kong) Limited. All rights reserved.</div>
+      <div class="meta-badge">✓ Meta Business Verified</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
