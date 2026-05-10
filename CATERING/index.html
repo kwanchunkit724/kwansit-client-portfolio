@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>比高時服務有限公司 | 專業到會・宴席・外賣服務</title>
+<meta name="description" content="比高時服務有限公司 — 香港專業到會及宴席服務，提供企業外賣到會、活動宴席、自助餐及各類餐飲服務，品質保證，準時到達。">
+<style>
+  :root {
+    --bg:       #0c0806;
+    --bg2:      #161008;
+    --bg3:      #1e1610;
+    --accent:   #8a1828;
+    --accent2:  #c83040;
+    --gold:     #c89020;
+    --gold2:    #f0b840;
+    --cream:    #f0d8a8;
+    --text:     #f0e8d8;
+    --muted:    #806040;
+    --border:   rgba(200,144,32,0.18);
+    --card:     rgba(255,255,255,0.03);
+    --radius:   12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', 'PingFang HK', 'Noto Sans HK', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(12,8,6,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo { font-size: 1.2rem; font-weight: 800; color: var(--gold2); text-decoration: none; letter-spacing: 0.05em; }
+  .nav-logo span { color: var(--cream); font-size: 0.78rem; font-weight: 400; margin-left: 0.4rem; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.92rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold2); }
+  .nav-cta {
+    background: var(--accent); color: #fff; border: none; padding: 0.55rem 1.3rem;
+    border-radius: 6px; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 70% 55% at 60% 40%, rgba(138,24,40,0.18) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 40% at 5% 80%, rgba(200,144,32,0.10) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(200,144,32,0.12); border: 1px solid rgba(200,144,32,0.3);
+    color: var(--gold2); border-radius: 50px; padding: 0.38rem 1rem;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.55rem; }
+  .hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 900; line-height: 1.2; margin-bottom: 1.4rem; }
+  .hero h1 .hl { color: var(--gold2); }
+  .hero h1 .hl-r { color: #f06070; }
+  .hero p { font-size: 1.05rem; color: var(--muted); max-width: 530px; margin-bottom: 2rem; line-height: 1.8; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-weight: 800; font-size: 1rem;
+    padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(138,24,40,0.4);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,48,64,0.5); }
+  .btn-outline {
+    background: transparent; color: var(--text); border: 1.5px solid rgba(255,255,255,0.2);
+    font-size: 1rem; padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold2); }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 18px; padding: 2rem;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  }
+  .info-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--gold2); margin-bottom: 1.4rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+  .info-row { display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: flex-start; }
+  .info-icon { font-size: 1.1rem; min-width: 28px; margin-top: 0.1rem; }
+  .info-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.18rem; }
+  .info-val { font-size: 0.92rem; color: var(--text); font-weight: 600; }
+  .info-val a { color: var(--gold2); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .info-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+
+  /* STATS */
+  .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3.5rem 5%; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 2.4rem; font-weight: 900; color: var(--gold2); line-height: 1; }
+  .stat-num sup { font-size: 1.1rem; vertical-align: super; }
+  .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+
+  /* SECTION */
+  .section { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; color: var(--accent2); text-transform: uppercase; margin-bottom: 0.7rem; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; line-height: 1.25; margin-bottom: 1rem; }
+  .section-title .hl { color: var(--gold2); }
+  .section-desc { color: var(--muted); max-width: 600px; margin-bottom: 3rem; font-size: 1rem; line-height: 1.8; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .service-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2.2rem;
+    transition: border-color 0.25s, transform 0.2s; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--gold));
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .service-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon { font-size: 2.8rem; margin-bottom: 1.2rem; }
+  .service-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--gold2); margin-bottom: 0.6rem; }
+  .service-card p { color: var(--muted); font-size: 0.92rem; line-height: 1.7; }
+  .service-tag {
+    display: inline-block; margin-top: 1.2rem;
+    background: rgba(200,144,32,0.1); border: 1px solid rgba(200,144,32,0.25);
+    color: var(--gold2); padding: 0.22rem 0.65rem; border-radius: 50px; font-size: 0.76rem; font-weight: 700;
+  }
+
+  /* MENU TYPES */
+  .menu-wrap { background: var(--bg2); padding: 6rem 5%; }
+  .menu-inner { max-width: 1200px; margin: 0 auto; }
+  .menu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem; }
+  .menu-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.8rem; text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .menu-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .menu-emoji { font-size: 2.4rem; margin-bottom: 0.8rem; }
+  .menu-card h4 { font-size: 0.98rem; font-weight: 700; color: var(--gold2); margin-bottom: 0.4rem; }
+  .menu-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
+
+  /* PROCESS */
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+  .process-grid::before {
+    content: ''; position: absolute; top: 36px; left: 12.5%; right: 12.5%; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--gold));
+  }
+  .process-step { text-align: center; padding: 0 1rem; position: relative; }
+  .step-num {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-size: 1.5rem; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.4rem; position: relative; z-index: 1;
+    box-shadow: 0 0 0 8px var(--bg), 0 4px 20px rgba(138,24,40,0.4);
+  }
+  .process-step h4 { font-size: 0.98rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .process-step p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* WHY */
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .why-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.8rem; display: flex; gap: 1.2rem; align-items: flex-start; }
+  .why-icon { font-size: 2rem; min-width: 44px; }
+  .why-item h4 { font-size: 1rem; font-weight: 700; color: var(--gold2); margin-bottom: 0.4rem; }
+  .why-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact-wrap {
+    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(138,24,40,0.08) 0%, transparent 65%), var(--bg);
+    padding: 6rem 5%;
+  }
+  .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; margin-bottom: 1rem; }
+  .contact-info p { color: var(--muted); font-size: 0.98rem; margin-bottom: 2rem; line-height: 1.8; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.1rem; }
+  .c-row { display: flex; gap: 1rem; align-items: flex-start; }
+  .c-icon { font-size: 1.3rem; min-width: 34px; }
+  .c-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.2rem; }
+  .c-val { font-size: 0.95rem; font-weight: 600; }
+  .c-val a { color: var(--gold2); text-decoration: none; }
+  .c-val a:hover { text-decoration: underline; }
+  form { display: flex; flex-direction: column; gap: 1.2rem; }
+  form label { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.3rem; display: block; }
+  form input, form textarea, form select {
+    width: 100%; background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.8rem 1rem; color: var(--text); font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s;
+  }
+  form input:focus, form textarea:focus, form select:focus { outline: none; border-color: var(--gold); }
+  form textarea { min-height: 110px; resize: vertical; }
+  form select option { background: #161008; }
+  .form-submit {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-weight: 800; font-size: 1rem;
+    border: none; padding: 0.95rem; border-radius: 8px; cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(138,24,40,0.4);
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,48,64,0.5); }
+
+  /* FOOTER */
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4rem 5% 2rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand .logo-text { font-size: 1.2rem; font-weight: 800; color: var(--gold2); margin-bottom: 0.8rem; }
+  .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  footer h5 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  footer ul li a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  footer ul li a:hover { color: var(--gold2); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .info-card { max-width: 480px; }
+    .services-grid, .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .menu-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .process-grid::before { display: none; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .services-grid, .menu-grid, .why-grid, .process-grid, .contact-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">比高時服務<span>Catering Services</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">服務項目</a></li>
+    <li><a href="#menu">菜式選擇</a></li>
+    <li><a href="#process">預訂流程</a></li>
+    <li><a href="#why">選擇我們</a></li>
+    <li><a href="#contact">查詢預訂</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">立即預訂</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">香港專業到會・宴席・外賣服務</div>
+      <h1>
+        精緻到會服務<br>
+        <span class="hl">企業・宴席・派對</span><br>
+        <span class="hl-r">美食到您身邊</span>
+      </h1>
+      <p>
+        比高時服務有限公司，香港專業餐飲到會服務商，
+        提供企業工作午餐、商務宴席、自助餐及各類派對到會服務，
+        精選食材、廚師現場烹製，為每個場合呈現最高水準的餐飲體驗。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#services">查看服務</a>
+        <a class="btn-outline" href="#contact">查詢報價</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>🍽️ 聯絡及預訂</h3>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">服務範圍</div>
+          <div class="info-val">香港全區上門到會服務</div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">🍱</div>
+        <div>
+          <div class="info-label">服務類型</div>
+          <div class="info-val">企業到會 · 宴席外賣 · 自助餐</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">👥</div>
+        <div>
+          <div class="info-label">接受人數</div>
+          <div class="info-val">10人至500人以上均可安排</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">⏰</div>
+        <div>
+          <div class="info-label">服務時段</div>
+          <div class="info-val">早午晚餐 · 全日提供</div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">📅</div>
+        <div>
+          <div class="info-label">預訂須知</div>
+          <div class="info-val">建議提前3-7日預訂</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">1000<sup>+</sup></div>
+      <div class="stat-label">成功到會次數</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">500<sup>+</sup></div>
+      <div class="stat-label">企業及機構客戶</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">50<sup>+</sup></div>
+      <div class="stat-label">精選菜式選擇</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">98<sup>%</sup></div>
+      <div class="stat-label">客戶滿意度</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div id="services">
+  <div class="section">
+    <div class="section-label">Our Services</div>
+    <h2 class="section-title">全面<span class="hl">到會服務</span></h2>
+    <p class="section-desc">
+      無論是公司會議、商務宴客、員工聚餐還是家庭派對，
+      比高時均能為您度身安排最合適的餐飲方案。
+    </p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3>企業外賣到會</h3>
+        <p>
+          專為企業客戶提供日常工作午餐、會議茶點及商務便當服務，
+          可按公司需求設計每日菜單，長期合約享優惠，
+          準時送達，讓您的團隊專注工作。
+        </p>
+        <span class="service-tag">Corporate Catering</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🥂</div>
+        <h3>宴席・自助餐服務</h3>
+        <p>
+          高端宴席及自助餐服務，包括廚師現場烹製、餐具佈置及服務員安排，
+          適合公司週年晚宴、頒獎典禮、商務接待等各類正式活動場合。
+        </p>
+        <span class="service-tag">Banquet Service</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎉</div>
+        <h3>派對及活動到會</h3>
+        <p>
+          為各類派對及活動提供靈活的到會服務，
+          包括生日派對、婚宴、家庭聚會、開幕活動等，
+          可按主題及人數定制菜單，讓您的活動更加精彩難忘。
+        </p>
+        <span class="service-tag">Event Catering</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MENU TYPES -->
+<div class="menu-wrap" id="menu">
+  <div class="menu-inner">
+    <div class="section-label">Menu Options</div>
+    <h2 class="section-title" style="margin-bottom:0.8rem;">豐富<span class="hl">菜式選擇</span></h2>
+    <p class="section-desc" style="margin-bottom: 2.5rem;">
+      提供多元化的菜式選擇，滿足不同飲食習慣及場合需要。
+    </p>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-emoji">🍱</div>
+        <h4>中式到會</h4>
+        <p>傳統港式點心、圍餐菜式及各類中式小食，適合各類本地活動。</p>
+      </div>
+      <div class="menu-card">
+        <div class="menu-emoji">🥗</div>
+        <h4>西式自助餐</h4>
+        <p>精選西式冷盤、烤肉、沙拉台及各類西式點心，適合商務及國際活動。</p>
+      </div>
+      <div class="menu-card">
+        <div class="menu-emoji">🍱</div>
+        <h4>日式・亞洲菜</h4>
+        <p>壽司、刺身及東南亞料理，為活動增添異國風情，廣受歡迎。</p>
+      </div>
+      <div class="menu-card">
+        <div class="menu-emoji">☕</div>
+        <h4>茶點・甜品</h4>
+        <p>精緻下午茶點、各式甜品及手工蛋糕，為會議及派對增添甜蜜氣氛。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div style="padding: 1px 0;" id="process">
+  <div class="section">
+    <div class="section-label">Booking Process</div>
+    <h2 class="section-title">預訂流程<br><span class="hl">簡單四步</span></h2>
+    <p class="section-desc" style="margin-bottom: 4rem;">
+      預訂比高時到會服務既簡單又方便，全程由專人跟進確保完美安排。
+    </p>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>查詢及報價</h4>
+        <p>聯絡我們告知活動日期、人數及菜式要求，我們將即時提供報價。</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>確認菜單方案</h4>
+        <p>與顧問確認菜單選擇、餐具需求及服務細節，按需要度身訂制。</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>專業準備烹製</h4>
+        <p>廚師團隊精心準備，所有食材均新鮮選購，確保最高食品安全標準。</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4>準時到達服務</h4>
+        <p>按時抵達活動場地，完成佈置及食物擺設，全程提供貼心服務。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY -->
+<div style="background: var(--bg2); padding: 1px 0;" id="why">
+  <div class="section">
+    <div class="section-label">Why Choose Us</div>
+    <h2 class="section-title">選擇<span class="hl">比高時的理由</span></h2>
+    <p class="section-desc">品質、準時、靈活——我們以最高標準服務每一位客戶。</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🥘</div>
+        <div>
+          <h4>新鮮食材每日選購</h4>
+          <p>堅持每日採購新鮮食材，確保所有菜式的口味及品質達到最高水準，絕不使用隔夜食材。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⏱️</div>
+        <div>
+          <h4>準時可靠的服務</h4>
+          <p>我們深知活動時間的重要性，每次均確保準時到達，讓您的活動流程順暢無阻。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🎨</div>
+        <div>
+          <h4>靈活定制方案</h4>
+          <p>可按客戶預算、活動主題及飲食需求度身設計菜單，包括素食、清真及特殊飲食要求。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💰</div>
+        <div>
+          <h4>物超所值的價格</h4>
+          <p>透明定價，物超所值，提供多個價位的套餐選擇，適合不同預算的客戶需要。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🤝</div>
+        <div>
+          <h4>全程貼心服務</h4>
+          <p>由預訂到活動結束，專屬顧問全程跟進，確保每個細節均達到您的期望。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🌿</div>
+        <div>
+          <h4>食品安全認真對待</h4>
+          <p>嚴格遵守食品安全法規，廚師均持有食品安全課程證書，讓您安心享用每一口美食。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">查詢及<span class="hl">預訂服務</span></h2>
+      <p>
+        想為您的活動安排到會服務？歡迎聯絡我們，
+        告知活動日期、地點及人數，我們將為您提供最合適的建議及報價，
+        盡早預訂以確保日期。
+      </p>
+      <div class="contact-details">
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">服務範圍</div>
+            <div class="c-val">香港、九龍、新界全區</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📅</div>
+          <div>
+            <div class="c-label">預訂建議</div>
+            <div class="c-val">建議活動前3-7日預訂，急訂請來電查詢</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">👥</div>
+          <div>
+            <div class="c-label">最少人數</div>
+            <div class="c-val">10人起接受預訂</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form onsubmit="return false;">
+      <div>
+        <label>您的姓名 / 公司名稱 *</label>
+        <input type="text" placeholder="例：陳大文 / ABC Company">
+      </div>
+      <div>
+        <label>聯絡電話 *</label>
+        <input type="tel" placeholder="例：9000 0000">
+      </div>
+      <div>
+        <label>電郵地址</label>
+        <input type="email" placeholder="example@email.com">
+      </div>
+      <div>
+        <label>服務類別</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>企業外賣到會</option>
+          <option>宴席 / 自助餐服務</option>
+          <option>派對及活動到會</option>
+          <option>定期午餐合約</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div>
+        <label>活動日期及人數</label>
+        <input type="text" placeholder="例：2025年1月15日，約50人">
+      </div>
+      <div>
+        <label>查詢詳情</label>
+        <textarea placeholder="請描述活動性質、地點、菜式偏好及特別要求..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">📩 立即查詢報價</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-text">比高時服務有限公司</div>
+      <p>
+        香港專業到會及宴席服務商，提供企業外賣到會、自助餐及各類活動餐飲服務，
+        新鮮食材、準時可靠，全港覆蓋。
+      </p>
+    </div>
+    <div>
+      <h5>服務項目</h5>
+      <ul>
+        <li><a href="#services">企業外賣到會</a></li>
+        <li><a href="#services">宴席自助餐</a></li>
+        <li><a href="#services">派對到會</a></li>
+        <li><a href="#menu">菜式選擇</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>資訊</h5>
+      <ul>
+        <li><a href="#process">預訂流程</a></li>
+        <li><a href="#why">服務優勢</a></li>
+        <li><a href="#contact">查詢報價</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>聯絡</h5>
+      <ul>
+        <li><a href="#contact">香港全區到會</a></li>
+        <li><a href="#contact">企業合約查詢</a></li>
+        <li><a href="#contact">活動預訂</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 比高時服務有限公司. All rights reserved.</span>
+    <span>香港專業到會・宴席・餐飲服務</span>
+  </div>
+</footer>
+
+</body>
+</html>
