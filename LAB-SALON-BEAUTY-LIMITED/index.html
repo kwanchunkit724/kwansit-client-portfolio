@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAB Salon & Beauty | 香港科技美容沙龍</title>
+<meta name="description" content="LAB Salon & Beauty Limited — 香港以科技為本的專業美容沙龍，融合先進美容技術與科學護膚理念，提供護膚、美髮、美甲及美體服務。">
+<style>
+:root {
+  --bg:       #060810;
+  --bg2:      #0a0e18;
+  --bg3:      #0e1220;
+  --cyan:     #20c8e8;
+  --cyan-lt:  #40e8ff;
+  --violet:   #8040d0;
+  --violet-lt:#a060f0;
+  --text:     #e8f0f8;
+  --muted:    #7090b0;
+  --border:   rgba(32,200,232,0.16);
+  --card-bg:  rgba(255,255,255,0.03);
+  --radius:   12px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans HK','PingFang HK','Microsoft JhengHei',sans-serif;line-height:1.7;overflow-x:hidden}
+
+/* Grid lines background for "lab" feel */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(32,200,232,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(32,200,232,0.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,8,16,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;position:relative;z-index:1}
+.nav-logo{font-size:1.15rem;font-weight:800;letter-spacing:.08em;color:var(--cyan)}
+.nav-logo span{color:var(--text);font-weight:400;font-size:.95rem;letter-spacing:.02em;margin-left:6px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--cyan),var(--cyan-lt));color:#06080e;border:none;padding:9px 22px;border-radius:4px;font-size:.88rem;cursor:pointer;font-weight:800;text-decoration:none;transition:opacity .2s;letter-spacing:.04em}
+.nav-cta:hover{opacity:.88}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:20%;right:8%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(32,200,232,0.12) 0%,transparent 70%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:15%;left:5%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(128,64,208,0.1) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(32,200,232,0.1);border:1px solid rgba(32,200,232,0.25);border-radius:4px;padding:6px 14px;font-size:.8rem;color:var(--cyan-lt);margin-bottom:20px;letter-spacing:.06em;font-family:monospace}
+h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;line-height:1.1;margin-bottom:12px;letter-spacing:-.01em}
+h1 .brand{color:var(--cyan)}
+h1 .sub{display:block;font-size:clamp(.95rem,2vw,1.4rem);font-weight:400;color:var(--muted);letter-spacing:.04em;margin-top:8px}
+.hero-desc{color:var(--muted);font-size:1.02rem;max-width:440px;margin:18px 0 32px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--cyan),var(--cyan-lt));color:#06080e;padding:13px 30px;border-radius:4px;font-size:.95rem;font-weight:800;text-decoration:none;transition:opacity .2s;display:inline-block;letter-spacing:.04em}
+.btn-primary:hover{opacity:.88}
+.btn-outline{border:1px solid var(--cyan);color:var(--cyan);padding:12px 28px;border-radius:4px;font-size:.95rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}
+.btn-outline:hover{background:rgba(32,200,232,0.08)}
+
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:32px;display:flex;flex-direction:column;gap:18px;position:relative;overflow:hidden}
+.hero-card::before{content:'LAB';position:absolute;top:-10px;right:20px;font-size:5rem;font-weight:900;color:rgba(32,200,232,0.04);letter-spacing:-.02em;pointer-events:none}
+.card-badge{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.badge-icon{width:44px;height:44px;background:rgba(32,200,232,0.12);border:1px solid rgba(32,200,232,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.badge-label{font-size:.75rem;color:var(--muted);font-family:monospace;letter-spacing:.04em}
+.badge-name{font-size:.98rem;font-weight:700;color:var(--text)}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--cyan);flex-shrink:0;margin-top:2px;text-align:center;font-size:.95rem;font-family:monospace}
+.card-row-text{font-size:.9rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block}
+.status-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(32,200,100,0.1);border:1px solid rgba(32,200,100,0.22);border-radius:4px;padding:5px 12px;font-size:.78rem;color:#40e880;font-family:monospace}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#40e880;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px);position:relative;z-index:1}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.stat-item{text-align:center}
+.stat-num{font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,var(--cyan),var(--violet-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;font-family:monospace;letter-spacing:-.02em}
+.stat-label{color:var(--muted);font-size:.85rem;margin-top:6px}
+
+section{padding:80px clamp(16px,4vw,64px);position:relative;z-index:1}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(32,200,232,0.08);border:1px solid rgba(32,200,232,0.2);border-radius:4px;padding:4px 12px;font-size:.75rem;color:var(--cyan-lt);letter-spacing:.08em;margin-bottom:14px;font-family:monospace}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--cyan)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-body p{color:var(--muted);font-size:.97rem;margin-bottom:16px;line-height:1.8}
+.highlight-box{background:rgba(32,200,232,0.05);border-left:3px solid var(--cyan);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:24px 0}
+.highlight-box p{color:var(--text);font-size:.95rem;line-height:1.75;margin:0;font-family:monospace;font-size:.88rem}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.prop-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px;display:flex;align-items:flex-start;gap:10px}
+.prop-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
+.prop-card h4{font-size:.87rem;font-weight:700;margin-bottom:3px;color:var(--text)}
+.prop-card p{font-size:.8rem;color:var(--muted);line-height:1.5}
+
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--violet));opacity:0;transition:opacity .25s}
+.service-card:hover{border-color:var(--cyan);transform:translateY(-4px)}
+.service-card:hover::before{opacity:1}
+.sc-icon{width:48px;height:48px;background:rgba(32,200,232,0.1);border:1px solid rgba(32,200,232,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.sc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.sc-tag{display:inline-block;margin-top:12px;font-size:.78rem;color:var(--cyan);font-weight:600;background:rgba(32,200,232,0.08);border:1px solid rgba(32,200,232,0.18);border-radius:4px;padding:3px 10px;font-family:monospace}
+
+.tech-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.tech-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .25s}
+.tech-card:hover{border-color:var(--violet)}
+.tc-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.tc-num{width:36px;height:36px;background:rgba(128,64,208,0.15);border:1px solid rgba(128,64,208,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.88rem;font-weight:800;color:var(--violet-lt);font-family:monospace;flex-shrink:0}
+.tc-title{font-size:1rem;font-weight:700}
+.tc-desc{font-size:.88rem;color:var(--muted);line-height:1.65}
+
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.why-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:22px;text-align:center;transition:border-color .25s}
+.why-card:hover{border-color:var(--cyan)}
+.why-icon{font-size:1.8rem;margin-bottom:10px}
+.why-card h4{font-size:.9rem;font-weight:700;margin-bottom:7px}
+.why-card p{font-size:.82rem;color:var(--muted);line-height:1.6}
+
+.contact-section{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:42px;height:42px;background:rgba(32,200,232,0.08);border:1px solid rgba(32,200,232,0.18);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;font-family:monospace}
+.ci-label{font-size:.74rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.08em;font-family:monospace}
+.ci-value{font-size:.95rem;color:var(--text);line-height:1.6}
+.ci-value a{color:var(--cyan-lt);text-decoration:none}
+.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:36px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px;font-family:monospace;color:var(--cyan-lt)}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px;font-family:monospace;letter-spacing:.04em}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:4px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--cyan)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#0a0e18}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--cyan),var(--cyan-lt));color:#06080e;border:none;padding:13px;border-radius:4px;font-size:.95rem;font-weight:800;cursor:pointer;transition:opacity .2s;font-family:inherit;letter-spacing:.05em}
+.form-submit:hover{opacity:.88}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px);position:relative;z-index:1}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:1rem;font-weight:800;color:var(--cyan);font-family:monospace;letter-spacing:.1em}
+.footer-logo span{color:var(--muted);font-weight:400;letter-spacing:.02em;font-family:'Noto Sans HK',sans-serif;margin-left:6px;font-size:.9rem}
+.footer-copy{font-size:.8rem;color:var(--muted);text-align:center;font-family:monospace}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--cyan)}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-glow,.hero-glow2{display:none}
+  .stats-inner,.why-grid{grid-template-columns:repeat(2,1fr)}
+  .cards-grid,.tech-grid{grid-template-columns:1fr 1fr}
+  .about-props{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .cards-grid,.tech-grid,.why-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .form-row{grid-template-columns:1fr}
+  .footer-inner{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">LAB<span>Salon & Beauty</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">關於</a></li>
+      <li><a href="#services">服務</a></li>
+      <li><a href="#tech">技術</a></li>
+      <li><a href="#why">優勢</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+    <a href="tel:+85260901114" class="nav-cta">BOOK NOW</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">// HK SCIENCE-BASED BEAUTY SALON</div>
+      <h1>
+        <span class="brand">LAB</span> SALON
+        <span class="sub">& Beauty Limited · 香港科技美容</span>
+      </h1>
+      <p class="hero-desc">融合實驗室級科技護膚理念與專業美容技藝，LAB Salon & Beauty 以先進儀器和科學配方，為您打造精準有效的美容解決方案。</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">探索服務</a>
+        <a href="#contact" class="btn-outline">預約諮詢</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-icon">🔬</div>
+        <div>
+          <div class="badge-label">// REGISTERED · HK</div>
+          <div class="badge-name">LAB Salon &amp; Beauty Limited</div>
+        </div>
+      </div>
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        OPEN — ACCEPTING BOOKINGS
+      </div>
+      <hr class="card-divider">
+      <div class="card-row">
+        <div class="card-row-icon">📍</div>
+        <div class="card-row-text">
+          <strong>地區 / LOCATION</strong>
+          香港 Hong Kong
+        </div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-icon">📞</div>
+        <div class="card-row-text">
+          <strong>預約 / BOOKING</strong>
+          6090 1114
+        </div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-icon">⚗</div>
+        <div class="card-row-text">
+          <strong>理念 / CONCEPT</strong>
+          Science × Beauty × Precision
+        </div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-icon">✦</div>
+        <div class="card-row-text">
+          <strong>服務 / SERVICES</strong>
+          護膚 · 美髮 · 美甲 · 美體
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">LAB</div>
+      <div class="stat-label">科學美容理念</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6+</div>
+      <div class="stat-label">服務類別</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">香港登記</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">PRO</div>
+      <div class="stat-label">專業認可技師</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="section-tag">// ABOUT US</div>
+        <h2>科學美容<span class="accent">新概念</span></h2>
+        <p>LAB Salon & Beauty Limited 以「實驗室」為概念，將科學與美容完美結合。我們相信，真正有效的美容服務應以科學數據和皮膚診斷為基礎，而非依賴猜測與試驗。</p>
+        <p>我們的專業團隊運用先進皮膚分析儀器，精準診斷每位顧客的肌膚及髮質狀況，再配合針對性的護理方案，確保每項服務都達到最佳效果。</p>
+        <div class="highlight-box">
+          <p>// PHILOSOPHY<br>"Beauty is not random — it's precise, measurable, and achievable through the right formula."<br>美麗並非偶然，而是通過正確配方可以實現的精確結果。</p>
+        </div>
+        <div class="about-props">
+          <div class="prop-card">
+            <div class="prop-icon">🔬</div>
+            <div>
+              <h4>皮膚科技分析</h4>
+              <p>儀器診斷，精準護理方案</p>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">⚗</div>
+            <div>
+              <h4>科研級護膚品</h4>
+              <p>採用醫美級別活性成分</p>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💻</div>
+            <div>
+              <h4>數據追蹤進度</h4>
+              <p>記錄肌膚改善數據</p>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🎓</div>
+            <div>
+              <h4>持牌認可技師</h4>
+              <p>專業資格，定期進修</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:32px">
+          <div style="font-size:.75rem;color:var(--cyan);font-family:monospace;letter-spacing:.06em;margin-bottom:18px">// SERVICE_MENU.json</div>
+          <div style="display:flex;flex-direction:column;gap:0;font-family:monospace;font-size:.85rem">
+            <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);color:var(--muted)">
+              <span><span style="color:var(--cyan)">"skincare"</span>:</span>
+              <span style="color:var(--violet-lt)">"面部護理療程"</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);color:var(--muted)">
+              <span><span style="color:var(--cyan)">"hairsalon"</span>:</span>
+              <span style="color:var(--violet-lt)">"專業髮型服務"</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);color:var(--muted)">
+              <span><span style="color:var(--cyan)">"nails"</span>:</span>
+              <span style="color:var(--violet-lt)">"美甲服務"</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);color:var(--muted)">
+              <span><span style="color:var(--cyan)">"lashes"</span>:</span>
+              <span style="color:var(--violet-lt)">"眼睫毛美容"</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);color:var(--muted)">
+              <span><span style="color:var(--cyan)">"bodycare"</span>:</span>
+              <span style="color:var(--violet-lt)">"美體療程"</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:12px 0;color:var(--muted)">
+              <span><span style="color:var(--cyan)">"advanced"</span>:</span>
+              <span style="color:var(--violet-lt)">"先進儀器療程"</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="section-tag">// SERVICES</div>
+    <h2>全面<span class="accent">美容服務</span>項目</h2>
+    <p class="section-lead">從科學護膚到時尚髮型，LAB Salon & Beauty 提供一站式專業美容服務，以精準技術滿足您的所有美容需求。</p>
+    <div class="cards-grid">
+      <div class="service-card">
+        <div class="sc-icon">🔬</div>
+        <div class="sc-title">肌膚科學分析</div>
+        <div class="sc-desc">採用專業皮膚檢測儀，分析水分、油脂、色素、毛孔及紋理等多項肌膚數據，為您制定個人化護膚方案，讓護理更精準有效。</div>
+        <span class="sc-tag">DATA-DRIVEN</span>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">🌿</div>
+        <div class="sc-title">醫美級面部護理</div>
+        <div class="sc-desc">採用醫美級別活性成分，包括A酸、煙酰胺、積雪草及果酸等，針對暗瘡、色斑、衰老及敏感等不同問題肌膚提供專業療程。</div>
+        <span class="sc-tag">CLINICAL GRADE</span>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">⚡</div>
+        <div class="sc-title">先進儀器療程</div>
+        <div class="sc-desc">引進超聲波導入、微電流提升、LED光療及射頻收緊等先進美容儀器，在安全有效的前提下，加速護膚品吸收及提升肌膚狀態。</div>
+        <span class="sc-tag">ADVANCED TECH</span>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">✂</div>
+        <div class="sc-title">專業髮型設計</div>
+        <div class="sc-desc">由資深髮型師主理剪染燙造型服務，採用國際品牌護髮產品，結合頭皮健康分析，為您提供由裡到外的全面髮型護理。</div>
+        <span class="sc-tag">HAIR SCIENCE</span>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">💅</div>
+        <div class="sc-title">精緻美甲服務</div>
+        <div class="sc-desc">提供日式凝膠美甲、手足護理及美甲設計。採用無毒、無甲醛配方的甲油，在追求時尚美麗的同時，確保指甲健康。</div>
+        <span class="sc-tag">NON-TOXIC</span>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">🦋</div>
+        <div class="sc-title">眼睫毛美容</div>
+        <div class="sc-desc">韓式及日式睫毛嫁接、燙睫毛及染眉服務，採用無甲醛膠水，確保安全舒適。多款睫毛款式及彎度選擇，打造個性化眼神。</div>
+        <span class="sc-tag">SAFE FORMULA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH APPROACH -->
+<section id="tech">
+  <div class="section-inner">
+    <div class="section-tag">// TECH APPROACH</div>
+    <h2>LAB 的<span class="accent">科學方法</span></h2>
+    <p class="section-lead">每次服務都遵循嚴謹的四步科學護膚流程，確保最佳效果。</p>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tc-head">
+          <div class="tc-num">01</div>
+          <div class="tc-title">DIAGNOSE · 精準診斷</div>
+        </div>
+        <div class="tc-desc">使用專業皮膚分析儀器進行全面肌膚檢測，量化肌膚狀況數據。了解您的真實膚況，而非依賴主觀判斷，為後續護理提供科學依據。</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-head">
+          <div class="tc-num">02</div>
+          <div class="tc-title">FORMULATE · 定制配方</div>
+        </div>
+        <div class="tc-desc">根據診斷數據，為您量身設計個人化護理方案。選取最適合您膚質的活性成分及療程組合，制定精準的護理配方計劃。</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-head">
+          <div class="tc-num">03</div>
+          <div class="tc-title">TREAT · 專業護理</div>
+        </div>
+        <div class="tc-desc">由持牌美容師執行專業護理療程，結合先進美容儀器與高效護膚配方，確保每個步驟都達到最佳效果，安全有效地改善肌膚狀況。</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-head">
+          <div class="tc-num">04</div>
+          <div class="tc-title">TRACK · 追蹤進度</div>
+        </div>
+        <div class="tc-desc">定期複測肌膚數據，追蹤療程效果及肌膚改善進度。根據追蹤結果適時調整護理方案，確保持續優化效果，讓美麗有據可查。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="section-tag">// WHY LAB</div>
+    <h2>選擇<span class="accent">LAB</span>的理由</h2>
+    <p class="section-lead" style="margin-bottom:36px">科學思維 × 美容專業 × 香港本地服務</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">📊</div>
+        <h4>數據驅動效果</h4>
+        <p>以科學數據衡量護理效果，讓改善看得見、量得出</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛡</div>
+        <h4>安全成分保障</h4>
+        <p>嚴選通過安全測試的護膚及美容產品，保障您的健康</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <h4>精準個人化</h4>
+        <p>每位顧客獲得針對性的個人化護理方案</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔄</div>
+        <h4>持續優化方案</h4>
+        <p>定期評估及調整護理計劃，確保持續進步</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">// CONTACT</div>
+    <h2>預約<span class="accent">LAB</span>服務</h2>
+    <p class="section-lead">歡迎致電或WhatsApp預約，我們的美容顧問將為您安排最適合的服務方案。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">PHONE / WHATSAPP</div>
+            <div class="ci-value"><a href="tel:+85260901114">6090 1114</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">LOCATION</div>
+            <div class="ci-value">香港 Hong Kong</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🔬</div>
+          <div>
+            <div class="ci-label">SPECIALITY</div>
+            <div class="ci-value">Science-Based Beauty<br>科學美容護理</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✦</div>
+          <div>
+            <div class="ci-label">SERVICES</div>
+            <div class="ci-value">護膚療程 · 髮型設計 · 美甲<br>眼睫毛 · 先進儀器療程</div>
+          </div>
+        </div>
+        <div style="background:rgba(32,200,232,0.06);border:1px solid rgba(32,200,232,0.15);border-radius:8px;padding:18px;margin-top:8px;font-family:monospace;font-size:.82rem;color:var(--muted);line-height:1.7">
+          <span style="color:var(--cyan)">// BOOKING NOTE:</span><br>
+          致電或WhatsApp <strong style="color:var(--text)">6090 1114</strong><br>
+          告知服務類型及方便時段<br>
+          我們將盡快確認預約
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>// BOOKING_FORM</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label>NAME 姓名</label>
+              <input type="text" placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label>PHONE 電話</label>
+              <input type="tel" placeholder="6090 xxxx">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>SERVICE 服務類別</label>
+            <select>
+              <option value="">Select service...</option>
+              <option>肌膚科學分析 Skin Analysis</option>
+              <option>面部護理療程 Facial Treatment</option>
+              <option>先進儀器療程 Advanced Treatment</option>
+              <option>髮型設計 Hair Salon</option>
+              <option>美甲服務 Nail Service</option>
+              <option>眼睫毛 Lash Service</option>
+              <option>其他查詢 Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>PREFERRED TIME 方便時間</label>
+            <input type="text" placeholder="e.g. 2025-06-15 15:00">
+          </div>
+          <div class="form-group">
+            <label>NOTES 備註</label>
+            <textarea placeholder="Skin concerns, allergies, or any special requests..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">SUBMIT BOOKING REQUEST</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">LAB<span>Salon & Beauty Limited · 香港</span></div>
+    <div class="footer-copy">© 2025 LAB Salon &amp; Beauty Limited · Hong Kong</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
