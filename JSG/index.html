@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>JSG 柏高物業服務有限公司 | 香港物業管理</title>
+<meta name="description" content="JSG 柏高物業服務有限公司 — 香港專業物業管理及服務，提供住宅、商業物業的全方位管理方案。"/>
+<style>
+:root{
+  --bg:#06080c;
+  --surface:#0a0d14;
+  --card:#101420;
+  --border:#1a2030;
+  --accent:#3a7ab8;
+  --accent2:#60a8e0;
+  --navy:#182848;
+  --text:#dce8f8;
+  --muted:#607090;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(6,8,12,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-size:1.05rem;font-weight:700;color:var(--accent2);letter-spacing:.04em;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.nav-links a:hover{color:var(--accent2);}
+
+/* HERO */
+.hero{min-height:88vh;display:flex;align-items:center;justify-content:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(58,122,184,.1) 0%,transparent 65%);}
+.hero-inner{max-width:1200px;width:100%;display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:center;position:relative;}
+.hero-badge{display:inline-block;background:rgba(58,122,184,.15);border:1px solid rgba(58,122,184,.35);color:var(--accent2);font-size:.75rem;padding:.35rem .9rem;border-radius:20px;letter-spacing:.1em;margin-bottom:1.5rem;text-transform:uppercase;}
+.hero h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.2;margin-bottom:.5rem;}
+.hero h1 span{color:var(--accent2);}
+.hero-en{font-size:.9rem;color:var(--muted);margin-bottom:1.2rem;}
+.hero-sub{font-size:.95rem;color:var(--muted);max-width:480px;margin-bottom:2.5rem;line-height:1.7;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:#fff;padding:.85rem 2rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;transition:background .2s;}
+.hero-cta:hover{background:var(--accent2);}
+.hero-cta-out{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);color:var(--muted);padding:.85rem 2rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .2s;}
+.hero-cta-out:hover{border-color:var(--accent);color:var(--accent2);}
+
+/* INFO CARD */
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.8rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.info-card h3{font-size:.78rem;color:var(--accent2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.2rem;}
+.info-row{display:flex;gap:.8rem;margin-bottom:.85rem;align-items:flex-start;}
+.info-icon{width:20px;color:var(--accent2);flex-shrink:0;margin-top:.1rem;font-size:.9rem;}
+.info-text{font-size:.85rem;color:var(--muted);}
+.info-text strong{color:var(--text);display:block;font-size:.8rem;font-weight:600;}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:1.9rem;font-weight:800;color:var(--accent2);display:block;}
+.stat-label{font-size:.78rem;color:var(--muted);margin-top:.2rem;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-label{font-size:.72rem;color:var(--accent2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem;}
+.sec-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:1rem;}
+.sec-desc{color:var(--muted);max-width:620px;margin-bottom:3rem;line-height:1.7;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.about-highlight{background:linear-gradient(135deg,rgba(58,122,184,.08),rgba(58,122,184,.03));border:1px solid rgba(58,122,184,.2);border-radius:12px;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:.95rem;line-height:1.75;color:var(--text);}
+.about-highlight cite{display:block;font-size:.78rem;color:var(--accent2);margin-top:.8rem;font-style:normal;}
+.prop-cards{display:grid;gap:1rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;gap:1rem;align-items:flex-start;}
+.prop-icon{width:36px;height:36px;background:rgba(58,122,184,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.prop-card h4{font-size:.9rem;font-weight:700;margin-bottom:.2rem;}
+.prop-card p{font-size:.82rem;color:var(--muted);}
+
+/* SERVICES */
+.services{background:var(--surface);}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s,transform .2s;}
+.svc-card:hover{border-color:rgba(58,122,184,.4);transform:translateY(-4px);}
+.svc-top{background:rgba(58,122,184,.06);padding:2rem;text-align:center;font-size:2.5rem;border-bottom:1px solid var(--border);}
+.svc-body{padding:1.4rem;}
+.svc-body h3{font-size:1rem;font-weight:700;margin-bottom:.5rem;}
+.svc-body p{font-size:.83rem;color:var(--muted);line-height:1.6;}
+.svc-tag{display:inline-block;background:rgba(58,122,184,.12);color:var(--accent2);font-size:.7rem;padding:.2rem .6rem;border-radius:4px;margin-top:.8rem;}
+
+/* VALUES */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.val-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.6rem;text-align:center;}
+.val-icon{font-size:2rem;margin-bottom:.8rem;}
+.val-card h3{font-size:.95rem;font-weight:700;margin-bottom:.4rem;}
+.val-card p{font-size:.8rem;color:var(--muted);line-height:1.5;}
+
+/* CONTACT */
+.contact{background:var(--surface);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-info h3{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;}
+.c-item{display:flex;gap:1rem;margin-bottom:1.2rem;align-items:flex-start;}
+.c-icon{width:40px;height:40px;background:rgba(58,122,184,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:.75rem;color:var(--muted);margin-bottom:.1rem;}
+.c-val{font-size:.9rem;font-weight:500;}
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;}
+.contact-card p{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;}
+.c-form-row{margin-bottom:1rem;}
+.c-form-row label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:.4rem;}
+.c-form-row input,.c-form-row textarea,.c-form-row select{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;color:var(--text);font-size:.88rem;}
+.c-form-row textarea{height:90px;resize:vertical;}
+.c-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:.85rem;border-radius:8px;font-weight:700;font-size:.95rem;cursor:pointer;transition:background .2s;}
+.c-btn:hover{background:var(--accent2);}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2rem;text-align:center;}
+.foot-logo{font-size:1rem;font-weight:700;color:var(--accent2);margin-bottom:.4rem;}
+.foot-copy{font-size:.78rem;color:var(--muted);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .grid-3,.values-grid,.stats-inner{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .grid-3,.values-grid,.stats-inner{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">JSG 柏高物業服務</div>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#values">企業理念</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">香港物業管理服務 · Property Management HK</div>
+      <h1>JSG <span>柏高</span>物業<br/>服務有限公司</h1>
+      <div class="hero-en">JSG Property Services Limited · Hong Kong</div>
+      <p class="hero-sub">專業物業管理團隊，以專業態度、貼心服務，為香港住宅及商業物業提供全方位管理解決方案，守護業主與住客的每一個家園。</p>
+      <div class="hero-ctas">
+        <a href="#services" class="hero-cta">了解服務 →</a>
+        <a href="#contact" class="hero-cta-out">立即查詢</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>公司資料</h3>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div class="info-text"><strong>地區</strong>香港 Hong Kong SAR</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🏢</span>
+        <div class="info-text"><strong>業務</strong>物業管理 · 物業服務</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🏠</span>
+        <div class="info-text"><strong>服務範疇</strong>住宅 · 商業 · 工業物業</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">⚖️</span>
+        <div class="info-text"><strong>資質</strong>香港物業管理公司</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">✅</span>
+        <div class="info-text"><strong>狀態</strong>正常營業中</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num">JSG</span><div class="stat-label">品牌標識</div></div>
+    <div class="stat"><span class="stat-num">柏高</span><div class="stat-label">企業名號</div></div>
+    <div class="stat"><span class="stat-num">🏠</span><div class="stat-label">物業服務</div></div>
+    <div class="stat"><span class="stat-num">HK</span><div class="stat-label">香港本地企業</div></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div>
+        <div class="sec-label">關於我們</div>
+        <h2 class="sec-title">專業物業服務，<br/>守護您的家園</h2>
+        <div class="about-highlight">
+          <p>JSG 柏高物業服務有限公司是香港一家專業物業管理公司，以「柏高」精神為核心，致力為住宅及商業物業提供高水準的管理服務。我們相信專業的物業管理不僅是維護建築設施，更是為業主和住客創造安全、舒適、和諧的生活和工作環境。</p>
+          <cite>— JSG 柏高物業服務有限公司</cite>
+        </div>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.7;">
+          憑藉豐富的物業管理經驗和專業團隊，柏高為客戶提供涵蓋日常管理、維修保養、安保服務、財務管理等全方位物業服務，讓業主無憂，住客安心。
+        </p>
+      </div>
+      <div class="prop-cards">
+        <div class="prop-card">
+          <div class="prop-icon">🏆</div>
+          <div>
+            <h4>專業管理團隊</h4>
+            <p>擁有豐富物業管理經驗的專業團隊，持有相關執照及認證。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🛡️</div>
+          <div>
+            <h4>全面物業保障</h4>
+            <p>從日常清潔到設備維修，提供全面的物業保養及管理服務。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">💬</div>
+          <div>
+            <h4>貼心客戶服務</h4>
+            <p>設立24小時緊急聯絡機制，即時響應業主及住客的各類需求。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">📊</div>
+          <div>
+            <h4>透明財務管理</h4>
+            <p>定期提供清晰財務報告，確保管理費用使用透明、物有所值。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <div class="sec-inner">
+    <div class="sec-label">服務項目</div>
+    <h2 class="sec-title">全方位物業管理服務</h2>
+    <p class="sec-desc">JSG 柏高提供住宅、商業及工業物業的全面管理服務，為每類物業度身訂制最合適的管理方案。</p>
+    <div class="grid-3">
+      <div class="svc-card">
+        <div class="svc-top">🏘️</div>
+        <div class="svc-body">
+          <h3>住宅物業管理</h3>
+          <p>住宅樓宇日常管理，包括公共地方清潔、維修跟進、保安服務及住客事務處理。</p>
+          <span class="svc-tag">住宅管理</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">🏢</div>
+        <div class="svc-body">
+          <h3>商業物業管理</h3>
+          <p>寫字樓、商場、零售商鋪的專業物業管理，維護商業環境的專業形象。</p>
+          <span class="svc-tag">商業管理</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">🔧</div>
+        <div class="svc-body">
+          <h3>設施維修保養</h3>
+          <p>定期檢查及保養各類機電設備，及時處理維修事宜，確保設施正常運作。</p>
+          <span class="svc-tag">維修保養</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">🔒</div>
+        <div class="svc-body">
+          <h3>保安服務</h3>
+          <p>提供24小時駐守保安及閉路電視監察，確保物業安全，保障業主及住客。</p>
+          <span class="svc-tag">安保服務</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">💰</div>
+        <div class="svc-body">
+          <h3>財務管理</h3>
+          <p>專業處理管理費收取、支出記錄、財務報告編製及法團會計事務。</p>
+          <span class="svc-tag">財務管理</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">🌿</div>
+        <div class="svc-body">
+          <h3>環境美化</h3>
+          <p>公共區域清潔、綠化植栽養護，為業主及住客創造舒適整潔的居住環境。</p>
+          <span class="svc-tag">環境服務</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="values">
+  <div class="sec-inner">
+    <div class="sec-label">企業理念</div>
+    <h2 class="sec-title">柏高核心價值</h2>
+    <p class="sec-desc">以「柏高」精神——如柏樹般常青、如高峰般卓越——引領企業持續提升服務水準。</p>
+    <div class="values-grid">
+      <div class="val-card">
+        <div class="val-icon">🌲</div>
+        <h3>常青服務</h3>
+        <p>如柏樹四季常青，我們持續提供穩定可靠的物業服務，不因季節或環境而改變。</p>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">🏔️</div>
+        <h3>卓越追求</h3>
+        <p>如高峰般追求卓越，不斷提升服務標準，超越業主的期望。</p>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">🤝</div>
+        <h3>誠信合作</h3>
+        <p>以誠信為本，與業主及住客建立長期信賴關係，共同守護物業價值。</p>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">⚡</div>
+        <h3>快速響應</h3>
+        <p>設立緊急響應機制，確保各類事故及需求均能得到及時、有效的處理。</p>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">📋</div>
+        <h3>透明管理</h3>
+        <p>財務透明、運作透明，定期向業主匯報，確保管理費用物有所值。</p>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">🌟</div>
+        <h3>持續進步</h3>
+        <p>定期培訓員工，引入新技術與管理方法，持續提升服務質量。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="sec-inner">
+    <div class="sec-label">聯絡我們</div>
+    <h2 class="sec-title">立即查詢</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>聯絡資料</h3>
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">地址</div>
+            <div class="c-val">香港 Hong Kong</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🏢</div>
+          <div>
+            <div class="c-label">公司名稱</div>
+            <div class="c-val">JSG 柏高物業服務有限公司</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🏠</div>
+          <div>
+            <div class="c-label">服務類型</div>
+            <div class="c-val">住宅 · 商業 · 工業物業管理</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🕐</div>
+          <div>
+            <div class="c-label">辦公時間</div>
+            <div class="c-val">星期一至五 09:00–18:00<br/><span style="font-size:.82rem;color:var(--muted)">緊急事故24小時響應</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>物業管理查詢</h3>
+        <p>歡迎查詢物業管理服務方案，我們將按您的物業特性提供最合適的管理建議。</p>
+        <div class="c-form-row">
+          <label>您的姓名</label>
+          <input type="text" placeholder="請輸入姓名"/>
+        </div>
+        <div class="c-form-row">
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="請輸入聯絡電話"/>
+        </div>
+        <div class="c-form-row">
+          <label>物業類型</label>
+          <select>
+            <option>請選擇物業類型</option>
+            <option>住宅物業 Residential</option>
+            <option>商業物業 Commercial</option>
+            <option>工業物業 Industrial</option>
+            <option>其他 Others</option>
+          </select>
+        </div>
+        <div class="c-form-row">
+          <label>查詢內容</label>
+          <textarea placeholder="請說明物業位置、規模及所需服務..."></textarea>
+        </div>
+        <button class="c-btn">發送查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">JSG 柏高物業服務有限公司</div>
+  <div class="foot-copy">© 2025 JSG 柏高物業服務有限公司 · 香港物業管理 · 版權所有</div>
+</footer>
+
+</body>
+</html>
