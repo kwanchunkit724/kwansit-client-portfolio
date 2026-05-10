@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>環球國際旅遊有限公司 | Mundial International Travel — 澳門旅行社</title>
+<style>
+  :root {
+    --navy: #1a2e5c;
+    --navy-mid: #243a72;
+    --gold: #c9a020;
+    --gold-dark: #a88010;
+    --gold-light: #fdf6e3;
+    --white: #ffffff;
+    --light: #f5f7fc;
+    --text: #2c3445;
+    --muted: #6b7280;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', '微軟正黑體', Arial, sans-serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
+  .nav-logo { width: 42px; height: 42px; border-radius: 8px; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .nav-name { color: var(--white); font-weight: 700; font-size: 15px; line-height: 1.2; }
+  .nav-name span { color: var(--gold); font-size: 12px; }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a { color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--white); padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 700; transition: background .2s; }
+  .nav-cta:hover { background: var(--gold-dark); }
+
+  /* HERO */
+  .hero {
+    margin-top: 64px;
+    background: linear-gradient(150deg, var(--navy) 0%, var(--navy-mid) 55%, #1e3880 100%);
+    min-height: 580px; display: flex; align-items: center;
+    padding: 72px 48px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '🌏';
+    position: absolute; right: 80px; top: 40%;
+    font-size: 220px; opacity: 0.07;
+  }
+  .hero-content { max-width: 640px; z-index: 1; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,160,32,0.2); border: 1px solid rgba(201,160,32,0.4); color: var(--gold); padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; margin-bottom: 24px; }
+  .hero h1 { font-size: 44px; font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 8px; }
+  .hero h1 span { color: var(--gold); }
+  .hero-en { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 20px; }
+  .hero-desc { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 36px; max-width: 560px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-gold { background: var(--gold); color: var(--white); padding: 13px 30px; border-radius: 8px; font-size: 15px; font-weight: 700; transition: background .2s, transform .2s; }
+  .btn-gold:hover { background: var(--gold-dark); transform: translateY(-2px); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.35); color: var(--white); padding: 13px 30px; border-radius: 8px; font-size: 15px; font-weight: 600; transition: border-color .2s; }
+  .btn-outline:hover { border-color: var(--white); }
+  .hero-card { position: absolute; right: 56px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(12px); border-radius: 16px; padding: 28px 32px; min-width: 260px; z-index: 1; }
+  .hero-card-title { color: var(--gold); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+  .hero-info-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .hero-info-row:last-child { margin-bottom: 0; }
+  .hero-info-icon { font-size: 16px; }
+  .hero-info-text { font-size: 13px; color: rgba(255,255,255,0.9); }
+  .hero-info-text strong { color: var(--white); display: block; }
+
+  /* STRIP */
+  .strip { background: var(--gold); display: flex; justify-content: center; flex-wrap: wrap; }
+  .strip-item { padding: 20px 44px; text-align: center; border-right: 1px solid rgba(255,255,255,0.25); }
+  .strip-item:last-child { border-right: none; }
+  .strip-num { font-size: 24px; font-weight: 800; color: var(--white); }
+  .strip-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 2px; font-weight: 500; }
+
+  /* SECTION */
+  section { padding: 80px 48px; }
+  .section-label { display: inline-block; color: var(--gold); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  h2 { font-size: 34px; font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 640px; margin-bottom: 48px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .macau-box { background: var(--white); border-radius: 14px; padding: 28px; border-left: 4px solid var(--gold); margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .macau-box h3 { font-size: 14px; color: var(--gold); font-weight: 700; margin-bottom: 10px; }
+  .macau-box .row { display: flex; gap: 10px; margin-bottom: 8px; font-size: 14px; color: var(--text); align-items: flex-start; }
+  .macau-box .row span { flex-shrink: 0; font-size: 16px; }
+  .about-desc p { font-size: 15px; color: var(--text); line-height: 1.8; margin-bottom: 16px; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .about-prop { background: var(--white); border-radius: 12px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-top: 3px solid var(--gold); }
+  .about-prop-icon { font-size: 26px; margin-bottom: 10px; }
+  .about-prop h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .about-prop p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: var(--white); border-radius: 14px; padding: 28px 22px; box-shadow: 0 4px 18px rgba(0,0,0,0.07); border-top: 4px solid var(--gold); transition: transform .25s, box-shadow .25s; }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+  .service-icon { width: 50px; height: 50px; border-radius: 12px; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+  .service-card h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .service-card h3 small { font-size: 12px; color: var(--muted); font-weight: 400; display: block; margin-top: 2px; }
+  .service-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .service-tag { display: inline-block; margin-top: 12px; background: var(--gold-light); color: #7a5800; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+
+  /* DESTINATIONS */
+  .dest { background: var(--light); }
+  .dest-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .dest-card { background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.07); transition: transform .25s; }
+  .dest-card:hover { transform: translateY(-4px); }
+  .dest-flag { font-size: 48px; padding: 24px; text-align: center; background: linear-gradient(135deg, var(--gold-light), var(--white)); }
+  .dest-info { padding: 14px; }
+  .dest-info h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .dest-info p { font-size: 12px; color: var(--muted); }
+  .dest-badge { display: inline-block; margin-top: 8px; background: rgba(201,160,32,0.12); color: #7a5800; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+
+  /* WHY */
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .why-card { background: var(--navy); border-radius: 14px; padding: 28px 20px; text-align: center; transition: transform .25s; }
+  .why-card:hover { transform: translateY(-4px); }
+  .why-icon { font-size: 32px; margin-bottom: 14px; }
+  .why-card h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .why-card p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+  /* CONTACT */
+  .contact { background: var(--navy); }
+  .contact h2 { color: var(--white); }
+  .contact .section-label { color: var(--gold); }
+  .contact .section-sub { color: rgba(255,255,255,0.65); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+  .contact-row { display: flex; align-items: flex-start; gap: 14px; }
+  .contact-row-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(201,160,32,0.15); border: 1px solid rgba(201,160,32,0.3); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .contact-row-text h4 { font-size: 12px; color: var(--gold); font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .contact-row-text p, .contact-row-text a { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.55; }
+  .contact-row-text a:hover { color: var(--gold); }
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .contact-form input, .contact-form select, .contact-form textarea { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 12px 15px; color: var(--white); font-size: 14px; font-family: inherit; outline: none; transition: border-color .2s; }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form select option { background: var(--navy); }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--gold); }
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+  .contact-form button { background: var(--gold); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .2s; }
+  .contact-form button:hover { background: var(--gold-dark); }
+
+  /* FOOTER */
+  footer { background: #0f1c3a; color: rgba(255,255,255,0.5); text-align: center; padding: 26px 48px; font-size: 13px; }
+  footer span { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 48px 24px; }
+    .hero h1 { font-size: 30px; }
+    .hero-card { display: none; }
+    section { padding: 56px 24px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .dest-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .about-props { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">🌏</div>
+    <div class="nav-name">環球國際旅遊<br><span>Mundial International Travel Service</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">關於我們</a>
+    <a href="#services">旅遊服務</a>
+    <a href="#destinations">目的地</a>
+    <a href="#why">我們的優勢</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <a href="#contact" class="nav-cta">立即查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✈️ 澳門持牌旅行社 · Macau Licensed Travel Agent</div>
+    <h1>探索<span>環球精彩</span><br>從澳門出發</h1>
+    <div class="hero-en">Mundial International Travel Service Co. Ltd. · 環球國際旅遊有限公司</div>
+    <p class="hero-desc">
+      環球國際旅遊有限公司，位於澳門的專業旅行社，為旅客提供機票預訂、旅遊套票、酒店安排、郵輪假期及簽證服務。無論您嚮往東南亞海灘、歐洲古都還是日本賞楓，我們都為您度身策劃最美好的旅程。
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">立即查詢行程</a>
+      <a href="#services" class="btn-outline">瀏覽服務</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-title">📍 聯絡資料</div>
+    <div class="hero-info-row">
+      <div class="hero-info-icon">📞</div>
+      <div class="hero-info-text"><strong>+853 2885 5133</strong>辦公室電話</div>
+    </div>
+    <div class="hero-info-row">
+      <div class="hero-info-icon">📞</div>
+      <div class="hero-info-text"><strong>+853 2871 5454</strong>辦公室電話2</div>
+    </div>
+    <div class="hero-info-row">
+      <div class="hero-info-icon">📠</div>
+      <div class="hero-info-text"><strong>+853 2871 5648</strong>傳真</div>
+    </div>
+    <div class="hero-info-row">
+      <div class="hero-info-icon">📍</div>
+      <div class="hero-info-text"><strong>澳門美麗街21-21A號</strong>怡美大廈1樓A座</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">
+    <div class="strip-num">澳門</div>
+    <div class="strip-label">持牌旅行社</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">全球</div>
+    <div class="strip-label">旅遊目的地</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">一站式</div>
+    <div class="strip-label">旅遊服務</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">專業</div>
+    <div class="strip-label">旅遊顧問團隊</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">關於我們</div>
+    <h2>環球國際旅遊 · 您的旅遊夥伴</h2>
+    <p class="section-sub" style="margin: 0 auto;">環球國際旅遊有限公司（Mundial International Travel Service Co. Ltd.）是澳門的持牌旅行社，以專業、貼心的服務，協助客戶規劃世界各地的精彩旅程。</p>
+  </div>
+  <div class="about-grid">
+    <div>
+      <div class="macau-box">
+        <h3>📍 辦公室地址</h3>
+        <div class="row"><span>🏢</span><span>澳門美麗街21, 21A號怡美大廈1樓A座<br>1/F A, Yi Mei Building, 21-21A Bela Vista, Macau</span></div>
+        <div class="row"><span>📞</span><span>+853 2885 5133 / +853 2871 5454</span></div>
+        <div class="row"><span>📠</span><span>傳真 Fax: +853 2871 5648</span></div>
+        <div class="row"><span>📧</span><span>co.ltd.mundial@macau.ctm.net</span></div>
+        <div class="row"><span>🌐</span><span>www.mits.mo</span></div>
+        <div class="row"><span>📱</span><span>Facebook: macaumundialtravel</span></div>
+      </div>
+      <div class="about-desc">
+        <p>「Mundial」源自葡萄牙語，意即「環球」，完美體現了公司為澳門旅客搭建通往世界橋樑的使命。澳門獨特的中西文化交融背景，令我們在服務粵語、普通話及葡語客戶方面擁有天然優勢。</p>
+        <p>我們的旅遊顧問團隊具備豐富的環球旅遊知識，從亞洲近途至歐美遠途，能為各類客戶提供專業的旅遊諮詢及預訂服務。</p>
+      </div>
+    </div>
+    <div class="about-props">
+      <div class="about-prop">
+        <div class="about-prop-icon">🎫</div>
+        <h4>機票專家</h4>
+        <p>全球主要航空公司機票預訂，為您找到最佳票價及航班。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🌐</div>
+        <h4>環球覆蓋</h4>
+        <p>連接世界各地旅遊目的地，讓您輕鬆踏上每一段旅程。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🗣️</div>
+        <h4>多語言服務</h4>
+        <p>廣東話、普通話及葡語服務，照顧澳門多元客群需要。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🤝</div>
+        <h4>個人化服務</h4>
+        <p>根據您的需求及預算，度身設計最合適的旅遊方案。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background: var(--white);">
+  <div class="section-label">旅遊服務</div>
+  <h2>全面旅遊產品</h2>
+  <p class="section-sub">從單一機票到完整套票，環球國際旅遊提供多元化的旅遊服務，滿足您所有出行需要。</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✈️</div>
+      <h3>機票預訂<small>Flight Booking</small></h3>
+      <p>代訂全球主要航空公司機票，涵蓋各大洲主要航線。提供單程、來回及多城市機票，按需求靈活安排。</p>
+      <span class="service-tag">全球航線</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏖️</div>
+      <h3>旅遊套票<small>Holiday Packages</small></h3>
+      <p>機票加酒店一站式套票，精選各地旅遊路線，物有所值。適合個人、家庭及情侶旅行，輕鬆出發。</p>
+      <span class="service-tag">機+酒套票</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏨</div>
+      <h3>酒店預訂<small>Hotel Booking</small></h3>
+      <p>全球各地優質酒店預訂服務，涵蓋商務酒店、度假村及精品酒店，按預算提供最合適建議。</p>
+      <span class="service-tag">全球旅館</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛳️</div>
+      <h3>郵輪假期<small>Cruise Packages</small></h3>
+      <p>亞洲及環球郵輪假期，涵蓋多個著名郵輪品牌，享受豪華設施與多個港口觀光的悠閒旅程。</p>
+      <span class="service-tag">郵輪套餐</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📄</div>
+      <h3>簽證服務<small>Visa Services</small></h3>
+      <p>提供各主要旅遊目的地的簽證申請諮詢及文件協助服務，確保旅客順利辦妥出行所需文件。</p>
+      <span class="service-tag">多國簽證</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👥</div>
+      <h3>團體旅遊<small>Group Tours</small></h3>
+      <p>專業的公司考察、家庭聚遊及社群團體旅遊服務，提供量身訂製的團體行程及特別安排。</p>
+      <span class="service-tag">團體訂製</span>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section class="dest" id="destinations">
+  <div style="text-align: center; margin-bottom: 48px;">
+    <div class="section-label">熱門目的地</div>
+    <h2>環球精選目的地</h2>
+    <p class="section-sub" style="margin: 0 auto;">從鄰近的亞洲國家到遙遠的歐美大陸，環球國際旅遊助您探索世界每個角落。</p>
+  </div>
+  <div class="dest-grid">
+    <div class="dest-card">
+      <div class="dest-flag">🇯🇵</div>
+      <div class="dest-info">
+        <h4>日本 Japan</h4>
+        <p>東京、京都、大阪、北海道</p>
+        <span class="dest-badge">🔥 最受歡迎</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇰🇷</div>
+      <div class="dest-info">
+        <h4>韓國 Korea</h4>
+        <p>首爾、釜山、濟州島</p>
+        <span class="dest-badge">⭐ 熱門之選</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇹🇭</div>
+      <div class="dest-info">
+        <h4>泰國 Thailand</h4>
+        <p>曼谷、普吉島、清邁</p>
+        <span class="dest-badge">🏖️ 海灘勝地</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇹🇼</div>
+      <div class="dest-info">
+        <h4>台灣 Taiwan</h4>
+        <p>台北、台中、花蓮</p>
+        <span class="dest-badge">✈️ 近程首選</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇫🇷</div>
+      <div class="dest-info">
+        <h4>法國 France</h4>
+        <p>巴黎、尼斯、普羅旺斯</p>
+        <span class="dest-badge">🗼 歐洲精選</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇬🇧</div>
+      <div class="dest-info">
+        <h4>英國 UK</h4>
+        <p>倫敦、愛丁堡、湖區</p>
+        <span class="dest-badge">🏰 皇室風情</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇦🇺</div>
+      <div class="dest-info">
+        <h4>澳洲 Australia</h4>
+        <p>悉尼、墨爾本、黃金海岸</p>
+        <span class="dest-badge">🦘 南半球</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🌍</div>
+      <div class="dest-info">
+        <h4>更多目的地</h4>
+        <p>按需訂製，環球任一地點</p>
+        <span class="dest-badge">🗺️ 全球出發</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" style="background: var(--white);">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">為何選擇我們</div>
+    <h2>環球旅遊的優勢</h2>
+    <p class="section-sub" style="margin: 0 auto;">選擇環球國際旅遊，享受專業、貼心的一站式旅遊服務體驗。</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🏆</div>
+      <h4>澳門持牌旅行社</h4>
+      <p>持有澳門政府旅行社牌照，服務有法律保障，讓您安心預訂。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🌐</div>
+      <h4>環球旅遊網絡</h4>
+      <p>與全球主要航空公司、酒店集團及旅遊服務商建立長期合作關係。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🗣️</div>
+      <h4>多語言支援</h4>
+      <p>廣東話、普通話及葡語服務，為澳門多元社群提供無障礙旅遊諮詢。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💡</div>
+      <h4>專業旅遊顧問</h4>
+      <p>豐富的環球旅遊知識，提供客觀、實用的旅行建議，讓每趟旅程盡善盡美。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">聯絡我們</div>
+  <h2>立即查詢旅遊服務</h2>
+  <p class="section-sub">歡迎電話或電郵聯絡，我們的旅遊顧問將盡快為您提供專業建議及報價。</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-row-icon">📍</div>
+        <div class="contact-row-text">
+          <h4>地址</h4>
+          <p>澳門美麗街21, 21A號怡美大廈1樓A座<br>1/F A, Yi Mei Building, 21-21A Bela Vista, Macau</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📞</div>
+        <div class="contact-row-text">
+          <h4>電話</h4>
+          <a href="tel:+85328855133">+853 2885 5133</a><br>
+          <a href="tel:+85328715454">+853 2871 5454</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📠</div>
+        <div class="contact-row-text">
+          <h4>傳真</h4>
+          <p>+853 2871 5648</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📧</div>
+        <div class="contact-row-text">
+          <h4>電郵</h4>
+          <a href="mailto:co.ltd.mundial@macau.ctm.net">co.ltd.mundial@macau.ctm.net</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">🌐</div>
+        <div class="contact-row-text">
+          <h4>網站 / Facebook</h4>
+          <a href="https://www.mits.mo" target="_blank">www.mits.mo</a><br>
+          <a href="https://www.facebook.com/macaumundialtravel" target="_blank">macaumundialtravel</a>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <input type="text" placeholder="您的姓名 Your Name" />
+      <input type="tel" placeholder="聯絡電話 Phone" />
+      <input type="email" placeholder="電郵地址 Email" />
+      <select>
+        <option value="" disabled selected>查詢類別 Enquiry Type</option>
+        <option>機票預訂 Flight Booking</option>
+        <option>旅遊套票 Holiday Package</option>
+        <option>酒店預訂 Hotel Booking</option>
+        <option>郵輪假期 Cruise Package</option>
+        <option>簽證服務 Visa Services</option>
+        <option>團體旅遊 Group Tour</option>
+        <option>其他查詢 General Enquiry</option>
+      </select>
+      <textarea placeholder="請描述您的旅遊需求（目的地、出發日期、人數等）…"></textarea>
+      <button type="submit">提交查詢 / Send Enquiry ✈️</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 <span>環球國際旅遊有限公司 Mundial International Travel Service Co. Ltd.</span> · 澳門持牌旅行社 · All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
