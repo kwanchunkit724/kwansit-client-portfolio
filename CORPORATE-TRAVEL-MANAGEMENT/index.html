@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haymarket Media Group Asia | Campaign Asia-Pacific · B2B Media</title>
+<style>
+  :root {
+    --charcoal: #1a1a2e;
+    --charcoal-mid: #262640;
+    --red: #c0001e;
+    --red-dark: #9c0018;
+    --red-light: #fff0f2;
+    --white: #ffffff;
+    --light: #f5f5f8;
+    --text: #2c3445;
+    --muted: #6b7280;
+    --silver: #e8e8ef;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--charcoal);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
+  .nav-logo { height: 40px; display: flex; align-items: center; }
+  .nav-logo-box { background: var(--red); color: var(--white); font-weight: 900; font-size: 16px; padding: 8px 14px; border-radius: 4px; letter-spacing: 1px; }
+  .nav-name { color: rgba(255,255,255,0.6); font-size: 13px; margin-left: 4px; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.75); font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--red); }
+  .nav-cta { background: var(--red); color: var(--white); padding: 9px 20px; border-radius: 4px; font-size: 14px; font-weight: 700; transition: background .2s; }
+  .nav-cta:hover { background: var(--red-dark); }
+
+  /* HERO */
+  .hero {
+    margin-top: 64px;
+    background: var(--charcoal);
+    min-height: 560px; display: flex; align-items: center;
+    padding: 72px 48px; position: relative; overflow: hidden;
+  }
+  .hero-red-bar { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--red); }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0; bottom: 0;
+    width: 40%; background: linear-gradient(135deg, transparent, rgba(192,0,30,0.08));
+  }
+  .hero-content { max-width: 660px; z-index: 1; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(192,0,30,0.2); border: 1px solid rgba(192,0,30,0.4); color: #ff8080; padding: 6px 16px; border-radius: 3px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
+  .hero h1 { font-size: 46px; font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 20px; }
+  .hero h1 span { color: var(--red); }
+  .hero-desc { font-size: 16px; color: rgba(255,255,255,0.72); line-height: 1.8; margin-bottom: 36px; max-width: 580px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-red { background: var(--red); color: var(--white); padding: 13px 28px; border-radius: 4px; font-size: 15px; font-weight: 700; transition: background .2s, transform .2s; }
+  .btn-red:hover { background: var(--red-dark); transform: translateY(-2px); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.3); color: var(--white); padding: 13px 28px; border-radius: 4px; font-size: 15px; font-weight: 600; transition: border-color .2s; }
+  .btn-outline:hover { border-color: var(--white); }
+  .hero-stats { position: absolute; right: 56px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 16px; z-index: 1; }
+  .hero-stat-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 20px 24px; min-width: 200px; }
+  .hero-stat-num { font-size: 32px; font-weight: 900; color: var(--white); line-height: 1; }
+  .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+  /* TICKER */
+  .ticker { background: var(--red); padding: 14px 48px; display: flex; align-items: center; gap: 20px; overflow: hidden; }
+  .ticker-label { color: var(--white); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; }
+  .ticker-divider { color: rgba(255,255,255,0.4); }
+  .ticker-items { display: flex; gap: 40px; align-items: center; }
+  .ticker-item { color: rgba(255,255,255,0.9); font-size: 13px; font-weight: 500; white-space: nowrap; }
+
+  /* SECTION */
+  section { padding: 80px 48px; }
+  .section-label { display: inline-block; color: var(--red); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  h2 { font-size: 34px; font-weight: 800; color: var(--charcoal); margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 640px; margin-bottom: 48px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .group-box { background: var(--white); border-radius: 4px; padding: 28px; border-top: 4px solid var(--red); margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .group-box h3 { font-size: 15px; color: var(--charcoal); font-weight: 700; margin-bottom: 10px; }
+  .group-box p { font-size: 14px; color: var(--text); line-height: 1.75; }
+  .about-desc p { font-size: 15px; color: var(--text); line-height: 1.8; margin-bottom: 16px; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .about-prop { background: var(--white); border-radius: 4px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid var(--red); }
+  .about-prop-icon { font-size: 26px; margin-bottom: 10px; }
+  .about-prop h4 { font-size: 14px; font-weight: 700; color: var(--charcoal); margin-bottom: 6px; }
+  .about-prop p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* BRANDS */
+  .brands-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .brand-card { background: var(--white); border-radius: 6px; padding: 30px 24px; box-shadow: 0 4px 18px rgba(0,0,0,0.07); border-top: 4px solid var(--charcoal); transition: transform .25s, box-shadow .25s; }
+  .brand-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.12); }
+  .brand-name { font-size: 18px; font-weight: 900; color: var(--charcoal); margin-bottom: 6px; }
+  .brand-type { font-size: 11px; color: var(--red); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+  .brand-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .brand-tag { display: inline-block; margin-top: 12px; background: var(--light); color: var(--charcoal); padding: 4px 10px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+
+  /* SERVICES */
+  .services { background: var(--light); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: var(--white); border-radius: 6px; padding: 28px 22px; box-shadow: 0 4px 14px rgba(0,0,0,0.06); border-top: 3px solid var(--red); transition: transform .25s; }
+  .service-card:hover { transform: translateY(-4px); }
+  .service-icon { font-size: 30px; margin-bottom: 16px; }
+  .service-card h3 { font-size: 16px; font-weight: 700; color: var(--charcoal); margin-bottom: 8px; }
+  .service-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+  /* EVENTS */
+  .events-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .event-card { background: var(--charcoal); border-radius: 6px; padding: 28px 20px; text-align: center; transition: transform .25s; }
+  .event-card:hover { transform: translateY(-4px); }
+  .event-icon { font-size: 30px; margin-bottom: 14px; }
+  .event-card h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .event-card p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+  /* CONTACT */
+  .contact { background: var(--charcoal); }
+  .contact h2 { color: var(--white); }
+  .contact .section-label { color: #ff8080; }
+  .contact .section-sub { color: rgba(255,255,255,0.65); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+  .contact-row { display: flex; align-items: flex-start; gap: 14px; }
+  .contact-row-icon { width: 42px; height: 42px; border-radius: 4px; background: rgba(192,0,30,0.15); border: 1px solid rgba(192,0,30,0.3); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .contact-row-text h4 { font-size: 12px; color: #ff8080; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .contact-row-text p, .contact-row-text a { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.55; }
+  .contact-row-text a:hover { color: var(--red); }
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .contact-form input, .contact-form select, .contact-form textarea { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; padding: 12px 15px; color: var(--white); font-size: 14px; font-family: inherit; outline: none; transition: border-color .2s; }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form select option { background: var(--charcoal); }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--red); }
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+  .contact-form button { background: var(--red); color: var(--white); border: none; padding: 14px; border-radius: 4px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .2s; }
+  .contact-form button:hover { background: var(--red-dark); }
+
+  /* FOOTER */
+  footer { background: #0d0d1a; color: rgba(255,255,255,0.45); text-align: center; padding: 26px 48px; font-size: 13px; }
+  footer span { color: var(--red); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 48px 24px; }
+    .hero h1 { font-size: 30px; }
+    .hero-stats { display: none; }
+    section { padding: 56px 24px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .brands-grid, .services-grid { grid-template-columns: 1fr 1fr; }
+    .events-grid { grid-template-columns: 1fr 1fr; }
+    .about-props { grid-template-columns: 1fr; }
+    .ticker-items { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">
+      <div class="nav-logo-box">HAYMARKET</div>
+    </div>
+    <div class="nav-name">Media Group Asia</div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#brands">Brands</a>
+    <a href="#services">Services</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Subscribe</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-red-bar"></div>
+  <div class="hero-content">
+    <div class="hero-badge">📰 B2B Media · Asia Pacific</div>
+    <h1>The Voice of<br><span>Asia Pacific</span><br>Business Media</h1>
+    <p class="hero-desc">
+      Haymarket Media Group is a leading B2B media company in Asia Pacific, delivering trusted editorial, data-driven insights, and industry-leading events through brands including Campaign Asia-Pacific, Marketing, PRWeek and more — empowering marketing, advertising, and communications professionals across the region.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-red">Subscribe Now</a>
+      <a href="#brands" class="btn-outline">Our Brands</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat-box">
+      <div class="hero-stat-num">25+</div>
+      <div class="hero-stat-label">APAC Markets Covered</div>
+    </div>
+    <div class="hero-stat-box">
+      <div class="hero-stat-num">500K+</div>
+      <div class="hero-stat-label">Industry Professionals Reached</div>
+    </div>
+    <div class="hero-stat-box">
+      <div class="hero-stat-num">60+</div>
+      <div class="hero-stat-label">Annual Industry Events</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-label">🔴 Latest</div>
+  <div class="ticker-divider">|</div>
+  <div class="ticker-items">
+    <div class="ticker-item">Campaign Asia-Pacific — Asia's #1 Marketing & Advertising Media</div>
+    <div class="ticker-divider">·</div>
+    <div class="ticker-item">Annual Agency of the Year Awards Now Open</div>
+    <div class="ticker-divider">·</div>
+    <div class="ticker-item">Haymarket Asia — Hong Kong Headquarters</div>
+    <div class="ticker-divider">·</div>
+    <div class="ticker-item">Digital subscriptions available at haymarket.asia</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">About Haymarket Asia</div>
+    <h2>Asia Pacific's Trusted B2B Media Group</h2>
+    <p class="section-sub" style="margin: 0 auto;">Haymarket Media Group has been serving Asia Pacific's business professionals for decades through industry-defining editorial, intelligence, and events across marketing, advertising, and communications.</p>
+  </div>
+  <div class="about-grid">
+    <div>
+      <div class="group-box">
+        <h3>🌏 Part of Haymarket Media Group</h3>
+        <p>Haymarket Media Group, founded in the UK, is one of the world's leading business media companies. In Asia Pacific, Haymarket operates from its Hong Kong base, publishing premier brands including Campaign Asia-Pacific — the definitive authority on marketing and advertising across the region — reaching senior marketing, agency, and media professionals across 25+ markets.</p>
+      </div>
+      <div class="about-desc">
+        <p>Our editorial teams combine deep regional expertise with global perspectives, delivering news, analysis, data, and intelligence that marketing and communications professionals rely on to make better decisions and drive business growth.</p>
+        <p>Beyond publishing, Haymarket organises the most prestigious industry events in Asia Pacific — from the annual Agency of the Year Awards to thought leadership conferences — creating platforms for the industry's leading voices.</p>
+      </div>
+    </div>
+    <div class="about-props">
+      <div class="about-prop">
+        <div class="about-prop-icon">📰</div>
+        <h4>Editorial Excellence</h4>
+        <p>Award-winning journalists and editors delivering breaking news, analysis, and feature content daily.</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">📊</div>
+        <h4>Data &amp; Intelligence</h4>
+        <p>Proprietary research, rankings, and data products informing strategic decisions across the industry.</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🎖️</div>
+        <h4>Industry Awards</h4>
+        <p>The most coveted accolades in APAC marketing — Agency of the Year, Spikes, and more.</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🤝</div>
+        <h4>Community</h4>
+        <p>Connecting 500,000+ marketing and advertising professionals across Asia Pacific.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands" style="background: var(--white);">
+  <div class="section-label">Our Brands</div>
+  <h2>Media Brands for Every Profession</h2>
+  <p class="section-sub">Haymarket Asia's portfolio of B2B media brands covers marketing, advertising, PR, healthcare, and more.</p>
+  <div class="brands-grid">
+    <div class="brand-card">
+      <div class="brand-name">Campaign Asia</div>
+      <div class="brand-type">Marketing &amp; Advertising</div>
+      <p>The definitive source for marketing, advertising, and communications news and analysis across Asia Pacific. Essential reading for agency and brand-side professionals.</p>
+      <span class="brand-tag">campaignasia.com</span>
+    </div>
+    <div class="brand-card">
+      <div class="brand-name">PRWeek Asia</div>
+      <div class="brand-type">Public Relations</div>
+      <p>Asia Pacific's leading publication for PR and communications professionals. News, insight, and the annual PRWeek Asia Awards recognising excellence in the field.</p>
+      <span class="brand-tag">PR &amp; Communications</span>
+    </div>
+    <div class="brand-card">
+      <div class="brand-name">Haymarket Medical</div>
+      <div class="brand-type">Healthcare Media</div>
+      <p>Medical education and clinical information resources for healthcare professionals across Asia Pacific, supporting better patient outcomes through trusted content.</p>
+      <span class="brand-tag">Healthcare</span>
+    </div>
+    <div class="brand-card">
+      <div class="brand-name">Agency of the Year</div>
+      <div class="brand-type">Industry Awards</div>
+      <p>The most prestigious awards programme in APAC marketing. Over 20 categories recognising the best agencies, networks, and independents across the region.</p>
+      <span class="brand-tag">Annual Awards</span>
+    </div>
+    <div class="brand-card">
+      <div class="brand-name">Campaign Intelligence</div>
+      <div class="brand-type">Data &amp; Research</div>
+      <p>Exclusive data, reports, and market intelligence products. Adspend tracking, agency rankings, salary surveys, and proprietary research informing C-suite decisions.</p>
+      <span class="brand-tag">Market Data</span>
+    </div>
+    <div class="brand-card">
+      <div class="brand-name">Haymarket Events</div>
+      <div class="brand-type">Conferences &amp; Events</div>
+      <p>60+ annual events including conferences, masterclasses, and roundtables. Premium platforms connecting Asia Pacific's most influential marketing and media leaders.</p>
+      <span class="brand-tag">60+ Events/Year</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div style="text-align: center; margin-bottom: 48px;">
+    <div class="section-label">What We Offer</div>
+    <h2>Reach, Inform, Connect</h2>
+    <p class="section-sub" style="margin: 0 auto;">From subscriptions to bespoke content partnerships, Haymarket Asia offers a full range of solutions for industry professionals and brand partners.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>Digital Subscriptions</h3>
+      <p>Unlimited access to Campaign Asia, PRWeek Asia, and all Haymarket APAC editorial content. Daily newsletters, breaking news alerts, and exclusive feature content.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Research &amp; Data</h3>
+      <p>Bespoke market research, adspend reports, agency rankings, and industry surveys. Proprietary data products providing competitive intelligence for senior decision-makers.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3>Branded Content</h3>
+      <p>Custom content strategies and branded content solutions — from sponsored articles and whitepapers to video production and social media campaigns across Haymarket's audiences.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📣</div>
+      <h3>Display Advertising</h3>
+      <p>Premium advertising inventory across Haymarket's digital and print platforms, reaching senior marketing, agency, and media professionals throughout Asia Pacific.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎓</div>
+      <h3>Training &amp; Masterclasses</h3>
+      <p>Industry-led professional development programmes, workshops, and masterclasses covering the latest trends in marketing, digital, data, creativity, and brand strategy.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏆</div>
+      <h3>Awards &amp; Recognition</h3>
+      <p>Enter and sponsor Asia Pacific's most recognised industry awards programmes — Agency of the Year, Spikes Asia, PRWeek Asia Awards, and more.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events" style="background: var(--white);">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">Events &amp; Awards</div>
+    <h2>Where the Industry Meets</h2>
+    <p class="section-sub" style="margin: 0 auto;">Haymarket Asia's events calendar brings together the brightest minds in Asia Pacific marketing, media, and communications.</p>
+  </div>
+  <div class="events-grid">
+    <div class="event-card">
+      <div class="event-icon">🥇</div>
+      <h4>Agency of the Year</h4>
+      <p>APAC's most prestigious agency awards. 20+ categories across all disciplines and markets.</p>
+    </div>
+    <div class="event-card">
+      <div class="event-icon">💡</div>
+      <h4>Campaign 360</h4>
+      <p>Annual marketing leadership conference bringing together brand CMOs and agency heads.</p>
+    </div>
+    <div class="event-card">
+      <div class="event-icon">📱</div>
+      <h4>Digital Summit</h4>
+      <p>The definitive conference for digital marketing, data, and technology in Asia Pacific.</p>
+    </div>
+    <div class="event-card">
+      <div class="event-icon">🎨</div>
+      <h4>Spikes Asia</h4>
+      <p>The festival of creativity for Asia Pacific — celebrating the best creative work across the region.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2>Contact Haymarket Asia</h2>
+  <p class="section-sub">For subscriptions, advertising enquiries, event sponsorship, or editorial contacts — reach out to our Hong Kong team.</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-row-icon">🏢</div>
+        <div class="contact-row-text">
+          <h4>Headquarters</h4>
+          <p>Haymarket Media Group Asia<br>Hong Kong</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📱</div>
+        <div class="contact-row-text">
+          <h4>Phone</h4>
+          <a href="tel:+85266816768">+852 6681 6768</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📧</div>
+        <div class="contact-row-text">
+          <h4>Subscriptions</h4>
+          <a href="mailto:subscriptions@haymarket.asia">subscriptions@haymarket.asia</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">🌐</div>
+        <div class="contact-row-text">
+          <h4>Website</h4>
+          <a href="https://www.haymarket.asia" target="_blank">www.haymarket.asia</a><br>
+          <a href="https://www.campaignasia.com" target="_blank">www.campaignasia.com</a>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <input type="text" placeholder="Your Name" />
+      <input type="text" placeholder="Company" />
+      <input type="email" placeholder="Email Address" />
+      <select>
+        <option value="" disabled selected>Enquiry Type</option>
+        <option>Digital Subscription</option>
+        <option>Advertising / Sponsorship</option>
+        <option>Branded Content Partnership</option>
+        <option>Research &amp; Data</option>
+        <option>Events &amp; Awards</option>
+        <option>Editorial / Press</option>
+        <option>General Enquiry</option>
+      </select>
+      <textarea placeholder="Tell us about your enquiry…"></textarea>
+      <button type="submit">Send Enquiry →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 <span>Haymarket Media Group Asia</span> · Publishers of Campaign Asia-Pacific · Hong Kong · All Rights Reserved · <span>subscriptions@haymarket.asia</span></p>
+</footer>
+
+</body>
+</html>
