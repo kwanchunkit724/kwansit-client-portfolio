@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>康華地產有限公司 | 大灣區樓盤專家</title>
+<meta name="description" content="康華地產有限公司 — 專注大灣區樓盤代理，覆蓋珠海、中山、肇慶、深圳等9個城市，提供睇樓團、買賣代理及康華管家服務。"/>
+<style>
+:root{
+  --bg:#080506;
+  --surface:#0e0a08;
+  --card:#150e0c;
+  --border:#281810;
+  --accent:#c83028;
+  --accent2:#e85040;
+  --gold:#c89020;
+  --text:#f0e8e0;
+  --muted:#907060;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(8,5,6,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-size:1rem;font-weight:700;color:var(--accent2);letter-spacing:.04em;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.nav-links a:hover{color:var(--accent2);}
+
+/* HERO */
+.hero{min-height:90vh;display:flex;align-items:center;justify-content:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(200,48,40,.1) 0%,transparent 65%);}
+.hero-inner{max-width:1200px;width:100%;display:grid;grid-template-columns:1fr 390px;gap:4rem;align-items:center;position:relative;}
+.hero-badge{display:inline-block;background:rgba(200,48,40,.15);border:1px solid rgba(200,48,40,.35);color:var(--accent2);font-size:.75rem;padding:.35rem .9rem;border-radius:20px;letter-spacing:.1em;margin-bottom:1.5rem;text-transform:uppercase;}
+.hero h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.2;margin-bottom:.5rem;}
+.hero h1 span{color:var(--accent2);}
+.hero-tag{font-size:1rem;color:var(--gold);font-weight:600;margin-bottom:.8rem;}
+.hero-sub{font-size:.93rem;color:var(--muted);max-width:480px;margin-bottom:1.5rem;line-height:1.7;}
+.disclaimer-note{background:rgba(200,48,40,.07);border:1px solid rgba(200,48,40,.2);border-radius:8px;padding:.8rem 1rem;font-size:.78rem;color:var(--muted);margin-bottom:2rem;line-height:1.6;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:#fff;padding:.85rem 2rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;transition:background .2s;}
+.hero-cta:hover{background:var(--accent2);}
+.hero-cta-out{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);color:var(--muted);padding:.85rem 2rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .2s;}
+.hero-cta-out:hover{border-color:var(--accent);color:var(--accent2);}
+
+/* INFO CARD */
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.8rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));}
+.info-card h3{font-size:.78rem;color:var(--accent2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.2rem;}
+.info-row{display:flex;gap:.8rem;margin-bottom:.85rem;align-items:flex-start;}
+.info-icon{width:20px;color:var(--accent2);flex-shrink:0;margin-top:.1rem;font-size:.9rem;}
+.info-text{font-size:.82rem;color:var(--muted);}
+.info-text strong{color:var(--text);display:block;font-size:.78rem;font-weight:600;}
+.info-text a{color:var(--muted);text-decoration:none;}
+.info-text a:hover{color:var(--accent2);}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--accent2);display:block;}
+.stat-label{font-size:.78rem;color:var(--muted);margin-top:.2rem;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-label{font-size:.72rem;color:var(--accent2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem;}
+.sec-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:1rem;}
+.sec-desc{color:var(--muted);max-width:620px;margin-bottom:3rem;line-height:1.7;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.about-highlight{background:linear-gradient(135deg,rgba(200,48,40,.08),rgba(200,48,40,.03));border:1px solid rgba(200,48,40,.2);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:.95rem;line-height:1.75;color:var(--text);}
+.about-highlight cite{display:block;font-size:.78rem;color:var(--accent2);margin-top:.8rem;font-style:normal;}
+.prop-cards{display:grid;gap:1rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;gap:1rem;align-items:flex-start;}
+.prop-icon{width:36px;height:36px;background:rgba(200,48,40,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.prop-card h4{font-size:.9rem;font-weight:700;margin-bottom:.2rem;}
+.prop-card p{font-size:.82rem;color:var(--muted);}
+
+/* CITIES */
+.cities{background:var(--surface);}
+.cities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.city-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.4rem;transition:border-color .2s,transform .2s;}
+.city-card:hover{border-color:rgba(200,48,40,.4);transform:translateY(-4px);}
+.city-name{font-size:1.1rem;font-weight:700;color:var(--accent2);margin-bottom:.5rem;}
+.city-districts{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem;}
+.district-tag{background:rgba(200,48,40,.1);border:1px solid rgba(200,48,40,.2);color:var(--muted);font-size:.7rem;padding:.15rem .5rem;border-radius:4px;}
+.city-card p{font-size:.8rem;color:var(--muted);}
+
+/* SERVICES */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s,transform .2s;}
+.svc-card:hover{border-color:rgba(200,48,40,.4);transform:translateY(-4px);}
+.svc-top{background:rgba(200,48,40,.06);padding:2rem;text-align:center;font-size:2.5rem;border-bottom:1px solid var(--border);}
+.svc-body{padding:1.4rem;}
+.svc-body h3{font-size:1rem;font-weight:700;margin-bottom:.5rem;}
+.svc-body p{font-size:.83rem;color:var(--muted);line-height:1.6;}
+.svc-tag{display:inline-block;background:rgba(200,48,40,.12);color:var(--accent2);font-size:.7rem;padding:.2rem .6rem;border-radius:4px;margin-top:.8rem;}
+
+/* OFFICES */
+.offices{background:var(--surface);}
+.offices-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+.office-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.6rem;}
+.office-loc{font-size:.72rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
+.office-name{font-size:1rem;font-weight:700;margin-bottom:1rem;}
+.office-item{display:flex;gap:.6rem;margin-bottom:.6rem;align-items:flex-start;font-size:.83rem;color:var(--muted);}
+.office-item span:first-child{flex-shrink:0;}
+
+/* BUTLER */
+.butler-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
+.butler-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;text-align:center;}
+.butler-icon{font-size:1.8rem;margin-bottom:.5rem;}
+.butler-name{font-size:.8rem;font-weight:600;}
+
+/* CONTACT */
+.contact{background:var(--surface);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-info h3{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;}
+.c-item{display:flex;gap:1rem;margin-bottom:1.2rem;align-items:flex-start;}
+.c-icon{width:40px;height:40px;background:rgba(200,48,40,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:.75rem;color:var(--muted);margin-bottom:.1rem;}
+.c-val{font-size:.9rem;font-weight:500;}
+.c-val a{color:var(--text);text-decoration:none;}
+.c-val a:hover{color:var(--accent2);}
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;}
+.contact-card p{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;}
+.c-form-row{margin-bottom:1rem;}
+.c-form-row label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:.4rem;}
+.c-form-row input,.c-form-row textarea,.c-form-row select{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;color:var(--text);font-size:.88rem;}
+.c-form-row textarea{height:90px;resize:vertical;}
+.c-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:.85rem;border-radius:8px;font-weight:700;font-size:.95rem;cursor:pointer;transition:background .2s;}
+.c-btn:hover{background:var(--accent2);}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2rem;text-align:center;}
+.foot-logo{font-size:1rem;font-weight:700;color:var(--accent2);margin-bottom:.3rem;}
+.foot-disc{font-size:.72rem;color:var(--muted);max-width:700px;margin:0 auto .5rem;line-height:1.6;}
+.foot-copy{font-size:.75rem;color:var(--muted);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .cities-grid,.offices-grid,.grid-3,.stats-inner{grid-template-columns:1fr 1fr;}
+  .butler-grid{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:600px){
+  .cities-grid,.offices-grid,.grid-3,.stats-inner,.butler-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">康華地產 · 大灣區樓盤專家</div>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#cities">覆蓋城市</a></li>
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#offices">辦公室</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">大灣區地產代理 · GBA Property Specialist</div>
+      <h1><span>康華</span>地產有限公司</h1>
+      <div class="hero-tag">大灣區樓盤專家 · 覆蓋9大城市</div>
+      <p class="hero-sub">專注大灣區各城市物業代理，涵蓋珠海、中山、肇慶、深圳、廣州、東莞、惠州、佛山、江門，提供買賣代理、睇樓團及全面康華管家服務。</p>
+      <div class="disclaimer-note">⚠️ 重要聲明：本公司純粹就香港以外地方的物業進行地產代理工作，本公司並沒有牌照處理任何位於香港的物業。</div>
+      <div class="hero-ctas">
+        <a href="#cities" class="hero-cta">瀏覽樓盤城市 →</a>
+        <a href="#contact" class="hero-cta-out">報名睇樓團</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>聯絡資料</h3>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div class="info-text"><strong>香港辦公室</strong>荃灣南豐中心6樓618A</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📞</span>
+        <div class="info-text"><strong>香港電話</strong><a href="tel:26508000">2650 8000</a> / <a href="tel:53003213">5300 3213</a></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📱</span>
+        <div class="info-text"><strong>手機</strong><a href="tel:67950820">6795 0820</a></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📞</span>
+        <div class="info-text"><strong>肇慶/珠海/中山</strong><a href="tel:98182008">9818 2008</a></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🌐</span>
+        <div class="info-text"><strong>網站</strong><a href="https://hwagents.com" target="_blank">hwagents.com</a></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🏢</span>
+        <div class="info-text"><strong>辦公地點</strong>香港 · 肇慶 · 珠海 · 中山</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num">9</span><div class="stat-label">覆蓋大灣區城市</div></div>
+    <div class="stat"><span class="stat-num">4</span><div class="stat-label">辦公室地點</div></div>
+    <div class="stat"><span class="stat-num">睇樓</span><div class="stat-label">定期睇樓團</div></div>
+    <div class="stat"><span class="stat-num">管家</span><div class="stat-label">康華管家服務</div></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div>
+        <div class="sec-label">關於我們</div>
+        <h2 class="sec-title">大灣區樓盤，<br/>康華為您把關</h2>
+        <div class="about-highlight">
+          <p>康華地產有限公司專注於大灣區各城市的物業代理服務，協助香港居民及投資者把握大灣區發展機遇，置業於珠三角各主要城市。我們在香港、肇慶、珠海及中山均設有辦公室，為客戶提供在地支援及一站式服務。</p>
+          <cite>— 康華地產有限公司 · hwagents.com</cite>
+        </div>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.7;">
+          康華提供全面的「康華管家」服務，由代辦匯款、全屋裝修、收樓驗樓，到代租代管及傢俬電器採購，讓客戶在香港便可輕鬆管理大灣區物業，解除置業後顧之憂。我們亦定期舉辦大灣區物業講座及睇樓團，讓客戶親身了解各城市的發展潛力。
+        </p>
+      </div>
+      <div class="prop-cards">
+        <div class="prop-card">
+          <div class="prop-icon">🌏</div>
+          <div>
+            <h4>大灣區專家</h4>
+            <p>專注大灣區物業代理，深耕珠三角市場，提供最新最準確的市場資訊。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🏢</div>
+          <div>
+            <h4>4個辦公室</h4>
+            <p>在香港、肇慶、珠海及中山均設有辦公室，提供在地專業服務。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🚌</div>
+          <div>
+            <h4>定期睇樓團</h4>
+            <p>定期組織大灣區各城市睇樓團，讓客戶親身感受不同城市的置業環境。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🔑</div>
+          <div>
+            <h4>康華管家服務</h4>
+            <p>從收樓到出租，全程代辦，讓您在香港輕鬆管理大灣區物業。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cities" class="cities">
+  <div class="sec-inner">
+    <div class="sec-label">覆蓋城市</div>
+    <h2 class="sec-title">大灣區9大城市</h2>
+    <p class="sec-desc">康華地產的服務網絡覆蓋大灣區9個主要城市，為客戶提供多元化的置業選擇。</p>
+    <div class="cities-grid">
+      <div class="city-card">
+        <div class="city-name">🏙️ 珠海</div>
+        <p>橫琴新區、唐家灣等核心地段，臨港優質住宅</p>
+        <div class="city-districts">
+          <span class="district-tag">金灣區</span>
+          <span class="district-tag">斗門區</span>
+          <span class="district-tag">香洲區</span>
+          <span class="district-tag">橫琴區</span>
+          <span class="district-tag">唐家灣</span>
+        </div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">🌆 中山</div>
+        <p>廣深港核心腹地，均衡發展宜居城市</p>
+        <div class="city-districts">
+          <span class="district-tag">市區</span>
+          <span class="district-tag">南部片區</span>
+          <span class="district-tag">火炬開發區</span>
+          <span class="district-tag">其他區域</span>
+        </div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">🌿 肇慶</div>
+        <p>高鐵直達廣深港，優質生態城市，價格親民</p>
+        <div class="city-districts">
+          <span class="district-tag">鼎湖區</span>
+          <span class="district-tag">端州區</span>
+          <span class="district-tag">高要區</span>
+        </div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">🏗️ 深圳</div>
+        <p>一線城市，緊鄰香港，商業及科技核心</p>
+        <div class="city-districts">
+          <span class="district-tag">各區</span>
+        </div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">🌇 廣州</div>
+        <p>大灣區中心城市，龐大商業及交通樞紐</p>
+        <div class="city-districts">
+          <span class="district-tag">各區</span>
+        </div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">🏭 東莞</div>
+        <p>製造業重鎮，深莞惠都市圈核心城市</p>
+        <div class="city-districts">
+          <span class="district-tag">各鎮</span>
+        </div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">🌊 惠州</div>
+        <p>優美海岸線，宜居生態城市，升值潛力高</p>
+        <div class="city-districts">
+          <span class="district-tag">各區</span>
+        </div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">🏘️ 佛山</div>
+        <p>廣佛同城，製造業及文化名城</p>
+        <div class="city-districts">
+          <span class="district-tag">各區</span>
+        </div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">🌿 江門</div>
+        <p>大灣區西翼核心城市，環境優美，宜業宜居</p>
+        <div class="city-districts">
+          <span class="district-tag">各區</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="sec-inner">
+    <div class="sec-label">服務項目</div>
+    <h2 class="sec-title">全方位大灣區置業服務</h2>
+    <p class="sec-desc">從樓盤選購到售後管理，康華提供一站式大灣區置業服務，讓您置業無憂。</p>
+    <div class="grid-3">
+      <div class="svc-card">
+        <div class="svc-top">🏠</div>
+        <div class="svc-body">
+          <h3>大灣區樓盤代理</h3>
+          <p>代理大灣區各城市一手及二手住宅物業，提供最新樓盤資訊、價格分析及買賣代理服務，協助客戶以最佳條件置業。</p>
+          <span class="svc-tag">核心服務</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">🚌</div>
+        <div class="svc-body">
+          <h3>大灣區睇樓團</h3>
+          <p>定期舉辦大灣區各城市睇樓團，由香港出發，參觀珠海、中山、肇慶等城市的優質樓盤，讓客戶親身了解置業環境。</p>
+          <span class="svc-tag">睇樓團</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">🔑</div>
+        <div class="svc-body">
+          <h3>康華管家服務</h3>
+          <p>提供代辦匯款、全屋裝修、收樓驗樓、代租代管、傢俬電器採購等全面售後服務，讓您在香港便可安心管理大灣區物業。</p>
+          <span class="svc-tag">管家服務</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">📋</div>
+        <div class="svc-body">
+          <h3>網簽及買賣程序</h3>
+          <p>專業協助辦理大灣區物業買賣的各項手續，包括網簽查詢、買賣流程指引及注意事項說明，確保交易安全順利。</p>
+          <span class="svc-tag">買賣程序</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">🎤</div>
+        <div class="svc-body">
+          <h3>市場資訊及講座</h3>
+          <p>定期舉辦大灣區物業市場資訊講座，分享最新市場動態、城市發展規劃及置業注意事項，助客戶作出明智決定。</p>
+          <span class="svc-tag">資訊講座</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">📹</div>
+        <div class="svc-body">
+          <h3>樓盤影片展示</h3>
+          <p>提供大灣區各城市優質樓盤的影片資料，讓客戶在港便可直觀了解各地樓盤的實況、周邊設施及社區環境。</p>
+          <span class="svc-tag">影片服務</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;">
+      <div class="sec-label" style="margin-bottom:1rem;">康華管家服務詳情</div>
+      <div class="butler-grid">
+        <div class="butler-card">
+          <div class="butler-icon">💸</div>
+          <div class="butler-name">代辦匯款</div>
+        </div>
+        <div class="butler-card">
+          <div class="butler-icon">🔨</div>
+          <div class="butler-name">全屋裝修</div>
+        </div>
+        <div class="butler-card">
+          <div class="butler-icon">🏠</div>
+          <div class="butler-name">收樓及驗樓</div>
+        </div>
+        <div class="butler-card">
+          <div class="butler-icon">📋</div>
+          <div class="butler-name">代租代管</div>
+        </div>
+        <div class="butler-card">
+          <div class="butler-icon">🛋️</div>
+          <div class="butler-name">傢俬電器</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="offices" class="offices">
+  <div class="sec-inner">
+    <div class="sec-label">辦公室地點</div>
+    <h2 class="sec-title">四地辦公，在地服務</h2>
+    <p class="sec-desc">康華在香港及大灣區設有四個辦公室，為客戶提供便捷的在地服務。</p>
+    <div class="offices-grid">
+      <div class="office-card">
+        <div class="office-loc">🇭🇰 香港總辦事處</div>
+        <div class="office-name">香港辦公室</div>
+        <div class="office-item"><span>📍</span><span>荃灣南豐中心6樓618A</span></div>
+        <div class="office-item"><span>📞</span><span><a href="tel:26508000" style="color:var(--muted);text-decoration:none;">2650 8000</a> / <a href="tel:53003213" style="color:var(--muted);text-decoration:none;">5300 3213</a></span></div>
+      </div>
+      <div class="office-card">
+        <div class="office-loc">🌿 大灣區辦公室</div>
+        <div class="office-name">肇慶辦公室</div>
+        <div class="office-item"><span>📍</span><span>鼎湖區肇慶東站前綜合體商鋪L-103</span></div>
+        <div class="office-item"><span>📞</span><span><a href="tel:98182008" style="color:var(--muted);text-decoration:none;">9818 2008</a></span></div>
+      </div>
+      <div class="office-card">
+        <div class="office-loc">🌊 大灣區辦公室</div>
+        <div class="office-name">珠海辦公室</div>
+        <div class="office-item"><span>📍</span><span>香洲區港安街42號2003房</span></div>
+        <div class="office-item"><span>📞</span><span><a href="tel:98182008" style="color:var(--muted);text-decoration:none;">9818 2008</a></span></div>
+      </div>
+      <div class="office-card">
+        <div class="office-loc">🏙️ 大灣區辦公室</div>
+        <div class="office-name">中山辦公室</div>
+        <div class="office-item"><span>📍</span><span>西區街道臻匯公館地舖24卡</span></div>
+        <div class="office-item"><span>📞</span><span><a href="tel:98182008" style="color:var(--muted);text-decoration:none;">9818 2008</a></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="sec-inner">
+    <div class="sec-label">聯絡我們</div>
+    <h2 class="sec-title">報名及查詢</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>聯絡資料</h3>
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">香港辦公室</div>
+            <div class="c-val">荃灣南豐中心6樓618A</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">香港電話</div>
+            <div class="c-val"><a href="tel:26508000">2650 8000</a> / <a href="tel:53003213">5300 3213</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📱</div>
+          <div>
+            <div class="c-label">手機</div>
+            <div class="c-val"><a href="tel:67950820">6795 0820</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">肇慶/珠海/中山</div>
+            <div class="c-val"><a href="tel:98182008">9818 2008</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">網站</div>
+            <div class="c-val"><a href="https://hwagents.com" target="_blank">hwagents.com</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>大灣區置業查詢</h3>
+        <p>歡迎填寫以下資料，我們的大灣區專家將盡快與您聯絡，提供個人化置業建議。</p>
+        <div class="c-form-row">
+          <label>您的姓名</label>
+          <input type="text" placeholder="請輸入姓名"/>
+        </div>
+        <div class="c-form-row">
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="請輸入聯絡電話"/>
+        </div>
+        <div class="c-form-row">
+          <label>感興趣的城市</label>
+          <select>
+            <option>請選擇感興趣的城市</option>
+            <option>珠海 Zhuhai</option>
+            <option>中山 Zhongshan</option>
+            <option>肇慶 Zhaoqing</option>
+            <option>深圳 Shenzhen</option>
+            <option>廣州 Guangzhou</option>
+            <option>東莞 Dongguan</option>
+            <option>惠州 Huizhou</option>
+            <option>佛山 Foshan</option>
+            <option>江門 Jiangmen</option>
+          </select>
+        </div>
+        <div class="c-form-row">
+          <label>您想留給我們的訊息</label>
+          <textarea placeholder="請說明您的置業需求、預算及時間安排..."></textarea>
+        </div>
+        <button class="c-btn">提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">康華地產有限公司</div>
+  <div class="foot-disc">免責聲明：本公司純粹就香港以外地方的物業進行地產代理工作，本公司並沒有牌照處理任何位於香港的物業。所有國內物業資料及圖片由發展商提供，顧客必須親自審查所有資料的真確性。</div>
+  <div class="foot-copy">© 2018 hwagents.com · 康華地產有限公司 · 版權所有</div>
+</footer>
+
+</body>
+</html>
