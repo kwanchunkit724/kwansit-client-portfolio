@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>潮食派有限公司 | FoodCraze — 香港潮流美食</title>
+<meta name="description" content="潮食派有限公司（FoodCraze）— 香港潮流美食餐飲集團，多個分店遍佈港九，以新穎創意菜式及活潑用餐體驗著稱。"/>
+<style>
+:root{
+  --bg:#080406;
+  --surface:#100810;
+  --card:#160d16;
+  --border:#221422;
+  --accent:#e02880;
+  --accent2:#e0a020;
+  --text:#f0eef0;
+  --muted:#8a808a;
+  --radius:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,4,6,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{display:flex;flex-direction:column;line-height:1.2;}
+.nav-logo-cn{font-size:1.1rem;font-weight:800;color:var(--accent);}
+.nav-logo-en{font-size:0.68rem;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:0.85rem;letter-spacing:0.04em;color:var(--muted);transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:700;transition:opacity 0.2s;}
+.nav-cta:hover{opacity:0.85;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:64px;}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 60% at 20% 40%,rgba(224,40,128,0.12) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 50% at 80% 60%,rgba(224,160,32,0.08) 0%,transparent 60%),
+  linear-gradient(160deg,#080406 0%,#100610 60%,#080406 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(224,40,128,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(224,40,128,0.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 400px;gap:5rem;align-items:center;position:relative;z-index:2;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(224,40,128,0.12);border:1px solid rgba(224,40,128,0.25);border-radius:20px;padding:0.3rem 1rem;font-size:0.78rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.5rem;}
+.hero h1{font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:900;line-height:1.1;margin-bottom:0.5rem;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-en{font-size:1rem;color:var(--muted);font-weight:500;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin-bottom:2.5rem;line-height:1.7;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 2rem;border-radius:8px;font-weight:700;font-size:0.95rem;transition:opacity 0.2s;}
+.btn-primary:hover{opacity:0.85;}
+.btn-secondary{border:1px solid var(--border);color:var(--text);padding:0.75rem 2rem;border-radius:8px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s;}
+.btn-secondary:hover{border-color:var(--accent);}
+.hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.72rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.7rem 0;border-bottom:1px solid var(--border);}
+.info-row:last-child{border-bottom:none;}
+.info-icon{width:32px;height:32px;border-radius:7px;background:rgba(224,40,128,0.12);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;}
+.info-val{font-size:0.9rem;font-weight:600;}
+.info-val a{color:var(--accent);}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stats-inner{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:2.2rem;font-weight:900;color:var(--accent);line-height:1;}
+.stat-label{font-size:0.78rem;color:var(--muted);margin-top:0.4rem;}
+
+/* SECTIONS */
+section{padding:5rem 0;}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.section-tag{display:inline-block;background:rgba(224,40,128,0.12);border:1px solid rgba(224,40,128,0.2);border-radius:20px;padding:0.3rem 1rem;font-size:0.75rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1rem;}
+.section-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;line-height:1.2;margin-bottom:0.75rem;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:640px;line-height:1.7;}
+.section-header{margin-bottom:3rem;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(224,40,128,0.08),rgba(224,160,32,0.06));border:1px solid rgba(224,40,128,0.18);border-radius:12px;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:1.05rem;line-height:1.8;}
+.about-body p{color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+.prop-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-name{font-size:0.82rem;font-weight:700;color:var(--accent);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+
+/* CONCEPT CARDS */
+.concept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.concept-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.25s;}
+.concept-card:hover{border-color:rgba(224,40,128,0.35);transform:translateY(-3px);}
+.concept-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.concept-card:hover::after{opacity:1;}
+.concept-tag{display:inline-block;background:rgba(224,40,128,0.12);border:1px solid rgba(224,40,128,0.2);border-radius:20px;padding:0.2rem 0.75rem;font-size:0.7rem;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.75rem;}
+.concept-name{font-size:1.2rem;font-weight:800;margin-bottom:0.4rem;}
+.concept-en{font-size:0.8rem;color:var(--muted);margin-bottom:0.6rem;letter-spacing:0.06em;}
+.concept-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+.concept-badge{display:inline-block;background:rgba(224,160,32,0.12);border:1px solid rgba(224,160,32,0.2);border-radius:4px;padding:0.15rem 0.5rem;font-size:0.68rem;color:var(--accent2);margin-top:0.75rem;}
+
+/* MENU HIGHLIGHTS */
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.menu-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:border-color 0.25s;}
+.menu-card:hover{border-color:rgba(224,160,32,0.35);}
+.menu-icon{font-size:1.8rem;margin-bottom:0.75rem;}
+.menu-dish{font-size:1rem;font-weight:700;margin-bottom:0.3rem;}
+.menu-desc{font-size:0.83rem;color:var(--muted);line-height:1.6;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-block{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-title{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;}
+.contact-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 0;border-bottom:1px solid var(--border);}
+.contact-item:last-child{border-bottom:none;}
+.contact-icon{width:38px;height:38px;border-radius:8px;background:rgba(224,40,128,0.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.contact-type{font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;}
+.contact-val{font-size:0.95rem;font-weight:600;}
+.contact-val a{color:var(--accent);}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem 0 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-logo-cn{font-size:1.1rem;font-weight:800;color:var(--accent);margin-bottom:0.2rem;}
+.footer-logo-en{font-size:0.75rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;}
+.footer-desc{font-size:0.85rem;color:var(--muted);line-height:1.7;max-width:300px;}
+.footer-col h4{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col ul li a{font-size:0.88rem;color:var(--muted);transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.concept-grid,.menu-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .prop-cards{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-cn">潮食派</div>
+      <div class="nav-logo-en">FoodCraze</div>
+    </div>
+    <div class="nav-links">
+      <a href="#concepts">餐廳概念</a>
+      <a href="#menu">招牌菜式</a>
+      <a href="#locations">分店資料</a>
+      <a href="#contact">聯絡</a>
+    </div>
+    <a href="mailto:info@foodcraze.com.hk" class="nav-cta">立即預訂</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🍽️ 潮流餐飲 · 香港多區分店</div>
+      <h1><em>潮食</em>派<br/>用餐體驗</h1>
+      <div class="hero-en">FoodCraze · Hong Kong</div>
+      <p class="hero-sub">潮食派有限公司以「潮流美食、創意體驗」為核心理念，在香港多區開設特色餐廳，以新穎獨特的菜式概念、活潑輕鬆的用餐氛圍，帶給食客前所未有的飲食體驗。</p>
+      <div class="hero-btns">
+        <a href="#concepts" class="btn-primary">探索餐廳</a>
+        <a href="#locations" class="btn-secondary">分店位置</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">📋 聯絡資料</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">公司名稱</div>
+          <div class="info-val">潮食派有限公司</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">地區</div>
+          <div class="info-val">香港（多區分店）</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-val"><a href="mailto:info@foodcraze.com.hk">info@foodcraze.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網站</div>
+          <div class="info-val"><a href="https://foodcraze.com.hk" target="_blank">foodcraze.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🍴</div>
+        <div>
+          <div class="info-label">業務類別</div>
+          <div class="info-val">餐飲集團 · 多區分店</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">多</div>
+      <div class="stat-label">香港分店</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">🍽️</div>
+      <div class="stat-label">創意菜式</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">潮</div>
+      <div class="stat-label">流行餐飲概念</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">💯</div>
+      <div class="stat-label">用餐體驗</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">關於我們</div>
+        <h2 class="section-title">潮流美食<br/>全新體驗</h2>
+        <div class="about-highlight">
+          <p>潮食派有限公司是香港本土餐飲品牌，以「潮流美食」為核心，融合創意烹飪理念與輕鬆活潑的用餐環境，打造多個特色餐飲概念，於香港多區設有分店，服務不同地區的食客。</p>
+        </div>
+        <div class="about-body">
+          <p>「潮食派」品牌名稱結合了「潮流」（trendy）、「食」（food）、「派」（faction／style），準確呈現了品牌的定位——引領香港餐飲潮流，以創意菜式及獨特氛圍吸引追求新體驗的現代食客。</p>
+          <p>集團旗下餐廳位於香港各區，每間分店均有其獨特設計風格，菜式以香港本地口味為基礎，融入亞洲各地潮流飲食元素，帶來兼具創意與美味的用餐體驗。</p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">✨</div>
+            <div class="prop-name">創意概念</div>
+            <div class="prop-desc">每間分店擁有獨特定位，以新穎菜式及空間設計打造差異化用餐體驗</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🗺️</div>
+            <div class="prop-name">多區分店</div>
+            <div class="prop-desc">餐廳分佈香港各主要地區，為更多食客提供方便就近的用餐選擇</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🌏</div>
+            <div class="prop-name">亞洲風味</div>
+            <div class="prop-desc">菜式融合港式、亞洲各地潮流飲食元素，兼顧不同口味偏好</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📸</div>
+            <div class="prop-name">打卡勝地</div>
+            <div class="prop-desc">精心設計的用餐環境，賞心悅目的菜式呈現，成為社交媒體熱門打卡餐廳</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPTS -->
+<section id="concepts" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">餐廳概念</div>
+      <h2 class="section-title">潮食派餐飲體驗</h2>
+      <p class="section-sub">潮食派旗下各餐廳各具特色，以不同烹飪風格及用餐主題，為食客帶來多元化的飲食體驗。</p>
+    </div>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <div class="concept-tag">港式創意</div>
+        <div class="concept-name">潮式港味</div>
+        <div class="concept-en">Modern Hong Kong Cuisine</div>
+        <div class="concept-desc">以香港傳統飲食文化為根基，加入現代創意烹調手法，重新演繹經典港式菜色，帶來既熟悉又充滿驚喜的味覺體驗。</div>
+        <div class="concept-badge">本地品味</div>
+      </div>
+      <div class="concept-card">
+        <div class="concept-tag">亞洲融合</div>
+        <div class="concept-name">亞洲潮味</div>
+        <div class="concept-en">Asian Fusion Flavours</div>
+        <div class="concept-desc">融合日、韓、泰、台等亞洲飲食精華，以創意手法重組亞洲各地風味，為香港食客呈現環亞洲的美食之旅。</div>
+        <div class="concept-badge">亞洲風格</div>
+      </div>
+      <div class="concept-card">
+        <div class="concept-tag">休閒輕食</div>
+        <div class="concept-name">輕食時光</div>
+        <div class="concept-en">Casual All-Day Dining</div>
+        <div class="concept-desc">輕鬆舒適的全日餐廳概念，提供早午餐、下午茶及晚市選擇，配合香港都市人的飲食節奏，是工作、社交的理想餐飲場所。</div>
+        <div class="concept-badge">全日供應</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">招牌菜式</div>
+      <h2 class="section-title">精選人氣美食</h2>
+      <p class="section-sub">潮食派廚師團隊精心研發各式創意菜色，以新鮮食材及獨到烹調技法，帶來令人難忘的味覺體驗。</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-icon">🍲</div>
+        <div class="menu-dish">招牌燉湯</div>
+        <div class="menu-desc">精選上等食材，以傳統慢燉工法烹製，湯底濃郁鮮甜，養生美味兼備，是潮食派的人氣必點之選。</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-icon">🍱</div>
+        <div class="menu-dish">創意便當系列</div>
+        <div class="menu-desc">主廚精心搭配的多款便當選擇，主食、配菜、湯品一應俱全，營養均衡，適合午市快速用餐。</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-icon">🥗</div>
+        <div class="menu-dish">時令沙律</div>
+        <div class="menu-desc">採用新鮮時令蔬果，配以特製醬汁，色彩繽紛、口感清爽，健康輕盈之選，深受注重健康的食客喜愛。</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-icon">🍜</div>
+        <div class="menu-dish">特色麵食</div>
+        <div class="menu-desc">融合亞洲各地麵食精髓，以精製湯底及特色配料，打造層次豐富的麵食體驗，香氣四溢令人食指大動。</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-icon">🧋</div>
+        <div class="menu-dish">特調飲品</div>
+        <div class="menu-desc">調飲師精心調配的特色飲料系列，包括創意奶茶、特調果汁及季節限定飲品，為用餐體驗增添亮點。</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-icon">🍮</div>
+        <div class="menu-dish">甜品系列</div>
+        <div class="menu-desc">糅合港式傳統與現代甜品概念，以精緻呈現配合創意口味，甜而不膩，是完美的飯後甜蜜句點。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section id="locations" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">分店資料</div>
+      <h2 class="section-title">香港各區分店</h2>
+      <p class="section-sub">潮食派在香港多個地區設有分店，方便各區食客享用潮流美食體驗。請瀏覽我們的網站或聯絡我們獲取最新分店資料。</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem;">📍</div>
+        <div style="font-size:1rem;font-weight:700;margin-bottom:0.4rem;">香港區分店</div>
+        <div style="font-size:0.85rem;color:var(--muted);line-height:1.6;">服務香港島各區食客，提供便捷就近的用餐選擇</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem;">📍</div>
+        <div style="font-size:1rem;font-weight:700;margin-bottom:0.4rem;">九龍區分店</div>
+        <div style="font-size:0.85rem;color:var(--muted);line-height:1.6;">九龍多區均有分店，方便廣大九龍居民及上班族</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem;">🌐</div>
+        <div style="font-size:1rem;font-weight:700;margin-bottom:0.4rem;">最新分店資料</div>
+        <div style="font-size:0.85rem;color:var(--muted);line-height:1.6;">瀏覽 <a href="https://foodcraze.com.hk/location-2/" target="_blank" style="color:var(--accent);">foodcraze.com.hk</a> 查閱最新分店地址及營業時間</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">與潮食派聯繫</h2>
+      <p class="section-sub">如有任何查詢、訂座或合作意向，歡迎隨時與我們聯絡。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <div class="contact-title">📞 聯絡方式</div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-type">電郵</div>
+            <div class="contact-val"><a href="mailto:info@foodcraze.com.hk">info@foodcraze.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-type">網站</div>
+            <div class="contact-val"><a href="https://foodcraze.com.hk" target="_blank">foodcraze.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-type">地區</div>
+            <div class="contact-val">香港（多區分店）</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🗺️</div>
+          <div>
+            <div class="contact-type">分店查詢</div>
+            <div class="contact-val"><a href="https://foodcraze.com.hk/location-2/" target="_blank">查看所有分店位置</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-title">🍽️ 餐飲服務</div>
+        <div class="contact-item">
+          <div class="contact-icon">📅</div>
+          <div>
+            <div class="contact-type">訂座預訂</div>
+            <div class="contact-val">電郵至 info@foodcraze.com.hk 查詢訂座安排</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🎉</div>
+          <div>
+            <div class="contact-type">私人活動</div>
+            <div class="contact-val">生日派對、慶功宴、企業聚餐，歡迎洽詢</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🤝</div>
+          <div>
+            <div class="contact-type">合作查詢</div>
+            <div class="contact-val">品牌合作、媒體邀約請電郵聯絡</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div>
+            <div class="contact-type">招聘查詢</div>
+            <div class="contact-val">誠邀有志人士加入潮食派大家庭</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-cn">潮食派有限公司</div>
+        <div class="footer-logo-en">FoodCraze Limited</div>
+        <p class="footer-desc">香港本土潮流餐飲品牌，以創意菜式及獨特用餐體驗，引領香港飲食潮流，在港多區設有特色餐廳。</p>
+      </div>
+      <div class="footer-col">
+        <h4>探索</h4>
+        <ul>
+          <li><a href="#about">關於我們</a></li>
+          <li><a href="#concepts">餐廳概念</a></li>
+          <li><a href="#menu">招牌菜式</a></li>
+          <li><a href="#locations">分店位置</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡</h4>
+        <ul>
+          <li><a href="mailto:info@foodcraze.com.hk">info@foodcraze.com.hk</a></li>
+          <li><a href="https://foodcraze.com.hk" target="_blank">foodcraze.com.hk</a></li>
+          <li><a href="https://foodcraze.com.hk/location-2/" target="_blank">分店位置</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 潮食派有限公司 FoodCraze Limited · 版權所有</div>
+      <div style="font-size:0.8rem;color:var(--muted);">香港潮流餐飲</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
