@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港百年大吉貿易有限公司 | 貴金屬與珠寶批發專家</title>
+<style>
+  :root {
+    --bg:        #0c0906;
+    --surface:   #140f08;
+    --card:      #1e170e;
+    --accent1:   #c89820;
+    --accent2:   #f0c840;
+    --accent3:   #e8a840;
+    --warm:      #f8e8c0;
+    --text:      #f0e8d0;
+    --muted:     #9a8460;
+    --border:    rgba(200,152,32,0.22);
+    --glow:      rgba(200,152,32,0.22);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'PingFang HK', 'Microsoft JhengHei', sans-serif; line-height: 1.7; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(12,9,6,0.96); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 1rem; color: #0c0906;
+    box-shadow: 0 0 20px var(--glow);
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-name span { color: var(--accent2); font-weight: 400; font-size: 0.88rem; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #0c0906; border: none; padding: 9px 22px; border-radius: 6px;
+    font-size: 0.88rem; font-weight: 800; cursor: pointer; text-decoration: none;
+    box-shadow: 0 4px 16px var(--glow); transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; padding: 120px 5% 80px;
+    background:
+      radial-gradient(ellipse 70% 55% at 85% 45%, rgba(200,152,32,0.16) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 50% at 10% 75%, rgba(240,200,64,0.08) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
+  }
+  .hero-text { flex: 1 1 480px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(200,152,32,0.12); border: 1px solid rgba(200,152,32,0.32);
+    padding: 6px 16px; border-radius: 20px; font-size: 0.82rem;
+    color: var(--accent2); margin-bottom: 24px; letter-spacing: 0.04em;
+  }
+  .hero-badge::before { content: '💍'; font-size: 0.9rem; }
+  .hero-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.18; margin-bottom: 8px; }
+  .hero-title .gold { color: var(--accent2); }
+  .hero-title .warm { color: var(--warm); }
+  .hero-tagline { font-size: 1.1rem; color: var(--accent3); font-weight: 600; margin-bottom: 10px; letter-spacing: 0.04em; }
+  .hero-en { font-size: 0.95rem; color: var(--muted); margin-bottom: 20px; }
+  .hero-desc { font-size: 1rem; color: var(--muted); max-width: 540px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #0c0906; padding: 13px 28px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 800; text-decoration: none;
+    box-shadow: 0 6px 24px var(--glow); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid var(--accent1); color: var(--accent2);
+    padding: 13px 28px; border-radius: 8px; font-size: 0.95rem;
+    font-weight: 600; text-decoration: none; transition: background .2s;
+  }
+  .btn-outline:hover { background: rgba(200,152,32,0.1); }
+
+  /* info card */
+  .hero-card {
+    flex: 0 0 310px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  }
+  .hero-card h3 { font-size: 0.78rem; color: var(--accent2); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+  .info-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .info-icon { font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+  .info-label { font-size: 0.73rem; color: var(--muted); margin-bottom: 2px; }
+  .info-val { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+  .info-val a { color: var(--accent2); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .divider-card { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+  .hours-badge {
+    display: inline-block; background: rgba(200,152,32,0.1); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 6px; font-size: 0.78rem; color: var(--accent2); margin-top: 4px;
+  }
+
+  /* ── STATS ── */
+  .stats-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 44px 5%;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; text-align: center;
+  }
+  .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 88px 5%; }
+  .section-label { font-size: 0.78rem; color: var(--accent1); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 800; margin-bottom: 14px; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 600px; margin-bottom: 48px; }
+
+  /* ── SERVICES ── */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+  .svc-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 30px 26px; transition: transform .25s, box-shadow .25s; position: relative; overflow: hidden;
+  }
+  .svc-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    transform: scaleX(0); transition: transform .3s; transform-origin: left;
+  }
+  .svc-card:hover { transform: translateY(-4px); box-shadow: 0 14px 44px rgba(200,152,32,0.16); }
+  .svc-card:hover::after { transform: scaleX(1); }
+  .svc-icon { font-size: 2.2rem; margin-bottom: 14px; }
+  .svc-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; color: var(--accent2); }
+  .svc-card p { font-size: 0.88rem; color: var(--muted); }
+  .svc-tag {
+    display: inline-block; margin-top: 12px; background: rgba(200,152,32,0.1);
+    border: 1px solid var(--border); padding: 3px 10px; border-radius: 4px;
+    font-size: 0.75rem; color: var(--accent3); font-weight: 700;
+  }
+
+  /* ── PRODUCTS ── */
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+  .prod-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 26px 22px; text-align: center; transition: transform .25s, border-color .25s;
+  }
+  .prod-card:hover { transform: translateY(-3px); border-color: var(--accent2); }
+  .prod-icon { font-size: 2.4rem; margin-bottom: 12px; }
+  .prod-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .prod-card p { font-size: 0.82rem; color: var(--muted); }
+
+  /* ── ADVANTAGES ── */
+  .adv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
+  .adv-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px 24px; display: flex; gap: 16px; align-items: flex-start;
+  }
+  .adv-icon-wrap {
+    width: 50px; height: 50px; border-radius: 10px; flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(200,152,32,0.2), rgba(240,200,64,0.12));
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+  }
+  .adv-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: var(--accent2); }
+  .adv-card p { font-size: 0.87rem; color: var(--muted); }
+
+  /* ── HIGHLIGHT ── */
+  .highlight {
+    background: linear-gradient(135deg, rgba(200,152,32,0.14), rgba(240,200,64,0.08));
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 60px 48px; margin: 0 5% 80px; text-align: center;
+  }
+  .highlight-pretext { font-size: 0.82rem; color: var(--accent3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+  .highlight h2 { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 900; margin-bottom: 14px; }
+  .highlight h2 em { color: var(--accent2); font-style: normal; }
+  .highlight p { color: var(--muted); max-width: 640px; margin: 0 auto 28px; font-size: 0.98rem; }
+
+  /* ── MARKETS ── */
+  .markets-wrap { display: flex; flex-wrap: wrap; gap: 12px; }
+  .market-tag {
+    background: var(--card); border: 1px solid var(--border);
+    padding: 10px 20px; border-radius: 8px; font-size: 0.88rem;
+    font-weight: 600; color: var(--text); transition: border-color .2s;
+  }
+  .market-tag:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  /* ── CONTACT ── */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info { display: flex; flex-direction: column; gap: 18px; }
+  .c-item { display: flex; gap: 14px; align-items: flex-start; }
+  .c-icon {
+    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(200,152,32,0.1); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .c-item h4 { font-size: 0.8rem; color: var(--muted); margin-bottom: 2px; }
+  .c-item p, .c-item a { font-size: 0.92rem; color: var(--text); text-decoration: none; }
+  .c-item a:hover { color: var(--accent2); }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); padding: 11px 14px; border-radius: 8px; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent1); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #0c0906; border: none; padding: 13px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 800; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.88; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 44px 5% 28px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center;
+  }
+  .footer-brand { font-size: 1rem; font-weight: 700; }
+  .footer-brand span { color: var(--accent2); font-weight: 400; }
+  .footer-copy { font-size: 0.8rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; }
+  .footer-links a:hover { color: var(--accent2); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero { flex-direction: column; }
+    .hero-card { flex: 1 1 100%; }
+    .highlight { padding: 36px 24px; margin: 0 0 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#home">
+    <div class="nav-logo">大吉</div>
+    <div class="nav-name">香港百年大吉貿易 <span>| Daji HK</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">服務項目</a></li>
+    <li><a href="#products">產品種類</a></li>
+    <li><a href="#advantages">公司優勢</a></li>
+    <li><a href="#markets">市場覆蓋</a></li>
+    <li><a href="#contact">業務查詢</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">業務查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-badge">香港旺角 · 百年貿易傳承 · 貴金屬與珠寶批發</div>
+    <h1 class="hero-title">
+      <span class="gold">香港百年大吉</span><br>
+      <span class="warm">貿易有限公司</span>
+    </h1>
+    <p class="hero-tagline">大吉大利 · 財富好運 · 全球供應</p>
+    <p class="hero-en">Hong Kong's Premier Precious Metals &amp; Jewellery Wholesale Specialist</p>
+    <p class="hero-desc">
+      總部位於香港旺角，承載超過百年的家族貿易傳統。
+      專注貴金屬與珠寶批發及進出口貿易，服務來自北美、歐洲、亞洲逾30個國家的批發商及零售商，
+      出口比例高達 85%，以香港為全球貿易樞紐。
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#contact">業務查詢 &lt; 2 小時回覆</a>
+      <a class="btn-outline" href="#services">了解服務</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <h3>聯絡我們</h3>
+    <div class="info-row">
+      <div class="info-icon">📍</div>
+      <div>
+        <div class="info-label">地址</div>
+        <div class="info-val">旺角亞皆老街 98 號<br>富濤大廈 2 樓 1D 室</div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">📱</div>
+      <div>
+        <div class="info-label">電話</div>
+        <div class="info-val"><a href="tel:+85262563822">+852 6256 3822</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">✉️</div>
+      <div>
+        <div class="info-label">電郵</div>
+        <div class="info-val"><a href="mailto:support@dajihk.com">support@dajihk.com</a></div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">🌐</div>
+      <div>
+        <div class="info-label">網站</div>
+        <div class="info-val"><a href="https://www.dajihk.com/" target="_blank" rel="noopener">dajihk.com</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">🕐</div>
+      <div>
+        <div class="info-label">辦公時間</div>
+        <div class="info-val"><div class="hours-badge">週一至週五 09:00 – 18:00</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div>
+    <div class="stat-num">100+</div>
+    <div class="stat-label">年家族貿易傳承</div>
+  </div>
+  <div>
+    <div class="stat-num">85%</div>
+    <div class="stat-label">出口業務比例</div>
+  </div>
+  <div>
+    <div class="stat-num">30+</div>
+    <div class="stat-label">國家進出口網絡</div>
+  </div>
+  <div>
+    <div class="stat-num">&lt; 2hr</div>
+    <div class="stat-label">平均回應時間</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label">服務項目</p>
+  <h2 class="section-title">一站式貴金屬與珠寶服務</h2>
+  <p class="section-sub">從批發貿易到定制生產，浤富國際提供全面的貴金屬與珠寶業務解決方案。</p>
+
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon">💎</div>
+      <h3>批發貿易</h3>
+      <p>低最低訂購量（MOQ），靈活配合中小型批發商及零售商需求，快速確認訂單。</p>
+      <span class="svc-tag">低 MOQ · 快速回覆</span>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🌏</div>
+      <h3>進出口貿易</h3>
+      <p>全球運輸網絡，專業處理海關手續及進出口文件，確保貨物安全準時抵達目的地。</p>
+      <span class="svc-tag">全球 30+ 國家</span>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">✏️</div>
+      <h3>定制與 OEM</h3>
+      <p>根據客戶圖紙或樣品定制珠寶設計，支援品牌自有產品生產，高度靈活。</p>
+      <span class="svc-tag">圖紙 / 樣品訂制</span>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏦</div>
+      <h3>儲存與買回服務</h3>
+      <p>提供貴金屬安全儲存服務，並附帶買回保證，為客戶的資產保值提供保障。</p>
+      <span class="svc-tag">安全儲存 · 買回保證</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background: var(--surface);">
+  <p class="section-label">產品種類</p>
+  <h2 class="section-title">貴金屬與珠寶產品</h2>
+  <p class="section-sub" style="margin-bottom: 36px">專注細石時尚珠寶、純金製品及玉石，所有產品均符合 ISO 9001 國際標準，100% 真品保證。</p>
+
+  <div class="products-grid">
+    <div class="prod-card">
+      <div class="prod-icon">💍</div>
+      <h3>細石時尚珠寶</h3>
+      <p>鑽石、彩寶及各類時尚寶石鑲嵌首飾</p>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">🥇</div>
+      <h3>純金製品</h3>
+      <p>純金戒指、項鏈、手鏈及金條等黃金製品</p>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">🟢</div>
+      <h3>玉石珠寶</h3>
+      <p>翡翠、和田玉等各類玉石首飾及擺件</p>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">⬛</div>
+      <h3>鉑金製品</h3>
+      <p>鉑金戒指、婚戒及各類鉑金珠寶</p>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">🪙</div>
+      <h3>貴金屬原料</h3>
+      <p>黃金、白銀、鉑金等貴金屬原料批發</p>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">✨</div>
+      <h3>定制珠寶</h3>
+      <p>按客戶設計圖紙或樣品定制生產</p>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHT -->
+<div class="highlight">
+  <div class="highlight-pretext">百年傳承 · 全球貿易</div>
+  <h2>以香港為<em>全球貿易樞紐</em><br>服務世界各地批發商</h2>
+  <p>
+    香港擁有完善的物流網絡與稅務優勢，是全球珠寶貿易的重要中心。
+    香港貿易發展局數據顯示，香港珠寶進口額 2019 年逾 500 億美元。
+    大吉貿易在這一龐大市場中深耕多年，為全球 30+ 國家的客戶提供穩定可靠的貴金屬與珠寶供應。
+  </p>
+  <a class="btn-primary" href="#contact">即時業務查詢</a>
+</div>
+
+<!-- ADVANTAGES -->
+<section id="advantages">
+  <p class="section-label">公司優勢</p>
+  <h2 class="section-title">選擇大吉貿易的理由</h2>
+  <p class="section-sub">品質、效率與誠信，是我們百年家族企業立足全球的核心競爭力。</p>
+
+  <div class="adv-grid">
+    <div class="adv-card">
+      <div class="adv-icon-wrap">🛡️</div>
+      <div>
+        <h3>品質承諾</h3>
+        <p>所有貴金屬與寶石均經嚴格檢驗，符合 ISO 9001 國際標準，100% 真品保證。</p>
+      </div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-icon-wrap">🌏</div>
+      <div>
+        <h3>全球視野</h3>
+        <p>進出口網絡覆蓋 30+ 國家，與國際物流公司合作，準時交貨率超過 95%。</p>
+      </div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-icon-wrap">⚡</div>
+      <div>
+        <h3>快速回應</h3>
+        <p>平均回應時間低於 2 小時，提供中文、英文、日文多語言服務。</p>
+      </div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-icon-wrap">⭐</div>
+      <div>
+        <h3>客戶滿意</h3>
+        <p>客戶滿意度達 4.8/5.0，家族企業誠信經營，以長期夥伴關係為目標。</p>
+      </div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-icon-wrap">💻</div>
+      <div>
+        <h3>電商技術</h3>
+        <p>用戶友好的在線平台，支援多幣種支付與即時報價，全球客戶隨時下單。</p>
+      </div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-icon-wrap">🏮</div>
+      <div>
+        <h3>百年傳承</h3>
+        <p>超過百年家族貿易傳統，深厚的行業積累與廣泛的供應商關係網絡。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section id="markets" style="background: var(--surface);">
+  <p class="section-label">市場覆蓋</p>
+  <h2 class="section-title">服務全球 30+ 國家</h2>
+  <p class="section-sub" style="margin-bottom: 32px">憑藉香港國際貿易樞紐優勢，大吉貿易的業務覆蓋北美、歐洲及亞洲各主要市場。</p>
+
+  <div class="markets-wrap">
+    <div class="market-tag">🇺🇸 美國</div>
+    <div class="market-tag">🇨🇦 加拿大</div>
+    <div class="market-tag">🇬🇧 英國</div>
+    <div class="market-tag">🇩🇪 德國</div>
+    <div class="market-tag">🇫🇷 法國</div>
+    <div class="market-tag">🇮🇹 意大利</div>
+    <div class="market-tag">🇯🇵 日本</div>
+    <div class="market-tag">🇰🇷 韓國</div>
+    <div class="market-tag">🇸🇬 新加坡</div>
+    <div class="market-tag">🇦🇺 澳洲</div>
+    <div class="market-tag">🇨🇳 中國大陸</div>
+    <div class="market-tag">🇹🇼 台灣</div>
+    <div class="market-tag">🌏 其他 30+ 國家</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">業務查詢</p>
+  <h2 class="section-title">與我們聯絡</h2>
+  <p class="section-sub">歡迎批發商、零售商及進口商查詢，我們承諾在 2 小時內回覆您的業務查詢。</p>
+
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <h4>地址</h4>
+          <p>旺角亞皆老街 98 號富濤大廈 2 樓 1D 室</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📱</div>
+        <div>
+          <h4>電話</h4>
+          <a href="tel:+85262563822">+852 6256 3822</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">✉️</div>
+        <div>
+          <h4>電郵</h4>
+          <a href="mailto:support@dajihk.com">support@dajihk.com</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">🕐</div>
+        <div>
+          <h4>辦公時間</h4>
+          <p>週一至週五 09:00 – 18:00</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">🌐</div>
+        <div>
+          <h4>官方網站</h4>
+          <a href="https://www.dajihk.com/" target="_blank" rel="noopener">dajihk.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>公司 / 姓名</label>
+          <input type="text" placeholder="公司名稱或負責人姓名">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="+852 / +1 / +44 xxxx xxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>電郵地址</label>
+        <input type="email" placeholder="your@company.com">
+      </div>
+      <div class="form-group">
+        <label>業務類別</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>珠寶批發查詢</option>
+          <option>貴金屬進出口</option>
+          <option>定制 / OEM 生產</option>
+          <option>貴金屬儲存服務</option>
+          <option>報價查詢</option>
+          <option>其他業務合作</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>查詢詳情</label>
+        <textarea placeholder="請說明所需產品種類、數量、目的地市場或其他業務需求…"></textarea>
+      </div>
+      <button class="form-submit">發送業務查詢（2 小時內回覆）</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">香港百年大吉貿易有限公司 <span>| dajihk.com</span></div>
+  <div class="footer-copy">© 2025 香港百年大吉貿易有限公司. 版權所有</div>
+  <div class="footer-links">
+    <a href="#services">服務項目</a>
+    <a href="#products">產品種類</a>
+    <a href="#contact">業務查詢</a>
+  </div>
+</footer>
+
+</body>
+</html>
