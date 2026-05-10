@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>普惠食品企業有限公司 | 肉品進口貿易 · 台灣苗栗</title>
+<meta name="description" content="普惠食品企業有限公司成立於1985年，為台灣領先的肉品進口貿易公司，專業供應豬肉、牛肉、鴨肉、火雞及海鮮，持HACCP、ISO、SGS認證，服務餐廳、飯店、食品加工業者及批發盤商。"/>
+<style>
+:root{
+  --bg:#050204;
+  --surface:#0c060a;
+  --card:#140810;
+  --border:#200c18;
+  --accent:#b01828;
+  --accent2:#c0a040;
+  --text:#f0eced;
+  --muted:#8a7880;
+  --radius:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,2,4,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{display:flex;flex-direction:column;line-height:1.2;}
+.nav-logo-cn{font-size:1.05rem;font-weight:800;color:var(--accent);}
+.nav-logo-tag{font-size:0.65rem;letter-spacing:0.08em;color:var(--muted);}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:0.85rem;color:var(--muted);transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:700;transition:opacity 0.2s;}
+.nav-cta:hover{opacity:0.85;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:64px;}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 60% at 20% 40%,rgba(176,24,40,0.12) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 50% at 80% 60%,rgba(192,160,64,0.06) 0%,transparent 60%),
+  linear-gradient(160deg,#050204 0%,#0c060a 60%,#050204 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(176,24,40,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(176,24,40,0.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 400px;gap:5rem;align-items:center;position:relative;z-index:2;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(176,24,40,0.12);border:1px solid rgba(176,24,40,0.25);border-radius:20px;padding:0.3rem 1rem;font-size:0.78rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.5rem;}
+.hero h1{font-size:clamp(2.2rem,4vw,3.6rem);font-weight:900;line-height:1.1;margin-bottom:0.5rem;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-tagline{font-size:0.95rem;color:var(--muted);font-style:italic;border-left:3px solid var(--accent);padding-left:1rem;margin-bottom:1.5rem;line-height:1.6;}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin-bottom:2.5rem;line-height:1.7;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 2rem;border-radius:8px;font-weight:700;font-size:0.95rem;transition:opacity 0.2s;}
+.btn-primary:hover{opacity:0.85;}
+.btn-secondary{border:1px solid var(--border);color:var(--text);padding:0.75rem 2rem;border-radius:8px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s;}
+.btn-secondary:hover{border-color:var(--accent);}
+.hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.72rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.7rem 0;border-bottom:1px solid var(--border);}
+.info-row:last-child{border-bottom:none;}
+.info-icon{width:32px;height:32px;border-radius:7px;background:rgba(176,24,40,0.12);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;}
+.info-val{font-size:0.9rem;font-weight:600;}
+.info-val a{color:var(--accent);}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stats-inner{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--accent);line-height:1;}
+.stat-label{font-size:0.78rem;color:var(--muted);margin-top:0.4rem;}
+
+/* SECTIONS */
+section{padding:5rem 0;}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.section-tag{display:inline-block;background:rgba(176,24,40,0.12);border:1px solid rgba(176,24,40,0.2);border-radius:20px;padding:0.3rem 1rem;font-size:0.75rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1rem;}
+.section-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;line-height:1.2;margin-bottom:0.75rem;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:640px;line-height:1.7;}
+.section-header{margin-bottom:3rem;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(176,24,40,0.08),rgba(192,160,64,0.06));border:1px solid rgba(176,24,40,0.18);border-radius:12px;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:1.05rem;line-height:1.8;}
+.about-body p{color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+.mission-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-top:1.5rem;}
+.mission-label{font-size:0.72rem;letter-spacing:0.1em;color:var(--accent);text-transform:uppercase;margin-bottom:0.5rem;}
+.mission-text{font-size:0.88rem;color:var(--muted);line-height:1.7;}
+.prop-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-name{font-size:0.82rem;font-weight:700;color:var(--accent);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+
+/* PRODUCTS */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.25s;}
+.prod-card:hover{border-color:rgba(176,24,40,0.35);transform:translateY(-3px);}
+.prod-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.prod-card:hover::after{opacity:1;}
+.prod-emoji{font-size:2.2rem;margin-bottom:0.75rem;}
+.prod-tag{display:inline-block;background:rgba(176,24,40,0.12);border:1px solid rgba(176,24,40,0.2);border-radius:20px;padding:0.2rem 0.75rem;font-size:0.7rem;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.75rem;}
+.prod-name{font-size:1.15rem;font-weight:800;margin-bottom:0.4rem;}
+.prod-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;margin-bottom:0.75rem;}
+.prod-sources{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.5rem;}
+.source-tag{font-size:0.72rem;background:rgba(192,160,64,0.10);border:1px solid rgba(192,160,64,0.2);border-radius:4px;padding:0.15rem 0.5rem;color:var(--accent2);}
+
+/* SERVICES */
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.srv-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;transition:border-color 0.25s;}
+.srv-card:hover{border-color:rgba(192,160,64,0.35);}
+.srv-icon{font-size:2rem;margin-bottom:1rem;}
+.srv-name{font-size:1.05rem;font-weight:700;margin-bottom:0.4rem;}
+.srv-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+
+/* CERTIFICATIONS */
+.cert-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center;transition:border-color 0.25s;}
+.cert-card:hover{border-color:rgba(176,24,40,0.35);}
+.cert-icon{font-size:2rem;margin-bottom:0.75rem;}
+.cert-name{font-size:1rem;font-weight:700;color:var(--accent);margin-bottom:0.4rem;}
+.cert-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-block{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-title{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;}
+.contact-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 0;border-bottom:1px solid var(--border);}
+.contact-item:last-child{border-bottom:none;}
+.contact-icon{width:38px;height:38px;border-radius:8px;background:rgba(176,24,40,0.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.contact-type{font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;}
+.contact-val{font-size:0.95rem;font-weight:600;}
+.contact-val a{color:var(--accent);}
+.client-types{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;}
+.client-tag{font-size:0.82rem;background:rgba(176,24,40,0.10);border:1px solid rgba(176,24,40,0.2);border-radius:6px;padding:0.35rem 0.8rem;color:var(--accent);}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem 0 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-logo-cn{font-size:1.05rem;font-weight:800;color:var(--accent);margin-bottom:0.2rem;}
+.footer-logo-tag{font-size:0.72rem;color:var(--muted);margin-bottom:0.75rem;}
+.footer-desc{font-size:0.85rem;color:var(--muted);line-height:1.7;max-width:300px;}
+.footer-col h4{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col ul li a{font-size:0.88rem;color:var(--muted);transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+.cert-badges{display:flex;gap:0.5rem;}
+.cb{font-size:0.75rem;background:rgba(176,24,40,0.10);border:1px solid rgba(176,24,40,0.2);border-radius:4px;padding:0.2rem 0.6rem;color:var(--accent);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.prod-grid,.srv-grid,.cert-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:repeat(3,1fr);}
+  .prop-cards{grid-template-columns:1fr;}
+  .cert-grid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-cn">普惠食品企業有限公司</div>
+      <div class="nav-logo-tag">肉品進口貿易 · 台灣苗栗</div>
+    </div>
+    <div class="nav-links">
+      <a href="#products">肉品系列</a>
+      <a href="#services">服務內容</a>
+      <a href="#certifications">認證品質</a>
+      <a href="#contact">聯絡</a>
+    </div>
+    <a href="mailto:service@puhui-foods.com" class="nav-cta">立即洽詢</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🥩 肉品進口貿易 · 成立1985年 · 台灣苗栗</div>
+      <h1>用<em>匠人精神</em><br/>提供優質肉品</h1>
+      <div class="hero-tagline">為生命、健康提供產品與服務，用我們的匠人精神提供食品的安全、安心、美味可口的肉品</div>
+      <p class="hero-sub">普惠食品企業有限公司自1985年起深耕台灣肉品進口貿易，專業供應豬肉、牛肉、鴨肉、火雞及海鮮，持HACCP、ISO、SGS國際認證，服務餐廳、飯店、食品加工業者及批發盤商。</p>
+      <div class="hero-btns">
+        <a href="mailto:service@puhui-foods.com" class="btn-primary">立即洽詢</a>
+        <a href="#products" class="btn-secondary">瀏覽肉品系列</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">📋 公司資料</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">公司名稱</div>
+          <div class="info-val">普惠食品企業有限公司</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">地址</div>
+          <div class="info-val">苗栗縣竹南鎮國泰路13號</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">電話</div>
+          <div class="info-val"><a href="tel:+886037463581">037-463581</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📠</div>
+        <div>
+          <div class="info-label">傳真</div>
+          <div class="info-val">037-482273</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電子郵件</div>
+          <div class="info-val"><a href="mailto:service@puhui-foods.com">service@puhui-foods.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">1985</div>
+      <div class="stat-label">創立年份</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">35+</div>
+      <div class="stat-label">年肉品貿易經驗</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">主要肉品類別</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">國際認證</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">🌏</div>
+      <div class="stat-label">全球採購網絡</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">關於普惠</div>
+        <h2 class="section-title">台灣領先肉品<br/>進口貿易企業</h2>
+        <div class="about-highlight">
+          <p>普惠食品企業有限公司成立於1985年，深耕台灣肉品進口貿易逾35年，以走訪全球各地農場、親身確認品質的嚴格採購標準，為台灣餐飲業界及食品加工業提供最優質的進口肉品與海鮮，並提供專業的國際肉品市場行情分析服務。</p>
+        </div>
+        <div class="about-body">
+          <p>公司持有HACCP、ISO QAR及SGS國際食品安全認證，並實施「6S管理模式」，從農場條件到冷鏈物流的每一個環節均維持嚴格的衛生安全標準，設有專業的產品檢測實驗室，確保每批貨品的品質與安全。</p>
+          <p>普惠的專業採購團隊定期走訪北美、南美、歐洲、澳洲等主要肉品產區，掌握最新市場動態，為客戶提供即時的國際肉品行情分析，協助業者有效規避市場波動風險，做出最佳採購決策。</p>
+        </div>
+        <div class="mission-box">
+          <div class="mission-label">企業使命</div>
+          <div class="mission-text">為生命、健康提供產品與服務，為員工搭建人生價值的實現平台，用我們的匠人精神提供食品的安全、安心、美味可口的肉品。</div>
+        </div>
+        <div class="mission-box" style="margin-top:1rem;">
+          <div class="mission-label">未來願景</div>
+          <div class="mission-text">整合一條龍的供應，從源頭的國際採購到專業的倉儲及完善的物流配送，衛生安全的中央加工廠到電商及連鎖體系，提供消費者更安全更有品質的餐飲文化。</div>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">🌍</div>
+            <div class="prop-name">全球採購網絡</div>
+            <div class="prop-desc">走訪北美、歐洲、澳洲、南美等產區，親赴農場確認品質，嚴選全球最優肉品</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📊</div>
+            <div class="prop-name">市場行情分析</div>
+            <div class="prop-desc">提供專業國際肉品市場行情分析報告，協助客戶掌握市場動態，降低採購風險</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">❄️</div>
+            <div class="prop-name">冷鏈物流管理</div>
+            <div class="prop-desc">完善的冷鏈倉儲及物流配送系統，從採購到配送全程保持最佳溫控，確保肉品新鮮</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🔬</div>
+            <div class="prop-name">品質檢測實驗室</div>
+            <div class="prop-desc">設有專業食品安全檢測實驗室，對每批進口肉品進行嚴格品質檢驗，確保食用安全</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">肉品系列</div>
+      <h2 class="section-title">全球優質肉品與海鮮</h2>
+      <p class="section-sub">普惠精選全球各地優質產區的肉品，涵蓋豬、牛、鴨、火雞及海鮮，以嚴格品質標準為台灣食品業界提供最可信賴的進口肉品。</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-emoji">🐷</div>
+        <div class="prod-tag">豬肉系列</div>
+        <div class="prod-name">精選豬肉</div>
+        <div class="prod-desc">涵蓋台灣本地豬、北美豬及歐洲頂級豬種，包括白豬、柏克夏黑豬（Berkshire）及伊比利豬（Iberian），滿足不同層次的餐飲需求。</div>
+        <div class="prod-sources">
+          <div class="source-tag">台灣</div>
+          <div class="source-tag">北美</div>
+          <div class="source-tag">歐洲</div>
+          <div class="source-tag">柏克夏黑豬</div>
+          <div class="source-tag">伊比利豬</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🐄</div>
+        <div class="prod-tag">牛肉系列</div>
+        <div class="prod-name">進口牛肉</div>
+        <div class="prod-desc">精選來自北美、澳洲、巴拉圭及宏都拉斯等優質牧場的牛肉，品種多樣，品質穩定，適合各式料理及食品加工需求。</div>
+        <div class="prod-sources">
+          <div class="source-tag">北美</div>
+          <div class="source-tag">澳洲</div>
+          <div class="source-tag">巴拉圭</div>
+          <div class="source-tag">宏都拉斯</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🦆</div>
+        <div class="prod-tag">鴨肉系列</div>
+        <div class="prod-name">特色鴨肉</div>
+        <div class="prod-desc">提供整鴨、櫻桃鴨及鴨脖等多款鴨肉產品，與花蓮及宜蘭知名品牌建立合作夥伴關係，品質受台灣餐飲業界廣泛肯定。</div>
+        <div class="prod-sources">
+          <div class="source-tag">整鴨</div>
+          <div class="source-tag">櫻桃鴨</div>
+          <div class="source-tag">鴨脖</div>
+          <div class="source-tag">花蓮/宜蘭品牌</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🦃</div>
+        <div class="prod-tag">火雞系列</div>
+        <div class="prod-name">北美火雞</div>
+        <div class="prod-desc">精選加拿大及美國優質火雞，提供火雞翅、整隻火雞及火雞腿等多種規格，是節慶料理及餐廳菜單的理想選擇。</div>
+        <div class="prod-sources">
+          <div class="source-tag">加拿大</div>
+          <div class="source-tag">美國</div>
+          <div class="source-tag">火雞翅</div>
+          <div class="source-tag">整隻火雞</div>
+          <div class="source-tag">火雞腿</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🐟</div>
+        <div class="prod-tag">海鮮系列</div>
+        <div class="prod-name">進口海鮮</div>
+        <div class="prod-desc">精選智利鮭魚、挪威鮭魚等頂級冷凍海鮮產品，嚴格把關從捕撈到冷鏈儲運的每一環節，確保海鮮的新鮮度與品質。</div>
+        <div class="prod-sources">
+          <div class="source-tag">智利鮭魚</div>
+          <div class="source-tag">挪威鮭魚</div>
+          <div class="source-tag">急凍海鮮</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🎁</div>
+        <div class="prod-tag">客製化採購</div>
+        <div class="prod-name">專屬訂製服務</div>
+        <div class="prod-desc">針對大型餐廳、連鎖飯店及食品加工業者的特殊需求，提供客製化採購解決方案，依據規格、數量及預算靈活安排進口採購計劃。</div>
+        <div class="prod-sources">
+          <div class="source-tag">大宗採購</div>
+          <div class="source-tag">規格訂製</div>
+          <div class="source-tag">彈性配送</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">服務內容</div>
+      <h2 class="section-title">專業肉品貿易服務</h2>
+      <p class="section-sub">普惠為不同類型的食品業界客戶提供全方位的肉品進口及供應服務，從採購到配送，一站式滿足業者需求。</p>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card">
+        <div class="srv-icon">🏭</div>
+        <div class="srv-name">批發與盤商服務</div>
+        <div class="srv-desc">為大型批發商及盤商提供穩定的肉品供應，附帶即時國際市場行情分析，協助業者掌握最佳進貨時機，降低市場風險。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">🍽️</div>
+        <div class="srv-name">餐廳與飯店業者</div>
+        <div class="srv-desc">針對餐廳、飯店及酒樓業者的日常食材需求，提供穩定優質的肉品供應，支援菜單設計及食材成本控制，彈性配合業者的訂購節奏。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">🏗️</div>
+        <div class="srv-name">食品加工調理業者</div>
+        <div class="srv-desc">為食品加工廠及中央廚房提供符合工業規格的大宗肉品供應，配合加工業者的原材料規格要求，確保供應穩定、品質一致。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">🛒</div>
+        <div class="srv-name">超市電商通路</div>
+        <div class="srv-desc">支援連鎖超市及電商平台的肉品採購需求，提供符合零售包裝規格的肉品，配合通路的上架時間及物流要求。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">🌐</div>
+        <div class="srv-name">食材進口代理</div>
+        <div class="srv-desc">提供一站式食材進口代理服務，協助業者進行國際採購、報關、檢驗及物流安排，以豐富的業界人脈為客戶開拓全球優質貨源。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">🤝</div>
+        <div class="srv-name">供應商合作</div>
+        <div class="srv-desc">積極與全球優質肉品生產商建立長期合作夥伴關係，以普惠的品質標準審核合作供應商，確保每批進口肉品均符合台灣食安規範。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">認證品質</div>
+      <h2 class="section-title">國際認證 · 品質保證</h2>
+      <p class="section-sub">普惠持有多項國際食品安全認證，並實施6S管理模式，以最高標準確保每一批肉品的安全與品質。</p>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon">✅</div>
+        <div class="cert-name">HACCP認證</div>
+        <div class="cert-desc">危害分析及關鍵控制點國際食品安全管理體系認證，確保食品生產全程安全</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🏆</div>
+        <div class="cert-name">ISO QAR認證</div>
+        <div class="cert-desc">國際標準化組織品質保證認證，全面保障產品品質管理系統符合國際標準</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🔬</div>
+        <div class="cert-name">SGS認證</div>
+        <div class="cert-desc">國際公認的SGS食品安全檢驗認證，每批進口肉品均通過嚴格第三方檢驗</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">⚙️</div>
+        <div class="cert-name">6S管理模式</div>
+        <div class="cert-desc">實施整理、整頓、清掃、清潔、素養、安全六大管理標準，確保生產環境衛生安全</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">歡迎洽詢合作</h2>
+      <p class="section-sub">無論您是餐廳業者、批發盤商或食品加工廠，歡迎聯絡普惠，了解適合您業務需求的肉品供應方案。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <div class="contact-title">📞 聯絡方式</div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-type">公司地址</div>
+            <div class="contact-val">苗栗縣竹南鎮國泰路13號</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-type">連絡電話</div>
+            <div class="contact-val"><a href="tel:+886037463581">037-463581</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📠</div>
+          <div>
+            <div class="contact-type">傳真號碼</div>
+            <div class="contact-val">037-482273</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-type">電子郵件</div>
+            <div class="contact-val"><a href="mailto:service@puhui-foods.com">service@puhui-foods.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-type">網站</div>
+            <div class="contact-val"><a href="https://www.puhui-foods.com" target="_blank">puhui-foods.com</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-title">🎯 服務對象</div>
+        <div style="color:var(--muted);font-size:0.88rem;line-height:1.7;margin-bottom:1.2rem;">普惠歡迎以下業者洽詢合作：</div>
+        <div class="client-types">
+          <div class="client-tag">批發與盤商</div>
+          <div class="client-tag">餐廳與飯店業者</div>
+          <div class="client-tag">食品加工調理業者</div>
+          <div class="client-tag">零售通路</div>
+          <div class="client-tag">超市電商</div>
+          <div class="client-tag">供應商合作</div>
+        </div>
+        <div style="margin-top:1.5rem;background:rgba(176,24,40,0.08);border:1px solid rgba(176,24,40,0.15);border-radius:8px;padding:1rem;">
+          <div style="font-size:0.78rem;color:var(--accent);margin-bottom:0.4rem;">招募人才</div>
+          <div style="font-size:0.85rem;color:var(--muted);">歡迎對肉品貿易有興趣的人才加入普惠！可上518人力銀行或1111人力銀行查詢職缺。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-cn">普惠食品企業有限公司</div>
+        <div class="footer-logo-tag">肉品進口貿易 · 成立1985年 · 台灣苗栗</div>
+        <p class="footer-desc">台灣領先肉品進口貿易企業，持HACCP、ISO、SGS國際認證，專業供應豬、牛、鴨、火雞及海鮮，服務餐廳、飯店、食品加工業及批發盤商，以35年匠人精神提供最安全優質的肉品。</p>
+      </div>
+      <div class="footer-col">
+        <h4>肉品系列</h4>
+        <ul>
+          <li><a href="#products">豬肉系列</a></li>
+          <li><a href="#products">牛肉系列</a></li>
+          <li><a href="#products">鴨肉系列</a></li>
+          <li><a href="#products">火雞系列</a></li>
+          <li><a href="#products">海鮮系列</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡</h4>
+        <ul>
+          <li><a href="tel:+886037463581">037-463581</a></li>
+          <li><a href="mailto:service@puhui-foods.com">service@puhui-foods.com</a></li>
+          <li><a href="#">苗栗縣竹南鎮國泰路13號</a></li>
+          <li><a href="https://www.puhui-foods.com" target="_blank">puhui-foods.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 普惠食品企業股份有限公司 All Rights Reserved</div>
+      <div class="cert-badges">
+        <div class="cb">HACCP</div>
+        <div class="cb">ISO QAR</div>
+        <div class="cb">SGS</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
