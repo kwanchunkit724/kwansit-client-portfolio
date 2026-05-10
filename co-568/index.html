@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>卓越行有限公司 | Surpass HK Limited</title>
+<style>
+:root {
+  --primary: #0e1018;
+  --secondary: #121620;
+  --accent: #0c58d0;
+  --accent2: #18b060;
+  --accent-light: #1878f8;
+  --text: #e4e8f0;
+  --text-muted: #7888a0;
+  --card-bg: #161c28;
+  --border: #1c2438;
+  --hero-overlay: rgba(14,16,24,0.85);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;background:var(--primary);color:var(--text);line-height:1.7;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,16,24,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--accent),#0840a0);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900;color:#fff;}
+.nav-logo-text{display:flex;flex-direction:column;}
+.nav-logo-cn{font-size:1rem;font-weight:700;color:var(--text);line-height:1.2;}
+.nav-logo-en{font-size:0.6rem;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.88rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent-light);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:6px;text-decoration:none;font-size:0.88rem;font-weight:600;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent-light);}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(155deg,#0e1018 0%,#101520 45%,#0c1420 100%);display:flex;align-items:center;padding-top:68px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 55%,rgba(12,88,208,0.1) 0%,transparent 55%);}
+.hero-grid{max-width:1200px;margin:0 auto;padding:5rem 2rem;display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(12,88,208,0.1);border:1px solid rgba(12,88,208,0.3);border-radius:20px;padding:0.4rem 1rem;margin-bottom:1.5rem;font-size:0.8rem;color:var(--accent-light);}
+.hero h1{font-size:3rem;font-weight:900;line-height:1.2;margin-bottom:0.5rem;}
+.hero h1 .blue{color:var(--accent-light);}
+.hero-en{font-size:0.95rem;color:var(--text-muted);margin-bottom:1rem;letter-spacing:0.04em;}
+.hero-desc{font-size:0.98rem;color:var(--text-muted);margin-bottom:2rem;max-width:530px;line-height:1.8;}
+.hero-highlights{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;}
+.hl-badge{background:rgba(24,176,96,0.1);border:1px solid rgba(24,176,96,0.25);border-radius:4px;padding:0.35rem 0.8rem;font-size:0.78rem;color:#60d090;display:flex;align-items:center;gap:5px;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.85rem 2rem;border-radius:7px;text-decoration:none;font-weight:700;font-size:0.93rem;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);}
+.btn-secondary{background:transparent;color:var(--accent-light);border:2px solid var(--accent);padding:0.85rem 2rem;border-radius:7px;text-decoration:none;font-weight:700;font-size:0.93rem;transition:all 0.2s;}
+.btn-secondary:hover{background:rgba(12,88,208,0.1);}
+.hero-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent-light);margin-bottom:1.3rem;}
+.info-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1rem;}
+.info-row:last-child{margin-bottom:0;}
+.info-icon{width:36px;height:36px;border-radius:7px;background:rgba(12,88,208,0.1);border:1px solid rgba(12,88,208,0.2);display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+.info-label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;}
+.info-value{font-size:0.88rem;color:var(--text);}
+.info-value a{color:var(--accent-light);text-decoration:none;}
+
+/* STATS */
+.stats{background:var(--secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+.stat-num{font-size:2.2rem;font-weight:900;color:var(--accent-light);line-height:1;}
+.stat-label{font-size:0.82rem;color:var(--text-muted);margin-top:6px;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent-light);margin-bottom:0.6rem;}
+.section-title{font-size:2.1rem;font-weight:800;margin-bottom:1rem;line-height:1.2;}
+.section-sub{font-size:0.95rem;color:var(--text-muted);max-width:600px;margin-bottom:3rem;line-height:1.8;}
+
+/* ABOUT */
+.about{background:var(--secondary);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(12,88,208,0.1),rgba(24,176,96,0.06));border:1px solid rgba(12,88,208,0.25);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:1.8rem;margin-bottom:1.8rem;}
+.about-highlight h3{font-size:0.95rem;font-weight:700;color:var(--accent-light);margin-bottom:0.7rem;text-transform:uppercase;letter-spacing:0.05em;}
+.about-highlight p{color:var(--text-muted);font-size:0.92rem;line-height:1.8;}
+.about-body p{color:var(--text-muted);margin-bottom:1rem;font-size:0.92rem;line-height:1.8;}
+.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;align-items:flex-start;gap:10px;}
+.prop-icon{font-size:1.4rem;flex-shrink:0;}
+.prop-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.prop-desc{font-size:0.76rem;color:var(--text-muted);}
+
+/* PRODUCTS */
+.products{background:var(--primary);}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.product-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.product-card:hover{border-color:rgba(12,88,208,0.35);transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,0.4);}
+.product-card:hover::before{opacity:1;}
+.product-icon{font-size:2.4rem;margin-bottom:0.8rem;}
+.product-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.product-desc{font-size:0.84rem;color:var(--text-muted);line-height:1.7;}
+
+/* TEAM */
+.team{background:var(--secondary);}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.team-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;text-align:center;}
+.team-avatar{width:72px;height:72px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 1rem;}
+.team-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+.team-role{font-size:0.8rem;color:var(--accent-light);margin-bottom:0.6rem;text-transform:uppercase;letter-spacing:0.06em;}
+.team-email{font-size:0.8rem;color:var(--text-muted);}
+.team-email a{color:var(--accent-light);text-decoration:none;}
+
+/* CONTACT */
+.contact{background:var(--primary);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.contact-info-block{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:2rem;}
+.contact-info-block h3{font-size:1rem;font-weight:700;margin-bottom:1.4rem;color:var(--text);}
+.cinfo-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border);}
+.cinfo-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.cinfo-icon{width:38px;height:38px;background:rgba(12,88,208,0.1);border:1px solid rgba(12,88,208,0.2);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+.cinfo-label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;}
+.cinfo-value{font-size:0.88rem;color:var(--text);}
+.cinfo-value a{color:var(--accent-light);text-decoration:none;}
+.contact-form-block{background:var(--secondary);border:1px solid var(--border);border-radius:14px;padding:2rem;}
+.contact-form-block h3{font-size:1rem;font-weight:700;margin-bottom:1.4rem;color:var(--text);}
+.form-group{margin-bottom:1.1rem;}
+.form-group label{display:block;font-size:0.75rem;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--primary);border:1px solid var(--border);border-radius:7px;padding:0.75rem 1rem;color:var(--text);font-family:inherit;font-size:0.9rem;transition:border-color 0.2s;resize:vertical;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);}
+.form-group select option{background:var(--primary);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.submit-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:0.85rem;border-radius:7px;font-family:inherit;font-size:0.93rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.submit-btn:hover{background:var(--accent-light);}
+
+/* FOOTER */
+footer{background:var(--secondary);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:2rem;}
+.footer-brand p{font-size:0.83rem;color:var(--text-muted);line-height:1.7;margin-top:1rem;}
+.footer-col h4{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent-light);margin-bottom:1rem;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:0.6rem;}
+.footer-col ul li a{color:var(--text-muted);text-decoration:none;font-size:0.83rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent-light);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.78rem;color:var(--text-muted);}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .products-grid,.team-grid{grid-template-columns:1fr 1fr;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .footer-top{grid-template-columns:1fr;}
+  nav .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">卓</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-cn">卓越行有限公司</span>
+        <span class="nav-logo-en">Surpass HK Limited</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#products">產品服務</a></li>
+      <li><a href="#team">團隊</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">立即查詢</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>⭐</span>
+        <span>香港火炭 · 專業零售及批發</span>
+      </div>
+      <h1>卓越行<br><span class="blue">有限公司</span></h1>
+      <p class="hero-en">Surpass HK Limited</p>
+      <p class="hero-desc">卓越行有限公司（Surpass HK Limited）位於沙田火炭，致力為客戶提供優質產品及專業服務。我們的專業團隊憑豐富行業經驗，為合作夥伴及客戶提供全面可靠的服務支援。</p>
+      <div class="hero-highlights">
+        <div class="hl-badge">📍 沙田火炭 維力工業中心</div>
+        <div class="hl-badge">⏰ 星期一至六 提供服務</div>
+        <div class="hl-badge">💻 專業IT團隊支援</div>
+      </div>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">了解產品服務 →</a>
+        <a href="#contact" class="btn-secondary">📧 聯絡我們</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">公司資訊</div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">地址</div>
+          <div class="info-value">火炭歐秀街34-36號<br>維力工業中心A座16樓15室</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">電話</div>
+          <div class="info-value"><a href="tel:+85228905890">2890 5890</a> / <a href="tel:+85226876518">2687 6518</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📠</div>
+        <div>
+          <div class="info-label">傳真</div>
+          <div class="info-value">2609 4559 / 2687 2329</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-value"><a href="mailto:pure@surpasshk.com">pure@surpasshk.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🕐</div>
+        <div>
+          <div class="info-label">辦公時間</div>
+          <div class="info-value">星期一至五：9am – 6pm<br>星期六：9am – 2pm</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">火炭</div>
+      <div class="stat-label">沙田火炭業務據點</div>
+    </div>
+    <div>
+      <div class="stat-num">3+</div>
+      <div class="stat-label">專業聯絡電話號碼</div>
+    </div>
+    <div>
+      <div class="stat-num">週六</div>
+      <div class="stat-label">提供星期六服務</div>
+    </div>
+    <div>
+      <div class="stat-num">IT</div>
+      <div class="stat-label">IT經理專業支援</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">關於我們</div>
+        <h2 class="section-title">卓越品質<br>超越期望</h2>
+        <div class="about-highlight">
+          <h3>🏢 立足火炭 服務業界</h3>
+          <p>卓越行有限公司（Surpass HK Limited）位於沙田火炭維力工業中心，長期致力為香港工商業界提供優質產品及服務。公司擁有專業的管理及技術支援團隊，配合完善的客戶服務體系。</p>
+        </div>
+        <div class="about-body">
+          <p>公司設有IT管理支援部門，為業務運作及客戶服務提供技術保障，確保服務效率與品質達到業界高水準。</p>
+          <p>公司地處沙田火炭歐秀街，毗鄰多個工業及商業設施，交通便利，方便客戶及合作夥伴前來洽商。</p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-grid">
+          <div class="prop-card">
+            <div class="prop-icon">⭐</div>
+            <div>
+              <div class="prop-title">品質保證</div>
+              <div class="prop-desc">嚴格的產品及服務質素標準，確保每次交付均符合要求</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💻</div>
+            <div>
+              <div class="prop-title">IT技術支援</div>
+              <div class="prop-desc">專業IT管理人員提供技術支援及系統維護</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🤝</div>
+            <div>
+              <div class="prop-title">客戶服務</div>
+              <div class="prop-desc">以客為先，提供周到貼心的客戶服務體驗</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📍</div>
+            <div>
+              <div class="prop-title">交通便利</div>
+              <div class="prop-desc">位於火炭工業區，鄰近港鐵火炭站，方便到訪</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">⏰</div>
+            <div>
+              <div class="prop-title">彈性辦公</div>
+              <div class="prop-desc">星期一至六均提供服務，配合不同客戶時間需求</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📞</div>
+            <div>
+              <div class="prop-title">多渠道聯絡</div>
+              <div class="prop-desc">提供多個電話及傳真號碼，確保暢順溝通</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="products">
+  <div class="section-inner">
+    <div class="section-label">產品及服務</div>
+    <h2 class="section-title">業務範疇</h2>
+    <p class="section-sub">提供多元化產品及專業服務，滿足客戶各類業務需求</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🛒</div>
+        <div class="product-name">零售及批發</div>
+        <div class="product-desc">提供各類優質產品的零售及批發服務，以具競爭力的價格為客戶提供所需商品，靈活配合大小訂單需求。</div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">💻</div>
+        <div class="product-name">IT系統支援</div>
+        <div class="product-desc">專業IT管理團隊提供系統維護、技術支援及IT相關顧問服務，確保業務系統穩定運行。</div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">📦</div>
+        <div class="product-name">產品採購服務</div>
+        <div class="product-desc">憑藉豐富的採購網絡及業界聯繫，協助客戶採購所需產品，提供專業的採購諮詢及建議。</div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🤝</div>
+        <div class="product-name">企業業務合作</div>
+        <div class="product-desc">歡迎各業務合作洽詢，公司積極發展策略性合作夥伴關係，共同開拓市場機遇。</div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">📊</div>
+        <div class="product-name">業務諮詢服務</div>
+        <div class="product-desc">提供專業業務諮詢意見，協助客戶制定合適的業務策略及解決方案，提升業務效益。</div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🚚</div>
+        <div class="product-name">物流及配送安排</div>
+        <div class="product-desc">為客戶提供彈性的物流配送安排，確保貨品準時安全送達，滿足客戶的供應鏈需求。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="team">
+  <div class="section-inner">
+    <div class="section-label">公司團隊</div>
+    <h2 class="section-title">專業管理團隊</h2>
+    <p class="section-sub">由資深管理人員及專業技術人員組成的卓越團隊</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">👔</div>
+        <div class="team-name">Stanley Leung</div>
+        <div class="team-role">Director · 董事</div>
+        <div class="team-email">公司主管</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">💻</div>
+        <div class="team-name">Kenneth Leung</div>
+        <div class="team-role">IT Manager · IT經理</div>
+        <div class="team-email"><a href="mailto:kenneth@surpasshk.com">kenneth@surpasshk.com</a></div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">🖥️</div>
+        <div class="team-name">Ken Yu</div>
+        <div class="team-role">IT Manager · IT經理</div>
+        <div class="team-email"><a href="mailto:ken@surpasshk.com">ken@surpasshk.com</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <h2 class="section-title">查詢及合作洽談</h2>
+    <p class="section-sub">歡迎就業務合作或產品查詢聯絡我們，我們的團隊將盡快回覆</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-block">
+          <h3>聯絡資訊</h3>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📍</div>
+            <div>
+              <div class="cinfo-label">地址</div>
+              <div class="cinfo-value">火炭歐秀街34-36號<br>維力工業中心A座16樓15室<br>沙田，新界</div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📞</div>
+            <div>
+              <div class="cinfo-label">電話</div>
+              <div class="cinfo-value">
+                <a href="tel:+85228905890">2890 5890</a><br>
+                <a href="tel:+85226876518">2687 6518</a>
+              </div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📠</div>
+            <div>
+              <div class="cinfo-label">傳真</div>
+              <div class="cinfo-value">2609 4559 / 2687 2329</div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📧</div>
+            <div>
+              <div class="cinfo-label">電郵</div>
+              <div class="cinfo-value">
+                <a href="mailto:pure@surpasshk.com">pure@surpasshk.com</a>
+              </div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">🕐</div>
+            <div>
+              <div class="cinfo-label">辦公時間</div>
+              <div class="cinfo-value">
+                星期一至五：9:00 – 18:00<br>
+                星期六：9:00 – 14:00<br>
+                星期日：休息
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-block">
+        <h3>發送查詢</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>公司</label>
+            <input type="text" placeholder="公司名稱">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>電話</label>
+            <input type="tel" placeholder="聯絡電話">
+          </div>
+          <div class="form-group">
+            <label>電郵</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>查詢類別</label>
+          <select>
+            <option value="">請選擇...</option>
+            <option>產品採購查詢</option>
+            <option>IT服務查詢</option>
+            <option>業務合作洽談</option>
+            <option>物流配送查詢</option>
+            <option>一般查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea rows="4" placeholder="請說明您的需求或查詢詳情..."></textarea>
+        </div>
+        <button class="submit-btn">📩 提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="display:inline-flex;margin-bottom:0.8rem;">
+          <div class="nav-logo-icon" style="font-size:0.9rem;">卓</div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-cn">卓越行有限公司</span>
+            <span class="nav-logo-en">Surpass HK Limited · surpasshk.com</span>
+          </div>
+        </a>
+        <p>位於沙田火炭的專業貿易及服務公司，提供優質產品零售批發、IT技術支援及業務諮詢服務，致力超越客戶期望。</p>
+      </div>
+      <div class="footer-col">
+        <h4>產品服務</h4>
+        <ul>
+          <li><a href="#products">零售及批發</a></li>
+          <li><a href="#products">IT系統支援</a></li>
+          <li><a href="#products">產品採購服務</a></li>
+          <li><a href="#products">業務合作</a></li>
+          <li><a href="#products">業務諮詢</a></li>
+          <li><a href="#products">物流配送</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>快捷連結</h4>
+        <ul>
+          <li><a href="#about">關於我們</a></li>
+          <li><a href="#team">公司團隊</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+          <li><a href="https://surpasshk.com" target="_blank">公司網站</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 卓越行有限公司 Surpass HK Limited. 版權所有。</div>
+      <div class="footer-copy">火炭歐秀街34-36號維力工業中心A座16樓15室，沙田</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
