@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patrickal Trading Co. Ltd. | Textile &amp; Fabric Wholesale</title>
+<style>
+  :root {
+    --bg-primary: #0c0809;
+    --bg-secondary: #160d10;
+    --bg-card: #1e1218;
+    --bg-card2: #281820;
+    --burg1: #5a0c1a;
+    --burg2: #961828;
+    --burg3: #c82038;
+    --cream: #f2e8d8;
+    --gold1: #b89018;
+    --gold2: #d8b030;
+    --gold3: #f0cc50;
+    --text-main: #f4ece0;
+    --text-muted: #b09080;
+    --text-dim: #6a4850;
+    --border: rgba(150,24,40,0.22);
+    --cream-border: rgba(242,232,216,0.15);
+    --gold-border: rgba(184,144,24,0.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg-primary);color:var(--text-main);font-family:'Segoe UI','Noto Sans HK',sans-serif;line-height:1.7;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(12,8,9,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+  .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--burg1),var(--burg2));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:var(--cream);}
+  .nav-logo-text{font-size:16px;font-weight:700;color:var(--cream);}
+  .nav-logo-sub{font-size:11px;color:var(--text-dim);}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{text-decoration:none;color:var(--text-muted);font-size:14px;transition:color .2s;}
+  .nav-links a:hover{color:var(--cream);}
+  .nav-cta{background:linear-gradient(135deg,var(--burg1),var(--burg2));color:var(--cream);padding:9px 22px;border-radius:5px;text-decoration:none;font-size:14px;font-weight:700;transition:opacity .2s;}
+  .nav-cta:hover{opacity:.85;}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;
+    background:radial-gradient(ellipse 60% 55% at 60% 30%,rgba(90,12,26,0.22) 0%,transparent 70%),
+    radial-gradient(ellipse 35% 35% at 5% 80%,rgba(184,144,24,0.07) 0%,transparent 70%);}
+  .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;position:relative;z-index:1;}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(150,24,40,0.15);border:1px solid rgba(150,24,40,0.35);border-radius:4px;padding:6px 14px;font-size:12px;color:var(--burg3);margin-bottom:24px;letter-spacing:1px;text-transform:uppercase;}
+  .hero-dot{width:6px;height:6px;background:var(--gold2);border-radius:50%;animation:blink 2s infinite;}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+  h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.15;margin-bottom:14px;}
+  h1 span{background:linear-gradient(135deg,var(--burg2),var(--burg3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero-desc{font-size:16px;color:var(--text-muted);max-width:540px;margin-bottom:36px;line-height:1.85;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-burg{background:linear-gradient(135deg,var(--burg1),var(--burg2));color:var(--cream);padding:13px 30px;border-radius:5px;text-decoration:none;font-weight:700;font-size:15px;transition:all .2s;}
+  .btn-burg:hover{opacity:.85;transform:translateY(-2px);}
+  .btn-outline{border:1px solid var(--cream-border);color:var(--text-muted);padding:13px 30px;border-radius:5px;text-decoration:none;font-size:15px;transition:all .2s;}
+  .btn-outline:hover{border-color:var(--cream);color:var(--cream);}
+
+  /* INFO CARD */
+  .info-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:30px;box-shadow:0 24px 60px rgba(0,0,0,.6);}
+  .info-card-title{font-size:11px;color:var(--gold2);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:20px;}
+  .info-row{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);}
+  .info-row:last-child{border-bottom:none;}
+  .i-icon{width:34px;height:34px;background:rgba(150,24,40,0.12);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+  .i-label{font-size:10px;color:var(--text-dim);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;}
+  .i-val{font-size:13px;color:var(--text-main);font-weight:600;}
+  .i-val a{color:var(--burg3);text-decoration:none;}
+
+  /* STATS */
+  .stats{background:var(--bg-secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:38px 5%;}
+  .stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .stat-item{text-align:center;}
+  .stat-num{font-size:1.9rem;font-weight:800;background:linear-gradient(135deg,var(--gold1),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .stat-label{font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+  /* SECTION */
+  section{padding:80px 5%;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-tag{font-size:11px;color:var(--gold2);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;margin-bottom:12px;}
+  .section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:16px;}
+  .section-title span{background:linear-gradient(135deg,var(--burg2),var(--burg3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .section-sub{color:var(--text-muted);font-size:15px;max-width:620px;margin-bottom:48px;line-height:1.8;}
+
+  /* PRODUCTS */
+  .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .prod-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:28px;transition:all .3s;position:relative;overflow:hidden;}
+  .prod-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--burg1),var(--burg3));opacity:0;transition:opacity .3s;}
+  .prod-card:hover{border-color:rgba(150,24,40,0.4);transform:translateY(-4px);background:var(--bg-card2);}
+  .prod-card:hover::before{opacity:1;}
+  .prod-icon{font-size:34px;margin-bottom:14px;}
+  .prod-title{font-size:17px;font-weight:700;margin-bottom:8px;color:var(--cream);}
+  .prod-desc{font-size:14px;color:var(--text-muted);line-height:1.8;}
+  .prod-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
+  .ptag{background:rgba(150,24,40,0.12);border:1px solid var(--border);border-radius:3px;padding:3px 9px;font-size:11px;color:var(--burg3);}
+
+  /* SERVICES */
+  .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .svc-card{background:var(--bg-card);border:1px solid var(--cream-border);border-radius:12px;padding:26px;display:flex;gap:16px;transition:all .3s;}
+  .svc-card:hover{border-color:rgba(242,232,216,0.25);background:var(--bg-card2);}
+  .svc-icon{font-size:30px;flex-shrink:0;margin-top:2px;}
+  .svc-title{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--cream);}
+  .svc-desc{font-size:14px;color:var(--text-muted);line-height:1.7;}
+
+  /* MARKETS */
+  .markets-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .market-card{background:var(--bg-card);border:1px solid var(--gold-border);border-radius:10px;padding:22px;text-align:center;transition:all .3s;}
+  .market-card:hover{border-color:rgba(216,176,48,0.35);transform:translateY(-3px);background:var(--bg-card2);}
+  .market-flag{font-size:32px;margin-bottom:12px;}
+  .market-title{font-size:14px;font-weight:700;color:var(--cream);}
+  .market-desc{font-size:12px;color:var(--text-muted);margin-top:5px;line-height:1.6;}
+
+  /* WHY */
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .why-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:22px;text-align:center;transition:all .3s;}
+  .why-card:hover{border-color:rgba(150,24,40,0.35);transform:translateY(-3px);}
+  .why-icon{font-size:28px;margin-bottom:12px;}
+  .why-title{font-size:14px;font-weight:700;margin-bottom:6px;color:var(--cream);}
+  .why-desc{font-size:13px;color:var(--text-muted);line-height:1.6;}
+
+  /* CONTACT */
+  .contact-section{background:var(--bg-secondary);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .c-list{display:flex;flex-direction:column;gap:18px;}
+  .c-item{display:flex;gap:14px;align-items:flex-start;}
+  .ci-icon{width:42px;height:42px;background:rgba(150,24,40,0.12);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+  .ci-label{font-size:11px;color:var(--text-dim);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;}
+  .ci-val{font-size:14px;color:var(--text-main);font-weight:600;}
+  .ci-val a{color:var(--burg3);text-decoration:none;}
+
+  /* FORM */
+  .cform{display:flex;flex-direction:column;gap:14px;}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .fg{display:flex;flex-direction:column;gap:7px;}
+  .fg label{font-size:12px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.3px;}
+  .fg input,.fg select,.fg textarea{background:var(--bg-card);border:1px solid var(--border);border-radius:5px;padding:11px 14px;color:var(--text-main);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;}
+  .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--burg2);}
+  .fg textarea{resize:vertical;min-height:110px;}
+  .fg select option{background:#1e1218;}
+  .fsub{background:linear-gradient(135deg,var(--burg1),var(--burg2));color:var(--cream);border:none;padding:13px 28px;border-radius:5px;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+  .fsub:hover{opacity:.85;}
+
+  /* FOOTER */
+  footer{background:#090607;border-top:1px solid var(--border);padding:46px 5% 24px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:44px;margin-bottom:36px;}
+  .fb-name{font-size:17px;font-weight:800;color:var(--cream);margin-bottom:6px;}
+  .fb-desc{font-size:13px;color:var(--text-dim);line-height:1.7;}
+  .fc-title{font-size:11px;color:var(--gold2);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
+  .fc-links{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  .fc-links a{text-decoration:none;color:var(--text-dim);font-size:13px;transition:color .2s;}
+  .fc-links a:hover{color:var(--burg3);}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .footer-copy{font-size:12px;color:var(--text-dim);}
+
+  @media(max-width:960px){
+    .prod-grid{grid-template-columns:1fr 1fr;}
+    .markets-grid,.why-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:768px){
+    .hero-inner,.contact-grid,.footer-top{grid-template-columns:1fr;}
+    .info-card{display:none;}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .prod-grid,.svc-grid,.markets-grid,.why-grid{grid-template-columns:1fr;}
+    .frow{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon">P</div>
+      <div>
+        <div class="nav-logo-text">Patrickal Trading Co. Ltd.</div>
+        <div class="nav-logo-sub">Textile &amp; Fabric Wholesale · Hong Kong</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#markets">Markets</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Trade Enquiry</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">
+        <span class="hero-dot"></span>
+        Textile &amp; Fabric Wholesale · Hong Kong
+      </div>
+      <h1>Patrickal Trading<br><span>Quality Textiles</span></h1>
+      <p class="hero-desc">Patrickal Trading Co. Ltd. is a Hong Kong-based wholesale trader specialising in quality fabrics and textile products. With deep connections across the global textile supply chain, we provide manufacturers, garment factories, and retailers with reliable sourcing and competitive pricing on a comprehensive range of textile materials.</p>
+      <div class="hero-btns">
+        <a class="btn-burg" href="#contact">Trade Enquiry</a>
+        <a class="btn-outline" href="#products">View Products</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">Company Details</div>
+      <div class="info-row">
+        <div class="i-icon">🏢</div>
+        <div>
+          <div class="i-label">Company</div>
+          <div class="i-val">Patrickal Trading Co. Ltd.</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">✉️</div>
+        <div>
+          <div class="i-label">Email</div>
+          <div class="i-val"><a href="mailto:patricko@hkabc.net">patricko@hkabc.net</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">📍</div>
+        <div>
+          <div class="i-label">Location</div>
+          <div class="i-val">Hong Kong</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">🧵</div>
+        <div>
+          <div class="i-label">Specialisation</div>
+          <div class="i-val">Textile &amp; Fabric Wholesale</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Fabric SKUs</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Trade Customers</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years in Textiles</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Global</div>
+      <div class="stat-label">Sourcing Network</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-inner">
+    <div class="section-tag">Product Range</div>
+    <h2 class="section-title">Wholesale <span>Textile Products</span></h2>
+    <p class="section-sub">Patrickal Trading offers a broad range of textile and fabric products to meet the diverse needs of manufacturers, tailors, retailers, and importers across Asia and beyond.</p>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-icon">🧶</div>
+        <div class="prod-title">Woven Fabrics</div>
+        <div class="prod-desc">A comprehensive range of woven fabrics sourced from leading mills in China, Korea, and Europe, available in a wide variety of weights, weave structures, and finishes.</div>
+        <div class="prod-tags">
+          <span class="ptag">Cotton Woven</span>
+          <span class="ptag">Polyester</span>
+          <span class="ptag">Blended</span>
+          <span class="ptag">Linen</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🎽</div>
+        <div class="prod-title">Knit Fabrics</div>
+        <div class="prod-desc">Jersey, interlock, rib, and other knit constructions for sportswear, casual wear, and intimate apparel. Available in cotton, polyester, nylon, and blended compositions.</div>
+        <div class="prod-tags">
+          <span class="ptag">Jersey</span>
+          <span class="ptag">Interlock</span>
+          <span class="ptag">Rib Knit</span>
+          <span class="ptag">Fleece</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🌟</div>
+        <div class="prod-title">Specialty &amp; Technical Fabrics</div>
+        <div class="prod-desc">Functional and specialty fabrics including moisture-wicking, stretch, anti-bacterial, and water-repellent materials for activewear, workwear, and outdoor applications.</div>
+        <div class="prod-tags">
+          <span class="ptag">Moisture-Wick</span>
+          <span class="ptag">Stretch</span>
+          <span class="ptag">Water-Repellent</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🏠</div>
+        <div class="prod-title">Home Textile Fabrics</div>
+        <div class="prod-desc">Upholstery, curtain, and bedding fabrics for the home furnishing sector, including plain weaves, jacquards, and printed designs in a wide range of colourways.</div>
+        <div class="prod-tags">
+          <span class="ptag">Upholstery</span>
+          <span class="ptag">Curtain Fabric</span>
+          <span class="ptag">Bedding</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🪡</div>
+        <div class="prod-title">Trimmings &amp; Accessories</div>
+        <div class="prod-desc">Wholesale textile trimmings and accessories including buttons, zippers, elastic, lace, ribbon, labels, and other garment accessories for manufacturers and tailors.</div>
+        <div class="prod-tags">
+          <span class="ptag">Buttons &amp; Zippers</span>
+          <span class="ptag">Elastic</span>
+          <span class="ptag">Lace &amp; Ribbon</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🎨</div>
+        <div class="prod-title">Dyed &amp; Printed Fabrics</div>
+        <div class="prod-desc">Solid-dyed and printed fabrics in seasonal colourways, available in stock or custom colour-matched to specifications for fashion brands and retail buyers.</div>
+        <div class="prod-tags">
+          <span class="ptag">Solid Dyed</span>
+          <span class="ptag">Digital Print</span>
+          <span class="ptag">Screen Print</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--bg-secondary);">
+  <div class="section-inner">
+    <div class="section-tag">Trading Services</div>
+    <h2 class="section-title">Our <span>Trade Services</span></h2>
+    <p class="section-sub">Beyond product supply, Patrickal Trading provides value-added services to support our customers' sourcing and procurement needs.</p>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🔍</div>
+        <div>
+          <div class="svc-title">Fabric Sourcing</div>
+          <div class="svc-desc">Access our extensive network of mills and suppliers in Greater China, Southeast Asia, and Europe to source specific fabrics to your technical specifications, quantity, and price requirements.</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📦</div>
+        <div>
+          <div class="svc-title">Stock Wholesale</div>
+          <div class="svc-desc">Ready-to-ship stock fabrics available for immediate purchase, ideal for small-batch orders, sampling, and urgent production requirements where lead time is critical.</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🎯</div>
+        <div>
+          <div class="svc-title">Custom Development</div>
+          <div class="svc-desc">Collaborate with our team on custom fabric development — from yarn selection and construction to dyeing, printing, and finishing — to create exclusive materials for your brand.</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🚢</div>
+        <div>
+          <div class="svc-title">Import &amp; Export</div>
+          <div class="svc-desc">Experienced in international textile trade, we handle documentation, customs clearance, and logistics coordination for fabric shipments between Hong Kong, China, and global markets.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section id="markets">
+  <div class="section-inner">
+    <div class="section-tag">Market Coverage</div>
+    <h2 class="section-title">Our <span>Trade Markets</span></h2>
+    <p class="section-sub">Patrickal Trading serves customers across the globe, leveraging Hong Kong's strategic position as an international textile trading hub.</p>
+    <div class="markets-grid">
+      <div class="market-card">
+        <div class="market-flag">🏙️</div>
+        <div class="market-title">Hong Kong</div>
+        <div class="market-desc">Home market — local garment factories, fashion brands, and retailers</div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇨🇳</div>
+        <div class="market-title">China</div>
+        <div class="market-desc">Manufacturing hubs in Guangdong, Zhejiang, and Jiangsu</div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🌏</div>
+        <div class="market-title">Southeast Asia</div>
+        <div class="market-desc">Vietnam, Bangladesh, Cambodia, and regional garment hubs</div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🌍</div>
+        <div class="market-title">International</div>
+        <div class="market-desc">Europe, USA, Middle East, and global fashion importers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section style="background:var(--bg-secondary);">
+  <div class="section-inner">
+    <div class="section-tag">Why Patrickal</div>
+    <h2 class="section-title">Our <span>Trading Strengths</span></h2>
+    <p class="section-sub">Built on years of experience in the Hong Kong textile trade, Patrickal offers reliability, quality, and value at every step.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🏭</div>
+        <div class="why-title">Mill Relationships</div>
+        <div class="why-desc">Direct relationships with reputable mills ensure consistent quality and competitive mill-to-market pricing.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <div class="why-title">Fast Response</div>
+        <div class="why-desc">Quick quotation turnaround and sample dispatch to support tight development and production schedules.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">✅</div>
+        <div class="why-title">Quality Assurance</div>
+        <div class="why-desc">All fabrics are quality-checked before dispatch, with testing support available for buyers with specific compliance requirements.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <div class="why-title">Competitive Pricing</div>
+        <div class="why-desc">Wholesale pricing with flexible MOQs to serve both large-scale manufacturers and smaller fashion businesses.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">Contact Us</div>
+    <h2 class="section-title">Send a <span>Trade Enquiry</span></h2>
+    <p class="section-sub">For product availability, samples, pricing, or custom sourcing requests, contact our team directly.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="c-list">
+          <div class="c-item">
+            <div class="ci-icon">✉️</div>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-val"><a href="mailto:patricko@hkabc.net">patricko@hkabc.net</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">Location</div>
+              <div class="ci-val">Hong Kong</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">⏰</div>
+            <div>
+              <div class="ci-label">Office Hours</div>
+              <div class="ci-val">Mon – Fri: 9:00am – 6:00pm HKT</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">🌐</div>
+            <div>
+              <div class="ci-label">Trade Directory</div>
+              <div class="ci-val">Listed on Textile Infomedia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="cform" onsubmit="return false;">
+        <div class="frow">
+          <div class="fg">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="fg">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="Contact number">
+          </div>
+        </div>
+        <div class="fg">
+          <label>Email Address *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="fg">
+          <label>Company / Factory</label>
+          <input type="text" placeholder="Organisation name">
+        </div>
+        <div class="fg">
+          <label>Enquiry Type</label>
+          <select>
+            <option>Fabric Sample Request</option>
+            <option>Wholesale Price Enquiry</option>
+            <option>Custom Fabric Development</option>
+            <option>Stock Availability</option>
+            <option>Import / Export Enquiry</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Details *</label>
+          <textarea placeholder="Describe your fabric requirements, quantities, or any other details..."></textarea>
+        </div>
+        <button type="submit" class="fsub">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="fb-name">Patrickal Trading Co. Ltd.</div>
+        <div class="fb-desc" style="margin-top:6px;">Hong Kong textile and fabric wholesale trader, providing quality sourcing and competitive pricing for manufacturers, garment factories, and retailers across Asia and globally.</div>
+      </div>
+      <div>
+        <div class="fc-title">Products</div>
+        <ul class="fc-links">
+          <li><a href="#products">Woven Fabrics</a></li>
+          <li><a href="#products">Knit Fabrics</a></li>
+          <li><a href="#products">Specialty Fabrics</a></li>
+          <li><a href="#products">Trimmings</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fc-title">Contact</div>
+        <ul class="fc-links">
+          <li><a href="mailto:patricko@hkabc.net">patricko@hkabc.net</a></li>
+          <li><a href="#contact">Submit Enquiry</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Patrickal Trading Co. Ltd. All rights reserved. Hong Kong.</div>
+      <div style="font-size:12px;color:var(--text-dim);">Textile &amp; Fabric Wholesale · Hong Kong</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
