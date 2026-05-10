@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>富璟護老院（第一城）有限公司 | Foo King Care Home</title>
+<style>
+:root {
+  --primary: #0d1014;
+  --secondary: #121620;
+  --accent: #10a890;
+  --accent2: #d4960c;
+  --accent-warm: #e8c870;
+  --text: #e8e4d8;
+  --text-muted: #8a9490;
+  --card-bg: #161c22;
+  --border: #1c2830;
+  --hero-overlay: rgba(13,16,20,0.82);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;background:var(--primary);color:var(--text);line-height:1.7;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,16,20,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),#0c8870);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;}
+.nav-logo-text{display:flex;flex-direction:column;}
+.nav-logo-cn{font-size:0.95rem;font-weight:700;color:var(--text);line-height:1.2;}
+.nav-logo-sub{font-size:0.6rem;color:var(--text-muted);letter-spacing:0.06em;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.88rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:6px;text-decoration:none;font-size:0.88rem;font-weight:600;transition:background 0.2s;}
+.nav-cta:hover{background:#0c8870;}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(150deg,#0d1014 0%,#0c1820 45%,#0c1614 100%);display:flex;align-items:center;padding-top:70px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 55%,rgba(16,168,144,0.1) 0%,transparent 55%);}
+.hero-grid{max-width:1200px;margin:0 auto;padding:5rem 2rem;display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(16,168,144,0.1);border:1px solid rgba(16,168,144,0.3);border-radius:20px;padding:0.4rem 1rem;margin-bottom:1.5rem;font-size:0.8rem;color:var(--accent);}
+.hero h1{font-size:2.8rem;font-weight:900;line-height:1.2;margin-bottom:0.4rem;}
+.hero h1 .accent{color:var(--accent);}
+.hero-en{font-size:0.95rem;color:var(--text-muted);margin-bottom:1rem;letter-spacing:0.04em;}
+.hero-desc{font-size:0.98rem;color:var(--text-muted);margin-bottom:2rem;max-width:530px;line-height:1.8;}
+.hero-highlights{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;}
+.hl-badge{background:rgba(212,150,12,0.1);border:1px solid rgba(212,150,12,0.25);border-radius:4px;padding:0.3rem 0.8rem;font-size:0.78rem;color:var(--accent-warm);display:flex;align-items:center;gap:5px;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.85rem 2rem;border-radius:7px;text-decoration:none;font-weight:700;font-size:0.93rem;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{background:#0c8870;transform:translateY(-2px);}
+.btn-secondary{background:transparent;color:var(--accent);border:2px solid var(--accent);padding:0.85rem 2rem;border-radius:7px;text-decoration:none;font-weight:700;font-size:0.93rem;transition:all 0.2s;}
+.btn-secondary:hover{background:rgba(16,168,144,0.1);}
+.hero-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin-bottom:1.3rem;}
+.info-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1rem;}
+.info-row:last-child{margin-bottom:0;}
+.info-icon{width:36px;height:36px;border-radius:7px;background:rgba(16,168,144,0.1);border:1px solid rgba(16,168,144,0.2);display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+.info-label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;}
+.info-value{font-size:0.88rem;color:var(--text);}
+.info-value a{color:var(--accent);text-decoration:none;}
+
+/* STATS */
+.stats{background:linear-gradient(90deg,var(--accent),#0c8870);padding:2.5rem 2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+.stat-num{font-size:2.2rem;font-weight:900;color:#fff;line-height:1;}
+.stat-label{font-size:0.8rem;color:rgba(255,255,255,0.8);margin-top:6px;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin-bottom:0.6rem;}
+.section-title{font-size:2.1rem;font-weight:800;margin-bottom:1rem;line-height:1.2;}
+.section-sub{font-size:0.95rem;color:var(--text-muted);max-width:600px;margin-bottom:3rem;line-height:1.8;}
+
+/* ABOUT */
+.about{background:var(--secondary);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(16,168,144,0.1),rgba(212,150,12,0.06));border:1px solid rgba(16,168,144,0.25);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:1.8rem;margin-bottom:1.8rem;}
+.about-highlight h3{font-size:0.95rem;font-weight:700;color:var(--accent);margin-bottom:0.7rem;text-transform:uppercase;letter-spacing:0.05em;}
+.about-highlight p{color:var(--text-muted);font-size:0.92rem;line-height:1.8;}
+.about-body p{color:var(--text-muted);margin-bottom:1rem;font-size:0.92rem;line-height:1.8;}
+.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;align-items:flex-start;gap:10px;}
+.prop-icon{font-size:1.4rem;flex-shrink:0;}
+.prop-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.prop-desc{font-size:0.76rem;color:var(--text-muted);}
+
+/* SERVICES */
+.services{background:var(--primary);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.service-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.8rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),#0c8870);opacity:0;transition:opacity 0.25s;}
+.service-card:hover{border-color:rgba(16,168,144,0.35);transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,0.4);}
+.service-card:hover::before{opacity:1;}
+.service-icon{font-size:2.4rem;margin-bottom:0.8rem;}
+.service-name{font-size:1.02rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.service-desc{font-size:0.84rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.7;}
+.service-items{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.service-items li{font-size:0.8rem;color:var(--text-muted);display:flex;align-items:center;gap:8px;}
+.service-items li::before{content:'✓';color:var(--accent);font-weight:700;}
+
+/* ADMISSION */
+.admission{background:var(--secondary);}
+.admission-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;}
+.admission-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:2rem;}
+.admission-card h3{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:1.2rem;display:flex;align-items:center;gap:8px;}
+.req-list{list-style:none;display:flex;flex-direction:column;gap:0.8rem;}
+.req-item{display:flex;align-items:flex-start;gap:10px;padding:0.8rem;background:rgba(16,168,144,0.05);border:1px solid rgba(16,168,144,0.12);border-radius:8px;}
+.req-item-icon{font-size:1rem;flex-shrink:0;}
+.req-item-text{font-size:0.88rem;color:var(--text-muted);}
+.fee-card{background:linear-gradient(135deg,rgba(212,150,12,0.12),rgba(232,200,112,0.06));border:1px solid rgba(212,150,12,0.25);border-radius:14px;padding:2rem;text-align:center;}
+.fee-amount{font-size:3rem;font-weight:900;color:var(--accent2);line-height:1;margin:1rem 0 0.4rem;}
+.fee-unit{font-size:0.85rem;color:var(--text-muted);}
+.fee-note{font-size:0.78rem;color:var(--text-muted);margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid rgba(212,150,12,0.2);}
+
+/* LOCATION */
+.location{background:var(--primary);}
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.location-info{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:2rem;}
+.location-info h3{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:1.2rem;}
+.loc-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid var(--border);}
+.loc-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.loc-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.loc-label{font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;}
+.loc-value{font-size:0.88rem;color:var(--text);}
+.loc-value a{color:var(--accent);text-decoration:none;}
+.transport-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:2rem;}
+.transport-card h3{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:1.2rem;}
+.transport-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:0.8rem;padding-bottom:0.8rem;border-bottom:1px solid var(--border);}
+.transport-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.transport-icon{font-size:1.1rem;flex-shrink:0;}
+.transport-label{font-size:0.72rem;color:var(--text-muted);margin-bottom:3px;}
+.transport-value{font-size:0.84rem;color:var(--text-muted);}
+
+/* CONTACT */
+.contact{background:var(--secondary);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.contact-info-block{background:var(--primary);border:1px solid var(--border);border-radius:14px;padding:2rem;}
+.contact-info-block h3{font-size:1rem;font-weight:700;margin-bottom:1.4rem;color:var(--text);}
+.cinfo-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border);}
+.cinfo-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.cinfo-icon{width:38px;height:38px;background:rgba(16,168,144,0.1);border:1px solid rgba(16,168,144,0.2);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+.cinfo-label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;}
+.cinfo-value{font-size:0.88rem;color:var(--text);}
+.cinfo-value a{color:var(--accent);text-decoration:none;}
+.contact-form-block{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:2rem;}
+.contact-form-block h3{font-size:1rem;font-weight:700;margin-bottom:1.4rem;color:var(--text);}
+.form-group{margin-bottom:1.1rem;}
+.form-group label{display:block;font-size:0.75rem;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--primary);border:1px solid var(--border);border-radius:7px;padding:0.75rem 1rem;color:var(--text);font-family:inherit;font-size:0.9rem;transition:border-color 0.2s;resize:vertical;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);}
+.form-group select option{background:var(--primary);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.submit-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:0.85rem;border-radius:7px;font-family:inherit;font-size:0.93rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.submit-btn:hover{background:#0c8870;}
+
+/* FOOTER */
+footer{background:var(--primary);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:2rem;}
+.footer-brand p{font-size:0.83rem;color:var(--text-muted);line-height:1.7;margin-top:1rem;}
+.footer-col h4{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:1rem;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:0.6rem;}
+.footer-col ul li a{color:var(--text-muted);text-decoration:none;font-size:0.83rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.78rem;color:var(--text-muted);}
+.license-badge{background:rgba(16,168,144,0.1);border:1px solid rgba(16,168,144,0.2);border-radius:4px;padding:4px 10px;font-size:0.75rem;color:var(--accent);}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid,.admission-grid,.location-grid{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .footer-top{grid-template-columns:1fr;}
+  nav .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">🏥</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-cn">富璟護老院（第一城）有限公司</span>
+        <span class="nav-logo-sub">牌照處檔號：1074 · 沙田第一城</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">院舍簡介</a></li>
+      <li><a href="#services">護理服務</a></li>
+      <li><a href="#admission">入住資訊</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">即時查詢</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>🌿</span>
+        <span>沙田第一城 · 專業護老服務</span>
+      </div>
+      <h1>富璟<span class="accent">護老院</span><br>（第一城）</h1>
+      <p class="hero-en">Foo King Care Home (City One) Ltd.</p>
+      <p class="hero-desc">位於沙田第一城，富璟護老院致力為長者提供溫馨舒適、專業周到的住宿護理服務。我們擁有286個宿位，以愛心與專業為每位長者帶來安心晚年。</p>
+      <div class="hero-highlights">
+        <div class="hl-badge">🏛️ 牌照處檔號：1074</div>
+        <div class="hl-badge">🛏️ 286個宿位</div>
+        <div class="hl-badge">📍 第一城站B出口</div>
+      </div>
+      <div class="hero-actions">
+        <a href="tel:+85221176717" class="btn-primary">📞 2117 6717 立即致電</a>
+        <a href="#admission" class="btn-secondary">了解入住詳情</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">院舍聯絡資訊</div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">地址</div>
+          <div class="info-value">新界沙田第一城銀城街2號<br>銀城商場4樓402A舖</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">電話</div>
+          <div class="info-value"><a href="tel:+85221176717">2117 6717</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📱</div>
+        <div>
+          <div class="info-label">手機</div>
+          <div class="info-value"><a href="tel:+85253921535">5392 1535</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-value"><a href="mailto:fjcityone@outlook.com">fjcityone@outlook.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🚇</div>
+        <div>
+          <div class="info-label">交通</div>
+          <div class="info-value">港鐵第一城站B出口</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">286</div>
+      <div class="stat-label">宿位數目</div>
+    </div>
+    <div>
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">全天候護理照顧</div>
+    </div>
+    <div>
+      <div class="stat-num">$6,000</div>
+      <div class="stat-label">自資宿位每月起</div>
+    </div>
+    <div>
+      <div class="stat-num">1074</div>
+      <div class="stat-label">牌照處登記檔號</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">院舍簡介</div>
+        <h2 class="section-title">專業護老<br>溫馨如家</h2>
+        <div class="about-highlight">
+          <h3>🏡 沙田第一城 — 您長者的安心家園</h3>
+          <p>富璟護老院（第一城）位於沙田第一城銀城商場4樓，地處交通便利，鄰近港鐵第一城站。院舍持有牌照處1074號登記，提供合法監管的優質護老住宿服務，設有286個宿位，服務有需要的長者。</p>
+        </div>
+        <div class="about-body">
+          <p>院舍由一支具備豐富護理經驗的專業團隊管理，致力為每位入住長者提供個人化的護理計劃，配合其健康狀況及日常生活需要。</p>
+          <p>我們相信每位長者都值得享有尊嚴、尊重與關愛。在富璟護老院，長者不只是住客，更是我們大家庭的一份子，我們致力讓他們在熟悉的社區環境中安享晚年。</p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-grid">
+          <div class="prop-card">
+            <div class="prop-icon">💊</div>
+            <div>
+              <div class="prop-title">專業藥物管理</div>
+              <div class="prop-desc">嚴格執行醫生處方，確保長者按時準確服藥</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🩺</div>
+            <div>
+              <div class="prop-title">定期護理評估</div>
+              <div class="prop-desc">定期進行全面護理評估，調整個人護理計劃</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🛁</div>
+            <div>
+              <div class="prop-title">生活照料服務</div>
+              <div class="prop-desc">協助沐浴、餵飯、換尿片等日常生活護理</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">❤️</div>
+            <div>
+              <div class="prop-title">生命體徵監測</div>
+              <div class="prop-desc">定時量度血壓、體溫、脈搏等生命指標</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🎵</div>
+            <div>
+              <div class="prop-title">康樂活動</div>
+              <div class="prop-desc">豐富多元的康樂活動，促進身心健康</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🚇</div>
+            <div>
+              <div class="prop-title">交通便利</div>
+              <div class="prop-desc">港鐵第一城站B出口，方便家屬探訪</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="section-inner">
+    <div class="section-label">護理服務</div>
+    <h2 class="section-title">全面護理照顧</h2>
+    <p class="section-sub">專業護理團隊提供全面的住宿護理服務，照顧長者身心健康</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🩺</div>
+        <div class="service-name">護理評估服務</div>
+        <div class="service-desc">由專業護士定期對入住長者進行全面護理評估，制定個人化護理計劃，確保護理服務切合個別需要。</div>
+        <ul class="service-items">
+          <li>入院全面評估</li>
+          <li>定期覆核評估</li>
+          <li>個人護理計劃制定</li>
+          <li>家屬溝通協調</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💊</div>
+        <div class="service-name">藥物管理服務</div>
+        <div class="service-desc">嚴格按照醫生處方執行藥物管理，確保長者準時、正確服用藥物，並監測藥物反應及副作用。</div>
+        <ul class="service-items">
+          <li>執藥及核派藥</li>
+          <li>藥物記錄管理</li>
+          <li>藥物反應監察</li>
+          <li>定期覆診安排</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💗</div>
+        <div class="service-name">生命體徵監測</div>
+        <div class="service-desc">定時量度並記錄長者的生命體徵，包括血壓、體溫、脈搏及血氧等指標，及早發現異常情況。</div>
+        <ul class="service-items">
+          <li>血壓及脈搏量度</li>
+          <li>體溫監測</li>
+          <li>血氧監察</li>
+          <li>異常情況即時處理</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛁</div>
+        <div class="service-name">個人護理服務</div>
+        <div class="service-desc">提供專業的個人日常護理服務，尊重長者尊嚴與私隱，協助完成日常生活活動，保持個人衛生。</div>
+        <ul class="service-items">
+          <li>協助沐浴及梳洗</li>
+          <li>餵食及飲食協助</li>
+          <li>尿片更換服務</li>
+          <li>衣著及儀容護理</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <div class="service-name">康樂及社交活動</div>
+        <div class="service-desc">定期舉辦各類康樂及社交活動，促進長者身心健康，維持社交聯繫，提升生活質素。</div>
+        <ul class="service-items">
+          <li>手工藝及創意活動</li>
+          <li>體能訓練活動</li>
+          <li>懷舊治療活動</li>
+          <li>節日慶典活動</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌿</div>
+        <div class="service-name">膳食及營養服務</div>
+        <div class="service-desc">提供均衡健康的膳食，配合長者的醫療及飲食需要，提供多種餐食選擇，確保充足營養攝取。</div>
+        <ul class="service-items">
+          <li>均衡健康膳食</li>
+          <li>特別飲食配合</li>
+          <li>軟餐及流質飲食</li>
+          <li>定時三餐供應</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMISSION -->
+<section id="admission" class="admission">
+  <div class="section-inner">
+    <div class="section-label">入住資訊</div>
+    <h2 class="section-title">入住條件及收費</h2>
+    <p class="section-sub">了解入住富璟護老院的條件及相關費用，歡迎致電查詢</p>
+    <div class="admission-grid">
+      <div class="admission-card">
+        <h3>📋 入住條件</h3>
+        <ul class="req-list">
+          <li class="req-item">
+            <div class="req-item-icon">✅</div>
+            <div class="req-item-text"><strong>年齡要求：</strong>年齡達65歲或以上的長者均可申請入住</div>
+          </li>
+          <li class="req-item">
+            <div class="req-item-icon">🧠</div>
+            <div class="req-item-text"><strong>精神狀態：</strong>精神狀態適合過群體生活，能適應院舍環境</div>
+          </li>
+          <li class="req-item">
+            <div class="req-item-icon">👴</div>
+            <div class="req-item-text"><strong>65歲以下申請：</strong>年齡64歲以下的人士，需經證實有需要接受住宿照顧，請致電 2117 6717 查詢詳情</div>
+          </li>
+          <li class="req-item">
+            <div class="req-item-icon">📄</div>
+            <div class="req-item-text"><strong>入住文件：</strong>身份證、醫療記錄及相關文件，詳情請致電查詢</div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="fee-card">
+          <div class="section-label" style="text-align:center;">自資宿位月費</div>
+          <div class="fee-amount">$6,000</div>
+          <div class="fee-unit">每月起（不包括雜費）</div>
+          <div class="fee-note">實際收費視乎護理級別及個人需要而定。<br>政府資助宿位（津助宿位）需透過社會福利署社區照顧服務券或安老院舍調配登記冊申請。請致電查詢最新收費詳情。</div>
+        </div>
+        <div style="background:rgba(16,168,144,0.08);border:1px solid rgba(16,168,144,0.2);border-radius:12px;padding:1.5rem;margin-top:1.2rem;text-align:center;">
+          <p style="font-size:0.9rem;color:var(--accent);font-weight:700;margin-bottom:0.5rem;">📞 查詢及參觀預約</p>
+          <p style="font-size:1.4rem;font-weight:900;color:var(--text);margin-bottom:0.3rem;"><a href="tel:+85221176717" style="color:var(--accent);text-decoration:none;">2117 6717</a></p>
+          <p style="font-size:0.82rem;color:var(--text-muted);">歡迎致電預約參觀院舍設施</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location">
+  <div class="section-inner">
+    <div class="section-label">位置及交通</div>
+    <h2 class="section-title">地址及前往方法</h2>
+    <div class="location-grid">
+      <div class="location-info">
+        <h3>📍 院舍位置</h3>
+        <div class="loc-row">
+          <div class="loc-icon">🏢</div>
+          <div>
+            <div class="loc-label">地址</div>
+            <div class="loc-value">新界沙田第一城銀城街2號<br>銀城商場4樓402A舖<br>（置富第一城樂薈4樓402A舖第一部份）</div>
+          </div>
+        </div>
+        <div class="loc-row">
+          <div class="loc-icon">📞</div>
+          <div>
+            <div class="loc-label">電話</div>
+            <div class="loc-value"><a href="tel:+85221176717">2117 6717</a></div>
+          </div>
+        </div>
+        <div class="loc-row">
+          <div class="loc-icon">📱</div>
+          <div>
+            <div class="loc-label">手機</div>
+            <div class="loc-value"><a href="tel:+85253921535">5392 1535</a></div>
+          </div>
+        </div>
+        <div class="loc-row">
+          <div class="loc-icon">📧</div>
+          <div>
+            <div class="loc-label">電郵</div>
+            <div class="loc-value"><a href="mailto:fjcityone@outlook.com">fjcityone@outlook.com</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="transport-card">
+        <h3>🚇 前往交通</h3>
+        <div class="transport-item">
+          <div class="transport-icon">🚇</div>
+          <div>
+            <div class="transport-label">港鐵（最近）</div>
+            <div class="transport-value">馬鞍山線 第一城站 B出口（步行約3分鐘）</div>
+          </div>
+        </div>
+        <div class="transport-item">
+          <div class="transport-icon">🚌</div>
+          <div>
+            <div class="transport-label">巴士（附近）</div>
+            <div class="transport-value">240X, 80L, 82K, 86, 89X, A41, N42<br>61R, 62R, 182, 281A, 682B, 682C, 84M, 88R, 89R, N182</div>
+          </div>
+        </div>
+        <div class="transport-item">
+          <div class="transport-icon">🚐</div>
+          <div>
+            <div class="transport-label">小巴</div>
+            <div class="transport-value">182, 49X, 682B, 73A, 82C, 84M, 85A, N182<br>804, 811, 65A, 65K, 67A</div>
+          </div>
+        </div>
+        <div class="transport-item">
+          <div class="transport-icon">🚕</div>
+          <div>
+            <div class="transport-label">的士</div>
+            <div class="transport-value">可於第一城各主要出入口乘的士前往</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <h2 class="section-title">查詢及預約參觀</h2>
+    <p class="section-sub">歡迎致電或發送訊息查詢入住詳情，我們的護理團隊將盡快為您提供協助</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-block">
+          <h3>聯絡資訊</h3>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📍</div>
+            <div>
+              <div class="cinfo-label">地址</div>
+              <div class="cinfo-value">新界沙田第一城銀城街2號<br>銀城商場4樓402A舖</div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📞</div>
+            <div>
+              <div class="cinfo-label">電話</div>
+              <div class="cinfo-value"><a href="tel:+85221176717">2117 6717</a></div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📱</div>
+            <div>
+              <div class="cinfo-label">手機</div>
+              <div class="cinfo-value"><a href="tel:+85253921535">5392 1535</a></div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📧</div>
+            <div>
+              <div class="cinfo-label">電郵</div>
+              <div class="cinfo-value"><a href="mailto:fjcityone@outlook.com">fjcityone@outlook.com</a></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:rgba(16,168,144,0.08);border:1px solid rgba(16,168,144,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem;">
+          <p style="font-size:0.85rem;color:var(--accent);font-weight:600;margin-bottom:4px;">🏛️ 院舍牌照資訊</p>
+          <p style="font-size:0.82rem;color:var(--text-muted);">富璟護老院（第一城）有限公司 · 牌照處檔號：1074 · 依法持牌，受社會福利署監管</p>
+        </div>
+      </div>
+      <div class="contact-form-block">
+        <h3>發送查詢</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>查詢人姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>與長者關係</label>
+            <input type="text" placeholder="例：子女、配偶">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>聯絡電話</label>
+            <input type="tel" placeholder="聯絡電話">
+          </div>
+          <div class="form-group">
+            <label>電郵</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>查詢事項</label>
+          <select>
+            <option value="">請選擇...</option>
+            <option>入住查詢及條件</option>
+            <option>收費及宿位查詢</option>
+            <option>院舍參觀預約</option>
+            <option>護理服務查詢</option>
+            <option>政府資助宿位查詢</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea rows="3" placeholder="請說明長者情況或查詢詳情，以便我們為您提供準確資訊..."></textarea>
+        </div>
+        <button class="submit-btn">📩 提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="display:inline-flex;margin-bottom:0.8rem;">
+          <div class="nav-logo-icon">🏥</div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-cn">富璟護老院（第一城）有限公司</span>
+            <span class="nav-logo-sub">牌照處檔號：1074 · 沙田第一城</span>
+          </div>
+        </a>
+        <p>位於沙田第一城，提供286個宿位的專業護老住宿服務。持牌院舍，受社會福利署監管，致力為長者提供專業、溫馨的護理照顧。</p>
+      </div>
+      <div class="footer-col">
+        <h4>護理服務</h4>
+        <ul>
+          <li><a href="#services">護理評估服務</a></li>
+          <li><a href="#services">藥物管理服務</a></li>
+          <li><a href="#services">生命體徵監測</a></li>
+          <li><a href="#services">個人護理服務</a></li>
+          <li><a href="#services">康樂及社交活動</a></li>
+          <li><a href="#services">膳食及營養服務</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>快捷連結</h4>
+        <ul>
+          <li><a href="#about">院舍簡介</a></li>
+          <li><a href="#admission">入住條件及收費</a></li>
+          <li><a href="#location">位置及交通</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 富璟護老院（第一城）有限公司。牌照處檔號：1074。版權所有。</div>
+      <div class="license-badge">持牌護老院 ✓</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
