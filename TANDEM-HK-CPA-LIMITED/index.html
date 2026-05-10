@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TANDEM (HK) CPA Limited | Certified Public Accountants Hong Kong</title>
+<style>
+  :root {
+    --dark: #1a2230;
+    --dark2: #0e1420;
+    --teal: #007870;
+    --teal-light: #009888;
+    --gold: #c8980a;
+    --gold-light: #e0ac10;
+    --white: #ffffff;
+    --light-bg: #f4f8f7;
+    --text: #1a2230;
+    --text-light: #4a5568;
+    --border: #dde8e4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: var(--white); }
+
+  nav {
+    background: var(--dark2);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px; position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; }
+  .nav-logo { width: 42px; height: 42px; background: linear-gradient(135deg, var(--teal), var(--teal-light)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 900; color: var(--white); letter-spacing: -0.5px; }
+  .nav-name .main { font-size: 16px; font-weight: 700; color: var(--white); display: block; }
+  .nav-name .sub { font-size: 11px; color: rgba(255,255,255,0.5); display: block; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal-light); }
+  .nav-cta { background: var(--teal); color: var(--white); padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--teal-light); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--dark2) 0%, var(--dark) 55%, #1a3030 100%);
+    padding: 80px 40px; min-height: 530px;
+    display: flex; align-items: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 75% 50%, rgba(0,152,136,0.15) 0%, transparent 60%);
+  }
+  .hero-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 50px; width: 100%; position: relative; z-index: 1; }
+  .hero-text { flex: 1; }
+  .hero-badge { display: inline-block; background: rgba(0,152,136,0.18); border: 1px solid rgba(0,152,136,0.4); color: var(--teal-light); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+  .hero-text h1 { font-size: 52px; font-weight: 900; color: var(--white); line-height: 1.1; margin-bottom: 12px; }
+  .hero-text h1 span { color: var(--teal-light); }
+  .hero-text h2 { font-size: 20px; font-weight: 400; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+  .hero-tagline { font-size: 15px; color: var(--gold-light); font-style: italic; margin-bottom: 18px; padding-left: 16px; border-left: 3px solid var(--gold); }
+  .hero-text p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 490px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: var(--teal); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--teal-light); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  .hero-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(0,152,136,0.25); backdrop-filter: blur(10px); border-radius: 16px; padding: 32px 28px; min-width: 280px; flex-shrink: 0; }
+  .hero-card h3 { color: var(--teal-light); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+  .hc-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+  .hc-item:last-child { margin-bottom: 0; }
+  .hc-icon { width: 36px; height: 36px; background: rgba(0,152,136,0.22); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .hc-info .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+  .hc-info .value { font-size: 13px; color: var(--white); font-weight: 600; }
+
+  .stats-strip { background: var(--teal); padding: 22px 40px; display: flex; justify-content: center; }
+  .stat-item { text-align: center; padding: 0 48px; position: relative; }
+  .stat-item + .stat-item::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 40px; background: rgba(255,255,255,0.35); }
+  .stat-num { font-size: 32px; font-weight: 900; color: var(--white); line-height: 1; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 4px; font-weight: 500; }
+
+  section { padding: 80px 40px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  .section-title { font-size: 36px; font-weight: 900; color: var(--dark); margin-bottom: 16px; line-height: 1.2; }
+  .section-sub { font-size: 16px; color: var(--text-light); line-height: 1.7; max-width: 620px; }
+  .section-header { margin-bottom: 52px; }
+
+  .about { background: var(--light-bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .about-box { background: var(--dark); border-radius: 16px; padding: 40px; color: var(--white); position: relative; overflow: hidden; }
+  .about-box::after { content: 'T'; position: absolute; right: 10px; bottom: -20px; font-size: 160px; font-weight: 900; color: rgba(0,152,136,0.06); line-height: 1; }
+  .about-box h3 { font-size: 22px; font-weight: 800; color: var(--teal-light); margin-bottom: 16px; }
+  .about-box p { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.82); margin-bottom: 14px; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .prop-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 22px; border-top: 3px solid var(--teal); }
+  .prop-icon { font-size: 28px; margin-bottom: 12px; }
+  .prop-card h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .prop-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 30px 26px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--dark), var(--teal)); }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(26,34,48,0.12); }
+  .service-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--teal), var(--teal-light)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 18px; }
+  .service-card h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .service-card p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+  .service-tag { display: inline-block; background: rgba(0,120,112,0.1); color: var(--teal); padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-top: 12px; }
+
+  .diff { background: var(--dark); }
+  .diff .section-title { color: var(--white); }
+  .diff .section-tag { color: var(--teal-light); }
+  .diff .section-sub { color: rgba(255,255,255,0.7); }
+  .diff-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .diff-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(0,152,136,0.2); border-radius: 14px; padding: 28px 20px; text-align: center; transition: background 0.2s; }
+  .diff-card:hover { background: rgba(0,152,136,0.1); }
+  .diff-icon { font-size: 36px; margin-bottom: 14px; }
+  .diff-card h3 { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .diff-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .contact-info h3 { font-size: 26px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+  .contact-info > p { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 32px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 22px; }
+  .ci-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--teal), var(--teal-light)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .ci-label { font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .ci-val { font-size: 15px; font-weight: 600; color: var(--dark); }
+  .ci-val a { color: var(--dark); text-decoration: none; }
+  .ci-val a:hover { color: var(--teal); }
+
+  .contact-form { background: var(--light-bg); border-radius: 16px; padding: 36px; }
+  .contact-form h3 { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .form-group label { font-size: 13px; font-weight: 600; color: var(--dark); }
+  .form-group input, .form-group select, .form-group textarea { padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; color: var(--text); background: var(--white); outline: none; font-family: inherit; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit { width: 100%; background: var(--teal); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+  .form-submit:hover { background: var(--teal-light); }
+
+  footer { background: var(--dark2); padding: 40px; text-align: center; }
+  .footer-brand { font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+  .footer-brand span { color: var(--teal-light); }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 14px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  @media (max-width: 900px) {
+    .hero-content { flex-direction: column; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .diff-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">CPA</div>
+    <div class="nav-name">
+      <span class="main">TANDEM (HK) CPA Limited</span>
+      <span class="sub">Certified Public Accountants · Hong Kong</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#difference">Our Approach</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Free Consultation</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">🏆 HKICPA Certified Public Accountants</div>
+      <h1>TANDEM<br><span>HK</span> CPA</h1>
+      <h2>Certified Public Accountants — Hong Kong</h2>
+      <div class="hero-tagline">Moving Forward Together — Your Success, Our Purpose</div>
+      <p>TANDEM (HK) CPA Limited is a professional Hong Kong accounting firm delivering audit, accounting, tax, and advisory services. We work alongside you — in tandem — to keep your business financially sound and compliant.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#contact" class="btn-outline">Free Consultation</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>📋 Contact Details</h3>
+      <div class="hc-item">
+        <div class="hc-icon">📱</div>
+        <div class="hc-info">
+          <div class="label">Mobile</div>
+          <div class="value">6419 2883</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">✉️</div>
+        <div class="hc-info">
+          <div class="label">Email</div>
+          <div class="value">info@tandemhk.com</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🌐</div>
+        <div class="hc-info">
+          <div class="label">Website</div>
+          <div class="value">tandemhk.com</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🏆</div>
+        <div class="hc-info">
+          <div class="label">Qualification</div>
+          <div class="value">HKICPA Certified Practising CPA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">CPA</div>
+    <div class="stat-label">Qualified Firm</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">1-Stop</div>
+    <div class="stat-label">Accounting &amp; Advisory</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">HK</div>
+    <div class="stat-label">Regulated Practice</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Client Focus</div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-box">
+        <h3>🤝 Moving Forward Together</h3>
+        <p>TANDEM (HK) CPA Limited is a Hong Kong-registered certified public accounting firm, providing professional audit, accounting, tax, and business advisory services to companies across various industries.</p>
+        <p>The name "Tandem" reflects our core philosophy — we work alongside our clients, in true partnership, moving forward together toward shared goals. We don't just file your accounts; we genuinely invest in understanding your business and supporting its growth.</p>
+        <p>Our experienced team of CPAs brings deep knowledge of Hong Kong accounting standards, tax law, and regulatory requirements, delivering reliable, accurate, and timely services that give you confidence and peace of mind.</p>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">🎓</div>
+          <h4>HKICPA Qualified</h4>
+          <p>Our CPAs hold valid HKICPA practising certificates, authorised to provide statutory audit and assurance services.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🤝</div>
+          <h4>True Partnership</h4>
+          <p>We work in tandem with your business — as a genuine partner, not just a service provider. Your goals are our goals.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">⚡</div>
+          <h4>Responsive &amp; Accessible</h4>
+          <p>Fast turnaround, clear communication, and a team that's always available to answer your questions promptly.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🎯</div>
+          <h4>Practical Advice</h4>
+          <p>We go beyond compliance — providing actionable insights and practical recommendations to improve your business.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Services</div>
+      <h2 class="section-title">Professional CPA Services</h2>
+      <p class="section-sub">A comprehensive range of accounting and advisory services for Hong Kong businesses at every stage of growth.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Statutory Audit</h3>
+        <p>Independent audit of financial statements by qualified CPAs, compliant with Hong Kong Standards on Auditing (HKSA) and the Companies Ordinance. Includes IRD submission support.</p>
+        <span class="service-tag">HKICPA Compliant</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Accounting &amp; Bookkeeping</h3>
+        <p>Comprehensive monthly bookkeeping, management accounts, and annual financial statement preparation — keeping your financial records accurate and up to date year-round.</p>
+        <span class="service-tag">Monthly Service</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📝</div>
+        <h3>Tax &amp; IRD Services</h3>
+        <p>Profits tax, salaries tax, and property tax return preparation and filing. Proactive tax planning to optimise your position and ensure full regulatory compliance with the IRD.</p>
+        <span class="service-tag">Tax Planning</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3>Company Formation</h3>
+        <p>Incorporation of Hong Kong limited companies, including company name search, document preparation, business registration, and post-incorporation support.</p>
+        <span class="service-tag">Full Setup</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Company Secretarial</h3>
+        <p>Registered office, company secretary, annual general meeting support, statutory register maintenance, and all required Companies Registry filings.</p>
+        <span class="service-tag">Ongoing Compliance</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💼</div>
+        <h3>Business Advisory</h3>
+        <p>Financial planning, business structuring, cash flow management, and strategic advisory — helping you make better informed decisions for sustainable growth.</p>
+        <span class="service-tag">Strategic Growth</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diff" id="difference">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Our Approach</div>
+      <h2 class="section-title">The Tandem Difference</h2>
+      <p class="section-sub">What sets TANDEM apart is our belief in genuine partnership — working alongside our clients, not just for them.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-icon">🤝</div>
+        <h3>In Tandem</h3>
+        <p>We ride alongside you every step of the way — understanding your business deeply and adapting our support as you grow.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">🔎</div>
+        <h3>Proactive Insight</h3>
+        <p>We don't wait for problems — we identify opportunities and risks early, giving you time to act and make informed decisions.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">⚡</div>
+        <h3>Fast &amp; Reliable</h3>
+        <p>Prompt responses, on-time delivery, and consistent quality — because your business can't afford delays or surprises.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">💡</div>
+        <h3>Value Beyond Numbers</h3>
+        <p>Our CPAs translate financial data into business intelligence — helping you understand what the numbers mean and what to do next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Contact</div>
+      <h2 class="section-title">Let's Work in Tandem</h2>
+      <p class="section-sub">Reach out for a free initial consultation — our team will assess your needs and recommend the right services for your business.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <p>We'd love to learn about your business and explore how we can support your growth. Contact us for a free, no-obligation consultation.</p>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">Mobile</div>
+            <div class="ci-val"><a href="tel:64192883">6419 2883</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val"><a href="mailto:info@tandemhk.com">info@tandemhk.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Website</div>
+            <div class="ci-val"><a href="https://tandemhk.com" target="_blank">tandemhk.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-val">Hong Kong</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>🤝 Start the Conversation</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name *</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Phone *</label>
+            <input type="tel" placeholder="Contact number">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select>
+            <option>-- Select Service --</option>
+            <option>Statutory Audit</option>
+            <option>Accounting &amp; Bookkeeping</option>
+            <option>Tax &amp; IRD Services</option>
+            <option>Company Formation</option>
+            <option>Company Secretarial</option>
+            <option>Business Advisory</option>
+            <option>Full Package</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Business</label>
+          <textarea placeholder="Brief description of your business and what you need help with..."></textarea>
+        </div>
+        <button class="form-submit">Send Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand"><span>TANDEM</span> (HK) CPA Limited</div>
+  <div class="footer-sub">Certified Public Accountants · Hong Kong · Moving Forward Together</div>
+  <div class="footer-copy">© 2024 TANDEM (HK) CPA Limited. All Rights Reserved. · info@tandemhk.com · 6419 2883</div>
+</footer>
+
+</body>
+</html>
