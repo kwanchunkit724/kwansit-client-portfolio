@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lam Construction Co. Ltd. | 林氏建築有限公司</title>
+<style>
+  :root {
+    --bg-primary: #080a0d;
+    --bg-secondary: #0e1218;
+    --bg-card: #141c24;
+    --bg-card2: #1c2630;
+    --slate1: #1e2c3c;
+    --slate2: #2a3e54;
+    --orange1: #c04010;
+    --orange2: #e05820;
+    --orange3: #f87838;
+    --yellow: #f8b820;
+    --text-main: #f0f2f4;
+    --text-muted: #7890a8;
+    --text-dim: #3a5068;
+    --border: rgba(42,62,84,0.5);
+    --orange-border: rgba(192,64,16,0.25);
+    --glow: rgba(224,88,32,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg-primary);color:var(--text-main);font-family:'Noto Sans HK','Microsoft JhengHei','Segoe UI',sans-serif;line-height:1.7;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,10,13,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+  .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--orange1),var(--orange2));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;}
+  .nav-logo-text{font-size:15px;font-weight:700;color:var(--text-main);}
+  .nav-logo-sub{font-size:11px;color:var(--text-dim);}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{text-decoration:none;color:var(--text-muted);font-size:14px;transition:color .2s;}
+  .nav-links a:hover{color:var(--orange3);}
+  .nav-cta{background:linear-gradient(135deg,var(--orange1),var(--orange2));color:#fff;padding:9px 22px;border-radius:6px;text-decoration:none;font-size:14px;font-weight:700;transition:opacity .2s;}
+  .nav-cta:hover{opacity:.85;}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;
+    background:radial-gradient(ellipse 55% 55% at 60% 30%,rgba(30,44,60,0.4) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 40% at 10% 80%,rgba(192,64,16,0.08) 0%,transparent 70%);}
+  .hero-diag{position:absolute;bottom:0;right:0;width:50%;height:100%;background:linear-gradient(135deg,transparent 40%,rgba(26,44,62,0.15) 100%);}
+  .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;position:relative;z-index:1;}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(192,64,16,0.15);border:1px solid var(--orange-border);border-radius:4px;padding:6px 14px;font-size:12px;color:var(--orange3);margin-bottom:24px;letter-spacing:.5px;}
+  .hero-dot{width:7px;height:7px;background:var(--orange3);border-radius:50%;animation:blink 2s infinite;}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+  h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.15;margin-bottom:16px;letter-spacing:-.3px;}
+  h1 span{background:linear-gradient(135deg,var(--orange2),var(--orange3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero-zh{font-size:1.1rem;color:var(--text-muted);font-weight:600;margin-bottom:20px;letter-spacing:1px;}
+  .hero-desc{font-size:16px;color:var(--text-muted);max-width:540px;margin-bottom:36px;line-height:1.85;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-orange{background:linear-gradient(135deg,var(--orange1),var(--orange2));color:#fff;padding:13px 30px;border-radius:6px;text-decoration:none;font-weight:700;font-size:15px;transition:all .2s;}
+  .btn-orange:hover{opacity:.85;transform:translateY(-2px);}
+  .btn-outline{border:1px solid var(--border);color:var(--text-muted);padding:13px 30px;border-radius:6px;text-decoration:none;font-size:15px;transition:all .2s;}
+  .btn-outline:hover{border-color:var(--orange3);color:var(--orange3);}
+
+  /* INFO CARD */
+  .info-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:32px;box-shadow:0 24px 60px rgba(0,0,0,.6);}
+  .info-card-title{font-size:11px;color:var(--orange3);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:20px;}
+  .info-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+  .info-row:last-child{border-bottom:none;}
+  .i-icon{width:34px;height:34px;background:rgba(192,64,16,0.12);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+  .i-label{font-size:10px;color:var(--text-dim);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;}
+  .i-val{font-size:13px;color:var(--text-main);font-weight:600;}
+  .i-val a{color:var(--orange3);text-decoration:none;}
+
+  /* STATS */
+  .stats{background:var(--bg-secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:38px 5%;}
+  .stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .stat-item{text-align:center;}
+  .stat-num{font-size:1.9rem;font-weight:800;background:linear-gradient(135deg,var(--orange2),var(--orange3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .stat-label{font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+  /* SECTION */
+  section{padding:80px 5%;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-tag{font-size:11px;color:var(--orange3);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;margin-bottom:12px;}
+  .section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:16px;}
+  .section-title span{background:linear-gradient(135deg,var(--orange2),var(--orange3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .section-sub{color:var(--text-muted);font-size:15px;max-width:620px;margin-bottom:48px;line-height:1.8;}
+
+  /* SERVICES */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .svc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:28px;transition:all .3s;position:relative;overflow:hidden;}
+  .svc-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--orange1),var(--orange3));opacity:0;transition:opacity .3s;}
+  .svc-card:hover{border-color:rgba(192,64,16,0.4);transform:translateY(-4px);background:var(--bg-card2);}
+  .svc-card:hover::before{opacity:1;}
+  .svc-icon{font-size:34px;margin-bottom:14px;}
+  .svc-title{font-size:16px;font-weight:700;margin-bottom:10px;}
+  .svc-desc{font-size:14px;color:var(--text-muted);line-height:1.8;}
+  .svc-list{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:6px;}
+  .svc-list li{font-size:13px;color:var(--text-muted);padding-left:14px;position:relative;}
+  .svc-list li::before{content:'▸';position:absolute;left:0;color:var(--orange2);}
+
+  /* PROCESS */
+  .process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+  .pstep{text-align:center;position:relative;}
+  .pstep:not(:last-child)::after{content:'→';position:absolute;right:-12px;top:18px;color:var(--text-dim);font-size:18px;}
+  .p-num{width:52px;height:52px;background:linear-gradient(135deg,var(--orange1),var(--orange2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#fff;margin:0 auto 12px;}
+  .p-title{font-size:13px;font-weight:700;margin-bottom:6px;}
+  .p-desc{font-size:12px;color:var(--text-muted);line-height:1.6;}
+
+  /* SECTORS */
+  .sectors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .sector-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:22px;text-align:center;transition:all .3s;}
+  .sector-card:hover{border-color:rgba(192,64,16,0.35);transform:translateY(-3px);background:var(--bg-card2);}
+  .sector-icon{font-size:32px;margin-bottom:12px;}
+  .sector-title{font-size:14px;font-weight:700;}
+  .sector-desc{font-size:13px;color:var(--text-muted);margin-top:6px;line-height:1.6;}
+
+  /* WHY */
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .why-item{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:24px;display:flex;gap:16px;transition:all .3s;}
+  .why-item:hover{border-color:rgba(192,64,16,0.3);background:var(--bg-card2);}
+  .wi-num{width:44px;height:44px;background:linear-gradient(135deg,var(--orange1),var(--orange2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;flex-shrink:0;}
+  .wi-title{font-size:15px;font-weight:700;margin-bottom:6px;}
+  .wi-desc{font-size:13px;color:var(--text-muted);line-height:1.7;}
+
+  /* CONTACT */
+  .contact-section{background:var(--bg-secondary);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .c-list{display:flex;flex-direction:column;gap:18px;}
+  .c-item{display:flex;gap:14px;align-items:flex-start;}
+  .ci-icon{width:42px;height:42px;background:rgba(192,64,16,0.12);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+  .ci-label{font-size:11px;color:var(--text-dim);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;}
+  .ci-val{font-size:14px;color:var(--text-main);font-weight:600;}
+  .ci-val a{color:var(--orange3);text-decoration:none;}
+
+  /* FORM */
+  .cform{display:flex;flex-direction:column;gap:14px;}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .fg{display:flex;flex-direction:column;gap:7px;}
+  .fg label{font-size:12px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+  .fg input,.fg select,.fg textarea{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text-main);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;}
+  .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--orange2);}
+  .fg textarea{resize:vertical;min-height:110px;}
+  .fg select option{background:#141c24;}
+  .fsub{background:linear-gradient(135deg,var(--orange1),var(--orange2));color:#fff;border:none;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+  .fsub:hover{opacity:.85;}
+
+  /* FOOTER */
+  footer{background:#060809;border-top:1px solid var(--border);padding:48px 5% 26px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:44px;margin-bottom:36px;}
+  .fb-name{font-size:17px;font-weight:800;margin-bottom:4px;}
+  .fb-zh{font-size:12px;color:var(--text-dim);margin-bottom:8px;}
+  .fb-desc{font-size:13px;color:var(--text-dim);line-height:1.7;}
+  .fc-title{font-size:11px;color:var(--orange3);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
+  .fc-links{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  .fc-links a{text-decoration:none;color:var(--text-dim);font-size:13px;transition:color .2s;}
+  .fc-links a:hover{color:var(--orange3);}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .footer-copy{font-size:12px;color:var(--text-dim);}
+
+  @media(max-width:960px){
+    .svc-grid{grid-template-columns:1fr 1fr;}
+    .sectors-grid{grid-template-columns:1fr 1fr;}
+    .process-grid{grid-template-columns:1fr 1fr;}.pstep::after{display:none;}
+  }
+  @media(max-width:768px){
+    .hero-inner,.contact-grid,.footer-top{grid-template-columns:1fr;}
+    .info-card{display:none;}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .svc-grid,.sectors-grid,.why-grid,.process-grid{grid-template-columns:1fr;}
+    .frow{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon">L</div>
+      <div>
+        <div class="nav-logo-text">Lam Construction Co. Ltd.</div>
+        <div class="nav-logo-sub">林氏建築有限公司 · Hong Kong</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#sectors">工程範疇</a></li>
+      <li><a href="#process">施工流程</a></li>
+      <li><a href="#contact">聯絡查詢</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">免費報價</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-diag"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-dot"></span>
+        香港 · 專業建築工程承辦商
+      </div>
+      <h1>Lam Construction<br><span>精工建築</span></h1>
+      <div class="hero-zh">林氏建築有限公司</div>
+      <p class="hero-desc">林氏建築有限公司是香港信譽卓著的建築工程承辦商，提供住宅、商業及工業建築的全面工程服務。從地基工程到竣工交付，我們以嚴格的工程標準及豐富的香港建築經驗，確保每個項目高質量完成。</p>
+      <div class="hero-btns">
+        <a class="btn-orange" href="#contact">立即查詢報價</a>
+        <a class="btn-outline" href="#services">了解服務詳情</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">公司資料</div>
+      <div class="info-row">
+        <div class="i-icon">🏢</div>
+        <div>
+          <div class="i-label">公司名稱</div>
+          <div class="i-val">Lam Construction Co. Ltd.</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">✉️</div>
+        <div>
+          <div class="i-label">電郵</div>
+          <div class="i-val"><a href="mailto:info@lamconstruct.com.hk">info@lamconstruct.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">📍</div>
+        <div>
+          <div class="i-label">地區</div>
+          <div class="i-val">香港</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">🔨</div>
+        <div>
+          <div class="i-label">行業</div>
+          <div class="i-val">建築工程</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">完成工程項目</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">年建築經驗</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">合規安全承諾</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">全港</div>
+      <div class="stat-label">服務範圍</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務項目</div>
+    <h2 class="section-title">全面的<span>建築工程</span>服務</h2>
+    <p class="section-sub">林氏建築提供一站式建築工程解決方案，涵蓋新建、改建及翻新工程，從規劃設計到竣工驗收，全程專業管理。</p>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🏗️</div>
+        <div class="svc-title">主體建築工程</div>
+        <div class="svc-desc">承接各類住宅、商業及工業建築的新建工程，嚴格按照香港屋宇署法規執行，確保結構安全及工程質量。</div>
+        <ul class="svc-list">
+          <li>住宅及商業大廈新建</li>
+          <li>地基及樁基工程</li>
+          <li>混凝土結構工程</li>
+          <li>鋼結構工程</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔧</div>
+        <div class="svc-title">改建及擴建工程</div>
+        <div class="svc-desc">為現有建築提供改建、擴建及結構加固服務，協助業主在保留原有建築的基礎上，提升空間使用效率及功能。</div>
+        <ul class="svc-list">
+          <li>結構改建及加固</li>
+          <li>樓層擴建</li>
+          <li>外牆改造</li>
+          <li>用途改變工程</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏛️</div>
+        <div class="svc-title">室內裝修及翻新</div>
+        <div class="svc-desc">提供辦公室、商舖及住宅的全面室內裝修及翻新工程，打造符合客戶需求的現代化功能空間。</div>
+        <ul class="svc-list">
+          <li>辦公室裝修</li>
+          <li>商舖裝潢</li>
+          <li>住宅翻新</li>
+          <li>隔間及間牆工程</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💧</div>
+        <div class="svc-title">維修及保養工程</div>
+        <div class="svc-desc">提供建築維修、防水補漏及外牆修葺服務，協助業主保持物業的良好狀態，延長建築使用壽命。</div>
+        <ul class="svc-list">
+          <li>防水補漏工程</li>
+          <li>外牆修葺及油漆</li>
+          <li>天台及地台翻新</li>
+          <li>水喉及排水工程</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏭</div>
+        <div class="svc-title">工業建築工程</div>
+        <div class="svc-desc">為工廠大廈、倉庫及工業設施提供專業的建築及改建服務，符合工業用途的特殊結構及安全要求。</div>
+        <ul class="svc-list">
+          <li>工廠大廈建設</li>
+          <li>倉庫及物流設施</li>
+          <li>工業單位改建</li>
+          <li>機電工程配合</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📋</div>
+        <div class="svc-title">項目管理顧問</div>
+        <div class="svc-desc">為業主提供專業的建築項目管理及顧問服務，包括工程規劃、成本控制、質量監控及工程進度管理。</div>
+        <ul class="svc-list">
+          <li>工程規劃及排程</li>
+          <li>成本及預算管理</li>
+          <li>質量控制及驗收</li>
+          <li>政府審批協助</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section id="sectors" style="background:var(--bg-secondary);">
+  <div class="section-inner">
+    <div class="section-tag">工程範疇</div>
+    <h2 class="section-title">服務<span>各類型項目</span></h2>
+    <p class="section-sub">林氏建築擁有豐富的跨行業建築工程經驗，為不同類型的業主提供合適的建築方案。</p>
+    <div class="sectors-grid">
+      <div class="sector-card">
+        <div class="sector-icon">🏠</div>
+        <div class="sector-title">住宅項目</div>
+        <div class="sector-desc">私人屋苑、村屋及各類住宅發展項目</div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏢</div>
+        <div class="sector-title">商業項目</div>
+        <div class="sector-desc">辦公大樓、商場及零售商舖建築工程</div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏥</div>
+        <div class="sector-title">機構項目</div>
+        <div class="sector-desc">學校、醫療機構及社區設施建設</div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏭</div>
+        <div class="sector-title">工業項目</div>
+        <div class="sector-desc">工廠大廈、倉庫及工業設施工程</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag">為何選擇林氏建築</div>
+    <h2 class="section-title">我們的<span>核心優勢</span></h2>
+    <p class="section-sub">豐富的香港建築工程經驗，嚴謹的質量管理，確保每個項目準時、安全、高質量完成。</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="wi-num">01</div>
+        <div>
+          <div class="wi-title">持牌承辦商</div>
+          <div class="wi-desc">持有香港屋宇署認可的建築承辦商牌照，所有工程均符合本港法規及安全標準，讓客戶安心。</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="wi-num">02</div>
+        <div>
+          <div class="wi-title">豐富工程經驗</div>
+          <div class="wi-desc">深耕香港建築市場逾十五年，完成各類大型及小型工程逾二百個，積累豐富的本地施工技術及經驗。</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="wi-num">03</div>
+        <div>
+          <div class="wi-title">安全優先</div>
+          <div class="wi-desc">嚴格執行工地安全措施，定期進行安全培訓，所有工地人員均持有相關安全資格，確保零意外目標。</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="wi-num">04</div>
+        <div>
+          <div class="wi-title">準時完工</div>
+          <div class="wi-desc">制定清晰的工程時間表，嚴格執行進度管理，確保工程在既定時間內完成，減低對客戶業務的影響。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" style="background:var(--bg-secondary);">
+  <div class="section-inner">
+    <div class="section-tag">施工流程</div>
+    <h2 class="section-title">清晰的<span>工程流程</span></h2>
+    <p class="section-sub">我們採用系統化的項目管理方法，讓客戶全程了解工程進度。</p>
+    <div class="process-grid">
+      <div class="pstep">
+        <div class="p-num">1</div>
+        <div class="p-title">初步諮詢</div>
+        <div class="p-desc">了解客戶需求及工程範圍，進行現場評估。</div>
+      </div>
+      <div class="pstep">
+        <div class="p-num">2</div>
+        <div class="p-title">報價設計</div>
+        <div class="p-desc">提供詳細報價及工程設計方案，明確列明工程細節。</div>
+      </div>
+      <div class="pstep">
+        <div class="p-num">3</div>
+        <div class="p-title">合約簽訂</div>
+        <div class="p-desc">確認工程範圍、費用及時間表，簽訂工程合約。</div>
+      </div>
+      <div class="pstep">
+        <div class="p-num">4</div>
+        <div class="p-title">工程施工</div>
+        <div class="p-desc">專業團隊按計劃施工，定期匯報工程進度。</div>
+      </div>
+      <div class="pstep">
+        <div class="p-num">5</div>
+        <div class="p-title">驗收交付</div>
+        <div class="p-desc">完工驗收，確認質量達標，正式交付並提供保養。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡查詢</div>
+    <h2 class="section-title">立即<span>免費報價</span></h2>
+    <p class="section-sub">歡迎聯絡林氏建築，我們將盡快安排專人評估您的工程需求並提供免費報價。</p>
+    <div class="contact-grid">
+      <div>
+        <div class="c-list">
+          <div class="c-item">
+            <div class="ci-icon">✉️</div>
+            <div>
+              <div class="ci-label">電郵</div>
+              <div class="ci-val"><a href="mailto:info@lamconstruct.com.hk">info@lamconstruct.com.hk</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">地區</div>
+              <div class="ci-val">香港</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">⏰</div>
+            <div>
+              <div class="ci-label">辦公時間</div>
+              <div class="ci-val">星期一至五 8:30 – 18:00</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">🔨</div>
+            <div>
+              <div class="ci-label">服務範圍</div>
+              <div class="ci-val">香港全港各區</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="cform" onsubmit="return false;">
+        <div class="frow">
+          <div class="fg">
+            <label>姓名 *</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="fg">
+            <label>聯絡電話 *</label>
+            <input type="tel" placeholder="電話號碼">
+          </div>
+        </div>
+        <div class="fg">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="fg">
+          <label>工程地址 / 類型</label>
+          <input type="text" placeholder="例：九龍灣 / 辦公室翻新 / 約1000呎">
+        </div>
+        <div class="fg">
+          <label>所需服務</label>
+          <select>
+            <option>新建工程</option>
+            <option>改建及擴建</option>
+            <option>室內裝修翻新</option>
+            <option>維修及保養</option>
+            <option>工業建築工程</option>
+            <option>項目管理顧問</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>工程詳情 *</label>
+          <textarea placeholder="請描述工程需求、面積、時間要求或其他事項..."></textarea>
+        </div>
+        <button type="submit" class="fsub">提交報價查詢</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="fb-name">Lam Construction Co. Ltd.</div>
+        <div class="fb-zh">林氏建築有限公司</div>
+        <div class="fb-desc">香港專業建築工程承辦商，提供住宅、商業及工業建築的全面工程服務，以嚴謹的工程標準及豐富的香港建築經驗，確保每個項目高質完成。</div>
+      </div>
+      <div>
+        <div class="fc-title">服務項目</div>
+        <ul class="fc-links">
+          <li><a href="#services">主體建築工程</a></li>
+          <li><a href="#services">改建及擴建</a></li>
+          <li><a href="#services">室內裝修翻新</a></li>
+          <li><a href="#services">維修及保養</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fc-title">聯絡資料</div>
+        <ul class="fc-links">
+          <li><a href="mailto:info@lamconstruct.com.hk">info@lamconstruct.com.hk</a></li>
+          <li><a href="#contact">提交工程查詢</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Lam Construction Co. Ltd. 林氏建築有限公司. All rights reserved.</div>
+      <div style="font-size:12px;color:var(--text-dim);">建築工程 · 香港</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
