@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>創造力廣告事業有限公司 | 廣告設計 · 平面印刷 · 網站建置</title>
+<meta name="description" content="創造力廣告事業有限公司 (TopWiner) — 桃園中壢專業廣告設計公司，提供平面設計、網站建置、企業識別、特殊印刷、多媒體製作及行動展示服務。電話：03-4629459">
+<style>
+:root{--bg:#040608;--bg2:#060810;--bg3:#080c16;--violet:#6030c0;--violet-lt:#8050e0;--gold:#c89030;--gold-lt:#e8b040;--text:#e8eef8;--muted:#6880a8;--border:rgba(96,48,192,0.2);--card-bg:rgba(255,255,255,0.03);--radius:10px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC','PingFang TC',sans-serif;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,6,8,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1rem;font-weight:800;color:var(--violet-lt)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--violet),var(--violet-lt));color:#fff;padding:9px 22px;border-radius:6px;font-size:.88rem;font-weight:700;text-decoration:none;transition:opacity .2s}.nav-cta:hover{opacity:.88}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 60% 40%,rgba(96,48,192,0.12) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(96,48,192,0.1);border:1px solid rgba(96,48,192,0.28);border-radius:6px;padding:6px 14px;font-size:.8rem;color:var(--violet-lt);margin-bottom:20px}
+h1{font-size:clamp(1.8rem,4vw,2.9rem);font-weight:900;line-height:1.12;margin-bottom:12px}
+h1 .sub{display:block;font-size:clamp(.85rem,1.7vw,1rem);font-weight:400;color:var(--violet-lt);letter-spacing:.04em;margin-top:8px}
+.hero-desc{color:var(--muted);font-size:1rem;max-width:440px;margin:18px 0 22px;line-height:1.8}
+.svc-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.st{display:inline-flex;align-items:center;gap:5px;background:rgba(200,144,48,0.1);border:1px solid rgba(200,144,48,0.3);border-radius:6px;padding:4px 10px;font-size:.76rem;color:var(--gold-lt);font-weight:600}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--violet),var(--violet-lt));color:#fff;padding:13px 28px;border-radius:6px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 26px;border-radius:6px;font-size:.93rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}.btn-outline:hover{border-color:var(--violet-lt);color:var(--violet-lt)}
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:16px}
+.card-badge{display:flex;align-items:center;gap:12px}
+.badge-emblem{width:48px;height:48px;background:linear-gradient(135deg,var(--violet),var(--violet-lt));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:#fff;text-align:center;line-height:1.3}
+.badge-name{font-size:.95rem;font-weight:700}.badge-label{font-size:.76rem;color:var(--muted)}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--violet-lt);flex-shrink:0;margin-top:2px;text-align:center}
+.card-row-text{font-size:.88rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block;font-size:.9rem}
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.stat-item{text-align:center}
+.stat-num{font-size:1.9rem;font-weight:900;background:linear-gradient(135deg,var(--violet-lt),var(--gold-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.82rem;margin-top:6px}
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(96,48,192,0.08);border:1px solid rgba(96,48,192,0.2);border-radius:6px;padding:4px 12px;font-size:.75rem;color:var(--violet-lt);letter-spacing:.05em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--violet-lt)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s}.svc-card:hover{border-color:var(--violet-lt);transform:translateY(-4px)}
+.sc-icon{width:50px;height:50px;background:rgba(96,48,192,0.1);border:1px solid rgba(96,48,192,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.sc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.contact-section{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(96,48,192,0.1);border:1px solid rgba(96,48,192,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.75rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.93rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--violet-lt);text-decoration:none}.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:34px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--violet-lt)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#060810}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--violet),var(--violet-lt));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}.form-submit:hover{opacity:.88}
+footer{background:var(--bg3);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:.95rem;font-weight:800;color:var(--violet-lt)}
+.footer-copy{font-size:.8rem;color:var(--muted);text-align:center}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}.footer-links a:hover{color:var(--text)}
+@media(max-width:900px){.hero-inner,.contact-grid{grid-template-columns:1fr}.stats-inner,.cards-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav-links{display:none}.cards-grid,.stats-inner{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">創造力廣告事業有限公司</div>
+    <ul class="nav-links">
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a href="tel:+886346294590" class="nav-cta">來電洽詢</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🎨 廣告設計 · 印刷 · 數位行銷</div>
+      <h1>創造力廣告事業有限公司<span class="sub">TopWiner · 桃園中壢</span></h1>
+      <div class="svc-tags">
+        <span class="st">🎨 平面設計</span>
+        <span class="st">🖨️ 特殊印刷</span>
+        <span class="st">💻 網站建置</span>
+        <span class="st">🏢 企業識別</span>
+        <span class="st">🎬 多媒體製作</span>
+      </div>
+      <p class="hero-desc">桃園中壢專業廣告設計公司，提供平面設計、企業識別、網站建置、特殊印刷、多媒體影像製作及行動展示等一站式廣告服務，協助企業打造品牌形象。</p>
+      <div class="hero-btns">
+        <a href="tel:+886346294590" class="btn-primary">☎ 03-4629459</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-emblem">TOP<br>WINER</div>
+        <div>
+          <div class="badge-label">桃園中壢廣告設計公司</div>
+          <div class="badge-name">創造力廣告事業有限公司</div>
+        </div>
+      </div>
+      <hr class="card-divider">
+      <div class="card-row"><div class="card-row-icon">📞</div><div class="card-row-text"><strong>電話</strong>03-4629459</div></div>
+      <div class="card-row"><div class="card-row-icon">📠</div><div class="card-row-text"><strong>傳真</strong>03-4629861</div></div>
+      <div class="card-row"><div class="card-row-icon">📧</div><div class="card-row-text"><strong>電子信箱</strong>sales@topwiner.com.tw</div></div>
+      <div class="card-row"><div class="card-row-icon">💬</div><div class="card-row-text"><strong>LINE 即時諮詢</strong>LINE ID: sales103</div></div>
+      <div class="card-row"><div class="card-row-icon">📍</div><div class="card-row-text"><strong>地址</strong>桃園市中壢福建路14號</div></div>
+      <div class="card-row"><div class="card-row-icon">🏢</div><div class="card-row-text"><strong>統一編號</strong>12905115</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">全方位</div><div class="stat-label">一站式廣告服務</div></div>
+    <div class="stat-item"><div class="stat-num">創意</div><div class="stat-label">專業設計團隊</div></div>
+    <div class="stat-item"><div class="stat-num">數位</div><div class="stat-label">網站 · 多媒體</div></div>
+    <div class="stat-item"><div class="stat-num">免費</div><div class="stat-label">報價洽詢</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務項目</div>
+    <h2>全方位<span class="accent">廣告設計</span>服務</h2>
+    <p class="section-lead">創造力廣告提供從創意概念到成品執行的完整廣告服務，涵蓋平面設計、印刷製作、網站建置、企業識別到多媒體影像，一站式滿足企業所有廣告需求。</p>
+    <div class="cards-grid">
+      <div class="svc-card">
+        <div class="sc-icon">🎨</div>
+        <div class="sc-title">平面設計</div>
+        <div class="sc-desc">公司簡介、海報DM、說明書、信封信紙、名片等各式平面設計印刷，從排版設計到成品輸出，提供完整平面製作服務。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🏢</div>
+        <div class="sc-title">企業識別設計</div>
+        <div class="sc-desc">企業識別系統（CIS）設計，包括品牌標誌、視覺規範、名片、信封、制服等，為企業建立一致且專業的品牌形象。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">💻</div>
+        <div class="sc-title">網站建置</div>
+        <div class="sc-desc">企業官網規劃與設計、網頁版面設計、主機伺服器空間，提供完整網站製作解決方案，讓企業在數位時代建立網路品牌。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🖨️</div>
+        <div class="sc-title">特殊印刷</div>
+        <div class="sc-desc">各類特殊印刷加工服務，包括大尺寸海報輸出、燙金、壓紋、局部上光等特殊加工，提升印刷品的視覺質感與品牌價值。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🎬</div>
+        <div class="sc-title">多媒體影像製作</div>
+        <div class="sc-desc">企業影片、產品型錄影像、商業攝影、修圖服務，以及電視廣告色彩製作等多媒體影像製作，全面滿足企業視覺傳播需求。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📱</div>
+        <div class="sc-title">行動展示</div>
+        <div class="sc-desc">展覽攤位設計、行動展示系統規劃與製作，為企業提供專業的展覽空間設計及各類展示道具，讓品牌在展場中脫穎而出。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2>廣告設計<span class="accent">洽詢報價</span></h2>
+    <p class="section-lead">歡迎來電、電郵或LINE即時洽詢，我們的設計團隊將為您提供專業建議及免費報價。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">電話</div>
+            <div class="ci-value"><a href="tel:+886346294590">03-4629459</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📠</div>
+          <div>
+            <div class="ci-label">傳真</div>
+            <div class="ci-value">03-4629861</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">電子信箱</div>
+            <div class="ci-value"><a href="mailto:sales@topwiner.com.tw">sales@topwiner.com.tw</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">💬</div>
+          <div>
+            <div class="ci-label">LINE 即時諮詢</div>
+            <div class="ci-value">LINE ID：sales103</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">地址</div>
+            <div class="ci-value">桃園市中壢福建路14號</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>廣告設計洽詢</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group"><label>公司名稱</label><input type="text" placeholder="貴公司名稱"></div>
+            <div class="form-group"><label>聯絡人</label><input type="text" placeholder="您的姓名"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>聯絡電話</label><input type="tel" placeholder="03-XXXX XXXX"></div>
+            <div class="form-group"><label>電子信箱</label><input type="email" placeholder="your@email.com"></div>
+          </div>
+          <div class="form-group"><label>欲製作項目</label>
+            <select>
+              <option value="">請選擇</option>
+              <option>平面設計</option>
+              <option>企業識別設計</option>
+              <option>網站建置</option>
+              <option>特殊印刷</option>
+              <option>多媒體影像製作</option>
+              <option>行動展示</option>
+              <option>其他洽詢</option>
+            </select>
+          </div>
+          <div class="form-group"><label>需求說明</label><textarea placeholder="請描述您的廣告設計需求、預算及時程..."></textarea></div>
+          <button type="submit" class="form-submit">送出洽詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">創造力廣告事業有限公司 · 桃園中壢</div>
+    <div class="footer-copy">© 2025 創造力廣告事業有限公司 · 統編：12905115 · Tel: 03-4629459</div>
+    <div class="footer-links"><a href="#services">服務</a><a href="#contact">聯絡</a></div>
+  </div>
+</footer>
+</body>
+</html>
