@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>First Digital Trust Limited | Licensed Trust Company — Digital Asset Custody & Trust Services</title>
+  <meta name="description" content="First Digital Trust Limited — Hong Kong licensed trust company (TC006771) providing digital asset custody, reserve management, FDUSD stablecoin backing and institutional trust services." />
+  <style>
+    :root {
+      --bg:      #070c16;
+      --surface: #0d1424;
+      --card:    #121d30;
+      --accent:  #0f58c8;
+      --accent2: #38d8c0;
+      --accent3: #f0b820;
+      --text:    #d8e8f8;
+      --muted:   #5878a0;
+      --border:  rgba(15,88,200,0.2);
+      --radius:  12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(7,12,22,0.96); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 66px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), #0a3a90);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 800; color: #fff; letter-spacing: -0.3px;
+    }
+    .nav-name { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+    .nav-name span { color: var(--accent2); }
+    .nav-badge {
+      background: rgba(240,184,32,0.12); border: 1px solid rgba(240,184,32,0.3);
+      color: var(--accent3); font-size: 0.68rem; font-weight: 700;
+      padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.87rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent2); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--accent), #0a3a90);
+      color: #fff; padding: 8px 20px; border-radius: 6px;
+      font-weight: 700; font-size: 0.85rem; text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(15,88,200,0.4); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 110px 5% 70px;
+      background:
+        radial-gradient(ellipse at 72% 22%, rgba(15,88,200,0.16) 0%, transparent 52%),
+        radial-gradient(ellipse at 8% 78%, rgba(56,216,192,0.09) 0%, transparent 48%),
+        var(--bg);
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(15,88,200,0.05) 1px, transparent 1px);
+      background-size: 46px 46px;
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: center; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+    .hbadge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 14px; border-radius: 20px; font-size: 0.76rem; font-weight: 600;
+    }
+    .hbadge.blue { background: rgba(15,88,200,0.12); border: 1px solid rgba(15,88,200,0.3); color: var(--accent2); }
+    .hbadge.gold { background: rgba(240,184,32,0.1); border: 1px solid rgba(240,184,32,0.28); color: var(--accent3); }
+    h1 { font-size: clamp(2rem, 4vw, 3.1rem); font-weight: 900; line-height: 1.18; margin-bottom: 14px; }
+    h1 .tag { font-size: 0.46em; color: var(--accent2); display: block; margin-bottom: 10px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+    h1 .main { background: linear-gradient(135deg, var(--text), rgba(216,232,248,0.75)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-tagline { font-size: 1rem; color: var(--muted); margin: 16px 0 34px; max-width: 500px; line-height: 1.85; }
+    .hero-tagline strong { color: var(--accent2); -webkit-text-fill-color: var(--accent2); }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #0a3a90);
+      color: #fff; padding: 13px 30px; border-radius: 8px;
+      font-weight: 800; font-size: 0.9rem; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(15,88,200,0.4); }
+    .btn-secondary {
+      border: 2px solid rgba(56,216,192,0.35); color: var(--accent2);
+      padding: 11px 26px; border-radius: 8px;
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-secondary:hover { background: rgba(56,216,192,0.08); }
+
+    /* HERO CARD */
+    .hero-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+      position: relative;
+    }
+    .hero-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+      border-radius: 16px 16px 0 0;
+    }
+    .hc-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+    .hc-sub { color: var(--muted); font-size: 0.76rem; margin-bottom: 16px; }
+    .hc-divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+    .hc-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .hc-icon { font-size: 0.95rem; flex-shrink: 0; margin-top: 3px; }
+    .hc-label { color: var(--muted); font-size: 0.7rem; margin-bottom: 1px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .hc-val { color: var(--text); font-size: 0.85rem; font-weight: 500; }
+    .hc-lic {
+      background: rgba(240,184,32,0.1); border: 1px solid rgba(240,184,32,0.25);
+      border-radius: 8px; padding: 11px 14px; margin-top: 4px;
+    }
+    .hc-lic-label { color: var(--muted); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 3px; }
+    .hc-lic-num { color: var(--accent3); font-size: 1rem; font-weight: 800; font-family: 'Courier New', monospace; }
+    .hc-lic-desc { color: var(--muted); font-size: 0.72rem; margin-top: 3px; }
+
+    /* STATS */
+    #stats {
+      background: var(--surface);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 44px 5%;
+    }
+    .stats-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 900; line-height: 1.1; }
+    .stat-num.blue { background: linear-gradient(135deg, var(--accent2), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-num.gold { color: var(--accent3); }
+    .stat-label { color: var(--muted); font-size: 0.82rem; margin-top: 5px; }
+
+    /* SECTIONS */
+    section { padding: 86px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { color: var(--accent2); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 800; margin-bottom: 16px; }
+    .section-desc { color: var(--muted); font-size: 0.94rem; max-width: 620px; line-height: 1.85; }
+
+    /* SERVICES */
+    #services { background: var(--bg); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 46px; }
+    .service-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 30px 24px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0); transform-origin: left; transition: transform .3s;
+    }
+    .service-card:hover { transform: translateY(-4px); border-color: rgba(15,88,200,0.4); box-shadow: 0 12px 40px rgba(15,88,200,0.1); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .sc-icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .sc-title { font-size: 1rem; font-weight: 700; margin-bottom: 10px; color: var(--accent2); }
+    .sc-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.75; }
+
+    /* FDUSD */
+    #fdusd { background: var(--surface); }
+    .fdusd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 48px; }
+    .fdusd-text p { color: var(--muted); font-size: 0.93rem; line-height: 1.88; margin-bottom: 18px; }
+    .fdusd-text p strong { color: var(--accent2); }
+    .fdusd-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .fdusd-stat {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+    }
+    .fs-num { font-size: 1.6rem; font-weight: 900; color: var(--accent3); line-height: 1.1; margin-bottom: 4px; }
+    .fs-label { color: var(--muted); font-size: 0.8rem; }
+    .fdusd-features { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+    .ff-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 16px;
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .ff-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .ff-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 3px; }
+    .ff-desc { color: var(--muted); font-size: 0.8rem; }
+
+    /* COMPLIANCE */
+    #compliance { background: var(--bg); }
+    .compliance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 46px; }
+    .comp-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 26px 22px;
+      text-align: center; transition: transform .2s, border-color .2s;
+    }
+    .comp-card:hover { transform: translateY(-3px); border-color: var(--accent3); }
+    .comp-icon { font-size: 2.2rem; margin-bottom: 12px; }
+    .comp-title { font-weight: 700; font-size: 0.92rem; margin-bottom: 8px; color: var(--accent3); }
+    .comp-desc { color: var(--muted); font-size: 0.83rem; line-height: 1.7; }
+
+    /* CONTACT */
+    #contact { background: var(--surface); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 48px; }
+    .contact-info { display: flex; flex-direction: column; gap: 18px; }
+    .ci-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 20px;
+    }
+    .ci-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .ci-label { color: var(--muted); font-size: 0.7rem; margin-bottom: 2px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .ci-val { font-weight: 600; font-size: 0.88rem; }
+    .ci-val a { color: var(--accent2); text-decoration: none; }
+    .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 32px; }
+    .form-row { margin-bottom: 18px; }
+    .form-row label { display: block; color: var(--muted); font-size: 0.72rem; font-weight: 600; margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); border-radius: 7px; padding: 11px 13px; font-size: 0.87rem;
+      outline: none; transition: border-color .2s; font-family: inherit;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--accent); }
+    .form-row textarea { min-height: 100px; resize: vertical; }
+    .form-submit {
+      width: 100%; padding: 13px; border-radius: 8px; border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), #0a3a90);
+      color: #fff; font-weight: 800; font-size: 0.92rem; font-family: inherit;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,88,200,0.35); }
+
+    /* FOOTER */
+    footer {
+      background: #050810; border-top: 1px solid var(--border);
+      padding: 50px 5% 28px; text-align: center;
+    }
+    .footer-brand { font-size: 1.15rem; font-weight: 800; margin-bottom: 4px; }
+    .footer-brand span { color: var(--accent2); }
+    .footer-lic { display: inline-block; background: rgba(240,184,32,0.1); border: 1px solid rgba(240,184,32,0.25); color: var(--accent3); border-radius: 4px; padding: 2px 10px; font-size: 0.72rem; font-weight: 700; margin-bottom: 16px; font-family: 'Courier New', monospace; }
+    .footer-sub { color: var(--muted); font-size: 0.8rem; margin-bottom: 24px; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 20px; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.8rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--accent2); }
+    .footer-copy { color: #151e30; font-size: 0.73rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .fdusd-grid, .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .services-grid, .compliance-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 4%; }
+      .nav-links { display: none; }
+      .nav-badge { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#hero">
+    <div class="nav-logo">FDT</div>
+    <span class="nav-name"><span>First Digital</span> Trust</span>
+    <span class="nav-badge">TCSP TC006771</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#fdusd">FDUSD</a></li>
+    <li><a href="#compliance">Compliance</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Enquire</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badges">
+        <span class="hbadge blue">🏛️ Licensed Trust Company · TC006771</span>
+        <span class="hbadge gold">💰 FDUSD Reserve Manager</span>
+      </div>
+      <h1>
+        <span class="tag">First Digital Trust Limited</span>
+        <span class="main">Digital Asset Custody<br/>&amp; Institutional Trust</span>
+      </h1>
+      <p class="hero-tagline">
+        First Digital Trust is Hong Kong's premier licensed trust company specialising in
+        <strong>digital asset custody, stablecoin reserve management</strong> and institutional trust services.
+        As the reserve manager and custodian for FDUSD, we bridge traditional finance and the digital asset ecosystem.
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#services">🔐 Our Services</a>
+        <a class="btn-secondary" href="#fdusd">FDUSD Stablecoin</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-title">First Digital Trust Limited</div>
+      <div class="hc-sub">Formerly: First Digital Global Company Limited</div>
+      <div class="hc-divider"></div>
+      <div class="hc-row">
+        <span class="hc-icon">📍</span>
+        <div>
+          <div class="hc-label">Registered Address</div>
+          <div class="hc-val">Room 4001, 40/F, Tower One<br/>Lippo Centre, 89 Queensway, HK</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">📋</span>
+        <div>
+          <div class="hc-label">Company No.</div>
+          <div class="hc-val">2833473 · BR: 70760197</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">📅</span>
+        <div>
+          <div class="hc-label">Incorporated</div>
+          <div class="hc-val">27 May 2019 · Central &amp; Western</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">🏛️</span>
+        <div>
+          <div class="hc-label">Type</div>
+          <div class="hc-val">Public Company · Trust Company</div>
+        </div>
+      </div>
+      <div class="hc-divider"></div>
+      <div class="hc-lic">
+        <div class="hc-lic-label">TCSP Licence No.</div>
+        <div class="hc-lic-num">TC006771</div>
+        <div class="hc-lic-desc">Registered under Trustee Ordinance Cap. 29 §78(1)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num blue">TC006771</div>
+      <div class="stat-label">TCSP Licence Number</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num gold">2019</div>
+      <div class="stat-label">Year Established</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num blue">FDUSD</div>
+      <div class="stat-label">Stablecoin Reserve Manager</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num gold">40/F</div>
+      <div class="stat-label">Lippo Centre, Queensway HK</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">Our Services</div>
+    <h2 class="section-title">Institutional-Grade Trust &amp; Custody</h2>
+    <p class="section-desc">First Digital Trust provides a comprehensive suite of trust and custody services tailored for digital asset institutions, exchanges, family offices and financial intermediaries.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="sc-icon">🔐</div>
+        <div class="sc-title">Digital Asset Custody</div>
+        <div class="sc-desc">Institutional-grade cold and warm storage custody solutions for digital assets, providing segregated client accounts with robust security protocols and multi-signature controls.</div>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">💰</div>
+        <div class="sc-title">Stablecoin Reserve Management</div>
+        <div class="sc-desc">As reserve manager and custodian for FDUSD, First Digital Trust holds high-quality liquid assets backing the stablecoin, with regular third-party attestations ensuring full reserve transparency.</div>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">🏛️</div>
+        <div class="sc-title">Trust &amp; Corporate Services</div>
+        <div class="sc-desc">Licensed trust company services including trust formation, trustee services, corporate secretarial, registered agent and fiduciary services for institutional and private clients.</div>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">🏢</div>
+        <div class="sc-title">Institutional Settlement</div>
+        <div class="sc-desc">Secure settlement infrastructure for digital asset transactions, providing institutional counterparties with reliable, regulated settlement services across major blockchains.</div>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">📊</div>
+        <div class="sc-title">Asset Management Support</div>
+        <div class="sc-desc">Back-office infrastructure and custody support for digital asset fund managers, family offices and investment managers operating in the digital asset space.</div>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">🔍</div>
+        <div class="sc-title">Compliance &amp; Reporting</div>
+        <div class="sc-desc">Comprehensive compliance reporting, AML/KYC procedures, and regulatory reporting services to support clients' obligations under Hong Kong and international regulatory frameworks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FDUSD -->
+<section id="fdusd">
+  <div class="section-inner">
+    <div class="section-label">FDUSD Stablecoin</div>
+    <h2 class="section-title">Powering the First Digital USD Stablecoin</h2>
+    <div class="fdusd-grid">
+      <div class="fdusd-text">
+        <p>
+          <strong>First Digital USD (FDUSD)</strong> is a USD-backed stablecoin issued with First Digital Trust Limited as the designated reserve manager and custodian. Launched in 2023, FDUSD is designed to maintain a 1:1 peg with the US Dollar, backed by high-quality liquid assets held in segregated trust accounts.
+        </p>
+        <p>
+          As the <strong>licensed trust company and reserve custodian</strong>, First Digital Trust ensures that all FDUSD in circulation is fully backed by US Treasury bills, cash equivalents and other approved high-quality liquid assets, held in segregated accounts separate from First Digital's own assets.
+        </p>
+        <p>
+          Regular independent attestations confirm the <strong>full reserve backing</strong> of FDUSD, providing transparency and confidence to institutional users, exchanges and DeFi protocols that integrate FDUSD as a settlement and liquidity instrument.
+        </p>
+        <div class="fdusd-features">
+          <div class="ff-item">
+            <div class="ff-icon">✅</div>
+            <div>
+              <div class="ff-title">1:1 USD Backing</div>
+              <div class="ff-desc">Every FDUSD is backed by US Treasuries, cash or approved high-quality liquid assets held in trust.</div>
+            </div>
+          </div>
+          <div class="ff-item">
+            <div class="ff-icon">🔍</div>
+            <div>
+              <div class="ff-title">Regular Attestations</div>
+              <div class="ff-desc">Independent third-party attestations confirm full reserve coverage and asset quality on a regular basis.</div>
+            </div>
+          </div>
+          <div class="ff-item">
+            <div class="ff-icon">🏛️</div>
+            <div>
+              <div class="ff-title">Licensed &amp; Regulated</div>
+              <div class="ff-desc">Backed by a Hong Kong licensed trust company under the Trustee Ordinance Cap. 29.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fdusd-stats">
+          <div class="fdusd-stat">
+            <div class="fs-num">1:1</div>
+            <div class="fs-label">USD Peg Maintained</div>
+          </div>
+          <div class="fdusd-stat">
+            <div class="fs-num">2023</div>
+            <div class="fs-label">FDUSD Launch Year</div>
+          </div>
+          <div class="fdusd-stat">
+            <div class="fs-num">T-Bills</div>
+            <div class="fs-label">Primary Reserve Asset</div>
+          </div>
+          <div class="fdusd-stat">
+            <div class="fs-num">Multi-chain</div>
+            <div class="fs-label">Blockchain Availability</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section id="compliance">
+  <div class="section-inner">
+    <div class="section-label">Regulatory Framework</div>
+    <h2 class="section-title">Built on a Foundation of Compliance</h2>
+    <p class="section-desc">First Digital Trust operates under a robust regulatory framework, holding all required licences and maintaining the highest standards of compliance, governance and transparency.</p>
+    <div class="compliance-grid">
+      <div class="comp-card">
+        <div class="comp-icon">📜</div>
+        <div class="comp-title">TCSP Licence TC006771</div>
+        <div class="comp-desc">Licensed Trust and Corporate Service Provider under Hong Kong's Trustee Ordinance (Cap. 29), ensuring full regulatory compliance for all trust and custody activities.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🔒</div>
+        <div class="comp-title">AML / KYC Framework</div>
+        <div class="comp-desc">Rigorous Anti-Money Laundering and Know Your Customer procedures applied to all clients and transactions, meeting FATF recommendations and Hong Kong regulatory requirements.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">📊</div>
+        <div class="comp-title">Reserve Transparency</div>
+        <div class="comp-desc">Regular independent attestations of FDUSD reserve assets, providing full transparency on reserve composition, quality and coverage to the market and regulators.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Connect with First Digital Trust</h2>
+    <p class="section-desc">For institutional enquiries regarding digital asset custody, FDUSD integration, or trust services, please complete the form below and our team will respond promptly.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="ci-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Office Address</div>
+            <div class="ci-val">Room 4001, 40/F, Tower One<br/>Lippo Centre, 89 Queensway<br/>Hong Kong</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">🏛️</div>
+          <div>
+            <div class="ci-label">Licence</div>
+            <div class="ci-val">TCSP Licence No. TC006771<br/>Trustee Ordinance Cap. 29 §78(1)</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📋</div>
+          <div>
+            <div class="ci-label">Company Registration</div>
+            <div class="ci-val">No. 2833473 · BR: 70760197</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">🕐</div>
+          <div>
+            <div class="ci-label">Office Hours</div>
+            <div class="ci-val">Monday – Friday, 9:00 – 18:00 HKT</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name" />
+        </div>
+        <div class="form-row">
+          <label>Institution / Company</label>
+          <input type="text" placeholder="Organisation name" />
+        </div>
+        <div class="form-row">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@institution.com" />
+        </div>
+        <div class="form-row">
+          <label>Service Interest</label>
+          <select>
+            <option value="">— Select —</option>
+            <option>Digital Asset Custody</option>
+            <option>FDUSD Integration</option>
+            <option>Stablecoin Reserve Management</option>
+            <option>Trust &amp; Corporate Services</option>
+            <option>Institutional Settlement</option>
+            <option>Compliance &amp; Reporting</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Message</label>
+          <textarea placeholder="Please describe your institutional requirements..."></textarea>
+        </div>
+        <button class="form-submit" type="button">🔐 Submit Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><span>First Digital</span> Trust Limited</div>
+  <div class="footer-lic">TCSP Licence No. TC006771</div>
+  <div class="footer-sub">Digital Asset Custody · Stablecoin Reserve Management · Institutional Trust · 89 Queensway, Hong Kong</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#fdusd">FDUSD</a>
+    <a href="#compliance">Compliance</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2025 First Digital Trust Limited. All rights reserved. · Company No. 2833473 · Licensed Trust Company under Trustee Ordinance Cap. 29</div>
+</footer>
+
+</body>
+</html>
