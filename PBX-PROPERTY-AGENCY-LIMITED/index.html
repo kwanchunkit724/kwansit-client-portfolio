@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PBX Property Agency Limited | 香港地產代理</title>
+  <meta name="description" content="PBX Property Agency Limited — 香港專業地產代理，提供住宅及商業物業買賣、租賃及投資顧問服務，服務港九新界各區。" />
+  <style>
+    :root {
+      --bg:       #080608;
+      --bg2:      #0e0c10;
+      --bg3:      #161218;
+      --border:   #241a28;
+      --acc:      #c06828;
+      --acc2:     #d88840;
+      --acc3:     #904818;
+      --text:     #e8e0d8;
+      --muted:    #9080a0;
+      --card:     #110d14;
+      --radius:   10px;
+      --nav-h:    64px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+      background: rgba(8,6,8,0.96); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-logo-icon {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--acc3), var(--acc), var(--acc2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; color: #fff; letter-spacing: 0.5px;
+    }
+    .nav-logo-text { font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: 1px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color .2s; }
+    .nav-links a:hover { color: var(--acc2); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 9px 22px; border-radius: 6px;
+      font-size: 12px; letter-spacing: 0.5px; cursor: pointer;
+      font-family: inherit; font-weight: 600; text-decoration: none; transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; padding-top: var(--nav-h);
+      background: linear-gradient(155deg, var(--bg) 0%, #100a0c 50%, var(--bg) 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 15% 50%, rgba(192,104,40,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 85% 60%, rgba(144,72,24,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1180px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 420px; gap: 72px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(192,104,40,0.12); border: 1px solid rgba(192,104,40,0.3);
+      border-radius: 20px; padding: 6px 16px; margin-bottom: 24px;
+      font-size: 12px; color: var(--acc2); letter-spacing: 0.8px;
+    }
+    .hero h1 { font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 700; line-height: 1.25; margin-bottom: 18px; }
+    .hero h1 .brand { color: var(--acc2); }
+    .hero-sub { font-size: 1rem; color: var(--muted); margin-bottom: 36px; line-height: 1.8; max-width: 500px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 13px 28px; border-radius: 7px;
+      font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 600;
+      text-decoration: none; transition: opacity .2s; display: inline-block;
+    }
+    .btn-primary:hover { opacity: .85; }
+    .btn-ghost {
+      background: transparent; color: var(--acc2);
+      border: 1.5px solid rgba(192,104,40,0.4); padding: 12px 26px; border-radius: 7px;
+      font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 500;
+      text-decoration: none; transition: all .2s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--acc2); background: rgba(192,104,40,0.06); }
+
+    /* HERO CARD */
+    .hero-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .hero-card-top {
+      background: linear-gradient(135deg, #1a1020, #120c18);
+      padding: 22px 26px; border-bottom: 1px solid var(--border);
+    }
+    .hero-card-top h3 { font-size: 15px; color: var(--acc2); font-weight: 600; margin-bottom: 4px; }
+    .hero-card-top p { font-size: 12px; color: var(--muted); }
+    .pbx-badge {
+      display: inline-flex; gap: 6px; align-items: center;
+      background: rgba(192,104,40,0.15); border: 1px solid rgba(192,104,40,0.35);
+      border-radius: 6px; padding: 4px 12px; margin-top: 10px;
+      font-size: 11px; color: var(--acc); letter-spacing: 0.5px;
+    }
+    .hero-card-body { padding: 22px 26px; }
+    .info-row { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(36,26,40,0.7); align-items: flex-start; }
+    .info-row:last-child { border-bottom: none; }
+    .info-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+    .info-label { font-size: 11px; color: var(--muted); letter-spacing: 0.5px; }
+    .info-val { font-size: 13px; color: var(--text); margin-top: 1px; }
+
+    /* STATS */
+    .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 40px; }
+    .stats-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+    .stat { text-align: center; padding: 0 20px; }
+    .stat-num { font-size: 2rem; font-weight: 700; color: var(--acc2); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 0.5px; }
+
+    /* SECTIONS */
+    section { padding: 84px 40px; }
+    .section-inner { max-width: 1180px; margin: 0 auto; }
+    .section-label { font-size: 11px; color: var(--acc); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+    .section-title { font-size: clamp(1.6rem, 2.5vw, 2.3rem); font-weight: 700; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+    .section-title em { font-style: normal; color: var(--acc2); }
+    .section-desc { font-size: 1rem; color: var(--muted); max-width: 600px; line-height: 1.8; }
+
+    /* ABOUT */
+    .about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; align-items: start; }
+    .about-highlight {
+      background: linear-gradient(135deg, rgba(192,104,40,0.08), rgba(144,72,24,0.04));
+      border: 1px solid rgba(192,104,40,0.2); border-radius: 14px; padding: 30px;
+    }
+    .about-highlight h3 { font-size: 1.1rem; color: var(--acc2); margin-bottom: 14px; font-weight: 600; }
+    .about-highlight p { font-size: 0.94rem; color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
+    .about-highlight p:last-child { margin-bottom: 0; }
+    .about-highlight strong { color: var(--text); }
+    .about-props { display: flex; flex-direction: column; gap: 16px; }
+    .prop-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px;
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .prop-icon { font-size: 22px; flex-shrink: 0; }
+    .prop-card h4 { font-size: 14px; color: var(--acc2); margin-bottom: 5px; font-weight: 600; }
+    .prop-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* SERVICES */
+    .services { background: var(--bg2); }
+    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 26px;
+      transition: border-color .2s, transform .2s;
+    }
+    .card:hover { border-color: rgba(192,104,40,0.4); transform: translateY(-3px); }
+    .card-icon { font-size: 26px; margin-bottom: 14px; }
+    .card h3 { font-size: 14px; color: var(--text); margin-bottom: 9px; font-weight: 600; }
+    .card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .card-tag {
+      display: inline-block; margin-top: 12px;
+      background: rgba(192,104,40,0.1); border: 1px solid rgba(192,104,40,0.25);
+      color: var(--acc); font-size: 11px; padding: 3px 10px; border-radius: 4px; letter-spacing: 0.3px;
+    }
+
+    /* LISTINGS */
+    .listings { background: var(--bg); }
+    .listings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
+    .listing-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+      transition: border-color .2s, transform .2s;
+    }
+    .listing-card:hover { border-color: rgba(192,104,40,0.35); transform: translateY(-3px); }
+    .listing-img {
+      height: 120px;
+      background: linear-gradient(135deg, #1a1020, #120c18);
+      display: flex; align-items: center; justify-content: center; font-size: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .listing-body { padding: 18px 20px; }
+    .listing-type { font-size: 11px; color: var(--acc); letter-spacing: 0.5px; margin-bottom: 6px; }
+    .listing-name { font-size: 14px; color: var(--text); font-weight: 600; margin-bottom: 6px; }
+    .listing-area { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+    .listing-price { font-size: 14px; color: var(--acc2); font-weight: 600; }
+
+    /* DISTRICTS */
+    .districts { background: var(--bg2); }
+    .districts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+    .district-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 22px;
+      text-align: center; transition: border-color .2s;
+    }
+    .district-card:hover { border-color: rgba(192,104,40,0.35); }
+    .district-icon { font-size: 28px; margin-bottom: 10px; }
+    .district-name { font-size: 14px; color: var(--acc2); font-weight: 600; margin-bottom: 6px; }
+    .district-sub { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* CONTACT */
+    .contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; }
+    .contact-info h3 { font-size: 1.1rem; color: var(--acc2); font-weight: 600; margin-bottom: 24px; }
+    .contact-item { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+    .contact-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .contact-label { font-size: 11px; color: var(--muted); letter-spacing: 0.5px; }
+    .contact-val { font-size: 14px; color: var(--text); margin-top: 2px; }
+    .contact-val a { color: var(--acc2); text-decoration: none; }
+    .contact-val a:hover { text-decoration: underline; }
+    .contact-form {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 32px;
+    }
+    .contact-form h3 { font-size: 1.05rem; color: var(--text); margin-bottom: 6px; font-weight: 600; }
+    .contact-form p { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+    .form-row { margin-bottom: 16px; }
+    .form-row label { display: block; font-size: 11px; color: var(--muted); letter-spacing: 0.5px; margin-bottom: 6px; }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; background: rgba(36,26,40,0.5); border: 1px solid var(--border);
+      border-radius: 7px; padding: 10px 14px; color: var(--text); font-size: 13px;
+      font-family: inherit; outline: none; transition: border-color .2s;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--acc); }
+    .form-row textarea { resize: vertical; min-height: 88px; }
+    .form-row select option { background: var(--bg2); }
+    .form-submit {
+      width: 100%; background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 12px; border-radius: 7px; font-size: 14px;
+      cursor: pointer; font-family: inherit; font-weight: 600; transition: opacity .2s;
+    }
+    .form-submit:hover { opacity: .85; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg2); border-top: 1px solid var(--border); padding: 44px 40px 28px; text-align: center;
+    }
+    .footer-inner { max-width: 1180px; margin: 0 auto; }
+    .footer-brand { font-size: 17px; color: var(--acc2); font-weight: 700; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .footer-tagline { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 24px; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--acc2); }
+    .footer-copy { font-size: 12px; color: rgba(144,128,160,0.5); }
+
+    @media (max-width: 1024px) {
+      .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cards-grid, .listings-grid, .districts-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 60px 20px; }
+      .cards-grid, .listings-grid, .districts-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">PBX</div>
+    <span class="nav-logo-text">PBX 地產代理</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#services">服務項目</a></li>
+    <li><a href="#listings">精選物業</a></li>
+    <li><a href="#districts">服務地區</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">即時查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🏠 香港專業地產代理</div>
+      <h1>專業物業服務<br>從<span class="brand">買賣租賃</span>到<br>投資顧問</h1>
+      <p class="hero-sub">
+        PBX Property Agency Limited — 扎根香港，為客戶提供住宅及商業物業買賣、租賃及投資顧問服務，以專業知識及誠信服務每位客戶。
+      </p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">瞭解服務</a>
+        <a href="#contact" class="btn-ghost">預約諮詢</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-top">
+        <h3>PBX Property Agency Limited</h3>
+        <p>持牌地產代理 · 香港</p>
+        <div class="pbx-badge">🏅 專業誠信 · 全面服務</div>
+      </div>
+      <div class="hero-card-body">
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">服務地區</div>
+            <div class="info-val">港島、九龍、新界</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🏠</div>
+          <div>
+            <div class="info-label">物業類型</div>
+            <div class="info-val">住宅 · 商業 · 工業</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">💼</div>
+          <div>
+            <div class="info-label">服務範疇</div>
+            <div class="info-val">買賣 · 租賃 · 投資顧問</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📊</div>
+          <div>
+            <div class="info-label">市場覆蓋</div>
+            <div class="info-val">一手盤 · 二手盤 · 商業樓宇</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">港九新界</div>
+      <div class="stat-label">全港服務網絡</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">住宅商業</div>
+      <div class="stat-label">多元物業類型</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">買賣租賃</div>
+      <div class="stat-label">全面代理服務</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">專業誠信</div>
+      <div class="stat-label">核心服務理念</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">關於 PBX</div>
+    <div class="section-title">值得信賴的<em>香港地產代理</em></div>
+    <p class="section-desc">PBX Property Agency Limited 是一間持牌香港地產代理公司，以專業知識及誠信服務為本，協助客戶實現置業及投資目標。</p>
+    <div class="about-grid">
+      <div class="about-highlight">
+        <h3>公司簡介</h3>
+        <p>
+          PBX Property Agency Limited（PBX地產代理有限公司）是香港一間專業持牌地產代理，專注於<strong>住宅及商業物業</strong>的買賣及租賃業務，同時提供物業投資顧問服務。
+        </p>
+        <p>
+          我們的專業團隊熟悉香港各區樓市動態，從港島半山豪宅到九龍城住宅、新界屋苑，均能為客戶提供精準的市場分析及物業配對服務。
+        </p>
+        <p>
+          無論您是<strong>首次置業</strong>、換樓升級、投資收租，還是商業物業需求，PBX地產代理均能以<strong>專業誠信</strong>的態度全程陪伴，讓您安心交易。
+        </p>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">🎯</div>
+          <div>
+            <h4>精準配對</h4>
+            <p>深入了解客戶需求，精準篩選最合適的物業選擇，節省您的搜尋時間。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">📋</div>
+          <div>
+            <h4>全程跟進</h4>
+            <p>由睇樓、議價、簽約至成交，全程專業跟進，確保每個環節順利進行。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">📊</div>
+          <div>
+            <h4>市場分析</h4>
+            <p>提供最新成交數據及市場走勢分析，協助客戶作出最有利的決策。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🤝</div>
+          <div>
+            <h4>誠信服務</h4>
+            <p>以客為先，誠信為本，建立長期信賴關係，服務客戶每個置業需求。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label">服務項目</div>
+    <div class="section-title">全面的<em>物業代理服務</em></div>
+    <p class="section-desc">PBX地產代理提供住宅及商業物業全方位服務，一站式滿足您的置業及投資需求。</p>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🏡</div>
+        <h3>住宅物業買賣</h3>
+        <p>協助買家及賣家完成住宅物業交易。從市場定價、放盤推廣到合約簽訂，提供全程專業代理服務。</p>
+        <span class="card-tag">買賣代理</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔑</div>
+        <h3>租賃服務</h3>
+        <p>住宅及商業物業租賃配對，協助業主放租及協助租客尋找合適租盤，確保雙方利益得到保障。</p>
+        <span class="card-tag">租賃代理</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <h3>商業物業</h3>
+        <p>辦公室、零售舖位、工廈及商業大廈等商業物業的買賣及租賃服務，配合企業擴展需求。</p>
+        <span class="card-tag">商業地產</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <h3>投資顧問</h3>
+        <p>為投資者提供香港樓市分析、投資策略建議及回報估算，協助把握最佳投資時機。</p>
+        <span class="card-tag">投資分析</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <h3>估價服務</h3>
+        <p>根據最新成交數據及市場走勢，為物業提供參考估價，協助業主及買家了解物業合理價值。</p>
+        <span class="card-tag">市場估價</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <h3>按揭轉介</h3>
+        <p>為買家提供按揭計劃建議及銀行轉介服務，協助選擇最合適的按揭方案，減輕置業負擔。</p>
+        <span class="card-tag">按揭顧問</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LISTINGS -->
+<section class="listings" id="listings">
+  <div class="section-inner">
+    <div class="section-label">精選物業</div>
+    <div class="section-title">最新<em>放盤精選</em></div>
+    <p class="section-desc">我們持續更新放盤資訊，涵蓋港九新界各類住宅及商業物業，歡迎查詢詳情。</p>
+    <div class="listings-grid">
+      <div class="listing-card">
+        <div class="listing-img">🏙</div>
+        <div class="listing-body">
+          <div class="listing-type">出售 · 住宅</div>
+          <div class="listing-name">港島半山豪宅</div>
+          <div class="listing-area">📍 港島 · 豪華裝修 · 山景</div>
+          <div class="listing-price">歡迎查詢</div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-img">🏘</div>
+        <div class="listing-body">
+          <div class="listing-type">出租 · 住宅</div>
+          <div class="listing-name">九龍城優質住宅</div>
+          <div class="listing-area">📍 九龍城區 · 近學校 · 交通方便</div>
+          <div class="listing-price">歡迎查詢</div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-img">🏢</div>
+        <div class="listing-body">
+          <div class="listing-type">出售 · 商業</div>
+          <div class="listing-name">商業區寫字樓</div>
+          <div class="listing-area">📍 商業核心區 · 全新裝修</div>
+          <div class="listing-price">歡迎查詢</div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-img">🌿</div>
+        <div class="listing-body">
+          <div class="listing-type">出售 · 住宅</div>
+          <div class="listing-name">新界低密度屋苑</div>
+          <div class="listing-area">📍 新界 · 屋苑式管理 · 綠化環境</div>
+          <div class="listing-price">歡迎查詢</div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-img">🏪</div>
+        <div class="listing-body">
+          <div class="listing-type">出租 · 商業</div>
+          <div class="listing-name">旺區零售舖位</div>
+          <div class="listing-area">📍 旺角 / 銅鑼灣 · 人流旺盛</div>
+          <div class="listing-price">歡迎查詢</div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-img">🌆</div>
+        <div class="listing-body">
+          <div class="listing-type">出租 · 住宅</div>
+          <div class="listing-name">市區精裝單位</div>
+          <div class="listing-area">📍 港九市區 · 即租即住</div>
+          <div class="listing-price">歡迎查詢</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISTRICTS -->
+<section class="districts" id="districts">
+  <div class="section-inner">
+    <div class="section-label">服務地區</div>
+    <div class="section-title">覆蓋<em>港九新界</em>各區</div>
+    <p class="section-desc">PBX地產代理服務遍及香港各主要地區，熟悉各區樓市特色，為您提供最貼近當地市場的專業建議。</p>
+    <div class="districts-grid">
+      <div class="district-card">
+        <div class="district-icon">🏝</div>
+        <div class="district-name">港島區</div>
+        <div class="district-sub">中環 · 灣仔 · 銅鑼灣<br>半山 · 南區 · 東區</div>
+      </div>
+      <div class="district-card">
+        <div class="district-icon">🏙</div>
+        <div class="district-name">九龍區</div>
+        <div class="district-sub">旺角 · 油尖 · 九龍城<br>黃大仙 · 觀塘 · 深水埗</div>
+      </div>
+      <div class="district-card">
+        <div class="district-icon">🌿</div>
+        <div class="district-name">新界區</div>
+        <div class="district-sub">荃灣 · 沙田 · 元朗<br>屯門 · 大埔 · 西貢</div>
+      </div>
+      <div class="district-card">
+        <div class="district-icon">🏢</div>
+        <div class="district-name">商業物業</div>
+        <div class="district-sub">中環 · 灣仔 · 觀塘<br>葵涌 · 荃灣工商業區</div>
+      </div>
+      <div class="district-card">
+        <div class="district-icon">🏘</div>
+        <div class="district-name">住宅屋苑</div>
+        <div class="district-sub">大型屋苑 · 半獨立屋<br>村屋 · 洋房</div>
+      </div>
+      <div class="district-card">
+        <div class="district-icon">🌐</div>
+        <div class="district-name">一手新盤</div>
+        <div class="district-sub">發展商新盤<br>樓花買賣 · 居屋申請</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <div class="section-title">立即<em>查詢物業</em></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>我們的聯絡資料</h3>
+        <div class="contact-item">
+          <div class="contact-icon">🏢</div>
+          <div>
+            <div class="contact-label">公司名稱</div>
+            <div class="contact-val">PBX Property Agency Limited<br>PBX地產代理有限公司</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">服務地區</div>
+            <div class="contact-val">香港 · 九龍 · 新界</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🏠</div>
+          <div>
+            <div class="contact-label">業務範圍</div>
+            <div class="contact-val">住宅 · 商業 · 工業物業代理</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">查詢方式</div>
+            <div class="contact-val">請填寫右方查詢表格，我們將盡快回覆</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div>
+            <div class="contact-label">服務時間</div>
+            <div class="contact-val">星期一至六：上午9時至下午7時</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>物業查詢表格</h3>
+        <p>請填寫以下表格，我們的地產代理將盡快與您聯絡。</p>
+        <form onsubmit="event.preventDefault()">
+          <div class="form-row">
+            <label>您的姓名</label>
+            <input type="text" placeholder="請輸入姓名" />
+          </div>
+          <div class="form-row">
+            <label>聯絡電話</label>
+            <input type="tel" placeholder="香港電話號碼" />
+          </div>
+          <div class="form-row">
+            <label>電子郵件</label>
+            <input type="email" placeholder="您的電郵地址" />
+          </div>
+          <div class="form-row">
+            <label>查詢類型</label>
+            <select>
+              <option>住宅購買</option>
+              <option>住宅放盤出售</option>
+              <option>住宅租賃（找租）</option>
+              <option>住宅放盤出租</option>
+              <option>商業物業購買</option>
+              <option>商業物業租賃</option>
+              <option>投資顧問</option>
+              <option>按揭轉介</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>心儀地區</label>
+            <select>
+              <option>港島區</option>
+              <option>九龍區</option>
+              <option>新界區</option>
+              <option>不限地區</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>詳細要求</label>
+            <textarea placeholder="請說明您的物業要求、預算範圍或其他問題..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">提交查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">PBX Property Agency Limited · PBX地產代理有限公司</div>
+    <div class="footer-tagline">專業地產代理 · 誠信服務 · 港九新界</div>
+    <div class="footer-links">
+      <a href="#about">關於我們</a>
+      <a href="#services">服務項目</a>
+      <a href="#listings">精選物業</a>
+      <a href="#districts">服務地區</a>
+      <a href="#contact">聯絡我們</a>
+    </div>
+    <div class="footer-copy">&copy; 2024 PBX Property Agency Limited. 版權所有。持牌地產代理，香港。</div>
+  </div>
+</footer>
+
+</body>
+</html>
