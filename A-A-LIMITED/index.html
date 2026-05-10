@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>A&amp;A Limited | Award-Winning Digital Business Consulting · Kwun Tong</title>
+<meta name="description" content="A&A Limited is an award-winning Hong Kong digital firm providing end-to-end digital transformation solutions including website, mobile app, AI, chatbot and e-commerce. Clients include HSBC, JP Morgan and West Kowloon Cultural District."/>
+<style>
+:root{
+  --primary:#2a0860;
+  --primary-mid:#4010a0;
+  --primary-light:#5820d0;
+  --accent:#e020b0;
+  --accent-light:#f040c8;
+  --accent2:#a020e8;
+  --dark:#0d0428;
+  --surface:#f8f4ff;
+  --surface2:#ede0f8;
+  --text:#120828;
+  --text-muted:#584878;
+  --white:#ffffff;
+  --radius:10px;
+  --shadow:0 4px 24px rgba(42,8,96,0.14);
+  --shadow-lg:0 8px 48px rgba(42,8,96,0.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.7}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(13,4,40,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(224,32,176,0.25)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--primary-light),var(--accent));border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;color:var(--white)}
+.nav-logo-text{font-size:16px;font-weight:800;color:var(--white);line-height:1.2}
+.nav-logo-sub{font-size:11px;color:var(--accent-light);font-weight:400}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent-light)}
+.nav-cta{background:linear-gradient(135deg,var(--accent),var(--accent-light))!important;color:var(--white)!important;padding:8px 20px;border-radius:6px;font-weight:700!important;font-size:13px!important}
+@media(max-width:780px){.nav-links{display:none}}
+
+.hero{min-height:100vh;background:linear-gradient(150deg,var(--dark) 0%,var(--primary) 55%,#380a88 100%);display:flex;align-items:center;padding-top:64px;position:relative;overflow:hidden}
+.hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(224,32,176,0.15) 0%,transparent 50%),radial-gradient(ellipse at 20% 80%,rgba(88,32,208,0.15) 0%,transparent 50%)}
+.hero-inner{max-width:1200px;margin:0 auto;padding:80px 24px;width:100%;display:grid;grid-template-columns:1fr 420px;gap:56px;align-items:center;position:relative;z-index:1}
+.award-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(224,32,176,0.15);border:1px solid rgba(224,32,176,0.35);border-radius:20px;padding:6px 16px;margin-bottom:10px}
+.award-text{font-size:12px;color:var(--accent-light);font-weight:700;letter-spacing:.5px}
+.offices-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:5px 14px;margin-bottom:18px}
+.offices-text{font-size:12px;color:rgba(255,255,255,0.75);font-weight:600}
+.hero h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:8px}
+.hero h1 span{background:linear-gradient(90deg,var(--accent-light),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-tagline{font-size:1.1rem;color:rgba(255,255,255,0.55);font-weight:400;margin-bottom:18px;font-style:italic}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:34px;max-width:520px}
+.power3{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.p3-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:6px 14px;font-size:13px;color:var(--white);font-weight:600}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--accent),var(--accent-light));color:var(--white);padding:14px 28px;border-radius:var(--radius);font-weight:700;font-size:15px;text-decoration:none;transition:all .2s;box-shadow:0 4px 20px rgba(224,32,176,0.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(224,32,176,0.5)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(255,255,255,0.3);color:var(--white);padding:14px 28px;border-radius:var(--radius);font-weight:600;font-size:15px;text-decoration:none;transition:all .2s}
+.btn-outline:hover{border-color:var(--accent-light);color:var(--accent-light)}
+.hero-card{background:rgba(255,255,255,0.06);backdrop-filter:blur(16px);border:1px solid rgba(224,32,176,0.2);border-radius:18px;padding:30px;color:var(--white)}
+.hero-card-label{font-size:12px;color:var(--accent-light);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.hero-card-label::before{content:'';width:14px;height:2px;background:var(--accent-light)}
+.info-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:13px}
+.info-icon{width:34px;height:34px;min-width:34px;background:rgba(224,32,176,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.info-lbl{font-size:11px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.info-val{font-size:13.5px;color:var(--white);font-weight:500;line-height:1.45}
+.info-val a{color:var(--accent-light);text-decoration:none}
+.hero-divider{height:1px;background:rgba(255,255,255,0.1);margin:14px 0}
+@media(max-width:920px){.hero-inner{grid-template-columns:1fr}.hero-card{max-width:480px}}
+
+.stats{background:linear-gradient(90deg,var(--primary),var(--primary-mid));padding:44px 24px}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.stat-item{background:rgba(255,255,255,0.06);padding:26px 18px;text-align:center;transition:background .2s}
+.stat-item:first-child{border-radius:var(--radius) 0 0 var(--radius)}
+.stat-item:last-child{border-radius:0 var(--radius) var(--radius) 0}
+.stat-item:hover{background:rgba(224,32,176,0.15)}
+.stat-num{font-size:1.9rem;font-weight:900;color:var(--accent-light);line-height:1;margin-bottom:5px}
+.stat-label{font-size:12.5px;color:rgba(255,255,255,0.7)}
+@media(max-width:640px){.stats-inner{grid-template-columns:repeat(2,1fr)}}
+
+section{padding:88px 24px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(42,8,96,0.08);color:var(--primary-light);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px;border:1px solid rgba(88,32,208,0.18)}
+.section-title{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;color:var(--dark);line-height:1.22;margin-bottom:14px}
+.section-title span{color:var(--primary-light)}
+.section-sub{font-size:1rem;color:var(--text-muted);max-width:580px;line-height:1.8}
+.section-header{margin-bottom:52px}
+.bg-alt{background:var(--surface)}
+.bg-dark{background:var(--primary);color:var(--white)}
+.bg-dark .section-tag{background:rgba(224,32,176,0.15);color:var(--accent-light);border-color:rgba(224,32,176,0.25)}
+.bg-dark .section-title{color:var(--white)}
+.bg-dark .section-sub{color:rgba(255,255,255,0.65)}
+.divider{width:44px;height:3px;background:linear-gradient(90deg,var(--primary-light),var(--accent));border-radius:2px;margin-bottom:18px}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{background:var(--white);border:1px solid rgba(42,8,96,0.1);border-radius:16px;padding:28px;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary-light),var(--accent))}
+.svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.svc-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(42,8,96,0.08),rgba(224,32,176,0.1));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.svc-title{font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:6px}
+.svc-desc{font-size:13.5px;color:var(--text-muted);line-height:1.75}
+@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.svc-grid{grid-template-columns:1fr}}
+
+/* CLIENTS */
+.clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.client-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:22px;display:flex;align-items:center;gap:14px;transition:all .2s}
+.client-card:hover{background:rgba(255,255,255,0.12);transform:translateY(-2px)}
+.client-icon{font-size:2rem;flex-shrink:0}
+.client-name{font-size:15px;font-weight:700;color:var(--white)}
+.client-sector{font-size:12px;color:rgba(255,255,255,0.5);margin-top:3px}
+@media(max-width:760px){.clients-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.clients-grid{grid-template-columns:1fr}}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-body p{font-size:1rem;color:var(--text-muted);line-height:1.85;margin-bottom:16px}
+.power3-section{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.p3-card{background:var(--surface2);border-radius:12px;padding:20px;text-align:center;border-top:3px solid var(--accent)}
+.p3-icon{font-size:1.8rem;margin-bottom:10px}
+.p3-title{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:5px}
+.p3-desc{font-size:12.5px;color:var(--text-muted);line-height:1.55}
+.about-vis{background:linear-gradient(135deg,var(--dark),var(--primary));border-radius:18px;padding:36px;color:var(--white)}
+.about-vis-title{font-size:1rem;font-weight:700;color:var(--accent-light);margin-bottom:20px}
+.culture-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;border-left:2px solid var(--accent)}
+.cult-icon{font-size:1.4rem;flex-shrink:0}
+.cult-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px}
+.cult-desc{font-size:12.5px;color:rgba(255,255,255,0.6);line-height:1.5}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr}.power3-section{grid-template-columns:1fr}}
+
+/* OFFICES */
+.offices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.office-card{background:rgba(255,255,255,0.06);border:1px solid rgba(224,32,176,0.2);border-radius:14px;padding:28px;text-align:center;transition:all .2s}
+.office-card:hover{background:rgba(255,255,255,0.1);border-color:rgba(224,32,176,0.4);transform:translateY(-3px)}
+.office-flag{font-size:2.4rem;margin-bottom:12px}
+.office-city{font-size:16px;font-weight:700;color:var(--white);margin-bottom:4px}
+.office-address{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6}
+@media(max-width:680px){.offices-grid{grid-template-columns:1fr}}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:start}
+.contact-card{background:linear-gradient(135deg,var(--dark),var(--primary));border-radius:16px;padding:34px;color:var(--white)}
+.contact-title{font-size:17px;font-weight:700;color:var(--accent-light);margin-bottom:22px}
+.c-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+.c-icon{width:38px;height:38px;min-width:38px;background:rgba(224,32,176,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.c-lbl{font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:.5px;margin-bottom:3px;text-transform:uppercase}
+.c-val{font-size:13.5px;color:var(--white);font-weight:500;line-height:1.5}
+.c-val a{color:var(--accent-light);text-decoration:none}
+.form-card{background:var(--surface);border-radius:16px;padding:34px;border:1px solid rgba(42,8,96,0.1)}
+.form-title{font-size:17px;font-weight:700;color:var(--primary);margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid rgba(42,8,96,0.15);border-radius:8px;font-size:14px;color:var(--text);background:var(--white);transition:border-color .2s;outline:none;font-family:inherit}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.submit-btn{width:100%;background:linear-gradient(135deg,var(--primary-light),var(--accent));color:var(--white);padding:14px;border:none;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s,transform .2s}
+.submit-btn:hover{opacity:.9;transform:translateY(-1px)}
+@media(max-width:800px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+
+footer{background:var(--dark);padding:48px 24px 28px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;margin-bottom:32px}
+.footer-brand-name{font-size:18px;font-weight:900;color:var(--white);margin-bottom:4px}
+.footer-brand-sub{font-size:12px;color:var(--accent-light);margin-bottom:12px}
+.footer-brand-desc{font-size:12.5px;color:rgba(255,255,255,0.45);line-height:1.75}
+.footer-heading{font-size:11px;font-weight:700;color:var(--accent-light);letter-spacing:.8px;text-transform:uppercase;margin-bottom:14px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--accent-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.35)}
+@media(max-width:800px){.footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">A&A</div>
+      <div>
+        <div class="nav-logo-text">A&amp;A Limited</div>
+        <div class="nav-logo-sub">Digital Business Consulting</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#offices">Offices</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="award-badge">
+        <span class="award-text">🏆 Award-Winning Digital Firm</span>
+      </div>
+      <div class="offices-badge">
+        <span class="offices-text">🌏 Hong Kong · Sydney · Shanghai</span>
+      </div>
+      <h1>Digital Transformation<br/><span>Reimagined</span></h1>
+      <div class="hero-tagline">"Be the first choice of our clients, partners and staffs"</div>
+      <p class="hero-desc">A&A Limited is an award-winning digital firm delivering end-to-end transformation solutions — blending technology, creativity and business consulting to create limitless value for enterprise clients across Asia and beyond.</p>
+      <div class="power3">
+        <div class="p3-pill">⚡ Technology</div>
+        <div class="p3-pill">🎨 Creative</div>
+        <div class="p3-pill">💼 Consulting</div>
+      </div>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Start a Project →</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">Company Info</div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-lbl">Head Office</div>
+          <div class="info-val">26/F Kin Sang Commercial Centre<br/>49 King Yip Street, Kwun Tong<br/>Kowloon, Hong Kong</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-lbl">Email</div>
+          <div class="info-val"><a href="mailto:info@aa-limited.com">info@aa-limited.com</a></div>
+        </div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="info-row">
+        <div class="info-icon">👥</div>
+        <div>
+          <div class="info-lbl">Team Size</div>
+          <div class="info-val">20+ Professionals</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-lbl">Industry</div>
+          <div class="info-val">Digital Business Consulting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Team Members</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Global Offices</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">360°</div>
+      <div class="stat-label">Digital Solutions</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">🏆</div>
+      <div class="stat-label">Award-Winning</div>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">End-to-End <span>Digital Solutions</span></h2>
+      <p class="section-sub">From strategy to deployment, A&A delivers integrated digital transformation solutions that solve real business problems and create lasting value.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🌐</div>
+        <div class="svc-title">Website Development</div>
+        <div class="svc-desc">Crafting high-performance, visually compelling websites tailored to your brand. From corporate portals to complex web applications, we build digital experiences that convert and engage.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📱</div>
+        <div class="svc-title">Mobile App Development</div>
+        <div class="svc-desc">Native and cross-platform mobile applications designed for iOS and Android. We build intuitive, scalable apps that deliver seamless user experiences and drive business outcomes.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🤖</div>
+        <div class="svc-title">AI &amp; Chatbot Solutions</div>
+        <div class="svc-desc">Intelligent automation and conversational AI solutions that streamline operations, enhance customer service, and unlock new efficiencies across your business processes.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🛒</div>
+        <div class="svc-title">E-Commerce Solutions</div>
+        <div class="svc-desc">Full-stack e-commerce platforms integrating payment gateways, inventory management and customer analytics — built to scale with your business growth.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📚</div>
+        <div class="svc-title">Learning Management System</div>
+        <div class="svc-desc">Custom LMS platforms for corporate training, education institutions and certification programmes — enabling engaging, trackable digital learning experiences at scale.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💡</div>
+        <div class="svc-title">Digital Business Consulting</div>
+        <div class="svc-desc">Strategic consulting that identifies the missing link between your current business performance and optimal organizational achievement, delivering actionable digital transformation roadmaps.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="clients" class="bg-dark">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Our Clients</div>
+      <h2 class="section-title">Trusted by <span style="color:var(--accent-light)">Industry Leaders</span></h2>
+      <p class="section-sub">From global financial institutions to government bodies and cultural organisations, A&A serves a diverse portfolio of renowned clients.</p>
+    </div>
+    <div class="clients-grid">
+      <div class="client-card">
+        <div class="client-icon">🏦</div>
+        <div>
+          <div class="client-name">HSBC</div>
+          <div class="client-sector">Global Banking &amp; Financial Services</div>
+        </div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">💹</div>
+        <div>
+          <div class="client-name">JP Morgan</div>
+          <div class="client-sector">Investment Banking</div>
+        </div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🎭</div>
+        <div>
+          <div class="client-name">West Kowloon Cultural District</div>
+          <div class="client-sector">Arts &amp; Culture</div>
+        </div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🎓</div>
+        <div>
+          <div class="client-name">Education Bureau (HKSAR)</div>
+          <div class="client-sector">Government &amp; Education</div>
+        </div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🏗️</div>
+        <div>
+          <div class="client-name">KONE</div>
+          <div class="client-sector">Elevators &amp; Escalators</div>
+        </div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🖨️</div>
+        <div>
+          <div class="client-name">Fuji Xerox</div>
+          <div class="client-sector">Document &amp; Technology Solutions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="bg-alt">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">About A&amp;A</div>
+        <h2 class="section-title">The <span>Power of Three</span></h2>
+        <div class="divider"></div>
+        <div class="about-body">
+          <p>A&A Limited is a Hong Kong-headquartered award-winning digital firm, with offices in Sydney and Shanghai. We bring together the knowledge and experience of young aspiring professionals and experienced advisory members to deliver revolutionary results for clients.</p>
+          <p>We treat every project with integrity and commitment, striving to spot the missing link between existing business performance and optimal organizational achievement. Our integrated solution packages blend digital solutions, creativity and business consulting to create limitless value.</p>
+          <p>Our mission is clear: to be the first choice of our clients, partners and staff — achieved through our core value of harmonizing the Power of Three.</p>
+        </div>
+        <div class="power3-section">
+          <div class="p3-card">
+            <div class="p3-icon">⚡</div>
+            <div class="p3-title">Technology</div>
+            <div class="p3-desc">Leveraging trending technologies to deliver cutting-edge digital solutions</div>
+          </div>
+          <div class="p3-card">
+            <div class="p3-icon">🎨</div>
+            <div class="p3-title">Creative</div>
+            <div class="p3-desc">Applied creative strategies that make technology meaningful and engaging</div>
+          </div>
+          <div class="p3-card">
+            <div class="p3-icon">💼</div>
+            <div class="p3-title">Consulting</div>
+            <div class="p3-desc">Strategic business consulting grounded in real organizational insights</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-vis">
+        <div class="about-vis-title">Our Culture &amp; Work Environment</div>
+        <div class="culture-item">
+          <div class="cult-icon">🌟</div>
+          <div>
+            <div class="cult-title">Young &amp; Energetic Team</div>
+            <div class="cult-desc">We welcome creative, innovative thinkers and encourage bold ideas in this disruptive digital era</div>
+          </div>
+        </div>
+        <div class="culture-item">
+          <div class="cult-icon">📈</div>
+          <div>
+            <div class="cult-title">Continuous Growth</div>
+            <div class="cult-desc">Extensive contextual and practical training opportunities for all team members</div>
+          </div>
+        </div>
+        <div class="culture-item">
+          <div class="cult-icon">🏢</div>
+          <div>
+            <div class="cult-title">Premium Office</div>
+            <div class="cult-desc">Open-plan workspace with Victoria Harbour views, smart casual dress code</div>
+          </div>
+        </div>
+        <div class="culture-item">
+          <div class="cult-icon">✅</div>
+          <div>
+            <div class="cult-title">Great Benefits</div>
+            <div class="cult-desc">Five-day work week, flexible hours, performance bonus, medical insurance</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="offices" class="bg-dark">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center">
+      <div class="section-tag">Global Presence</div>
+      <h2 class="section-title">Our <span style="color:var(--accent-light)">Offices</span></h2>
+      <p class="section-sub" style="margin:0 auto">A&A operates across three cities, bringing local expertise with global perspective to every client engagement.</p>
+    </div>
+    <div class="offices-grid">
+      <div class="office-card">
+        <div class="office-flag">🇭🇰</div>
+        <div class="office-city">Hong Kong (HQ)</div>
+        <div class="office-address">26/F Kin Sang Commercial Centre<br/>49 King Yip Street, Kwun Tong<br/>Kowloon</div>
+      </div>
+      <div class="office-card">
+        <div class="office-flag">🇦🇺</div>
+        <div class="office-city">Sydney</div>
+        <div class="office-address">Australia Office<br/>Digital Strategy &amp; Consulting<br/>APAC Region</div>
+      </div>
+      <div class="office-card">
+        <div class="office-flag">🇨🇳</div>
+        <div class="office-city">Shanghai</div>
+        <div class="office-address">China Office<br/>Greater China Operations<br/>Business Development</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Get in Touch</div>
+      <h2 class="section-title">Start Your <span>Digital Transformation</span></h2>
+      <p class="section-sub">Ready to build something great? Tell us about your project and let's create limitless value together.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-title">Contact A&amp;A</div>
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-lbl">Head Office</div>
+            <div class="c-val">26/F Kin Sang Commercial Centre<br/>49 King Yip Street, Kwun Tong<br/>Kowloon, Hong Kong</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📧</div>
+          <div>
+            <div class="c-lbl">Email</div>
+            <div class="c-val"><a href="mailto:info@aa-limited.com">info@aa-limited.com</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">⏰</div>
+          <div>
+            <div class="c-lbl">Office Hours</div>
+            <div class="c-val">Monday – Friday (Five-day week)<br/>Flexible working hours</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🌏</div>
+          <div>
+            <div class="c-lbl">Global Offices</div>
+            <div class="c-val">Hong Kong · Sydney · Shanghai</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <div class="form-title">Project Enquiry</div>
+        <form onsubmit="return false">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" placeholder="Full name"/>
+            </div>
+            <div class="form-group">
+              <label>Company</label>
+              <input type="text" placeholder="Company name"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" placeholder="your@email.com"/>
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="+852 XXXX XXXX"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Service Needed</label>
+            <select>
+              <option value="">-- Select a service --</option>
+              <option>Website Development</option>
+              <option>Mobile App Development</option>
+              <option>AI / Chatbot Solutions</option>
+              <option>E-Commerce Solutions</option>
+              <option>Learning Management System</option>
+              <option>Digital Business Consulting</option>
+              <option>Other / Multiple Services</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Project Brief *</label>
+            <textarea placeholder="Tell us about your project, goals and timeline…"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Submit Enquiry →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">A&amp;A Limited</div>
+        <div class="footer-brand-sub">Digital Business Consulting · HK · Sydney · Shanghai</div>
+        <div class="footer-brand-desc">Award-winning digital firm delivering end-to-end transformation solutions. Blending Technology, Creative and Consulting — the Power of Three — to create limitless value for enterprise clients.<br/><br/>info@aa-limited.com</div>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Website Development</a></li>
+          <li><a href="#services">Mobile Apps</a></li>
+          <li><a href="#services">AI &amp; Chatbot</a></li>
+          <li><a href="#services">E-Commerce</a></li>
+          <li><a href="#services">LMS</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li><a href="#about">About A&amp;A</a></li>
+          <li><a href="#clients">Our Clients</a></li>
+          <li><a href="#offices">Our Offices</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Offices</div>
+        <ul class="footer-links">
+          <li><a href="#offices">🇭🇰 Hong Kong (HQ)</a></li>
+          <li><a href="#offices">🇦🇺 Sydney</a></li>
+          <li><a href="#offices">🇨🇳 Shanghai</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 A&amp;A Limited. All rights reserved.</div>
+      <div class="footer-copy">Kwun Tong, Hong Kong · info@aa-limited.com</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
