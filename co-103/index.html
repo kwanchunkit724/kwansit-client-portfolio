@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上海銀鳳樓餐廳 | 板橋三十年老字號 · 江浙美饌 · 港式點心</title>
+<style>
+:root {
+  --bg:       #080504;
+  --surface:  #100a06;
+  --card:     #1a1008;
+  --border:   #301808;
+  --acc1:     #780c08;
+  --acc2:     #b81410;
+  --acc3:     #e02018;
+  --gold:     #d8980c;
+  --gold2:    #f0b820;
+  --cream:    #f4ead0;
+  --text:     #f0e8d0;
+  --muted:    #9a7848;
+  --radius:   8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI','Microsoft JhengHei',Arial,sans-serif;line-height:1.7;font-size:16px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,5,4,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--acc1),var(--acc2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.logo-text{font-size:1.1rem;font-weight:700;color:var(--text)}
+.logo-sub{font-size:.68rem;color:var(--muted);letter-spacing:.05em}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:9px 22px;border-radius:5px;font-size:.88rem;font-weight:600;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;background:radial-gradient(ellipse 75% 55% at 35% 50%,rgba(120,12,8,.18) 0%,transparent 65%),var(--bg)}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(216,152,12,.12);border:1px solid rgba(216,152,12,.35);border-radius:20px;padding:6px 16px;font-size:.8rem;color:var(--gold);margin-bottom:24px;letter-spacing:.05em}
+.hero h1{font-size:2.7rem;font-weight:800;line-height:1.25;margin-bottom:10px}
+.hero h1 span{color:var(--gold)}
+.hero-sub{font-size:.95rem;color:var(--muted);letter-spacing:.06em;margin-bottom:16px}
+.hero-desc{font-size:1rem;color:var(--muted);margin-bottom:36px;max-width:520px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:13px 30px;border-radius:6px;font-size:.95rem;font-weight:700;text-decoration:none;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:13px 30px;border-radius:6px;font-size:.95rem;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hero-card h3{font-size:.88rem;color:var(--gold);margin-bottom:18px;text-transform:uppercase;letter-spacing:.1em}
+.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:.87rem}
+.info-row:last-child{border-bottom:none}
+.info-label{color:var(--muted)}
+.info-val{color:var(--text);font-weight:600;text-align:right;max-width:60%}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-box{text-align:center}
+.stat-num{font-size:2.2rem;font-weight:800;color:var(--gold);display:block}
+.stat-label{font-size:.83rem;color:var(--muted);margin-top:4px}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(184,20,16,.12);border:1px solid rgba(184,20,16,.3);border-radius:4px;padding:4px 12px;font-size:.76rem;color:var(--acc2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:1.85rem;font-weight:800;margin-bottom:12px}
+.section-sub{color:var(--muted);font-size:.97rem;max-width:620px}
+.section-head{margin-bottom:48px}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* ABOUT */
+.about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-content p{color:var(--muted);line-height:1.8;margin-bottom:16px}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.highlight{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;gap:12px;align-items:flex-start}
+.h-icon{font-size:1.4rem;flex-shrink:0}
+.h-body strong{display:block;color:var(--text);font-size:.88rem;margin-bottom:3px}
+.h-body span{font-size:.8rem;color:var(--muted)}
+.about-visual{background:linear-gradient(135deg,var(--card),var(--surface));border:1px solid var(--border);border-radius:14px;padding:36px;text-align:center}
+.vis-icon{font-size:4rem;margin-bottom:16px}
+.vis-title{font-size:1.4rem;font-weight:800;color:var(--text);margin-bottom:8px}
+.vis-desc{font-size:.9rem;color:var(--muted);line-height:1.7}
+.vis-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.vs{background:var(--bg);border-radius:8px;padding:14px}
+.vs-num{font-size:1.5rem;font-weight:800;color:var(--gold);display:block}
+.vs-label{font-size:.76rem;color:var(--muted)}
+
+/* CUISINE */
+.cuisine{background:var(--surface)}
+.cuisine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cuisine-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .25s,transform .25s}
+.cuisine-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+.cuisine-icon{font-size:2.4rem;margin-bottom:14px}
+.cuisine-name{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.cuisine-desc{font-size:.87rem;color:var(--muted);line-height:1.7;margin-bottom:14px}
+.dish-list{display:flex;flex-wrap:wrap;gap:6px}
+.dish{background:rgba(216,152,12,.1);border:1px solid rgba(216,152,12,.25);border-radius:4px;padding:2px 9px;font-size:.74rem;color:var(--gold)}
+
+/* OCCASIONS */
+.occasions{background:var(--bg)}
+.occ-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.occ-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;display:flex;gap:16px;align-items:flex-start;transition:border-color .25s}
+.occ-card:hover{border-color:var(--acc2)}
+.occ-icon{width:50px;height:50px;background:linear-gradient(135deg,var(--acc1),var(--acc2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.occ-body h3{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.occ-body p{font-size:.86rem;color:var(--muted);line-height:1.65}
+
+/* SERVICES */
+.services{background:var(--surface)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;transition:border-color .25s,transform .25s}
+.svc-card:hover{border-color:var(--acc2);transform:translateY(-3px)}
+.svc-icon{font-size:2.2rem;margin-bottom:12px}
+.svc-name{font-size:.97rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.svc-desc{font-size:.84rem;color:var(--muted);line-height:1.6}
+
+/* CONTACT */
+.contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h2{font-size:1.8rem;font-weight:800;margin-bottom:16px}
+.contact-info p{color:var(--muted);margin-bottom:28px;line-height:1.7}
+.contact-items{display:flex;flex-direction:column;gap:16px}
+.contact-item{display:flex;align-items:flex-start;gap:14px}
+.contact-icon{width:40px;height:40px;background:rgba(120,12,8,.28);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-detail strong{display:block;color:var(--text);font-size:.9rem;margin-bottom:2px}
+.contact-detail span{color:var(--muted);font-size:.85rem}
+.phone-link{color:var(--gold);text-decoration:none;font-weight:700}
+form{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:18px}
+form label{font-size:.84rem;color:var(--muted);margin-bottom:4px;display:block}
+form input,form select,form textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.91rem;outline:none;transition:border-color .2s;font-family:inherit}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--gold)}
+form textarea{resize:vertical;min-height:100px}
+form button{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s}
+form button:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 5% 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-top:12px}
+.footer-col h4{font-size:.87rem;font-weight:700;color:var(--text);margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col a{color:var(--muted);text-decoration:none;font-size:.86rem;transition:color .2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{color:var(--muted);font-size:.82rem}
+.footer-loc{color:var(--muted);font-size:.82rem}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .hero h1{font-size:2rem}
+  .cuisine-grid,.svc-grid{grid-template-columns:1fr 1fr}
+  .occ-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  .cuisine-grid,.svc-grid,.about-highlights{grid-template-columns:1fr}
+  .vis-stats{grid-template-columns:repeat(3,1fr)}
+  .hero h1{font-size:1.75rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">🏮</div>
+      <div>
+        <div class="logo-text">上海銀鳳樓</div>
+        <div class="logo-sub">板橋三十年老字號 · 江浙美饌</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#cuisine">菜式特色</a></li>
+      <li><a href="#occasions">宴會服務</a></li>
+      <li><a href="#services">外送訂餐</a></li>
+      <li><a href="#contact">訂位聯絡</a></li>
+    </ul>
+    <a class="nav-cta" href="tel:0229553336">立即訂位</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🏮 板橋老字號 · 三十年傳承好味道</div>
+      <h1>傳承三十年<br><span>江浙經典風味</span></h1>
+      <div class="hero-sub">上海銀鳳樓餐廳有限公司 · 新北市板橋</div>
+      <p class="hero-desc">
+        位於板橋中山路的上海銀鳳樓，三十年老字號的口碑與堅持，提供正宗江浙美饌、
+        上海佳餚及港式點心。500坪寬敞空間，100桌席位，設有包廂，
+        無論家庭聚會、商務宴請、婚慶喜宴均是最佳選擇。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="tel:0229553336">📞 訂位：02-2955-3336</a>
+        <a class="btn-outline" href="#cuisine">菜式特色</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>餐廳資料</h3>
+      <div class="info-row">
+        <span class="info-label">餐廳名稱</span>
+        <span class="info-val">上海銀鳳樓餐廳</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">創立年份</span>
+        <span class="info-val">逾三十年歷史</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">電話</span>
+        <span class="info-val">02-2955-3336</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">地址</span>
+        <span class="info-val">新北市板橋區館前東路13號2樓之2</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">營業時間</span>
+        <span class="info-val">11:00–14:00<br>17:00–21:00（週一至週日）</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">場地</span>
+        <span class="info-val">500坪 · 100桌 · 包廂</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-box">
+      <span class="stat-num">30+</span>
+      <div class="stat-label">年老字號品牌歷史</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">500坪</span>
+      <div class="stat-label">寬敞用餐空間</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">100桌</span>
+      <div class="stat-label">席位容量</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">100+</span>
+      <div class="stat-label">道精緻菜式</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-content">
+        <div class="section-tag">About Us</div>
+        <h2 class="section-title">在地三十年的好味道</h2>
+        <p>
+          位於板橋中山路上的「上海銀鳳樓餐廳」，是板橋地區享譽三十年的老字號中餐廳。
+          餐廳提供傳統江浙美饌、經典上海料理及港式點心，真材實料、口味多變。
+          廚師注重刀法及精湛的烹調技術，不論道地上海菜或創新佳餚，道道美味且精緻。
+        </p>
+        <p>
+          上海銀鳳樓位於板橋市中心，交通十分便利，附近設有三個特約停車場供顧客停車。
+          餐廳佔地500坪，可容納100桌席位，並設有獨立包廂，寬敞舒適的空間
+          不論大宴小酌均適宜，是公司團體聚餐、家庭節慶的首選場地。
+        </p>
+        <p>
+          我們以優惠的價格，讓您享受豪華豐盛的美味佳餚，古典簡潔的裝潢設計，
+          讓您在清新舒適的空間中，細細品味每道經典佳餚。
+        </p>
+        <div class="about-highlights">
+          <div class="highlight">
+            <div class="h-icon">🏛️</div>
+            <div class="h-body">
+              <strong>三十年老字號</strong>
+              <span>板橋在地口碑品牌</span>
+            </div>
+          </div>
+          <div class="highlight">
+            <div class="h-icon">👨‍🍳</div>
+            <div class="h-body">
+              <strong>專業廚師團隊</strong>
+              <span>注重刀工與烹調技藝</span>
+            </div>
+          </div>
+          <div class="highlight">
+            <div class="h-icon">🅿️</div>
+            <div class="h-body">
+              <strong>停車便利</strong>
+              <span>附近三個特約停車場</span>
+            </div>
+          </div>
+          <div class="highlight">
+            <div class="h-icon">🏮</div>
+            <div class="h-body">
+              <strong>包廂設施</strong>
+              <span>適合私人宴會與包場</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="vis-icon">🏮</div>
+        <div class="vis-title">上海銀鳳樓餐廳</div>
+        <p class="vis-desc">板橋在地三十年，江浙上海料理與港式點心的老字號名店，真材實料、精緻美味</p>
+        <div class="vis-stats">
+          <div class="vs">
+            <span class="vs-num">30+</span>
+            <div class="vs-label">年歷史</div>
+          </div>
+          <div class="vs">
+            <span class="vs-num">500</span>
+            <div class="vs-label">坪空間</div>
+          </div>
+          <div class="vs">
+            <span class="vs-num">100</span>
+            <div class="vs-label">桌席位</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CUISINE -->
+<section class="cuisine" id="cuisine">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Cuisine</div>
+      <h2 class="section-title">三大菜系特色</h2>
+      <p class="section-sub">融合江浙傳統美饌、上海名菜與港式點心，百道菜式任您選擇</p>
+    </div>
+    <div class="cuisine-grid">
+      <div class="cuisine-card">
+        <div class="cuisine-icon">🥢</div>
+        <div class="cuisine-name">江浙美饌</div>
+        <p class="cuisine-desc">
+          傳承正宗江浙飲食文化，以精細刀工與濃醇口味見稱，食材新鮮、烹調講究，
+          每道菜式均展現江南料理的細膩風格。
+        </p>
+        <div class="dish-list">
+          <span class="dish">東坡肉</span>
+          <span class="dish">獅子頭</span>
+          <span class="dish">紅燒划水</span>
+          <span class="dish">醃篤鮮</span>
+          <span class="dish">蔥油雞</span>
+        </div>
+      </div>
+      <div class="cuisine-card">
+        <div class="cuisine-icon">🍜</div>
+        <div class="cuisine-name">上海料理</div>
+        <p class="cuisine-desc">
+          道地上海家常菜及名餚，紅燒、清蒸、爆炒各具特色，
+          師傅以精湛廚藝還原老上海的經典滋味，令人回味無窮。
+        </p>
+        <div class="dish-list">
+          <span class="dish">上海炒麵</span>
+          <span class="dish">蟹粉豆腐</span>
+          <span class="dish">蔥爆羊肉</span>
+          <span class="dish">糖醋排骨</span>
+          <span class="dish">草頭圈子</span>
+        </div>
+      </div>
+      <div class="cuisine-card">
+        <div class="cuisine-icon">🥟</div>
+        <div class="cuisine-name">港式點心</div>
+        <p class="cuisine-desc">
+          正宗港式飲茶點心，蝦餃、燒賣、腸粉等經典茶點，
+          搭配傳統江浙菜式，讓每桌宴席更添豐富選擇。
+        </p>
+        <div class="dish-list">
+          <span class="dish">蝦餃皇</span>
+          <span class="dish">燒賣</span>
+          <span class="dish">腸粉</span>
+          <span class="dish">叉燒包</span>
+          <span class="dish">蘿蔔糕</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- OCCASIONS -->
+<section class="occasions" id="occasions">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Private Dining</div>
+      <h2 class="section-title">各式宴請首選場地</h2>
+      <p class="section-sub">500坪空間、100桌席位、獨立包廂，滿足各種場合的宴客需求</p>
+    </div>
+    <div class="occ-grid">
+      <div class="occ-card">
+        <div class="occ-icon">💒</div>
+        <div class="occ-body">
+          <h3>婚慶喜宴</h3>
+          <p>為新人提供優質的婚宴場所，寬敞包廂與精緻宴席菜單，加上專業服務人員，讓您的婚宴賓至如歸，圓滿完成人生大事。</p>
+        </div>
+      </div>
+      <div class="occ-card">
+        <div class="occ-icon">🏢</div>
+        <div class="occ-body">
+          <h3>公司團體聚餐</h3>
+          <p>適合企業尾牙、員工聚餐及商務宴請，場地寬敞氣派，菜式豐富多樣，是板橋地區公司聚餐的熱門首選。</p>
+        </div>
+      </div>
+      <div class="occ-card">
+        <div class="occ-icon">🎉</div>
+        <div class="occ-body">
+          <h3>家庭節慶宴客</h3>
+          <p>壽宴、節慶家庭聚餐，溫馨包廂設計，老少咸宜的江浙菜式，讓一家大小在舒適的環境中共享天倫之樂。</p>
+        </div>
+      </div>
+      <div class="occ-card">
+        <div class="occ-icon">🤝</div>
+        <div class="occ-body">
+          <h3>商務宴請</h3>
+          <p>獨立包廂提供私密舒適的用餐環境，精緻菜式彰顯誠意，是接待重要客戶與商業夥伴的理想選擇。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Services</div>
+      <h2 class="section-title">餐廳服務項目</h2>
+      <p class="section-sub">除堂食外，亦提供外送、外帶及訂位服務，讓您隨時享用上海銀鳳樓的美食</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🛵</div>
+        <div class="svc-name">外送服務</div>
+        <p class="svc-desc">限板橋地區外送，讓您在家即可享用正宗江浙美饌。歡迎提前來電訂餐，安排外送時間。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🥡</div>
+        <div class="svc-name">外帶服務</div>
+        <p class="svc-desc">提供外帶餐點，可事先電話訂餐，到店取餐，方便快捷，帶走家鄉滋味回家享用。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📋</div>
+        <div class="svc-name">訂位服務</div>
+        <p class="svc-desc">來電預約訂位，由專業服務人員為您安排最合適的席位，確保您的用餐體驗完美無憂。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-tag">Contact &amp; Reservations</div>
+        <h2>訂位與聯絡</h2>
+        <p>
+          歡迎電話訂位、訂餐，或透過以下方式與我們聯絡。
+          如有大型宴席需求，建議提前預約，以確保場地安排完善。
+        </p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-detail">
+              <strong>訂位訂餐專線</strong>
+              <a class="phone-link" href="tel:0229553336">02-2955-3336</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>餐廳地址</strong>
+              <span>新北市板橋區館前東路13號2樓之2</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-detail">
+              <strong>營業時間</strong>
+              <span>週一至週日<br>午餐：11:00 – 14:00<br>晚餐：17:00 – 21:00</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🅿️</div>
+            <div class="contact-detail">
+              <strong>停車資訊</strong>
+              <span>附近設有三個特約停車場，交通便利</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form>
+        <div>
+          <label>姓名 *</label>
+          <input type="text" placeholder="請輸入大名">
+        </div>
+        <div>
+          <label>聯絡電話 *</label>
+          <input type="tel" placeholder="請輸入聯絡電話">
+        </div>
+        <div>
+          <label>電郵（選填）</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div>
+          <label>用餐日期</label>
+          <input type="date">
+        </div>
+        <div>
+          <label>用餐人數</label>
+          <select>
+            <option>1–4 人</option>
+            <option>5–10 人</option>
+            <option>11–20 人</option>
+            <option>21–50 人</option>
+            <option>50人以上（大型宴席）</option>
+          </select>
+        </div>
+        <div>
+          <label>服務需求</label>
+          <select>
+            <option>一般堂食訂位</option>
+            <option>包廂訂位</option>
+            <option>婚慶喜宴</option>
+            <option>公司聚餐</option>
+            <option>外送服務</option>
+            <option>外帶訂餐</option>
+          </select>
+        </div>
+        <div>
+          <label>備註</label>
+          <textarea placeholder="如有特別要求或餐飲需求，歡迎在此說明……"></textarea>
+        </div>
+        <button type="submit">送出訂位查詢 →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">🏮</div>
+          <div>
+            <div class="logo-text">上海銀鳳樓餐廳</div>
+            <div class="logo-sub">板橋三十年老字號 · 新北市板橋</div>
+          </div>
+        </div>
+        <p>板橋在地三十年老字號中餐廳，提供傳統江浙美饌、上海料理及港式點心。500坪空間、100桌席位，婚宴、聚餐、宴客首選。</p>
+      </div>
+      <div class="footer-col">
+        <h4>菜式特色</h4>
+        <ul>
+          <li><a href="#cuisine">江浙美饌</a></li>
+          <li><a href="#cuisine">上海料理</a></li>
+          <li><a href="#cuisine">港式點心</a></li>
+          <li><a href="#occasions">宴席菜單</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>服務資訊</h4>
+        <ul>
+          <li><a href="#services">外送外帶</a></li>
+          <li><a href="#occasions">婚慶喜宴</a></li>
+          <li><a href="#occasions">公司聚餐</a></li>
+          <li><a href="#contact">訂位聯絡</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 上海銀鳳樓餐廳有限公司. 版權所有.</div>
+      <div class="footer-loc">📍 新北市板橋區館前東路13號2樓之2 ｜ ☎ 02-2955-3336</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
