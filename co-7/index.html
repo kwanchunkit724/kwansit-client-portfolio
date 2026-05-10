@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>勁寶食品有限公司 — 香港領先食品飲料供應商</title>
+<style>
+  :root {
+    --bg:       #04080e;
+    --surface:  #081018;
+    --card:     #0c1822;
+    --border:   #142840;
+    --accent1:  #0a5888;
+    --accent2:  #1278b0;
+    --accent3:  #28a0d8;
+    --orange:   #d06020;
+    --orange2:  #f08030;
+    --green:    #208848;
+    --green2:   #30b860;
+    --text:     #e8f0f8;
+    --muted:    #6090b0;
+    --cream:    #f4f0e4;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif; line-height: 1.7; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(4,8,14,0.97); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .nav-logo {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent3));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.95rem; color: #fff;
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent3); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 0.5rem 1.2rem;
+    border-radius: 6px; font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; text-decoration: none; transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding: 100px 2.5rem 60px;
+    background:
+      radial-gradient(ellipse 80% 60% at 65% 35%, rgba(10,88,136,0.25) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 50% at 15% 75%, rgba(208,96,32,0.1) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(10,88,136,0.2); border: 1px solid rgba(40,160,216,0.3);
+    color: var(--accent3); font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.5rem;
+  }
+  .hero h1 { font-size: clamp(1.9rem, 3.5vw, 3rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  .hero h1 span { color: var(--accent3); }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); margin-bottom: 2rem; max-width: 520px; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 0.8rem 1.8rem; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(10,88,136,0.4); transition: transform .2s, box-shadow .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(10,88,136,0.5); }
+  .btn-outline {
+    border: 2px solid var(--border); color: var(--text);
+    padding: 0.75rem 1.8rem; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: border-color .2s, color .2s;
+  }
+  .btn-outline:hover { border-color: var(--accent3); color: var(--accent3); }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem; box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  }
+  .info-card h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
+  .info-row { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(20,40,64,0.8); }
+  .info-row:last-child { border-bottom: none; }
+  .info-icon { font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0; }
+  .info-label { font-size: 0.72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; }
+  .info-val { font-size: 0.92rem; color: var(--text); }
+  .info-val a { color: var(--accent3); text-decoration: none; }
+
+  /* STATS */
+  .stats { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2.5rem; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+  .stat { text-align: center; padding: 1.5rem 0.5rem; }
+  .stat-num { font-size: 2rem; font-weight: 900; color: var(--accent3); }
+  .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.3rem; }
+
+  /* SECTION COMMON */
+  section { padding: 80px 2.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; background: rgba(10,88,136,0.15); border: 1px solid rgba(40,160,216,0.25);
+    color: var(--accent3); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem;
+    border-radius: 20px; margin-bottom: 0.8rem;
+  }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 1rem; }
+  .section-title span { color: var(--accent3); }
+  .section-sub { font-size: 1rem; color: var(--muted); max-width: 600px; margin-bottom: 3rem; }
+
+  /* PRODUCTS */
+  .products-bg { background: var(--bg); }
+  .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+  .product-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.5rem; transition: border-color .25s, transform .25s;
+    cursor: default;
+  }
+  .product-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
+  .product-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .product-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .product-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+  /* OPERATIONS */
+  .ops-bg { background: var(--surface); }
+  .ops-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .ops-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 2rem; transition: border-color .25s;
+  }
+  .ops-card:hover { border-color: var(--orange); }
+  .ops-num {
+    font-size: 2.5rem; font-weight: 900; color: var(--orange2); margin-bottom: 0.3rem; line-height: 1;
+  }
+  .ops-unit { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.8rem; }
+  .ops-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .ops-card p { font-size: 0.87rem; color: var(--muted); }
+
+  /* CLIENTS */
+  .clients-bg { background: var(--bg); }
+  .clients-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-bottom: 3rem; }
+  .client-chip {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1.2rem; display: flex; align-items: center; gap: 0.7rem;
+    transition: border-color .2s;
+  }
+  .client-chip:hover { border-color: var(--accent2); }
+  .client-chip-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .client-chip-label { font-size: 0.87rem; font-weight: 600; color: var(--text); }
+
+  /* SUBSIDIARIES */
+  .subs-bg { background: var(--surface); }
+  .subs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .sub-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.8rem; transition: border-color .25s;
+  }
+  .sub-card:hover { border-color: var(--green2); }
+  .sub-flag { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .sub-region { font-size: 0.7rem; color: var(--green2); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+  .sub-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .sub-card p { font-size: 0.82rem; color: var(--muted); }
+
+  /* CERTS */
+  .certs-bg { background: var(--bg); }
+  .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .cert-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 2rem; text-align: center;
+  }
+  .cert-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .cert-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--orange2); }
+  .cert-card p { font-size: 0.87rem; color: var(--muted); }
+
+  /* CONTACT */
+  .contact-bg { background: var(--surface); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info-list { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; }
+  .ci-item { display: flex; align-items: flex-start; gap: 0.9rem; }
+  .ci-icon {
+    width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(10,88,136,0.2); border: 1px solid rgba(40,160,216,0.25);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .ci-label { font-size: 0.72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
+  .ci-val { font-size: 0.92rem; color: var(--text); }
+  .ci-val a { color: var(--accent3); text-decoration: none; }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; }
+  .contact-form h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.78rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); border-radius: 8px; padding: 0.7rem 0.9rem; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent2); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select option { background: var(--surface); }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 0.85rem; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.85; }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg); border-top: 1px solid var(--border);
+    padding: 60px 2.5rem 30px;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+  .footer-brand h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.8rem; }
+  .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  footer h4 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  footer ul li a { color: var(--text); text-decoration: none; font-size: 0.88rem; transition: color .2s; }
+  footer ul li a:hover { color: var(--accent3); }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+  .footer-bottom p { font-size: 0.8rem; color: var(--muted); }
+
+  @media (max-width: 1000px) {
+    .products-grid { grid-template-columns: repeat(3, 1fr); }
+    .stats-inner { grid-template-columns: repeat(3, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .info-card { display: none; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .ops-grid { grid-template-columns: 1fr 1fr; }
+    .clients-grid { grid-template-columns: repeat(2, 1fr); }
+    .subs-grid { grid-template-columns: 1fr 1fr; }
+    .certs-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .products-grid, .ops-grid, .clients-grid, .subs-grid, .certs-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">勁寶</div>
+    <span class="nav-name">勁寶食品有限公司</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products">產品系列</a></li>
+    <li><a href="#operations">業務規模</a></li>
+    <li><a href="#clients">服務客戶</a></li>
+    <li><a href="#subsidiaries">附屬公司</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">立即查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">🥤 香港 · 成立1986年</div>
+      <h1>香港及澳門<br><span>首屈一指的</span><br>食品飲料供應商</h1>
+      <p class="hero-sub">勁寶食品有限公司自1986年起，從單一橙汁產品發展成為香港及澳門規模最大的食品飲料批發供應商，服務近2,000客戶，覆蓋逾3,000個餐飲店鋪。</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#products">瀏覽產品系列</a>
+        <a class="btn-outline" href="https://www.anwfood.com" target="_blank" rel="noopener">官方網站</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>公司資料</h3>
+      <div class="info-row">
+        <span class="info-icon">🏢</span>
+        <div>
+          <div class="info-label">公司名稱</div>
+          <div class="info-val">勁寶食品有限公司<br>ANW Food Limited</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📅</span>
+        <div>
+          <div class="info-label">成立日期</div>
+          <div class="info-val">1986年6月1日</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div>
+          <div class="info-label">總部</div>
+          <div class="info-val">沙田火炭工業區<br>廠房面積約150,000平方英尺</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">👥</span>
+        <div>
+          <div class="info-label">員工總數</div>
+          <div class="info-val">約300名（全集團）</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🌐</span>
+        <div>
+          <div class="info-label">網站</div>
+          <div class="info-val"><a href="https://www.anwfood.com" target="_blank">anwfood.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">1986</div>
+      <div class="stat-label">年創立</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2,000+</div>
+      <div class="stat-label">香港活躍客戶</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3,000+</div>
+      <div class="stat-label">服務餐飲店鋪</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">300+</div>
+      <div class="stat-label">集團員工</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">150K</div>
+      <div class="stat-label">平方英尺廠房</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products-bg" id="products">
+  <div class="section-inner">
+    <div class="section-tag">產品系列</div>
+    <h2 class="section-title">多元化的<span>食品飲料產品</span></h2>
+    <p class="section-sub">從鮮榨果汁到急凍食品，從奶製品到植物性飲料，勁寶提供全面的餐飲食材採購方案，一站式滿足各類食肆需求。</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🍊</div>
+        <h3>鮮榨果汁</h3>
+        <p>新鮮壓榨橙汁、蘋果汁等，每日配送，保持最佳鮮度與口感。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🧃</div>
+        <h3>濃縮果汁飲料</h3>
+        <p>從濃縮果汁調和而成，多種口味可選，適合大量使用的餐飲用途。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">❄️</div>
+        <h3>急凍果汁</h3>
+        <p>冷凍保存的高品質果汁，適合製作特飲、冰沙等創意飲品。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🍵</div>
+        <h3>果茶 &amp; 茶飲</h3>
+        <p>多款果茶、拼配紅茶及抹茶粉，滿足茶飲市場多元需求。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">💧</div>
+        <h3>礦泉水</h3>
+        <p>天然礦泉水及深層地下水，適合餐廳、酒店及活動場所。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🥛</div>
+        <h3>奶製品</h3>
+        <p>鮮奶、乳酪、忌廉、保鮮奶及植物性奶類飲品，多品類覆蓋。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🥦</div>
+        <h3>急凍蔬菜</h3>
+        <p>凱加品牌急凍蔬菜，營養保留完整，方便廚房快速備料使用。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">☕</div>
+        <h3>咖啡 &amp; 朱古力</h3>
+        <p>沖調咖啡及朱古力飲品，配合Monin糖漿及醬料，打造精品飲品菜單。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🫙</div>
+        <h3>罐頭食品</h3>
+        <p>進口罐頭生果及罐頭蔬菜，長效保存，適合大量備用存貨。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🍰</div>
+        <h3>急凍蛋糕</h3>
+        <p>急凍甜品及蛋糕系列，品質穩定，方便餐廳及甜品店快速出品。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🌱</div>
+        <h3>植物性飲料</h3>
+        <p>植物肉、鮮豆漿、植物性忌廉及其他素食友善產品，迎合健康飲食趨勢。</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🍬</div>
+        <h3>糖漿 &amp; 醬料</h3>
+        <p>Monin品牌糖漿、醬料及果茸特調，康民濃縮飲品及糖漿，為特飲調製提供無限創意。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPERATIONS -->
+<section class="ops-bg" id="operations">
+  <div class="section-inner">
+    <div class="section-tag">業務規模</div>
+    <h2 class="section-title">強大的<span>物流與運營能力</span></h2>
+    <p class="section-sub">配備完善的倉儲設施、冷藏物流車隊及專業員工團隊，確保每日準時、穩定地向全港客戶配送新鮮食品飲料。</p>
+    <div class="ops-grid">
+      <div class="ops-card">
+        <div class="ops-num">22</div>
+        <div class="ops-unit">輛冷藏貨車（香港）</div>
+        <h3>冷藏物流車隊</h3>
+        <p>勁寶物流（香港）有限公司負責全港配送，22輛冷藏貨車及2輛普通送貨車，香港總承載量93公噸；澳門4輛冷藏車，承載量25公噸。</p>
+      </div>
+      <div class="ops-card">
+        <div class="ops-num">150,000</div>
+        <div class="ops-unit">平方英尺廠房面積</div>
+        <h3>沙田火炭廠房</h3>
+        <p>總部位於沙田火炭工業區，廠房面積約15萬平方英尺，涵蓋果汁製造廠、飲料加工設施、冷藏倉庫及辦公室。</p>
+      </div>
+      <div class="ops-card">
+        <div class="ops-num">180+</div>
+        <div class="ops-unit">名香港員工</div>
+        <h3>專業員工團隊</h3>
+        <p>由1986年不足10人的創業團隊，發展至今香港子公司約180名員工，全集團合共約300名員工，支撐龐大的業務運營。</p>
+      </div>
+      <div class="ops-card">
+        <div class="ops-num">2,000+</div>
+        <div class="ops-unit">香港活躍客戶</div>
+        <h3>廣泛客戶網絡</h3>
+        <p>在香港服務近2,000個活躍客戶，覆蓋逾3,000個食肆店鋪；澳門業務向幾乎所有主要賭場酒店供應食品飲料。</p>
+      </div>
+      <div class="ops-card">
+        <div class="ops-num">ISO</div>
+        <div class="ops-unit">22000 + HACCP 認證</div>
+        <h3>國際品質認證</h3>
+        <p>2009年9月起通過ISO 22000:2005及HACCP國際認證，持有香港食物環境衛生署食品製造廠牌照（1986年起）。</p>
+      </div>
+      <div class="ops-card">
+        <div class="ops-num">8</div>
+        <div class="ops-unit">個附屬及聯營公司</div>
+        <h3>跨地區業務網絡</h3>
+        <p>集團旗下包含香港、澳門、上海、深圳、馬來西亞及新加坡的附屬公司，構建完整的大中華及東南亞業務版圖。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients-bg" id="clients">
+  <div class="section-inner">
+    <div class="section-tag">服務客戶</div>
+    <h2 class="section-title">服務各類型<span>餐飲機構</span></h2>
+    <p class="section-sub">勁寶食品服務香港各行各業的餐飲客戶，從高端酒店到社區食堂，提供可靠、穩定的食品飲料供應。</p>
+    <div class="clients-grid">
+      <div class="client-chip">
+        <div class="client-chip-icon">✈️</div>
+        <div class="client-chip-label">航空公司餐飲服務商</div>
+      </div>
+      <div class="client-chip">
+        <div class="client-chip-icon">🏨</div>
+        <div class="client-chip-label">酒店旅館</div>
+      </div>
+      <div class="client-chip">
+        <div class="client-chip-icon">🏪</div>
+        <div class="client-chip-label">便利店</div>
+      </div>
+      <div class="client-chip">
+        <div class="client-chip-icon">☕</div>
+        <div class="client-chip-label">咖啡店</div>
+      </div>
+      <div class="client-chip">
+        <div class="client-chip-icon">🍔</div>
+        <div class="client-chip-label">快餐店</div>
+      </div>
+      <div class="client-chip">
+        <div class="client-chip-icon">🍽️</div>
+        <div class="client-chip-label">餐廳</div>
+      </div>
+      <div class="client-chip">
+        <div class="client-chip-icon">🥐</div>
+        <div class="client-chip-label">麵包店</div>
+      </div>
+      <div class="client-chip">
+        <div class="client-chip-icon">🏌️</div>
+        <div class="client-chip-label">會所</div>
+      </div>
+      <div class="client-chip">
+        <div class="client-chip-icon">🍺</div>
+        <div class="client-chip-label">酒吧</div>
+      </div>
+      <div class="client-chip">
+        <div class="client-chip-icon">🍱</div>
+        <div class="client-chip-label">飯堂</div>
+      </div>
+      <div class="client-chip">
+        <div class="client-chip-icon">🏭</div>
+        <div class="client-chip-label">食品廠</div>
+      </div>
+      <div class="client-chip">
+        <div class="client-chip-icon">🎰</div>
+        <div class="client-chip-label">澳門賭場酒店</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBSIDIARIES -->
+<section class="subs-bg" id="subsidiaries">
+  <div class="section-inner">
+    <div class="section-tag">集團架構</div>
+    <h2 class="section-title">附屬及<span>聯營公司</span></h2>
+    <p class="section-sub">勁寶集團業務遍及大中華及東南亞主要市場，以香港為核心，輻射澳門、上海、深圳、馬來西亞及新加坡。</p>
+    <div class="subs-grid">
+      <div class="sub-card">
+        <div class="sub-flag">🇭🇰</div>
+        <div class="sub-region">香港</div>
+        <h3>勁寶食品(香港)有限公司</h3>
+        <p>集團香港核心業務子公司，承接所有香港本地食品飲料批發分銷業務，自2018年1月1日起接管集團香港業務。</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-flag">🇭🇰</div>
+        <div class="sub-region">香港</div>
+        <h3>勁寶物流(香港)有限公司</h3>
+        <p>負責勁寶食品（香港）全部香港物流及配送業務，管理22輛冷藏貨車，確保每日準時配送全港各客戶。</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-flag">🇭🇰</div>
+        <div class="sub-region">香港</div>
+        <h3>凱加食品(香港)有限公司</h3>
+        <p>凱加品牌香港業務，專注急凍蔬菜及相關產品的本港分銷業務。</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-flag">🇲🇴</div>
+        <div class="sub-region">澳門</div>
+        <h3>勁寶食品(澳門)有限公司</h3>
+        <p>向澳門幾乎所有主要賭場酒店供應食品飲料，擁有4輛冷藏貨車，總承載量25公噸。</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-flag">🇨🇳</div>
+        <div class="sub-region">上海</div>
+        <h3>上海勁寶食品有限公司</h3>
+        <p>負責集團上海及長三角地區的食品飲料業務，開拓內地高端餐飲市場。</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-flag">🇨🇳</div>
+        <div class="sub-region">深圳</div>
+        <h3>深圳勁寶食品有限公司</h3>
+        <p>覆蓋大灣區深圳及珠三角市場，配合集團粵港澳大灣區整體業務發展策略。</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-flag">🇲🇾</div>
+        <div class="sub-region">馬來西亞</div>
+        <h3>凱加食品(馬來西亞)有限公司</h3>
+        <p>凱加品牌馬來西亞業務，開拓東南亞食品市場，擴大集團在亞太地區的業務版圖。</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-flag">🇸🇬</div>
+        <div class="sub-region">新加坡</div>
+        <h3>凱加食品(星加坡)有限公司</h3>
+        <p>凱加品牌新加坡業務，服務新加坡餐飲市場，進一步鞏固集團東南亞業務佈局。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section class="certs-bg" id="certs">
+  <div class="section-inner">
+    <div class="section-tag">品質保證</div>
+    <h2 class="section-title">國際認可的<span>品質標準</span></h2>
+    <p class="section-sub">勁寶食品自成立以來持續維持嚴格的食品安全標準，獲得多項國際及本地權威機構的認證。</p>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-icon">🏆</div>
+        <h3>ISO 22000:2005 認證</h3>
+        <p>自2009年9月起通過國際認可認證有限公司（ACI）頒發的ISO 22000食品安全管理體系認證，確保整個食品供應鏈的安全管理符合國際標準。</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">✅</div>
+        <h3>HACCP 認證</h3>
+        <p>同步持有HACCP（危害分析關鍵控制點）認證，系統性識別及控制食品生產過程中的潛在危害，保障食品安全。</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🏛️</div>
+        <h3>食品製造廠牌照</h3>
+        <p>自1986年創立起持有香港食物環境衛生署頒發的食品製造廠牌照，在本港合法合規從事食品生產及加工業務。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-bg" id="contact">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2 class="section-title">開始<span>業務合作</span></h2>
+    <p class="section-sub">歡迎餐廳、酒店、食品企業及各類餐飲商與我們聯絡，了解更多產品資訊及訂購安排。</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-list">
+          <div class="ci-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">總部地址</div>
+              <div class="ci-val">沙田火炭工業區<br>香港</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🌐</div>
+            <div>
+              <div class="ci-label">官方網站</div>
+              <div class="ci-val"><a href="https://www.anwfood.com" target="_blank" rel="noopener">www.anwfood.com</a></div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">📦</div>
+            <div>
+              <div class="ci-label">服務地區</div>
+              <div class="ci-val">香港全境 · 澳門 · 大中華區</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🕐</div>
+            <div>
+              <div class="ci-label">業務查詢</div>
+              <div class="ci-val">新客戶訂貨 · 產品查詢 · 送貨安排</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>發送查詢</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>公司</label>
+            <input type="text" placeholder="公司 / 食肆名稱">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>查詢類別</label>
+          <select>
+            <option value="">請選擇查詢類別</option>
+            <option>新客戶開戶查詢</option>
+            <option>產品及價格查詢</option>
+            <option>送貨安排</option>
+            <option>業務合作</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea placeholder="請描述您的需求，包括業務類型、所需產品及數量等。"></textarea>
+        </div>
+        <button class="form-submit">提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>勁寶食品有限公司</h3>
+        <p>自1986年起服務香港及澳門餐飲業，從單一橙汁產品發展為擁有逾300名員工、服務2,000+客戶的領先食品飲料批發商，業務遍及大中華及東南亞。</p>
+      </div>
+      <div>
+        <h4>主要產品</h4>
+        <ul>
+          <li><a href="#products">鮮榨果汁</a></li>
+          <li><a href="#products">奶製品</a></li>
+          <li><a href="#products">急凍食品</a></li>
+          <li><a href="#products">糖漿醬料</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>業務網絡</h4>
+        <ul>
+          <li><a href="#subsidiaries">香港業務</a></li>
+          <li><a href="#subsidiaries">澳門業務</a></li>
+          <li><a href="#subsidiaries">中國大陸</a></li>
+          <li><a href="#subsidiaries">東南亞</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>快速連結</h4>
+        <ul>
+          <li><a href="#operations">業務規模</a></li>
+          <li><a href="#certs">品質認證</a></li>
+          <li><a href="https://www.anwfood.com" target="_blank">官方網站</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 勁寶食品有限公司 版權所有</p>
+      <p>沙田火炭 · 香港 · 食品飲料批發供應</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
