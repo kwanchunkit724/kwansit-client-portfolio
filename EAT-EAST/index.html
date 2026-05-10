@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eat East 波仔阳光一代 | 冷凍快餐 · 冷凍食品(小食)</title>
+<style>
+:root {
+  --bg:       #0a0602;
+  --surface:  #181008;
+  --card:     #221808;
+  --border:   #3a2810;
+  --acc1:     #c84010;
+  --acc2:     #f06020;
+  --acc3:     #f8902a;
+  --gold:     #e8a030;
+  --text:     #f0e8d8;
+  --muted:    #b09870;
+  --radius:   10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;font-size:16px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,6,2,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--acc1),var(--acc3));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.logo-text{font-size:1.2rem;font-weight:700;color:var(--text)}
+.logo-sub{font-size:.72rem;color:var(--muted);letter-spacing:.05em}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
+.nav-links a:hover{color:var(--acc3)}
+.nav-cta{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:9px 22px;border-radius:6px;font-size:.88rem;font-weight:600;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(200,64,16,.12) 0%,transparent 70%),var(--bg)}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,64,16,.15);border:1px solid rgba(200,64,16,.4);border-radius:20px;padding:6px 16px;font-size:.82rem;color:var(--acc3);margin-bottom:24px}
+.hero h1{font-size:3rem;font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:var(--acc3)}
+.hero-en{font-size:1.05rem;color:var(--muted);margin-bottom:20px;letter-spacing:.05em}
+.hero-desc{font-size:1.05rem;color:var(--muted);margin-bottom:36px;max-width:520px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:13px 30px;border-radius:7px;font-size:.95rem;font-weight:700;text-decoration:none;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:13px 30px;border-radius:7px;font-size:.95rem;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--acc2);color:var(--acc2)}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hero-card h3{font-size:1rem;color:var(--acc3);margin-bottom:20px;text-transform:uppercase;letter-spacing:.08em}
+.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.info-row:last-child{border-bottom:none}
+.info-label{color:var(--muted)}
+.info-val{color:var(--text);font-weight:600;text-align:right;max-width:60%}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-box{text-align:center}
+.stat-num{font-size:2.2rem;font-weight:800;color:var(--acc3);display:block}
+.stat-label{font-size:.85rem;color:var(--muted);margin-top:4px}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(200,64,16,.15);border:1px solid rgba(200,64,16,.35);border-radius:4px;padding:4px 12px;font-size:.78rem;color:var(--acc2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:2rem;font-weight:800;margin-bottom:12px}
+.section-sub{color:var(--muted);font-size:1rem;max-width:600px}
+.section-head{margin-bottom:48px}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* PRODUCT GRID */
+.products{background:var(--bg)}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .25s,transform .25s}
+.prod-card:hover{border-color:var(--acc2);transform:translateY(-4px)}
+.prod-icon{font-size:2.4rem;margin-bottom:16px}
+.prod-name{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.prod-zh{font-size:.82rem;color:var(--muted);margin-bottom:12px}
+.prod-desc{font-size:.9rem;color:var(--muted);line-height:1.65}
+.prod-tag{display:inline-block;background:rgba(240,96,32,.12);border:1px solid rgba(240,96,32,.3);border-radius:4px;padding:3px 10px;font-size:.76rem;color:var(--acc2);margin-top:12px}
+
+/* BRAND STORY */
+.brand-story{background:var(--surface)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.story-content h2{font-size:2rem;font-weight:800;margin-bottom:20px}
+.story-content p{color:var(--muted);line-height:1.8;margin-bottom:16px}
+.story-highlights{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.highlight-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px}
+.highlight-icon{font-size:1.4rem;margin-bottom:8px}
+.highlight-title{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.highlight-text{font-size:.82rem;color:var(--muted)}
+.story-visual{background:linear-gradient(135deg,var(--card),var(--surface));border:1px solid var(--border);border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:20px}
+.visual-stat{text-align:center;padding:20px;background:var(--bg);border-radius:10px}
+.visual-num{font-size:2rem;font-weight:800;color:var(--acc3)}
+.visual-label{font-size:.85rem;color:var(--muted);margin-top:4px}
+
+/* CATEGORIES */
+.categories{background:var(--bg)}
+.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.cat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;display:flex;gap:20px;align-items:flex-start;transition:border-color .25s}
+.cat-card:hover{border-color:var(--acc3)}
+.cat-icon{width:52px;height:52px;border-radius:8px;background:linear-gradient(135deg,var(--acc1),var(--acc2));display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.cat-body h3{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.cat-body .cat-en{font-size:.78rem;color:var(--acc3);margin-bottom:8px}
+.cat-body p{font-size:.88rem;color:var(--muted);line-height:1.6}
+
+/* QUALITY */
+.quality{background:var(--surface)}
+.quality-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.quality-item{text-align:center;padding:32px 24px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius)}
+.quality-icon{font-size:2.4rem;margin-bottom:16px}
+.quality-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.quality-desc{font-size:.88rem;color:var(--muted);line-height:1.6}
+
+/* CONTACT */
+.contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h2{font-size:1.8rem;font-weight:800;margin-bottom:16px}
+.contact-info p{color:var(--muted);margin-bottom:28px;line-height:1.7}
+.contact-items{display:flex;flex-direction:column;gap:16px}
+.contact-item{display:flex;align-items:flex-start;gap:14px}
+.contact-icon{width:40px;height:40px;background:rgba(200,64,16,.15);border:1px solid rgba(200,64,16,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-detail strong{display:block;color:var(--text);font-size:.9rem;margin-bottom:2px}
+.contact-detail span{color:var(--muted);font-size:.85rem}
+form{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:18px}
+form label{font-size:.85rem;color:var(--muted);margin-bottom:4px;display:block}
+form input,form select,form textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:11px 14px;color:var(--text);font-size:.92rem;outline:none;transition:border-color .2s;font-family:inherit}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--acc2)}
+form textarea{resize:vertical;min-height:110px}
+form button{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;border:none;padding:13px;border-radius:7px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s}
+form button:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 5% 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{color:var(--muted);font-size:.9rem;line-height:1.7;margin-top:12px}
+.footer-col h4{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:16px;text-transform:uppercase;letter-spacing:.08em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
+.footer-col a:hover{color:var(--acc3)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{color:var(--muted);font-size:.83rem}
+.footer-hk{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:.83rem}
+
+@media(max-width:900px){
+  .hero-inner,.story-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .hero h1{font-size:2.2rem}
+  .prod-grid,.quality-grid{grid-template-columns:1fr 1fr}
+  .cat-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  .prod-grid,.quality-grid,.story-highlights{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">🍱</div>
+      <div>
+        <div class="logo-text">Eat East</div>
+        <div class="logo-sub">波仔阳光一代有限公司</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#products">產品系列</a></li>
+      <li><a href="#story">品牌故事</a></li>
+      <li><a href="#categories">食品分類</a></li>
+      <li><a href="#quality">品質承諾</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">立即訂購</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🌅 阳光一代 · 香港製造</div>
+      <h1>香港<span>正宗風味</span><br>冷凍美食</h1>
+      <div class="hero-en">Eat East — Authentic Hong Kong Frozen Food</div>
+      <p class="hero-desc">
+        Eat East 波仔阳光一代，源自香港，專注研發各式冷凍快餐及冷凍小食。
+        每件產品精選優質食材，保留地道港式風味，讓您隨時隨地享受家鄉滋味。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#products">探索產品</a>
+        <a class="btn-outline" href="#contact">批發查詢</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>公司資料</h3>
+      <div class="info-row">
+        <span class="info-label">品牌名稱</span>
+        <span class="info-val">Eat East</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">公司名稱</span>
+        <span class="info-val">波仔阳光一代有限公司</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">主要業務</span>
+        <span class="info-val">冷凍快餐 · 冷凍小食</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">服務地區</span>
+        <span class="info-val">香港 · 大灣區</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">供應對象</span>
+        <span class="info-val">零售 · 餐飲 · 批發</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">語言服務</span>
+        <span class="info-val">繁體中文 · English</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-box">
+      <span class="stat-num">50+</span>
+      <div class="stat-label">冷凍產品種類</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">-18°C</span>
+      <div class="stat-label">冷凍儲存標準</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">全港</span>
+      <div class="stat-label">配送網絡覆蓋</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">100%</span>
+      <div class="stat-label">食品安全標準</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Product Range</div>
+      <h2 class="section-title">招牌冷凍產品系列</h2>
+      <p class="section-sub">精選食材，急速冷凍鎖鮮，還原最地道的香港風味</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-icon">🍢</div>
+        <div class="prod-name">港式小食系列</div>
+        <div class="prod-zh">Hong Kong Street Snacks</div>
+        <p class="prod-desc">
+          魚蛋、牛丸、豬皮、雞翼尖……街頭地道風味，急速冷凍保鮮，隨時隨地重現銅鑼灣廟街滋味。
+        </p>
+        <span class="prod-tag">暢銷首選</span>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🍜</div>
+        <div class="prod-name">冷凍即食麵食</div>
+        <div class="prod-zh">Frozen Ready Noodles</div>
+        <p class="prod-desc">
+          港式湯底配搭各式麵條，牛腩、蝦子、叉燒等經典口味，三分鐘即食，方便快捷。
+        </p>
+        <span class="prod-tag">快速便捷</span>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🥟</div>
+        <div class="prod-name">點心冷凍系列</div>
+        <div class="prod-zh">Frozen Dim Sum</div>
+        <p class="prod-desc">
+          蝦餃、燒賣、腸粉、蘿蔔糕等傳統港式點心，工廠製作同等品質，蒸熱即享。
+        </p>
+        <span class="prod-tag">傳統點心</span>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🥩</div>
+        <div class="prod-name">冷凍肉製品</div>
+        <div class="prod-zh">Frozen Meat Products</div>
+        <p class="prod-desc">
+          豬扒、雞排、牛肉片、叉燒等冷凍肉品，選用優質原材料，獨立包裝，按需取用。
+        </p>
+        <span class="prod-tag">優質肉品</span>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🍱</div>
+        <div class="prod-name">冷凍快餐套餐</div>
+        <div class="prod-zh">Frozen Meal Sets</div>
+        <p class="prod-desc">
+          完整的冷凍快餐套餐，主食加配菜一次齊備，微波爐或蒸爐加熱即可，適合辦公室及家庭。
+        </p>
+        <span class="prod-tag">一餐齊備</span>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🧆</div>
+        <div class="prod-name">冷凍炸物系列</div>
+        <div class="prod-zh">Frozen Fried Snacks</div>
+        <p class="prod-desc">
+          炸魚皮、炸雞塊、春卷、芋角、鹹水角等各式炸物，解凍即炸，皮脆肉嫩，派對聚會必備。
+        </p>
+        <span class="prod-tag">派對首選</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- BRAND STORY -->
+<section class="brand-story" id="story">
+  <div class="section-inner">
+    <div class="story-grid">
+      <div class="story-content">
+        <div class="section-tag">Our Story</div>
+        <h2>波仔的阳光故事</h2>
+        <p>
+          Eat East 波仔阳光一代有限公司，由一班熱愛香港飲食文化的年輕人創立。
+          創辦人「波仔」自小在街頭小食攤邊長大，立志將那份街頭風味帶進每個家庭的冰箱。
+        </p>
+        <p>
+          品牌名稱「阳光一代」象徵著充滿朝氣、積極向上的創業精神。我們相信，
+          一頓美食不僅填飽肚子，更能帶來溫暖與歡笑——這正是 Eat East 的核心價值。
+        </p>
+        <p>
+          從最初幾款拳頭產品開始，到如今逾五十種冷凍食品，Eat East 堅持以最嚴格的食品
+          安全標準、最貼近地道的口味研發，服務香港零售及餐飲市場。
+        </p>
+        <div class="story-highlights">
+          <div class="highlight-item">
+            <div class="highlight-icon">🏭</div>
+            <div class="highlight-title">本地生產</div>
+            <div class="highlight-text">香港本地加工生產，確保新鮮品質</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">❄️</div>
+            <div class="highlight-title">急速冷凍</div>
+            <div class="highlight-text">IQF急凍技術，鎖住食材鮮味</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🛡️</div>
+            <div class="highlight-title">安全認證</div>
+            <div class="highlight-text">符合香港食物安全標準及法例</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🚚</div>
+            <div class="highlight-title">全港配送</div>
+            <div class="highlight-text">冷鏈物流確保全程冷凍運輸</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-visual">
+        <div class="visual-stat">
+          <div class="visual-num">50+</div>
+          <div class="visual-label">冷凍產品種類</div>
+        </div>
+        <div class="visual-stat">
+          <div class="visual-num">全港</div>
+          <div class="visual-label">零售網絡覆蓋</div>
+        </div>
+        <div class="visual-stat">
+          <div class="visual-num">餐廳 · 超市 · 便利店</div>
+          <div class="visual-label">多元銷售渠道</div>
+        </div>
+        <div class="visual-stat">
+          <div class="visual-num">B2B · B2C</div>
+          <div class="visual-label">批發及零售並重</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Food Categories</div>
+      <h2 class="section-title">冷凍食品分類</h2>
+      <p class="section-sub">涵蓋多個食品類別，滿足零售商、餐廳及家庭用戶的不同需求</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-icon">🍢</div>
+        <div class="cat-body">
+          <h3>冷凍快餐 (Ready Meals)</h3>
+          <div class="cat-en">Frozen Fast Food</div>
+          <p>即食冷凍快餐，包括港式炒飯、炒麵、飯盒等，加熱三至五分鐘即可享用，適合忙碌都市人。</p>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🥟</div>
+        <div class="cat-body">
+          <h3>冷凍小食 (Snacks)</h3>
+          <div class="cat-en">Frozen Snacks</div>
+          <p>各式冷凍小食包括魚蛋、牛丸、雞翼、炸物等，派對、宵夜、下午茶的理想選擇。</p>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🥩</div>
+        <div class="cat-body">
+          <h3>冷凍肉品 (Meat)</h3>
+          <div class="cat-en">Frozen Meat</div>
+          <p>精選冷凍豬、牛、雞肉製品，包括醃制肉片、炸豬扒、雞排等，廚房必備食材。</p>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🦐</div>
+        <div class="cat-body">
+          <h3>冷凍海鮮 (Seafood)</h3>
+          <div class="cat-en">Frozen Seafood</div>
+          <p>急凍蝦、魚柳、帶子、魷魚等海鮮製品，保留原鮮風味，配合多種烹調方法。</p>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🫕</div>
+        <div class="cat-body">
+          <h3>火鍋料 (Hot Pot)</h3>
+          <div class="cat-en">Hot Pot Ingredients</div>
+          <p>豐富的火鍋配料系列，包括各式魚蛋、肉丸、豆腐、餃子，一次滿足全桌火鍋需求。</p>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🍞</div>
+        <div class="cat-body">
+          <h3>冷凍烘焙 (Bakery)</h3>
+          <div class="cat-en">Frozen Bakery</div>
+          <p>急凍蛋撻皮、菠蘿包、港式麵包等烘焙產品，烤箱加熱即可，還原新鮮出爐口感。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- QUALITY -->
+<section class="quality" id="quality">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Quality Assurance</div>
+      <h2 class="section-title">品質與食品安全承諾</h2>
+      <p class="section-sub">從原材料採購到冷鏈配送，每一環節嚴格把關</p>
+    </div>
+    <div class="quality-grid">
+      <div class="quality-item">
+        <div class="quality-icon">🔬</div>
+        <div class="quality-title">原材料嚴選</div>
+        <p class="quality-desc">每批原材料均經過嚴格篩選及化驗，符合香港及國際食品安全標準方可投入生產。</p>
+      </div>
+      <div class="quality-item">
+        <div class="quality-icon">❄️</div>
+        <div class="quality-title">IQF急速冷凍</div>
+        <p class="quality-desc">採用個別快速冷凍（IQF）技術，最大限度鎖住食材水分、營養及鮮味，保持最佳口感。</p>
+      </div>
+      <div class="quality-item">
+        <div class="quality-icon">📋</div>
+        <div class="quality-title">HACCP管理</div>
+        <p class="quality-desc">生產全程按危害分析關鍵控制點（HACCP）標準執行，確保每件產品的食品安全。</p>
+      </div>
+      <div class="quality-item">
+        <div class="quality-icon">🚛</div>
+        <div class="quality-title">冷鏈物流</div>
+        <p class="quality-desc">全程冷鏈運輸，由廠房至零售點保持 -18°C 以下，確保產品品質不受影響。</p>
+      </div>
+      <div class="quality-item">
+        <div class="quality-icon">🏷️</div>
+        <div class="quality-title">清晰標籤</div>
+        <p class="quality-desc">每件產品清楚標示成分、營養資料、過敏原及有效日期，符合香港食物及藥物條例。</p>
+      </div>
+      <div class="quality-item">
+        <div class="quality-icon">♻️</div>
+        <div class="quality-title">環保包裝</div>
+        <p class="quality-desc">採用可回收及環保包裝材料，減少冷凍食品行業的碳足跡，為可持續發展出一份力。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-tag">Contact Us</div>
+        <h2>聯絡 Eat East</h2>
+        <p>
+          無論您是零售商、餐廳、超市還是個人客戶，Eat East 均提供靈活的採購及批發方案。
+          請透過以下表格或聯絡方式與我們洽談，我們將盡快回覆您的查詢。
+        </p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>服務地區</strong>
+              <span>香港全境 · 澳門 · 大灣區</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-detail">
+              <strong>辦公時間</strong>
+              <span>星期一至五 09:00–18:00<br>星期六 09:00–13:00</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🚚</div>
+            <div class="contact-detail">
+              <strong>訂單及配送</strong>
+              <span>批發訂單歡迎查詢，可安排定期送貨</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📦</div>
+            <div class="contact-detail">
+              <strong>最低訂購量</strong>
+              <span>批發客戶最低訂購量按產品類別而定</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form>
+        <div>
+          <label>姓名 / Name *</label>
+          <input type="text" placeholder="請輸入姓名">
+        </div>
+        <div>
+          <label>公司名稱 / Company</label>
+          <input type="text" placeholder="公司或機構名稱（如適用）">
+        </div>
+        <div>
+          <label>電郵地址 / Email *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div>
+          <label>聯絡電話 / Phone</label>
+          <input type="tel" placeholder="+852 xxxx xxxx">
+        </div>
+        <div>
+          <label>查詢類別 / Enquiry Type</label>
+          <select>
+            <option>批發採購查詢</option>
+            <option>產品資料索取</option>
+            <option>配送安排</option>
+            <option>OEM代工生產</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div>
+          <label>查詢內容 / Message *</label>
+          <textarea placeholder="請詳細描述您的需求或查詢……"></textarea>
+        </div>
+        <button type="submit">發送查詢 →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">🍱</div>
+          <div>
+            <div class="logo-text">Eat East</div>
+            <div class="logo-sub">波仔阳光一代有限公司</div>
+          </div>
+        </div>
+        <p>Eat East 致力將地道香港風味帶進每個家庭，提供高品質冷凍快餐及冷凍小食，服務零售、餐飲及批發市場。</p>
+      </div>
+      <div class="footer-col">
+        <h4>產品系列</h4>
+        <ul>
+          <li><a href="#products">港式小食</a></li>
+          <li><a href="#products">冷凍即食麵食</a></li>
+          <li><a href="#products">點心系列</a></li>
+          <li><a href="#products">冷凍肉製品</a></li>
+          <li><a href="#products">冷凍炸物</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>關於我們</h4>
+        <ul>
+          <li><a href="#story">品牌故事</a></li>
+          <li><a href="#quality">品質承諾</a></li>
+          <li><a href="#categories">食品分類</a></li>
+          <li><a href="#contact">批發查詢</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 波仔阳光一代有限公司 (Eat East). All rights reserved.</div>
+      <div class="footer-hk">🇭🇰 香港製造 · Made in Hong Kong</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
