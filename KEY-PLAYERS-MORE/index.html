@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Key Players &amp; More — Hong Kong Logistics Consulting &amp; Talent Solutions</title>
+<style>
+  :root {
+    --bg:       #080610;
+    --surface:  #0e0c1c;
+    --card:     #141028;
+    --border:   #221c40;
+    --accent1:  #3a1880;
+    --accent2:  #5828b8;
+    --accent3:  #7848e8;
+    --violet:   #9060f0;
+    --amber:    #c08020;
+    --amber2:   #e0a030;
+    --text:     #eae8f8;
+    --muted:    #6858a0;
+    --silver:   #a098c8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.7; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(8,6,16,0.97); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .nav-logo {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent3));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.9rem; color: #fff;
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent3); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px;
+    font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  .hero {
+    min-height: 100vh; padding: 100px 2.5rem 60px;
+    background:
+      radial-gradient(ellipse 80% 55% at 65% 35%, rgba(58,24,128,0.28) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(192,128,32,0.1) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(58,24,128,0.2); border: 1px solid rgba(120,72,232,0.3);
+    color: var(--accent3); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.5rem;
+  }
+  .hero h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  .hero h1 span { color: var(--accent3); }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); margin-bottom: 2rem; max-width: 520px; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 0.8rem 1.8rem; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(58,24,128,0.45); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 2px solid var(--border); color: var(--text); padding: 0.75rem 1.8rem;
+    border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: border-color .2s, color .2s;
+  }
+  .btn-outline:hover { border-color: var(--accent3); color: var(--accent3); }
+
+  .info-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 2rem; box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  }
+  .info-card h3 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--violet); margin-bottom: 1.2rem; }
+  .info-row { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(34,28,64,0.8); }
+  .info-row:last-child { border-bottom: none; }
+  .info-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .info-label { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; }
+  .info-val { font-size: 0.9rem; color: var(--text); }
+
+  .stats { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2.5rem; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { text-align: center; padding: 1.5rem 1rem; position: relative; }
+  .stat:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 25%; height: 50%; width: 1px; background: var(--border); }
+  .stat-num { font-size: 2rem; font-weight: 900; color: var(--accent3); }
+  .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.3rem; }
+
+  section { padding: 80px 2.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; background: rgba(58,24,128,0.15); border: 1px solid rgba(120,72,232,0.25);
+    color: var(--accent3); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.8rem; border-radius: 20px; margin-bottom: 0.8rem;
+  }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 1rem; }
+  .section-title span { color: var(--accent3); }
+  .section-sub { font-size: 1rem; color: var(--muted); max-width: 600px; margin-bottom: 3rem; }
+
+  .services-bg { background: var(--bg); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .svc-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 2rem; transition: border-color .25s, transform .25s;
+  }
+  .svc-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+  .svc-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .svc-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .svc-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.65; }
+
+  .talent-bg { background: var(--surface); }
+  .talent-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .talent-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 2rem; display: flex; gap: 1.2rem; transition: border-color .25s;
+  }
+  .talent-card:hover { border-color: var(--amber); }
+  .talent-icon {
+    width: 48px; height: 48px; border-radius: 10px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--amber), var(--amber2));
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+  }
+  .talent-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .talent-card p { font-size: 0.87rem; color: var(--muted); }
+
+  .sectors-bg { background: var(--bg); }
+  .sectors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .sector-chip {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1.5rem; display: flex; align-items: center; gap: 0.8rem; transition: border-color .2s;
+  }
+  .sector-chip:hover { border-color: var(--accent2); }
+  .sector-chip-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .sector-chip-name { font-size: 0.92rem; font-weight: 600; color: var(--text); }
+
+  .contact-bg { background: var(--surface); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .ci-list { display: flex; flex-direction: column; gap: 1.2rem; }
+  .ci-item { display: flex; gap: 0.9rem; }
+  .ci-icon {
+    width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0;
+    background: rgba(58,24,128,0.2); border: 1px solid rgba(120,72,232,0.25);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .ci-label { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
+  .ci-val { font-size: 0.9rem; color: var(--text); }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem; }
+  .contact-form h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.76rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); border-radius: 6px; padding: 0.7rem 0.9rem; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent2); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select option { background: var(--surface); }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 0.85rem; border-radius: 6px;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.85; }
+
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 60px 2.5rem 30px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.8rem; color: var(--accent3); }
+  .footer-brand p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; }
+  footer h4 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  footer ul li a { color: var(--text); text-decoration: none; font-size: 0.87rem; transition: color .2s; }
+  footer ul li a:hover { color: var(--accent3); }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  .footer-bottom p { font-size: 0.78rem; color: var(--muted); }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .info-card { display: none; }
+    .services-grid, .sectors-grid { grid-template-columns: 1fr 1fr; }
+    .talent-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .services-grid, .sectors-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">KP</div>
+    <span class="nav-name">Key Players &amp; More</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#talent">Talent Solutions</a></li>
+    <li><a href="#sectors">Sectors</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Work With Us</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🚀 Hong Kong · Logistics &amp; Consulting</div>
+      <h1>Connecting the <span>Key Players</span><br>in Logistics &amp; Trade</h1>
+      <p class="hero-sub">Key Players &amp; More is a Hong Kong-based logistics consulting and talent solutions firm. We help supply chain businesses find the right people, optimise their operations, and navigate the complexities of international trade in Asia and beyond.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#services">Our Services</a>
+        <a class="btn-outline" href="#contact">Get in Touch</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>About Us</h3>
+      <div class="info-row">
+        <span class="info-icon">🏢</span>
+        <div>
+          <div class="info-label">Company</div>
+          <div class="info-val">Key Players &amp; More</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div>
+          <div class="info-label">Location</div>
+          <div class="info-val">Hong Kong</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🚚</span>
+        <div>
+          <div class="info-label">Focus</div>
+          <div class="info-val">Logistics · Supply Chain · Trade</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🌏</span>
+        <div>
+          <div class="info-label">Market</div>
+          <div class="info-val">Asia Pacific · Global</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">Asia</div>
+      <div class="stat-label">Market Focus</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">B2B</div>
+      <div class="stat-label">Client Base</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">Headquarters</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">360°</div>
+      <div class="stat-label">Logistics Support</div>
+    </div>
+  </div>
+</div>
+
+<section class="services-bg" id="services">
+  <div class="section-inner">
+    <div class="section-tag">Services</div>
+    <h2 class="section-title">What We <span>Do</span></h2>
+    <p class="section-sub">From operational consulting to executive recruitment, we bring specialist expertise to every engagement — helping logistics businesses grow, compete, and perform at their best.</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">📊</div>
+        <h3>Logistics Consulting</h3>
+        <p>Process review, network design, and operational improvement for freight forwarders, 3PLs, and shipper logistics teams. We identify inefficiencies and deliver actionable improvement plans.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔍</div>
+        <h3>Executive Search</h3>
+        <p>Specialist recruitment for senior and mid-level roles across logistics, supply chain, shipping, and trade finance — connecting companies with the key players that drive growth.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🌐</div>
+        <h3>Market Entry Advisory</h3>
+        <p>Strategic guidance for logistics companies entering new Asian markets — covering regulatory requirements, partner identification, local operations setup, and go-to-market strategy.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🤝</div>
+        <h3>Business Development</h3>
+        <p>Sales strategy, channel partner identification, and key account management support for logistics service providers looking to grow their client base in Hong Kong and across Asia.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📋</div>
+        <h3>Compliance &amp; Trade Advisory</h3>
+        <p>Guidance on trade compliance, import/export regulations, and customs procedures across key Asian markets — helping businesses stay compliant as regulations evolve.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏋️</div>
+        <h3>Training &amp; Development</h3>
+        <p>Tailored training programmes for logistics teams — covering freight operations, customer service, trade documentation, and leadership development for emerging managers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="talent-bg" id="talent">
+  <div class="section-inner">
+    <div class="section-tag">Talent Solutions</div>
+    <h2 class="section-title">Finding the <span>Right People</span></h2>
+    <p class="section-sub">Great logistics businesses are built on great people. Our talent solutions connect you with experienced professionals across the full supply chain spectrum.</p>
+    <div class="talent-grid">
+      <div class="talent-card">
+        <div class="talent-icon">🎯</div>
+        <div>
+          <h3>Executive &amp; Senior Leadership</h3>
+          <p>C-suite and VP-level placements for logistics companies — from Country Managers and Operations Directors to Chief Supply Chain Officers. Confidential searches handled with discretion.</p>
+        </div>
+      </div>
+      <div class="talent-card">
+        <div class="talent-icon">👤</div>
+        <div>
+          <h3>Mid-Level Specialists</h3>
+          <p>Experienced freight operations managers, trade compliance officers, business development managers, and logistics analysts placed with leading companies across Hong Kong and Asia.</p>
+        </div>
+      </div>
+      <div class="talent-card">
+        <div class="talent-icon">🌏</div>
+        <div>
+          <h3>Cross-Border Talent</h3>
+          <p>Bilingual (Cantonese/Mandarin/English) logistics professionals for Greater China operations — ideal for companies bridging Hong Kong and mainland China supply chains.</p>
+        </div>
+      </div>
+      <div class="talent-card">
+        <div class="talent-icon">📈</div>
+        <div>
+          <h3>Contract &amp; Interim Roles</h3>
+          <p>Short-term and project-based logistics professionals to cover peak periods, system implementations, or strategic projects — ready to deliver from day one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectors-bg" id="sectors">
+  <div class="section-inner">
+    <div class="section-tag">Industry Sectors</div>
+    <h2 class="section-title">Sectors We <span>Serve</span></h2>
+    <p class="section-sub">Our team brings deep knowledge across the key sectors that drive logistics demand in Hong Kong and across the Asia Pacific region.</p>
+    <div class="sectors-grid">
+      <div class="sector-chip">
+        <div class="sector-chip-icon">🚢</div>
+        <div class="sector-chip-name">Ocean Freight &amp; Shipping</div>
+      </div>
+      <div class="sector-chip">
+        <div class="sector-chip-icon">✈️</div>
+        <div class="sector-chip-name">Air Freight &amp; Courier</div>
+      </div>
+      <div class="sector-chip">
+        <div class="sector-chip-icon">🏭</div>
+        <div class="sector-chip-name">3PL &amp; Warehousing</div>
+      </div>
+      <div class="sector-chip">
+        <div class="sector-chip-icon">🛒</div>
+        <div class="sector-chip-name">E-Commerce &amp; Retail</div>
+      </div>
+      <div class="sector-chip">
+        <div class="sector-chip-icon">🏗️</div>
+        <div class="sector-chip-name">Industrial &amp; Manufacturing</div>
+      </div>
+      <div class="sector-chip">
+        <div class="sector-chip-icon">🧊</div>
+        <div class="sector-chip-name">Cold Chain &amp; Pharma</div>
+      </div>
+      <div class="sector-chip">
+        <div class="sector-chip-icon">🔧</div>
+        <div class="sector-chip-name">Tech &amp; Electronics Trade</div>
+      </div>
+      <div class="sector-chip">
+        <div class="sector-chip-icon">🚛</div>
+        <div class="sector-chip-name">Road Transport &amp; Last Mile</div>
+      </div>
+      <div class="sector-chip">
+        <div class="sector-chip-icon">🌿</div>
+        <div class="sector-chip-name">Perishables &amp; FMCG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-bg" id="contact">
+  <div class="section-inner">
+    <div class="section-tag">Contact</div>
+    <h2 class="section-title">Let's <span>Work Together</span></h2>
+    <p class="section-sub">Whether you're looking for logistics talent, operational consulting, or market entry support, reach out to start the conversation.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="ci-list">
+          <div class="ci-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">Location</div>
+              <div class="ci-val">Hong Kong</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🎯</div>
+            <div>
+              <div class="ci-label">Specialisation</div>
+              <div class="ci-val">Logistics · Supply Chain · Trade · Recruitment</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🌏</div>
+            <div>
+              <div class="ci-label">Market Coverage</div>
+              <div class="ci-val">Hong Kong · Greater China · Asia Pacific · Global</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Send an Enquiry</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Company name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Enquiry Type</label>
+          <select>
+            <option value="">Select enquiry type</option>
+            <option>Executive Search / Recruitment</option>
+            <option>Logistics Consulting</option>
+            <option>Market Entry Advisory</option>
+            <option>Business Development</option>
+            <option>Training &amp; Development</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your needs — we'll respond within one business day."></textarea>
+        </div>
+        <button class="form-submit">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Key Players &amp; More</h3>
+        <p>A Hong Kong-based logistics consulting and talent solutions firm. We help supply chain businesses find the right people, optimise operations, and grow in the Asia Pacific market.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Logistics Consulting</a></li>
+          <li><a href="#services">Executive Search</a></li>
+          <li><a href="#services">Market Entry</a></li>
+          <li><a href="#services">Training</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#talent">Talent Solutions</a></li>
+          <li><a href="#sectors">Sectors</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Key Players &amp; More. All rights reserved.</p>
+      <p>Hong Kong · Logistics Consulting &amp; Talent Solutions</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
