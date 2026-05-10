@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BBC News 中文 | 全球新聞 · 中文報道</title>
+<meta name="description" content="BBC 中文 — 公正、獨立、可信賴的國際新聞。全球大事，中文報道。連接數百萬華語讀者。">
+<style>
+  :root {
+    --primary: #0a0d14;
+    --primary-mid: #111622;
+    --accent: #bb1919;
+    --accent-light: #e03030;
+    --accent-dark: #8a1010;
+    --text: #e4e8f0;
+    --text-muted: #8894b0;
+    --surface: #0e1320;
+    --surface2: #141a28;
+    --card: #121828;
+    --border: rgba(187,25,25,0.2);
+    --border-soft: rgba(255,255,255,0.07);
+    --white: #ffffff;
+    --yellow: #ffcc00;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, '微軟正黑體', sans-serif; background: var(--primary); color: var(--text); line-height: 1.75; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--accent); padding: 0 5%; height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo-box {
+    background: #fff; color: var(--accent); font-weight: 900;
+    font-size: 1.1rem; padding: 4px 10px; letter-spacing: 0.08em;
+  }
+  .nav-logo-cn { color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 0.05em; }
+  .nav-links { display: flex; gap: 26px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.25); }
+  .nav-cta { background: #fff; color: var(--accent); border: none; padding: 7px 18px; font-weight: 700; font-size: 0.85rem; cursor: pointer; text-decoration: none; }
+  .nav-cta:hover { background: rgba(255,255,255,0.9); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    background: linear-gradient(145deg, var(--primary) 0%, var(--primary-mid) 100%);
+    padding: 90px 5% 60px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: 56px; left: 0; right: 0; height: 4px;
+    background: var(--accent);
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 400px; gap: 60px; align-items: start; position: relative; z-index: 1; }
+  .hero-service-tag {
+    display: inline-block; background: var(--accent); color: #fff;
+    font-size: 0.75rem; font-weight: 700; padding: 4px 12px; margin-bottom: 18px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .hero h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 8px; color: var(--white); }
+  .hero h1 .en { font-size: clamp(1.2rem, 2.5vw, 1.8rem); color: var(--text-muted); font-weight: 400; display: block; margin-top: 6px; }
+  .hero-tagline { font-size: 1rem; color: var(--text-muted); margin: 16px 0 28px; max-width: 500px; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary { background: var(--accent); color: #fff; padding: 12px 26px; font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: background 0.2s; display: inline-block; }
+  .btn-primary:hover { background: var(--accent-light); }
+  .btn-outline { border: 1px solid rgba(255,255,255,0.25); color: var(--text); padding: 11px 24px; font-weight: 500; font-size: 0.9rem; text-decoration: none; transition: all 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: #fff; color: #fff; }
+
+  /* HERO NEWS CARD */
+  .hero-news { }
+  .news-block-title { font-size: 0.72rem; font-weight: 700; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); }
+  .news-item { padding: 16px 0; border-bottom: 1px solid var(--border-soft); }
+  .news-item:last-child { border-bottom: none; }
+  .news-cat { font-size: 0.7rem; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .news-headline { font-size: 0.95rem; font-weight: 700; color: var(--white); line-height: 1.4; margin-bottom: 6px; }
+  .news-meta { font-size: 0.75rem; color: var(--text-muted); }
+  .whatsapp-cta {
+    background: rgba(37,211,102,0.1); border: 1px solid rgba(37,211,102,0.25);
+    padding: 14px 16px; margin-top: 20px; display: flex; gap: 12px; align-items: center;
+  }
+  .wa-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .wa-title { font-size: 0.88rem; font-weight: 700; color: #fff; margin-bottom: 3px; }
+  .wa-sub { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* RED BAR */
+  .red-bar { background: var(--accent); padding: 18px 5%; }
+  .red-bar-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .rb-stat { text-align: center; border-right: 1px solid rgba(255,255,255,0.15); }
+  .rb-stat:last-child { border-right: none; }
+  .rb-num { font-size: 1.8rem; font-weight: 900; color: #fff; line-height: 1; }
+  .rb-label { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.8); margin-top: 3px; }
+
+  /* SECTIONS */
+  section { padding: 88px 5%; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag { font-size: 0.72rem; font-weight: 700; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: clamp(1.6rem, 2.8vw, 2.3rem); font-weight: 800; margin-bottom: 14px; color: var(--white); }
+  .section-lead { font-size: 0.95rem; color: var(--text-muted); max-width: 600px; }
+
+  /* ABOUT */
+  .about { background: var(--surface); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .bbc-principles { display: grid; gap: 12px; margin-top: 24px; }
+  .principle { display: flex; gap: 14px; align-items: flex-start; }
+  .principle-mark { width: 34px; height: 34px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.85rem; color: #fff; flex-shrink: 0; }
+  .principle-text { }
+  .principle-title { font-size: 0.9rem; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+  .principle-desc { font-size: 0.8rem; color: var(--text-muted); }
+  .reach-stats { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .rs-card { background: var(--card); border: 1px solid var(--border-soft); padding: 18px; }
+  .rs-num { font-size: 1.8rem; font-weight: 900; color: var(--accent); line-height: 1; }
+  .rs-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+
+  /* TOPICS */
+  .topics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 44px; }
+  .topic-card { background: var(--card); border: 1px solid var(--border-soft); padding: 20px; transition: all 0.2s; cursor: pointer; }
+  .topic-card:hover { border-color: var(--accent); background: var(--surface2); }
+  .topic-icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .topic-name { font-size: 0.92rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .topic-cn { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+  .service-card { background: var(--card); border: 1px solid var(--border-soft); padding: 26px 22px; transition: all 0.2s; }
+  .service-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .service-icon { font-size: 2rem; margin-bottom: 12px; }
+  .service-name { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .service-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
+
+  /* WHATSAPP FEATURE */
+  .wa-feature { background: var(--surface); }
+  .wa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .wa-big-icon { font-size: 5rem; margin-bottom: 20px; }
+  .wa-feature-points { display: grid; gap: 14px; margin-top: 24px; }
+  .wa-point { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; }
+  .wa-check { width: 22px; height: 22px; background: rgba(37,211,102,0.1); border: 1px solid rgba(37,211,102,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #25d366; flex-shrink: 0; }
+  .wa-phone-mock { background: var(--card); border: 1px solid var(--border-soft); border-radius: 24px; padding: 24px; max-width: 300px; margin: 0 auto; }
+  .wp-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border-soft); }
+  .wp-avatar { width: 40px; height: 40px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem; color: #fff; border-radius: 50%; }
+  .wp-name { font-size: 0.9rem; font-weight: 700; color: var(--white); }
+  .wp-status { font-size: 0.72rem; color: #25d366; }
+  .wp-msg { background: var(--surface2); border-radius: 0 12px 12px 12px; padding: 12px 14px; margin-bottom: 10px; font-size: 0.82rem; color: var(--text); }
+  .wp-msg-time { font-size: 0.68rem; color: var(--text-muted); text-align: right; margin-top: 4px; }
+
+  /* CONTACT */
+  .contact { background: var(--surface); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 44px; }
+  .contact-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 22px; }
+  .contact-icon { width: 40px; height: 40px; background: rgba(187,25,25,0.1); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .contact-label { font-size: 0.72rem; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; }
+  .contact-value { font-size: 0.9rem; color: var(--text); }
+  .contact-value a { color: var(--text); text-decoration: none; }
+  .contact-value a:hover { color: var(--accent); }
+  .contact-form-wrap { background: var(--card); border: 1px solid var(--border-soft); padding: 34px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-bottom: 5px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--surface2); border: 1px solid var(--border-soft); padding: 10px 13px; color: var(--text); font-size: 0.88rem; font-family: inherit; outline: none; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
+  .form-submit { width: 100%; background: var(--accent); color: #fff; border: none; padding: 12px; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: background 0.2s; }
+  .form-submit:hover { background: var(--accent-light); }
+
+  /* FOOTER */
+  footer { background: #050810; border-top: 3px solid var(--accent); padding: 46px 5% 26px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 46px; margin-bottom: 36px; }
+  .footer-brand p { font-size: 0.85rem; color: var(--text-muted); margin-top: 12px; max-width: 320px; line-height: 1.7; }
+  .footer-col h4 { font-size: 0.75rem; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+  .footer-col ul { list-style: none; display: grid; gap: 9px; }
+  .footer-col ul li a { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--white); }
+  .footer-bottom { border-top: 1px solid var(--border-soft); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+
+  @media (max-width: 900px) {
+    .hero-inner, .about-grid, .wa-grid, .contact-grid, .footer-top { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .topics-grid { grid-template-columns: 1fr 1fr; }
+    .red-bar-inner { grid-template-columns: 1fr 1fr; }
+    .hero-news { display: none; }
+  }
+  @media (max-width: 600px) {
+    .services-grid, .topics-grid, .red-bar-inner, .reach-stats { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-box">BBC</div>
+    <div class="nav-logo-cn">中文</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#topics">報道範疇</a></li>
+    <li><a href="#whatsapp">WhatsApp頻道</a></li>
+    <li><a href="#contact">聯絡</a></li>
+  </ul>
+  <a href="#whatsapp" class="nav-cta">訂閱新聞</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-service-tag">BBC 國際中文服務</div>
+      <h1>公正、獨立、可信賴<span class="en">Impartial · Independent · Trusted</span></h1>
+      <p class="hero-tagline">BBC 中文為全球華語讀者提供深入、準確的國際新聞報道，涵蓋政治、科技、社會、文化及香港本地新聞。</p>
+      <div class="hero-btns">
+        <a href="#about" class="btn-primary">了解更多</a>
+        <a href="#whatsapp" class="btn-outline">訂閱 WhatsApp 新聞</a>
+      </div>
+    </div>
+    <div class="hero-news">
+      <div class="news-block-title">最新報道</div>
+      <div class="news-item">
+        <div class="news-cat">科技安全</div>
+        <div class="news-headline">黑客針對政府官員後，Signal向用戶發布詐騙警告</div>
+        <div class="news-meta">2026年3月11日</div>
+      </div>
+      <div class="news-item">
+        <div class="news-cat">數碼私隱</div>
+        <div class="news-headline">WhatsApp回應質疑 端到端加密功能不向政府妥協</div>
+        <div class="news-meta">2021年6月14日</div>
+      </div>
+      <div class="news-item">
+        <div class="news-cat">社交媒體</div>
+        <div class="news-headline">WhatsApp要求用戶同意與臉書分享資料 恐觸發停用潮</div>
+        <div class="news-meta">2021年1月12日</div>
+      </div>
+      <div class="whatsapp-cta">
+        <div class="wa-icon">💬</div>
+        <div>
+          <div class="wa-title">BBC 中文 WhatsApp 頻道</div>
+          <div class="wa-sub">直接在 WhatsApp 接收最新新聞推送</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RED BAR -->
+<div class="red-bar">
+  <div class="red-bar-inner">
+    <div class="rb-stat">
+      <div class="rb-num">1億+</div>
+      <div class="rb-label">全球每週讀者</div>
+    </div>
+    <div class="rb-stat">
+      <div class="rb-num">40+</div>
+      <div class="rb-label">語言版本</div>
+    </div>
+    <div class="rb-stat">
+      <div class="rb-num">90+</div>
+      <div class="rb-label">年新聞歷史</div>
+    </div>
+    <div class="rb-stat">
+      <div class="rb-num">全球</div>
+      <div class="rb-label">駐地記者網絡</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">關於 BBC 中文</div>
+        <h2 class="section-title">全球最受信任的<br>中文新聞服務</h2>
+        <p class="section-lead">BBC 中文（BBC 國際中文服務）是英國廣播公司為全球華語讀者提供的新聞平台，提供政治、商業、科技、文化及社會議題的深度報道。</p>
+        <div class="bbc-principles">
+          <div class="principle">
+            <div class="principle-mark">公</div>
+            <div class="principle-text">
+              <div class="principle-title">公正無偏</div>
+              <div class="principle-desc">BBC 嚴格遵守編輯獨立原則，報道不受政府、廣告商或任何政治立場左右</div>
+            </div>
+          </div>
+          <div class="principle">
+            <div class="principle-mark">準</div>
+            <div class="principle-text">
+              <div class="principle-title">準確核實</div>
+              <div class="principle-desc">每則報道均經過嚴格事實核查，資料來源透明，錯誤及時更正</div>
+            </div>
+          </div>
+          <div class="principle">
+            <div class="principle-mark">深</div>
+            <div class="principle-text">
+              <div class="principle-title">深度分析</div>
+              <div class="principle-desc">超越標題新聞，提供背景資料、專家觀點與深度特寫報道</div>
+            </div>
+          </div>
+          <div class="principle">
+            <div class="principle-mark">速</div>
+            <div class="principle-text">
+              <div class="principle-title">即時更新</div>
+              <div class="principle-desc">24小時不間斷更新，第一時間報道全球重要新聞動態</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-tag">全球覆蓋</div>
+        <h3 style="font-size:1.2rem; font-weight:700; color:var(--white); margin-bottom:16px;">面向全球華語社群</h3>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:22px;">BBC 中文服務遍及香港、台灣、中國大陸、東南亞及全球各地華人社群，是全球最具影響力的中文國際媒體之一。</p>
+        <div class="reach-stats">
+          <div class="rs-card">
+            <div class="rs-num">BBC.co.uk</div>
+            <div class="rs-label">中文網頁版</div>
+          </div>
+          <div class="rs-card">
+            <div class="rs-num">WhatsApp</div>
+            <div class="rs-label">新聞推送頻道</div>
+          </div>
+          <div class="rs-card">
+            <div class="rs-num">社交媒體</div>
+            <div class="rs-label">Facebook · YouTube · X</div>
+          </div>
+          <div class="rs-card">
+            <div class="rs-num">Podcast</div>
+            <div class="rs-label">中文播客節目</div>
+          </div>
+        </div>
+        <div style="margin-top:18px; background:rgba(187,25,25,0.08); border:1px solid var(--border); padding:16px 18px;">
+          <div style="font-size:0.82rem; color:var(--accent); font-weight:700; margin-bottom:6px;">📧 分享你的聲音</div>
+          <div style="font-size:0.82rem; color:var(--text-muted);">讀者意見、新聞線索或故事分享：<a href="mailto:yourvoice@bbc.co.uk" style="color:var(--accent); text-decoration:none;">yourvoice@bbc.co.uk</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS -->
+<section id="topics" style="background: var(--primary);">
+  <div class="section-inner">
+    <div class="section-tag">報道範疇</div>
+    <h2 class="section-title">全面覆蓋 · 深度報道</h2>
+    <p class="section-lead">BBC 中文涵蓋廣泛的新聞報道領域，為讀者提供全方位的資訊視野。</p>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-icon">🌐</div>
+        <div class="topic-name">國際時事</div>
+        <div class="topic-cn">World News</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">🏙️</div>
+        <div class="topic-name">香港新聞</div>
+        <div class="topic-cn">Hong Kong</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">💻</div>
+        <div class="topic-name">科技資訊</div>
+        <div class="topic-cn">Technology</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">💼</div>
+        <div class="topic-name">商業財經</div>
+        <div class="topic-cn">Business</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">🔬</div>
+        <div class="topic-name">科學健康</div>
+        <div class="topic-cn">Science &amp; Health</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">🎭</div>
+        <div class="topic-name">文化藝術</div>
+        <div class="topic-cn">Culture &amp; Arts</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">⚖️</div>
+        <div class="topic-name">政治外交</div>
+        <div class="topic-cn">Politics</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">🌱</div>
+        <div class="topic-name">氣候環境</div>
+        <div class="topic-cn">Climate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section style="background: var(--surface);" id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務平台</div>
+    <h2 class="section-title">多平台接收 BBC 中文新聞</h2>
+    <p class="section-lead">透過多種渠道接收 BBC 中文的最新報道，隨時隨地掌握資訊。</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <div class="service-name">BBC 中文網</div>
+        <div class="service-desc">在 BBC.co.uk/zhongwen 閱讀完整的中文新聞報道、深度特寫、分析評論及多媒體內容，隨時隨地，免費瀏覽。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💬</div>
+        <div class="service-name">WhatsApp 頻道</div>
+        <div class="service-desc">訂閱 BBC 中文 WhatsApp 頻道，直接在 WhatsApp 接收每日精選新聞推送。方便快捷，第一時間掌握重要新聞。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <div class="service-name">社交媒體</div>
+        <div class="service-desc">在 Facebook、YouTube、X（Twitter）等平台追蹤 BBC 中文，獲取最新報道、影片新聞及互動內容。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎙️</div>
+        <div class="service-name">中文播客</div>
+        <div class="service-desc">收聽 BBC 中文製作的播客節目，深度解讀重大新聞事件，專題訪問各界專家及意見領袖。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📺</div>
+        <div class="service-name">影像新聞</div>
+        <div class="service-desc">BBC 中文製作的新聞影片、紀錄片及深度報道短片，以視覺方式呈現複雜的國際議題。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📧</div>
+        <div class="service-name">讀者參與</div>
+        <div class="service-desc">透過 yourvoice@bbc.co.uk 與我們分享你的故事、觀點及新聞線索。你的聲音，成就更好的報道。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP FEATURE -->
+<section class="wa-feature" id="whatsapp">
+  <div class="section-inner">
+    <div class="wa-grid">
+      <div>
+        <div class="section-tag">WhatsApp 新聞頻道</div>
+        <h2 class="section-title">在 WhatsApp<br>接收 BBC 中文新聞</h2>
+        <p class="section-lead">BBC 中文在 WhatsApp 設有專屬新聞頻道，讓你直接在熟悉的通訊工具上接收每日精選的重要新聞。</p>
+        <div class="wa-feature-points">
+          <div class="wa-point">
+            <div class="wa-check">✓</div>
+            <span>每日精選重要國際及香港新聞</span>
+          </div>
+          <div class="wa-point">
+            <div class="wa-check">✓</div>
+            <span>突發新聞即時推送</span>
+          </div>
+          <div class="wa-point">
+            <div class="wa-check">✓</div>
+            <span>連結至 BBC 中文完整深度報道</span>
+          </div>
+          <div class="wa-point">
+            <div class="wa-check">✓</div>
+            <span>完全免費，隨時可取消訂閱</span>
+          </div>
+        </div>
+        <div style="margin-top:28px; padding:16px 20px; background:rgba(37,211,102,0.06); border:1px solid rgba(37,211,102,0.2); display:inline-block;">
+          <div style="font-size:0.85rem; color:#25d366; font-weight:700; margin-bottom:4px;">💬 立即訂閱 BBC 中文 WhatsApp 頻道</div>
+          <div style="font-size:0.8rem; color:var(--text-muted);">在 WhatsApp 搜尋「BBC News 中文」或前往 BBC 中文網頁訂閱</div>
+        </div>
+      </div>
+      <div class="wa-phone-mock">
+        <div class="wp-header">
+          <div class="wp-avatar">BBC</div>
+          <div>
+            <div class="wp-name">BBC News 中文</div>
+            <div class="wp-status">頻道 · 已驗證</div>
+          </div>
+        </div>
+        <div class="wp-msg">
+          🔴 【突發】黑客針對政府官員後，Signal向用戶發布詐騙警告
+          <div class="wp-msg-time">2026年3月11日 · 閱讀全文 →</div>
+        </div>
+        <div class="wp-msg">
+          📰 WhatsApp回應質疑 端到端加密功能不向政府妥協
+          <div class="wp-msg-time">2021年6月14日</div>
+        </div>
+        <div class="wp-msg">
+          ⚠️ WhatsApp要求用戶同意與臉書分享資料 恐觸發停用潮
+          <div class="wp-msg-time">2021年1月12日</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2 class="section-title">與 BBC 中文聯絡</h2>
+    <p class="section-lead">分享新聞線索、讀者意見、投訴或合作查詢，歡迎透過以下渠道與我們聯絡。</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">電郵 / Email</div>
+            <div class="contact-value"><a href="mailto:yourvoice@bbc.co.uk">yourvoice@bbc.co.uk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-label">中文網站</div>
+            <div class="contact-value"><a href="https://www.bbc.com/zhongwen/trad" target="_blank" rel="noopener">bbc.com/zhongwen/trad</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">服務地區</div>
+            <div class="contact-value">香港 · 全球華語社群</div>
+          </div>
+        </div>
+        <div style="background:rgba(187,25,25,0.07); border:1px solid var(--border); padding:18px 20px; margin-top:8px;">
+          <div style="font-size:0.82rem; font-weight:700; color:var(--accent); margin-bottom:8px;">📰 新聞線索</div>
+          <div style="font-size:0.82rem; color:var(--text-muted);">如你有新聞線索或希望分享個人故事，請電郵 <a href="mailto:yourvoice@bbc.co.uk" style="color:var(--accent); text-decoration:none;">yourvoice@bbc.co.uk</a></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-soft); padding:18px 20px; margin-top:14px;">
+          <div style="font-size:0.82rem; font-weight:700; color:#fff; margin-bottom:8px;">🔴 BBC 新聞室守則</div>
+          <div style="font-size:0.82rem; color:var(--text-muted);">BBC 全球新聞部門遵守嚴格的編輯標準，確保報道的準確性、公正性及獨立性。讀者如對報道有疑問，歡迎直接聯絡我們。</div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3 style="font-size:1rem; font-weight:700; color:var(--white); margin-bottom:6px;">發送訊息</h3>
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:20px;">新聞線索、讀者意見或合作查詢</p>
+        <form>
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="你的姓名">
+          </div>
+          <div class="form-group">
+            <label>電郵地址</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>查詢類型</label>
+            <select>
+              <option value="">請選擇…</option>
+              <option>新聞線索</option>
+              <option>讀者意見</option>
+              <option>報道投訴</option>
+              <option>合作查詢</option>
+              <option>其他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>訊息內容</label>
+            <textarea rows="4" placeholder="請告訴我們你想分享的資訊…"></textarea>
+          </div>
+          <button type="submit" class="form-submit">發送訊息</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+          <div style="background:var(--accent); color:#fff; font-weight:900; font-size:1rem; padding:4px 10px;">BBC</div>
+          <div style="font-size:1rem; font-weight:700; color:var(--white);">中文</div>
+        </div>
+        <p>BBC 中文（BBC 國際中文服務）是英國廣播公司為全球華語讀者提供的獨立、公正的國際新聞服務，致力以中文報道改變世界的故事。</p>
+      </div>
+      <div class="footer-col">
+        <h4>報道範疇</h4>
+        <ul>
+          <li><a href="#topics">國際時事</a></li>
+          <li><a href="#topics">香港新聞</a></li>
+          <li><a href="#topics">科技資訊</a></li>
+          <li><a href="#topics">商業財經</a></li>
+          <li><a href="#topics">文化藝術</a></li>
+          <li><a href="#topics">氣候環境</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>服務</h4>
+        <ul>
+          <li><a href="#services">BBC 中文網</a></li>
+          <li><a href="#whatsapp">WhatsApp 頻道</a></li>
+          <li><a href="#services">社交媒體</a></li>
+          <li><a href="#services">中文播客</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+          <li><a href="https://www.bbc.com/zhongwen/trad" target="_blank" rel="noopener">前往 BBC 中文</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 BBC. 版權所有。BBC World Service · 中文部。</div>
+      <div style="font-size:0.8rem; color:var(--text-muted);">yourvoice@bbc.co.uk</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
