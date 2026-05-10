@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regal Printing Limited | Book Printing Hong Kong &amp; China · Print on Demand</title>
+<style>
+:root {
+  --bg:       #080605;
+  --surface:  #100c08;
+  --card:     #181208;
+  --border:   #2c2010;
+  --acc1:     #6a2808;
+  --acc2:     #a84010;
+  --acc3:     #d86020;
+  --gold:     #e8a828;
+  --gold2:    #f8c840;
+  --text:     #f4ede0;
+  --muted:    #9a7850;
+  --radius:   8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;font-size:16px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,6,5,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--acc1),var(--acc3));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.logo-text{font-size:1.15rem;font-weight:700;color:var(--text)}
+.logo-sub{font-size:.7rem;color:var(--muted);letter-spacing:.05em}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
+.nav-links a:hover{color:var(--acc3)}
+.nav-cta{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:9px 22px;border-radius:5px;font-size:.88rem;font-weight:600;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;background:radial-gradient(ellipse 75% 55% at 35% 50%,rgba(106,40,8,.16) 0%,transparent 65%),var(--bg)}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(216,96,32,.12);border:1px solid rgba(216,96,32,.32);border-radius:20px;padding:6px 16px;font-size:.8rem;color:var(--acc3);margin-bottom:24px;letter-spacing:.05em}
+.hero h1{font-size:2.9rem;font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:var(--gold)}
+.hero-desc{font-size:1.02rem;color:var(--muted);margin-bottom:36px;max-width:540px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:13px 30px;border-radius:6px;font-size:.95rem;font-weight:700;text-decoration:none;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:13px 30px;border-radius:6px;font-size:.95rem;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--acc2);color:var(--acc2)}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hero-card h3{font-size:.9rem;color:var(--gold);margin-bottom:18px;text-transform:uppercase;letter-spacing:.1em}
+.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.info-row:last-child{border-bottom:none}
+.info-label{color:var(--muted)}
+.info-val{color:var(--text);font-weight:600;text-align:right;max-width:60%}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-box{text-align:center}
+.stat-num{font-size:2rem;font-weight:800;color:var(--gold);display:block}
+.stat-label{font-size:.83rem;color:var(--muted);margin-top:4px}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(168,64,16,.12);border:1px solid rgba(168,64,16,.3);border-radius:4px;padding:4px 12px;font-size:.76rem;color:var(--acc2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:1.9rem;font-weight:800;margin-bottom:12px}
+.section-sub{color:var(--muted);font-size:.98rem;max-width:620px}
+.section-head{margin-bottom:48px}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* SERVICES */
+.services{background:var(--bg)}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:border-color .25s,transform .25s}
+.svc-card:hover{border-color:var(--acc2);transform:translateY(-3px)}
+.svc-icon{font-size:2.4rem;margin-bottom:16px}
+.svc-name{font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.svc-desc{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.svc-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{background:rgba(168,64,16,.1);border:1px solid rgba(168,64,16,.28);border-radius:4px;padding:3px 10px;font-size:.74rem;color:var(--acc2)}
+
+/* PRODUCTS */
+.products{background:var(--surface)}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:border-color .25s,transform .25s}
+.prod-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+.prod-icon{font-size:2rem;margin-bottom:12px}
+.prod-name{font-size:.97rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.prod-desc{font-size:.83rem;color:var(--muted);line-height:1.6}
+
+/* WHY */
+.why{background:var(--bg)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.why-content p{color:var(--muted);line-height:1.8;margin-bottom:16px}
+.why-points{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.why-point{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;gap:12px;align-items:flex-start}
+.wp-icon{font-size:1.3rem;flex-shrink:0}
+.wp-body strong{display:block;font-size:.88rem;color:var(--text);margin-bottom:3px}
+.wp-body span{font-size:.8rem;color:var(--muted)}
+.why-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.w-stat{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:22px;text-align:center}
+.w-num{font-size:1.8rem;font-weight:800;color:var(--gold);display:block;margin-bottom:4px}
+.w-label{font-size:.8rem;color:var(--muted)}
+
+/* PROCESS */
+.process{background:var(--surface)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;text-align:center}
+.step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--acc1),var(--acc2));display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:#fff;margin:0 auto 12px}
+.step-title{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.step-desc{font-size:.8rem;color:var(--muted);line-height:1.5}
+
+/* CONTACT */
+.contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h2{font-size:1.8rem;font-weight:800;margin-bottom:16px}
+.contact-info p{color:var(--muted);margin-bottom:28px;line-height:1.7}
+.contact-items{display:flex;flex-direction:column;gap:16px}
+.contact-item{display:flex;align-items:flex-start;gap:14px}
+.contact-icon{width:40px;height:40px;background:rgba(106,40,8,.28);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-detail strong{display:block;color:var(--text);font-size:.9rem;margin-bottom:2px}
+.contact-detail span{color:var(--muted);font-size:.85rem}
+form{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:18px}
+form label{font-size:.84rem;color:var(--muted);margin-bottom:4px;display:block}
+form input,form select,form textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.91rem;outline:none;transition:border-color .2s;font-family:inherit}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--acc2)}
+form textarea{resize:vertical;min-height:110px}
+form button{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s}
+form button:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 5% 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-top:12px}
+.footer-col h4{font-size:.87rem;font-weight:700;color:var(--text);margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col a{color:var(--muted);text-decoration:none;font-size:.86rem;transition:color .2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{color:var(--muted);font-size:.82rem}
+.footer-hk{color:var(--muted);font-size:.82rem}
+
+@media(max-width:900px){
+  .hero-inner,.why-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .hero h1{font-size:2.1rem}
+  .svc-grid{grid-template-columns:1fr}
+  .prod-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  .prod-grid,.why-points,.why-stats{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">📚</div>
+      <div>
+        <div class="logo-text">Regal Printing</div>
+        <div class="logo-sub">Regal Printing Limited · Hong Kong &amp; China</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#why">Why Regal</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Quote</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">📚 Book Printing · Hong Kong &amp; China Since 2004</div>
+      <h1>World-Class Book Printing<br><span>at China Prices</span></h1>
+      <p class="hero-desc">
+        Regal Printing Limited is a Hong Kong &amp; China full-service book printing and
+        paper products manufacturing company. From large-volume offset printing to
+        Print on Demand digital runs, we serve publishers, brands, and businesses
+        worldwide with top-quality print at cost-effective China pricing.
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#products">View Products</a>
+        <a class="btn-outline" href="#contact">Request a Quote</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Company Profile</h3>
+      <div class="info-row">
+        <span class="info-label">Company</span>
+        <span class="info-val">Regal Printing Limited</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Founded</span>
+        <span class="info-val">2004</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Base</span>
+        <span class="info-val">Hong Kong &amp; China</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Specialty</span>
+        <span class="info-val">Books · Paper Products</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Technology</span>
+        <span class="info-val">Offset · Print on Demand</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Website</span>
+        <span class="info-val">regalprinting.com.hk</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-box">
+      <span class="stat-num">2004</span>
+      <div class="stat-label">Established in Hong Kong</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">20+</span>
+      <div class="stat-label">Book &amp; Print Product Types</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">Global</span>
+      <div class="stat-label">Worldwide Client Base</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">HK+CN</span>
+      <div class="stat-label">Dual Production Locations</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Print Services</div>
+      <h2 class="section-title">Two Core Print Services</h2>
+      <p class="section-sub">Whether you need 500 copies or 500,000, Regal Printing has the right technology and the right price</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🏭</div>
+        <div class="svc-name">Large Volume Offset Printing</div>
+        <p class="svc-desc">
+          High-volume commercial offset printing in Hong Kong and China — the most cost-effective
+          solution for large print runs of books, catalogues, calendars, and paper products.
+          Precision CMYK colour reproduction, wide substrate range, and full finishing options
+          including softcover, hardcover, Wire-O, and saddle stitch binding.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">High Volume</span>
+          <span class="tag">CMYK Offset</span>
+          <span class="tag">HK &amp; China Production</span>
+          <span class="tag">Cost Effective</span>
+          <span class="tag">All Binding Types</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🖥️</div>
+        <div class="svc-name">Print on Demand (Digital)</div>
+        <p class="svc-desc">
+          Short-run digital Print on Demand services for publishers, self-publishers, and
+          businesses needing small quantities — from one copy upwards. No minimum order,
+          fast turnaround, and the same quality standards as our offset production. Perfect
+          for test runs, personalised editions, and low-inventory publishing models.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">Print on Demand</span>
+          <span class="tag">No Minimum Order</span>
+          <span class="tag">Self-Publishing</span>
+          <span class="tag">Fast Turnaround</span>
+          <span class="tag">1 Copy Minimum</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Print Products</div>
+      <h2 class="section-title">What We Print</h2>
+      <p class="section-sub">A comprehensive range of book and paper product types — if it's printed, Regal can produce it</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-icon">📗</div>
+        <div class="prod-name">Softcover Books</div>
+        <p class="prod-desc">Perfect-bound paperback books — novels, textbooks, catalogues, and trade books in all sizes with laminated or uncoated covers.</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">📘</div>
+        <div class="prod-name">Hardcover Books</div>
+        <p class="prod-desc">Case-bound hardcover books with cloth, paper, or PU cover options. Dust jackets, foil stamping, and embossing available.</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🧒</div>
+        <div class="prod-name">Children's Books</div>
+        <p class="prod-desc">Picture books, board books, pop-up books, and novelty children's titles — specialist experience in all children's book formats.</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🎭</div>
+        <div class="prod-name">Pop-Up &amp; Novelty Books</div>
+        <p class="prod-desc">Engineered pop-ups, lift-the-flap, spiral-bound, and novelty book formats. Specialised production for complex paper engineering projects.</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">📅</div>
+        <div class="prod-name">Calendars</div>
+        <p class="prod-desc">Wall calendars, desk calendars, page-a-day calendars, and promotional calendars. Full custom design and print for corporate and retail use.</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🎮</div>
+        <div class="prod-name">Game Box Sets</div>
+        <p class="prod-desc">Board games, card game sets, and boxed game products with custom-printed boxes, cards, booklets, and game components.</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">📰</div>
+        <div class="prod-name">Magazines &amp; Catalogues</div>
+        <p class="prod-desc">Commercial catalogues, consumer magazines, trade publications, and corporate journals — saddle-stitched or perfect bound.</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🎴</div>
+        <div class="prod-name">Card Sets &amp; Greeting Cards</div>
+        <p class="prod-desc">Playing card decks, tarot sets, oracle card sets, greeting cards, and boxed card collections with custom packaging.</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">📦</div>
+        <div class="prod-name">Packaging &amp; Gift Boxes</div>
+        <p class="prod-desc">Custom retail packaging, gift boxes, product cartons, and premium packaging with foil, embossing, and spot UV finishing options.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WHY REGAL -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div class="why-content">
+        <div class="section-tag">Why Regal Printing</div>
+        <h2 class="section-title">The Regal Advantage</h2>
+        <p>
+          Regal Printing combines the quality control and service standards of a Hong Kong
+          company with the cost efficiency of China manufacturing. Since 2004, we have
+          been helping publishers, brands, and businesses worldwide access world-class
+          print quality at significantly reduced costs compared to Western printers.
+        </p>
+        <p>
+          Our dual Hong Kong and China production capability means we can route your job
+          to the most appropriate facility based on quantity, quality requirements, and
+          timeline — always delivering the best possible outcome at the best price.
+        </p>
+        <div class="why-points">
+          <div class="why-point">
+            <div class="wp-icon">💰</div>
+            <div class="wp-body">
+              <strong>Cost Savings</strong>
+              <span>Save significantly vs. local Western printing costs</span>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="wp-icon">🎯</div>
+            <div class="wp-body">
+              <strong>Quality Control</strong>
+              <span>HK-standard QC on all China production</span>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="wp-icon">🌍</div>
+            <div class="wp-body">
+              <strong>Global Shipping</strong>
+              <span>Worldwide delivery from HK &amp; China factories</span>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="wp-icon">📚</div>
+            <div class="wp-body">
+              <strong>Book Specialists</strong>
+              <span>20+ years book printing expertise</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="why-stats">
+          <div class="w-stat">
+            <span class="w-num">2004</span>
+            <div class="w-label">Established</div>
+          </div>
+          <div class="w-stat">
+            <span class="w-num">HK+CN</span>
+            <div class="w-label">Dual Factories</div>
+          </div>
+          <div class="w-stat">
+            <span class="w-num">Global</span>
+            <div class="w-label">Client Reach</div>
+          </div>
+          <div class="w-stat">
+            <span class="w-num">20+</span>
+            <div class="w-label">Product Types</div>
+          </div>
+          <div class="w-stat">
+            <span class="w-num">POD</span>
+            <div class="w-label">Print on Demand</div>
+          </div>
+          <div class="w-stat">
+            <span class="w-num">Offset</span>
+            <div class="w-label">Large Volume</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">How It Works</div>
+      <h2 class="section-title">From Files to Finished Books</h2>
+      <p class="section-sub">A streamlined production process refined over 20+ years of book printing experience</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Quotation</div>
+        <p class="step-desc">Submit your specs — size, pages, quantity, binding — and receive a detailed quote promptly.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">File Review</div>
+        <p class="step-desc">Submit print-ready files. Our pre-press team checks all files before production commences.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Proof</div>
+        <p class="step-desc">Receive a digital or physical proof for sign-off before the full print run begins.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Production</div>
+        <p class="step-desc">Press run with quality monitoring at every stage. Progress updates throughout production.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-title">Ship</div>
+        <p class="step-desc">QC-inspected, packed, and shipped worldwide from our Hong Kong and China facilities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-tag">Get a Quote</div>
+        <h2>Request a Print Quotation</h2>
+        <p>
+          Tell us about your book or print project and we'll provide a competitive quotation.
+          Regal Printing serves clients worldwide — wherever you are, we can print and
+          ship your project at China prices with Hong Kong quality.
+        </p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div class="contact-detail">
+              <strong>Website</strong>
+              <span>www.regalprinting.com.hk</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>Production Locations</strong>
+              <span>Hong Kong &amp; Mainland China</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌍</div>
+            <div class="contact-detail">
+              <strong>Shipping</strong>
+              <span>Worldwide delivery — sea freight and air freight options</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📄</div>
+            <div class="contact-detail">
+              <strong>Quote Turnaround</strong>
+              <span>Quotations provided within 1–2 business days</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form>
+        <div>
+          <label>Full Name *</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div>
+          <label>Company / Publisher</label>
+          <input type="text" placeholder="Your company or publishing house">
+        </div>
+        <div>
+          <label>Email Address *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div>
+          <label>Country</label>
+          <input type="text" placeholder="Your country">
+        </div>
+        <div>
+          <label>Product Type</label>
+          <select>
+            <option>Softcover Book</option>
+            <option>Hardcover Book</option>
+            <option>Children's Book</option>
+            <option>Pop-Up / Novelty Book</option>
+            <option>Calendar</option>
+            <option>Game Box Set</option>
+            <option>Magazine / Catalogue</option>
+            <option>Card Set / Greeting Cards</option>
+            <option>Packaging / Gift Box</option>
+            <option>Print on Demand</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label>Project Details *</label>
+          <textarea placeholder="Describe your project — size (e.g. 6×9 in), page count, quantity, paper stock, binding type, colour (4c/1c), and any finishing requirements…"></textarea>
+        </div>
+        <button type="submit">Request Quotation →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">📚</div>
+          <div>
+            <div class="logo-text">Regal Printing</div>
+            <div class="logo-sub">Regal Printing Limited · HK &amp; China</div>
+          </div>
+        </div>
+        <p>A Hong Kong &amp; China book printing and paper products company since 2004. Large-volume offset printing and Print on Demand — serving publishers and brands worldwide at China prices.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Print Products</h4>
+        <ul>
+          <li><a href="#products">Books &amp; Hardcovers</a></li>
+          <li><a href="#products">Children's Books</a></li>
+          <li><a href="#products">Calendars</a></li>
+          <li><a href="#products">Game Box Sets</a></li>
+          <li><a href="#products">Packaging</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Offset Printing</a></li>
+          <li><a href="#services">Print on Demand</a></li>
+          <li><a href="#why">Why Regal</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#contact">Get a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Regal Printing Limited. All Rights Reserved.</div>
+      <div class="footer-hk">🇭🇰 Hong Kong &amp; China · Global Book Printing</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
