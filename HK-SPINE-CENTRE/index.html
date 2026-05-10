@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HK Spine Centre | Gleneagles Hospital Hong Kong</title>
+<style>
+  :root {
+    --primary: #041428;
+    --accent: #0076be;
+    --accent2: #00a0d6;
+    --light: #e8f4fb;
+    --white: #ffffff;
+    --text: #1a2a3a;
+    --muted: #5a7080;
+    --border: #c8dde8;
+    --card-bg: #f0f8fd;
+    --hero-overlay: rgba(4,20,40,0.72);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI',Arial,sans-serif; color:var(--text); background:#fff; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+
+  /* NAV */
+  nav {
+    background:var(--primary);
+    padding:0 2rem;
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px; position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 12px rgba(0,0,0,0.35);
+  }
+  .nav-brand { display:flex; align-items:center; gap:12px; }
+  .nav-logo {
+    width:42px; height:42px; background:var(--accent);
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:1rem; color:#fff; letter-spacing:-0.5px;
+  }
+  .nav-brand-text { color:#fff; }
+  .nav-brand-text .line1 { font-size:1.05rem; font-weight:700; letter-spacing:0.3px; }
+  .nav-brand-text .line2 { font-size:0.72rem; color:var(--accent2); letter-spacing:0.5px; }
+  .nav-links { display:flex; gap:1.8rem; }
+  .nav-links a { color:rgba(255,255,255,0.82); font-size:0.88rem; font-weight:500; letter-spacing:0.3px; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--accent2); text-decoration:none; }
+  .nav-cta {
+    background:var(--accent); color:#fff !important; padding:8px 18px;
+    border-radius:20px; font-size:0.85rem !important; font-weight:600 !important;
+    transition:background 0.2s !important;
+  }
+  .nav-cta:hover { background:var(--accent2) !important; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+      url('https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1600&q=80') center/cover no-repeat;
+    min-height:520px; display:flex; align-items:center;
+    padding:4rem 2rem;
+  }
+  .hero-inner { max-width:1100px; margin:0 auto; width:100%; display:flex; align-items:center; gap:3rem; }
+  .hero-text { flex:1; }
+  .hero-badge {
+    display:inline-block; background:rgba(0,118,190,0.25); border:1px solid var(--accent2);
+    color:var(--accent2); font-size:0.78rem; font-weight:600; padding:5px 14px;
+    border-radius:20px; letter-spacing:1px; text-transform:uppercase; margin-bottom:1.2rem;
+  }
+  .hero-text h1 { font-size:2.8rem; font-weight:800; color:#fff; line-height:1.15; margin-bottom:0.8rem; }
+  .hero-text h1 span { color:var(--accent2); }
+  .hero-text .subtitle { font-size:1.1rem; color:rgba(255,255,255,0.80); margin-bottom:1.8rem; line-height:1.6; max-width:520px; }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--accent); color:#fff; padding:13px 28px;
+    border-radius:28px; font-weight:700; font-size:0.95rem;
+    border:2px solid var(--accent); transition:all 0.2s; display:inline-block;
+  }
+  .btn-primary:hover { background:var(--accent2); border-color:var(--accent2); text-decoration:none; }
+  .btn-outline {
+    background:transparent; color:#fff; padding:13px 28px;
+    border-radius:28px; font-weight:600; font-size:0.95rem;
+    border:2px solid rgba(255,255,255,0.5); transition:all 0.2s; display:inline-block;
+  }
+  .btn-outline:hover { border-color:#fff; background:rgba(255,255,255,0.1); text-decoration:none; }
+
+  .hero-card {
+    background:rgba(255,255,255,0.10); backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.18); border-radius:16px;
+    padding:1.8rem 1.5rem; min-width:270px; color:#fff;
+  }
+  .hero-card h3 { font-size:0.85rem; color:var(--accent2); letter-spacing:1px; text-transform:uppercase; margin-bottom:1rem; }
+  .info-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:0.85rem; font-size:0.88rem; color:rgba(255,255,255,0.88); }
+  .info-icon { color:var(--accent2); font-size:1rem; margin-top:1px; flex-shrink:0; }
+
+  /* STATS */
+  .stats-strip { background:var(--accent); padding:1.5rem 2rem; }
+  .stats-inner { max-width:1100px; margin:0 auto; display:flex; gap:0; justify-content:space-around; flex-wrap:wrap; }
+  .stat-item { text-align:center; padding:0.5rem 1.5rem; }
+  .stat-num { font-size:2rem; font-weight:800; color:#fff; }
+  .stat-label { font-size:0.78rem; color:rgba(255,255,255,0.82); letter-spacing:0.5px; text-transform:uppercase; margin-top:2px; }
+
+  /* SECTIONS */
+  section { padding:4rem 2rem; }
+  .section-inner { max-width:1100px; margin:0 auto; }
+  .section-tag { font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:0.5rem; }
+  .section-title { font-size:2rem; font-weight:800; color:var(--primary); margin-bottom:0.8rem; }
+  .section-sub { font-size:1rem; color:var(--muted); line-height:1.7; max-width:620px; }
+
+  /* ABOUT */
+  .about { background:#fff; }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; margin-top:2.5rem; }
+  .about-text p { color:var(--muted); line-height:1.8; margin-bottom:1rem; font-size:0.97rem; }
+  .highlight-box {
+    background:var(--primary); color:#fff; border-radius:16px; padding:2rem;
+    border-left:4px solid var(--accent);
+  }
+  .highlight-box h4 { font-size:1rem; color:var(--accent2); margin-bottom:1rem; letter-spacing:0.5px; }
+  .highlight-box ul { list-style:none; padding:0; }
+  .highlight-box ul li { padding:0.5rem 0; border-bottom:1px solid rgba(255,255,255,0.1); font-size:0.9rem; color:rgba(255,255,255,0.88); display:flex; align-items:center; gap:8px; }
+  .highlight-box ul li:last-child { border-bottom:none; }
+  .highlight-box ul li::before { content:'▸'; color:var(--accent2); flex-shrink:0; }
+  .prop-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.5rem; }
+  .prop-card { background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:1.2rem; text-align:center; }
+  .prop-icon { font-size:1.8rem; margin-bottom:0.5rem; }
+  .prop-card h5 { font-size:0.88rem; font-weight:700; color:var(--primary); margin-bottom:0.3rem; }
+  .prop-card p { font-size:0.78rem; color:var(--muted); line-height:1.5; }
+
+  /* CONDITIONS */
+  .conditions { background:var(--light); }
+  .conditions-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:2.5rem; }
+  .condition-card {
+    background:#fff; border-radius:14px; padding:1.5rem;
+    border:1px solid var(--border); border-top:3px solid var(--accent);
+    transition:box-shadow 0.2s, transform 0.2s;
+  }
+  .condition-card:hover { box-shadow:0 6px 24px rgba(0,118,190,0.15); transform:translateY(-3px); }
+  .condition-icon { font-size:2rem; margin-bottom:0.8rem; }
+  .condition-card h4 { font-size:1rem; font-weight:700; color:var(--primary); margin-bottom:0.5rem; }
+  .condition-card p { font-size:0.85rem; color:var(--muted); line-height:1.6; }
+
+  /* SERVICES */
+  .services { background:#fff; }
+  .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.5rem; }
+  .service-card {
+    background:var(--card-bg); border:1px solid var(--border); border-radius:14px;
+    padding:1.8rem 1.5rem; transition:all 0.2s;
+  }
+  .service-card:hover { border-color:var(--accent); box-shadow:0 6px 24px rgba(0,118,190,0.12); transform:translateY(-3px); }
+  .service-icon { font-size:2.2rem; margin-bottom:1rem; }
+  .service-card h4 { font-size:1.05rem; font-weight:700; color:var(--primary); margin-bottom:0.6rem; }
+  .service-card p { font-size:0.88rem; color:var(--muted); line-height:1.65; }
+
+  /* FEES */
+  .fees { background:var(--light); }
+  .fees-table-wrap { margin-top:2.5rem; overflow-x:auto; }
+  .fees-table { width:100%; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.08); }
+  .fees-table th { background:var(--primary); color:#fff; padding:1rem 1.5rem; text-align:left; font-size:0.88rem; }
+  .fees-table td { padding:1rem 1.5rem; border-bottom:1px solid var(--border); font-size:0.9rem; color:var(--text); }
+  .fees-table tr:last-child td { border-bottom:none; }
+  .fees-table tr:nth-child(even) td { background:var(--card-bg); }
+  .fees-note { margin-top:1rem; font-size:0.82rem; color:var(--muted); font-style:italic; }
+
+  /* HOURS */
+  .hours-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2.5rem; }
+  .hours-card { background:#fff; border-radius:14px; padding:2rem; border:1px solid var(--border); }
+  .hours-card h4 { font-size:1rem; font-weight:700; color:var(--primary); margin-bottom:1.2rem; display:flex; align-items:center; gap:8px; }
+  .hours-row { display:flex; justify-content:space-between; padding:0.6rem 0; border-bottom:1px solid var(--border); font-size:0.9rem; }
+  .hours-row:last-child { border-bottom:none; }
+  .day { color:var(--muted); }
+  .time { font-weight:600; color:var(--primary); }
+  .time.closed { color:#c0392b; }
+
+  /* CONTACT */
+  .contact { background:var(--primary); }
+  .contact .section-title { color:#fff; }
+  .contact .section-sub { color:rgba(255,255,255,0.7); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; }
+  .contact-info h4 { font-size:0.85rem; color:var(--accent2); letter-spacing:1px; text-transform:uppercase; margin-bottom:1.5rem; }
+  .contact-detail { display:flex; align-items:flex-start; gap:14px; margin-bottom:1.4rem; }
+  .contact-icon { width:42px; height:42px; background:rgba(0,118,190,0.2); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+  .contact-detail-text .label { font-size:0.75rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.5px; }
+  .contact-detail-text .value { font-size:0.95rem; color:#fff; font-weight:600; margin-top:2px; }
+  .contact-detail-text .value a { color:var(--accent2); }
+  .contact-form { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:2rem; }
+  .contact-form h4 { font-size:1rem; font-weight:700; color:#fff; margin-bottom:1.5rem; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .form-group { margin-bottom:1rem; }
+  .form-group label { font-size:0.8rem; color:rgba(255,255,255,0.65); margin-bottom:5px; display:block; }
+  .form-group input, .form-group select, .form-group textarea {
+    width:100%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
+    border-radius:8px; padding:10px 14px; color:#fff; font-size:0.9rem;
+    transition:border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline:none; border-color:var(--accent2);
+  }
+  .form-group select option { background:var(--primary); }
+  .form-group textarea { resize:vertical; min-height:90px; }
+  .form-submit {
+    width:100%; background:var(--accent); color:#fff; border:none; border-radius:28px;
+    padding:13px; font-size:0.95rem; font-weight:700; cursor:pointer; transition:background 0.2s;
+    margin-top:0.5rem;
+  }
+  .form-submit:hover { background:var(--accent2); }
+
+  /* FOOTER */
+  footer { background:#020c18; padding:2rem; text-align:center; color:rgba(255,255,255,0.45); font-size:0.82rem; }
+  footer a { color:var(--accent2); }
+
+  @media(max-width:900px) {
+    .hero-inner { flex-direction:column; }
+    .hero-card { min-width:unset; width:100%; }
+    .about-grid, .contact-grid, .hours-grid { grid-template-columns:1fr; }
+    .prop-cards, .conditions-grid, .services-grid { grid-template-columns:1fr 1fr; }
+    .form-row { grid-template-columns:1fr; }
+    .nav-links { display:none; }
+    .hero-text h1 { font-size:2rem; }
+  }
+  @media(max-width:600px) {
+    .prop-cards, .conditions-grid, .services-grid { grid-template-columns:1fr; }
+    .stats-inner { flex-direction:column; gap:1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">HK</div>
+    <div class="nav-brand-text">
+      <div class="line1">HK Spine Centre</div>
+      <div class="line2">GLENEAGLES HOSPITAL HONG KONG</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#conditions">Conditions</a>
+    <a href="#services">Services</a>
+    <a href="#fees">Fees</a>
+    <a href="#hours">Hours</a>
+    <a href="#contact" class="nav-cta">Book Appointment</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">Specialist Spine Care ·  Wong Chuk Hang</div>
+      <h1>Advanced Spine Care<br>by <span>HKU Professors</span></h1>
+      <p class="subtitle">Professorial-led, team-based orthopaedic spine care at Gleneagles Hospital Hong Kong — offering expert consultations, robotic-assisted surgery, and comprehensive rehabilitation.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Book Consultation</a>
+        <a href="#conditions" class="btn-outline">Conditions We Treat</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Contact Information</h3>
+      <div class="info-row"><span class="info-icon">📞</span><span><strong>Mainline:</strong> +852 3153 9000</span></div>
+      <div class="info-row"><span class="info-icon">💬</span><span><strong>WhatsApp:</strong> +852 6452 3581</span></div>
+      <div class="info-row"><span class="info-icon">✉️</span><span><strong>Email:</strong> info@iholistic.org</span></div>
+      <div class="info-row"><span class="info-icon">📍</span><span>Clinic D, G/F, Tower A<br>1 Nam Fung Path, Wong Chuk Hang, HK</span></div>
+      <div class="info-row"><span class="info-icon">🕐</span><span>Tue 2–6pm · Fri 2–4pm</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">HKU</div>
+      <div class="stat-label">Professor-Led Team</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6+</div>
+      <div class="stat-label">Specialist Services</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Robotic</div>
+      <div class="stat-label">Navigation System</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Emergency Assessment</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Full</div>
+      <div class="stat-label">Rehab Support</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-tag">About HK Spine Centre</div>
+    <h2 class="section-title">Expert Spine Care at Gleneagles Hong Kong</h2>
+    <p class="section-sub">A professorial-led, team-based spine programme delivering world-class orthopaedic care in a state-of-the-art private hospital setting.</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>The HK Spine Centre, located within Gleneagles Hospital Hong Kong in Wong Chuk Hang, provides comprehensive care for the full spectrum of spinal conditions — from common degenerative diseases to complex deformities and trauma.</p>
+        <p>Led by professors from The University of Hong Kong and supported by an experienced team of specialist consultants, the Centre operates on a professorial-led and team-based model, ensuring every patient benefits from both specialist expertise and multi-disciplinary collaboration.</p>
+        <p>Equipped with advanced robotic navigation technology, the Centre delivers precision-guided surgical interventions that minimise risk and promote faster recovery. Post-operative care includes structured physiotherapy and rehabilitation to support long-term outcomes.</p>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">🏆</div>
+            <h5>HKU Professors</h5>
+            <p>Led by University of Hong Kong professors and specialist consultants</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🤖</div>
+            <h5>Robotic Tech</h5>
+            <p>Robotic navigation for precision-guided spinal surgery</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🏥</div>
+            <h5>Private Hospital</h5>
+            <p>Full facilities of Gleneagles Hospital Hong Kong</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="highlight-box">
+          <h4>Why Choose HK Spine Centre</h4>
+          <ul>
+            <li>Professorial-led, team-based approach to care</li>
+            <li>State-of-the-art robotic navigation surgery system</li>
+            <li>Full spectrum from conservative to surgical treatment</li>
+            <li>Integrated post-operative physiotherapy and rehabilitation</li>
+            <li>Emergency spinal assessment available upon request</li>
+            <li>Located within a full-service private hospital</li>
+            <li>Insurance and corporate scheme compatible</li>
+            <li>Multi-disciplinary specialist support on-site</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDITIONS -->
+<section class="conditions" id="conditions">
+  <div class="section-inner">
+    <div class="section-tag">Conditions We Treat</div>
+    <h2 class="section-title">Comprehensive Spinal Condition Management</h2>
+    <p class="section-sub">Our specialist team provides assessment, diagnosis, and treatment for a wide range of spinal disorders and injuries.</p>
+    <div class="conditions-grid">
+      <div class="condition-card">
+        <div class="condition-icon">🔵</div>
+        <h4>Disc Herniation</h4>
+        <p>Bulging or ruptured intervertebral discs causing nerve compression, radiating pain, numbness or weakness in the arms or legs.</p>
+      </div>
+      <div class="condition-card">
+        <div class="condition-icon">🔵</div>
+        <h4>Spinal Stenosis</h4>
+        <p>Narrowing of the spinal canal that puts pressure on the spinal cord or nerve roots, commonly causing leg pain and difficulty walking.</p>
+      </div>
+      <div class="condition-card">
+        <div class="condition-icon">🔵</div>
+        <h4>Scoliosis & Deformity</h4>
+        <p>Abnormal lateral curvature of the spine, ranging from adolescent idiopathic scoliosis to adult degenerative deformity requiring correction.</p>
+      </div>
+      <div class="condition-card">
+        <div class="condition-icon">🔵</div>
+        <h4>Degenerative Spine Disease</h4>
+        <p>Age-related wear and tear of spinal structures including disc degeneration, facet joint arthritis, and spondylolisthesis.</p>
+      </div>
+      <div class="condition-card">
+        <div class="condition-icon">🔵</div>
+        <h4>Spinal Trauma & Fractures</h4>
+        <p>Vertebral fractures and spinal injuries resulting from trauma, osteoporosis, or other conditions requiring stabilisation or surgery.</p>
+      </div>
+      <div class="condition-card">
+        <div class="condition-icon">🔵</div>
+        <h4>Spinal Tumours</h4>
+        <p>Primary and metastatic spinal tumours requiring specialised surgical and oncological management in coordination with the hospital's cancer services.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-tag">Our Services</div>
+    <h2 class="section-title">Specialist Spine Services</h2>
+    <p class="section-sub">From initial consultation through to post-operative recovery, our Centre offers a complete continuum of spinal care.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🩺</div>
+        <h4>Specialist Consultation</h4>
+        <p>Comprehensive assessment by HKU professors and specialist consultants to accurately diagnose your spinal condition and recommend appropriate treatment pathways.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔬</div>
+        <h4>Diagnostic Imaging</h4>
+        <p>Advanced MRI, CT and X-ray imaging available in-hospital for precise diagnosis of spinal pathology, nerve involvement and structural abnormalities.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💊</div>
+        <h4>Non-Surgical Treatment</h4>
+        <p>Conservative management including medication, pain injections, nerve blocks, and guided physiotherapy for patients where surgery is not indicated.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h4>Robotic-Assisted Surgery</h4>
+        <p>State-of-the-art robotic navigation system enables precise pedicle screw placement and minimally invasive spinal procedures, reducing risk and recovery time.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏃</div>
+        <h4>Post-Op Rehabilitation</h4>
+        <p>Structured physiotherapy and rehabilitation programme following spine surgery, designed to restore function, strength, and mobility as quickly as possible.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚨</div>
+        <h4>Emergency Assessment</h4>
+        <p>Urgent spinal assessments available upon request for acute presentations including cauda equina syndrome, acute disc prolapse, or spinal trauma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="fees" id="fees">
+  <div class="section-inner">
+    <div class="section-tag">Consultation Fees</div>
+    <h2 class="section-title">Transparent Fee Structure</h2>
+    <p class="section-sub">All consultation fees are in Hong Kong Dollars. Fees exclude procedures, medications, laboratory and imaging services.</p>
+    <div class="fees-table-wrap">
+      <table class="fees-table">
+        <thead>
+          <tr>
+            <th>Consultation Type</th>
+            <th>Professor</th>
+            <th>Specialist Consultant</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Initial Consultation</td>
+            <td>HK$1,090 – HK$2,210</td>
+            <td>HK$790 – HK$1,850</td>
+          </tr>
+          <tr>
+            <td>Follow-up Consultation</td>
+            <td>HK$860 – HK$1,990</td>
+            <td>HK$640 – HK$1,400</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fees-note">* Fees are guidelines only and may vary by individual doctor. All fees exclude procedures, medications, diagnostic tests, and imaging services. Please enquire for specific doctor fee schedules.</p>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section id="hours" style="background:#fff; padding:4rem 2rem;">
+  <div class="section-inner">
+    <div class="section-tag">Location & Hours</div>
+    <h2 class="section-title">Find Us at Gleneagles Hospital HK</h2>
+    <p class="section-sub">The Spine Centre operates within Gleneagles Hospital Hong Kong, with scheduled clinics on Tuesdays and Fridays. Emergency assessments available upon request.</p>
+    <div class="hours-grid">
+      <div class="hours-card">
+        <h4>🕐 Clinic Hours</h4>
+        <div class="hours-row"><span class="day">Monday</span><span class="time closed">Closed</span></div>
+        <div class="hours-row"><span class="day">Tuesday</span><span class="time">2:00 PM – 6:00 PM</span></div>
+        <div class="hours-row"><span class="day">Wednesday</span><span class="time closed">Closed</span></div>
+        <div class="hours-row"><span class="day">Thursday</span><span class="time closed">Closed</span></div>
+        <div class="hours-row"><span class="day">Friday</span><span class="time">2:00 PM – 4:00 PM</span></div>
+        <div class="hours-row"><span class="day">Saturday</span><span class="time closed">Closed</span></div>
+        <div class="hours-row"><span class="day">Sunday</span><span class="time closed">Closed</span></div>
+        <p style="font-size:0.8rem;color:var(--muted);margin-top:1rem;">Emergency assessments available upon request outside clinic hours.</p>
+      </div>
+      <div class="hours-card">
+        <h4>📍 Location</h4>
+        <p style="font-size:0.95rem;color:var(--text);line-height:1.7;margin-bottom:1rem;">
+          <strong>Clinic D, G/F, Tower A</strong><br>
+          1 Nam Fung Path<br>
+          Wong Chuk Hang, Hong Kong
+        </p>
+        <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">
+          Located within Gleneagles Hospital Hong Kong, easily accessible from Wong Chuk Hang MTR station.
+        </p>
+        <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;">
+          <strong style="color:var(--text);">Hospital Mainline:</strong> +852 3153 9000<br>
+          <strong style="color:var(--text);">WhatsApp Enquiry:</strong> +852 6452 3581
+        </p>
+        <div style="margin-top:1.5rem;">
+          <a href="https://gleneagles.hk/facilities-services/spine-centre" target="_blank" class="btn-primary" style="font-size:0.85rem;padding:10px 20px;">View on Gleneagles Website</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--accent2);">Get in Touch</div>
+    <h2 class="section-title">Book a Spine Consultation</h2>
+    <p class="section-sub">Reach out to schedule your specialist consultation or ask about our services. Our team will respond promptly to your enquiry.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h4>Contact Details</h4>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail-text">
+            <div class="label">Hospital Mainline</div>
+            <div class="value"><a href="tel:+85231539000">+852 3153 9000</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">💬</div>
+          <div class="contact-detail-text">
+            <div class="label">WhatsApp Enquiry</div>
+            <div class="value"><a href="https://wa.me/85264523581">+852 6452 3581</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-detail-text">
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:info@iholistic.org">info@iholistic.org</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail-text">
+            <div class="label">Address</div>
+            <div class="value">Clinic D, G/F, Tower A<br>1 Nam Fung Path, Wong Chuk Hang, HK</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-detail-text">
+            <div class="label">Clinic Hours</div>
+            <div class="value">Tue 2:00–6:00pm · Fri 2:00–4:00pm</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h4>Appointment Enquiry</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Your first name">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Your last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" placeholder="+852 XXXX XXXX">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Consultation Type</label>
+          <select>
+            <option>Initial Consultation</option>
+            <option>Follow-up Consultation</option>
+            <option>Emergency Assessment</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Brief Description of Concern</label>
+          <textarea placeholder="Please briefly describe your spinal concern or question..."></textarea>
+        </div>
+        <button class="form-submit">Send Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:0.5rem;">
+    <strong style="color:rgba(255,255,255,0.7);">HK Spine Centre</strong> · Gleneagles Hospital Hong Kong · Clinic D, G/F, Tower A, 1 Nam Fung Path, Wong Chuk Hang, HK
+  </p>
+  <p>
+    Tel: <a href="tel:+85231539000">+852 3153 9000</a> &nbsp;|&nbsp;
+    WhatsApp: <a href="https://wa.me/85264523581">+852 6452 3581</a> &nbsp;|&nbsp;
+    <a href="mailto:info@iholistic.org">info@iholistic.org</a> &nbsp;|&nbsp;
+    <a href="https://gleneagles.hk" target="_blank">gleneagles.hk</a>
+  </p>
+  <p style="margin-top:0.8rem;font-size:0.75rem;">© 2025 HK Spine Centre · Gleneagles Hospital Hong Kong. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
