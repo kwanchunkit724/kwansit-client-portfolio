@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美聯工商舖 | Midland ICI</title>
+<style>
+:root {
+  --primary: #08121e;
+  --accent: #c89010;
+  --accent2: #a07008;
+  --blue: #1258b8;
+  --light: #f5f8ff;
+  --mid: #e0e8f5;
+  --text: #1a2438;
+  --text-light: #5870a0;
+  --white: #ffffff;
+  --card-bg: #f8faff;
+  --border: #ccd8ee;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans TC',sans-serif;color:var(--text);background:var(--white);line-height:1.7;}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,18,30,0.97);backdrop-filter:blur(8px);border-bottom:2px solid var(--accent);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-logo{display:flex;align-items:center;gap:12px;}
+.nav-logo-icon{width:40px;height:40px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.nav-logo-icon svg{width:22px;height:22px;fill:var(--white);}
+.nav-brand{display:flex;flex-direction:column;}
+.nav-brand-cn{font-size:1rem;font-weight:700;color:var(--white);}
+.nav-brand-en{font-size:0.62rem;color:rgba(255,255,255,0.45);letter-spacing:0.1em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.9rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:var(--white);padding:0.45rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent2);}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(135deg,var(--primary) 0%,#0e1f38 55%,#101828 100%);display:flex;align-items:center;padding-top:68px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c89010' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40z'/%3E%3C/g%3E%3C/svg%3E");}
+.hero-glow{position:absolute;top:20%;right:10%;width:600px;height:600px;background:radial-gradient(circle,rgba(200,144,16,0.08),transparent 65%);border-radius:50%;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,144,16,0.12);border:1px solid rgba(200,144,16,0.35);color:var(--accent);padding:0.4rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:600;letter-spacing:0.06em;margin-bottom:1.5rem;}
+.hero h1{font-size:3rem;font-weight:800;color:var(--white);line-height:1.2;margin-bottom:1rem;}
+.hero h1 span{color:var(--accent);}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.65);margin-bottom:2rem;max-width:480px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2.5rem;}
+.hero-tag{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.8rem;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:var(--white);padding:0.9rem 2rem;border-radius:8px;font-size:0.95rem;font-weight:700;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);}
+.btn-outline{border:2px solid rgba(255,255,255,0.25);color:var(--white);padding:0.9rem 2rem;border-radius:8px;font-size:0.95rem;font-weight:600;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+
+/* INFO CARD */
+.info-card{background:rgba(255,255,255,0.05);border:1px solid rgba(200,144,16,0.3);border-radius:16px;padding:2rem;backdrop-filter:blur(12px);}
+.info-card h3{font-size:0.82rem;color:var(--accent);font-weight:700;margin-bottom:1.2rem;letter-spacing:0.08em;text-transform:uppercase;}
+.info-item{display:flex;gap:12px;margin-bottom:1rem;align-items:flex-start;}
+.info-icon{width:36px;height:36px;background:rgba(200,144,16,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.info-icon svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:2;}
+.info-label{font-size:0.68rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.06em;}
+.info-value{font-size:0.88rem;color:var(--white);font-weight:600;}
+.info-value a{color:var(--white);text-decoration:none;}
+.info-value a:hover{color:var(--accent);}
+.info-divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:1rem 0;}
+.office-badge{background:linear-gradient(135deg,rgba(200,144,16,0.2),rgba(18,88,184,0.15));border:1px solid rgba(200,144,16,0.3);border-radius:10px;padding:0.9rem;text-align:center;}
+.office-badge .ob-title{font-size:0.78rem;font-weight:700;color:var(--accent);margin-bottom:3px;}
+.office-badge .ob-addr{font-size:0.72rem;color:rgba(255,255,255,0.6);line-height:1.5;}
+
+/* STATS */
+.stats{background:var(--primary);padding:3rem 0;}
+.stats-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.stat-item{text-align:center;padding:1.5rem;border:1px solid rgba(200,144,16,0.2);border-radius:12px;background:rgba(200,144,16,0.04);}
+.stat-num{font-size:2.2rem;font-weight:800;color:var(--accent);}
+.stat-lbl{font-size:0.8rem;color:rgba(255,255,255,0.55);margin-top:4px;}
+
+/* ABOUT */
+.about{padding:6rem 0;background:var(--light);}
+.about-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.section-label{font-size:0.75rem;font-weight:700;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.8rem;}
+.section-title{font-size:2.2rem;font-weight:800;color:var(--primary);line-height:1.25;margin-bottom:1rem;}
+.section-title span{color:var(--accent);}
+.about-text{color:var(--text-light);line-height:1.9;margin-bottom:1.5rem;}
+.highlight-box{background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:12px;padding:1.8rem;color:var(--white);margin-bottom:2rem;}
+.highlight-box h4{font-size:1rem;font-weight:700;margin-bottom:0.6rem;}
+.highlight-box p{font-size:0.88rem;opacity:0.92;line-height:1.7;}
+.prop-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color 0.2s;}
+.prop-card:hover{border-color:var(--accent);}
+.prop-icon{width:36px;height:36px;background:rgba(200,144,16,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:0.7rem;}
+.prop-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:2;}
+.prop-card h5{font-size:0.85rem;font-weight:700;color:var(--primary);margin-bottom:0.3rem;}
+.prop-card p{font-size:0.78rem;color:var(--text-light);line-height:1.5;}
+
+/* SERVICES */
+.services{padding:6rem 0;background:var(--white);}
+.services-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.services-header{text-align:center;margin-bottom:3.5rem;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--blue));transform:scaleX(0);transition:transform 0.25s;}
+.svc-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(200,144,16,0.1);transform:translateY(-4px);}
+.svc-card:hover::before{transform:scaleX(1);}
+.svc-num{font-size:0.7rem;font-weight:700;color:var(--accent);letter-spacing:0.1em;margin-bottom:1rem;}
+.svc-icon{width:52px;height:52px;background:rgba(200,144,16,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;}
+.svc-icon svg{width:28px;height:28px;stroke:var(--accent);fill:none;stroke-width:1.8;}
+.svc-card h3{font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:0.7rem;}
+.svc-card p{font-size:0.85rem;color:var(--text-light);line-height:1.7;margin-bottom:1rem;}
+.svc-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.svc-tag{background:rgba(200,144,16,0.08);color:var(--accent2);font-size:0.72rem;padding:0.2rem 0.6rem;border-radius:4px;font-weight:600;}
+
+/* OFFICES */
+.offices{padding:5rem 0;background:linear-gradient(135deg,var(--primary),#0e1f38);}
+.offices-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.offices-header{text-align:center;margin-bottom:3rem;}
+.offices-header .section-label{color:var(--accent);}
+.offices-header .section-title{color:var(--white);}
+.offices-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.office-card{background:rgba(255,255,255,0.04);border:1px solid rgba(200,144,16,0.25);border-radius:14px;padding:2rem;}
+.office-card h3{font-size:1rem;font-weight:700;color:var(--accent);margin-bottom:1.2rem;display:flex;align-items:center;gap:8px;}
+.office-row{display:flex;gap:10px;margin-bottom:0.8rem;align-items:flex-start;}
+.office-row-icon{width:28px;height:28px;background:rgba(200,144,16,0.1);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.office-row-icon svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2;}
+.office-row-content .olabel{font-size:0.68rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.05em;}
+.office-row-content .oval{font-size:0.85rem;color:rgba(255,255,255,0.85);}
+.office-row-content .oval a{color:rgba(255,255,255,0.85);text-decoration:none;}
+.office-row-content .oval a:hover{color:var(--accent);}
+
+/* CONTACT */
+.contact{padding:6rem 0;background:var(--light);}
+.contact-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
+.contact-info h2{font-size:2rem;font-weight:800;color:var(--primary);margin-bottom:1rem;}
+.contact-info p{color:var(--text-light);margin-bottom:2rem;line-height:1.8;}
+.contact-details{display:flex;flex-direction:column;gap:1.2rem;}
+.cdetail{display:flex;gap:1rem;align-items:flex-start;}
+.cdetail-icon{width:44px;height:44px;background:rgba(200,144,16,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cdetail-icon svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:2;}
+.cdetail-label{font-size:0.72rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.06em;}
+.cdetail-value{font-size:0.95rem;font-weight:600;color:var(--primary);}
+.cdetail-value a{color:var(--primary);text-decoration:none;}
+.cdetail-value a:hover{color:var(--accent);}
+.contact-form{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2.5rem;box-shadow:0 4px 24px rgba(200,144,16,0.06);}
+.contact-form h3{font-size:1.2rem;font-weight:700;color:var(--primary);margin-bottom:1.5rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-group{margin-bottom:1rem;}
+.form-group label{display:block;font-size:0.8rem;font-weight:600;color:var(--text-light);margin-bottom:0.4rem;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:8px;font-size:0.9rem;color:var(--text);background:var(--card-bg);outline:none;transition:border-color 0.2s;font-family:inherit;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent);}
+.form-group textarea{resize:vertical;min-height:100px;}
+.form-submit{width:100%;background:var(--accent);color:var(--white);border:none;padding:0.9rem;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;font-family:inherit;}
+.form-submit:hover{background:var(--accent2);}
+
+/* FOOTER */
+footer{background:var(--primary);padding:3rem 0 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-brand-cn{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.3rem;}
+.footer-brand-en{font-size:0.72rem;color:rgba(255,255,255,0.35);margin-bottom:1rem;letter-spacing:0.06em;}
+.footer-tagline{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.7;}
+.footer-col h4{font-size:0.8rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;}
+.footer-col ul{list-style:none;padding:0;}
+.footer-col ul li{margin-bottom:0.6rem;}
+.footer-col ul li a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:0.78rem;color:rgba(255,255,255,0.3);}
+.footer-web{font-size:0.78rem;color:rgba(255,255,255,0.3);}
+
+@media(max-width:1024px){
+  .hero-inner,.about-inner,.offices-grid,.contact-inner{grid-template-columns:1fr;gap:2.5rem;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .hero h1{font-size:2rem;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .services-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="nav-brand">
+        <span class="nav-brand-cn">美聯工商舖</span>
+        <span class="nav-brand-en">Midland ICI</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#about">關於我們</a>
+      <a href="#services">服務範疇</a>
+      <a href="#offices">分行網絡</a>
+      <a href="#contact">聯絡我們</a>
+    </div>
+    <a href="#contact" class="nav-cta">物業查詢</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        香港工商物業代理領導品牌
+      </div>
+      <h1>工商物業<br><span>專業代理服務</span></h1>
+      <p class="hero-sub">美聯工商舖（Midland ICI）是香港領先的工商物業代理機構，專注寫字樓、工業、商業及舖位買賣租賃，提供全面專業的物業顧問服務，助您把握最佳商業地產機遇。</p>
+      <div class="hero-tags">
+        <span class="hero-tag">寫字樓</span>
+        <span class="hero-tag">工業物業</span>
+        <span class="hero-tag">商舖</span>
+        <span class="hero-tag">買賣/租賃</span>
+        <span class="hero-tag">新盤/項目</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          搜尋物業
+        </a>
+        <a href="#contact" class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/></svg>
+          聯絡代理
+        </a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>立即聯絡我們</h3>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 9.11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.01 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.11 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">客戶服務熱線</div>
+          <div class="info-value"><a href="tel:+85228012136">2801-2136</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="info-label">電郵 Email</div>
+          <div class="info-value"><a href="mailto:hk.office@midlandici.com.hk">hk.office@midlandici.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">官方網站</div>
+          <div class="info-value"><a href="https://www.midlandici.com.hk" target="_blank">midlandici.com.hk</a></div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="office-badge">
+        <div class="ob-title">🏢 香港區旗艦店</div>
+        <div class="ob-addr">夏慤道18號海富中心1座18樓1804室<br>熱線: 2111-1313 / 2523-1198</div>
+      </div>
+      <div class="office-badge" style="margin-top:0.8rem;">
+        <div class="ob-title">🏢 九龍及新界區旗艦店</div>
+        <div class="ob-addr">尖沙咀科學館道14號新文華中心B座7樓<br>熱線: 2311-7171</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">全港</div>
+      <div class="stat-lbl">分行網絡覆蓋</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">萬+</div>
+      <div class="stat-lbl">工商物業盤源</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HK/KLN</div>
+      <div class="stat-lbl">雙旗艦辦事處</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">專業</div>
+      <div class="stat-lbl">持牌代理團隊</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="section-label">關於我們 About Us</div>
+      <h2 class="section-title">工商物業<span>專業代理先驅</span></h2>
+      <p class="about-text">美聯工商舖（Midland ICI — Industrial Commercial International）是美聯物業旗下專注工商物業的代理品牌，專業代理香港工業、商業及舖位物業買賣及租賃，擁有遍佈全港的分行網絡及龐大的盤源資料庫。</p>
+      <div class="highlight-box">
+        <h4>🏆 我們的優勢</h4>
+        <p>憑借美聯集團深厚的市場背景及龐大的客戶資源，我們的專業代理團隊以最新市場數據及豐富的行業經驗，為客戶提供精準的物業顧問服務，協助您作出最明智的投資及業務決策。</p>
+      </div>
+      <p class="about-text">服務涵蓋寫字樓、工業大廈、商舖及地舖等各類工商物業，並提供新盤項目推介、市場分析及投資顧問等增值服務，是您尋找工商物業的可信賴夥伴。</p>
+    </div>
+    <div>
+      <div class="prop-cards">
+        <div class="prop-card">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h5>廣泛盤源</h5>
+          <p>擁有全港最全面的工商物業盤源資料庫，第一時間掌握市場動向。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <h5>專業團隊</h5>
+          <p>持牌代理及資深顧問，深具工商物業市場知識，提供精準服務。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          </div>
+          <h5>市場分析</h5>
+          <p>提供最新工商物業市場分析報告，助客戶把握最佳買賣時機。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <h5>全程支援</h5>
+          <p>由搜盤、睇樓、議價到成交，全程專業支援，讓您交易安心。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="section-label">服務範疇 Our Services</div>
+      <h2 class="section-title">全面的<span>工商物業服務</span></h2>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        </div>
+        <h3>寫字樓買賣及租賃</h3>
+        <p>涵蓋甲級、乙級寫字樓及商業樓宇，提供全港各區辦公室的買賣及租賃服務，包括新盤及二手市場，為企業找到最合適的辦公地點。</p>
+        <div class="svc-tags">
+          <span class="svc-tag">甲/乙級</span>
+          <span class="svc-tag">中環/灣仔</span>
+          <span class="svc-tag">九龍商業區</span>
+          <span class="svc-tag">新界</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 20h.01M7 20v-4M12 20v-8M17 20V8M22 4v16"/></svg>
+        </div>
+        <h3>工業物業代理</h3>
+        <p>工廈單位、貨倉、廠房及迷你倉買賣及租賃，覆蓋觀塘、葵涌、荃灣、屯門等主要工業區，為不同行業的企業提供合適的工業物業選擇。</p>
+        <div class="svc-tags">
+          <span class="svc-tag">工業大廈</span>
+          <span class="svc-tag">貨倉/廠房</span>
+          <span class="svc-tag">觀塘/葵涌</span>
+          <span class="svc-tag">荃灣/屯門</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <h3>商舖及地舖代理</h3>
+        <p>全港各主要購物商圈及地區商舖的買賣及租賃，包括核心零售區、街舖及商場舖位，協助零售及餐飲業主尋找最佳商舖位置。</p>
+        <div class="svc-tags">
+          <span class="svc-tag">地舖</span>
+          <span class="svc-tag">商場舖位</span>
+          <span class="svc-tag">旺角/銅鑼灣</span>
+          <span class="svc-tag">尖沙咀</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>新盤及發展項目</h3>
+        <p>獨家代理或聯合代理最新工商物業發展項目，提供優先認購資訊及專業的新盤投資分析，讓投資者掌握最新市場機遇。</p>
+        <div class="svc-tags">
+          <span class="svc-tag">新盤推介</span>
+          <span class="svc-tag">發展商合作</span>
+          <span class="svc-tag">優先認購</span>
+          <span class="svc-tag">投資分析</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">05</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3>市場分析及成交資訊</h3>
+        <p>提供最新工商物業市場分析報告、成交紀錄及大廈資訊，協助客戶深入了解市場動態，作出更明智的買賣及投資決策。</p>
+        <div class="svc-tags">
+          <span class="svc-tag">成交紀錄</span>
+          <span class="svc-tag">市場報告</span>
+          <span class="svc-tag">大廈資訊</span>
+          <span class="svc-tag">熱門商圈</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">06</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>代理團隊及加入我們</h3>
+        <p>加入美聯工商舖精英代理團隊，享有完善培訓、業界最具競爭力的佣金制度及豐富的業務資源，共同拓展工商物業市場版圖。</p>
+        <div class="svc-tags">
+          <span class="svc-tag">加入代理</span>
+          <span class="svc-tag">培訓支援</span>
+          <span class="svc-tag">佣金制度</span>
+          <span class="svc-tag">職業發展</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICES -->
+<section class="offices" id="offices">
+  <div class="offices-inner">
+    <div class="offices-header">
+      <div class="section-label">分行網絡 Our Offices</div>
+      <h2 class="section-title">旗艦辦事處</h2>
+    </div>
+    <div class="offices-grid">
+      <div class="office-card">
+        <h3>🏙️ 香港區旗艦店</h3>
+        <div class="office-row">
+          <div class="office-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="office-row-content">
+            <div class="olabel">地址</div>
+            <div class="oval">香港夏慤道18號海富中心1座18樓1804室</div>
+          </div>
+        </div>
+        <div class="office-row">
+          <div class="office-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 9.11"/></svg>
+          </div>
+          <div class="office-row-content">
+            <div class="olabel">查詢熱線</div>
+            <div class="oval">
+              <a href="tel:+85221111313">2111-1313</a> /
+              <a href="tel:+85225231198">2523-1198</a> /
+              <a href="tel:+85225252345">2525-2345</a>
+            </div>
+          </div>
+        </div>
+        <div class="office-row">
+          <div class="office-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/></svg>
+          </div>
+          <div class="office-row-content">
+            <div class="olabel">電郵</div>
+            <div class="oval"><a href="mailto:hk.office@midlandici.com.hk">hk.office@midlandici.com.hk</a></div>
+          </div>
+        </div>
+        <div class="office-row">
+          <div class="office-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 17H2a3 3 0 003-3V9a7 7 0 0114 0v5a3 3 0 003 3z"/><path d="M12 20a2 2 0 002-2H10a2 2 0 002 2z"/></svg>
+          </div>
+          <div class="office-row-content">
+            <div class="olabel">傳真</div>
+            <div class="oval">2537-4828</div>
+          </div>
+        </div>
+      </div>
+      <div class="office-card">
+        <h3>🏙️ 九龍及新界區旗艦店</h3>
+        <div class="office-row">
+          <div class="office-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="office-row-content">
+            <div class="olabel">地址</div>
+            <div class="oval">九龍尖沙咀科學館道14號新文華中心B座7樓11-16室</div>
+          </div>
+        </div>
+        <div class="office-row">
+          <div class="office-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 9.11"/></svg>
+          </div>
+          <div class="office-row-content">
+            <div class="olabel">查詢熱線</div>
+            <div class="oval"><a href="tel:+85223117171">2311-7171</a></div>
+          </div>
+        </div>
+        <div class="office-row">
+          <div class="office-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/></svg>
+          </div>
+          <div class="office-row-content">
+            <div class="olabel">電郵</div>
+            <div class="oval"><a href="mailto:kln.office@midlandici.com.hk">kln.office@midlandici.com.hk</a></div>
+          </div>
+        </div>
+        <div class="office-row">
+          <div class="office-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 17H2a3 3 0 003-3V9a7 7 0 0114 0v5a3 3 0 003 3z"/></svg>
+          </div>
+          <div class="office-row-content">
+            <div class="olabel">傳真</div>
+            <div class="oval">2312-2787</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">聯絡我們 Contact Us</div>
+      <h2>物業查詢<br>代理隨時候命</h2>
+      <p>無論您是尋找辦公室、工廈、商舖還是有意放盤，我們的專業代理團隊隨時為您提供最新盤源資訊及市場建議。</p>
+      <div class="contact-details">
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 9.11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.01 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.11 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">客戶服務熱線</div>
+            <div class="cdetail-value"><a href="tel:+85228012136">2801-2136</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 9.11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.01 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.11 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">香港區熱線</div>
+            <div class="cdetail-value"><a href="tel:+85221111313">2111-1313</a> / <a href="tel:+85225231198">2523-1198</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">九龍及新界區熱線</div>
+            <div class="cdetail-value"><a href="tel:+85223117171">2311-7171</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">電郵 Email</div>
+            <div class="cdetail-value"><a href="mailto:hk.office@midlandici.com.hk">hk.office@midlandici.com.hk</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">官方網站</div>
+            <div class="cdetail-value"><a href="https://www.midlandici.com.hk" target="_blank">midlandici.com.hk</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>🏢 物業查詢 / 放盤</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>姓名 Name</label>
+          <input type="text" placeholder="您的姓名">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話 Phone</label>
+          <input type="tel" placeholder="+852 XXXX XXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>電郵 Email</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>查詢類別 Enquiry Type</label>
+        <select>
+          <option>尋找寫字樓 Office Search</option>
+          <option>尋找工業物業 Industrial Property</option>
+          <option>尋找商舖 Shop Search</option>
+          <option>放盤 List Property</option>
+          <option>新盤查詢 New Development</option>
+          <option>市場分析 Market Analysis</option>
+          <option>加入代理 Join as Agent</option>
+          <option>其他 Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>查詢詳情 Message</label>
+        <textarea placeholder="請描述您的物業需求（地區、面積、預算等）..."></textarea>
+      </div>
+      <button class="form-submit">發送查詢 Send Enquiry</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-cn">美聯工商舖</div>
+        <div class="footer-brand-en">MIDLAND ICI — INDUSTRIAL COMMERCIAL INTERNATIONAL</div>
+        <p class="footer-tagline">香港領先工商物業代理品牌，專注寫字樓、工業及商舖買賣租賃。<br>客服熱線：2801-2136 | midlandici.com.hk</p>
+      </div>
+      <div class="footer-col">
+        <h4>服務範疇</h4>
+        <ul>
+          <li><a href="#services">寫字樓代理</a></li>
+          <li><a href="#services">工業物業</a></li>
+          <li><a href="#services">商舖代理</a></li>
+          <li><a href="#services">新盤項目</a></li>
+          <li><a href="#services">市場分析</a></li>
+          <li><a href="#services">加入我們</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡資訊</h4>
+        <ul>
+          <li><a href="tel:+85228012136">客服: 2801-2136</a></li>
+          <li><a href="tel:+85221111313">港島: 2111-1313</a></li>
+          <li><a href="tel:+85223117171">九龍: 2311-7171</a></li>
+          <li><a href="mailto:hk.office@midlandici.com.hk">hk.office@midlandici.com.hk</a></li>
+          <li><a href="https://www.midlandici.com.hk" target="_blank">midlandici.com.hk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 美聯工商舖 Midland ICI. All rights reserved.</div>
+      <div class="footer-web">持牌地產代理 | 地監局牌照持有人</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
