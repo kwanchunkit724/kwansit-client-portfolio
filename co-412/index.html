@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>聯展科技有限公司 IPT | 軟件開發 · 網站設計 · 香港</title>
+<style>
+:root{
+  --navy:#0d1e38;
+  --navy2:#152640;
+  --orange:#e07000;
+  --orange2:#f08500;
+  --light:#f3f7fb;
+  --white:#ffffff;
+  --text:#1a2533;
+  --muted:#566473;
+  --border:#ccd8e8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI','PingFang HK','Microsoft JhengHei',Arial,sans-serif;color:var(--text);background:var(--white);line-height:1.65;}
+a{color:inherit;text-decoration:none;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);border-bottom:2px solid var(--orange);padding:0 6%;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
+.nav-logo{font-size:1.2rem;font-weight:800;color:var(--white);}
+.nav-logo span{color:var(--orange2);}
+.nav-links{display:flex;gap:24px;}
+.nav-links a{color:rgba(255,255,255,0.82);font-size:0.87rem;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--orange2);}
+.nav-cta{background:var(--orange);color:var(--white)!important;padding:8px 18px;border-radius:4px;font-weight:700!important;}
+
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,#0a1830 100%);padding:120px 6% 80px;min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:480px;height:480px;border-radius:50%;background:rgba(224,112,0,0.07);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;width:100%;max-width:1200px;margin:0 auto;}
+.hero-label{display:inline-block;background:rgba(224,112,0,0.15);color:var(--orange2);font-size:0.78rem;font-weight:700;letter-spacing:2px;padding:5px 14px;border-radius:20px;border:1px solid rgba(224,112,0,0.3);margin-bottom:18px;text-transform:uppercase;}
+.hero h1{font-size:2.5rem;font-weight:900;color:var(--white);line-height:1.2;margin-bottom:10px;}
+.hero h1 span{color:var(--orange2);}
+.hero-en{font-size:1rem;color:rgba(255,255,255,0.5);margin-bottom:14px;}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.68);max-width:520px;margin-bottom:34px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-or{background:var(--orange);color:var(--white);padding:13px 28px;border-radius:5px;font-weight:700;font-size:0.95rem;transition:background 0.2s,transform 0.2s;}
+.btn-or:hover{background:var(--orange2);transform:translateY(-2px);}
+.btn-out{border:2px solid rgba(255,255,255,0.3);color:var(--white);padding:13px 28px;border-radius:5px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s,transform 0.2s;}
+.btn-out:hover{border-color:var(--orange2);transform:translateY(-2px);}
+.hero-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:28px 24px;}
+.hero-card h3{color:var(--orange2);font-size:0.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;}
+.hc-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+.hc-icon{width:34px;height:34px;border-radius:8px;background:rgba(224,112,0,0.15);border:1px solid rgba(224,112,0,0.3);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.hc-label{font-size:0.73rem;color:rgba(255,255,255,0.45);margin-bottom:2px;}
+.hc-val{color:var(--white);font-size:0.88rem;font-weight:600;}
+.hc-divider{border:none;border-top:1px solid rgba(255,255,255,0.1);margin:14px 0;}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;}
+.badge{background:rgba(224,112,0,0.15);border:1px solid rgba(224,112,0,0.3);color:var(--orange2);font-size:0.68rem;font-weight:700;padding:4px 10px;border-radius:20px;}
+
+.stats{background:var(--orange);padding:26px 6%;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1100px;margin:0 auto;}
+.stat{text-align:center;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--white);}
+.stat-lbl{font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.5px;}
+
+section{padding:80px 6%;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-tag{display:inline-block;background:rgba(224,112,0,0.1);color:var(--orange);font-size:0.75rem;font-weight:700;letter-spacing:2px;padding:4px 14px;border-radius:20px;border:1px solid rgba(224,112,0,0.25);text-transform:uppercase;margin-bottom:12px;}
+.sec-title{font-size:2rem;font-weight:800;color:var(--navy);margin-bottom:10px;}
+.sec-sub{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:44px;}
+
+.about{background:var(--light);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.about-text p{color:var(--muted);margin-bottom:16px;line-height:1.75;}
+.highlight-box{background:var(--navy);border-radius:12px;padding:26px 24px;margin-bottom:22px;}
+.highlight-box h3{color:var(--orange2);font-size:1rem;font-weight:700;margin-bottom:8px;}
+.highlight-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.prop-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px 16px;border-top:3px solid var(--orange);}
+.prop-card h4{color:var(--navy);font-size:0.9rem;font-weight:700;margin-bottom:6px;}
+.prop-card p{color:var(--muted);font-size:0.8rem;line-height:1.55;}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.svc-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:26px 20px;transition:box-shadow 0.2s,transform 0.2s;border-top:4px solid transparent;}
+.svc-card:hover{box-shadow:0 8px 24px rgba(224,112,0,0.1);transform:translateY(-4px);border-top-color:var(--orange);}
+.svc-icon{width:46px;height:46px;border-radius:10px;background:rgba(224,112,0,0.08);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;}
+.svc-card h3{color:var(--navy);font-size:0.98rem;font-weight:700;margin-bottom:8px;}
+.svc-card p{color:var(--muted);font-size:0.84rem;line-height:1.6;}
+
+.projects{background:var(--navy);}
+.projects .sec-title{color:var(--white);}
+.projects .sec-sub{color:rgba(255,255,255,0.6);}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.proj-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:22px 18px;}
+.proj-date{color:var(--orange2);font-size:0.72rem;font-weight:700;text-transform:uppercase;margin-bottom:6px;}
+.proj-type{background:rgba(224,112,0,0.2);color:var(--orange2);font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:12px;display:inline-block;margin-bottom:8px;}
+.proj-card h3{color:var(--white);font-size:0.9rem;font-weight:700;margin-bottom:6px;line-height:1.45;}
+.proj-card p{color:rgba(255,255,255,0.6);font-size:0.8rem;line-height:1.55;}
+
+.contact-s{background:var(--light);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.contact-info h3{color:var(--navy);font-size:1.25rem;font-weight:700;margin-bottom:6px;}
+.contact-info p{color:var(--muted);font-size:0.92rem;margin-bottom:26px;}
+.ci-block{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
+.ci-icon{width:40px;height:40px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ci-label{font-size:0.74rem;color:var(--muted);margin-bottom:2px;}
+.ci-val{color:var(--navy);font-size:0.93rem;font-weight:600;}
+.cform{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:32px 28px;}
+.cform h3{color:var(--navy);font-size:1.1rem;font-weight:700;margin-bottom:22px;}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.form-group label{font-size:0.8rem;font-weight:600;color:var(--navy);}
+.form-group input,.form-group select,.form-group textarea{border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-size:0.9rem;color:var(--text);background:var(--light);font-family:inherit;outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--orange);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.btn-submit{width:100%;background:var(--navy);color:var(--white);border:none;border-radius:6px;padding:13px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.btn-submit:hover{background:var(--navy2);}
+
+footer{background:var(--navy);padding:50px 6% 28px;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;margin-bottom:36px;}
+.footer-brand h3{color:var(--white);font-size:1.1rem;font-weight:800;margin-bottom:8px;}
+.footer-brand h3 span{color:var(--orange2);}
+.footer-brand p{color:rgba(255,255,255,0.5);font-size:0.84rem;line-height:1.65;}
+.footer-col h4{color:var(--orange2);font-size:0.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-col ul li a{color:rgba(255,255,255,0.55);font-size:0.84rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--orange2);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;align-items:center;justify-content:space-between;}
+.footer-bottom p{color:rgba(255,255,255,0.38);font-size:0.78rem;}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .stats-grid,.services-grid,.proj-grid{grid-template-columns:repeat(2,1fr);}
+  .about-props{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">聯展科技 <span>IPT</span></div>
+    <div class="nav-links">
+      <a href="#about">關於我們</a>
+      <a href="#services">服務</a>
+      <a href="#projects">成功案例</a>
+      <a href="#contact" class="nav-cta">聯絡我們</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-label">Hong Kong IT Services Since 2018</div>
+      <h1>聯展科技<br><span>系統開發</span> · 網站設計</h1>
+      <p class="hero-en">IPT — Information & Professional Technology</p>
+      <p class="hero-sub">香港專業軟件開發公司，專門為非政府機構、社福機構及各行業提供度身訂製的系統解決方案與網站設計服務，屢獲政府及知名機構信任。</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-or">免費諮詢</a>
+        <a href="#projects" class="btn-out">查看案例</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>聯絡資料</h3>
+      <div class="hc-row">
+        <div class="hc-icon">✉</div>
+        <div>
+          <div class="hc-label">電郵</div>
+          <div class="hc-val">cs@hkpaperpenink.com</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📱</div>
+        <div>
+          <div class="hc-label">WhatsApp</div>
+          <div class="hc-val">+852 9148 5809</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">🌐</div>
+        <div>
+          <div class="hc-label">網站</div>
+          <div class="hc-val">ipt-hk.com</div>
+        </div>
+      </div>
+      <hr class="hc-divider">
+      <div class="badge-row">
+        <span class="badge">系統開發</span>
+        <span class="badge">NGO/NPO專家</span>
+        <span class="badge">網站設計</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num">10+</div><div class="stat-lbl">成功系統項目</div></div>
+    <div class="stat"><div class="stat-num">NGO</div><div class="stat-lbl">社福機構專家</div></div>
+    <div class="stat"><div class="stat-num">2018</div><div class="stat-lbl">服務香港至今</div></div>
+    <div class="stat"><div class="stat-num">度身</div><div class="stat-lbl">訂製解決方案</div></div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="sec-tag">關於聯展科技</div>
+        <h2 class="sec-title">香港本地專業軟件開發商</h2>
+        <p>聯展科技有限公司（IPT）是一家立根香港的專業資訊科技公司，專注於為非政府機構（NGO）、社福機構、診所及企業提供度身訂製的系統開發及網站設計服務。</p>
+        <p>自成立以來，IPT 已成功交付多個大型系統項目，服務客戶包括香港癌症基金會、香港家庭福利會、基督教家庭服務中心等知名機構，以及嶺南大學等高等院校，建立了卓越的業界信譽。</p>
+        <div class="highlight-box">
+          <h3>我們的專業優勢</h3>
+          <p>多年深耕 NGO 及社福界，深明不同機構的業務流程與監管要求。我們的解決方案不只滿足技術規格，更能切實提升工作效率，協助機構達成服務使命。</p>
+        </div>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <h4>NGO/NPO 專家</h4>
+          <p>多年服務非政府機構及社福機構，深明客戶管理、個案追蹤及統計申報的獨特需求。</p>
+        </div>
+        <div class="prop-card">
+          <h4>度身訂製開發</h4>
+          <p>拒絕一刀切方案，每個系統均按客戶業務流程度身訂製，確保真正解決業務痛點。</p>
+        </div>
+        <div class="prop-card">
+          <h4>成功中標記錄</h4>
+          <p>屢次成功中標政府及知名機構招標，充分証明技術實力與服務品質。</p>
+        </div>
+        <div class="prop-card">
+          <h4>完整技術支援</h4>
+          <p>系統上線後持續提供維護及技術支援，確保系統長期穩定運作。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="sec-inner">
+    <div class="sec-tag">服務範疇</div>
+    <h2 class="sec-title">專業 IT 服務</h2>
+    <p class="sec-sub">從系統規劃到開發上線，提供全程專業的資訊科技服務。</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🗂️</div>
+        <h3>案例管理系統</h3>
+        <p>為社福及NGO機構開發綜合個案管理系統，涵蓋案例記錄、活動管理、社工報告及SWD統計申報功能。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">👥</div>
+        <h3>會員及報名系統</h3>
+        <p>會員資料管理、網上報名、付款整合及活動管理系統，為各類機構提供完整的會員服務數碼化解決方案。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏥</div>
+        <h3>診所管理系統</h3>
+        <p>Eye Solution（ES）眼科診所管理系統，專為眼科診所行業設計，支援大型連鎖診所集團使用。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💳</div>
+        <h3>網上付款系統</h3>
+        <p>整合各大支付閘道，提供安全可靠的網上繳費及報名功能，簡化機構的收費行政程序。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🌐</div>
+        <h3>網站設計</h3>
+        <p>企業網站、機構官方網站、電子商務平台設計及開發，為各類規模機構提供專業網上形象。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📊</div>
+        <h3>客戶資訊系統</h3>
+        <p>CRM 客戶資訊管理系統，協助機構統一管理服務對象資料、服務記錄及相關統計分析報告。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="sec-inner">
+    <div class="sec-tag">成功案例</div>
+    <h2 class="sec-title">信任我們的機構</h2>
+    <p class="sec-sub">多年來為香港著名機構及大學成功交付系統項目，屢受業界信賴。</p>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-date">Mar 2024</div>
+        <div class="proj-type">系統開發</div>
+        <h3>Youth Case and Program Management System</h3>
+        <p>為基督教家庭服務中心 (CFSC) 開發青少年個案及計劃管理系統。</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-date">Dec 2023</div>
+        <div class="proj-type">系統開發</div>
+        <h3>Membership and Enrolment System</h3>
+        <p>為香港癌症基金會 (HKCF) 開發會員及報名管理系統。</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-date">May 2022</div>
+        <div class="proj-type">系統開發</div>
+        <h3>Eye Solution (ES) Clinic System</h3>
+        <p>為香港最大型眼科診所集團之一成功上線專用診所管理系統。</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-date">Apr 2022</div>
+        <div class="proj-type">系統開發</div>
+        <h3>Online Payment and Enrollment System</h3>
+        <p>為香港家庭福利會 (HKFWS) 開發網上繳費及報名系統。</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-date">Mar 2020</div>
+        <div class="proj-type">系統開發</div>
+        <h3>Social School Work System (SSW)</h3>
+        <p>為香港家庭福利會社工開發學生個案管理系統，符合社署統計要求。</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-date">Oct 2018</div>
+        <div class="proj-type">網站設計</div>
+        <h3>嶺南大學 – 經濟系網站</h3>
+        <p>為嶺南大學經濟學系設計及開發官方院系網站。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-s" id="contact">
+  <div class="sec-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="sec-tag">聯絡我們</div>
+        <h3>立即與我們洽談</h3>
+        <p>無論是系統開發、網站設計或IT顧問，歡迎聯絡我們的團隊，免費諮詢您的項目需求。</p>
+        <div class="ci-block">
+          <div class="ci-icon">✉</div>
+          <div>
+            <div class="ci-label">電郵</div>
+            <div class="ci-val">cs@hkpaperpenink.com</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">WhatsApp</div>
+            <div class="ci-val">+852 9148 5809</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">網站</div>
+            <div class="ci-val">ipt-hk.com</div>
+          </div>
+        </div>
+      </div>
+      <div class="cform">
+        <h3>發送項目查詢</h3>
+        <div class="form-group">
+          <label>機構 / 公司名稱</label>
+          <input type="text" placeholder="機構或公司名稱">
+        </div>
+        <div class="form-group">
+          <label>聯絡人姓名</label>
+          <input type="text" placeholder="您的姓名">
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>WhatsApp / 電話</label>
+          <input type="tel" placeholder="+852 xxxx xxxx">
+        </div>
+        <div class="form-group">
+          <label>查詢類別</label>
+          <select>
+            <option value="">請選擇...</option>
+            <option>案例/客戶管理系統</option>
+            <option>會員及報名系統</option>
+            <option>診所管理系統</option>
+            <option>網上付款系統</option>
+            <option>網站設計</option>
+            <option>其他系統開發</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>項目說明</label>
+          <textarea placeholder="請簡述您的系統需求或項目背景..."></textarea>
+        </div>
+        <button class="btn-submit">發送查詢 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>聯展科技 <span>IPT</span></h3>
+        <p>聯展科技有限公司 — 香港本地專業軟件開發及網站設計公司，專為NGO、社福機構、診所及企業提供度身訂製的系統解決方案，服務遍及香港各知名機構。</p>
+      </div>
+      <div class="footer-col">
+        <h4>服務</h4>
+        <ul>
+          <li><a href="#services">案例管理系統</a></li>
+          <li><a href="#services">會員及報名系統</a></li>
+          <li><a href="#services">診所管理系統</a></li>
+          <li><a href="#services">網站設計</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡</h4>
+        <ul>
+          <li><a href="mailto:cs@hkpaperpenink.com">cs@hkpaperpenink.com</a></li>
+          <li><a href="tel:+85291485809">+852 9148 5809</a></li>
+          <li><a href="https://ipt-hk.com">ipt-hk.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 聯展科技有限公司 IPT. All rights reserved. Hong Kong SAR.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
