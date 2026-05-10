@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Bridge Max Limited 滿橋顧問有限公司 | 財務顧問服務</title>
+<meta name="description" content="Bridge Max Limited（滿橋顧問有限公司）是一家位於旺角的專業財務顧問公司，提供全方位企業財務策劃及顧問服務。"/>
+<style>
+:root{
+  --primary:#1e3a5f;
+  --primary-mid:#2a5080;
+  --primary-light:#3870b0;
+  --accent:#c8a020;
+  --accent-light:#e8c040;
+  --dark:#0d1e30;
+  --surface:#f5f7fa;
+  --surface2:#eaeff5;
+  --text:#1a2535;
+  --text-muted:#5a6a80;
+  --white:#ffffff;
+  --radius:10px;
+  --shadow:0 4px 24px rgba(30,58,95,0.12);
+  --shadow-lg:0 8px 48px rgba(30,58,95,0.18);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.7}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(13,30,48,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,160,32,0.2)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--primary-light),var(--accent));border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:var(--white)}
+.nav-logo-text{font-size:15px;font-weight:700;color:var(--white);line-height:1.2}
+.nav-logo-sub{font-size:11px;color:var(--accent-light);font-weight:400}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent-light)}
+.nav-cta{background:linear-gradient(135deg,var(--accent),var(--accent-light));color:var(--dark)!important;padding:8px 20px;border-radius:6px;font-weight:700!important;font-size:13px!important;transition:opacity .2s!important}
+.nav-cta:hover{opacity:.85}
+@media(max-width:768px){.nav-links{display:none}}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(150deg,var(--dark) 0%,var(--primary) 55%,#1a3060 100%);display:flex;align-items:center;position:relative;overflow:hidden;padding-top:64px}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0zM40 40h40v40H40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero::after{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(200,160,32,0.12) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;padding:80px 24px;width:100%;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,160,32,0.15);border:1px solid rgba(200,160,32,0.35);border-radius:20px;padding:6px 16px;margin-bottom:20px}
+.hero-badge-dot{width:8px;height:8px;background:var(--accent-light);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+.hero-badge-text{font-size:12px;color:var(--accent-light);font-weight:600;letter-spacing:.5px}
+.hero h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;color:var(--white);line-height:1.15;margin-bottom:10px}
+.hero h1 span{color:var(--accent-light)}
+.hero-zh{font-size:1.35rem;color:rgba(255,255,255,0.65);font-weight:400;margin-bottom:20px;letter-spacing:1px}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:36px;max-width:520px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--accent),var(--accent-light));color:var(--dark);padding:14px 28px;border-radius:var(--radius);font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(200,160,32,0.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,160,32,0.5)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(255,255,255,0.35);color:var(--white);padding:14px 28px;border-radius:var(--radius);font-weight:600;font-size:15px;text-decoration:none;transition:all .2s}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08)}
+.hero-card{background:rgba(255,255,255,0.06);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:32px;color:var(--white)}
+.hero-card-title{font-size:13px;color:var(--accent-light);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.hero-card-title::before{content:'';width:16px;height:2px;background:var(--accent-light)}
+.info-row{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.info-icon{width:34px;height:34px;min-width:34px;background:rgba(200,160,32,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.info-label{font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.info-val{font-size:14px;color:var(--white);font-weight:500;line-height:1.4}
+.info-val a{color:var(--accent-light);text-decoration:none}
+.hero-card-divider{height:1px;background:rgba(255,255,255,0.1);margin:18px 0}
+.new-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(200,160,32,0.2);border:1px solid rgba(200,160,32,0.4);border-radius:12px;padding:4px 10px;font-size:11px;color:var(--accent-light);font-weight:600;margin-top:8px}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-card{max-width:480px}}
+
+/* STATS */
+.stats{background:var(--primary);padding:56px 24px}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.stat-item{background:rgba(255,255,255,0.05);padding:32px 24px;text-align:center;transition:background .2s}
+.stat-item:first-child{border-radius:var(--radius) 0 0 var(--radius)}
+.stat-item:last-child{border-radius:0 var(--radius) var(--radius) 0}
+.stat-item:hover{background:rgba(255,255,255,0.1)}
+.stat-num{font-size:2.2rem;font-weight:800;color:var(--accent-light);line-height:1;margin-bottom:6px}
+.stat-label{font-size:13px;color:rgba(255,255,255,0.65);font-weight:500}
+@media(max-width:640px){.stats-inner{grid-template-columns:repeat(2,1fr)}.stat-item:first-child{border-radius:var(--radius) 0 0 0}.stat-item:last-child{border-radius:0 0 var(--radius) 0}}
+
+/* SECTIONS */
+section{padding:88px 24px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(30,58,95,0.1);color:var(--primary);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px;border:1px solid rgba(30,58,95,0.18)}
+.section-title{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;color:var(--dark);line-height:1.25;margin-bottom:14px}
+.section-title span{color:var(--primary-light)}
+.section-sub{font-size:1.05rem;color:var(--text-muted);max-width:580px;line-height:1.8}
+.section-header{margin-bottom:52px}
+.section-alt{background:var(--surface)}
+.section-dark{background:var(--primary);color:var(--white)}
+.section-dark .section-tag{background:rgba(200,160,32,0.2);color:var(--accent-light);border-color:rgba(200,160,32,0.3)}
+.section-dark .section-title{color:var(--white)}
+.section-dark .section-sub{color:rgba(255,255,255,0.7)}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc-card{background:var(--white);border:1px solid rgba(30,58,95,0.1);border-radius:16px;padding:32px;transition:transform .2s,box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-light))}
+.svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--primary-light)}
+.svc-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(30,58,95,0.1),rgba(42,80,128,0.15));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px}
+.svc-title{font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:8px}
+.svc-en{font-size:13px;color:var(--text-muted);font-weight:400;margin-bottom:12px}
+.svc-desc{font-size:14px;color:var(--text-muted);line-height:1.75}
+@media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.services-grid{grid-template-columns:1fr}}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-content p{font-size:1rem;color:var(--text-muted);line-height:1.85;margin-bottom:16px}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.highlight-item{background:var(--surface2);border-radius:12px;padding:20px;border-left:3px solid var(--primary-light)}
+.highlight-title{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:4px}
+.highlight-desc{font-size:13px;color:var(--text-muted);line-height:1.6}
+.about-visual{background:linear-gradient(135deg,var(--primary),var(--primary-mid));border-radius:20px;padding:40px;color:var(--white)}
+.about-visual-title{font-size:1.1rem;font-weight:700;color:var(--accent-light);margin-bottom:24px}
+.about-feat{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px}
+.about-feat-icon{width:40px;height:40px;min-width:40px;background:rgba(200,160,32,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.about-feat-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px}
+.about-feat-desc{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6}
+@media(max-width:800px){.about-grid{grid-template-columns:1fr}.about-highlights{grid-template-columns:1fr}}
+
+/* APPROACH */
+.approach-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.approach-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--primary-light),var(--accent));z-index:0}
+.step-item{text-align:center;padding:0 16px;position:relative;z-index:1}
+.step-num{width:56px;height:56px;background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:var(--white);margin:0 auto 16px;border:3px solid var(--white);box-shadow:0 0 0 3px var(--primary-light)}
+.step-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:6px}
+.step-desc{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6}
+@media(max-width:700px){.approach-steps{grid-template-columns:repeat(2,1fr)}.approach-steps::before{display:none}}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.why-card{background:var(--white);border-radius:16px;padding:28px;text-align:center;border:1px solid rgba(30,58,95,0.1);transition:transform .2s,box-shadow .2s}
+.why-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.why-icon{font-size:2.2rem;margin-bottom:14px}
+.why-title{font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:8px}
+.why-desc{font-size:13.5px;color:var(--text-muted);line-height:1.7}
+@media(max-width:700px){.why-grid{grid-template-columns:1fr}}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info-card{background:linear-gradient(135deg,var(--dark),var(--primary));border-radius:16px;padding:36px;color:var(--white);height:100%}
+.contact-info-title{font-size:18px;font-weight:700;color:var(--accent-light);margin-bottom:24px}
+.c-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px}
+.c-icon{width:40px;height:40px;min-width:40px;background:rgba(200,160,32,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px}
+.c-label{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:.5px;margin-bottom:3px;text-transform:uppercase}
+.c-val{font-size:14px;color:var(--white);font-weight:500;line-height:1.5}
+.c-val a{color:var(--accent-light);text-decoration:none}
+.form-card{background:var(--surface);border-radius:16px;padding:36px;border:1px solid rgba(30,58,95,0.1)}
+.form-title{font-size:18px;font-weight:700;color:var(--primary);margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid rgba(30,58,95,0.15);border-radius:8px;font-size:14px;color:var(--text);background:var(--white);transition:border-color .2s;outline:none;font-family:inherit}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary-light)}
+.form-group textarea{resize:vertical;min-height:110px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.submit-btn{width:100%;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:var(--white);padding:14px;border:none;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s,transform .2s}
+.submit-btn:hover{opacity:.9;transform:translateY(-1px)}
+@media(max-width:800px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:var(--dark);padding:48px 24px 28px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.footer-brand-name{font-size:17px;font-weight:800;color:var(--white);margin-bottom:4px}
+.footer-brand-zh{font-size:13px;color:var(--accent-light);margin-bottom:14px}
+.footer-brand-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.75}
+.footer-heading{font-size:13px;font-weight:700;color:var(--accent-light);letter-spacing:.8px;text-transform:uppercase;margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--accent-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.4)}
+.footer-legal{font-size:12px;color:rgba(255,255,255,0.35)}
+@media(max-width:700px){.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;align-items:flex-start}}
+
+/* UTILS */
+.divider{width:48px;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:2px;margin-bottom:20px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">BM</div>
+      <div>
+        <div class="nav-logo-text">Bridge Max Limited</div>
+        <div class="nav-logo-sub">滿橋顧問有限公司</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">服務</a></li>
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#approach">服務流程</a></li>
+      <li><a href="#why">為何選擇</a></li>
+      <li><a href="#contact" class="nav-cta">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        <span class="hero-badge-text">財務顧問 · 旺角</span>
+      </div>
+      <h1>專業財務顧問<br/><span>助您橋接機遇</span></h1>
+      <div class="hero-zh">Bridge Max Limited — 滿橋顧問有限公司</div>
+      <p class="hero-desc">我們專注為企業及個人客戶提供全方位財務顧問服務，以專業知識及豐富經驗，為客戶搭建通往成功的橋樑，實現財務目標。</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">立即諮詢 →</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">公司資訊</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">公司全名</div>
+          <div class="info-val">Bridge Max Limited<br/>滿橋顧問有限公司</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">辦公地址</div>
+          <div class="info-val">旺角亞皆老街2C號<br/>啓裕商業大廈6樓602室<br/>九龍, 香港</div>
+        </div>
+      </div>
+      <div class="hero-card-divider"></div>
+      <div class="info-row">
+        <div class="info-icon">🔢</div>
+        <div>
+          <div class="info-label">商業登記號碼</div>
+          <div class="info-val">77536529</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📅</div>
+        <div>
+          <div class="info-label">成立日期</div>
+          <div class="info-val">2024年12月31日</div>
+        </div>
+      </div>
+      <div class="new-badge">
+        <span>⭐</span>
+        <span>嶄新成立 · 充滿活力</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">360°</div>
+      <div class="stat-label">全方位財務顧問</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">MTR</div>
+      <div class="stat-label">旺角核心位置</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">香港本地專業</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">持續成長潛能</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">服務範疇</div>
+      <h2 class="section-title">全方位<span>財務顧問服務</span></h2>
+      <p class="section-sub">Bridge Max Limited 為企業及個人提供專業財務策劃與顧問服務，助您把握每一個商業機遇。</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">💼</div>
+        <div class="svc-title">企業財務顧問</div>
+        <div class="svc-en">Corporate Financial Advisory</div>
+        <div class="svc-desc">為企業提供全面的財務策略規劃，包括資本結構優化、財務分析及業務發展建議，助企業作出明智的財務決策。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📊</div>
+        <div class="svc-title">投資顧問服務</div>
+        <div class="svc-en">Investment Advisory</div>
+        <div class="svc-desc">分析市場機遇，提供客觀的投資意見及資產配置建議，協助客戶實現財富增值目標，管理投資風險。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔄</div>
+        <div class="svc-title">企業融資安排</div>
+        <div class="svc-en">Corporate Financing</div>
+        <div class="svc-desc">協助企業尋找合適的融資渠道，包括銀行貸款、私募融資及其他資金安排，支持業務拓展需要。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏗️</div>
+        <div class="svc-title">業務重組顧問</div>
+        <div class="svc-en">Business Restructuring</div>
+        <div class="svc-desc">針對企業面臨的財務挑戰，提供業務及財務重組方案，協助優化運營架構，提升企業效益。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🤝</div>
+        <div class="svc-title">併購及盡職調查</div>
+        <div class="svc-en">M&A & Due Diligence</div>
+        <div class="svc-desc">為企業合併、收購及出售提供專業支援，包括目標識別、估值分析及盡職調查，確保交易順利完成。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📋</div>
+        <div class="svc-title">財務策劃及預算</div>
+        <div class="svc-en">Financial Planning & Budgeting</div>
+        <div class="svc-desc">協助企業制定切實可行的財務計劃及預算方案，建立有效的財務管理體系，支援長期業務發展目標。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section-alt">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-content">
+        <div class="section-tag">關於我們</div>
+        <h2 class="section-title">橋接財務<span>成就未來</span></h2>
+        <div class="divider"></div>
+        <p>Bridge Max Limited（滿橋顧問有限公司）是一家於香港成立的財務顧問公司，辦公室設於旺角商業核心地帶，為企業及個人客戶提供專業的財務顧問及諮詢服務。</p>
+        <p>「滿橋」之名，寓意我們致力為客戶搭建通往機遇的完整橋樑——無論是融資、投資、業務發展還是財務管理，我們以專業知識及客戶優先的服務理念，助您達成每一個財務目標。</p>
+        <p>我們深信，每位客戶的財務需求都是獨特的。因此，我們提供度身訂造的解決方案，確保我們的建議切合您的實際狀況及長遠目標。</p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <div class="highlight-title">🎯 客戶優先</div>
+            <div class="highlight-desc">以客戶利益為核心，提供客觀專業的顧問意見</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-title">🔒 保密承諾</div>
+            <div class="highlight-desc">嚴格保護客戶的商業及財務資料</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-title">📍 本地優勢</div>
+            <div class="highlight-desc">深入了解香港市場環境及法規要求</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-title">💡 創新思維</div>
+            <div class="highlight-desc">運用嶄新的財務工具及方法解決問題</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-visual-title">我們的核心優勢</div>
+        <div class="about-feat">
+          <div class="about-feat-icon">🏆</div>
+          <div>
+            <div class="about-feat-title">專業財務知識</div>
+            <div class="about-feat-desc">團隊具備深厚的財務及金融知識，涵蓋企業融資、投資分析及市場評估</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon">🌐</div>
+          <div>
+            <div class="about-feat-title">廣闊業務網絡</div>
+            <div class="about-feat-desc">建立廣泛的商業及金融機構網絡，為客戶提供更多資源及合作機會</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon">⚡</div>
+          <div>
+            <div class="about-feat-title">高效服務效率</div>
+            <div class="about-feat-desc">迅速響應客戶需求，提供及時的財務分析及顧問意見</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon">📈</div>
+          <div>
+            <div class="about-feat-title">以成果為導向</div>
+            <div class="about-feat-desc">專注為客戶創造實質的財務價值及可量度的業務成果</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach" class="section-dark">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center">
+      <div class="section-tag">服務流程</div>
+      <h2 class="section-title">四步驟<span style="color:var(--accent-light)">服務模式</span></h2>
+      <p class="section-sub" style="margin:0 auto">系統化的服務流程確保每位客戶獲得最優質、最切合需求的財務顧問服務。</p>
+    </div>
+    <div class="approach-steps">
+      <div class="step-item">
+        <div class="step-num">01</div>
+        <div class="step-title">了解需求</div>
+        <div class="step-desc">深入了解客戶的業務背景、財務狀況及目標，全面掌握需求</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">02</div>
+        <div class="step-title">分析評估</div>
+        <div class="step-desc">進行專業的財務分析及市場評估，識別機遇與風險</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">03</div>
+        <div class="step-title">制定方案</div>
+        <div class="step-desc">根據分析結果，量身訂製最合適的財務策略及解決方案</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">04</div>
+        <div class="step-title">跟進執行</div>
+        <div class="step-desc">協助客戶執行方案，持續跟進進度，確保達成預期目標</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center">
+      <div class="section-tag">選擇理由</div>
+      <h2 class="section-title">為何選擇<span>Bridge Max</span></h2>
+      <p class="section-sub" style="margin:0 auto">我們致力成為您最可靠的財務顧問夥伴，以專業與誠信贏取您的信任。</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🎓</div>
+        <div class="why-title">專業資格認證</div>
+        <div class="why-desc">顧問團隊持有相關財務及商業專業資格，確保服務質素達到業界最高標準。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <div class="why-title">誠信透明服務</div>
+        <div class="why-desc">秉持誠信原則，提供透明的收費結構及清晰的服務說明，建立長期互信關係。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📱</div>
+        <div class="why-title">隨時溝通支援</div>
+        <div class="why-desc">提供靈活的溝通渠道，隨時為您解答財務疑問，確保您得到及時的支援與協助。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-alt">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">與我們<span>即時聯絡</span></h2>
+      <p class="section-sub">如有任何財務顧問查詢，歡迎填寫以下表格或直接前往我們的旺角辦公室。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-card">
+        <div class="contact-info-title">聯絡資訊</div>
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">辦公地址</div>
+            <div class="c-val">旺角亞皆老街2C號<br/>啓裕商業大廈6樓602室<br/>九龍, 香港</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🗺️</div>
+          <div>
+            <div class="c-label">交通資訊</div>
+            <div class="c-val">旺角地鐵站步行可達<br/>鄰近旺角商業核心地帶</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">⏰</div>
+          <div>
+            <div class="c-label">辦公時間</div>
+            <div class="c-val">星期一至五：09:00 – 18:00<br/>星期六：09:00 – 13:00</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📋</div>
+          <div>
+            <div class="c-label">商業登記</div>
+            <div class="c-val">BR No. 77536529</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <div class="form-title">發送查詢</div>
+        <form onsubmit="return false">
+          <div class="form-row">
+            <div class="form-group">
+              <label>姓名 *</label>
+              <input type="text" placeholder="您的姓名"/>
+            </div>
+            <div class="form-group">
+              <label>公司名稱</label>
+              <input type="text" placeholder="公司名稱（如適用）"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>電郵地址 *</label>
+              <input type="email" placeholder="your@email.com"/>
+            </div>
+            <div class="form-group">
+              <label>電話號碼</label>
+              <input type="tel" placeholder="+852 XXXX XXXX"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>查詢服務</label>
+            <select>
+              <option value="">-- 請選擇服務 --</option>
+              <option>企業財務顧問</option>
+              <option>投資顧問服務</option>
+              <option>企業融資安排</option>
+              <option>業務重組顧問</option>
+              <option>併購及盡職調查</option>
+              <option>財務策劃及預算</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>查詢詳情 *</label>
+            <textarea placeholder="請描述您的財務需求或查詢內容…"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">提交查詢 →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Bridge Max Limited</div>
+        <div class="footer-brand-zh">滿橋顧問有限公司</div>
+        <div class="footer-brand-desc">為企業及個人客戶提供專業的財務顧問及諮詢服務，以專業知識助您橋接每一個財務機遇。<br/><br/>旺角亞皆老街2C號啓裕商業大廈6樓602室</div>
+      </div>
+      <div>
+        <div class="footer-heading">服務</div>
+        <ul class="footer-links">
+          <li><a href="#services">企業財務顧問</a></li>
+          <li><a href="#services">投資顧問服務</a></li>
+          <li><a href="#services">企業融資安排</a></li>
+          <li><a href="#services">業務重組顧問</a></li>
+          <li><a href="#services">併購及盡職調查</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">關於</div>
+        <ul class="footer-links">
+          <li><a href="#about">關於我們</a></li>
+          <li><a href="#approach">服務流程</a></li>
+          <li><a href="#why">為何選擇我們</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Bridge Max Limited 滿橋顧問有限公司. 版權所有。</div>
+      <div class="footer-legal">商業登記號碼：77536529 | 香港九龍旺角</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
