@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mega Solutions 萬佳企業服務有限公司 | 一站式專業企業服務</title>
+<style>
+:root {
+  --primary: #0a1018;
+  --secondary: #0e1620;
+  --accent: #c89020;
+  --accent2: #1058c8;
+  --accent-light: #e0aa30;
+  --text: #e8e4d8;
+  --text-muted: #8890a0;
+  --card-bg: #141e2c;
+  --border: #1a2838;
+  --hero-overlay: rgba(10,16,24,0.85);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;background:var(--primary);color:var(--text);line-height:1.7;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,16,24,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),#a07010);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900;color:#fff;}
+.nav-logo-text{display:flex;flex-direction:column;}
+.nav-logo-en{font-size:0.9rem;font-weight:700;color:var(--accent-light);line-height:1.2;}
+.nav-logo-cn{font-size:0.7rem;color:var(--text-muted);letter-spacing:0.04em;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.88rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent-light);}
+.nav-cta{background:var(--accent);color:#0a1018;padding:0.5rem 1.3rem;border-radius:6px;text-decoration:none;font-size:0.88rem;font-weight:700;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent-light);}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(160deg,#0a1018 0%,#0c1828 45%,#0a1420 100%);display:flex;align-items:center;padding-top:70px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 55%,rgba(200,144,32,0.1) 0%,transparent 55%);}
+.hero-grid{max-width:1200px;margin:0 auto;padding:5rem 2rem;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,144,32,0.12);border:1px solid rgba(200,144,32,0.3);border-radius:3px;padding:0.4rem 1rem;margin-bottom:1.5rem;font-size:0.78rem;color:var(--accent-light);letter-spacing:0.1em;text-transform:uppercase;}
+.hero h1{font-size:2.8rem;font-weight:900;line-height:1.2;margin-bottom:0.5rem;}
+.hero h1 .gold{color:var(--accent-light);}
+.hero-en{font-size:1rem;color:var(--accent);margin-bottom:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;}
+.hero-desc{font-size:0.98rem;color:var(--text-muted);margin-bottom:2rem;max-width:540px;line-height:1.8;}
+.hero-offices{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:2rem;}
+.office-dot{background:rgba(16,88,200,0.1);border:1px solid rgba(16,88,200,0.25);border-radius:4px;padding:0.3rem 0.8rem;font-size:0.78rem;color:#7ab0f0;display:flex;align-items:center;gap:5px;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#0a1018;padding:0.85rem 2rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:0.93rem;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);}
+.btn-wa{background:#25d366;color:#fff;padding:0.85rem 2rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:0.93rem;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-wa:hover{background:#1da851;transform:translateY(-2px);}
+.hero-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent-light);margin-bottom:1.3rem;}
+.info-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1rem;}
+.info-row:last-child{margin-bottom:0;}
+.info-icon{width:34px;height:34px;border-radius:6px;background:rgba(200,144,32,0.1);border:1px solid rgba(200,144,32,0.2);display:flex;align-items:center;justify-content:center;font-size:0.88rem;flex-shrink:0;}
+.info-label{font-size:0.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:2px;}
+.info-value{font-size:0.86rem;color:var(--text);}
+.info-value a{color:var(--accent-light);text-decoration:none;}
+
+/* STATS */
+.stats{background:linear-gradient(90deg,var(--accent),#a07010);padding:2.5rem 2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+.stat-num{font-size:2.2rem;font-weight:900;color:#0a1018;line-height:1;}
+.stat-label{font-size:0.8rem;color:rgba(10,16,24,0.75);margin-top:6px;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:0.73rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent-light);margin-bottom:0.6rem;}
+.section-title{font-size:2.1rem;font-weight:800;margin-bottom:1rem;line-height:1.2;}
+.section-sub{font-size:0.95rem;color:var(--text-muted);max-width:600px;margin-bottom:3rem;line-height:1.8;}
+
+/* ABOUT */
+.about{background:var(--secondary);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(200,144,32,0.1),rgba(16,88,200,0.06));border:1px solid rgba(200,144,32,0.25);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:1.8rem;margin-bottom:1.8rem;}
+.about-highlight h3{font-size:0.93rem;font-weight:700;color:var(--accent-light);margin-bottom:0.7rem;text-transform:uppercase;letter-spacing:0.05em;}
+.about-highlight p{color:var(--text-muted);font-size:0.92rem;line-height:1.8;}
+.about-body p{color:var(--text-muted);margin-bottom:1rem;font-size:0.92rem;line-height:1.8;}
+.industries{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem;}
+.ind-tag{background:rgba(16,88,200,0.1);border:1px solid rgba(16,88,200,0.2);color:#7ab0f0;padding:4px 12px;border-radius:20px;font-size:0.78rem;}
+.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;align-items:flex-start;gap:10px;}
+.prop-icon{font-size:1.4rem;flex-shrink:0;}
+.prop-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.prop-desc{font-size:0.76rem;color:var(--text-muted);}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.service-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.service-card:hover{border-color:rgba(200,144,32,0.35);transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,0.5);}
+.service-card:hover::before{opacity:1;}
+.service-icon{font-size:2.2rem;margin-bottom:0.8rem;}
+.service-name{font-size:0.98rem;font-weight:700;color:var(--text);margin-bottom:0.3rem;}
+.service-en{font-size:0.72rem;color:var(--text-muted);margin-bottom:0.8rem;text-transform:uppercase;letter-spacing:0.06em;}
+.service-desc{font-size:0.83rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.7;}
+.service-items{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.service-items li{font-size:0.78rem;color:var(--text-muted);display:flex;align-items:center;gap:8px;}
+.service-items li::before{content:'▸';color:var(--accent);}
+
+/* MORE SERVICES */
+.more-services{background:var(--secondary);}
+.more-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.more-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;text-align:center;transition:border-color 0.2s;}
+.more-card:hover{border-color:rgba(200,144,32,0.3);}
+.more-icon{font-size:1.6rem;margin-bottom:0.5rem;}
+.more-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.more-desc{font-size:0.75rem;color:var(--text-muted);}
+
+/* OFFICES */
+.offices{background:var(--primary);}
+.offices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.office-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;}
+.office-flag{font-size:1.8rem;margin-bottom:0.6rem;}
+.office-region{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent-light);margin-bottom:0.4rem;}
+.office-name{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.8rem;}
+.office-detail{display:flex;align-items:flex-start;gap:8px;margin-bottom:0.5rem;}
+.office-detail-icon{font-size:0.85rem;flex-shrink:0;margin-top:2px;}
+.office-detail-text{font-size:0.82rem;color:var(--text-muted);}
+.office-detail-text a{color:var(--accent-light);text-decoration:none;}
+
+/* CONTACT */
+.contact{background:var(--secondary);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.contact-info-block{background:var(--primary);border:1px solid var(--border);border-radius:14px;padding:2rem;}
+.contact-info-block h3{font-size:1rem;font-weight:700;margin-bottom:1.4rem;color:var(--text);}
+.cinfo-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border);}
+.cinfo-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.cinfo-icon{width:38px;height:38px;background:rgba(200,144,32,0.1);border:1px solid rgba(200,144,32,0.2);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+.cinfo-label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;}
+.cinfo-value{font-size:0.88rem;color:var(--text);}
+.cinfo-value a{color:var(--accent-light);text-decoration:none;}
+.contact-form-block{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:2rem;}
+.contact-form-block h3{font-size:1rem;font-weight:700;margin-bottom:1.4rem;color:var(--text);}
+.form-group{margin-bottom:1.1rem;}
+.form-group label{display:block;font-size:0.73rem;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--primary);border:1px solid var(--border);border-radius:7px;padding:0.75rem 1rem;color:var(--text);font-family:inherit;font-size:0.9rem;transition:border-color 0.2s;resize:vertical;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);}
+.form-group select option{background:var(--primary);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.submit-btn{width:100%;background:var(--accent);color:#0a1018;border:none;padding:0.85rem;border-radius:7px;font-family:inherit;font-size:0.93rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.submit-btn:hover{background:var(--accent-light);}
+
+/* FOOTER */
+footer{background:var(--primary);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:2rem;}
+.footer-brand p{font-size:0.83rem;color:var(--text-muted);line-height:1.7;margin-top:1rem;}
+.footer-col h4{font-size:0.73rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent-light);margin-bottom:1rem;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:0.6rem;}
+.footer-col ul li a{color:var(--text-muted);text-decoration:none;font-size:0.83rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent-light);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.78rem;color:var(--text-muted);}
+.director-badge{background:rgba(200,144,32,0.1);border:1px solid rgba(200,144,32,0.2);border-radius:4px;padding:4px 10px;font-size:0.75rem;color:var(--accent-light);}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .services-grid,.offices-grid{grid-template-columns:1fr 1fr;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .more-grid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  nav .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">M</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-en">MEGA SOLUTIONS</span>
+        <span class="nav-logo-cn">萬佳企業服務有限公司</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#offices">辦事處</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">免費諮詢</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>⚖️</span>
+        <span>一站式專業企業服務 · Since 2013</span>
+      </div>
+      <h1><span class="gold">萬佳企業</span><br>服務有限公司</h1>
+      <p class="hero-en">Mega Solutions Corporation Services Limited</p>
+      <p class="hero-desc">自2013年成立，萬佳企業服務有限公司竭誠為有意創業人士、本港各級企業及內地客戶提供全面、高質素的一站式專業企業服務。由成立公司、會計審計，到商務顧問及企業融資，一站搞定。</p>
+      <div class="hero-offices">
+        <div class="office-dot">🏢 荃灣辦事處</div>
+        <div class="office-dot">🏙️ 尖沙咀辦事處</div>
+        <div class="office-dot">🌏 深圳辦事處</div>
+      </div>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">了解服務項目 →</a>
+        <a href="https://wa.me/85269939985" target="_blank" class="btn-wa">💬 WhatsApp 查詢</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">立即聯絡我們</div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">荃灣辦公室</div>
+          <div class="info-value"><a href="tel:+85224029983">+852 2402 9983</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">尖沙咀辦公室</div>
+          <div class="info-value"><a href="tel:+85235833771">+852 3583 3771</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💬</div>
+        <div>
+          <div class="info-label">WhatsApp</div>
+          <div class="info-value"><a href="https://wa.me/85269939985" target="_blank">+852 6993 9985</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-value"><a href="mailto:info@megasolutions.com.hk">info@megasolutions.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💬</div>
+        <div>
+          <div class="info-label">WeChat</div>
+          <div class="info-value">megasolutionshk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">2013</div>
+      <div class="stat-label">成立年份</div>
+    </div>
+    <div>
+      <div class="stat-num">3</div>
+      <div class="stat-label">辦事處（港兩深一）</div>
+    </div>
+    <div>
+      <div class="stat-num">14+</div>
+      <div class="stat-label">專業服務類別</div>
+    </div>
+    <div>
+      <div class="stat-num">10+</div>
+      <div class="stat-label">年業界服務經驗</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">關於我們</div>
+        <h2 class="section-title">您創業成功<br>是我們的使命</h2>
+        <div class="about-highlight">
+          <h3>✦ Establishing Your Successful Business Is Our Mission</h3>
+          <p>萬佳企業服務有限公司於2013年成立，由資深執業董事Jeff Chan帶領，以資深會計師團隊為核心，為有意創業人士及香港各級企業提供全面、高質素的一站式專業企業服務。</p>
+        </div>
+        <div class="about-body">
+          <p>我們的服務理念是「以客為本，質素至上」。無論您是初創企業還是成熟的大型企業，我們均能提供切合實際需要的專業服務，協助解決繁複的營商問題。</p>
+          <p>我們已成功服務多間上市公司的財務管理，並吸納了跨行業的忠誠客戶群，充分體現我們的服務水準及業界認可。</p>
+        </div>
+        <div class="section-label" style="margin-top:1.5rem;">服務行業</div>
+        <div class="industries">
+          <span class="ind-tag">製造業</span>
+          <span class="ind-tag">貿易</span>
+          <span class="ind-tag">工程</span>
+          <span class="ind-tag">餐飲</span>
+          <span class="ind-tag">運輸</span>
+          <span class="ind-tag">非牟利機構</span>
+          <span class="ind-tag">上市公司</span>
+          <span class="ind-tag">初創企業</span>
+        </div>
+      </div>
+      <div>
+        <div class="prop-grid">
+          <div class="prop-card">
+            <div class="prop-icon">👨‍💼</div>
+            <div>
+              <div class="prop-title">資深執業會計師</div>
+              <div class="prop-desc">Jeff Chan執業董事帶領，10+年業界經驗</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🏢</div>
+            <div>
+              <div class="prop-title">三大辦事處</div>
+              <div class="prop-desc">香港荃灣、尖沙咀及深圳辦事處</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🎯</div>
+            <div>
+              <div class="prop-title">一站式服務</div>
+              <div class="prop-desc">開公司到審計報稅，全程一站搞掂</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🌏</div>
+            <div>
+              <div class="prop-title">港深兩地服務</div>
+              <div class="prop-desc">香港及深圳業務均可提供專業服務支援</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🏆</div>
+            <div>
+              <div class="prop-title">上市公司經驗</div>
+              <div class="prop-desc">曾服務多間上市公司財務管理</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💬</div>
+            <div>
+              <div class="prop-title">多渠道聯絡</div>
+              <div class="prop-desc">WhatsApp、WeChat、電話均可查詢</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">服務項目</div>
+    <h2 class="section-title">一站式專業企業服務</h2>
+    <p class="section-sub">全方位覆蓋企業生命周期各階段的專業服務需求</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <div class="service-name">成立公司</div>
+        <div class="service-en">Company Formation</div>
+        <div class="service-desc">為創業人士提供全面的公司成立服務，由香港有限公司到離岸公司及內地設立，一應俱全。</div>
+        <ul class="service-items">
+          <li>香港有限公司、無限公司</li>
+          <li>離岸公司設立</li>
+          <li>深圳/前海公司</li>
+          <li>獨資/合夥業務</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <div class="service-name">會計及報稅</div>
+        <div class="service-en">Accounting & Tax</div>
+        <div class="service-desc">專業會計團隊提供財務管理、記帳、稅務規劃及稅表申報服務，確保業務合規高效。</div>
+        <ul class="service-items">
+          <li>月/季度記帳服務</li>
+          <li>財務報表編製</li>
+          <li>利得稅申報</li>
+          <li>稅務規劃建議</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <div class="service-name">公司審計</div>
+        <div class="service-en">Audit Services</div>
+        <div class="service-desc">因應客戶業務特性提供度身訂製的審計方案，包括法定審計、自願核數及休眠公司審計。</div>
+        <ul class="service-items">
+          <li>法定年度審計</li>
+          <li>休眠公司審計</li>
+          <li>稅局實地審計支援</li>
+          <li>上市公司審計</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <div class="service-name">公司秘書</div>
+        <div class="service-en">Company Secretary</div>
+        <div class="service-desc">提供全面的公司秘書服務，處理週年申報、股東大會、董事變更及股權更改等法定事務。</div>
+        <ul class="service-items">
+          <li>年度申報表提交</li>
+          <li>股東/董事變更</li>
+          <li>股權轉讓安排</li>
+          <li>法定文件管理</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💼</div>
+        <div class="service-name">商務顧問及企業融資</div>
+        <div class="service-en">Business Consulting & Finance</div>
+        <div class="service-desc">提供業務流程優化、公司管治諮詢及企業融資服務，協助企業發展壯大，尋找更多機遇。</div>
+        <ul class="service-items">
+          <li>業務流程優化</li>
+          <li>企業融資安排</li>
+          <li>盡職審查服務</li>
+          <li>公司管治顧問</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">™️</div>
+        <div class="service-name">商標登記及其他</div>
+        <div class="service-en">Trademark & More</div>
+        <div class="service-desc">提供商標登記、虛擬辦公室、員工外判及公司撤銷等多元化服務，一次過滿足各類業務需求。</div>
+        <ul class="service-items">
+          <li>香港商標登記</li>
+          <li>虛擬辦公室服務</li>
+          <li>員工外判服務</li>
+          <li>公司撤銷程序</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE SERVICES -->
+<section class="more-services">
+  <div class="section-inner">
+    <div class="section-label">更多服務</div>
+    <h2 class="section-title">全面服務覆蓋</h2>
+    <p class="section-sub">更多專業服務，配合您的業務全方位需求</p>
+    <div class="more-grid">
+      <div class="more-card">
+        <div class="more-icon">🔎</div>
+        <div class="more-title">盡職審查</div>
+        <div class="more-desc">投資前財務評估</div>
+      </div>
+      <div class="more-card">
+        <div class="more-icon">🏛️</div>
+        <div class="more-title">稅局稽查應對</div>
+        <div class="more-desc">實地審查代理服務</div>
+      </div>
+      <div class="more-card">
+        <div class="more-icon">🏢</div>
+        <div class="more-title">虛擬辦公室</div>
+        <div class="more-desc">香港商業地址服務</div>
+      </div>
+      <div class="more-card">
+        <div class="more-icon">📱</div>
+        <div class="more-title">小紅書推廣</div>
+        <div class="more-desc">內地市場推廣服務</div>
+      </div>
+      <div class="more-card">
+        <div class="more-icon">👥</div>
+        <div class="more-title">員工外判</div>
+        <div class="more-desc">人力資源靈活安排</div>
+      </div>
+      <div class="more-card">
+        <div class="more-icon">📂</div>
+        <div class="more-title">休眠公司服務</div>
+        <div class="more-desc">休眠公司會計審計</div>
+      </div>
+      <div class="more-card">
+        <div class="more-icon">❌</div>
+        <div class="more-title">公司撤銷</div>
+        <div class="more-desc">公司登出程序辦理</div>
+      </div>
+      <div class="more-card">
+        <div class="more-icon">🌐</div>
+        <div class="more-title">深圳前海公司</div>
+        <div class="more-desc">內地公司成立支援</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICES -->
+<section id="offices" class="offices">
+  <div class="section-inner">
+    <div class="section-label">辦事處</div>
+    <h2 class="section-title">三大辦事處</h2>
+    <p class="section-sub">香港荃灣、尖沙咀及深圳三大辦事處，服務港深兩地客戶</p>
+    <div class="offices-grid">
+      <div class="office-card">
+        <div class="office-flag">🇭🇰</div>
+        <div class="office-region">香港 · 主辦事處</div>
+        <div class="office-name">荃灣辦事處</div>
+        <div class="office-detail">
+          <div class="office-detail-icon">📍</div>
+          <div class="office-detail-text">新界荃灣海盛路11號<br>One Midtown 43樓 19-20室</div>
+        </div>
+        <div class="office-detail">
+          <div class="office-detail-icon">📞</div>
+          <div class="office-detail-text"><a href="tel:+85224029983">+852 2402 9983</a></div>
+        </div>
+        <div class="office-detail">
+          <div class="office-detail-icon">📧</div>
+          <div class="office-detail-text"><a href="mailto:info@megasolutions.com.hk">info@megasolutions.com.hk</a></div>
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-flag">🇭🇰</div>
+        <div class="office-region">香港 · 九龍</div>
+        <div class="office-name">尖沙咀辦事處</div>
+        <div class="office-detail">
+          <div class="office-detail-icon">📍</div>
+          <div class="office-detail-text">尖沙咀么地道61號<br>冠輝中心7樓706D室</div>
+        </div>
+        <div class="office-detail">
+          <div class="office-detail-icon">📞</div>
+          <div class="office-detail-text"><a href="tel:+85235833771">+852 3583 3771</a></div>
+        </div>
+        <div class="office-detail">
+          <div class="office-detail-icon">📧</div>
+          <div class="office-detail-text"><a href="mailto:info@megasolutions.com.hk">info@megasolutions.com.hk</a></div>
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-flag">🇨🇳</div>
+        <div class="office-region">中國 · 深圳</div>
+        <div class="office-name">深圳辦事處</div>
+        <div class="office-detail">
+          <div class="office-detail-icon">📍</div>
+          <div class="office-detail-text">深圳市福田區益田路4068號<br>卓越時代廣場11樓1111-1112室</div>
+        </div>
+        <div class="office-detail">
+          <div class="office-detail-icon">📞</div>
+          <div class="office-detail-text"><a href="tel:+8618688717939">+86 18688 717 939</a></div>
+        </div>
+        <div class="office-detail">
+          <div class="office-detail-icon">📧</div>
+          <div class="office-detail-text"><a href="mailto:info@megasolutions.com.hk">info@megasolutions.com.hk</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <h2 class="section-title">免費初步諮詢</h2>
+    <p class="section-sub">歡迎就任何企業服務需求查詢，我們提供免費初步諮詢，為您制定最合適的服務方案</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-block">
+          <h3>聯絡方式</h3>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📞</div>
+            <div>
+              <div class="cinfo-label">荃灣辦公室</div>
+              <div class="cinfo-value"><a href="tel:+85224029983">+852 2402 9983</a></div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📞</div>
+            <div>
+              <div class="cinfo-label">尖沙咀辦公室</div>
+              <div class="cinfo-value"><a href="tel:+85235833771">+852 3583 3771</a></div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">💬</div>
+            <div>
+              <div class="cinfo-label">WhatsApp</div>
+              <div class="cinfo-value"><a href="https://wa.me/85269939985" target="_blank">+852 6993 9985</a></div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">💬</div>
+            <div>
+              <div class="cinfo-label">WeChat</div>
+              <div class="cinfo-value">megasolutionshk</div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📧</div>
+            <div>
+              <div class="cinfo-label">電郵</div>
+              <div class="cinfo-value"><a href="mailto:info@megasolutions.com.hk">info@megasolutions.com.hk</a></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:rgba(200,144,32,0.08);border:1px solid rgba(200,144,32,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem;">
+          <p style="font-size:0.85rem;color:var(--accent-light);font-weight:700;margin-bottom:4px;">👔 執業董事</p>
+          <p style="font-size:0.9rem;color:var(--text);font-weight:600;">Jeff Chan</p>
+          <p style="font-size:0.8rem;color:var(--text-muted);">Practising Director · 資深執業董事<br>萬佳企業服務有限公司</p>
+        </div>
+      </div>
+      <div class="contact-form-block">
+        <h3>免費諮詢查詢</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>公司名稱</label>
+            <input type="text" placeholder="公司名稱（如適用）">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>電話/WhatsApp</label>
+            <input type="tel" placeholder="聯絡電話">
+          </div>
+          <div class="form-group">
+            <label>電郵</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>所需服務</label>
+          <select>
+            <option value="">請選擇所需服務...</option>
+            <option>成立公司</option>
+            <option>會計及報稅</option>
+            <option>公司審計</option>
+            <option>公司秘書</option>
+            <option>商務顧問</option>
+            <option>企業融資</option>
+            <option>商標登記</option>
+            <option>虛擬辦公室</option>
+            <option>深圳/前海公司成立</option>
+            <option>其他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea rows="3" placeholder="請說明您的業務需求或查詢詳情..."></textarea>
+        </div>
+        <button class="submit-btn">📩 提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="display:inline-flex;margin-bottom:0.8rem;">
+          <div class="nav-logo-icon">M</div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-en">MEGA SOLUTIONS</span>
+            <span class="nav-logo-cn">萬佳企業服務有限公司</span>
+          </div>
+        </a>
+        <p>自2013年起，為香港及深圳的企業提供一站式專業企業服務。由成立公司、會計審計到商務顧問，助您的業務穩健發展。</p>
+      </div>
+      <div class="footer-col">
+        <h4>核心服務</h4>
+        <ul>
+          <li><a href="#services">成立公司</a></li>
+          <li><a href="#services">會計及報稅</a></li>
+          <li><a href="#services">公司審計</a></li>
+          <li><a href="#services">公司秘書</a></li>
+          <li><a href="#services">商務顧問</a></li>
+          <li><a href="#services">商標登記</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>快捷連結</h4>
+        <ul>
+          <li><a href="#about">關於我們</a></li>
+          <li><a href="#offices">辦事處位置</a></li>
+          <li><a href="#contact">免費諮詢</a></li>
+          <li><a href="https://www.megasolutions.com.hk" target="_blank">公司網站</a></li>
+          <li><a href="https://wa.me/85269939985" target="_blank">💬 WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2013–2025 萬佳企業服務有限公司 Mega Solutions Corporation Services Limited. 版權所有。</div>
+      <div class="director-badge">👔 Jeff Chan · Practising Director</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
