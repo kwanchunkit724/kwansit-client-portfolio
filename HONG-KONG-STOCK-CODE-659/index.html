@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NWS Holdings Limited | Infrastructure &amp; Services Group · HKEX: 0659</title>
+<style>
+:root {
+  --bg:       #060608;
+  --surface:  #0c0c10;
+  --card:     #121218;
+  --border:   #202030;
+  --acc1:     #2a2060;
+  --acc2:     #3c3090;
+  --acc3:     #5848c0;
+  --gold:     #d8a828;
+  --gold2:    #f0c840;
+  --text:     #eceaf8;
+  --muted:    #7870b0;
+  --radius:   8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;font-size:16px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,6,8,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--acc1),var(--acc3));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.logo-text{font-size:1.15rem;font-weight:700;color:var(--text)}
+.logo-sub{font-size:.68rem;color:var(--muted);letter-spacing:.06em}
+.ticker{background:rgba(216,168,40,.15);border:1px solid rgba(216,168,40,.4);border-radius:4px;padding:3px 9px;font-size:.72rem;color:var(--gold);font-weight:700;letter-spacing:.05em;margin-left:8px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
+.nav-links a:hover{color:var(--acc3)}
+.nav-cta{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:9px 22px;border-radius:5px;font-size:.88rem;font-weight:600;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;background:radial-gradient(ellipse 80% 55% at 30% 45%,rgba(42,32,96,.18) 0%,transparent 65%),var(--bg)}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(88,72,192,.12);border:1px solid rgba(88,72,192,.32);border-radius:20px;padding:6px 16px;font-size:.8rem;color:var(--acc3);margin-bottom:24px;letter-spacing:.05em}
+.hero h1{font-size:2.8rem;font-weight:800;line-height:1.2;margin-bottom:8px}
+.hero-zh{font-size:1.3rem;color:var(--muted);font-weight:600;margin-bottom:16px}
+.hero h1 span{color:var(--gold)}
+.hero-desc{font-size:1.02rem;color:var(--muted);margin-bottom:36px;max-width:540px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:13px 30px;border-radius:6px;font-size:.95rem;font-weight:700;text-decoration:none;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:13px 30px;border-radius:6px;font-size:.95rem;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--acc3);color:var(--acc3)}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hero-card h3{font-size:.9rem;color:var(--gold);margin-bottom:18px;text-transform:uppercase;letter-spacing:.1em}
+.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.info-row:last-child{border-bottom:none}
+.info-label{color:var(--muted)}
+.info-val{color:var(--text);font-weight:600;text-align:right;max-width:60%}
+.gold-val{color:var(--gold)!important}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-box{text-align:center}
+.stat-num{font-size:2.1rem;font-weight:800;color:var(--gold);display:block}
+.stat-label{font-size:.83rem;color:var(--muted);margin-top:4px}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(60,48,144,.12);border:1px solid rgba(60,48,144,.3);border-radius:4px;padding:4px 12px;font-size:.76rem;color:var(--acc3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:1.9rem;font-weight:800;margin-bottom:12px}
+.section-sub{color:var(--muted);font-size:.98rem;max-width:620px}
+.section-head{margin-bottom:48px}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* BUSINESS SEGMENTS */
+.segments{background:var(--bg)}
+.seg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.seg-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .25s,transform .25s}
+.seg-card:hover{border-color:var(--acc3);transform:translateY(-3px)}
+.seg-icon{font-size:2.2rem;margin-bottom:16px}
+.seg-name{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.seg-zh{font-size:.78rem;color:var(--gold);margin-bottom:10px}
+.seg-desc{font-size:.87rem;color:var(--muted);line-height:1.7}
+.seg-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.tag{background:rgba(88,72,192,.1);border:1px solid rgba(88,72,192,.26);border-radius:4px;padding:3px 9px;font-size:.73rem;color:var(--acc3)}
+
+/* KEY SUBSIDIARIES */
+.subsidiaries{background:var(--surface)}
+.sub-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.sub-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;gap:16px;align-items:flex-start;transition:border-color .25s}
+.sub-card:hover{border-color:var(--gold)}
+.sub-icon{width:46px;height:46px;background:linear-gradient(135deg,var(--acc1),var(--acc2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.sub-body h3{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:3px}
+.sub-body .sub-zh{font-size:.75rem;color:var(--gold);margin-bottom:6px}
+.sub-body p{font-size:.84rem;color:var(--muted);line-height:1.6}
+
+/* INFRASTRUCTURE */
+.infrastructure{background:var(--bg)}
+.infra-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.infra-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;transition:border-color .25s}
+.infra-card:hover{border-color:var(--acc3)}
+.infra-icon{font-size:2rem;margin-bottom:12px}
+.infra-name{font-size:.93rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.infra-region{font-size:.76rem;color:var(--gold);margin-bottom:6px}
+.infra-desc{font-size:.82rem;color:var(--muted);line-height:1.6}
+
+/* ABOUT */
+.about{background:var(--surface)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-content p{color:var(--muted);line-height:1.8;margin-bottom:16px}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.highlight{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center}
+.h-num{font-size:1.6rem;font-weight:800;color:var(--gold);display:block;margin-bottom:4px}
+.h-label{font-size:.8rem;color:var(--muted)}
+
+/* CONTACT */
+.contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h2{font-size:1.8rem;font-weight:800;margin-bottom:16px}
+.contact-info p{color:var(--muted);margin-bottom:28px;line-height:1.7}
+.contact-items{display:flex;flex-direction:column;gap:16px}
+.contact-item{display:flex;align-items:flex-start;gap:14px}
+.contact-icon{width:40px;height:40px;background:rgba(42,32,96,.3);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-detail strong{display:block;color:var(--text);font-size:.9rem;margin-bottom:2px}
+.contact-detail span{color:var(--muted);font-size:.85rem}
+form{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:18px}
+form label{font-size:.84rem;color:var(--muted);margin-bottom:4px;display:block}
+form input,form select,form textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.91rem;outline:none;transition:border-color .2s;font-family:inherit}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--acc3)}
+form textarea{resize:vertical;min-height:110px}
+form button{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s}
+form button:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 5% 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-top:12px}
+.footer-col h4{font-size:.87rem;font-weight:700;color:var(--text);margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col a{color:var(--muted);text-decoration:none;font-size:.86rem;transition:color .2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{color:var(--muted);font-size:.82rem}
+.footer-hk{color:var(--muted);font-size:.82rem}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .hero h1{font-size:2.1rem}
+  .seg-grid,.infra-grid{grid-template-columns:1fr 1fr}
+  .sub-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  .seg-grid,.infra-grid,.about-highlights{grid-template-columns:1fr}
+  .hero h1{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">🏛️</div>
+      <div>
+        <div class="logo-text">NWS Holdings <span class="ticker">HKEX: 0659</span></div>
+        <div class="logo-sub">新創建集團有限公司</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#segments">Businesses</a></li>
+      <li><a href="#subsidiaries">Subsidiaries</a></li>
+      <li><a href="#infrastructure">Infrastructure</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Investor Relations</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">📈 HKEX: 0659 · New World Group</div>
+      <h1>Infrastructure &amp;<br><span>Services for</span> Tomorrow</h1>
+      <div class="hero-zh">新創建集團有限公司</div>
+      <p class="hero-desc">
+        NWS Holdings Limited (HKEX: 0659) is a leading Hong Kong–listed infrastructure
+        and services conglomerate within the New World Group. With diversified investments
+        spanning construction, road infrastructure, facilities management, logistics,
+        and insurance, NWS Holdings builds and operates assets that underpin daily life
+        across Hong Kong and Mainland China.
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#segments">Our Businesses</a>
+        <a class="btn-outline" href="#about">About NWS</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Stock Information</h3>
+      <div class="info-row">
+        <span class="info-label">Company</span>
+        <span class="info-val">NWS Holdings Limited</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Stock Code</span>
+        <span class="info-val gold-val">HKEX: 0659</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Chinese Name</span>
+        <span class="info-val">新創建集團有限公司</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Group</span>
+        <span class="info-val">New World Group</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Focus</span>
+        <span class="info-val">Infrastructure &amp; Services</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Markets</span>
+        <span class="info-val">HK · Mainland China</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-box">
+      <span class="stat-num">0659</span>
+      <div class="stat-label">HKEX Stock Code</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">4+</span>
+      <div class="stat-label">Core Business Segments</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">HK + GBA</span>
+      <div class="stat-label">Primary Operating Markets</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">NWD</span>
+      <div class="stat-label">New World Development Group</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- BUSINESS SEGMENTS -->
+<section class="segments" id="segments">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Business Segments</div>
+      <h2 class="section-title">Diversified Business Portfolio</h2>
+      <p class="section-sub">NWS Holdings operates across four core business segments spanning infrastructure and services</p>
+    </div>
+    <div class="seg-grid">
+      <div class="seg-card">
+        <div class="seg-icon">🏗️</div>
+        <div class="seg-name">Construction</div>
+        <div class="seg-zh">建築業務</div>
+        <p class="seg-desc">
+          Through Hip Hing Construction, NWS Holdings operates one of Hong Kong's leading
+          construction companies, delivering building and civil engineering works for government,
+          residential, commercial, and infrastructure clients.
+        </p>
+        <div class="seg-tags">
+          <span class="tag">Hip Hing Construction</span>
+          <span class="tag">Building Works</span>
+          <span class="tag">Civil Engineering</span>
+        </div>
+      </div>
+      <div class="seg-card">
+        <div class="seg-icon">🛣️</div>
+        <div class="seg-name">Roads</div>
+        <div class="seg-zh">道路業務</div>
+        <p class="seg-desc">
+          A portfolio of expressway and road concessions across Mainland China — operating,
+          managing, and collecting tolls on major transportation arteries that connect
+          China's cities and economic zones.
+        </p>
+        <div class="seg-tags">
+          <span class="tag">Toll Roads</span>
+          <span class="tag">Expressways</span>
+          <span class="tag">Mainland China</span>
+        </div>
+      </div>
+      <div class="seg-card">
+        <div class="seg-icon">🏢</div>
+        <div class="seg-name">Facilities Management</div>
+        <div class="seg-zh">設施管理業務</div>
+        <p class="seg-desc">
+          Comprehensive integrated facilities management services for commercial, residential,
+          government, and public sector clients across Hong Kong — covering property management,
+          environmental services, and security.
+        </p>
+        <div class="seg-tags">
+          <span class="tag">Property Mgmt</span>
+          <span class="tag">FM Services</span>
+          <span class="tag">Cleaning &amp; Security</span>
+        </div>
+      </div>
+      <div class="seg-card">
+        <div class="seg-icon">📦</div>
+        <div class="seg-name">Logistics</div>
+        <div class="seg-zh">物流業務</div>
+        <p class="seg-desc">
+          Strategic logistics and warehousing operations including interests in ATL Logistics
+          Centre — one of Hong Kong's largest dedicated logistics facilities serving
+          regional trade and air cargo flows.
+        </p>
+        <div class="seg-tags">
+          <span class="tag">ATL Logistics</span>
+          <span class="tag">Warehousing</span>
+          <span class="tag">Air Cargo</span>
+        </div>
+      </div>
+      <div class="seg-card">
+        <div class="seg-icon">🛡️</div>
+        <div class="seg-name">Insurance</div>
+        <div class="seg-zh">保險業務</div>
+        <p class="seg-desc">
+          Insurance operations providing general insurance products across Hong Kong,
+          leveraging the New World Group's established customer network and brand
+          to serve corporate and personal insurance needs.
+        </p>
+        <div class="seg-tags">
+          <span class="tag">General Insurance</span>
+          <span class="tag">Hong Kong</span>
+        </div>
+      </div>
+      <div class="seg-card">
+        <div class="seg-icon">✈️</div>
+        <div class="seg-name">Aviation &amp; Others</div>
+        <div class="seg-zh">航空及其他業務</div>
+        <p class="seg-desc">
+          Interests in aviation-related services and other strategic investments, including
+          a stake in Hong Kong Air Cargo Terminals Limited (HACTL) — the dominant cargo
+          terminal operator at Hong Kong International Airport.
+        </p>
+        <div class="seg-tags">
+          <span class="tag">HACTL</span>
+          <span class="tag">Air Cargo</span>
+          <span class="tag">HKIA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- KEY SUBSIDIARIES -->
+<section class="subsidiaries" id="subsidiaries">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Key Subsidiaries &amp; Associates</div>
+      <h2 class="section-title">Flagship Operations</h2>
+      <p class="section-sub">The principal subsidiaries and associates that power NWS Holdings' diversified business portfolio</p>
+    </div>
+    <div class="sub-grid">
+      <div class="sub-card">
+        <div class="sub-icon">🏗️</div>
+        <div class="sub-body">
+          <h3>Hip Hing Construction Co. Ltd</h3>
+          <div class="sub-zh">協興建築有限公司</div>
+          <p>One of Hong Kong's most recognised construction companies, delivering major building and civil works projects for public and private sector clients for decades.</p>
+        </div>
+      </div>
+      <div class="sub-card">
+        <div class="sub-icon">📦</div>
+        <div class="sub-body">
+          <h3>ATL Logistics Centre</h3>
+          <div class="sub-zh">ATL物流中心</div>
+          <p>A landmark multi-storey logistics facility at Hong Kong's Kwai Chung Container Port area, providing world-class warehousing and distribution services.</p>
+        </div>
+      </div>
+      <div class="sub-card">
+        <div class="sub-icon">🏢</div>
+        <div class="sub-body">
+          <h3>NWS Facilities Management</h3>
+          <div class="sub-zh">新創建設施管理</div>
+          <p>Integrated facilities management services covering building operations, cleaning, security, landscaping, and environmental solutions across Hong Kong.</p>
+        </div>
+      </div>
+      <div class="sub-card">
+        <div class="sub-icon">✈️</div>
+        <div class="sub-body">
+          <h3>HACTL (Associate)</h3>
+          <div class="sub-zh">香港空運貨站有限公司</div>
+          <p>Hong Kong Air Cargo Terminals Limited — the dominant cargo terminal operator at HKIA, handling the majority of Hong Kong's international air freight volume.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- INFRASTRUCTURE -->
+<section class="infrastructure" id="infrastructure">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Infrastructure Investments</div>
+      <h2 class="section-title">Roads &amp; Infrastructure Portfolio</h2>
+      <p class="section-sub">Strategic road concessions and infrastructure assets across Mainland China generating stable long-term returns</p>
+    </div>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-icon">🛣️</div>
+        <div class="infra-name">Guangzhou Expressways</div>
+        <div class="infra-region">Guangdong Province</div>
+        <p class="infra-desc">Toll expressway concessions in the Pearl River Delta region, serving the high-traffic corridor between Guangzhou and Hong Kong.</p>
+      </div>
+      <div class="infra-card">
+        <div class="infra-icon">🌉</div>
+        <div class="infra-name">Yangtze River Bridges</div>
+        <div class="infra-region">Central China</div>
+        <p class="infra-desc">Strategic bridge and crossing concessions over the Yangtze River, essential connectors in China's inland transportation network.</p>
+      </div>
+      <div class="infra-card">
+        <div class="infra-icon">🚗</div>
+        <div class="infra-name">Trunk Road Concessions</div>
+        <div class="infra-region">Multiple Provinces</div>
+        <p class="infra-desc">A diversified portfolio of national and provincial trunk road concessions providing steady toll revenue across multiple Chinese provinces.</p>
+      </div>
+      <div class="infra-card">
+        <div class="infra-icon">🏗️</div>
+        <div class="infra-name">Construction Projects — HK</div>
+        <div class="infra-region">Hong Kong SAR</div>
+        <p class="infra-desc">Major building and civil engineering contracts awarded by the HKSAR Government, Housing Authority, and private developers across Hong Kong.</p>
+      </div>
+      <div class="infra-card">
+        <div class="infra-icon">📦</div>
+        <div class="infra-name">Logistics Terminals</div>
+        <div class="infra-region">Hong Kong · Mainland</div>
+        <p class="infra-desc">Container-adjacent warehousing and logistics infrastructure at strategic locations serving Hong Kong's role as a global trade hub.</p>
+      </div>
+      <div class="infra-card">
+        <div class="infra-icon">✈️</div>
+        <div class="infra-name">Air Cargo Terminals</div>
+        <div class="infra-region">Hong Kong International Airport</div>
+        <p class="infra-desc">Interests in HACTL, the principal cargo terminal at HKIA, handling millions of tonnes of air freight annually for the region.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-content">
+        <div class="section-tag">About NWS Holdings</div>
+        <h2 class="section-title">A Foundation of<br>Infrastructure &amp; Services</h2>
+        <p>
+          NWS Holdings Limited (新創建集團有限公司) is listed on the Main Board of the
+          Hong Kong Stock Exchange under stock code 0659. The company is a member of
+          the New World Group, one of Hong Kong's most respected diversified conglomerates.
+        </p>
+        <p>
+          With a focus on long-term value creation, NWS Holdings invests in and operates
+          infrastructure and service assets that deliver essential connectivity, construction,
+          logistics, and management capabilities to communities across Hong Kong and China.
+        </p>
+        <p>
+          The group's strategy centres on owning quality assets with stable, recurring
+          income streams — from toll roads with long concession tenures to construction
+          contracts with government clients and long-term facilities management agreements.
+        </p>
+      </div>
+      <div>
+        <div class="about-highlights">
+          <div class="highlight">
+            <span class="h-num">0659</span>
+            <div class="h-label">HKEX Main Board</div>
+          </div>
+          <div class="highlight">
+            <span class="h-num">NWD</span>
+            <div class="h-label">New World Group</div>
+          </div>
+          <div class="highlight">
+            <span class="h-num">HK+CN</span>
+            <div class="h-label">Dual Market Presence</div>
+          </div>
+          <div class="highlight">
+            <span class="h-num">6</span>
+            <div class="h-label">Business Segments</div>
+          </div>
+          <div class="highlight">
+            <span class="h-num">B$</span>
+            <div class="h-label">Billion-Dollar Revenue</div>
+          </div>
+          <div class="highlight">
+            <span class="h-num">GBA</span>
+            <div class="h-label">Greater Bay Area Focus</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-tag">Contact &amp; Investor Relations</div>
+        <h2>Connect with NWS Holdings</h2>
+        <p>
+          For investor relations, business enquiries, or partnership discussions,
+          please use the contact form or reach out through the channels below.
+          Announcements and financial reports are available via the HKEX website.
+        </p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📈</div>
+            <div class="contact-detail">
+              <strong>Stock Exchange</strong>
+              <span>HKEX Main Board · Stock Code: 0659</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>Headquarters</strong>
+              <span>Hong Kong SAR</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📋</div>
+            <div class="contact-detail">
+              <strong>Investor Relations</strong>
+              <span>Announcements, circulars, and annual reports available via HKEX</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🏢</div>
+            <div class="contact-detail">
+              <strong>Group Affiliation</strong>
+              <span>New World Development Group (HKEX: 0017)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form>
+        <div>
+          <label>Full Name *</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div>
+          <label>Organisation</label>
+          <input type="text" placeholder="Company, fund, or institution">
+        </div>
+        <div>
+          <label>Email Address *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div>
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+852 xxxx xxxx">
+        </div>
+        <div>
+          <label>Enquiry Type</label>
+          <select>
+            <option>Investor Relations</option>
+            <option>Construction (Hip Hing)</option>
+            <option>Facilities Management</option>
+            <option>Logistics</option>
+            <option>Business Partnership</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div>
+          <label>Message *</label>
+          <textarea placeholder="Please describe your enquiry in detail…"></textarea>
+        </div>
+        <button type="submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">🏛️</div>
+          <div>
+            <div class="logo-text">NWS Holdings <span class="ticker">HKEX: 0659</span></div>
+            <div class="logo-sub">新創建集團有限公司</div>
+          </div>
+        </div>
+        <p>A HKEX-listed infrastructure and services group within the New World Group. Delivering construction, roads, facilities management, logistics, and insurance businesses across Hong Kong and Mainland China.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Businesses</h4>
+        <ul>
+          <li><a href="#segments">Construction</a></li>
+          <li><a href="#segments">Roads</a></li>
+          <li><a href="#segments">Facilities Management</a></li>
+          <li><a href="#segments">Logistics</a></li>
+          <li><a href="#segments">Insurance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#subsidiaries">Key Subsidiaries</a></li>
+          <li><a href="#infrastructure">Infrastructure</a></li>
+          <li><a href="#about">About NWS</a></li>
+          <li><a href="#contact">Investor Relations</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 NWS Holdings Limited (新創建集團有限公司). HKEX: 0659. All Rights Reserved.</div>
+      <div class="footer-hk">🇭🇰 New World Group · Hong Kong</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
