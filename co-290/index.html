@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金宏物流有限公司 | 中港物流 | 香港倉儲 | 國際速遞 | 報關清關</title>
+<meta name="description" content="金宏物流有限公司 — 元朗新田，提供兩岸三地及國際速遞、中港全球一條龍物流、中港物流、代客報關清關、貨物存倉及裝櫃的一站式托運服務。">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold:      #c8970a;
+    --gold-lt:   #e8af18;
+    --gold-bg:   #fdf8ec;
+    --navy:      #1b2e50;
+    --navy-mid:  #26436e;
+    --sky:       #1e77c8;
+    --bg:        #f3f6fa;
+    --border:    #dbe3ee;
+    --white:     #ffffff;
+    --text:      #1a1a1a;
+    --text-mid:  #484848;
+    --shadow:    0 4px 20px rgba(0,0,0,0.09);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', 'Segoe UI', sans-serif; color: var(--text); background: var(--white); line-height: 1.65; }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    position: sticky; top: 0; z-index: 100;
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.28);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo-icon {
+    width: 40px; height: 40px; background: var(--gold-lt);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; font-weight: 800; color: var(--navy); flex-shrink: 0;
+  }
+  .nav-logo-text strong { display: block; color: var(--white); font-size: 0.94rem; font-weight: 700; line-height: 1.2; }
+  .nav-logo-text span { font-size: 0.67rem; color: rgba(255,255,255,0.45); }
+  .nav-links { display: flex; gap: 24px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.87rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--gold-lt); }
+  .nav-cta {
+    background: var(--gold-lt); color: var(--navy);
+    border: none; border-radius: 6px; padding: 9px 18px;
+    font-size: 0.87rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--white); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, #2d5080 100%);
+    padding: 88px 5% 78px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M0 0h80v80H0z'/%3E%3Cpath d='M20 20h40v40H20z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -60px; right: -60px;
+    width: 360px; height: 360px;
+    background: var(--gold-lt); border-radius: 50%; opacity: 0.06;
+  }
+  .hero-inner { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 1fr 280px; gap: 56px; align-items: center; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(200,151,10,0.18); border: 1px solid rgba(200,151,10,0.4);
+    color: var(--gold-lt); font-size: 0.79rem; font-weight: 600;
+    padding: 4px 13px; border-radius: 18px; margin-bottom: 16px; letter-spacing: 0.04em;
+  }
+  .hero h1 { font-size: 2.6rem; font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 10px; }
+  .hero h1 em { color: var(--gold-lt); font-style: normal; }
+  .hero-en { font-size: 0.95rem; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+  .hero-sub { color: rgba(255,255,255,0.75); font-size: 0.96rem; margin-bottom: 30px; max-width: 520px; line-height: 1.72; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-gold {
+    background: var(--gold-lt); color: var(--navy);
+    padding: 12px 28px; border-radius: 7px; font-weight: 700; font-size: 0.95rem;
+    text-decoration: none; display: inline-block; transition: background .2s, transform .15s;
+  }
+  .btn-gold:hover { background: var(--gold); color: var(--white); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--white);
+    border: 2px solid rgba(255,255,255,0.35);
+    padding: 10px 24px; border-radius: 7px; font-weight: 600; font-size: 0.95rem;
+    text-decoration: none; display: inline-block; transition: border-color .2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.75); }
+  .hero-card {
+    background: rgba(255,255,255,0.09); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.18); border-radius: 14px; padding: 24px 20px;
+  }
+  .hc-title { color: var(--gold-lt); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .hc-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 13px; }
+  .hc-icon { width: 28px; height: 28px; background: rgba(200,151,10,0.18); border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+  .hc-lbl { font-size: 0.67rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.05em; }
+  .hc-val { font-size: 0.86rem; color: var(--white); font-weight: 600; line-height: 1.35; }
+
+  /* TAGLINE STRIP */
+  .tagline-strip {
+    background: var(--gold-lt); padding: 0 5%;
+    display: flex; align-items: stretch;
+  }
+  .ts-item { flex: 1; padding: 18px 16px; text-align: center; border-right: 1px solid rgba(27,46,80,0.2); }
+  .ts-item:last-child { border-right: none; }
+  .ts-icon { font-size: 1.5rem; margin-bottom: 5px; }
+  .ts-text { font-size: 0.8rem; font-weight: 700; color: var(--navy); }
+
+  /* SECTIONS */
+  section { padding: 76px 5%; }
+  .section-inner { max-width: 1060px; margin: 0 auto; }
+  .eyebrow { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky); margin-bottom: 7px; }
+  .section-title { font-size: 1.95rem; font-weight: 800; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+  .section-title em { color: var(--navy-mid); font-style: normal; }
+  .section-lead { color: var(--text-mid); font-size: 0.96rem; max-width: 620px; line-height: 1.75; }
+  .divider { width: 46px; height: 4px; background: var(--gold-lt); border-radius: 2px; margin: 14px 0 38px; }
+
+  /* ABOUT */
+  .about { background: var(--bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .about-body p { color: var(--text-mid); margin-bottom: 15px; line-height: 1.78; font-size: 0.94rem; }
+  .about-taglines { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+  .at-item {
+    background: var(--gold-bg); border: 1px solid #e6c84a;
+    border-left: 4px solid var(--gold);
+    border-radius: 8px; padding: 12px 16px;
+    font-size: 0.88rem; font-weight: 600; color: var(--navy);
+  }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .prop-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 16px;
+    border-top: 3px solid var(--gold-lt);
+  }
+  .prop-card .pi { font-size: 1.6rem; margin-bottom: 7px; }
+  .prop-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+  .prop-card p { font-size: 0.78rem; color: var(--text-mid); line-height: 1.5; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .service-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.12); }
+  .sc-head {
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    padding: 22px 20px 18px; position: relative;
+  }
+  .sc-num { position: absolute; top: 12px; right: 14px; font-size: 2rem; font-weight: 800; color: rgba(255,255,255,0.07); line-height: 1; }
+  .sc-icon { font-size: 2rem; margin-bottom: 8px; }
+  .sc-head h3 { font-size: 0.96rem; font-weight: 700; color: var(--white); }
+  .sc-body { padding: 17px 20px; }
+  .sc-body p { font-size: 0.83rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 12px; }
+  .sc-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .sc-tag { background: #eef3fc; color: var(--navy-mid); font-size: 0.7rem; font-weight: 600; padding: 3px 9px; border-radius: 10px; }
+
+  /* WHY */
+  .why { background: var(--navy); }
+  .why .eyebrow { color: rgba(200,151,10,0.85); }
+  .why .section-title { color: var(--white); }
+  .why .divider { background: var(--gold-lt); }
+  .why .section-lead { color: rgba(255,255,255,0.75); }
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 40px; }
+  .why-card {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 24px 18px; text-align: center;
+    transition: background .2s;
+  }
+  .why-card:hover { background: rgba(255,255,255,0.11); }
+  .why-icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .why-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--gold-lt); margin-bottom: 7px; }
+  .why-card p { font-size: 0.78rem; color: rgba(255,255,255,0.7); line-height: 1.55; }
+
+  /* CONTACT */
+  .contact { background: var(--bg); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info h3 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 18px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .ci-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; }
+  .ci-icon { width: 38px; height: 38px; background: rgba(27,46,80,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .ci-label { font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+  .ci-value { color: var(--text); font-size: 0.9rem; font-weight: 600; }
+  .ci-value a { color: var(--sky); text-decoration: none; }
+  .ci-value a:hover { text-decoration: underline; }
+  .contact-form {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; padding: 26px; box-shadow: var(--shadow);
+  }
+  .contact-form h3 { color: var(--navy); font-size: 0.96rem; font-weight: 700; margin-bottom: 20px; }
+  .form-row { margin-bottom: 14px; }
+  .form-row label { display: block; font-size: 0.77rem; color: var(--text-mid); margin-bottom: 5px; font-weight: 500; }
+  .form-row input, .form-row textarea, .form-row select {
+    width: 100%; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 7px;
+    color: var(--text); padding: 9px 13px; font-size: 0.88rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-row input:focus, .form-row textarea:focus, .form-row select:focus { border-color: var(--sky); background: var(--white); }
+  .form-row textarea { height: 96px; resize: vertical; }
+  .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-submit {
+    width: 100%; background: var(--navy); color: var(--white);
+    border: none; border-radius: 8px; padding: 12px; font-size: 0.96rem; font-weight: 700;
+    cursor: pointer; transition: background .2s; font-family: inherit;
+  }
+  .form-submit:hover { background: var(--navy-mid); }
+  .wa-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: #25d366; color: var(--white);
+    border-radius: 8px; padding: 13px; font-size: 0.95rem; font-weight: 700;
+    text-decoration: none; margin-top: 10px; transition: background .2s;
+  }
+  .wa-btn:hover { background: #1da851; }
+  .wa-btn::before { content: '💬'; font-size: 1.1rem; }
+
+  /* FOOTER */
+  footer { background: #11203a; padding: 26px 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-logo-icon { width: 34px; height: 34px; background: var(--gold-lt); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 800; color: var(--navy); }
+  .footer-logo-text { color: rgba(255,255,255,0.65); font-size: 0.84rem; line-height: 1.4; }
+  .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.74rem; text-align: center; }
+  .footer-contact { color: rgba(255,255,255,0.55); font-size: 0.79rem; text-align: right; }
+  .footer-contact a { color: var(--gold-lt); text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-card { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .about-props { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 2rem; }
+    .nav-links { display: none; }
+    .tagline-strip { flex-wrap: wrap; }
+    .ts-item { min-width: 50%; }
+  }
+  @media (max-width: 580px) {
+    .services-grid, .why-grid, .about-props { grid-template-columns: 1fr; }
+    .form-2col { grid-template-columns: 1fr; }
+    .ts-item { min-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">金</div>
+    <div class="nav-logo-text">
+      <strong>金宏物流有限公司</strong>
+      <span>Golden Macro Logistics Ltd.</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#services">服務</a></li>
+    <li><a href="#why">優勢</a></li>
+    <li><a href="#contact">聯絡</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">免費報價</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🌏 兩岸三地 · 國際物流</div>
+      <h1>中港全球<em>一條龍</em>物流服務</h1>
+      <div class="hero-en">Golden Macro Logistics Ltd. — 金宏物流有限公司</div>
+      <p class="hero-sub">提供兩岸三地及國際往來速遞服務，中港全球一條龍國際物流，包括中港物流、代客報關清關、貨物存倉及裝櫃的一站式托運服務。</p>
+      <div class="hero-actions">
+        <a class="btn-gold" href="#services">了解服務</a>
+        <a class="btn-ghost" href="#contact">立即報價</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-title">聯絡資料</div>
+      <div class="hc-row">
+        <div class="hc-icon">📍</div>
+        <div>
+          <div class="hc-lbl">地址</div>
+          <div class="hc-val">元朗新田嘉龍路33號地下</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📱</div>
+        <div>
+          <div class="hc-lbl">電話 / WhatsApp</div>
+          <div class="hc-val">9715 5552</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">✉️</div>
+        <div>
+          <div class="hc-lbl">電郵</div>
+          <div class="hc-val">chau@gml-hk.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAGLINE STRIP -->
+<div class="tagline-strip">
+  <div class="ts-item">
+    <div class="ts-icon">🚀</div>
+    <div class="ts-text">兩岸三地速遞</div>
+  </div>
+  <div class="ts-item">
+    <div class="ts-icon">🌏</div>
+    <div class="ts-text">國際物流</div>
+  </div>
+  <div class="ts-item">
+    <div class="ts-icon">📋</div>
+    <div class="ts-text">代客報關清關</div>
+  </div>
+  <div class="ts-item">
+    <div class="ts-icon">🏭</div>
+    <div class="ts-text">貨物存倉裝櫃</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="eyebrow">關於我們</div>
+        <h2 class="section-title">元朗<em>物流專家</em></h2>
+        <div class="divider"></div>
+        <p>金宏物流有限公司（Golden Macro Logistics Ltd.）位於元朗新田，是一家專注中港及國際物流的一站式服務供應商，為客戶提供全面的貨運解決方案。</p>
+        <p>我們深明物流的核心在於可靠性與效率，憑著豐富的行業經驗，熟悉中港兩地的清關程序及國際物流網絡，能夠為客戶提供切合需要的度身訂造物流方案。</p>
+        <div class="about-taglines">
+          <div class="at-item">🌏 兩岸三地及國際往來速遞服務</div>
+          <div class="at-item">🔗 中港全球一條龍國際物流服務</div>
+          <div class="at-item">📦 中港物流 · 報關清關 · 存倉裝櫃一站式托運</div>
+        </div>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="pi">🌏</div>
+          <h4>中港雙向物流</h4>
+          <p>香港與中國內地之間的雙向貨運，熟悉兩地清關程序，快捷可靠。</p>
+        </div>
+        <div class="prop-card">
+          <div class="pi">✈️</div>
+          <h4>國際速遞</h4>
+          <p>兩岸三地及全球各地往來速遞服務，接通主要國際物流網絡。</p>
+        </div>
+        <div class="prop-card">
+          <div class="pi">📋</div>
+          <h4>報關清關專家</h4>
+          <p>代客處理香港及內地進出口報關清關手續，合規高效。</p>
+        </div>
+        <div class="prop-card">
+          <div class="pi">📦</div>
+          <h4>存倉及裝櫃</h4>
+          <p>元朗自設倉儲設施，提供貨物存倉及裝櫃配套服務。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="eyebrow">服務項目</div>
+    <h2 class="section-title">全面<em>物流服務</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">由速遞到倉儲，由報關到全球物流，金宏物流為您提供一站式全方位服務。</p>
+
+    <div class="services-grid" style="margin-top:38px;">
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">01</div>
+          <div class="sc-icon">🚀</div>
+          <h3>兩岸三地速遞</h3>
+        </div>
+        <div class="sc-body">
+          <p>提供香港、中國內地、台灣及澳門之間的快遞速遞服務，網絡覆蓋廣泛，快速可靠。</p>
+          <div class="sc-tags">
+            <span class="sc-tag">香港</span>
+            <span class="sc-tag">中國內地</span>
+            <span class="sc-tag">台灣</span>
+            <span class="sc-tag">澳門</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">02</div>
+          <div class="sc-icon">🌐</div>
+          <h3>國際物流服務</h3>
+        </div>
+        <div class="sc-body">
+          <p>全球往來國際物流，接通主要航空及海運網絡，為客戶提供靈活的國際貨運方案。</p>
+          <div class="sc-tags">
+            <span class="sc-tag">全球覆蓋</span>
+            <span class="sc-tag">空運</span>
+            <span class="sc-tag">海運</span>
+            <span class="sc-tag">門對門</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">03</div>
+          <div class="sc-icon">🔗</div>
+          <h3>中港一條龍物流</h3>
+        </div>
+        <div class="sc-body">
+          <p>中港全球一條龍國際物流服務，一手處理由香港至內地及全球的貨運，簡化流程，節省成本。</p>
+          <div class="sc-tags">
+            <span class="sc-tag">中港跨境</span>
+            <span class="sc-tag">一條龍</span>
+            <span class="sc-tag">全程跟蹤</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">04</div>
+          <div class="sc-icon">📋</div>
+          <h3>代客報關清關</h3>
+        </div>
+        <div class="sc-body">
+          <p>專業代辦進出口報關清關服務，熟悉香港及內地海關法規，確保合規快速通關，省卻客戶繁瑣手續。</p>
+          <div class="sc-tags">
+            <span class="sc-tag">進口清關</span>
+            <span class="sc-tag">出口報關</span>
+            <span class="sc-tag">合規代辦</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">05</div>
+          <div class="sc-icon">🏭</div>
+          <h3>貨物存倉</h3>
+        </div>
+        <div class="sc-body">
+          <p>元朗倉儲設施提供短期及長期貨物存倉服務，安全可靠，靈活配合客戶存貨需要。</p>
+          <div class="sc-tags">
+            <span class="sc-tag">短期存倉</span>
+            <span class="sc-tag">長期存倉</span>
+            <span class="sc-tag">元朗倉庫</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">06</div>
+          <div class="sc-icon">🚢</div>
+          <h3>裝櫃服務</h3>
+        </div>
+        <div class="sc-body">
+          <p>提供貨物裝櫃配套服務，可安排整櫃（FCL）或散雜貨（LCL）裝箱，配合海運出口需要。</p>
+          <div class="sc-tags">
+            <span class="sc-tag">整櫃 FCL</span>
+            <span class="sc-tag">散雜貨 LCL</span>
+            <span class="sc-tag">專業裝箱</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="eyebrow">為何選擇金宏</div>
+    <h2 class="section-title">四大<em>服務優勢</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">金宏物流以專業、可靠、靈活為核心，為客戶提供最貼心的物流服務。</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h4>快速回應</h4>
+        <p>WhatsApp 9715 5552 即時聯絡，專人快速報價，靈活安排收貨及送貨時間。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌏</div>
+        <h4>廣闊網絡</h4>
+        <p>覆蓋兩岸三地及全球主要地區，無論是速遞還是大宗貨運，均能妥善安排。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <h4>合理收費</h4>
+        <p>提供具競爭力的收費，免費報價服務，透明收費，無隱藏費用。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛡️</div>
+        <h4>可靠安全</h4>
+        <p>多年行業經驗，熟悉各地清關程序，確保貨物安全、準時到達目的地。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="eyebrow">聯絡我們</div>
+    <h2 class="section-title">免費<em>查詢報價</em></h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>聯絡資料</h3>
+        <div class="ci-row">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">地址</div>
+            <div class="ci-value">新界元朗新田嘉龍路33號地下<br>G/F, 33 Ka Lung Road, San Tin<br>Yuen Long, N.T., Hong Kong</div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">電話 / WhatsApp</div>
+            <div class="ci-value"><a href="tel:97155552">9715 5552</a></div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">電郵</div>
+            <div class="ci-value"><a href="mailto:chau@gml-hk.com">chau@gml-hk.com</a></div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">網址</div>
+            <div class="ci-value"><a href="https://www.goldenmacrohk.com" target="_blank">goldenmacrohk.com</a></div>
+          </div>
+        </div>
+        <a class="wa-btn" href="https://wa.me/85297155552" target="_blank">WhatsApp 即時查詢</a>
+      </div>
+      <div class="contact-form">
+        <h3>📋 免費報價申請</h3>
+        <div class="form-2col">
+          <div class="form-row">
+            <label>公司 / 姓名 *</label>
+            <input type="text" placeholder="你的名稱">
+          </div>
+          <div class="form-row">
+            <label>聯絡電話 *</label>
+            <input type="tel" placeholder="電話號碼">
+          </div>
+        </div>
+        <div class="form-row">
+          <label>電郵地址</label>
+          <input type="email" placeholder="電郵">
+        </div>
+        <div class="form-row">
+          <label>所需服務</label>
+          <select>
+            <option value="">請選擇服務類別</option>
+            <option>兩岸三地速遞</option>
+            <option>國際物流</option>
+            <option>中港一條龍物流</option>
+            <option>代客報關清關</option>
+            <option>貨物存倉</option>
+            <option>裝櫃服務</option>
+            <option>其他 (請說明)</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>查詢詳情 *</label>
+          <textarea placeholder="請說明貨物性質、目的地、數量及其他特殊要求，我們盡快回覆免費報價。"></textarea>
+        </div>
+        <button class="form-submit" type="button">提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-icon">金</div>
+    <div class="footer-logo-text">金宏物流有限公司<br><span style="font-size:0.72rem;opacity:.5;">Golden Macro Logistics Ltd.</span></div>
+  </div>
+  <div class="footer-copy">© 2024 金宏物流有限公司 · 元朗新田 · 中港全球一條龍物流</div>
+  <div class="footer-contact">
+    📱 <a href="tel:97155552">9715 5552</a><br>
+    ✉ <a href="mailto:chau@gml-hk.com">chau@gml-hk.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
