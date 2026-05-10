@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>GMG Sports Hong Kong Limited | Global Sports Retail</title>
+<meta name="description" content="GMG Sports Hong Kong Limited — part of GMG Group, global sports retail and distribution with 650+ stores across 20 countries, inspiring active lifestyles across Asia and beyond."/>
+<style>
+:root{
+  --bg:#050a08;
+  --surface:#090f0c;
+  --card:#0e1410;
+  --border:#182018;
+  --accent:#28c060;
+  --accent2:#50e880;
+  --blue:#2860c0;
+  --text:#e8f0ec;
+  --muted:#708878;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(5,10,8,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-size:1.1rem;font-weight:900;color:var(--accent2);letter-spacing:.06em;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.nav-links a:hover{color:var(--accent2);}
+
+/* HERO */
+.hero{min-height:90vh;display:flex;align-items:center;justify-content:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 30% 50%,rgba(40,192,96,.1) 0%,transparent 65%);}
+.hero-map{position:absolute;right:-5%;top:0;bottom:0;width:50%;opacity:.04;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='80' fill='none' stroke='%2328c060' stroke-width='1'/%3E%3Ccircle cx='100' cy='100' r='50' fill='none' stroke='%2328c060' stroke-width='1'/%3E%3C/svg%3E") center/cover;}
+.hero-inner{max-width:1200px;width:100%;display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:center;position:relative;}
+.hero-badge{display:inline-block;background:rgba(40,192,96,.15);border:1px solid rgba(40,192,96,.35);color:var(--accent2);font-size:.75rem;padding:.35rem .9rem;border-radius:20px;letter-spacing:.1em;margin-bottom:1.5rem;text-transform:uppercase;}
+.hero h1{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:900;line-height:1.1;margin-bottom:.8rem;}
+.hero h1 em{color:var(--accent2);font-style:normal;}
+.hero-mission{font-size:1rem;font-style:italic;color:var(--muted);border-left:3px solid var(--accent);padding-left:1rem;margin-bottom:2rem;max-width:480px;line-height:1.7;}
+.hero-sub{font-size:.95rem;color:var(--muted);max-width:480px;margin-bottom:2.5rem;line-height:1.7;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:#050a08;padding:.85rem 2rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;transition:background .2s;}
+.hero-cta:hover{background:var(--accent2);}
+.hero-cta-out{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);color:var(--muted);padding:.85rem 2rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .2s;}
+.hero-cta-out:hover{border-color:var(--accent);color:var(--accent2);}
+
+/* INFO CARD */
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.8rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.info-card h3{font-size:.78rem;color:var(--accent2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.2rem;}
+.info-row{display:flex;gap:.8rem;margin-bottom:.85rem;align-items:flex-start;}
+.info-icon{width:20px;color:var(--accent2);flex-shrink:0;margin-top:.1rem;font-size:.9rem;}
+.info-text{font-size:.85rem;color:var(--muted);}
+.info-text strong{color:var(--text);display:block;font-size:.8rem;font-weight:600;}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:2.2rem;font-weight:900;color:var(--accent2);display:block;}
+.stat-label{font-size:.78rem;color:var(--muted);margin-top:.2rem;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-label{font-size:.72rem;color:var(--accent2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem;}
+.sec-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:1rem;}
+.sec-desc{color:var(--muted);max-width:620px;margin-bottom:3rem;line-height:1.7;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.about-highlight{background:linear-gradient(135deg,rgba(40,192,96,.08),rgba(40,192,96,.03));border:1px solid rgba(40,192,96,.2);border-radius:12px;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight .vision{font-size:1.05rem;font-weight:700;color:var(--accent2);margin-bottom:.8rem;}
+.about-highlight p{font-size:.95rem;line-height:1.75;color:var(--text);}
+.about-highlight cite{display:block;font-size:.78rem;color:var(--accent2);margin-top:.8rem;font-style:normal;}
+.prop-cards{display:grid;gap:1rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;gap:1rem;align-items:flex-start;}
+.prop-icon{width:36px;height:36px;background:rgba(40,192,96,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.prop-card h4{font-size:.9rem;font-weight:700;margin-bottom:.2rem;}
+.prop-card p{font-size:.82rem;color:var(--muted);}
+
+/* DIVISIONS */
+.divisions{background:var(--surface);}
+.div-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:2rem;}
+.div-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1rem;text-align:center;transition:border-color .2s,transform .2s;}
+.div-card:hover{border-color:rgba(40,192,96,.4);transform:translateY(-4px);}
+.div-icon{font-size:2rem;margin-bottom:.7rem;}
+.div-name{font-size:.88rem;font-weight:700;margin-bottom:.3rem;}
+.div-desc{font-size:.75rem;color:var(--muted);}
+
+/* PRODUCTS */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s,transform .2s;}
+.prod-card:hover{border-color:rgba(40,192,96,.4);transform:translateY(-4px);}
+.prod-top{background:rgba(40,192,96,.06);padding:2rem;text-align:center;font-size:2.5rem;border-bottom:1px solid var(--border);}
+.prod-body{padding:1.4rem;}
+.prod-body h3{font-size:1rem;font-weight:700;margin-bottom:.5rem;}
+.prod-body p{font-size:.83rem;color:var(--muted);line-height:1.6;}
+.prod-tag{display:inline-block;background:rgba(40,192,96,.12);color:var(--accent2);font-size:.7rem;padding:.2rem .6rem;border-radius:4px;margin-top:.8rem;}
+
+/* REACH */
+.reach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.reach-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.6rem;text-align:center;}
+.reach-num{font-size:2.2rem;font-weight:900;color:var(--accent2);display:block;margin-bottom:.4rem;}
+.reach-label{font-size:.88rem;font-weight:600;margin-bottom:.3rem;}
+.reach-sub{font-size:.78rem;color:var(--muted);}
+
+/* CONTACT */
+.contact{background:var(--surface);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-info h3{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;}
+.c-item{display:flex;gap:1rem;margin-bottom:1.2rem;align-items:flex-start;}
+.c-icon{width:40px;height:40px;background:rgba(40,192,96,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:.75rem;color:var(--muted);margin-bottom:.1rem;}
+.c-val{font-size:.9rem;font-weight:500;}
+.c-val a{color:var(--text);text-decoration:none;}
+.c-val a:hover{color:var(--accent2);}
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;}
+.contact-card p{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;}
+.c-form-row{margin-bottom:1rem;}
+.c-form-row label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:.4rem;}
+.c-form-row input,.c-form-row textarea{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;color:var(--text);font-size:.88rem;}
+.c-form-row textarea{height:90px;resize:vertical;}
+.c-btn{width:100%;background:var(--accent);color:#050a08;border:none;padding:.85rem;border-radius:8px;font-weight:700;font-size:.95rem;cursor:pointer;transition:background .2s;}
+.c-btn:hover{background:var(--accent2);}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2rem;text-align:center;}
+.foot-logo{font-size:1.1rem;font-weight:900;color:var(--accent2);margin-bottom:.4rem;}
+.foot-copy{font-size:.78rem;color:var(--muted);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .div-grid,.reach-grid,.grid-3,.stats-inner{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .div-grid,.reach-grid,.grid-3,.stats-inner{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">GMG SPORTS HK</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#divisions">Divisions</a></li>
+      <li><a href="#sports">Sports Retail</a></li>
+      <li><a href="#reach">Global Reach</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Global Sports Retail · Hong Kong</div>
+      <h1>GMG Sports<br/><em>Hong Kong</em><br/>Limited</h1>
+      <div class="hero-mission">"To inspire people to win in ways that make the world better."</div>
+      <p class="hero-sub">Part of GMG Group — a global sports retailer and distributor operating across MENA, Southeast Asia, and Hong Kong, with over 650 stores in 20 countries inspiring active lifestyles worldwide.</p>
+      <div class="hero-ctas">
+        <a href="#sports" class="hero-cta">Explore Sports →</a>
+        <a href="#contact" class="hero-cta-out">Contact Us</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>Company Details</h3>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div class="info-text"><strong>Location</strong>Hong Kong SAR</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🏢</span>
+        <div class="info-text"><strong>Parent Group</strong>GMG Group</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🏪</span>
+        <div class="info-text"><strong>Industry</strong>Sports Retail &amp; Distribution</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📱</span>
+        <div class="info-text"><strong>Mobile</strong><a href="tel:66555815">6655 5815</a></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🌍</span>
+        <div class="info-text"><strong>Presence</strong>MENA · Southeast Asia · Hong Kong</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🌐</span>
+        <div class="info-text"><strong>Website</strong><a href="https://www.gmg.com" target="_blank">gmg.com</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num">650+</span><div class="stat-label">Stores Worldwide</div></div>
+    <div class="stat"><span class="stat-num">20</span><div class="stat-label">Countries</div></div>
+    <div class="stat"><span class="stat-num">10K+</span><div class="stat-label">Employees</div></div>
+    <div class="stat"><span class="stat-num">64</span><div class="stat-label">Cities Served</div></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div>
+        <div class="sec-label">About Us</div>
+        <h2 class="sec-title">Inspiring Active<br/>Lifestyles Globally</h2>
+        <div class="about-highlight">
+          <div class="vision">Mission: Dare to develop better products and experiences</div>
+          <p>GMG is a global retailer and distributor operating across MENA, Southeast Asia, and Hong Kong. Through its sports division — with approximately 450 stores worldwide — GMG inspires and empowers active lifestyles by distributing a diversified portfolio of leading athletic brands.</p>
+          <cite>— GMG Group · GMG Sports Hong Kong Limited</cite>
+        </div>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.7;">
+          GMG Sports Hong Kong Limited serves as the Group's Hong Kong entity, connecting world-class sports brands with consumers across Asia. With decades of retail expertise and a deep understanding of local and regional markets, GMG bridges global brands with active communities.
+        </p>
+      </div>
+      <div class="prop-cards">
+        <div class="prop-card">
+          <div class="prop-icon">🌏</div>
+          <div>
+            <h4>Global Scale, Local Presence</h4>
+            <p>Operating across 20 countries with 650+ stores, with a dedicated Hong Kong entity serving Asia.</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">👟</div>
+          <div>
+            <h4>Leading Sports Brands</h4>
+            <p>Distributing a diversified portfolio of top international athletic and sports equipment brands.</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🏪</div>
+          <div>
+            <h4>450+ Sports Stores</h4>
+            <p>Extensive retail footprint dedicated to sports, giving consumers access to premium athletic gear.</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">💪</div>
+          <div>
+            <h4>Inspiring Active Lifestyles</h4>
+            <p>Committed to empowering communities to embrace sport and wellness as a way of life.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="divisions" class="divisions">
+  <div class="sec-inner">
+    <div class="sec-label">Business Divisions</div>
+    <h2 class="sec-title">Seven Pillars of GMG</h2>
+    <p class="sec-desc">GMG Group operates across seven integrated business divisions, with Sports Retail at its core — supported by logistics, health, and lifestyle verticals.</p>
+    <div class="div-grid">
+      <div class="div-card">
+        <div class="div-icon">🏃</div>
+        <div class="div-name">Sports</div>
+        <div class="div-desc">450+ sports retail stores, leading athletic brands</div>
+      </div>
+      <div class="div-card">
+        <div class="div-icon">🥗</div>
+        <div class="div-name">Everyday Goods</div>
+        <div class="div-desc">Farm-to-fork food distribution and retail</div>
+      </div>
+      <div class="div-card">
+        <div class="div-icon">💊</div>
+        <div class="div-name">Health &amp; Beauty</div>
+        <div class="div-desc">Nutrition, supplements, skincare</div>
+      </div>
+      <div class="div-card">
+        <div class="div-icon">🏢</div>
+        <div class="div-name">Properties</div>
+        <div class="div-desc">Commercial, residential, community malls (11 malls)</div>
+      </div>
+      <div class="div-card">
+        <div class="div-icon">🚢</div>
+        <div class="div-name">Logistics</div>
+        <div class="div-desc">Trilogi — air, sea, land freight across MENA &amp; Asia</div>
+      </div>
+      <div class="div-card">
+        <div class="div-icon">🏠</div>
+        <div class="div-name">Home</div>
+        <div class="div-desc">Indoor and outdoor living products</div>
+      </div>
+      <div class="div-card">
+        <div class="div-icon">🚀</div>
+        <div class="div-name">Ventures</div>
+        <div class="div-desc">Real estate, education, outdoor living</div>
+      </div>
+      <div class="div-card">
+        <div class="div-icon">🌱</div>
+        <div class="div-name">Wellness</div>
+        <div class="div-desc">Wellness acceleration &amp; sustainable food ecosystems</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sports">
+  <div class="sec-inner">
+    <div class="sec-label">Sports Retail</div>
+    <h2 class="sec-title">Powering Active Lifestyles</h2>
+    <p class="sec-desc">The sports division is GMG's flagship business, operating a vast network of athletic retail stores carrying world-class sports brands.</p>
+    <div class="grid-3">
+      <div class="prod-card">
+        <div class="prod-top">👟</div>
+        <div class="prod-body">
+          <h3>Athletic Footwear</h3>
+          <p>Premium sports shoes from leading global brands, covering running, training, basketball, football, and lifestyle categories.</p>
+          <span class="prod-tag">Footwear</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">👕</div>
+        <div class="prod-body">
+          <h3>Sports Apparel</h3>
+          <p>High-performance sports clothing for all disciplines — from compression wear to casual activewear and team kits.</p>
+          <span class="prod-tag">Apparel</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">⚽</div>
+        <div class="prod-body">
+          <h3>Sports Equipment</h3>
+          <p>Equipment and accessories for a wide range of sports — football, basketball, tennis, fitness training, and more.</p>
+          <span class="prod-tag">Equipment</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">🏋️</div>
+        <div class="prod-body">
+          <h3>Fitness &amp; Training</h3>
+          <p>Gym equipment, weights, resistance training tools, and fitness accessories for home and commercial use.</p>
+          <span class="prod-tag">Fitness</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">🎒</div>
+        <div class="prod-body">
+          <h3>Sports Accessories</h3>
+          <p>Bags, caps, socks, gloves, and essential accessories that complement every athlete's performance and lifestyle.</p>
+          <span class="prod-tag">Accessories</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">🏪</div>
+        <div class="prod-body">
+          <h3>Retail Distribution</h3>
+          <p>B2B distribution services connecting international sports brands with retailers across MENA and Asia-Pacific.</p>
+          <span class="prod-tag">Distribution</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reach" style="background:var(--surface);">
+  <div class="sec-inner">
+    <div class="sec-label">Global Reach</div>
+    <h2 class="sec-title">Worldwide Presence</h2>
+    <p class="sec-desc">GMG's extensive global footprint gives brands and consumers seamless access across continents.</p>
+    <div class="reach-grid">
+      <div class="reach-card">
+        <span class="reach-num">650+</span>
+        <div class="reach-label">Retail Stores</div>
+        <div class="reach-sub">Spanning multiple retail formats across global markets</div>
+      </div>
+      <div class="reach-card">
+        <span class="reach-num">20</span>
+        <div class="reach-label">Countries</div>
+        <div class="reach-sub">MENA, Southeast Asia, and Hong Kong operations</div>
+      </div>
+      <div class="reach-card">
+        <span class="reach-num">64</span>
+        <div class="reach-label">Cities</div>
+        <div class="reach-sub">Retail presence in 64 major cities worldwide</div>
+      </div>
+      <div class="reach-card">
+        <span class="reach-num">10K+</span>
+        <div class="reach-label">Employees</div>
+        <div class="reach-sub">A diverse global workforce dedicated to excellence</div>
+      </div>
+      <div class="reach-card">
+        <span class="reach-num">450+</span>
+        <div class="reach-label">Sports Stores</div>
+        <div class="reach-sub">Dedicated sports retail locations worldwide</div>
+      </div>
+      <div class="reach-card">
+        <span class="reach-num">11</span>
+        <div class="reach-label">Community Malls</div>
+        <div class="reach-sub">GMG-owned community mall properties</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="sec-inner">
+    <div class="sec-label">Contact</div>
+    <h2 class="sec-title">Get In Touch</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">Location</div>
+            <div class="c-val">Hong Kong SAR</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📱</div>
+          <div>
+            <div class="c-label">Mobile</div>
+            <div class="c-val"><a href="tel:66555815">6655 5815</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">Group Website</div>
+            <div class="c-val"><a href="https://www.gmg.com" target="_blank">www.gmg.com</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🏢</div>
+          <div>
+            <div class="c-label">Corporate Group</div>
+            <div class="c-val">GMG Group</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🏪</div>
+          <div>
+            <div class="c-label">Business</div>
+            <div class="c-val">Sports Retail &amp; Distribution</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>Send an Enquiry</h3>
+        <p>Interested in partnerships, distribution, or retail opportunities with GMG Sports in Hong Kong? We'd love to hear from you.</p>
+        <div class="c-form-row">
+          <label>Your Name</label>
+          <input type="text" placeholder="Full name"/>
+        </div>
+        <div class="c-form-row">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com"/>
+        </div>
+        <div class="c-form-row">
+          <label>Company</label>
+          <input type="text" placeholder="Your company name"/>
+        </div>
+        <div class="c-form-row">
+          <label>Message</label>
+          <textarea placeholder="Please describe your enquiry..."></textarea>
+        </div>
+        <button class="c-btn">Send Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">GMG SPORTS HONG KONG LIMITED</div>
+  <div class="foot-copy">© 2025 GMG Sports Hong Kong Limited · Part of GMG Group · <a href="https://www.gmg.com" target="_blank" style="color:var(--muted);text-decoration:none;">gmg.com</a></div>
+</footer>
+
+</body>
+</html>
