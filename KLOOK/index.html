@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxe Travel Hong Kong | Luxury Travel Experiences</title>
+<style>
+:root {
+  --primary: #0a0c14;
+  --accent: #c8a040;
+  --accent2: #a07828;
+  --gold-light: #e8c870;
+  --light: #f8f6f0;
+  --mid: #ede8d8;
+  --text: #1a1610;
+  --text-light: #6a6050;
+  --white: #ffffff;
+  --card-bg: #fdfaf4;
+  --border: #e0d8c0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Georgia',serif;color:var(--text);background:var(--white);line-height:1.7;}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,12,20,0.97);backdrop-filter:blur(10px);border-bottom:1px solid rgba(200,160,64,0.3);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:72px;}
+.nav-logo{display:flex;align-items:center;gap:14px;}
+.nav-logo-icon{width:42px;height:42px;border:2px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.nav-logo-icon svg{width:22px;height:22px;fill:var(--accent);}
+.nav-brand{display:flex;flex-direction:column;}
+.nav-brand-main{font-size:1rem;font-weight:600;color:var(--white);font-family:Georgia,serif;letter-spacing:0.06em;}
+.nav-brand-sub{font-size:0.6rem;color:rgba(255,255,255,0.4);letter-spacing:0.14em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2.2rem;}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.88rem;font-family:Georgia,serif;transition:color 0.2s;letter-spacing:0.04em;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{border:1px solid var(--accent);color:var(--accent);padding:0.45rem 1.3rem;border-radius:4px;font-size:0.82rem;font-weight:600;text-decoration:none;transition:all 0.2s;font-family:Georgia,serif;letter-spacing:0.06em;}
+.nav-cta:hover{background:var(--accent);color:var(--primary);}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(135deg,var(--primary) 0%,#14100c 55%,#0c0e18 100%);display:flex;align-items:center;padding-top:72px;position:relative;overflow:hidden;}
+.hero-ornament{position:absolute;top:15%;right:8%;width:450px;height:450px;border:1px solid rgba(200,160,64,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.hero-ornament::before{content:'';width:350px;height:350px;border:1px solid rgba(200,160,64,0.06);border-radius:50%;}
+.hero-glow{position:absolute;top:20%;right:15%;width:400px;height:400px;background:radial-gradient(circle,rgba(200,160,64,0.07),transparent 65%);border-radius:50%;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(200,160,64,0.35);color:var(--gold-light);padding:0.4rem 1.1rem;border-radius:2px;font-size:0.76rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1.8rem;font-family:-apple-system,sans-serif;}
+.hero h1{font-size:3rem;font-weight:400;color:var(--white);line-height:1.25;margin-bottom:1rem;font-family:Georgia,serif;letter-spacing:0.02em;}
+.hero h1 em{color:var(--accent);font-style:normal;}
+.hero-divider{width:60px;height:1px;background:var(--accent);margin-bottom:1.5rem;}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.6);margin-bottom:2.5rem;max-width:500px;font-family:-apple-system,sans-serif;line-height:1.8;}
+.hero-actions{display:flex;gap:1.2rem;flex-wrap:wrap;}
+.btn-gold{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--primary);padding:0.9rem 2.2rem;border-radius:4px;font-size:0.88rem;font-weight:700;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;letter-spacing:0.06em;font-family:-apple-system,sans-serif;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(200,160,64,0.25);}
+.btn-outline{border:1px solid rgba(255,255,255,0.3);color:var(--white);padding:0.9rem 2.2rem;border-radius:4px;font-size:0.88rem;font-weight:400;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;font-family:-apple-system,sans-serif;letter-spacing:0.06em;}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+
+/* INFO CARD */
+.info-card{background:rgba(255,255,255,0.04);border:1px solid rgba(200,160,64,0.25);border-radius:4px;padding:2.2rem;}
+.info-card h3{font-size:0.72rem;color:var(--accent);font-weight:400;margin-bottom:1.5rem;letter-spacing:0.16em;text-transform:uppercase;font-family:-apple-system,sans-serif;}
+.info-item{display:flex;gap:14px;margin-bottom:1.2rem;align-items:flex-start;}
+.info-icon{width:34px;height:34px;border:1px solid rgba(200,160,64,0.25);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.info-icon svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:1.8;}
+.info-label{font-size:0.66rem;color:rgba(255,255,255,0.38);text-transform:uppercase;letter-spacing:0.1em;font-family:-apple-system,sans-serif;}
+.info-value{font-size:0.86rem;color:var(--white);font-weight:400;font-family:-apple-system,sans-serif;}
+.info-value a{color:var(--white);text-decoration:none;}
+.info-value a:hover{color:var(--gold-light);}
+.info-divider{border:none;border-top:1px solid rgba(255,255,255,0.07);margin:1.4rem 0;}
+.prestige-seal{text-align:center;padding:1.2rem;border:1px solid rgba(200,160,64,0.2);}
+.prestige-seal .seal-top{font-size:0.66rem;color:var(--accent);letter-spacing:0.18em;text-transform:uppercase;font-family:-apple-system,sans-serif;}
+.prestige-seal .seal-main{font-size:1rem;color:var(--white);font-family:Georgia,serif;margin:4px 0;}
+.prestige-seal .seal-sub{font-size:0.7rem;color:rgba(255,255,255,0.4);letter-spacing:0.08em;font-family:-apple-system,sans-serif;}
+
+/* STATS */
+.stats{background:#0e0e14;padding:2.5rem 0;border-top:1px solid rgba(200,160,64,0.12);border-bottom:1px solid rgba(200,160,64,0.12);}
+.stats-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.stat-item{text-align:center;padding:1.2rem;}
+.stat-num{font-size:2rem;font-weight:400;color:var(--accent);font-family:Georgia,serif;}
+.stat-lbl{font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:4px;letter-spacing:0.1em;text-transform:uppercase;font-family:-apple-system,sans-serif;}
+
+/* ABOUT */
+.about{padding:7rem 0;background:var(--light);}
+.about-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;}
+.section-eyebrow{font-size:0.72rem;font-weight:400;color:var(--accent);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1rem;font-family:-apple-system,sans-serif;}
+.section-title{font-size:2.2rem;font-weight:400;color:var(--primary);line-height:1.3;margin-bottom:1.2rem;font-family:Georgia,serif;}
+.section-title em{color:var(--accent);font-style:normal;}
+.section-divider{width:50px;height:1px;background:var(--accent);margin-bottom:1.5rem;}
+.about-text{color:var(--text-light);line-height:1.9;margin-bottom:1.5rem;font-family:-apple-system,sans-serif;font-size:0.92rem;}
+.highlight-box{background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:4px;padding:2rem;color:var(--primary);margin-bottom:2rem;}
+.highlight-box h4{font-size:0.95rem;font-weight:700;margin-bottom:0.7rem;font-family:Georgia,serif;}
+.highlight-box p{font-size:0.86rem;opacity:0.9;line-height:1.8;font-family:-apple-system,sans-serif;}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.pillar{background:var(--white);border:1px solid var(--border);padding:1.4rem;transition:border-color 0.2s;}
+.pillar:hover{border-color:var(--accent);}
+.pillar-icon{width:32px;height:32px;border:1px solid rgba(200,160,64,0.4);display:flex;align-items:center;justify-content:center;margin-bottom:0.8rem;}
+.pillar-icon svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:1.8;}
+.pillar h5{font-size:0.85rem;font-weight:600;color:var(--primary);margin-bottom:0.3rem;font-family:-apple-system,sans-serif;}
+.pillar p{font-size:0.76rem;color:var(--text-light);line-height:1.6;font-family:-apple-system,sans-serif;}
+
+/* SERVICES */
+.services{padding:7rem 0;background:var(--white);}
+.services-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.services-header{text-align:center;margin-bottom:4rem;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);padding:2.2rem;transition:all 0.25s;position:relative;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold-light));transform:scaleX(0);transition:transform 0.25s;}
+.svc-card:hover{border-color:var(--accent);box-shadow:0 8px 40px rgba(200,160,64,0.1);transform:translateY(-4px);}
+.svc-card:hover::before{transform:scaleX(1);}
+.svc-num{font-size:0.68rem;font-weight:400;color:var(--accent);letter-spacing:0.14em;margin-bottom:1.2rem;font-family:-apple-system,sans-serif;}
+.svc-icon{width:48px;height:48px;border:1px solid rgba(200,160,64,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:1.3rem;}
+.svc-icon svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.6;}
+.svc-card h3{font-size:1rem;font-weight:600;color:var(--primary);margin-bottom:0.7rem;font-family:Georgia,serif;}
+.svc-card p{font-size:0.84rem;color:var(--text-light);line-height:1.8;margin-bottom:1rem;font-family:-apple-system,sans-serif;}
+.svc-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.svc-tag{background:rgba(200,160,64,0.08);color:var(--accent2);font-size:0.7rem;padding:0.2rem 0.6rem;border:1px solid rgba(200,160,64,0.2);font-family:-apple-system,sans-serif;}
+
+/* CONTACT */
+.contact{padding:7rem 0;background:var(--light);}
+.contact-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;}
+.contact-info h2{font-size:2rem;font-weight:400;color:var(--primary);margin-bottom:1rem;font-family:Georgia,serif;}
+.contact-info p{color:var(--text-light);margin-bottom:2rem;line-height:1.9;font-family:-apple-system,sans-serif;font-size:0.92rem;}
+.contact-details{display:flex;flex-direction:column;gap:1.3rem;}
+.cdetail{display:flex;gap:1rem;align-items:flex-start;}
+.cdetail-icon{width:42px;height:42px;border:1px solid rgba(200,160,64,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cdetail-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.8;}
+.cdetail-label{font-size:0.68rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.1em;font-family:-apple-system,sans-serif;}
+.cdetail-value{font-size:0.92rem;font-weight:600;color:var(--primary);font-family:-apple-system,sans-serif;}
+.cdetail-value a{color:var(--primary);text-decoration:none;}
+.cdetail-value a:hover{color:var(--accent);}
+.contact-form{background:var(--white);border:1px solid var(--border);padding:2.8rem;}
+.contact-form h3{font-size:1.15rem;font-weight:400;color:var(--primary);margin-bottom:1.8rem;font-family:Georgia,serif;letter-spacing:0.04em;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-group{margin-bottom:1rem;}
+.form-group label{display:block;font-size:0.76rem;font-weight:600;color:var(--text-light);margin-bottom:0.4rem;letter-spacing:0.08em;text-transform:uppercase;font-family:-apple-system,sans-serif;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.9rem;color:var(--text);background:var(--card-bg);outline:none;transition:border-color 0.2s;font-family:-apple-system,sans-serif;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent);}
+.form-group textarea{resize:vertical;min-height:110px;}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--primary);border:none;padding:0.9rem;font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:-apple-system,sans-serif;letter-spacing:0.06em;text-transform:uppercase;}
+.form-submit:hover{box-shadow:0 4px 20px rgba(200,160,64,0.25);}
+
+/* FOOTER */
+footer{background:var(--primary);padding:4rem 0 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand{font-size:1.1rem;font-weight:400;color:var(--white);margin-bottom:0.4rem;font-family:Georgia,serif;letter-spacing:0.06em;}
+.footer-brand-sub{font-size:0.65rem;color:var(--accent);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:1rem;font-family:-apple-system,sans-serif;}
+.footer-tagline{font-size:0.84rem;color:rgba(255,255,255,0.42);line-height:1.8;font-family:-apple-system,sans-serif;}
+.footer-col h4{font-size:0.7rem;font-weight:400;color:var(--accent);text-transform:uppercase;letter-spacing:0.16em;margin-bottom:1.2rem;font-family:-apple-system,sans-serif;}
+.footer-col ul{list-style:none;padding:0;}
+.footer-col ul li{margin-bottom:0.7rem;}
+.footer-col ul li a{color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.84rem;transition:color 0.2s;font-family:-apple-system,sans-serif;}
+.footer-col ul li a:hover{color:var(--gold-light);}
+.footer-divider{border:none;border-top:1px solid rgba(200,160,64,0.1);margin-bottom:1.5rem;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:0.74rem;color:rgba(255,255,255,0.25);font-family:-apple-system,sans-serif;}
+.footer-web{font-size:0.74rem;color:rgba(255,255,255,0.25);font-family:-apple-system,sans-serif;}
+
+@media(max-width:1024px){
+  .hero-inner,.about-inner,.contact-inner{grid-template-columns:1fr;gap:3rem;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .hero h1{font-size:2.1rem;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .services-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="nav-brand">
+        <span class="nav-brand-main">Luxe Travel</span>
+        <span class="nav-brand-sub">Hong Kong</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Enquire Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ornament"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">✦ Hong Kong's Premier Luxury Travel Specialist</div>
+      <h1>Journey Beyond<br>the <em>Ordinary</em></h1>
+      <div class="hero-divider"></div>
+      <p class="hero-sub">Luxe Travel crafts extraordinary journeys for the discerning traveller. From bespoke private tours and exclusive retreats to curated cultural immersions — every itinerary is designed to exceed expectations.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-gold">
+          Explore Journeys
+        </a>
+        <a href="#contact" class="btn-outline">
+          Private Consultation
+        </a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>Contact Luxe Travel</h3>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:info@luxetravel.com.hk">info@luxetravel.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">Website</div>
+          <div class="info-value"><a href="https://www.luxetravel.com.hk" target="_blank">luxetravel.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="info-label">Base</div>
+          <div class="info-value">Hong Kong SAR</div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="prestige-seal">
+        <div class="seal-top">✦ Established in Hong Kong ✦</div>
+        <div class="seal-main">Luxury Travel Specialists</div>
+        <div class="seal-sub">Bespoke · Exclusive · Extraordinary</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">150+</div>
+      <div class="stat-lbl">Destinations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5★</div>
+      <div class="stat-lbl">Luxury Standard</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-lbl">Bespoke Itineraries</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-lbl">Concierge Support</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="section-eyebrow">About Luxe Travel</div>
+      <h2 class="section-title">Hong Kong's Luxury<br><em>Travel Authority</em></h2>
+      <div class="section-divider"></div>
+      <p class="about-text">Luxe Travel is Hong Kong's leading specialist in luxury and bespoke travel experiences. We serve discerning clients who demand more than the ordinary — private villa retreats, exclusive cultural expeditions, tailored honeymoon escapes and ultra-luxury cruises across the world's most coveted destinations.</p>
+      <div class="highlight-box">
+        <h4>Our Philosophy</h4>
+        <p>"Travel is not just about where you go — it's about how you experience it." Every Luxe Travel journey is meticulously crafted to reflect the unique preferences and aspirations of each client, ensuring memories that last a lifetime.</p>
+      </div>
+      <p class="about-text">Based in Hong Kong, our team of seasoned travel consultants possesses intimate knowledge of the world's finest hotels, resorts and hidden gems — from the Maldives and French Riviera to Japan's private ryokans and Africa's exclusive safari lodges.</p>
+    </div>
+    <div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h5>Trusted Expertise</h5>
+          <p>Our consultants hold deep, personal knowledge of every destination we recommend.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h5>24/7 Concierge</h5>
+          <p>Around-the-clock support before, during and after your journey for total peace of mind.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <h5>Personalised Service</h5>
+          <p>Every detail — from villa selection to private transfers — is tailored to your preferences.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
+          </div>
+          <h5>Exclusive Access</h5>
+          <p>Access to sold-out properties, private events and experiences unavailable to the public.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="section-eyebrow">What We Offer</div>
+      <h2 class="section-title">Curated <em>Luxury Experiences</em></h2>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-num">I.</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Private Villa & Resort Retreats</h3>
+        <p>Exclusive access to the world's finest private villas and ultra-luxury resorts — from Maldives overwater estates to Tuscany hillside retreats and Bali jungle sanctuaries.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Private Villas</span>
+          <span class="svc-tag">5-Star Resorts</span>
+          <span class="svc-tag">Overwater Bungalows</span>
+          <span class="svc-tag">Beach Retreats</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">II.</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <h3>Bespoke Cultural Expeditions</h3>
+        <p>Immersive cultural journeys led by expert guides — exploring ancient temples in Kyoto, the palaces of Rajasthan, Italy's art cities or Egypt's timeless wonders in absolute style.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Private Guides</span>
+          <span class="svc-tag">Cultural Immersion</span>
+          <span class="svc-tag">Heritage Sites</span>
+          <span class="svc-tag">Curated Art Tours</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">III.</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <h3>Honeymoon & Romance</h3>
+        <p>Unforgettable romantic escapes tailored to every couple's dream — private island dinners, sunrise hot air balloon rides over Cappadocia, and exclusive champagne butler services.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Honeymoon</span>
+          <span class="svc-tag">Anniversary</span>
+          <span class="svc-tag">Private Dining</span>
+          <span class="svc-tag">Spa Retreats</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">IV.</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>Adventure & Expedition</h3>
+        <p>Extraordinary luxury adventures — private safaris in the Serengeti, helicopter landings on remote glaciers, sailing expeditions in the Galápagos and Antarctic voyages on expedition ships.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Luxury Safari</span>
+          <span class="svc-tag">Arctic/Antarctic</span>
+          <span class="svc-tag">Private Heli-Tours</span>
+          <span class="svc-tag">Yacht Charters</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">V.</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 16V8M18 16V8M12 16V8"/></svg>
+        </div>
+        <h3>Ultra-Luxury Cruising</h3>
+        <p>Handpicked voyages aboard the world's most prestigious cruise lines — Silversea, Regent Seven Seas, Seabourn — including small-ship expeditions to rarely visited destinations.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Silversea</span>
+          <span class="svc-tag">Seabourn</span>
+          <span class="svc-tag">Expedition Cruises</span>
+          <span class="svc-tag">River Cruises</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">VI.</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Corporate & Group Travel</h3>
+        <p>Premium incentive travel programmes and corporate retreat planning — exclusive venue sourcing, group logistics, private event management and team-building experiences worldwide.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Incentive Travel</span>
+          <span class="svc-tag">Corporate Retreats</span>
+          <span class="svc-tag">Private Events</span>
+          <span class="svc-tag">MICE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-eyebrow">Plan Your Journey</div>
+      <h2>Begin Your<br>Next Adventure</h2>
+      <div class="section-divider"></div>
+      <p>Every extraordinary journey begins with a conversation. Share your travel aspirations with our consultants and we'll craft an experience that surpasses your every expectation.</p>
+      <div class="contact-details">
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">Email</div>
+            <div class="cdetail-value"><a href="mailto:info@luxetravel.com.hk">info@luxetravel.com.hk</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">Website</div>
+            <div class="cdetail-value"><a href="https://www.luxetravel.com.hk" target="_blank">luxetravel.com.hk</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">Location</div>
+            <div class="cdetail-value">Hong Kong SAR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Private Travel Enquiry</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+852 XXXX XXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>Travel Interest</label>
+        <select>
+          <option>Private Villa / Resort Retreat</option>
+          <option>Bespoke Cultural Expedition</option>
+          <option>Honeymoon / Romance</option>
+          <option>Adventure & Safari</option>
+          <option>Luxury Cruise</option>
+          <option>Corporate / Group Travel</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell Us Your Dream Journey</label>
+        <textarea placeholder="Destinations, dates, number of travellers, special requests..."></textarea>
+      </div>
+      <button class="form-submit">Send Enquiry</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Luxe Travel</div>
+        <div class="footer-brand-sub">✦ Hong Kong's Luxury Travel Specialists ✦</div>
+        <p class="footer-tagline">Crafting extraordinary journeys for the discerning traveller.<br>Bespoke · Exclusive · Extraordinary</p>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#services">Private Villa Retreats</a></li>
+          <li><a href="#services">Cultural Expeditions</a></li>
+          <li><a href="#services">Honeymoon & Romance</a></li>
+          <li><a href="#services">Adventure & Safari</a></li>
+          <li><a href="#services">Luxury Cruising</a></li>
+          <li><a href="#services">Corporate Travel</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@luxetravel.com.hk">info@luxetravel.com.hk</a></li>
+          <li><a href="https://www.luxetravel.com.hk" target="_blank">luxetravel.com.hk</a></li>
+          <li><a href="#contact">Private Consultation</a></li>
+          <li><a href="#about">About Luxe Travel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 Luxe Travel Hong Kong. All rights reserved.</div>
+      <div class="footer-web">info@luxetravel.com.hk · luxetravel.com.hk</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
