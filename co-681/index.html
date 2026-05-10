@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>寶泰貿易有限公司 | Ponti Trading Ltd. | 亞洲頂尖葡萄酒進口商</title>
+  <meta name="description" content="寶泰貿易有限公司（Ponti Trading Ltd.）— 1994年創立，亞洲頂尖葡萄酒進口分銷商，業務覆蓋香港、澳門及新加坡，旗下設有酒部、食品部、Ponti Wine Cellars及Natural Ponti等多個業務部門。" />
+  <style>
+    :root {
+      --bg:       #080508;
+      --bg2:      #0e080c;
+      --bg3:      #160c12;
+      --border:   #281018;
+      --acc:      #a82838;
+      --acc2:     #d04858;
+      --acc3:     #801828;
+      --acc-g:    #c89858;
+      --text:     #ece0d8;
+      --muted:    #987080;
+      --card:     #100810;
+      --radius:   10px;
+      --nav-h:    64px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: Georgia, 'Times New Roman', serif; line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+      background: rgba(8,5,8,0.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-logo-mark {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--acc3), var(--acc), var(--acc2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700; color: #fff;
+    }
+    .nav-logo-text { font-size: 15px; font-weight: 400; color: var(--text); letter-spacing: 1.5px; font-family: 'Trebuchet MS', sans-serif; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; letter-spacing: 0.5px; font-family: 'Trebuchet MS', sans-serif; transition: color .2s; }
+    .nav-links a:hover { color: var(--acc-g); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 9px 22px; border-radius: 6px;
+      font-size: 12px; letter-spacing: 0.5px; cursor: pointer;
+      font-family: 'Trebuchet MS', sans-serif; font-weight: 600; text-decoration: none; transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; padding-top: var(--nav-h);
+      background: linear-gradient(155deg, var(--bg) 0%, #100810 55%, var(--bg) 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 15% 55%, rgba(168,40,56,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 85% 30%, rgba(200,152,88,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1180px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 440px; gap: 72px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(168,40,56,0.1); border: 1px solid rgba(168,40,56,0.3);
+      border-radius: 20px; padding: 6px 16px; margin-bottom: 24px;
+      font-size: 12px; color: var(--acc-g); letter-spacing: 1px; font-family: 'Trebuchet MS', sans-serif;
+    }
+    .hero h1 { font-size: clamp(2rem, 3.5vw, 3.4rem); font-weight: 400; line-height: 1.2; margin-bottom: 10px; }
+    .hero h1 em { font-style: italic; color: var(--acc-g); }
+    .hero h1 .brand { color: var(--acc2); }
+    .hero-sub { font-size: 1rem; color: var(--muted); margin-bottom: 36px; line-height: 1.8; max-width: 520px; font-family: 'Trebuchet MS', sans-serif; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 13px 28px; border-radius: 6px;
+      font-size: 13px; letter-spacing: 0.5px; cursor: pointer; font-family: 'Trebuchet MS', sans-serif; font-weight: 700;
+      text-decoration: none; transition: opacity .2s; display: inline-block;
+    }
+    .btn-primary:hover { opacity: .85; }
+    .btn-ghost {
+      background: transparent; color: var(--acc-g);
+      border: 1.5px solid rgba(200,152,88,0.4); padding: 12px 26px; border-radius: 6px;
+      font-size: 13px; cursor: pointer; font-family: 'Trebuchet MS', sans-serif; font-weight: 500;
+      text-decoration: none; transition: all .2s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--acc-g); background: rgba(200,152,88,0.06); }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 10px; }
+    .trust-item {
+      background: rgba(40,16,24,0.6); border: 1px solid var(--border);
+      color: var(--muted); font-size: 12px; padding: 5px 14px; border-radius: 5px;
+      font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* HERO CARD */
+    .hero-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .hero-card-top {
+      background: linear-gradient(135deg, #1a0c12, #120810);
+      padding: 22px 26px; border-bottom: 1px solid var(--border);
+    }
+    .hero-card-top h3 { font-size: 15px; color: var(--acc-g); font-weight: 400; margin-bottom: 3px; font-family: 'Trebuchet MS', sans-serif; letter-spacing: 1px; }
+    .hero-card-top p { font-size: 12px; color: var(--muted); font-family: 'Trebuchet MS', sans-serif; }
+    .est-badge {
+      display: inline-flex; gap: 6px; align-items: center;
+      background: rgba(168,40,56,0.12); border: 1px solid rgba(168,40,56,0.3);
+      border-radius: 6px; padding: 4px 12px; margin-top: 10px;
+      font-size: 11px; color: var(--acc2); letter-spacing: 0.5px; font-family: 'Trebuchet MS', sans-serif;
+    }
+    .hero-card-body { padding: 20px 26px; }
+    .info-row { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(40,16,24,0.7); align-items: flex-start; }
+    .info-row:last-child { border-bottom: none; }
+    .info-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+    .info-label { font-size: 11px; color: var(--muted); font-family: 'Trebuchet MS', sans-serif; }
+    .info-val { font-size: 13px; color: var(--text); margin-top: 1px; font-family: 'Trebuchet MS', sans-serif; }
+    .info-val a { color: var(--acc-g); text-decoration: none; }
+
+    /* STATS */
+    .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 40px; }
+    .stats-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 400; color: var(--acc-g); line-height: 1; margin-bottom: 5px; }
+    .stat-label { font-size: 12px; color: var(--muted); font-family: 'Trebuchet MS', sans-serif; }
+
+    /* SECTIONS */
+    section { padding: 84px 40px; }
+    .section-inner { max-width: 1180px; margin: 0 auto; }
+    .section-label { font-size: 11px; color: var(--acc2); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; font-family: 'Trebuchet MS', sans-serif; }
+    .section-title { font-size: clamp(1.6rem, 2.5vw, 2.3rem); font-weight: 400; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+    .section-title em { font-style: italic; color: var(--acc-g); }
+    .section-desc { font-size: 1rem; color: var(--muted); max-width: 620px; line-height: 1.8; font-family: 'Trebuchet MS', sans-serif; }
+
+    /* ABOUT */
+    .about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; align-items: start; }
+    .about-highlight {
+      background: linear-gradient(135deg, rgba(168,40,56,0.07), rgba(128,24,40,0.03));
+      border: 1px solid rgba(168,40,56,0.18); border-radius: 14px; padding: 30px;
+    }
+    .about-highlight h3 { font-size: 1.1rem; color: var(--acc-g); margin-bottom: 14px; font-weight: 400; }
+    .about-highlight p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 12px; font-family: 'Trebuchet MS', sans-serif; }
+    .about-highlight p:last-child { margin-bottom: 0; }
+    .about-highlight strong { color: var(--text); }
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .tl-item { display: flex; gap: 16px; padding-bottom: 20px; position: relative; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before {
+      content: '';
+      position: absolute; left: 19px; top: 28px; bottom: 0;
+      width: 1px; background: var(--border);
+    }
+    .tl-item:last-child::before { display: none; }
+    .tl-dot {
+      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(168,40,56,0.15); border: 1px solid rgba(168,40,56,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: var(--acc2); font-weight: 700; font-family: 'Trebuchet MS', sans-serif;
+      z-index: 1;
+    }
+    .tl-text h4 { font-size: 13px; color: var(--acc-g); font-weight: 600; font-family: 'Trebuchet MS', sans-serif; margin-bottom: 3px; }
+    .tl-text p { font-size: 12px; color: var(--muted); line-height: 1.5; font-family: 'Trebuchet MS', sans-serif; }
+
+    /* DIVISIONS */
+    .divisions { background: var(--bg2); }
+    .divisions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 48px; }
+    .division-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px;
+      transition: border-color .2s, transform .2s;
+    }
+    .division-card:hover { border-color: rgba(168,40,56,0.4); transform: translateY(-2px); }
+    .division-icon { font-size: 28px; margin-bottom: 12px; }
+    .division-type { font-size: 11px; color: var(--acc2); letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 8px; font-family: 'Trebuchet MS', sans-serif; }
+    .division-card h3 { font-size: 16px; color: var(--text); margin-bottom: 10px; font-weight: 400; }
+    .division-card p { font-size: 13px; color: var(--muted); line-height: 1.7; font-family: 'Trebuchet MS', sans-serif; }
+    .division-contacts { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+    .dc-row { display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--muted); font-family: 'Trebuchet MS', sans-serif; }
+    .dc-row span { font-size: 13px; }
+    .dc-row a { color: var(--acc-g); text-decoration: none; }
+
+    /* REGIONS */
+    .regions { background: var(--bg); }
+    .regions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
+    .region-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 26px;
+      text-align: center; transition: border-color .2s;
+    }
+    .region-card:hover { border-color: rgba(200,152,88,0.3); }
+    .region-icon { font-size: 28px; margin-bottom: 10px; }
+    .region-name { font-size: 15px; color: var(--acc-g); font-weight: 400; margin-bottom: 6px; }
+    .region-sub { font-size: 12px; color: var(--muted); line-height: 1.5; font-family: 'Trebuchet MS', sans-serif; }
+
+    /* CONTACT */
+    .contact { background: var(--bg2); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; }
+    .contact-info h3 { font-size: 1.1rem; color: var(--acc-g); font-weight: 400; margin-bottom: 24px; }
+    .contact-item { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+    .ci-icon { font-size: 19px; flex-shrink: 0; margin-top: 2px; }
+    .ci-label { font-size: 11px; color: var(--muted); font-family: 'Trebuchet MS', sans-serif; }
+    .ci-val { font-size: 13.5px; color: var(--text); margin-top: 2px; font-family: 'Trebuchet MS', sans-serif; }
+    .ci-val a { color: var(--acc-g); text-decoration: none; }
+    .ci-val a:hover { text-decoration: underline; }
+    .contact-form {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 30px;
+    }
+    .contact-form h3 { font-size: 1rem; color: var(--text); margin-bottom: 6px; font-weight: 400; }
+    .contact-form p { font-size: 13px; color: var(--muted); margin-bottom: 20px; font-family: 'Trebuchet MS', sans-serif; }
+    .form-row { margin-bottom: 15px; }
+    .form-row label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 5px; font-family: 'Trebuchet MS', sans-serif; }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; background: rgba(40,16,24,0.5); border: 1px solid var(--border);
+      border-radius: 7px; padding: 10px 14px; color: var(--text); font-size: 13px;
+      font-family: 'Trebuchet MS', sans-serif; outline: none; transition: border-color .2s;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--acc); }
+    .form-row textarea { resize: vertical; min-height: 86px; }
+    .form-row select option { background: var(--bg2); }
+    .form-submit {
+      width: 100%; background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 12px; border-radius: 7px; font-size: 13px;
+      cursor: pointer; font-family: 'Trebuchet MS', sans-serif; font-weight: 700; transition: opacity .2s; letter-spacing: 0.5px;
+    }
+    .form-submit:hover { opacity: .85; }
+
+    /* FOOTER */
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 44px 40px 28px; text-align: center; }
+    .footer-inner { max-width: 1180px; margin: 0 auto; }
+    .footer-brand { font-size: 17px; color: var(--acc-g); font-weight: 400; margin-bottom: 4px; letter-spacing: 1px; }
+    .footer-tagline { font-size: 12px; color: var(--muted); margin-bottom: 24px; font-family: 'Trebuchet MS', sans-serif; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 24px; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; font-family: 'Trebuchet MS', sans-serif; transition: color .2s; }
+    .footer-links a:hover { color: var(--acc-g); }
+    .footer-copy { font-size: 12px; color: rgba(152,112,128,0.5); font-family: 'Trebuchet MS', sans-serif; }
+
+    @media (max-width: 1024px) {
+      .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .divisions-grid { grid-template-columns: 1fr; }
+      .regions-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 60px 20px; }
+      .regions-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">🍷</div>
+    <span class="nav-logo-text">Ponti Trading · 寶泰貿易</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#divisions">業務部門</a></li>
+    <li><a href="#regions">業務覆蓋</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">業務查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🍷 亞洲頂尖葡萄酒進口分銷商 · 1994年創立</div>
+      <h1>連繫<em>優質美酒</em><br>與<span class="brand">每一位愛酒者</span></h1>
+      <p class="hero-sub">
+        寶泰貿易有限公司（Ponti Trading Ltd.）— 自1994年起成為亞洲頂尖葡萄酒進口及分銷商，業務覆蓋香港、澳門及新加坡，旗下五間公司為酒店、會所、餐廳、零售商及個人客戶提供優質葡萄酒及食品。
+      </p>
+      <div class="hero-btns">
+        <a href="#divisions" class="btn-primary">了解各業務部門</a>
+        <a href="#contact" class="btn-ghost">批發洽談</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-item">🍷 葡萄酒進口</span>
+        <span class="trust-item">🥗 食品分銷</span>
+        <span class="trust-item">🏪 零售酒窖</span>
+        <span class="trust-item">🌿 天然有機食品</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-top">
+        <h3>Ponti Trading Ltd. · 寶泰貿易有限公司</h3>
+        <p>葡萄酒及食品進口分銷 · 香港</p>
+        <div class="est-badge">🍷 Asia's Premier Wine Distribution Company</div>
+      </div>
+      <div class="hero-card-body">
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">地址</div>
+            <div class="info-val">九龍新蒲崗六合街8號<br>六合工業大廈2樓D室</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">一般查詢電話</div>
+            <div class="info-val"><a href="tel:+85223283218">2328 3218</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📧</div>
+          <div>
+            <div class="info-label">一般查詢電郵</div>
+            <div class="info-val"><a href="mailto:general@ponti-tdg.com">general@ponti-tdg.com</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🌐</div>
+          <div>
+            <div class="info-label">官方網站</div>
+            <div class="info-val"><a href="https://www.ponti-trading.com" target="_blank">www.ponti-trading.com</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">⏰</div>
+          <div>
+            <div class="info-label">辦公時間</div>
+            <div class="info-val">星期一至五：上午9時至下午6時</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">1994</div>
+      <div class="stat-label">批發業務創立年份</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5</div>
+      <div class="stat-label">旗下業務公司</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">覆蓋市場（港澳新）</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">B2B+B2C</div>
+      <div class="stat-label">批發零售雙線業務</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">業務年資</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">關於寶泰</div>
+    <div class="section-title">亞洲頂尖<em>葡萄酒進口商</em></div>
+    <p class="section-desc">寶泰貿易有限公司自1994年起建立起亞洲頂尖的葡萄酒分銷網絡，致力連繫客戶、供應商與業務夥伴。</p>
+    <div class="about-grid">
+      <div class="about-highlight">
+        <h3>品牌故事</h3>
+        <p>
+          寶泰貿易有限公司（Ponti Trading Ltd.）的名字本身就代表其使命——"Connecting customers, suppliers & businesses"，即連繫客戶、供應商與業務夥伴。自1994年創立以來，公司已成為亞洲頂尖的葡萄酒進口及分銷商之一。
+        </p>
+        <p>
+          公司的根源可追溯至<strong>1988年</strong>，當時在九龍創立了Ponti Food & Wine Cellar Ltd.，為香港葡萄酒愛好者提供精選優質佳釀。及後於1994年正式成立<strong>寶泰貿易有限公司</strong>，全面拓展批發分銷業務。
+        </p>
+        <p>
+          時至今日，集團業務遍及<strong>香港、澳門及新加坡</strong>，旗下五間公司涵蓋批發、零售及有機健康食品等多個領域，服務酒店、會所、餐廳、零售商及個人客戶。
+        </p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot">1988</div>
+          <div class="tl-text">
+            <h4>創立根源</h4>
+            <p>在九龍創立Ponti Food & Wine Cellar Ltd.，開始葡萄酒零售業務。</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">1994</div>
+          <div class="tl-text">
+            <h4>批發業務起步</h4>
+            <p>正式成立寶泰貿易有限公司（Ponti Trading Ltd.），拓展葡萄酒及食品批發分銷。</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">1997</div>
+          <div class="tl-text">
+            <h4>拓展新加坡</h4>
+            <p>在新加坡創立Excaliber Fine Wines，業務正式踏足東南亞市場。</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">2003</div>
+          <div class="tl-text">
+            <h4>頂級零售</h4>
+            <p>成立Ponti Wine Cellars Pte Ltd.，專注頂級葡萄酒零售及私人客戶服務。</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">2019</div>
+          <div class="tl-text">
+            <h4>健康有機</h4>
+            <p>推出Natural Ponti Ltd.，進軍有機健康食品市場，為現代健康生活提供天然選擇。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVISIONS -->
+<section class="divisions" id="divisions">
+  <div class="section-inner">
+    <div class="section-label">業務部門</div>
+    <div class="section-title">旗下<em>四大業務部門</em></div>
+    <p class="section-desc">寶泰旗下設有批發及零售四大業務部門，分別服務業務夥伴及個人消費者。</p>
+    <div class="divisions-grid">
+      <div class="division-card">
+        <div class="division-icon">🍷</div>
+        <div class="division-type">批發 · Wholesale</div>
+        <h3>酒部 Wine Division</h3>
+        <p>為酒店、會所、餐廳及零售商提供批發葡萄酒分銷服務，涵蓋來自世界各地的優質葡萄酒，包括法、意、西、澳、新世界葡萄酒等。</p>
+        <div class="division-contacts">
+          <div class="dc-row"><span>📞</span> <a href="tel:+85223069121">2306 9121</a></div>
+          <div class="dc-row"><span>📧</span> <a href="mailto:winesales@ponti-tdg.com">winesales@ponti-tdg.com</a></div>
+        </div>
+      </div>
+      <div class="division-card">
+        <div class="division-icon">🥗</div>
+        <div class="division-type">批發 · Wholesale</div>
+        <h3>食品部 Food Division</h3>
+        <p>進口及分銷各類優質食品，為酒店廚房、餐廳及食品零售商提供優質食材及特色食品，滿足各類餐飲業的採購需求。</p>
+        <div class="division-contacts">
+          <div class="dc-row"><span>📞</span> <a href="tel:+85223069132">2306 9132</a></div>
+          <div class="dc-row"><span>📧</span> <a href="mailto:foodsales@ponti-tdg.com">foodsales@ponti-tdg.com</a></div>
+        </div>
+      </div>
+      <div class="division-card">
+        <div class="division-icon">🏪</div>
+        <div class="division-type">零售 · Retail</div>
+        <h3>Ponti Wine Cellars</h3>
+        <p>頂級葡萄酒零售酒窖，為葡萄酒愛好者及收藏家提供精選佳釀，配備專業品酒顧問服務，是尋找特別場合禮物的理想之選。</p>
+        <div class="division-contacts">
+          <div class="dc-row"><span>📞</span> <a href="tel:+85227397678">2739 7678</a></div>
+          <div class="dc-row"><span>📧</span> <a href="mailto:enquiries@pontiwinecellars.com">enquiries@pontiwinecellars.com</a></div>
+        </div>
+      </div>
+      <div class="division-card">
+        <div class="division-icon">🌿</div>
+        <div class="division-type">零售 · Retail</div>
+        <h3>Natural Ponti</h3>
+        <p>2019年創立的有機健康食品品牌，為注重健康的現代消費者提供嚴選天然有機食品，支持可持續農業及健康生活方式。</p>
+        <div class="division-contacts">
+          <div class="dc-row"><span>📱</span> WhatsApp: <a href="https://wa.me/85290128569">9012 8569</a>（只限文字）</div>
+          <div class="dc-row"><span>📧</span> <a href="mailto:customercare@naturalponti.com.hk">customercare@naturalponti.com.hk</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGIONS -->
+<section class="regions" id="regions">
+  <div class="section-inner">
+    <div class="section-label">業務覆蓋</div>
+    <div class="section-title">港澳新加坡<em>三地業務</em></div>
+    <p class="section-desc">寶泰貿易業務覆蓋亞洲三個核心市場，建立穩固的葡萄酒及食品分銷網絡。</p>
+    <div class="regions-grid">
+      <div class="region-card">
+        <div class="region-icon">🇭🇰</div>
+        <div class="region-name">香港 Hong Kong</div>
+        <div class="region-sub">
+          總部及主要業務基地<br>
+          新蒲崗六合工業大廈<br>
+          批發 · 零售 · 有機食品
+        </div>
+      </div>
+      <div class="region-card">
+        <div class="region-icon">🇲🇴</div>
+        <div class="region-name">澳門 Macau</div>
+        <div class="region-sub">
+          酒店及餐飲業服務<br>
+          葡萄酒批發分銷<br>
+          澳門市場覆蓋
+        </div>
+      </div>
+      <div class="region-card">
+        <div class="region-icon">🇸🇬</div>
+        <div class="region-name">新加坡 Singapore</div>
+        <div class="region-sub">
+          1997年進入東南亞<br>
+          Excaliber Fine Wines<br>
+          Ponti Wine Cellars Pte Ltd.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <div class="section-title">業務合作<em>歡迎洽詢</em></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>一般及批發查詢</h3>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">地址</div>
+            <div class="ci-val">香港九龍新蒲崗六合街8號<br>六合工業大廈2樓D室</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">一般查詢</div>
+            <div class="ci-val"><a href="tel:+85223283218">2328 3218</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🖨️</div>
+          <div>
+            <div class="ci-label">傳真</div>
+            <div class="ci-val">2322 5757</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">一般查詢電郵</div>
+            <div class="ci-val"><a href="mailto:general@ponti-tdg.com">general@ponti-tdg.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">官方網站</div>
+            <div class="ci-val"><a href="https://www.ponti-trading.com" target="_blank">www.ponti-trading.com</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>業務查詢</h3>
+        <p>請選擇所屬業務部門，我們的專業團隊將盡快回覆您的查詢。</p>
+        <form onsubmit="event.preventDefault()">
+          <div class="form-row">
+            <label>公司名稱</label>
+            <input type="text" placeholder="請輸入公司名稱" />
+          </div>
+          <div class="form-row">
+            <label>聯絡人姓名</label>
+            <input type="text" placeholder="聯絡人全名" />
+          </div>
+          <div class="form-row">
+            <label>聯絡電話</label>
+            <input type="tel" placeholder="+852 xxxx xxxx" />
+          </div>
+          <div class="form-row">
+            <label>電子郵件</label>
+            <input type="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-row">
+            <label>查詢業務部門</label>
+            <select>
+              <option>酒部（批發）— Wine Division</option>
+              <option>食品部（批發）— Food Division</option>
+              <option>Ponti Wine Cellars（零售）</option>
+              <option>Natural Ponti（有機食品）</option>
+              <option>一般查詢</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>業務性質</label>
+            <select>
+              <option>酒店 / 會所</option>
+              <option>餐廳 / 飲食業</option>
+              <option>零售商</option>
+              <option>個人客戶</option>
+              <option>其他</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>查詢詳情</label>
+            <textarea placeholder="請說明您的業務需求或查詢內容..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">提交查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">寶泰貿易有限公司 · Ponti Trading Ltd.</div>
+    <div class="footer-tagline">亞洲頂尖葡萄酒進口分銷商 · 1994年創立 · 香港 · 澳門 · 新加坡</div>
+    <div class="footer-links">
+      <a href="#about">關於我們</a>
+      <a href="#divisions">業務部門</a>
+      <a href="#regions">業務覆蓋</a>
+      <a href="#contact">聯絡我們</a>
+      <a href="https://www.ponti-trading.com" target="_blank">官方網站</a>
+    </div>
+    <div class="footer-copy">&copy; 2024 寶泰貿易有限公司. 版權所有。葡萄酒及食品進口分銷，香港。</div>
+  </div>
+</footer>
+
+</body>
+</html>
