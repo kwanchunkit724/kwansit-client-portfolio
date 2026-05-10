@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moores Rowland (HK) CPA Limited | Audit, Tax &amp; Financial Services</title>
+<style>
+  :root {
+    --navy: #14274e;
+    --navy-dark: #0a1830;
+    --navy-mid: #1c3568;
+    --gold: #c09a00;
+    --gold-light: #d4ac00;
+    --white: #ffffff;
+    --light-bg: #f4f6fb;
+    --text: #14274e;
+    --text-light: #4a5568;
+    --border: #dde2ea;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Georgia', Arial, sans-serif; color: var(--text); background: var(--white); }
+
+  nav {
+    background: var(--navy-dark);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px; position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; }
+  .nav-logo {
+    height: 42px; padding: 0 14px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 900; color: var(--navy-dark); white-space: nowrap; letter-spacing: 1px;
+  }
+  .nav-name .main { font-size: 16px; font-weight: 700; color: var(--white); display: block; }
+  .nav-name .sub { font-size: 11px; color: rgba(255,255,255,0.5); display: block; }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy-dark); padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 800; text-decoration: none; }
+  .nav-cta:hover { opacity: 0.9; }
+
+  .hero {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-mid) 100%);
+    padding: 80px 40px; min-height: 540px;
+    display: flex; align-items: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 75% 50%, rgba(192,154,0,0.12) 0%, transparent 60%);
+  }
+  .hero-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 50px; width: 100%; position: relative; z-index: 1; }
+  .hero-text { flex: 1; }
+  .hero-badge { display: inline-block; background: rgba(192,154,0,0.18); border: 1px solid rgba(212,172,0,0.4); color: var(--gold-light); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+  .hero-text h1 { font-size: 48px; font-weight: 900; color: var(--white); line-height: 1.1; margin-bottom: 12px; }
+  .hero-text h1 span { color: var(--gold-light); }
+  .hero-text h2 { font-size: 19px; font-weight: 400; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+  .hero-text p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 490px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy-dark); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 800; text-decoration: none; }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  .hero-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(192,154,0,0.25); backdrop-filter: blur(10px); border-radius: 16px; padding: 32px 28px; min-width: 290px; flex-shrink: 0; }
+  .hero-card h3 { color: var(--gold-light); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+  .hc-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+  .hc-item:last-child { margin-bottom: 0; }
+  .hc-icon { width: 36px; height: 36px; background: rgba(192,154,0,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .hc-info .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+  .hc-info .value { font-size: 13px; color: var(--white); font-weight: 600; }
+
+  .stats-strip { background: linear-gradient(90deg, var(--gold), var(--gold-light)); padding: 22px 40px; display: flex; justify-content: center; }
+  .stat-item { text-align: center; padding: 0 44px; position: relative; }
+  .stat-item + .stat-item::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 40px; background: rgba(14,24,48,0.2); }
+  .stat-num { font-size: 30px; font-weight: 900; color: var(--navy-dark); line-height: 1; }
+  .stat-label { font-size: 12px; color: rgba(14,24,48,0.65); margin-top: 4px; font-weight: 600; }
+
+  section { padding: 80px 40px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .section-title { font-size: 36px; font-weight: 900; color: var(--navy); margin-bottom: 16px; line-height: 1.2; }
+  .section-sub { font-size: 16px; color: var(--text-light); line-height: 1.7; max-width: 620px; }
+  .section-header { margin-bottom: 52px; }
+
+  .about { background: var(--light-bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .about-box { background: var(--navy); border-radius: 16px; padding: 40px; color: var(--white); position: relative; overflow: hidden; }
+  .about-box::after { content: 'MRHK'; position: absolute; right: -10px; bottom: -20px; font-size: 70px; font-weight: 900; color: rgba(255,255,255,0.04); line-height: 1; }
+  .about-box h3 { font-size: 22px; font-weight: 800; color: var(--gold-light); margin-bottom: 16px; }
+  .about-box p { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.82); margin-bottom: 14px; }
+  .network-badge { margin-top: 20px; background: rgba(192,154,0,0.15); border: 1px solid rgba(212,172,0,0.3); border-radius: 8px; padding: 14px 16px; }
+  .network-badge p { font-size: 13px; color: var(--gold-light); margin: 0; font-weight: 600; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .prop-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 22px; border-top: 3px solid var(--gold); }
+  .prop-icon { font-size: 28px; margin-bottom: 12px; }
+  .prop-card h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .prop-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--navy), var(--gold)); }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(20,39,78,0.12); }
+  .service-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--navy), var(--navy-mid)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+  .service-card h3 { font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+  .service-card p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+  .service-tag { display: inline-block; background: rgba(192,154,0,0.1); color: var(--gold); padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-top: 10px; }
+
+  .network { background: var(--navy); }
+  .network .section-title { color: var(--white); }
+  .network .section-tag { color: var(--gold-light); }
+  .network .section-sub { color: rgba(255,255,255,0.7); }
+  .net-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .net-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(192,154,0,0.2); border-radius: 14px; padding: 28px 24px; transition: background 0.2s; }
+  .net-card:hover { background: rgba(192,154,0,0.1); }
+  .net-icon { font-size: 36px; margin-bottom: 14px; }
+  .net-card h3 { font-size: 17px; font-weight: 800; color: var(--gold-light); margin-bottom: 8px; }
+  .net-card p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7; }
+
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .contact-info h3 { font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+  .contact-info > p { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 32px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+  .ci-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--navy), var(--navy-mid)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .ci-label { font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .ci-val { font-size: 14px; font-weight: 600; color: var(--navy); }
+  .ci-val a { color: var(--navy); text-decoration: none; }
+  .ci-val a:hover { color: var(--gold); }
+
+  .contact-form { background: var(--light-bg); border-radius: 16px; padding: 36px; }
+  .contact-form h3 { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .form-group label { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .form-group input, .form-group select, .form-group textarea { padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; color: var(--text); background: var(--white); outline: none; font-family: inherit; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit { width: 100%; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy-dark); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 800; cursor: pointer; font-family: inherit; }
+  .form-submit:hover { opacity: 0.9; }
+
+  footer { background: var(--navy-dark); padding: 40px; text-align: center; }
+  .footer-brand { font-size: 18px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+  .footer-brand span { color: var(--gold-light); }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 14px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  @media (max-width: 900px) {
+    .hero-content { flex-direction: column; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid, .net-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">MRHK</div>
+    <div class="nav-name">
+      <span class="main">Moores Rowland (HK) CPA Limited</span>
+      <span class="sub">Audit · Tax · Advisory · Hong Kong</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#network">Network</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Enquire Now</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">🌐 Moores Rowland Asia Pacific Network</div>
+      <h1>Moores<br>Rowland <span>HK</span></h1>
+      <h2>Audit, Tax &amp; Financial Services</h2>
+      <p>Moores Rowland (HK) CPA Limited (MRHK) is a trusted CPA firm with over 25 years of management experience, providing audit, tax, and corporate advisory services from Hong Kong — with associates across Mainland China and Macau.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>📋 Contact Details</h3>
+      <div class="hc-item">
+        <div class="hc-icon">📱</div>
+        <div class="hc-info">
+          <div class="label">Mobile</div>
+          <div class="value">6623 3289</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">✉️</div>
+        <div class="hc-info">
+          <div class="label">Email</div>
+          <div class="value">office@mrhkcpa.com</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🌐</div>
+        <div class="hc-info">
+          <div class="label">Website</div>
+          <div class="value">mrhkcpa.com</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🌍</div>
+        <div class="hc-info">
+          <div class="label">Network</div>
+          <div class="value">Moores Rowland Asia Pacific</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">25+</div>
+    <div class="stat-label">Years of Experience</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">MRAP</div>
+    <div class="stat-label">Asia Pacific Network</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">9+</div>
+    <div class="stat-label">Service Lines</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">HK + China</div>
+    <div class="stat-label">Regional Coverage</div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-box">
+        <h3>🏛️ Trusted CPA Practice</h3>
+        <p>Moores Rowland (HK) CPA Limited (MRHK) is a trusted CPA firm whose management team brings over 25 years of professional experience in audit, tax, and advisory services.</p>
+        <p>Our main office is in Hong Kong, supported by associates in various cities across Mainland China and Macau. As a participating firm of Moores Rowland in Asia Pacific (MRAP), we provide quality audit, assurance, taxation, and advisory services to clients throughout the Asia Pacific region.</p>
+        <p>Clients can expect a creative, proactive, and responsive approach, with strong attention to detail and a robust execution toolkit — across every engagement, regardless of size or complexity.</p>
+        <div class="network-badge">
+          <p>🌐 Participating Firm: Moores Rowland Asia Pacific (MRAP)</p>
+        </div>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">🏆</div>
+          <h4>25+ Years Experience</h4>
+          <p>Management team with more than 25 years of professional experience across audit, tax, and corporate advisory.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🌏</div>
+          <h4>Regional Network</h4>
+          <p>Hong Kong headquarters with associates across Mainland China and Macau, as part of the MRAP network.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🎯</div>
+          <h4>Creative &amp; Proactive</h4>
+          <p>A creative, proactive, and responsive approach with strong attention to detail and robust execution.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">📋</div>
+          <h4>Comprehensive Toolkit</h4>
+          <p>Broad service capability spanning audit, tax, ESG, IPO advisory, trust planning, and charity formation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Services</div>
+      <h2 class="section-title">Our Service Offerings</h2>
+      <p class="section-sub">A comprehensive suite of professional CPA services — from statutory audit to specialist ESG, IPO, and trust advisory.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Audit &amp; Assurance</h3>
+        <p>Statutory and compliance audits, internal control reviews, and recommendations. Conducted to the highest standards by qualified CPAs.</p>
+        <span class="service-tag">Statutory Audit</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Accounting &amp; Business Advisory</h3>
+        <p>Maintenance of accounting books, preparation of financial statements, forecasts and budgets, and mergers &amp; acquisitions advisory support.</p>
+        <span class="service-tag">Financial Reporting</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔒</div>
+        <h3>Internal Control Review</h3>
+        <p>Assisting clients in evaluating the effectiveness and efficiency of existing internal control systems, identifying weaknesses and proposing improvement recommendations.</p>
+        <span class="service-tag">Risk Management</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌿</div>
+        <h3>ESG &amp; Sustainability Reporting</h3>
+        <p>Helping clients improve their ESG framework, enhance efficiency, and fulfil regulatory ESG reporting requirements as they evolve across Hong Kong and the region.</p>
+        <span class="service-tag">ESG Compliance</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📈</div>
+        <h3>IPO Advisory</h3>
+        <p>Navigating accounting, restructuring, compliance, tax, and legal considerations in preparation for IPO listings — supporting every stage of the IPO journey.</p>
+        <span class="service-tag">Capital Markets</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚖️</div>
+        <h3>Tax Advisory &amp; Litigation</h3>
+        <p>Cross-border tax advisory, compliance, tax audits, and litigation support. Expert guidance on Hong Kong and international tax matters for businesses of all sizes.</p>
+        <span class="service-tag">Cross-Border Tax</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏛️</div>
+        <h3>Trust &amp; Succession Planning</h3>
+        <p>Comprehensive trust and succession planning advisory services — helping families and business owners protect and transfer wealth across generations.</p>
+        <span class="service-tag">Wealth Planning</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">❤️</div>
+        <h3>Formation of Charities</h3>
+        <p>Assisting clients to establish charitable organisations and apply for approval of charitable status in Hong Kong, including governance and compliance advisory.</p>
+        <span class="service-tag">Non-Profit</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3>Corporate Services</h3>
+        <p>Company incorporation, bank account opening, and compliance services — supporting businesses at every stage of their Hong Kong and regional corporate lifecycle.</p>
+        <span class="service-tag">Company Formation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="network" id="network">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Regional Network</div>
+      <h2 class="section-title">Our Reach Across Asia Pacific</h2>
+      <p class="section-sub">As a participating firm of Moores Rowland Asia Pacific (MRAP), MRHK delivers quality professional services with regional reach and local expertise.</p>
+    </div>
+    <div class="net-grid">
+      <div class="net-card">
+        <div class="net-icon">🇭🇰</div>
+        <h3>Hong Kong</h3>
+        <p>Main office delivering the full suite of CPA services — audit, tax, advisory, corporate, and specialist services — to clients across all industries in Hong Kong.</p>
+      </div>
+      <div class="net-card">
+        <div class="net-icon">🇨🇳</div>
+        <h3>Mainland China</h3>
+        <p>Associates across key cities in Mainland China, providing cross-border advisory, tax compliance, and audit services for businesses operating in the Greater Bay Area and beyond.</p>
+      </div>
+      <div class="net-card">
+        <div class="net-icon">🌏</div>
+        <h3>Asia Pacific (MRAP)</h3>
+        <p>Part of the Moores Rowland Asia Pacific (MRAP) network — delivering coordinated, quality professional services across the wider Asia Pacific region for international clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Contact</div>
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-sub">Contact our Hong Kong team for a free initial consultation. We'll assess your needs and recommend the right service package.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Moores Rowland HK</h3>
+        <p>Our experienced CPA team is ready to help with all your accounting, audit, tax, and advisory needs. Reach out today for a no-obligation consultation.</p>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">Mobile</div>
+            <div class="ci-val"><a href="tel:66233289">6623 3289</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val"><a href="mailto:office@mrhkcpa.com">office@mrhkcpa.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Website</div>
+            <div class="ci-val"><a href="https://mrhkcpa.com" target="_blank">mrhkcpa.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-val">Hong Kong (Main Office)<br>+ Mainland China &amp; Macau Associates</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>📋 Service Enquiry</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name *</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Phone *</label>
+            <input type="tel" placeholder="Contact number">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select>
+            <option>-- Select Service --</option>
+            <option>Audit &amp; Assurance</option>
+            <option>Accounting &amp; Business Advisory</option>
+            <option>Internal Control Review</option>
+            <option>ESG &amp; Sustainability Reporting</option>
+            <option>IPO Advisory</option>
+            <option>Tax Advisory &amp; Litigation</option>
+            <option>Trust &amp; Succession Planning</option>
+            <option>Formation of Charities</option>
+            <option>Corporate Services</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Enquiry Details</label>
+          <textarea placeholder="Please describe your business and the services you require..."></textarea>
+        </div>
+        <button class="form-submit">Submit Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand"><span>Moores Rowland</span> (HK) CPA Limited</div>
+  <div class="footer-sub">Participating Firm: Moores Rowland Asia Pacific (MRAP) · Audit · Tax · Advisory · IPO · ESG</div>
+  <div class="footer-copy">© 2024 Moores Rowland (HK) CPA Limited. All Rights Reserved. · office@mrhkcpa.com · 6623 3289</div>
+</footer>
+
+</body>
+</html>
