@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carson Logistics (HK) Limited | Sino-HK Logistics | Import & Export | Warehouse</title>
+<meta name="description" content="Carson Logistics (Hongkong) Limited — Founded 1993, 30+ years in Sino-Hong Kong logistics. One-stop import & export agency, warehouse service, sea freight, air freight from Lau Fau Shan, New Territories.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange:    #d4620a;
+    --orange-lt: #f07820;
+    --orange-bg: #fff5ed;
+    --navy:      #1a2f4a;
+    --navy-mid:  #243d62;
+    --sky:       #1c6aaa;
+    --bg:        #f4f6f9;
+    --border:    #dce4ee;
+    --white:     #ffffff;
+    --text:      #1a1a1a;
+    --text-mid:  #484848;
+    --shadow:    0 4px 20px rgba(0,0,0,0.09);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color: var(--text); background: var(--white); line-height: 1.65; }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    position: sticky; top: 0; z-index: 100;
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.28);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo-mark {
+    width: 42px; height: 42px; background: var(--orange-lt);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem; font-weight: 800; color: var(--white); flex-shrink: 0; letter-spacing: -0.5px;
+  }
+  .nav-logo-text strong { display: block; color: var(--white); font-size: 0.94rem; font-weight: 700; line-height: 1.2; }
+  .nav-logo-text span { font-size: 0.67rem; color: rgba(255,255,255,0.45); }
+  .nav-links { display: flex; gap: 26px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.88rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--orange-lt); }
+  .nav-cta {
+    background: var(--orange-lt); color: var(--white);
+    border: none; border-radius: 6px; padding: 9px 20px;
+    font-size: 0.88rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--orange); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, #2c4878 100%);
+    padding: 92px 5% 82px; position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -70px; right: -70px;
+    width: 400px; height: 400px;
+    background: var(--orange-lt); border-radius: 50%; opacity: 0.07;
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: center; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(240,120,32,0.18); border: 1px solid rgba(240,120,32,0.4);
+    color: var(--orange-lt); font-size: 0.79rem; font-weight: 600;
+    padding: 4px 14px; border-radius: 18px; margin-bottom: 18px; letter-spacing: 0.04em;
+  }
+  .hero h1 { font-size: 2.8rem; font-weight: 800; color: var(--white); line-height: 1.18; margin-bottom: 10px; }
+  .hero h1 em { color: var(--orange-lt); font-style: normal; }
+  .hero-sub { color: rgba(255,255,255,0.75); font-size: 0.98rem; margin-bottom: 32px; max-width: 540px; line-height: 1.72; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-orange {
+    background: var(--orange-lt); color: var(--white);
+    padding: 13px 30px; border-radius: 7px; font-weight: 700; font-size: 0.96rem;
+    text-decoration: none; display: inline-block; transition: background .2s, transform .15s;
+  }
+  .btn-orange:hover { background: var(--orange); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--white);
+    border: 2px solid rgba(255,255,255,0.35);
+    padding: 11px 26px; border-radius: 7px; font-weight: 600; font-size: 0.96rem;
+    text-decoration: none; display: inline-block; transition: border-color .2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.75); }
+  .hero-card {
+    background: rgba(255,255,255,0.09); backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 26px 22px;
+  }
+  .hc-title { color: var(--orange-lt); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .hc-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 13px; padding-bottom: 13px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .hc-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .hc-icon { width: 30px; height: 30px; background: rgba(240,120,32,0.18); border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 2px; }
+  .hc-lbl { font-size: 0.67rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.05em; }
+  .hc-val { font-size: 0.86rem; color: var(--white); font-weight: 600; line-height: 1.3; }
+
+  /* STRIP */
+  .strip { background: var(--orange-lt); padding: 0 5%; display: flex; align-items: stretch; }
+  .st-item { flex: 1; padding: 18px 16px; text-align: center; border-right: 1px solid rgba(255,255,255,0.25); }
+  .st-item:last-child { border-right: none; }
+  .st-num { font-size: 1.8rem; font-weight: 800; color: var(--white); line-height: 1; }
+  .st-label { font-size: 0.72rem; color: rgba(255,255,255,0.85); font-weight: 500; margin-top: 3px; }
+
+  /* SECTIONS */
+  section { padding: 80px 5%; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .eyebrow { font-size: 0.77rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+  .section-title { font-size: 2rem; font-weight: 800; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+  .section-title em { color: var(--sky); font-style: normal; }
+  .section-lead { color: var(--text-mid); font-size: 0.97rem; max-width: 640px; line-height: 1.75; }
+  .divider { width: 48px; height: 4px; background: var(--orange-lt); border-radius: 2px; margin: 16px 0 40px; }
+
+  /* ABOUT */
+  .about { background: var(--bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 58px; align-items: start; }
+  .about-body p { color: var(--text-mid); margin-bottom: 15px; line-height: 1.78; font-size: 0.95rem; }
+  .legacy-box {
+    background: var(--navy); color: var(--white);
+    border-radius: 12px; padding: 22px 24px; margin-top: 22px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .legacy-num { font-size: 3.5rem; font-weight: 800; color: var(--orange-lt); line-height: 1; flex-shrink: 0; }
+  .legacy-text strong { display: block; font-size: 0.92rem; color: var(--white); margin-bottom: 4px; }
+  .legacy-text span { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .prop-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 16px; border-top: 3px solid var(--orange-lt);
+  }
+  .prop-card .pi { font-size: 1.7rem; margin-bottom: 8px; }
+  .prop-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+  .prop-card p { font-size: 0.78rem; color: var(--text-mid); line-height: 1.5; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .service-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.12); }
+  .sc-head {
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    padding: 22px 20px 18px; position: relative;
+  }
+  .sc-num { position: absolute; top: 12px; right: 14px; font-size: 2rem; font-weight: 800; color: rgba(255,255,255,0.07); line-height: 1; }
+  .sc-icon { font-size: 2rem; margin-bottom: 8px; }
+  .sc-head h3 { font-size: 0.96rem; font-weight: 700; color: var(--white); }
+  .sc-head .cn { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 3px; }
+  .sc-body { padding: 17px 20px; }
+  .sc-body p { font-size: 0.83rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 12px; }
+  .sc-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .sc-tag { background: var(--orange-bg); color: var(--orange); font-size: 0.7rem; font-weight: 600; padding: 3px 9px; border-radius: 10px; }
+
+  /* ADVANTAGES */
+  .advantages { background: var(--navy); }
+  .advantages .eyebrow { color: rgba(240,120,32,0.9); }
+  .advantages .section-title { color: var(--white); }
+  .advantages .divider { background: var(--orange-lt); }
+  .advantages .section-lead { color: rgba(255,255,255,0.75); }
+  .adv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 42px; }
+  .adv-card {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 12px; padding: 24px 18px; text-align: center;
+    transition: background .2s;
+  }
+  .adv-card:hover { background: rgba(255,255,255,0.12); }
+  .adv-icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .adv-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--orange-lt); margin-bottom: 7px; }
+  .adv-card p { font-size: 0.78rem; color: rgba(255,255,255,0.7); line-height: 1.55; }
+
+  /* CONTACT */
+  .contact { background: var(--bg); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info h3 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 18px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .ci-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; }
+  .ci-icon { width: 38px; height: 38px; background: rgba(26,47,74,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .ci-label { font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+  .ci-value { color: var(--text); font-size: 0.9rem; font-weight: 600; }
+  .ci-value a { color: var(--sky); text-decoration: none; }
+  .ci-value a:hover { text-decoration: underline; }
+  .contact-form {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px; box-shadow: var(--shadow);
+  }
+  .contact-form h3 { color: var(--navy); font-size: 0.96rem; font-weight: 700; margin-bottom: 20px; }
+  .form-row { margin-bottom: 14px; }
+  .form-row label { display: block; font-size: 0.78rem; color: var(--text-mid); margin-bottom: 5px; font-weight: 500; }
+  .form-row input, .form-row textarea, .form-row select {
+    width: 100%; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 7px;
+    color: var(--text); padding: 9px 13px; font-size: 0.88rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-row input:focus, .form-row textarea:focus, .form-row select:focus { border-color: var(--orange-lt); background: var(--white); }
+  .form-row textarea { height: 96px; resize: vertical; }
+  .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-submit {
+    width: 100%; background: var(--orange-lt); color: var(--white);
+    border: none; border-radius: 8px; padding: 12px; font-size: 0.96rem; font-weight: 700;
+    cursor: pointer; transition: background .2s; font-family: inherit;
+  }
+  .form-submit:hover { background: var(--orange); }
+
+  /* FOOTER */
+  footer { background: var(--navy); padding: 28px 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-logo-mark { width: 34px; height: 34px; background: var(--orange-lt); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 800; color: var(--white); }
+  .footer-logo-text { color: rgba(255,255,255,0.65); font-size: 0.84rem; line-height: 1.4; }
+  .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.74rem; text-align: center; }
+  .footer-contact { color: rgba(255,255,255,0.55); font-size: 0.79rem; text-align: right; }
+  .footer-contact a { color: var(--orange-lt); text-decoration: none; }
+
+  @media (max-width: 920px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-card { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .adv-grid { grid-template-columns: 1fr 1fr; }
+    .about-props { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 2.1rem; }
+    .nav-links { display: none; }
+    .strip { flex-wrap: wrap; }
+    .st-item { min-width: 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
+  }
+  @media (max-width: 580px) {
+    .services-grid, .adv-grid, .about-props { grid-template-columns: 1fr; }
+    .form-2col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-mark">CARSON</div>
+    <div class="nav-logo-text">
+      <strong>Carson Logistics (HK) Limited</strong>
+      <span>Sino-Hong Kong Logistics · Est. 1993</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#advantages">Advantages</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Get a Quote</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🚛 30+ Years Sino-HK Logistics · Est. 1993</div>
+      <h1>One-Stop <em>Sino-HK Freight</em> Solutions</h1>
+      <p class="hero-sub">Carson Logistics (HK) Limited has been connecting mainland China and Hong Kong since 1993. We specialize in Sino-HK logistics, import/export agency, warehousing, sea freight and air freight — delivering reliability across the border for over three decades.</p>
+      <div class="hero-actions">
+        <a class="btn-orange" href="#services">Our Services</a>
+        <a class="btn-ghost" href="#contact">Contact Us</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-title">Contact Details</div>
+      <div class="hc-row">
+        <div class="hc-icon">📍</div>
+        <div>
+          <div class="hc-lbl">Address</div>
+          <div class="hc-val">DD129 L2988, Lau Fau Shan Road<br>Lau Fau Shan, N.T., Hong Kong</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📞</div>
+        <div>
+          <div class="hc-lbl">Hotline</div>
+          <div class="hc-val">(852) 2137 0670</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">✉️</div>
+        <div>
+          <div class="hc-lbl">Email</div>
+          <div class="hc-val">service-comm@carsonlink.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="st-item">
+    <div class="st-num">1993</div>
+    <div class="st-label">Year Founded</div>
+  </div>
+  <div class="st-item">
+    <div class="st-num">30+</div>
+    <div class="st-label">Years Experience</div>
+  </div>
+  <div class="st-item">
+    <div class="st-num">5</div>
+    <div class="st-label">Core Services</div>
+  </div>
+  <div class="st-item">
+    <div class="st-num">Lau Fau Shan</div>
+    <div class="st-label">Border Proximity</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="eyebrow">About Carson</div>
+        <h2 class="section-title">Trusted <em>Since 1993</em></h2>
+        <div class="divider"></div>
+        <p>Carson Logistics (HK) Ltd. was founded in 1993 with a specialization in Chinese Mainland–Hong Kong logistics services. For over 30 years, we have been a trusted partner for businesses requiring reliable, efficient cross-border freight solutions between mainland China and Hong Kong.</p>
+        <p>Our operations are strategically located in Lau Fau Shan, New Territories — in close proximity to the China–HK border, giving us a significant operational advantage for cross-border trucking and logistics coordination. We provide one-stop service for import and export from mainland China to foreign countries through Hong Kong.</p>
+        <p>Our core business includes China–HK trucks, Hong Kong warehouse management, bulk cargo consolidation and distribution — backed by decades of hands-on experience and deep knowledge of customs and cross-border operations.</p>
+        <div class="legacy-box">
+          <div class="legacy-num">30+</div>
+          <div class="legacy-text">
+            <strong>Years of Sino-HK Expertise</strong>
+            <span>Since 1993, specializing in China Mainland ↔ Hong Kong logistics, import/export, and one-stop freight services.</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="pi">🌉</div>
+          <h4>Border Proximity</h4>
+          <p>Located in Lau Fau Shan — strategically positioned near the China-HK border for fast cross-border operations.</p>
+        </div>
+        <div class="prop-card">
+          <div class="pi">🔗</div>
+          <h4>One-Stop Service</h4>
+          <p>End-to-end import and export through HK bonded area, combining trucking, warehousing and agency services.</p>
+        </div>
+        <div class="prop-card">
+          <div class="pi">📦</div>
+          <h4>Consolidation</h4>
+          <p>Bulk cargo consolidation (carpooling) and distribution services, optimizing costs for smaller shipments.</p>
+        </div>
+        <div class="prop-card">
+          <div class="pi">🛂</div>
+          <h4>Customs Expertise</h4>
+          <p>30+ years navigating HK and mainland China customs procedures — ensuring smooth border crossings for your cargo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="eyebrow">Our Services</div>
+    <h2 class="section-title">Five <em>Logistics Solutions</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">Comprehensive Sino-HK freight solutions covering every aspect of your import and export needs.</p>
+
+    <div class="services-grid" style="margin-top:40px;">
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">01</div>
+          <div class="sc-icon">🚛</div>
+          <h3>Sino-HK Logistics</h3>
+          <div class="cn">中港物流</div>
+        </div>
+        <div class="sc-body">
+          <p>Our core service for over 30 years — daily truck runs between mainland China and Hong Kong. Bulk cargo, FCL and LCL solutions with reliable schedules and experienced drivers.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">Daily Runs</span>
+            <span class="sc-tag">Cross-Border</span>
+            <span class="sc-tag">FCL & LCL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">02</div>
+          <div class="sc-icon">📋</div>
+          <h3>Import & Export Agency</h3>
+          <div class="cn">進出口代理</div>
+        </div>
+        <div class="sc-body">
+          <p>Full import and export agency services through Hong Kong bonded area. We handle documentation, customs declarations, and regulatory compliance on your behalf.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">Customs</span>
+            <span class="sc-tag">Documentation</span>
+            <span class="sc-tag">HK Bonded</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">03</div>
+          <div class="sc-icon">🏭</div>
+          <h3>Warehouse Service</h3>
+          <div class="cn">倉儲服務</div>
+        </div>
+        <div class="sc-body">
+          <p>Hong Kong warehousing with flexible storage options. Goods consolidation, deconsolidation, labeling, packing and distribution services from our Lau Fau Shan facility.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">Storage</span>
+            <span class="sc-tag">Consolidation</span>
+            <span class="sc-tag">Distribution</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">04</div>
+          <div class="sc-icon">🚢</div>
+          <h3>Sea Freight Service</h3>
+          <div class="cn">海運服務</div>
+        </div>
+        <div class="sc-body">
+          <p>Ocean freight import and export from Hong Kong to worldwide destinations. FCL and LCL consolidation services with competitive rates from major Hong Kong container terminals.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">FCL</span>
+            <span class="sc-tag">LCL</span>
+            <span class="sc-tag">Worldwide</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">05</div>
+          <div class="sc-icon">✈️</div>
+          <h3>Air Freight Service</h3>
+          <div class="cn">空運服務</div>
+        </div>
+        <div class="sc-body">
+          <p>Express air freight solutions for time-critical shipments. Import and export air cargo handling through Hong Kong International Airport, covering all major global trade lanes.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">Import & Export</span>
+            <span class="sc-tag">Express</span>
+            <span class="sc-tag">HKIA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">+</div>
+          <div class="sc-icon">🔄</div>
+          <h3>Cargo Consolidation</h3>
+          <div class="cn">拼貨服務</div>
+        </div>
+        <div class="sc-body">
+          <p>Bulk cargo carpooling and consolidation services — ideal for smaller shipments that benefit from shared container or truck space, keeping your logistics costs down.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">LCL Consolidation</span>
+            <span class="sc-tag">Cost Savings</span>
+            <span class="sc-tag">Flexible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVANTAGES -->
+<section class="advantages" id="advantages">
+  <div class="section-inner">
+    <div class="eyebrow">Our Advantages</div>
+    <h2 class="section-title">Why Choose <em>Carson</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">Three decades of Sino-HK logistics experience combined with strategic location and comprehensive service capabilities.</p>
+    <div class="adv-grid">
+      <div class="adv-card">
+        <div class="adv-icon">🏆</div>
+        <h4>30+ Years Experience</h4>
+        <p>Since 1993, deep expertise in Sino-HK cross-border logistics, customs procedures and freight operations.</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-icon">📍</div>
+        <h4>Strategic Location</h4>
+        <p>Based in Lau Fau Shan, N.T. — close to the China-HK border for fast, efficient cross-border trucking.</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-icon">🔗</div>
+        <h4>One-Stop Service</h4>
+        <p>From trucking and customs to warehousing, sea freight and air freight — complete logistics under one roof.</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-icon">🌐</div>
+        <h4>Global Connectivity</h4>
+        <p>Using Hong Kong as the gateway, we connect mainland China exporters and importers to markets worldwide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="eyebrow">Contact Us</div>
+    <h2 class="section-title">Get in <em>Touch</em></h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Our Details</h3>
+        <div class="ci-row">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Address</div>
+            <div class="ci-value">DD129 L2988, Lau Fau Shan Road<br>Lau Fau Shan, New Territories<br>Hong Kong<br><span style="font-size:0.82rem;color:#888;">流浮山路 DD129 L2988，流浮山，新界</span></div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">Hotline</div>
+            <div class="ci-value"><a href="tel:+85221370670">(852) 2137 0670</a></div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value"><a href="mailto:service-comm@carsonlink.com">service-comm@carsonlink.com</a></div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Website</div>
+            <div class="ci-value"><a href="http://www.carsonlink.com" target="_blank">carsonlink.com</a></div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">📅</div>
+          <div>
+            <div class="ci-label">Founded</div>
+            <div class="ci-value">1993 — 30+ years of Sino-HK logistics</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>📋 Freight Enquiry</h3>
+        <div class="form-2col">
+          <div class="form-row">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-row">
+            <label>Company</label>
+            <input type="text" placeholder="Company name">
+          </div>
+        </div>
+        <div class="form-2col">
+          <div class="form-row">
+            <label>Email *</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-row">
+            <label>Tel</label>
+            <input type="tel" placeholder="+852 xxxx xxxx">
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Service Required</label>
+          <select>
+            <option value="">Select service</option>
+            <option>Sino-HK Logistics (Cross-Border)</option>
+            <option>Import & Export Agency</option>
+            <option>Warehouse Service</option>
+            <option>Sea Freight</option>
+            <option>Air Freight</option>
+            <option>Cargo Consolidation</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Shipment Details *</label>
+          <textarea placeholder="Please describe your cargo type, origin, destination, weight/volume, and any special requirements."></textarea>
+        </div>
+        <button class="form-submit" type="button">Send Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark">CL</div>
+    <div class="footer-logo-text">Carson Logistics (Hongkong) Limited<br><span style="font-size:0.72rem;opacity:.5;">Est. 1993 · Lau Fau Shan, N.T. · Sino-HK Logistics Specialists</span></div>
+  </div>
+  <div class="footer-copy">© 2012–2024 CARSON LOGISTICS (HONGKONG) LIMITED · All Rights Reserved</div>
+  <div class="footer-contact">
+    📞 <a href="tel:+85221370670">(852) 2137 0670</a><br>
+    ✉ <a href="mailto:service-comm@carsonlink.com">service-comm@carsonlink.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
