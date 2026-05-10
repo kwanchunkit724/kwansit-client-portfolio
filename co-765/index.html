@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaida CPA Limited | 開達會計師事務所 · North Point Hong Kong</title>
+<meta name="description" content="Kaida CPA Limited (開達會計師事務所有限公司) — Your trusted CPA firm in Hong Kong, specialising in audit, tax advisory, corporate financing and corporate services. AIA Tower, North Point. Tel: (852) 3905 3280">
+<style>
+:root{--bg:#020608;--bg2:#04090e;--bg3:#060d14;--emerald:#0d6e58;--emerald-lt:#129070;--emerald-bright:#18b888;--mint:#10a888;--text:#e6f4f0;--muted:#4d8070;--border:rgba(13,110,88,0.22);--card-bg:rgba(255,255,255,0.03);--radius:10px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI','Helvetica Neue',sans-serif;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(2,6,8,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1rem;font-weight:800;color:var(--emerald-bright)}
+.nav-logo span{color:var(--mint);font-weight:400;font-size:.76rem;margin-left:8px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--emerald),var(--emerald-lt));color:#fff;padding:9px 22px;border-radius:6px;font-size:.88rem;font-weight:700;text-decoration:none;transition:opacity .2s}.nav-cta:hover{opacity:.88}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 60% 40%,rgba(13,110,88,0.11) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(13,110,88,0.1);border:1px solid rgba(13,110,88,0.3);border-radius:6px;padding:6px 14px;font-size:.8rem;color:var(--emerald-bright);margin-bottom:20px}
+h1{font-size:clamp(2rem,4.5vw,3rem);font-weight:900;line-height:1.1;margin-bottom:12px}
+h1 .kaida{color:var(--emerald-bright)}
+h1 .sub{display:block;font-size:clamp(.85rem,1.7vw,1rem);font-weight:400;color:var(--mint);letter-spacing:.04em;margin-top:8px}
+.value-row{display:flex;flex-direction:column;gap:8px;margin:14px 0 18px}
+.val{display:flex;align-items:center;gap:8px;font-size:.88rem;color:var(--muted)}
+.val-dot{width:8px;height:8px;background:var(--emerald-bright);border-radius:50%;flex-shrink:0}
+.val strong{color:var(--text)}
+.svc-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.st{display:inline-flex;align-items:center;gap:5px;background:rgba(24,184,136,0.07);border:1px solid rgba(24,184,136,0.18);border-radius:6px;padding:4px 10px;font-size:.75rem;color:var(--emerald-bright);font-weight:600}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--emerald),var(--emerald-lt));color:#fff;padding:13px 28px;border-radius:6px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 26px;border-radius:6px;font-size:.93rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}.btn-outline:hover{border-color:var(--emerald-bright);color:var(--emerald-bright)}
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:15px}
+.card-badge{display:flex;align-items:center;gap:12px}
+.badge-emblem{width:48px;height:48px;background:linear-gradient(135deg,var(--emerald),var(--emerald-bright));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;color:#fff;text-align:center;line-height:1.3}
+.badge-name{font-size:.95rem;font-weight:700}.badge-label{font-size:.76rem;color:var(--muted)}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--emerald-bright);flex-shrink:0;margin-top:2px;text-align:center}
+.card-row-text{font-size:.88rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block;font-size:.9rem}
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.stat-item{text-align:center}
+.stat-num{font-size:1.9rem;font-weight:900;background:linear-gradient(135deg,var(--emerald-lt),var(--emerald-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.82rem;margin-top:6px}
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(13,110,88,0.08);border:1px solid rgba(13,110,88,0.2);border-radius:6px;padding:4px 12px;font-size:.75rem;color:var(--emerald-bright);letter-spacing:.05em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--emerald-bright)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+.cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:30px;transition:border-color .25s,transform .25s}.svc-card:hover{border-color:var(--emerald-bright);transform:translateY(-4px)}
+.sc-icon{width:54px;height:54px;background:rgba(13,110,88,0.1);border:1px solid rgba(13,110,88,0.22);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:16px}
+.sc-title{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.sc-desc{font-size:.88rem;color:var(--muted);line-height:1.65}
+.values-section{background:var(--bg2)}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.value-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center}
+.vc-icon{font-size:2rem;margin-bottom:12px}
+.vc-title{font-size:1rem;font-weight:700;color:var(--emerald-bright);margin-bottom:8px}
+.vc-desc{font-size:.87rem;color:var(--muted);line-height:1.6}
+.contact-section{background:var(--bg3)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(13,110,88,0.1);border:1px solid rgba(13,110,88,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.75rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.93rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--emerald-bright);text-decoration:none}.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:34px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--emerald-bright)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#04090e}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--emerald),var(--emerald-lt));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}.form-submit:hover{opacity:.88}
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:.95rem;font-weight:800;color:var(--emerald-bright)}
+.footer-copy{font-size:.8rem;color:var(--muted);text-align:center}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}.footer-links a:hover{color:var(--text)}
+@media(max-width:900px){.hero-inner,.contact-grid{grid-template-columns:1fr}.stats-inner,.cards-grid,.values-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav-links{display:none}.cards-grid,.stats-inner,.values-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Kaida CPA Limited<span>開達會計師事務所</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#values">Our Values</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://wa.me/85260929490" class="nav-cta">WhatsApp Us</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🏛️ Your Trusted CPA Firm · North Point, Hong Kong</div>
+      <h1><span class="kaida">Kaida</span> CPA Limited<span class="sub">開達會計師事務所有限公司 · kaidacpa.com</span></h1>
+      <div class="value-row">
+        <div class="val"><div class="val-dot"></div><span><strong>Ethical Excellence</strong> — Integrity at the core of everything we do</span></div>
+        <div class="val"><div class="val-dot"></div><span><strong>Professionalism &amp; Efficiency</strong> — Accurate, reliable, top-quality reports</span></div>
+        <div class="val"><div class="val-dot"></div><span><strong>Your Needs, Our Priority</strong> — Personalised client service</span></div>
+      </div>
+      <div class="svc-tags">
+        <span class="st">📊 Audit</span>
+        <span class="st">📝 Tax Advisory</span>
+        <span class="st">💼 Corporate Finance</span>
+        <span class="st">📋 Corporate Services</span>
+      </div>
+      <div class="hero-btns">
+        <a href="https://wa.me/85260929490" class="btn-primary">💬 WhatsApp Free Consult</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-emblem">KAI<br>DA</div>
+        <div>
+          <div class="badge-label">CPA Firm · North Point, Hong Kong</div>
+          <div class="badge-name">Kaida CPA Limited</div>
+        </div>
+      </div>
+      <hr class="card-divider">
+      <div class="card-row"><div class="card-row-icon">📧</div><div class="card-row-text"><strong>Email</strong>info@kaidacpa.com</div></div>
+      <div class="card-row"><div class="card-row-icon">☎️</div><div class="card-row-text"><strong>Office</strong>(852) 3905 3280</div></div>
+      <div class="card-row"><div class="card-row-icon">📱</div><div class="card-row-text"><strong>WhatsApp</strong>(852) 6092 9490</div></div>
+      <div class="card-row"><div class="card-row-icon">📍</div><div class="card-row-text"><strong>Address</strong>43/F, AIA Tower, 183 Electric Road, North Point, Hong Kong</div></div>
+      <div class="card-row"><div class="card-row-icon">🌐</div><div class="card-row-text"><strong>Website</strong>kaidacpa.com</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">AIA</div><div class="stat-label">Tower, North Point</div></div>
+    <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Core Service Lines</div></div>
+    <div class="stat-item"><div class="stat-num">Free</div><div class="stat-label">Initial Consultation</div></div>
+    <div class="stat-item"><div class="stat-num">CPA</div><div class="stat-label">Licensed &amp; Regulated</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">OUR SERVICES</div>
+    <h2>Specialised <span class="accent">CPA Services</span> for Your Business</h2>
+    <p class="section-lead">At Kaida, we are dedicated to delivering accurate, reliable and top-quality financial services. We specialise in audit, tax advisory, corporate financing and corporate services tailored to meet your unique needs.</p>
+    <div class="cards-grid">
+      <div class="svc-card">
+        <div class="sc-icon">📊</div>
+        <div class="sc-title">Audit Services</div>
+        <div class="sc-desc">Statutory audit engagements conducted by our licensed CPAs in accordance with Hong Kong Standards on Auditing. We deliver independent, credible audit reports that provide assurance to management, shareholders and regulators, supporting sound financial governance across your organisation.</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📝</div>
+        <div class="sc-title">Tax Advisory</div>
+        <div class="sc-desc">Comprehensive Hong Kong tax advisory services covering profits tax, salaries tax, stamp duty and cross-border tax structuring. We help you navigate complex tax regulations, optimise your tax position and ensure timely, accurate compliance with Inland Revenue Department requirements.</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">💼</div>
+        <div class="sc-title">Corporate Financing Services</div>
+        <div class="sc-desc">Advisory support for businesses seeking financing solutions, including financial due diligence, business valuations and restructuring advice. We help you present your business in the best light to investors, lenders and strategic partners to secure the capital needed for growth.</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📋</div>
+        <div class="sc-title">Corporate Services</div>
+        <div class="sc-desc">End-to-end corporate services for Hong Kong companies including company incorporation, company secretarial maintenance, accounting and bookkeeping. We handle the administrative burden so you can focus on growing your business with confidence in its compliance and governance.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="values" class="values-section">
+  <div class="section-inner">
+    <div class="section-tag">OUR VALUES</div>
+    <h2>What Sets <span class="accent">Kaida</span> Apart</h2>
+    <p class="section-lead">Our commitment to ethical excellence, professional standards and client-first service is what makes Kaida the trusted CPA partner for businesses across Hong Kong.</p>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="vc-icon">⚖️</div>
+        <div class="vc-title">Ethical Excellence</div>
+        <div class="vc-desc">Integrity is at the core of our values. We are committed to upholding the highest ethical standards in all our business dealings, without compromise.</div>
+      </div>
+      <div class="value-card">
+        <div class="vc-icon">🎯</div>
+        <div class="vc-title">Professionalism &amp; Efficiency</div>
+        <div class="vc-desc">Professional knowledge and expertise are non-negotiable. We deliver accurate, reliable, and top-quality reports and financial services every time.</div>
+      </div>
+      <div class="value-card">
+        <div class="vc-icon">🤝</div>
+        <div class="vc-title">Your Needs, Our Priority</div>
+        <div class="vc-desc">We understand the importance of personalised client service. With a variety of expert accountants, we match the right professional to your needs.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">CONTACT US</div>
+    <h2>Get a <span class="accent">Free Consultation</span></h2>
+    <p class="section-lead">Contact Kaida CPA Limited for a free initial consultation. Whether you prefer to call, email or WhatsApp, our professional team is ready to discuss how we can support your business.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value"><a href="mailto:info@kaidacpa.com">info@kaidacpa.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">☎️</div>
+          <div>
+            <div class="ci-label">Office Tel</div>
+            <div class="ci-value"><a href="tel:+85239053280">(852) 3905 3280</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">WhatsApp</div>
+            <div class="ci-value"><a href="https://wa.me/85260929490">(852) 6092 9490</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Address</div>
+            <div class="ci-value">43/F, AIA Tower<br>183 Electric Road, North Point<br>Hong Kong</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>Free Consultation Enquiry</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group"><label>Your Name</label><input type="text" placeholder="Your full name"></div>
+            <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+852 XXXX XXXX"></div>
+          </div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+          <div class="form-group"><label>Service Required</label>
+            <select>
+              <option value="">Please select</option>
+              <option>Audit Services</option>
+              <option>Tax Advisory</option>
+              <option>Corporate Financing Services</option>
+              <option>Corporate Services</option>
+              <option>Other Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Your Message</label><textarea placeholder="Tell us about your requirements for a free consultation..."></textarea></div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Kaida CPA Limited · 開達會計師事務所有限公司</div>
+    <div class="footer-copy">© 2025 Kaida CPA Limited · info@kaidacpa.com · 43/F AIA Tower, North Point</div>
+    <div class="footer-links"><a href="#services">Services</a><a href="#values">Values</a><a href="#contact">Contact</a></div>
+  </div>
+</footer>
+</body>
+</html>
