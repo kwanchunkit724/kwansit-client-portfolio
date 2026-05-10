@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HKR International Limited | 香港興業國際集團有限公司</title>
+<style>
+  :root {
+    --bg-primary: #06080c;
+    --bg-secondary: #0c1018;
+    --bg-card: #121822;
+    --bg-card2: #1a2230;
+    --accent1: #1438a0;
+    --accent2: #2060d8;
+    --accent3: #4890f8;
+    --gold1: #b89020;
+    --gold2: #e0b830;
+    --gold3: #f8d860;
+    --silver: #a0b8d0;
+    --text-main: #eef2f8;
+    --text-muted: #7898bc;
+    --text-dim: #3a5070;
+    --border: rgba(32,96,216,0.2);
+    --gold-border: rgba(184,144,32,0.25);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg-primary);color:var(--text-main);font-family:'Noto Sans HK','Microsoft JhengHei','Segoe UI',sans-serif;line-height:1.7;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,8,12,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 5%;}
+  .nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px;}
+  .nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+  .nav-logo-mark{height:38px;display:flex;align-items:center;gap:3px;}
+  .nav-logo-mark span{display:inline-block;width:10px;height:38px;border-radius:2px;}
+  .nav-logo-mark span:nth-child(1){background:var(--accent1);height:28px;align-self:flex-end;}
+  .nav-logo-mark span:nth-child(2){background:var(--accent2);height:38px;}
+  .nav-logo-mark span:nth-child(3){background:var(--accent3);height:22px;align-self:flex-end;}
+  .nav-logo-text{font-size:16px;font-weight:800;color:var(--text-main);letter-spacing:.5px;}
+  .nav-logo-sub{font-size:11px;color:var(--text-dim);}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{text-decoration:none;color:var(--text-muted);font-size:13px;transition:color .2s;text-transform:uppercase;letter-spacing:.5px;}
+  .nav-links a:hover{color:var(--gold2);}
+  .nav-stock{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-dim);}
+  .nav-stock-code{color:var(--accent3);font-weight:700;}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:130px 5% 80px;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;
+    background:radial-gradient(ellipse 70% 60% at 60% 30%,rgba(20,56,160,0.16) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 40% at 10% 80%,rgba(184,144,32,0.07) 0%,transparent 70%);}
+  .hero-lines{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:90px 90px;opacity:.15;}
+  .hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:70px;align-items:center;position:relative;z-index:1;}
+  .hero-est{font-size:12px;color:var(--gold2);letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:20px;}
+  h1{font-size:clamp(1.9rem,4vw,3rem);font-weight:800;line-height:1.2;margin-bottom:8px;}
+  h1 span{background:linear-gradient(135deg,var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero-zh{font-size:clamp(1.1rem,2vw,1.5rem);color:var(--text-muted);font-weight:600;margin-bottom:20px;letter-spacing:1px;}
+  .hero-desc{font-size:16px;color:var(--text-muted);max-width:580px;margin-bottom:36px;line-height:1.85;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-blue{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;padding:13px 32px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px;transition:all .2s;letter-spacing:.3px;}
+  .btn-blue:hover{opacity:.85;transform:translateY(-2px);}
+  .btn-gold{border:1px solid var(--gold-border);color:var(--gold2);padding:13px 32px;border-radius:6px;text-decoration:none;font-size:14px;transition:all .2s;}
+  .btn-gold:hover{background:rgba(184,144,32,0.1);border-color:var(--gold2);}
+
+  /* INFO CARD */
+  .info-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:32px;box-shadow:0 24px 64px rgba(0,0,0,.6);}
+  .info-card-title{font-size:11px;color:var(--gold2);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:20px;}
+  .info-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+  .info-row:last-child{border-bottom:none;}
+  .i-icon{width:34px;height:34px;background:rgba(32,96,216,0.12);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+  .i-label{font-size:10px;color:var(--text-dim);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;}
+  .i-val{font-size:13px;color:var(--text-main);font-weight:600;}
+  .i-val a{color:var(--accent3);text-decoration:none;}
+
+  /* STATS */
+  .stats{background:var(--bg-secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%;}
+  .stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+  .stat-item{text-align:center;}
+  .stat-num{font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--gold1),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .stat-label{font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+  /* SECTION */
+  section{padding:80px 5%;}
+  .section-inner{max-width:1280px;margin:0 auto;}
+  .section-tag{font-size:11px;color:var(--gold2);letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:12px;}
+  .section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:16px;}
+  .section-title span{background:linear-gradient(135deg,var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .section-sub{color:var(--text-muted);font-size:15px;max-width:640px;margin-bottom:48px;line-height:1.8;}
+
+  /* BUSINESS DIVISIONS */
+  .divisions-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  .div-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:32px;transition:all .3s;position:relative;overflow:hidden;}
+  .div-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent1),var(--accent3));opacity:0;transition:opacity .3s;}
+  .div-card:hover{border-color:rgba(32,96,216,0.4);transform:translateY(-4px);background:var(--bg-card2);}
+  .div-card:hover::before{opacity:1;}
+  .div-icon{font-size:36px;margin-bottom:16px;}
+  .div-title{font-size:19px;font-weight:800;margin-bottom:8px;}
+  .div-subtitle{font-size:13px;color:var(--accent3);margin-bottom:14px;font-weight:600;}
+  .div-desc{font-size:14px;color:var(--text-muted);line-height:1.8;}
+  .div-highlights{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:6px;}
+  .div-highlights li{font-size:13px;color:var(--text-muted);padding-left:16px;position:relative;}
+  .div-highlights li::before{content:'▸';position:absolute;left:0;color:var(--accent2);}
+
+  /* FLAGSHIP */
+  .flagship-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .flag-card{background:var(--bg-card);border:1px solid var(--gold-border);border-radius:12px;padding:24px;transition:all .3s;}
+  .flag-card:hover{border-color:rgba(224,184,48,0.45);transform:translateY(-3px);background:var(--bg-card2);}
+  .flag-icon{font-size:32px;margin-bottom:14px;}
+  .flag-title{font-size:16px;font-weight:700;margin-bottom:6px;}
+  .flag-loc{font-size:12px;color:var(--gold2);margin-bottom:10px;font-weight:600;}
+  .flag-desc{font-size:13px;color:var(--text-muted);line-height:1.7;}
+
+  /* MILESTONES */
+  .timeline{display:flex;flex-direction:column;gap:0;}
+  .tl-item{display:grid;grid-template-columns:120px 1fr;gap:24px;position:relative;}
+  .tl-item::before{content:'';position:absolute;left:112px;top:28px;bottom:-20px;width:1px;background:var(--border);}
+  .tl-item:last-child::before{display:none;}
+  .tl-year{text-align:right;padding-top:18px;}
+  .tl-year-num{font-size:16px;font-weight:800;background:linear-gradient(135deg,var(--gold1),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .tl-body{padding:16px 0 24px 24px;position:relative;}
+  .tl-body::before{content:'';position:absolute;left:-5px;top:22px;width:10px;height:10px;background:var(--accent2);border-radius:50%;}
+  .tl-title{font-size:15px;font-weight:700;margin-bottom:6px;}
+  .tl-desc{font-size:13px;color:var(--text-muted);line-height:1.7;}
+
+  /* CONTACT */
+  .contact-section{background:var(--bg-secondary);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .c-list{display:flex;flex-direction:column;gap:20px;}
+  .c-item{display:flex;gap:14px;align-items:flex-start;}
+  .ci-icon{width:44px;height:44px;background:rgba(32,96,216,0.12);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+  .ci-label{font-size:12px;color:var(--text-dim);margin-bottom:4px;}
+  .ci-val{font-size:15px;color:var(--text-main);font-weight:600;}
+  .ci-val a{color:var(--accent3);text-decoration:none;}
+
+  /* FORM */
+  .cform{display:flex;flex-direction:column;gap:16px;}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .fg{display:flex;flex-direction:column;gap:8px;}
+  .fg label{font-size:13px;color:var(--text-muted);font-weight:600;}
+  .fg input,.fg select,.fg textarea{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:12px 16px;color:var(--text-main);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;}
+  .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--accent2);}
+  .fg textarea{resize:vertical;min-height:110px;}
+  .fg select option{background:#121822;}
+  .fsub{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;border:none;padding:13px 30px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;letter-spacing:.3px;}
+  .fsub:hover{opacity:.85;}
+
+  /* FOOTER */
+  footer{background:#040609;border-top:1px solid var(--border);padding:52px 5% 28px;}
+  .footer-inner{max-width:1280px;margin:0 auto;}
+  .footer-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+  .fb-logo{font-size:18px;font-weight:900;margin-bottom:4px;}
+  .fb-zh{font-size:13px;color:var(--text-dim);margin-bottom:10px;}
+  .fb-desc{font-size:13px;color:var(--text-dim);line-height:1.7;}
+  .fc-title{font-size:11px;color:var(--gold2);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;}
+  .fc-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .fc-links a{text-decoration:none;color:var(--text-dim);font-size:13px;transition:color .2s;}
+  .fc-links a:hover{color:var(--accent3);}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .footer-copy{font-size:12px;color:var(--text-dim);}
+
+  @media(max-width:1024px){.stats-inner{grid-template-columns:repeat(3,1fr);}
+    .footer-top{grid-template-columns:1fr 1fr;}}
+  @media(max-width:768px){
+    .hero-inner,.contact-grid{grid-template-columns:1fr;}
+    .info-card{display:none;}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .divisions-grid,.flagship-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .frow{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-mark">
+        <span></span><span></span><span></span>
+      </div>
+      <div>
+        <div class="nav-logo-text">HKR International</div>
+        <div class="nav-logo-sub">香港興業國際集團有限公司</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#business">Business</a></li>
+      <li><a href="#flagship">Flagship Projects</a></li>
+      <li><a href="#milestones">Our History</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-stock">
+      <span>HKEX</span>
+      <span class="nav-stock-code">0480.HK</span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-est">Established 1977 · Listed on HKEX</div>
+      <h1>HKR <span>International</span><br>Limited</h1>
+      <div class="hero-zh">香港興業國際集團有限公司</div>
+      <p class="hero-desc">HKR International is a diversified Hong Kong-listed group with core businesses spanning property development, hospitality, property management, and healthcare. For nearly five decades, we have shaped Hong Kong's residential and commercial landscape while expanding our footprint across Asia.</p>
+      <div class="hero-btns">
+        <a class="btn-blue" href="#business">Our Businesses</a>
+        <a class="btn-gold" href="#contact">Contact Us</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">Corporate Information</div>
+      <div class="info-row">
+        <div class="i-icon">📈</div>
+        <div>
+          <div class="i-label">Stock Code</div>
+          <div class="i-val">HKEX: 0480</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">🏢</div>
+        <div>
+          <div class="i-label">Headquarters</div>
+          <div class="i-val">Citicorp Centre<br>18 Whitfield Road, Causeway Bay</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">📞</div>
+        <div>
+          <div class="i-label">Telephone</div>
+          <div class="i-val"><a href="tel:+85228790111">+852 2879 0111</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">🌐</div>
+        <div>
+          <div class="i-label">Website</div>
+          <div class="i-val"><a href="https://www.hkri.com" target="_blank">www.hkri.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">📅</div>
+        <div>
+          <div class="i-label">Founded</div>
+          <div class="i-val">1977 · Listed Since 1988</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">1977</div>
+      <div class="stat-label">Year Founded</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Core Business Divisions</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0480</div>
+      <div class="stat-label">HKEX Stock Code</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Asia</div>
+      <div class="stat-label">Regional Presence</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">47+</div>
+      <div class="stat-label">Years of Excellence</div>
+    </div>
+  </div>
+</div>
+
+<!-- BUSINESS DIVISIONS -->
+<section id="business">
+  <div class="section-inner">
+    <div class="section-tag">Business Overview</div>
+    <h2 class="section-title">Four <span>Core Divisions</span></h2>
+    <p class="section-sub">HKR International operates across four complementary business segments, creating a diversified portfolio that has delivered sustained value to shareholders and communities.</p>
+    <div class="divisions-grid">
+      <div class="div-card">
+        <div class="div-icon">🏗️</div>
+        <div class="div-title">Property Development</div>
+        <div class="div-subtitle">地產發展</div>
+        <div class="div-desc">HKR International has an outstanding track record in residential and commercial property development in Hong Kong and China, delivering prestigious projects that set benchmarks in design and quality.</div>
+        <ul class="div-highlights">
+          <li>Residential developments in prime locations</li>
+          <li>Commercial and mixed-use projects</li>
+          <li>Presence in Hong Kong and Mainland China</li>
+          <li>Landmark township development at Discovery Bay</li>
+        </ul>
+      </div>
+      <div class="div-card">
+        <div class="div-icon">🏨</div>
+        <div class="div-title">Hospitality</div>
+        <div class="div-subtitle">酒店及旅遊</div>
+        <div class="div-desc">The Group's hospitality division encompasses hotel ownership and management across Hong Kong and Asia, offering guests exceptional service in distinctive, thoughtfully designed environments.</div>
+        <ul class="div-highlights">
+          <li>Panda Hotel — Tsuen Wan, Hong Kong</li>
+          <li>Hotel management expertise across Asia</li>
+          <li>Resort and leisure facilities</li>
+          <li>Discovery Bay Tourism Services</li>
+        </ul>
+      </div>
+      <div class="div-card">
+        <div class="div-icon">🏘️</div>
+        <div class="div-title">Property Management</div>
+        <div class="div-subtitle">物業管理</div>
+        <div class="div-desc">Comprehensive property management services covering residential estates, commercial buildings, and clubhouse facilities, ensuring residents and tenants enjoy the highest standards of living and working environments.</div>
+        <ul class="div-highlights">
+          <li>Residential estate management</li>
+          <li>Commercial property management</li>
+          <li>Clubhouse and facilities management</li>
+          <li>Discovery Bay community management</li>
+        </ul>
+      </div>
+      <div class="div-card">
+        <div class="div-icon">🏥</div>
+        <div class="div-title">Healthcare</div>
+        <div class="div-subtitle">醫療保健</div>
+        <div class="div-desc">HKR's healthcare division reflects the Group's commitment to improving quality of life, providing professional medical and health services to meet the growing demands of Hong Kong's ageing population.</div>
+        <ul class="div-highlights">
+          <li>Medical centre operations</li>
+          <li>Elderly care and rehabilitation services</li>
+          <li>Wellness and preventive healthcare</li>
+          <li>Healthcare facility management</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLAGSHIP PROJECTS -->
+<section id="flagship" style="background:var(--bg-secondary);">
+  <div class="section-inner">
+    <div class="section-tag">Flagship Projects</div>
+    <h2 class="section-title">Landmark <span>Developments</span></h2>
+    <p class="section-sub">HKR International's portfolio includes some of Hong Kong's most distinctive addresses, from self-contained townships to premier residential developments.</p>
+    <div class="flagship-grid">
+      <div class="flag-card">
+        <div class="flag-icon">🏝️</div>
+        <div class="flag-title">Discovery Bay</div>
+        <div class="flag-loc">愉景灣 · Lantau Island</div>
+        <div class="flag-desc">Hong Kong's premier self-contained residential township on Lantau Island, home to over 20,000 residents. Discovery Bay offers a car-free, green living environment with extensive leisure, retail, and community facilities.</div>
+      </div>
+      <div class="flag-card">
+        <div class="flag-icon">🐼</div>
+        <div class="flag-title">Panda Hotel</div>
+        <div class="flag-loc">栢麗大道酒店 · Tsuen Wan</div>
+        <div class="flag-desc">A well-established full-service hotel in the heart of Tsuen Wan, offering 1,026 guest rooms and suites alongside extensive conference, banquet, dining, and recreational facilities.</div>
+      </div>
+      <div class="flag-card">
+        <div class="flag-icon">🌆</div>
+        <div class="flag-title">Luxury Residential</div>
+        <div class="flag-loc">優質住宅發展 · Hong Kong Island</div>
+        <div class="flag-desc">A series of prestigious residential developments across Hong Kong Island and the New Territories, delivering premium homes with thoughtful design, quality finishes, and prime locations.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MILESTONES -->
+<section id="milestones">
+  <div class="section-inner">
+    <div class="section-tag">Corporate History</div>
+    <h2 class="section-title">Nearly Five Decades of <span>Achievement</span></h2>
+    <p class="section-sub">From its founding in 1977, HKR International has grown into one of Hong Kong's most respected and diversified property groups.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year"><div class="tl-year-num">1977</div></div>
+        <div class="tl-body">
+          <div class="tl-title">Foundation</div>
+          <div class="tl-desc">HKR International was established in Hong Kong by Dr. Cha Chi Ming, laying the foundation for a diversified property and hospitality group.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year"><div class="tl-year-num">1982</div></div>
+        <div class="tl-body">
+          <div class="tl-title">Discovery Bay Development Begins</div>
+          <div class="tl-desc">HKR commenced development of Discovery Bay on Lantau Island, a visionary residential township project that would transform the area into one of Hong Kong's most unique communities.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year"><div class="tl-year-num">1988</div></div>
+        <div class="tl-body">
+          <div class="tl-title">Listed on Hong Kong Stock Exchange</div>
+          <div class="tl-desc">HKR International achieved its listing on the Hong Kong Stock Exchange (stock code: 0480), gaining access to public capital markets to fund continued growth.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year"><div class="tl-year-num">1990s</div></div>
+        <div class="tl-body">
+          <div class="tl-title">Hospitality Expansion</div>
+          <div class="tl-desc">Expanded the hospitality division with the development and operation of Panda Hotel in Tsuen Wan, complementing the Group's property development activities.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year"><div class="tl-year-num">2000s</div></div>
+        <div class="tl-body">
+          <div class="tl-title">Mainland China Expansion</div>
+          <div class="tl-desc">Extended property development activities into Mainland China, capitalising on the growing demand for quality residential and commercial properties.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year"><div class="tl-year-num">Today</div></div>
+        <div class="tl-body">
+          <div class="tl-title">Continuing the Legacy</div>
+          <div class="tl-desc">HKR International continues to develop premium properties, manage iconic assets, and deliver exceptional hospitality experiences across Hong Kong and Asia, building on nearly five decades of excellence.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">Contact</div>
+    <h2 class="section-title">Get in <span>Touch</span></h2>
+    <p class="section-sub">For investor relations, business enquiries, or general information about HKR International, please contact our corporate office.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="c-list">
+          <div class="c-item">
+            <div class="ci-icon">🏢</div>
+            <div>
+              <div class="ci-label">Headquarters</div>
+              <div class="ci-val">23/F, Citicorp Centre<br>18 Whitfield Road, Causeway Bay, HK</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-label">Telephone</div>
+              <div class="ci-val"><a href="tel:+85228790111">+852 2879 0111</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">🌐</div>
+            <div>
+              <div class="ci-label">Website</div>
+              <div class="ci-val"><a href="https://www.hkri.com" target="_blank">www.hkri.com</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">📈</div>
+            <div>
+              <div class="ci-label">Stock Exchange</div>
+              <div class="ci-val">The Stock Exchange of Hong Kong<br>Stock Code: 0480</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="cform" onsubmit="return false;">
+        <div class="frow">
+          <div class="fg">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="fg">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="Contact number">
+          </div>
+        </div>
+        <div class="fg">
+          <label>Email Address *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="fg">
+          <label>Company / Organisation</label>
+          <input type="text" placeholder="Company name">
+        </div>
+        <div class="fg">
+          <label>Enquiry Type</label>
+          <select>
+            <option>Investor Relations</option>
+            <option>Property Purchase Enquiry</option>
+            <option>Hotel Reservation — Panda Hotel</option>
+            <option>Property Management</option>
+            <option>Business Partnership</option>
+            <option>Media Enquiry</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Message *</label>
+          <textarea placeholder="Please describe your enquiry..."></textarea>
+        </div>
+        <button type="submit" class="fsub">Submit Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="fb-logo">HKR International Limited</div>
+        <div class="fb-zh">香港興業國際集團有限公司</div>
+        <div class="fb-desc">A diversified Hong Kong-listed group with core businesses in property development, hospitality, property management, and healthcare. HKEX Stock Code: 0480.</div>
+      </div>
+      <div>
+        <div class="fc-title">Business</div>
+        <ul class="fc-links">
+          <li><a href="#business">Property Development</a></li>
+          <li><a href="#business">Hospitality</a></li>
+          <li><a href="#business">Property Management</a></li>
+          <li><a href="#business">Healthcare</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fc-title">Flagship</div>
+        <ul class="fc-links">
+          <li><a href="#flagship">Discovery Bay</a></li>
+          <li><a href="#flagship">Panda Hotel</a></li>
+          <li><a href="#flagship">Luxury Residential</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fc-title">Corporate</div>
+        <ul class="fc-links">
+          <li><a href="#milestones">Our History</a></li>
+          <li><a href="#contact">Investor Relations</a></li>
+          <li><a href="https://www.hkri.com" target="_blank">Corporate Website</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 HKR International Limited 香港興業國際集團有限公司. All rights reserved.</div>
+      <div style="font-size:12px;color:var(--text-dim);">HKEX: 0480 · Property · Hospitality · Healthcare</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
