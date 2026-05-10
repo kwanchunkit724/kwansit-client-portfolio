@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>永樂街海味（香港）有限公司 | 頂級鮑魚・花膠・海參・瑤柱</title>
+<meta name="description" content="永樂街海味（香港）有限公司 — 香港上環永樂街著名海味老鋪，專售頂級南非鮑魚、花膠、海參、瑤柱、燕窩等珍貴海味乾貨，品質保證，網上訂購。">
+<style>
+  :root {
+    --bg:       #060a0c;
+    --bg2:      #0c1418;
+    --bg3:      #101c22;
+    --accent:   #c89020;
+    --accent2:  #f0b840;
+    --teal:     #20909a;
+    --teal2:    #30c0cc;
+    --text:     #f0ede8;
+    --muted:    #8a8278;
+    --border:   rgba(200,144,32,0.18);
+    --card:     rgba(255,255,255,0.03);
+    --radius:   12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', 'PingFang HK', 'Noto Sans HK', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(6,10,12,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo { font-size: 1.2rem; font-weight: 800; color: var(--accent2); text-decoration: none; letter-spacing: 0.04em; }
+  .nav-logo span { color: var(--teal2); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.92rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-cta {
+    background: var(--accent); color: #060a0c; border: none; padding: 0.55rem 1.3rem;
+    border-radius: 6px; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 65% 55% at 65% 40%, rgba(200,144,32,0.12) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 40% at 5% 80%, rgba(32,144,154,0.08) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(200,144,32,0.12); border: 1px solid rgba(200,144,32,0.3);
+    color: var(--accent2); border-radius: 50px; padding: 0.38rem 1rem;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.55rem; }
+  .hero h1 { font-size: clamp(2.1rem, 4.2vw, 3.2rem); font-weight: 900; line-height: 1.25; margin-bottom: 1.4rem; }
+  .hero h1 .hl { color: var(--accent2); }
+  .hero h1 .hl-teal { color: var(--teal2); }
+  .hero p { font-size: 1.05rem; color: var(--muted); max-width: 520px; margin-bottom: 2rem; line-height: 1.8; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #060a0c; font-weight: 800; font-size: 1rem;
+    padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(200,144,32,0.35);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,144,32,0.5); }
+  .btn-outline {
+    background: transparent; color: var(--text); border: 1.5px solid rgba(255,255,255,0.2);
+    font-size: 1rem; padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent2); }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 18px; padding: 2rem;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .info-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--accent2); margin-bottom: 1.4rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+  .info-row { display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: flex-start; }
+  .info-icon { font-size: 1.1rem; min-width: 28px; margin-top: 0.1rem; }
+  .info-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.18rem; }
+  .info-val { font-size: 0.92rem; color: var(--text); font-weight: 600; }
+  .info-val a { color: var(--accent2); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .info-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+
+  /* STATS */
+  .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3.5rem 5%; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 2.4rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-num sup { font-size: 1.1rem; vertical-align: super; }
+  .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+
+  /* SECTION */
+  .section { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.7rem; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; line-height: 1.25; margin-bottom: 1rem; }
+  .section-title .hl { color: var(--accent2); }
+  .section-title .hl-teal { color: var(--teal2); }
+  .section-desc { color: var(--muted); max-width: 600px; margin-bottom: 3rem; font-size: 1rem; line-height: 1.8; }
+
+  /* PRODUCTS */
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .product-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2rem;
+    transition: border-color 0.25s, transform 0.2s; position: relative; overflow: hidden;
+  }
+  .product-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .product-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .product-card:hover::after { opacity: 1; }
+  .product-emoji { font-size: 2.8rem; margin-bottom: 1rem; }
+  .product-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--accent2); margin-bottom: 0.5rem; }
+  .product-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+  .product-origins {
+    display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.2rem;
+  }
+  .origin-tag {
+    background: rgba(200,144,32,0.1); border: 1px solid rgba(200,144,32,0.25);
+    color: var(--accent2); padding: 0.22rem 0.65rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700;
+  }
+
+  /* FEATURED ABALONE */
+  .abalone-wrap { background: var(--bg2); padding: 6rem 5%; }
+  .abalone-inner { max-width: 1200px; margin: 0 auto; }
+  .abalone-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .abalone-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem; text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .abalone-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .abalone-flag { font-size: 2rem; margin-bottom: 0.8rem; }
+  .abalone-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+  .abalone-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+  .abalone-size {
+    display: inline-block; margin-top: 0.8rem;
+    background: rgba(200,144,32,0.12); border: 1px solid rgba(200,144,32,0.3);
+    color: var(--accent2); padding: 0.22rem 0.65rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700;
+  }
+
+  /* WHY */
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .why-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.8rem;
+    display: flex; gap: 1.2rem; align-items: flex-start;
+  }
+  .why-icon { font-size: 2rem; min-width: 44px; }
+  .why-item h4 { font-size: 1rem; font-weight: 700; color: var(--accent2); margin-bottom: 0.4rem; }
+  .why-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+  /* GIFT */
+  .gift-wrap { background: var(--bg2); padding: 6rem 5%; }
+  .gift-inner { max-width: 1200px; margin: 0 auto; }
+  .gift-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .gift-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.8rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .gift-card:hover { border-color: var(--teal); transform: translateY(-3px); }
+  .gift-card h4 { font-size: 1rem; font-weight: 700; color: var(--teal2); margin-bottom: 0.6rem; }
+  .gift-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  .gift-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+  /* CONTACT */
+  .contact-wrap {
+    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(200,144,32,0.07) 0%, transparent 65%), var(--bg);
+    padding: 6rem 5%;
+  }
+  .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; margin-bottom: 1rem; }
+  .contact-info p { color: var(--muted); font-size: 0.98rem; margin-bottom: 2rem; line-height: 1.8; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.1rem; }
+  .c-row { display: flex; gap: 1rem; align-items: flex-start; }
+  .c-icon { font-size: 1.3rem; min-width: 34px; }
+  .c-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.2rem; }
+  .c-val { font-size: 0.95rem; font-weight: 600; }
+  .c-val a { color: var(--accent2); text-decoration: none; }
+  .c-val a:hover { text-decoration: underline; }
+  form { display: flex; flex-direction: column; gap: 1.2rem; }
+  form label { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.3rem; display: block; }
+  form input, form textarea, form select {
+    width: 100%; background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.8rem 1rem; color: var(--text); font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s;
+  }
+  form input:focus, form textarea:focus, form select:focus { outline: none; border-color: var(--accent); }
+  form textarea { min-height: 110px; resize: vertical; }
+  form select option { background: #0c1418; }
+  .form-submit {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #060a0c; font-weight: 800; font-size: 1rem;
+    border: none; padding: 0.95rem; border-radius: 8px; cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(200,144,32,0.35);
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,144,32,0.5); }
+
+  /* FOOTER */
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4rem 5% 2rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand .logo-text { font-size: 1.15rem; font-weight: 800; color: var(--accent2); margin-bottom: 0.8rem; }
+  .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  footer h5 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  footer ul li a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  footer ul li a:hover { color: var(--accent2); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .info-card { max-width: 480px; }
+    .products-grid, .why-grid, .gift-grid { grid-template-columns: repeat(2, 1fr); }
+    .abalone-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .products-grid, .abalone-grid, .why-grid, .gift-grid, .contact-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">永樂街海味<span>香港</span></a>
+  <ul class="nav-links">
+    <li><a href="#products">精選海味</a></li>
+    <li><a href="#abalone">鮑魚專區</a></li>
+    <li><a href="#why">選購優勢</a></li>
+    <li><a href="#gift">禮盒訂購</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">立即訂購</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">香港上環永樂街海味老鋪</div>
+      <h1>
+        精選頂級海味<br>
+        <span class="hl">鮑魚・花膠・海參</span><br>
+        <span class="hl-teal">品質保證，回饋顧客</span>
+      </h1>
+      <p>
+        永樂街海味（香港）有限公司，扎根香港著名海味街多年，
+        嚴選全球頂級鮑魚、花膠、海參、瑤柱、燕窩等珍貴海味乾貨，
+        以合理價格提供最高品質，讓每位顧客都能享用正宗上等海味。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#abalone">精選鮑魚系列</a>
+        <a class="btn-outline" href="#products">全部產品</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>🏪 門市資料</h3>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">地址</div>
+          <div class="info-val">香港上環永樂街<br>（海味乾貨專區）</div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">📱</div>
+        <div>
+          <div class="info-label">手機 / WhatsApp</div>
+          <div class="info-val"><a href="https://wa.me/85255488795">5548 8795</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-val"><a href="mailto:winglokdriedseafood@yahoo.com">winglokdriedseafood@yahoo.com</a></div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網上商店</div>
+          <div class="info-val"><a href="https://www.winglokstreet.com.hk" target="_blank" rel="noopener">winglokstreet.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🚚</div>
+        <div>
+          <div class="info-label">服務</div>
+          <div class="info-val">本地送貨 ｜ 自取門市</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">20<sup>+</sup></div>
+      <div class="stat-label">年海味專業經驗</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100<sup>+</sup></div>
+      <div class="stat-label">精選海味品種</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10<sup>+</sup></div>
+      <div class="stat-label">鮑魚產地來源</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5<sup>★</sup></div>
+      <div class="stat-label">顧客評分</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div id="products">
+  <div class="section">
+    <div class="section-label">Premium Dried Seafood</div>
+    <h2 class="section-title">精選頂級<span class="hl">海味乾貨</span></h2>
+    <p class="section-desc">
+      我們嚴選全球各地頂級產地的海味，確保每件產品品質上乘、來源可靠，
+      讓您安心選購，放心烹調。
+    </p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-emoji">🐚</div>
+        <h3>頂級鮑魚</h3>
+        <p>
+          精選南非、澳洲、日本等地優質鮑魚，品種齊全，規格多樣，
+          由「頭抽」至「兩頭半」均有供應，適合煲湯、紅燒及宴客饋贈。
+        </p>
+        <div class="product-origins">
+          <span class="origin-tag">南非</span>
+          <span class="origin-tag">澳洲</span>
+          <span class="origin-tag">日本</span>
+          <span class="origin-tag">墨西哥</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-emoji">🌊</div>
+        <h3>花膠（魚肚）</h3>
+        <p>
+          精選多種優質花膠，包括鱈魚花膠、鰵魚花膠等，
+          富含豐富膠原蛋白，養顏滋補，是傳統養生煲湯的珍貴食材。
+        </p>
+        <div class="product-origins">
+          <span class="origin-tag">阿根廷</span>
+          <span class="origin-tag">秘魯</span>
+          <span class="origin-tag">泰國</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-emoji">🫧</div>
+        <h3>海參</h3>
+        <p>
+          精選頂級遼參、北極參及澳洲海參，
+          發製方法傳統，肉質厚實有彈性，滋補養生，
+          適合多種烹調方式。
+        </p>
+        <div class="product-origins">
+          <span class="origin-tag">大連遼參</span>
+          <span class="origin-tag">北極參</span>
+          <span class="origin-tag">澳洲</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-emoji">🐡</div>
+        <h3>日月貝（瑤柱）</h3>
+        <p>
+          嚴選日本北海道及中國大連頂級日月貝柱，
+          粒粒飽滿，鮮味濃郁，是煲粥、炒飯、紅燒料理的重要提鮮食材。
+        </p>
+        <div class="product-origins">
+          <span class="origin-tag">北海道</span>
+          <span class="origin-tag">大連</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-emoji">🦪</div>
+        <h3>蠔豉（乾蠔）</h3>
+        <p>
+          選用優質生蠔製成，肉質肥美，鮮味十足，
+          傳統賀年菜「生財好市蠔豉煲」的必備食材，
+          家宴、節慶首選。
+        </p>
+        <div class="product-origins">
+          <span class="origin-tag">廣東</span>
+          <span class="origin-tag">日本</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-emoji">🕊️</div>
+        <h3>燕窩</h3>
+        <p>
+          精選馬來西亞及印尼頂級屋燕窩，品質純正，
+          含豐富燕酸及蛋白質，滋陰潤肺，美顏養生，
+          是高端養生禮品之首選。
+        </p>
+        <div class="product-origins">
+          <span class="origin-tag">馬來西亞</span>
+          <span class="origin-tag">印尼</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABALONE FEATURE -->
+<div class="abalone-wrap" id="abalone">
+  <div class="abalone-inner">
+    <div class="section-label">Abalone Collection</div>
+    <h2 class="section-title" style="margin-bottom:0.8rem;">鮑魚<span class="hl-teal">精選系列</span></h2>
+    <p class="section-desc">
+      鮑魚以「頭數」計算，數字越小代表每斤顆數越少，鮑魚越大越名貴。
+      我們提供各種規格選擇，滿足日常滋補及宴客饋贈的需要。
+    </p>
+    <div class="abalone-grid">
+      <div class="abalone-card">
+        <div class="abalone-flag">🇿🇦</div>
+        <h4>南非青邊鮑</h4>
+        <p>南非 Amidori 品牌，肉質厚實，鮮味濃郁，深受港人喜愛</p>
+        <span class="abalone-size">29–35 頭 / 斤</span>
+      </div>
+      <div class="abalone-card">
+        <div class="abalone-flag">🇦🇺</div>
+        <h4>澳洲罐裝鮑</h4>
+        <p>澳洲優質鮑魚，汁液濃厚，肉質嫩滑，紅燒效果極佳</p>
+        <span class="abalone-size">多種頭數可選</span>
+      </div>
+      <div class="abalone-card">
+        <div class="abalone-flag">🇯🇵</div>
+        <h4>日本網鮑</h4>
+        <p>日本頂級網鮑，傳統烹製工藝，鮮味層次豐富，宴客首選</p>
+        <span class="abalone-size">頭抽至兩頭半</span>
+      </div>
+      <div class="abalone-card">
+        <div class="abalone-flag">🇲🇽</div>
+        <h4>墨西哥鮑</h4>
+        <p>墨西哥優質野生鮑魚，肉質結實，性價比高，日常滋補佳品</p>
+        <span class="abalone-size">多種規格</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY -->
+<div id="why">
+  <div class="section">
+    <div class="section-label">Why Choose Us</div>
+    <h2 class="section-title">選購<span class="hl">我們的理由</span></h2>
+    <p class="section-desc">永樂街海味多年堅持品質，以誠待客，回饋每一位顧客的信任與支持。</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🔍</div>
+        <div>
+          <h4>嚴格品質把關</h4>
+          <p>每批貨品均經嚴格品質檢查，確保產品新鮮度、乾爽度及外觀符合標準，杜絕劣質或摻假產品。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🌍</div>
+        <div>
+          <h4>全球產地直採</h4>
+          <p>與南非、澳洲、日本、馬來西亞等地優質供應商長期合作，確保產品來源可靠，品質穩定。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💰</div>
+        <div>
+          <h4>合理回饋價格</h4>
+          <p>長年致力以最合理價格提供最優質海味，讓每位顧客都能以實惠的價錢享用頂級海味食材。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">👨‍🍳</div>
+        <div>
+          <h4>烹調建議指導</h4>
+          <p>資深海味師傅提供烹調建議、泡發方法及保存技巧，助您輕鬆處理各類海味，充分享受美味。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🎁</div>
+        <div>
+          <h4>精美禮盒訂製</h4>
+          <p>提供各種節慶及送禮場合的精美海味禮盒訂製服務，包裝精美，送禮體面，款式多樣可選。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🚚</div>
+        <div>
+          <h4>本地快捷送貨</h4>
+          <p>提供香港本地快捷送貨服務，亦可到門市自取，方便靈活，確保產品新鮮安全送抵您手。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GIFT -->
+<div class="gift-wrap" id="gift">
+  <div class="gift-inner">
+    <div class="section-label">Gift Sets</div>
+    <h2 class="section-title">節慶<span class="hl-teal">海味禮盒</span></h2>
+    <p class="section-desc" style="margin-bottom: 2.5rem;">
+      無論中秋、新年、探病、商務饋贈，我們的精美海味禮盒都是最體面的心意。
+    </p>
+    <div class="gift-grid">
+      <div class="gift-card">
+        <div class="gift-icon">🏮</div>
+        <h4>農曆新年海味禮籃</h4>
+        <p>精選鮑魚、花膠、瑤柱、蠔豉四寶，寓意「發財好市」，賀年送禮首選，款式可依預算訂製。</p>
+      </div>
+      <div class="gift-card">
+        <div class="gift-icon">🌕</div>
+        <h4>中秋滋補禮盒</h4>
+        <p>甄選海參、燕窩及優質花膠，搭配精美禮盒包裝，是中秋節探親訪友、表達心意的上等賀禮。</p>
+      </div>
+      <div class="gift-card">
+        <div class="gift-icon">💼</div>
+        <h4>商務頂級禮品</h4>
+        <p>為商務饋贈而設的頂級海味禮品系列，選用最高規格鮑魚及燕窩，彰顯尊重，包裝雅致大方。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">查詢<span class="hl">及訂購</span></h2>
+      <p>
+        如有任何產品查詢、訂購、禮盒訂製或大量批發需求，
+        歡迎透過以下方式聯絡我們，我們將竭誠為您服務。
+      </p>
+      <div class="contact-details">
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">地址</div>
+            <div class="c-val">香港上環永樂街（海味乾貨專區）</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📱</div>
+          <div>
+            <div class="c-label">手機 / WhatsApp</div>
+            <div class="c-val"><a href="https://wa.me/85255488795">+852 5548 8795</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">電郵</div>
+            <div class="c-val"><a href="mailto:winglokdriedseafood@yahoo.com">winglokdriedseafood@yahoo.com</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">網上商店</div>
+            <div class="c-val"><a href="https://www.winglokstreet.com.hk" target="_blank" rel="noopener">www.winglokstreet.com.hk</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form onsubmit="return false;">
+      <div>
+        <label>您的姓名 *</label>
+        <input type="text" placeholder="例：陳大文">
+      </div>
+      <div>
+        <label>聯絡電話 *</label>
+        <input type="tel" placeholder="例：9000 0000">
+      </div>
+      <div>
+        <label>電郵地址</label>
+        <input type="email" placeholder="example@email.com">
+      </div>
+      <div>
+        <label>查詢類別</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>鮑魚產品查詢</option>
+          <option>花膠 / 海參查詢</option>
+          <option>瑤柱 / 燕窩查詢</option>
+          <option>節慶禮盒訂製</option>
+          <option>大量批發查詢</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div>
+        <label>查詢詳情</label>
+        <textarea placeholder="請詳述您的查詢或訂購要求，包括產品種類、數量、預算等..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">📩 立即發送查詢</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-text">永樂街海味（香港）有限公司</div>
+      <p>
+        香港上環永樂街著名海味老鋪，嚴選全球頂級鮑魚、花膠、海參及各式珍貴海味乾貨，
+        多年來以誠信品質服務廣大顧客。
+      </p>
+    </div>
+    <div>
+      <h5>精選產品</h5>
+      <ul>
+        <li><a href="#abalone">鮑魚系列</a></li>
+        <li><a href="#products">花膠 / 魚肚</a></li>
+        <li><a href="#products">海參</a></li>
+        <li><a href="#products">瑤柱 / 燕窩</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>服務</h5>
+      <ul>
+        <li><a href="#gift">節慶禮盒</a></li>
+        <li><a href="#why">產品品質</a></li>
+        <li><a href="#contact">大量批發</a></li>
+        <li><a href="https://www.winglokstreet.com.hk" target="_blank" rel="noopener">網上商店</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>聯絡資料</h5>
+      <ul>
+        <li><a href="https://wa.me/85255488795">WhatsApp: 5548 8795</a></li>
+        <li><a href="mailto:winglokdriedseafood@yahoo.com">winglokdriedseafood<br>@yahoo.com</a></li>
+        <li><a href="https://www.winglokstreet.com.hk" target="_blank" rel="noopener">winglokstreet.com.hk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 永樂街海味（香港）有限公司. All rights reserved.</span>
+    <span>香港上環永樂街</span>
+  </div>
+</footer>
+
+</body>
+</html>
