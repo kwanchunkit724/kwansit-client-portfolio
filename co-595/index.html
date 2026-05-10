@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>都城實業股份有限公司 | 台灣餐飲集團</title>
+<style>
+:root {
+  --bg: #08080a;
+  --bg2: #0e0c10;
+  --bg3: #141018;
+  --accent: #7840c8;
+  --accent2: #9858e0;
+  --gold: #e09020;
+  --gold2: #f0b040;
+  --text: #ece8f0;
+  --muted: #786880;
+  --border: rgba(120,64,200,0.16);
+  --card: #0e0c14;
+  --radius: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI','Microsoft JhengHei',system-ui,sans-serif;line-height:1.6;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,8,10,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:1.1rem;font-weight:900;color:var(--gold);text-decoration:none;letter-spacing:1px;}
+.nav-logo span{color:var(--muted);font-size:0.78rem;font-weight:400;margin-left:0.5rem;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:600;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent2);}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 2rem 60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 60% 40%,rgba(120,64,200,0.12) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 10% 85%,rgba(224,144,32,0.07) 0%,transparent 60%);}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center;position:relative;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(120,64,200,0.12);border:1px solid rgba(120,64,200,0.25);color:var(--accent2);padding:0.35rem 0.9rem;border-radius:20px;font-size:0.8rem;font-weight:600;margin-bottom:1.5rem;}
+.badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero h1{font-size:2.8rem;font-weight:900;line-height:1.2;margin-bottom:0.5rem;letter-spacing:2px;}
+.hero h1 span{color:var(--gold);}
+.hero-sub-title{font-size:0.95rem;color:var(--muted);margin-bottom:1.2rem;letter-spacing:0.5px;}
+.hero-desc{font-size:0.95rem;color:var(--muted);max-width:480px;margin-bottom:2rem;line-height:1.8;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:all 0.2s;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--gold);padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;border:1px solid rgba(224,144,32,0.3);transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--gold);background:rgba(224,144,32,0.08);}
+
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));}
+.info-card-title{font-size:0.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(120,64,200,0.08);}
+.info-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.info-icon{width:32px;height:32px;background:rgba(120,64,200,0.12);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;color:var(--text);font-weight:500;line-height:1.4;}
+.info-val a{color:var(--accent2);text-decoration:none;}
+
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.stat-item{text-align:center;}
+.stat-num{font-size:2.3rem;font-weight:900;color:var(--gold);line-height:1;margin-bottom:0.3rem;}
+.stat-label{font-size:0.8rem;color:var(--muted);}
+
+section{padding:5rem 2rem;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-tag{font-size:0.75rem;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:2px;margin-bottom:0.8rem;}
+.section-title{font-size:2.1rem;font-weight:800;line-height:1.2;margin-bottom:1rem;letter-spacing:1px;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.8;}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+.about-highlight{background:var(--bg3);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:1.5rem 1.8rem;margin-bottom:1.5rem;}
+.about-highlight p{color:var(--text);font-size:0.95rem;line-height:1.9;}
+.about-text{color:var(--muted);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color 0.2s;}
+.prop-card:hover{border-color:var(--accent);}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.78rem;color:var(--muted);line-height:1.5;}
+.region-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.region-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));}
+.region-title{font-size:0.85rem;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:1.2rem;}
+.region-items{display:flex;flex-direction:column;gap:0.8rem;}
+.region-item{display:flex;align-items:center;gap:0.8rem;padding:0.8rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;}
+.region-flag{font-size:1.1rem;}
+.region-info{flex:1;}
+.region-city{font-size:0.88rem;font-weight:700;color:var(--text);}
+.region-note{font-size:0.75rem;color:var(--muted);}
+.hr-box{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-top:1.2rem;}
+.hr-title{font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.8rem;}
+.hr-items{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.hr-item{font-size:0.78rem;padding:0.2rem 0.7rem;background:rgba(120,64,200,0.12);color:var(--accent2);border-radius:4px;}
+
+.services-bg{background:var(--bg2);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--c,var(--accent));opacity:0;transition:opacity 0.25s;}
+.service-card:hover{border-color:rgba(120,64,200,0.35);transform:translateY(-3px);}
+.service-card:hover::before{opacity:1;}
+.service-card:nth-child(1){--c:#7840c8;}
+.service-card:nth-child(2){--c:#e09020;}
+.service-card:nth-child(3){--c:#18c870;}
+.service-card:nth-child(4){--c:#0c78d0;}
+.service-card:nth-child(5){--c:#e03860;}
+.service-card:nth-child(6){--c:#9858e0;}
+.svc-icon{font-size:2rem;margin-bottom:0.8rem;}
+.svc-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.svc-desc{font-size:0.83rem;color:var(--muted);line-height:1.6;}
+
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;text-align:center;transition:all 0.2s;}
+.why-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.why-icon{font-size:2rem;margin-bottom:0.8rem;}
+.why-title{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.why-desc{font-size:0.82rem;color:var(--muted);line-height:1.6;}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;}
+.contact-info{display:flex;flex-direction:column;gap:1.2rem;}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem;background:var(--card);border:1px solid var(--border);border-radius:10px;transition:border-color 0.2s;}
+.contact-item:hover{border-color:var(--accent);}
+.c-icon{width:40px;height:40px;background:rgba(120,64,200,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.3rem;}
+.c-val{font-size:0.9rem;color:var(--text);font-weight:500;line-height:1.5;}
+.c-val a{color:var(--accent2);text-decoration:none;}
+.join-card{background:var(--card);border:1px solid rgba(120,64,200,0.3);border-radius:var(--radius);padding:2.5rem;position:relative;overflow:hidden;}
+.join-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));}
+.join-badge{display:inline-block;font-size:0.72rem;font-weight:700;padding:0.25rem 0.7rem;background:rgba(120,64,200,0.15);color:var(--accent2);border-radius:4px;margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.5px;}
+.join-title{font-size:1.3rem;font-weight:800;color:var(--text);margin-bottom:0.8rem;letter-spacing:1px;}
+.join-desc{font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem;}
+.join-items{display:flex;flex-direction:column;gap:0.5rem;}
+.join-item{display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:var(--text);}
+.join-item::before{content:'✓';color:var(--gold);font-weight:800;flex-shrink:0;}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1100px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-brand p{color:var(--muted);font-size:0.85rem;line-height:1.7;margin-top:0.8rem;}
+.footer-logo{font-size:1.1rem;font-weight:900;color:var(--gold);letter-spacing:1px;}
+.footer-col h4{font-size:0.75rem;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col li a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col li a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+.footer-loc{font-size:0.8rem;color:var(--muted);}
+.footer-loc span{color:var(--accent2);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero h1{font-size:2.1rem;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .services-grid,.why-grid{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+}
+@media(max-width:600px){
+  .services-grid,.about-props{grid-template-columns:1fr;}
+  .hero h1{font-size:1.7rem;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">都城實業 <span>Ducheng Industrial</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#services">業務範疇</a></li>
+      <li><a href="#why">企業優勢</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">聯絡我們</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="badge-dot"></span> 台灣餐飲企業 · 北台灣多點佈局</div>
+      <h1>都城實業<br><span>股份有限公司</span></h1>
+      <div class="hero-sub-title">Ducheng Industrial Co., Ltd. · 餐飲集團</div>
+      <p class="hero-desc">深耕台灣餐飲產業，業務橫跨台北市、新北市及桃園市，以專業團隊、穩健管理與優質服務，為消費者帶來豐富多元的餐飲體驗。</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">聯絡我們</a>
+        <a href="#services" class="btn-secondary">了解業務</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">📍 企業聯絡資訊</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">企業名稱</div>
+          <div class="info-val">都城實業股份有限公司</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">聯絡電話</div>
+          <div class="info-val"><a href="tel:63022450">0630-22450</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🍽️</div>
+        <div>
+          <div class="info-label">產業別</div>
+          <div class="info-val">餐飲業 · 連鎖餐飲管理</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">營運區域</div>
+          <div class="info-val">台北市 · 新北市 · 桃園市</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">地區</div>
+          <div class="info-val">台灣 · 北台灣多點佈局</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">主要營運城市</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">多點</div>
+      <div class="stat-label">北台灣連鎖佈局</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">餐飲</div>
+      <div class="stat-label">核心產業</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">台灣</div>
+      <div class="stat-label">深耕本土市場</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-tag">About Us</div>
+    <h2 class="section-title">深耕台灣餐飲產業</h2>
+    <p class="section-sub">都城實業股份有限公司以台灣餐飲市場為核心，橫跨北台灣多個城市，致力提供優質餐飲服務。</p>
+    <div class="about-grid">
+      <div>
+        <div class="about-highlight">
+          <p>都城實業股份有限公司是一家深耕台灣北部餐飲市場的連鎖餐飲企業，業務範圍涵蓋台北市、新北市及桃園市，以穩健的企業管理和多元的餐飲佈局，持續擴展品牌版圖。</p>
+        </div>
+        <p class="about-text">公司秉持「顧客至上、品質第一」的經營理念，透過嚴格的品質管控與持續的人才培育，確保每一間餐廳都能提供一致的優質服務體驗。</p>
+        <p class="about-text">都城實業積極佈局北台灣餐飲市場，在台北市與桃園市均設有多個服務據點，持續擴大服務版圖，為台灣消費者帶來更豐富的餐飲選擇。</p>
+        <div class="about-props">
+          <div class="prop-card">
+            <div class="prop-icon">🏪</div>
+            <div class="prop-title">多點連鎖佈局</div>
+            <div class="prop-desc">台北市、新北市、桃園市多點同步營運</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">👥</div>
+            <div class="prop-title">專業人才團隊</div>
+            <div class="prop-desc">積極培育餐飲管理人才，提供職涯發展機會</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🎯</div>
+            <div class="prop-title">品質管控</div>
+            <div class="prop-desc">嚴格食材品管與標準化作業流程</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📈</div>
+            <div class="prop-title">持續擴展</div>
+            <div class="prop-desc">積極拓展北台灣餐飲版圖，尋求新據點</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="region-box">
+          <div class="region-title">🗺️ 主要營運區域</div>
+          <div class="region-items">
+            <div class="region-item">
+              <span class="region-flag">🏙️</span>
+              <div class="region-info">
+                <div class="region-city">台北市</div>
+                <div class="region-note">都會核心區域多點佈局</div>
+              </div>
+            </div>
+            <div class="region-item">
+              <span class="region-flag">🌆</span>
+              <div class="region-info">
+                <div class="region-city">新北市</div>
+                <div class="region-note">大台北衛星城市服務據點</div>
+              </div>
+            </div>
+            <div class="region-item">
+              <span class="region-flag">🌇</span>
+              <div class="region-info">
+                <div class="region-city">桃園市</div>
+                <div class="region-note">北台灣重要餐飲市場</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hr-box" style="margin-top:1.2rem;">
+          <div class="hr-title">人才招募</div>
+          <div class="hr-items">
+            <span class="hr-item">餐飲服務人員</span>
+            <span class="hr-item">廚房作業人員</span>
+            <span class="hr-item">兼職時薪：200 TWD/時</span>
+            <span class="hr-item">台北市 · 桃園市</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <div class="section-inner">
+    <div class="section-tag">Business Scope</div>
+    <h2 class="section-title">核心業務範疇</h2>
+    <p class="section-sub">都城實業聚焦北台灣餐飲市場，提供多元化的餐飲服務與企業管理解決方案。</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-icon">🍽️</div>
+        <div class="svc-title">餐飲門市營運</div>
+        <div class="svc-desc">在台北市、新北市及桃園市經營多個餐飲門市，提供穩定的餐飲服務，確保一致的品質標準與顧客體驗。</div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🏪</div>
+        <div class="svc-title">連鎖門市管理</div>
+        <div class="svc-desc">以標準化管理體系統一管理北台灣各地門市，確保服務品質與作業流程的一致性，提升整體營運效率。</div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">👨‍🍳</div>
+        <div class="svc-title">餐飲人才培育</div>
+        <div class="svc-desc">積極培育餐飲服務與廚房管理人才，提供完善的在職訓練，協助員工建立紮實的餐飲服務技能與職涯發展。</div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">📊</div>
+        <div class="svc-title">企業營運管理</div>
+        <div class="svc-desc">透過專業的企業管理體系，統籌各地門市的食材採購、品質控管、人力調度及財務管理，確保集團穩健運營。</div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🛒</div>
+        <div class="svc-title">食材採購管理</div>
+        <div class="svc-desc">建立嚴格的食材採購標準與供應商管理制度，確保食材新鮮度與品質穩定，為顧客提供安心、美味的餐飲選擇。</div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🌱</div>
+        <div class="svc-title">品牌持續擴展</div>
+        <div class="svc-desc">持續評估北台灣潛力市場，積極尋求新設門市機會，拓展餐飲版圖，打造更完善的區域服務網絡。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="section-inner">
+    <div class="section-tag">Why Us</div>
+    <h2 class="section-title">企業核心優勢</h2>
+    <p class="section-sub">都城實業以扎實的餐飲管理基礎，持續深化北台灣市場，建立穩健的多據點連鎖餐飲版圖。</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🗺️</div>
+        <div class="why-title">北台灣多點佈局</div>
+        <div class="why-desc">台北市、新北市、桃園市三大城市同步佈局，覆蓋北台灣主要餐飲消費市場，服務廣大消費族群。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚙️</div>
+        <div class="why-title">標準化管理體系</div>
+        <div class="why-desc">建立一套完整的連鎖餐飲標準作業流程，確保各門市服務品質一致，維護品牌形象與顧客滿意度。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">👥</div>
+        <div class="why-title">重視人才培育</div>
+        <div class="why-desc">提供完善的員工培訓體系，重視人才職涯發展，打造穩定且具向心力的服務團隊，支撐集團長期成長。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg2);border-top:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-tag">Contact Us</div>
+    <h2 class="section-title">聯絡都城實業</h2>
+    <p class="section-sub">如有業務合作、加盟洽談或人才招募等相關查詢，歡迎聯絡我們。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">聯絡電話</div>
+            <div class="c-val"><a href="tel:63022450">0630-22450</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">主要營運地區</div>
+            <div class="c-val">台北市 · 新北市 · 桃園市</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">🍽️</div>
+          <div>
+            <div class="c-label">產業別</div>
+            <div class="c-val">餐飲業 · 連鎖餐飲管理</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">💼</div>
+          <div>
+            <div class="c-label">人才招募</div>
+            <div class="c-val">歡迎餐飲服務相關人才加入<br>兼職時薪：200 TWD/時起</div>
+          </div>
+        </div>
+      </div>
+      <div class="join-card">
+        <span class="join-badge">🤝 加入都城</span>
+        <div class="join-title">人才招募資訊</div>
+        <div class="join-desc">都城實業積極招募優秀餐飲服務人才，加入我們，與北台灣多點連鎖餐飲集團共同成長。</div>
+        <div class="join-items">
+          <div class="join-item">台北市、新北市、桃園市均有職缺</div>
+          <div class="join-item">時薪 200 TWD 起（正職另計）</div>
+          <div class="join-item">完善在職訓練體系</div>
+          <div class="join-item">多班次彈性排班</div>
+          <div class="join-item">正職升遷管理職通道</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">都城實業股份有限公司</div>
+        <p>深耕台灣北部餐飲市場，業務橫跨台北市、新北市及桃園市，以標準化連鎖管理體系提供優質餐飲服務。</p>
+      </div>
+      <div class="footer-col">
+        <h4>業務範疇</h4>
+        <ul>
+          <li><a href="#services">餐飲門市營運</a></li>
+          <li><a href="#services">連鎖門市管理</a></li>
+          <li><a href="#services">餐飲人才培育</a></li>
+          <li><a href="#services">企業營運管理</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>企業資訊</h4>
+        <ul>
+          <li><a href="#about">關於我們</a></li>
+          <li><a href="#why">企業優勢</a></li>
+          <li><a href="#contact">人才招募</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 都城實業股份有限公司。版權所有。</div>
+      <div class="footer-loc">台灣 · <span>北台灣多點佈局</span></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
