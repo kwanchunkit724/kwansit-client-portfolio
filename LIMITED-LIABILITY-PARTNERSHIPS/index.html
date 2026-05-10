@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kesari Technology | Corporate Services &amp; Company Formation Hong Kong</title>
+<style>
+  :root {
+    --primary: #0b1220;
+    --accent: #b8860b;
+    --accent2: #e8b94a;
+    --light: #f5f3ee;
+    --white: #ffffff;
+    --text: #1a1e2a;
+    --muted: #5a6070;
+    --border: #ddd8c8;
+    --card-bg: #faf8f2;
+    --hero-overlay: rgba(11,18,32,0.74);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI',Arial,sans-serif; color:var(--text); background:#fff; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+
+  nav {
+    background:var(--primary);
+    padding:0 2rem;
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px; position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 12px rgba(0,0,0,0.35);
+  }
+  .nav-brand { display:flex; align-items:center; gap:12px; }
+  .nav-logo {
+    width:42px; height:42px; background:var(--accent);
+    border-radius:8px; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:1.1rem; color:#fff;
+  }
+  .nav-brand-text { color:#fff; }
+  .nav-brand-text .line1 { font-size:1.05rem; font-weight:700; }
+  .nav-brand-text .line2 { font-size:0.72rem; color:var(--accent2); letter-spacing:0.5px; }
+  .nav-links { display:flex; gap:1.8rem; }
+  .nav-links a { color:rgba(255,255,255,0.82); font-size:0.88rem; font-weight:500; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--accent2); text-decoration:none; }
+  .nav-cta {
+    background:var(--accent); color:#fff !important; padding:8px 18px;
+    border-radius:6px; font-size:0.85rem !important; font-weight:600 !important;
+    transition:background 0.2s !important;
+  }
+  .nav-cta:hover { background:var(--accent2) !important; color:var(--primary) !important; }
+
+  .hero {
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+      url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1600&q=80') center/cover no-repeat;
+    min-height:500px; display:flex; align-items:center; padding:4rem 2rem;
+  }
+  .hero-inner { max-width:1100px; margin:0 auto; width:100%; display:flex; align-items:center; gap:3rem; }
+  .hero-text { flex:1; }
+  .hero-badge {
+    display:inline-block; background:rgba(184,134,11,0.25); border:1px solid var(--accent2);
+    color:var(--accent2); font-size:0.78rem; font-weight:600; padding:5px 14px;
+    border-radius:4px; letter-spacing:1px; text-transform:uppercase; margin-bottom:1.2rem;
+  }
+  .hero-text h1 { font-size:2.7rem; font-weight:800; color:#fff; line-height:1.15; margin-bottom:0.8rem; }
+  .hero-text h1 span { color:var(--accent2); }
+  .hero-text .subtitle { font-size:1.05rem; color:rgba(255,255,255,0.80); margin-bottom:1.8rem; line-height:1.65; max-width:520px; }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--accent); color:#fff; padding:13px 28px; border-radius:6px;
+    font-weight:700; font-size:0.95rem; border:2px solid var(--accent); transition:all 0.2s; display:inline-block;
+  }
+  .btn-primary:hover { background:var(--accent2); border-color:var(--accent2); color:var(--primary); text-decoration:none; }
+  .btn-outline {
+    background:transparent; color:#fff; padding:13px 28px; border-radius:6px;
+    font-weight:600; font-size:0.95rem; border:2px solid rgba(255,255,255,0.5); transition:all 0.2s; display:inline-block;
+  }
+  .btn-outline:hover { border-color:#fff; background:rgba(255,255,255,0.1); text-decoration:none; }
+  .hero-card {
+    background:rgba(255,255,255,0.09); backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.16); border-radius:14px;
+    padding:1.8rem 1.5rem; min-width:270px; color:#fff;
+  }
+  .hero-card h3 { font-size:0.82rem; color:var(--accent2); letter-spacing:1px; text-transform:uppercase; margin-bottom:1rem; }
+  .info-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:0.85rem; font-size:0.88rem; color:rgba(255,255,255,0.88); }
+  .info-icon { color:var(--accent2); flex-shrink:0; margin-top:1px; }
+
+  .stats-strip { background:var(--accent); padding:1.4rem 2rem; }
+  .stats-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-around; flex-wrap:wrap; gap:0; }
+  .stat-item { text-align:center; padding:0.4rem 1.5rem; }
+  .stat-num { font-size:1.9rem; font-weight:800; color:#fff; }
+  .stat-label { font-size:0.75rem; color:rgba(255,255,255,0.82); letter-spacing:0.5px; text-transform:uppercase; margin-top:2px; }
+
+  section { padding:4rem 2rem; }
+  .section-inner { max-width:1100px; margin:0 auto; }
+  .section-tag { font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:0.5rem; }
+  .section-title { font-size:2rem; font-weight:800; color:var(--primary); margin-bottom:0.8rem; }
+  .section-sub { font-size:1rem; color:var(--muted); line-height:1.7; max-width:620px; }
+
+  .about { background:#fff; }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; margin-top:2.5rem; }
+  .about-text p { color:var(--muted); line-height:1.8; margin-bottom:1rem; font-size:0.97rem; }
+  .highlight-box {
+    background:var(--primary); color:#fff; border-radius:12px; padding:2rem;
+    border-left:4px solid var(--accent);
+  }
+  .highlight-box h4 { font-size:0.95rem; color:var(--accent2); margin-bottom:1rem; letter-spacing:0.3px; }
+  .highlight-box ul { list-style:none; }
+  .highlight-box ul li { padding:0.5rem 0; border-bottom:1px solid rgba(255,255,255,0.1); font-size:0.9rem; color:rgba(255,255,255,0.88); display:flex; align-items:center; gap:8px; }
+  .highlight-box ul li:last-child { border-bottom:none; }
+  .highlight-box ul li::before { content:'▸'; color:var(--accent2); flex-shrink:0; }
+  .prop-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.5rem; }
+  .prop-card { background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:1.2rem; text-align:center; }
+  .prop-icon { font-size:1.8rem; margin-bottom:0.5rem; }
+  .prop-card h5 { font-size:0.88rem; font-weight:700; color:var(--primary); margin-bottom:0.3rem; }
+  .prop-card p { font-size:0.78rem; color:var(--muted); line-height:1.5; }
+
+  .services { background:var(--light); }
+  .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.5rem; }
+  .service-card {
+    background:#fff; border:1px solid var(--border); border-radius:12px;
+    padding:1.8rem 1.5rem; transition:all 0.2s; border-top:3px solid var(--accent);
+  }
+  .service-card:hover { box-shadow:0 6px 24px rgba(184,134,11,0.12); transform:translateY(-3px); }
+  .service-icon { font-size:2rem; margin-bottom:0.9rem; }
+  .service-card h4 { font-size:1.02rem; font-weight:700; color:var(--primary); margin-bottom:0.6rem; }
+  .service-card p { font-size:0.87rem; color:var(--muted); line-height:1.65; }
+
+  .llp-section { background:#fff; }
+  .llp-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; align-items:start; }
+  .llp-steps { counter-reset:steps; }
+  .step-item { display:flex; gap:1.2rem; margin-bottom:1.5rem; }
+  .step-num {
+    width:36px; height:36px; background:var(--accent); color:#fff;
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:0.9rem; flex-shrink:0;
+  }
+  .step-content h5 { font-size:0.95rem; font-weight:700; color:var(--primary); margin-bottom:0.3rem; }
+  .step-content p { font-size:0.87rem; color:var(--muted); line-height:1.6; }
+  .llp-info-card { background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:2rem; }
+  .llp-info-card h4 { font-size:1rem; font-weight:700; color:var(--primary); margin-bottom:1.2rem; }
+  .info-row2 { display:flex; gap:12px; margin-bottom:1rem; align-items:flex-start; }
+  .info-row2 .check { color:var(--accent); font-weight:700; font-size:1rem; flex-shrink:0; margin-top:1px; }
+  .info-row2 p { font-size:0.88rem; color:var(--muted); line-height:1.6; }
+  .info-row2 strong { color:var(--text); }
+
+  .contact { background:var(--primary); }
+  .contact .section-title { color:#fff; }
+  .contact .section-sub { color:rgba(255,255,255,0.7); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; }
+  .contact-info h4 { font-size:0.82rem; color:var(--accent2); letter-spacing:1px; text-transform:uppercase; margin-bottom:1.5rem; }
+  .contact-detail { display:flex; align-items:flex-start; gap:14px; margin-bottom:1.4rem; }
+  .contact-icon { width:42px; height:42px; background:rgba(184,134,11,0.2); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+  .contact-detail-text .label { font-size:0.75rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.5px; }
+  .contact-detail-text .value { font-size:0.95rem; color:#fff; font-weight:600; margin-top:2px; }
+  .contact-detail-text .value a { color:var(--accent2); }
+  .contact-form { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:2rem; }
+  .contact-form h4 { font-size:1rem; font-weight:700; color:#fff; margin-bottom:1.5rem; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .form-group { margin-bottom:1rem; }
+  .form-group label { font-size:0.8rem; color:rgba(255,255,255,0.65); margin-bottom:5px; display:block; }
+  .form-group input, .form-group select, .form-group textarea {
+    width:100%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
+    border-radius:7px; padding:10px 14px; color:#fff; font-size:0.9rem; transition:border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:var(--accent2); }
+  .form-group select option { background:var(--primary); }
+  .form-group textarea { resize:vertical; min-height:90px; }
+  .form-submit {
+    width:100%; background:var(--accent); color:#fff; border:none; border-radius:6px;
+    padding:13px; font-size:0.95rem; font-weight:700; cursor:pointer; transition:background 0.2s; margin-top:0.5rem;
+  }
+  .form-submit:hover { background:var(--accent2); color:var(--primary); }
+
+  footer { background:#060c18; padding:2rem; text-align:center; color:rgba(255,255,255,0.45); font-size:0.82rem; }
+  footer a { color:var(--accent2); }
+
+  @media(max-width:900px) {
+    .hero-inner, .about-grid, .llp-grid, .contact-grid { flex-direction:column; grid-template-columns:1fr; }
+    .hero-card { min-width:unset; width:100%; }
+    .prop-cards, .services-grid { grid-template-columns:1fr 1fr; }
+    .nav-links { display:none; }
+    .hero-text h1 { font-size:2rem; }
+  }
+  @media(max-width:600px) {
+    .prop-cards, .services-grid { grid-template-columns:1fr; }
+    .form-row { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">KT</div>
+    <div class="nav-brand-text">
+      <div class="line1">Kesari Technology</div>
+      <div class="line2">CORPORATE &amp; TECHNOLOGY SERVICES · HONG KONG</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#llp">LLP Registration</a>
+    <a href="#contact" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">Corporate Services · Hong Kong</div>
+      <h1>Company Formation &amp;<br><span>Corporate Solutions</span></h1>
+      <p class="subtitle">Kesari Technology provides professional corporate services and technology solutions for businesses establishing and growing in Hong Kong — including Limited Liability Partnership registration, company formation, and advisory services.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Start Your Enquiry</a>
+        <a href="#llp" class="btn-outline">LLP Registration</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Contact Us</h3>
+      <div class="info-row"><span class="info-icon">✉️</span><span><strong>Email:</strong> info@kesaritechnology.com</span></div>
+      <div class="info-row"><span class="info-icon">📍</span><span><strong>Region:</strong> Hong Kong</span></div>
+      <div class="info-row"><span class="info-icon">🌐</span><span><strong>Web:</strong> kesaritechnology.com</span></div>
+      <div class="info-row"><span class="info-icon">⚖️</span><span><strong>Industry:</strong> Legal &amp; Corporate Services</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">LLP</div>
+      <div class="stat-label">Registration Specialists</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">Jurisdiction Focus</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Tech</div>
+      <div class="stat-label">Enabled Services</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">End-to-End</div>
+      <div class="stat-label">Corporate Support</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-tag">About Kesari Technology</div>
+    <h2 class="section-title">Your Corporate Formation Partner in Hong Kong</h2>
+    <p class="section-sub">Kesari Technology combines corporate services expertise with technology to help businesses register, structure, and manage their operations in Hong Kong.</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Kesari Technology is a Hong Kong-based corporate services and technology firm providing comprehensive solutions for businesses looking to establish or restructure their legal entities. From Limited Liability Partnerships (LLP) to private limited companies, we guide clients through every step of the registration process.</p>
+        <p>Our team understands the regulatory landscape of Hong Kong's corporate environment, ensuring your business structure is correctly established, compliant, and positioned for growth. We combine legal service expertise with modern technology tools to streamline the formation and management process.</p>
+        <p>Whether you are a startup, an established enterprise, or a professional partnership, Kesari Technology offers tailored solutions to match your specific structural and compliance needs.</p>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">⚖️</div>
+            <h5>Legal Expertise</h5>
+            <p>Deep knowledge of HK corporate and partnership law</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💻</div>
+            <h5>Tech-Enabled</h5>
+            <p>Digital tools to streamline formation processes</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🤝</div>
+            <h5>End-to-End</h5>
+            <p>From registration to ongoing compliance support</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="highlight-box">
+          <h4>Why Work With Kesari Technology</h4>
+          <ul>
+            <li>Specialist in Hong Kong company and partnership formation</li>
+            <li>LLP and limited company registration expertise</li>
+            <li>Technology-driven process for speed and accuracy</li>
+            <li>Comprehensive compliance and secretarial support</li>
+            <li>Professional advisory on optimal business structures</li>
+            <li>Transparent pricing with no hidden costs</li>
+            <li>Dedicated support throughout the registration process</li>
+            <li>Ongoing corporate maintenance and filing services</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-tag">Our Services</div>
+    <h2 class="section-title">Corporate &amp; Technology Services</h2>
+    <p class="section-sub">We offer a comprehensive range of corporate formation, compliance, and technology services for businesses operating in Hong Kong.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h4>Limited Liability Partnership</h4>
+        <p>Complete LLP registration service in Hong Kong — from name reservation through deed preparation, registration with the Companies Registry, and post-formation compliance.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h4>Company Incorporation</h4>
+        <p>Efficient private limited company incorporation including articles of association preparation, registered office service, and Companies Registry submissions.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔄</div>
+        <h4>Corporate Restructuring</h4>
+        <p>Advisory and execution support for changing your business structure — conversion, restructuring, mergers, or dissolution — with full regulatory compliance.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📁</div>
+        <h4>Company Secretarial</h4>
+        <p>Ongoing company secretarial services including statutory filings, annual returns, maintenance of registers, and Companies Registry correspondence.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <h4>Technology Solutions</h4>
+        <p>Business technology implementation and digital transformation services to improve operational efficiency and support your company's growth objectives.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h4>Compliance Advisory</h4>
+        <p>Regulatory compliance guidance for HK companies including annual filing obligations, business registration renewals, and licensing requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LLP SECTION -->
+<section class="llp-section" id="llp">
+  <div class="section-inner">
+    <div class="section-tag">LLP Registration</div>
+    <h2 class="section-title">Registering a Limited Liability Partnership in Hong Kong</h2>
+    <p class="section-sub">The Limited Liability Partnerships Ordinance (Cap. 637) provides a flexible business structure combining partnership features with limited liability protection. We make the process straightforward.</p>
+    <div class="llp-grid">
+      <div class="llp-steps">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h5>Choose Your Structure</h5>
+            <p>Determine whether an LLP suits your business needs — ideal for professional firms such as law, accounting, architecture, and consultancy practices requiring limited liability protection.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h5>Name Reservation</h5>
+            <p>Reserve your LLP name with the Companies Registry. We check name availability and ensure compliance with naming requirements under the LLP Ordinance.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h5>Partnership Deed Preparation</h5>
+            <p>Draft a comprehensive LLP agreement setting out capital contributions, profit-sharing arrangements, management responsibilities, and partner rights and obligations.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h5>Registration Submission</h5>
+            <p>Submit the completed registration application and documentation to the Companies Registry, along with the prescribed registration fee.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h5>Post-Registration Compliance</h5>
+            <p>Obtain Business Registration Certificate, set up partner accounts, and establish ongoing compliance procedures to keep your LLP in good standing.</p>
+          </div>
+        </div>
+      </div>
+      <div class="llp-info-card">
+        <h4>Key Facts About HK Limited Liability Partnerships</h4>
+        <div class="info-row2">
+          <span class="check">✓</span>
+          <p><strong>Legal Framework:</strong> Governed by the Limited Liability Partnerships Ordinance (Cap. 637), enacted to enable flexible professional partnerships with liability protection.</p>
+        </div>
+        <div class="info-row2">
+          <span class="check">✓</span>
+          <p><strong>Liability Protection:</strong> Partners' personal assets are protected from the negligence claims arising from acts of other partners or employees.</p>
+        </div>
+        <div class="info-row2">
+          <span class="check">✓</span>
+          <p><strong>Minimum Partners:</strong> At least two partners required. There is no upper limit on the number of partners in an LLP.</p>
+        </div>
+        <div class="info-row2">
+          <span class="check">✓</span>
+          <p><strong>Designated Partner:</strong> At least one Designated Partner (DP) must be appointed to manage compliance and filing obligations.</p>
+        </div>
+        <div class="info-row2">
+          <span class="check">✓</span>
+          <p><strong>Annual Filing:</strong> LLPs must file annual statements with the Companies Registry confirming partners and the Designated Partner details.</p>
+        </div>
+        <div class="info-row2">
+          <span class="check">✓</span>
+          <p><strong>Flexibility:</strong> Partners have the freedom to arrange internal governance as they see fit through the LLP agreement.</p>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <a href="#contact" class="btn-primary" style="font-size:0.88rem;padding:11px 22px;">Enquire About LLP Registration</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--accent2);">Contact Us</div>
+    <h2 class="section-title">Get Started with Kesari Technology</h2>
+    <p class="section-sub">Reach out to our team to discuss your corporate formation or technology service requirements. We'll guide you to the right solution.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h4>Contact Information</h4>
+        <div class="contact-detail">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-detail-text">
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:info@kesaritechnology.com">info@kesaritechnology.com</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🌐</div>
+          <div class="contact-detail-text">
+            <div class="label">Website</div>
+            <div class="value"><a href="https://kesaritechnology.com" target="_blank">kesaritechnology.com</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail-text">
+            <div class="label">Region</div>
+            <div class="value">Hong Kong</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">⚖️</div>
+          <div class="contact-detail-text">
+            <div class="label">Specialisation</div>
+            <div class="value">LLP Registration · Company Formation<br>Corporate Services · Tech Solutions</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h4>Service Enquiry Form</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Your first name">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Your last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+852 XXXX XXXX">
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select>
+            <option>LLP Registration</option>
+            <option>Company Incorporation</option>
+            <option>Corporate Restructuring</option>
+            <option>Company Secretarial Services</option>
+            <option>Technology Solutions</option>
+            <option>Compliance Advisory</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your requirements..."></textarea>
+        </div>
+        <button class="form-submit">Send Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="margin-bottom:0.5rem;">
+    <strong style="color:rgba(255,255,255,0.7);">Kesari Technology</strong> · Corporate &amp; Technology Services · Hong Kong
+  </p>
+  <p>
+    <a href="mailto:info@kesaritechnology.com">info@kesaritechnology.com</a> &nbsp;|&nbsp;
+    <a href="https://kesaritechnology.com" target="_blank">kesaritechnology.com</a>
+  </p>
+  <p style="margin-top:0.8rem;font-size:0.75rem;">© 2025 Kesari Technology. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
