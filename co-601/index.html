@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鴨靈號 Dukling | 香港古董帆船 · 維多利亞港觀光</title>
+<style>
+:root {
+  --bg: #04080e;
+  --bg2: #060c14;
+  --bg3: #0a1020;
+  --accent: #c82020;
+  --accent2: #e03030;
+  --gold: #d4880c;
+  --gold2: #f0a820;
+  --teal: #0c8888;
+  --text: #e8f0f8;
+  --muted: #5878a0;
+  --border: rgba(212,136,12,0.15);
+  --card: #080e18;
+  --radius: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI','Microsoft JhengHei',system-ui,sans-serif;line-height:1.6;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,8,14,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:1.2rem;font-weight:900;color:var(--gold);text-decoration:none;letter-spacing:1px;}
+.nav-logo span{color:var(--muted);font-size:0.78rem;font-weight:400;margin-left:0.5rem;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:600;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent2);}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 2rem 60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(12,136,136,0.08) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 10% 80%,rgba(200,32,32,0.07) 0%,transparent 60%),linear-gradient(180deg,transparent 60%,rgba(212,136,12,0.04) 100%);}
+.hero-waves{position:absolute;bottom:0;left:0;right:0;height:120px;overflow:hidden;opacity:0.12;}
+.hero-waves::before{content:'';position:absolute;bottom:0;left:-100%;right:-100%;height:60px;background:repeating-linear-gradient(90deg,var(--teal) 0px,var(--teal) 60px,transparent 60px,transparent 120px);animation:wave 4s linear infinite;}
+.hero-waves::after{content:'';position:absolute;bottom:20px;left:-100%;right:-100%;height:40px;background:repeating-linear-gradient(90deg,transparent 0px,transparent 40px,var(--teal) 40px,var(--teal) 80px);animation:wave 6s linear infinite reverse;opacity:0.6;}
+@keyframes wave{from{transform:translateX(0);}to{transform:translateX(120px);}}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(212,136,12,0.12);border:1px solid rgba(212,136,12,0.25);color:var(--gold);padding:0.35rem 0.9rem;border-radius:20px;font-size:0.8rem;font-weight:600;margin-bottom:1.5rem;}
+.badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero h1{font-size:3.2rem;font-weight:900;line-height:1.15;margin-bottom:0.5rem;letter-spacing:2px;}
+.hero h1 span{color:var(--gold);}
+.hero-en{font-size:1.1rem;color:var(--teal);font-weight:600;letter-spacing:1px;margin-bottom:1.2rem;}
+.hero-desc{font-size:0.95rem;color:var(--muted);max-width:500px;margin-bottom:2rem;line-height:1.9;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:all 0.2s;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--gold);padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;border:1px solid rgba(212,136,12,0.3);transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--gold);background:rgba(212,136,12,0.08);}
+.btn-wa{background:rgba(24,180,80,0.15);color:#18c860;padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;border:1px solid rgba(24,180,80,0.25);transition:all 0.2s;}
+.btn-wa:hover{background:rgba(24,180,80,0.25);}
+
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold),var(--teal));}
+.info-card-title{font-size:0.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(212,136,12,0.08);}
+.info-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.info-icon{width:32px;height:32px;background:rgba(212,136,12,0.12);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;color:var(--text);font-weight:500;line-height:1.4;}
+.info-val a{color:var(--gold);text-decoration:none;}
+
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.stat-item{text-align:center;}
+.stat-num{font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1;margin-bottom:0.3rem;}
+.stat-label{font-size:0.8rem;color:var(--muted);}
+
+section{padding:5rem 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-tag{font-size:0.75rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:0.8rem;}
+.section-title{font-size:2.2rem;font-weight:800;line-height:1.2;margin-bottom:1rem;letter-spacing:1px;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:620px;line-height:1.9;}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+.about-highlight{background:var(--bg3);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:1.5rem 1.8rem;margin-bottom:1.5rem;}
+.about-highlight p{color:var(--text);font-size:0.95rem;line-height:1.9;font-style:italic;}
+.about-text{color:var(--muted);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color 0.2s;}
+.prop-card:hover{border-color:var(--gold);}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.78rem;color:var(--muted);line-height:1.5;}
+.boarding-box{background:var(--card);border:1px solid rgba(12,136,136,0.25);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.boarding-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold));}
+.boarding-title{font-size:0.9rem;font-weight:700;color:var(--teal);letter-spacing:0.5px;margin-bottom:1.2rem;}
+.boarding-step{display:flex;align-items:flex-start;gap:0.8rem;padding:0.8rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;margin-bottom:0.7rem;transition:border-color 0.2s;}
+.boarding-step:hover{border-color:var(--teal);}
+.boarding-step:last-child{margin-bottom:0;}
+.step-icon{font-size:1.1rem;flex-shrink:0;}
+.step-text{font-size:0.83rem;color:var(--muted);line-height:1.5;}
+.step-text strong{color:var(--text);}
+
+.services-bg{background:var(--bg2);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--c,var(--gold));opacity:0;transition:opacity 0.25s;}
+.service-card:hover{border-color:rgba(212,136,12,0.35);transform:translateY(-3px);}
+.service-card:hover::before{opacity:1;}
+.service-card:nth-child(1){--c:#c82020;}
+.service-card:nth-child(2){--c:#d4880c;}
+.service-card:nth-child(3){--c:#0c8888;}
+.service-card:nth-child(4){--c:#9030d8;}
+.service-card:nth-child(5){--c:#18c870;}
+.service-card:nth-child(6){--c:#0c78d0;}
+.svc-icon{font-size:2rem;margin-bottom:0.8rem;}
+.svc-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.svc-desc{font-size:0.83rem;color:var(--muted);line-height:1.6;}
+.svc-email{font-size:0.75rem;color:var(--teal);margin-top:0.6rem;}
+.svc-email a{color:var(--teal);text-decoration:none;}
+
+.group-bg{background:var(--bg3);}
+.group-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem;}
+.group-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;transition:all 0.2s;}
+.group-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.group-card.flagship{border-color:rgba(212,136,12,0.3);grid-column:span 2;}
+.group-icon{font-size:1.8rem;margin-bottom:0.6rem;}
+.group-name{font-size:1rem;font-weight:800;color:var(--gold);margin-bottom:0.3rem;letter-spacing:0.5px;}
+.group-en{font-size:0.78rem;color:var(--muted);margin-bottom:0.6rem;}
+.group-desc{font-size:0.83rem;color:var(--muted);line-height:1.6;}
+.group-tag{display:inline-block;font-size:0.7rem;font-weight:700;padding:0.2rem 0.6rem;background:rgba(212,136,12,0.12);color:var(--gold2);border-radius:4px;margin-top:0.6rem;}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;}
+.contact-info{display:flex;flex-direction:column;gap:1rem;}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem;background:var(--card);border:1px solid var(--border);border-radius:10px;transition:border-color 0.2s;}
+.contact-item:hover{border-color:var(--gold);}
+.c-icon{width:40px;height:40px;background:rgba(212,136,12,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.3rem;}
+.c-val{font-size:0.88rem;color:var(--text);font-weight:500;line-height:1.5;}
+.c-val a{color:var(--gold);text-decoration:none;}
+.office-card{background:var(--card);border:1px solid rgba(212,136,12,0.25);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.office-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold),var(--teal));}
+.office-badge{display:inline-block;font-size:0.72rem;font-weight:700;padding:0.25rem 0.7rem;background:rgba(12,136,136,0.15);color:var(--teal);border-radius:4px;margin-bottom:1rem;text-transform:uppercase;}
+.office-name{font-size:1.3rem;font-weight:800;color:var(--text);margin-bottom:0.3rem;letter-spacing:1px;}
+.office-en{font-size:0.82rem;color:var(--muted);margin-bottom:1rem;}
+.office-addr{font-size:0.88rem;color:var(--text);line-height:1.8;margin-bottom:1rem;}
+.office-hours-block{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.8rem;}
+.hours-row{display:flex;align-items:center;gap:0.6rem;padding:0.5rem 0.8rem;background:rgba(212,136,12,0.06);border-radius:6px;font-size:0.82rem;color:var(--muted);}
+.hours-row strong{color:var(--gold);}
+.social-row{display:flex;gap:0.8rem;margin-top:1rem;}
+.social-btn{display:flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;background:rgba(12,136,136,0.1);border:1px solid rgba(12,136,136,0.2);border-radius:6px;font-size:0.78rem;color:var(--teal);text-decoration:none;transition:all 0.2s;}
+.social-btn:hover{background:rgba(12,136,136,0.2);}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-brand p{color:var(--muted);font-size:0.85rem;line-height:1.7;margin-top:0.8rem;}
+.footer-logo{font-size:1.3rem;font-weight:900;color:var(--gold);letter-spacing:1px;}
+.footer-logo span{color:var(--muted);font-size:0.75rem;font-weight:400;margin-left:0.3rem;}
+.footer-col h4{font-size:0.75rem;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col li a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col li a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+.footer-est{font-size:0.8rem;color:var(--muted);}
+.footer-est span{color:var(--gold);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero h1{font-size:2.2rem;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .group-grid{grid-template-columns:1fr;}
+  .group-card.flagship{grid-column:span 1;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+}
+@media(max-width:600px){
+  .services-grid,.about-props{grid-template-columns:1fr;}
+  .hero h1{font-size:1.8rem;}
+  .hero-btns{flex-direction:column;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">🚢 鴨靈號 <span>Dukling 1955</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">鴨靈號</a></li>
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#group">集團旗下</a></li>
+      <li><a href="#contact">預訂查詢</a></li>
+    </ul>
+    <a href="tel:+85237597070" class="nav-cta">立即預訂</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-waves"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="badge-dot"></span> 香港唯一恆常運行古董帆船 · 建造於1955年</div>
+      <h1>鴨靈號<br><span>Dukling</span></h1>
+      <div class="hero-en">Hong Kong's Iconic Antique Chinese Junk · Est. 1955</div>
+      <p class="hero-desc">1955年建造，香港目前唯一仍恆常運行的古董中式帆船。坐在鴨靈號上，就像穿越時空隧道，坐在舊的香港，看新的香港。</p>
+      <div class="hero-btns">
+        <a href="tel:+85237597070" class="btn-primary">📞 票務熱線</a>
+        <a href="https://wa.me/85296221679" class="btn-wa">💬 WhatsApp 查詢</a>
+        <a href="#services" class="btn-secondary">服務項目</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">📍 鴨靈號聯絡資料</div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">票務熱線</div>
+          <div class="info-val"><a href="tel:+85237597070">(852) 3759-7070</a><br><span style="font-size:0.75rem;color:var(--muted);">每日 10:00 – 22:00</span></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💬</div>
+        <div>
+          <div class="info-label">WhatsApp</div>
+          <div class="info-val"><a href="https://wa.me/85296221679">(852) 9622-1679</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">查詢電郵</div>
+          <div class="info-val"><a href="mailto:info@dukling.com.hk">info@dukling.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">⚓</div>
+        <div>
+          <div class="info-label">登船位置</div>
+          <div class="info-val">尖沙咀一號梯台<br><span style="font-size:0.75rem;color:var(--muted);">星光大道星巴克對出，李小龍銅像與麥兜銅像之間</span></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網址</div>
+          <div class="info-val"><a href="https://dukling.com.hk" target="_blank">dukling.com.hk</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">1955</div>
+      <div class="stat-label">建造年份</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">唯一</div>
+      <div class="stat-label">香港仍運行古董帆船</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">維港</div>
+      <div class="stat-label">維多利亞港遊覽服務</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HS集團</div>
+      <div class="stat-label">旅遊集團旗下品牌</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-tag">About Dukling</div>
+    <h2 class="section-title">香港不朽的情懷</h2>
+    <p class="section-sub">鴨靈號是昔日漁民出海捕魚的工具，如今成為香港獨一無二的文化遺產與旅遊象徵。</p>
+    <div class="about-grid">
+      <div>
+        <div class="about-highlight">
+          <p>「坐在鴨靈號上，就像穿越時空隧道，坐在舊的香港，看新的香港。希望大家慢慢享受維港兩岸景色的同時，也可以靜靜細味香港的一份——不朽的情懷。」</p>
+        </div>
+        <p class="about-text">「鴨靈號」於1955年建造，是香港目前唯一仍恆常運行的古董中式帆船，是昔日漁民出海捕魚的工具。鴨靈號不單是香港的標誌，更是香港人的集體回憶。</p>
+        <p class="about-text">鴨靈號現時用作觀光船，提供維多利亞港遊覽服務，同時亦可提供派對、包船、拍攝、廣告、文化體驗遊等等服務，是HS旅遊集團旗下之附屬子公司。</p>
+        <div class="about-props">
+          <div class="prop-card">
+            <div class="prop-icon">⛵</div>
+            <div class="prop-title">70年歷史古帆船</div>
+            <div class="prop-desc">1955年建造，承載香港漁業文化與集體回憶</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🌊</div>
+            <div class="prop-title">維多利亞港遊覽</div>
+            <div class="prop-desc">在壯麗的維港景色中享受獨特的帆船體驗</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🎉</div>
+            <div class="prop-title">包船私人活動</div>
+            <div class="prop-desc">派對、企業活動、廣告拍攝及文化體驗遊</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🏆</div>
+            <div class="prop-title">香港文化地標</div>
+            <div class="prop-desc">香港獨一無二的歷史符號與旅遊必遊體驗</div>
+          </div>
+        </div>
+      </div>
+      <div class="boarding-box">
+        <div class="boarding-title">⚓ 登船資訊</div>
+        <div class="boarding-step">
+          <span class="step-icon">📍</span>
+          <div class="step-text"><strong>登船地點</strong><br>尖沙咀一號梯台（星光大道的星巴克對出）<br>李小龍銅像和麥兜銅像之間，鄰近梅艷芳銅像</div>
+        </div>
+        <div class="boarding-step">
+          <span class="step-icon">🚇</span>
+          <div class="step-text"><strong>如何前往</strong><br>乘搭地鐵至尖沙咀站，沿星光大道步行至一號梯台</div>
+        </div>
+        <div class="boarding-step">
+          <span class="step-icon">📞</span>
+          <div class="step-text"><strong>票務熱線</strong><br>(852) 3759-7070<br>每日 10:00 – 22:00</div>
+        </div>
+        <div class="boarding-step">
+          <span class="step-icon">💬</span>
+          <div class="step-text"><strong>WhatsApp 即時查詢</strong><br>(852) 9622-1679</div>
+        </div>
+        <div class="boarding-step">
+          <span class="step-icon">🏢</span>
+          <div class="step-text"><strong>辦公室地址</strong><br>香港九龍尖沙咀東部科學館道14號<br>新文華中心A座9樓912室<br>辦公室時間：一至五 9:00-19:00；六 9:00-13:00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <div class="section-inner">
+    <div class="section-tag">Services</div>
+    <h2 class="section-title">鴨靈號服務項目</h2>
+    <p class="section-sub">鴨靈號提供多元化的維港遊覽及包船服務，為您的香港體驗增添獨特而難忘的回憶。</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-icon">🌅</div>
+        <div class="svc-title">維多利亞港觀光遊覽</div>
+        <div class="svc-desc">乘坐70年歷史古董帆船，悠閒遊覽香港標誌性的維多利亞港，欣賞兩岸城市景色，感受香港不朽情懷。</div>
+        <div class="svc-email">預訂：<a href="mailto:reservation@dukling.com.hk">reservation@dukling.com.hk</a></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🎉</div>
+        <div class="svc-title">派對及慶祝活動</div>
+        <div class="svc-desc">在維港美景下舉辦生日派對、周年紀念、求婚等特別慶祝活動，讓鴨靈號成為您最獨特的派對場地。</div>
+        <div class="svc-email">查詢：<a href="mailto:sales@dukling.com.hk">sales@dukling.com.hk</a></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">⛵</div>
+        <div class="svc-title">包船服務</div>
+        <div class="svc-desc">提供靈活的包船方案，適合各類私人活動、企業聚會及小型社交活動，讓您獨家享用鴨靈號的維港體驗。</div>
+        <div class="svc-email">查詢：<a href="mailto:sales@dukling.com.hk">sales@dukling.com.hk</a></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🎬</div>
+        <div class="svc-title">廣告及拍攝場地</div>
+        <div class="svc-desc">鴨靈號是香港獨特的拍攝場景，廣受廣告、電影及媒體製作團隊青睞，提供無可取代的香港懷舊視覺元素。</div>
+        <div class="svc-email">查詢：<a href="mailto:marketing@dukling.com.hk">marketing@dukling.com.hk</a></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🎎</div>
+        <div class="svc-title">文化體驗遊</div>
+        <div class="svc-desc">為學校、旅行團或文化愛好者提供深度的香港漁業文化與帆船歷史體驗遊，了解鴨靈號背後的香港故事。</div>
+        <div class="svc-email">查詢：<a href="mailto:info@dukling.com.hk">info@dukling.com.hk</a></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🏢</div>
+        <div class="svc-title">企業活動及品牌推廣</div>
+        <div class="svc-desc">為企業客戶提供獨特的維港品牌推廣場景，舉辦客戶招待活動、媒體發布會及企業聯誼，提升品牌形象。</div>
+        <div class="svc-email">查詢：<a href="mailto:marketing@dukling.com.hk">marketing@dukling.com.hk</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GROUP -->
+<section id="group" class="group-bg">
+  <div class="section-inner">
+    <div class="section-tag">HS Travel Group</div>
+    <h2 class="section-title">HS 旅遊集團旗下品牌</h2>
+    <p class="section-sub">鴨靈號是行內既穩定又有聲望的 HS 旅遊集團旗下之附屬子公司，集團旗下品牌各具獨特市場定位。</p>
+    <div class="group-grid">
+      <div class="group-card flagship">
+        <div class="group-icon">⛵</div>
+        <div class="group-name">鴨靈號 Dukling</div>
+        <div class="group-en">Hong Kong's Antique Chinese Junk · Est. 1955</div>
+        <div class="group-desc">香港目前唯一仍恆常運行的古董中式帆船。提供維多利亞港觀光遊覽、包船、派對、廣告拍攝及文化體驗遊服務。香港標誌性的歷史文化遺產，香港人的集體回憶。</div>
+        <span class="group-tag">旗艦品牌 · 維港觀光</span>
+      </div>
+      <div class="group-card">
+        <div class="group-icon">🌏</div>
+        <div class="group-name">恆盛國際旅遊有限公司</div>
+        <div class="group-en">International Travel Services · 25 Years Experience</div>
+        <div class="group-desc">擁有25年經驗、全球其中一所主要酒店預訂中心，總部設於香港，並於中國、臺灣、日本和泰國等地設有分社。</div>
+        <span class="group-tag">酒店預訂 · 亞太分社</span>
+      </div>
+      <div class="group-card">
+        <div class="group-icon">💻</div>
+        <div class="group-name">AsiaTravelCare.com</div>
+        <div class="group-en">Online Travel Agency · TIC Lic. No.353113</div>
+        <div class="group-desc">網上旅行社以優惠價格為旅客提供多元化酒店、門票、觀光團等旅遊服務。總部位於香港，設有多個海外辦事處。</div>
+        <span class="group-tag">網上旅行社 · 多元服務</span>
+      </div>
+      <div class="group-card">
+        <div class="group-icon">✈️</div>
+        <div class="group-name">品樂旅行社</div>
+        <div class="group-en">Business Travel Division of AsiaTravelCare.com</div>
+        <div class="group-desc">主要針對商務旅遊的獨特模式，為客戶提供質優價宜的綜合旅遊服務，與各大航空公司及國際酒店集團聯繫密切。</div>
+        <span class="group-tag">商務旅遊 · 度身設計</span>
+      </div>
+      <div class="group-card">
+        <div class="group-icon">🚌</div>
+        <div class="group-name">譽利旅遊巴士有限公司</div>
+        <div class="group-en">Luxury Coach & Car Fleet Services</div>
+        <div class="group-desc">經營現代化車隊，擁有豪華空調旅遊巴及轎車（20至50座位），提供機場接送、遊覽名勝及會議展覽交通安排。</div>
+        <span class="group-tag">旅遊巴士 · 轎車租賃</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg2);border-top:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-tag">Contact & Booking</div>
+    <h2 class="section-title">預訂及查詢</h2>
+    <p class="section-sub">透過多個聯絡渠道預訂鴨靈號遊覽或查詢各類服務詳情。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">票務熱線</div>
+            <div class="c-val"><a href="tel:+85237597070">(852) 3759-7070</a><br><span style="font-size:0.78rem;color:var(--muted);">每日 10:00–22:00（星期一至日）</span></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">💬</div>
+          <div>
+            <div class="c-label">WhatsApp</div>
+            <div class="c-val"><a href="https://wa.me/85296221679">(852) 9622-1679</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">查詢電郵</div>
+            <div class="c-val">
+              <a href="mailto:info@dukling.com.hk">info@dukling.com.hk</a><br>
+              <a href="mailto:reservation@dukling.com.hk">reservation@dukling.com.hk</a> （票務）<br>
+              <a href="mailto:sales@dukling.com.hk">sales@dukling.com.hk</a> （包船）<br>
+              <a href="mailto:marketing@dukling.com.hk">marketing@dukling.com.hk</a> （廣告）
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">📱</div>
+          <div>
+            <div class="c-label">社交媒體</div>
+            <div class="c-val">
+              <a href="https://www.facebook.com/Dukling1955/" target="_blank">Facebook: Dukling1955</a><br>
+              Instagram: @dukling1955
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="office-card">
+        <span class="office-badge">🏢 辦公室地址</span>
+        <div class="office-name">鴨靈號 Dukling</div>
+        <div class="office-en">HS 旅遊集團附屬子公司</div>
+        <div class="office-addr">
+          香港九龍尖沙咀東部科學館道14號<br>
+          新文華中心A座9樓912室<br><br>
+          Room 912, 9/F, Block A, New World Centre<br>
+          14 Salisbury Road, Tsim Sha Tsui East<br>
+          Kowloon, Hong Kong
+        </div>
+        <div class="office-hours-block">
+          <div class="hours-row">⏰ <strong>辦公室：</strong>星期一至五 09:00 – 19:00</div>
+          <div class="hours-row">⏰ <strong>星期六：</strong>09:00 – 13:00</div>
+          <div class="hours-row">📞 <strong>票務熱線：</strong>每日 10:00 – 22:00</div>
+        </div>
+        <div class="social-row">
+          <a href="https://www.facebook.com/Dukling1955/" target="_blank" class="social-btn">📘 Facebook</a>
+          <a href="https://dukling.com.hk" target="_blank" class="social-btn">🌐 網站</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">🚢 鴨靈號 <span>Dukling 1955</span></div>
+        <p>香港1955年建造的古董中式帆船，香港唯一仍恆常運行的帆船，提供維港觀光遊覽、包船及文化體驗服務。HS 旅遊集團旗下品牌。</p>
+      </div>
+      <div class="footer-col">
+        <h4>服務項目</h4>
+        <ul>
+          <li><a href="#services">維港觀光遊覽</a></li>
+          <li><a href="#services">派對包船</a></li>
+          <li><a href="#services">廣告拍攝</a></li>
+          <li><a href="#services">文化體驗遊</a></li>
+          <li><a href="#services">企業活動</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>集團品牌</h4>
+        <ul>
+          <li><a href="#group">恆盛國際旅遊</a></li>
+          <li><a href="#group">AsiaTravelCare</a></li>
+          <li><a href="#group">品樂旅行社</a></li>
+          <li><a href="#group">譽利旅遊巴士</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡我們</h4>
+        <ul>
+          <li><a href="tel:+85237597070">(852) 3759-7070</a></li>
+          <li><a href="https://wa.me/85296221679">WhatsApp</a></li>
+          <li><a href="mailto:info@dukling.com.hk">info@dukling.com.hk</a></li>
+          <li><a href="https://dukling.com.hk" target="_blank">dukling.com.hk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 鴨靈號 Dukling · HS 旅遊集團。版權所有。</div>
+      <div class="footer-est">建造於 <span>1955年</span> · 尖沙咀一號梯台登船</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
