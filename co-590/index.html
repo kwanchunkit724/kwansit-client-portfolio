@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>富臨集團控股有限公司 | Fulum Group Holdings Limited</title>
+<style>
+:root {
+  --bg: #080808;
+  --bg2: #0e0a08;
+  --bg3: #140e08;
+  --accent: #c82020;
+  --accent2: #e03030;
+  --gold: #d4a020;
+  --gold2: #e8c040;
+  --text: #f0e8d8;
+  --muted: #907868;
+  --border: rgba(212,160,32,0.15);
+  --card: #100c08;
+  --radius: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI','Microsoft JhengHei',system-ui,sans-serif;line-height:1.6;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,8,8,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:1.2rem;font-weight:800;color:var(--gold);text-decoration:none;letter-spacing:1px;}
+.nav-logo span{color:var(--text);font-size:0.8rem;font-weight:400;margin-left:0.5rem;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:600;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent2);}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 2rem 60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 60% 35%,rgba(200,32,32,0.1) 0%,transparent 65%),radial-gradient(ellipse 50% 50% at 15% 80%,rgba(212,160,32,0.07) 0%,transparent 60%);}
+.hero-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(212,160,32,0.02) 0px,rgba(212,160,32,0.02) 1px,transparent 1px,transparent 20px),repeating-linear-gradient(-45deg,rgba(212,160,32,0.02) 0px,rgba(212,160,32,0.02) 1px,transparent 1px,transparent 20px);pointer-events:none;}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(212,160,32,0.12);border:1px solid rgba(212,160,32,0.25);color:var(--gold);padding:0.35rem 0.9rem;border-radius:20px;font-size:0.8rem;font-weight:600;margin-bottom:1.5rem;}
+.badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero h1{font-size:2.8rem;font-weight:900;line-height:1.2;margin-bottom:0.8rem;letter-spacing:2px;}
+.hero h1 span{color:var(--gold);}
+.hero-en{font-size:1.1rem;color:var(--muted);margin-bottom:1.2rem;letter-spacing:0.5px;}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:500px;margin-bottom:2rem;line-height:1.8;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:all 0.2s;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--gold);padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;border:1px solid rgba(212,160,32,0.3);transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--gold);background:rgba(212,160,32,0.08);}
+
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));}
+.info-card-title{font-size:0.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(212,160,32,0.08);}
+.info-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.info-icon{width:32px;height:32px;background:rgba(212,160,32,0.12);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;color:var(--text);font-weight:500;line-height:1.4;}
+.info-val a{color:var(--gold);text-decoration:none;}
+
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.stat-item{text-align:center;}
+.stat-num{font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1;margin-bottom:0.3rem;}
+.stat-label{font-size:0.8rem;color:var(--muted);letter-spacing:0.3px;}
+
+section{padding:5rem 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-tag{font-size:0.75rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:0.8rem;}
+.section-title{font-size:2.2rem;font-weight:800;line-height:1.2;margin-bottom:1rem;letter-spacing:1px;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.8;}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+.about-highlight{background:var(--bg3);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:1.5rem 1.8rem;margin-bottom:1.5rem;}
+.about-highlight p{color:var(--text);font-size:0.95rem;line-height:1.9;}
+.about-text{color:var(--muted);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color 0.2s;}
+.prop-card:hover{border-color:var(--gold);}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.78rem;color:var(--muted);line-height:1.5;}
+.timeline{display:flex;flex-direction:column;gap:0;position:relative;}
+.timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),var(--gold),transparent);}
+.timeline-item{display:flex;gap:1.5rem;padding-bottom:1.5rem;position:relative;}
+.timeline-dot{width:42px;height:42px;background:var(--card);border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800;color:var(--gold);flex-shrink:0;position:relative;z-index:1;}
+.timeline-content{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;flex:1;transition:border-color 0.2s;}
+.timeline-content:hover{border-color:var(--gold);}
+.timeline-year{font-size:0.72rem;color:var(--gold);font-weight:700;letter-spacing:0.5px;margin-bottom:0.2rem;}
+.timeline-text{font-size:0.85rem;color:var(--text);line-height:1.5;}
+
+.brands-bg{background:var(--bg2);}
+.brands-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.brand-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:all 0.25s;position:relative;overflow:hidden;text-align:center;}
+.brand-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--c,var(--gold));opacity:0;transition:opacity 0.25s;}
+.brand-card:hover{border-color:rgba(212,160,32,0.35);transform:translateY(-3px);}
+.brand-card:hover::before{opacity:1;}
+.brand-card:nth-child(1){--c:#c82020;}
+.brand-card:nth-child(2){--c:#d4a020;}
+.brand-card:nth-child(3){--c:#e07820;}
+.brand-card:nth-child(4){--c:#18c870;}
+.brand-card:nth-child(5){--c:#0c78d0;}
+.brand-card:nth-child(6){--c:#9030d8;}
+.brand-icon{font-size:2.5rem;margin-bottom:1rem;}
+.brand-name{font-size:1.2rem;font-weight:800;color:var(--gold);margin-bottom:0.3rem;letter-spacing:1px;}
+.brand-en{font-size:0.82rem;color:var(--muted);margin-bottom:0.8rem;}
+.brand-desc{font-size:0.83rem;color:var(--muted);line-height:1.6;}
+.brand-type{display:inline-block;font-size:0.7rem;font-weight:700;padding:0.2rem 0.6rem;background:rgba(212,160,32,0.12);color:var(--gold);border-radius:4px;margin-top:0.6rem;}
+
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;text-align:center;transition:all 0.2s;}
+.why-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.why-icon{font-size:2rem;margin-bottom:0.8rem;}
+.why-title{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.why-desc{font-size:0.82rem;color:var(--muted);line-height:1.6;}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;}
+.contact-info{display:flex;flex-direction:column;gap:1.2rem;}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem;background:var(--card);border:1px solid var(--border);border-radius:10px;transition:border-color 0.2s;}
+.contact-item:hover{border-color:var(--gold);}
+.c-icon{width:40px;height:40px;background:rgba(212,160,32,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.3rem;}
+.c-val{font-size:0.9rem;color:var(--text);font-weight:500;line-height:1.5;}
+.c-val a{color:var(--gold);text-decoration:none;}
+.hq-card{background:var(--card);border:1px solid rgba(212,160,32,0.3);border-radius:var(--radius);padding:2.5rem;position:relative;overflow:hidden;}
+.hq-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));}
+.hq-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.72rem;font-weight:700;padding:0.25rem 0.7rem;background:rgba(200,32,32,0.15);color:var(--accent2);border-radius:4px;margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.5px;}
+.hq-name{font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:0.3rem;letter-spacing:1px;}
+.hq-en{font-size:0.85rem;color:var(--muted);margin-bottom:1.2rem;}
+.hq-addr{font-size:0.95rem;color:var(--text);line-height:1.8;margin-bottom:1.2rem;}
+.hq-stock{display:flex;align-items:center;gap:0.8rem;padding:0.8rem 1rem;background:rgba(212,160,32,0.08);border:1px solid rgba(212,160,32,0.15);border-radius:8px;margin-top:1rem;}
+.hq-stock-icon{font-size:1.2rem;}
+.hq-stock-text{font-size:0.82rem;color:var(--muted);line-height:1.4;}
+.hq-stock-text strong{color:var(--gold);}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-brand p{color:var(--muted);font-size:0.85rem;line-height:1.7;margin-top:0.8rem;}
+.footer-logo{font-size:1.3rem;font-weight:800;color:var(--gold);letter-spacing:1px;}
+.footer-col h4{font-size:0.75rem;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col li a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col li a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+.footer-stock{font-size:0.8rem;color:var(--muted);}
+.footer-stock span{color:var(--gold);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero h1{font-size:2rem;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .brands-grid,.why-grid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+}
+@media(max-width:600px){
+  .brands-grid,.about-props{grid-template-columns:1fr;}
+  .hero h1{font-size:1.7rem;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">富臨集團 <span>Fulum Group</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#brands">旗下品牌</a></li>
+      <li><a href="#why">集團優勢</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">立即預訂</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="badge-dot"></span> 深耕餐飲三十餘載 · 創立於1992年</div>
+      <h1>富臨集團<br>控股有限公司</h1>
+      <div class="hero-en">Fulum Group Holdings Limited</div>
+      <p class="hero-sub">由三兄弟在大角咀創辦的小型火鍋館，蛻變為香港首屈一指的上市餐飲集團，旗下品牌橫跨中式餐飲、粵菜鮑魚、韓烤及美食廣場，遍及香港、內地及澳門。</p>
+      <div class="hero-btns">
+        <a href="#brands" class="btn-primary">探索品牌</a>
+        <a href="#about" class="btn-secondary">集團介紹</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">📍 集團聯絡資料</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">集團總部</div>
+          <div class="info-val">九龍灣偉業街38號<br>富臨中心26樓</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">電話</div>
+          <div class="info-val"><a href="tel:+85223535866">+852 2353 5866</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-val"><a href="mailto:info@fulum.com.hk">info@fulum.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網址</div>
+          <div class="info-val"><a href="https://www.fulum.com.hk" target="_blank">www.fulum.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📈</div>
+        <div>
+          <div class="info-label">港交所主板上市</div>
+          <div class="info-val">股票代碼：<strong style="color:var(--gold)">1443.HK</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">1992</div>
+      <div class="stat-label">創辦年份</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">餐飲行業深耕年數</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1443</div>
+      <div class="stat-label">港交所主板股票代碼</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3地</div>
+      <div class="stat-label">香港、內地、澳門</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-tag">About Us</div>
+    <h2 class="section-title">集團發展歷程</h2>
+    <p class="section-sub">從一間大角咀火鍋小館，到香港聯交所主板上市餐飲集團，富臨集團以創新精神開創香港中式餐飲新格局。</p>
+    <div class="about-grid">
+      <div>
+        <div class="about-highlight">
+          <p>富臨集團的歷程始於1992年，由三位楊氏兄弟── 楊維先生、楊潤全先生及楊潤基先生在香港大角咀創辦小型火鍋館，由此開啟中式餐飲新篇章。</p>
+        </div>
+        <p class="about-text">其後相繼打造出「富臨」及「陶源酒家」兩大中式品牌基石，以大眾中式餐飲及主打精湛粵菜工藝的鮑魚專門店，迅速蛻變為全港首屈一指的中式餐飲集團，深獲食客青睞。</p>
+        <p class="about-text">秉持年輕化與創新的經營理念，集團大膽開拓大眾化韓烤業務，創立全港頗具規模的韓烤品牌「炑八韓烤」，成功捕捉年輕市場脈動。2014年，集團於香港聯合交易所主板上市（股票代碼：1443），標誌業務邁入全新里程碑。</p>
+        <div class="about-props">
+          <div class="prop-card">
+            <div class="prop-icon">🍽️</div>
+            <div class="prop-title">多元餐飲品牌</div>
+            <div class="prop-desc">涵蓋中式、粵菜、韓烤、咖啡餐廳等多元化品牌組合</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📈</div>
+            <div class="prop-title">港交所主板上市</div>
+            <div class="prop-desc">2014年於香港聯交所主板掛牌，股票代碼1443</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🌏</div>
+            <div class="prop-title">跨境版圖</div>
+            <div class="prop-desc">業務遍及香港、中國內地及澳門三地</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🎪</div>
+            <div class="prop-title">美食廣場管理</div>
+            <div class="prop-desc">提供美食廣場管理及優質應節食品業務</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot">1992</div>
+          <div class="timeline-content">
+            <div class="timeline-year">創業起點</div>
+            <div class="timeline-text">楊氏三兄弟於大角咀創辦小型火鍋館，踏上餐飲創業之路。</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">品牌</div>
+          <div class="timeline-content">
+            <div class="timeline-year">品牌建立</div>
+            <div class="timeline-text">先後創立「富臨」及「陶源酒家」兩大中式品牌，確立集團在港式餐飲的領導地位。</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">韓烤</div>
+          <div class="timeline-content">
+            <div class="timeline-year">多元拓展</div>
+            <div class="timeline-text">創立「炑八韓烤」品牌，成功打入年輕消費市場，開拓大眾化韓烤業務新藍海。</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">2014</div>
+          <div class="timeline-content">
+            <div class="timeline-year">港交所主板上市</div>
+            <div class="timeline-text">成功於香港聯合交易所主板掛牌（股票代碼：1443），邁入企業發展全新里程碑。</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">今日</div>
+          <div class="timeline-content">
+            <div class="timeline-year">持續擴展</div>
+            <div class="timeline-text">業務橫跨香港、內地及澳門，核心聚焦大眾市場至高端市場餐飲、應節食品及美食廣場管理。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands" class="brands-bg">
+  <div class="section-inner">
+    <div class="section-tag">Our Brands</div>
+    <h2 class="section-title">旗下餐飲品牌</h2>
+    <p class="section-sub">富臨集團旗下擁有多個獨特餐飲品牌，涵蓋各類餐飲體驗，滿足不同食客的多元需求。</p>
+    <div class="brands-grid">
+      <div class="brand-card">
+        <div class="brand-icon">🏮</div>
+        <div class="brand-name">富臨</div>
+        <div class="brand-en">Fulum Restaurant</div>
+        <div class="brand-desc">集團核心品牌，主打大眾化中式餐飲，提供地道香港風味菜式，遍佈港九各區，深受本地家庭食客愛戴。</div>
+        <span class="brand-type">大眾中式餐飲</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🦞</div>
+        <div class="brand-name">陶源酒家</div>
+        <div class="brand-en">Tao Yuan Restaurant</div>
+        <div class="brand-desc">主打精湛粵菜工藝的高端中式餐廳，以鮑魚料理見稱，為食客呈獻精緻廣東美食體驗。</div>
+        <span class="brand-type">高端粵菜 · 鮑魚專門</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🔥</div>
+        <div class="brand-name">炑八韓烤</div>
+        <div class="brand-en">Ping Ba Korean BBQ</div>
+        <div class="brand-desc">全港頗具規模的韓式烤肉品牌，以親民價格提供道地韓烤體驗，深受年輕一代食客熱捧。</div>
+        <span class="brand-type">韓式烤肉</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">☕</div>
+        <div class="brand-name">PHI Coffee & Pancake</div>
+        <div class="brand-en">PHI Coffee & Pancake</div>
+        <div class="brand-desc">輕鬆愜意的咖啡餐廳品牌，提供精選咖啡飲品、pancake及輕食，為顧客帶來休閒飲食空間。</div>
+        <span class="brand-type">咖啡 · 輕食</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🌊</div>
+        <div class="brand-name">Terrace in Seaside</div>
+        <div class="brand-en">Terrace in Seaside</div>
+        <div class="brand-desc">海景主題餐廳，提供浪漫優雅的用餐環境，配以精緻菜式，為特別場合創造難忘的美食體驗。</div>
+        <span class="brand-type">主題餐廳</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🏪</div>
+        <div class="brand-name">美食廣場管理</div>
+        <div class="brand-en">Food Court Management</div>
+        <div class="brand-desc">集團亦提供美食廣場管理服務，憑藉豐富餐飲管理經驗，為各類商業項目提供專業飲食管理方案。</div>
+        <span class="brand-type">飲食廣場管理</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="section-inner">
+    <div class="section-tag">Group Strengths</div>
+    <h2 class="section-title">集團核心優勢</h2>
+    <p class="section-sub">三十年深耕香港餐飲業，富臨集團以多元品牌、穩健管理及持續創新，鞏固市場領導地位。</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🏆</div>
+        <div class="why-title">三十年餐飲經驗</div>
+        <div class="why-desc">自1992年創業至今，累積逾三十年香港餐飲行業深厚經驗，熟悉本地食客口味及市場脈絡。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📈</div>
+        <div class="why-title">港交所上市企業</div>
+        <div class="why-desc">2014年於港交所主板上市（1443.HK），以透明財務管理及穩健企業治理贏得投資者信賴。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🍴</div>
+        <div class="why-title">多元品牌組合</div>
+        <div class="why-desc">旗下品牌覆蓋大眾至高端市場，滿足不同消費層食客的多元飲食需求，降低單一市場風險。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌏</div>
+        <div class="why-title">跨境市場佈局</div>
+        <div class="why-desc">業務遍及香港、中國內地及澳門，把握大灣區餐飲市場龐大機遇，持續擴展品牌版圖。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💡</div>
+        <div class="why-title">年輕化創新精神</div>
+        <div class="why-desc">集團秉持創新理念，積極引進國際餐飲品牌及開拓新興餐飲業態，緊貼年輕消費者需求。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎁</div>
+        <div class="why-title">應節食品業務</div>
+        <div class="why-desc">除餐廳業務外，集團亦提供一系列優質應節食品，豐富品牌接觸點並創造額外收入來源。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg2);border-top:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-tag">Contact Us</div>
+    <h2 class="section-title">聯絡富臨集團</h2>
+    <p class="section-sub">如有業務查詢、預訂或合作洽談，歡迎透過以下方式聯絡集團。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">電話</div>
+            <div class="c-val"><a href="tel:+85223535866">+852 2353 5866</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">電郵</div>
+            <div class="c-val"><a href="mailto:info@fulum.com.hk">info@fulum.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">官方網站</div>
+            <div class="c-val"><a href="https://www.fulum.com.hk" target="_blank">www.fulum.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">📈</div>
+          <div>
+            <div class="c-label">港交所上市資料</div>
+            <div class="c-val">股票代碼：<a href="https://www.hkex.com.hk/Market-Data/Securities-Prices/Equities?sym=1443&sc_lang=zh-HK" target="_blank">1443.HK</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="hq-card">
+        <span class="hq-badge">🏢 集團總部</span>
+        <div class="hq-name">富臨集團控股有限公司</div>
+        <div class="hq-en">Fulum Group Holdings Limited</div>
+        <div class="hq-addr">
+          九龍灣偉業街38號<br>
+          富臨中心26樓<br>
+          <br>
+          26/F, Fulum Centre<br>
+          38 Wai Yip Street, Kowloon Bay<br>
+          Hong Kong
+        </div>
+        <div class="hq-stock">
+          <span class="hq-stock-icon">📊</span>
+          <div class="hq-stock-text">
+            <strong>港交所主板上市企業</strong><br>
+            股票代碼：1443.HK · 2014年上市
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">富臨集團</div>
+        <p>深耕餐飲三十餘載，由大角咀火鍋小館蛻變為香港首屈一指的上市餐飲集團。旗下品牌遍及香港、內地及澳門。</p>
+      </div>
+      <div class="footer-col">
+        <h4>旗下品牌</h4>
+        <ul>
+          <li><a href="#brands">富臨</a></li>
+          <li><a href="#brands">陶源酒家</a></li>
+          <li><a href="#brands">炑八韓烤</a></li>
+          <li><a href="#brands">PHI Coffee</a></li>
+          <li><a href="#brands">Terrace in Seaside</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>集團資訊</h4>
+        <ul>
+          <li><a href="#about">集團介紹</a></li>
+          <li><a href="#about">發展歷程</a></li>
+          <li><a href="#why">集團優勢</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>業務版圖</h4>
+        <ul>
+          <li><a href="#brands">🇭🇰 香港</a></li>
+          <li><a href="#brands">🇨🇳 中國內地</a></li>
+          <li><a href="#brands">🇲🇴 澳門</a></li>
+          <li><a href="https://www.fulum.com.hk" target="_blank">官方網站</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 富臨集團控股有限公司。版權所有。</div>
+      <div class="footer-stock">港交所主板上市 · 股票代碼 <span>1443.HK</span></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
