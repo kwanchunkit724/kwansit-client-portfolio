@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A&R Engineering Company Limited | Engineering Excellence in Hong Kong</title>
+<style>
+:root {
+  --bg:       #050809;
+  --surface:  #0a1008;
+  --card:     #101808;
+  --border:   #1c2e18;
+  --acc1:     #1a5c18;
+  --acc2:     #2a8828;
+  --acc3:     #40b83c;
+  --amber:    #d89030;
+  --steel:    #6090a8;
+  --text:     #e8f0e4;
+  --muted:    #6a9068;
+  --radius:   8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;font-size:16px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,8,9,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--acc1),var(--acc3));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.logo-text{font-size:1.15rem;font-weight:700;color:var(--text)}
+.logo-sub{font-size:.7rem;color:var(--muted);letter-spacing:.05em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
+.nav-links a:hover{color:var(--acc3)}
+.nav-cta{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:9px 22px;border-radius:5px;font-size:.88rem;font-weight:600;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;background:radial-gradient(ellipse 75% 55% at 35% 50%,rgba(26,92,24,.14) 0%,transparent 65%),var(--bg)}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(64,184,60,.1);border:1px solid rgba(64,184,60,.32);border-radius:20px;padding:6px 16px;font-size:.8rem;color:var(--acc3);margin-bottom:24px;letter-spacing:.05em}
+.hero h1{font-size:2.9rem;font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:var(--acc3)}
+.hero-desc{font-size:1.02rem;color:var(--muted);margin-bottom:36px;max-width:540px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:13px 30px;border-radius:6px;font-size:.95rem;font-weight:700;text-decoration:none;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:13px 30px;border-radius:6px;font-size:.95rem;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--acc2);color:var(--acc2)}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hero-card h3{font-size:.9rem;color:var(--acc3);margin-bottom:18px;text-transform:uppercase;letter-spacing:.1em}
+.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.info-row:last-child{border-bottom:none}
+.info-label{color:var(--muted)}
+.info-val{color:var(--text);font-weight:600;text-align:right;max-width:60%}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-box{text-align:center}
+.stat-num{font-size:2.1rem;font-weight:800;color:var(--acc3);display:block}
+.stat-label{font-size:.83rem;color:var(--muted);margin-top:4px}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(42,136,40,.12);border:1px solid rgba(42,136,40,.3);border-radius:4px;padding:4px 12px;font-size:.76rem;color:var(--acc2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:1.9rem;font-weight:800;margin-bottom:12px}
+.section-sub{color:var(--muted);font-size:.98rem;max-width:620px}
+.section-head{margin-bottom:48px}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* SERVICES */
+.services{background:var(--bg)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .25s,transform .25s}
+.svc-card:hover{border-color:var(--acc2);transform:translateY(-3px)}
+.svc-icon{font-size:2.2rem;margin-bottom:16px}
+.svc-name{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.svc-desc{font-size:.88rem;color:var(--muted);line-height:1.7}
+.svc-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.tag{background:rgba(42,136,40,.1);border:1px solid rgba(42,136,40,.28);border-radius:4px;padding:3px 9px;font-size:.74rem;color:var(--acc2)}
+
+/* EXPERTISE */
+.expertise{background:var(--surface)}
+.exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.exp-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;display:flex;gap:18px;align-items:flex-start;transition:border-color .25s}
+.exp-card:hover{border-color:var(--acc2)}
+.exp-icon{width:50px;height:50px;background:linear-gradient(135deg,var(--acc1),var(--acc2));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.exp-body h3{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.exp-body p{font-size:.87rem;color:var(--muted);line-height:1.65}
+
+/* SECTORS */
+.sectors{background:var(--bg)}
+.sector-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sector-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;transition:border-color .25s,transform .25s}
+.sector-card:hover{border-color:var(--amber);transform:translateY(-3px)}
+.sector-icon{font-size:2.2rem;margin-bottom:12px}
+.sector-name{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.sector-desc{font-size:.83rem;color:var(--muted);line-height:1.6}
+
+/* STANDARDS */
+.standards{background:var(--surface)}
+.std-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.std-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;transition:border-color .25s}
+.std-card:hover{border-color:var(--acc2)}
+.std-icon{font-size:2rem;margin-bottom:12px}
+.std-name{font-size:.93rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.std-desc{font-size:.82rem;color:var(--muted);line-height:1.6}
+
+/* CONTACT */
+.contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h2{font-size:1.8rem;font-weight:800;margin-bottom:16px}
+.contact-info p{color:var(--muted);margin-bottom:28px;line-height:1.7}
+.contact-items{display:flex;flex-direction:column;gap:16px}
+.contact-item{display:flex;align-items:flex-start;gap:14px}
+.contact-icon{width:40px;height:40px;background:rgba(26,92,24,.25);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-detail strong{display:block;color:var(--text);font-size:.9rem;margin-bottom:2px}
+.contact-detail span{color:var(--muted);font-size:.85rem}
+form{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:18px}
+form label{font-size:.84rem;color:var(--muted);margin-bottom:4px;display:block}
+form input,form select,form textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.91rem;outline:none;transition:border-color .2s;font-family:inherit}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--acc2)}
+form textarea{resize:vertical;min-height:110px}
+form button{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s}
+form button:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 5% 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-top:12px}
+.footer-col h4{font-size:.87rem;font-weight:700;color:var(--text);margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col a{color:var(--muted);text-decoration:none;font-size:.86rem;transition:color .2s}
+.footer-col a:hover{color:var(--acc3)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{color:var(--muted);font-size:.82rem}
+.footer-hk{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:.82rem}
+
+@media(max-width:900px){
+  .hero-inner,.contact-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .hero h1{font-size:2.1rem}
+  .svc-grid,.sector-grid,.std-grid{grid-template-columns:1fr 1fr}
+  .exp-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  .svc-grid,.sector-grid,.std-grid{grid-template-columns:1fr}
+  .hero h1{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">⚙️</div>
+      <div>
+        <div class="logo-text">A&amp;R Engineering</div>
+        <div class="logo-sub">A&amp;R Engineering Company Limited</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#sectors">Sectors</a></li>
+      <li><a href="#standards">Standards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">⚙️ Engineering Excellence · Hong Kong</div>
+      <h1>Precision Engineering<br><span>Powering Hong Kong</span></h1>
+      <p class="hero-desc">
+        A&amp;R Engineering Company Limited provides professional engineering services
+        across mechanical, electrical, and civil disciplines throughout Hong Kong.
+        With hands-on expertise and a commitment to technical excellence, we deliver
+        reliable, code-compliant solutions for every project — on time and on budget.
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#services">Our Services</a>
+        <a class="btn-outline" href="#contact">Request a Quote</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Company Profile</h3>
+      <div class="info-row">
+        <span class="info-label">Company</span>
+        <span class="info-val">A&amp;R Engineering Co. Ltd</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Industry</span>
+        <span class="info-val">Engineering &amp; Construction</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Disciplines</span>
+        <span class="info-val">M&amp;E · Civil · Structural</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Service Area</span>
+        <span class="info-val">Hong Kong SAR</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Clients</span>
+        <span class="info-val">Commercial · Government · Industrial</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Languages</span>
+        <span class="info-val">English · 中文</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-box">
+      <span class="stat-num">3</span>
+      <div class="stat-label">Engineering Disciplines</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">100%</span>
+      <div class="stat-label">Code-Compliant Delivery</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">HK</span>
+      <div class="stat-label">Island · Kowloon · NT</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">A&amp;R</span>
+      <div class="stat-label">Accredited &amp; Registered</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Our Services</div>
+      <h2 class="section-title">Engineering Services</h2>
+      <p class="section-sub">Comprehensive engineering solutions spanning mechanical, electrical, and civil disciplines</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🌡️</div>
+        <div class="svc-name">HVAC Systems</div>
+        <p class="svc-desc">
+          Design, supply, installation, testing, and commissioning of heating, ventilation, and air-conditioning systems for commercial, industrial, and residential buildings.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">Air Conditioning</span>
+          <span class="tag">Ventilation</span>
+          <span class="tag">Chillers</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">⚡</div>
+        <div class="svc-name">Electrical Works</div>
+        <p class="svc-desc">
+          LV/MV electrical installations, switchgear, distribution boards, cable management, lighting systems, and emergency power solutions to Hong Kong Wiring Regulations.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">LV/MV Installation</span>
+          <span class="tag">Lighting</span>
+          <span class="tag">Emergency Power</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🚿</div>
+        <div class="svc-name">Plumbing &amp; Drainage</div>
+        <p class="svc-desc">
+          Cold and hot water supply systems, sanitary plumbing, drainage networks, and water tank installations designed and built to Water Supplies Department standards.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">Water Supply</span>
+          <span class="tag">Drainage</span>
+          <span class="tag">Sanitary</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔥</div>
+        <div class="svc-name">Fire Services</div>
+        <p class="svc-desc">
+          Fire detection and alarm systems, sprinkler installations, hose reel networks, and hydrant systems — all compliant with FSD requirements and Codes of Practice.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">Sprinkler</span>
+          <span class="tag">Detection</span>
+          <span class="tag">FSD Compliant</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏗️</div>
+        <div class="svc-name">Civil &amp; Structural</div>
+        <p class="svc-desc">
+          Structural steelwork, concrete works, foundation engineering, and civil infrastructure. From minor alterations to major structural modifications under Buildings Ordinance.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">Structural Steel</span>
+          <span class="tag">Concrete</span>
+          <span class="tag">Foundations</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔧</div>
+        <div class="svc-name">Maintenance Engineering</div>
+        <p class="svc-desc">
+          Planned preventive maintenance contracts and reactive repairs for all M&amp;E systems, ensuring plant reliability, code compliance, and uninterrupted operation.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">PPM</span>
+          <span class="tag">Reactive Repair</span>
+          <span class="tag">Annual Inspection</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXPERTISE -->
+<section class="expertise" id="expertise">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Technical Expertise</div>
+      <h2 class="section-title">Why Choose A&amp;R Engineering</h2>
+      <p class="section-sub">Technical depth, regulatory knowledge, and a client-first approach that sets us apart</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="exp-icon">📐</div>
+        <div class="exp-body">
+          <h3>Registered Contractors</h3>
+          <p>All works carried out by registered contractors under the relevant Hong Kong ordinances, including Buildings Ordinance, Electricity Ordinance, and Gas Safety Ordinance.</p>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🎓</div>
+        <div class="exp-body">
+          <h3>Qualified Engineers</h3>
+          <p>Our team includes Registered Professional Engineers (RPE) and Registered Inspectors, providing full design, inspection, and certification capabilities in-house.</p>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">📋</div>
+        <div class="exp-body">
+          <h3>Code Compliance</h3>
+          <p>Deep working knowledge of HKSAR codes of practice, Buildings Department requirements, FSD regulations, and WSD standards — no surprises at inspection time.</p>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">⏱️</div>
+        <div class="exp-body">
+          <h3>On-Schedule Delivery</h3>
+          <p>Reliable programme management ensuring engineering works integrate seamlessly with overall project schedules, minimising disruption to building occupants and operations.</p>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">💡</div>
+        <div class="exp-body">
+          <h3>Value Engineering</h3>
+          <p>We challenge specifications to find cost-effective alternatives without sacrificing performance, helping clients achieve budget targets without compromising quality.</p>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">📞</div>
+        <div class="exp-body">
+          <h3>Responsive Support</h3>
+          <p>Prompt response to technical queries, site emergencies, and maintenance callouts. Our team is reachable when you need us — not just during office hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTORS -->
+<section class="sectors" id="sectors">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Sectors Served</div>
+      <h2 class="section-title">Industries We Serve</h2>
+      <p class="section-sub">Engineering expertise applied across Hong Kong's diverse commercial and industrial landscape</p>
+    </div>
+    <div class="sector-grid">
+      <div class="sector-card">
+        <div class="sector-icon">🏢</div>
+        <div class="sector-name">Commercial Offices</div>
+        <p class="sector-desc">Grade A office towers, commercial centres, and business parks — HVAC, electrical, and fire services installation and maintenance.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏭</div>
+        <div class="sector-name">Industrial Facilities</div>
+        <p class="sector-desc">Factories, warehouses, and industrial units — heavy M&amp;E installations, power distribution, and specialist ventilation systems.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏥</div>
+        <div class="sector-name">Healthcare</div>
+        <p class="sector-desc">Hospitals, clinics, and medical centres requiring clean room standards, medical gas systems, and critical power solutions.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏨</div>
+        <div class="sector-name">Hotels &amp; Hospitality</div>
+        <p class="sector-desc">Hotel engineering services including chiller plant, guest room HVAC, kitchen ventilation, and building management systems.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏫</div>
+        <div class="sector-name">Education &amp; Institutions</div>
+        <p class="sector-desc">Schools, universities, and public institutions — engineering systems that deliver comfort, safety, and energy efficiency year-round.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏛️</div>
+        <div class="sector-name">Government Works</div>
+        <p class="sector-desc">Government buildings, public housing, and infrastructure projects — meeting Architectural Services Department and Housing Authority standards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- STANDARDS -->
+<section class="standards" id="standards">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Standards &amp; Compliance</div>
+      <h2 class="section-title">Accreditations &amp; Standards</h2>
+      <p class="section-sub">All works executed in strict compliance with Hong Kong's regulatory framework and international engineering standards</p>
+    </div>
+    <div class="std-grid">
+      <div class="std-card">
+        <div class="std-icon">🏛️</div>
+        <div class="std-name">Buildings Ordinance</div>
+        <p class="std-desc">Full compliance with the HKSAR Buildings Ordinance (Cap. 123) and associated Building (Construction) Regulations.</p>
+      </div>
+      <div class="std-card">
+        <div class="std-icon">⚡</div>
+        <div class="std-name">Electricity Ordinance</div>
+        <p class="std-desc">All electrical works executed per the Electricity Ordinance (Cap. 406) and Hong Kong Wiring Regulations by registered electrical contractors.</p>
+      </div>
+      <div class="std-card">
+        <div class="std-icon">🔥</div>
+        <div class="std-name">FSD Codes of Practice</div>
+        <p class="std-desc">Fire services installations designed and installed in accordance with Fire Services Department Codes of Practice and relevant standards.</p>
+      </div>
+      <div class="std-card">
+        <div class="std-icon">💧</div>
+        <div class="std-name">WSD Standards</div>
+        <p class="std-desc">Plumbing and drainage works comply with Water Supplies Department requirements and the Waterworks Ordinance (Cap. 102).</p>
+      </div>
+      <div class="std-card">
+        <div class="std-icon">🛡️</div>
+        <div class="std-name">Safety Management</div>
+        <p class="std-desc">Site safety managed under the Occupational Safety and Health Ordinance, with documented Safety Management Systems on all projects.</p>
+      </div>
+      <div class="std-card">
+        <div class="std-icon">🌿</div>
+        <div class="std-name">Green Building</div>
+        <p class="std-desc">M&amp;E design and installation aligned with BEAM Plus green building requirements, supporting clients' sustainability and energy efficiency targets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-tag">Contact Us</div>
+        <h2>Start Your Engineering Project</h2>
+        <p>
+          Whether you need a full M&amp;E installation, a maintenance contract, or specialist
+          engineering consultancy, A&amp;R Engineering is ready to assist. Submit your enquiry
+          and our technical team will respond promptly.
+        </p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>Service Area</strong>
+              <span>Hong Kong Island · Kowloon · New Territories</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-detail">
+              <strong>Office Hours</strong>
+              <span>Monday – Friday: 08:30 – 18:00<br>Saturday: 08:30 – 13:00</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🔧</div>
+            <div class="contact-detail">
+              <strong>Emergency Callout</strong>
+              <span>24/7 emergency maintenance support available for contract clients</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div class="contact-detail">
+              <strong>Languages</strong>
+              <span>English · 廣東話 · 普通話</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form>
+        <div>
+          <label>Full Name *</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div>
+          <label>Company / Organisation</label>
+          <input type="text" placeholder="Your company or project name">
+        </div>
+        <div>
+          <label>Email Address *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div>
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+852 xxxx xxxx">
+        </div>
+        <div>
+          <label>Engineering Discipline</label>
+          <select>
+            <option>HVAC Systems</option>
+            <option>Electrical Works</option>
+            <option>Plumbing &amp; Drainage</option>
+            <option>Fire Services</option>
+            <option>Civil &amp; Structural</option>
+            <option>Maintenance Engineering</option>
+            <option>Multiple Disciplines</option>
+          </select>
+        </div>
+        <div>
+          <label>Project Details *</label>
+          <textarea placeholder="Describe your engineering project or maintenance requirement — location, scope, timeline, and any specific technical requirements…"></textarea>
+        </div>
+        <button type="submit">Submit Enquiry →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">⚙️</div>
+          <div>
+            <div class="logo-text">A&amp;R Engineering</div>
+            <div class="logo-sub">A&amp;R Engineering Company Limited</div>
+          </div>
+        </div>
+        <p>A Hong Kong engineering company specialising in M&amp;E, civil, and structural engineering services for commercial, industrial, and institutional clients. Registered contractors. Code-compliant delivery.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">HVAC Systems</a></li>
+          <li><a href="#services">Electrical Works</a></li>
+          <li><a href="#services">Plumbing &amp; Drainage</a></li>
+          <li><a href="#services">Fire Services</a></li>
+          <li><a href="#services">Civil &amp; Structural</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#expertise">Our Expertise</a></li>
+          <li><a href="#sectors">Sectors</a></li>
+          <li><a href="#standards">Standards</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 A&amp;R Engineering Company Limited. All Rights Reserved.</div>
+      <div class="footer-hk">🇭🇰 Engineering Hong Kong</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
