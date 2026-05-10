@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雅譽印刷廠有限公司 | Artistry Printing Factory Ltd.</title>
+<style>
+:root {
+  --primary: #0c1010;
+  --secondary: #141c1c;
+  --accent: #18a878;
+  --accent2: #c8a030;
+  --text: #e8ede8;
+  --text-muted: #98a898;
+  --card-bg: #172020;
+  --border: #1e3030;
+  --hero-overlay: rgba(12,16,16,0.82);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;background:var(--primary);color:var(--text);line-height:1.7;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(12,16,16,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:900;color:#fff;}
+.nav-logo-text{display:flex;flex-direction:column;}
+.nav-logo-cn{font-size:1rem;font-weight:700;color:var(--text);line-height:1.2;}
+.nav-logo-en{font-size:0.62rem;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.9rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:6px;text-decoration:none;font-size:0.88rem;font-weight:600;transition:background 0.2s;}
+.nav-cta:hover{background:#14906a;}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(135deg,#0c1010 0%,#0a1818 40%,#0c1a14 100%);display:flex;align-items:center;padding-top:68px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(24,168,120,0.12) 0%,transparent 60%);}
+.hero-grid{max-width:1200px;margin:0 auto;padding:5rem 2rem;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(24,168,120,0.15);border:1px solid rgba(24,168,120,0.3);border-radius:20px;padding:0.4rem 1rem;margin-bottom:1.5rem;font-size:0.82rem;color:var(--accent);}
+.hero h1{font-size:3.2rem;font-weight:900;line-height:1.15;margin-bottom:0.6rem;}
+.hero h1 .accent{color:var(--accent);}
+.hero-en{font-size:1.1rem;color:var(--text-muted);margin-bottom:1rem;letter-spacing:0.03em;}
+.hero-desc{font-size:1.05rem;color:var(--text-muted);margin-bottom:2rem;max-width:520px;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.85rem 2rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{background:#14906a;transform:translateY(-2px);}
+.btn-secondary{background:transparent;color:var(--accent);border:2px solid var(--accent);padding:0.85rem 2rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-secondary:hover{background:rgba(24,168,120,0.1);}
+.hero-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.hero-card-title{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1rem;}
+.info-row:last-child{margin-bottom:0;}
+.info-icon{width:36px;height:36px;border-radius:8px;background:rgba(24,168,120,0.12);border:1px solid rgba(24,168,120,0.2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;}
+.info-value{font-size:0.9rem;color:var(--text);font-weight:500;}
+.info-value a{color:var(--accent);text-decoration:none;}
+
+/* STATS */
+.stats{background:var(--secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+.stat-num{font-size:2.4rem;font-weight:900;color:var(--accent);line-height:1;}
+.stat-label{font-size:0.85rem;color:var(--text-muted);margin-top:6px;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin-bottom:0.6rem;}
+.section-title{font-size:2.2rem;font-weight:800;margin-bottom:1rem;line-height:1.2;}
+.section-sub{font-size:1rem;color:var(--text-muted);max-width:600px;margin-bottom:3rem;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(24,168,120,0.1),rgba(200,160,48,0.08));border:1px solid rgba(24,168,120,0.25);border-radius:16px;padding:2rem;margin-bottom:2rem;}
+.about-highlight h3{font-size:1.15rem;font-weight:700;color:var(--accent);margin-bottom:0.8rem;}
+.about-highlight p{color:var(--text-muted);font-size:0.95rem;line-height:1.8;}
+.about-body p{color:var(--text-muted);margin-bottom:1rem;font-size:0.95rem;line-height:1.8;}
+.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.2rem;display:flex;align-items:flex-start;gap:12px;}
+.prop-icon{font-size:1.5rem;flex-shrink:0;}
+.prop-title{font-size:0.88rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.prop-desc{font-size:0.78rem;color:var(--text-muted);}
+
+/* PRODUCTS */
+.products{background:var(--secondary);}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.product-card{background:var(--primary);border:1px solid var(--border);border-radius:14px;padding:1.8rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.product-card:hover{border-color:rgba(24,168,120,0.4);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.4);}
+.product-card:hover::before{opacity:1;}
+.product-icon{font-size:2.4rem;margin-bottom:1rem;}
+.product-name{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.product-desc{font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.7;}
+.product-items{display:flex;flex-wrap:wrap;gap:6px;}
+.product-tag{background:rgba(24,168,120,0.1);border:1px solid rgba(24,168,120,0.2);color:var(--accent);padding:3px 10px;border-radius:20px;font-size:0.72rem;}
+
+/* PROCESS */
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2rem;}
+.step{text-align:center;position:relative;}
+.step::after{content:'';position:absolute;top:28px;left:60%;right:-40%;height:2px;background:linear-gradient(90deg,var(--accent),transparent);opacity:0.3;}
+.step:last-child::after{display:none;}
+.step-num{width:56px;height:56px;background:linear-gradient(135deg,var(--accent),#14906a);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:900;color:#fff;margin:0 auto 0.8rem;}
+.step-title{font-size:0.88rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+.step-desc{font-size:0.75rem;color:var(--text-muted);}
+
+/* CAPABILITIES */
+.capabilities{background:var(--secondary);}
+.cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.cap-card{background:var(--primary);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;}
+.cap-icon{font-size:2rem;margin-bottom:0.8rem;}
+.cap-title{font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:0.4rem;}
+.cap-desc{font-size:0.78rem;color:var(--text-muted);}
+
+/* WHY CHOOSE */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.why-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.8rem;}
+.why-num{font-size:2.5rem;font-weight:900;color:rgba(24,168,120,0.25);line-height:1;margin-bottom:0.8rem;}
+.why-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.why-desc{font-size:0.85rem;color:var(--text-muted);line-height:1.7;}
+
+/* CONTACT */
+.contact{background:var(--secondary);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.contact-info-block{background:var(--primary);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-info-block h3{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;color:var(--text);}
+.cinfo-row{display:flex;align-items:flex-start;gap:14px;margin-bottom:1.4rem;padding-bottom:1.4rem;border-bottom:1px solid var(--border);}
+.cinfo-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.cinfo-icon{width:40px;height:40px;background:rgba(24,168,120,0.12);border:1px solid rgba(24,168,120,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.cinfo-label{font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;}
+.cinfo-value{font-size:0.92rem;color:var(--text);font-weight:500;}
+.cinfo-value a{color:var(--accent);text-decoration:none;}
+.contact-form-block{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-form-block h3{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;color:var(--text);}
+.form-group{margin-bottom:1.2rem;}
+.form-group label{display:block;font-size:0.8rem;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--primary);border:1px solid var(--border);border-radius:8px;padding:0.8rem 1rem;color:var(--text);font-family:inherit;font-size:0.92rem;transition:border-color 0.2s;resize:vertical;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);}
+.form-group select option{background:var(--primary);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.submit-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:0.9rem;border-radius:8px;font-family:inherit;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.submit-btn:hover{background:#14906a;}
+
+/* FOOTER */
+footer{background:var(--primary);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:2rem;}
+.footer-brand .nav-logo{margin-bottom:1rem;}
+.footer-brand p{font-size:0.85rem;color:var(--text-muted);line-height:1.7;}
+.footer-col h4{font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:1rem;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:0.6rem;}
+.footer-col ul li a{color:var(--text-muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.8rem;color:var(--text-muted);}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .products-grid{grid-template-columns:1fr 1fr;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .process-steps{grid-template-columns:1fr 1fr;}
+  .cap-grid{grid-template-columns:1fr 1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  nav .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">雅</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-cn">雅譽印刷廠有限公司</span>
+        <span class="nav-logo-en">Artistry Printing Factory Ltd.</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#products">印刷產品</a></li>
+      <li><a href="#process">製作流程</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">立即查詢</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>🖨️</span>
+        <span>專業印刷 · 精工製作 · 品質保證</span>
+      </div>
+      <h1>香港<span class="accent">專業</span><br>印刷廠</h1>
+      <p class="hero-en">Artistry Printing Factory Ltd.</p>
+      <p class="hero-desc">雅譽印刷廠有限公司自2009年紮根香港觀塘，專注提供多元化商業印刷服務。由標籤貼紙到精美書冊，由名片信封到宣傳單張，以專業技術及嚴謹態度服務本地工商業界。</p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">瀏覽印刷產品 →</a>
+        <a href="#contact" class="btn-secondary">📧 查詢報價</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">公司資訊</div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">地址</div>
+          <div class="info-value">觀塘道460-470號<br>觀塘工業中心第二期<br>13樓K座</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-value"><a href="mailto:chiuclun@gmail.com">chiuclun@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網址</div>
+          <div class="info-value"><a href="http://artistry-fty.com" target="_blank">artistry-fty.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📅</div>
+        <div>
+          <div class="info-label">成立年份</div>
+          <div class="info-value">2009年</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">15+</div>
+      <div class="stat-label">年業界經驗</div>
+    </div>
+    <div>
+      <div class="stat-num">16+</div>
+      <div class="stat-label">印刷產品種類</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">品質承諾</div>
+    </div>
+    <div>
+      <div class="stat-num">觀塘</div>
+      <div class="stat-label">香港工業中心</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">關於我們</div>
+        <h2 class="section-title">精工印刷<br>成就您的品牌形象</h2>
+        <div class="about-highlight">
+          <h3>🏭 紮根觀塘 服務業界</h3>
+          <p>雅譽印刷廠自2009年成立，位於香港工業重心觀塘，服務各行各業的商業印刷需求。我們致力以精準技術、優質物料及準時交付，協助客戶提升品牌形象及推廣效益。</p>
+        </div>
+        <div class="about-body">
+          <p>我們的專業團隊擁有豐富的印刷業經驗，從設計諮詢到最終成品，全程跟進每一細節，確保每件印刷品均符合客戶要求。</p>
+          <p>無論是大批量商業印刷，還是小批次個性化訂製，我們均能靈活配合，提供具競爭力的報價及優質服務。</p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-grid">
+          <div class="prop-card">
+            <div class="prop-icon">🎯</div>
+            <div>
+              <div class="prop-title">品質管控</div>
+              <div class="prop-desc">嚴格的產品及文件質素標準，確保每件成品完美呈現</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">⚡</div>
+            <div>
+              <div class="prop-title">快速交付</div>
+              <div class="prop-desc">高效生產流程，緊急訂單亦可彈性安排</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🎨</div>
+            <div>
+              <div class="prop-title">設計支援</div>
+              <div class="prop-desc">設計庫資源豐富，提供專業設計諮詢及排版服務</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💰</div>
+            <div>
+              <div class="prop-title">合理定價</div>
+              <div class="prop-desc">透明價格政策，提供多款印刷方案配合不同預算</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📋</div>
+            <div>
+              <div class="prop-title">數字校正</div>
+              <div class="prop-desc">印刷前提供數字校正樣本，確認色彩及版面</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🤝</div>
+            <div>
+              <div class="prop-title">專業顧問</div>
+              <div class="prop-desc">由查詢到交貨，專業客服全程為您提供最佳方案</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="products">
+  <div class="section-inner">
+    <div class="section-label">印刷產品</div>
+    <h2 class="section-title">全面印刷方案</h2>
+    <p class="section-sub">覆蓋商業印刷各大類別，滿足您的一站式印刷需求</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🏷️</div>
+        <div class="product-name">標籤及橫頭字</div>
+        <div class="product-desc">各式貼標及企業信箋橫頭字印製，彰顯品牌識別，適用於產品包裝、辦公文件等多種用途。</div>
+        <div class="product-items">
+          <span class="product-tag">貼標</span>
+          <span class="product-tag">橫頭字</span>
+          <span class="product-tag">電視條碼</span>
+          <span class="product-tag">防偽標籤</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">📚</div>
+        <div class="product-name">書冊及說明書</div>
+        <div class="product-desc">專業印製各類書冊、產品說明書及使用手冊，版面清晰，裝訂精美，有效傳達資訊。</div>
+        <div class="product-items">
+          <span class="product-tag">書冊</span>
+          <span class="product-tag">說明書</span>
+          <span class="product-tag">產品目錄</span>
+          <span class="product-tag">通告</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">📢</div>
+        <div class="product-name">宣傳印刷品</div>
+        <div class="product-desc">色彩鮮豔、印刷精美的宣傳物料，提升推廣效果，適合零售、餐飲、活動等各種推廣場合。</div>
+        <div class="product-items">
+          <span class="product-tag">海報</span>
+          <span class="product-tag">宣傳海報</span>
+          <span class="product-tag">宣傳單張</span>
+          <span class="product-tag">DM</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">💼</div>
+        <div class="product-name">名片及信封</div>
+        <div class="product-desc">高質素名片及各規格信封印製，讓您的品牌形象在每次溝通中留下深刻印象。</div>
+        <div class="product-items">
+          <span class="product-tag">名片</span>
+          <span class="product-tag">信封</span>
+          <span class="product-tag">座椅卡</span>
+          <span class="product-tag">企業文具</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🛍️</div>
+        <div class="product-name">禮品袋及展示袋</div>
+        <div class="product-desc">精美彩色禮品袋及各式展示袋，提升產品包裝質感，適合節日禮品、零售包裝及活動贈品。</div>
+        <div class="product-items">
+          <span class="product-tag">彩色禮品袋</span>
+          <span class="product-tag">展示袋</span>
+          <span class="product-tag">購物袋</span>
+          <span class="product-tag">紙袋</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">📓</div>
+        <div class="product-name">記事本及其他</div>
+        <div class="product-desc">企業記事本、筆記簿等各類客製化印刷品，是公司推廣禮品及活動紀念品的理想選擇。</div>
+        <div class="product-items">
+          <span class="product-tag">記事本</span>
+          <span class="product-tag">筆記簿</span>
+          <span class="product-tag">企業禮品</span>
+          <span class="product-tag">紀念品</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-inner">
+    <div class="section-label">製作流程</div>
+    <h2 class="section-title">簡單五步驟<br>完成您的印刷訂單</h2>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">查詢報價</div>
+        <div class="step-desc">提供印刷需求及規格，獲取準確報價</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">設計確認</div>
+        <div class="step-desc">提交設計稿件，或由我們協助排版設計</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">數字校正</div>
+        <div class="step-desc">提供數字校正樣本，確認色彩版面</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">投入生產</div>
+        <div class="step-desc">確認後立即安排生產，嚴格品質管控</div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-title">交付成品</div>
+        <div class="step-desc">準時交貨，確保每件成品完美無缺</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="capabilities">
+  <div class="section-inner">
+    <div class="section-label">印刷技術</div>
+    <h2 class="section-title">多元印刷技術</h2>
+    <p class="section-sub">靈活運用各種印刷技術，達到最佳呈現效果</p>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-icon">🖨️</div>
+        <div class="cap-title">平版印刷</div>
+        <div class="cap-desc">大批量印刷首選，色彩準確，成本效益高</div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">💻</div>
+        <div class="cap-title">數碼印刷</div>
+        <div class="cap-desc">小批次、個性化印刷，快速靈活，適合樣品制作</div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">✨</div>
+        <div class="cap-title">特殊印刷效果</div>
+        <div class="cap-desc">燙金、UV光油、壓紋等後加工處理，提升質感</div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">📐</div>
+        <div class="cap-title">精準裁切裝訂</div>
+        <div class="cap-desc">多種裝訂方式，精準裁切，成品整齊美觀</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section>
+  <div class="section-inner">
+    <div class="section-label">選擇雅譽</div>
+    <h2 class="section-title">為何選擇我們</h2>
+    <p class="section-sub">15年以上的印刷業經驗，是您最可靠的印刷夥伴</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <div class="why-title">豐富業界經驗</div>
+        <div class="why-desc">自2009年起，持續服務香港工商業界，積累豐富印刷經驗，深明客戶需求，提供最切實的印刷解決方案。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <div class="why-title">嚴格品質標準</div>
+        <div class="why-desc">建立完善的產品質素及文件標準管理制度，從物料採購到成品交付，層層把關，確保品質一致。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <div class="why-title">一站式服務</div>
+        <div class="why-desc">提供設計諮詢、印前製作、印刷生產及後期加工全方位服務，簡化您的採購流程，節省時間成本。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <h2 class="section-title">立即查詢報價</h2>
+    <p class="section-sub">歡迎提供印刷需求，我們將盡快為您提供專業建議及報價</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-block">
+          <h3>聯絡資訊</h3>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📍</div>
+            <div>
+              <div class="cinfo-label">地址</div>
+              <div class="cinfo-value">香港九龍觀塘道460-470號<br>觀塘工業中心第二期<br>13樓K座</div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📧</div>
+            <div>
+              <div class="cinfo-label">電郵</div>
+              <div class="cinfo-value"><a href="mailto:chiuclun@gmail.com">chiuclun@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">🌐</div>
+            <div>
+              <div class="cinfo-label">網址</div>
+              <div class="cinfo-value"><a href="http://artistry-fty.com" target="_blank">www.artistry-fty.com</a></div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">🕐</div>
+            <div>
+              <div class="cinfo-label">辦公時間</div>
+              <div class="cinfo-value">星期一至五：9:00 – 18:00<br>星期六：9:00 – 13:00</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:rgba(24,168,120,0.08);border:1px solid rgba(24,168,120,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem;">
+          <p style="font-size:0.85rem;color:var(--accent);font-weight:600;margin-bottom:4px;">📋 查詢時請提供</p>
+          <p style="font-size:0.82rem;color:var(--text-muted);">印刷品種類、尺寸規格、印刷數量、完成日期要求，以便我們為您提供準確報價。</p>
+        </div>
+      </div>
+      <div class="contact-form-block">
+        <h3>發送查詢</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>公司名稱</label>
+            <input type="text" placeholder="公司名稱（如適用）">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>電郵</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>電話</label>
+            <input type="tel" placeholder="聯絡電話">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>印刷產品類型</label>
+          <select>
+            <option value="">請選擇印刷類型...</option>
+            <option>標籤 / 貼標</option>
+            <option>書冊 / 說明書</option>
+            <option>海報 / 宣傳單張</option>
+            <option>名片 / 信封</option>
+            <option>禮品袋 / 展示袋</option>
+            <option>記事本</option>
+            <option>其他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea rows="4" placeholder="請說明印刷需求：尺寸、數量、特殊要求等..."></textarea>
+        </div>
+        <button class="submit-btn">📩 提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="display:inline-flex;margin-bottom:1rem;">
+          <div class="nav-logo-icon">雅</div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-cn">雅譽印刷廠有限公司</span>
+            <span class="nav-logo-en">Artistry Printing Factory Ltd.</span>
+          </div>
+        </a>
+        <p>自2009年服務香港業界，提供全面商業印刷服務。以品質、效率、誠信為本，是您可靠的印刷合作夥伴。</p>
+      </div>
+      <div class="footer-col">
+        <h4>印刷產品</h4>
+        <ul>
+          <li><a href="#products">標籤及橫頭字</a></li>
+          <li><a href="#products">書冊及說明書</a></li>
+          <li><a href="#products">宣傳印刷品</a></li>
+          <li><a href="#products">名片及信封</a></li>
+          <li><a href="#products">禮品袋及展示袋</a></li>
+          <li><a href="#products">記事本及其他</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>快捷連結</h4>
+        <ul>
+          <li><a href="#about">關於我們</a></li>
+          <li><a href="#process">製作流程</a></li>
+          <li><a href="#contact">查詢報價</a></li>
+          <li><a href="http://artistry-fty.com" target="_blank">公司網站</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2009–2025 雅譽印刷廠有限公司 Artistry Printing Factory Ltd. 版權所有。</div>
+      <div class="footer-copy">觀塘道460-470號觀塘工業中心第二期13樓K座，香港</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
