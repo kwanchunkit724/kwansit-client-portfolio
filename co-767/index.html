@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SME Brother | 香港中小企業務服務 · 公司秘書 · 人力資源</title>
+<meta name="description" content="SME Brother — 香港中小企業一站式商業服務，提供公司成立、公司秘書、人力資源、職業介紹及商業諮詢服務。秘書公司牌照：TC009730。WhatsApp: 6705 9572">
+<style>
+:root{--bg:#080404;--bg2:#100806;--bg3:#160b08;--orange:#c84810;--orange-lt:#e86020;--orange-bright:#f88030;--red:#b03018;--text:#f8ede8;--muted:#907060;--border:rgba(200,72,16,0.22);--card-bg:rgba(255,255,255,0.03);--radius:10px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans HK','PingFang HK',sans-serif;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,4,4,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1.05rem;font-weight:900;color:var(--orange-bright)}
+.nav-logo span{color:var(--orange-lt);font-weight:400;font-size:.76rem;margin-left:8px}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--orange),var(--orange-lt));color:#fff;padding:9px 22px;border-radius:6px;font-size:.88rem;font-weight:700;text-decoration:none;transition:opacity .2s}.nav-cta:hover{opacity:.88}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 60% 40%,rgba(200,72,16,0.12) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(200,72,16,0.1);border:1px solid rgba(200,72,16,0.3);border-radius:6px;padding:6px 14px;font-size:.8rem;color:var(--orange-bright);margin-bottom:20px}
+h1{font-size:clamp(2rem,4.5vw,3rem);font-weight:900;line-height:1.1;margin-bottom:12px}
+h1 .sme{color:var(--orange-bright)}
+h1 .sub{display:block;font-size:clamp(.85rem,1.7vw,1rem);font-weight:400;color:var(--orange-lt);letter-spacing:.04em;margin-top:8px}
+.lic-row{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
+.lic{display:inline-flex;align-items:center;gap:6px;background:rgba(248,128,48,0.07);border:1px solid rgba(248,128,48,0.18);border-radius:6px;padding:4px 10px;font-size:.76rem;color:var(--orange-bright);font-weight:600}
+.hero-desc{color:var(--muted);font-size:1rem;max-width:440px;margin-bottom:22px;line-height:1.8}
+.svc-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.st{display:inline-flex;align-items:center;gap:5px;background:rgba(200,72,16,0.08);border:1px solid rgba(200,72,16,0.2);border-radius:6px;padding:4px 10px;font-size:.75rem;color:var(--orange-bright);font-weight:600}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--orange),var(--orange-lt));color:#fff;padding:13px 28px;border-radius:6px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 26px;border-radius:6px;font-size:.93rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}.btn-outline:hover{border-color:var(--orange-bright);color:var(--orange-bright)}
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:15px}
+.card-badge{display:flex;align-items:center;gap:12px}
+.badge-emblem{width:48px;height:48px;background:linear-gradient(135deg,var(--orange),var(--orange-bright));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;color:#fff;text-align:center;line-height:1.3}
+.badge-name{font-size:.95rem;font-weight:700}.badge-label{font-size:.76rem;color:var(--muted)}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--orange-bright);flex-shrink:0;margin-top:2px;text-align:center}
+.card-row-text{font-size:.88rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block;font-size:.9rem}
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.stat-item{text-align:center}
+.stat-num{font-size:1.9rem;font-weight:900;background:linear-gradient(135deg,var(--orange-lt),var(--orange-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.82rem;margin-top:6px}
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(200,72,16,0.08);border:1px solid rgba(200,72,16,0.2);border-radius:6px;padding:4px 12px;font-size:.75rem;color:var(--orange-bright);letter-spacing:.05em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--orange-bright)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s}.svc-card:hover{border-color:var(--orange-bright);transform:translateY(-4px)}
+.sc-icon{width:50px;height:50px;background:rgba(200,72,16,0.1);border:1px solid rgba(200,72,16,0.22);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.sc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.contact-section{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(200,72,16,0.1);border:1px solid rgba(200,72,16,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.75rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.93rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--orange-bright);text-decoration:none}.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:34px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--orange-bright)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#100806}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--orange),var(--orange-lt));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}.form-submit:hover{opacity:.88}
+footer{background:var(--bg3);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:.95rem;font-weight:800;color:var(--orange-bright)}
+.footer-copy{font-size:.8rem;color:var(--muted);text-align:center}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}.footer-links a:hover{color:var(--text)}
+@media(max-width:900px){.hero-inner,.contact-grid{grid-template-columns:1fr}.stats-inner,.cards-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav-links{display:none}.cards-grid,.stats-inner{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo"><span class="sme">SME</span> Brother<span>中小企業商業服務</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a href="https://wa.me/85267059572" class="nav-cta">即時查詢</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🏢 香港中小企業一站式商業服務</div>
+      <h1><span class="sme">SME</span> Brother<span class="sub">smebrother.com · 香港中小企業業務夥伴</span></h1>
+      <div class="lic-row">
+        <span class="lic">📋 秘書公司牌照：TC009730</span>
+        <span class="lic">👥 職業介紹所牌照：78287</span>
+      </div>
+      <p class="hero-desc">SME Brother 是香港中小企業的可靠業務夥伴，提供公司成立、公司秘書、人力資源及職業介紹等一站式服務，助您以最低成本高效管理業務合規事務。</p>
+      <div class="svc-tags">
+        <span class="st">🏢 公司成立</span>
+        <span class="st">📋 公司秘書</span>
+        <span class="st">👥 人力資源</span>
+        <span class="st">🔍 職業介紹</span>
+        <span class="st">📊 商業諮詢</span>
+      </div>
+      <div class="hero-btns">
+        <a href="https://wa.me/85267059572" class="btn-primary">💬 WhatsApp 即時查詢</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-emblem">SME<br>兄弟</div>
+        <div>
+          <div class="badge-label">香港中小企業商業服務</div>
+          <div class="badge-name">SME Brother</div>
+        </div>
+      </div>
+      <hr class="card-divider">
+      <div class="card-row"><div class="card-row-icon">📧</div><div class="card-row-text"><strong>電郵</strong>info@smebrother.com</div></div>
+      <div class="card-row"><div class="card-row-icon">📱</div><div class="card-row-text"><strong>WhatsApp / 手機</strong>6705 9572</div></div>
+      <div class="card-row"><div class="card-row-icon">🌐</div><div class="card-row-text"><strong>網站</strong>smebrother.com</div></div>
+      <div class="card-row"><div class="card-row-icon">📍</div><div class="card-row-text"><strong>地區</strong>香港</div></div>
+      <div class="card-row"><div class="card-row-icon">📋</div><div class="card-row-text"><strong>持牌</strong>秘書公司牌照 TC009730 · 職業介紹所牌照 78287</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">持牌</div><div class="stat-label">秘書公司及職業介紹所</div></div>
+    <div class="stat-item"><div class="stat-num">一站式</div><div class="stat-label">中小企業商業服務</div></div>
+    <div class="stat-item"><div class="stat-num">即時</div><div class="stat-label">WhatsApp 報價查詢</div></div>
+    <div class="stat-item"><div class="stat-num">全面</div><div class="stat-label">公司成立至人力資源</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務項目</div>
+    <h2>中小企業<span class="accent">一站式</span>業務支援</h2>
+    <p class="section-lead">SME Brother 專為香港中小企業提供全方位業務支援服務，從公司成立到日常合規管理，協助您以最高效率處理所有業務事宜。</p>
+    <div class="cards-grid">
+      <div class="svc-card">
+        <div class="sc-icon">🏢</div>
+        <div class="sc-title">公司成立服務</div>
+        <div class="sc-desc">快速辦理香港有限公司及無限公司成立，處理公司名稱查冊、章程文件及公司註冊處申請，讓您的業務以最短時間合法開展。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📋</div>
+        <div class="sc-title">公司秘書服務</div>
+        <div class="sc-desc">持牌公司秘書服務（牌照：TC009730），提供周年申報、法定文件維護、董事變更登記及公司印章管理，確保公司合規運作。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">👥</div>
+        <div class="sc-title">人力資源服務</div>
+        <div class="sc-desc">全面人力資源外包服務，包括薪酬管理、員工入職及離職手續、MPF強積金申報及僱員補償保險安排，減輕企業HR行政負擔。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🔍</div>
+        <div class="sc-title">職業介紹服務</div>
+        <div class="sc-desc">持牌職業介紹所（牌照：78287），為企業提供人才招募及配對服務，協助尋找適合的員工，加快人才到位，支援業務發展。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🏠</div>
+        <div class="sc-title">虛擬辦公室</div>
+        <div class="sc-desc">提供香港商業地址作公司注冊及通訊地址，以及郵件轉寄服務，讓初創企業以最低成本建立專業的商業形象及辦公室地址。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">💡</div>
+        <div class="sc-title">商業諮詢服務</div>
+        <div class="sc-desc">為中小企業提供公司架構規劃、業務合規諮詢及財務報告建議，協助企業了解香港法規要求，降低合規風險。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2>即時<span class="accent">免費報價</span></h2>
+    <p class="section-lead">歡迎WhatsApp或電郵聯絡SME Brother，即時獲取免費報價及服務諮詢，我們的專業團隊將為您量身提供最合適的業務方案。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">電郵</div>
+            <div class="ci-value"><a href="mailto:info@smebrother.com">info@smebrother.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">WhatsApp / 手機</div>
+            <div class="ci-value"><a href="https://wa.me/85267059572">6705 9572</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">官方網站</div>
+            <div class="ci-value">smebrother.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📋</div>
+          <div>
+            <div class="ci-label">持牌資訊</div>
+            <div class="ci-value">秘書公司牌照：TC009730<br>職業介紹所牌照：78287</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>即時報價查詢</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group"><label>公司名稱 / 姓名</label><input type="text" placeholder="貴公司名稱或姓名"></div>
+            <div class="form-group"><label>WhatsApp / 電話</label><input type="tel" placeholder="+852 XXXX XXXX"></div>
+          </div>
+          <div class="form-group"><label>電郵地址</label><input type="email" placeholder="your@email.com"></div>
+          <div class="form-group"><label>查詢服務</label>
+            <select>
+              <option value="">請選擇</option>
+              <option>公司成立服務</option>
+              <option>公司秘書服務</option>
+              <option>人力資源服務</option>
+              <option>職業介紹服務</option>
+              <option>虛擬辦公室</option>
+              <option>商業諮詢</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group"><label>查詢詳情</label><textarea placeholder="請描述您的業務需求，我們將盡快提供免費報價..."></textarea></div>
+          <button type="submit" class="form-submit">提交查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">SME Brother · 香港中小企業商業服務</div>
+    <div class="footer-copy">© 2025 SME Brother · info@smebrother.com · 秘書牌照 TC009730 · 職介牌照 78287</div>
+    <div class="footer-links"><a href="#services">服務</a><a href="#contact">聯絡</a></div>
+  </div>
+</footer>
+</body>
+</html>
