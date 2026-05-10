@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>聚羿國際有限公司 | 美容護膚 · 香港</title>
+  <meta name="description" content="聚羿國際有限公司 — 香港專業美容護膚品牌，提供護膚品、美容儀器及專業美容服務，以天然成份及先進技術為您帶來最佳護膚體驗。" />
+  <style>
+    :root {
+      --bg:       #090608;
+      --bg2:      #100c0e;
+      --bg3:      #181014;
+      --border:   #281820;
+      --acc:      #c86080;
+      --acc2:     #e888a8;
+      --acc3:     #a04060;
+      --acc-g:    #c8a858;
+      --text:     #f0e4e8;
+      --muted:    #9878a8;
+      --card:     #110c10;
+      --radius:   10px;
+      --nav-h:    64px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+      background: rgba(9,6,8,0.96); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-mark {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--acc3), var(--acc), var(--acc2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700; color: #fff;
+    }
+    .nav-logo-text { font-size: 14px; font-weight: 600; color: var(--text); }
+    .nav-links { display: flex; gap: 26px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color .2s; }
+    .nav-links a:hover { color: var(--acc2); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 9px 20px; border-radius: 20px;
+      font-size: 12px; cursor: pointer; font-family: inherit; font-weight: 600;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; padding-top: var(--nav-h);
+      background: linear-gradient(155deg, var(--bg) 0%, #100810 55%, var(--bg) 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 15% 55%, rgba(200,96,128,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 85% 30%, rgba(200,168,88,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1180px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 420px; gap: 72px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(200,96,128,0.1); border: 1px solid rgba(200,96,128,0.3);
+      border-radius: 20px; padding: 6px 16px; margin-bottom: 24px;
+      font-size: 12px; color: var(--acc2); letter-spacing: 0.8px;
+    }
+    .hero h1 { font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 700; line-height: 1.25; margin-bottom: 18px; }
+    .hero h1 .hl { color: var(--acc2); }
+    .hero h1 .hl2 { color: var(--acc-g); }
+    .hero-sub { font-size: 1rem; color: var(--muted); margin-bottom: 36px; line-height: 1.8; max-width: 500px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 13px 28px; border-radius: 24px;
+      font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 600;
+      text-decoration: none; transition: opacity .2s; display: inline-block;
+    }
+    .btn-primary:hover { opacity: .85; }
+    .btn-ghost {
+      background: transparent; color: var(--acc2);
+      border: 1.5px solid rgba(200,96,128,0.4); padding: 12px 26px; border-radius: 24px;
+      font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 500;
+      text-decoration: none; transition: all .2s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--acc2); background: rgba(200,96,128,0.06); }
+    .hero-feats { display: flex; flex-wrap: wrap; gap: 10px; }
+    .hero-feat {
+      background: rgba(40,24,32,0.6); border: 1px solid var(--border);
+      color: var(--muted); font-size: 12px; padding: 6px 14px; border-radius: 20px;
+    }
+
+    /* HERO CARD */
+    .hero-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+      overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .hero-card-top {
+      background: linear-gradient(135deg, #1a0e16, #120a0e);
+      padding: 22px 26px; border-bottom: 1px solid var(--border);
+    }
+    .hero-card-top h3 { font-size: 15px; color: var(--acc2); font-weight: 700; margin-bottom: 3px; }
+    .hero-card-top p { font-size: 12px; color: var(--muted); }
+    .beauty-badge {
+      display: inline-flex; gap: 6px; align-items: center;
+      background: rgba(200,96,128,0.12); border: 1px solid rgba(200,96,128,0.3);
+      border-radius: 20px; padding: 4px 12px; margin-top: 10px;
+      font-size: 11px; color: var(--acc); letter-spacing: 0.5px;
+    }
+    .hero-card-body { padding: 20px 26px; }
+    .info-row { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(40,24,32,0.7); align-items: flex-start; }
+    .info-row:last-child { border-bottom: none; }
+    .info-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+    .info-label { font-size: 11px; color: var(--muted); }
+    .info-val { font-size: 13px; color: var(--text); margin-top: 1px; }
+    .info-val a { color: var(--acc2); text-decoration: none; }
+
+    /* STATS */
+    .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 40px; }
+    .stats-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 1.9rem; font-weight: 700; color: var(--acc2); line-height: 1; margin-bottom: 5px; }
+    .stat-label { font-size: 12px; color: var(--muted); }
+
+    /* SECTIONS */
+    section { padding: 84px 40px; }
+    .section-inner { max-width: 1180px; margin: 0 auto; }
+    .section-label { font-size: 11px; color: var(--acc); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+    .section-title { font-size: clamp(1.6rem, 2.5vw, 2.3rem); font-weight: 700; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+    .section-title em { font-style: normal; color: var(--acc2); }
+    .section-desc { font-size: 1rem; color: var(--muted); max-width: 600px; line-height: 1.8; }
+
+    /* ABOUT */
+    .about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; align-items: start; }
+    .about-highlight {
+      background: linear-gradient(135deg, rgba(200,96,128,0.07), rgba(160,64,96,0.03));
+      border: 1px solid rgba(200,96,128,0.18); border-radius: 16px; padding: 30px;
+    }
+    .about-highlight h3 { font-size: 1.1rem; color: var(--acc2); margin-bottom: 14px; font-weight: 600; }
+    .about-highlight p { font-size: 0.94rem; color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
+    .about-highlight p:last-child { margin-bottom: 0; }
+    .about-highlight strong { color: var(--text); }
+    .about-values { display: flex; flex-direction: column; gap: 16px; }
+    .value-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .value-icon { font-size: 22px; flex-shrink: 0; }
+    .value-card h4 { font-size: 14px; color: var(--acc2); margin-bottom: 5px; font-weight: 600; }
+    .value-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* PRODUCTS */
+    .products { background: var(--bg2); }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
+    .product-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 26px;
+      transition: border-color .2s, transform .2s; text-align: center;
+    }
+    .product-card:hover { border-color: rgba(200,96,128,0.4); transform: translateY(-3px); }
+    .product-icon { font-size: 36px; margin-bottom: 14px; }
+    .product-cat { font-size: 11px; color: var(--acc); letter-spacing: 0.8px; margin-bottom: 8px; text-transform: uppercase; }
+    .product-card h3 { font-size: 15px; color: var(--text); margin-bottom: 10px; font-weight: 700; }
+    .product-card p { font-size: 13px; color: var(--muted); line-height: 1.7; text-align: left; }
+    .product-tag {
+      display: inline-block; margin-top: 12px;
+      background: rgba(200,96,128,0.1); border: 1px solid rgba(200,96,128,0.25);
+      color: var(--acc); font-size: 11px; padding: 3px 12px; border-radius: 12px;
+    }
+
+    /* TREATMENTS */
+    .treatments { background: var(--bg); }
+    .treatments-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 48px; }
+    .treatment-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 26px;
+      display: flex; gap: 18px; align-items: flex-start;
+      transition: border-color .2s;
+    }
+    .treatment-card:hover { border-color: rgba(200,96,128,0.3); }
+    .treatment-icon { font-size: 26px; flex-shrink: 0; }
+    .treatment-card h3 { font-size: 14px; color: var(--text); margin-bottom: 8px; font-weight: 600; }
+    .treatment-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    /* INGREDIENTS */
+    .ingredients { background: var(--bg2); }
+    .ing-highlight {
+      background: linear-gradient(135deg, rgba(200,168,88,0.08), rgba(200,96,128,0.04));
+      border: 1px solid rgba(200,168,88,0.2); border-radius: 20px; padding: 56px;
+      text-align: center; max-width: 840px; margin: 48px auto 0;
+    }
+    .ing-highlight h2 { font-size: 1.7rem; color: var(--text); margin-bottom: 14px; font-weight: 700; }
+    .ing-highlight p { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 560px; margin: 0 auto 32px; }
+    .ing-tags { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .ing-tag {
+      background: rgba(200,168,88,0.1); border: 1px solid rgba(200,168,88,0.25);
+      color: var(--acc-g); font-size: 12px; padding: 6px 16px; border-radius: 20px;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; }
+    .contact-info h3 { font-size: 1.1rem; color: var(--acc2); font-weight: 600; margin-bottom: 24px; }
+    .contact-item { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+    .ci-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .ci-label { font-size: 11px; color: var(--muted); }
+    .ci-val { font-size: 14px; color: var(--text); margin-top: 2px; }
+    .ci-val a { color: var(--acc2); text-decoration: none; }
+    .ci-val a:hover { text-decoration: underline; }
+    .contact-form {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px;
+    }
+    .contact-form h3 { font-size: 1.05rem; color: var(--text); margin-bottom: 6px; font-weight: 600; }
+    .contact-form p { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+    .form-row { margin-bottom: 16px; }
+    .form-row label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; background: rgba(40,24,32,0.5); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 14px; color: var(--text); font-size: 13px;
+      font-family: inherit; outline: none; transition: border-color .2s;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--acc); }
+    .form-row textarea { resize: vertical; min-height: 88px; }
+    .form-row select option { background: var(--bg2); }
+    .form-submit {
+      width: 100%; background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 12px; border-radius: 24px; font-size: 14px;
+      cursor: pointer; font-family: inherit; font-weight: 600; transition: opacity .2s;
+    }
+    .form-submit:hover { opacity: .85; }
+
+    /* FOOTER */
+    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 44px 40px 28px; text-align: center; }
+    .footer-inner { max-width: 1180px; margin: 0 auto; }
+    .footer-brand { font-size: 17px; color: var(--acc2); font-weight: 700; margin-bottom: 6px; }
+    .footer-tagline { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 24px; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--acc2); }
+    .footer-copy { font-size: 12px; color: rgba(152,120,168,0.5); }
+
+    @media (max-width: 1024px) {
+      .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .treatments-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 60px 20px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .ing-highlight { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">聚</div>
+    <span class="nav-logo-text">聚羿國際有限公司</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#products">產品系列</a></li>
+    <li><a href="#treatments">美容服務</a></li>
+    <li><a href="#ingredients">成份理念</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">立即諮詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">✨ 香港專業美容護膚品牌</div>
+      <h1>綻放<span class="hl">自然美麗</span><br>喚醒<span class="hl2">肌膚光采</span></h1>
+      <p class="hero-sub">
+        聚羿國際有限公司 — 結合東方天然草本精華與現代美容科技，為您提供由護膚品到專業美容服務的全方位護膚解決方案，讓每位女性散發自信光彩。
+      </p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">探索產品</a>
+        <a href="#contact" class="btn-ghost">預約服務</a>
+      </div>
+      <div class="hero-feats">
+        <span class="hero-feat">🌿 天然成份</span>
+        <span class="hero-feat">🔬 科研配方</span>
+        <span class="hero-feat">💆 專業服務</span>
+        <span class="hero-feat">🌸 溫和有效</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-top">
+        <h3>聚羿國際有限公司</h3>
+        <p>美容護膚品牌 · 香港</p>
+        <div class="beauty-badge">🌸 美麗從護膚開始</div>
+      </div>
+      <div class="hero-card-body">
+        <div class="info-row">
+          <div class="info-icon">📱</div>
+          <div>
+            <div class="info-label">WhatsApp / 電話</div>
+            <div class="info-val"><a href="https://wa.me/85284801898">8480 1898</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">服務地區</div>
+            <div class="info-val">香港全境</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">💄</div>
+          <div>
+            <div class="info-label">主要業務</div>
+            <div class="info-val">護膚品 · 美容儀器 · 美容服務</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🌿</div>
+          <div>
+            <div class="info-label">產品理念</div>
+            <div class="info-val">天然有效 · 溫和護膚</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📦</div>
+          <div>
+            <div class="info-label">產品系列</div>
+            <div class="info-val">保濕 · 美白 · 抗衰老 · 修護</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">天然</div>
+      <div class="stat-label">精選天然有機成份</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">全系列</div>
+      <div class="stat-label">面部及身體護理產品</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">專業</div>
+      <div class="stat-label">持牌美容師服務</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">溫和</div>
+      <div class="stat-label">敏感肌膚適用配方</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">全港</div>
+      <div class="stat-label">香港全境服務</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">關於我們</div>
+    <div class="section-title">專注<em>美容護膚</em>的專業品牌</div>
+    <p class="section-desc">聚羿國際有限公司致力研發天然有效的護膚產品，結合東方草本智慧與現代科技，為香港女性提供最佳護膚體驗。</p>
+    <div class="about-grid">
+      <div class="about-highlight">
+        <h3>品牌理念</h3>
+        <p>
+          聚羿國際有限公司（JURI International Limited）是一間香港本土美容護膚品牌，品牌名稱取意「聚集精華、射中目標」，象徵我們將最精純的天然護膚成份精準地送達您的肌膚細胞。
+        </p>
+        <p>
+          我們相信<strong>真正有效的護膚</strong>，源於對肌膚的深刻了解。我們的產品研發以科學為基礎，精選天然草本精華及有機成份，配合先進的美容科技，為不同膚質的女性提供<strong>溫和而有效的護膚解決方案</strong>。
+        </p>
+        <p>
+          無論您是追求日常保濕滋潤、美白提亮、抗衰老緊緻，還是需要深層修護，聚羿國際均有適合您的產品及服務方案。
+        </p>
+      </div>
+      <div class="about-values">
+        <div class="value-card">
+          <div class="value-icon">🌿</div>
+          <div>
+            <h4>天然成份</h4>
+            <p>嚴選天然植物提取物及有機成份，拒絕有害化學物質，安心滋養肌膚。</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🔬</div>
+          <div>
+            <h4>科研支持</h4>
+            <p>每款產品均通過皮膚科測試及臨床研究驗證，確保安全有效，適合不同膚質使用。</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💝</div>
+          <div>
+            <h4>溫和配方</h4>
+            <p>特別注重敏感肌膚的護理需求，低刺激配方確保您的肌膚得到最溫柔的呵護。</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🏆</div>
+          <div>
+            <h4>品質保證</h4>
+            <p>嚴格把控每個生產環節，確保每瓶產品均符合最高品質標準，讓您安心使用。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-label">產品系列</div>
+    <div class="section-title">全面的<em>護膚產品系列</em></div>
+    <p class="section-desc">聚羿國際提供全方位護膚產品，從日常基礎護理到針對性護膚方案，滿足您的每種護膚需求。</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">💧</div>
+        <div class="product-cat">基礎系列</div>
+        <h3>深層保濕系列</h3>
+        <p>補水鎖水雙效配方，持續24小時深層補濕，適合乾燥及缺水肌膚，令肌膚全日保持水潤彈滑。</p>
+        <span class="product-tag">全膚質適用</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">✨</div>
+        <div class="product-cat">美白系列</div>
+        <h3>亮白提亮系列</h3>
+        <p>天然美白精華配方，針對色斑、暗沉及不均勻膚色，循序漸進提亮膚色，還原透亮無瑕肌。</p>
+        <span class="product-tag">淡斑美白</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">⏳</div>
+        <div class="product-cat">抗衰老系列</div>
+        <h3>緊緻抗老系列</h3>
+        <p>採用多重抗氧化及膠原蛋白促進配方，有效淡化細紋、改善鬆弛，令肌膚重現緊緻年輕輪廓。</p>
+        <span class="product-tag">緊緻抗皺</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🌹</div>
+        <div class="product-cat">修護系列</div>
+        <h3>舒敏修護系列</h3>
+        <p>專為敏感及受損肌膚設計，溫和鎮靜配方有效舒緩肌膚敏感、泛紅及不適，重建肌膚屏障。</p>
+        <span class="product-tag">敏感肌適用</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🧴</div>
+        <div class="product-cat">潔膚系列</div>
+        <h3>溫和潔膚系列</h3>
+        <p>溫和高效清潔配方，徹底卸妝及潔膚，去除多餘油脂及雜質，同時保留肌膚天然水分。</p>
+        <span class="product-tag">潔淨不緊繃</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🌸</div>
+        <div class="product-cat">眼部護理</div>
+        <h3>眼部精華系列</h3>
+        <p>針對眼周幼細肌膚設計的輕薄精華，有效改善黑眼圈、浮腫及細紋，令雙眼重現明亮神采。</p>
+        <span class="product-tag">眼周專用</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TREATMENTS -->
+<section class="treatments" id="treatments">
+  <div class="section-inner">
+    <div class="section-label">美容服務</div>
+    <div class="section-title">專業<em>美容護膚療程</em></div>
+    <p class="section-desc">除護膚品外，聚羿國際亦提供由專業美容師主理的全面美容療程，讓您享受專業護膚的貼心體驗。</p>
+    <div class="treatments-grid">
+      <div class="treatment-card">
+        <div class="treatment-icon">💆</div>
+        <div>
+          <h3>深層潔面療程</h3>
+          <p>採用蒸臉及深層清潔技術，徹底清除毛孔雜質、黑頭及多餘油脂，改善膚質，令肌膚潔淨光滑。</p>
+        </div>
+      </div>
+      <div class="treatment-card">
+        <div class="treatment-icon">✨</div>
+        <div>
+          <h3>保濕補水療程</h3>
+          <p>結合高效保濕護膚品及專業按摩手技，深層補充肌膚水分，有效改善乾燥及缺水問題。</p>
+        </div>
+      </div>
+      <div class="treatment-card">
+        <div class="treatment-icon">🌟</div>
+        <div>
+          <h3>美白提亮療程</h3>
+          <p>運用美白精華及特殊護膚技術，針對色斑及暗沉肌膚，循序漸進提亮膚色，還原透亮光澤。</p>
+        </div>
+      </div>
+      <div class="treatment-card">
+        <div class="treatment-icon">⚡</div>
+        <div>
+          <h3>緊緻抗老療程</h3>
+          <p>結合高頻儀器及抗老精華，刺激膠原蛋白再生，有效提升及緊緻肌膚，淡化細紋和皺紋。</p>
+        </div>
+      </div>
+      <div class="treatment-card">
+        <div class="treatment-icon">🌿</div>
+        <div>
+          <h3>舒敏修護療程</h3>
+          <p>專為敏感及受損肌膚設計的舒緩療程，溫和鎮靜配方加上專業按摩，修復肌膚屏障，恢復健康。</p>
+        </div>
+      </div>
+      <div class="treatment-card">
+        <div class="treatment-icon">👁️</div>
+        <div>
+          <h3>眼部修護療程</h3>
+          <p>針對眼部細紋、黑眼圈及眼袋的專業療程，採用特殊眼部護理技術，令眼周肌膚重現年輕活力。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INGREDIENTS -->
+<section class="ingredients" id="ingredients">
+  <div class="section-inner">
+    <div class="section-label">成份理念</div>
+    <div class="section-title">精選<em>天然護膚成份</em></div>
+    <div class="ing-highlight">
+      <h2>大自然的護膚智慧</h2>
+      <p>
+        聚羿國際精選來自世界各地的天然植物精華及有機成份，每一種成份均經過嚴格篩選及臨床驗證，確保為您的肌膚提供最純淨有效的滋養。
+      </p>
+      <div class="ing-tags">
+        <span class="ing-tag">🌹 玫瑰精華</span>
+        <span class="ing-tag">🍵 綠茶抗氧化</span>
+        <span class="ing-tag">🌸 桂花提取物</span>
+        <span class="ing-tag">🧊 透明質酸</span>
+        <span class="ing-tag">🌿 蘆薈萃取</span>
+        <span class="ing-tag">🍑 桃花精油</span>
+        <span class="ing-tag">💛 維他命C</span>
+        <span class="ing-tag">⭐ 視黃醇</span>
+        <span class="ing-tag">🌺 牡丹精華</span>
+        <span class="ing-tag">🥥 椰子油</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <div class="section-title">開啟您的<em>護膚之旅</em></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>預約及查詢</h3>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">WhatsApp / 電話</div>
+            <div class="ci-val"><a href="https://wa.me/85284801898">8480 1898</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">服務地區</div>
+            <div class="ci-val">香港全境</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">💄</div>
+          <div>
+            <div class="ci-label">主要業務</div>
+            <div class="ci-val">護膚品銷售 · 美容療程 · 美容諮詢</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">⏰</div>
+          <div>
+            <div class="ci-label">查詢時間</div>
+            <div class="ci-val">星期一至六：上午10時至晚上8時</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🎁</div>
+          <div>
+            <div class="ci-label">優惠資訊</div>
+            <div class="ci-val">首次諮詢免費 · 新客優惠套餐</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>護膚諮詢預約</h3>
+        <p>填寫以下表格，我們的美容顧問將為您提供個人化護膚建議。</p>
+        <form onsubmit="event.preventDefault()">
+          <div class="form-row">
+            <label>您的姓名</label>
+            <input type="text" placeholder="請輸入姓名" />
+          </div>
+          <div class="form-row">
+            <label>WhatsApp / 電話</label>
+            <input type="tel" placeholder="香港電話號碼" />
+          </div>
+          <div class="form-row">
+            <label>感興趣的服務</label>
+            <select>
+              <option>護膚品查詢</option>
+              <option>深層潔面療程</option>
+              <option>保濕補水療程</option>
+              <option>美白提亮療程</option>
+              <option>緊緻抗老療程</option>
+              <option>舒敏修護療程</option>
+              <option>眼部修護療程</option>
+              <option>全面護膚諮詢</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>您的膚質</label>
+            <select>
+              <option>乾性肌膚</option>
+              <option>油性肌膚</option>
+              <option>混合性肌膚</option>
+              <option>敏感性肌膚</option>
+              <option>普通肌膚</option>
+              <option>不確定</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>主要護膚煩惱</label>
+            <textarea placeholder="請說明您的護膚煩惱或問題，例如：乾燥缺水、暗沉色斑、細紋鬆弛等..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">預約諮詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">聚羿國際有限公司 · JURI International Limited</div>
+    <div class="footer-tagline">天然護膚 · 美麗從護膚開始 · 香港</div>
+    <div class="footer-links">
+      <a href="#about">關於我們</a>
+      <a href="#products">產品系列</a>
+      <a href="#treatments">美容服務</a>
+      <a href="#ingredients">成份理念</a>
+      <a href="#contact">聯絡我們</a>
+    </div>
+    <div class="footer-copy">&copy; 2024 聚羿國際有限公司. 版權所有。香港美容護膚品牌。</div>
+  </div>
+</footer>
+
+</body>
+</html>
