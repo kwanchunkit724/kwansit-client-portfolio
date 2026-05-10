@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>瑞爾國際物流集團有限公司 | Realogistics International Group</title>
+<style>
+  :root {
+    --bg:        #060b0e;
+    --surface:   #0c1318;
+    --card:      #121c22;
+    --accent1:   #00a8c8;
+    --accent2:   #30d8f0;
+    --accent3:   #f07820;
+    --text:      #d8eef8;
+    --muted:     #6888a0;
+    --border:    rgba(0,168,200,0.22);
+    --glow:      rgba(0,168,200,0.2);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'PingFang HK', 'Microsoft JhengHei', sans-serif; line-height: 1.7; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(6,11,14,0.95); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.88rem; color: #060b0e;
+    box-shadow: 0 0 18px var(--glow);
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-name span { color: var(--accent2); font-weight: 400; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #060b0e; border: none; padding: 9px 22px; border-radius: 6px;
+    font-size: 0.88rem; font-weight: 800; cursor: pointer; text-decoration: none;
+    box-shadow: 0 4px 16px var(--glow); transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; padding: 120px 5% 80px;
+    background:
+      radial-gradient(ellipse 70% 55% at 88% 45%, rgba(0,168,200,0.15) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 50% at 8% 75%, rgba(48,216,240,0.07) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
+  }
+  .hero-text { flex: 1 1 480px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,168,200,0.1); border: 1px solid rgba(0,168,200,0.3);
+    padding: 6px 16px; border-radius: 20px; font-size: 0.82rem;
+    color: var(--accent2); margin-bottom: 24px; letter-spacing: 0.04em;
+  }
+  .hero-badge::before { content: '✈️'; font-size: 0.9rem; }
+  .hero-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.18; margin-bottom: 8px; }
+  .hero-title .cyan { color: var(--accent2); }
+  .hero-title .orange { color: var(--accent3); }
+  .hero-en { font-size: 1.05rem; color: var(--muted); font-weight: 500; margin-bottom: 20px; }
+  .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 520px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #060b0e; padding: 13px 28px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 800; text-decoration: none;
+    box-shadow: 0 6px 24px var(--glow); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid var(--accent1); color: var(--accent2);
+    padding: 13px 28px; border-radius: 8px; font-size: 0.95rem;
+    font-weight: 600; text-decoration: none; transition: background .2s;
+  }
+  .btn-outline:hover { background: rgba(0,168,200,0.1); }
+
+  /* info card */
+  .hero-card {
+    flex: 0 0 310px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .hero-card h3 { font-size: 0.78rem; color: var(--accent2); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+  .info-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .info-icon { font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+  .info-label { font-size: 0.73rem; color: var(--muted); margin-bottom: 2px; }
+  .info-val { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+  .info-val a { color: var(--accent2); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .divider-card { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+  .est-badge {
+    display: inline-block; background: rgba(0,168,200,0.1); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 6px; font-size: 0.78rem; color: var(--accent2); margin-top: 4px;
+  }
+
+  /* ── STATS ── */
+  .stats-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 44px 5%;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; text-align: center;
+  }
+  .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 88px 5%; }
+  .section-label { font-size: 0.78rem; color: var(--accent1); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 800; margin-bottom: 14px; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 600px; margin-bottom: 48px; }
+
+  /* ── SERVICES ── */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 22px; }
+  .svc-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px 24px; transition: transform .25s, box-shadow .25s;
+  }
+  .svc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,168,200,0.14); }
+  .svc-icon { font-size: 2rem; margin-bottom: 14px; }
+  .svc-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .svc-card p { font-size: 0.88rem; color: var(--muted); }
+
+  /* ── CASE STUDY ── */
+  .case-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 40px 36px; position: relative; overflow: hidden;
+  }
+  .case-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+  }
+  .case-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(240,120,32,0.12); border: 1px solid rgba(240,120,32,0.28);
+    padding: 5px 14px; border-radius: 20px; font-size: 0.78rem;
+    color: var(--accent3); margin-bottom: 18px; font-weight: 700;
+  }
+  .case-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 16px; }
+  .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+  .case-col h4 { font-size: 0.8rem; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .case-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .case-list li { display: flex; gap: 8px; font-size: 0.88rem; color: var(--muted); align-items: flex-start; }
+  .case-list li::before { content: '▸'; color: var(--accent2); flex-shrink: 0; }
+
+  /* ── COLD CHAIN ── */
+  .coldchain-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
+  .cc-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px 24px; display: flex; gap: 16px; align-items: flex-start;
+  }
+  .cc-icon-wrap {
+    width: 48px; height: 48px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(0,168,200,0.12); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+  }
+  .cc-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .cc-card p { font-size: 0.87rem; color: var(--muted); }
+
+  /* ── HIGHLIGHT ── */
+  .highlight {
+    background: linear-gradient(135deg, rgba(0,168,200,0.12), rgba(48,216,240,0.07));
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 56px 48px; margin: 0 5% 80px; text-align: center;
+  }
+  .highlight h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: 14px; }
+  .highlight p { color: var(--muted); max-width: 640px; margin: 0 auto 28px; font-size: 0.98rem; }
+
+  /* ── CONTACT ── */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info { display: flex; flex-direction: column; gap: 18px; }
+  .c-item { display: flex; gap: 14px; align-items: flex-start; }
+  .c-icon {
+    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(0,168,200,0.1); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .c-item h4 { font-size: 0.8rem; color: var(--muted); margin-bottom: 2px; }
+  .c-item p, .c-item a { font-size: 0.9rem; color: var(--text); text-decoration: none; }
+  .c-item a:hover { color: var(--accent2); }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); padding: 11px 14px; border-radius: 8px; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent1); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #060b0e; border: none; padding: 13px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 800; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.88; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 44px 5% 28px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center;
+  }
+  .footer-brand { font-size: 1rem; font-weight: 700; }
+  .footer-brand span { color: var(--accent2); font-weight: 400; }
+  .footer-copy { font-size: 0.8rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; }
+  .footer-links a:hover { color: var(--accent2); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero { flex-direction: column; }
+    .hero-card { flex: 1 1 100%; }
+    .highlight { padding: 36px 24px; margin: 0 0 60px; }
+    .case-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#home">
+    <div class="nav-logo">瑞爾</div>
+    <div class="nav-name">瑞爾國際物流 <span>| Realogistics</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">服務項目</a></li>
+    <li><a href="#coldchain">冷鏈物流</a></li>
+    <li><a href="#case">案例分享</a></li>
+    <li><a href="#contact">即時報價</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">即時報價</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-badge">香港 · 成立於 2012 年 · 國際貨運代理</div>
+    <h1 class="hero-title">
+      <span class="cyan">瑞爾國際</span>物流集團<br>
+      <span class="orange">Realogistics</span>
+    </h1>
+    <p class="hero-en">International Freight Forwarding &amp; Cold Chain Logistics · Est. 2012</p>
+    <p class="hero-desc">
+      2012 年創立於香港，專業提供國際貨運代理、冷鏈物流及航空海運服務。
+      擅長醫藥品冷鏈運輸，採用 RAP 冷藏容器全程 24/7 監控，
+      為全球客戶提供精準可靠的物流解決方案。
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#contact">即時報價查詢</a>
+      <a class="btn-outline" href="#services">了解服務</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <h3>聯絡 Realogistics</h3>
+    <div class="info-row">
+      <div class="info-icon">📱</div>
+      <div>
+        <div class="info-label">WhatsApp</div>
+        <div class="info-val"><a href="tel:+85269373282">+852 6937 3282</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">✉️</div>
+      <div>
+        <div class="info-label">電郵</div>
+        <div class="info-val"><a href="mailto:tony.wu_hkg@realogistics.net">tony.wu_hkg@realogistics.net</a></div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">🌐</div>
+      <div>
+        <div class="info-label">網站</div>
+        <div class="info-val"><a href="https://www.realogistics.com.hk" target="_blank" rel="noopener">realogistics.com.hk</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">📍</div>
+      <div>
+        <div class="info-label">總部</div>
+        <div class="info-val">香港 Hong Kong<br><div class="est-badge">🏢 成立 2012 年</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div>
+    <div class="stat-num">2012</div>
+    <div class="stat-label">香港創立年份</div>
+  </div>
+  <div>
+    <div class="stat-num">24/7</div>
+    <div class="stat-label">冷鏈全程監控</div>
+  </div>
+  <div>
+    <div class="stat-num">RAP</div>
+    <div class="stat-label">冷藏容器技術</div>
+  </div>
+  <div>
+    <div class="stat-num">全球</div>
+    <div class="stat-label">國際貨運網絡覆蓋</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label">服務項目</p>
+  <h2 class="section-title">全面國際物流服務</h2>
+  <p class="section-sub">瑞爾國際物流提供多元化貨運代理服務，涵蓋航空、海運及陸路，專注冷鏈及特殊貨物運輸。</p>
+
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon">✈️</div>
+      <h3>航空貨運</h3>
+      <p>提供點對點航空貨運代理服務，覆蓋全球主要機場，快速可靠，確保貨物準時到達。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🚢</div>
+      <h3>海運貨運</h3>
+      <p>整櫃（FCL）及拼櫃（LCL）服務，覆蓋全球各大港口，提供靈活的海運解決方案。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🌡️</div>
+      <h3>冷鏈物流</h3>
+      <p>採用 RAP 冷藏容器，24/7 全程溫控監控，專業處理醫藥品、生鮮食品等溫度敏感貨物。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">💊</div>
+      <h3>醫藥品運輸</h3>
+      <p>符合 GDP 標準的醫藥品航空及海運服務，專業標籤、包裝及文件處理，確保合規運輸。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">📋</div>
+      <h3>報關及文件處理</h3>
+      <p>專業處理進出口報關、商業發票、裝箱單及相關運輸文件，確保清關順暢。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏭</div>
+      <h3>倉儲及配送</h3>
+      <p>提供本地倉儲安排及最後一哩配送服務，完善整體供應鏈物流管理。</p>
+    </div>
+  </div>
+</section>
+
+<!-- COLD CHAIN -->
+<section id="coldchain" style="background: var(--surface);">
+  <p class="section-label">冷鏈物流專業</p>
+  <h2 class="section-title">RAP 冷藏容器技術</h2>
+  <p class="section-sub">瑞爾國際物流採用業界頂級 RAP 冷藏容器技術，配合全程 24/7 監控系統，確保溫度敏感貨物的安全運輸。</p>
+
+  <div class="coldchain-grid">
+    <div class="cc-card">
+      <div class="cc-icon-wrap">📦</div>
+      <div>
+        <h3>RAP 冷藏容器</h3>
+        <p>採用 RAP（Refrigerated Active Packaging）技術，提供精確、持久的溫度控制，適用於醫藥品及生物製品。</p>
+      </div>
+    </div>
+    <div class="cc-card">
+      <div class="cc-icon-wrap">📡</div>
+      <div>
+        <h3>24/7 全程監控</h3>
+        <p>實時溫度記錄及監控系統，確保貨物在整個運輸過程中持續符合溫控要求，全程可追蹤。</p>
+      </div>
+    </div>
+    <div class="cc-card">
+      <div class="cc-icon-wrap">🏥</div>
+      <div>
+        <h3>醫藥品冷鏈合規</h3>
+        <p>熟悉醫藥品運輸法規及 GDP 標準，提供專業包裝、標籤及運輸文件，確保全程合規。</p>
+      </div>
+    </div>
+    <div class="cc-card">
+      <div class="cc-icon-wrap">❄️</div>
+      <div>
+        <h3>冷倉預冷管理</h3>
+        <p>系統化完成冷倉預冷、容器取貨、包裝及交付等程序，確保溫度鏈在操作全程不間斷。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHT -->
+<div class="highlight">
+  <h2>專業貨運代理<br><span style="color:var(--accent2)">快速報價 · 全球覆蓋</span></h2>
+  <p>
+    無論是標準貨運還是高難度冷鏈運輸，瑞爾國際物流均能為您提供專業解決方案。
+    立即透過 WhatsApp 或電郵聯絡我們，獲取快速報價及物流建議。
+  </p>
+  <a class="btn-primary" href="tel:+85269373282">WhatsApp 即時報價</a>
+</div>
+
+<!-- CASE STUDY -->
+<section id="case">
+  <p class="section-label">案例分享</p>
+  <h2 class="section-title">成功案例：醫藥品冷鏈運輸</h2>
+  <p class="section-sub" style="margin-bottom: 36px">瑞爾國際物流為重要客戶成功完成醫藥品國內全流程運輸及國際出口業務。</p>
+
+  <div class="case-card">
+    <div class="case-tag">✈️ 航空貨運案例</div>
+    <h3>北京大興機場 → 廣州白雲機場 醫藥品冷鏈航空運輸</h3>
+    <p style="color: var(--muted); font-size: 0.92rem;">採用 RAP 冷藏容器，全程溫控，成功完成醫藥品國內航空運輸及後續國際出口操作。</p>
+
+    <div class="case-grid">
+      <div class="case-col">
+        <h4>案例挑戰</h4>
+        <ul class="case-list">
+          <li>醫藥品專業包裝及標籤要求</li>
+          <li>全冷鏈運輸，嚴格溫控要求</li>
+          <li>全程監控確保合規，不間斷記錄</li>
+        </ul>
+      </div>
+      <div class="case-col">
+        <h4>Realogistics 解決方案</h4>
+        <ul class="case-list">
+          <li>專業標籤及各類運輸標識安排</li>
+          <li>RAP 冷藏容器 24/7 穩定溫控</li>
+          <li>系統化冷倉預冷及交付流程</li>
+          <li>現場記錄操作細節及交貨時間</li>
+          <li>任務完成後及時歸還冷藏容器</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background: var(--surface);">
+  <p class="section-label">即時報價</p>
+  <h2 class="section-title">聯絡我們獲取快速報價</h2>
+  <p class="section-sub">請填寫貨運需求，或直接透過 WhatsApp 聯絡，我們將盡快提供專業報價。</p>
+
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="c-item">
+        <div class="c-icon">📱</div>
+        <div>
+          <h4>WhatsApp（即時回覆）</h4>
+          <a href="tel:+85269373282">+852 6937 3282</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">✉️</div>
+        <div>
+          <h4>電郵</h4>
+          <a href="mailto:tony.wu_hkg@realogistics.net">tony.wu_hkg@realogistics.net</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">💬</div>
+        <div>
+          <h4>Skype</h4>
+          <p>tony.wu_hkg@hotmail.com</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">🌐</div>
+        <div>
+          <h4>網站</h4>
+          <a href="https://www.realogistics.com.hk" target="_blank" rel="noopener">realogistics.com.hk</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <h4>總部</h4>
+          <p>香港 · 成立於 2012 年</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>公司 / 姓名</label>
+          <input type="text" placeholder="公司名稱或負責人姓名">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話 / WhatsApp</label>
+          <input type="tel" placeholder="+852 xxxx xxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>電郵地址</label>
+        <input type="email" placeholder="your@company.com">
+      </div>
+      <div class="form-group">
+        <label>服務類別</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>航空貨運</option>
+          <option>海運貨運</option>
+          <option>冷鏈物流</option>
+          <option>醫藥品運輸</option>
+          <option>報關及文件處理</option>
+          <option>倉儲及配送</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>貨運詳情 / 備註</label>
+        <textarea placeholder="請說明貨物類型、出發地、目的地、重量/體積及特殊要求…"></textarea>
+      </div>
+      <button class="form-submit">發送報價查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">瑞爾國際物流集團有限公司 <span>| Realogistics International Group Co., Ltd.</span></div>
+  <div class="footer-copy">© 2025 Realogistics International Group Co., Ltd. 版權所有</div>
+  <div class="footer-links">
+    <a href="#services">服務項目</a>
+    <a href="#coldchain">冷鏈物流</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+</footer>
+
+</body>
+</html>
