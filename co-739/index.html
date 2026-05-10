@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>優聯創意設計印刷有限公司 | 創意設計 · 專業印刷</title>
+<meta name="description" content="優聯創意設計印刷有限公司 — 專業創意設計及印刷服務，提供名片、海報、DM、包裝、書刊、禮品及各類印刷產品。專注印刷，激盪創意設計。Email: service@uu-lian.com">
+<style>
+:root{--bg:#04060c;--bg2:#06090f;--bg3:#080c14;--red:#c02830;--red-lt:#e03848;--gold:#c89030;--gold-lt:#e8b040;--text:#e8eef8;--muted:#6888a8;--border:rgba(192,40,48,0.2);--card-bg:rgba(255,255,255,0.03);--radius:10px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans HK','PingFang HK',sans-serif;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,6,12,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1rem;font-weight:800;color:var(--red-lt)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--red),var(--red-lt));color:#fff;padding:9px 22px;border-radius:6px;font-size:.88rem;font-weight:700;text-decoration:none;transition:opacity .2s}.nav-cta:hover{opacity:.88}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 60% 40%,rgba(192,40,48,0.1) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(192,40,48,0.1);border:1px solid rgba(192,40,48,0.28);border-radius:6px;padding:6px 14px;font-size:.8rem;color:var(--red-lt);margin-bottom:20px}
+h1{font-size:clamp(1.9rem,4vw,3rem);font-weight:900;line-height:1.12;margin-bottom:12px}
+h1 .en{display:block;font-size:clamp(.85rem,1.7vw,1rem);font-weight:400;color:var(--red-lt);letter-spacing:.04em;margin-top:8px}
+.hero-desc{color:var(--muted);font-size:1rem;max-width:440px;margin:18px 0 22px;line-height:1.8}
+.tagline-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.tb{display:inline-flex;align-items:center;gap:6px;background:rgba(200,144,48,0.1);border:1px solid rgba(200,144,48,0.3);border-radius:6px;padding:5px 12px;font-size:.78rem;color:var(--gold-lt);font-weight:600}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--red),var(--red-lt));color:#fff;padding:13px 28px;border-radius:6px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 26px;border-radius:6px;font-size:.93rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}.btn-outline:hover{border-color:var(--red-lt);color:var(--red-lt)}
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:16px}
+.card-badge{display:flex;align-items:center;gap:12px}
+.badge-emblem{width:48px;height:48px;background:linear-gradient(135deg,var(--red),var(--red-lt));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.badge-name{font-size:.95rem;font-weight:700}.badge-label{font-size:.76rem;color:var(--muted)}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--red-lt);flex-shrink:0;margin-top:2px;text-align:center}
+.card-row-text{font-size:.88rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block;font-size:.9rem}
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.stat-item{text-align:center}
+.stat-num{font-size:1.9rem;font-weight:900;background:linear-gradient(135deg,var(--red-lt),var(--gold-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.82rem;margin-top:6px}
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(192,40,48,0.08);border:1px solid rgba(192,40,48,0.2);border-radius:6px;padding:4px 12px;font-size:.75rem;color:var(--red-lt);letter-spacing:.05em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--red-lt)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s}.svc-card:hover{border-color:var(--red-lt);transform:translateY(-4px)}
+.sc-icon{width:50px;height:50px;background:rgba(192,40,48,0.1);border:1px solid rgba(192,40,48,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.sc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.products-section{background:var(--bg2)}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.prod-item{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;transition:border-color .2s}.prod-item:hover{border-color:var(--gold-lt)}
+.prod-icon{font-size:1.6rem;margin-bottom:8px}
+.prod-name{font-size:.88rem;font-weight:700;color:var(--text)}
+.contact-section{background:var(--bg3)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(192,40,48,0.1);border:1px solid rgba(192,40,48,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.75rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.95rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--red-lt);text-decoration:none}.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:34px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--red-lt)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#06090f}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--red),var(--red-lt));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}.form-submit:hover{opacity:.88}
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:.95rem;font-weight:800;color:var(--red-lt)}
+.footer-copy{font-size:.8rem;color:var(--muted);text-align:center}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}.footer-links a:hover{color:var(--text)}
+@media(max-width:900px){.hero-inner,.contact-grid{grid-template-columns:1fr}.stats-inner,.cards-grid,.prod-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav-links{display:none}.cards-grid,.stats-inner,.prod-grid{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">優聯創意設計印刷有限公司</div>
+    <ul class="nav-links">
+      <li><a href="#services">服務</a></li>
+      <li><a href="#products">印刷產品</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+    <a href="mailto:service@uu-lian.com" class="nav-cta">立即查詢</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🖨️ 創意設計 · 專業印刷</div>
+      <h1>優聯創意設計印刷<span class="en">UU-Lian Creative Design &amp; Printing</span></h1>
+      <div class="tagline-badges">
+        <span class="tb">🎨 創意設計</span>
+        <span class="tb">🖨️ 專業印刷</span>
+        <span class="tb">📦 包裝製作</span>
+        <span class="tb">🎁 企業禮品</span>
+      </div>
+      <p class="hero-desc">激盪思維，激發共鳴。專注印刷與創意設計，提供名片、海報、DM、書刊、包裝、禮品及各類印刷服務，為企業及個人客戶提供一站式印刷解決方案。</p>
+      <div class="hero-btns">
+        <a href="mailto:service@uu-lian.com" class="btn-primary">即時查詢報價</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-emblem">🖨️</div>
+        <div>
+          <div class="badge-label">創意設計 · 專業印刷</div>
+          <div class="badge-name">優聯創意設計印刷有限公司</div>
+        </div>
+      </div>
+      <hr class="card-divider">
+      <div class="card-row"><div class="card-row-icon">📧</div><div class="card-row-text"><strong>電郵</strong>service@uu-lian.com</div></div>
+      <div class="card-row"><div class="card-row-icon">🌐</div><div class="card-row-text"><strong>網站</strong>uu-lian.com</div></div>
+      <div class="card-row"><div class="card-row-icon">🕐</div><div class="card-row-text"><strong>辦公時間</strong>週一至五 09:00–18:30</div></div>
+      <div class="card-row"><div class="card-row-icon">🎨</div><div class="card-row-text"><strong>服務範疇</strong>創意設計 · 平面印刷 · 大型輸出 · 包裝 · 禮品</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">2012</div><div class="stat-label">成立年份</div></div>
+    <div class="stat-item"><div class="stat-num">專業</div><div class="stat-label">創意設計團隊</div></div>
+    <div class="stat-item"><div class="stat-num">全面</div><div class="stat-label">一站式印刷服務</div></div>
+    <div class="stat-item"><div class="stat-num">免費</div><div class="stat-label">報價查詢</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務範疇</div>
+    <h2>專注<span class="accent">印刷</span>與創意設計</h2>
+    <p class="section-lead">優聯創意設計印刷提供全方位印刷及設計服務，從創意概念到成品交付，為企業及個人提供高品質的印刷解決方案。</p>
+    <div class="cards-grid">
+      <div class="svc-card">
+        <div class="sc-icon">🎨</div>
+        <div class="sc-title">創意設計</div>
+        <div class="sc-desc">專業平面設計服務，包括企業識別設計、名片設計、宣傳品設計、包裝設計等，激盪思維，為品牌注入創意活力。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🖨️</div>
+        <div class="sc-title">平面印刷</div>
+        <div class="sc-desc">高品質平面印刷服務，涵蓋名片、DM 單張、海報、貼紙、信封等各類商業印刷，色彩鮮明、精準呈現。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📐</div>
+        <div class="sc-title">大型輸出安裝</div>
+        <div class="sc-desc">大型噴繪輸出及安裝服務，適用於展覽、門市佈置、戶外廣告等場合，尺寸靈活，視覺效果震撼。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📚</div>
+        <div class="sc-title">書刊目錄印刷</div>
+        <div class="sc-desc">專業書刊、型錄、雜誌及宣傳冊印刷，提供騎馬釘、膠裝、精裝等多種裝訂方式，品質卓越。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📦</div>
+        <div class="sc-title">包裝製作</div>
+        <div class="sc-desc">客製化包裝設計及製作，包括紙袋、紙盒、禮品盒、食品包裝等，為產品增添品牌價值。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🎁</div>
+        <div class="sc-title">企業禮品</div>
+        <div class="sc-desc">各類企業宣傳禮品及紀念品訂制，包括印刷品、促銷物料等，適合企業活動、展覽及客戶送禮之用。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products" class="products-section">
+  <div class="section-inner">
+    <div class="section-tag">印刷產品</div>
+    <h2>多元<span class="accent">印刷產品</span>一站搞定</h2>
+    <p class="section-lead">從日常商業印刷品到特種印刷，優聯提供種類齊全的印刷產品，滿足各行各業的不同需求。</p>
+    <div class="prod-grid">
+      <div class="prod-item"><div class="prod-icon">💼</div><div class="prod-name">名片</div></div>
+      <div class="prod-item"><div class="prod-icon">📄</div><div class="prod-name">DM 單張</div></div>
+      <div class="prod-item"><div class="prod-icon">🪧</div><div class="prod-name">海報</div></div>
+      <div class="prod-item"><div class="prod-icon">🏷️</div><div class="prod-name">貼紙標籤</div></div>
+      <div class="prod-item"><div class="prod-icon">✉️</div><div class="prod-name">信封信紙</div></div>
+      <div class="prod-item"><div class="prod-icon">📚</div><div class="prod-name">書刊目錄</div></div>
+      <div class="prod-item"><div class="prod-icon">📦</div><div class="prod-name">紙盒包裝</div></div>
+      <div class="prod-item"><div class="prod-icon">🛍️</div><div class="prod-name">手提紙袋</div></div>
+      <div class="prod-item"><div class="prod-icon">🎁</div><div class="prod-name">禮品盒</div></div>
+      <div class="prod-item"><div class="prod-icon">👕</div><div class="prod-name">服裝印刷</div></div>
+      <div class="prod-item"><div class="prod-icon">💒</div><div class="prod-name">婚禮請帖</div></div>
+      <div class="prod-item"><div class="prod-icon">🍱</div><div class="prod-name">食品包裝</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2>印刷<span class="accent">查詢報價</span></h2>
+    <p class="section-lead">歡迎電郵查詢，我們的設計印刷顧問將為您提供專業建議及免費報價。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">電郵</div>
+            <div class="ci-value"><a href="mailto:service@uu-lian.com">service@uu-lian.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">網站</div>
+            <div class="ci-value">uu-lian.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🕐</div>
+          <div>
+            <div class="ci-label">辦公時間</div>
+            <div class="ci-value">週一至五 09:00–18:30<br>（午休 12:00–13:30）</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🖨️</div>
+          <div>
+            <div class="ci-label">服務範疇</div>
+            <div class="ci-value">創意設計 · 平面印刷 · 大型輸出<br>包裝製作 · 企業禮品 · 書刊印刷</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>印刷查詢</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group"><label>姓名</label><input type="text" placeholder="您的姓名"></div>
+            <div class="form-group"><label>聯絡電話</label><input type="tel" placeholder="9XXX XXXX"></div>
+          </div>
+          <div class="form-group"><label>電郵地址</label><input type="email" placeholder="your@email.com"></div>
+          <div class="form-group"><label>查詢類別</label>
+            <select>
+              <option value="">請選擇</option>
+              <option>名片印刷</option>
+              <option>DM / 單張 / 海報</option>
+              <option>書刊 / 目錄印刷</option>
+              <option>包裝 / 紙盒製作</option>
+              <option>大型輸出安裝</option>
+              <option>企業禮品</option>
+              <option>創意設計</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group"><label>查詢詳情</label><textarea placeholder="請描述您的印刷需求、數量、尺寸及其他要求..."></textarea></div>
+          <button type="submit" class="form-submit">提交查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">優聯創意設計印刷有限公司</div>
+    <div class="footer-copy">© 2025 優聯創意設計印刷有限公司 · service@uu-lian.com</div>
+    <div class="footer-links"><a href="#services">服務</a><a href="#products">產品</a><a href="#contact">聯絡</a></div>
+  </div>
+</footer>
+</body>
+</html>
