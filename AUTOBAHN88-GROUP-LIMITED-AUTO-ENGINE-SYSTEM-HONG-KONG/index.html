@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autobahn88 Group Limited | Performance Car Parts &amp; Auto Engine Systems | Hong Kong</title>
+<style>
+  :root {
+    --primary: #0e0e12;
+    --accent: #e04810;
+    --accent2: #ff6a30;
+    --accent3: #ff9966;
+    --light: #f5f3f0;
+    --white: #ffffff;
+    --text: #1a1612;
+    --muted: #5e5850;
+    --border: #ddd8d0;
+    --card-bg: #faf8f4;
+    --hero-overlay: rgba(14,14,18,0.82);
+    --dark-card: #161614;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI',Arial,sans-serif; color:var(--text); background:#fff; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+
+  nav {
+    background:var(--primary);
+    padding:0 2rem;
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px; position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 16px rgba(224,72,16,0.25);
+    border-bottom:2px solid var(--accent);
+  }
+  .nav-brand { display:flex; align-items:center; gap:12px; }
+  .nav-wordmark { font-size:1.25rem; font-weight:900; color:#fff; letter-spacing:1px; text-transform:uppercase; }
+  .nav-sub { font-size:0.65rem; color:var(--accent3); letter-spacing:1.5px; text-transform:uppercase; margin-top:1px; }
+  .nav-links { display:flex; gap:1.6rem; }
+  .nav-links a { color:rgba(255,255,255,0.76); font-size:0.86rem; font-weight:500; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--accent3); text-decoration:none; }
+  .nav-cta {
+    background:var(--accent); color:#fff !important; padding:8px 18px;
+    border-radius:4px; font-size:0.84rem !important; font-weight:700 !important; transition:background 0.2s !important;
+    text-transform:uppercase; letter-spacing:0.5px;
+  }
+  .nav-cta:hover { background:var(--accent2) !important; }
+
+  .hero {
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+      url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600&q=80') center/cover no-repeat;
+    min-height:520px; display:flex; align-items:center; padding:4rem 2rem;
+  }
+  .hero-inner { max-width:1100px; margin:0 auto; width:100%; display:flex; align-items:center; gap:3rem; }
+  .hero-text { flex:1; }
+  .hero-badge {
+    display:inline-block; background:rgba(224,72,16,0.2); border:1px solid rgba(255,106,48,0.5);
+    color:var(--accent3); font-size:0.75rem; font-weight:700; padding:5px 14px;
+    border-radius:3px; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:1.2rem;
+  }
+  .hero-text h1 { font-size:2.9rem; font-weight:900; color:#fff; line-height:1.1; margin-bottom:0.6rem; text-transform:uppercase; letter-spacing:1px; }
+  .hero-text h1 span { color:var(--accent2); }
+  .hero-text .subtitle { font-size:1rem; color:rgba(255,255,255,0.76); margin-bottom:2rem; line-height:1.7; max-width:520px; }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--accent); color:#fff; padding:13px 28px; border-radius:4px;
+    font-weight:700; font-size:0.9rem; border:2px solid var(--accent); transition:all 0.2s;
+    display:inline-block; text-transform:uppercase; letter-spacing:0.5px;
+  }
+  .btn-primary:hover { background:var(--accent2); border-color:var(--accent2); text-decoration:none; }
+  .btn-outline {
+    background:transparent; color:#fff; padding:13px 28px; border-radius:4px;
+    font-weight:600; font-size:0.9rem; border:2px solid rgba(255,255,255,0.45); transition:all 0.2s;
+    display:inline-block;
+  }
+  .btn-outline:hover { border-color:#fff; background:rgba(255,255,255,0.08); text-decoration:none; }
+  .hero-card {
+    background:rgba(255,255,255,0.07); backdrop-filter:blur(12px);
+    border:1px solid rgba(224,72,16,0.3); border-radius:8px;
+    padding:2rem 1.6rem; min-width:270px; color:#fff;
+  }
+  .hero-card h3 { font-size:0.72rem; color:var(--accent3); letter-spacing:2px; text-transform:uppercase; margin-bottom:1.2rem; }
+  .info-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:0.9rem; font-size:0.87rem; color:rgba(255,255,255,0.84); line-height:1.55; }
+  .info-icon { color:var(--accent3); flex-shrink:0; }
+
+  .stats-strip { background:var(--accent); padding:1.3rem 2rem; }
+  .stats-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-around; flex-wrap:wrap; }
+  .stat-item { text-align:center; padding:0.4rem 1.2rem; }
+  .stat-num { font-size:1.9rem; font-weight:900; color:#fff; }
+  .stat-label { font-size:0.7rem; color:rgba(255,255,255,0.8); letter-spacing:0.5px; text-transform:uppercase; margin-top:2px; }
+
+  section { padding:4rem 2rem; }
+  .section-inner { max-width:1100px; margin:0 auto; }
+  .section-tag { font-size:0.7rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--accent); margin-bottom:0.5rem; }
+  .section-title { font-size:2rem; font-weight:800; color:var(--primary); margin-bottom:0.8rem; }
+  .section-sub { font-size:0.97rem; color:var(--muted); line-height:1.8; max-width:640px; }
+
+  .about { background:#fff; }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:start; margin-top:2.5rem; }
+  .about-text p { color:var(--muted); line-height:1.85; margin-bottom:1rem; font-size:0.96rem; }
+  .highlight-box {
+    background:var(--primary); color:#fff; border-radius:8px; padding:2rem;
+    border-left:4px solid var(--accent);
+  }
+  .highlight-box h4 { font-size:0.75rem; color:var(--accent3); letter-spacing:2px; text-transform:uppercase; margin-bottom:1.2rem; }
+  .highlight-box ul { list-style:none; }
+  .highlight-box ul li { padding:0.5rem 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:0.9rem; color:rgba(255,255,255,0.84); display:flex; align-items:center; gap:10px; }
+  .highlight-box ul li:last-child { border-bottom:none; }
+  .highlight-box ul li::before { content:'›'; color:var(--accent2); font-size:1.1rem; flex-shrink:0; }
+
+  .products { background:var(--light); }
+  .products-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.5rem; }
+  .product-card {
+    background:#fff; border:1px solid var(--border); border-radius:8px;
+    padding:1.8rem; border-top:3px solid var(--accent); transition:all 0.2s;
+  }
+  .product-card:hover { box-shadow:0 6px 24px rgba(224,72,16,0.12); transform:translateY(-3px); }
+  .product-icon { font-size:2.2rem; margin-bottom:1rem; }
+  .product-card h4 { font-size:1.02rem; font-weight:700; color:var(--primary); margin-bottom:0.6rem; }
+  .product-card p { font-size:0.87rem; color:var(--muted); line-height:1.7; }
+  .product-list { list-style:none; margin-top:0.7rem; }
+  .product-list li { font-size:0.82rem; color:var(--muted); padding:0.2rem 0; display:flex; align-items:center; gap:6px; }
+  .product-list li::before { content:'·'; color:var(--accent); font-size:1.2rem; }
+
+  .teams { background:#fff; }
+  .teams-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; margin-top:2.5rem; }
+  .team-card { background:var(--dark-card); border-radius:10px; padding:2rem; border-left:3px solid var(--accent); }
+  .team-header { display:flex; align-items:center; gap:12px; margin-bottom:1rem; }
+  .team-badge { background:var(--accent); color:#fff; font-size:0.7rem; font-weight:700; padding:3px 10px; border-radius:3px; text-transform:uppercase; letter-spacing:0.5px; }
+  .team-size { font-size:0.8rem; color:rgba(255,255,255,0.5); }
+  .team-card h4 { font-size:1rem; font-weight:700; color:#fff; margin-bottom:0.7rem; }
+  .team-card p { font-size:0.88rem; color:rgba(255,255,255,0.7); line-height:1.75; }
+
+  .markets { background:var(--light); }
+  .markets-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:2.5rem; }
+  .market-card { background:#fff; border:1px solid var(--border); border-radius:8px; padding:1.5rem; text-align:center; }
+  .market-flag { font-size:2rem; margin-bottom:0.6rem; }
+  .market-card h5 { font-size:0.92rem; font-weight:700; color:var(--primary); margin-bottom:0.3rem; }
+  .market-card p { font-size:0.8rem; color:var(--muted); }
+
+  .contact { background:var(--primary); }
+  .contact .section-title { color:#fff; }
+  .contact .section-sub { color:rgba(255,255,255,0.62); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; }
+  .contact-info h4 { font-size:0.74rem; color:var(--accent3); letter-spacing:2px; text-transform:uppercase; margin-bottom:1.5rem; }
+  .contact-detail { display:flex; align-items:flex-start; gap:12px; margin-bottom:1.2rem; }
+  .contact-icon { width:40px; height:40px; background:rgba(224,72,16,0.18); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+  .contact-detail-text .label { font-size:0.72rem; color:rgba(255,255,255,0.42); text-transform:uppercase; letter-spacing:0.5px; }
+  .contact-detail-text .value { font-size:0.9rem; color:#fff; font-weight:500; margin-top:2px; }
+  .contact-detail-text .value a { color:var(--accent3); }
+  .contact-form { background:rgba(255,255,255,0.06); border:1px solid rgba(224,72,16,0.2); border-radius:10px; padding:2rem; }
+  .contact-form h4 { font-size:1rem; font-weight:700; color:#fff; margin-bottom:1.5rem; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .form-group { margin-bottom:1rem; }
+  .form-group label { font-size:0.78rem; color:rgba(255,255,255,0.5); margin-bottom:5px; display:block; }
+  .form-group input, .form-group select, .form-group textarea {
+    width:100%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.13);
+    border-radius:5px; padding:10px 14px; color:#fff; font-size:0.88rem; transition:border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:var(--accent3); }
+  .form-group select option { background:var(--primary); }
+  .form-group textarea { resize:vertical; min-height:90px; }
+  .form-submit {
+    width:100%; background:var(--accent); color:#fff; border:none; border-radius:5px;
+    padding:13px; font-size:0.9rem; font-weight:700; cursor:pointer; transition:background 0.2s;
+    margin-top:0.5rem; text-transform:uppercase; letter-spacing:0.5px;
+  }
+  .form-submit:hover { background:var(--accent2); }
+
+  footer { background:#080808; padding:2.5rem 2rem; text-align:center; color:rgba(255,255,255,0.38); font-size:0.78rem; border-top:1px solid rgba(224,72,16,0.15); }
+  footer a { color:var(--accent3); }
+
+  @media(max-width:900px) {
+    .hero-inner { flex-direction:column; }
+    .hero-card { min-width:unset; width:100%; }
+    .about-grid, .contact-grid { grid-template-columns:1fr; }
+    .products-grid, .markets-grid { grid-template-columns:1fr 1fr; }
+    .teams-grid { grid-template-columns:1fr; }
+    .nav-links { display:none; }
+    .hero-text h1 { font-size:2.1rem; }
+  }
+  @media(max-width:600px) {
+    .products-grid, .markets-grid, .form-row { grid-template-columns:1fr; }
+    .stats-inner { flex-direction:column; gap:1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div>
+      <div class="nav-wordmark">Autobahn88</div>
+      <div class="nav-sub">Performance Auto Parts · Hong Kong</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#products">Products</a>
+    <a href="#teams">Our Teams</a>
+    <a href="#markets">Markets</a>
+    <a href="#contact" class="nav-cta">Contact Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">🏎️ Est. 2000 · Hong Kong Performance Parts Manufacturer</div>
+      <h1>Autobahn<span>88</span><br>Group Limited</h1>
+      <p class="subtitle">A leading Hong Kong manufacturer and global supplier of performance auto parts — intercoolers, exhaust systems, silicone hoses, oil cooler kits, and racing accessories for enthusiasts and distributors worldwide.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Enquire Now</a>
+        <a href="#products" class="btn-outline">Our Products</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Contact Information</h3>
+      <div class="info-row"><span class="info-icon">📞</span><span><strong>Tel:</strong> +852 2151 1351</span></div>
+      <div class="info-row"><span class="info-icon">📞</span><span><strong>Mobile:</strong> +852 8480 1898</span></div>
+      <div class="info-row"><span class="info-icon">✉️</span><span><strong>Email:</strong> info@hklsc.com.hk</span></div>
+      <div class="info-row"><span class="info-icon">👤</span><span><strong>Contact:</strong> Mr. Lawrence Li (Marketing)</span></div>
+      <div class="info-row"><span class="info-icon">📍</span><span><strong>Base:</strong> Hong Kong</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">2000</div>
+      <div class="stat-label">Year Established</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">Exhaust Team Members</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">26+</div>
+      <div class="stat-label">Years Factory Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Global</div>
+      <div class="stat-label">Distribution Network</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Specialist Teams</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-tag">About Autobahn88 Group</div>
+    <h2 class="section-title">Leading Hong Kong Performance Parts Manufacturer</h2>
+    <p class="section-sub">Autobahn88 Group Limited is a leading supplier of intercoolers, front mount intercooler piping kits, oil cooler kits, racing radiators, stainless steel exhaust systems, and silicone hose — serving global distributors from Hong Kong.</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Established in 2000 and based in Hong Kong, Autobahn88 Group Limited has grown into one of the region's leading manufacturers and wholesale suppliers of performance car parts and accessories. The company operates through four specialist production teams, each dedicated to a specific category of performance components.</p>
+        <p>Autobahn88 serves first-tier and second-tier markets across the Americas, Europe, and beyond — supplying performance enthusiasts, aftermarket distributors, resellers, and retailers with high-quality parts that compete with the world's leading brands.</p>
+        <p>The company actively seeks European distributors, traders, and resellers who specialise in performance parts and car accessories, whether through retail stores or online platforms.</p>
+      </div>
+      <div>
+        <div class="highlight-box">
+          <h4>Why Choose Autobahn88</h4>
+          <ul>
+            <li>Leading HK manufacturer of performance auto parts</li>
+            <li>Four specialist production teams with deep expertise</li>
+            <li>Exhaust factory led by Wilson — 26+ years industry experience</li>
+            <li>Silicone hose quality comparable to SAMCO and SFS (UK)</li>
+            <li>OEM service available for custom part design</li>
+            <li>Serving Americas, Europe, and global markets</li>
+            <li>1st and 2nd tier market distribution capability</li>
+            <li>Actively recruiting European distributors and resellers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-tag">Product Range</div>
+    <h2 class="section-title">Performance Parts &amp; Auto Accessories</h2>
+    <p class="section-sub">Autobahn88 manufactures and supplies a comprehensive range of performance parts, covering everything from heat exchange components to interior and exterior accessories.</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🌡️</div>
+        <h4>Intercooler &amp; Piping Kits</h4>
+        <p>Front mount intercooler kits and piping systems for popular performance platforms including WRX, Mazda RX-7, Impreza, 300ZX, and MR2.</p>
+        <ul class="product-list">
+          <li>WRX Intercooler Kit</li>
+          <li>Mazda RX7 Intercooler &amp; Piping Kit</li>
+          <li>FMIC Piping Kits (various models)</li>
+          <li>BOV (Blow-Off Valves)</li>
+        </ul>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🔧</div>
+        <h4>Stainless Steel Exhaust Systems</h4>
+        <p>Custom and aftermarket stainless steel exhaust systems for Japanese performance cars and European supercars, designed by factory leader Wilson.</p>
+        <ul class="product-list">
+          <li>Honda, Toyota, Subaru, Nissan, MMC</li>
+          <li>BMW E46 M3, Porsche 964-996</li>
+          <li>Lotus Elise, Audi S Series</li>
+          <li>Ferrari &amp; Mercedes Benz</li>
+        </ul>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🟠</div>
+        <h4>Silicone Hose &amp; Kits</h4>
+        <p>High-quality silicone hoses and hose kits manufactured to the same quality standards as UK brands SAMCO and SFS, serving performance and OEM applications.</p>
+        <ul class="product-list">
+          <li>Silicone Radiator Hose Kits</li>
+          <li>Silicone Intercooler Hoses</li>
+          <li>Turbo Inlet/Outlet Hoses</li>
+          <li>Custom OEM Silicone Solutions</li>
+        </ul>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🛢️</div>
+        <h4>Oil Cooler &amp; Cooling Systems</h4>
+        <p>Greddy-style oil cooler kits and racing radiators for improved thermal management on performance and track vehicles.</p>
+        <ul class="product-list">
+          <li>Greddy Style Oil Cooler Kits</li>
+          <li>Racing Radiators</li>
+          <li>Cooling System Components</li>
+        </ul>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🏁</div>
+        <h4>Car Accessories</h4>
+        <p>Extensive range of interior and exterior performance accessories sourced from Japan, Taiwan, China, and Korea — for both enthusiasts and retailers.</p>
+        <ul class="product-list">
+          <li>Car Badges, Emblems &amp; Stickers</li>
+          <li>HID Conversion Kits</li>
+          <li>Steering Wheels &amp; Shift Knobs</li>
+          <li>Racing Seats &amp; Harness Pads</li>
+          <li>Swoosh Auto Gauge</li>
+          <li>Racing Wheel Nuts &amp; Tyre Valves</li>
+        </ul>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">⚙️</div>
+        <h4>OEM Service</h4>
+        <p>Custom OEM manufacturing service for automotive brands, distributors, and retailers requiring private label or custom-specification performance components.</p>
+        <ul class="product-list">
+          <li>Custom Part Design &amp; Development</li>
+          <li>Private Label Manufacturing</li>
+          <li>Prototype Development</li>
+          <li>Specification to Order</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAMS -->
+<section class="teams" id="teams">
+  <div class="section-inner">
+    <div class="section-tag">Our Specialist Teams</div>
+    <h2 class="section-title">Four Expert Production Teams</h2>
+    <p class="section-sub">Autobahn88 operates through four dedicated specialist teams, each bringing deep technical expertise to their product category.</p>
+    <div class="teams-grid">
+      <div class="team-card">
+        <div class="team-header">
+          <span class="team-badge">Heat Exchange</span>
+          <span class="team-size">4 Specialists</span>
+        </div>
+        <h4>🌡️ Intercooler &amp; Heat Exchange Team</h4>
+        <p>A team of 4 performance parts enthusiasts who continuously test and develop new intercooler and piping products for the latest performance platforms including Impreza, 300ZX, RX7, and MR2. Committed to keeping product lines current with new car releases.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-header">
+          <span class="team-badge">Exhaust</span>
+          <span class="team-size">30 Specialists</span>
+        </div>
+        <h4>🔧 Stainless Steel Exhaust Team</h4>
+        <p>Led by Wilson — over 26 years of automotive industry experience — this 30-strong team specialises in both Japanese sport cars and European supercars. Wilson has contributed to exhaust system designs for several primary auto manufacturers, bringing OEM-level expertise to aftermarket applications.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-header">
+          <span class="team-badge">Silicone Hose</span>
+          <span class="team-size">5 Specialists</span>
+        </div>
+        <h4>🟠 Silicone Hose Team</h4>
+        <p>Five material specialists producing silicone hoses and hose kits to the same quality standard as renowned UK brands SAMCO and SFS. Deep expertise in silicone material compounds ensures consistent performance characteristics across all operating temperatures and conditions.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-header">
+          <span class="team-badge">Accessories</span>
+          <span class="team-size">4 Specialists</span>
+        </div>
+        <h4>🏁 Car Accessories Team</h4>
+        <p>An experienced sourcing team of 4 that curates the best quality interior and exterior car accessories from Japan, Taiwan, China, and Korea. This team ensures competitive pricing and quality selection across the full range of accessories — from carbon fibre products to HID conversion kits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section class="markets" id="markets">
+  <div class="section-inner">
+    <div class="section-tag">Global Markets</div>
+    <h2 class="section-title">Serving Distributors Worldwide</h2>
+    <p class="section-sub">Autobahn88 currently serves 1st-tier and 2nd-tier markets globally, and is actively seeking new distributors and resellers in Europe and beyond.</p>
+    <div class="markets-grid">
+      <div class="market-card">
+        <div class="market-flag">🌎</div>
+        <h5>Americas</h5>
+        <p>North &amp; South America distribution across established performance parts retail and wholesale channels</p>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🌍</div>
+        <h5>Europe</h5>
+        <p>Western &amp; Eastern Europe markets served; actively seeking new distributors and online resellers across EU</p>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🌏</div>
+        <h5>Asia-Pacific</h5>
+        <p>Hong Kong-based with established Asia-Pacific distribution, leveraging proximity to key manufacturing and supply chains</p>
+      </div>
+    </div>
+    <div style="margin-top:2rem; background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:1.8rem;">
+      <h4 style="font-size:1rem; font-weight:700; color:var(--primary); margin-bottom:0.7rem;">🔍 Seeking European Distributors &amp; Resellers</h4>
+      <p style="font-size:0.9rem; color:var(--muted); line-height:1.75;">Autobahn88 is actively recruiting European distributors, traders, and resellers who sell performance parts and car accessories — whether through retail stores or online platforms. Contact us to discuss distribution partnerships and wholesale pricing arrangements.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--accent3);">Contact Us</div>
+    <h2 class="section-title">Get in Touch with Autobahn88</h2>
+    <p class="section-sub">For product enquiries, wholesale pricing, distribution partnerships, or OEM service requests, contact our team today.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h4>Contact Information</h4>
+        <div class="contact-detail">
+          <div class="contact-icon">👤</div>
+          <div class="contact-detail-text">
+            <div class="label">Marketing Contact</div>
+            <div class="value">Mr. Lawrence Li</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail-text">
+            <div class="label">Telephone</div>
+            <div class="value"><a href="tel:+85221511351">+852 2151 1351</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📱</div>
+          <div class="contact-detail-text">
+            <div class="label">Mobile</div>
+            <div class="value"><a href="tel:+85284801898">+852 8480 1898</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-detail-text">
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:info@hklsc.com.hk">info@hklsc.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail-text">
+            <div class="label">Location</div>
+            <div class="value">Hong Kong</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h4>Product &amp; Distribution Enquiry</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Your first name">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Your last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+XX XXXX XXXX">
+        </div>
+        <div class="form-group">
+          <label>Enquiry Type</label>
+          <select>
+            <option>Product / Wholesale Pricing</option>
+            <option>Distribution Partnership</option>
+            <option>OEM Service</option>
+            <option>Intercooler &amp; Piping Kits</option>
+            <option>Stainless Steel Exhaust</option>
+            <option>Silicone Hose</option>
+            <option>Car Accessories</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Describe your product requirements, distribution interest, or questions..."></textarea>
+        </div>
+        <button class="form-submit">Send Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="margin-bottom:0.5rem;"><strong style="color:rgba(255,255,255,0.65);">Autobahn88 Group Limited</strong> · Performance Auto Parts &amp; Auto Engine Systems · Hong Kong</p>
+  <p>
+    Tel: <a href="tel:+85221511351">+852 2151 1351</a> &nbsp;|&nbsp;
+    <a href="mailto:info@hklsc.com.hk">info@hklsc.com.hk</a>
+  </p>
+  <p style="margin-top:0.8rem; font-size:0.72rem;">© 2025 Autobahn88 Group Limited. All rights reserved. Established 2000, Hong Kong.</p>
+</footer>
+
+</body>
+</html>
