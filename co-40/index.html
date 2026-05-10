@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>利嘉閣地產有限公司（將軍澳分行）— Ricacorp Properties</title>
+<style>
+  :root {
+    --bg:       #080608;
+    --surface:  #110c10;
+    --card:     #181016;
+    --border:   #2c1828;
+    --accent1:  #6a0820;
+    --accent2:  #a01030;
+    --accent3:  #d02040;
+    --gold:     #c09020;
+    --gold2:    #e0b030;
+    --gold3:    #f8d060;
+    --text:     #f2ecf0;
+    --muted:    #907888;
+    --silver:   #c0b8c0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif; line-height: 1.7; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(8,6,8,0.97); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .nav-logo {
+    width: 38px; height: 38px; border-radius: 6px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent3));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.85rem; color: #fff;
+  }
+  .nav-name { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+  .nav-badge { font-size: 0.68rem; color: var(--gold2); background: rgba(192,144,32,0.12); border: 1px solid rgba(224,176,48,0.25); padding: 0.15rem 0.5rem; border-radius: 4px; margin-left: 0.4rem; font-weight: 700; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--gold2); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 0.5rem 1.2rem; border-radius: 5px;
+    font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  .hero {
+    min-height: 100vh; padding: 100px 2.5rem 60px;
+    background:
+      radial-gradient(ellipse 80% 55% at 65% 35%, rgba(106,8,32,0.25) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 40% at 10% 75%, rgba(192,144,32,0.08) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(106,8,32,0.2); border: 1px solid rgba(208,32,64,0.3);
+    color: var(--accent3); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.5rem;
+  }
+  .hero h1 { font-size: clamp(1.9rem, 3.8vw, 3rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  .hero h1 span { color: var(--gold2); }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); margin-bottom: 2rem; max-width: 520px; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 0.8rem 1.8rem; border-radius: 6px;
+    font-size: 0.95rem; font-weight: 700; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(106,8,32,0.4); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: #000; padding: 0.8rem 1.8rem; border-radius: 6px;
+    font-size: 0.95rem; font-weight: 700; text-decoration: none; transition: opacity .2s;
+  }
+  .btn-gold:hover { opacity: 0.85; }
+
+  .info-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 2rem; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .info-card h3 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold2); margin-bottom: 1.2rem; }
+  .info-row { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(44,24,40,0.8); }
+  .info-row:last-child { border-bottom: none; }
+  .info-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .info-label { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; }
+  .info-val { font-size: 0.9rem; color: var(--text); }
+  .info-val a { color: var(--accent3); text-decoration: none; }
+
+  .stats { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2.5rem; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { text-align: center; padding: 1.5rem 1rem; position: relative; }
+  .stat:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 25%; height: 50%; width: 1px; background: var(--border); }
+  .stat-num { font-size: 2rem; font-weight: 900; color: var(--gold2); }
+  .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.3rem; }
+
+  section { padding: 80px 2.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; background: rgba(106,8,32,0.15); border: 1px solid rgba(208,32,64,0.25);
+    color: var(--accent3); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.8rem; border-radius: 20px; margin-bottom: 0.8rem;
+  }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 1rem; }
+  .section-title span { color: var(--gold2); }
+  .section-sub { font-size: 1rem; color: var(--muted); max-width: 600px; margin-bottom: 3rem; }
+
+  /* AGENTS */
+  .agents-bg { background: var(--bg); }
+  .agents-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .agent-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.8rem; transition: border-color .25s, transform .25s;
+  }
+  .agent-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
+  .agent-avatar {
+    width: 56px; height: 56px; border-radius: 50%; margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 900; color: #fff;
+  }
+  .agent-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.15rem; }
+  .agent-en { font-size: 0.82rem; color: var(--silver); margin-bottom: 0.3rem; }
+  .agent-license { font-size: 0.7rem; color: var(--muted); font-family: monospace; margin-bottom: 0.8rem; }
+  .agent-tel { display: flex; align-items: center; gap: 0.4rem; font-size: 0.88rem; color: var(--gold2); font-weight: 600; text-decoration: none; }
+  .agent-tel:hover { color: var(--gold3); }
+  .agent-langs { display: flex; gap: 0.35rem; margin-top: 0.6rem; }
+  .lang-tag { background: rgba(192,144,32,0.1); border: 1px solid rgba(192,144,32,0.25); color: var(--gold2); font-size: 0.65rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; }
+
+  /* SERVICES */
+  .services-bg { background: var(--surface); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .svc-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 2rem; text-align: center; transition: border-color .25s;
+  }
+  .svc-card:hover { border-color: var(--accent2); }
+  .svc-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .svc-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--gold2); }
+  .svc-card p { font-size: 0.87rem; color: var(--muted); }
+
+  /* DISTRICTS */
+  .districts-bg { background: var(--bg); }
+  .districts-wrap { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .district-chip {
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--text); font-size: 0.83rem; padding: 0.45rem 1rem;
+    border-radius: 20px; transition: border-color .2s, color .2s;
+  }
+  .district-chip:hover { border-color: var(--accent2); color: var(--accent3); }
+  .district-chip.featured { border-color: var(--gold); color: var(--gold2); background: rgba(192,144,32,0.08); }
+
+  /* CONTACT */
+  .contact-bg { background: var(--surface); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .ci-list { display: flex; flex-direction: column; gap: 1.2rem; }
+  .ci-item { display: flex; gap: 0.9rem; }
+  .ci-icon {
+    width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0;
+    background: rgba(106,8,32,0.2); border: 1px solid rgba(208,32,64,0.25);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .ci-label { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
+  .ci-val { font-size: 0.9rem; color: var(--text); }
+  .ci-val a { color: var(--gold2); text-decoration: none; }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem; }
+  .contact-form h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.76rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); border-radius: 6px; padding: 0.7rem 0.9rem; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent2); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select option { background: var(--surface); }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 0.85rem; border-radius: 6px;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.85; }
+
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 60px 2.5rem 30px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.3rem; color: var(--gold2); }
+  .footer-brand .footer-en { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.8rem; }
+  .footer-brand p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; }
+  .footer-license { font-size: 0.75rem; color: var(--muted); margin-top: 0.6rem; font-family: monospace; }
+  footer h4 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  footer ul li a { color: var(--text); text-decoration: none; font-size: 0.87rem; transition: color .2s; }
+  footer ul li a:hover { color: var(--gold2); }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  .footer-bottom p { font-size: 0.78rem; color: var(--muted); }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .info-card { display: none; }
+    .agents-grid, .services-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .agents-grid, .services-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">利嘉</div>
+    <span class="nav-name">利嘉閣地產（將軍澳）</span>
+    <span class="nav-badge">C-002504</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#agents">代理團隊</a></li>
+    <li><a href="#services">服務</a></li>
+    <li><a href="#districts">服務地區</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">即時查詢</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🏡 將軍澳 · 持牌地產代理</div>
+      <h1>將軍澳區<br><span>專業地產代理</span></h1>
+      <p class="hero-sub">利嘉閣地產將軍澳分行，以一支經驗豐富的專業代理團隊為您服務，全面覆蓋將軍澳、坑口、康城等地區的住宅買賣及租務，助您實現置業夢想。</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#agents">認識我們的代理</a>
+        <a class="btn-gold" href="#contact">免費查詢</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>分行資料</h3>
+      <div class="info-row">
+        <span class="info-icon">🏢</span>
+        <div>
+          <div class="info-label">公司</div>
+          <div class="info-val">利嘉閣地產有限公司<br>Ricacorp Properties Ltd.</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📋</span>
+        <div>
+          <div class="info-label">牌照號碼</div>
+          <div class="info-val" style="font-family: monospace;">C-002504</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div>
+          <div class="info-label">分行地址</div>
+          <div class="info-val">將軍澳貿業路8號<br>新都城中心三期商場地下13號舖</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📞</span>
+        <div>
+          <div class="info-label">聯絡電話</div>
+          <div class="info-val"><a href="tel:85296879032">+852 9687 9032</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🗺️</span>
+        <div>
+          <div class="info-label">主要服務地區</div>
+          <div class="info-val">將軍澳 · 康城 · 坑口 · 寶琳 · 調景嶺</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">9</div>
+      <div class="stat-label">持牌代理</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">將軍澳</div>
+      <div class="stat-label">專注地區</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">買賣</div>
+      <div class="stat-label">及租賃服務</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">利嘉閣</div>
+      <div class="stat-label">知名品牌</div>
+    </div>
+  </div>
+</div>
+
+<section class="agents-bg" id="agents">
+  <div class="section-inner">
+    <div class="section-tag">代理團隊</div>
+    <h2 class="section-title">我們的<span>專業代理</span></h2>
+    <p class="section-sub">利嘉閣將軍澳分行擁有一支持牌專業代理團隊，深耕將軍澳區多年，熟悉區內樓盤，為您提供最貼心的置業服務。</p>
+    <div class="agents-grid">
+      <div class="agent-card">
+        <div class="agent-avatar">楊</div>
+        <div class="agent-name">楊莉華</div>
+        <div class="agent-en">Lily Yeung</div>
+        <div class="agent-license">S-381419</div>
+        <a class="agent-tel" href="tel:85296879032">📞 +852 9687 9032</a>
+      </div>
+      <div class="agent-card">
+        <div class="agent-avatar">黃</div>
+        <div class="agent-name">黃子珊</div>
+        <div class="agent-en">May Wong</div>
+        <div class="agent-license">S-461100</div>
+        <a class="agent-tel" href="tel:85295037636">📞 +852 9503 7636</a>
+      </div>
+      <div class="agent-card">
+        <div class="agent-avatar">朱</div>
+        <div class="agent-name">朱沛堯</div>
+        <div class="agent-en">Vincent Chu</div>
+        <div class="agent-license">E-224547</div>
+        <a class="agent-tel" href="tel:85293675445">📞 +852 9367 5445</a>
+        <div class="agent-langs">
+          <span class="lang-tag">廣東話</span>
+          <span class="lang-tag">普通話</span>
+          <span class="lang-tag">英文</span>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-avatar">李</div>
+        <div class="agent-name">李德正</div>
+        <div class="agent-en">KK Lee</div>
+        <div class="agent-license">S-371034</div>
+        <a class="agent-tel" href="tel:85262804265">📞 +852 6280 4265</a>
+      </div>
+      <div class="agent-card">
+        <div class="agent-avatar">孫</div>
+        <div class="agent-name">孫敏英</div>
+        <div class="agent-en">Suen Man Ying</div>
+        <div class="agent-license">S-697068</div>
+        <a class="agent-tel" href="tel:85290490565">📞 +852 9049 0565</a>
+      </div>
+      <div class="agent-card">
+        <div class="agent-avatar">吳</div>
+        <div class="agent-name">吳佩蘭</div>
+        <div class="agent-en">Sa Ng</div>
+        <div class="agent-license">S-043225</div>
+        <a class="agent-tel" href="tel:85291390848">📞 +852 9139 0848</a>
+      </div>
+      <div class="agent-card">
+        <div class="agent-avatar">蔡</div>
+        <div class="agent-name">蔡銘傑</div>
+        <div class="agent-en">Franco Choy</div>
+        <div class="agent-license">S-472080</div>
+        <a class="agent-tel" href="tel:85263740910">📞 +852 6374 0910</a>
+      </div>
+      <div class="agent-card">
+        <div class="agent-avatar">曾</div>
+        <div class="agent-name">曾偉芬</div>
+        <div class="agent-en">Funny Tsang</div>
+        <div class="agent-license">S-266325</div>
+        <a class="agent-tel" href="tel:85297716026">📞 +852 9771 6026</a>
+      </div>
+      <div class="agent-card">
+        <div class="agent-avatar">鄧</div>
+        <div class="agent-name">鄧達榮</div>
+        <div class="agent-en">Ringo Tang</div>
+        <div class="agent-license">E-075575</div>
+        <a class="agent-tel" href="tel:85292777113">📞 +852 9277 7113</a>
+        <div class="agent-langs">
+          <span class="lang-tag">廣東話</span>
+          <span class="lang-tag">普通話</span>
+          <span class="lang-tag">英文</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-bg" id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務項目</div>
+    <h2 class="section-title">全面的<span>地產服務</span></h2>
+    <p class="section-sub">無論您是買家、賣家或租客，我們的專業代理均能為您提供最全面的地產服務支援。</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🏠</div>
+        <h3>住宅買賣</h3>
+        <p>專業處理將軍澳區私人屋苑、居屋及村屋的買賣事宜，提供市場估價、配對買家及合約跟進服務。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔑</div>
+        <h3>租賃服務</h3>
+        <p>為業主及租客提供高效的租賃配對服務，協助業主放租及租客尋找合適單位，全程處理租約事宜。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💰</div>
+        <h3>物業估價</h3>
+        <p>提供專業物業市值評估，參考最新成交數據，為業主及買家提供準確客觀的市場估價參考。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📄</div>
+        <h3>按揭轉介</h3>
+        <p>協助客戶了解按揭選擇，轉介合適銀行或財務機構，提供按揭計算及申請流程指引。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏢</div>
+        <h3>工商舖位</h3>
+        <p>承接工商大廈、寫字樓及商舖的買賣及租賃，提供商業地產專業顧問服務。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🤝</div>
+        <h3>置業顧問</h3>
+        <p>為首次置業者提供全面的置業指引，包括選區建議、財務規劃及購買流程講解，輕鬆踏上置業之路。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="districts-bg" id="districts">
+  <div class="section-inner">
+    <div class="section-tag">服務地區</div>
+    <h2 class="section-title">覆蓋<span>全港各區</span></h2>
+    <p class="section-sub">以將軍澳為核心服務地區，同時覆蓋全港各大地區，為客戶提供廣泛的物業搜尋及服務支援。</p>
+    <div style="margin-bottom: 1.5rem;">
+      <h4 style="font-size: 0.8rem; color: var(--gold2); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.8rem;">將軍澳區（核心地區）</h4>
+      <div class="districts-wrap">
+        <span class="district-chip featured">將軍澳</span>
+        <span class="district-chip featured">康城</span>
+        <span class="district-chip featured">坑口</span>
+        <span class="district-chip featured">寶琳</span>
+        <span class="district-chip featured">調景嶺</span>
+        <span class="district-chip featured">清水灣</span>
+        <span class="district-chip featured">西貢</span>
+      </div>
+    </div>
+    <div style="margin-bottom: 1.5rem;">
+      <h4 style="font-size: 0.8rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.8rem;">九龍</h4>
+      <div class="districts-wrap">
+        <span class="district-chip">尖沙咀</span><span class="district-chip">旺角</span>
+        <span class="district-chip">九龍城</span><span class="district-chip">黃大仙</span>
+        <span class="district-chip">觀塘</span><span class="district-chip">九龍灣</span>
+        <span class="district-chip">啟德</span>
+      </div>
+    </div>
+    <div style="margin-bottom: 1.5rem;">
+      <h4 style="font-size: 0.8rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.8rem;">新界</h4>
+      <div class="districts-wrap">
+        <span class="district-chip">沙田</span><span class="district-chip">馬鞍山</span>
+        <span class="district-chip">大埔</span><span class="district-chip">荃灣</span>
+        <span class="district-chip">屯門</span><span class="district-chip">元朗</span>
+        <span class="district-chip">天水圍</span><span class="district-chip">粉嶺上水</span>
+      </div>
+    </div>
+    <div>
+      <h4 style="font-size: 0.8rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.8rem;">香港島</h4>
+      <div class="districts-wrap">
+        <span class="district-chip">銅鑼灣</span><span class="district-chip">灣仔</span>
+        <span class="district-chip">太古城</span><span class="district-chip">北角</span>
+        <span class="district-chip">海怡半島</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-bg" id="contact">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2 class="section-title">立即<span>查詢</span></h2>
+    <p class="section-sub">無論是買樓、賣樓、放租或租樓，歡迎聯絡我們的專業代理，提供免費諮詢服務。</p>
+    <div class="contact-grid">
+      <div>
+        <div class="ci-list">
+          <div class="ci-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">分行地址</div>
+              <div class="ci-val">將軍澳貿業路8號<br>新都城中心三期商場地下13號舖</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-label">聯絡電話</div>
+              <div class="ci-val"><a href="tel:85296879032">+852 9687 9032</a>（楊莉華 Lily）</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🚇</div>
+            <div>
+              <div class="ci-label">交通</div>
+              <div class="ci-val">將軍澳港鐵站步行即達<br>新都城中心三期商場內</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">📋</div>
+            <div>
+              <div class="ci-label">牌照</div>
+              <div class="ci-val" style="font-family: monospace; font-size: 0.85rem;">地產代理（公司）牌照 C-002504</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>免費查詢</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>電話</label>
+            <input type="tel" placeholder="聯絡電話">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>查詢類別</label>
+          <select>
+            <option value="">請選擇</option>
+            <option>買樓查詢</option>
+            <option>賣樓放盤</option>
+            <option>租樓查詢</option>
+            <option>放租放盤</option>
+            <option>物業估價</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea placeholder="請說明您的物業需求，包括地區、預算、房間數量等。"></textarea>
+        </div>
+        <button class="form-submit">提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>利嘉閣地產有限公司</h3>
+        <div class="footer-en">Ricacorp Properties Limited</div>
+        <p>香港知名地產代理集團，將軍澳分行專注服務將軍澳、坑口及康城一帶，擁有9位持牌專業代理，提供住宅及工商物業的買賣、租賃及顧問服務。</p>
+        <div class="footer-license">地產代理（公司）牌照：C-002504</div>
+      </div>
+      <div>
+        <h4>服務項目</h4>
+        <ul>
+          <li><a href="#services">住宅買賣</a></li>
+          <li><a href="#services">租賃服務</a></li>
+          <li><a href="#services">物業估價</a></li>
+          <li><a href="#services">按揭轉介</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>快速連結</h4>
+        <ul>
+          <li><a href="#agents">代理團隊</a></li>
+          <li><a href="#districts">服務地區</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 利嘉閣地產有限公司 版權所有 · 牌照 C-002504</p>
+      <p>將軍澳新都城中心三期 · 香港</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
