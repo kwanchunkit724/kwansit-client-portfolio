@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>超力國際食品有限公司 | Chewy International Food Ltd</title>
+<meta name="description" content="超力國際食品有限公司 — 香港領先進口食品分銷商，提供優質米食、麵食、凍品、有機食品、松露製品等多元化食品類別，持HACCP認證，榮獲「關愛企業」稱號。"/>
+<style>
+:root{
+  --bg:#040702;
+  --surface:#0a0e04;
+  --card:#101508;
+  --border:#1c2010;
+  --accent:#3a9a2a;
+  --accent2:#c89020;
+  --text:#f0f0e8;
+  --muted:#8a8c80;
+  --radius:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,7,2,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{display:flex;flex-direction:column;line-height:1.2;}
+.nav-logo-cn{font-size:1rem;font-weight:700;color:var(--accent);}
+.nav-logo-en{font-size:0.7rem;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:0.85rem;letter-spacing:0.06em;color:var(--muted);transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:600;transition:opacity 0.2s;}
+.nav-cta:hover{opacity:0.85;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:64px;}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 60% at 20% 40%,rgba(58,154,42,0.10) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 50% at 80% 60%,rgba(200,144,32,0.08) 0%,transparent 60%),
+  linear-gradient(160deg,#040702 0%,#080c04 60%,#040702 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(58,154,42,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(58,154,42,0.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 400px;gap:5rem;align-items:center;position:relative;z-index:2;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(58,154,42,0.12);border:1px solid rgba(58,154,42,0.25);border-radius:20px;padding:0.3rem 1rem;font-size:0.78rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.5rem;}
+.hero h1{font-size:clamp(2rem,4vw,3.4rem);font-weight:800;line-height:1.15;margin-bottom:0.5rem;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-en{font-size:1.1rem;color:var(--muted);font-weight:500;letter-spacing:0.06em;margin-bottom:1.5rem;}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin-bottom:2.5rem;line-height:1.7;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 2rem;border-radius:8px;font-weight:700;font-size:0.95rem;transition:opacity 0.2s;}
+.btn-primary:hover{opacity:0.85;}
+.btn-secondary{border:1px solid var(--border);color:var(--text);padding:0.75rem 2rem;border-radius:8px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s;}
+.btn-secondary:hover{border-color:var(--accent);}
+.hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.7rem 0;border-bottom:1px solid var(--border);}
+.info-row:last-child{border-bottom:none;}
+.info-icon{width:32px;height:32px;border-radius:7px;background:rgba(58,154,42,0.12);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);letter-spacing:0.06em;margin-bottom:0.2rem;}
+.info-val{font-size:0.9rem;font-weight:600;}
+.info-val a{color:var(--accent);}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stats-inner{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--accent);line-height:1;}
+.stat-label{font-size:0.78rem;color:var(--muted);letter-spacing:0.06em;margin-top:0.4rem;}
+
+/* SECTIONS */
+section{padding:5rem 0;}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.section-tag{display:inline-block;background:rgba(58,154,42,0.12);border:1px solid rgba(58,154,42,0.2);border-radius:20px;padding:0.3rem 1rem;font-size:0.75rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1rem;}
+.section-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;line-height:1.2;margin-bottom:0.75rem;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:640px;line-height:1.7;}
+.section-header{margin-bottom:3rem;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(58,154,42,0.08),rgba(200,144,32,0.06));border:1px solid rgba(58,154,42,0.18);border-radius:12px;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:1.05rem;line-height:1.8;color:var(--text);}
+.about-body p{color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+.cert-cards{display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.4rem;display:flex;align-items:center;gap:0.75rem;}
+.cert-icon{font-size:1.6rem;}
+.cert-name{font-size:0.85rem;font-weight:700;color:var(--accent);}
+.cert-desc{font-size:0.75rem;color:var(--muted);}
+.prop-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-name{font-size:0.82rem;font-weight:700;letter-spacing:0.06em;color:var(--accent);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+
+/* PRODUCTS */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.25s;}
+.prod-card:hover{border-color:rgba(58,154,42,0.35);transform:translateY(-3px);}
+.prod-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.prod-card:hover::after{opacity:1;}
+.prod-emoji{font-size:2rem;margin-bottom:0.75rem;}
+.prod-cat{display:inline-block;background:rgba(58,154,42,0.12);border:1px solid rgba(58,154,42,0.2);border-radius:20px;padding:0.2rem 0.75rem;font-size:0.7rem;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.75rem;}
+.prod-name{font-size:1.1rem;font-weight:700;margin-bottom:0.4rem;}
+.prod-en{font-size:0.78rem;color:var(--muted);margin-bottom:0.6rem;letter-spacing:0.04em;}
+.prod-items{list-style:none;display:flex;flex-direction:column;gap:0.3rem;}
+.prod-items li{font-size:0.82rem;color:var(--muted);display:flex;align-items:center;gap:0.4rem;}
+.prod-items li::before{content:'•';color:var(--accent);font-size:0.7rem;}
+
+/* SERVICES */
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.srv-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;transition:border-color 0.25s;}
+.srv-card:hover{border-color:rgba(200,144,32,0.35);}
+.srv-icon{font-size:2rem;margin-bottom:1rem;}
+.srv-name{font-size:1.05rem;font-weight:700;margin-bottom:0.4rem;}
+.srv-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+
+/* RECIPE SECTION */
+.recipe-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;}
+.recipe-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 0.8rem;text-align:center;transition:border-color 0.25s;}
+.recipe-card:hover{border-color:rgba(58,154,42,0.35);}
+.recipe-flag{font-size:1.8rem;margin-bottom:0.5rem;}
+.recipe-name{font-size:0.82rem;font-weight:600;margin-bottom:0.2rem;}
+.recipe-en{font-size:0.72rem;color:var(--muted);}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-block{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-title{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.5rem;}
+.contact-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 0;border-bottom:1px solid var(--border);}
+.contact-item:last-child{border-bottom:none;}
+.contact-icon{width:38px;height:38px;border-radius:8px;background:rgba(58,154,42,0.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.contact-detail{}
+.contact-type{font-size:0.72rem;color:var(--muted);letter-spacing:0.06em;margin-bottom:0.2rem;}
+.contact-val{font-size:0.95rem;font-weight:600;}
+.contact-val a{color:var(--accent);}
+.social-links{display:flex;gap:0.75rem;margin-top:1rem;flex-wrap:wrap;}
+.social-link{display:flex;align-items:center;gap:0.5rem;background:rgba(58,154,42,0.10);border:1px solid rgba(58,154,42,0.2);border-radius:8px;padding:0.5rem 1rem;font-size:0.85rem;transition:border-color 0.2s;}
+.social-link:hover{border-color:var(--accent);}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem 0 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-logo-cn{font-size:1.05rem;font-weight:700;color:var(--accent);margin-bottom:0.2rem;}
+.footer-logo-en{font-size:0.78rem;color:var(--muted);letter-spacing:0.06em;margin-bottom:0.75rem;}
+.footer-desc{font-size:0.85rem;color:var(--muted);line-height:1.7;max-width:300px;}
+.footer-col h4{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col ul li a{font-size:0.88rem;color:var(--muted);transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+.footer-cert{display:flex;gap:1rem;}
+.cert-tag{font-size:0.75rem;background:rgba(58,154,42,0.10);border:1px solid rgba(58,154,42,0.2);border-radius:4px;padding:0.2rem 0.6rem;color:var(--accent);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.prod-grid,.srv-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:repeat(3,1fr);}
+  .recipe-grid{grid-template-columns:repeat(3,1fr);}
+  .prop-cards{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-cn">超力國際食品有限公司</div>
+      <div class="nav-logo-en">Chewy International Food Ltd</div>
+    </div>
+    <div class="nav-links">
+      <a href="#products">產品類別</a>
+      <a href="#services">服務</a>
+      <a href="#recipes">食譜</a>
+      <a href="#contact">聯絡</a>
+    </div>
+    <a href="mailto:drlamchunhk@gmail.com" class="nav-cta">聯絡我們</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🌾 HACCP認證 · 關愛企業 · 香港</div>
+      <h1><em>超力</em>國際食品<br/>優質進口食品分銷</h1>
+      <div class="hero-en">Chewy International Food Limited</div>
+      <p class="hero-sub">超力國際食品有限公司提供多元化進口食品類別，涵蓋優質米食、麵類、凍品、有機食品、松露製品及韓式蜂蜜飲品，並設有豐富食譜資源，服務香港各地家庭與餐飲業界。</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">瀏覽產品</a>
+        <a href="#contact" class="btn-secondary">立即查詢</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">📋 公司資料</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">公司名稱</div>
+          <div class="info-val">超力國際食品有限公司</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">地區</div>
+          <div class="info-val">香港</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📱</div>
+        <div>
+          <div class="info-label">電話</div>
+          <div class="info-val"><a href="tel:+85263531125">+852 6353 1125</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-val"><a href="mailto:drlamchunhk@gmail.com">drlamchunhk@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網站</div>
+          <div class="info-val"><a href="https://chewy.com.hk" target="_blank">chewy.com.hk</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">12</div>
+      <div class="stat-label">食品類別</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1998</div>
+      <div class="stat-label">創立年份</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">6+</div>
+      <div class="stat-label">食譜料理風格</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">HACCP</div>
+      <div class="stat-label">國際認證</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">🏆</div>
+      <div class="stat-label">關愛企業</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">關於我們</div>
+        <h2 class="section-title">香港優質進口<br/>食品分銷商</h2>
+        <div class="about-highlight">
+          <p>超力國際食品有限公司（Chewy International Food Limited）自1998年起在香港深耕食品進口與分銷行業，致力為家庭用戶及餐飲業界提供多元化、高品質的進口食品選擇，產品涵蓋12大類別，由優質泰國茉莉香米到頂級黑松露醬，一應俱全。</p>
+        </div>
+        <div class="about-body">
+          <p>公司持有HACCP（危害分析及關鍵控制點）食品安全認證，同時榮獲「關愛企業」稱號，反映超力對食品安全標準及企業社會責任的高度重視。</p>
+          <p>超力的產品線横跨傳統亞洲食材至西式食品，並設有豐富的網上食譜資源，涵蓋中式、日式、泰式、越式、韓式及西式料理，協助顧客以超力食品烹調各地美食。</p>
+        </div>
+        <div class="cert-cards">
+          <div class="cert-card">
+            <div class="cert-icon">✅</div>
+            <div>
+              <div class="cert-name">HACCP認證</div>
+              <div class="cert-desc">國際食品安全管理標準</div>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">💛</div>
+            <div>
+              <div class="cert-name">關愛企業</div>
+              <div class="cert-desc">香港社會服務聯盟認可</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">🌾</div>
+            <div class="prop-name">進口優質原料</div>
+            <div class="prop-desc">嚴選泰國、美國、意大利、韓國等地優質食材，品質有保障</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🥬</div>
+            <div class="prop-name">有機食品系列</div>
+            <div class="prop-desc">提供有機紅藜麥、小米等健康食品，滿足注重養生的現代家庭</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📺</div>
+            <div class="prop-name">電視廣告推廣</div>
+            <div class="prop-desc">積極投放電視廣告資源，提升品牌知名度，廣為香港市民認識</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">👥</div>
+            <div class="prop-name">會員忠誠計劃</div>
+            <div class="prop-desc">設有會員專區，為忠實顧客提供專屬優惠及積分獎賞</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">產品類別</div>
+      <h2 class="section-title">12大食品類別，一站採購</h2>
+      <p class="section-sub">超力精選全球優質食材，提供多元化食品類別，滿足家庭日常烹調及餐廳採購需求。</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-emoji">🌾</div>
+        <div class="prod-cat">主食系列</div>
+        <div class="prod-name">優質米食</div>
+        <div class="prod-en">Premium Rice</div>
+        <ul class="prod-items">
+          <li>泰國茉莉香米</li>
+          <li>美國珍珠米</li>
+          <li>有機米品種</li>
+          <li>糯米系列</li>
+        </ul>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🍜</div>
+        <div class="prod-cat">麵食系列</div>
+        <div class="prod-name">米粉與麵條</div>
+        <div class="prod-en">Rice Noodles & Pasta</div>
+        <ul class="prod-items">
+          <li>銀絲米粉</li>
+          <li>新竹米粉</li>
+          <li>泰式米線</li>
+          <li>伊麵、烏冬、拉麵</li>
+        </ul>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🍝</div>
+        <div class="prod-cat">西式麵食</div>
+        <div class="prod-name">意粉與通粉</div>
+        <div class="prod-en">Italian Pasta</div>
+        <ul class="prod-items">
+          <li>意大利粉各款</li>
+          <li>通粉、蝴蝶粉</li>
+          <li>長通粉、車輪粉</li>
+          <li>有機意粉品種</li>
+        </ul>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">❄️</div>
+        <div class="prod-cat">凍品系列</div>
+        <div class="prod-name">急凍食品</div>
+        <div class="prod-en">Frozen Foods</div>
+        <ul class="prod-items">
+          <li>急凍薄餅</li>
+          <li>魚蛋、魚餅系列</li>
+          <li>即食熟食食品</li>
+          <li>急凍點心類</li>
+        </ul>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🍄</div>
+        <div class="prod-cat">頂級食材</div>
+        <div class="prod-name">松露製品</div>
+        <div class="prod-en">Truffle Products</div>
+        <ul class="prod-items">
+          <li>Saffronière黑松露醬</li>
+          <li>500g裝松露蘑菇醬</li>
+          <li>法國進口黑松露系列</li>
+          <li>松露橄欖油</li>
+        </ul>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🥬</div>
+        <div class="prod-cat">健康系列</div>
+        <div class="prod-name">有機食品</div>
+        <div class="prod-en">Organic Foods</div>
+        <ul class="prod-items">
+          <li>紅藜麥</li>
+          <li>小米、薏米</li>
+          <li>有機燕麥</li>
+          <li>健康穀物系列</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE PRODUCTS -->
+<section>
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">更多產品</div>
+      <h2 class="section-title">多元化食品選擇</h2>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card">
+        <div class="srv-icon">🌶️</div>
+        <div class="srv-name">調味料與醬料</div>
+        <div class="srv-desc">精選多款進口醬料及調味品，包括各式特色醬汁、香料及風味調料，為烹調增添滋味層次。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">🥐</div>
+        <div class="srv-name">烘焙材料</div>
+        <div class="srv-desc">提供木薯澱粉、粘米粉、糯米粉等多款烘焙及烹調用粉類食材，適合家庭製作傳統糕點及西式烘焙。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">🥫</div>
+        <div class="srv-name">罐頭食品</div>
+        <div class="srv-desc">精選各類優質罐頭食品，方便快捷，保存期長，滿足家庭日常餐桌及緊急儲糧需要。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">🍯</div>
+        <div class="srv-name">韓式蜂蜜飲品</div>
+        <div class="srv-desc">引進韓國特色蜂蜜飲品系列，包括蜂蜜柚子茶、蜂蜜薑茶等，暖胃養生，深受香港消費者歡迎。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">🛒</div>
+        <div class="srv-name">網上購物平台</div>
+        <div class="srv-desc">設有完整網上商店及購物車功能，消費者可方便地在線下單，享受足不出戶的便捷購物體驗。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">👑</div>
+        <div class="srv-name">會員忠誠計劃</div>
+        <div class="srv-desc">設立會員專區，為忠實顧客提供專屬折扣、積分累積及優先購買新品等多重會員福利。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECIPES -->
+<section id="recipes" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">食譜資源</div>
+      <h2 class="section-title">6大料理風格食譜</h2>
+      <p class="section-sub">超力網站備有豐富食譜資源，以超力食品烹調各地美食，讓家庭主婦及烹飪愛好者盡享煮食樂趣。</p>
+    </div>
+    <div class="recipe-grid">
+      <div class="recipe-card">
+        <div class="recipe-flag">🇨🇳</div>
+        <div class="recipe-name">中式料理</div>
+        <div class="recipe-en">Chinese</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-flag">🇯🇵</div>
+        <div class="recipe-name">日式料理</div>
+        <div class="recipe-en">Japanese</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-flag">🇹🇭</div>
+        <div class="recipe-name">泰式料理</div>
+        <div class="recipe-en">Thai</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-flag">🇻🇳</div>
+        <div class="recipe-name">越式料理</div>
+        <div class="recipe-en">Vietnamese</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-flag">🇰🇷</div>
+        <div class="recipe-name">韓式料理</div>
+        <div class="recipe-en">Korean</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-flag">🌍</div>
+        <div class="recipe-name">西式料理</div>
+        <div class="recipe-en">Western</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">與超力聯繫</h2>
+      <p class="section-sub">如有產品查詢、採購需求或合作意向，歡迎隨時與我們聯絡。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <div class="contact-title">📞 聯絡方式</div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-detail">
+            <div class="contact-type">電話 / 手機</div>
+            <div class="contact-val"><a href="tel:+85263531125">+852 6353 1125</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-detail">
+            <div class="contact-type">電郵</div>
+            <div class="contact-val"><a href="mailto:drlamchunhk@gmail.com">drlamchunhk@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div class="contact-detail">
+            <div class="contact-type">網站</div>
+            <div class="contact-val"><a href="https://chewy.com.hk" target="_blank">chewy.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail">
+            <div class="contact-type">地區</div>
+            <div class="contact-val">香港</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-title">🌐 社交媒體</div>
+        <div class="contact-item">
+          <div class="contact-icon">💙</div>
+          <div class="contact-detail">
+            <div class="contact-type">Facebook</div>
+            <div class="contact-val"><a href="https://facebook.com/chewyfood" target="_blank">facebook.com/chewyfood</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📷</div>
+          <div class="contact-detail">
+            <div class="contact-type">Instagram</div>
+            <div class="contact-val"><a href="https://instagram.com/chewyfoods" target="_blank">@chewyfoods</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">▶️</div>
+          <div class="contact-detail">
+            <div class="contact-type">YouTube</div>
+            <div class="contact-val"><a href="https://youtube.com/channel/UCCqIezRj2bespO5Kfr_Hadw" target="_blank">超力國際食品頻道</a></div>
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <div class="contact-type" style="font-size:0.78rem;color:var(--muted);margin-bottom:0.75rem;">認證資質</div>
+          <div style="display:flex;gap:0.75rem;">
+            <div style="background:rgba(58,154,42,0.10);border:1px solid rgba(58,154,42,0.2);border-radius:6px;padding:0.5rem 1rem;font-size:0.82rem;color:var(--accent);">✅ HACCP認證</div>
+            <div style="background:rgba(200,144,32,0.10);border:1px solid rgba(200,144,32,0.2);border-radius:6px;padding:0.5rem 1rem;font-size:0.82rem;color:var(--accent2);">💛 關愛企業</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-cn">超力國際食品有限公司</div>
+        <div class="footer-logo-en">Chewy International Food Limited</div>
+        <p class="footer-desc">自1998年起為香港家庭及餐飲業界提供多元化優質進口食品，持HACCP認證，榮獲關愛企業稱號，致力以最高食品安全標準服務每一位顧客。</p>
+      </div>
+      <div class="footer-col">
+        <h4>產品</h4>
+        <ul>
+          <li><a href="#products">優質米食</a></li>
+          <li><a href="#products">米粉麵條</a></li>
+          <li><a href="#products">松露製品</a></li>
+          <li><a href="#products">有機食品</a></li>
+          <li><a href="#products">韓式飲品</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡</h4>
+        <ul>
+          <li><a href="tel:+85263531125">+852 6353 1125</a></li>
+          <li><a href="mailto:drlamchunhk@gmail.com">drlamchunhk@gmail.com</a></li>
+          <li><a href="https://chewy.com.hk" target="_blank">chewy.com.hk</a></li>
+          <li><a href="https://facebook.com/chewyfood" target="_blank">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">版權 © 2025 超力國際食品有限公司。本公司保留一切版權。</div>
+      <div class="footer-cert">
+        <div class="cert-tag">HACCP認證</div>
+        <div class="cert-tag">關愛企業</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
