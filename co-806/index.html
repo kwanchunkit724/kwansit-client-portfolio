@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安栢汽車服務有限公司 | Empire Auto Service Ltd.</title>
+<style>
+  :root {
+    --bg:        #0a0c10;
+    --surface:   #13181f;
+    --card:      #1a2030;
+    --accent1:   #e84020;
+    --accent2:   #f0a020;
+    --accent3:   #40c0e8;
+    --text:      #e8eaf0;
+    --muted:     #8898b0;
+    --border:    rgba(232,64,32,0.22);
+    --glow:      rgba(232,64,32,0.18);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'PingFang HK', 'Microsoft JhengHei', sans-serif; line-height: 1.7; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(10,12,16,0.94); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 1.1rem; color: #fff; letter-spacing: -0.5px;
+    box-shadow: 0 0 18px var(--glow);
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-name span { color: var(--accent2); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 9px 22px; border-radius: 6px;
+    font-size: 0.88rem; font-weight: 700; cursor: pointer; text-decoration: none;
+    box-shadow: 0 4px 16px var(--glow); transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; padding: 120px 5% 80px;
+    background:
+      radial-gradient(ellipse 70% 50% at 80% 50%, rgba(232,64,32,0.13) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 60% at 15% 70%, rgba(240,160,32,0.09) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
+  }
+  .hero-text { flex: 1 1 480px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(232,64,32,0.12); border: 1px solid rgba(232,64,32,0.3);
+    padding: 6px 16px; border-radius: 20px; font-size: 0.82rem;
+    color: var(--accent2); margin-bottom: 24px; letter-spacing: 0.04em;
+  }
+  .hero-badge::before { content: '🔧'; font-size: 0.9rem; }
+  .hero-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.18; margin-bottom: 8px; }
+  .hero-title .red { color: var(--accent1); }
+  .hero-title .gold { color: var(--accent2); }
+  .hero-en { font-size: 1.05rem; color: var(--muted); font-weight: 500; margin-bottom: 20px; letter-spacing: 0.04em; }
+  .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 520px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 13px 28px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; text-decoration: none;
+    box-shadow: 0 6px 24px var(--glow); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid var(--accent1); color: var(--accent1);
+    padding: 13px 28px; border-radius: 8px; font-size: 0.95rem;
+    font-weight: 600; text-decoration: none; transition: background .2s;
+  }
+  .btn-outline:hover { background: rgba(232,64,32,0.1); }
+
+  /* info card */
+  .hero-card {
+    flex: 0 0 320px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .hero-card h3 { font-size: 0.8rem; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .info-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .info-icon { font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+  .info-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 2px; }
+  .info-val { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+  .info-val a { color: var(--accent3); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .divider-card { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+
+  /* ── STATS ── */
+  .stats-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 44px 5%;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; text-align: center;
+  }
+  .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 88px 5%; }
+  .section-label { font-size: 0.78rem; color: var(--accent1); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 800; margin-bottom: 14px; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 600px; margin-bottom: 48px; }
+
+  /* ── SERVICES GRID ── */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 22px; }
+  .svc-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px 24px; transition: transform .25s, box-shadow .25s;
+  }
+  .svc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(232,64,32,0.15); }
+  .svc-icon { font-size: 2rem; margin-bottom: 14px; }
+  .svc-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+  .svc-card p { font-size: 0.88rem; color: var(--muted); }
+
+  /* ── HIGHLIGHT BAND ── */
+  .highlight {
+    background: linear-gradient(135deg, rgba(232,64,32,0.12), rgba(240,160,32,0.10));
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 56px 48px; margin: 0 5% 80px; text-align: center;
+  }
+  .highlight h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: 14px; }
+  .highlight p { color: var(--muted); max-width: 640px; margin: 0 auto 28px; font-size: 0.98rem; }
+
+  /* ── BRANDS ── */
+  .brands-section { background: var(--surface); padding: 72px 5%; }
+  .brands-grid { display: flex; flex-wrap: wrap; gap: 14px; }
+  .brand-tag {
+    background: var(--card); border: 1px solid var(--border);
+    padding: 10px 20px; border-radius: 8px; font-size: 0.9rem;
+    font-weight: 600; color: var(--text); transition: border-color .2s;
+  }
+  .brand-tag:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  /* ── WHY ── */
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+  .why-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 30px 26px; display: flex; gap: 18px; align-items: flex-start;
+  }
+  .why-num {
+    font-size: 2rem; font-weight: 900; color: var(--accent1); opacity: 0.6;
+    line-height: 1; flex-shrink: 0;
+  }
+  .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .why-card p { font-size: 0.88rem; color: var(--muted); }
+
+  /* ── PROCESS ── */
+  .process-steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; counter-reset: step; }
+  .step {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 30px 22px; text-align: center; position: relative; counter-increment: step;
+  }
+  .step::before {
+    content: counter(step); position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; font-size: 0.8rem; font-weight: 800;
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-icon { font-size: 2rem; margin-bottom: 12px; }
+  .step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+  .step p { font-size: 0.82rem; color: var(--muted); }
+
+  /* ── CONTACT ── */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info { display: flex; flex-direction: column; gap: 18px; }
+  .c-item { display: flex; gap: 14px; align-items: flex-start; }
+  .c-icon {
+    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(232,64,32,0.12); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .c-item h4 { font-size: 0.8rem; color: var(--muted); margin-bottom: 2px; }
+  .c-item p, .c-item a { font-size: 0.95rem; color: var(--text); text-decoration: none; }
+  .c-item a:hover { color: var(--accent2); }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); padding: 11px 14px; border-radius: 8px; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent1); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 13px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.88; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 44px 5% 28px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center;
+  }
+  .footer-brand { font-size: 1rem; font-weight: 700; }
+  .footer-brand span { color: var(--accent2); }
+  .footer-copy { font-size: 0.8rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; }
+  .footer-links a:hover { color: var(--accent2); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero { flex-direction: column; }
+    .hero-card { flex: 1 1 100%; }
+    .highlight { padding: 36px 24px; margin: 0 0 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#home">
+    <div class="nav-logo">帝</div>
+    <div class="nav-name">安栢汽車 <span>| Empire Auto</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">服務項目</a></li>
+    <li><a href="#brands">品牌輪胎</a></li>
+    <li><a href="#why">為何選擇我們</a></li>
+    <li><a href="#process">服務流程</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">立即預約</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-badge">長沙灣專業汽車服務中心</div>
+    <h1 class="hero-title">
+      <span class="red">安栢</span>汽車服務<br>
+      <span class="gold">Empire Auto Service</span>
+    </h1>
+    <p class="hero-en">Professional Auto Care · Kowloon's Trusted Workshop</p>
+    <p class="hero-desc">
+      位於九龍長沙灣，提供全方位汽車保養及維修服務。
+      輪胎銷售、四輪定位、煞車系統、冷氣保養，
+      一站式專業服務，讓您的愛車保持最佳狀態。
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="tel:60812999">📞 立即致電預約</a>
+      <a class="btn-outline" href="#services">了解服務</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <h3>聯絡資訊</h3>
+    <div class="info-row">
+      <div class="info-icon">📍</div>
+      <div>
+        <div class="info-label">地址</div>
+        <div class="info-val">九龍長沙灣賢達街<br>寶業大廈地下</div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">📱</div>
+      <div>
+        <div class="info-label">手機</div>
+        <div class="info-val"><a href="tel:60812999">6081 2999</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">☎️</div>
+      <div>
+        <div class="info-label">電話</div>
+        <div class="info-val"><a href="tel:23230460">2323 0460</a></div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">✉️</div>
+      <div>
+        <div class="info-label">電郵</div>
+        <div class="info-val"><a href="mailto:themispdr@gmail.com">themispdr@gmail.com</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">🌐</div>
+      <div>
+        <div class="info-label">網站</div>
+        <div class="info-val"><a href="https://empireauto.hk/" target="_blank" rel="noopener">empireauto.hk</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div>
+    <div class="stat-num">20+</div>
+    <div class="stat-label">品牌輪胎選擇</div>
+  </div>
+  <div>
+    <div class="stat-num">Hunter</div>
+    <div class="stat-label">WinAlign 11 四輪定位系統</div>
+  </div>
+  <div>
+    <div class="stat-num">全車系</div>
+    <div class="stat-label">房車 / SUV / 旅行車</div>
+  </div>
+  <div>
+    <div class="stat-num">一站式</div>
+    <div class="stat-label">汽車保養維修服務</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label">服務項目</p>
+  <h2 class="section-title">全方位汽車護理</h2>
+  <p class="section-sub">從日常保養到專業維修，涵蓋各類汽車服務需求，讓您的愛車時刻保持最佳狀態。</p>
+
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon">🛞</div>
+      <h3>輪胎銷售及更換</h3>
+      <p>代理全球主要輪胎品牌，專業安裝及更換服務，確保行車安全。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🎯</div>
+      <h3>四輪定位服務</h3>
+      <p>採用 Hunter WinAlign 11 專業四輪定位系統，精準校正車輪角度，減少輪胎磨耗。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔧</div>
+      <h3>全車保養套餐</h3>
+      <p>定期保養套餐，包括換機油、濾清器更換、底盤檢查，全面呵護愛車。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🛑</div>
+      <h3>煞車系統服務</h3>
+      <p>煞車片、煞車碟更換及煞車系統全面檢測，確保行車安全。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">❄️</div>
+      <h3>冷氣系統保養</h3>
+      <p>冷氣清洗、雪種補充及壓縮機檢修，讓車廂保持舒適溫度。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">⚡</div>
+      <h3>電子系統診斷</h3>
+      <p>專業電腦診斷儀器，快速檢測引擎故障燈及各系統電子問題。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">⚙️</div>
+      <h3>波箱維修</h3>
+      <p>自動及手動波箱診斷與維修，確保傳動系統運作順暢。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🚗</div>
+      <h3>SUV 專項服務</h3>
+      <p>針對 SUV、旅行車及房車的專業保養方案，全車系通用。</p>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHT -->
+<div class="highlight">
+  <h2>Hunter WinAlign 11<br><span style="color:var(--accent2)">專業四輪定位系統</span></h2>
+  <p>
+    採用美國 Hunter Engineering 頂級四輪定位設備，精準測量及調校四輪角度。
+    改善操控性能，減少偏移及輪胎不均勻磨耗，提升行車安全及燃油效益。
+  </p>
+  <a class="btn-primary" href="#contact">預約四輪定位</a>
+</div>
+
+<!-- BRANDS -->
+<section class="brands-section" id="brands">
+  <p class="section-label">合作品牌</p>
+  <h2 class="section-title">主要輪胎品牌</h2>
+  <p class="section-sub" style="margin-bottom:32px">代理全球各大主要輪胎品牌，為不同車型及駕駛需求提供最合適的選擇。</p>
+  <div class="brands-grid">
+    <div class="brand-tag">Michelin 米芝蓮</div>
+    <div class="brand-tag">Bridgestone 普利司通</div>
+    <div class="brand-tag">Pirelli 倍耐力</div>
+    <div class="brand-tag">Continental 馬牌</div>
+    <div class="brand-tag">Dunlop 登祿普</div>
+    <div class="brand-tag">Goodyear 固特異</div>
+    <div class="brand-tag">Yokohama 橫濱</div>
+    <div class="brand-tag">Hankook 韓泰</div>
+    <div class="brand-tag">Toyo 東洋</div>
+    <div class="brand-tag">Kumho 錦湖</div>
+    <div class="brand-tag">Nankang 南港</div>
+    <div class="brand-tag">GT Radial</div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <p class="section-label">為何選擇我們</p>
+  <h2 class="section-title">安栢汽車服務優勢</h2>
+  <p class="section-sub">專業、誠信、高效，是我們對每位客戶的承諾。</p>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <div>
+        <h3>頂尖設備</h3>
+        <p>配備 Hunter WinAlign 11 等國際頂級診斷及定位設備，確保服務精準度。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <div>
+        <h3>全車系通用</h3>
+        <p>無論房車、SUV、旅行車，均可提供專業保養及維修服務。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <div>
+        <h3>品牌輪胎選擇多</h3>
+        <p>代理多個國際主流輪胎品牌，配合不同預算及駕駛需求。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <div>
+        <h3>九龍便利地點</h3>
+        <p>位於長沙灣市區，交通方便，服務九龍各區及港九新界車主。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">05</div>
+      <div>
+        <h3>透明報價</h3>
+        <p>維修前詳細說明費用，誠信施工，絕不收取隱藏費用。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">06</div>
+      <div>
+        <h3>一站式服務</h3>
+        <p>從輪胎更換到波箱維修，所有汽車服務一站搞定，節省您的時間。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" style="background: var(--surface);">
+  <p class="section-label">服務流程</p>
+  <h2 class="section-title">簡單四步，完成保養</h2>
+  <p class="section-sub">高效率的服務流程，讓您的愛車盡快回復最佳狀態。</p>
+
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-icon">📞</div>
+      <h3>預約服務</h3>
+      <p>致電或 WhatsApp 預約服務時間，避免等候。</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">🔍</div>
+      <h3>車輛檢查</h3>
+      <p>技師全面檢查車輛，詳細說明問題及維修建議。</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">🔨</div>
+      <h3>確認維修</h3>
+      <p>客戶確認報價後，由專業技師進行維修保養。</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">✅</div>
+      <h3>完成交車</h3>
+      <p>維修完成後進行最終測試，確保一切正常後交車。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">聯絡我們</p>
+  <h2 class="section-title">預約汽車服務</h2>
+  <p class="section-sub">歡迎致電或填寫表格預約，我們將盡快與您確認服務時間。</p>
+
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <h4>地址</h4>
+          <p>九龍長沙灣賢達街寶業大廈地下</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📱</div>
+        <div>
+          <h4>手機 / WhatsApp</h4>
+          <a href="tel:60812999">6081 2999</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">☎️</div>
+        <div>
+          <h4>電話</h4>
+          <a href="tel:23230460">2323 0460</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">✉️</div>
+        <div>
+          <h4>電郵</h4>
+          <a href="mailto:themispdr@gmail.com">themispdr@gmail.com</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">🌐</div>
+        <div>
+          <h4>官方網站</h4>
+          <a href="https://empireauto.hk/" target="_blank" rel="noopener">empireauto.hk</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>您的姓名</label>
+          <input type="text" placeholder="陳先生 / 陳小姐">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="9xxx xxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>車牌號碼</label>
+        <input type="text" placeholder="AB 1234">
+      </div>
+      <div class="form-group">
+        <label>服務類別</label>
+        <select>
+          <option value="">請選擇服務</option>
+          <option>輪胎銷售及更換</option>
+          <option>四輪定位</option>
+          <option>全車保養套餐</option>
+          <option>煞車系統服務</option>
+          <option>冷氣系統保養</option>
+          <option>電子系統診斷</option>
+          <option>波箱維修</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>備註 / 問題描述</label>
+        <textarea placeholder="請描述車輛問題或服務需求…"></textarea>
+      </div>
+      <button class="form-submit">發送預約查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">安栢汽車服務有限公司 <span>| Empire Auto Service Ltd.</span></div>
+  <div class="footer-copy">© 2025 Empire Auto Service Ltd. 版權所有</div>
+  <div class="footer-links">
+    <a href="#services">服務項目</a>
+    <a href="#brands">輪胎品牌</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+</footer>
+
+</body>
+</html>
