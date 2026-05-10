@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Zoti Sports Teamwear Limited | 精雕細琢 一絲不苟</title>
+<meta name="description" content="Zoti Sports Teamwear Limited — 香港專業球衣製造商，自2000年起為各運動隊伍提供高質定制球衣服務，精雕細琢，一絲不苟。"/>
+<style>
+:root{
+  --bg:#080608;
+  --surface:#0e0b0c;
+  --card:#141012;
+  --border:#221820;
+  --accent:#e02820;
+  --accent2:#ff5040;
+  --orange:#e07820;
+  --text:#f0e8e8;
+  --muted:#908080;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(8,6,8,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-size:1.1rem;font-weight:900;color:var(--accent2);letter-spacing:.05em;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.nav-links a:hover{color:var(--accent2);}
+
+/* HERO */
+.hero{min-height:92vh;display:flex;align-items:center;justify-content:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 25% 50%,rgba(224,40,32,.12) 0%,transparent 65%);}
+.hero-stripes{position:absolute;right:0;top:0;bottom:0;width:45%;background:repeating-linear-gradient(135deg,rgba(224,40,32,.03) 0px,rgba(224,40,32,.03) 1px,transparent 1px,transparent 20px);clip-path:polygon(15% 0%,100% 0%,100% 100%,0% 100%);}
+.hero-inner{max-width:1200px;width:100%;display:grid;grid-template-columns:1fr 390px;gap:4rem;align-items:center;position:relative;}
+.hero-badge{display:inline-block;background:rgba(224,40,32,.15);border:1px solid rgba(224,40,32,.35);color:var(--accent2);font-size:.75rem;padding:.35rem .9rem;border-radius:20px;letter-spacing:.1em;margin-bottom:1.5rem;text-transform:uppercase;}
+.hero h1{font-size:clamp(2.4rem,5vw,4rem);font-weight:900;line-height:1.1;margin-bottom:.8rem;}
+.hero h1 em{color:var(--accent2);font-style:normal;}
+.hero-tagline{font-size:1.3rem;font-weight:700;color:var(--orange);margin-bottom:.6rem;letter-spacing:.06em;}
+.hero-sub{font-size:.95rem;color:var(--muted);max-width:480px;margin-bottom:2.5rem;line-height:1.7;}
+.hero-since{display:inline-flex;align-items:center;gap:.5rem;background:rgba(224,40,32,.1);border:1px solid rgba(224,40,32,.2);border-radius:8px;padding:.5rem 1rem;font-size:.82rem;color:var(--muted);margin-bottom:2rem;}
+.hero-since strong{color:var(--accent2);}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:#fff;padding:.85rem 2rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;transition:background .2s;}
+.hero-cta:hover{background:var(--accent2);}
+.hero-cta-out{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);color:var(--muted);padding:.85rem 2rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .2s;}
+.hero-cta-out:hover{border-color:var(--accent);color:var(--accent2);}
+
+/* INFO CARD */
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.8rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--orange));}
+.info-card h3{font-size:.78rem;color:var(--accent2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.2rem;}
+.info-row{display:flex;gap:.8rem;margin-bottom:.85rem;align-items:flex-start;}
+.info-icon{width:20px;color:var(--accent2);flex-shrink:0;margin-top:.1rem;font-size:.9rem;}
+.info-text{font-size:.85rem;color:var(--muted);}
+.info-text strong{color:var(--text);display:block;font-size:.8rem;font-weight:600;}
+.info-text a{color:var(--muted);text-decoration:none;}
+.info-text a:hover{color:var(--accent2);}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:2.2rem;font-weight:900;color:var(--accent2);display:block;}
+.stat-label{font-size:.78rem;color:var(--muted);margin-top:.2rem;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-label{font-size:.72rem;color:var(--accent2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem;}
+.sec-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:1rem;}
+.sec-desc{color:var(--muted);max-width:620px;margin-bottom:3rem;line-height:1.7;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.about-highlight{background:linear-gradient(135deg,rgba(224,40,32,.08),rgba(224,40,32,.03));border:1px solid rgba(224,40,32,.2);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:1rem;line-height:1.75;color:var(--text);}
+.about-highlight cite{display:block;font-size:.78rem;color:var(--accent2);margin-top:.8rem;font-style:normal;}
+.prop-cards{display:grid;gap:1rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;gap:1rem;align-items:flex-start;}
+.prop-icon{width:36px;height:36px;background:rgba(224,40,32,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.prop-card h4{font-size:.9rem;font-weight:700;margin-bottom:.2rem;}
+.prop-card p{font-size:.82rem;color:var(--muted);}
+
+/* SPORTS */
+.sports{background:var(--surface);}
+.sports-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.sport-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.6rem 1rem;text-align:center;transition:border-color .2s,transform .2s;}
+.sport-card:hover{border-color:rgba(224,40,32,.4);transform:translateY(-4px);}
+.sport-icon{font-size:2.5rem;margin-bottom:.8rem;}
+.sport-name{font-size:.95rem;font-weight:700;margin-bottom:.3rem;}
+.sport-desc{font-size:.78rem;color:var(--muted);}
+
+/* PRODUCTS */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s,transform .2s;}
+.prod-card:hover{border-color:rgba(224,40,32,.4);transform:translateY(-4px);}
+.prod-top{background:rgba(224,40,32,.06);padding:2rem;text-align:center;font-size:2.5rem;border-bottom:1px solid var(--border);}
+.prod-body{padding:1.4rem;}
+.prod-body h3{font-size:1rem;font-weight:700;margin-bottom:.5rem;}
+.prod-body p{font-size:.83rem;color:var(--muted);line-height:1.6;}
+.prod-tag{display:inline-block;background:rgba(224,40,32,.12);color:var(--accent2);font-size:.7rem;padding:.2rem .6rem;border-radius:4px;margin-top:.8rem;}
+
+/* PROCESS */
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;position:relative;}
+.process-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--accent),var(--orange));z-index:0;}
+.step{text-align:center;position:relative;z-index:1;}
+.step-num{width:56px;height:56px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:900;color:#fff;margin:0 auto 1rem;border:3px solid var(--bg);}
+.step h4{font-size:.9rem;font-weight:700;margin-bottom:.4rem;}
+.step p{font-size:.78rem;color:var(--muted);}
+
+/* CONTACT */
+.contact{background:var(--surface);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-info h3{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;}
+.c-item{display:flex;gap:1rem;margin-bottom:1.2rem;align-items:flex-start;}
+.c-icon{width:40px;height:40px;background:rgba(224,40,32,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:.75rem;color:var(--muted);margin-bottom:.1rem;}
+.c-val{font-size:.9rem;font-weight:500;}
+.c-val a{color:var(--text);text-decoration:none;}
+.c-val a:hover{color:var(--accent2);}
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;}
+.contact-card p{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;}
+.c-form-row{margin-bottom:1rem;}
+.c-form-row label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:.4rem;}
+.c-form-row input,.c-form-row textarea,.c-form-row select{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;color:var(--text);font-size:.88rem;}
+.c-form-row textarea{height:90px;resize:vertical;}
+.c-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:.85rem;border-radius:8px;font-weight:700;font-size:.95rem;cursor:pointer;transition:background .2s;}
+.c-btn:hover{background:var(--accent2);}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2rem;text-align:center;}
+.foot-logo{font-size:1.1rem;font-weight:900;color:var(--accent2);margin-bottom:.3rem;}
+.foot-tagline{font-size:.88rem;color:var(--orange);margin-bottom:.4rem;}
+.foot-copy{font-size:.78rem;color:var(--muted);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .sports-grid,.process-steps{grid-template-columns:1fr 1fr;}
+  .grid-3,.stats-inner{grid-template-columns:1fr 1fr;}
+  .hero-stripes{display:none;}
+  .process-steps::before{display:none;}
+}
+@media(max-width:600px){
+  .grid-3,.stats-inner,.sports-grid,.process-steps{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">ZOTI SPORTS</div>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#sports">運動類型</a></li>
+      <li><a href="#products">產品系列</a></li>
+      <li><a href="#process">訂製流程</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stripes"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">香港球衣定制製造商 · Since 2000</div>
+      <h1>ZOTI<br/><em>SPORTS</em></h1>
+      <div class="hero-tagline">精雕細琢 · 一絲不苟</div>
+      <p class="hero-sub">自2000年創立以來，以最高標準製造每一件球衣。憑藉多年服裝製造商經驗，為每支運動隊伍打造盡善盡美的定制球衣，陪伴您完成每一場比賽。</p>
+      <div class="hero-since"><strong>EST. 2000</strong> · 25年製衣經驗 · 香港本地製造</div>
+      <div class="hero-ctas">
+        <a href="https://www.zotisportshk.com" target="_blank" class="hero-cta">設計球衣 →</a>
+        <a href="#contact" class="hero-cta-out">查詢報價</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>公司資料</h3>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div class="info-text"><strong>地址</strong>葵涌葵秀路11-15號<br/>蘇濤工商中心17樓D室</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📞</span>
+        <div class="info-text"><strong>電話1</strong><a href="tel:34262172">3426 2172</a></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📱</span>
+        <div class="info-text"><strong>電話2 / WhatsApp</strong><a href="tel:98440644">9844 0644</a></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📠</span>
+        <div class="info-text"><strong>傳真</strong>3426 2163</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📧</span>
+        <div class="info-text"><strong>電郵</strong><a href="mailto:sales@zotisports.com">sales@zotisports.com</a></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📸</span>
+        <div class="info-text"><strong>Instagram</strong>@zotisports_hk</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num">25+</span><div class="stat-label">年製衣經驗</div></div>
+    <div class="stat"><span class="stat-num">100%</span><div class="stat-label">全件定制</div></div>
+    <div class="stat"><span class="stat-num">多款</span><div class="stat-label">運動類型</div></div>
+    <div class="stat"><span class="stat-num">HK</span><div class="stat-label">香港本地品牌</div></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div>
+        <div class="sec-label">關於我們</div>
+        <h2 class="sec-title">精雕細琢，<br/>每件球衣都是心血</h2>
+        <div class="about-highlight">
+          <p>自2000年創立以來，Zoti Sports都以最高的標準要求自己，為大家提供最好的服務。我們憑著多年的服裝製造商經驗所累積到的豐富知識，配合嚴謹的態度，務求每一件製造的球衣都能盡善盡美，以最高質量的球衣陪伴你完成每一場比賽。</p>
+          <cite>— Zoti Sports Teamwear Limited</cite>
+        </div>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.7;">
+          我們深明每支球隊都有獨特的需要，因此提供全方位定制服務，由款式設計、顏色配搭、印字印號，到布料選擇，均由專人跟進，確保每件球衣完全符合球隊的要求與形象。
+        </p>
+      </div>
+      <div class="prop-cards">
+        <div class="prop-card">
+          <div class="prop-icon">✂️</div>
+          <div>
+            <h4>專業製衣經驗</h4>
+            <p>25年服裝製造商經驗，深明球衣設計與製作每一個細節。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🎨</div>
+          <div>
+            <h4>線上Kit Designer</h4>
+            <p>提供網上球衣設計工具，隊員可自行配色、加Logo、選款式。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">⭐</div>
+          <div>
+            <h4>最高品質標準</h4>
+            <p>每件球衣均經嚴格品質檢查，確保縫工精準、用料上乘。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🏆</div>
+          <div>
+            <h4>全隊定制方案</h4>
+            <p>由球衣、短褲、外套到配件，一站式滿足球隊所有服裝需求。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sports" class="sports">
+  <div class="sec-inner">
+    <div class="sec-label">運動類型</div>
+    <h2 class="sec-title">各類運動球衣定制</h2>
+    <p class="sec-desc">Zoti Sports為多種運動類型提供定制球衣服務，無論是室內還是室外運動，均可按需訂製。</p>
+    <div class="sports-grid">
+      <div class="sport-card">
+        <div class="sport-icon">⚽</div>
+        <div class="sport-name">足球</div>
+        <div class="sport-desc">球衣、短褲、護腿套裝，全隊統一設計</div>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🏀</div>
+        <div class="sport-name">籃球</div>
+        <div class="sport-desc">球衣球褲套裝，個性化印號印名</div>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🏐</div>
+        <div class="sport-name">排球</div>
+        <div class="sport-desc">男女排球球衣，短袖長袖均可定制</div>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🏓</div>
+        <div class="sport-name">乒乓球</div>
+        <div class="sport-desc">輕量透氣設計，適合快速移動</div>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🏸</div>
+        <div class="sport-name">羽毛球</div>
+        <div class="sport-desc">靈活剪裁，舒適透氣，比賽訓練皆宜</div>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🏊</div>
+        <div class="sport-name">水上運動</div>
+        <div class="sport-desc">各類水上運動服裝，耐氯耐磨</div>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🏃</div>
+        <div class="sport-name">田徑</div>
+        <div class="sport-desc">跑步服、比賽背心，輕量專業</div>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">⚾</div>
+        <div class="sport-name">其他運動</div>
+        <div class="sport-desc">棒球、欖球等各類運動均可訂制</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products">
+  <div class="sec-inner">
+    <div class="sec-label">產品系列</div>
+    <h2 class="sec-title">全套球隊服裝方案</h2>
+    <p class="sec-desc">從比賽球衣到訓練服，提供球隊所需的一切服裝，全部可按要求定制。</p>
+    <div class="grid-3">
+      <div class="prod-card">
+        <div class="prod-top">👕</div>
+        <div class="prod-body">
+          <h3>比賽球衣</h3>
+          <p>各類運動比賽球衣，可定制隊名、號碼、Logo，採用透氣吸汗布料，讓運動員在比賽中保持最佳狀態。</p>
+          <span class="prod-tag">核心產品</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">🧥</div>
+        <div class="prod-body">
+          <h3>外套與風褸</h3>
+          <p>賽前熱身、賽後保暖外套，可配合球衣設計統一風格，印制球隊名稱及號碼。</p>
+          <span class="prod-tag">配套產品</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">👖</div>
+        <div class="prod-body">
+          <h3>運動短褲長褲</h3>
+          <p>配合球衣的運動褲，精選彈性布料，靈活舒適，提供最佳運動體驗。</p>
+          <span class="prod-tag">配套產品</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">💪</div>
+        <div class="prod-body">
+          <h3>長袖訓練服</h3>
+          <p>訓練時使用的長袖運動服，採用排汗透氣面料，適合不同天氣訓練場合。</p>
+          <span class="prod-tag">訓練系列</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">🎨</div>
+        <div class="prod-body">
+          <h3>定制設計服務</h3>
+          <p>專業設計師協助設計球隊專屬形象，提供色彩、Logo、字型等全方位設計建議。</p>
+          <span class="prod-tag">增值服務</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">📦</div>
+        <div class="prod-body">
+          <h3>全隊整批訂製</h3>
+          <p>為整支球隊提供一站式服裝方案，統一尺碼、號碼及設計，方便球隊管理。</p>
+          <span class="prod-tag">企業方案</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process" style="background:var(--surface);">
+  <div class="sec-inner">
+    <div class="sec-label">訂製流程</div>
+    <h2 class="sec-title">簡單四步，完成訂製</h2>
+    <p class="sec-desc">清晰簡便的訂製流程，讓您輕鬆完成球衣訂制，全程專人跟進。</p>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>聯絡查詢</h4>
+        <p>透過電話、WhatsApp或電郵聯絡我們，說明運動類型及需求。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>設計確認</h4>
+        <p>使用Kit Designer或與設計師溝通，確定款式、顏色及印字。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>落單生產</h4>
+        <p>確認設計及報價後，提交尺碼表及訂金，安排生產製作。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>交貨取件</h4>
+        <p>生產完成後通知取件，亦可安排送貨，全程品質保證。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="sec-inner">
+    <div class="sec-label">聯絡我們</div>
+    <h2 class="sec-title">查詢報價</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>聯絡資料</h3>
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">地址</div>
+            <div class="c-val">新界葵青葵涌葵秀路11-15號<br/>蘇濤工商中心17樓D室</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">電話</div>
+            <div class="c-val"><a href="tel:34262172">3426 2172</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📱</div>
+          <div>
+            <div class="c-label">手機 / WhatsApp</div>
+            <div class="c-val"><a href="tel:98440644">9844 0644</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📠</div>
+          <div>
+            <div class="c-label">傳真</div>
+            <div class="c-val">3426 2163</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📧</div>
+          <div>
+            <div class="c-label">電郵</div>
+            <div class="c-val"><a href="mailto:sales@zotisports.com">sales@zotisports.com</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📸</div>
+          <div>
+            <div class="c-label">Instagram</div>
+            <div class="c-val">@zotisports_hk</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">網站</div>
+            <div class="c-val"><a href="https://www.zotisportshk.com" target="_blank">zotisportshk.com</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>查詢球衣訂製</h3>
+        <p>請填寫以下資料，我們將盡快提供報價及設計建議。</p>
+        <div class="c-form-row">
+          <label>您的姓名 / 球隊名稱</label>
+          <input type="text" placeholder="例：香港FC球隊"/>
+        </div>
+        <div class="c-form-row">
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="請輸入聯絡電話"/>
+        </div>
+        <div class="c-form-row">
+          <label>運動類型</label>
+          <select>
+            <option>請選擇運動類型</option>
+            <option>足球 Football</option>
+            <option>籃球 Basketball</option>
+            <option>排球 Volleyball</option>
+            <option>乒乓球 Table Tennis</option>
+            <option>羽毛球 Badminton</option>
+            <option>其他 Others</option>
+          </select>
+        </div>
+        <div class="c-form-row">
+          <label>查詢內容</label>
+          <textarea placeholder="請說明所需數量、款式要求等..."></textarea>
+        </div>
+        <button class="c-btn">發送查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">ZOTI SPORTS TEAMWEAR LIMITED</div>
+  <div class="foot-tagline">精雕細琢 · 一絲不苟</div>
+  <div class="foot-copy">© 2025 Zoti Sports Teamwear Limited · 香港葵涌 · 自2000年起</div>
+</footer>
+
+</body>
+</html>
