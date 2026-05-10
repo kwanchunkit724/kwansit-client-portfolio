@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>MT Sports Limited | 浩瀚運動有限公司</title>
+<meta name="description" content="MT Sports Limited (浩瀚運動有限公司) — 香港運動零售商，代理Adidas、KETTLER、LP SUPPORT等國際品牌，設實體門市及網上商店。"/>
+<style>
+:root{
+  --bg:#050810;
+  --surface:#080d18;
+  --card:#0d1220;
+  --border:#182030;
+  --accent:#1a80e8;
+  --accent2:#40a8ff;
+  --green:#28c870;
+  --text:#e8ecf8;
+  --muted:#788098;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(5,8,16,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-size:1.05rem;font-weight:800;color:var(--accent2);letter-spacing:.04em;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.nav-links a:hover{color:var(--accent2);}
+
+/* HERO */
+.hero{min-height:90vh;display:flex;align-items:center;justify-content:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 30% 50%,rgba(26,128,232,.12) 0%,transparent 65%);}
+.hero-deco{position:absolute;right:-5%;top:0;bottom:0;width:55%;background:linear-gradient(135deg,rgba(26,128,232,.04) 0%,transparent 60%);clip-path:polygon(20% 0%,100% 0%,100% 100%,0% 100%);}
+.hero-inner{max-width:1200px;width:100%;display:grid;grid-template-columns:1fr 390px;gap:4rem;align-items:center;position:relative;}
+.hero-badge{display:inline-block;background:rgba(26,128,232,.15);border:1px solid rgba(26,128,232,.35);color:var(--accent2);font-size:.75rem;padding:.35rem .9rem;border-radius:20px;letter-spacing:.1em;margin-bottom:1.5rem;text-transform:uppercase;}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;line-height:1.1;margin-bottom:.8rem;}
+.hero h1 em{color:var(--accent2);font-style:normal;}
+.hero-sub-zh{font-size:1.1rem;color:var(--muted);margin-bottom:.3rem;}
+.hero-sub{font-size:.95rem;color:var(--muted);max-width:480px;margin-bottom:2.5rem;}
+.hero-brands{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:2rem;}
+.brand-chip{background:rgba(26,128,232,.1);border:1px solid rgba(26,128,232,.25);color:var(--accent2);font-size:.72rem;padding:.3rem .8rem;border-radius:20px;font-weight:600;letter-spacing:.05em;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:#fff;padding:.85rem 2rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;transition:background .2s;}
+.hero-cta:hover{background:var(--accent2);}
+.hero-cta-out{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);color:var(--muted);padding:.85rem 2rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .2s;}
+.hero-cta-out:hover{border-color:var(--accent);color:var(--accent2);}
+
+/* INFO CARD */
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.8rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.info-card h3{font-size:.78rem;color:var(--accent2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.2rem;}
+.info-row{display:flex;gap:.8rem;margin-bottom:.85rem;align-items:flex-start;}
+.info-icon{width:20px;color:var(--accent2);flex-shrink:0;margin-top:.1rem;font-size:.9rem;}
+.info-text{font-size:.85rem;color:var(--muted);}
+.info-text strong{color:var(--text);display:block;font-size:.8rem;font-weight:600;}
+.info-text a{color:var(--muted);text-decoration:none;}
+.info-text a:hover{color:var(--accent2);}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:2rem;font-weight:900;color:var(--accent2);display:block;}
+.stat-label{font-size:.78rem;color:var(--muted);margin-top:.2rem;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-label{font-size:.72rem;color:var(--accent2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem;}
+.sec-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:1rem;}
+.sec-desc{color:var(--muted);max-width:620px;margin-bottom:3rem;line-height:1.7;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.about-highlight{background:linear-gradient(135deg,rgba(26,128,232,.08),rgba(26,128,232,.03));border:1px solid rgba(26,128,232,.2);border-radius:12px;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:1rem;line-height:1.75;color:var(--text);}
+.about-highlight cite{display:block;font-size:.78rem;color:var(--accent2);margin-top:.8rem;font-style:normal;}
+.prop-cards{display:grid;gap:1rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;gap:1rem;align-items:flex-start;}
+.prop-icon{width:36px;height:36px;background:rgba(26,128,232,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.prop-card h4{font-size:.9rem;font-weight:700;margin-bottom:.2rem;}
+.prop-card p{font-size:.82rem;color:var(--muted);}
+
+/* BRANDS */
+.brands{background:var(--surface);}
+.brands-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;}
+.brand-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.6rem 1rem;text-align:center;transition:border-color .2s,transform .2s;}
+.brand-card:hover{border-color:rgba(26,128,232,.4);transform:translateY(-4px);}
+.brand-name{font-size:1rem;font-weight:800;color:var(--accent2);margin-bottom:.5rem;}
+.brand-desc{font-size:.78rem;color:var(--muted);line-height:1.5;}
+.brand-icon{font-size:2rem;margin-bottom:.8rem;}
+
+/* PRODUCTS */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s,transform .2s;}
+.prod-card:hover{border-color:rgba(26,128,232,.4);transform:translateY(-4px);}
+.prod-top{background:rgba(26,128,232,.06);padding:2rem;text-align:center;font-size:2.5rem;border-bottom:1px solid var(--border);}
+.prod-body{padding:1.4rem;}
+.prod-body h3{font-size:1rem;font-weight:700;margin-bottom:.5rem;}
+.prod-body p{font-size:.83rem;color:var(--muted);line-height:1.6;}
+.prod-tag{display:inline-block;background:rgba(26,128,232,.12);color:var(--accent2);font-size:.7rem;padding:.2rem .6rem;border-radius:4px;margin-top:.8rem;}
+
+/* PAYMENT */
+.payment-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem;}
+.pay-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;text-align:center;}
+.pay-card .pay-icon{font-size:1.8rem;margin-bottom:.5rem;}
+.pay-card p{font-size:.8rem;color:var(--muted);}
+
+/* CONTACT */
+.contact{background:var(--surface);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-info h3{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;}
+.c-item{display:flex;gap:1rem;margin-bottom:1.2rem;align-items:flex-start;}
+.c-icon{width:40px;height:40px;background:rgba(26,128,232,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:.75rem;color:var(--muted);margin-bottom:.1rem;}
+.c-val{font-size:.9rem;font-weight:500;}
+.c-val a{color:var(--text);text-decoration:none;}
+.c-val a:hover{color:var(--accent2);}
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;}
+.contact-card p{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;}
+.c-form-row{margin-bottom:1rem;}
+.c-form-row label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:.4rem;}
+.c-form-row input,.c-form-row textarea{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;color:var(--text);font-size:.88rem;}
+.c-form-row textarea{height:90px;resize:vertical;}
+.c-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:.85rem;border-radius:8px;font-weight:700;font-size:.95rem;cursor:pointer;transition:background .2s;}
+.c-btn:hover{background:var(--accent2);}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2rem;text-align:center;}
+.foot-logo{font-size:1.1rem;font-weight:800;color:var(--accent2);margin-bottom:.4rem;}
+.foot-copy{font-size:.78rem;color:var(--muted);}
+
+@media(max-width:1000px){
+  .brands-grid{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .grid-3,.stats-inner,.payment-grid{grid-template-columns:1fr 1fr;}
+  .hero-deco{display:none;}
+}
+@media(max-width:600px){
+  .grid-3,.stats-inner,.payment-grid,.brands-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">MT Sports Limited</div>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#brands">代理品牌</a></li>
+      <li><a href="#products">產品系列</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-deco"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">香港運動零售 · Sports Retail HK</div>
+      <h1>MT Sports<br/><em>Limited</em></h1>
+      <p class="hero-sub-zh">浩瀚運動有限公司</p>
+      <p class="hero-sub">代理國際頂尖運動品牌，提供高品質運動裝備、護具及健身器材，服務香港運動愛好者與專業運動員。</p>
+      <div class="hero-brands">
+        <span class="brand-chip">ADIDAS</span>
+        <span class="brand-chip">KETTLER</span>
+        <span class="brand-chip">LP SUPPORT</span>
+        <span class="brand-chip">X2FIT</span>
+        <span class="brand-chip">SNAILCLE</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="https://mtsports.hk" target="_blank" class="hero-cta">網上商店 →</a>
+        <a href="#contact" class="hero-cta-out">查詢訂購</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>公司資料</h3>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div class="info-text"><strong>地址</strong>荃灣柴灣角街84-92號<br/>順豐工業中心19樓A&amp;B室</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📞</span>
+        <div class="info-text"><strong>電話</strong><a href="tel:28897078">2889 7078</a></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📠</span>
+        <div class="info-text"><strong>傳真</strong>2897 1646</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📱</span>
+        <div class="info-text"><strong>手機</strong><a href="tel:52236614">5223 6614</a></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📧</span>
+        <div class="info-text"><strong>電郵</strong><a href="mailto:info@mtsports.hk">info@mtsports.hk</a></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🌐</span>
+        <div class="info-text"><strong>網站</strong><a href="https://mtsports.hk" target="_blank">mtsports.hk</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num">5</span><div class="stat-label">代理國際品牌</div></div>
+    <div class="stat"><span class="stat-num">O2O</span><div class="stat-label">線上線下零售</div></div>
+    <div class="stat"><span class="stat-num">4</span><div class="stat-label">支付方式</div></div>
+    <div class="stat"><span class="stat-num">HK</span><div class="stat-label">香港本地企業</div></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div>
+        <div class="sec-label">關於我們</div>
+        <h2 class="sec-title">浩瀚運動，<br/>專業裝備</h2>
+        <div class="about-highlight">
+          <p>MT Sports Limited（浩瀚運動有限公司）是香港專業運動零售商，代理多個國際知名運動品牌，致力為香港運動愛好者及專業運動員提供高品質運動裝備、護具及健身器材，兼備實體門市及網上購物平台，方便顧客隨時選購。</p>
+          <cite>— MT Sports Limited · 浩瀚運動有限公司</cite>
+        </div>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.7;">
+          公司設於荃灣順豐工業中心，擁有多個零售地點，以「浩瀚」精神廣納各類運動產品，服務範疇涵蓋日常運動、健身訓練、運動護理等多個領域，為每位顧客提供最合適的運動解決方案。
+        </p>
+      </div>
+      <div class="prop-cards">
+        <div class="prop-card">
+          <div class="prop-icon">🏆</div>
+          <div>
+            <h4>國際品牌代理</h4>
+            <p>代理Adidas、KETTLER等多個國際知名運動品牌，品質有保證。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🛒</div>
+          <div>
+            <h4>線上線下購物</h4>
+            <p>設實體門市及網上商店，支援Mastercard、Visa、Amex、PayPal付款。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🛡️</div>
+          <div>
+            <h4>專業運動護具</h4>
+            <p>代理LP SUPPORT等護具品牌，保護運動員免受運動傷害。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">💪</div>
+          <div>
+            <h4>健身器材專家</h4>
+            <p>提供KETTLER及X2FIT等健身器材，滿足家用及商業健身需要。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="brands" class="brands">
+  <div class="sec-inner">
+    <div class="sec-label">代理品牌</div>
+    <h2 class="sec-title">國際頂尖品牌</h2>
+    <p class="sec-desc">MT Sports代理五大國際運動品牌，涵蓋運動服裝、健身器材、護具及運動配件，一站式滿足您的運動需求。</p>
+    <div class="brands-grid">
+      <div class="brand-card">
+        <div class="brand-icon">👟</div>
+        <div class="brand-name">ADIDAS</div>
+        <div class="brand-desc">全球頂尖運動品牌，運動服裝、球鞋及運動配件</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🏋️</div>
+        <div class="brand-name">KETTLER</div>
+        <div class="brand-desc">德國健身器材品牌，單車、划船機、跑步機等</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🛡️</div>
+        <div class="brand-name">LP SUPPORT</div>
+        <div class="brand-desc">專業運動護具品牌，護膝、護腕、護踝、支撐帶</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">💪</div>
+        <div class="brand-name">X2FIT</div>
+        <div class="brand-desc">健身訓練器材及配件，提升運動表現</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🏃</div>
+        <div class="brand-name">SNAILCLE</div>
+        <div class="brand-desc">運動產品系列，多元化運動配件</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products">
+  <div class="sec-inner">
+    <div class="sec-label">產品系列</div>
+    <h2 class="sec-title">全方位運動裝備</h2>
+    <p class="sec-desc">涵蓋各類運動所需裝備，由日常運動服裝到專業護具，一應俱全。</p>
+    <div class="grid-3">
+      <div class="prod-card">
+        <div class="prod-top">👕</div>
+        <div class="prod-body">
+          <h3>運動服裝</h3>
+          <p>Adidas正品運動服裝，包括T恤、運動褲、外套等，適合各類運動場合。</p>
+          <span class="prod-tag">Adidas</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">🚲</div>
+        <div class="prod-body">
+          <h3>健身器材</h3>
+          <p>KETTLER德國製造健身單車、划船機、跑步機及多功能健身站，家用商用皆宜。</p>
+          <span class="prod-tag">KETTLER</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">🦵</div>
+        <div class="prod-body">
+          <h3>運動護具</h3>
+          <p>LP SUPPORT專業護膝、護腕、護踝、護肘等各部位護具，預防及輔助康復。</p>
+          <span class="prod-tag">LP SUPPORT</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">🏋️</div>
+        <div class="prod-body">
+          <h3>訓練配件</h3>
+          <p>X2FIT訓練配件，包括阻力帶、瑜伽墊、啞鈴、平衡板等，全面提升訓練效果。</p>
+          <span class="prod-tag">X2FIT</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">🏃</div>
+        <div class="prod-body">
+          <h3>運動配件</h3>
+          <p>SNAILCLE及其他品牌運動配件，各類運動所需小型配備，提升運動體驗。</p>
+          <span class="prod-tag">SNAILCLE</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">💳</div>
+        <div class="prod-body">
+          <h3>網上購物</h3>
+          <p>mtsports.hk網上商店，支援Mastercard、Visa、American Express及PayPal，安全便捷。</p>
+          <span class="prod-tag">電商平台</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="sec-inner">
+    <div class="sec-label">聯絡我們</div>
+    <h2 class="sec-title">查詢訂購</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>聯絡資料</h3>
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">地址</div>
+            <div class="c-val">新界荃灣柴灣角街84-92號<br/>順豐工業中心19樓A&amp;B室</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">電話</div>
+            <div class="c-val"><a href="tel:28897078">2889 7078</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📠</div>
+          <div>
+            <div class="c-label">傳真</div>
+            <div class="c-val">2897 1646</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📱</div>
+          <div>
+            <div class="c-label">手機</div>
+            <div class="c-val"><a href="tel:52236614">5223 6614</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📧</div>
+          <div>
+            <div class="c-label">電郵</div>
+            <div class="c-val"><a href="mailto:info@mtsports.hk">info@mtsports.hk</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">網上商店</div>
+            <div class="c-val"><a href="https://mtsports.hk" target="_blank">mtsports.hk</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>發送查詢</h3>
+        <p>如有任何產品查詢、訂購或批發事宜，歡迎聯絡我們，我們將盡快回覆。</p>
+        <div class="c-form-row">
+          <label>您的姓名</label>
+          <input type="text" placeholder="請輸入姓名"/>
+        </div>
+        <div class="c-form-row">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com"/>
+        </div>
+        <div class="c-form-row">
+          <label>查詢類別</label>
+          <input type="text" placeholder="一般查詢 / 產品查詢 / 批發"/>
+        </div>
+        <div class="c-form-row">
+          <label>查詢內容</label>
+          <textarea placeholder="請輸入您的查詢..."></textarea>
+        </div>
+        <button class="c-btn">發送查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">MT Sports Limited · 浩瀚運動有限公司</div>
+  <div class="foot-copy">© 2026 浩瀚運動有限公司 · 版權所有，不得轉載 · <a href="https://mtsports.hk" target="_blank" style="color:var(--muted);text-decoration:none;">mtsports.hk</a></div>
+</footer>
+
+</body>
+</html>
