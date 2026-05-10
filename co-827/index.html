@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANDA (HK) Limited | 安達（香港）有限公司</title>
+<style>
+  :root {
+    --bg:        #08060e;
+    --surface:   #100e1a;
+    --card:      #181424;
+    --accent1:   #6030c8;
+    --accent2:   #9060f0;
+    --accent3:   #40c8f0;
+    --text:      #e8e0f8;
+    --muted:     #7868a8;
+    --border:    rgba(96,48,200,0.24);
+    --glow:      rgba(96,48,200,0.22);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'PingFang HK', 'Microsoft JhengHei', sans-serif; line-height: 1.7; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(8,6,14,0.95); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.95rem; color: #fff; letter-spacing: 0.5px;
+    box-shadow: 0 0 18px var(--glow);
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-name span { color: var(--accent3); font-weight: 400; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent3); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 9px 22px; border-radius: 6px;
+    font-size: 0.88rem; font-weight: 700; cursor: pointer; text-decoration: none;
+    box-shadow: 0 4px 16px var(--glow); transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; padding: 120px 5% 80px;
+    background:
+      radial-gradient(ellipse 70% 55% at 85% 45%, rgba(96,48,200,0.16) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 50% at 8% 75%, rgba(64,200,240,0.07) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
+  }
+  .hero-text { flex: 1 1 480px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(96,48,200,0.12); border: 1px solid rgba(96,48,200,0.3);
+    padding: 6px 16px; border-radius: 20px; font-size: 0.82rem;
+    color: var(--accent3); margin-bottom: 24px; letter-spacing: 0.04em;
+  }
+  .hero-badge::before { content: '🏪'; font-size: 0.9rem; }
+  .hero-title { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; line-height: 1.15; margin-bottom: 8px; }
+  .hero-title .violet { color: var(--accent2); }
+  .hero-title .cyan { color: var(--accent3); }
+  .hero-en { font-size: 1.05rem; color: var(--muted); font-weight: 500; margin-bottom: 20px; letter-spacing: 0.04em; }
+  .hero-desc { font-size: 1.02rem; color: var(--muted); max-width: 520px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 13px 28px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; text-decoration: none;
+    box-shadow: 0 6px 24px var(--glow); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid var(--accent1); color: var(--accent3);
+    padding: 13px 28px; border-radius: 8px; font-size: 0.95rem;
+    font-weight: 600; text-decoration: none; transition: background .2s;
+  }
+  .btn-outline:hover { background: rgba(96,48,200,0.1); }
+
+  /* info card */
+  .hero-card {
+    flex: 0 0 290px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .hero-card h3 { font-size: 0.78rem; color: var(--accent3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+  .info-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .info-icon { font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+  .info-label { font-size: 0.73rem; color: var(--muted); margin-bottom: 2px; }
+  .info-val { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+  .info-val a { color: var(--accent3); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .divider-card { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+
+  /* ── STATS ── */
+  .stats-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 44px 5%;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; text-align: center;
+  }
+  .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 88px 5%; }
+  .section-label { font-size: 0.78rem; color: var(--accent1); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 800; margin-bottom: 14px; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 600px; margin-bottom: 48px; }
+
+  /* ── SERVICES ── */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 22px; }
+  .svc-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px 24px; transition: transform .25s, box-shadow .25s;
+  }
+  .svc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(96,48,200,0.18); }
+  .svc-icon { font-size: 2rem; margin-bottom: 14px; }
+  .svc-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .svc-card p { font-size: 0.88rem; color: var(--muted); }
+
+  /* ── WHY ── */
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 22px; }
+  .why-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px 24px; display: flex; gap: 16px; align-items: flex-start;
+  }
+  .why-num { font-size: 2rem; font-weight: 900; color: var(--accent1); opacity: 0.6; line-height: 1; flex-shrink: 0; }
+  .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .why-card p { font-size: 0.88rem; color: var(--muted); }
+
+  /* ── HIGHLIGHT ── */
+  .highlight {
+    background: linear-gradient(135deg, rgba(96,48,200,0.14), rgba(64,200,240,0.07));
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 56px 48px; margin: 0 5% 80px; text-align: center;
+  }
+  .highlight h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: 14px; }
+  .highlight p { color: var(--muted); max-width: 640px; margin: 0 auto 28px; font-size: 0.98rem; }
+
+  /* ── CONTACT ── */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info { display: flex; flex-direction: column; gap: 18px; }
+  .c-item { display: flex; gap: 14px; align-items: flex-start; }
+  .c-icon {
+    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(96,48,200,0.12); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .c-item h4 { font-size: 0.8rem; color: var(--muted); margin-bottom: 2px; }
+  .c-item p, .c-item a { font-size: 0.92rem; color: var(--text); text-decoration: none; }
+  .c-item a:hover { color: var(--accent3); }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); padding: 11px 14px; border-radius: 8px; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent2); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 13px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.88; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 44px 5% 28px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center;
+  }
+  .footer-brand { font-size: 1rem; font-weight: 700; }
+  .footer-brand span { color: var(--accent3); font-weight: 400; }
+  .footer-copy { font-size: 0.8rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; }
+  .footer-links a:hover { color: var(--accent3); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero { flex-direction: column; }
+    .hero-card { flex: 1 1 100%; }
+    .highlight { padding: 36px 24px; margin: 0 0 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#home">
+    <div class="nav-logo">安達</div>
+    <div class="nav-name">ANDA (HK) Limited <span>| 安達（香港）</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">業務範疇</a></li>
+    <li><a href="#why">公司優勢</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">立即查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-badge">香港 · 零售貿易</div>
+    <h1 class="hero-title">
+      <span class="violet">ANDA</span> (HK) Limited<br>
+      <span class="cyan">安達（香港）有限公司</span>
+    </h1>
+    <p class="hero-en">Retail &amp; Trading · Hong Kong</p>
+    <p class="hero-desc">
+      立足香港，提供專業零售及貿易服務。
+      憑藉靈活高效的業務模式及對客戶需求的深入理解，
+      為合作夥伴提供可靠的商業解決方案，共同創造商業價值。
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#contact">業務查詢</a>
+      <a class="btn-outline" href="#services">了解業務</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <h3>聯絡資訊</h3>
+    <div class="info-row">
+      <div class="info-icon">📱</div>
+      <div>
+        <div class="info-label">手機 / WhatsApp</div>
+        <div class="info-val"><a href="tel:65194755">6519 4755</a></div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">✉️</div>
+      <div>
+        <div class="info-label">電郵</div>
+        <div class="info-val"><a href="mailto:info@anda.com.hk">info@anda.com.hk</a></div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">🌐</div>
+      <div>
+        <div class="info-label">網站</div>
+        <div class="info-val"><a href="https://www.anda.com.hk" target="_blank" rel="noopener">anda.com.hk</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">📍</div>
+      <div>
+        <div class="info-label">地區</div>
+        <div class="info-val">香港 Hong Kong</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div>
+    <div class="stat-num">香港</div>
+    <div class="stat-label">本地企業</div>
+  </div>
+  <div>
+    <div class="stat-num">零售</div>
+    <div class="stat-label">零售貿易業務</div>
+  </div>
+  <div>
+    <div class="stat-num">靈活</div>
+    <div class="stat-label">靈活業務模式</div>
+  </div>
+  <div>
+    <div class="stat-num">誠信</div>
+    <div class="stat-label">誠信優質服務</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label">業務範疇</p>
+  <h2 class="section-title">零售及貿易服務</h2>
+  <p class="section-sub">ANDA (HK) Limited 提供多元化的零售及貿易業務，以客戶需求為中心，提供專業可靠的商業服務。</p>
+
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon">🛍️</div>
+      <h3>零售業務</h3>
+      <p>提供多樣化的零售產品及服務，以優質貨品及貼心服務滿足客戶的消費需求。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🤝</div>
+      <h3>貿易代理</h3>
+      <p>代理優質品牌及產品在香港市場的銷售業務，協助品牌拓展本地及大灣區市場。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">📦</div>
+      <h3>產品採購</h3>
+      <p>憑藉廣泛的供應商網絡，為企業客戶提供高效的產品採購及貨源整合服務。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🌏</div>
+      <h3>進出口貿易</h3>
+      <p>處理商品進出口貿易業務，提供完整的貿易文件及物流安排支援。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">💼</div>
+      <h3>企業採購服務</h3>
+      <p>為企業客戶提供專業的採購解決方案，整合資源，降低採購成本。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">📊</div>
+      <h3>業務諮詢</h3>
+      <p>提供市場分析及業務發展建議，協助客戶在香港市場制定有效的商業策略。</p>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHT -->
+<div class="highlight">
+  <h2>立足香港<br><span style="color:var(--accent3)">連接本地與國際市場</span></h2>
+  <p>
+    香港擁有獨特的地理優勢、健全的法律環境及自由貿易政策，
+    是亞太區最重要的商業中心之一。
+    ANDA (HK) Limited 善用香港平台，為客戶提供靈活高效的零售及貿易服務，
+    協助業務持續增長。
+  </p>
+  <a class="btn-primary" href="#contact">與我們合作</a>
+</div>
+
+<!-- WHY -->
+<section id="why" style="background: var(--surface);">
+  <p class="section-label">公司優勢</p>
+  <h2 class="section-title">選擇 ANDA (HK) 的理由</h2>
+  <p class="section-sub">專業、靈活、誠信，是 ANDA (HK) Limited 贏得客戶信賴的核心競爭力。</p>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <div>
+        <h3>香港本地優勢</h3>
+        <p>深根香港，熟悉本地市場及商業環境，提供精準的在地業務支援。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <div>
+        <h3>靈活業務模式</h3>
+        <p>根據客戶需求度身制訂服務方案，無論個人或企業客戶均可靈活配合。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <div>
+        <h3>快速回應</h3>
+        <p>高效的溝通及執行團隊，確保客戶查詢及業務需求得到及時跟進處理。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <div>
+        <h3>誠信經營</h3>
+        <p>秉持誠信為本的理念，以透明清晰的業務模式建立長期互信的客戶關係。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">05</div>
+      <div>
+        <h3>廣泛商業網絡</h3>
+        <p>建立廣泛的本地及國際商業合作網絡，為客戶對接合適的業務資源。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">06</div>
+      <div>
+        <h3>一站式服務</h3>
+        <p>涵蓋零售、貿易、採購及諮詢服務，提供全面支援，簡化客戶的業務流程。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">聯絡我們</p>
+  <h2 class="section-title">查詢及合作</h2>
+  <p class="section-sub">歡迎業務合作查詢，請填寫表格或直接聯絡，我們將盡快回覆您。</p>
+
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="c-item">
+        <div class="c-icon">📱</div>
+        <div>
+          <h4>手機 / WhatsApp</h4>
+          <a href="tel:65194755">6519 4755</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">✉️</div>
+        <div>
+          <h4>電郵</h4>
+          <a href="mailto:info@anda.com.hk">info@anda.com.hk</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">🌐</div>
+        <div>
+          <h4>網站</h4>
+          <a href="https://www.anda.com.hk" target="_blank" rel="noopener">anda.com.hk</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <h4>地區</h4>
+          <p>香港 Hong Kong</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>姓名 / 公司</label>
+          <input type="text" placeholder="陳先生 / 公司名稱">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="9xxx xxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>電郵地址</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>查詢類別</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>零售業務查詢</option>
+          <option>貿易代理合作</option>
+          <option>產品採購服務</option>
+          <option>進出口貿易</option>
+          <option>企業採購服務</option>
+          <option>其他業務合作</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>查詢詳情</label>
+        <textarea placeholder="請說明您的業務需求或合作意向…"></textarea>
+      </div>
+      <button class="form-submit">發送查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">ANDA (HK) Limited <span>| 安達（香港）有限公司</span></div>
+  <div class="footer-copy">© 2025 ANDA (HK) Limited. 版權所有</div>
+  <div class="footer-links">
+    <a href="#services">業務範疇</a>
+    <a href="#why">公司優勢</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+</footer>
+
+</body>
+</html>
