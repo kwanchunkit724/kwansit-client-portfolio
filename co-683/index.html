@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>奧思集團有限公司 | Water Oasis Group Ltd. | 香港領先美容集團</title>
+  <meta name="description" content="奧思集團有限公司（Water Oasis Group Ltd.）— 香港領先美容服務供應商及美容產品零售商，1998年成立，2002年於港交所主板上市，旗下設有Oasis Medical、Oasis Beauty、Oasis Spa等多個品牌。" />
+  <style>
+    :root {
+      --bg:       #060a10;
+      --bg2:      #080e14;
+      --bg3:      #0c1420;
+      --border:   #102030;
+      --acc:      #1898c8;
+      --acc2:     #38b8e8;
+      --acc3:     #1070a8;
+      --acc-t:    #18c8b0;
+      --text:     #cce4f0;
+      --muted:    #506880;
+      --card:     #080c14;
+      --radius:   10px;
+      --nav-h:    64px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; line-height: 1.7; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+      background: rgba(6,10,16,0.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+    .nav-logo-mark {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--acc3), var(--acc), var(--acc2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; color: #fff;
+    }
+    .nav-logo-text { font-size: 14px; font-weight: 600; color: var(--text); }
+    .nav-links { display: flex; gap: 26px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color .2s; }
+    .nav-links a:hover { color: var(--acc2); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 9px 20px; border-radius: 20px;
+      font-size: 12px; cursor: pointer; font-family: inherit; font-weight: 600;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    .hero {
+      min-height: 100vh; padding-top: var(--nav-h);
+      background: linear-gradient(155deg, var(--bg) 0%, #081018 55%, var(--bg) 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 15% 55%, rgba(24,152,200,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 85% 30%, rgba(24,200,176,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1180px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 440px; gap: 72px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(24,152,200,0.1); border: 1px solid rgba(24,152,200,0.3);
+      border-radius: 20px; padding: 6px 16px; margin-bottom: 24px;
+      font-size: 12px; color: var(--acc2); letter-spacing: 0.8px;
+    }
+    .hero h1 { font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 700; line-height: 1.25; margin-bottom: 18px; }
+    .hero h1 .hl { color: var(--acc2); }
+    .hero h1 .hl2 { color: var(--acc-t); }
+    .hero-sub { font-size: 1rem; color: var(--muted); margin-bottom: 36px; line-height: 1.8; max-width: 500px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 13px 28px; border-radius: 24px;
+      font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 600;
+      text-decoration: none; transition: opacity .2s; display: inline-block;
+    }
+    .btn-primary:hover { opacity: .85; }
+    .btn-ghost {
+      background: transparent; color: var(--acc2);
+      border: 1.5px solid rgba(24,152,200,0.4); padding: 12px 26px; border-radius: 24px;
+      font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 500;
+      text-decoration: none; transition: all .2s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--acc2); background: rgba(24,152,200,0.06); }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 10px; }
+    .trust-item { background: rgba(16,32,48,0.6); border: 1px solid var(--border); color: var(--muted); font-size: 12px; padding: 5px 14px; border-radius: 20px; }
+
+    .hero-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    .hero-card-top { background: linear-gradient(135deg, #0e1a28, #0a1420); padding: 22px 26px; border-bottom: 1px solid var(--border); }
+    .hero-card-top h3 { font-size: 15px; color: var(--acc2); font-weight: 700; margin-bottom: 3px; }
+    .hero-card-top p { font-size: 12px; color: var(--muted); }
+    .listed-badge {
+      display: inline-flex; gap: 6px; align-items: center;
+      background: rgba(24,152,200,0.12); border: 1px solid rgba(24,152,200,0.3);
+      border-radius: 6px; padding: 4px 12px; margin-top: 10px;
+      font-size: 11px; color: var(--acc); letter-spacing: 0.5px;
+    }
+    .hero-card-body { padding: 20px 26px; }
+    .info-row { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(16,32,48,0.8); align-items: flex-start; }
+    .info-row:last-child { border-bottom: none; }
+    .info-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+    .info-label { font-size: 11px; color: var(--muted); }
+    .info-val { font-size: 13px; color: var(--text); margin-top: 1px; }
+    .info-val a { color: var(--acc2); text-decoration: none; }
+
+    .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 40px; }
+    .stats-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 700; color: var(--acc2); line-height: 1; margin-bottom: 5px; }
+    .stat-label { font-size: 12px; color: var(--muted); }
+
+    section { padding: 84px 40px; }
+    .section-inner { max-width: 1180px; margin: 0 auto; }
+    .section-label { font-size: 11px; color: var(--acc); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+    .section-title { font-size: clamp(1.6rem, 2.5vw, 2.3rem); font-weight: 700; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+    .section-title em { font-style: normal; color: var(--acc2); }
+    .section-desc { font-size: 1rem; color: var(--muted); max-width: 620px; line-height: 1.8; }
+
+    .about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; align-items: start; }
+    .about-highlight {
+      background: linear-gradient(135deg, rgba(24,152,200,0.07), rgba(16,112,168,0.03));
+      border: 1px solid rgba(24,152,200,0.18); border-radius: 14px; padding: 30px;
+    }
+    .about-highlight h3 { font-size: 1.1rem; color: var(--acc2); margin-bottom: 14px; font-weight: 600; }
+    .about-highlight p { font-size: 0.94rem; color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
+    .about-highlight p:last-child { margin-bottom: 0; }
+    .about-highlight strong { color: var(--text); }
+    .about-props { display: flex; flex-direction: column; gap: 14px; }
+    .prop-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start; }
+    .prop-icon { font-size: 22px; flex-shrink: 0; }
+    .prop-card h4 { font-size: 14px; color: var(--acc2); margin-bottom: 5px; font-weight: 600; }
+    .prop-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    .service-brands { background: var(--bg2); }
+    .service-brands-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+    .brand-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 26px;
+      text-align: center; transition: border-color .2s, transform .2s;
+    }
+    .brand-card:hover { border-color: rgba(24,152,200,0.4); transform: translateY(-3px); }
+    .brand-icon { font-size: 32px; margin-bottom: 12px; }
+    .brand-name { font-size: 16px; color: var(--acc2); font-weight: 700; margin-bottom: 6px; }
+    .brand-type { font-size: 11px; color: var(--acc); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px; }
+    .brand-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    .retail-brands { background: var(--bg); }
+    .retail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+    .retail-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px;
+      transition: border-color .2s; display: flex; align-items: flex-start; gap: 14px;
+    }
+    .retail-card:hover { border-color: rgba(24,200,176,0.35); }
+    .retail-icon { font-size: 24px; flex-shrink: 0; }
+    .retail-card h3 { font-size: 14px; color: var(--acc-t); margin-bottom: 6px; font-weight: 600; }
+    .retail-card p { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+    .contact { background: var(--bg2); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; }
+    .contact-info h3 { font-size: 1.1rem; color: var(--acc2); font-weight: 600; margin-bottom: 24px; }
+    .contact-item { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+    .ci-icon { font-size: 19px; flex-shrink: 0; margin-top: 2px; }
+    .ci-label { font-size: 11px; color: var(--muted); }
+    .ci-val { font-size: 13.5px; color: var(--text); margin-top: 2px; }
+    .ci-val a { color: var(--acc2); text-decoration: none; }
+    .ci-val a:hover { text-decoration: underline; }
+    .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 30px; }
+    .contact-form h3 { font-size: 1rem; color: var(--text); margin-bottom: 6px; font-weight: 600; }
+    .contact-form p { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .form-row { margin-bottom: 15px; }
+    .form-row label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 5px; }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; background: rgba(16,32,48,0.5); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 14px; color: var(--text); font-size: 13px;
+      font-family: inherit; outline: none; transition: border-color .2s;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--acc); }
+    .form-row textarea { resize: vertical; min-height: 86px; }
+    .form-row select option { background: var(--bg2); }
+    .form-submit {
+      width: 100%; background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 12px; border-radius: 24px; font-size: 14px;
+      cursor: pointer; font-family: inherit; font-weight: 600; transition: opacity .2s;
+    }
+    .form-submit:hover { opacity: .85; }
+
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 44px 40px 28px; text-align: center; }
+    .footer-inner { max-width: 1180px; margin: 0 auto; }
+    .footer-brand { font-size: 17px; color: var(--acc2); font-weight: 700; margin-bottom: 4px; }
+    .footer-tagline { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 24px; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--acc2); }
+    .footer-copy { font-size: 12px; color: rgba(80,104,128,0.5); }
+
+    @media (max-width: 1024px) {
+      .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .service-brands-grid, .retail-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 60px 20px; }
+      .service-brands-grid, .retail-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">💧</div>
+    <span class="nav-logo-text">Water Oasis Group · 奧思集團</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">關於集團</a></li>
+    <li><a href="#service-brands">服務品牌</a></li>
+    <li><a href="#retail-brands">零售品牌</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">立即預約</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🏆 香港交易所主板上市 · 港交所：1161</div>
+      <h1>香港<span class="hl">領先美容</span><br>服務集團<br><span class="hl2">Water Oasis</span></h1>
+      <p class="hero-sub">
+        奧思集團有限公司（Water Oasis Group Ltd.）— 香港領先美容服務供應商及美容產品零售商，1998年成立，2002年於港交所主板上市，旗下多個服務及零售品牌，致力成為大中華地區美容行業翹楚。
+      </p>
+      <div class="hero-btns">
+        <a href="#service-brands" class="btn-primary">瞭解服務品牌</a>
+        <a href="#contact" class="btn-ghost">預約美容服務</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-item">🏥 Oasis Medical</span>
+        <span class="trust-item">💆 Oasis Beauty</span>
+        <span class="trust-item">🛁 Oasis Spa</span>
+        <span class="trust-item">👨 Oasis Homme</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-top">
+        <h3>奧思集團有限公司</h3>
+        <p>Water Oasis Group Ltd. · 港交所主板上市</p>
+        <div class="listed-badge">📈 HKEx Main Board · Stock Code 1161</div>
+      </div>
+      <div class="hero-card-body">
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">集團總部</div>
+            <div class="info-val">銅鑼灣告士打道280號世界貿易中心18樓</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">電話</div>
+            <div class="info-val"><a href="tel:+85228907428">2890 7428</a> | <a href="tel:+85231827777">3182 7777</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📧</div>
+          <div>
+            <div class="info-label">企業查詢</div>
+            <div class="info-val"><a href="mailto:corporate@wateroasis.com.hk">corporate@wateroasis.com.hk</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🌐</div>
+          <div>
+            <div class="info-label">官方網站</div>
+            <div class="info-val"><a href="https://www.wateroasis.com.hk" target="_blank">wateroasis.com.hk</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📅</div>
+          <div>
+            <div class="info-label">成立年份</div>
+            <div class="info-val">1998年 · 上市：2002年</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">1998</div>
+      <div class="stat-label">集團成立年份</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2002</div>
+      <div class="stat-label">港交所主板上市年份</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">6+</div>
+      <div class="stat-label">服務品牌</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">6+</div>
+      <div class="stat-label">零售及產品品牌</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">大中華</div>
+      <div class="stat-label">業務覆蓋範圍</div>
+    </div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">關於奧思集團</div>
+    <div class="section-title">香港<em>領先美容集團</em></div>
+    <p class="section-desc">奧思集團成立二十餘年，憑藉清晰的品牌願景及不斷創新的精神，發展成為深受客戶愛戴的美容服務供應商。</p>
+    <div class="about-grid">
+      <div class="about-highlight">
+        <h3>集團簡介</h3>
+        <p>
+          奧思集團有限公司（Water Oasis Group Ltd.）是香港的<strong>領先美容服務供應商及美容產品零售商</strong>，自1998年成立至今，一直是香港美容行業的領導者之一，致力發展多個「創新」美容服務及產品。
+        </p>
+        <p>
+          集團於<strong>2002年在香港聯合交易所主板上市</strong>，多年來憑藉清晰的品牌願景和不斷追求蛻變進步的動力，逐步發展為深受用戶愛戴的美容服務供應商，並擁有強大的自家及特許品牌產品組合。
+        </p>
+        <p>
+          作為行業領先者，奧思集團致力成為<strong>大中華地區的美容行業翹楚</strong>，業務範圍涵蓋醫學美容、水療、護膚、美容產品零售等多個領域，服務多元化的客群。
+        </p>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">📈</div>
+          <div>
+            <h4>上市公司</h4>
+            <p>2002年於香港聯交所主板上市，受嚴格企業管治規範，財務透明，信譽可靠。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">💡</div>
+          <div>
+            <h4>創新先驅</h4>
+            <p>行業的創新先驅，持續研發新的美容服務及產品，緊貼最新科技與趨勢。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🌍</div>
+          <div>
+            <h4>大中華佈局</h4>
+            <p>業務覆蓋香港及中國內地，致力成為大中華地區的美容行業領導者。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🏅</div>
+          <div>
+            <h4>多品牌策略</h4>
+            <p>旗下多個服務品牌及零售品牌，涵蓋不同客群需求，提供全方位美容解決方案。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-brands" id="service-brands">
+  <div class="section-inner">
+    <div class="section-label">服務品牌</div>
+    <div class="section-title">六大<em>Oasis服務品牌</em></div>
+    <p class="section-desc">奧思集團旗下設有六個Oasis美容服務品牌，涵蓋醫學美容、水療、男士護理等多個細分市場。</p>
+    <div class="service-brands-grid">
+      <div class="brand-card">
+        <div class="brand-icon">🏥</div>
+        <div class="brand-name">Oasis Medical</div>
+        <div class="brand-type">醫學美容</div>
+        <p>提供專業醫學美容治療，包括激光療程、注射類美容及皮膚科治療，由持牌醫護人員主理，安全專業。</p>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">💆</div>
+        <div class="brand-name">Oasis Beauty</div>
+        <div class="brand-type">美容護膚</div>
+        <p>全面的美容護膚服務，包括臉部及身體護理，為不同膚質提供個人化美容方案，讓您重現亮麗容顏。</p>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🛁</div>
+        <div class="brand-name">Oasis Spa</div>
+        <div class="brand-type">水療養生</div>
+        <p>奢華水療體驗，融合東西方養生理念，提供全身放鬆療程，在繁忙都市生活中讓身心靈得到深度舒緩。</p>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">👨</div>
+        <div class="brand-name">Oasis Homme</div>
+        <div class="brand-type">男士護膚</div>
+        <p>專為現代都市男性設計的美容護膚服務，針對男性肌膚特性，提供清潔、修護及緊緻等護膚療程。</p>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🌸</div>
+        <div class="brand-name">Oasis Florist</div>
+        <div class="brand-type">花藝生活</div>
+        <p>結合花卉美學與美容養生的獨特概念，以花卉精華融入護膚療程及產品，帶來自然純粹的美麗體驗。</p>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🤰</div>
+        <div class="brand-name">Oasis Mom</div>
+        <div class="brand-type">媽媽護理</div>
+        <p>專為孕婦及新手媽媽設計的溫和美容護膚服務，採用安全溫和的產品配方，呵護媽媽及寶寶的健康。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="retail-brands" id="retail-brands">
+  <div class="section-inner">
+    <div class="section-label">零售品牌</div>
+    <div class="section-title">旗下<em>零售及產品品牌</em></div>
+    <p class="section-desc">奧思集團代理及自主多個知名美容護膚產品品牌，提供多元化護膚及美容產品選擇。</p>
+    <div class="retail-grid">
+      <div class="retail-card">
+        <div class="retail-icon">💎</div>
+        <div>
+          <h3>Glycel</h3>
+          <p>奧思集團自主品牌，採用先進的精華技術，提供高效護膚系列，深受香港消費者愛戴。</p>
+        </div>
+      </div>
+      <div class="retail-card">
+        <div class="retail-icon">🌟</div>
+        <div>
+          <h3>Erno Laszlo</h3>
+          <p>頂尖奢華護膚品牌，源自美國的傳奇美容世家，以獨特的洗臉儀式聞名，深受名流人士推崇。</p>
+        </div>
+      </div>
+      <div class="retail-card">
+        <div class="retail-icon">🌺</div>
+        <div>
+          <h3>Eurobeaute</h3>
+          <p>歐洲優質美容品牌，結合歐洲尖端護膚科技，為亞洲消費者提供適合亞洲肌膚的護膚方案。</p>
+        </div>
+      </div>
+      <div class="retail-card">
+        <div class="retail-icon">🌿</div>
+        <div>
+          <h3>HABA</h3>
+          <p>日本天然護膚品牌，以純粹無添加的護膚理念著稱，採用高純度角鯊烷及天然植物成份。</p>
+        </div>
+      </div>
+      <div class="retail-card">
+        <div class="retail-icon">✨</div>
+        <div>
+          <h3>OKO Beauty</h3>
+          <p>時尚美容品牌，以創新的護膚概念及多元化的產品系列，吸引注重潮流及質素的現代消費者。</p>
+        </div>
+      </div>
+      <div class="retail-card">
+        <div class="retail-icon">🔬</div>
+        <div>
+          <h3>phmedic+</h3>
+          <p>醫學級護膚品牌，結合藥學及皮膚科研究，為有特殊護膚需求的消費者提供更專業的護膚解決方案。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <div class="section-title">預約服務<em>歡迎聯絡</em></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>集團聯絡資料</h3>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">集團總部</div>
+            <div class="ci-val">銅鑼灣告士打道280號<br>世界貿易中心18樓</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">聯絡電話</div>
+            <div class="ci-val"><a href="tel:+85228907428">2890 7428</a> | <a href="tel:+85231827777">3182 7777</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">企業查詢</div>
+            <div class="ci-val"><a href="mailto:corporate@wateroasis.com.hk">corporate@wateroasis.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">直接市場推廣</div>
+            <div class="ci-val"><a href="mailto:dm@oasis-group.com.hk">dm@oasis-group.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">官方網站</div>
+            <div class="ci-val"><a href="https://www.wateroasis.com.hk" target="_blank">www.wateroasis.com.hk</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>服務預約及查詢</h3>
+        <p>選擇您感興趣的品牌或服務，我們將安排專業顧問跟進。</p>
+        <form onsubmit="event.preventDefault()">
+          <div class="form-row">
+            <label>您的姓名</label>
+            <input type="text" placeholder="請輸入姓名" />
+          </div>
+          <div class="form-row">
+            <label>聯絡電話</label>
+            <input type="tel" placeholder="香港電話號碼" />
+          </div>
+          <div class="form-row">
+            <label>電子郵件</label>
+            <input type="email" placeholder="您的電郵地址" />
+          </div>
+          <div class="form-row">
+            <label>查詢品牌/服務</label>
+            <select>
+              <option>Oasis Medical（醫學美容）</option>
+              <option>Oasis Beauty（美容護膚）</option>
+              <option>Oasis Spa（水療）</option>
+              <option>Oasis Homme（男士美容）</option>
+              <option>Oasis Florist</option>
+              <option>Oasis Mom（孕婦護理）</option>
+              <option>Glycel 護膚產品</option>
+              <option>Erno Laszlo 護膚產品</option>
+              <option>其他品牌查詢</option>
+              <option>企業合作</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>查詢詳情</label>
+            <textarea placeholder="請說明您的需求或問題..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">提交查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">奧思集團有限公司 · Water Oasis Group Ltd.</div>
+    <div class="footer-tagline">香港領先美容服務供應商及美容產品零售商 · 港交所主板上市 · 1998年成立</div>
+    <div class="footer-links">
+      <a href="#about">關於集團</a>
+      <a href="#service-brands">服務品牌</a>
+      <a href="#retail-brands">零售品牌</a>
+      <a href="#contact">聯絡我們</a>
+      <a href="https://www.wateroasis.com.hk" target="_blank">官方網站</a>
+    </div>
+    <div class="footer-copy">&copy; 2024 奧思集團有限公司. 版權所有。香港上市美容集團。</div>
+  </div>
+</footer>
+
+</body>
+</html>
