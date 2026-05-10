@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>嘉興堂 Hong Kong Printing Company Limited | 包裝印刷一站式服務</title>
+<style>
+  :root {
+    --navy: #1c3158;
+    --navy-dark: #0f1e38;
+    --orange: #e07800;
+    --orange-light: #f59400;
+    --white: #ffffff;
+    --light-bg: #f5f7fa;
+    --text: #1a1a2e;
+    --text-light: #4a5568;
+    --border: #dde2ea;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif; color: var(--text); background: var(--white); }
+
+  /* NAV */
+  nav {
+    background: var(--navy-dark);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; }
+  .nav-logo {
+    width: 42px; height: 42px; background: var(--orange);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 900; color: var(--white); letter-spacing: -1px;
+  }
+  .nav-name { color: var(--white); }
+  .nav-name .zh { font-size: 17px; font-weight: 700; display: block; }
+  .nav-name .en { font-size: 11px; color: rgba(255,255,255,0.6); display: block; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--orange-light); }
+  .nav-cta {
+    background: var(--orange); color: var(--white);
+    padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 600;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--orange-light); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, #1e4a7a 100%);
+    padding: 80px 40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    background:
+      repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,0.015) 30px, rgba(255,255,255,0.015) 31px),
+      repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(255,255,255,0.015) 30px, rgba(255,255,255,0.015) 31px);
+  }
+  .hero-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 50px; width: 100%; position: relative; z-index: 1; }
+  .hero-text { flex: 1; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(224,120,0,0.18); border: 1px solid rgba(224,120,0,0.5);
+    color: var(--orange-light); padding: 6px 16px; border-radius: 20px;
+    font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero-text h1 { font-size: 52px; font-weight: 900; color: var(--white); line-height: 1.1; margin-bottom: 12px; }
+  .hero-text h1 span { color: var(--orange-light); }
+  .hero-text h2 { font-size: 22px; font-weight: 400; color: rgba(255,255,255,0.75); margin-bottom: 24px; }
+  .hero-text p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 480px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--orange); color: var(--white);
+    padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700;
+    text-decoration: none; transition: background 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--orange-light); }
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.4); color: var(--white);
+    padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600;
+    text-decoration: none; transition: all 0.2s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  .hero-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 32px 28px;
+    min-width: 280px;
+    flex-shrink: 0;
+  }
+  .hero-card h3 { color: var(--orange-light); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+  .hc-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .hc-item:last-child { margin-bottom: 0; }
+  .hc-icon { width: 36px; height: 36px; background: rgba(224,120,0,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .hc-info .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+  .hc-info .value { font-size: 14px; color: var(--white); font-weight: 600; }
+
+  /* STATS */
+  .stats-strip {
+    background: var(--orange);
+    padding: 22px 40px;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+  .stat-item { text-align: center; padding: 0 48px; position: relative; }
+  .stat-item + .stat-item::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 40px; background: rgba(255,255,255,0.35); }
+  .stat-num { font-size: 32px; font-weight: 900; color: var(--white); line-height: 1; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 4px; font-weight: 500; }
+
+  /* SECTIONS */
+  section { padding: 80px 40px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+  .section-title { font-size: 36px; font-weight: 900; color: var(--navy); margin-bottom: 16px; line-height: 1.2; }
+  .section-sub { font-size: 16px; color: var(--text-light); line-height: 1.7; max-width: 620px; }
+  .section-header { margin-bottom: 52px; }
+
+  /* ABOUT */
+  .about { background: var(--light-bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .about-legacy {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 40px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-legacy::after {
+    content: '25+';
+    position: absolute;
+    right: -10px; bottom: -20px;
+    font-size: 120px; font-weight: 900;
+    color: rgba(255,255,255,0.05);
+    line-height: 1;
+  }
+  .about-legacy h3 { font-size: 22px; font-weight: 800; margin-bottom: 16px; color: var(--orange-light); }
+  .about-legacy p { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.82); margin-bottom: 14px; }
+  .about-legacy p:last-child { margin-bottom: 0; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .prop-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 22px;
+    border-top: 3px solid var(--orange);
+  }
+  .prop-icon { font-size: 28px; margin-bottom: 12px; }
+  .prop-card h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .prop-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  /* PRODUCTS */
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .product-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 30px 26px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--navy), var(--orange));
+  }
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(28,49,88,0.12); }
+  .product-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--navy), #2a4f88); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 18px; }
+  .product-card h3 { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+  .product-card .en-title { font-size: 12px; color: var(--orange); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+  .product-card p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+  .product-tag {
+    display: inline-block;
+    background: rgba(224,120,0,0.1);
+    color: var(--orange);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 12px;
+  }
+
+  /* PRICING */
+  .pricing { background: var(--navy); }
+  .pricing .section-title { color: var(--white); }
+  .pricing .section-tag { color: var(--orange-light); }
+  .pricing .section-sub { color: rgba(255,255,255,0.7); }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .price-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 30px 26px;
+    transition: background 0.2s;
+  }
+  .price-card:hover { background: rgba(255,255,255,0.11); }
+  .price-card h3 { font-size: 16px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+  .price-card .price-val { font-size: 28px; font-weight: 900; color: var(--orange-light); margin: 12px 0 4px; }
+  .price-card .price-unit { font-size: 12px; color: rgba(255,255,255,0.55); }
+  .price-card p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; margin-top: 12px; }
+  .price-note {
+    text-align: center;
+    margin-top: 36px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+  }
+  .price-note strong { color: var(--orange-light); }
+
+  /* CAPABILITIES */
+  .capabilities { background: var(--light-bg); }
+  .cap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .cap-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 30px 22px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cap-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(28,49,88,0.1); }
+  .cap-icon { font-size: 40px; margin-bottom: 16px; }
+  .cap-card h3 { font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+  .cap-card .en { font-size: 12px; color: var(--orange); font-weight: 600; margin-bottom: 10px; }
+  .cap-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  /* CONTACT */
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .contact-info h3 { font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+  .contact-info > p { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 32px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 22px; }
+  .ci-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--navy), #2a4f88); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .ci-label { font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .ci-val { font-size: 15px; font-weight: 600; color: var(--navy); }
+  .ci-val a { color: var(--navy); text-decoration: none; }
+  .ci-val a:hover { color: var(--orange); }
+
+  .contact-form { background: var(--light-bg); border-radius: 16px; padding: 36px; }
+  .contact-form h3 { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .form-group label { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .form-group input, .form-group select, .form-group textarea {
+    padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px;
+    font-size: 14px; color: var(--text); background: var(--white);
+    transition: border-color 0.2s; outline: none; font-family: inherit;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--orange); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%;
+    background: var(--orange); color: var(--white);
+    border: none; padding: 14px; border-radius: 8px;
+    font-size: 15px; font-weight: 700; cursor: pointer;
+    transition: background 0.2s; font-family: inherit;
+  }
+  .form-submit:hover { background: var(--orange-light); }
+
+  /* FOOTER */
+  footer { background: var(--navy-dark); padding: 40px; text-align: center; }
+  .footer-brand { font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.35); }
+
+  @media (max-width: 900px) {
+    .hero-content { flex-direction: column; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .products-grid, .pricing-grid { grid-template-columns: 1fr 1fr; }
+    .cap-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">嘉</div>
+    <div class="nav-name">
+      <span class="zh">嘉興堂印刷</span>
+      <span class="en">Hong Kong Printing Company Limited</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">公司簡介</a>
+    <a href="#products">產品服務</a>
+    <a href="#pricing">參考報價</a>
+    <a href="#capabilities">生產能力</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <a href="#contact" class="nav-cta">即時報價</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">🖨️ 包裝印刷專家</div>
+      <h1>嘉興堂<span>印刷</span></h1>
+      <h2>Hong Kong Printing Company Limited</h2>
+      <p>在香港印刷業深耕逾25年，提供瓦通紙箱、禮品盒、掛牌、海報、貼紙等全線包裝印刷一站式服務。品質保證，價格合理，是您可靠的印刷採購夥伴。</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">查看產品系列</a>
+        <a href="#contact" class="btn-outline">獲取報價</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>📋 公司資訊</h3>
+      <div class="hc-item">
+        <div class="hc-icon">📞</div>
+        <div class="hc-info">
+          <div class="label">聯絡電話</div>
+          <div class="value">6888 4563</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">✉️</div>
+        <div class="hc-info">
+          <div class="label">電郵查詢</div>
+          <div class="value">info@3linkgroup.com</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🌐</div>
+        <div class="hc-info">
+          <div class="label">公司網站</div>
+          <div class="value">printing-hk.com</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🏆</div>
+        <div class="hc-info">
+          <div class="label">業務年資</div>
+          <div class="value">香港本地逾25年</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">25+</div>
+    <div class="stat-label">Years in HK</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">8+</div>
+    <div class="stat-label">Product Lines</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">1-Stop</div>
+    <div class="stat-label">Service Provider</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Quality Assured</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-legacy">
+        <h3>🏭 逾25年印刷業專業</h3>
+        <p>嘉興堂香港印刷有限公司（Hong Kong Printing Company Limited）在香港印刷業紮根超過25年，憑藉持續提升生產技術與服務水平，成為業界公認的品質與服務並重的供應商。</p>
+        <p>我們以一站式服務模式，為各類企業及機構提供全面、專業、具成本效益的印刷採購解決方案，涵蓋包裝印刷、商業印刷及標籤生產等多個範疇。</p>
+        <p>品質、服務、快速交貨及誠信可靠，是我們對每位客戶的承諾。</p>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">🎯</div>
+          <h4>一站式服務</h4>
+          <p>從設計、製版、印刷到成品，全程一手包辦，省時省力。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">⚡</div>
+          <h4>快速交貨</h4>
+          <p>高效生產排程，靈活應對緊急訂單，準時完成交付。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">✅</div>
+          <h4>品質保證</h4>
+          <p>嚴格品質管控，每個環節把關，確保成品達到最高標準。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">💰</div>
+          <h4>合理定價</h4>
+          <p>超特價優惠，書刊6折起，彩色貼紙低至$0.009/張。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Products &amp; Services</div>
+      <h2 class="section-title">產品服務系列</h2>
+      <p class="section-sub">涵蓋包裝盒類、行銷印刷品及標籤系列，為您的品牌提供完整印刷包裝解決方案。</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">📦</div>
+        <h3>瓦通坑盒</h3>
+        <div class="en-title">Corrugated Box</div>
+        <p>各規格瓦通紙箱訂製，適用於電商、貨運及產品包裝。可根據客戶需求設計印刷圖案，堅固耐用。</p>
+        <span class="product-tag">訂製尺寸</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🎁</div>
+        <h3>禮品盒 / 卡盒</h3>
+        <div class="en-title">Gift Box / Card Box</div>
+        <p>精美禮品盒及卡盒訂製，天地蓋、摺疊盒等多種款式，適合品牌禮品、節慶包裝及零售陳列。</p>
+        <span class="product-tag">多款選擇</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🏷️</div>
+        <h3>掛牌 / 吊牌</h3>
+        <div class="en-title">Hanging Card / Hangtag</div>
+        <p>服裝、配件及零售商品專用掛牌，可鍍膜、燙金或壓花加工，提升產品形象。</p>
+        <span class="product-tag">多種表面處理</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">📋</div>
+        <h3>泡殼咭 / 保護包裝</h3>
+        <div class="en-title">Blister Card / Laminated Card</div>
+        <p>配合泡殼包裝使用的印刷底卡，以及各類覆膜卡，保護產品同時展示品牌資訊。</p>
+        <span class="product-tag">抗UV覆膜</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🖼️</div>
+        <h3>海報 / 傳單 / 小冊子</h3>
+        <div class="en-title">Poster / Leaflet / Brochure</div>
+        <p>各規格商業印刷品，包括A3/A4/A5海報、單張、雙面摺疊傳單及多頁小冊子，超特價書刊6折起。</p>
+        <span class="product-tag">超值優惠</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🔖</div>
+        <h3>貼紙 / 標籤</h3>
+        <div class="en-title">Sticker / Label</div>
+        <p>彩色貼紙低至$0.009/張，可訂製各種形狀、尺寸及材質的產品標籤、封口貼及促銷貼紙。</p>
+        <span class="product-tag">低至$0.009/張</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Reference Pricing</div>
+      <h2 class="section-title">參考報價</h2>
+      <p class="section-sub">透明定價，超特價優惠。實際報價視乎規格及數量而定，歡迎聯絡查詢。</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>📚 書刊印刷</h3>
+        <div class="price-val">$0.13</div>
+        <div class="price-unit">起 / 本（6折超特價）</div>
+        <p>各類書刊、報告、目錄訂製，批量優惠，品質保證。</p>
+      </div>
+      <div class="price-card">
+        <h3>🔖 彩色貼紙</h3>
+        <div class="price-val">$0.009</div>
+        <div class="price-unit">起 / 張（批量印刷）</div>
+        <p>彩色貼紙批量印刷，多種材質選擇，適合產品標籤及促銷用途。</p>
+      </div>
+      <div class="price-card">
+        <h3>📦 包裝訂製</h3>
+        <div class="price-val">按量</div>
+        <div class="price-unit">議價（最低起訂量視款式）</div>
+        <p>禮品盒、坑盒、掛牌等包裝訂製，批量越大單價越低，歡迎詢價。</p>
+      </div>
+    </div>
+    <p class="price-note">以上為參考價格，實際報價依規格、材質及數量而定。<br>如需精確報價，請<strong>立即聯絡我們</strong>，我們將盡快回覆。</p>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="capabilities" id="capabilities">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Our Capabilities</div>
+      <h2 class="section-title">生產能力</h2>
+      <p class="section-sub">完整的印刷生產能力，確保每個訂單都能以最高標準完成。</p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-icon">🎨</div>
+        <h3>設計排版</h3>
+        <div class="en">Design &amp; Layout</div>
+        <p>專業設計團隊協助客戶進行版面排版及稿件優化，確保印刷效果完美。</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🖨️</div>
+        <h3>彩色印刷</h3>
+        <div class="en">Colour Printing</div>
+        <p>先進彩色印刷設備，精準還原色彩，適用於各類商業印刷及包裝用途。</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">✂️</div>
+        <h3>後期加工</h3>
+        <div class="en">Post-Processing</div>
+        <p>覆膜（光/啞）、燙金、壓花、模切等多種表面處理，提升產品質感。</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🔍</div>
+        <h3>品質管控</h3>
+        <div class="en">Quality Control</div>
+        <p>每個生產環節均有嚴格品檢程序，確保每批成品均符合客戶標準。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Contact Us</div>
+      <h2 class="section-title">聯絡我們</h2>
+      <p class="section-sub">如有任何印刷查詢，歡迎透過以下方式聯絡我們，我們將盡快為您提供報價。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>聯絡資訊</h3>
+        <p>專業印刷25年，品質保證，價格合理。歡迎告知您的印刷需求，我們提供免費評估及報價。</p>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">電話 Tel</div>
+            <div class="ci-val"><a href="tel:68884563">6888 4563</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">電郵 Email</div>
+            <div class="ci-val"><a href="mailto:info@3linkgroup.com">info@3linkgroup.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">網站 Website</div>
+            <div class="ci-val"><a href="http://www.printing-hk.com/en/" target="_blank">www.printing-hk.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🏢</div>
+          <div>
+            <div class="ci-label">服務地區</div>
+            <div class="ci-val">香港全境</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>📋 印刷查詢表格</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名 *</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>電話 *</label>
+            <input type="tel" placeholder="聯絡電話">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>印刷產品類型</label>
+          <select>
+            <option>-- 請選擇 --</option>
+            <option>瓦通坑盒</option>
+            <option>禮品盒 / 卡盒</option>
+            <option>掛牌 / 吊牌</option>
+            <option>海報 / 傳單</option>
+            <option>彩色貼紙 / 標籤</option>
+            <option>書刊 / 小冊子</option>
+            <option>其他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea placeholder="請描述您的印刷需求，包括尺寸、數量及特殊要求等..."></textarea>
+        </div>
+        <button class="form-submit">立即提交查詢 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">嘉興堂 Hong Kong Printing Company Limited</div>
+  <div class="footer-sub">專業包裝印刷一站式服務 · 香港 · 逾25年業務經驗</div>
+  <div class="footer-copy">© 2024 Hong Kong Printing Company Limited. All Rights Reserved.</div>
+</footer>
+
+</body>
+</html>
