@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HongKong Maining Import &amp; Export Trading Co., Ltd. | Garment Accessories &amp; Packaging</title>
+<style>
+:root {
+  --primary: #08182e;
+  --primary-mid: #0e2040;
+  --accent: #c89020;
+  --accent-light: #e0aa30;
+  --red: #b81820;
+  --white: #ffffff;
+  --off-white: #f6f7f4;
+  --light-grey: #e6e8e4;
+  --mid-grey: #7a8278;
+  --dark-grey: #3a4038;
+  --text: #1a1e18;
+  --text-light: #58625a;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 20px rgba(8,24,46,0.10);
+  --shadow-md: 0 8px 36px rgba(8,24,46,0.14);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.3s ease;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(8,24,46,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200,144,32,0.20);
+  padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px;
+}
+.nav-logo { font-size: 1.2rem; font-weight: 800; color: var(--white); letter-spacing: 0.05em; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.78); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: var(--transition); }
+.nav-links a:hover { color: var(--accent-light); }
+.nav-cta { background: var(--accent); color: var(--primary); padding: 0.5rem 1.3rem; border-radius: 50px; font-size: 0.88rem; font-weight: 700; transition: var(--transition); }
+.nav-cta:hover { background: var(--accent-light); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary) 0%, #0e2040 40%, #102448 70%, #142858 100%);
+  display: flex; align-items: center; padding: 100px 5% 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(200,144,32,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 55% at 15% 75%, rgba(184,24,32,0.08) 0%, transparent 65%);
+}
+.hero-inner {
+  max-width: 1200px; width: 100%; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(200,144,32,0.15); border: 1px solid rgba(200,144,32,0.35);
+  color: var(--accent-light); padding: 0.4rem 1rem; border-radius: 50px;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-size: clamp(2rem, 4.2vw, 3.5rem); font-weight: 800; line-height: 1.14;
+  color: var(--white); margin-bottom: 0.5rem; letter-spacing: -0.02em;
+}
+.hero h1 .accent { color: var(--accent); }
+.hero-sub { font-size: 1.08rem; color: rgba(255,255,255,0.68); margin-bottom: 1.8rem; }
+.hero-desc { font-size: 1rem; color: rgba(255,255,255,0.66); line-height: 1.78; margin-bottom: 2.2rem; max-width: 520px; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--accent); color: var(--primary);
+  padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem;
+  transition: var(--transition); box-shadow: 0 4px 20px rgba(200,144,32,0.35);
+}
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+.btn-outline {
+  border: 2px solid rgba(255,255,255,0.32); color: var(--white);
+  padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 600; font-size: 1rem;
+  transition: var(--transition);
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+.hero-card {
+  background: rgba(255,255,255,0.06); backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 2rem;
+}
+.hero-card-head {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 1.8rem;
+  padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+.hero-card-icon {
+  width: 50px; height: 50px; border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+}
+.hero-card-head h3 { color: var(--white); font-size: 1rem; font-weight: 700; }
+.hero-card-head p { color: rgba(255,255,255,0.50); font-size: 0.78rem; }
+.hero-info-row { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+.hero-info-icon {
+  width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+  background: rgba(200,144,32,0.18);
+  display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+}
+.hero-info-label { font-size: 0.70rem; color: rgba(255,255,255,0.42); text-transform: uppercase; letter-spacing: 0.06em; }
+.hero-info-val { font-size: 0.88rem; color: rgba(255,255,255,0.88); font-weight: 500; }
+
+/* STATS */
+.stats-strip { background: linear-gradient(90deg, var(--primary) 0%, var(--primary-mid) 100%); padding: 3rem 5%; }
+.stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.stat-item { text-align: center; }
+.stat-num { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--accent-light); letter-spacing: -0.02em; line-height: 1; }
+.stat-unit { font-size: 1.3rem; }
+.stat-label { color: rgba(255,255,255,0.58); font-size: 0.85rem; margin-top: 0.4rem; }
+
+/* SHARED */
+section { padding: 90px 5%; }
+.section-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(200,144,32,0.08); border: 1px solid rgba(200,144,32,0.25);
+  color: var(--accent); padding: 0.35rem 1rem; border-radius: 50px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 1rem;
+}
+.section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: var(--primary); line-height: 1.2; letter-spacing: -0.02em; }
+.section-subtitle { font-size: 1.02rem; color: var(--text-light); line-height: 1.7; margin-top: 0.8rem; max-width: 620px; }
+.section-header { margin-bottom: 3rem; }
+.max-w { max-width: 1200px; margin: 0 auto; }
+
+/* ABOUT */
+.about { background: var(--off-white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-highlight {
+  background: linear-gradient(135deg, var(--primary) 0%, #0e2040 100%);
+  border-radius: 18px; padding: 2.2rem; border-left: 4px solid var(--accent); margin-bottom: 2rem;
+}
+.about-highlight blockquote { font-size: 1.15rem; font-style: italic; font-weight: 600; color: var(--white); line-height: 1.6; }
+.about-highlight cite { display: block; margin-top: 0.8rem; font-size: 0.8rem; color: var(--accent-light); font-style: normal; letter-spacing: 0.05em; }
+.about-body p { font-size: 0.98rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.2rem; }
+.prop-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.prop-card { background: var(--white); border-radius: var(--radius); padding: 1.3rem; border: 1px solid var(--light-grey); transition: var(--transition); }
+.prop-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.prop-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.prop-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem; }
+.prop-card p { font-size: 0.8rem; color: var(--text-light); line-height: 1.5; }
+
+/* PRODUCTS */
+.products { background: var(--white); }
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+.product-card {
+  background: var(--card-bg); border-radius: var(--radius);
+  padding: 2rem; border: 1px solid var(--light-grey); transition: var(--transition);
+  position: relative; overflow: hidden;
+}
+.product-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  transform: scaleX(0); transform-origin: left; transition: var(--transition);
+}
+.product-card:hover { border-color: rgba(200,144,32,0.35); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.product-card:hover::before { transform: scaleX(1); }
+.product-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: linear-gradient(135deg, rgba(200,144,32,0.12), rgba(200,144,32,0.05));
+  display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.2rem;
+}
+.product-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.7rem; }
+.product-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
+.hs-code { display: inline-block; margin-top: 0.9rem; padding: 0.2rem 0.75rem; background: rgba(200,144,32,0.08); border: 1px solid rgba(200,144,32,0.22); color: var(--accent); font-size: 0.72rem; font-weight: 600; border-radius: 50px; }
+
+/* MARKETS */
+.markets {
+  background: linear-gradient(135deg, var(--primary) 0%, #0e2040 60%, #122448 100%);
+  position: relative; overflow: hidden;
+}
+.markets::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 65% 55% at 80% 45%, rgba(200,144,32,0.12) 0%, transparent 70%);
+}
+.markets .section-tag { background: rgba(200,144,32,0.15); border-color: rgba(200,144,32,0.35); color: var(--accent-light); }
+.markets .section-title { color: var(--white); }
+.markets .section-subtitle { color: rgba(255,255,255,0.62); }
+.markets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; z-index: 1; }
+.market-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px; padding: 2rem; transition: var(--transition);
+}
+.market-card:hover { background: rgba(255,255,255,0.10); border-color: rgba(200,144,32,0.4); transform: translateY(-3px); }
+.market-flag { font-size: 2.5rem; margin-bottom: 1rem; }
+.market-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+.market-card p { font-size: 0.88rem; color: rgba(255,255,255,0.60); line-height: 1.65; }
+.market-buyers { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.buyer-item { font-size: 0.78rem; color: rgba(255,255,255,0.48); display: flex; align-items: center; gap: 0.4rem; }
+.buyer-item::before { content: '▸'; color: var(--accent); font-size: 0.7rem; }
+
+/* TRADE SERVICES */
+.trade-services { background: var(--off-white); }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+.service-card {
+  background: var(--white); border-radius: var(--radius);
+  padding: 1.8rem; border: 1px solid var(--light-grey); transition: var(--transition);
+}
+.service-card:hover { border-color: var(--accent); box-shadow: var(--shadow); transform: translateY(-2px); }
+.service-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+.service-card h3 { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.6rem; }
+.service-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
+
+/* CONTACT */
+.contact { background: linear-gradient(135deg, var(--primary) 0%, #0e2040 100%); }
+.contact .section-title { color: var(--white); }
+.contact .section-subtitle { color: rgba(255,255,255,0.62); }
+.contact .section-tag { background: rgba(200,144,32,0.15); border-color: rgba(200,144,32,0.35); color: var(--accent-light); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
+.contact-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius); padding: 1.3rem;
+}
+.contact-item-icon {
+  width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0;
+  background: rgba(200,144,32,0.18);
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+}
+.contact-item-label { font-size: 0.70rem; color: rgba(255,255,255,0.40); text-transform: uppercase; letter-spacing: 0.07em; }
+.contact-item-val { font-size: 0.92rem; color: rgba(255,255,255,0.88); font-weight: 500; margin-top: 0.15rem; }
+.contact-form {
+  background: rgba(255,255,255,0.06); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.10); border-radius: 20px; padding: 2.4rem;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.56); margin-bottom: 0.4rem; font-weight: 500; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-sm); padding: 0.75rem 1rem; color: var(--white);
+  font-size: 0.9rem; transition: var(--transition); outline: none; font-family: inherit;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); background: rgba(255,255,255,0.12); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.28); }
+.form-group select option { background: var(--primary); color: var(--white); }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-submit {
+  width: 100%; background: var(--accent); color: var(--primary);
+  border: none; border-radius: 50px; padding: 1rem;
+  font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition);
+}
+.form-submit:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+/* FOOTER */
+footer { background: #040c1a; padding: 2.5rem 5%; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-size: 1.1rem; font-weight: 800; color: var(--white); letter-spacing: 0.04em; }
+.footer-logo span { color: var(--accent); }
+.footer-copy { font-size: 0.80rem; color: rgba(255,255,255,0.38); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.80rem; color: rgba(255,255,255,0.42); transition: var(--transition); }
+.footer-links a:hover { color: var(--accent); }
+
+@media (max-width: 960px) {
+  .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero-card { display: none; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .products-grid, .services-grid, .markets-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .products-grid, .services-grid, .markets-grid, .prop-cards { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MAINING<span> Trading</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#markets">Markets</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">Garment Accessories · Packaging · Global Export · Hong Kong</div>
+      <h1>Reliable Sourcing,<br><span class="accent">Global Delivery.</span></h1>
+      <p class="hero-sub">Your trusted Hong Kong trading partner for garment accessories and industrial packaging.</p>
+      <p class="hero-desc">
+        HongKong Maining Import &amp; Export Trading Co., Ltd. is a Hong Kong-based international trading company specialising in garment accessories, industrial packaging materials, and textile consumables. We source from China's manufacturing heartlands and deliver reliably to textile mills, garment factories, and distributors across Asia, South Asia, and beyond.
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">View Products</a>
+        <a href="#contact" class="btn-outline">Request a Quote</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hero-card-icon">🏢</div>
+        <div>
+          <h3>HongKong Maining Import &amp; Export</h3>
+          <p>Kowloon, Hong Kong</p>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">📍</div>
+        <div>
+          <div class="hero-info-label">Location</div>
+          <div class="hero-info-val">Kowloon, Hong Kong</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">📞</div>
+        <div>
+          <div class="hero-info-label">Phone</div>
+          <div class="hero-info-val">+852 5607 4900</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">🚢</div>
+        <div>
+          <div class="hero-info-label">Trade Volume</div>
+          <div class="hero-info-val">9,000+ shipments processed (2025–2026)</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">🌏</div>
+        <div>
+          <div class="hero-info-label">Export Markets</div>
+          <div class="hero-info-val">Pakistan, Vietnam, SE Asia &amp; more</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">9,600<span class="stat-unit">+</span></div>
+      <div class="stat-label">Annual Shipments</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10<span class="stat-unit">+</span></div>
+      <div class="stat-label">Export Destinations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5<span class="stat-unit">+</span></div>
+      <div class="stat-label">Product Categories</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">Global Trade Gateway</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="max-w">
+    <div class="about-grid">
+      <div>
+        <div class="section-header">
+          <div class="section-tag">About Us</div>
+          <h2 class="section-title">Hong Kong's Gateway to Global Garment Supply Chains</h2>
+        </div>
+        <div class="about-highlight">
+          <blockquote>"Connecting China's manufacturing excellence with the world's garment industry — one reliable shipment at a time."</blockquote>
+          <cite>— HongKong Maining Import &amp; Export Trading Co., Ltd.</cite>
+        </div>
+        <div class="about-body">
+          <p>
+            HongKong Maining Import &amp; Export Trading Co., Ltd. is a professional international trading company registered and operating in Hong Kong. Leveraging Hong Kong's strategic position as Asia's premier trading hub, we specialise in sourcing, quality control, and export of garment accessories and industrial packaging materials.
+          </p>
+          <p>
+            Our core expertise lies in serving the textile and apparel supply chain — supplying packaging boxes, hang tags, paper stickers, polypropylene strings, and related accessories to garment manufacturers and textile mills in South Asia, Southeast Asia, and beyond.
+          </p>
+          <p>
+            With consistent trade activity exceeding 9,600 documented shipments annually, Maining is a high-volume, reliable partner for buyers who demand punctual delivery and product consistency.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">⚡</div>
+            <h4>Fast Turnaround</h4>
+            <p>Streamlined sourcing and export processes for quick order fulfilment and on-time delivery.</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🔍</div>
+            <h4>Quality Control</h4>
+            <p>Every order undergoes rigorous inspection before shipping — your brand reputation protected.</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💰</div>
+            <h4>Competitive Pricing</h4>
+            <p>Direct factory sourcing from China's manufacturing base means best-in-class pricing for buyers.</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🌐</div>
+            <h4>HK Trade Advantage</h4>
+            <p>Hong Kong's free port status, established logistics, and legal framework work for you.</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📦</div>
+            <h4>Custom Packaging</h4>
+            <p>OEM / custom print available for boxes, stickers, and labels — your specifications delivered.</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🤝</div>
+            <h4>Trusted Partners</h4>
+            <p>Long-term relationships with leading textile mills and garment factories across Asia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Our Products</div>
+      <h2 class="section-title">Garment Accessories &amp; Packaging Materials</h2>
+      <p class="section-subtitle">Comprehensive range of garment trims, accessories, and industrial packaging for the textile supply chain.</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">📦</div>
+        <h3>Garment Accessories Packing Boxes</h3>
+        <p>Custom-size corrugated and rigid carton boxes designed specifically for garment accessories and apparel components. Available in standard and split-value configurations for duty optimisation.</p>
+        <span class="hs-code">HS 4819.1000</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🗃️</div>
+        <h3>Industrial Paper Boxes</h3>
+        <p>High-quality paper and paperboard boxes for a broad range of industrial and consumer packaging applications. Available in custom sizes, print specifications, and structural configurations.</p>
+        <span class="hs-code">HS 4819.1000</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🏷️</div>
+        <h3>Paper Stickers &amp; Labels</h3>
+        <p>Self-adhesive paper stickers and labels for garment care instructions, size labels, price tags, and branding. Custom print in single or multi-colour to exact brand specifications.</p>
+        <span class="hs-code">HS 4821.9000</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🔗</div>
+        <h3>Hang Tags with Plastic Lock</h3>
+        <p>Polyester / polypropylene hang tag strings with plastic snap-lock fasteners — the standard attachment method for price and brand hang tags on garments globally.</p>
+        <span class="hs-code">HS 5607.4900</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🧷</div>
+        <h3>Garment Trims &amp; Accessories</h3>
+        <p>Comprehensive range of garment accessories including elastic bands, ribbons, zippers, buttons, and specialty trims. OEM supply for global fashion brands and retailers.</p>
+        <span class="hs-code">Various HS Codes</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🧵</div>
+        <h3>Textile Consumables</h3>
+        <p>Supporting materials for textile manufacturing: packaging films, protective wraps, poly bags, and storage consumables. Bulk supply for high-volume manufacturing environments.</p>
+        <span class="hs-code">Various HS Codes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section class="markets" id="markets">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Export Markets</div>
+      <h2 class="section-title">Serving the Global Textile Belt</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">Our products reach the world's leading garment manufacturing centres.</p>
+    </div>
+    <div class="markets-grid">
+      <div class="market-card">
+        <div class="market-flag">🇵🇰</div>
+        <h3>Pakistan</h3>
+        <p>One of the world's top textile exporters. We supply garment accessories and packaging to spinning mills, weaving units, and garment factories across the textile belt.</p>
+        <div class="market-buyers">
+          <div class="buyer-item">Beacon Impex Pvt Ltd</div>
+          <div class="buyer-item">Ayesha Spinning Mills Limited</div>
+          <div class="buyer-item">Leading Lahore &amp; Faisalabad textile groups</div>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇻🇳</div>
+        <h3>Vietnam</h3>
+        <p>The world's fastest-growing garment manufacturing hub. We serve Vietnamese factories producing for global fashion brands with reliable accessories and trim supply.</p>
+        <div class="market-buyers">
+          <div class="buyer-item">Công Ty TNHH Dae Woong Việt Nam</div>
+          <div class="buyer-item">Công Ty TNHH Komega X</div>
+          <div class="buyer-item">Ho Chi Minh City garment exporters</div>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🌏</div>
+        <h3>Asia-Pacific &amp; Beyond</h3>
+        <p>We continuously expand our market reach across Southeast Asia, South Asia, and emerging textile manufacturing regions. Hong Kong's logistics infrastructure enables efficient multi-destination shipping.</p>
+        <div class="market-buyers">
+          <div class="buyer-item">Bangladesh garment industry</div>
+          <div class="buyer-item">Indonesia &amp; Cambodia factories</div>
+          <div class="buyer-item">Flexible to new markets</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="trade-services" id="services">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Trade Services</div>
+      <h2 class="section-title">End-to-End Import &amp; Export Solutions</h2>
+      <p class="section-subtitle">We handle every step of the trading process so you can focus on your business.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Sourcing &amp; Procurement</h3>
+        <p>Access to China's extensive manufacturing network for garment accessories, packaging, and textile materials. We identify the best factories, negotiate prices, and manage supplier relationships.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✅</div>
+        <h3>Quality Inspection</h3>
+        <p>Pre-shipment quality control and inspection services. Every order is checked against specifications before dispatch — reducing returns, delays, and costly reprocessing at the destination.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚢</div>
+        <h3>Freight &amp; Logistics</h3>
+        <p>Sea freight coordination from major Chinese ports and Hong Kong. We manage bill of lading, customs documentation, and port logistics for smooth import/export clearance.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Trade Documentation</h3>
+        <p>Complete export documentation including commercial invoices, packing lists, certificates of origin, and customs declarations — compliant with international trade requirements.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <h3>OEM &amp; Custom Orders</h3>
+        <p>Custom printing, branding, and specification manufacturing for packaging and accessories. Your logo, colours, and size requirements produced to spec at factory-direct pricing.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Bulk &amp; Repeat Orders</h3>
+        <p>Preferred pricing and priority scheduling for high-volume and regular-repeat buyers. Long-term supply contracts available to ensure consistent pricing and supply continuity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Contact Us</div>
+      <h2 class="section-title">Start Your Sourcing Enquiry</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">
+        Tell us what you need and we'll provide product availability, pricing, and lead times promptly.
+      </p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Location</div>
+              <div class="contact-item-val">Kowloon, Hong Kong</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Phone / WhatsApp</div>
+              <div class="contact-item-val">+852 5607 4900</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🚢</div>
+            <div>
+              <div class="contact-item-label">Export Capabilities</div>
+              <div class="contact-item-val">Sea freight from HK, Shenzhen, Guangzhou, Ningbo &amp; Shanghai</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">⏱️</div>
+            <div>
+              <div class="contact-item-label">Response Time</div>
+              <div class="contact-item-val">Within 24 hours on working days</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 style="color:var(--white);font-size:1.15rem;font-weight:700;margin-bottom:1.5rem;">Product Enquiry / RFQ</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" placeholder="Your company">
+          </div>
+          <div class="form-group">
+            <label>Contact Person</label>
+            <input type="text" placeholder="Your name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@company.com">
+          </div>
+          <div class="form-group">
+            <label>WhatsApp / Phone</label>
+            <input type="tel" placeholder="+1 / +92 / +84...">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Product Required</label>
+          <select>
+            <option value="">Select product category...</option>
+            <option>Garment Accessories Packing Boxes</option>
+            <option>Industrial Paper Boxes</option>
+            <option>Paper Stickers &amp; Labels</option>
+            <option>Hang Tags &amp; Plastic Locks</option>
+            <option>Garment Trims &amp; Accessories</option>
+            <option>Textile Consumables</option>
+            <option>Multiple Products / Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Enquiry Details</label>
+          <textarea placeholder="Quantity, specifications, destination port, required delivery date, any custom requirements..."></textarea>
+        </div>
+        <button class="form-submit">Send RFQ →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">MAINING<span> Trading</span></div>
+    <div class="footer-copy">© 2024 HongKong Maining Import &amp; Export Trading Co., Ltd. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
