@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>創業鳥 BizAndBird | 香港公司成立 · 核數審計 · 公司報稅服務</title>
+<meta name="description" content="創業鳥 BizAndBird — 香港專業商業服務機構，提供成立公司、公司秘書、核數審計、公司報稅、不活動公司申請及虛擬辦公室服務。WhatsApp: 65027845">
+<style>
+:root{--bg:#03060f;--bg2:#050a18;--bg3:#070e20;--navy:#1438a0;--navy-lt:#1c50c8;--sky:#1878d8;--sky-lt:#28a0f0;--text:#e8eef8;--muted:#6878a8;--border:rgba(20,56,160,0.22);--card-bg:rgba(255,255,255,0.03);--radius:10px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans HK','PingFang HK',sans-serif;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(3,6,15,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1.05rem;font-weight:800;color:var(--sky-lt)}
+.nav-logo span{color:var(--navy-lt);font-weight:400;font-size:.78rem;margin-left:8px;opacity:.9}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--navy),var(--navy-lt));color:#fff;padding:9px 22px;border-radius:6px;font-size:.88rem;font-weight:700;text-decoration:none;transition:opacity .2s}.nav-cta:hover{opacity:.88}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 55% 40%,rgba(20,56,160,0.13) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(20,56,160,0.1);border:1px solid rgba(20,56,160,0.3);border-radius:6px;padding:6px 14px;font-size:.8rem;color:var(--sky-lt);margin-bottom:20px}
+h1{font-size:clamp(1.9rem,4vw,3rem);font-weight:900;line-height:1.1;margin-bottom:12px}
+h1 .bird{color:var(--sky-lt)}
+h1 .sub{display:block;font-size:clamp(.85rem,1.7vw,1rem);font-weight:400;color:var(--navy-lt);letter-spacing:.04em;margin-top:8px}
+.hero-desc{color:var(--muted);font-size:1rem;max-width:440px;margin:16px 0 22px;line-height:1.8}
+.svc-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.st{display:inline-flex;align-items:center;gap:5px;background:rgba(24,120,216,0.08);border:1px solid rgba(24,120,216,0.22);border-radius:6px;padding:4px 10px;font-size:.75rem;color:var(--sky-lt);font-weight:600}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--navy),var(--navy-lt));color:#fff;padding:13px 28px;border-radius:6px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 26px;border-radius:6px;font-size:.93rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}.btn-outline:hover{border-color:var(--sky-lt);color:var(--sky-lt)}
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:15px}
+.card-badge{display:flex;align-items:center;gap:12px}
+.badge-emblem{width:48px;height:48px;background:linear-gradient(135deg,var(--navy),var(--sky-lt));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.badge-name{font-size:.95rem;font-weight:700}.badge-label{font-size:.76rem;color:var(--muted)}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--sky-lt);flex-shrink:0;margin-top:2px;text-align:center}
+.card-row-text{font-size:.88rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block;font-size:.9rem}
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.stat-item{text-align:center}
+.stat-num{font-size:1.9rem;font-weight:900;background:linear-gradient(135deg,var(--navy-lt),var(--sky-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.82rem;margin-top:6px}
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(20,56,160,0.08);border:1px solid rgba(20,56,160,0.2);border-radius:6px;padding:4px 12px;font-size:.75rem;color:var(--sky-lt);letter-spacing:.05em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--sky-lt)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s}.svc-card:hover{border-color:var(--sky-lt);transform:translateY(-4px)}
+.sc-icon{width:50px;height:50px;background:rgba(20,56,160,0.1);border:1px solid rgba(20,56,160,0.22);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.sc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.info-section{background:var(--bg2)}
+.info-box{background:var(--bg3);border:1px solid rgba(24,120,216,0.2);border-radius:12px;padding:28px 32px}
+.info-box h3{font-size:1.1rem;font-weight:700;color:var(--sky-lt);margin-bottom:14px}
+.info-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.info-list li{display:flex;gap:10px;font-size:.9rem;color:var(--muted);line-height:1.6}
+.info-list li::before{content:'→';color:var(--sky-lt);flex-shrink:0;font-weight:700}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+.contact-section{background:var(--bg3)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(20,56,160,0.1);border:1px solid rgba(20,56,160,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.75rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.93rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--sky-lt);text-decoration:none}.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:34px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--sky-lt)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#050a18}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--navy),var(--navy-lt));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}.form-submit:hover{opacity:.88}
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:.95rem;font-weight:800;color:var(--sky-lt)}
+.footer-copy{font-size:.8rem;color:var(--muted);text-align:center}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}.footer-links a:hover{color:var(--text)}
+@media(max-width:900px){.hero-inner,.contact-grid,.info-grid{grid-template-columns:1fr}.stats-inner,.cards-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav-links{display:none}.cards-grid,.stats-inner{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">創業鳥<span>BizAndBird</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#tax">報稅須知</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a href="mailto:info@bizandbird.com" class="nav-cta">免費查詢</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🐦 香港公司成立 · 核數審計 · 公司報稅</div>
+      <h1>創業<span class="bird">鳥</span><span class="sub">BizAndBird · 香港商業服務</span></h1>
+      <p class="hero-desc">創業鳥是香港專業商業服務機構，協助初創企業及中小企業成立公司、處理核數審計及公司報稅，提供一站式商業支援，讓您專注發展業務。</p>
+      <div class="svc-tags">
+        <span class="st">🏢 成立公司</span>
+        <span class="st">📋 公司秘書</span>
+        <span class="st">📊 核數審計</span>
+        <span class="st">📝 公司報稅</span>
+        <span class="st">💤 不活動公司</span>
+      </div>
+      <div class="hero-btns">
+        <a href="mailto:info@bizandbird.com" class="btn-primary">免費諮詢</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-emblem">🐦</div>
+        <div>
+          <div class="badge-label">香港商業服務機構</div>
+          <div class="badge-name">創業鳥 BizAndBird</div>
+        </div>
+      </div>
+      <hr class="card-divider">
+      <div class="card-row"><div class="card-row-icon">📧</div><div class="card-row-text"><strong>電郵</strong>info@bizandbird.com</div></div>
+      <div class="card-row"><div class="card-row-icon">📱</div><div class="card-row-text"><strong>WhatsApp / 手機</strong>6502 7845</div></div>
+      <div class="card-row"><div class="card-row-icon">🌐</div><div class="card-row-text"><strong>網站</strong>bizandbird.com</div></div>
+      <div class="card-row"><div class="card-row-icon">📍</div><div class="card-row-text"><strong>地區</strong>香港</div></div>
+      <div class="card-row"><div class="card-row-icon">💬</div><div class="card-row-text"><strong>免費諮詢</strong>致電或WhatsApp查詢，提供個案免費報價</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">一站式</div><div class="stat-label">商業服務</div></div>
+    <div class="stat-item"><div class="stat-num">免費</div><div class="stat-label">初步諮詢報價</div></div>
+    <div class="stat-item"><div class="stat-num">2023</div><div class="stat-label">新稅局規定專家</div></div>
+    <div class="stat-item"><div class="stat-num">全面</div><div class="stat-label">公司成立至報稅</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務項目</div>
+    <h2>全方位<span class="accent">商業服務</span>支援</h2>
+    <p class="section-lead">創業鳥提供一站式香港商業服務，從成立公司到日常合規，協助初創及中小企業以最低成本完成所有法定要求。</p>
+    <div class="cards-grid">
+      <div class="svc-card">
+        <div class="sc-icon">🏢</div>
+        <div class="sc-title">成立香港公司</div>
+        <div class="sc-desc">快速辦理香港有限公司成立，處理公司名稱查冊、章程文件準備及公司註冊處申請，協助您的業務合法快速起步。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📋</div>
+        <div class="sc-title">公司秘書服務</div>
+        <div class="sc-desc">專業法定公司秘書服務，包括周年申報、董事會議記錄、股東變更及法定文件管理，確保公司符合《公司條例》要求。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📊</div>
+        <div class="sc-title">核數 · 審計服務</div>
+        <div class="sc-desc">由獨立執業會計師進行法定審計，編製經審計財務報表，符合2023年稅務局新規定，適用於所有香港有限公司。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📝</div>
+        <div class="sc-title">公司報稅服務</div>
+        <div class="sc-desc">代辦利得稅申報全程手續，由申請延期、準備帳目、審計到提交報稅表，協助公司合規完成每年報稅流程。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">💤</div>
+        <div class="sc-title">不活動公司申請</div>
+        <div class="sc-desc">協助無營運公司向公司註冊處申請成為「不活動公司」，取得零申報豁免資格，以最低成本維持公司存續。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🏠</div>
+        <div class="sc-title">虛擬辦公室</div>
+        <div class="sc-desc">提供香港商業地址作公司注冊地址及通訊地址，並提供郵件轉寄服務，協助初創企業建立專業的公司形象。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tax" class="info-section">
+  <div class="section-inner">
+    <div class="section-tag">報稅須知</div>
+    <h2>2023年<span class="accent">稅務新規</span>重點</h2>
+    <p class="section-lead">自2023年4月1日起，香港稅務局實施重要更新，所有有限公司報稅規定有重大變化，了解最新要求，確保公司合規。</p>
+    <div class="info-grid">
+      <div class="info-box">
+        <h3>📌 2023年新規定重點</h3>
+        <ul class="info-list">
+          <li>所有香港有限公司，無論收入多少，提交利得稅報稅表時必須附上經審計的財務報表</li>
+          <li>即使公司無收入、無營運，也不能隨意進行「零申報」</li>
+          <li>唯一豁免：已獲正式認定為「不活動公司」的公司</li>
+          <li>未遵守規定可能面臨稅務調查及罰款風險</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <h3>💤 不活動公司申請條件</h3>
+        <ul class="info-list">
+          <li>財政年度內沒有任何會計交易及經營活動</li>
+          <li>沒有擁有商業銀行戶口或銀行戶口沒有資金流動</li>
+          <li>在政府機構中有「無經營」的相關記錄</li>
+          <li>須通過特別決議，向公司註冊處正式申請批准</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2>即時<span class="accent">免費查詢</span></h2>
+    <p class="section-lead">有關公司成立、核數審計或公司報稅的任何查詢，歡迎致電或WhatsApp聯絡創業鳥，我們將為您提供免費諮詢及個案報價。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">電郵</div>
+            <div class="ci-value"><a href="mailto:info@bizandbird.com">info@bizandbird.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">WhatsApp / 手機</div>
+            <div class="ci-value"><a href="tel:+85265027845">6502 7845</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">官方網站</div>
+            <div class="ci-value">bizandbird.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">服務地區</div>
+            <div class="ci-value">香港</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>商業服務查詢</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group"><label>姓名 / 公司名稱</label><input type="text" placeholder="您的姓名或公司名稱"></div>
+            <div class="form-group"><label>聯絡電話</label><input type="tel" placeholder="+852 XXXX XXXX"></div>
+          </div>
+          <div class="form-group"><label>電郵地址</label><input type="email" placeholder="your@email.com"></div>
+          <div class="form-group"><label>查詢服務</label>
+            <select>
+              <option value="">請選擇</option>
+              <option>成立香港公司</option>
+              <option>公司秘書服務</option>
+              <option>核數 / 審計服務</option>
+              <option>公司報稅服務</option>
+              <option>不活動公司申請</option>
+              <option>虛擬辦公室</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group"><label>查詢詳情</label><textarea placeholder="請描述您的查詢，我們將提供免費諮詢及個案報價..."></textarea></div>
+          <button type="submit" class="form-submit">提交查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">創業鳥 BizAndBird · 香港商業服務</div>
+    <div class="footer-copy">© 2025 BizAndBird · info@bizandbird.com · WhatsApp: 6502 7845</div>
+    <div class="footer-links"><a href="#services">服務</a><a href="#tax">報稅</a><a href="#contact">聯絡</a></div>
+  </div>
+</footer>
+</body>
+</html>
