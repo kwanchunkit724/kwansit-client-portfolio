@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greenwood HK | Hong Kong Audit &amp; Accounting Services</title>
+<style>
+  :root {
+    --green: #1a5c30;
+    --green-mid: #1e7038;
+    --green-light: #228a42;
+    --dark: #1a2030;
+    --white: #ffffff;
+    --light-bg: #f4f8f5;
+    --text: #1a2030;
+    --text-light: #4a5568;
+    --border: #dde8e2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: var(--white); }
+
+  nav {
+    background: var(--dark);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px; position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; }
+  .nav-logo { width: 42px; height: 42px; background: var(--green-mid); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; color: var(--white); }
+  .nav-name .main { font-size: 17px; font-weight: 700; color: var(--white); display: block; }
+  .nav-name .sub { font-size: 11px; color: rgba(255,255,255,0.5); display: block; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .nav-links a:hover { color: #4aca78; }
+  .nav-cta { background: var(--green-mid); color: var(--white); padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--green-light); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #1c2c20 55%, var(--green) 100%);
+    padding: 80px 40px; min-height: 530px;
+    display: flex; align-items: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 75% 50%, rgba(34,138,66,0.18) 0%, transparent 60%);
+  }
+  .hero-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 50px; width: 100%; position: relative; z-index: 1; }
+  .hero-text { flex: 1; }
+  .hero-badge { display: inline-block; background: rgba(34,138,66,0.2); border: 1px solid rgba(74,202,120,0.4); color: #4aca78; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+  .hero-text h1 { font-size: 52px; font-weight: 900; color: var(--white); line-height: 1.1; margin-bottom: 12px; }
+  .hero-text h1 span { color: #4aca78; }
+  .hero-text h2 { font-size: 20px; font-weight: 400; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+  .hero-text p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 490px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: var(--green-mid); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--green-light); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  .hero-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(34,138,66,0.25); backdrop-filter: blur(10px); border-radius: 16px; padding: 32px 28px; min-width: 280px; flex-shrink: 0; }
+  .hero-card h3 { color: #4aca78; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+  .hc-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+  .hc-item:last-child { margin-bottom: 0; }
+  .hc-icon { width: 36px; height: 36px; background: rgba(34,138,66,0.22); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .hc-info .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+  .hc-info .value { font-size: 13px; color: var(--white); font-weight: 600; }
+
+  .stats-strip { background: var(--green); padding: 22px 40px; display: flex; justify-content: center; }
+  .stat-item { text-align: center; padding: 0 48px; position: relative; }
+  .stat-item + .stat-item::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 40px; background: rgba(255,255,255,0.35); }
+  .stat-num { font-size: 32px; font-weight: 900; color: var(--white); line-height: 1; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 4px; font-weight: 500; }
+
+  section { padding: 80px 40px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--green-mid); margin-bottom: 12px; }
+  .section-title { font-size: 36px; font-weight: 900; color: var(--dark); margin-bottom: 16px; line-height: 1.2; }
+  .section-sub { font-size: 16px; color: var(--text-light); line-height: 1.7; max-width: 620px; }
+  .section-header { margin-bottom: 52px; }
+
+  .about { background: var(--light-bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .about-box { background: var(--dark); border-radius: 16px; padding: 40px; color: var(--white); position: relative; overflow: hidden; }
+  .about-box::after { content: '🌿'; position: absolute; right: 20px; bottom: 20px; font-size: 100px; opacity: 0.06; line-height: 1; }
+  .about-box h3 { font-size: 22px; font-weight: 800; color: #4aca78; margin-bottom: 16px; }
+  .about-box p { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.82); margin-bottom: 14px; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .prop-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 22px; border-top: 3px solid var(--green-mid); }
+  .prop-icon { font-size: 28px; margin-bottom: 12px; }
+  .prop-card h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .prop-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 30px 26px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--dark), var(--green-mid)); }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(26,32,48,0.12); }
+  .service-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--green), var(--green-mid)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 18px; }
+  .service-card h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .service-card p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+  .service-tag { display: inline-block; background: rgba(30,112,56,0.1); color: var(--green-mid); padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-top: 12px; }
+
+  .process { background: var(--green); }
+  .process .section-title { color: var(--white); }
+  .process .section-tag { color: #4aca78; }
+  .process .section-sub { color: rgba(255,255,255,0.7); }
+  .proc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .proc-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 28px 22px; text-align: center; }
+  .proc-num { width: 48px; height: 48px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; color: var(--white); margin: 0 auto 16px; }
+  .proc-card h3 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .proc-card p { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .contact-info h3 { font-size: 26px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+  .contact-info > p { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 32px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 22px; }
+  .ci-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--green), var(--green-mid)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .ci-label { font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .ci-val { font-size: 15px; font-weight: 600; color: var(--dark); }
+  .ci-val a { color: var(--dark); text-decoration: none; }
+  .ci-val a:hover { color: var(--green-mid); }
+
+  .contact-form { background: var(--light-bg); border-radius: 16px; padding: 36px; }
+  .contact-form h3 { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .form-group label { font-size: 13px; font-weight: 600; color: var(--dark); }
+  .form-group input, .form-group select, .form-group textarea { padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; color: var(--text); background: var(--white); outline: none; font-family: inherit; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--green-mid); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit { width: 100%; background: var(--green-mid); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+  .form-submit:hover { background: var(--green-light); }
+
+  footer { background: var(--dark); padding: 40px; text-align: center; }
+  .footer-brand { font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+  .footer-brand span { color: #4aca78; }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 14px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  @media (max-width: 900px) {
+    .hero-content { flex-direction: column; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .proc-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">🌿</div>
+    <div class="nav-name">
+      <span class="main">Greenwood HK</span>
+      <span class="sub">Audit &amp; Accounting Services · Hong Kong</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#process">Our Process</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Free Consultation</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">🌿 Professional Audit &amp; Accounting</div>
+      <h1>Greenwood<br><span>HK</span></h1>
+      <h2>Hong Kong Audit &amp; Accounting Services</h2>
+      <p>Greenwood HK provides professional audit, accounting, and tax services to businesses throughout Hong Kong. Trusted by local and international companies for rigorous, reliable, and results-oriented financial services.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>📋 Contact Details</h3>
+      <div class="hc-item">
+        <div class="hc-icon">📱</div>
+        <div class="hc-info">
+          <div class="label">Mobile</div>
+          <div class="value">9091 8351</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">✉️</div>
+        <div class="hc-info">
+          <div class="label">Email</div>
+          <div class="value">info@greenwoodhk.com</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🌐</div>
+        <div class="hc-info">
+          <div class="label">Website</div>
+          <div class="value">greenwoodhk.com</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">📍</div>
+        <div class="hc-info">
+          <div class="label">Location</div>
+          <div class="value">Hong Kong</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">CPA</div>
+    <div class="stat-label">Qualified Auditors</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">HK</div>
+    <div class="stat-label">Based &amp; Regulated</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">Fast</div>
+    <div class="stat-label">Turnaround</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Compliance Focus</div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-box">
+        <h3>🌿 Rooted in Integrity</h3>
+        <p>Greenwood HK is a professional accounting and audit services firm based in Hong Kong, serving businesses across every stage of their growth — from startup incorporation to complex multi-entity audit engagements.</p>
+        <p>We combine deep technical expertise in Hong Kong accounting standards and tax regulations with a practical, client-focused approach. Our goal is simple: deliver accurate, timely, and valuable financial services that give you the confidence to make better business decisions.</p>
+        <p>Whether you need a statutory audit, monthly bookkeeping, or strategic tax advice, Greenwood HK has the expertise and commitment to deliver — with integrity at every step.</p>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">🎓</div>
+          <h4>CPA Qualified</h4>
+          <p>All audit engagements led by HKICPA-qualified certified public accountants with statutory practising certificates.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">⚡</div>
+          <h4>Responsive Service</h4>
+          <p>Fast turnaround on requests and proactive communication — you'll always know where your engagement stands.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🌐</div>
+          <h4>Local &amp; International</h4>
+          <p>Serving Hong Kong companies and international businesses with cross-border accounting and compliance needs.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🔐</div>
+          <h4>Confidentiality</h4>
+          <p>Strict confidentiality protocols and professional ethics maintained across all client engagements and data.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Services</div>
+      <h2 class="section-title">Audit &amp; Accounting Services</h2>
+      <p class="section-sub">Professional financial services tailored to Hong Kong businesses — from mandatory statutory audit to day-to-day bookkeeping and strategic tax planning.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Statutory Audit</h3>
+        <p>Annual statutory audit services for Hong Kong limited companies, conducted by qualified CPAs and compliant with Hong Kong Financial Reporting Standards (HKFRS).</p>
+        <span class="service-tag">Mandatory Compliance</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Accounting &amp; Bookkeeping</h3>
+        <p>Monthly and quarterly accounting services including bookkeeping, management accounts preparation, and financial statement analysis to keep your finances in order.</p>
+        <span class="service-tag">Monthly Service</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📝</div>
+        <h3>Tax Advisory &amp; Filing</h3>
+        <p>Profits tax return preparation, tax planning, deferred tax analysis, and advisory on Hong Kong's territorial tax system to minimise your tax exposure legally.</p>
+        <span class="service-tag">Tax Optimisation</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3>Company Secretarial</h3>
+        <p>Annual return filing, Companies Registry compliance, registered office services, and maintenance of statutory registers for Hong Kong companies.</p>
+        <span class="service-tag">Ongoing Compliance</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Financial Due Diligence</h3>
+        <p>Buy-side and sell-side financial due diligence for mergers, acquisitions, and investment transactions — independent, thorough, and actionable findings.</p>
+        <span class="service-tag">M&amp;A Support</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💡</div>
+        <h3>CFO Advisory</h3>
+        <p>Part-time CFO and financial controller services for SMEs needing senior financial leadership without the overhead of a full-time hire.</p>
+        <span class="service-tag">Strategic Finance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Our Process</div>
+      <h2 class="section-title">How We Work</h2>
+      <p class="section-sub">A transparent, efficient engagement process that keeps you informed and in control at every stage.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-card">
+        <div class="proc-num">1</div>
+        <h3>Initial Consultation</h3>
+        <p>Free consultation to understand your business, assess your needs, and propose the right service package.</p>
+      </div>
+      <div class="proc-card">
+        <div class="proc-num">2</div>
+        <h3>Engagement &amp; Planning</h3>
+        <p>Formal engagement letter, timeline agreement, and request list for information and documents needed.</p>
+      </div>
+      <div class="proc-card">
+        <div class="proc-num">3</div>
+        <h3>Fieldwork &amp; Review</h3>
+        <p>Thorough fieldwork, analysis, and review conducted by qualified professionals to the highest standards.</p>
+      </div>
+      <div class="proc-card">
+        <div class="proc-num">4</div>
+        <h3>Delivery &amp; Support</h3>
+        <p>Final deliverables — reports, accounts, tax returns — delivered on time with ongoing support as needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Contact</div>
+      <h2 class="section-title">Talk to Our Team</h2>
+      <p class="section-sub">Get in touch for a free initial consultation. We'll assess your needs and recommend the right services for your business.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Contact Greenwood HK</h3>
+        <p>Our accounting and audit professionals are ready to help. Reach out by phone, email, or fill in the form and we'll be in touch promptly.</p>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">Mobile</div>
+            <div class="ci-val"><a href="tel:90918351">9091 8351</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val"><a href="mailto:info@greenwoodhk.com">info@greenwoodhk.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Website</div>
+            <div class="ci-val"><a href="https://greenwoodhk.com" target="_blank">greenwoodhk.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-val">Hong Kong</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>🌿 Engagement Enquiry</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name *</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Phone *</label>
+            <input type="tel" placeholder="Contact number">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select>
+            <option>-- Select Service --</option>
+            <option>Statutory Audit</option>
+            <option>Accounting &amp; Bookkeeping</option>
+            <option>Tax Advisory &amp; Filing</option>
+            <option>Company Secretarial</option>
+            <option>Financial Due Diligence</option>
+            <option>CFO Advisory</option>
+            <option>Full Package</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Business</label>
+          <textarea placeholder="Briefly describe your business, industry, and what you need help with..."></textarea>
+        </div>
+        <button class="form-submit">Submit Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand"><span>Greenwood</span> HK</div>
+  <div class="footer-sub">Hong Kong Audit &amp; Accounting Services · Professional · Reliable · Compliant</div>
+  <div class="footer-copy">© 2024 Greenwood HK. All Rights Reserved. · info@greenwoodhk.com · 9091 8351</div>
+</footer>
+
+</body>
+</html>
