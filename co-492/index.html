@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港商曼巴互動娛樂股份有限公司 | MAMBA Interactive Entertainment | 互動娛樂科技</title>
+<style>
+  :root {
+    --primary: #0e0818;
+    --accent: #8040c0;
+    --accent2: #a060e0;
+    --accent3: #cc99ff;
+    --gold: #e0b840;
+    --gold2: #ffd060;
+    --light: #f5f0ff;
+    --white: #ffffff;
+    --text: #18101e;
+    --muted: #6050708;
+    --muted: #5e4878;
+    --border: #d8c8ec;
+    --card-bg: #faf6ff;
+    --hero-overlay: rgba(14,8,24,0.80);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI','Microsoft JhengHei','Noto Sans TC',sans-serif; color:var(--text); background:#fff; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+
+  nav {
+    background:var(--primary);
+    padding:0 2rem;
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px; position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 16px rgba(128,64,192,0.3);
+    border-bottom:1px solid rgba(128,64,192,0.4);
+  }
+  .nav-brand { display:flex; align-items:center; gap:12px; }
+  .nav-logo {
+    width:44px; height:44px; background:linear-gradient(135deg,var(--accent),var(--gold));
+    border-radius:8px; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:1rem; color:#fff;
+  }
+  .nav-brand-text .line1 { font-size:1rem; font-weight:700; color:#fff; }
+  .nav-brand-text .line2 { font-size:0.66rem; color:var(--accent3); letter-spacing:0.5px; }
+  .nav-links { display:flex; gap:1.6rem; }
+  .nav-links a { color:rgba(255,255,255,0.78); font-size:0.87rem; font-weight:500; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--accent3); text-decoration:none; }
+  .nav-cta {
+    background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff !important; padding:8px 18px;
+    border-radius:20px; font-size:0.85rem !important; font-weight:600 !important; transition:opacity 0.2s !important;
+  }
+  .nav-cta:hover { opacity:0.85; }
+
+  .hero {
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+      url('https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1600&q=80') center/cover no-repeat;
+    min-height:520px; display:flex; align-items:center; padding:4rem 2rem;
+  }
+  .hero-inner { max-width:1100px; margin:0 auto; width:100%; display:flex; align-items:center; gap:3rem; }
+  .hero-text { flex:1; }
+  .hero-badge {
+    display:inline-block; background:rgba(128,64,192,0.2); border:1px solid rgba(204,153,255,0.4);
+    color:var(--accent3); font-size:0.76rem; font-weight:600; padding:5px 14px;
+    border-radius:20px; letter-spacing:1px; margin-bottom:1.2rem;
+  }
+  .hero-text h1 { font-size:2.5rem; font-weight:800; color:#fff; line-height:1.15; margin-bottom:0.5rem; }
+  .hero-text h1 span { color:var(--gold2); }
+  .hero-text .en { font-size:1rem; color:var(--accent3); margin-bottom:1rem; }
+  .hero-text .subtitle { font-size:1rem; color:rgba(255,255,255,0.78); margin-bottom:2rem; line-height:1.75; max-width:520px; }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn-primary {
+    background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; padding:12px 28px; border-radius:24px;
+    font-weight:700; font-size:0.93rem; transition:opacity 0.2s; display:inline-block;
+  }
+  .btn-primary:hover { opacity:0.88; text-decoration:none; }
+  .btn-gold {
+    background:linear-gradient(135deg,var(--gold),var(--gold2)); color:#0e0818; padding:12px 28px; border-radius:24px;
+    font-weight:700; font-size:0.93rem; transition:opacity 0.2s; display:inline-block;
+  }
+  .btn-gold:hover { opacity:0.9; text-decoration:none; }
+  .hero-card {
+    background:rgba(255,255,255,0.08); backdrop-filter:blur(12px);
+    border:1px solid rgba(128,64,192,0.3); border-radius:14px;
+    padding:2rem 1.6rem; min-width:275px; color:#fff;
+  }
+  .hero-card h3 { font-size:0.76rem; color:var(--accent3); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:1.2rem; }
+  .info-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:0.9rem; font-size:0.88rem; color:rgba(255,255,255,0.84); line-height:1.55; }
+  .info-icon { color:var(--gold2); flex-shrink:0; }
+
+  .stats-strip { background:linear-gradient(90deg,var(--accent),var(--accent2)); padding:1.4rem 2rem; }
+  .stats-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-around; flex-wrap:wrap; }
+  .stat-item { text-align:center; padding:0.4rem 1.2rem; }
+  .stat-num { font-size:1.9rem; font-weight:800; color:#fff; }
+  .stat-label { font-size:0.7rem; color:rgba(255,255,255,0.8); letter-spacing:0.5px; margin-top:2px; }
+
+  section { padding:4rem 2rem; }
+  .section-inner { max-width:1100px; margin:0 auto; }
+  .section-tag { font-size:0.72rem; font-weight:700; letter-spacing:2px; color:var(--accent); margin-bottom:0.5rem; }
+  .section-title { font-size:2rem; font-weight:800; color:var(--primary); margin-bottom:0.8rem; }
+  .section-sub { font-size:1rem; color:var(--muted); line-height:1.8; max-width:640px; }
+
+  .about { background:#fff; }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:start; margin-top:2.5rem; }
+  .about-text p { color:var(--muted); line-height:1.9; margin-bottom:1rem; font-size:0.97rem; }
+  .highlight-box {
+    background:var(--primary); color:#fff; border-radius:12px; padding:2rem;
+    border-left:4px solid var(--accent);
+    background:linear-gradient(135deg,#0e0818,#1a0c30);
+  }
+  .highlight-box h4 { font-size:0.78rem; color:var(--accent3); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:1.2rem; }
+  .highlight-box ul { list-style:none; }
+  .highlight-box ul li { padding:0.5rem 0; border-bottom:1px solid rgba(255,255,255,0.1); font-size:0.9rem; color:rgba(255,255,255,0.86); display:flex; align-items:center; gap:10px; }
+  .highlight-box ul li:last-child { border-bottom:none; }
+  .highlight-box ul li::before { content:'✦'; color:var(--gold2); flex-shrink:0; font-size:0.9rem; }
+
+  .business { background:var(--light); }
+  .business-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.5rem; }
+  .biz-card {
+    background:#fff; border:1px solid var(--border); border-radius:12px;
+    padding:1.8rem; border-top:3px solid var(--accent); transition:all 0.2s;
+  }
+  .biz-card:hover { box-shadow:0 6px 24px rgba(128,64,192,0.12); transform:translateY(-3px); }
+  .biz-icon { font-size:2.2rem; margin-bottom:0.9rem; }
+  .biz-card h4 { font-size:1rem; font-weight:700; color:var(--primary); margin-bottom:0.6rem; }
+  .biz-card p { font-size:0.87rem; color:var(--muted); line-height:1.7; }
+
+  .game { background:#fff; }
+  .game-card { background:linear-gradient(135deg,#0e0818,#1a0c30); border-radius:16px; padding:3rem; margin-top:2.5rem; display:flex; gap:3rem; align-items:center; border:1px solid rgba(128,64,192,0.3); }
+  .game-info h3 { font-size:1.8rem; font-weight:800; color:var(--gold2); margin-bottom:0.5rem; }
+  .game-info .game-cn { font-size:1.1rem; color:var(--accent3); margin-bottom:1.2rem; }
+  .game-info p { font-size:0.95rem; color:rgba(255,255,255,0.78); line-height:1.8; margin-bottom:1.2rem; }
+  .game-tags { display:flex; flex-wrap:wrap; gap:0.5rem; }
+  .game-tag { background:rgba(128,64,192,0.3); border:1px solid rgba(128,64,192,0.5); color:var(--accent3); font-size:0.78rem; padding:3px 10px; border-radius:12px; }
+  .game-visual { font-size:8rem; flex-shrink:0; }
+
+  .contact { background:var(--primary); background:linear-gradient(135deg,#0e0818,#1a0c30); }
+  .contact .section-title { color:#fff; }
+  .contact .section-sub { color:rgba(255,255,255,0.65); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; }
+  .contact-info h4 { font-size:0.76rem; color:var(--accent3); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:1.5rem; }
+  .contact-detail { display:flex; align-items:flex-start; gap:14px; margin-bottom:1.3rem; }
+  .contact-icon { width:42px; height:42px; background:rgba(128,64,192,0.2); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+  .contact-detail-text .label { font-size:0.72rem; color:rgba(255,255,255,0.45); letter-spacing:0.5px; }
+  .contact-detail-text .value { font-size:0.9rem; color:#fff; font-weight:500; margin-top:2px; }
+  .contact-detail-text .value a { color:var(--accent3); }
+  .contact-form { background:rgba(255,255,255,0.07); border:1px solid rgba(128,64,192,0.2); border-radius:14px; padding:2rem; }
+  .contact-form h4 { font-size:1rem; font-weight:700; color:#fff; margin-bottom:1.5rem; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .form-group { margin-bottom:1rem; }
+  .form-group label { font-size:0.78rem; color:rgba(255,255,255,0.5); margin-bottom:5px; display:block; }
+  .form-group input, .form-group select, .form-group textarea {
+    width:100%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14);
+    border-radius:8px; padding:10px 14px; color:#fff; font-size:0.9rem; transition:border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:var(--accent3); }
+  .form-group select option { background:#1a0c30; }
+  .form-group textarea { resize:vertical; min-height:90px; }
+  .form-submit {
+    width:100%; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; border:none; border-radius:24px;
+    padding:13px; font-size:0.95rem; font-weight:700; cursor:pointer; transition:opacity 0.2s; margin-top:0.5rem;
+  }
+  .form-submit:hover { opacity:0.88; }
+
+  footer { background:#080510; padding:2.5rem 2rem; text-align:center; color:rgba(255,255,255,0.38); font-size:0.8rem; border-top:1px solid rgba(128,64,192,0.15); }
+  footer a { color:var(--accent3); }
+
+  @media(max-width:900px) {
+    .hero-inner { flex-direction:column; }
+    .hero-card { min-width:unset; width:100%; }
+    .about-grid, .contact-grid { grid-template-columns:1fr; }
+    .business-grid { grid-template-columns:1fr 1fr; }
+    .game-card { flex-direction:column; }
+    .nav-links { display:none; }
+    .hero-text h1 { font-size:2rem; }
+  }
+  @media(max-width:600px) {
+    .business-grid, .form-row { grid-template-columns:1fr; }
+    .stats-inner { flex-direction:column; gap:1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">M</div>
+    <div class="nav-brand-text">
+      <div class="line1">曼巴互動娛樂 MAMBA Interactive</div>
+      <div class="line2">Interactive Entertainment · Hong Kong</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">關於我們</a>
+    <a href="#business">業務範疇</a>
+    <a href="#game">遊戲服務</a>
+    <a href="#contact" class="nav-cta">聯絡我們</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">✦ 互動娛樂科技 · 香港</div>
+      <h1>曼巴互動娛樂<br><span>MAMBA Interactive</span></h1>
+      <p class="en">香港商曼巴互動娛樂股份有限公司</p>
+      <p class="subtitle">香港商曼巴互動娛樂股份有限公司（MAMBA Interactive Entertainment Limited）是一家以香港為基地的互動娛樂科技企業，業務涵蓋遊戲發行、資訊軟體、數碼娛樂內容及相關科技服務。</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">聯絡我們</a>
+        <a href="#game" class="btn-gold">遊戲服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>聯絡資訊</h3>
+      <div class="info-row"><span class="info-icon">✉️</span><span><strong>客戶服務：</strong><br>service@onmyojigame.com</span></div>
+      <div class="info-row"><span class="info-icon">🌐</span><span><strong>遊戲官網：</strong><br>onmyojigame.com</span></div>
+      <div class="info-row"><span class="info-icon">📍</span><span><strong>香港基地</strong><br>台北辦公室：信義區光復南路495號8樓</span></div>
+      <div class="info-row"><span class="info-icon">🎮</span><span><strong>業務：</strong> 互動娛樂 · 遊戲發行 · 資訊軟體</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">2019</div><div class="stat-label">成立年份</div></div>
+    <div class="stat-item"><div class="stat-num">HK</div><div class="stat-label">香港基地</div></div>
+    <div class="stat-item"><div class="stat-num">TW</div><div class="stat-label">台灣分公司</div></div>
+    <div class="stat-item"><div class="stat-num">多元</div><div class="stat-label">業務類別</div></div>
+    <div class="stat-item"><div class="stat-num">互動</div><div class="stat-label">娛樂科技</div></div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-tag">關於曼巴互動娛樂</div>
+    <h2 class="section-title">香港互動娛樂科技企業</h2>
+    <p class="section-sub">香港商曼巴互動娛樂股份有限公司（MAMBA Interactive Entertainment Limited）是以香港為母公司的互動娛樂及科技企業，並於台灣設有分公司。</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>香港商曼巴互動娛樂股份有限公司成立於2019年，業務涵蓋互動娛樂、遊戲發行、資訊軟體批發及零售、數碼內容發行及智慧財產權等多個範疇。公司旗下遊戲服務品牌包括知名手機遊戲「陰陽師」（Onmyoji）的相關服務平台。</p>
+        <p>公司在台灣分公司以「MAMBA Interactive Entertainment Limited Taiwan Branch (H.K.)」名義登記，從事資訊軟體批發及零售、電腦及周邊設備批發、電子材料批發及各類數碼娛樂服務。</p>
+        <p>公司以互動娛樂為核心業務，融合資訊科技、數碼內容發行及軟體服務，致力於為玩家及合作夥伴提供優質的娛樂科技體驗。</p>
+      </div>
+      <div>
+        <div class="highlight-box">
+          <h4>公司核心優勢</h4>
+          <ul>
+            <li>香港登記互動娛樂科技企業</li>
+            <li>台灣分公司設有完整業務運營</li>
+            <li>遊戲發行及客戶服務運營能力</li>
+            <li>資訊軟體批發及零售資格</li>
+            <li>智慧財產權授權及運營</li>
+            <li>數碼內容及電子商務平台</li>
+            <li>進出口貿易資格（台灣）</li>
+            <li>管理顧問及資訊服務能力</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="business" id="business">
+  <div class="section-inner">
+    <div class="section-tag">業務範疇</div>
+    <h2 class="section-title">多元業務，科技娛樂融合</h2>
+    <p class="section-sub">曼巴互動娛樂業務涵蓋遊戲服務、軟體批發、數碼內容及多類科技服務，形成完整的互動娛樂生態。</p>
+    <div class="business-grid">
+      <div class="biz-card">
+        <div class="biz-icon">🎮</div>
+        <h4>遊戲發行與服務</h4>
+        <p>手機及電腦遊戲的發行、運營及客戶服務支援，提供優質的遊戲體驗及玩家服務平台。</p>
+      </div>
+      <div class="biz-card">
+        <div class="biz-icon">💻</div>
+        <h4>資訊軟體業務</h4>
+        <p>資訊軟體批發及零售，電腦及周邊設備批發，電子材料批發等科技商業業務。</p>
+      </div>
+      <div class="biz-card">
+        <div class="biz-icon">🛒</div>
+        <h4>電子商務平台</h4>
+        <p>無店面零售及網路電商平台運營，為消費者提供便捷的數碼商品購買管道。</p>
+      </div>
+      <div class="biz-card">
+        <div class="biz-icon">©️</div>
+        <h4>智慧財產權</h4>
+        <p>遊戲IP授權、角色商品化及相關智慧財產權的管理與授權業務。</p>
+      </div>
+      <div class="biz-card">
+        <div class="biz-icon">📊</div>
+        <h4>管理顧問服務</h4>
+        <p>資訊科技管理顧問服務，協助企業建立數碼化業務策略及提升運營效率。</p>
+      </div>
+      <div class="biz-card">
+        <div class="biz-icon">🌏</div>
+        <h4>國際貿易</h4>
+        <p>香港與台灣之間的國際貿易業務，推動數碼產品及娛樂內容的跨境流通。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="game" id="game">
+  <div class="section-inner">
+    <div class="section-tag">遊戲服務</div>
+    <h2 class="section-title">Onmyoji 陰陽師</h2>
+    <div class="game-card">
+      <div class="game-visual">🎑</div>
+      <div class="game-info">
+        <h3>Onmyoji</h3>
+        <p class="game-cn">陰陽師 · 奇幻角色扮演手機遊戲</p>
+        <p>曼巴互動娛樂透過 onmyojigame.com 平台為玩家提供遊戲客戶服務及相關支援。Onmyoji（陰陽師）是以日本平安時代為背景的奇幻手機角色扮演遊戲，擁有精美畫風及深度的日式奇幻世界觀，深受全球玩家喜愛。</p>
+        <div class="game-tags">
+          <span class="game-tag">手機遊戲</span>
+          <span class="game-tag">角色扮演 RPG</span>
+          <span class="game-tag">日式奇幻</span>
+          <span class="game-tag">平安時代</span>
+          <span class="game-tag">卡牌收集</span>
+          <span class="game-tag">客戶服務</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--accent3);">聯絡我們</div>
+    <h2 class="section-title">與我們取得聯絡</h2>
+    <p class="section-sub">如有業務合作、遊戲客戶服務或一般查詢，請透過以下方式聯絡曼巴互動娛樂。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h4>聯絡資訊</h4>
+        <div class="contact-detail">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-detail-text">
+            <div class="label">客戶服務電郵</div>
+            <div class="value"><a href="mailto:service@onmyojigame.com">service@onmyojigame.com</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🌐</div>
+          <div class="contact-detail-text">
+            <div class="label">遊戲官方網站</div>
+            <div class="value"><a href="https://www.onmyojigame.com" target="_blank">onmyojigame.com</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail-text">
+            <div class="label">台北辦公室</div>
+            <div class="value">台北市信義區光復南路495號8樓之5<br>8F.-5, No. 495, Guangfu S. Rd., Xinyi, Taipei</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail-text">
+            <div class="label">台灣電話</div>
+            <div class="value">02-2758-8089</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🏢</div>
+          <div class="contact-detail-text">
+            <div class="label">公司登記</div>
+            <div class="value">香港商曼巴互動娛樂股份有限公司<br>MAMBA Interactive Entertainment Limited (H.K.)</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h4>查詢表格</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>聯絡電話</label>
+            <input type="tel" placeholder="電話號碼">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>查詢類別</label>
+          <select>
+            <option>遊戲客戶服務</option>
+            <option>業務合作</option>
+            <option>資訊軟體採購</option>
+            <option>IP授權查詢</option>
+            <option>一般查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>留言</label>
+          <textarea placeholder="請輸入您的查詢內容…"></textarea>
+        </div>
+        <button class="form-submit">提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="margin-bottom:0.5rem;"><strong style="color:rgba(255,255,255,0.65);">香港商曼巴互動娛樂股份有限公司</strong><br>MAMBA Interactive Entertainment Limited (H.K.)</p>
+  <p>
+    <a href="mailto:service@onmyojigame.com">service@onmyojigame.com</a> &nbsp;|&nbsp;
+    <a href="https://www.onmyojigame.com" target="_blank">onmyojigame.com</a>
+  </p>
+  <p style="margin-top:0.8rem; font-size:0.74rem;">© 2025 香港商曼巴互動娛樂股份有限公司。版權所有。</p>
+</footer>
+
+</body>
+</html>
