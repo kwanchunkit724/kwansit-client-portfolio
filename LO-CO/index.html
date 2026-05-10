@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lo & Co. 羅律師行 | 香港專業法律服務</title>
+  <meta name="description" content="Lo & Co. — 香港精品法律事務所，提供商業法律、訴訟、物業及家庭法律服務，以專業誠信著稱。" />
+  <style>
+    :root {
+      --bg:      #0d0e16;
+      --surface: #131420;
+      --card:    #191b2a;
+      --accent:  #7838c0;
+      --accent2: #c0a040;
+      --accent3: #60c8d8;
+      --text:    #e8e4f4;
+      --muted:   #6860a0;
+      --border:  rgba(120,56,192,0.18);
+      --radius:  10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Georgia', 'Times New Roman', 'PingFang HK', serif; background: var(--bg); color: var(--text); line-height: 1.78; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,14,22,0.96); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 66px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-monogram {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #4820a0);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Georgia', serif; font-size: 1.1rem; font-weight: 700; color: #fff;
+      letter-spacing: -0.5px;
+    }
+    .nav-wordmark { font-family: 'Georgia', serif; font-size: 1.15rem; font-weight: 700; color: var(--text); }
+    .nav-wordmark span { color: var(--accent2); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-family: 'Helvetica Neue', sans-serif; font-size: 0.87rem; letter-spacing: 0.02em; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent2); }
+    .nav-cta {
+      border: 1px solid var(--accent2); color: var(--accent2);
+      padding: 7px 20px; border-radius: 3px;
+      font-family: 'Helvetica Neue', sans-serif; font-weight: 600; font-size: 0.83rem;
+      text-decoration: none; letter-spacing: 0.04em;
+      transition: background .2s, color .2s;
+    }
+    .nav-cta:hover { background: var(--accent2); color: #0d0e16; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 110px 5% 70px;
+      background:
+        radial-gradient(ellipse at 72% 22%, rgba(120,56,192,0.12) 0%, transparent 52%),
+        radial-gradient(ellipse at 8% 78%, rgba(192,160,64,0.07) 0%, transparent 46%),
+        var(--bg);
+      position: relative; overflow: hidden;
+    }
+    .hero-rule { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent2), transparent); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 350px; gap: 68px; align-items: center; }
+    .hero-eyebrow {
+      font-family: 'Helvetica Neue', sans-serif; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent2);
+      margin-bottom: 22px; display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--accent2); }
+    h1 { font-size: clamp(2rem, 4vw, 3.1rem); font-weight: 700; line-height: 1.18; margin-bottom: 14px; }
+    h1 .firm-name { font-size: 0.88em; color: var(--accent2); display: block; margin-bottom: 4px; }
+    h1 .tagline { color: var(--text); font-weight: 700; }
+    .hero-desc { font-size: 0.97rem; color: var(--muted); margin: 18px 0 34px; max-width: 500px; line-height: 1.88; font-family: 'Helvetica Neue', sans-serif; }
+    .hero-desc strong { color: var(--accent3); }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      padding: 13px 30px; border-radius: 4px;
+      font-family: 'Helvetica Neue', sans-serif; font-weight: 700; font-size: 0.9rem;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      transition: background .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { background: #8a48d8; box-shadow: 0 8px 24px rgba(120,56,192,0.4); }
+    .btn-secondary {
+      border: 1px solid rgba(192,160,64,0.4); color: var(--accent2);
+      padding: 12px 26px; border-radius: 4px;
+      font-family: 'Helvetica Neue', sans-serif; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; transition: background .2s;
+    }
+    .btn-secondary:hover { background: rgba(192,160,64,0.08); }
+
+    /* HERO CARD */
+    .hero-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 6px; padding: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+      position: relative;
+    }
+    .hero-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 6px 6px 0 0;
+    }
+    .hc-logo { font-family: 'Georgia', serif; font-size: 1.5rem; font-weight: 700; color: var(--accent2); margin-bottom: 4px; }
+    .hc-cn { color: var(--muted); font-size: 0.82rem; margin-bottom: 18px; font-family: 'Helvetica Neue', sans-serif; }
+    .hc-divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+    .hc-row { display: flex; gap: 10px; margin-bottom: 13px; font-family: 'Helvetica Neue', sans-serif; }
+    .hc-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+    .hc-label { color: var(--muted); font-size: 0.72rem; margin-bottom: 2px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .hc-val { color: var(--text); font-size: 0.86rem; font-weight: 500; }
+    .hc-val a { color: var(--accent3); text-decoration: none; }
+    .hc-tag { display: inline-block; background: rgba(120,56,192,0.15); color: var(--accent3); border-radius: 4px; padding: 2px 9px; font-size: 0.73rem; font-weight: 600; }
+
+    /* STATS */
+    #stats {
+      background: var(--surface);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 44px 5%;
+    }
+    .stats-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 2.1rem; font-weight: 700; color: var(--accent2); font-family: 'Georgia', serif; }
+    .stat-label { color: var(--muted); font-size: 0.82rem; margin-top: 5px; font-family: 'Helvetica Neue', sans-serif; }
+
+    /* SECTIONS */
+    section { padding: 88px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-eyebrow {
+      font-family: 'Helvetica Neue', sans-serif; font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent2);
+      margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
+    }
+    .section-eyebrow::before { content: ''; display: block; width: 22px; height: 1px; background: var(--accent2); }
+    .section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 700; margin-bottom: 16px; }
+    .section-desc { color: var(--muted); font-size: 0.93rem; max-width: 620px; line-height: 1.88; font-family: 'Helvetica Neue', sans-serif; }
+
+    /* PRACTICE */
+    #practice { background: var(--bg); }
+    .practice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 46px; }
+    .practice-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 30px 24px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      position: relative;
+    }
+    .practice-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      border-radius: var(--radius) 0 0 var(--radius);
+    }
+    .practice-card:hover { transform: translateY(-4px); border-color: rgba(120,56,192,0.4); box-shadow: 0 12px 40px rgba(120,56,192,0.1); }
+    .pc-icon { font-size: 2rem; margin-bottom: 14px; }
+    .pc-title { font-size: 1rem; font-weight: 700; margin-bottom: 10px; color: var(--accent3); font-family: 'Helvetica Neue', sans-serif; }
+    .pc-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.75; font-family: 'Helvetica Neue', sans-serif; }
+
+    /* APPROACH */
+    #approach { background: var(--surface); }
+    .approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 48px; }
+    .approach-text p { color: var(--muted); font-size: 0.93rem; line-height: 1.9; margin-bottom: 18px; font-family: 'Helvetica Neue', sans-serif; }
+    .approach-text p strong { color: var(--accent3); }
+    .approach-values { display: flex; flex-direction: column; gap: 16px; }
+    .av-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px 22px;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .av-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .av-title { font-weight: 700; margin-bottom: 4px; font-size: 0.92rem; font-family: 'Helvetica Neue', sans-serif; }
+    .av-desc { color: var(--muted); font-size: 0.83rem; font-family: 'Helvetica Neue', sans-serif; }
+
+    /* CONTACT */
+    #contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 48px; }
+    .contact-info { display: flex; flex-direction: column; gap: 18px; }
+    .ci-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 20px;
+    }
+    .ci-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .ci-label { color: var(--muted); font-size: 0.72rem; font-family: 'Helvetica Neue', sans-serif; margin-bottom: 2px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .ci-val { font-weight: 600; font-size: 0.88rem; font-family: 'Helvetica Neue', sans-serif; }
+    .ci-val a { color: var(--accent3); text-decoration: none; }
+    .ci-val a:hover { text-decoration: underline; }
+    .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 32px; }
+    .form-row { margin-bottom: 18px; }
+    .form-row label { display: block; color: var(--muted); font-size: 0.72rem; font-weight: 600; margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'Helvetica Neue', sans-serif; }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); border-radius: 4px; padding: 11px 13px; font-size: 0.87rem;
+      outline: none; transition: border-color .2s; font-family: 'Helvetica Neue', sans-serif;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--accent); }
+    .form-row textarea { min-height: 100px; resize: vertical; }
+    .form-submit {
+      width: 100%; padding: 13px; border-radius: 4px; border: none; cursor: pointer;
+      background: var(--accent); color: #fff;
+      font-weight: 700; font-size: 0.9rem; font-family: 'Helvetica Neue', sans-serif;
+      letter-spacing: 0.04em; transition: background .2s, box-shadow .2s;
+    }
+    .form-submit:hover { background: #8a48d8; box-shadow: 0 6px 20px rgba(120,56,192,0.35); }
+
+    /* FOOTER */
+    footer {
+      background: #08080f; border-top: 1px solid var(--border);
+      padding: 50px 5% 28px; text-align: center;
+    }
+    .footer-wordmark { font-family: 'Georgia', serif; font-size: 1.4rem; font-weight: 700; color: var(--accent2); margin-bottom: 4px; }
+    .footer-sub { color: var(--muted); font-size: 0.82rem; font-family: 'Helvetica Neue', sans-serif; margin-bottom: 24px; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 20px; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.8rem; font-family: 'Helvetica Neue', sans-serif; transition: color .2s; }
+    .footer-links a:hover { color: var(--accent2); }
+    .footer-copy { color: #1a1830; font-size: 0.74rem; font-family: 'Helvetica Neue', sans-serif; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .approach-grid, .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .practice-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 4%; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#hero">
+    <div class="nav-monogram">L&</div>
+    <span class="nav-wordmark">Lo <span>&</span> Co.</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#practice">業務範疇</a></li>
+    <li><a href="#approach">服務理念</a></li>
+    <li><a href="#contact">聯絡</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">預約諮詢</a>
+</nav>
+
+<div class="hero-rule"></div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Hong Kong Legal Practice · 香港法律事務所</div>
+      <h1>
+        <span class="firm-name">Lo &amp; Co. 羅律師行</span>
+        <span class="tagline">專業法律服務<br/>以誠信為本</span>
+      </h1>
+      <p class="hero-desc">
+        Lo &amp; Co. 是一家香港精品法律事務所，致力為個人及企業客戶提供<strong>高質素、量身訂製的法律服務</strong>。
+        我們的律師團隊在商業法律、訴訟、物業及家庭法律等領域擁有豐富的實踐經驗，
+        以專業和誠信為每位客戶保駕護航。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#practice">⚖️ 了解業務範疇</a>
+        <a class="btn-secondary" href="#contact">預約免費諮詢</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-logo">Lo &amp; Co.</div>
+      <div class="hc-cn">羅律師行</div>
+      <div class="hc-divider"></div>
+      <div class="hc-row">
+        <span class="hc-icon">✉️</span>
+        <div>
+          <div class="hc-label">電郵 Email</div>
+          <div class="hc-val"><a href="mailto:info@loandlo.com">info@loandlo.com</a></div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">📍</span>
+        <div>
+          <div class="hc-label">服務地區</div>
+          <div class="hc-val">Hong Kong</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">⚖️</span>
+        <div>
+          <div class="hc-label">行業</div>
+          <div class="hc-val"><span class="hc-tag">法律 Legal Services</span></div>
+        </div>
+      </div>
+      <div class="hc-divider"></div>
+      <div class="hc-row">
+        <span class="hc-icon">🌐</span>
+        <div>
+          <div class="hc-label">網址</div>
+          <div class="hc-val"><a href="mailto:info@loandlo.com">loandlo.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num">香港</div>
+      <div class="stat-label">本地精品法律事務所</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">全面</div>
+      <div class="stat-label">商業、訴訟、物業、家庭</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">專業</div>
+      <div class="stat-label">經驗豐富的律師團隊</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">誠信</div>
+      <div class="stat-label">以客戶利益為先</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRACTICE AREAS -->
+<section id="practice">
+  <div class="section-inner">
+    <div class="section-eyebrow">業務範疇 Practice Areas</div>
+    <h2 class="section-title">全面法律服務，一站滿足</h2>
+    <p class="section-desc">Lo &amp; Co. 提供涵蓋多個法律領域的專業服務，由經驗豐富的律師團隊為每位客戶提供針對性的法律解決方案。</p>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <div class="pc-icon">🏢</div>
+        <div class="pc-title">商業及公司法律</div>
+        <div class="pc-desc">公司設立、股權架構、商業合約起草及審閱、企業合規、兼併收購及商業糾紛的全面法律顧問服務。</div>
+      </div>
+      <div class="practice-card">
+        <div class="pc-icon">⚖️</div>
+        <div class="pc-title">民事及商業訴訟</div>
+        <div class="pc-desc">代理各類民事及商業訴訟，包括合約糾紛、侵權索償、公司糾紛及破產重組，提供高效的法庭代理服務。</div>
+      </div>
+      <div class="practice-card">
+        <div class="pc-icon">🏠</div>
+        <div class="pc-title">物業及房地產法律</div>
+        <div class="pc-desc">住宅及商業物業交易、按揭文件、租約起草、業主與租客糾紛及物業發展的專業法律服務。</div>
+      </div>
+      <div class="practice-card">
+        <div class="pc-icon">👨‍👩‍👧</div>
+        <div class="pc-title">家庭法律</div>
+        <div class="pc-desc">離婚、贍養費、子女撫養權及探視安排、財產分配及婚前協議等家庭法律事宜，提供體貼專業的法律支援。</div>
+      </div>
+      <div class="practice-card">
+        <div class="pc-icon">📜</div>
+        <div class="pc-title">遺囑及遺產</div>
+        <div class="pc-desc">遺囑草擬、財產規劃、遺產管理及繼承糾紛處理，協助客戶妥善安排身後事及保障家人利益。</div>
+      </div>
+      <div class="practice-card">
+        <div class="pc-icon">🌐</div>
+        <div class="pc-title">跨境法律事務</div>
+        <div class="pc-desc">處理涉及香港與大陸、澳門或海外的跨境法律事宜，包括跨境合約、投資架構及跨境糾紛解決。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="section-inner">
+    <div class="section-eyebrow">服務理念 Our Approach</div>
+    <h2 class="section-title">以客戶為中心的法律服務</h2>
+    <div class="approach-grid">
+      <div class="approach-text">
+        <p>
+          Lo &amp; Co. 深信每位客戶都值得獲得<strong>專業、體貼和有效的法律服務</strong>。
+          無論案件規模大小，我們均以同等的投入和專業精神處理每個法律事務，
+          確保客戶獲得量身訂製的最佳法律解決方案。
+        </p>
+        <p>
+          我們的律師團隊不僅具備扎實的法律知識，更深明商業及個人現實考量的重要性，
+          力求在保障客戶<strong>法律權益</strong>的同時，兼顧商業效益和實際可行性。
+        </p>
+        <p>
+          Lo &amp; Co. 以<strong>清晰透明的溝通方式</strong>與客戶保持緊密聯繫，
+          確保客戶在整個法律程序中均能充分了解案件進展，並參與每個關鍵決策。
+        </p>
+      </div>
+      <div class="approach-values">
+        <div class="av-item">
+          <div class="av-icon">⚖️</div>
+          <div>
+            <div class="av-title">專業誠信</div>
+            <div class="av-desc">秉持嚴格的職業操守，以誠信和透明的態度為每位客戶提供法律服務。</div>
+          </div>
+        </div>
+        <div class="av-item">
+          <div class="av-icon">🎯</div>
+          <div>
+            <div class="av-title">量身訂製</div>
+            <div class="av-desc">深入了解每位客戶的獨特需求，提供針對性的法律策略和個人化服務方案。</div>
+          </div>
+        </div>
+        <div class="av-item">
+          <div class="av-icon">💬</div>
+          <div>
+            <div class="av-title">清晰溝通</div>
+            <div class="av-desc">以淺白易懂的語言解釋複雜法律概念，確保客戶充分了解自身的法律狀況。</div>
+          </div>
+        </div>
+        <div class="av-item">
+          <div class="av-icon">⚡</div>
+          <div>
+            <div class="av-title">高效處理</div>
+            <div class="av-desc">珍惜客戶的時間和資源，以最高效率處理法律事務，爭取最佳結果。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-eyebrow">聯絡我們 Contact</div>
+    <h2 class="section-title">預約法律諮詢</h2>
+    <p class="section-desc">歡迎透過電郵或填寫以下表格聯絡我們，Lo &amp; Co. 的律師團隊將盡快安排與您會面或進行電話諮詢。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="ci-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">電郵 Email</div>
+            <div class="ci-val"><a href="mailto:info@loandlo.com">info@loandlo.com</a></div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">服務地區</div>
+            <div class="ci-val">Hong Kong</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">🕐</div>
+          <div>
+            <div class="ci-label">辦公時間</div>
+            <div class="ci-val">星期一至五 9:00 – 18:00</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">⚖️</div>
+          <div>
+            <div class="ci-label">業務範疇</div>
+            <div class="ci-val">商業 · 訴訟 · 物業 · 家庭 · 遺產</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <label>姓名 Name</label>
+          <input type="text" placeholder="您的姓名" />
+        </div>
+        <div class="form-row">
+          <label>電郵 Email</label>
+          <input type="email" placeholder="your@email.com" />
+        </div>
+        <div class="form-row">
+          <label>聯絡電話 Phone</label>
+          <input type="tel" placeholder="+852 xxxx xxxx" />
+        </div>
+        <div class="form-row">
+          <label>法律事務類別</label>
+          <select>
+            <option value="">— 請選擇 —</option>
+            <option>商業及公司法律</option>
+            <option>民事及商業訴訟</option>
+            <option>物業及房地產法律</option>
+            <option>家庭法律</option>
+            <option>遺囑及遺產</option>
+            <option>跨境法律事務</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>查詢詳情</label>
+          <textarea placeholder="請簡述您的法律問題或需求..."></textarea>
+        </div>
+        <button class="form-submit" type="button">⚖️ 提交諮詢申請</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-wordmark">Lo &amp; Co.</div>
+  <div class="footer-sub">羅律師行 · Hong Kong Legal Practice · info@loandlo.com</div>
+  <div class="footer-links">
+    <a href="#practice">業務範疇</a>
+    <a href="#approach">服務理念</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <div class="footer-copy">© 2025 Lo &amp; Co. All rights reserved. · 本網站內容不構成法律意見。</div>
+</footer>
+
+</body>
+</html>
