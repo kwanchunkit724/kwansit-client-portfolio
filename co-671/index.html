@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>曜亞國際(香港)有限公司 | 醫學美容設備代理</title>
+  <meta name="description" content="曜亞國際(香港)有限公司 — 專業醫學美容設備及產品代理商，獨家代理LPG、Cooltech、Fotona、ShenB等國際頂級品牌，服務全港美容診所及醫療機構。" />
+  <style>
+    :root {
+      --bg:       #060810;
+      --bg2:      #090b14;
+      --bg3:      #0e1020;
+      --border:   #181c2e;
+      --acc:      #18b0c8;
+      --acc2:     #38d0e8;
+      --acc3:     #1080a0;
+      --acc-v:    #7858c8;
+      --text:     #d8e4f0;
+      --muted:    #6878a8;
+      --card:     #0c0e1a;
+      --radius:   10px;
+      --nav-h:    64px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+      background: rgba(6,8,16,0.96); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+    .nav-logo-mark {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--acc3), var(--acc), var(--acc2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700; color: #fff;
+    }
+    .nav-logo-text { font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: 0.5px; }
+    .nav-links { display: flex; gap: 26px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color .2s; }
+    .nav-links a:hover { color: var(--acc2); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 9px 20px; border-radius: 6px;
+      font-size: 12px; cursor: pointer; font-family: inherit; font-weight: 600;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; padding-top: var(--nav-h);
+      background: linear-gradient(155deg, var(--bg) 0%, #080c1c 55%, var(--bg) 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 15% 55%, rgba(24,176,200,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 85% 30%, rgba(120,88,200,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1180px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 420px; gap: 72px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(24,176,200,0.1); border: 1px solid rgba(24,176,200,0.3);
+      border-radius: 20px; padding: 6px 16px; margin-bottom: 24px;
+      font-size: 12px; color: var(--acc2); letter-spacing: 0.8px;
+    }
+    .hero h1 { font-size: clamp(1.9rem, 3.5vw, 3.2rem); font-weight: 700; line-height: 1.25; margin-bottom: 18px; }
+    .hero h1 .hl { color: var(--acc2); }
+    .hero-sub { font-size: 0.98rem; color: var(--muted); margin-bottom: 36px; line-height: 1.8; max-width: 520px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 13px 28px; border-radius: 7px;
+      font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 600;
+      text-decoration: none; transition: opacity .2s; display: inline-block;
+    }
+    .btn-primary:hover { opacity: .85; }
+    .btn-ghost {
+      background: transparent; color: var(--acc2);
+      border: 1.5px solid rgba(24,176,200,0.4); padding: 12px 26px; border-radius: 7px;
+      font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 500;
+      text-decoration: none; transition: all .2s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--acc2); background: rgba(24,176,200,0.06); }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .hero-tag {
+      background: rgba(24,30,46,0.6); border: 1px solid var(--border);
+      color: var(--muted); font-size: 12px; padding: 5px 12px; border-radius: 6px;
+    }
+
+    /* HERO CARD */
+    .hero-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .hero-card-top {
+      background: linear-gradient(135deg, #0e1220, #0a0e18);
+      padding: 22px 26px; border-bottom: 1px solid var(--border);
+    }
+    .hero-card-top h3 { font-size: 14px; color: var(--acc2); font-weight: 700; margin-bottom: 3px; }
+    .hero-card-top p { font-size: 12px; color: var(--muted); }
+    .est-badge {
+      display: inline-flex; gap: 6px; align-items: center;
+      background: rgba(24,176,200,0.12); border: 1px solid rgba(24,176,200,0.3);
+      border-radius: 6px; padding: 4px 12px; margin-top: 10px;
+      font-size: 11px; color: var(--acc); letter-spacing: 0.5px;
+    }
+    .hero-card-body { padding: 20px 26px; }
+    .info-row { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(24,28,46,0.7); align-items: flex-start; }
+    .info-row:last-child { border-bottom: none; }
+    .info-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+    .info-label { font-size: 11px; color: var(--muted); }
+    .info-val { font-size: 13px; color: var(--text); margin-top: 1px; }
+    .info-val a { color: var(--acc2); text-decoration: none; }
+
+    /* STATS */
+    .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 40px; }
+    .stats-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 700; color: var(--acc2); line-height: 1; margin-bottom: 5px; }
+    .stat-label { font-size: 12px; color: var(--muted); }
+
+    /* SECTIONS */
+    section { padding: 84px 40px; }
+    .section-inner { max-width: 1180px; margin: 0 auto; }
+    .section-label { font-size: 11px; color: var(--acc); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+    .section-title { font-size: clamp(1.6rem, 2.5vw, 2.3rem); font-weight: 700; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+    .section-title em { font-style: normal; color: var(--acc2); }
+    .section-desc { font-size: 1rem; color: var(--muted); max-width: 600px; line-height: 1.8; }
+
+    /* ABOUT */
+    .about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; align-items: start; }
+    .about-highlight {
+      background: linear-gradient(135deg, rgba(24,176,200,0.07), rgba(16,128,160,0.03));
+      border: 1px solid rgba(24,176,200,0.18); border-radius: 14px; padding: 30px;
+    }
+    .about-highlight h3 { font-size: 1.1rem; color: var(--acc2); margin-bottom: 14px; font-weight: 600; }
+    .about-highlight p { font-size: 0.94rem; color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
+    .about-highlight p:last-child { margin-bottom: 0; }
+    .about-highlight strong { color: var(--text); }
+    .about-props { display: flex; flex-direction: column; gap: 16px; }
+    .prop-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .prop-icon { font-size: 22px; flex-shrink: 0; }
+    .prop-card h4 { font-size: 14px; color: var(--acc2); margin-bottom: 5px; font-weight: 600; }
+    .prop-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* BRANDS */
+    .brands { background: var(--bg2); }
+    .brands-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
+    .brand-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 26px;
+      transition: border-color .2s, transform .2s;
+    }
+    .brand-card:hover { border-color: rgba(24,176,200,0.4); transform: translateY(-3px); }
+    .brand-icon { font-size: 28px; margin-bottom: 12px; }
+    .brand-name { font-size: 16px; color: var(--acc2); font-weight: 700; margin-bottom: 6px; }
+    .brand-type { font-size: 11px; color: var(--acc); letter-spacing: 0.5px; margin-bottom: 10px; }
+    .brand-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .brand-tag {
+      display: inline-block; margin-top: 12px;
+      background: rgba(24,176,200,0.08); border: 1px solid rgba(24,176,200,0.2);
+      color: var(--acc); font-size: 11px; padding: 3px 10px; border-radius: 4px;
+    }
+
+    /* SERVICES */
+    .services { background: var(--bg); }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 48px; }
+    .service-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px;
+      display: flex; gap: 18px; align-items: flex-start;
+      transition: border-color .2s;
+    }
+    .service-card:hover { border-color: rgba(24,176,200,0.3); }
+    .service-icon { font-size: 26px; flex-shrink: 0; }
+    .service-card h3 { font-size: 15px; color: var(--text); margin-bottom: 8px; font-weight: 600; }
+    .service-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    /* OFFICES */
+    .offices { background: var(--bg2); }
+    .offices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
+    .office-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 26px;
+    }
+    .office-region { font-size: 11px; color: var(--acc); letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 8px; }
+    .office-name { font-size: 14px; color: var(--acc2); font-weight: 700; margin-bottom: 16px; }
+    .office-detail { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
+    .office-detail:last-child { margin-bottom: 0; }
+    .od-icon { font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+    .od-text { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+    .od-text a { color: var(--acc2); text-decoration: none; }
+    .hk-highlight { border-color: rgba(24,176,200,0.4); background: rgba(24,176,200,0.04); }
+
+    /* CONTACT */
+    .contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; }
+    .contact-info h3 { font-size: 1.1rem; color: var(--acc2); font-weight: 600; margin-bottom: 24px; }
+    .contact-item { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+    .ci-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .ci-label { font-size: 11px; color: var(--muted); }
+    .ci-val { font-size: 13.5px; color: var(--text); margin-top: 2px; }
+    .ci-val a { color: var(--acc2); text-decoration: none; }
+    .ci-val a:hover { text-decoration: underline; }
+    .contact-form {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 32px;
+    }
+    .contact-form h3 { font-size: 1.05rem; color: var(--text); margin-bottom: 6px; font-weight: 600; }
+    .contact-form p { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+    .form-row { margin-bottom: 16px; }
+    .form-row label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; background: rgba(24,28,46,0.5); border: 1px solid var(--border);
+      border-radius: 7px; padding: 10px 14px; color: var(--text); font-size: 13px;
+      font-family: inherit; outline: none; transition: border-color .2s;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--acc); }
+    .form-row textarea { resize: vertical; min-height: 88px; }
+    .form-row select option { background: var(--bg2); }
+    .form-submit {
+      width: 100%; background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 12px; border-radius: 7px; font-size: 14px;
+      cursor: pointer; font-family: inherit; font-weight: 600; transition: opacity .2s;
+    }
+    .form-submit:hover { opacity: .85; }
+
+    /* FOOTER */
+    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 44px 40px 28px; text-align: center; }
+    .footer-inner { max-width: 1180px; margin: 0 auto; }
+    .footer-brand { font-size: 16px; color: var(--acc2); font-weight: 700; margin-bottom: 4px; }
+    .footer-tagline { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 24px; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--acc2); }
+    .footer-copy { font-size: 12px; color: rgba(104,120,168,0.5); }
+
+    @media (max-width: 1024px) {
+      .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .brands-grid, .offices-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 60px 20px; }
+      .brands-grid, .offices-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">曜</div>
+    <span class="nav-logo-text">曜亞國際(香港)有限公司</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#brands">代理品牌</a></li>
+    <li><a href="#services">服務項目</a></li>
+    <li><a href="#offices">辦事處</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">業務查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">💎 醫學美容設備 · 專業代理商</div>
+      <h1>頂尖醫學美容<br>設備及產品<br><span class="hl">獨家代理</span></h1>
+      <p class="hero-sub">
+        曜亞國際(香港)有限公司 — 嘉億集團旗下成員，自2003年起專注醫學美容設備及產品代理業務，獨家代理LPG、Cooltech、Fotona等多個國際知名品牌，服務全港美容診所及醫療機構。
+      </p>
+      <div class="hero-btns">
+        <a href="#brands" class="btn-primary">探索代理品牌</a>
+        <a href="#contact" class="btn-ghost">業務合作洽談</a>
+      </div>
+      <div class="hero-tags">
+        <span class="hero-tag">🏥 醫療美容</span>
+        <span class="hero-tag">⚡ 能量儀器</span>
+        <span class="hero-tag">💉 注射類產品</span>
+        <span class="hero-tag">🏢 B2B代理</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-top">
+        <h3>曜亞國際(香港)有限公司</h3>
+        <p>醫學美容設備及產品代理商 · 香港</p>
+        <div class="est-badge">✦ 成立於2003年 · 嘉億集團成員</div>
+      </div>
+      <div class="hero-card-body">
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">香港辦事處</div>
+            <div class="info-val">紅磡民樂街21號富高工業中心A座4樓13室</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">香港電話</div>
+            <div class="info-val"><a href="tel:+85223939292">+852 2393-9292</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📧</div>
+          <div>
+            <div class="info-label">電郵</div>
+            <div class="info-val"><a href="mailto:service@dmttw.com">service@dmttw.com</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🌐</div>
+          <div>
+            <div class="info-label">官方網站</div>
+            <div class="info-val"><a href="https://www.dmttw.com.tw" target="_blank">www.dmttw.com.tw</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🏢</div>
+          <div>
+            <div class="info-label">集團總部</div>
+            <div class="info-val">台灣新北市中和區（嘉億集團）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">2003</div>
+      <div class="stat-label">集團成立年份</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">獨家代理國際品牌</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">港台中</div>
+      <div class="stat-label">三地業務網絡</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">全方位</div>
+      <div class="stat-label">售前售後支援服務</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">B2B</div>
+      <div class="stat-label">醫療美容機構服務</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">關於曜亞</div>
+    <div class="section-title">專業醫學美容<em>設備代理商</em></div>
+    <p class="section-desc">曜亞國際是嘉億集團旗下成員，專注醫學美容設備及產品代理，以專業服務支援全港醫美行業發展。</p>
+    <div class="about-grid">
+      <div class="about-highlight">
+        <h3>公司簡介</h3>
+        <p>
+          曜亞國際股份有限公司（DMT International）成立於<strong>2003年</strong>，是嘉億集團旗下的綜合醫學美容設備及產品代理商，集合商業、市場、運營及技術各領域專才，深耕醫學美容行業逾二十年。
+        </p>
+        <p>
+          香港分公司曜亞國際(香港)有限公司，坐落於九龍紅磡，負責獨家代理多個國際頂級醫學美容品牌在港業務，服務對象包括<strong>美容診所、醫療機構及醫學美容中心</strong>。
+        </p>
+        <p>
+          公司推行「全員客服專案」，將業務、市場及維護人員整合為服務團隊，提供<strong>即時回應的全面支援</strong>，並持續為客戶創造創新美容解決方案及商業機遇。
+        </p>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">🏆</div>
+          <div>
+            <h4>獨家代理</h4>
+            <p>獨家代理多個國際頂級醫學美容品牌，確保客戶獲得正品保障及原廠技術支援。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🔧</div>
+          <div>
+            <h4>售後維護</h4>
+            <p>專業技術團隊提供完善的設備安裝、操作培訓及定期維護服務，全程無憂。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">📚</div>
+          <div>
+            <h4>專業培訓</h4>
+            <p>定期舉辦行業培訓活動及研討會，協助醫療美容機構提升專業水平及業務能力。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🌏</div>
+          <div>
+            <h4>三地服務</h4>
+            <p>業務覆蓋香港、台灣及中國，跨境合作無縫接軌，提供一致高水準服務。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands" id="brands">
+  <div class="section-inner">
+    <div class="section-label">代理品牌</div>
+    <div class="section-title">獨家代理<em>國際頂級品牌</em></div>
+    <p class="section-desc">曜亞國際獨家代理多個醫學美容設備及產品品牌，涵蓋能量儀器、注射類產品及護膚品系列。</p>
+    <div class="brands-grid">
+      <div class="brand-card">
+        <div class="brand-icon">💆</div>
+        <div class="brand-name">LPG</div>
+        <div class="brand-type">法國 · 機械美容儀器</div>
+        <p>法國原裝進口LPG Mobilift及Alliance系列，採用專利Endermologie®技術，有效塑形緊膚及淋巴引流，適用於全身及面部護理。</p>
+        <span class="brand-tag">獨家代理</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">❄️</div>
+        <div class="brand-name">Cooltech</div>
+        <div class="brand-type">冷凍溶脂技術</div>
+        <p>先進的冷凍溶脂技術（CoolSculpting類），非侵入式針對頑固脂肪，安全有效，療程無需恢復期，深受體雕客戶歡迎。</p>
+        <span class="brand-tag">獨家代理</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-name">Fotona</div>
+        <div class="brand-type">激光治療系統</div>
+        <p>Fotona電磁刺激系統，結合先進激光技術，適用於皮膚緊緻、除毛、祛痘及多種皮膚治療，備受醫療美容專業人士信賴。</p>
+        <span class="brand-tag">獨家代理</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">📡</div>
+        <div class="brand-name">ShenB</div>
+        <div class="brand-type">射頻及等離子系統</div>
+        <p>ShenB Sunny射頻系統及ShenB Plato等離子系統，提供多種非侵入性皮膚治療方案，適用於緊膚、提升及皮膚再生。</p>
+        <span class="brand-tag">獨家代理</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">💉</div>
+        <div class="brand-name">注射類產品</div>
+        <div class="brand-type">Hydeumis · Anymesis · Ellacor</div>
+        <p>代理多款優質注射類產品，包括透明質酸填充劑Hydeumis、Anymesis及PDO線Ellacor，為醫療美容提供多元化注射解決方案。</p>
+        <span class="brand-tag">正品代理</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🔬</div>
+        <div class="brand-name">DR CYJ · Novasonix HERA</div>
+        <div class="brand-type">護膚品 · 超聲波治療</div>
+        <p>DR CYJ護髮保健系列及Novasonix HERA超聲波治療儀，為美容診所提供更全面的護髮及皮膚超聲波治療解決方案。</p>
+        <span class="brand-tag">正品代理</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label">服務項目</div>
+    <div class="section-title">全面<em>業務支援</em></div>
+    <p class="section-desc">曜亞國際為代理商客戶提供完整的售前諮詢、設備安裝、培訓及售後維護服務，確保每位客戶獲得最大業務效益。</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🤝</div>
+        <div>
+          <h3>業務諮詢</h3>
+          <p>專業業務代表為您分析美容市場趨勢及競爭格局，協助選擇最適合診所定位及客群的設備組合及治療方案。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <div>
+          <h3>設備安裝及調試</h3>
+          <p>專業技術人員到場安裝及調試所有設備，確保儀器以最佳狀態運行，並提供完整的操作說明及初始設定支援。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👨‍🏫</div>
+        <div>
+          <h3>專業操作培訓</h3>
+          <p>由品牌認可培訓師主持的操作培訓課程，涵蓋設備操作技術、客戶溝通及療程設計，提升團隊專業水平。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛠️</div>
+        <div>
+          <h3>售後維護保養</h3>
+          <p>提供定期保養、零件更換及故障維修服務，確保設備長期穩定運行，最大化設備使用壽命及投資回報。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <div>
+          <h3>市場推廣支援</h3>
+          <p>提供品牌授權推廣物料，協助診所有效推廣療程，吸引目標客群，提升診所業務增長潛力。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📞</div>
+        <div>
+          <h3>全天候客服支援</h3>
+          <p>專業客服團隊提供即時響應服務，解答產品、技術及業務問題，讓您的業務運作無後顧之憂。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICES -->
+<section class="offices" id="offices">
+  <div class="section-inner">
+    <div class="section-label">辦事處</div>
+    <div class="section-title">港台中<em>三地業務</em></div>
+    <p class="section-desc">曜亞國際在香港、台灣及中國均設有辦事處，提供跨境無縫服務，支援三地醫學美容行業。</p>
+    <div class="offices-grid">
+      <div class="office-card hk-highlight">
+        <div class="office-region">🇭🇰 香港</div>
+        <div class="office-name">曜亞國際(香港)有限公司</div>
+        <div class="office-detail">
+          <div class="od-icon">📍</div>
+          <div class="od-text">九龍紅磡民樂街21號<br>富高工業中心A座4樓13室</div>
+        </div>
+        <div class="office-detail">
+          <div class="od-icon">📞</div>
+          <div class="od-text"><a href="tel:+85223939292">+852 2393-9292</a></div>
+        </div>
+        <div class="office-detail">
+          <div class="od-icon">📧</div>
+          <div class="od-text"><a href="mailto:service@dmttw.com">service@dmttw.com</a></div>
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-region">🇹🇼 台灣 — 台北總公司</div>
+        <div class="office-name">曜亞國際股份有限公司</div>
+        <div class="office-detail">
+          <div class="od-icon">📍</div>
+          <div class="od-text">23586新北市中和區<br>中正路880號14樓</div>
+        </div>
+        <div class="office-detail">
+          <div class="od-icon">📞</div>
+          <div class="od-text">(02) 2221-7733</div>
+        </div>
+        <div class="office-detail">
+          <div class="od-icon">🖨️</div>
+          <div class="od-text">FAX: (02) 2221-6394</div>
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-region">🇨🇳 中國 — 廣州</div>
+        <div class="office-name">曜亞 中國【廣州】</div>
+        <div class="office-detail">
+          <div class="od-icon">📍</div>
+          <div class="od-text">廣州市越秀區東風中路363號<br>國信大廈1304之二室</div>
+        </div>
+        <div class="office-detail">
+          <div class="od-icon">📞</div>
+          <div class="od-text">+86-020-8354-3931</div>
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-region">🇹🇼 台灣 — 台中</div>
+        <div class="office-name">台中辦公室</div>
+        <div class="office-detail">
+          <div class="od-icon">📍</div>
+          <div class="od-text">402台中市南區<br>復興路一段270號3樓</div>
+        </div>
+        <div class="office-detail">
+          <div class="od-icon">📞</div>
+          <div class="od-text">(04) 2302-8585</div>
+        </div>
+        <div class="office-detail">
+          <div class="od-icon">🖨️</div>
+          <div class="od-text">FAX: (04) 2302-6087</div>
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-region">🇹🇼 台灣 — 高雄</div>
+        <div class="office-name">高雄辦公室</div>
+        <div class="office-detail">
+          <div class="od-icon">📍</div>
+          <div class="od-text">807高雄市三民區<br>建國一路458號13樓</div>
+        </div>
+        <div class="office-detail">
+          <div class="od-icon">📞</div>
+          <div class="od-text">(07) 222-3388</div>
+        </div>
+        <div class="office-detail">
+          <div class="od-icon">🖨️</div>
+          <div class="od-text">FAX: (07) 222-0992</div>
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-region">🌐 網址</div>
+        <div class="office-name">官方網站</div>
+        <div class="office-detail">
+          <div class="od-icon">🌐</div>
+          <div class="od-text"><a href="https://www.dmttw.com.tw" target="_blank">www.dmttw.com.tw</a></div>
+        </div>
+        <div class="office-detail">
+          <div class="od-icon">📧</div>
+          <div class="od-text"><a href="mailto:service@dmttw.com">service@dmttw.com</a></div>
+        </div>
+        <div class="office-detail">
+          <div class="od-icon">💼</div>
+          <div class="od-text">嘉億集團成員</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <div class="section-title">業務合作<em>歡迎洽談</em></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>香港辦事處聯絡資料</h3>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">地址</div>
+            <div class="ci-val">香港九龍紅磡民樂街21號<br>富高工業中心A座4樓13室</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">電話</div>
+            <div class="ci-val"><a href="tel:+85223939292">+852 2393-9292</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">電郵</div>
+            <div class="ci-val"><a href="mailto:service@dmttw.com">service@dmttw.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">官網</div>
+            <div class="ci-val"><a href="https://www.dmttw.com.tw" target="_blank">www.dmttw.com.tw</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🏢</div>
+          <div>
+            <div class="ci-label">集團</div>
+            <div class="ci-val">嘉億集團成員 · 台灣及中國業務</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>業務查詢</h3>
+        <p>歡迎美容診所及醫療機構洽詢代理合作及產品採購事宜。</p>
+        <form onsubmit="event.preventDefault()">
+          <div class="form-row">
+            <label>公司 / 診所名稱</label>
+            <input type="text" placeholder="請輸入公司或診所名稱" />
+          </div>
+          <div class="form-row">
+            <label>聯絡人姓名</label>
+            <input type="text" placeholder="聯絡人全名" />
+          </div>
+          <div class="form-row">
+            <label>電話號碼</label>
+            <input type="tel" placeholder="+852 xxxx xxxx" />
+          </div>
+          <div class="form-row">
+            <label>電子郵件</label>
+            <input type="email" placeholder="business@example.com" />
+          </div>
+          <div class="form-row">
+            <label>查詢品牌 / 產品</label>
+            <select>
+              <option>LPG 機械美容儀器</option>
+              <option>Cooltech 冷凍溶脂</option>
+              <option>Fotona 激光系統</option>
+              <option>ShenB 射頻 / 等離子</option>
+              <option>注射類產品（Hydeumis / Anymesis / Ellacor）</option>
+              <option>DR CYJ / Novasonix HERA</option>
+              <option>多個品牌 / 整體方案</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>查詢詳情</label>
+            <textarea placeholder="請說明您的業務需求、診所規模及希望了解的產品資訊..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">提交查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">曜亞國際(香港)有限公司 · DMT International (HK) Ltd.</div>
+    <div class="footer-tagline">醫學美容設備及產品專業代理 · 嘉億集團成員 · 2003年成立</div>
+    <div class="footer-links">
+      <a href="#about">關於我們</a>
+      <a href="#brands">代理品牌</a>
+      <a href="#services">服務項目</a>
+      <a href="#offices">辦事處</a>
+      <a href="#contact">聯絡我們</a>
+      <a href="https://www.dmttw.com.tw" target="_blank">官方網站</a>
+    </div>
+    <div class="footer-copy">&copy; 2024 曜亞國際(香港)有限公司. 版權所有。醫學美容設備及產品代理，香港。</div>
+  </div>
+</footer>
+
+</body>
+</html>
