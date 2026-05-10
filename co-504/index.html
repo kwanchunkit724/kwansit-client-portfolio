@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西雅圖貿易有限公司 | 餐廳POS系統 | 香港總代理</title>
+<style>
+:root {
+  --primary: #0a1430;
+  --primary-mid: #0e1c42;
+  --accent: #d04018;
+  --accent-light: #e85820;
+  --gold: #c8900c;
+  --gold-light: #e0aa18;
+  --white: #ffffff;
+  --off-white: #f6f5f2;
+  --light-grey: #e8e5e0;
+  --mid-grey: #8a8280;
+  --text: #1a1610;
+  --text-light: #5a5250;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 20px rgba(10,20,48,0.10);
+  --shadow-md: 0 8px 36px rgba(10,20,48,0.14);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.3s ease;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', 'Microsoft JhengHei', 'Noto Sans TC', system-ui, sans-serif; color: var(--text); background: var(--white); line-height: 1.7; }
+a { text-decoration: none; color: inherit; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,20,48,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(208,64,24,0.22);
+  padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px;
+}
+.nav-logo { font-size: 1.25rem; font-weight: 800; color: var(--white); letter-spacing: 0.05em; }
+.nav-logo span { color: var(--accent-light); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.78); font-size: 0.9rem; font-weight: 500; transition: var(--transition); }
+.nav-links a:hover { color: var(--accent-light); }
+.nav-cta { background: var(--accent); color: var(--white); padding: 0.5rem 1.3rem; border-radius: 50px; font-size: 0.88rem; font-weight: 700; transition: var(--transition); }
+.nav-cta:hover { background: var(--accent-light); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary) 0%, #0e1c42 40%, #101e48 70%, #0e2050 100%);
+  display: flex; align-items: center; padding: 100px 5% 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 35%, rgba(208,64,24,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 15% 72%, rgba(200,144,12,0.08) 0%, transparent 65%);
+}
+.hero-inner {
+  max-width: 1200px; width: 100%; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(208,64,24,0.15); border: 1px solid rgba(208,64,24,0.38);
+  color: #ff8860; padding: 0.4rem 1rem; border-radius: 50px;
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 900; line-height: 1.18;
+  color: var(--white); margin-bottom: 0.8rem; letter-spacing: -0.01em;
+}
+.hero h1 .accent { color: var(--accent-light); }
+.hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.68); margin-bottom: 1.8rem; font-style: italic; }
+.hero-desc { font-size: 1rem; color: rgba(255,255,255,0.66); line-height: 1.80; margin-bottom: 2.2rem; max-width: 520px; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary { background: var(--accent); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; transition: var(--transition); box-shadow: 0 4px 20px rgba(208,64,24,0.40); }
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+.btn-outline { border: 2px solid rgba(255,255,255,0.32); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: var(--transition); }
+.btn-outline:hover { border-color: var(--accent-light); color: var(--accent-light); }
+
+.hero-card {
+  background: rgba(255,255,255,0.06); backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 2rem;
+}
+.hero-card-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.8rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.10); }
+.hero-card-icon { width: 50px; height: 50px; border-radius: 14px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+.hero-card-head h3 { color: var(--white); font-size: 1rem; font-weight: 700; }
+.hero-card-head p { color: rgba(255,255,255,0.50); font-size: 0.78rem; }
+.hero-info-row { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+.hero-info-icon { width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0; background: rgba(208,64,24,0.18); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+.hero-info-label { font-size: 0.70rem; color: rgba(255,255,255,0.42); text-transform: uppercase; letter-spacing: 0.06em; }
+.hero-info-val { font-size: 0.88rem; color: rgba(255,255,255,0.90); font-weight: 500; }
+
+/* STATS */
+.stats-strip { background: linear-gradient(90deg, var(--primary) 0%, var(--primary-mid) 100%); padding: 3rem 5%; }
+.stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.stat-item { text-align: center; }
+.stat-num { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--accent-light); letter-spacing: -0.02em; line-height: 1; }
+.stat-unit { font-size: 1.3rem; }
+.stat-label { color: rgba(255,255,255,0.60); font-size: 0.85rem; margin-top: 0.4rem; }
+
+/* SHARED */
+section { padding: 90px 5%; }
+.section-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(208,64,24,0.08); border: 1px solid rgba(208,64,24,0.25); color: var(--accent); padding: 0.35rem 1rem; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 1rem; }
+.section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: var(--primary); line-height: 1.25; letter-spacing: -0.01em; }
+.section-subtitle { font-size: 1.02rem; color: var(--text-light); line-height: 1.75; margin-top: 0.8rem; max-width: 620px; }
+.section-header { margin-bottom: 3rem; }
+.max-w { max-width: 1200px; margin: 0 auto; }
+
+/* ABOUT */
+.about { background: var(--off-white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-highlight { background: linear-gradient(135deg, var(--primary) 0%, #0e1c40 100%); border-radius: 18px; padding: 2.2rem; border-left: 4px solid var(--accent); margin-bottom: 2rem; }
+.about-highlight blockquote { font-size: 1.18rem; font-weight: 700; color: var(--white); line-height: 1.6; }
+.about-highlight cite { display: block; margin-top: 0.8rem; font-size: 0.8rem; color: var(--accent-light); font-style: normal; }
+.about-body p { font-size: 0.98rem; color: var(--text-light); line-height: 1.85; margin-bottom: 1.2rem; }
+.prop-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.prop-card { background: var(--white); border-radius: var(--radius); padding: 1.4rem; border: 1px solid var(--light-grey); transition: var(--transition); }
+.prop-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.prop-icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
+.prop-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--primary); margin-bottom: 0.3rem; }
+.prop-card p { font-size: 0.82rem; color: var(--text-light); line-height: 1.55; }
+
+/* PRODUCTS */
+.products { background: var(--white); }
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+.product-card { background: var(--card-bg); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--light-grey); transition: var(--transition); position: relative; overflow: hidden; }
+.product-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); transform: scaleX(0); transform-origin: left; transition: var(--transition); }
+.product-card:hover { border-color: rgba(208,64,24,0.3); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.product-card:hover::before { transform: scaleX(1); }
+.product-icon { width: 54px; height: 54px; border-radius: 14px; background: linear-gradient(135deg, rgba(208,64,24,0.12), rgba(208,64,24,0.05)); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.2rem; }
+.product-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.7rem; }
+.product-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.70; }
+.product-features { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.feature-tag { background: rgba(208,64,24,0.07); border: 1px solid rgba(208,64,24,0.18); color: var(--accent); font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.65rem; border-radius: 50px; }
+
+/* SOLUTIONS */
+.solutions {
+  background: linear-gradient(135deg, var(--primary) 0%, #0e1c42 55%, #10204a 100%);
+  position: relative; overflow: hidden;
+}
+.solutions::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 65% 55% at 78% 45%, rgba(208,64,24,0.12) 0%, transparent 70%); }
+.solutions .section-tag { background: rgba(200,144,12,0.15); border-color: rgba(200,144,12,0.35); color: var(--gold-light); }
+.solutions .section-title { color: var(--white); }
+.solutions .section-subtitle { color: rgba(255,255,255,0.62); }
+.sol-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; z-index: 1; }
+.sol-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: 16px; padding: 1.8rem 1.4rem; text-align: center; transition: var(--transition); }
+.sol-card:hover { background: rgba(255,255,255,0.10); border-color: rgba(208,64,24,0.4); transform: translateY(-3px); }
+.sol-icon { font-size: 2rem; margin-bottom: 0.9rem; }
+.sol-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--white); line-height: 1.35; margin-bottom: 0.5rem; }
+.sol-card p { font-size: 0.80rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+/* WHY US */
+.why { background: var(--off-white); }
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.why-text p { font-size: 0.98rem; color: var(--text-light); line-height: 1.85; margin-bottom: 1.2rem; }
+.why-points { display: flex; flex-direction: column; gap: 1.2rem; }
+.why-item { display: flex; align-items: flex-start; gap: 1rem; background: var(--white); border-radius: var(--radius); padding: 1.4rem; border: 1px solid var(--light-grey); transition: var(--transition); }
+.why-item:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.why-item-icon { width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0; background: linear-gradient(135deg, var(--accent), var(--accent-light)); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+.why-item-text h4 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem; }
+.why-item-text p { font-size: 0.85rem; color: var(--text-light); line-height: 1.55; }
+
+/* CONTACT */
+.contact { background: linear-gradient(135deg, var(--primary) 0%, #0e1c42 100%); }
+.contact .section-title { color: var(--white); }
+.contact .section-subtitle { color: rgba(255,255,255,0.62); }
+.contact .section-tag { background: rgba(208,64,24,0.15); border-color: rgba(208,64,24,0.35); color: #ff8860; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
+.contact-item { display: flex; align-items: flex-start; gap: 1rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: var(--radius); padding: 1.3rem; }
+.contact-item-icon { width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0; background: rgba(208,64,24,0.18); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.contact-item-label { font-size: 0.70rem; color: rgba(255,255,255,0.40); text-transform: uppercase; letter-spacing: 0.07em; }
+.contact-item-val { font-size: 0.92rem; color: rgba(255,255,255,0.90); font-weight: 500; margin-top: 0.15rem; }
+.contact-form { background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.10); border-radius: 20px; padding: 2.4rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.58); margin-bottom: 0.4rem; font-weight: 500; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-sm); padding: 0.75rem 1rem; color: var(--white); font-size: 0.9rem; transition: var(--transition); outline: none; font-family: inherit; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent-light); background: rgba(255,255,255,0.12); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.28); }
+.form-group select option { background: var(--primary); color: var(--white); }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-submit { width: 100%; background: var(--accent); color: var(--white); border: none; border-radius: 50px; padding: 1rem; font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition); letter-spacing: 0.03em; }
+.form-submit:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+/* FOOTER */
+footer { background: #05080f; padding: 2.5rem 5%; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-size: 1.1rem; font-weight: 800; color: var(--white); }
+.footer-logo span { color: var(--accent-light); }
+.footer-copy { font-size: 0.80rem; color: rgba(255,255,255,0.38); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.80rem; color: rgba(255,255,255,0.42); transition: var(--transition); }
+.footer-links a:hover { color: var(--accent-light); }
+
+@media (max-width: 960px) {
+  .hero-inner, .about-grid, .contact-grid, .why-grid { grid-template-columns: 1fr; }
+  .hero-card { display: none; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .sol-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .products-grid, .sol-grid, .prop-cards { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">西雅圖<span>貿易</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#products">產品系列</a></li>
+    <li><a href="#solutions">行業方案</a></li>
+    <li><a href="#why">為何選擇</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">索取報價</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">📟 香港總代理 · 餐廳POS系統 · 零售科技方案</div>
+      <h1>餐飲業<br><span class="accent">智能科技</span><br>全面方案</h1>
+      <p class="hero-sub">西雅圖貿易 — 香港餐廳POS系統總代理</p>
+      <p class="hero-desc">
+        總代理西雅圖貿易有限公司是香港專業的餐廳資訊科技系統供應商，為各類型餐飲業提供完整的POS收銀系統、訂座管理及廚房顯示解決方案。我們以優質服務及可靠技術協助業界提升效率、降低成本。
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">了解產品系列</a>
+        <a href="#contact" class="btn-outline">預約示範</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hero-card-icon">🏪</div>
+        <div>
+          <h3>總代理西雅圖貿易有限公司</h3>
+          <p>香港 · 餐廳POS系統總代理</p>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">📍</div>
+        <div>
+          <div class="hero-info-label">地區</div>
+          <div class="hero-info-val">香港</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">✉️</div>
+        <div>
+          <div class="hero-info-label">電郵</div>
+          <div class="hero-info-val">customer@seattletrading.com.hk</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">🌐</div>
+        <div>
+          <div class="hero-info-label">網站</div>
+          <div class="hero-info-val">seattletrading.com.hk</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">🏆</div>
+        <div>
+          <div class="hero-info-label">身份</div>
+          <div class="hero-info-val">香港授權總代理商</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">500<span class="stat-unit">+</span></div>
+      <div class="stat-label">服務餐飲客戶</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24<span class="stat-unit">/7</span></div>
+      <div class="stat-label">技術支援服務</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6</div>
+      <div class="stat-label">主要餐飲行業方案</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">授權香港總代理</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="max-w">
+    <div class="about-grid">
+      <div>
+        <div class="section-header">
+          <div class="section-tag">關於我們</div>
+          <h2 class="section-title">香港餐飲業科技方案<br>信賴供應商</h2>
+        </div>
+        <div class="about-highlight">
+          <blockquote>「以科技賦能餐飲業，讓每一間食肆都能享受企業級管理效率。」</blockquote>
+          <cite>— 西雅圖貿易有限公司</cite>
+        </div>
+        <div class="about-body">
+          <p>
+            總代理西雅圖貿易有限公司是香港授權的餐廳POS系統及餐飲管理科技總代理商。我們專注為本地餐廳、茶餐廳、火鍋店、快餐店及酒樓提供全面的資訊科技解決方案。
+          </p>
+          <p>
+            從前台點餐、廚房管理、到後台報表分析，我們的產品覆蓋餐廳日常營運的每個環節。選擇西雅圖貿易，即代表選擇了穩定可靠的系統與專業的本地售後服務。
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">🏅</div>
+            <h4>香港總代理</h4>
+            <p>品牌官方授權，正貨保障，完整本地技術支援。</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🔧</div>
+            <h4>快速安裝</h4>
+            <p>專業團隊上門安裝調試，確保系統穩定上線，減少業務影響。</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📞</div>
+            <h4>本地售後</h4>
+            <p>香港本地技術團隊，快速響應維修及遠端技術支援。</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🔄</div>
+            <h4>系統培訓</h4>
+            <p>完整員工培訓，確保餐廳團隊熟練操作所有系統功能。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">產品系列</div>
+      <h2 class="section-title">完整餐廳POS及管理系統</h2>
+      <p class="section-subtitle">從前台到後廚，一套系統，全面覆蓋餐廳營運各個環節。</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🖥️</div>
+        <h3>餐廳POS收銀系統</h3>
+        <p>觸控式操作界面，支援堂食、外賣及外送一體管理。快速點餐、即時出單，大幅縮短點餐時間，提升桌面翻台率。</p>
+        <div class="product-features">
+          <span class="feature-tag">觸控螢幕</span>
+          <span class="feature-tag">多桌管理</span>
+          <span class="feature-tag">即時出單</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">👨‍🍳</div>
+        <h3>廚房顯示系統 (KDS)</h3>
+        <p>廚房顯示器實時接收訂單，取代紙本廚房單，減少出錯及延誤。按優先級排列訂單，協助廚房高效運作。</p>
+        <div class="product-features">
+          <span class="feature-tag">實時接單</span>
+          <span class="feature-tag">優先排序</span>
+          <span class="feature-tag">無紙廚房</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">📲</div>
+        <h3>桌邊點餐平板</h3>
+        <p>顧客自助或服務員手持平板點餐，訂單直接傳送廚房及收銀台，提升服務效率，減少人手需求。</p>
+        <div class="product-features">
+          <span class="feature-tag">無線點餐</span>
+          <span class="feature-tag">圖文菜單</span>
+          <span class="feature-tag">即時傳送</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">📅</div>
+        <h3>訂座及排隊系統</h3>
+        <p>線上線下一體化訂座管理，支援WhatsApp及電話訂座整合，顧客排隊叫號系統，告別混亂排隊情況。</p>
+        <div class="product-features">
+          <span class="feature-tag">線上訂座</span>
+          <span class="feature-tag">電子叫號</span>
+          <span class="feature-tag">SMS提醒</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🛵</div>
+        <h3>外賣及外送管理系統</h3>
+        <p>整合各大外送平台訂單，統一在POS管理，避免漏單及操作混亂。支援自家外送路線規劃及司機調派。</p>
+        <div class="product-features">
+          <span class="feature-tag">多平台整合</span>
+          <span class="feature-tag">路線規劃</span>
+          <span class="feature-tag">實時追蹤</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">📊</div>
+        <h3>後台管理及報表系統</h3>
+        <p>全面的銷售報表、存貨管理、員工績效分析及成本控制功能。隨時隨地透過手機或電腦查閱業務數據。</p>
+        <div class="product-features">
+          <span class="feature-tag">實時報表</span>
+          <span class="feature-tag">庫存管理</span>
+          <span class="feature-tag">雲端存取</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section class="solutions" id="solutions">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">行業方案</div>
+      <h2 class="section-title">為各類餐飲業度身訂造</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">不同類型的食肆，有不同的業務需求。我們針對各行業提供專屬配置方案。</p>
+    </div>
+    <div class="sol-grid">
+      <div class="sol-card">
+        <div class="sol-icon">🍜</div>
+        <h4>茶餐廳及<br>港式快餐</h4>
+        <p>快速點餐、高翻台率優化，支援飲品叫法及套餐組合設定。</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">🥘</div>
+        <h4>火鍋及<br>自助餐</h4>
+        <p>計時計費管理、食材追加提示、桌台翻台智能提醒系統。</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">🏮</div>
+        <h4>酒樓及<br>中式餐廳</h4>
+        <p>大桌訂座、點心卡記錄、宴席套餐管理及多語言點餐支援。</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">☕</div>
+        <h4>咖啡廳及<br>輕食</h4>
+        <p>飲品配方管理、會員積分系統及多元付款方式整合支援。</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">🍣</div>
+        <h4>日式及<br>西式餐廳</h4>
+        <p>英日中多語言菜單顯示、刷卡消費及VIP客戶管理功能。</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">🥡</div>
+        <h4>外賣及<br>雲廚房</h4>
+        <p>多平台訂單整合管理，廚房生產排程，外送效率最大化。</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">🍱</div>
+        <h4>飯堂及<br>員工餐廳</h4>
+        <p>預先訂購、人臉/卡片識別取餐、消費額度管理系統。</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">🛒</div>
+        <h4>零售及<br>食品店</h4>
+        <p>條碼掃描、存貨管理、電子收據及零售POS全面功能。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="max-w">
+    <div class="why-grid">
+      <div>
+        <div class="section-header">
+          <div class="section-tag">為何選擇西雅圖貿易</div>
+          <h2 class="section-title">本地服務，<br>國際質素</h2>
+        </div>
+        <div class="why-text">
+          <p>作為香港授權總代理，我們比任何其他渠道都更了解本地餐飲業的需求。我們提供的不只是產品，更是一套完整的業務支援體系。</p>
+        </div>
+      </div>
+      <div class="why-points">
+        <div class="why-item">
+          <div class="why-item-icon">🎯</div>
+          <div class="why-item-text">
+            <h4>授權總代理，原廠保障</h4>
+            <p>直接向品牌原廠授權代理採購，確保正貨品質及完整原廠保修服務。</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-item-icon">⚡</div>
+          <div class="why-item-text">
+            <h4>快速安裝及上線</h4>
+            <p>香港本地技術團隊，上門安裝，迅速完成設定及培訓，盡量縮短影響業務的時間。</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-item-icon">🔧</div>
+          <div class="why-item-text">
+            <h4>全面售後技術支援</h4>
+            <p>系統出現問題時，快速遠端協助或上門維修，保障您的業務不受影響。</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-item-icon">💡</div>
+          <div class="why-item-text">
+            <h4>度身訂造配置方案</h4>
+            <p>根據您的餐廳規模、業務類型及預算，推薦最合適的系統配置，避免不必要支出。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">立即查詢，<br>免費示範預約</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">
+        歡迎留下您的聯絡資料，我們的銷售顧問將在一個工作天內回覆，並可安排免費系統示範。
+      </p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">地區</div>
+              <div class="contact-item-val">香港</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">電郵</div>
+              <div class="contact-item-val">customer@seattletrading.com.hk</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🌐</div>
+            <div>
+              <div class="contact-item-label">網站</div>
+              <div class="contact-item-val">seattletrading.com.hk</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">⏱️</div>
+            <div>
+              <div class="contact-item-label">辦公時間</div>
+              <div class="contact-item-val">星期一至五，上午9時至下午6時</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 style="color:var(--white);font-size:1.15rem;font-weight:700;margin-bottom:1.5rem;">免費示範查詢</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>聯絡人姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>餐廳 / 公司名稱</label>
+            <input type="text" placeholder="店舖名稱">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>電郵地址</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>聯絡電話</label>
+            <input type="tel" placeholder="+852">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>餐廳類型</label>
+          <select>
+            <option value="">請選擇...</option>
+            <option>茶餐廳 / 港式快餐</option>
+            <option>火鍋店</option>
+            <option>酒樓 / 中式餐廳</option>
+            <option>咖啡廳 / 輕食</option>
+            <option>日式 / 西式餐廳</option>
+            <option>外賣店 / 雲廚房</option>
+            <option>自助餐廳</option>
+            <option>飯堂 / 員工餐廳</option>
+            <option>其他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea placeholder="請說明您的業務需求、桌數、月均客流量等資料，以便我們為您推薦合適方案..."></textarea>
+        </div>
+        <button class="form-submit">提交查詢 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">西雅圖<span>貿易</span></div>
+    <div class="footer-copy">© 2024 總代理西雅圖貿易有限公司 版權所有</div>
+    <div class="footer-links">
+      <a href="#about">關於</a>
+      <a href="#products">產品</a>
+      <a href="#contact">聯絡</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
