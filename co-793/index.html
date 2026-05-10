@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>百本醫護控股 | Bamboos Health Care — 香港上市綜合醫護集團</title>
+  <meta name="description" content="百本醫護控股有限公司 (HKEX: 8216) — 15,000+ 認可醫護人員，提供醫療機構支援及私家看護服務，關懷備至，專業實幹。" />
+  <style>
+    :root {
+      --bg:      #120810;
+      --surface: #1c0e18;
+      --card:    #241428;
+      --accent:  #d04060;
+      --accent2: #f0c040;
+      --accent3: #40c8a8;
+      --text:    #f5eef2;
+      --muted:   #a080a0;
+      --border:  rgba(208,64,96,0.18);
+      --radius:  14px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Helvetica Neue', Arial, 'PingFang HK', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(18,8,16,0.94); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 64px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #a02840);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.88rem; font-weight: 900; color: #fff; letter-spacing: -0.5px;
+    }
+    .nav-name { font-size: 1.05rem; font-weight: 700; color: var(--text); }
+    .nav-name span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--accent), #a02840);
+      color: #fff; padding: 8px 22px; border-radius: 24px;
+      font-weight: 700; font-size: 0.88rem; text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(208,64,96,0.4); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 100px 5% 60px;
+      background:
+        radial-gradient(ellipse at 68% 30%, rgba(208,64,96,0.14) 0%, transparent 55%),
+        radial-gradient(ellipse at 12% 72%, rgba(240,192,64,0.08) 0%, transparent 50%),
+        var(--bg);
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(208,64,96,0.05) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 400px; gap: 60px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(208,64,96,0.1); border: 1px solid rgba(208,64,96,0.3);
+      color: var(--accent); padding: 6px 16px; border-radius: 24px;
+      font-size: 0.82rem; font-weight: 600; margin-bottom: 24px;
+    }
+    h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 900; line-height: 1.15; margin-bottom: 12px; }
+    h1 .en { font-size: 0.48em; color: var(--accent2); display: block; margin-bottom: 8px; letter-spacing: 0.06em; text-transform: uppercase; }
+    h1 .cn { background: linear-gradient(135deg, var(--text), rgba(245,238,242,0.7)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-tagline { font-size: 1rem; color: var(--muted); margin: 16px 0 32px; max-width: 540px; line-height: 1.8; }
+    .hero-tagline strong { color: var(--accent2); -webkit-text-fill-color: var(--accent2); }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #a02840);
+      color: #fff; padding: 14px 32px; border-radius: 30px;
+      font-weight: 800; font-size: 0.95rem; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(208,64,96,0.4); }
+    .btn-secondary {
+      border: 2px solid rgba(64,200,168,0.4); color: var(--accent3);
+      padding: 12px 28px; border-radius: 30px;
+      font-weight: 700; font-size: 0.95rem; text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-secondary:hover { background: rgba(64,200,168,0.1); }
+
+    /* HERO CARD */
+    .hero-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; padding: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      position: relative;
+    }
+    .hero-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+      border-radius: 20px 20px 0 0;
+    }
+    .hc-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+    .hc-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .hc-label { color: var(--muted); font-size: 0.75rem; margin-bottom: 2px; }
+    .hc-val { color: var(--text); font-weight: 500; font-size: 0.88rem; }
+    .hc-val a { color: var(--accent3); text-decoration: none; }
+    .hc-tag { display: inline-block; background: rgba(208,64,96,0.15); color: var(--accent); border-radius: 6px; padding: 2px 10px; font-size: 0.75rem; font-weight: 600; }
+    .hc-listed { display: inline-block; background: rgba(240,192,64,0.15); color: var(--accent2); border-radius: 6px; padding: 2px 10px; font-size: 0.75rem; font-weight: 700; }
+    .hc-divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+    .hc-values { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .hc-value { background: rgba(64,200,168,0.1); color: var(--accent3); border-radius: 6px; padding: 3px 10px; font-size: 0.75rem; font-weight: 600; }
+
+    /* STATS */
+    #stats {
+      background: var(--surface);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 48px 5%;
+    }
+    .stats-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 2.4rem; font-weight: 900; line-height: 1.1; }
+    .stat-num.rose { background: linear-gradient(135deg, var(--accent), #f08090); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-num.gold { color: var(--accent2); }
+    .stat-num.teal { color: var(--accent3); }
+    .stat-num.white { color: var(--text); }
+    .stat-label { color: var(--muted); font-size: 0.85rem; margin-top: 6px; }
+
+    /* SECTIONS */
+    section { padding: 90px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { color: var(--accent); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; margin-bottom: 16px; }
+    .section-desc { color: var(--muted); font-size: 1rem; max-width: 640px; line-height: 1.8; }
+
+    /* SERVICES */
+    #services { background: var(--bg); }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 48px; }
+    .service-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+    }
+    .service-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 12px 40px rgba(208,64,96,0.12); }
+    .sc-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .sc-icon { font-size: 2.2rem; }
+    .sc-title { font-size: 1.1rem; font-weight: 800; }
+    .sc-list { list-style: none; }
+    .sc-list li {
+      color: var(--muted); font-size: 0.88rem; padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .sc-list li:last-child { border-bottom: none; }
+    .sc-list li::before { content: '◆'; color: var(--accent); font-size: 0.5rem; margin-top: 7px; flex-shrink: 0; }
+
+    /* PROFESSIONALS */
+    #professionals { background: var(--surface); }
+    .prof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 48px; }
+    .prof-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px 18px; text-align: center;
+      transition: transform .2s, border-color .2s;
+    }
+    .prof-card:hover { transform: translateY(-3px); border-color: var(--accent3); }
+    .prof-icon { font-size: 2.4rem; margin-bottom: 10px; }
+    .prof-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+    .prof-desc { color: var(--muted); font-size: 0.8rem; }
+
+    /* VALUES */
+    #values { background: var(--bg); }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
+    .value-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 36px 28px; text-align: center;
+    }
+    .vc-chinese { font-size: 2rem; font-weight: 900; color: var(--accent2); margin-bottom: 4px; }
+    .vc-title { font-size: 1rem; font-weight: 700; margin-bottom: 12px; }
+    .vc-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+
+    /* LEADERSHIP */
+    #leadership { background: var(--surface); }
+    .leader-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 36px; max-width: 800px; margin: 48px auto 0;
+      display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: start;
+    }
+    .leader-avatar {
+      width: 100px; height: 100px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; flex-shrink: 0;
+    }
+    .leader-name { font-size: 1.4rem; font-weight: 800; margin-bottom: 4px; }
+    .leader-title { color: var(--accent2); font-weight: 600; margin-bottom: 16px; font-size: 0.9rem; }
+    .leader-bio { color: var(--muted); font-size: 0.9rem; line-height: 1.75; margin-bottom: 20px; }
+    .leader-awards { display: flex; flex-wrap: wrap; gap: 8px; }
+    .award-tag { background: rgba(240,192,64,0.12); border: 1px solid rgba(240,192,64,0.25); color: var(--accent2); border-radius: 8px; padding: 5px 12px; font-size: 0.8rem; font-weight: 600; }
+
+    /* CONTACT */
+    #contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 48px; }
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .ci-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px;
+    }
+    .ci-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .ci-label { color: var(--muted); font-size: 0.78rem; margin-bottom: 2px; }
+    .ci-val { font-weight: 600; font-size: 0.95rem; }
+    .ci-val a { color: var(--accent3); text-decoration: none; }
+    .ci-val a:hover { text-decoration: underline; }
+    .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 36px; }
+    .form-row { margin-bottom: 20px; }
+    .form-row label { display: block; color: var(--muted); font-size: 0.82rem; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); border-radius: 10px; padding: 12px 16px; font-size: 0.9rem;
+      outline: none; transition: border-color .2s; font-family: inherit;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--accent); }
+    .form-row textarea { min-height: 100px; resize: vertical; }
+    .form-submit {
+      width: 100%; padding: 14px; border-radius: 12px; border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), #a02840);
+      color: #fff; font-weight: 800; font-size: 1rem; font-family: inherit;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(208,64,96,0.4); }
+
+    /* FOOTER */
+    footer {
+      background: #0a0508; border-top: 1px solid var(--border);
+      padding: 48px 5% 28px; text-align: center;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; }
+    .footer-brand span { color: var(--accent); }
+    .footer-sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 24px; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 24px; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { color: #2a1020; font-size: 0.78rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; }
+      .prof-grid { grid-template-columns: repeat(2, 1fr); }
+      .leader-card { grid-template-columns: 1fr; }
+      .leader-avatar { margin: 0 auto; }
+    }
+    @media (max-width: 768px) {
+      .services-grid, .values-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 4%; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#hero">
+    <div class="nav-logo">百本</div>
+    <span class="nav-name"><span>百本</span>醫護控股</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">服務</a></li>
+    <li><a href="#professionals">醫護人員</a></li>
+    <li><a href="#values">核心價值</a></li>
+    <li><a href="#leadership">管理層</a></li>
+    <li><a href="#contact">聯絡</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">立即洽詢</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🏥 香港交易所上市公司 · 股份編號 8216</div>
+      <h1>
+        <span class="en">Bamboos Health Care Holdings</span>
+        <span class="cn">百本醫護控股有限公司<br/>關懷備至 · 專業實幹</span>
+      </h1>
+      <p class="hero-tagline">
+        百本醫護是香港交易所上市的綜合醫護集團，旗下擁有逾 <strong>15,000 名認可專業醫護人員</strong>，
+        為醫院、診所、院舍及個人提供全面的醫療機構支援及私家看護服務，
+        致力建立健康社區。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#services">🏥 了解服務項目</a>
+        <a class="btn-secondary" href="#contact">聯絡洽詢</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-row">
+        <span class="hc-icon">🏢</span>
+        <div>
+          <div class="hc-label">公司名稱</div>
+          <div class="hc-val">百本醫護控股有限公司</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">📈</span>
+        <div>
+          <div class="hc-label">上市狀況</div>
+          <div class="hc-val"><span class="hc-listed">HKEX 股份編號 8216</span></div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">📱</span>
+        <div>
+          <div class="hc-label">聯絡電話</div>
+          <div class="hc-val"><a href="tel:+85295159439">+852 9515 9439</a></div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">✉️</span>
+        <div>
+          <div class="hc-label">電郵</div>
+          <div class="hc-val"><a href="mailto:mkorder@bamboos.com.hk">mkorder@bamboos.com.hk</a></div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">🏥</span>
+        <div>
+          <div class="hc-label">行業</div>
+          <div class="hc-val"><span class="hc-tag">醫護人手管理</span></div>
+        </div>
+      </div>
+      <hr class="hc-divider" />
+      <div class="hc-label" style="margin-bottom:8px;">核心價值</div>
+      <div class="hc-values">
+        <span class="hc-value">關懷備至</span>
+        <span class="hc-value">專業實幹</span>
+        <span class="hc-value">全心全意</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num rose">15,000+</div>
+      <div class="stat-label">認可專業醫護人員</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num gold">8216</div>
+      <div class="stat-label">港交所上市股份編號</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num teal">72</div>
+      <div class="stat-label">公司員工人數</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num white">全港</div>
+      <div class="stat-label">覆蓋香港各區醫療機構</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">服務項目</div>
+    <h2 class="section-title">全面醫護人手解決方案</h2>
+    <p class="section-desc">百本醫護提供兩大核心服務，涵蓋醫療機構人手支援及私家看護，以靈活高效的方式滿足各類醫護需求。</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="sc-header">
+          <div class="sc-icon">🏨</div>
+          <div class="sc-title">醫療機構支援</div>
+        </div>
+        <ul class="sc-list">
+          <li>病房及院舍人手替假服務</li>
+          <li>臨時醫護人手輪替服務</li>
+          <li>院舍陪診服務</li>
+          <li>醫院病房護理人員派遣</li>
+          <li>診所及醫療機構臨時人手</li>
+          <li>企業及機構醫護支援</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="sc-header">
+          <div class="sc-icon">🏠</div>
+          <div class="sc-title">私家看護方案</div>
+        </div>
+        <ul class="sc-list">
+          <li>家居上門護理及陪診服務</li>
+          <li>24小時私家看護服務</li>
+          <li>專業到戶護理服務</li>
+          <li>複康評估及跟進服務</li>
+          <li>出院後家居護理安排</li>
+          <li>個人化護理計劃制定</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFESSIONALS -->
+<section id="professionals">
+  <div class="section-inner">
+    <div class="section-label">醫護人員</div>
+    <h2 class="section-title">15,000+ 認可專業醫護人才</h2>
+    <p class="section-desc">百本嚴格甄選各類醫護專才，確保每位派遣的醫護人員均持有相關專業資格及豐富實際經驗。</p>
+    <div class="prof-grid">
+      <div class="prof-card">
+        <div class="prof-icon">👨‍⚕️</div>
+        <div class="prof-name">醫生</div>
+        <div class="prof-desc">西醫普通科及各類專科醫生</div>
+      </div>
+      <div class="prof-card">
+        <div class="prof-icon">👩‍⚕️</div>
+        <div class="prof-name">護士</div>
+        <div class="prof-desc">註冊護士及登記護士</div>
+      </div>
+      <div class="prof-card">
+        <div class="prof-icon">🌿</div>
+        <div class="prof-name">中醫師</div>
+        <div class="prof-desc">註冊中醫師</div>
+      </div>
+      <div class="prof-card">
+        <div class="prof-icon">🦽</div>
+        <div class="prof-name">治療師</div>
+        <div class="prof-desc">物理治療師、職業治療師</div>
+      </div>
+      <div class="prof-card">
+        <div class="prof-icon">❤️‍🩹</div>
+        <div class="prof-name">健康護理員</div>
+        <div class="prof-desc">專業個人護理及看護人員</div>
+      </div>
+      <div class="prof-card">
+        <div class="prof-icon">💊</div>
+        <div class="prof-name">藥劑師</div>
+        <div class="prof-desc">持牌藥劑師及藥房人員</div>
+      </div>
+      <div class="prof-card">
+        <div class="prof-icon">🔬</div>
+        <div class="prof-name">醫療化驗師</div>
+        <div class="prof-desc">醫院及診所化驗室人員</div>
+      </div>
+      <div class="prof-card">
+        <div class="prof-icon">🩻</div>
+        <div class="prof-name">放射技師</div>
+        <div class="prof-desc">醫學影像及放射科技師</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section id="values">
+  <div class="section-inner">
+    <div class="section-label">核心價值</div>
+    <h2 class="section-title">服務理念與承諾</h2>
+    <p class="section-desc">百本以三大核心價值為服務基石，致力為每位客戶提供最優質、最專業的醫護服務體驗。</p>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="vc-chinese">關懷備至</div>
+        <div class="vc-title">Care Wholeheartedly</div>
+        <div class="vc-desc">以客人的健康及利益為依歸，以真誠關懷的態度為每位客人提供貼心的醫護服務，讓客人感受到被重視與尊重。</div>
+      </div>
+      <div class="value-card">
+        <div class="vc-chinese">專業實幹</div>
+        <div class="vc-title">Act Professionally</div>
+        <div class="vc-desc">堅持錄用高質素的專業醫護人才，確保服務的醫護人員能時刻提供最專業及優質的醫護服務，以實際行動體現專業精神。</div>
+      </div>
+      <div class="value-card">
+        <div class="vc-chinese">全心全意</div>
+        <div class="vc-title">Serve Dedicatedly</div>
+        <div class="vc-desc">竭力提升服務的質素，推動大眾關注健康，並積極參與不同的醫療服務及活動，全力以赴為社會健康作出貢獻。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <div class="section-inner">
+    <div class="section-label">管理層</div>
+    <h2 class="section-title">卓越領導，推動醫護創新</h2>
+    <div class="leader-card">
+      <div class="leader-avatar">👨‍💼</div>
+      <div>
+        <div class="leader-name">關志康先生</div>
+        <div class="leader-title">主席 · 香港醫護學會會長</div>
+        <div class="leader-bio">
+          關志康先生是百本醫護的創辦人及主席，擁有卓越的學術背景及深厚的醫療行業經驗。
+          關先生持有香港大學經濟學學士及碩士學位，以及香港中文大學行政人員工商管理學碩士（EMBA）學位，
+          並曾獲美國哈佛大學獎學金全數資助，攻讀領袖管理深造課程。
+          關先生現為香港大學中藥藥劑學學士課程兼任講師，積極參與醫護教育工作。
+        </div>
+        <div class="leader-awards">
+          <span class="award-tag">🏆 安永企業家獎 2013 新興企業家</span>
+          <span class="award-tag">🌟 DHL/南華早報 2012 青年企業家獎</span>
+          <span class="award-tag">🎓 哈佛大學全額獎學金得主</span>
+          <span class="award-tag">📚 港大兼任講師</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <h2 class="section-title">醫護人手解決方案查詢</h2>
+    <p class="section-desc">無論是醫療機構人手需求或私家看護安排，百本醫護均可為您提供最合適的解決方案，歡迎隨時聯絡。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="ci-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">聯絡電話</div>
+            <div class="ci-val"><a href="tel:+85295159439">+852 9515 9439</a></div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">電郵</div>
+            <div class="ci-val"><a href="mailto:mkorder@bamboos.com.hk">mkorder@bamboos.com.hk</a></div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">服務地區</div>
+            <div class="ci-val">香港全區 (Hong Kong-wide)</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📈</div>
+          <div>
+            <div class="ci-label">上市資料</div>
+            <div class="ci-val">香港聯合交易所 · 股份編號 8216</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <label>機構名稱 / 姓名</label>
+          <input type="text" placeholder="醫院 / 診所 / 個人姓名" />
+        </div>
+        <div class="form-row">
+          <label>聯絡電話 Phone</label>
+          <input type="tel" placeholder="+852 xxxx xxxx" />
+        </div>
+        <div class="form-row">
+          <label>電郵 Email</label>
+          <input type="email" placeholder="your@email.com" />
+        </div>
+        <div class="form-row">
+          <label>服務類別 Service Type</label>
+          <select>
+            <option value="">— 請選擇 —</option>
+            <option>醫療機構人手支援</option>
+            <option>病房及院舍替假人手</option>
+            <option>私家看護服務</option>
+            <option>家居上門護理</option>
+            <option>24小時看護安排</option>
+            <option>複康護理服務</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>查詢詳情 Details</label>
+          <textarea placeholder="請描述您的醫護人手需求或護理安排要求..."></textarea>
+        </div>
+        <button class="form-submit" type="button">🏥 提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><span>百本</span>醫護控股有限公司</div>
+  <div class="footer-sub">Bamboos Health Care Holdings Ltd · HKEX: 8216 · 關懷備至 · 專業實幹 · 全心全意</div>
+  <div class="footer-links">
+    <a href="#services">服務項目</a>
+    <a href="#professionals">醫護人員</a>
+    <a href="#values">核心價值</a>
+    <a href="#leadership">管理層</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <div class="footer-copy">© 2025 百本醫護控股有限公司. All rights reserved. · 香港交易所上市公司 (編號: 8216)</div>
+</footer>
+
+</body>
+</html>
