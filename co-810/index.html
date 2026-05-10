@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>駿達汽車工程 | Chun Tat Motor Engineering | 元朗 · 新蒲崗</title>
+<style>
+  :root {
+    --bg:        #080b08;
+    --surface:   #0f140f;
+    --card:      #161e16;
+    --accent1:   #28c840;
+    --accent2:   #90e840;
+    --accent3:   #40e8b0;
+    --text:      #e0f0e0;
+    --muted:     #7a9878;
+    --border:    rgba(40,200,64,0.2);
+    --glow:      rgba(40,200,64,0.18);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'PingFang HK', 'Microsoft JhengHei', sans-serif; line-height: 1.7; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(8,11,8,0.94); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.85rem; color: #0a120a; letter-spacing: -0.5px;
+    box-shadow: 0 0 18px var(--glow);
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-name span { color: var(--accent2); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #0a120a; border: none; padding: 9px 22px; border-radius: 6px;
+    font-size: 0.88rem; font-weight: 800; cursor: pointer; text-decoration: none;
+    box-shadow: 0 4px 16px var(--glow); transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; padding: 120px 5% 80px;
+    background:
+      radial-gradient(ellipse 70% 55% at 85% 50%, rgba(40,200,64,0.12) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 50% at 10% 75%, rgba(144,232,64,0.07) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
+  }
+  .hero-text { flex: 1 1 480px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(40,200,64,0.1); border: 1px solid rgba(40,200,64,0.28);
+    padding: 6px 16px; border-radius: 20px; font-size: 0.82rem;
+    color: var(--accent2); margin-bottom: 24px; letter-spacing: 0.04em;
+  }
+  .hero-badge::before { content: '🔧'; font-size: 0.9rem; }
+  .hero-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.18; margin-bottom: 8px; }
+  .hero-title .green { color: var(--accent1); }
+  .hero-title .lime { color: var(--accent2); }
+  .hero-en { font-size: 1.05rem; color: var(--muted); font-weight: 500; margin-bottom: 20px; letter-spacing: 0.04em; }
+  .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 520px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #0a120a; padding: 13px 28px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 800; text-decoration: none;
+    box-shadow: 0 6px 24px var(--glow); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid var(--accent1); color: var(--accent2);
+    padding: 13px 28px; border-radius: 8px; font-size: 0.95rem;
+    font-weight: 600; text-decoration: none; transition: background .2s;
+  }
+  .btn-outline:hover { background: rgba(40,200,64,0.1); }
+
+  /* info card */
+  .hero-card {
+    flex: 0 0 320px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .hero-card h3 { font-size: 0.8rem; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .info-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .info-icon { font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+  .info-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 2px; }
+  .info-val { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+  .info-val a { color: var(--accent3); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .divider-card { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+  .hours-badge {
+    display: inline-block; background: rgba(40,200,64,0.12);
+    border: 1px solid var(--border); border-radius: 6px;
+    padding: 8px 14px; font-size: 0.82rem; color: var(--accent2); margin-top: 4px;
+  }
+
+  /* ── STATS ── */
+  .stats-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 44px 5%;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; text-align: center;
+  }
+  .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 88px 5%; }
+  .section-label { font-size: 0.78rem; color: var(--accent1); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 800; margin-bottom: 14px; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 600px; margin-bottom: 48px; }
+
+  /* ── SERVICES ── */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 22px; }
+  .svc-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px 24px; transition: transform .25s, box-shadow .25s;
+  }
+  .svc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(40,200,64,0.14); }
+  .svc-icon { font-size: 2rem; margin-bottom: 14px; }
+  .svc-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .svc-card p { font-size: 0.88rem; color: var(--muted); }
+
+  /* ── LOCATIONS ── */
+  .locations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; }
+  .loc-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 32px; position: relative; overflow: hidden;
+  }
+  .loc-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  }
+  .loc-badge {
+    display: inline-block; background: rgba(40,200,64,0.12); border: 1px solid var(--border);
+    padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; color: var(--accent2);
+    margin-bottom: 16px; font-weight: 700;
+  }
+  .loc-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 16px; }
+  .loc-detail { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; }
+  .loc-detail-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+  .loc-detail p { font-size: 0.9rem; color: var(--muted); }
+  .loc-detail a { font-size: 0.9rem; color: var(--accent3); text-decoration: none; }
+  .loc-detail a:hover { text-decoration: underline; }
+
+  /* ── HIGHLIGHT ── */
+  .highlight {
+    background: linear-gradient(135deg, rgba(40,200,64,0.1), rgba(144,232,64,0.07));
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 56px 48px; margin: 0 5% 80px; text-align: center;
+  }
+  .highlight h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: 14px; }
+  .highlight p { color: var(--muted); max-width: 640px; margin: 0 auto 28px; font-size: 0.98rem; }
+
+  /* ── CONTACT ── */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info { display: flex; flex-direction: column; gap: 18px; }
+  .c-item { display: flex; gap: 14px; align-items: flex-start; }
+  .c-icon {
+    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(40,200,64,0.1); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .c-item h4 { font-size: 0.8rem; color: var(--muted); margin-bottom: 2px; }
+  .c-item p, .c-item a { font-size: 0.9rem; color: var(--text); text-decoration: none; }
+  .c-item a:hover { color: var(--accent2); }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); padding: 11px 14px; border-radius: 8px; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent1); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #0a120a; border: none; padding: 13px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 800; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.88; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 44px 5% 28px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center;
+  }
+  .footer-brand { font-size: 1rem; font-weight: 700; }
+  .footer-brand span { color: var(--accent2); }
+  .footer-copy { font-size: 0.8rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; }
+  .footer-links a:hover { color: var(--accent2); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero { flex-direction: column; }
+    .hero-card { flex: 1 1 100%; }
+    .highlight { padding: 36px 24px; margin: 0 0 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#home">
+    <div class="nav-logo">駿達</div>
+    <div class="nav-name">駿達汽車工程 <span>| Chun Tat Motor</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">服務項目</a></li>
+    <li><a href="#locations">分店地點</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a class="nav-cta" href="tel:28779198">立即致電</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-badge">元朗 · 新蒲崗 雙廠專業汽車工程</div>
+    <h1 class="hero-title">
+      <span class="green">駿達</span>汽車工程<br>
+      <span class="lime">Chun Tat Motor</span>
+    </h1>
+    <p class="hero-en">Professional Motor Engineering · Yuen Long &amp; San Po Kong</p>
+    <p class="hero-desc">
+      設有元朗洪水橋總廠及九龍新蒲崗分廠，提供全面專業汽車維修及工程服務。
+      多年豐富經驗，為客戶提供安全可靠的汽車工程解決方案。
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="tel:28779198">📞 2877 9198 立即預約</a>
+      <a class="btn-outline" href="#services">了解服務</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <h3>聯絡資訊</h3>
+    <div class="info-row">
+      <div class="info-icon">☎️</div>
+      <div>
+        <div class="info-label">電話</div>
+        <div class="info-val"><a href="tel:28779198">2877 9198</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">📱</div>
+      <div>
+        <div class="info-label">手機 / WhatsApp</div>
+        <div class="info-val"><a href="tel:54116545">5411 6545</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">📠</div>
+      <div>
+        <div class="info-label">傳真</div>
+        <div class="info-val">2877 2884</div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">✉️</div>
+      <div>
+        <div class="info-label">電郵</div>
+        <div class="info-val"><a href="mailto:sales@chuntatmotor.com">sales@chuntatmotor.com</a></div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">🕐</div>
+      <div>
+        <div class="info-label">營業時間</div>
+        <div class="info-val">
+          <div class="hours-badge">週一至週六 9:00 – 18:00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div>
+    <div class="stat-num">2</div>
+    <div class="stat-label">服務廠房（總廠 + 分廠）</div>
+  </div>
+  <div>
+    <div class="stat-num">元朗</div>
+    <div class="stat-label">洪水橋總廠</div>
+  </div>
+  <div>
+    <div class="stat-num">新蒲崗</div>
+    <div class="stat-label">九龍分廠</div>
+  </div>
+  <div>
+    <div class="stat-num">6天</div>
+    <div class="stat-label">週一至週六營業</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label">服務項目</p>
+  <h2 class="section-title">全面汽車工程服務</h2>
+  <p class="section-sub">駿達汽車工程提供廣泛的汽車維修及保養服務，由專業技師為您的愛車提供一流護理。</p>
+
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon">🔧</div>
+      <h3>引擎維修保養</h3>
+      <p>引擎大小維修、機油更換、濾清器保養，確保引擎性能最佳。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🛑</div>
+      <h3>煞車系統</h3>
+      <p>煞車片、煞車碟更換及煞車系統全面檢修，保障行車安全。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔩</div>
+      <h3>底盤及懸掛</h3>
+      <p>底盤檢查、避震器更換及懸掛系統維修，提升行車舒適度。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">❄️</div>
+      <h3>冷氣系統保養</h3>
+      <p>冷氣清洗、雪種補充及壓縮機維修，保持車廂涼爽舒適。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">⚡</div>
+      <h3>電子系統診斷</h3>
+      <p>電腦診斷儀器全面掃描，快速找出引擎燈及電子系統問題。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🎯</div>
+      <h3>四輪定位及平衡</h3>
+      <p>精準四輪定位及車輪平衡服務，減少輪胎磨耗，改善操控。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">⚙️</div>
+      <h3>波箱維修</h3>
+      <p>自動及手動波箱診斷與維修，確保傳動系統運作順暢。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🚗</div>
+      <h3>定期保養套餐</h3>
+      <p>按廠方指引提供全面定期保養，保持車輛最佳狀態及延長壽命。</p>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHT -->
+<div class="highlight">
+  <h2>專業汽車工程<br><span style="color:var(--accent2)">元朗 · 九龍 雙廠服務</span></h2>
+  <p>
+    駿達汽車工程設有元朗洪水橋總廠及新蒲崗分廠，覆蓋新界西及九龍東地區。
+    兩廠均配備齊全設備及專業技師，為您提供高效、可靠的汽車工程服務。
+  </p>
+  <a class="btn-primary" href="#locations">查看廠房地址</a>
+</div>
+
+<!-- LOCATIONS -->
+<section id="locations" style="background: var(--surface);">
+  <p class="section-label">廠房地點</p>
+  <h2 class="section-title">雙廠覆蓋港九新界</h2>
+  <p class="section-sub">總廠及分廠均交通便利，方便各區客戶前往。</p>
+
+  <div class="locations-grid">
+    <div class="loc-card">
+      <div class="loc-badge">總廠 · Main Workshop</div>
+      <h3>元朗洪水橋廠房</h3>
+      <div class="loc-detail">
+        <div class="loc-detail-icon">📍</div>
+        <p>香港元朗洪水橋丹桂村路 37 號</p>
+      </div>
+      <div class="loc-detail">
+        <div class="loc-detail-icon">☎️</div>
+        <a href="tel:28779198">2877 9198</a>
+      </div>
+      <div class="loc-detail">
+        <div class="loc-detail-icon">📠</div>
+        <p>2877 2884（傳真）</p>
+      </div>
+      <div class="loc-detail">
+        <div class="loc-detail-icon">🕐</div>
+        <p>週一至週六 9:00 – 18:00</p>
+      </div>
+    </div>
+
+    <div class="loc-card">
+      <div class="loc-badge">分廠 · Branch Workshop</div>
+      <h3>九龍新蒲崗廠房</h3>
+      <div class="loc-detail">
+        <div class="loc-detail-icon">📍</div>
+        <p>九龍新蒲崗雙喜街 2-4 號</p>
+      </div>
+      <div class="loc-detail">
+        <div class="loc-detail-icon">📱</div>
+        <a href="tel:54116545">5411 6545（WhatsApp）</a>
+      </div>
+      <div class="loc-detail">
+        <div class="loc-detail-icon">✉️</div>
+        <a href="mailto:sales@chuntatmotor.com">sales@chuntatmotor.com</a>
+      </div>
+      <div class="loc-detail">
+        <div class="loc-detail-icon">🕐</div>
+        <p>週一至週六 9:00 – 18:00</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">聯絡我們</p>
+  <h2 class="section-title">預約汽車維修服務</h2>
+  <p class="section-sub">歡迎致電或填寫表格，我們會儘快回覆您的查詢。</p>
+
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="c-item">
+        <div class="c-icon">☎️</div>
+        <div>
+          <h4>電話（總廠）</h4>
+          <a href="tel:28779198">2877 9198</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📱</div>
+        <div>
+          <h4>手機 / WhatsApp</h4>
+          <a href="tel:54116545">5411 6545</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">✉️</div>
+        <div>
+          <h4>電郵</h4>
+          <a href="mailto:sales@chuntatmotor.com">sales@chuntatmotor.com</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <h4>總廠地址</h4>
+          <p>元朗洪水橋丹桂村路 37 號</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <h4>分廠地址</h4>
+          <p>九龍新蒲崗雙喜街 2-4 號</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">🌐</div>
+        <div>
+          <h4>官方網站</h4>
+          <a href="https://www.chuntatmotor.com" target="_blank" rel="noopener">chuntatmotor.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>您的姓名</label>
+          <input type="text" placeholder="陳先生 / 陳小姐">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="9xxx xxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>服務廠房</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>元朗洪水橋總廠</option>
+          <option>九龍新蒲崗分廠</option>
+          <option>不限，方便即可</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>服務類別</label>
+        <select>
+          <option value="">請選擇服務</option>
+          <option>引擎維修保養</option>
+          <option>煞車系統服務</option>
+          <option>底盤及懸掛維修</option>
+          <option>冷氣系統保養</option>
+          <option>電子系統診斷</option>
+          <option>四輪定位及平衡</option>
+          <option>波箱維修</option>
+          <option>定期保養套餐</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>問題描述</label>
+        <textarea placeholder="請描述車輛問題或服務需求…"></textarea>
+      </div>
+      <button class="form-submit">發送查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">駿達汽車工程 <span>| Chun Tat Motor Engineering</span></div>
+  <div class="footer-copy">© 2025 Chun Tat Motor Engineering. 版權所有</div>
+  <div class="footer-links">
+    <a href="#services">服務項目</a>
+    <a href="#locations">廠房地點</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+</footer>
+
+</body>
+</html>
