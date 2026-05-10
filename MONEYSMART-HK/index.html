@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoneySmart HK | Hong Kong's Financial Comparison Platform</title>
+<style>
+  :root {
+    --green: #00b386;
+    --green-dark: #008f6c;
+    --green-light: #e6f9f5;
+    --navy: #1a2234;
+    --navy-mid: #243050;
+    --white: #ffffff;
+    --light: #f5f7fa;
+    --mid: #e8edf5;
+    --text: #2c3445;
+    --muted: #6b7280;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--white);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
+  .nav-logo {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--green);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 16px; color: var(--white);
+  }
+  .nav-name { font-weight: 800; font-size: 18px; color: var(--navy); }
+  .nav-name span { color: var(--green); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--text); font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--green); }
+  .nav-cta {
+    background: var(--green); color: var(--white);
+    padding: 9px 22px; border-radius: 6px; font-size: 14px; font-weight: 600;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--green-dark); }
+
+  /* HERO */
+  .hero {
+    margin-top: 64px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, #1e3a5f 100%);
+    min-height: 560px;
+    display: flex; align-items: center;
+    padding: 72px 48px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -60px;
+    width: 480px; height: 480px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,179,134,0.18) 0%, transparent 70%);
+  }
+  .hero-content { max-width: 660px; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,179,134,0.2); border: 1px solid rgba(0,179,134,0.4);
+    color: var(--green); padding: 6px 16px; border-radius: 20px;
+    font-size: 13px; font-weight: 600; margin-bottom: 24px;
+  }
+  .hero h1 { font-size: 46px; font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 20px; }
+  .hero h1 span { color: var(--green); }
+  .hero-desc { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.75; margin-bottom: 36px; max-width: 540px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--green); color: var(--white);
+    padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700;
+    transition: background .2s, transform .2s;
+  }
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); }
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.35); color: var(--white);
+    padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600;
+    transition: border-color .2s;
+  }
+  .btn-outline:hover { border-color: var(--white); }
+  .hero-cards {
+    position: absolute; right: 60px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 14px; z-index: 1;
+  }
+  .mini-card {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
+    backdrop-filter: blur(10px); border-radius: 14px;
+    padding: 18px 24px; display: flex; align-items: center; gap: 14px;
+    min-width: 230px;
+  }
+  .mini-icon { font-size: 26px; }
+  .mini-label { font-size: 13px; color: rgba(255,255,255,0.7); }
+  .mini-value { font-size: 15px; font-weight: 700; color: var(--white); }
+
+  /* STATS STRIP */
+  .stats-strip { background: var(--green); display: flex; justify-content: center; flex-wrap: wrap; }
+  .stat-item { padding: 22px 48px; text-align: center; border-right: 1px solid rgba(255,255,255,0.25); }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-size: 26px; font-weight: 800; color: var(--white); }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 3px; font-weight: 500; }
+
+  /* SECTION */
+  section { padding: 80px 48px; }
+  .section-label { display: inline-block; color: var(--green); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  h2 { font-size: 34px; font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+  .section-sub { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 640px; margin-bottom: 48px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .mission-box {
+    background: var(--white); border-radius: 14px; padding: 28px;
+    border-left: 4px solid var(--green); margin-bottom: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .mission-box h3 { font-size: 15px; color: var(--green); font-weight: 700; margin-bottom: 8px; }
+  .mission-box p { font-size: 14px; color: var(--text); line-height: 1.7; }
+  .about-desc { font-size: 15px; color: var(--text); line-height: 1.8; }
+  .about-desc p { margin-bottom: 16px; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .about-prop {
+    background: var(--white); border-radius: 12px; padding: 22px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-top: 3px solid var(--green);
+  }
+  .about-prop-icon { font-size: 26px; margin-bottom: 10px; }
+  .about-prop h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .about-prop p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* PRODUCTS */
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .product-card {
+    background: var(--white); border-radius: 14px; padding: 30px 24px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    border-top: 4px solid var(--green);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+  .product-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: var(--green-light); display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 18px;
+  }
+  .product-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .product-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+  .product-tag { display: inline-block; margin-top: 14px; background: var(--green-light); color: var(--green-dark); padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+  /* HOW IT WORKS */
+  .how { background: var(--light); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .step { text-align: center; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--green); color: var(--white);
+    font-size: 22px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px;
+  }
+  .step h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .step-connector { display: flex; align-items: center; justify-content: center; padding-top: 28px; font-size: 22px; color: var(--green); }
+
+  /* FEATURES */
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .feature-card {
+    background: var(--navy); border-radius: 14px; padding: 30px 24px;
+    transition: transform .25s;
+  }
+  .feature-card:hover { transform: translateY(-4px); }
+  .feature-card h3 { font-size: 15px; font-weight: 700; color: var(--white); margin: 14px 0 8px; }
+  .feature-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+  .feature-icon { font-size: 28px; }
+
+  /* CONTACT */
+  .contact { background: var(--navy); }
+  .contact h2 { color: var(--white); }
+  .contact .section-label { color: var(--green); }
+  .contact .section-sub { color: rgba(255,255,255,0.65); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 22px; }
+  .contact-row { display: flex; align-items: flex-start; gap: 16px; }
+  .contact-row-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(0,179,134,0.15); border: 1px solid rgba(0,179,134,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .contact-row-text h4 { font-size: 13px; color: var(--green); font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .contact-row-text p, .contact-row-text a { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .contact-row-text a:hover { color: var(--green); }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .contact-form input, .contact-form select, .contact-form textarea {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px; padding: 13px 16px; color: var(--white);
+    font-size: 14px; font-family: inherit; outline: none; transition: border-color .2s;
+  }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form select option { background: var(--navy); }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--green); }
+  .contact-form textarea { resize: vertical; min-height: 110px; }
+  .contact-form button {
+    background: var(--green); color: var(--white); border: none;
+    padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700;
+    cursor: pointer; transition: background .2s;
+  }
+  .contact-form button:hover { background: var(--green-dark); }
+
+  /* FOOTER */
+  footer { background: #0f1520; color: rgba(255,255,255,0.5); text-align: center; padding: 28px 48px; font-size: 13px; }
+  footer span { color: var(--green); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 48px 24px; }
+    .hero h1 { font-size: 30px; }
+    .hero-cards { display: none; }
+    section { padding: 56px 24px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .products-grid, .features-grid { grid-template-columns: 1fr 1fr; }
+    .about-props { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .stat-item { padding: 16px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">MS</div>
+    <div class="nav-name">Money<span>Smart</span>.hk</div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#products">Products</a>
+    <a href="#how">How It Works</a>
+    <a href="#features">Features</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#products" class="nav-cta">Compare Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">💡 Hong Kong's Trusted Financial Comparison Platform</div>
+    <h1>Make <span>Smarter</span> Financial Decisions in Hong Kong</h1>
+    <p class="hero-desc">
+      MoneySmart.hk helps Hong Kong consumers compare credit cards, personal loans, mortgages, insurance and savings products — finding the best rates, cashback, and rewards tailored to your financial needs.
+    </p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-primary">Compare Products</a>
+      <a href="#about" class="btn-outline">Learn More</a>
+    </div>
+  </div>
+  <div class="hero-cards">
+    <div class="mini-card">
+      <div class="mini-icon">💳</div>
+      <div>
+        <div class="mini-label">Best Credit Card Cashback</div>
+        <div class="mini-value">Up to 8% Cashback</div>
+      </div>
+    </div>
+    <div class="mini-card">
+      <div class="mini-icon">🏠</div>
+      <div>
+        <div class="mini-label">Mortgage Rate</div>
+        <div class="mini-value">Compare 20+ Banks</div>
+      </div>
+    </div>
+    <div class="mini-card">
+      <div class="mini-icon">💰</div>
+      <div>
+        <div class="mini-label">Personal Loan</div>
+        <div class="mini-value">From 1.68% APR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">500K+</div>
+    <div class="stat-label">Monthly Users</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">200+</div>
+    <div class="stat-label">Financial Products</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">50+</div>
+    <div class="stat-label">Partner Banks &amp; Insurers</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Free to Use</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">About Us</div>
+    <h2>Hong Kong's #1 Financial Comparison Site</h2>
+    <p class="section-sub" style="margin: 0 auto;">MoneySmart.hk empowers Hong Kong consumers to make better money decisions with unbiased, easy-to-understand product comparisons and financial guides.</p>
+  </div>
+  <div class="about-grid">
+    <div>
+      <div class="mission-box">
+        <h3>🎯 Our Mission</h3>
+        <p>To help every Hong Kong resident make smarter financial choices — whether comparing the best credit card for daily spending, finding the lowest mortgage rate, or choosing the right insurance coverage. We aggregate and present real product data so you can compare in seconds, not days.</p>
+      </div>
+      <div class="about-desc">
+        <p>The Hong Kong financial market offers hundreds of credit cards, loans, and insurance products from dozens of institutions. Navigating this complexity is time-consuming and confusing for most consumers.</p>
+        <p>MoneySmart.hk cuts through the noise. Our platform aggregates up-to-date product data, applies smart filtering, and presents clear side-by-side comparisons — helping you save money and earn more rewards.</p>
+      </div>
+    </div>
+    <div class="about-props">
+      <div class="about-prop">
+        <div class="about-prop-icon">🆓</div>
+        <h4>Always Free</h4>
+        <p>Our comparison service is completely free for consumers — no hidden fees or subscriptions.</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">⚖️</div>
+        <h4>Unbiased Data</h4>
+        <p>We present products based on your needs, not commissions. Transparent, data-driven results.</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🔄</div>
+        <h4>Always Updated</h4>
+        <p>Our team constantly updates rates, promotions, and product details so you always see current info.</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🔐</div>
+        <h4>Safe &amp; Secure</h4>
+        <p>We never sell your personal data. Compare products privately and apply directly with the bank.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background: var(--white);">
+  <div class="section-label">What We Compare</div>
+  <h2>Financial Products</h2>
+  <p class="section-sub">Browse and compare Hong Kong's best financial products side by side — updated daily.</p>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-icon">💳</div>
+      <h3>Credit Cards</h3>
+      <p>Compare cashback rates, miles rewards, welcome bonuses, annual fees, and dining/travel perks from all major HK banks and card issuers.</p>
+      <span class="product-tag">100+ Cards</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">💰</div>
+      <h3>Personal Loans</h3>
+      <p>Find the lowest APR personal loans in HK. Compare repayment terms, approval speed, and maximum loan amounts across licensed banks and lenders.</p>
+      <span class="product-tag">Fast Approval</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🏠</div>
+      <h3>Mortgages</h3>
+      <p>Compare mortgage rates from 20+ HK banks. H-Plan vs P-Plan, first-time buyer incentives, and refinancing options — all in one place.</p>
+      <span class="product-tag">20+ Banks</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🛡️</div>
+      <h3>Insurance</h3>
+      <p>Life, medical, critical illness, home, travel, and car insurance from leading HK insurers. Compare premiums, coverage, and claim processes.</p>
+      <span class="product-tag">All Types</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🏦</div>
+      <h3>Savings &amp; Deposits</h3>
+      <p>Compare HK savings accounts, time deposits, and high-interest accounts. Find the best rates for HKD, USD, and RMB deposits.</p>
+      <span class="product-tag">Best Rates</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">📊</div>
+      <h3>Investments</h3>
+      <p>Explore MPF schemes, unit trusts, robo-advisors, and brokerage accounts. Compare fees, fund performance, and platform features.</p>
+      <span class="product-tag">MPF &amp; More</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div style="text-align: center; margin-bottom: 48px;">
+    <div class="section-label">Process</div>
+    <h2>How It Works</h2>
+    <p class="section-sub" style="margin: 0 auto;">Find and apply for the best financial product in four simple steps — completely free.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Tell Us Your Needs</h4>
+      <p>Select the product type and answer a few quick questions about your lifestyle and financial goals.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Compare Options</h4>
+      <p>Instantly see a side-by-side comparison of all matching products ranked by value to you.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Read Expert Reviews</h4>
+      <p>Dive into our detailed product reviews, pros/cons, and eligibility criteria before deciding.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Apply Directly</h4>
+      <p>Click through to apply directly with the bank or insurer. No middleman, no extra fees.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="background: var(--white);">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">Platform Features</div>
+    <h2>Why MoneySmart.hk</h2>
+    <p class="section-sub" style="margin: 0 auto;">Built for Hong Kong consumers — our platform combines real data, local expertise, and intuitive tools.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>Mobile Optimised</h3>
+      <p>Compare and apply on any device. Our responsive platform works seamlessly on mobile, tablet, and desktop.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧮</div>
+      <h3>Financial Calculators</h3>
+      <p>Loan repayment, mortgage affordability, and credit card reward calculators to help you crunch the numbers.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📰</div>
+      <h3>HK Financial Guides</h3>
+      <p>In-depth articles, comparisons, and news covering credit, mortgages, MPF, and personal finance for HK residents.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔔</div>
+      <h3>Rate Alerts</h3>
+      <p>Sign up for alerts when the best mortgage rates change, or when a new credit card promotion launches in HK.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤝</div>
+      <h3>Trusted by Banks</h3>
+      <p>Official partnerships with Hong Kong's major banks and insurance providers ensure accurate, authorised data.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌐</div>
+      <h3>Bilingual Platform</h3>
+      <p>Full English and Traditional Chinese support — compare, read reviews, and apply in your preferred language.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2>Contact Us</h2>
+  <p class="section-sub">Have a question about a product, want to partner with us, or need help using the platform? We're here to help.</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-row-icon">🏢</div>
+        <div class="contact-row-text">
+          <h4>Platform</h4>
+          <p>MoneySmart.hk<br>Hong Kong's Financial Comparison Platform</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📍</div>
+        <div class="contact-row-text">
+          <h4>Location</h4>
+          <p>Hong Kong</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📧</div>
+        <div class="contact-row-text">
+          <h4>Email</h4>
+          <a href="mailto:contact@moneysmart.hk">contact@moneysmart.hk</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">🌐</div>
+        <div class="contact-row-text">
+          <h4>Website</h4>
+          <a href="https://www.moneysmart.hk" target="_blank">www.moneysmart.hk</a>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <input type="text" placeholder="Your Name" />
+      <input type="email" placeholder="Email Address" />
+      <select>
+        <option value="" disabled selected>Enquiry Type</option>
+        <option>Credit Card Comparison</option>
+        <option>Personal Loan Enquiry</option>
+        <option>Mortgage Comparison</option>
+        <option>Insurance Products</option>
+        <option>Partnership / Advertise</option>
+        <option>Technical Support</option>
+        <option>General Enquiry</option>
+      </select>
+      <textarea placeholder="Tell us more about your enquiry…"></textarea>
+      <button type="submit">Send Message 💬</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 <span>MoneySmart.hk</span> · Hong Kong's Financial Comparison Platform · All Rights Reserved · <span>Free to Use</span></p>
+</footer>
+
+</body>
+</html>
