@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>利亞零售有限公司 | CRA Group · 聖安娜餅屋 · Mon cher · Zoff</title>
+<meta name="description" content="利亞零售有限公司（CRA Group）是馮氏集團旗下零售業務上市公司，旗下品牌包括聖安娜餅屋、Mon cher日本高級蛋糕店及Zoff時尚眼鏡店，在香港、澳門、廣州及新加坡合共逾170家門市，員工逾3,000人。"/>
+<style>
+:root{
+  --bg:#06050a;
+  --surface:#0c0a14;
+  --card:#12101c;
+  --border:#1c1826;
+  --accent:#d03060;
+  --accent2:#d09820;
+  --text:#f0eef8;
+  --muted:#888898;
+  --radius:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,5,10,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{display:flex;flex-direction:column;line-height:1.2;}
+.nav-logo-cn{font-size:1rem;font-weight:800;color:var(--accent);}
+.nav-logo-en{font-size:0.65rem;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:0.85rem;color:var(--muted);transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:700;transition:opacity 0.2s;}
+.nav-cta:hover{opacity:0.85;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:64px;}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 60% at 20% 40%,rgba(208,48,96,0.12) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 50% at 80% 60%,rgba(208,152,32,0.07) 0%,transparent 60%),
+  linear-gradient(160deg,#06050a 0%,#0c0a16 60%,#06050a 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(208,48,96,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(208,48,96,0.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 400px;gap:5rem;align-items:center;position:relative;z-index:2;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(208,48,96,0.12);border:1px solid rgba(208,48,96,0.25);border-radius:20px;padding:0.3rem 1rem;font-size:0.78rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.5rem;}
+.hero h1{font-size:clamp(2rem,4vw,3.4rem);font-weight:900;line-height:1.1;margin-bottom:0.5rem;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-en{font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin-bottom:2.5rem;line-height:1.7;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 2rem;border-radius:8px;font-weight:700;font-size:0.95rem;transition:opacity 0.2s;}
+.btn-primary:hover{opacity:0.85;}
+.btn-secondary{border:1px solid var(--border);color:var(--text);padding:0.75rem 2rem;border-radius:8px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s;}
+.btn-secondary:hover{border-color:var(--accent);}
+.hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.72rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.7rem 0;border-bottom:1px solid var(--border);}
+.info-row:last-child{border-bottom:none;}
+.info-icon{width:32px;height:32px;border-radius:7px;background:rgba(208,48,96,0.12);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;font-weight:600;line-height:1.5;}
+.info-val a{color:var(--accent);}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stats-inner{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--accent);line-height:1;}
+.stat-label{font-size:0.78rem;color:var(--muted);margin-top:0.4rem;}
+
+/* SECTIONS */
+section{padding:5rem 0;}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.section-tag{display:inline-block;background:rgba(208,48,96,0.12);border:1px solid rgba(208,48,96,0.2);border-radius:20px;padding:0.3rem 1rem;font-size:0.75rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1rem;}
+.section-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;line-height:1.2;margin-bottom:0.75rem;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:640px;line-height:1.7;}
+.section-header{margin-bottom:3rem;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(208,48,96,0.08),rgba(208,152,32,0.06));border:1px solid rgba(208,48,96,0.18);border-radius:12px;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:1.05rem;line-height:1.8;}
+.about-body p{color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+.milestones{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem;}
+.ms-item{display:flex;gap:1rem;align-items:flex-start;}
+.ms-year{font-size:0.82rem;font-weight:800;color:var(--accent);min-width:55px;}
+.ms-text{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+.prop-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-name{font-size:0.82rem;font-weight:700;color:var(--accent);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+
+/* BRANDS */
+.brand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.brand-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.25s;}
+.brand-card:hover{border-color:rgba(208,48,96,0.35);transform:translateY(-3px);}
+.brand-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.brand-card:hover::after{opacity:1;}
+.brand-origin{display:inline-block;background:rgba(208,48,96,0.12);border:1px solid rgba(208,48,96,0.2);border-radius:20px;padding:0.2rem 0.75rem;font-size:0.7rem;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.75rem;}
+.brand-emoji{font-size:2.5rem;margin-bottom:0.75rem;}
+.brand-cn{font-size:1.3rem;font-weight:900;margin-bottom:0.2rem;}
+.brand-en{font-size:0.85rem;color:var(--muted);margin-bottom:0.75rem;letter-spacing:0.04em;}
+.brand-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;margin-bottom:0.75rem;}
+.brand-badge{display:inline-block;background:rgba(208,152,32,0.12);border:1px solid rgba(208,152,32,0.2);border-radius:4px;padding:0.15rem 0.5rem;font-size:0.68rem;color:var(--accent2);}
+
+/* MARKETS */
+.market-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.market-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center;transition:border-color 0.25s;}
+.market-card:hover{border-color:rgba(208,48,96,0.35);}
+.market-flag{font-size:2rem;margin-bottom:0.5rem;}
+.market-name{font-size:0.95rem;font-weight:700;margin-bottom:0.3rem;}
+.market-detail{font-size:0.78rem;color:var(--muted);}
+
+/* INNOVATIONS */
+.inno-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.inno-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;transition:border-color 0.25s;}
+.inno-card:hover{border-color:rgba(208,152,32,0.35);}
+.inno-icon{font-size:2rem;margin-bottom:1rem;}
+.inno-name{font-size:1.05rem;font-weight:700;margin-bottom:0.4rem;}
+.inno-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-block{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-title{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;}
+.contact-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 0;border-bottom:1px solid var(--border);}
+.contact-item:last-child{border-bottom:none;}
+.contact-icon{width:38px;height:38px;border-radius:8px;background:rgba(208,48,96,0.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.contact-type{font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;}
+.contact-val{font-size:0.9rem;font-weight:600;}
+.contact-val a{color:var(--accent);}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem 0 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-logo-cn{font-size:1rem;font-weight:800;color:var(--accent);margin-bottom:0.15rem;}
+.footer-logo-en{font-size:0.7rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem;}
+.footer-desc{font-size:0.85rem;color:var(--muted);line-height:1.7;max-width:300px;}
+.footer-col h4{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col ul li a{font-size:0.88rem;color:var(--muted);transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+.footer-parent{font-size:0.8rem;color:var(--accent2);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.brand-grid,.market-grid,.inno-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:repeat(3,1fr);}
+  .prop-cards{grid-template-columns:1fr;}
+  .market-grid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-cn">利亞零售有限公司</div>
+      <div class="nav-logo-en">CRA Group · Fung Group</div>
+    </div>
+    <div class="nav-links">
+      <a href="#brands">旗下品牌</a>
+      <a href="#markets">業務版圖</a>
+      <a href="#innovation">零售創新</a>
+      <a href="#contact">聯絡</a>
+    </div>
+    <a href="mailto:info@irasia.com" class="nav-cta">投資者查詢</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🏬 馮氏集團旗下 · 香港交易所上市 · 逾170門市</div>
+      <h1><em>利亞零售</em><br/>新鮮感全接觸</h1>
+      <div class="hero-en">CRA Group · Retail Excellence</div>
+      <p class="hero-sub">利亞零售有限公司是馮氏集團旗下零售業務上市公司，旗下品牌包括聖安娜餅屋、Mon cher日本高級蛋糕店及Zoff時尚眼鏡店，在香港、澳門、廣州及新加坡合共逾170家門市，員工逾3,000人。</p>
+      <div class="hero-btns">
+        <a href="#brands" class="btn-primary">探索旗下品牌</a>
+        <a href="#markets" class="btn-secondary">業務版圖</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">📋 公司資料</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">公司</div>
+          <div class="info-val">利亞零售有限公司 (CRA Group)</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🏛️</div>
+        <div>
+          <div class="info-label">母公司</div>
+          <div class="info-val">馮氏集團 (Fung Group)</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">業務地區</div>
+          <div class="info-val">香港・澳門・廣州・新加坡</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">投資者查詢</div>
+          <div class="info-val"><a href="mailto:info@irasia.com">info@irasia.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">投資者資料</div>
+          <div class="info-val"><a href="https://www.irasia.com/listco/hk/cra/" target="_blank">irasia.com · CRA Group</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">170+</div>
+      <div class="stat-label">全球門市</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3,000+</div>
+      <div class="stat-label">員工人數</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">旗下品牌</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">業務地區</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">HKEX</div>
+      <div class="stat-label">香港交易所上市</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">關於利亞零售</div>
+        <h2 class="section-title">馮氏集團旗下<br/>優質專業零售商</h2>
+        <div class="about-highlight">
+          <p>利亞零售有限公司是馮氏集團（Fung Group）旗下零售業務的上市公司，以「新鮮感全接觸」為企業文化，致力為顧客帶來最新的產品、最優質便捷的服務，以及極具創意的推廣活動，在香港及大灣區深受消費者愛戴。</p>
+        </div>
+        <div class="about-body">
+          <p>集團旗下擁有聖安娜餅屋、Mon cher日本高級蛋糕店及Zoff時尚眼鏡店三大品牌，在香港、澳門、廣州及新加坡合共逾170家門市，並擁有業內領先的「線上到線下」(O2O) 顧客關係管理計劃，以電子印花、電子促銷優惠券及電子幸運抽獎等數位工具，加深與會員顧客的互動。</p>
+        </div>
+        <div class="milestones">
+          <div class="ms-item">
+            <div class="ms-year">2017</div>
+            <div class="ms-text">獲得日本著名便捷時尚眼鏡連鎖店Zoff於香港、澳門及華南地區的特許經營權</div>
+          </div>
+          <div class="ms-item">
+            <div class="ms-year">2020</div>
+            <div class="ms-text">獲得日本著名人氣蛋糕品牌Mon cher特許經營權，在香港崇光百貨開設首家分店</div>
+          </div>
+          <div class="ms-item">
+            <div class="ms-year">2024</div>
+            <div class="ms-text">通過收購Zoff新加坡，把業務範圍擴大至新加坡，進一步拓展東南亞市場</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">🔄</div>
+            <div class="prop-name">O2O零售模式</div>
+            <div class="prop-desc">業內領先的「線上到線下」顧客關係管理，以數位工具加深與會員的互動，帶動實體店人流</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🇯🇵</div>
+            <div class="prop-name">日本品牌特許</div>
+            <div class="prop-desc">持有Zoff時尚眼鏡及Mon cher日本人氣蛋糕在港澳華南及新加坡的獨家特許經營權</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🌏</div>
+            <div class="prop-name">大灣區擴展</div>
+            <div class="prop-desc">積極把業務拓展至大灣區，以香港品牌優勢在廣州及大灣區各城市開拓新市場</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">👥</div>
+            <div class="prop-name">逾3,000員工</div>
+            <div class="prop-desc">龐大的零售服務團隊遍佈四個市場，以卓越服務文化為顧客提供優質的購物體驗</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">旗下品牌</div>
+      <h2 class="section-title">三大旗艦品牌</h2>
+      <p class="section-sub">利亞零售旗下三大品牌各具特色，分別在麵包西餅、日本高級蛋糕及時尚眼鏡領域佔有重要地位，深受香港及大灣區消費者喜愛。</p>
+    </div>
+    <div class="brand-grid">
+      <div class="brand-card">
+        <div class="brand-origin">🇭🇰 香港品牌</div>
+        <div class="brand-emoji">🥐</div>
+        <div class="brand-cn">聖安娜餅屋</div>
+        <div class="brand-en">Saint Honore Cake Shop</div>
+        <div class="brand-desc">香港具規模的麵包西餅連鎖店，品牌早已家傳戶曉，在香港、澳門及大灣區市場迅速發展，是利亞零售的核心品牌，門市遍佈香港各主要商場及社區。</div>
+        <div class="brand-badge">🏠 家傳戶曉 · 港澳大灣區</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-origin">🇯🇵 日本品牌特許</div>
+        <div class="brand-emoji">🎂</div>
+        <div class="brand-cn">Mon cher</div>
+        <div class="brand-en">Mon cher 日本高級蛋糕</div>
+        <div class="brand-desc">2020年9月引入香港的日本著名人氣蛋糕品牌，首家分店開設於香港崇光百貨。Mon cher出品精美可口，其招牌「堂島捲」廣受好評，是日式甜品愛好者的首選。</div>
+        <div class="brand-badge">⭐ 日本人氣品牌 · 崇光百貨</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-origin">🇯🇵 日本品牌特許</div>
+        <div class="brand-emoji">👓</div>
+        <div class="brand-cn">Zoff</div>
+        <div class="brand-en">Zoff 時尚眼鏡</div>
+        <div class="brand-desc">2017年引入香港的日本著名便捷時尚眼鏡連鎖店，持有香港、澳門及華南地區特許經營權，2024年更擴展至新加坡。以時尚設計及實惠價格，深受年輕消費者歡迎。</div>
+        <div class="brand-badge">🌏 港澳華南+新加坡</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section id="markets">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">業務版圖</div>
+      <h2 class="section-title">四大市場 · 逾170門市</h2>
+      <p class="section-sub">利亞零售的業務版圖橫跨香港、澳門、廣州及新加坡，以香港為核心，積極拓展大灣區及東南亞市場。</p>
+    </div>
+    <div class="market-grid">
+      <div class="market-card">
+        <div class="market-flag">🇭🇰</div>
+        <div class="market-name">香港</div>
+        <div class="market-detail">核心市場 · 聖安娜 + Mon cher + Zoff</div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇲🇴</div>
+        <div class="market-name">澳門</div>
+        <div class="market-detail">聖安娜餅屋 + Zoff 門市</div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇨🇳</div>
+        <div class="market-name">廣州 · 大灣區</div>
+        <div class="market-detail">大灣區戰略擴展 · 積極發展中</div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇸🇬</div>
+        <div class="market-name">新加坡</div>
+        <div class="market-detail">2024年收購Zoff新加坡業務</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INNOVATION -->
+<section id="innovation" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">零售創新</div>
+      <h2 class="section-title">業內領先的O2O零售策略</h2>
+      <p class="section-sub">利亞零售擁有業內領先的「線上到線下」(O2O) 顧客關係管理計劃，以數位科技深化品牌與會員顧客的連結。</p>
+    </div>
+    <div class="inno-grid">
+      <div class="inno-card">
+        <div class="inno-icon">📱</div>
+        <div class="inno-name">線上到線下 (O2O)</div>
+        <div class="inno-desc">業內領先的O2O顧客關係管理計劃，各品牌透過線上到線下的業務模式及推廣工具，加深與會員顧客的互動，並增加實體店客流量。</div>
+      </div>
+      <div class="inno-card">
+        <div class="inno-icon">💳</div>
+        <div class="inno-name">電子印花 & 優惠券</div>
+        <div class="inno-desc">以電子印花計劃及電子促銷優惠券取代傳統紙本，提升顧客參與度，同時提供更精準的顧客數據分析，優化推廣成效。</div>
+      </div>
+      <div class="inno-card">
+        <div class="inno-icon">🎰</div>
+        <div class="inno-name">電子幸運抽獎</div>
+        <div class="inno-desc">創新的電子幸運抽獎活動設計，以趣味互動形式提升顧客參與度，刺激購買行為，並增加品牌在社交媒體的曝光及口碑傳播。</div>
+      </div>
+      <div class="inno-card">
+        <div class="inno-icon">🌐</div>
+        <div class="inno-name">數位化業務轉型</div>
+        <div class="inno-desc">集團致力於策略性業務轉型，以數位科技提升零售效率，重點發展香港的麵包西餅和眼鏡業務，並將業務進一步擴展至大灣區。</div>
+      </div>
+      <div class="inno-card">
+        <div class="inno-icon">🤝</div>
+        <div class="inno-name">日本品牌特許合作</div>
+        <div class="inno-desc">積極與日本知名零售品牌建立特許合作關係，引進Zoff及Mon cher等人氣品牌，為香港消費者帶來更多元化的優質消費體驗選擇。</div>
+      </div>
+      <div class="inno-card">
+        <div class="inno-icon">📊</div>
+        <div class="inno-name">大灣區戰略擴展</div>
+        <div class="inno-desc">積極把旗下品牌拓展至廣州及大灣區各城市，充分利用集團的豐富零售經驗及品牌影響力，把握大灣區零售市場的龐大發展機遇。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">與利亞零售聯繫</h2>
+      <p class="section-sub">如有投資者查詢、品牌合作、業務發展或招聘查詢，歡迎與我們聯絡。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <div class="contact-title">📞 聯絡方式</div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-type">投資者關係查詢</div>
+            <div class="contact-val"><a href="mailto:info@irasia.com">info@irasia.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-type">投資者資料網站</div>
+            <div class="contact-val"><a href="https://www.irasia.com/listco/hk/cra/" target="_blank">irasia.com · CRA Group Profile</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🏛️</div>
+          <div>
+            <div class="contact-type">母公司網站</div>
+            <div class="contact-val"><a href="https://www.funggroup.com" target="_blank">funggroup.com · 馮氏集團</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-title">🏬 旗下品牌</div>
+        <div class="contact-item">
+          <div class="contact-icon">🥐</div>
+          <div>
+            <div class="contact-type">聖安娜餅屋</div>
+            <div class="contact-val">Saint Honore Cake Shop · 港澳大灣區</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🎂</div>
+          <div>
+            <div class="contact-type">Mon cher</div>
+            <div class="contact-val">日本高級蛋糕 · 香港特許經營</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">👓</div>
+          <div>
+            <div class="contact-type">Zoff 時尚眼鏡</div>
+            <div class="contact-val">港澳華南+新加坡 · 特許經營</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-cn">利亞零售有限公司</div>
+        <div class="footer-logo-en">CRA Group · A Fung Group Company</div>
+        <p class="footer-desc">馮氏集團旗下零售業務上市公司，旗下包括聖安娜餅屋、Mon cher日本高級蛋糕及Zoff時尚眼鏡，在香港、澳門、廣州及新加坡逾170家門市，員工逾3,000人。</p>
+      </div>
+      <div class="footer-col">
+        <h4>旗下品牌</h4>
+        <ul>
+          <li><a href="#brands">聖安娜餅屋</a></li>
+          <li><a href="#brands">Mon cher</a></li>
+          <li><a href="#brands">Zoff 時尚眼鏡</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>業務地區</h4>
+        <ul>
+          <li><a href="#markets">🇭🇰 香港</a></li>
+          <li><a href="#markets">🇲🇴 澳門</a></li>
+          <li><a href="#markets">🇨🇳 廣州・大灣區</a></li>
+          <li><a href="#markets">🇸🇬 新加坡</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 利亞零售有限公司 CRA Group · 版權所有</div>
+      <div class="footer-parent">A Fung Group Company · 馮氏集團</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
