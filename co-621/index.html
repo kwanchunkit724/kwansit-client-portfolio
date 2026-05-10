@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>味珍味（香港）有限公司 | AJI-NO-CHINMI · 日本食材進口分銷</title>
+<meta name="description" content="味珍味（香港）有限公司成立於1981年，超過四十年日本食材進口分銷經驗，引入日本和牛、新鮮蔬果、雞蛋、拉麵工場等，持「商界展關懷」認可，與香港城市大學合辦獎學金計劃。"/>
+<style>
+:root{
+  --bg:#040408;
+  --surface:#080810;
+  --card:#0e0e18;
+  --border:#181828;
+  --accent:#c82020;
+  --accent2:#d09020;
+  --text:#f0eff5;
+  --muted:#888898;
+  --radius:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,4,8,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:0.75rem;}
+.nav-logo-cn{font-size:1.1rem;font-weight:800;color:var(--accent);}
+.nav-logo-en{font-size:0.68rem;letter-spacing:0.06em;color:var(--muted);text-transform:uppercase;border-left:1px solid var(--border);padding-left:0.75rem;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:0.85rem;color:var(--muted);transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:700;transition:opacity 0.2s;}
+.nav-cta:hover{opacity:0.85;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:64px;}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 60% at 20% 40%,rgba(200,32,32,0.10) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 50% at 80% 60%,rgba(208,144,32,0.06) 0%,transparent 60%),
+  linear-gradient(160deg,#040408 0%,#080810 60%,#040408 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(200,32,32,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,32,32,0.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center;position:relative;z-index:2;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(200,32,32,0.12);border:1px solid rgba(200,32,32,0.25);border-radius:20px;padding:0.3rem 1rem;font-size:0.78rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.5rem;}
+.hero h1{font-size:clamp(2.2rem,4vw,3.6rem);font-weight:900;line-height:1.1;margin-bottom:0.5rem;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-en{font-size:0.9rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin-bottom:2.5rem;line-height:1.7;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 2rem;border-radius:8px;font-weight:700;font-size:0.95rem;transition:opacity 0.2s;}
+.btn-primary:hover{opacity:0.85;}
+.btn-secondary{border:1px solid var(--border);color:var(--text);padding:0.75rem 2rem;border-radius:8px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s;}
+.btn-secondary:hover{border-color:var(--accent);}
+.hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.72rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.7rem 0;border-bottom:1px solid var(--border);}
+.info-row:last-child{border-bottom:none;}
+.info-icon{width:32px;height:32px;border-radius:7px;background:rgba(200,32,32,0.12);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;font-weight:600;line-height:1.5;}
+.info-val a{color:var(--accent);}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stats-inner{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--accent);line-height:1;}
+.stat-label{font-size:0.78rem;color:var(--muted);margin-top:0.4rem;}
+
+/* SECTIONS */
+section{padding:5rem 0;}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.section-tag{display:inline-block;background:rgba(200,32,32,0.12);border:1px solid rgba(200,32,32,0.2);border-radius:20px;padding:0.3rem 1rem;font-size:0.75rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1rem;}
+.section-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;line-height:1.2;margin-bottom:0.75rem;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:640px;line-height:1.7;}
+.section-header{margin-bottom:3rem;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(200,32,32,0.08),rgba(208,144,32,0.06));border:1px solid rgba(200,32,32,0.18);border-radius:12px;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:1.05rem;line-height:1.8;}
+.about-body p{color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+.timeline{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem;}
+.tl-item{display:flex;gap:1rem;align-items:flex-start;}
+.tl-year{font-size:0.82rem;font-weight:800;color:var(--accent);min-width:60px;}
+.tl-text{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+.prop-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-name{font-size:0.82rem;font-weight:700;color:var(--accent);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+.award-box{background:var(--card);border:1px solid rgba(208,144,32,0.25);border-radius:10px;padding:1.2rem;margin-top:1rem;display:flex;align-items:center;gap:0.75rem;}
+.award-icon{font-size:1.8rem;}
+.award-text{font-size:0.85rem;color:var(--muted);line-height:1.5;}
+.award-text strong{color:var(--accent2);}
+
+/* PRODUCTS */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.25s;}
+.prod-card:hover{border-color:rgba(200,32,32,0.35);transform:translateY(-3px);}
+.prod-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.prod-card:hover::after{opacity:1;}
+.prod-emoji{font-size:2.2rem;margin-bottom:0.75rem;}
+.prod-cat{display:inline-block;background:rgba(200,32,32,0.12);border:1px solid rgba(200,32,32,0.2);border-radius:20px;padding:0.2rem 0.75rem;font-size:0.7rem;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.75rem;}
+.prod-name{font-size:1.15rem;font-weight:800;margin-bottom:0.4rem;}
+.prod-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+.prod-badge{display:inline-block;background:rgba(208,144,32,0.12);border:1px solid rgba(208,144,32,0.2);border-radius:4px;padding:0.15rem 0.5rem;font-size:0.68rem;color:var(--accent2);margin-top:0.5rem;}
+
+/* CAT TAGS */
+.cat-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:2rem;}
+.cat-tag{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:0.5rem 1rem;font-size:0.85rem;transition:border-color 0.2s;}
+.cat-tag:hover{border-color:var(--accent);}
+
+/* CLIENTS */
+.client-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.client-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;transition:border-color 0.25s;}
+.client-card:hover{border-color:rgba(208,144,32,0.35);}
+.client-icon{font-size:2rem;margin-bottom:1rem;}
+.client-name{font-size:1.05rem;font-weight:700;margin-bottom:0.4rem;}
+.client-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+
+/* CSR */
+.csr-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;}
+.csr-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;}
+.csr-icon{font-size:2rem;margin-bottom:1rem;}
+.csr-name{font-size:1.05rem;font-weight:700;margin-bottom:0.4rem;}
+.csr-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-block{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-title{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;padding:0.9rem 0;border-bottom:1px solid var(--border);}
+.contact-item:last-child{border-bottom:none;}
+.contact-icon{width:38px;height:38px;border-radius:8px;background:rgba(200,32,32,0.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;margin-top:0.2rem;}
+.contact-type{font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;}
+.contact-val{font-size:0.9rem;font-weight:600;line-height:1.5;}
+.contact-val a{color:var(--accent);}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem 0 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-logo-cn{font-size:1rem;font-weight:800;color:var(--accent);margin-bottom:0.15rem;}
+.footer-logo-en{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;}
+.footer-desc{font-size:0.85rem;color:var(--muted);line-height:1.7;max-width:300px;}
+.footer-col h4{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col ul li a{font-size:0.88rem;color:var(--muted);transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+.footer-award{font-size:0.8rem;color:var(--accent2);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.prod-grid,.client-grid,.csr-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:repeat(3,1fr);}
+  .prop-cards{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-cn">味珍味（香港）有限公司</div>
+      <div class="nav-logo-en">AJI-NO-CHINMI CO.(HK) LTD.</div>
+    </div>
+    <div class="nav-links">
+      <a href="#products">味・分類</a>
+      <a href="#story">味・故事</a>
+      <a href="#clients">服務對象</a>
+      <a href="#contact">聯絡</a>
+    </div>
+    <a href="mailto:info@aji-no-chinmi.com.hk" class="nav-cta">聯絡我們</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🇯🇵 日本食材進口 · 成立1981年 · 四十年品質</div>
+      <h1><em>味</em>・珍・味<br/>用心製作</h1>
+      <div class="hero-en">AJI-NO-CHINMI CO. (HK) LTD. · Est. 1981</div>
+      <p class="hero-sub">味珍味（香港）有限公司成立於1981年，超過四十年日本食材進口分銷經驗。率先引入日本和牛、空運新鮮蔬果雞蛋，設立日式拉麵工場，服務客戶網絡遍佈全港超市、便利店及餐廳。</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">味・分類</a>
+        <a href="#story" class="btn-secondary">味・故事</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">📋 聯絡資料</div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">電話</div>
+          <div class="info-val"><a href="tel:+85224951261">(+852) 2495 1261</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📠</div>
+        <div>
+          <div class="info-label">傳真</div>
+          <div class="info-val">(+852) 2433 0186</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-val"><a href="mailto:info@aji-no-chinmi.com.hk">info@aji-no-chinmi.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">辦公室</div>
+          <div class="info-val">青衣航運路38號招商局物流中心12樓B室</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🥩</div>
+        <div>
+          <div class="info-label">鮮貨部</div>
+          <div class="info-val">青衣長達路33號青衣工業中心第2期D座地下33室</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">1981</div>
+      <div class="stat-label">創立年份</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">40+</div>
+      <div class="stat-label">年進口分銷經驗</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">13</div>
+      <div class="stat-label">食品類別</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">400+</div>
+      <div class="stat-label">城大獎學金項目</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">🏆</div>
+      <div class="stat-label">商界展關懷認可</div>
+    </div>
+  </div>
+</div>
+
+<!-- STORY / ABOUT -->
+<section id="story">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">味・故事</div>
+        <h2 class="section-title">四十年日本食材<br/>引進先驅</h2>
+        <div class="about-highlight">
+          <p>味珍味（香港）有限公司成立於1981年，超過四十年來一直以市場先驅的視野，率先為香港引入多款深受市場愛戴的日本食材，從和牛、吞拿魚到空運新鮮士多啤梨和雞蛋，奠定了日本食材在香港市場的地位。</p>
+        </div>
+        <div class="about-body">
+          <p>於90年代後期，味珍味更進一步設立拉麵工場，每日新鮮製造傳統日本拉麵，並由日本聘請專業師傅親身監控生產程序。工場設備完善，衛生要求極高，為全港零售商戶及餐廳提供優質的新鮮日本拉麵。</p>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-year">1981</div>
+            <div class="tl-text">公司成立，率先引入吞拿魚、日本和牛、炸帶子及波子汽水等日本食材</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">1980s</div>
+            <div class="tl-text">率先採用飛機運送新鮮日本蔬果及乳類製品，每週空運及船運新鮮食材到港</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">1990s</div>
+            <div class="tl-text">設立拉麵工場，日本師傅監控生產，每日新鮮製造傳統日本拉麵供應全港</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2013</div>
+            <div class="tl-text">與香港城市大學合辦「味珍味(香港)獎學金」計劃，累計約400項獎學金</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2021</div>
+            <div class="tl-text">榮獲香港社會服務聯會頒發「商界展關懷」標誌(2020-2021)</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">✈️</div>
+            <div class="prop-name">空運新鮮食材</div>
+            <div class="prop-desc">每週空運及船運最新鮮日本食材來港，包括日本士多啤梨及雞蛋，確保食材最佳鮮度</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🍜</div>
+            <div class="prop-name">日式拉麵工場</div>
+            <div class="prop-desc">自設拉麵工場，日本專業師傅監控生產，每日新鮮製造傳統日本拉麵，供應全港餐廳</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🚚</div>
+            <div class="prop-name">專屬物流車隊</div>
+            <div class="prop-desc">設有專屬物流部及不斷擴大的貨車車隊，提供高效快捷的送貨服務，覆蓋全港客戶</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🌐</div>
+            <div class="prop-name">全港客戶網絡</div>
+            <div class="prop-desc">服務遍及日資超市、大型超市、便利店、日式餐廳及各類小食店，客戶網絡覆蓋全港</div>
+          </div>
+        </div>
+        <div class="award-box">
+          <div class="award-icon">🏆</div>
+          <div class="award-text"><strong>商界展關懷標誌 (2020-2021)</strong><br/>榮獲香港社會服務聯會頒發，表彰味珍味在企業社會責任方面的卓越表現</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">味・分類</div>
+      <h2 class="section-title">13大日本食材類別</h2>
+      <p class="section-sub">味珍味精選進口多元化日本食材，由日常主食到特色食材，一站式滿足超市、便利店及餐廳的採購需求。</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-emoji">🍜</div>
+        <div class="prod-cat">麵食</div>
+        <div class="prod-name">日式拉麵系列</div>
+        <div class="prod-desc">自設拉麵工場，日本專業師傅監控，每日新鮮製造傳統日本拉麵，提供零售商戶及餐廳最正宗的日式麵食選擇。</div>
+        <div class="prod-badge">🏭 自設工場 · 每日新鮮</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🥚</div>
+        <div class="prod-cat">雞蛋</div>
+        <div class="prod-name">日本進口雞蛋</div>
+        <div class="prod-desc">每週以空運方式從日本直送新鮮雞蛋，嚴格把關溫控及新鮮度，是香港日式餐廳的首選日本雞蛋供應商。</div>
+        <div class="prod-badge">✈️ 每週空運直送</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🍓</div>
+        <div class="prod-cat">蔬果</div>
+        <div class="prod-name">日本新鮮蔬果</div>
+        <div class="prod-desc">自80年代起率先以飛機運送新鮮日本蔬果，包括日本士多啤梨等季節性精品蔬果，每週空運直送，保持最佳鮮度。</div>
+        <div class="prod-badge">✈️ 每週空運 · 當季精品</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🥛</div>
+        <div class="prod-cat">奶類</div>
+        <div class="prod-name">日本乳製品</div>
+        <div class="prod-desc">精選日本優質乳製品，以空運確保新鮮度，涵蓋各類鮮奶、奶油及乳製食品，滿足日式餐廳及超市的採購需求。</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🧂</div>
+        <div class="prod-cat">調味料</div>
+        <div class="prod-name">日式調味料</div>
+        <div class="prod-desc">精選日本各式調味料，包括醬油、味噌、醋、醬汁等，為香港廚師及家庭廚房帶來正宗日式料理的調味基礎。</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">❄️</div>
+        <div class="prod-cat">冷凍/急凍食品</div>
+        <div class="prod-name">日本急凍食品</div>
+        <div class="prod-desc">引入多款深受香港市場歡迎的日本急凍食品，包括早年率先引入的炸帶子等，品質穩定，深受超市及餐廳業者信賴。</div>
+        <div class="prod-badge">🌟 市場先驅引入</div>
+      </div>
+    </div>
+    <div class="cat-tags">
+      <div class="cat-tag">🍚 米飯</div>
+      <div class="cat-tag">🥤 飲料</div>
+      <div class="cat-tag">🎂 蛋糕原料</div>
+      <div class="cat-tag">🍲 湯及醬包</div>
+      <div class="cat-tag">🍬 零食</div>
+      <div class="cat-tag">☕ 咖啡</div>
+      <div class="cat-tag">🍮 甜品</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">服務對象</div>
+      <h2 class="section-title">全港客戶網絡</h2>
+      <p class="section-sub">味珍味的客戶網絡遍佈全港，涵蓋日資超市、大型超市、便利店及各類餐廳，以高效的物流車隊確保新鮮食材迅速送達。</p>
+    </div>
+    <div class="client-grid">
+      <div class="client-card">
+        <div class="client-icon">🏪</div>
+        <div class="client-name">日資超市</div>
+        <div class="client-desc">服務香港各大日資超市，提供穩定優質的日本食材供應，以豐富的品項選擇滿足日系超市顧客對正宗日本食材的需求。</div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🛒</div>
+        <div class="client-name">大型超級市場</div>
+        <div class="client-desc">為香港各大超市連鎖提供日本食材採購服務，品類齊全，配送準時，是超市日本食品貨架的可靠供應夥伴。</div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🏬</div>
+        <div class="client-name">便利店</div>
+        <div class="client-desc">支援香港各大便利店連鎖的日本食品採購，提供適合便利店包裝規格的日本食材，滿足即食及外帶需求。</div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🍣</div>
+        <div class="client-name">日式餐廳</div>
+        <div class="client-desc">以日式餐廳為主要服務對象，提供壽司、刺身、拉麵、懷石料理等所需的新鮮高品質日本食材，是業界的信賴之選。</div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🍽️</div>
+        <div class="client-name">各類餐廳</div>
+        <div class="client-desc">除日式餐廳外，亦服務香港各類餐飲業者，提供多元化的日本食材選擇，支援創意菜單的食材需求。</div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🥡</div>
+        <div class="client-name">小食店</div>
+        <div class="client-desc">為香港各區小食店及外賣店提供優質日本食材，讓更多香港市民在日常飲食中享受到正宗日本風味。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CSR -->
+<section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">關懷社會</div>
+      <h2 class="section-title">回饋社區 · 培育人才</h2>
+      <p class="section-sub">味珍味深信企業的社會責任，積極透過多元化社區活動及獎學金計劃，回饋香港社會。</p>
+    </div>
+    <div class="csr-grid">
+      <div class="csr-card">
+        <div class="csr-icon">🎓</div>
+        <div class="csr-name">城大獎學金計劃</div>
+        <div class="csr-desc">自2013年起與香港城市大學合辦「味珍味(香港)獎學金」計劃，至今累計頒發約400項獎學金，致力培育香港下一代。</div>
+      </div>
+      <div class="csr-card">
+        <div class="csr-icon">🍱</div>
+        <div class="csr-name">美食博覽參展</div>
+        <div class="csr-desc">多次參展香港貿易發展局舉辦的美食博覽及廠商會工展會，親身向公眾介紹產品，收集意見，發掘市場新機遇。</div>
+      </div>
+      <div class="csr-card">
+        <div class="csr-icon">⚾</div>
+        <div class="csr-name">運動贊助</div>
+        <div class="csr-desc">熱衷贊助社區運動項目，包括棒球等本地運動，支持香港運動發展，為社區注入正能量。</div>
+      </div>
+    </div>
+    <div style="margin-top:2rem;background:linear-gradient(135deg,rgba(200,32,32,0.08),rgba(208,144,32,0.06));border:1px solid rgba(208,144,32,0.2);border-radius:12px;padding:1.5rem;display:flex;align-items:center;gap:1.5rem;">
+      <div style="font-size:2.5rem;">🏆</div>
+      <div>
+        <div style="font-size:0.75rem;letter-spacing:0.1em;color:var(--accent2);margin-bottom:0.3rem;">獎項認可</div>
+        <div style="font-size:1.05rem;font-weight:700;margin-bottom:0.3rem;">商界展關懷標誌 (2020-2021)</div>
+        <div style="font-size:0.88rem;color:var(--muted);">2021年榮獲香港社會服務聯會頒發「商界展關懷」標誌，表彰味珍味在企業社會責任及關顧社群方面的卓越表現。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">與味珍味聯繫</h2>
+      <p class="section-sub">如有採購查詢、合作意向或產品資訊，歡迎聯絡我們的專業團隊。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <div class="contact-title">📞 聯絡方式</div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-type">電話</div>
+            <div class="contact-val"><a href="tel:+85224951261">(+852) 2495 1261</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📠</div>
+          <div>
+            <div class="contact-type">傳真</div>
+            <div class="contact-val">(+852) 2433 0186</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-type">電郵</div>
+            <div class="contact-val"><a href="mailto:info@aji-no-chinmi.com.hk">info@aji-no-chinmi.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-type">網站</div>
+            <div class="contact-val"><a href="https://www.aji-no-chinmi.com.hk" target="_blank">aji-no-chinmi.com.hk</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-title">📍 地址</div>
+        <div class="contact-item">
+          <div class="contact-icon">🏢</div>
+          <div>
+            <div class="contact-type">主辦公室</div>
+            <div class="contact-val">香港新界青衣青衣航運路38號<br/>招商局物流中心12樓B室</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🥩</div>
+          <div>
+            <div class="contact-type">鮮貨部</div>
+            <div class="contact-val">香港新界青衣島長達路33號<br/>青衣工業中心第2期D座地下33室</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🚚</div>
+          <div>
+            <div class="contact-type">物流車隊</div>
+            <div class="contact-val">專屬貨車車隊，高效配送至全港各區</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-cn">味珍味（香港）有限公司</div>
+        <div class="footer-logo-en">AJI-NO-CHINMI CO.(HK) LTD. · Est. 1981</div>
+        <p class="footer-desc">超過四十年日本食材進口分銷先驅，率先引入日本和牛、空運新鮮蔬果雞蛋、自設拉麵工場，持「商界展關懷」認可，與城市大學合辦獎學金計劃，服務全港超市、便利店及餐廳。</p>
+      </div>
+      <div class="footer-col">
+        <h4>味・分類</h4>
+        <ul>
+          <li><a href="#products">麵食</a></li>
+          <li><a href="#products">雞蛋</a></li>
+          <li><a href="#products">新鮮蔬果</a></li>
+          <li><a href="#products">乳製品</a></li>
+          <li><a href="#products">調味料</a></li>
+          <li><a href="#products">急凍食品</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡</h4>
+        <ul>
+          <li><a href="tel:+85224951261">(+852) 2495 1261</a></li>
+          <li><a href="mailto:info@aji-no-chinmi.com.hk">info@aji-no-chinmi.com.hk</a></li>
+          <li><a href="https://www.aji-no-chinmi.com.hk" target="_blank">aji-no-chinmi.com.hk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© Aji-no-chinmi. All Rights Reserved. · 版權所有</div>
+      <div class="footer-award">🏆 商界展關懷 2020-2021</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
