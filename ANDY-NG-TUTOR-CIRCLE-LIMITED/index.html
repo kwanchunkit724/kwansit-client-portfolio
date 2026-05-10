@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutor Circle 補習圈 | 香港首屈一指的私人補習配對平台</title>
+  <meta name="description" content="Tutor Circle 補習圈 — 香港網絡補習中介，80,000+ 認證導師，專業配對 DSE、IB、IELTS 及語言音樂課程。" />
+  <style>
+    :root {
+      --bg:        #12082a;
+      --surface:   #1e1040;
+      --card:      #261450;
+      --accent:    #22d47a;
+      --accent2:   #f0c030;
+      --accent3:   #e85040;
+      --text:      #eef2ff;
+      --muted:     #9a8ec0;
+      --border:    rgba(34,212,122,0.18);
+      --radius:    14px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Helvetica Neue', Arial, 'PingFang HK', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(18,8,42,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 64px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #10a85a);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; font-weight: 900; color: #12082a;
+    }
+    .nav-name { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .nav-name span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent); color: #12082a;
+      padding: 8px 22px; border-radius: 24px;
+      font-weight: 700; font-size: 0.88rem; text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(34,212,122,0.35); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 100px 5% 60px;
+      background: radial-gradient(ellipse at 70% 40%, rgba(34,212,122,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(240,192,48,0.09) 0%, transparent 55%),
+                  var(--bg);
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(34,212,122,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(34,212,122,0.12); border: 1px solid rgba(34,212,122,0.3);
+      color: var(--accent); padding: 6px 16px; border-radius: 24px;
+      font-size: 0.82rem; font-weight: 600; margin-bottom: 24px;
+    }
+    .hero-badge::before { content: '🎓'; }
+    h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 900; line-height: 1.15; margin-bottom: 12px; }
+    h1 .en { font-size: 0.55em; color: var(--accent); display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+    h1 .cn { background: linear-gradient(135deg, var(--text), rgba(238,242,255,0.7)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-tagline { font-size: 1.1rem; color: var(--muted); margin: 16px 0 32px; max-width: 520px; }
+    .hero-tagline strong { color: var(--accent2); -webkit-text-fill-color: var(--accent2); }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #10a85a);
+      color: #12082a; padding: 14px 32px; border-radius: 30px;
+      font-weight: 800; font-size: 0.95rem; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(34,212,122,0.4); }
+    .btn-secondary {
+      border: 2px solid rgba(240,192,48,0.5); color: var(--accent2);
+      padding: 12px 28px; border-radius: 30px;
+      font-weight: 700; font-size: 0.95rem; text-decoration: none;
+      transition: background .2s, border-color .2s;
+    }
+    .btn-secondary:hover { background: rgba(240,192,48,0.1); border-color: var(--accent2); }
+
+    /* HERO CARD */
+    .hero-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; padding: 32px; position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .hero-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), #e85040);
+      border-radius: 20px 20px 0 0;
+    }
+    .hc-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; font-size: 0.88rem; }
+    .hc-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .hc-label { color: var(--muted); font-size: 0.78rem; margin-bottom: 2px; }
+    .hc-val { color: var(--text); font-weight: 500; }
+    .hc-tag { display: inline-block; background: rgba(34,212,122,0.15); color: var(--accent); border-radius: 6px; padding: 2px 10px; font-size: 0.78rem; font-weight: 600; }
+    .hc-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+    .hc-since { display: flex; justify-content: space-between; align-items: center; }
+    .hc-since span { color: var(--muted); font-size: 0.82rem; }
+    .hc-since strong { color: var(--accent2); font-size: 1.05rem; }
+
+    /* STATS */
+    #stats {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 5%;
+    }
+    .stats-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .stat-item { text-align: center; padding: 24px 16px; }
+    .stat-num { font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-unit { font-size: 1rem; font-weight: 700; color: var(--accent); }
+    .stat-label { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
+
+    /* SECTIONS */
+    section { padding: 90px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { color: var(--accent); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; margin-bottom: 16px; }
+    .section-desc { color: var(--muted); font-size: 1rem; max-width: 600px; line-height: 1.8; }
+
+    /* SUBJECTS */
+    #subjects { background: var(--bg); }
+    .subjects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .subject-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px 28px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .subject-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0); transform-origin: left; transition: transform .3s;
+    }
+    .subject-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 12px 40px rgba(34,212,122,0.15); }
+    .subject-card:hover::after { transform: scaleX(1); }
+    .sc-icon { font-size: 2.4rem; margin-bottom: 16px; }
+    .sc-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+    .sc-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+    .sc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+    .sc-tag { background: rgba(34,212,122,0.1); color: var(--accent); border-radius: 6px; padding: 3px 10px; font-size: 0.78rem; font-weight: 600; }
+
+    /* HOW IT WORKS */
+    #how { background: var(--surface); }
+    .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
+    .step-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 24px; text-align: center;
+      position: relative;
+    }
+    .step-num {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #10a85a);
+      color: #12082a; font-size: 1.3rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
+    }
+    .step-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .step-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.7; }
+
+    /* RESULTS */
+    #results { background: var(--bg); }
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
+    .result-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 36px 28px; text-align: center;
+    }
+    .result-icon { font-size: 2.6rem; margin-bottom: 16px; }
+    .result-num { font-size: 2.8rem; font-weight: 900; line-height: 1; margin-bottom: 4px; }
+    .result-num.green { color: var(--accent); }
+    .result-num.gold { color: var(--accent2); }
+    .result-num.red { color: var(--accent3); }
+    .result-label { font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; }
+    .result-desc { color: var(--muted); font-size: 0.85rem; }
+
+    /* ABOUT */
+    #about { background: var(--surface); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 48px; }
+    .about-text p { color: var(--muted); font-size: 0.95rem; line-height: 1.85; margin-bottom: 18px; }
+    .about-text p strong { color: var(--accent); }
+    .about-values { display: flex; flex-direction: column; gap: 16px; }
+    .av-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px 24px;
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .av-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .av-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .av-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.6; }
+
+    /* TUTOR TYPES */
+    #tutors { background: var(--bg); }
+    .tutor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .tutor-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+      text-align: center; transition: transform .2s;
+    }
+    .tutor-card:hover { transform: translateY(-3px); }
+    .tutor-icon { font-size: 2.8rem; margin-bottom: 14px; }
+    .tutor-title { font-weight: 700; margin-bottom: 8px; }
+    .tutor-desc { color: var(--muted); font-size: 0.85rem; }
+
+    /* CONTACT */
+    #contact { background: var(--surface); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 48px; }
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .ci-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px;
+    }
+    .ci-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .ci-label { color: var(--muted); font-size: 0.78rem; margin-bottom: 2px; }
+    .ci-val { font-weight: 600; font-size: 0.95rem; }
+    .ci-val a { color: var(--accent); text-decoration: none; }
+    .ci-val a:hover { text-decoration: underline; }
+    .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 36px; }
+    .form-row { margin-bottom: 20px; }
+    .form-row label { display: block; color: var(--muted); font-size: 0.82rem; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); border-radius: 10px; padding: 12px 16px; font-size: 0.9rem;
+      outline: none; transition: border-color .2s; font-family: inherit;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--accent); }
+    .form-row textarea { min-height: 100px; resize: vertical; }
+    .form-submit {
+      width: 100%; padding: 14px; border-radius: 12px; border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), #10a85a);
+      color: #12082a; font-weight: 800; font-size: 1rem; font-family: inherit;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(34,212,122,0.35); }
+
+    /* FOOTER */
+    footer {
+      background: #0a0518; border-top: 1px solid var(--border);
+      padding: 48px 5% 28px; text-align: center;
+    }
+    .footer-brand { font-size: 1.3rem; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+    .footer-brand span { color: var(--accent); }
+    .footer-sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 24px; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 24px; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { color: #3a2a6a; font-size: 0.78rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .subjects-grid, .steps-grid, .results-grid, .tutor-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      nav { padding: 0 4%; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#hero">
+    <div class="nav-logo">TC</div>
+    <span class="nav-name">Tutor<span>Circle</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#subjects">學科</a></li>
+    <li><a href="#how">配對流程</a></li>
+    <li><a href="#results">成效</a></li>
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#contact">聯絡</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">立即配對</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">香港首屈一指的私人補習配對平台</div>
+      <h1>
+        <span class="en">Tutor Circle 補習圈</span>
+        <span class="cn">為每位學生<br/>找到最合適的導師</span>
+      </h1>
+      <p class="hero-tagline">
+        自2014年起，Tutor Circle 為逾 <strong>3萬個家庭</strong> 配對私人導師，
+        擁有 <strong>80,000+ 認證導師</strong>，覆蓋 DSE、IB、IELTS 及語言音樂課程。
+        誠信透明，以關係為先。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#contact">🎯 立即尋找導師</a>
+        <a class="btn-secondary" href="#how">了解配對流程</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-row">
+        <span class="hc-icon">🏢</span>
+        <div>
+          <div class="hc-label">公司名稱</div>
+          <div class="hc-val">Andy Ng - Tutor Circle Limited</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">📍</span>
+        <div>
+          <div class="hc-label">服務地區</div>
+          <div class="hc-val">香港全區 (Hong Kong)</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">📱</span>
+        <div>
+          <div class="hc-label">WhatsApp / 電話</div>
+          <div class="hc-val">
+            <a href="https://wa.me/85264328333" style="color:var(--accent);text-decoration:none;">
+              +852 6432 8333
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">🎓</span>
+        <div>
+          <div class="hc-label">行業</div>
+          <div class="hc-val"><span class="hc-tag">教育 Education</span></div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <span class="hc-icon">💡</span>
+        <div>
+          <div class="hc-label">配對模式</div>
+          <div class="hc-val">線上優先 · 上門補習</div>
+        </div>
+      </div>
+      <hr class="hc-divider" />
+      <div class="hc-since">
+        <span>成立年份</span>
+        <strong>2014</strong>
+      </div>
+      <div class="hc-since" style="margin-top:10px;">
+        <span>年度服務家庭</span>
+        <strong>30,000+</strong>
+      </div>
+      <div class="hc-since" style="margin-top:10px;">
+        <span>認可導師數目</span>
+        <strong>80,000+</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num">80,000<span class="stat-unit">+</span></div>
+      <div class="stat-label">認可認證導師</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">60,000<span class="stat-unit">+</span></div>
+      <div class="stat-label">成功配對學生與導師</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">30,000<span class="stat-unit">+</span></div>
+      <div class="stat-label">每年服務家庭數目</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HK$8M</div>
+      <div class="stat-label">年度業務規模</div>
+    </div>
+  </div>
+</div>
+
+<!-- SUBJECTS -->
+<section id="subjects">
+  <div class="section-inner">
+    <div class="section-label">學科涵蓋</div>
+    <h2 class="section-title">全面覆蓋各類學習需求</h2>
+    <p class="section-desc">無論是備戰公開試、提升英語水平，抑或學習樂器，Tutor Circle 均可為您配對最合適的導師。</p>
+    <div class="subjects-grid">
+      <div class="subject-card">
+        <div class="sc-icon">📚</div>
+        <div class="sc-title">DSE 備試課程</div>
+        <div class="sc-desc">針對香港文憑試，涵蓋中文、英文、數學、通識及各選修科目，由豐富教學經驗的導師提供一對一指導。</div>
+        <div class="sc-tags">
+          <span class="sc-tag">中文</span><span class="sc-tag">英文</span>
+          <span class="sc-tag">數學</span><span class="sc-tag">選修科</span>
+        </div>
+      </div>
+      <div class="subject-card">
+        <div class="sc-icon">🌍</div>
+        <div class="sc-title">IB 國際文憑</div>
+        <div class="sc-desc">International Baccalaureate 預備課程，協助就讀國際學校的學生應對 IB 課程挑戰，提升各科成績。</div>
+        <div class="sc-tags">
+          <span class="sc-tag">HL / SL</span><span class="sc-tag">TOK</span>
+          <span class="sc-tag">Extended Essay</span>
+        </div>
+      </div>
+      <div class="subject-card">
+        <div class="sc-icon">🗣️</div>
+        <div class="sc-title">IELTS 英語考試</div>
+        <div class="sc-desc">專業 IELTS 備考課程，針對聽說讀寫四個範疇，幫助學生達到目標分數，為升學或移民做好準備。</div>
+        <div class="sc-tags">
+          <span class="sc-tag">Speaking</span><span class="sc-tag">Writing</span>
+          <span class="sc-tag">Reading</span><span class="sc-tag">Listening</span>
+        </div>
+      </div>
+      <div class="subject-card">
+        <div class="sc-icon">🌐</div>
+        <div class="sc-title">語言課程</div>
+        <div class="sc-desc">提供英語、普通話、廣東話、日語、韓語等多種語言課程，針對日常對話、商業用途或特定考試。</div>
+        <div class="sc-tags">
+          <span class="sc-tag">英語</span><span class="sc-tag">普通話</span>
+          <span class="sc-tag">日語</span><span class="sc-tag">韓語</span>
+        </div>
+      </div>
+      <div class="subject-card">
+        <div class="sc-icon">🎵</div>
+        <div class="sc-title">音樂課程</div>
+        <div class="sc-desc">涵蓋鋼琴、小提琴、結他、聲樂等多種樂器及音樂理論，由專業音樂導師進行個人化教學。</div>
+        <div class="sc-tags">
+          <span class="sc-tag">鋼琴</span><span class="sc-tag">小提琴</span>
+          <span class="sc-tag">結他</span><span class="sc-tag">聲樂</span>
+        </div>
+      </div>
+      <div class="subject-card">
+        <div class="sc-icon">🔢</div>
+        <div class="sc-title">STEM 科學技術</div>
+        <div class="sc-desc">數學、物理、化學、生物及編程課程，針對各年級學生，提供奠實基礎及進階提升的個人化補習方案。</div>
+        <div class="sc-tags">
+          <span class="sc-tag">數學</span><span class="sc-tag">物理</span>
+          <span class="sc-tag">化學</span><span class="sc-tag">編程</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner">
+    <div class="section-label">配對流程</div>
+    <h2 class="section-title">四個步驟，輕鬆配對理想導師</h2>
+    <p class="section-desc">Tutor Circle 的在線配對系統讓整個過程簡單快捷，家長和學生可按個人需求填寫偏好，由我們代為篩選最合適的導師。</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">提交需求</div>
+        <div class="step-desc">填寫學科、預算、上課模式（上門/線上）及特殊需求，讓我們了解您的具體要求。</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">智能篩選</div>
+        <div class="step-desc">我們的系統從 80,000+ 認可導師中篩選最符合條件的候選人，確保每次推薦都精準到位。</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">接收推薦</div>
+        <div class="step-desc">我們會主動聯絡您，分享導師資料、學歷及教學經驗，讓您做出明智的選擇。</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">開始上課</div>
+        <div class="step-desc">確認導師後即可安排第一堂課。我們提供持續的售後跟進，確保學習體驗達到最高水準。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="section-inner">
+    <div class="section-label">服務成效</div>
+    <h2 class="section-title">數字見證卓越成果</h2>
+    <p class="section-desc">自引入先進的客戶管理系統後，Tutor Circle 的服務效率大幅提升，為更多家庭提供更快更好的配對服務。</p>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-icon">⚡</div>
+        <div class="result-num green">60%</div>
+        <div class="result-label">效率提升</div>
+        <div class="result-desc">團隊整體工作效率提升 60%，每日可處理更多配對請求</div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon">💬</div>
+        <div class="result-num gold">75%</div>
+        <div class="result-label">回覆時間縮短</div>
+        <div class="result-desc">客戶查詢回覆時間縮短達 75%，即時回應成為標準</div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon">📩</div>
+        <div class="result-num red">1,000</div>
+        <div class="result-label">每日處理查詢</div>
+        <div class="result-desc">每日可處理逾 1,000 則客戶查詢，服務能力大幅提升</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">關於我們</div>
+    <h2 class="section-title">誠信為本，以關係為先</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Tutor Circle 補習圈由 <strong>Andy Ng</strong> 於 2014 年創立，是一家以互聯網為基礎的補習中介公司。
+          創立的初衷源於對行業誠信的關注 — 在競爭激烈的補習市場中，部分機構收費不合理、服務質素參差不齊，
+          嚴重損害了業界形象。
+        </p>
+        <p>
+          Andy Ng 致力於重建客戶對補習行業的信任，將<strong>誠實、透明的溝通</strong>列為公司核心承諾。
+          即使這意味著需要投入更多時間和資源，Tutor Circle 仍堅守這一原則，建立了良好的口碑。
+        </p>
+        <p>
+          2022年，公司推出全新的<strong>混合配對模式</strong>（線上優先、上門補習後備），突破了地域限制，
+          讓分佈在香港各區、各年齡層、各學科需求的家庭均能受惠。
+        </p>
+      </div>
+      <div class="about-values">
+        <div class="av-item">
+          <div class="av-icon">🤝</div>
+          <div>
+            <div class="av-title">誠信透明</div>
+            <div class="av-desc">所有收費、導師資料及配對過程一律公開透明，讓家長放心選擇。</div>
+          </div>
+        </div>
+        <div class="av-item">
+          <div class="av-icon">🎯</div>
+          <div>
+            <div class="av-title">精準配對</div>
+            <div class="av-desc">根據學科需求、預算、時間表及特殊需求，從逾八萬導師中精挑細選。</div>
+          </div>
+        </div>
+        <div class="av-item">
+          <div class="av-icon">📲</div>
+          <div>
+            <div class="av-title">靈活上課模式</div>
+            <div class="av-desc">提供上門補習及線上教學，滿足不同年齡及地區的學生需求。</div>
+          </div>
+        </div>
+        <div class="av-item">
+          <div class="av-icon">💬</div>
+          <div>
+            <div class="av-title">持續售後跟進</div>
+            <div class="av-desc">配對後持續關注學習進度，確保師生關係長期融洽有效。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TUTORS -->
+<section id="tutors">
+  <div class="section-inner">
+    <div class="section-label">導師類型</div>
+    <h2 class="section-title">多元化認可導師</h2>
+    <p class="section-desc">Tutor Circle 的導師庫涵蓋不同背景及資歷，為每位學生提供最合適的人選。</p>
+    <div class="tutor-grid">
+      <div class="tutor-card">
+        <div class="tutor-icon">🏫</div>
+        <div class="tutor-title">在職教師</div>
+        <div class="tutor-desc">持有教師資格、在中小學任職的現職教師，擁有深厚課程知識。</div>
+      </div>
+      <div class="tutor-card">
+        <div class="tutor-icon">🎓</div>
+        <div class="tutor-title">大學生導師</div>
+        <div class="tutor-desc">就讀本港頂尖大學的在讀生，提供具性價比的補習服務。</div>
+      </div>
+      <div class="tutor-card">
+        <div class="tutor-icon">💼</div>
+        <div class="tutor-title">專業人士</div>
+        <div class="tutor-desc">各行各業的工作專業人士，擁有豐富的實際工作及教學經驗。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">聯絡我們</div>
+    <h2 class="section-title">立即開始您的配對之旅</h2>
+    <p class="section-desc">填寫以下表格或直接 WhatsApp 聯絡我們，我們將盡快為您推薦最合適的導師。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="ci-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">WhatsApp / 電話</div>
+            <div class="ci-val"><a href="https://wa.me/85264328333">+852 6432 8333</a></div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">服務地區</div>
+            <div class="ci-val">香港全區 (Hong Kong-wide)</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">🕐</div>
+          <div>
+            <div class="ci-label">服務時間</div>
+            <div class="ci-val">星期一至日 9:00 – 22:00</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">配對模式</div>
+            <div class="ci-val">線上優先 · 上門補習</div>
+          </div>
+        </div>
+        <a href="https://wa.me/85264328333" class="btn-primary" style="justify-content:center; margin-top:8px;">
+          💬 WhatsApp 立即查詢
+        </a>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <label>姓名 Name</label>
+          <input type="text" placeholder="家長 / 學生姓名" />
+        </div>
+        <div class="form-row">
+          <label>聯絡電話 Phone</label>
+          <input type="tel" placeholder="+852 xxxx xxxx" />
+        </div>
+        <div class="form-row">
+          <label>學科需求 Subject</label>
+          <select>
+            <option value="">— 請選擇學科 —</option>
+            <option>DSE 中文</option>
+            <option>DSE 英文</option>
+            <option>DSE 數學</option>
+            <option>DSE 選修科</option>
+            <option>IB 國際文憑</option>
+            <option>IELTS 英語考試</option>
+            <option>語言課程</option>
+            <option>音樂課程</option>
+            <option>STEM / 科學</option>
+            <option>其他</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>上課模式 Mode</label>
+          <select>
+            <option value="">— 請選擇 —</option>
+            <option>上門補習</option>
+            <option>線上教學</option>
+            <option>兩者皆可</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>備註 Remarks</label>
+          <textarea placeholder="請說明學生年級、具體需求或預算（可選填）"></textarea>
+        </div>
+        <button class="form-submit" type="button">🎯 提交配對申請</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Tutor<span>Circle</span> 補習圈</div>
+  <div class="footer-sub">Andy Ng - Tutor Circle Limited · 香港補習配對平台 · 成立於 2014</div>
+  <div class="footer-links">
+    <a href="#subjects">學科</a>
+    <a href="#how">配對流程</a>
+    <a href="#results">服務成效</a>
+    <a href="#about">關於我們</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <div class="footer-copy">© 2025 Andy Ng - Tutor Circle Limited. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
