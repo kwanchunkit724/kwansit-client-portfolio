@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BreadTalk Group | Global F&B Group · Est. 2000</title>
+<style>
+:root {
+  --bg: #080406;
+  --bg2: #0e0608;
+  --bg3: #160808;
+  --accent: #e02818;
+  --accent2: #f03828;
+  --orange: #e07018;
+  --orange2: #f09030;
+  --gold: #d4a020;
+  --text: #f8f0e8;
+  --muted: #907060;
+  --border: rgba(224,40,24,0.15);
+  --card: #0e0608;
+  --radius: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,4,6,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:1.15rem;font-weight:900;color:var(--text);text-decoration:none;}
+.nav-logo span{color:var(--accent);}
+.nav-sub{color:var(--muted);font-size:0.72rem;font-weight:400;margin-left:0.5rem;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--orange2);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:600;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent2);}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 2rem 60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(224,40,24,0.10) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 10% 85%,rgba(224,112,24,0.07) 0%,transparent 60%);}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;}
+.hero-eyebrow{font-size:0.72rem;font-weight:600;color:var(--orange);letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5rem;}
+.hero h1{font-size:3.4rem;font-weight:900;line-height:1.1;margin-bottom:0.8rem;letter-spacing:-1px;}
+.hero h1 span{color:var(--accent);}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin-bottom:2rem;line-height:1.8;}
+.hero-badges{display:flex;gap:0.8rem;margin-bottom:2rem;flex-wrap:wrap;}
+.hero-badge{display:flex;align-items:center;gap:0.4rem;padding:0.35rem 0.9rem;background:rgba(224,40,24,0.1);border:1px solid rgba(224,40,24,0.2);border-radius:20px;font-size:0.75rem;color:var(--orange2);font-weight:600;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:all 0.2s;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--orange);padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;border:1px solid rgba(224,112,24,0.3);transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--orange2);background:rgba(224,112,24,0.08);}
+
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--orange));}
+.info-card-title{font-size:0.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(224,40,24,0.08);}
+.info-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.info-icon{width:32px;height:32px;background:rgba(224,40,24,0.1);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;}
+.info-label{font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;color:var(--text);font-weight:500;line-height:1.4;}
+.info-val a{color:var(--orange2);text-decoration:none;}
+
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2rem;}
+.stat-item{text-align:center;}
+.stat-num{font-size:2.2rem;font-weight:900;color:var(--orange);line-height:1;margin-bottom:0.3rem;letter-spacing:-0.5px;}
+.stat-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;}
+
+section{padding:5.5rem 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-eyebrow{font-size:0.72rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:2px;margin-bottom:0.8rem;}
+.section-title{font-size:2.2rem;font-weight:800;line-height:1.2;margin-bottom:1rem;letter-spacing:-0.5px;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:620px;line-height:1.8;}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3.5rem;}
+.about-highlight{background:var(--bg3);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:1.5rem 1.8rem;margin-bottom:1.5rem;}
+.about-highlight p{color:var(--text);font-size:0.95rem;line-height:1.9;}
+.about-text{color:var(--muted);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color 0.2s;}
+.prop-card:hover{border-color:var(--orange);}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.78rem;color:var(--muted);line-height:1.5;}
+.geo-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.geo-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--orange));}
+.geo-title{font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1.2rem;}
+.geo-items{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;}
+.geo-item{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.7rem;background:var(--bg2);border:1px solid var(--border);border-radius:6px;font-size:0.82rem;color:var(--text);}
+.geo-flag{font-size:1rem;}
+
+.brands-bg{background:var(--bg2);}
+.brands-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem;}
+.brand-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:all 0.25s;position:relative;overflow:hidden;text-align:center;}
+.brand-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--c,var(--accent));opacity:0;transition:opacity 0.25s;}
+.brand-card:hover{border-color:rgba(224,40,24,0.3);transform:translateY(-3px);}
+.brand-card:hover::before{opacity:1;}
+.brand-card:nth-child(1){--c:#e02818;}
+.brand-card:nth-child(2){--c:#e07018;}
+.brand-card:nth-child(3){--c:#18a870;}
+.brand-card:nth-child(4){--c:#0c78d0;}
+.brand-card:nth-child(5){--c:#9030d8;}
+.brand-card:nth-child(6){--c:#d4a020;}
+.brand-icon{font-size:2.5rem;margin-bottom:0.8rem;}
+.brand-name{font-size:1.1rem;font-weight:800;color:var(--text);margin-bottom:0.3rem;}
+.brand-tagline{font-size:0.78rem;color:var(--orange2);font-weight:600;margin-bottom:0.6rem;}
+.brand-desc{font-size:0.82rem;color:var(--muted);line-height:1.6;}
+.brand-count{display:inline-block;font-size:0.72rem;font-weight:700;padding:0.2rem 0.6rem;background:rgba(224,40,24,0.1);color:var(--orange2);border-radius:4px;margin-top:0.6rem;}
+
+.divs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:3.5rem;}
+.div-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;text-align:center;transition:all 0.2s;}
+.div-card:hover{border-color:var(--orange);transform:translateY(-2px);}
+.div-icon{font-size:2rem;margin-bottom:0.8rem;}
+.div-title{font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:0.4rem;}
+.div-growth{font-size:1.3rem;font-weight:900;color:var(--orange);margin-bottom:0.3rem;}
+.div-desc{font-size:0.78rem;color:var(--muted);line-height:1.5;}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3.5rem;}
+.contact-info{display:flex;flex-direction:column;gap:1.2rem;}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem;background:var(--card);border:1px solid var(--border);border-radius:10px;transition:border-color 0.2s;}
+.contact-item:hover{border-color:var(--orange);}
+.c-icon{width:40px;height:40px;background:rgba(224,40,24,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.3rem;}
+.c-val{font-size:0.88rem;color:var(--text);font-weight:500;line-height:1.5;}
+.c-val a{color:var(--orange2);text-decoration:none;}
+.hq-card{background:var(--card);border:1px solid rgba(224,40,24,0.2);border-radius:var(--radius);padding:2.5rem;position:relative;overflow:hidden;}
+.hq-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--orange));}
+.hq-eyebrow{font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:1rem;}
+.hq-name{font-size:1.4rem;font-weight:900;color:var(--text);margin-bottom:0.5rem;}
+.hq-sub{font-size:0.82rem;color:var(--muted);margin-bottom:1.5rem;}
+.hq-blocks{display:flex;flex-direction:column;gap:0.7rem;}
+.hq-block{padding:0.8rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;}
+.hq-block-label{font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.hq-block-val{font-size:0.88rem;color:var(--text);}
+.hq-block-val a{color:var(--orange2);text-decoration:none;}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:4rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-brand p{color:var(--muted);font-size:0.85rem;line-height:1.7;margin-top:0.8rem;}
+.footer-logo{font-size:1.2rem;font-weight:900;color:var(--text);}
+.footer-logo span{color:var(--accent);}
+.footer-col h4{font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col li a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col li a:hover{color:var(--orange2);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.footer-copy{font-size:0.78rem;color:var(--muted);}
+.footer-est{font-size:0.78rem;color:var(--muted);}
+.footer-est span{color:var(--orange);}
+
+@media(max-width:1000px){.stats-inner{grid-template-columns:repeat(3,1fr);}.divs-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero h1{font-size:2.5rem;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .brands-grid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+}
+@media(max-width:600px){
+  .brands-grid,.about-props,.geo-items{grid-template-columns:1fr;}
+  .hero h1{font-size:2rem;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><span>Bread</span>Talk<span class="nav-sub">Group · Est. 2000</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#brands">Brands</a></li>
+      <li><a href="#divisions">Divisions</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Hong Kong Enquiry</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">🍞 Global F&B Group · Singapore · Est. 2000</div>
+      <h1><span>Bread</span>Talk<br>Group</h1>
+      <p class="hero-sub">From a single bakery in Singapore in 2000, BreadTalk Group has grown into a global food and beverage powerhouse — with 700+ outlets across 14 markets, 5,200+ employees, and some of Asia's most beloved dining brands.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">🏪 700+ Outlets</span>
+        <span class="hero-badge">🌏 14 Markets</span>
+        <span class="hero-badge">👨‍👩‍👧‍👦 5,200+ Employees</span>
+        <span class="hero-badge">🍜 Din Tai Fung Franchise</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#brands" class="btn-primary">Our Brands</a>
+        <a href="#contact" class="btn-secondary">HK Enquiry</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">📍 Hong Kong & Singapore Contact</div>
+      <div class="info-row">
+        <div class="info-icon">🇭🇰</div>
+        <div>
+          <div class="info-label">Hong Kong Enquiries</div>
+          <div class="info-val"><a href="mailto:kongenquiry@breadtalk.com">kongenquiry@breadtalk.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">Phone (Singapore HQ)</div>
+          <div class="info-val"><a href="tel:+6564230329">+65 6423 0329</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">Headquarters</div>
+          <div class="info-val">Singapore</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">Website</div>
+          <div class="info-val"><a href="https://www.breadtalk.com" target="_blank">www.breadtalk.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💼</div>
+        <div>
+          <div class="info-label">Partnerships</div>
+          <div class="info-val"><a href="https://www.breadtalk.com" target="_blank">breadtalk.com/be-our-partner</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">2000</div>
+      <div class="stat-label">Year Founded</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">700+</div>
+      <div class="stat-label">Outlets Worldwide</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">14</div>
+      <div class="stat-label">International Markets</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5,200+</div>
+      <div class="stat-label">Employees</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Flagship Brands</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-eyebrow">Our Story</div>
+    <h2 class="section-title">From One Bakery to a Global Culinary Empire</h2>
+    <p class="section-sub">BreadTalk Group began with a bold vision — to transform bread from a functional staple into a cultural lifestyle experience. Today, we are one of Asia's most recognised F&B groups.</p>
+    <div class="about-grid">
+      <div>
+        <div class="about-highlight">
+          <p>Established in 2000 in Singapore, BreadTalk Group was founded with a passion for creativity and product innovation. What began as a single bakery has evolved into a global culinary enterprise spanning 14 international markets with over 700 outlets and six iconic consumer brands.</p>
+        </div>
+        <p class="about-text">BreadTalk Group manages a diverse portfolio spanning bakeries, food courts, premium restaurants and innovative food concepts. The group's brands — including the flagship BreadTalk bakery chain and the Din Tai Fung franchise — have become household names across Asia and beyond.</p>
+        <p class="about-text">With a team of 5,200+ passionate employees and deep operational expertise in bakery, food atrium management, and restaurant operations, BreadTalk Group continues to expand its global footprint while staying true to its founding mission of culinary creativity and customer delight.</p>
+        <div class="about-props">
+          <div class="prop-card">
+            <div class="prop-icon">🍞</div>
+            <div class="prop-title">Bakery Innovation</div>
+            <div class="prop-desc">Pioneering creative bakery experiences across 14 international markets</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🌏</div>
+            <div class="prop-title">Global Presence</div>
+            <div class="prop-desc">700+ outlets in Singapore, Malaysia, Thailand, UK, China and beyond</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🍜</div>
+            <div class="prop-title">Premium Dining</div>
+            <div class="prop-desc">Franchise rights for Din Tai Fung in Singapore, Thailand and the UK</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🏪</div>
+            <div class="prop-title">Food Court Management</div>
+            <div class="prop-desc">Food Republic and Food Junction food atrium operations across Asia</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="geo-box">
+          <div class="geo-title">🌍 Global Footprint — 14 Markets</div>
+          <div class="geo-items">
+            <div class="geo-item"><span class="geo-flag">🇸🇬</span> Singapore</div>
+            <div class="geo-item"><span class="geo-flag">🇲🇾</span> Malaysia</div>
+            <div class="geo-item"><span class="geo-flag">🇹🇭</span> Thailand</div>
+            <div class="geo-item"><span class="geo-flag">🇨🇳</span> China</div>
+            <div class="geo-item"><span class="geo-flag">🇭🇰</span> Hong Kong</div>
+            <div class="geo-item"><span class="geo-flag">🇬🇧</span> United Kingdom</div>
+            <div class="geo-item"><span class="geo-flag">🇮🇩</span> Indonesia</div>
+            <div class="geo-item"><span class="geo-flag">🇵🇭</span> Philippines</div>
+            <div class="geo-item"><span class="geo-flag">🇰🇷</span> South Korea</div>
+            <div class="geo-item"><span class="geo-flag">🇹🇼</span> Taiwan</div>
+            <div class="geo-item"><span class="geo-flag">🇯🇵</span> Japan</div>
+            <div class="geo-item"><span class="geo-flag">🌏</span> +3 More</div>
+          </div>
+        </div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-top:1.2rem;">
+          <div style="font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.6rem;">Group Revenue Highlights</div>
+          <div style="font-size:0.88rem;color:var(--muted);line-height:1.8;">Revenue growth driven by four core divisions — Bakery, Food Atrium, Restaurant, and 4orth — with consistent year-on-year expansion across Southeast Asian and international markets.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands" class="brands-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow">Brand Portfolio</div>
+    <h2 class="section-title">Iconic Brands, Countless Experiences</h2>
+    <p class="section-sub">Six flagship brands spanning bakery, café, food court, restaurant and innovative concepts — each with a distinct identity and devoted following.</p>
+    <div class="brands-grid">
+      <div class="brand-card">
+        <div class="brand-icon">🍞</div>
+        <div class="brand-name">BreadTalk</div>
+        <div class="brand-tagline">The Original Artisan Bakery</div>
+        <div class="brand-desc">BreadTalk's flagship bakery chain pioneered the concept of open-kitchen display bakeries in Asia — turning bread into a lifestyle experience. With 500+ locations across 14 markets, it remains the group's core and most recognisable brand.</div>
+        <span class="brand-count">500+ Bakeries Globally</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">☕</div>
+        <div class="brand-name">Toast Box</div>
+        <div class="brand-tagline">Traditional Kopi Culture</div>
+        <div class="brand-desc">Celebrating the traditional Nanyang coffeehouse culture, Toast Box brings authentic kaya toast, soft-boiled eggs, and Nanyang-style coffee to modern café settings across Singapore and the region.</div>
+        <span class="brand-count">Singapore & Regional</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🍜</div>
+        <div class="brand-name">Din Tai Fung</div>
+        <div class="brand-tagline">World-Renowned Dumpling Restaurant</div>
+        <div class="brand-desc">BreadTalk Group holds the franchise rights for Din Tai Fung — the iconic Taiwanese restaurant famed for its xiao long bao — across Singapore, Thailand and the United Kingdom, including locations in London.</div>
+        <span class="brand-count">Franchise: SG · TH · UK</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🏪</div>
+        <div class="brand-name">Food Republic</div>
+        <div class="brand-tagline">Premium Food Atrium</div>
+        <div class="brand-desc">An upscale food hall concept offering a curated selection of local and international hawker-inspired cuisine across 40+ outlets in Singapore, Malaysia and Greater China — blending heritage flavours with modern ambiance.</div>
+        <span class="brand-count">40+ Outlets · SG · MY · CN</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🍱</div>
+        <div class="brand-name">Food Junction</div>
+        <div class="brand-tagline">Neighbourhood Food Court</div>
+        <div class="brand-desc">BreadTalk's community food court brand, operating 9 outlets across Singapore and Malaysia, providing accessible, affordable and diverse meal options for everyday dining needs.</div>
+        <span class="brand-count">9 Outlets · SG · MY</span>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon">🥣</div>
+        <div class="brand-name">Thye Moh Chan</div>
+        <div class="brand-tagline">Heritage Teochew Pastry</div>
+        <div class="brand-desc">A venerable heritage brand celebrated for its traditional Teochew-style pastries and mooncakes. Thye Moh Chan preserves Singapore's baking heritage while bringing timeless confections to new generations.</div>
+        <span class="brand-count">Singapore Heritage Brand</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVISIONS -->
+<section id="divisions">
+  <div class="section-inner">
+    <div class="section-eyebrow">Business Divisions</div>
+    <h2 class="section-title">Four Engines of Growth</h2>
+    <p class="section-sub">BreadTalk Group's four business divisions provide diversified revenue streams and strategic breadth across the food and beverage sector.</p>
+    <div class="divs-grid">
+      <div class="div-card">
+        <div class="div-icon">🥖</div>
+        <div class="div-title">Bakery Division</div>
+        <div class="div-growth">+2.3%</div>
+        <div class="div-desc">Core BreadTalk bakery operations across all international markets, driving brand recognition and foot traffic through constant product innovation and creative marketing.</div>
+      </div>
+      <div class="div-card">
+        <div class="div-icon">🍛</div>
+        <div class="div-title">Food Atrium Division</div>
+        <div class="div-growth">+3.1%</div>
+        <div class="div-desc">Food Republic and Food Junction food court management and operations, curating premium dining halls in shopping malls and commercial developments across Asia.</div>
+      </div>
+      <div class="div-card">
+        <div class="div-icon">🍽️</div>
+        <div class="div-title">Restaurant Division</div>
+        <div class="div-growth">+9.8%</div>
+        <div class="div-desc">Premium restaurant operations including the Din Tai Fung franchise in Singapore, Thailand and the United Kingdom, with strong same-store sales performance and pipeline expansion.</div>
+      </div>
+      <div class="div-card">
+        <div class="div-icon">🌱</div>
+        <div class="div-title">4orth Division</div>
+        <div class="div-growth">+49%</div>
+        <div class="div-desc">The group's high-growth innovation concept division, encompassing Song Fa Bak Kut Teh, Wu Pao Chun Bakery, and other emerging F&B brand partnerships with rapid expansion plans.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg2);border-top:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-eyebrow">Get In Touch</div>
+    <h2 class="section-title">Contact BreadTalk Group</h2>
+    <p class="section-sub">For Hong Kong enquiries, franchise opportunities, partnerships and corporate matters, please reach out to us directly.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="c-icon">🇭🇰</div>
+          <div>
+            <div class="c-label">Hong Kong Enquiries</div>
+            <div class="c-val"><a href="mailto:kongenquiry@breadtalk.com">kongenquiry@breadtalk.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">Phone (Singapore HQ)</div>
+            <div class="c-val"><a href="tel:+6564230329">+65 6423 0329</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">💼</div>
+          <div>
+            <div class="c-label">Franchise & Partnership</div>
+            <div class="c-val"><a href="https://www.breadtalk.com" target="_blank">breadtalk.com/be-our-partner</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">Website</div>
+            <div class="c-val"><a href="https://www.breadtalk.com" target="_blank">www.breadtalk.com</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="hq-card">
+        <div class="hq-eyebrow">Corporate Information</div>
+        <div class="hq-name">BreadTalk Group</div>
+        <div class="hq-sub">Global F&B Group · Established 2000 · Singapore</div>
+        <div class="hq-blocks">
+          <div class="hq-block">
+            <div class="hq-block-label">Hong Kong Enquiries</div>
+            <div class="hq-block-val"><a href="mailto:kongenquiry@breadtalk.com">kongenquiry@breadtalk.com</a></div>
+          </div>
+          <div class="hq-block">
+            <div class="hq-block-label">Singapore HQ</div>
+            <div class="hq-block-val">+65 6423 0329 · Singapore</div>
+          </div>
+          <div class="hq-block">
+            <div class="hq-block-label">Global Presence</div>
+            <div class="hq-block-val">700+ outlets · 14 markets · 5,200+ employees</div>
+          </div>
+          <div class="hq-block">
+            <div class="hq-block-label">Corporate Website</div>
+            <div class="hq-block-val"><a href="https://www.breadtalk.com" target="_blank">www.breadtalk.com</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><span>Bread</span>Talk Group</div>
+        <p>Established in 2000 in Singapore, BreadTalk Group is a global F&B powerhouse with 700+ outlets across 14 markets. Home to BreadTalk, Toast Box, Din Tai Fung (franchise), Food Republic, Food Junction and Thye Moh Chan.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Our Brands</h4>
+        <ul>
+          <li><a href="#brands">BreadTalk</a></li>
+          <li><a href="#brands">Toast Box</a></li>
+          <li><a href="#brands">Din Tai Fung</a></li>
+          <li><a href="#brands">Food Republic</a></li>
+          <li><a href="#brands">Food Junction</a></li>
+          <li><a href="#brands">Thye Moh Chan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Divisions</h4>
+        <ul>
+          <li><a href="#divisions">Bakery</a></li>
+          <li><a href="#divisions">Food Atrium</a></li>
+          <li><a href="#divisions">Restaurant</a></li>
+          <li><a href="#divisions">4orth</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:kongenquiry@breadtalk.com">HK Enquiry</a></li>
+          <li><a href="tel:+6564230329">+65 6423 0329</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="https://www.breadtalk.com" target="_blank">breadtalk.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 BreadTalk Group. All rights reserved.</div>
+      <div class="footer-est">Founded <span>2000</span> · Singapore</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
