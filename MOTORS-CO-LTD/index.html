@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A &amp; K Motors Co. Ltd | 汽車銷售 | 觀塘</title>
+<style>
+  :root {
+    --bg:        #090b0e;
+    --surface:   #111518;
+    --card:      #181e24;
+    --accent1:   #2060c8;
+    --accent2:   #a0c8f0;
+    --accent3:   #c0c8d8;
+    --text:      #e0e8f0;
+    --muted:     #7888a0;
+    --border:    rgba(32,96,200,0.22);
+    --glow:      rgba(32,96,200,0.2);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'PingFang HK', 'Microsoft JhengHei', sans-serif; line-height: 1.7; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(9,11,14,0.94); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent1), #60a0e8);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.95rem; color: #fff; letter-spacing: -1px;
+    box-shadow: 0 0 18px var(--glow);
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-name span { color: var(--accent2); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), #60a0e8);
+    color: #fff; border: none; padding: 9px 22px; border-radius: 6px;
+    font-size: 0.88rem; font-weight: 700; cursor: pointer; text-decoration: none;
+    box-shadow: 0 4px 16px var(--glow); transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; padding: 120px 5% 80px;
+    background:
+      radial-gradient(ellipse 65% 55% at 85% 50%, rgba(32,96,200,0.14) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 50% at 10% 80%, rgba(96,160,232,0.08) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
+  }
+  .hero-text { flex: 1 1 480px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(32,96,200,0.12); border: 1px solid rgba(32,96,200,0.3);
+    padding: 6px 16px; border-radius: 20px; font-size: 0.82rem;
+    color: var(--accent2); margin-bottom: 24px; letter-spacing: 0.04em;
+  }
+  .hero-badge::before { content: '🚗'; font-size: 0.9rem; }
+  .hero-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.18; margin-bottom: 8px; }
+  .hero-title .blue { color: var(--accent1); }
+  .hero-title .light { color: var(--accent2); }
+  .hero-en { font-size: 1.05rem; color: var(--muted); font-weight: 500; margin-bottom: 20px; letter-spacing: 0.04em; }
+  .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 520px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), #60a0e8);
+    color: #fff; padding: 13px 28px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; text-decoration: none;
+    box-shadow: 0 6px 24px var(--glow); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid var(--accent1); color: var(--accent2);
+    padding: 13px 28px; border-radius: 8px; font-size: 0.95rem;
+    font-weight: 600; text-decoration: none; transition: background .2s;
+  }
+  .btn-outline:hover { background: rgba(32,96,200,0.1); }
+
+  /* info card */
+  .hero-card {
+    flex: 0 0 300px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .hero-card h3 { font-size: 0.8rem; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .info-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .info-icon { font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+  .info-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 2px; }
+  .info-val { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+  .info-val a { color: var(--accent2); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .divider-card { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+
+  /* ── STATS ── */
+  .stats-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 44px 5%;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; text-align: center;
+  }
+  .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 88px 5%; }
+  .section-label { font-size: 0.78rem; color: var(--accent1); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 800; margin-bottom: 14px; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 600px; margin-bottom: 48px; }
+
+  /* ── SERVICES ── */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 22px; }
+  .svc-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px 24px; transition: transform .25s, box-shadow .25s;
+  }
+  .svc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(32,96,200,0.15); }
+  .svc-icon { font-size: 2rem; margin-bottom: 14px; }
+  .svc-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .svc-card p { font-size: 0.88rem; color: var(--muted); }
+
+  /* ── HIGHLIGHT ── */
+  .highlight {
+    background: linear-gradient(135deg, rgba(32,96,200,0.12), rgba(96,160,232,0.08));
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 56px 48px; margin: 0 5% 80px; text-align: center;
+  }
+  .highlight h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: 14px; }
+  .highlight p { color: var(--muted); max-width: 620px; margin: 0 auto 28px; font-size: 0.98rem; }
+
+  /* ── WHY ── */
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+  .why-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 30px 26px; display: flex; gap: 18px; align-items: flex-start;
+  }
+  .why-num { font-size: 2rem; font-weight: 900; color: var(--accent1); opacity: 0.65; line-height: 1; flex-shrink: 0; }
+  .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .why-card p { font-size: 0.88rem; color: var(--muted); }
+
+  /* ── PROCESS ── */
+  .process-steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; counter-reset: step; }
+  .step {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 30px 22px; text-align: center; position: relative; counter-increment: step;
+  }
+  .step::before {
+    content: counter(step); position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--accent1), #60a0e8);
+    color: #fff; font-size: 0.8rem; font-weight: 800;
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-icon { font-size: 2rem; margin-bottom: 12px; }
+  .step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+  .step p { font-size: 0.82rem; color: var(--muted); }
+
+  /* ── CONTACT ── */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info { display: flex; flex-direction: column; gap: 18px; }
+  .c-item { display: flex; gap: 14px; align-items: flex-start; }
+  .c-icon {
+    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(32,96,200,0.12); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .c-item h4 { font-size: 0.8rem; color: var(--muted); margin-bottom: 2px; }
+  .c-item p, .c-item a { font-size: 0.95rem; color: var(--text); text-decoration: none; }
+  .c-item a:hover { color: var(--accent2); }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); padding: 11px 14px; border-radius: 8px; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent1); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), #60a0e8);
+    color: #fff; border: none; padding: 13px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.88; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 44px 5% 28px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center;
+  }
+  .footer-brand { font-size: 1rem; font-weight: 700; }
+  .footer-brand span { color: var(--accent2); }
+  .footer-copy { font-size: 0.8rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; }
+  .footer-links a:hover { color: var(--accent2); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero { flex-direction: column; }
+    .hero-card { flex: 1 1 100%; }
+    .highlight { padding: 36px 24px; margin: 0 0 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#home">
+    <div class="nav-logo">A&K</div>
+    <div class="nav-name">A &amp; K Motors <span>Co. Ltd</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">服務項目</a></li>
+    <li><a href="#inventory">車款選擇</a></li>
+    <li><a href="#why">為何選擇我們</a></li>
+    <li><a href="#process">購車流程</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">即時查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-badge">觀塘汽車銷售中心</div>
+    <h1 class="hero-title">
+      <span class="blue">A &amp; K</span> Motors<br>
+      <span class="light">Co. Ltd</span>
+    </h1>
+    <p class="hero-en">Motorcar Dealers · Kwun Tong, Kowloon</p>
+    <p class="hero-desc">
+      位於九龍觀塘大業街，提供優質二手及新車買賣服務。
+      豐富的車款選擇、專業的購車建議，讓您輕鬆找到心儀的汽車。
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="tel:27118381">📞 立即致電查詢</a>
+      <a class="btn-outline" href="#inventory">瀏覽車款</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <h3>聯絡資訊</h3>
+    <div class="info-row">
+      <div class="info-icon">📍</div>
+      <div>
+        <div class="info-label">地址</div>
+        <div class="info-val">香港九龍觀塘<br>大業街 23 號</div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">☎️</div>
+      <div>
+        <div class="info-label">電話</div>
+        <div class="info-val"><a href="tel:27118381">2711 8381</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">📠</div>
+      <div>
+        <div class="info-label">傳真</div>
+        <div class="info-val">2750 7668</div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">📍</div>
+      <div>
+        <div class="info-label">地區</div>
+        <div class="info-val">觀塘 · 九龍</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div>
+    <div class="stat-num">觀塘</div>
+    <div class="stat-label">大業街核心地段</div>
+  </div>
+  <div>
+    <div class="stat-num">新車</div>
+    <div class="stat-label">多品牌新車代理</div>
+  </div>
+  <div>
+    <div class="stat-num">二手</div>
+    <div class="stat-label">優質二手車買賣</div>
+  </div>
+  <div>
+    <div class="stat-num">全面</div>
+    <div class="stat-label">購車諮詢及按揭服務</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label">服務項目</p>
+  <h2 class="section-title">專業汽車銷售服務</h2>
+  <p class="section-sub">從選車到交車，全程提供專業支援，讓每位客戶享有最佳的購車體驗。</p>
+
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon">🚗</div>
+      <h3>新車銷售</h3>
+      <p>代理多個主流品牌新車，提供最新車款及優惠報價，協助您選購理想新車。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔄</div>
+      <h3>二手車買賣</h3>
+      <p>嚴格篩選優質二手車，提供完整車輛歷史紀錄，保障買家權益。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">💰</div>
+      <h3>車輛按揭服務</h3>
+      <p>提供多種按揭方案，協助客戶輕鬆安排購車財務，無需一次過付清全款。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔁</div>
+      <h3>以舊換新</h3>
+      <p>接受舊車換購服務，專業評估車輛價值，提供合理收購價格。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">📋</div>
+      <h3>牌照及文件處理</h3>
+      <p>協助辦理車輛登記、轉讓文件及相關牌照手續，省時省力。</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🛡️</div>
+      <h3>車輛保險安排</h3>
+      <p>提供多種車輛保險方案建議，協助客戶選擇最合適的保障計劃。</p>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHT -->
+<div class="highlight" id="inventory">
+  <h2>多款車型任您選擇<br><span style="color:var(--accent2)">新車 · 二手車 · 進口車</span></h2>
+  <p>
+    A &amp; K Motors 提供多元化車款選擇，涵蓋日系、歐系、美系及韓系品牌。
+    無論您追求省油實用、豪華舒適或動感性能，我們都有合適的選擇。
+    歡迎來電或親臨觀塘展銷中心了解詳情。
+  </p>
+  <a class="btn-primary" href="tel:27118381">致電查詢現有車款</a>
+</div>
+
+<!-- WHY -->
+<section id="why" style="background: var(--surface);">
+  <p class="section-label">為何選擇我們</p>
+  <h2 class="section-title">A &amp; K Motors 的優勢</h2>
+  <p class="section-sub">專業、誠信、貼心服務，是我們贏得客戶信賴的核心。</p>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <div>
+        <h3>觀塘核心地段</h3>
+        <p>位於觀塘大業街，交通方便，九龍東各區均可輕鬆到達。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <div>
+        <h3>豐富車款庫存</h3>
+        <p>長期備有多款新車及二手車，讓您即到即看，不需等待。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <div>
+        <h3>透明定價</h3>
+        <p>清晰列明車輛售價及各項費用，誠信報價，絕無隱藏收費。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <div>
+        <h3>專業購車建議</h3>
+        <p>資深銷售顧問根據您的需求及預算，提供最合適的購車方案。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">05</div>
+      <div>
+        <h3>靈活按揭安排</h3>
+        <p>與多家金融機構合作，為客戶提供低利率、高彈性的按揭選擇。</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">06</div>
+      <div>
+        <h3>售後支援</h3>
+        <p>購車後持續提供售後諮詢服務，確保客戶的用車體驗無憂無慮。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <p class="section-label">購車流程</p>
+  <h2 class="section-title">簡單四步，輕鬆購車</h2>
+  <p class="section-sub">由選車到領牌，全程有專人跟進，讓購車過程簡單順暢。</p>
+
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-icon">🔍</div>
+      <h3>選擇心儀車款</h3>
+      <p>瀏覽我們的車款庫存，或致電告知您的需求，由顧問為您推薦。</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">🤝</div>
+      <h3>試駕及報價</h3>
+      <p>預約試駕，確認心水車款後，獲取詳細報價及按揭方案。</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">📝</div>
+      <h3>簽約及安排付款</h3>
+      <p>確認購買意向，簽署合約，安排付款或按揭申請手續。</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">🔑</div>
+      <h3>辦理領牌交車</h3>
+      <p>協助辦理牌照登記及保險，完成後正式交車，享受新車之旅。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background: var(--surface);">
+  <p class="section-label">聯絡我們</p>
+  <h2 class="section-title">查詢及預約睇車</h2>
+  <p class="section-sub">歡迎致電或填寫表格，我們的顧問將盡快與您聯絡。</p>
+
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <h4>地址</h4>
+          <p>香港九龍觀塘大業街 23 號</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">☎️</div>
+        <div>
+          <h4>電話</h4>
+          <a href="tel:27118381">2711 8381</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📠</div>
+        <div>
+          <h4>傳真</h4>
+          <p>2750 7668</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">🚇</div>
+        <div>
+          <h4>交通</h4>
+          <p>港鐵觀塘站步行可達<br>九龍東各區交通便利</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>您的姓名</label>
+          <input type="text" placeholder="陳先生 / 陳小姐">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="9xxx xxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>查詢類別</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>新車查詢</option>
+          <option>二手車查詢</option>
+          <option>以舊換新</option>
+          <option>按揭查詢</option>
+          <option>預約試駕</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>心水車型 / 備註</label>
+        <textarea placeholder="請說明您心儀的品牌、車型或其他需求…"></textarea>
+      </div>
+      <button class="form-submit">發送查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">A &amp; K Motors Co. Ltd <span>| 觀塘汽車銷售</span></div>
+  <div class="footer-copy">© 2025 A &amp; K Motors Co. Ltd. 版權所有</div>
+  <div class="footer-links">
+    <a href="#services">服務項目</a>
+    <a href="#inventory">車款</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+</footer>
+
+</body>
+</html>
