@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deppon Logistics (HongKong) Limited | 香港德邦物流有限公司</title>
+<style>
+  :root {
+    --orange: #f5821f;
+    --orange-dark: #d4680a;
+    --navy: #1a2035;
+    --navy-mid: #243050;
+    --white: #ffffff;
+    --light: #f7f8fa;
+    --mid: #e8eaf0;
+    --text: #2c3445;
+    --muted: #6b7280;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; }
+  .nav-logo {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 18px; color: var(--white); letter-spacing: -1px;
+  }
+  .nav-name { color: var(--white); font-weight: 700; font-size: 16px; line-height: 1.2; }
+  .nav-name span { color: var(--orange); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-cta {
+    background: var(--orange); color: var(--white);
+    padding: 9px 22px; border-radius: 6px; font-size: 14px; font-weight: 600;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--orange-dark); }
+
+  /* HERO */
+  .hero {
+    margin-top: 64px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #2a3a6a 100%);
+    min-height: 580px;
+    display: flex; align-items: center;
+    padding: 72px 48px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 520px; height: 520px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,130,31,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -60px; left: 30%;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,130,31,0.08) 0%, transparent 70%);
+  }
+  .hero-content { max-width: 680px; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(245,130,31,0.2); border: 1px solid rgba(245,130,31,0.4);
+    color: var(--orange); padding: 6px 16px; border-radius: 20px;
+    font-size: 13px; font-weight: 600; margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: 46px; font-weight: 800; color: var(--white);
+    line-height: 1.15; margin-bottom: 12px;
+  }
+  .hero h1 span { color: var(--orange); }
+  .hero-zh { font-size: 22px; color: rgba(255,255,255,0.6); margin-bottom: 24px; font-weight: 400; }
+  .hero-desc { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 36px; max-width: 560px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--orange); color: var(--white);
+    padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700;
+    transition: background .2s, transform .2s;
+  }
+  .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.4); color: var(--white);
+    padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600;
+    transition: border-color .2s, background .2s;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.07); }
+  .hero-card {
+    position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px); border-radius: 16px;
+    padding: 32px 36px; min-width: 280px; z-index: 1;
+  }
+  .hero-card-title { color: var(--orange); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+  .hero-stat { margin-bottom: 18px; }
+  .hero-stat-num { font-size: 30px; font-weight: 800; color: var(--white); line-height: 1; }
+  .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 3px; }
+  .hero-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 18px 0; }
+
+  /* STATS STRIP */
+  .stats-strip {
+    background: var(--orange);
+    display: flex; justify-content: center; flex-wrap: wrap;
+  }
+  .stat-item {
+    padding: 24px 48px; text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.25);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-size: 28px; font-weight: 800; color: var(--white); }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 3px; font-weight: 500; }
+
+  /* SECTION */
+  section { padding: 80px 48px; }
+  .section-label {
+    display: inline-block;
+    color: var(--orange); font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
+  }
+  h2 { font-size: 34px; font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+  .section-sub { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 640px; margin-bottom: 48px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .parent-box {
+    background: var(--white); border-radius: 14px; padding: 28px;
+    border-left: 4px solid var(--orange); margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .parent-box h3 { font-size: 15px; color: var(--orange); font-weight: 700; margin-bottom: 8px; }
+  .parent-box p { font-size: 14px; color: var(--text); line-height: 1.7; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .about-prop {
+    background: var(--white); border-radius: 12px; padding: 22px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-top: 3px solid var(--orange);
+  }
+  .about-prop-icon { font-size: 26px; margin-bottom: 10px; }
+  .about-prop h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .about-prop p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .about-desc { font-size: 15px; color: var(--text); line-height: 1.8; }
+  .about-desc p { margin-bottom: 16px; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    background: var(--white); border-radius: 14px; padding: 32px 26px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    border-top: 4px solid var(--orange);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+  .service-icon {
+    width: 54px; height: 54px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 18px;
+  }
+  .service-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .service-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+  .service-tag {
+    display: inline-block; margin-top: 14px;
+    background: rgba(245,130,31,0.1); color: var(--orange);
+    padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600;
+  }
+
+  /* NETWORK */
+  .network { background: var(--light); }
+  .network-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .network-card {
+    background: var(--white); border-radius: 14px; padding: 36px 28px;
+    text-align: center; box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    transition: transform .25s;
+  }
+  .network-card:hover { transform: translateY(-4px); }
+  .network-icon {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; margin: 0 auto 20px;
+  }
+  .network-card h3 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+  .network-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+  .network-highlight {
+    margin-top: 14px; padding: 10px 16px;
+    background: rgba(26,32,53,0.05); border-radius: 8px;
+    font-size: 13px; color: var(--navy); font-weight: 600;
+  }
+
+  /* ADVANTAGES */
+  .adv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .adv-card {
+    background: var(--navy); border-radius: 14px; padding: 30px 22px; text-align: center;
+    transition: transform .25s;
+  }
+  .adv-card:hover { transform: translateY(-4px); }
+  .adv-num { font-size: 40px; font-weight: 900; color: var(--orange); margin-bottom: 6px; }
+  .adv-card h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .adv-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* CONTACT */
+  .contact { background: var(--navy); }
+  .contact h2 { color: var(--white); }
+  .contact .section-label { color: var(--orange); }
+  .contact .section-sub { color: rgba(255,255,255,0.65); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 22px; }
+  .contact-row { display: flex; align-items: flex-start; gap: 16px; }
+  .contact-row-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(245,130,31,0.15); border: 1px solid rgba(245,130,31,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .contact-row-text h4 { font-size: 13px; color: var(--orange); font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .contact-row-text p, .contact-row-text a { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .contact-row-text a:hover { color: var(--orange); }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px; padding: 13px 16px; color: var(--white);
+    font-size: 14px; font-family: inherit; outline: none;
+    transition: border-color .2s;
+  }
+  .contact-form input::placeholder,
+  .contact-form select::placeholder,
+  .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form select option { background: var(--navy); }
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus { border-color: var(--orange); }
+  .contact-form textarea { resize: vertical; min-height: 110px; }
+  .contact-form button {
+    background: var(--orange); color: var(--white); border: none;
+    padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700;
+    cursor: pointer; transition: background .2s;
+  }
+  .contact-form button:hover { background: var(--orange-dark); }
+
+  /* FOOTER */
+  footer {
+    background: #111827; color: rgba(255,255,255,0.5);
+    text-align: center; padding: 28px 48px; font-size: 13px;
+  }
+  footer span { color: var(--orange); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 48px 24px; }
+    .hero h1 { font-size: 32px; }
+    .hero-card { display: none; }
+    section { padding: 56px 24px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid, .network-grid { grid-template-columns: 1fr 1fr; }
+    .adv-grid { grid-template-columns: 1fr 1fr; }
+    .about-props { grid-template-columns: 1fr; }
+    .stat-item { padding: 18px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">德邦</div>
+    <div class="nav-name">Deppon Logistics<br><span>香港德邦物流有限公司</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#network">Network</a>
+    <a href="#advantages">Why Us</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🚚 Deppon Express Group · JD Logistics</div>
+    <h1>Connecting Hong Kong<br>to <span>Mainland China</span></h1>
+    <div class="hero-zh">香港德邦物流有限公司</div>
+    <p class="hero-desc">
+      Backed by one of China's largest express logistics networks, Deppon Logistics (HongKong) Limited delivers seamless cross-border freight solutions — from express parcels to heavy cargo — with a reach spanning 1,700+ cities across the Greater China region.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Request a Quote</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-title">📊 Network Strength</div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">1,700+</div>
+      <div class="hero-stat-label">Cities Covered in China</div>
+    </div>
+    <hr class="hero-divider">
+    <div class="hero-stat">
+      <div class="hero-stat-num">30,000+</div>
+      <div class="hero-stat-label">Service Outlets Nationwide</div>
+    </div>
+    <hr class="hero-divider">
+    <div class="hero-stat">
+      <div class="hero-stat-num">2013</div>
+      <div class="hero-stat-label">HK Operations Established</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">30+</div>
+    <div class="stat-label">Years Group History</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">1,700+</div>
+    <div class="stat-label">Cities Served</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">30,000+</div>
+    <div class="stat-label">Service Outlets</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">GPS Tracking</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">About Us</div>
+    <h2>Deppon in Hong Kong</h2>
+    <p class="section-sub" style="margin: 0 auto;">Registered in Hong Kong since 2013, Deppon Logistics (HongKong) Limited serves as the gateway between Hong Kong's international trade hub and the vast Deppon Express network across Mainland China.</p>
+  </div>
+  <div class="about-grid">
+    <div>
+      <div class="parent-box">
+        <h3>🏢 Part of Deppon Express Group</h3>
+        <p>Deppon Express (德邦快递, SHA: 603056) was founded in 1996 and is now a core member of JD Logistics. The group is renowned for large-item express delivery (大件快递) and zero-load freight, operating one of China's most comprehensive logistics networks with over 30,000 service outlets and coverage across 1,700+ cities.</p>
+      </div>
+      <div class="about-desc">
+        <p>香港德邦物流有限公司 (Deppon Logistics HongKong) bridges the gap between international commerce and the world's largest manufacturing economy. Our Hong Kong platform provides importers, exporters, and e-commerce businesses with direct access to Deppon's unrivalled mainland network.</p>
+        <p>From Hong Kong's ports and airports through to any location in Guangdong, the Yangtze River Delta, or the furthest corners of China's interior, we provide end-to-end visibility, professional handling, and competitive transit times.</p>
+      </div>
+    </div>
+    <div class="about-props">
+      <div class="about-prop">
+        <div class="about-prop-icon">🗓️</div>
+        <h4>HK Est. 2013</h4>
+        <p>Over a decade serving the Hong Kong cross-border logistics corridor.</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🌐</div>
+        <h4>JD Logistics Network</h4>
+        <p>Backed by JD.com's world-class supply chain infrastructure and technology.</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">📦</div>
+        <h4>Large-Item Specialist</h4>
+        <p>Industry-leading capability for oversized, heavy, and bulky cargo shipments.</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🔍</div>
+        <h4>Full Visibility</h4>
+        <p>Real-time shipment tracking from pickup to final-mile delivery anywhere in China.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background: var(--white);">
+  <div class="section-label">What We Do</div>
+  <h2>Our Services</h2>
+  <p class="section-sub">Comprehensive logistics solutions tailored for Hong Kong–Mainland China trade flows, from express parcels to bulk freight and complete supply chain management.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🚚</div>
+      <h3>Cross-Border Express Freight</h3>
+      <p>Door-to-door express delivery between Hong Kong and Mainland China. Fast transit times with full customs handling and real-time tracking throughout.</p>
+      <span class="service-tag">HK ↔ China</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📦</div>
+      <h3>Large-Item &amp; Heavy Cargo</h3>
+      <p>Specialist handling for oversized and heavy freight — machinery, furniture, electronics — with dedicated loading equipment and white-glove delivery options.</p>
+      <span class="service-tag">大件快递</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏭</div>
+      <h3>Zero-Load (LTL) Freight</h3>
+      <p>Cost-effective less-than-truckload freight consolidation connecting Hong Kong with factories and distribution centres across Guangdong and beyond.</p>
+      <span class="service-tag">零担快运</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛃</div>
+      <h3>Customs Brokerage</h3>
+      <p>Professional import and export customs clearance services, handling HKSAR and PRC customs declarations, duties, and compliance documentation seamlessly.</p>
+      <span class="service-tag">清關服務</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏬</div>
+      <h3>Warehousing &amp; Distribution</h3>
+      <p>Flexible warehousing solutions in Hong Kong and Guangdong for inventory storage, order fulfilment, pick-and-pack, and last-mile distribution across the PRD.</p>
+      <span class="service-tag">倉儲配送</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⛓️</div>
+      <h3>Supply Chain Solutions</h3>
+      <p>Integrated supply chain management leveraging JD Logistics technology — demand forecasting, inventory optimisation, and multi-node coordination for importers and exporters.</p>
+      <span class="service-tag">供應鏈管理</span>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORK -->
+<section class="network" id="network">
+  <div style="text-align: center; margin-bottom: 48px;">
+    <div class="section-label">Coverage</div>
+    <h2>Our Logistics Network</h2>
+    <p class="section-sub" style="margin: 0 auto;">From Hong Kong to every province in China and beyond — Deppon's network ensures your cargo reaches its destination efficiently.</p>
+  </div>
+  <div class="network-grid">
+    <div class="network-card">
+      <div class="network-icon">🇭🇰</div>
+      <h3>Hong Kong Hub</h3>
+      <p>Centrally located Hong Kong operations managing cross-border customs, cargo consolidation, and direct connectivity to HK's ports and international airport.</p>
+      <div class="network-highlight">🏙️ Gateway to Greater China</div>
+    </div>
+    <div class="network-card">
+      <div class="network-icon">🇨🇳</div>
+      <h3>Mainland China</h3>
+      <p>Direct access to the Deppon Express network spanning 1,700+ cities, 30,000+ service outlets, with particular strength in the Pearl River Delta manufacturing belt.</p>
+      <div class="network-highlight">📍 1,700+ Cities Covered</div>
+    </div>
+    <div class="network-card">
+      <div class="network-icon">🌍</div>
+      <h3>International &amp; E-commerce</h3>
+      <p>Leveraging JD Logistics' global network for international-to-China import flows, cross-border e-commerce fulfilment, and reverse logistics handling.</p>
+      <div class="network-highlight">🛒 Cross-border E-commerce Ready</div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVANTAGES -->
+<section id="advantages" style="background: var(--light);">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">Why Choose Us</div>
+    <h2>The Deppon Advantage</h2>
+    <p class="section-sub" style="margin: 0 auto;">Combining a century of logistics expertise within the JD Group with dedicated on-the-ground Hong Kong service.</p>
+  </div>
+  <div class="adv-grid">
+    <div class="adv-card">
+      <div class="adv-num">30+</div>
+      <h4>Years of Excellence</h4>
+      <p>Deppon Group's decades-long track record delivering reliable freight across China's most demanding routes.</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-num">JD</div>
+      <h4>JD Logistics Backed</h4>
+      <p>Supported by JD.com's world-class logistics infrastructure, technology platform, and capital base.</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-num">GPS</div>
+      <h4>Full Tracking Visibility</h4>
+      <p>Every shipment tracked in real time from Hong Kong pickup through customs to final delivery in China.</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-num">PRD</div>
+      <h4>PRD Deep Coverage</h4>
+      <p>Exceptional coverage across Guangdong's Pearl River Delta — the world's largest manufacturing and export hub.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2>Contact Us</h2>
+  <p class="section-sub">Reach out for a shipping quote, service enquiry, or to discuss your logistics requirements. Our team is ready to assist.</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-row-icon">🏢</div>
+        <div class="contact-row-text">
+          <h4>Company</h4>
+          <p>Deppon Logistics (HongKong) Limited<br>香港德邦物流有限公司</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📍</div>
+        <div class="contact-row-text">
+          <h4>Location</h4>
+          <p>Hong Kong</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📧</div>
+        <div class="contact-row-text">
+          <h4>Email</h4>
+          <a href="mailto:ava.wong@hkxytech.com">ava.wong@hkxytech.com</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📱</div>
+        <div class="contact-row-text">
+          <h4>Mobile / WhatsApp</h4>
+          <a href="https://wa.me/85260871996">+852 6087 1996</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">🌐</div>
+        <div class="contact-row-text">
+          <h4>Group Website</h4>
+          <a href="https://www.deppon.com" target="_blank">www.deppon.com</a>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <input type="text" placeholder="Your Name / 您的姓名" />
+      <input type="email" placeholder="Email Address" />
+      <input type="tel" placeholder="Phone / WhatsApp" />
+      <select>
+        <option value="" disabled selected>Service Required</option>
+        <option>Cross-Border Express Freight (HK ↔ China)</option>
+        <option>Large-Item / Heavy Cargo</option>
+        <option>LTL / Zero-Load Freight (零担快运)</option>
+        <option>Customs Brokerage</option>
+        <option>Warehousing &amp; Distribution</option>
+        <option>Supply Chain Solutions</option>
+        <option>General Enquiry</option>
+      </select>
+      <textarea placeholder="Describe your shipment or enquiry…"></textarea>
+      <button type="submit">Send Enquiry 📨</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 <span>Deppon Logistics (HongKong) Limited</span> 香港德邦物流有限公司 · Part of <span>JD Logistics</span> Group · All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
