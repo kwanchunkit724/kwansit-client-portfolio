@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bannershop Hong Kong | Large Format Printing &amp; Signage Solutions</title>
+<style>
+  :root {
+    --orange: #e85a00;
+    --orange-light: #ff7020;
+    --dark: #1a1a2e;
+    --dark2: #0e0e1e;
+    --white: #ffffff;
+    --light-bg: #f5f5f8;
+    --text: #1a1a2e;
+    --text-light: #4a5568;
+    --border: #dde2ea;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: var(--white); }
+
+  nav {
+    background: var(--dark2);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px; position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
+  .nav-logo { display: flex; align-items: center; gap: 4px; }
+  .logo-b { font-size: 22px; font-weight: 900; color: var(--orange); }
+  .logo-s { font-size: 22px; font-weight: 900; color: var(--white); }
+  .nav-name .sub { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px; display: block; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--orange-light); }
+  .nav-cta { background: var(--orange); color: var(--white); padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--orange-light); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--dark2) 0%, var(--dark) 60%, #2a1a3e 100%);
+    padding: 80px 40px; min-height: 540px;
+    display: flex; align-items: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(232,90,0,0.18) 0%, transparent 60%);
+  }
+  .hero-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 50px; width: 100%; position: relative; z-index: 1; }
+  .hero-text { flex: 1; }
+  .hero-badge { display: inline-block; background: rgba(232,90,0,0.2); border: 1px solid rgba(255,112,32,0.5); color: var(--orange-light); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+  .hero-text h1 { font-size: 56px; font-weight: 900; color: var(--white); line-height: 1.05; margin-bottom: 14px; }
+  .hero-text h1 span { color: var(--orange); }
+  .hero-text h2 { font-size: 20px; font-weight: 400; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+  .hero-text p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 490px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: var(--orange); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 800; text-decoration: none; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--orange-light); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  .hero-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 16px; padding: 32px 28px; min-width: 280px; flex-shrink: 0; }
+  .hero-card h3 { color: var(--orange-light); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+  .hc-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .hc-item:last-child { margin-bottom: 0; }
+  .hc-icon { width: 36px; height: 36px; background: rgba(232,90,0,0.25); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .hc-info .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+  .hc-info .value { font-size: 14px; color: var(--white); font-weight: 600; }
+
+  .stats-strip { background: var(--orange); padding: 22px 40px; display: flex; justify-content: center; }
+  .stat-item { text-align: center; padding: 0 48px; position: relative; }
+  .stat-item + .stat-item::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 40px; background: rgba(255,255,255,0.35); }
+  .stat-num { font-size: 32px; font-weight: 900; color: var(--white); line-height: 1; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 4px; font-weight: 500; }
+
+  section { padding: 80px 40px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+  .section-title { font-size: 36px; font-weight: 900; color: var(--dark); margin-bottom: 16px; line-height: 1.2; }
+  .section-sub { font-size: 16px; color: var(--text-light); line-height: 1.7; max-width: 620px; }
+  .section-header { margin-bottom: 52px; }
+
+  .about { background: var(--light-bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .about-box { background: var(--dark); border-radius: 16px; padding: 40px; color: var(--white); position: relative; overflow: hidden; }
+  .about-box::after { content: 'BS'; position: absolute; right: -10px; bottom: -20px; font-size: 130px; font-weight: 900; color: rgba(255,255,255,0.04); line-height: 1; }
+  .about-box h3 { font-size: 22px; font-weight: 800; color: var(--orange-light); margin-bottom: 16px; }
+  .about-box p { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.82); margin-bottom: 14px; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .prop-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 22px; border-top: 3px solid var(--orange); }
+  .prop-icon { font-size: 28px; margin-bottom: 12px; }
+  .prop-card h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .prop-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .product-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 30px 26px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+  .product-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--dark), var(--orange)); }
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,26,46,0.12); }
+  .product-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--dark), #3a2a5e); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 18px; }
+  .product-card h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .product-card p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+  .product-tag { display: inline-block; background: rgba(232,90,0,0.1); color: var(--orange); padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-top: 12px; }
+
+  .use-cases { background: var(--dark); }
+  .use-cases .section-title { color: var(--white); }
+  .use-cases .section-tag { color: var(--orange-light); }
+  .use-cases .section-sub { color: rgba(255,255,255,0.7); }
+  .uc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .uc-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 28px 22px; text-align: center; transition: background 0.2s; }
+  .uc-card:hover { background: rgba(255,255,255,0.12); }
+  .uc-icon { font-size: 38px; margin-bottom: 14px; }
+  .uc-card h3 { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .uc-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  .why-us { background: var(--light-bg); }
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .why-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 30px 22px; text-align: center; transition: transform 0.2s; }
+  .why-card:hover { transform: translateY(-3px); }
+  .why-icon { font-size: 38px; margin-bottom: 14px; }
+  .why-card h3 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .why-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .contact-info h3 { font-size: 26px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+  .contact-info > p { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 32px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 22px; }
+  .ci-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--dark), #3a2a5e); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .ci-label { font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .ci-val { font-size: 15px; font-weight: 600; color: var(--dark); }
+  .ci-val a { color: var(--dark); text-decoration: none; }
+  .ci-val a:hover { color: var(--orange); }
+
+  .contact-form { background: var(--light-bg); border-radius: 16px; padding: 36px; }
+  .contact-form h3 { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .form-group label { font-size: 13px; font-weight: 600; color: var(--dark); }
+  .form-group input, .form-group select, .form-group textarea { padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; color: var(--text); background: var(--white); outline: none; font-family: inherit; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--orange); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit { width: 100%; background: var(--orange); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 800; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+  .form-submit:hover { background: var(--orange-light); }
+
+  footer { background: var(--dark2); padding: 40px; text-align: center; }
+  .footer-brand { font-size: 22px; font-weight: 900; color: var(--white); margin-bottom: 6px; }
+  .footer-brand span { color: var(--orange); }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 14px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  @media (max-width: 900px) {
+    .hero-content { flex-direction: column; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .uc-grid, .why-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">
+      <span class="logo-b">Banner</span><span class="logo-s">shop</span>
+    </div>
+    <div class="nav-name">
+      <span class="sub">Large Format Printing · Hong Kong</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#products">Products</a>
+    <a href="#use-cases">Use Cases</a>
+    <a href="#why">Why Us</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">🖨️ Large Format Printing Specialists</div>
+      <h1>Make Your<br>Brand<br><span>Unmissable</span></h1>
+      <h2>Bannershop Hong Kong</h2>
+      <p>Hong Kong's go-to source for large format printing and signage solutions. From event banners and exhibition displays to retail signage and building wraps — we print big, bold, and beautiful.</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">View Products</a>
+        <a href="#contact" class="btn-outline">Request Quote</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>📋 Contact Details</h3>
+      <div class="hc-item">
+        <div class="hc-icon">✉️</div>
+        <div class="hc-info">
+          <div class="label">Email</div>
+          <div class="value">sales@bannershop.com.hk</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🌐</div>
+        <div class="hc-info">
+          <div class="label">Website</div>
+          <div class="value">bannershop.com/hk</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">📍</div>
+        <div class="hc-info">
+          <div class="label">Location</div>
+          <div class="value">Hong Kong</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🏆</div>
+        <div class="hc-info">
+          <div class="label">Speciality</div>
+          <div class="value">Large Format &amp; Signage</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">Big</div>
+    <div class="stat-label">Format Printing</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">Fast</div>
+    <div class="stat-label">Turnaround</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">HK</div>
+    <div class="stat-label">Based &amp; Delivered</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Custom Made</div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-box">
+        <h3>🎯 Passion for Print</h3>
+        <p>Bannershop Hong Kong is a specialist large-format printing and signage company serving businesses across Hong Kong. We combine technical printing expertise with creative passion to deliver impactful visual solutions.</p>
+        <p>From a simple pull-up banner to a full building wrap, our team handles every project with the same attention to detail and commitment to quality. We've helped hundreds of Hong Kong businesses make their spaces and events visually compelling.</p>
+        <p>"A collection of work we've renovated with passion" — our motto reflects our approach to every project: treating each print as an opportunity to transform a space and elevate a brand.</p>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">🎨</div>
+          <h4>Vivid Colour Output</h4>
+          <p>High-resolution large-format printers delivering vibrant, accurate colours that make your brand stand out.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">⚡</div>
+          <h4>Fast Turnaround</h4>
+          <p>Same-day and next-day printing available for urgent orders. Rush production without compromising quality.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🔧</div>
+          <h4>Install &amp; Fit</h4>
+          <p>End-to-end service from print to professional installation — we handle the full job so you don't have to.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🌿</div>
+          <h4>Durable Materials</h4>
+          <p>UV-resistant, weatherproof substrates for outdoor use. Indoor and outdoor materials to suit every application.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Products</div>
+      <h2 class="section-title">Large Format Printing Products</h2>
+      <p class="section-sub">Everything you need to make a bold statement — from portable displays to permanent signage installations.</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🎪</div>
+        <h3>Event Banners</h3>
+        <p>Custom vinyl and fabric banners for events, trade shows, promotions, and grand openings. Available in any size with eyelet or pole finishing.</p>
+        <span class="product-tag">Any Size</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">📋</div>
+        <h3>Pull-Up &amp; Roll-Up Stands</h3>
+        <p>Portable retractable banner stands — ideal for exhibitions, presentations, and retail point-of-sale displays. Print + stand packages available.</p>
+        <span class="product-tag">Print + Stand</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🏪</div>
+        <h3>Shop Front &amp; Retail Signage</h3>
+        <p>Window graphics, fascia signage, lightboxes, and shopfront decals to attract customers and reinforce your brand at street level.</p>
+        <span class="product-tag">Brand Visibility</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🎭</div>
+        <h3>Exhibition Backdrops</h3>
+        <p>Large backdrop banners, tension fabric displays, and pop-up exhibition systems for conferences, fairs, and photo opportunities.</p>
+        <span class="product-tag">Exhibition Ready</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🏗️</div>
+        <h3>Building Wraps &amp; Outdoor</h3>
+        <p>Large-scale outdoor printed wraps, hoardings, and mesh banners for construction sites, building facades, and outdoor advertising.</p>
+        <span class="product-tag">Weatherproof</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🚗</div>
+        <h3>Vehicle &amp; Floor Graphics</h3>
+        <p>Vehicle wraps, magnetic car signs, floor graphics, and adhesive vinyl graphics for walls, floors, and windows.</p>
+        <span class="product-tag">Adhesive Vinyl</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="use-cases" id="use-cases">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Use Cases</div>
+      <h2 class="section-title">Where We Print</h2>
+      <p class="section-sub">From corporate offices to street-level retail, Bannershop delivers impactful print solutions across every environment.</p>
+    </div>
+    <div class="uc-grid">
+      <div class="uc-card">
+        <div class="uc-icon">🎪</div>
+        <h3>Events &amp; Exhibitions</h3>
+        <p>Trade shows, conferences, product launches, and corporate events — make your brand the centrepiece.</p>
+      </div>
+      <div class="uc-card">
+        <div class="uc-icon">🏪</div>
+        <h3>Retail &amp; F&amp;B</h3>
+        <p>Shop promotions, seasonal campaigns, menu boards, and window displays to drive footfall and sales.</p>
+      </div>
+      <div class="uc-card">
+        <div class="uc-icon">🏢</div>
+        <h3>Corporate &amp; Office</h3>
+        <p>Lobby branding, meeting room graphics, wayfinding signage, and branded wall murals for professional spaces.</p>
+      </div>
+      <div class="uc-card">
+        <div class="uc-icon">🏗️</div>
+        <h3>Construction &amp; Property</h3>
+        <p>Hoarding graphics, development signage, and building wraps to promote projects under construction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-us" id="why">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Why Bannershop</div>
+      <h2 class="section-title">The Bannershop Difference</h2>
+      <p class="section-sub">We're not just printers — we're visual communication specialists who care about your brand as much as you do.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <h3>Passionate Team</h3>
+        <p>A dedicated team that approaches every project with creativity and care — renovating spaces with passion.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3>Rapid Production</h3>
+        <p>Streamlined production process enabling quick turnaround on all orders without sacrificing quality.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔬</div>
+        <h3>Quality Assured</h3>
+        <p>Every print is inspected before delivery — accurate colours, sharp resolution, and clean finishing every time.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h3>Full-Service Support</h3>
+        <p>From artwork to installation, we're with you every step of the way to ensure a seamless experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Contact</div>
+      <h2 class="section-title">Ready to Print Big?</h2>
+      <p class="section-sub">Tell us what you need and we'll come back with a fast, competitive quote. No job too big, no job too small.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <p>Speak to our printing team today — we'll help you choose the right product, size, and material for your project and budget.</p>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val"><a href="mailto:sales@bannershop.com.hk">sales@bannershop.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Website</div>
+            <div class="ci-val"><a href="https://www.bannershop.com/hk" target="_blank">bannershop.com/hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-val">Hong Kong</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📦</div>
+          <div>
+            <div class="ci-label">Delivery</div>
+            <div class="ci-val">Delivery &amp; Installation Available</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>🖨️ Print Enquiry Form</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name *</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Phone *</label>
+            <input type="tel" placeholder="Contact number">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Product Type</label>
+          <select>
+            <option>-- Select Product --</option>
+            <option>Event Banner</option>
+            <option>Pull-Up / Roll-Up Stand</option>
+            <option>Shop Front / Retail Signage</option>
+            <option>Exhibition Backdrop</option>
+            <option>Building Wrap / Outdoor</option>
+            <option>Vehicle / Floor Graphics</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Project Details</label>
+          <textarea placeholder="Please describe your project including size, quantity, material, and timeline..."></textarea>
+        </div>
+        <button class="form-submit">Submit Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand"><span>Banner</span>shop Hong Kong</div>
+  <div class="footer-sub">Large Format Printing &amp; Signage Solutions · Passion in Every Print</div>
+  <div class="footer-copy">© 2024 Bannershop Hong Kong. All Rights Reserved.</div>
+</footer>
+
+</body>
+</html>
