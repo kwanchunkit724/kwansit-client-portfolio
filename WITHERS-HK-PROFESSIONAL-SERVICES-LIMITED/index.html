@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Withers | Premier International Law Firm | Hong Kong</title>
+<style>
+  :root {
+    --primary: #0e0c20;
+    --accent: #8b2252;
+    --accent2: #c04878;
+    --gold: #c4973a;
+    --light: #f6f4f8;
+    --white: #ffffff;
+    --text: #1a1820;
+    --muted: #5e5670;
+    --border: #dcd8e4;
+    --card-bg: #faf9fc;
+    --hero-overlay: rgba(14,12,32,0.78);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Georgia',serif; color:var(--text); background:#fff; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+
+  nav {
+    background:var(--primary);
+    padding:0 2rem;
+    display:flex; align-items:center; justify-content:space-between;
+    height:66px; position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 14px rgba(0,0,0,0.4);
+    border-bottom:1px solid rgba(196,151,58,0.2);
+  }
+  .nav-brand { display:flex; align-items:center; gap:14px; }
+  .nav-wordmark { font-size:1.35rem; font-weight:700; color:#fff; letter-spacing:2px; font-family:'Georgia',serif; text-transform:uppercase; }
+  .nav-sub { font-size:0.68rem; color:var(--gold); letter-spacing:2px; text-transform:uppercase; font-family:'Segoe UI',Arial,sans-serif; margin-top:1px; }
+  .nav-links { display:flex; gap:1.8rem; }
+  .nav-links a { color:rgba(255,255,255,0.78); font-size:0.84rem; font-family:'Segoe UI',Arial,sans-serif; font-weight:500; letter-spacing:0.3px; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--gold); text-decoration:none; }
+  .nav-cta {
+    background:transparent; color:var(--gold) !important; padding:7px 18px;
+    border-radius:2px; font-size:0.82rem !important; font-weight:600 !important;
+    border:1px solid var(--gold); transition:all 0.2s !important;
+  }
+  .nav-cta:hover { background:var(--gold) !important; color:var(--primary) !important; }
+
+  .hero {
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+      url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80') center/cover no-repeat;
+    min-height:520px; display:flex; align-items:center; padding:4rem 2rem;
+  }
+  .hero-inner { max-width:1100px; margin:0 auto; width:100%; display:flex; align-items:center; gap:3rem; }
+  .hero-text { flex:1; }
+  .hero-est {
+    display:inline-block; background:rgba(196,151,58,0.15); border:1px solid rgba(196,151,58,0.4);
+    color:var(--gold); font-size:0.73rem; font-weight:600; padding:5px 14px;
+    border-radius:2px; letter-spacing:2px; text-transform:uppercase; margin-bottom:1.2rem;
+    font-family:'Segoe UI',Arial,sans-serif;
+  }
+  .hero-text h1 { font-size:3.2rem; font-weight:700; color:#fff; line-height:1.1; margin-bottom:0.6rem; font-family:'Georgia',serif; letter-spacing:1px; }
+  .hero-text .tagline { font-size:1.05rem; color:rgba(255,255,255,0.65); margin-bottom:1.8rem; line-height:1.7; max-width:540px; font-family:'Segoe UI',Arial,sans-serif; }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--accent); color:#fff; padding:12px 28px; border-radius:2px;
+    font-weight:600; font-size:0.88rem; border:2px solid var(--accent); transition:all 0.2s;
+    display:inline-block; font-family:'Segoe UI',Arial,sans-serif; letter-spacing:0.5px;
+    text-transform:uppercase;
+  }
+  .btn-primary:hover { background:var(--accent2); border-color:var(--accent2); text-decoration:none; }
+  .btn-outline {
+    background:transparent; color:#fff; padding:12px 28px; border-radius:2px;
+    font-weight:600; font-size:0.88rem; border:2px solid rgba(255,255,255,0.4); transition:all 0.2s;
+    display:inline-block; font-family:'Segoe UI',Arial,sans-serif; text-transform:uppercase;
+  }
+  .btn-outline:hover { border-color:#fff; background:rgba(255,255,255,0.08); text-decoration:none; }
+  .hero-card {
+    background:rgba(255,255,255,0.07); backdrop-filter:blur(10px);
+    border:1px solid rgba(196,151,58,0.25); border-radius:4px;
+    padding:2rem 1.6rem; min-width:280px; color:#fff;
+  }
+  .hero-card h3 { font-size:0.75rem; color:var(--gold); letter-spacing:2px; text-transform:uppercase; margin-bottom:1.2rem; font-family:'Segoe UI',Arial,sans-serif; }
+  .info-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:0.9rem; font-size:0.87rem; color:rgba(255,255,255,0.84); font-family:'Segoe UI',Arial,sans-serif; line-height:1.5; }
+  .info-icon { color:var(--gold); flex-shrink:0; }
+
+  .stats-strip { background:var(--accent); padding:1.3rem 2rem; }
+  .stats-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-around; flex-wrap:wrap; }
+  .stat-item { text-align:center; padding:0.4rem 1.5rem; }
+  .stat-num { font-size:1.9rem; font-weight:700; color:#fff; font-family:'Georgia',serif; }
+  .stat-label { font-size:0.7rem; color:rgba(255,255,255,0.78); letter-spacing:1px; text-transform:uppercase; margin-top:2px; font-family:'Segoe UI',Arial,sans-serif; }
+
+  section { padding:4.5rem 2rem; }
+  .section-inner { max-width:1100px; margin:0 auto; }
+  .section-tag { font-size:0.7rem; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem; font-family:'Segoe UI',Arial,sans-serif; }
+  .section-title { font-size:2rem; font-weight:700; color:var(--primary); margin-bottom:0.8rem; font-family:'Georgia',serif; }
+  .section-sub { font-size:0.97rem; color:var(--muted); line-height:1.8; max-width:640px; font-family:'Segoe UI',Arial,sans-serif; }
+
+  .about { background:#fff; }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:start; margin-top:2.5rem; }
+  .about-text p { color:var(--muted); line-height:1.9; margin-bottom:1.1rem; font-size:0.96rem; font-family:'Segoe UI',Arial,sans-serif; }
+  .values-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem; }
+  .value-card { background:var(--card-bg); border:1px solid var(--border); border-radius:4px; padding:1.2rem; border-left:3px solid var(--gold); }
+  .value-card h5 { font-size:0.9rem; font-weight:700; color:var(--primary); margin-bottom:0.3rem; font-family:'Georgia',serif; }
+  .value-card p { font-size:0.8rem; color:var(--muted); line-height:1.6; font-family:'Segoe UI',Arial,sans-serif; }
+  .highlight-box {
+    background:var(--primary); color:#fff; border-radius:4px; padding:2rem;
+    border-left:3px solid var(--gold);
+  }
+  .highlight-box h4 { font-size:0.78rem; color:var(--gold); letter-spacing:2px; text-transform:uppercase; margin-bottom:1.2rem; font-family:'Segoe UI',Arial,sans-serif; }
+  .highlight-box ul { list-style:none; }
+  .highlight-box ul li { padding:0.55rem 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:0.9rem; color:rgba(255,255,255,0.84); display:flex; align-items:center; gap:10px; font-family:'Segoe UI',Arial,sans-serif; }
+  .highlight-box ul li:last-child { border-bottom:none; }
+  .highlight-box ul li::before { content:'—'; color:var(--gold); flex-shrink:0; }
+
+  .practice { background:var(--light); }
+  .practice-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; margin-top:2.5rem; }
+  .practice-card {
+    background:#fff; border:1px solid var(--border); border-radius:4px;
+    padding:2rem 1.6rem; border-top:3px solid var(--accent);
+    transition:box-shadow 0.2s, transform 0.2s;
+  }
+  .practice-card:hover { box-shadow:0 6px 24px rgba(139,34,82,0.1); transform:translateY(-3px); }
+  .practice-icon { font-size:1.9rem; margin-bottom:0.9rem; }
+  .practice-card h4 { font-size:1rem; font-weight:700; color:var(--primary); margin-bottom:0.6rem; font-family:'Georgia',serif; }
+  .practice-card p { font-size:0.86rem; color:var(--muted); line-height:1.7; font-family:'Segoe UI',Arial,sans-serif; }
+
+  .global { background:#fff; }
+  .global-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin-top:2.5rem; }
+  .office-tile { background:var(--card-bg); border:1px solid var(--border); border-radius:4px; padding:1.2rem; text-align:center; }
+  .office-flag { font-size:1.8rem; margin-bottom:0.5rem; }
+  .office-tile h5 { font-size:0.88rem; font-weight:700; color:var(--primary); margin-bottom:0.2rem; font-family:'Georgia',serif; }
+  .office-tile p { font-size:0.78rem; color:var(--muted); font-family:'Segoe UI',Arial,sans-serif; }
+
+  .contact { background:var(--primary); }
+  .contact .section-title { color:#fff; }
+  .contact .section-sub { color:rgba(255,255,255,0.6); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; }
+  .contact-info h4 { font-size:0.75rem; color:var(--gold); letter-spacing:2px; text-transform:uppercase; margin-bottom:1.5rem; font-family:'Segoe UI',Arial,sans-serif; }
+  .contact-detail { display:flex; align-items:flex-start; gap:14px; margin-bottom:1.4rem; }
+  .contact-icon { width:40px; height:40px; background:rgba(196,151,58,0.15); border-radius:3px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+  .contact-detail-text .label { font-size:0.72rem; color:rgba(255,255,255,0.42); text-transform:uppercase; letter-spacing:0.5px; font-family:'Segoe UI',Arial,sans-serif; }
+  .contact-detail-text .value { font-size:0.92rem; color:#fff; font-weight:500; margin-top:2px; font-family:'Segoe UI',Arial,sans-serif; }
+  .contact-detail-text .value a { color:var(--gold); }
+  .contact-form { background:rgba(255,255,255,0.05); border:1px solid rgba(196,151,58,0.15); border-radius:6px; padding:2rem; }
+  .contact-form h4 { font-size:1rem; font-weight:700; color:#fff; margin-bottom:1.5rem; font-family:'Georgia',serif; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .form-group { margin-bottom:1rem; }
+  .form-group label { font-size:0.77rem; color:rgba(255,255,255,0.5); margin-bottom:5px; display:block; font-family:'Segoe UI',Arial,sans-serif; letter-spacing:0.3px; text-transform:uppercase; }
+  .form-group input, .form-group select, .form-group textarea {
+    width:100%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.13);
+    border-radius:3px; padding:10px 14px; color:#fff; font-size:0.88rem; font-family:'Segoe UI',Arial,sans-serif; transition:border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:var(--gold); }
+  .form-group select option { background:var(--primary); }
+  .form-group textarea { resize:vertical; min-height:90px; }
+  .form-submit {
+    width:100%; background:var(--accent); color:#fff; border:none; border-radius:2px;
+    padding:13px; font-size:0.88rem; font-weight:600; cursor:pointer; transition:background 0.2s;
+    margin-top:0.5rem; font-family:'Segoe UI',Arial,sans-serif; letter-spacing:1px; text-transform:uppercase;
+  }
+  .form-submit:hover { background:var(--accent2); }
+
+  footer { background:#080612; padding:2.5rem 2rem; text-align:center; color:rgba(255,255,255,0.38); font-size:0.78rem; font-family:'Segoe UI',Arial,sans-serif; border-top:1px solid rgba(196,151,58,0.12); }
+  footer a { color:var(--gold); }
+  .footer-wordmark { font-size:1.4rem; font-family:'Georgia',serif; color:rgba(255,255,255,0.65); letter-spacing:3px; text-transform:uppercase; margin-bottom:0.5rem; }
+
+  @media(max-width:900px) {
+    .hero-inner { flex-direction:column; }
+    .hero-card { min-width:unset; width:100%; }
+    .about-grid, .contact-grid { grid-template-columns:1fr; }
+    .practice-grid { grid-template-columns:1fr 1fr; }
+    .global-grid { grid-template-columns:1fr 1fr; }
+    .nav-links { display:none; }
+    .hero-text h1 { font-size:2.2rem; }
+  }
+  @media(max-width:600px) {
+    .practice-grid, .global-grid, .values-grid, .form-row { grid-template-columns:1fr; }
+    .stats-inner { flex-direction:column; gap:1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div>
+      <div class="nav-wordmark">Withers</div>
+      <div class="nav-sub">International Law Firm · Hong Kong</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#practice">Practice Areas</a>
+    <a href="#global">Global Network</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-est">Established 1896 · Hong Kong Office</div>
+      <h1>Withers</h1>
+      <p class="tagline">One of the world's leading international law firms, advising ultra-high-net-worth individuals, families, entrepreneurs, and businesses from our Hong Kong office — connecting Asia to a global network spanning four continents.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Contact Our Team</a>
+        <a href="#practice" class="btn-outline">Our Expertise</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Hong Kong Office</h3>
+      <div class="info-row"><span class="info-icon">📍</span><span>One Exchange Square<br>8 Connaught Place, Central, HK</span></div>
+      <div class="info-row"><span class="info-icon">📞</span><span>+852 6511 0101</span></div>
+      <div class="info-row"><span class="info-icon">✉️</span><span>01space@hk01.com</span></div>
+      <div class="info-row"><span class="info-icon">🌐</span><span>withersworldwide.com</span></div>
+      <div class="info-row"><span class="info-icon">⚖️</span><span>Registered: Withers HK Professional Services Limited</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">1896</div>
+      <div class="stat-label">Year Founded</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">17+</div>
+      <div class="stat-label">Global Offices</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">900+</div>
+      <div class="stat-label">Legal Professionals</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">UHNW</div>
+      <div class="stat-label">Private Client Focus</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Continents</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-tag">About Withers</div>
+    <h2 class="section-title">A Different Kind of International Law Firm</h2>
+    <p class="section-sub">Withers is internationally recognised as a leader in serving ultra-high-net-worth individuals, family offices, private businesses, and entrepreneurs across the globe.</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Founded in London in 1896, Withers has grown into one of the world's most distinctive international law firms. Unlike firms focused primarily on corporate clients, Withers has built its global reputation on its exceptional private client and wealth management practice — serving the world's most successful individuals, families, and their businesses.</p>
+        <p>The Hong Kong office, registered as Withers HK Professional Services Limited, is a key hub in the firm's Asia-Pacific presence. The office serves clients in Hong Kong, Greater China, and across the Asia-Pacific region, providing expertise in both private client matters and complex commercial transactions.</p>
+        <p>Withers Hong Kong combines deep local market knowledge with the firm's global network, enabling seamless cross-border legal solutions for clients with international needs.</p>
+        <div class="values-grid">
+          <div class="value-card">
+            <h5>Private Client Excellence</h5>
+            <p>Globally recognised expertise for UHNW individuals and family offices</p>
+          </div>
+          <div class="value-card">
+            <h5>Cross-Border Capability</h5>
+            <p>Seamless HK–Mainland China and international transaction support</p>
+          </div>
+          <div class="value-card">
+            <h5>Integrated Service</h5>
+            <p>Private and commercial legal services under one roof</p>
+          </div>
+          <div class="value-card">
+            <h5>Global Network</h5>
+            <p>17+ offices across Asia, Europe, Americas, and the Middle East</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="highlight-box">
+          <h4>Why Withers Hong Kong</h4>
+          <ul>
+            <li>Over 125 years of international legal excellence</li>
+            <li>World-renowned private client and wealth management practice</li>
+            <li>Deep expertise in Greater China cross-border matters</li>
+            <li>Trusted by ultra-high-net-worth individuals and family offices</li>
+            <li>Integrated private and commercial legal capabilities</li>
+            <li>Recognised in leading legal directories worldwide</li>
+            <li>Multi-jurisdictional team with genuine regional insight</li>
+            <li>Discreet, partner-led service model</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE AREAS -->
+<section class="practice" id="practice">
+  <div class="section-inner">
+    <div class="section-tag">Practice Areas</div>
+    <h2 class="section-title">Expert Legal Services in Hong Kong</h2>
+    <p class="section-sub">Our Hong Kong team provides comprehensive legal services spanning private client, corporate, dispute resolution, and specialist practice areas.</p>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <div class="practice-icon">👑</div>
+        <h4>Private Client &amp; Wealth Management</h4>
+        <p>Comprehensive legal advice for ultra-high-net-worth individuals and families — estate planning, trust structures, succession planning, family constitutions, and offshore wealth management.</p>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">🏦</div>
+        <h4>Corporate &amp; Commercial</h4>
+        <p>Mergers and acquisitions, private equity transactions, joint ventures, corporate governance, and cross-border investments — serving entrepreneurs, family businesses, and institutional investors.</p>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">⚖️</div>
+        <h4>Dispute Resolution</h4>
+        <p>Complex commercial litigation, international arbitration, and mediation. Our team represents clients in high-value disputes before Hong Kong courts and major international arbitral tribunals.</p>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">🏠</div>
+        <h4>Real Estate</h4>
+        <p>Transactional and advisory real estate legal services for residential, commercial, and investment properties — including acquisitions, development projects, and cross-border real estate structures.</p>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">👥</div>
+        <h4>Employment</h4>
+        <p>Employment law advice for employers and executives in Hong Kong — including contracts, restrictive covenants, discrimination matters, terminations, and employment-related litigation.</p>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">💼</div>
+        <h4>Private Capital &amp; Family Office</h4>
+        <p>Specialist legal support for family offices, private investment structures, venture capital, and impact investment — combining deep private capital knowledge with international reach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL NETWORK -->
+<section class="global" id="global">
+  <div class="section-inner">
+    <div class="section-tag">Global Presence</div>
+    <h2 class="section-title">An International Platform for Your Legal Needs</h2>
+    <p class="section-sub">With offices across Asia-Pacific, Europe, the Americas, and the Middle East, Withers provides seamless cross-border legal services wherever your interests lie.</p>
+    <div class="global-grid">
+      <div class="office-tile">
+        <div class="office-flag">🇭🇰</div>
+        <h5>Hong Kong</h5>
+        <p>Central — Asia-Pacific hub</p>
+      </div>
+      <div class="office-tile">
+        <div class="office-flag">🇸🇬</div>
+        <h5>Singapore</h5>
+        <p>Southeast Asia gateway</p>
+      </div>
+      <div class="office-tile">
+        <div class="office-flag">🇬🇧</div>
+        <h5>London</h5>
+        <p>Global headquarters · est. 1896</p>
+      </div>
+      <div class="office-tile">
+        <div class="office-flag">🇺🇸</div>
+        <h5>New York &amp; LA</h5>
+        <p>Americas presence</p>
+      </div>
+      <div class="office-tile">
+        <div class="office-flag">🇨🇭</div>
+        <h5>Geneva &amp; Zurich</h5>
+        <p>European wealth centres</p>
+      </div>
+      <div class="office-tile">
+        <div class="office-flag">🇮🇹</div>
+        <h5>Milan</h5>
+        <p>Southern Europe</p>
+      </div>
+      <div class="office-tile">
+        <div class="office-flag">🇦🇪</div>
+        <h5>Dubai</h5>
+        <p>Middle East &amp; GCC</p>
+      </div>
+      <div class="office-tile">
+        <div class="office-flag">🌐</div>
+        <h5>+10 More Offices</h5>
+        <p>Four continents globally</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--gold);">Contact Us</div>
+    <h2 class="section-title">Get in Touch with Our Hong Kong Team</h2>
+    <p class="section-sub">Our Hong Kong office team is ready to assist with your legal enquiries. Please contact us or submit an enquiry using the form below.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h4>Hong Kong Office</h4>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail-text">
+            <div class="label">Address</div>
+            <div class="value">One Exchange Square<br>8 Connaught Place, Central<br>Hong Kong</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail-text">
+            <div class="label">Telephone</div>
+            <div class="value"><a href="tel:+85265110101">+852 6511 0101</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-detail-text">
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:01space@hk01.com">01space@hk01.com</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🌐</div>
+          <div class="contact-detail-text">
+            <div class="label">Website</div>
+            <div class="value"><a href="https://www.withersworldwide.com" target="_blank">withersworldwide.com</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">⚖️</div>
+          <div class="contact-detail-text">
+            <div class="label">Registered Name</div>
+            <div class="value">Withers HK Professional Services Limited</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h4>Legal Enquiry Form</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Your first name">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Your last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+852 XXXX XXXX">
+        </div>
+        <div class="form-group">
+          <label>Practice Area</label>
+          <select>
+            <option>Private Client &amp; Wealth Management</option>
+            <option>Corporate &amp; Commercial</option>
+            <option>Dispute Resolution</option>
+            <option>Real Estate</option>
+            <option>Employment Law</option>
+            <option>Private Capital &amp; Family Office</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Brief Description of Matter</label>
+          <textarea placeholder="Please briefly describe your legal matter or enquiry..."></textarea>
+        </div>
+        <button class="form-submit">Submit Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-wordmark">Withers</div>
+  <p style="margin-bottom:0.5rem;">Withers HK Professional Services Limited · One Exchange Square, 8 Connaught Place, Central, Hong Kong</p>
+  <p>
+    Tel: <a href="tel:+85265110101">+852 6511 0101</a> &nbsp;|&nbsp;
+    <a href="mailto:01space@hk01.com">01space@hk01.com</a> &nbsp;|&nbsp;
+    <a href="https://www.withersworldwide.com" target="_blank">withersworldwide.com</a>
+  </p>
+  <p style="margin-top:0.8rem; font-size:0.72rem;">© 2025 Withers HK Professional Services Limited. All rights reserved. Established 1896.</p>
+</footer>
+
+</body>
+</html>
