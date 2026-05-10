@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>優質電器有限公司 | 煤氣爐具 · 家用電器零售</title>
+<style>
+  :root {
+    --bg:        #060810;
+    --surface:   #0c1020;
+    --card:      #121828;
+    --accent1:   #1848c0;
+    --accent2:   #4090f8;
+    --accent3:   #80c8ff;
+    --silver:    #c0cce0;
+    --text:      #d8e8f8;
+    --muted:     #6880b0;
+    --border:    rgba(24,72,192,0.24);
+    --glow:      rgba(24,72,192,0.2);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'PingFang HK', 'Microsoft JhengHei', sans-serif; line-height: 1.7; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(6,8,16,0.95); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; box-shadow: 0 0 18px var(--glow);
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-name span { color: var(--accent3); font-weight: 400; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent3); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 9px 22px; border-radius: 6px;
+    font-size: 0.88rem; font-weight: 700; cursor: pointer; text-decoration: none;
+    box-shadow: 0 4px 16px var(--glow); transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; padding: 120px 5% 80px;
+    background:
+      radial-gradient(ellipse 70% 55% at 85% 45%, rgba(24,72,192,0.16) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 50% at 8% 75%, rgba(64,144,248,0.08) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
+  }
+  .hero-text { flex: 1 1 480px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(24,72,192,0.12); border: 1px solid rgba(24,72,192,0.3);
+    padding: 6px 16px; border-radius: 20px; font-size: 0.82rem;
+    color: var(--accent3); margin-bottom: 24px; letter-spacing: 0.04em;
+  }
+  .hero-badge::before { content: '🔌'; font-size: 0.9rem; }
+  .hero-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.18; margin-bottom: 8px; }
+  .hero-title .blue { color: var(--accent2); }
+  .hero-title .silver { color: var(--silver); }
+  .hero-en { font-size: 1rem; color: var(--muted); font-weight: 500; margin-bottom: 20px; }
+  .hero-desc { font-size: 1.02rem; color: var(--muted); max-width: 520px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 13px 28px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; text-decoration: none;
+    box-shadow: 0 6px 24px var(--glow); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid var(--accent1); color: var(--accent3);
+    padding: 13px 28px; border-radius: 8px; font-size: 0.95rem;
+    font-weight: 600; text-decoration: none; transition: background .2s;
+  }
+  .btn-outline:hover { background: rgba(24,72,192,0.1); }
+
+  /* info card */
+  .hero-card {
+    flex: 0 0 290px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .hero-card h3 { font-size: 0.78rem; color: var(--accent3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+  .info-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .info-icon { font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+  .info-label { font-size: 0.73rem; color: var(--muted); margin-bottom: 2px; }
+  .info-val { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+  .info-val a { color: var(--accent3); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .divider-card { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+
+  /* ── STATS ── */
+  .stats-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 44px 5%;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; text-align: center;
+  }
+  .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 88px 5%; }
+  .section-label { font-size: 0.78rem; color: var(--accent1); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 800; margin-bottom: 14px; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 600px; margin-bottom: 48px; }
+
+  /* ── PRODUCTS ── */
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+  .prod-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px 24px; transition: transform .25s, box-shadow .25s; position: relative;
+  }
+  .prod-card:hover { transform: translateY(-4px); box-shadow: 0 14px 44px rgba(24,72,192,0.16); }
+  .prod-icon { font-size: 2.4rem; margin-bottom: 14px; }
+  .prod-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--accent2); margin-bottom: 8px; }
+  .prod-card p { font-size: 0.88rem; color: var(--muted); }
+  .brand-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .brand-tag {
+    background: rgba(24,72,192,0.1); border: 1px solid var(--border);
+    padding: 3px 9px; border-radius: 4px; font-size: 0.73rem; color: var(--accent3);
+  }
+
+  /* ── SERVICES ── */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 22px; }
+  .svc-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 26px 22px; display: flex; gap: 16px; align-items: flex-start;
+  }
+  .svc-icon-wrap {
+    width: 48px; height: 48px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(24,72,192,0.12); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+  }
+  .svc-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .svc-card p { font-size: 0.87rem; color: var(--muted); }
+
+  /* ── HIGHLIGHT ── */
+  .highlight {
+    background: linear-gradient(135deg, rgba(24,72,192,0.14), rgba(64,144,248,0.07));
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 56px 48px; margin: 0 5% 80px; text-align: center;
+  }
+  .highlight h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: 14px; }
+  .highlight p { color: var(--muted); max-width: 640px; margin: 0 auto 28px; font-size: 0.98rem; }
+
+  /* ── CONTACT ── */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info { display: flex; flex-direction: column; gap: 18px; }
+  .c-item { display: flex; gap: 14px; align-items: flex-start; }
+  .c-icon {
+    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(24,72,192,0.1); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .c-item h4 { font-size: 0.8rem; color: var(--muted); margin-bottom: 2px; }
+  .c-item p, .c-item a { font-size: 0.92rem; color: var(--text); text-decoration: none; }
+  .c-item a:hover { color: var(--accent3); }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); padding: 11px 14px; border-radius: 8px; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent2); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 13px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.88; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 44px 5% 28px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center;
+  }
+  .footer-brand { font-size: 1rem; font-weight: 700; }
+  .footer-brand span { color: var(--accent3); font-weight: 400; }
+  .footer-copy { font-size: 0.8rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; }
+  .footer-links a:hover { color: var(--accent3); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero { flex-direction: column; }
+    .hero-card { flex: 1 1 100%; }
+    .highlight { padding: 36px 24px; margin: 0 0 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#home">
+    <div class="nav-logo">⚡</div>
+    <div class="nav-name">優質電器 <span>| 煤氣爐具專門店</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products">產品類別</a></li>
+    <li><a href="#services">服務項目</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">即時查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-badge">香港 · 煤氣爐具 · 家用電器零售</div>
+    <h1 class="hero-title">
+      <span class="blue">優質電器</span>有限公司<br>
+      <span class="silver">煤氣優質爐具產品</span>
+    </h1>
+    <p class="hero-en">Quality Electronics Ltd. · Gas Appliances &amp; Home Electrical Products</p>
+    <p class="hero-desc">
+      專業零售煤氣爐具及家用電器，提供各大品牌煤氣煮食爐、熱水爐、
+      嵌入式廚房電器及各類家庭電器產品。
+      選擇齊全，價格合理，並提供專業安裝及售後服務。
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="tel:84801898">📞 8480 1898 立即致電</a>
+      <a class="btn-outline" href="#products">瀏覽產品</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <h3>聯絡資訊</h3>
+    <div class="info-row">
+      <div class="info-icon">☎️</div>
+      <div>
+        <div class="info-label">電話</div>
+        <div class="info-val"><a href="tel:84801898">8480 1898</a></div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">📍</div>
+      <div>
+        <div class="info-label">地區</div>
+        <div class="info-val">香港 Hong Kong</div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">🏪</div>
+      <div>
+        <div class="info-label">業務</div>
+        <div class="info-val">煤氣爐具 · 家用電器<br>零售 · 安裝 · 維修</div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">🔧</div>
+      <div>
+        <div class="info-label">服務</div>
+        <div class="info-val">專業安裝及售後服務</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div>
+    <div class="stat-num">煤氣爐</div>
+    <div class="stat-label">各品牌煮食爐 · 熱水爐</div>
+  </div>
+  <div>
+    <div class="stat-num">嵌入式</div>
+    <div class="stat-label">廚房嵌入電器專門</div>
+  </div>
+  <div>
+    <div class="stat-num">安裝</div>
+    <div class="stat-label">專業安裝服務</div>
+  </div>
+  <div>
+    <div class="stat-num">售後</div>
+    <div class="stat-label">完善售後維修保障</div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <p class="section-label">產品類別</p>
+  <h2 class="section-title">煤氣爐具及家用電器</h2>
+  <p class="section-sub">提供多品牌煤氣及電力家用電器，涵蓋廚房烹飪、熱水供應及各類家居電器需求。</p>
+
+  <div class="products-grid">
+    <div class="prod-card">
+      <div class="prod-icon">🍳</div>
+      <h3>煤氣煮食爐</h3>
+      <p>各款枱面式及嵌入式煤氣煮食爐，包括雙頭、三頭及四頭爐，適合不同廚房需求。</p>
+      <div class="brand-tags">
+        <span class="brand-tag">Rinnai 林內</span>
+        <span class="brand-tag">Sakura 櫻花</span>
+        <span class="brand-tag">Paloma</span>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">🚿</div>
+      <h3>煤氣熱水爐</h3>
+      <p>即熱式及儲水式煤氣熱水爐，室內外型號齊備，提供持續穩定的熱水供應。</p>
+      <div class="brand-tags">
+        <span class="brand-tag">Rinnai 林內</span>
+        <span class="brand-tag">Paloma</span>
+        <span class="brand-tag">Noritz</span>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">🌬️</div>
+      <h3>抽油煙機</h3>
+      <p>多款歐式、島型及中式抽油煙機，高效抽煙、靜音設計，適合各類廚房格局。</p>
+      <div class="brand-tags">
+        <span class="brand-tag">Elica</span>
+        <span class="brand-tag">Faber</span>
+        <span class="brand-tag">Robam 老板</span>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">🫙</div>
+      <h3>洗碗碟機</h3>
+      <p>嵌入式及枱面式洗碗碟機，多種容量選擇，高溫殺菌，輕鬆保持廚房清潔。</p>
+      <div class="brand-tags">
+        <span class="brand-tag">Bosch</span>
+        <span class="brand-tag">Siemens</span>
+        <span class="brand-tag">AEG</span>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">🧊</div>
+      <h3>雪櫃</h3>
+      <p>各款單門、雙門及多門雪櫃，包括法式對開及抽屜式冰箱，滿足不同家庭需求。</p>
+      <div class="brand-tags">
+        <span class="brand-tag">Samsung</span>
+        <span class="brand-tag">LG</span>
+        <span class="brand-tag">Hitachi</span>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon">👕</div>
+      <h3>洗衣機 / 乾衣機</h3>
+      <p>前置式及頂置式洗衣機，以及獨立式乾衣機，多種容量可選，配合各類家庭。</p>
+      <div class="brand-tags">
+        <span class="brand-tag">Samsung</span>
+        <span class="brand-tag">LG</span>
+        <span class="brand-tag">Panasonic</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHT -->
+<div class="highlight">
+  <h2>煤氣爐具專業零售<br><span style="color:var(--accent3)">專業安裝 · 原廠保養</span></h2>
+  <p>
+    優質電器有限公司提供一站式煤氣爐具及家用電器銷售服務，
+    由選購、送貨到專業安裝，全程提供支援。
+    所有產品均附原廠保養，讓您安心選購。
+  </p>
+  <a class="btn-primary" href="tel:84801898">致電查詢及報價</a>
+</div>
+
+<!-- SERVICES -->
+<section id="services" style="background: var(--surface);">
+  <p class="section-label">服務項目</p>
+  <h2 class="section-title">專業安裝及售後服務</h2>
+  <p class="section-sub">除零售外，我們提供完善的安裝、維修及保養服務，確保電器長期正常運作。</p>
+
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🔧</div>
+      <div>
+        <h3>專業安裝</h3>
+        <p>持牌技工負責安裝，確保煤氣爐具及嵌入式電器的安裝安全合規。</p>
+      </div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🛠️</div>
+      <div>
+        <h3>維修服務</h3>
+        <p>提供各品牌家用電器的維修服務，快速診斷問題，恢復電器正常運作。</p>
+      </div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">📋</div>
+      <div>
+        <h3>原廠保養</h3>
+        <p>所有新購產品均附原廠保養，部分品牌提供延伸保養計劃。</p>
+      </div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🚚</div>
+      <div>
+        <h3>送貨上門</h3>
+        <p>提供送貨上門服務，配合客戶時間安排，搬運及安裝一條龍。</p>
+      </div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🔄</div>
+      <div>
+        <h3>舊電器回收</h3>
+        <p>提供舊電器回收服務，環保處理廢舊家電，符合香港電器廢物法規。</p>
+      </div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">💬</div>
+      <div>
+        <h3>選購諮詢</h3>
+        <p>專業顧問根據您的廚房格局及用電需求，推薦最合適的電器型號。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">聯絡我們</p>
+  <h2 class="section-title">查詢及訂購</h2>
+  <p class="section-sub">歡迎致電或填寫表格查詢產品及報價，我們將盡快回覆您的查詢。</p>
+
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="c-item">
+        <div class="c-icon">☎️</div>
+        <div>
+          <h4>電話查詢</h4>
+          <a href="tel:84801898">8480 1898</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <h4>地區</h4>
+          <p>香港 Hong Kong</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">🏪</div>
+        <div>
+          <h4>主要業務</h4>
+          <p>煤氣爐具 · 家用電器<br>零售 · 安裝 · 維修</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>您的姓名</label>
+          <input type="text" placeholder="陳先生 / 陳小姐">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="9xxx xxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>查詢類別</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>煤氣煮食爐查詢</option>
+          <option>煤氣熱水爐查詢</option>
+          <option>嵌入式廚房電器</option>
+          <option>雪櫃 / 洗衣機查詢</option>
+          <option>安裝服務查詢</option>
+          <option>維修保養服務</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>查詢詳情</label>
+        <textarea placeholder="請說明所需產品型號、規格或服務詳情…"></textarea>
+      </div>
+      <button class="form-submit">發送查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">優質電器有限公司 <span>| 煤氣優質爐具產品</span></div>
+  <div class="footer-copy">© 2025 優質電器有限公司. 版權所有</div>
+  <div class="footer-links">
+    <a href="#products">產品類別</a>
+    <a href="#services">服務項目</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+</footer>
+
+</body>
+</html>
