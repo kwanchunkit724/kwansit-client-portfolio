@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>航通超智科技有限公司 HTAI | 車隊管理系統 · 智能交通解決方案</title>
+<style>
+  :root {
+    --primary: #061420;
+    --accent: #0082b8;
+    --accent2: #00a8e0;
+    --accent3: #66d4ff;
+    --light: #eef6fb;
+    --white: #ffffff;
+    --text: #121c28;
+    --muted: #4e6070;
+    --border: #c8dce8;
+    --card-bg: #f0f8fc;
+    --hero-overlay: rgba(6,20,32,0.78);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI','Microsoft JhengHei','Noto Sans TC',sans-serif; color:var(--text); background:#fff; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+
+  nav {
+    background:var(--primary);
+    padding:0 2rem;
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px; position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 14px rgba(0,130,184,0.25);
+    border-bottom:1px solid rgba(0,130,184,0.3);
+  }
+  .nav-brand { display:flex; align-items:center; gap:12px; }
+  .nav-logo {
+    width:44px; height:44px; background:var(--accent);
+    border-radius:8px; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:0.95rem; color:#fff; letter-spacing:-0.5px;
+  }
+  .nav-brand-text .line1 { font-size:1.02rem; font-weight:700; color:#fff; }
+  .nav-brand-text .line2 { font-size:0.68rem; color:var(--accent3); letter-spacing:0.5px; }
+  .nav-links { display:flex; gap:1.6rem; }
+  .nav-links a { color:rgba(255,255,255,0.78); font-size:0.88rem; font-weight:500; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--accent3); text-decoration:none; }
+  .nav-cta {
+    background:var(--accent); color:#fff !important; padding:8px 18px;
+    border-radius:20px; font-size:0.85rem !important; font-weight:600 !important; transition:background 0.2s !important;
+  }
+  .nav-cta:hover { background:var(--accent2) !important; }
+
+  .hero {
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+      url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=80') center/cover no-repeat;
+    min-height:520px; display:flex; align-items:center; padding:4rem 2rem;
+  }
+  .hero-inner { max-width:1100px; margin:0 auto; width:100%; display:flex; align-items:center; gap:3rem; }
+  .hero-text { flex:1; }
+  .hero-badge {
+    display:inline-block; background:rgba(0,130,184,0.2); border:1px solid rgba(102,212,255,0.4);
+    color:var(--accent3); font-size:0.76rem; font-weight:600; padding:5px 14px;
+    border-radius:20px; letter-spacing:1px; margin-bottom:1.2rem;
+  }
+  .hero-text h1 { font-size:2.6rem; font-weight:800; color:#fff; line-height:1.15; margin-bottom:0.5rem; }
+  .hero-text .h1-en { font-size:1rem; color:var(--accent3); margin-bottom:1rem; }
+  .hero-text .subtitle { font-size:1rem; color:rgba(255,255,255,0.78); margin-bottom:2rem; line-height:1.75; max-width:520px; }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--accent); color:#fff; padding:13px 28px; border-radius:24px;
+    font-weight:700; font-size:0.93rem; border:2px solid var(--accent); transition:all 0.2s; display:inline-block;
+  }
+  .btn-primary:hover { background:var(--accent2); border-color:var(--accent2); text-decoration:none; }
+  .btn-outline {
+    background:transparent; color:#fff; padding:13px 28px; border-radius:24px;
+    font-weight:600; font-size:0.93rem; border:2px solid rgba(255,255,255,0.45); transition:all 0.2s; display:inline-block;
+  }
+  .btn-outline:hover { border-color:#fff; background:rgba(255,255,255,0.1); text-decoration:none; }
+  .hero-card {
+    background:rgba(255,255,255,0.08); backdrop-filter:blur(12px);
+    border:1px solid rgba(102,212,255,0.2); border-radius:14px;
+    padding:2rem 1.6rem; min-width:280px; color:#fff;
+  }
+  .hero-card h3 { font-size:0.78rem; color:var(--accent3); letter-spacing:1px; margin-bottom:1.2rem; }
+  .info-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:0.9rem; font-size:0.88rem; color:rgba(255,255,255,0.86); line-height:1.55; }
+  .info-icon { color:var(--accent3); flex-shrink:0; margin-top:1px; }
+
+  .stats-strip { background:var(--accent); padding:1.4rem 2rem; }
+  .stats-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-around; flex-wrap:wrap; }
+  .stat-item { text-align:center; padding:0.4rem 1.2rem; }
+  .stat-num { font-size:1.9rem; font-weight:800; color:#fff; }
+  .stat-label { font-size:0.7rem; color:rgba(255,255,255,0.8); letter-spacing:0.5px; margin-top:2px; }
+
+  section { padding:4rem 2rem; }
+  .section-inner { max-width:1100px; margin:0 auto; }
+  .section-tag { font-size:0.72rem; font-weight:700; letter-spacing:2px; color:var(--accent); margin-bottom:0.5rem; }
+  .section-title { font-size:2rem; font-weight:800; color:var(--primary); margin-bottom:0.8rem; }
+  .section-sub { font-size:1rem; color:var(--muted); line-height:1.8; max-width:640px; }
+
+  .about { background:#fff; }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:start; margin-top:2.5rem; }
+  .about-text p { color:var(--muted); line-height:1.9; margin-bottom:1rem; font-size:0.97rem; }
+  .highlight-box {
+    background:var(--primary); color:#fff; border-radius:12px; padding:2rem;
+    border-left:4px solid var(--accent);
+  }
+  .highlight-box h4 { font-size:0.8rem; color:var(--accent3); letter-spacing:1px; margin-bottom:1.2rem; }
+  .highlight-box ul { list-style:none; }
+  .highlight-box ul li { padding:0.5rem 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:0.9rem; color:rgba(255,255,255,0.86); display:flex; align-items:center; gap:10px; }
+  .highlight-box ul li:last-child { border-bottom:none; }
+  .highlight-box ul li::before { content:'▸'; color:var(--accent3); flex-shrink:0; }
+
+  .fms { background:var(--light); }
+  .fms-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2.5rem; }
+  .fms-card {
+    background:#fff; border:1px solid var(--border); border-radius:12px;
+    padding:1.6rem; border-top:3px solid var(--accent); transition:all 0.2s;
+  }
+  .fms-card:hover { box-shadow:0 6px 24px rgba(0,130,184,0.12); transform:translateY(-3px); }
+  .fms-icon { font-size:2rem; margin-bottom:0.8rem; }
+  .fms-card h4 { font-size:1rem; font-weight:700; color:var(--primary); margin-bottom:0.5rem; }
+  .fms-card p { font-size:0.86rem; color:var(--muted); line-height:1.7; }
+
+  .safety { background:#fff; }
+  .safety-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2.5rem; }
+  .safety-card { background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:2rem; }
+  .safety-card h4 { font-size:1.1rem; font-weight:700; color:var(--primary); margin-bottom:0.8rem; display:flex; align-items:center; gap:8px; }
+  .safety-card p { font-size:0.9rem; color:var(--muted); line-height:1.8; }
+
+  .extras { background:var(--light); }
+  .extras-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2.5rem; }
+  .extra-card { background:#fff; border:1px solid var(--border); border-radius:10px; padding:1.5rem; text-align:center; }
+  .extra-icon { font-size:2rem; margin-bottom:0.7rem; }
+  .extra-card h4 { font-size:0.95rem; font-weight:700; color:var(--primary); margin-bottom:0.4rem; }
+  .extra-card p { font-size:0.84rem; color:var(--muted); line-height:1.65; }
+
+  .contact { background:var(--primary); }
+  .contact .section-title { color:#fff; }
+  .contact .section-sub { color:rgba(255,255,255,0.65); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; }
+  .contact-info h4 { font-size:0.78rem; color:var(--accent3); letter-spacing:1px; margin-bottom:1.5rem; }
+  .contact-detail { display:flex; align-items:flex-start; gap:14px; margin-bottom:1.3rem; }
+  .contact-icon { width:42px; height:42px; background:rgba(0,130,184,0.2); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+  .contact-detail-text .label { font-size:0.72rem; color:rgba(255,255,255,0.45); letter-spacing:0.5px; }
+  .contact-detail-text .value { font-size:0.9rem; color:#fff; font-weight:500; margin-top:2px; }
+  .contact-detail-text .value a { color:var(--accent3); }
+  .contact-form { background:rgba(255,255,255,0.07); border:1px solid rgba(102,212,255,0.15); border-radius:14px; padding:2rem; }
+  .contact-form h4 { font-size:1rem; font-weight:700; color:#fff; margin-bottom:1.5rem; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .form-group { margin-bottom:1rem; }
+  .form-group label { font-size:0.8rem; color:rgba(255,255,255,0.55); margin-bottom:5px; display:block; }
+  .form-group input, .form-group select, .form-group textarea {
+    width:100%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
+    border-radius:8px; padding:10px 14px; color:#fff; font-size:0.9rem; transition:border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:var(--accent3); }
+  .form-group select option { background:var(--primary); }
+  .form-group textarea { resize:vertical; min-height:90px; }
+  .form-submit {
+    width:100%; background:var(--accent); color:#fff; border:none; border-radius:24px;
+    padding:13px; font-size:0.95rem; font-weight:700; cursor:pointer; transition:background 0.2s; margin-top:0.5rem;
+  }
+  .form-submit:hover { background:var(--accent2); }
+
+  footer { background:#030c14; padding:2.5rem 2rem; text-align:center; color:rgba(255,255,255,0.38); font-size:0.8rem; border-top:1px solid rgba(0,130,184,0.15); }
+  footer a { color:var(--accent3); }
+
+  @media(max-width:900px) {
+    .hero-inner { flex-direction:column; }
+    .hero-card { min-width:unset; width:100%; }
+    .about-grid, .safety-grid, .contact-grid { grid-template-columns:1fr; }
+    .fms-grid, .extras-grid { grid-template-columns:1fr 1fr; }
+    .nav-links { display:none; }
+    .hero-text h1 { font-size:2rem; }
+  }
+  @media(max-width:600px) {
+    .fms-grid, .extras-grid, .form-row { grid-template-columns:1fr; }
+    .stats-inner { flex-direction:column; gap:1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">HT</div>
+    <div class="nav-brand-text">
+      <div class="line1">航通超智科技有限公司</div>
+      <div class="line2">HTAI · 車隊FMS · 智能交通解決方案</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">關於我們</a>
+    <a href="#fms">車隊FMS</a>
+    <a href="#safety">安全駕駛</a>
+    <a href="#extras">更多服務</a>
+    <a href="#contact" class="nav-cta">聯絡我們</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">🚛 智能車隊管理 · 安全駕駛科技</div>
+      <h1>航通超智科技<br>HTAI</h1>
+      <p class="h1-en">Smart Fleet Management &amp; Intelligent Transportation Solutions</p>
+      <p class="subtitle">航通超智科技有限公司（HTAI）提供全面的車隊管理系統（FMS）、安全駕駛科技及的士管理解決方案，助香港運輸業界提升效率、保障安全、降低成本。</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">立即查詢</a>
+        <a href="#fms" class="btn-outline">車隊FMS服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>聯絡資訊</h3>
+      <div class="info-row"><span class="info-icon">📍</span><span>九龍尖沙咀廣東道33號<br>中港城6座9樓906室</span></div>
+      <div class="info-row"><span class="info-icon">📞</span><span>一般查詢：2627 3388<br>售後：2627 3380 / 2627 3318</span></div>
+      <div class="info-row"><span class="info-icon">💬</span><span>WhatsApp：+852 6097 2360</span></div>
+      <div class="info-row"><span class="info-icon">✉️</span><span>info@ht-ai.hk</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">FMS</div>
+      <div class="stat-label">車隊管理系統</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">ADAS</div>
+      <div class="stat-label">高級駕駛輔助</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HUD</div>
+      <div class="stat-label">抬頭顯示器</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">智能</div>
+      <div class="stat-label">尾板安全裝置</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">UBI</div>
+      <div class="stat-label">使用量保險</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-tag">關於航通超智科技</div>
+    <h2 class="section-title">香港智能交通科技先驅</h2>
+    <p class="section-sub">航通超智科技有限公司（HTAI）是香港領先的智能交通科技企業，專注為運輸業界提供先進的車隊管理系統及安全駕駛解決方案。</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>航通超智科技（HTAI）憑藉深厚的行業經驗及先進的科技能力，為香港運輸業界提供全面的智能化解決方案。公司旗下的車隊管理系統（Fleet Management System, FMS）涵蓋物流貨運、冷鏈運輸、校車管理、遊艇管理及的士管理等多個專業領域。</p>
+        <p>除車隊管理外，HTAI亦提供智能尾板安全裝置、ADAS先進駕駛輔助系統、DSM駕駛員狀態監測系統及HUD抬頭顯示器等安全駕駛科技，全方位保障駕駛員及乘客安全。</p>
+        <p>公司業務亦涵蓋UBI使用量保險及網店平台，並積極推動供應商資助計劃，協助更多企業接入智能車隊管理技術。</p>
+      </div>
+      <div>
+        <div class="highlight-box">
+          <h4>HTAI 核心優勢</h4>
+          <ul>
+            <li>全面的車隊FMS解決方案，涵蓋多類型車輛</li>
+            <li>智能尾板安全裝置，符合香港法規要求</li>
+            <li>ADAS先進駕駛輔助，有效預防交通意外</li>
+            <li>HUD抬頭顯示器，提升駕駛安全性</li>
+            <li>的士管理系統，優化車隊運營效率</li>
+            <li>UBI使用量保險，按實際使用量收費</li>
+            <li>供應商資助計劃，降低企業技術升級成本</li>
+            <li>專業安裝商合作網絡，確保服務品質</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FMS -->
+<section class="fms" id="fms">
+  <div class="section-inner">
+    <div class="section-tag">車隊管理系統</div>
+    <h2 class="section-title">Fleet Management System (FMS)</h2>
+    <p class="section-sub">航通超智科技的車隊FMS涵蓋香港各主要運輸行業，透過智能化管理提升效率、降低成本、保障安全。</p>
+    <div class="fms-grid">
+      <div class="fms-card">
+        <div class="fms-icon">🚛</div>
+        <h4>物流配送管理</h4>
+        <p>智能物流配送車隊管理，實時追蹤車輛位置，優化配送路線，提升整體物流效率及客戶服務水平。</p>
+      </div>
+      <div class="fms-card">
+        <div class="fms-icon">❄️</div>
+        <h4>冷鏈管理</h4>
+        <p>專為冷鏈運輸設計的FMS解決方案，全程監控車廂溫度、貨物狀態，確保食品及醫藥品的運送品質。</p>
+      </div>
+      <div class="fms-card">
+        <div class="fms-icon">🚌</div>
+        <h4>校車管理</h4>
+        <p>校車專用管理系統，即時追蹤校車位置、路線及學生上落車記錄，讓家長及學校安心掌握學生安全。</p>
+      </div>
+      <div class="fms-card">
+        <div class="fms-icon">⛵</div>
+        <h4>遊艇管理</h4>
+        <p>遊艇及海上船隻管理系統，提供定位追蹤、行程記錄及遠程監控功能，保障海上航行安全。</p>
+      </div>
+      <div class="fms-card">
+        <div class="fms-icon">🚕</div>
+        <h4>的士管理</h4>
+        <p>為的士車主及車隊提供專業管理系統，涵蓋出車記錄、收入管理、司機考勤等功能，提升車隊管理效率。</p>
+      </div>
+      <div class="fms-card">
+        <div class="fms-icon">💰</div>
+        <h4>供應商資助計劃</h4>
+        <p>協助企業申請相關政府及機構資助，降低引入智能車隊管理系統的初期成本，加速數碼化轉型。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAFETY -->
+<section class="safety" id="safety">
+  <div class="section-inner">
+    <div class="section-tag">安全駕駛科技</div>
+    <h2 class="section-title">智能安全系統，全面保障道路安全</h2>
+    <p class="section-sub">HTAI提供多款先進安全駕駛科技，從車內到車外，全方位提升駕駛安全水平。</p>
+    <div class="safety-grid">
+      <div class="safety-card">
+        <h4>🎯 ADAS 先進駕駛輔助系統</h4>
+        <p>先進駕駛輔助系統（ADAS）透過前置攝像頭實時分析路況，提供車道偏移警報、前車碰撞預警、行人檢測等功能，有效預防交通意外的發生，是商用車輛安全管理的重要工具。</p>
+      </div>
+      <div class="safety-card">
+        <h4>👁️ DSM 駕駛員狀態監測</h4>
+        <p>駕駛員狀態監測系統（DSM）透過車內攝像頭持續監測駕駛員的疲勞及分心狀態，一旦偵測到危險行為（如打瞌睡、使用手機）即時發出警報，大幅降低因人為疏忽引致意外的風險。</p>
+      </div>
+      <div class="safety-card">
+        <h4>📺 HUD 抬頭顯示器</h4>
+        <p>HUD抬頭顯示器將導航、車速、ADAS警示等關鍵資訊投射於擋風玻璃前，讓駕駛員無需低頭即可獲取行車資訊，保持視線集中於道路，有效提升駕駛安全。</p>
+      </div>
+      <div class="safety-card">
+        <h4>🔧 智能尾板安全裝置</h4>
+        <p>智能尾板安全裝置為貨車尾板操作提供全面的安全保障，符合香港最新法規要求。觸覺式安全感應有效防止夾傷意外，保護裝卸工人的人身安全，是香港物流業必備的安全升級。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRAS -->
+<section class="extras" id="extras">
+  <div class="section-inner">
+    <div class="section-tag">更多服務</div>
+    <h2 class="section-title">完整的智能交通生態系統</h2>
+    <p class="section-sub">HTAI持續擴展服務版圖，為運輸業界提供更全面、更創新的智能解決方案。</p>
+    <div class="extras-grid">
+      <div class="extra-card">
+        <div class="extra-icon">📊</div>
+        <h4>UBI 使用量保險</h4>
+        <p>根據實際駕駛行為及里程數計算保費，安全駕駛有望獲得保費優惠，為車隊節省保險成本。</p>
+      </div>
+      <div class="extra-card">
+        <div class="extra-icon">🛒</div>
+        <h4>網店平台</h4>
+        <p>HTAI網店平台提供各類智能車輛科技產品，方便客戶選購合適的FMS設備及安全駕駛系統。</p>
+      </div>
+      <div class="extra-card">
+        <div class="extra-icon">🔧</div>
+        <h4>安裝商合作招募</h4>
+        <p>誠邀專業安裝商加入HTAI合作網絡，共同為香港運輸業界提供優質的智能科技安裝及維護服務。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--accent3);">聯絡我們</div>
+    <h2 class="section-title">讓我們了解您的需求</h2>
+    <p class="section-sub">無論是想了解我們的產品服務，或需要技術支援，我們都樂意為您提供協助。請透過以下方式聯絡我們。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h4>聯絡資訊</h4>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail-text">
+            <div class="label">地址</div>
+            <div class="value">九龍尖沙咀廣東道33號<br>中港城6座9樓906室</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail-text">
+            <div class="label">一般查詢</div>
+            <div class="value"><a href="tel:+85226273388">2627 3388</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🔧</div>
+          <div class="contact-detail-text">
+            <div class="label">售後服務</div>
+            <div class="value"><a href="tel:+85226273380">2627 3380</a> / <a href="tel:+85226273318">2627 3318</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">💬</div>
+          <div class="contact-detail-text">
+            <div class="label">WhatsApp</div>
+            <div class="value"><a href="https://wa.me/85260972360">+852 6097 2360</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-detail-text">
+            <div class="label">電郵</div>
+            <div class="value"><a href="mailto:info@ht-ai.hk">info@ht-ai.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📱</div>
+          <div class="contact-detail-text">
+            <div class="label">社交媒體</div>
+            <div class="value">YouTube / Facebook / Instagram<br>航通租的e · htaxi.hk</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h4>聯絡表單</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>聯絡電話</label>
+            <input type="tel" placeholder="+852 XXXX XXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>查詢類別</label>
+          <select>
+            <option>車隊FMS系統</option>
+            <option>冷鏈管理系統</option>
+            <option>校車管理系統</option>
+            <option>智能尾板安全裝置</option>
+            <option>ADAS / DSM 安全系統</option>
+            <option>HUD抬頭顯示器</option>
+            <option>的士管理系統</option>
+            <option>UBI使用量保險</option>
+            <option>安裝商合作</option>
+            <option>一般查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>留言</label>
+          <textarea placeholder="請告訴我們您的需求…"></textarea>
+        </div>
+        <button class="form-submit">提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="margin-bottom:0.5rem;"><strong style="color:rgba(255,255,255,0.65);">航通超智科技有限公司 HTAI</strong> · 智能車隊管理 · 安全駕駛科技</p>
+  <p>
+    尖沙咀廣東道33號中港城6座9樓906室 &nbsp;|&nbsp;
+    <a href="tel:+85226273388">2627 3388</a> &nbsp;|&nbsp;
+    <a href="mailto:info@ht-ai.hk">info@ht-ai.hk</a> &nbsp;|&nbsp;
+    <a href="https://www.ht-ai.hk" target="_blank">ht-ai.hk</a>
+  </p>
+  <p style="margin-top:0.8rem; font-size:0.74rem;">© 2025 航通超智科技有限公司。版權所有。</p>
+</footer>
+
+</body>
+</html>
