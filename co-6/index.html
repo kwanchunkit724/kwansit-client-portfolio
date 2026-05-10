@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>譚仔國際有限公司 — TamJai International Co. Limited</title>
+<style>
+  :root {
+    --bg:       #0d0604;
+    --surface:  #1a0c08;
+    --card:     #241008;
+    --border:   #3c1a10;
+    --accent1:  #b82010;
+    --accent2:  #e03018;
+    --accent3:  #f85030;
+    --gold:     #d08820;
+    --gold2:    #f0a830;
+    --text:     #f4ece8;
+    --muted:    #a07060;
+    --cream:    #f8f0e0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif; line-height: 1.7; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,6,4,0.97); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .nav-logo {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent3));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.95rem; color: #fff;
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-stock { font-size: 0.72rem; color: var(--gold2); background: rgba(208,136,32,0.12); border: 1px solid rgba(240,168,48,0.25); padding: 0.2rem 0.6rem; border-radius: 4px; margin-left: 0.5rem; font-weight: 700; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent3); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 0.5rem 1.2rem;
+    border-radius: 6px; font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; text-decoration: none; transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding: 100px 2.5rem 60px;
+    background:
+      radial-gradient(ellipse 80% 60% at 65% 35%, rgba(184,32,16,0.28) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 50% at 15% 75%, rgba(208,136,32,0.12) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(184,32,16,0.2); border: 1px solid rgba(248,80,48,0.3);
+    color: var(--accent3); font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.5rem;
+  }
+  .hero h1 { font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  .hero h1 span { color: var(--accent3); }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); margin-bottom: 2rem; max-width: 520px; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 0.8rem 1.8rem; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(184,32,16,0.4); transition: transform .2s, box-shadow .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(184,32,16,0.5); }
+  .btn-outline {
+    border: 2px solid var(--border); color: var(--text);
+    padding: 0.75rem 1.8rem; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: border-color .2s, color .2s;
+  }
+  .btn-outline:hover { border-color: var(--accent3); color: var(--accent3); }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .info-card h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
+  .info-row { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(60,26,16,0.7); }
+  .info-row:last-child { border-bottom: none; }
+  .info-icon { font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0; }
+  .info-label { font-size: 0.72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; }
+  .info-val { font-size: 0.92rem; color: var(--text); }
+  .info-val a { color: var(--accent3); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+
+  /* STATS */
+  .stats { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2.5rem; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+  .stat { text-align: center; padding: 1.5rem 0.5rem; }
+  .stat-num { font-size: 2rem; font-weight: 900; color: var(--accent3); }
+  .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.3rem; }
+
+  /* SECTION COMMON */
+  section { padding: 80px 2.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; background: rgba(184,32,16,0.15); border: 1px solid rgba(248,80,48,0.25);
+    color: var(--accent3); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem;
+    border-radius: 20px; margin-bottom: 0.8rem;
+  }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 1rem; }
+  .section-title span { color: var(--accent3); }
+  .section-sub { font-size: 1rem; color: var(--muted); max-width: 600px; margin-bottom: 3rem; }
+
+  /* BRANDS */
+  .brands-bg { background: var(--bg); }
+  .brands-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .brand-card {
+    border-radius: 20px; padding: 3rem; position: relative; overflow: hidden;
+    border: 1px solid var(--border); transition: transform .25s, box-shadow .25s;
+  }
+  .brand-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+  .brand-card.samgor { background: linear-gradient(135deg, #1a0c04 0%, #2a1008 100%); border-color: #5a2010; }
+  .brand-card.tamjai { background: linear-gradient(135deg, #0a0c1a 0%, #101830 100%); border-color: #102050; }
+  .brand-badge {
+    display: inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.8rem; border-radius: 20px; margin-bottom: 1.5rem;
+  }
+  .brand-card.samgor .brand-badge { background: rgba(248,80,48,0.2); border: 1px solid rgba(248,80,48,0.4); color: var(--accent3); }
+  .brand-card.tamjai .brand-badge { background: rgba(64,128,240,0.2); border: 1px solid rgba(64,128,240,0.4); color: #5090f0; }
+  .brand-card h3 { font-size: 1.8rem; font-weight: 900; margin-bottom: 0.3rem; }
+  .brand-card.samgor h3 { color: var(--accent3); }
+  .brand-card.tamjai h3 { color: #5090f0; }
+  .brand-sub { font-size: 1rem; color: var(--muted); margin-bottom: 1rem; font-weight: 600; }
+  .brand-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
+  .brand-stats { display: flex; gap: 2rem; }
+  .brand-stat-num { font-size: 1.5rem; font-weight: 900; }
+  .brand-card.samgor .brand-stat-num { color: var(--accent3); }
+  .brand-card.tamjai .brand-stat-num { color: #5090f0; }
+  .brand-stat-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* NOODLES */
+  .noodles-bg { background: var(--surface); }
+  .noodles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .noodle-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.8rem; transition: border-color .25s, transform .25s;
+  }
+  .noodle-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
+  .noodle-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .noodle-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .noodle-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.6; }
+  .spice-bar { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.8rem; }
+  .spice-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .spice-dots { display: flex; gap: 3px; }
+  .spice-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+  .spice-dot.on { background: var(--accent3); }
+
+  /* TIMELINE */
+  .timeline-bg { background: var(--bg); }
+  .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+  .timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent2), transparent); }
+  .tl-item { display: flex; gap: 2rem; margin-bottom: 2.5rem; padding-left: 0; }
+  .tl-dot {
+    width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    border: 3px solid var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 900; color: #fff; z-index: 1;
+  }
+  .tl-content { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem 1.5rem; flex: 1; }
+  .tl-year { font-size: 0.72rem; color: var(--accent3); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+  .tl-content h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .tl-content p { font-size: 0.87rem; color: var(--muted); }
+
+  /* MARKETS */
+  .markets-bg { background: var(--surface); }
+  .markets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .market-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 2rem; text-align: center; transition: border-color .25s;
+  }
+  .market-card:hover { border-color: var(--gold); }
+  .market-flag { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .market-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--gold2); }
+  .market-card p { font-size: 0.85rem; color: var(--muted); }
+
+  /* CONTACT */
+  .contact-bg { background: var(--bg); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info-list { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; }
+  .ci-item { display: flex; align-items: flex-start; gap: 0.9rem; }
+  .ci-icon {
+    width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(184,32,16,0.2); border: 1px solid rgba(248,80,48,0.25);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .ci-label { font-size: 0.72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
+  .ci-val { font-size: 0.92rem; color: var(--text); }
+  .ci-val a { color: var(--accent3); text-decoration: none; }
+  .ci-val a:hover { text-decoration: underline; }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; }
+  .contact-form h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.78rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); border-radius: 8px; padding: 0.7rem 0.9rem; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent2); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select option { background: var(--surface); }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 0.85rem; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.85; }
+
+  /* FOOTER */
+  footer {
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 60px 2.5rem 30px;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+  .footer-brand h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.8rem; }
+  .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  footer h4 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  footer ul li a { color: var(--text); text-decoration: none; font-size: 0.88rem; transition: color .2s; }
+  footer ul li a:hover { color: var(--accent3); }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+  .footer-bottom p { font-size: 0.8rem; color: var(--muted); }
+
+  @media (max-width: 1000px) {
+    .stats-inner { grid-template-columns: repeat(3, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .info-card { display: none; }
+    .brands-grid { grid-template-columns: 1fr; }
+    .noodles-grid { grid-template-columns: 1fr 1fr; }
+    .markets-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .noodles-grid, .markets-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">譚仔</div>
+    <span class="nav-name">譚仔國際有限公司</span>
+    <span class="nav-stock">HKEX: 2217</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#brands">品牌</a></li>
+    <li><a href="#noodles">米線</a></li>
+    <li><a href="#history">歷史</a></li>
+    <li><a href="#markets">市場</a></li>
+    <li><a href="#contact">聯絡</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">業務合作</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">🍜 香港 · HKEX 2217</div>
+      <h1>香港最具代表性的<br><span>米線餐廳集團</span></h1>
+      <p class="hero-sub">譚仔國際有限公司旗下兩大品牌——譚仔三哥米線及譚仔雲南米線，以獨家秘製湯底及多元配料，在香港及大灣區建立深厚品牌地位，逾百家分店服務數以百萬計的食客。</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#brands">了解兩大品牌</a>
+        <a class="btn-outline" href="https://tamjai-intl.com" target="_blank" rel="noopener">官方網站</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>公司資料</h3>
+      <div class="info-row">
+        <span class="info-icon">🏢</span>
+        <div>
+          <div class="info-label">公司名稱</div>
+          <div class="info-val">譚仔國際有限公司<br>TamJai International Co. Limited</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📈</span>
+        <div>
+          <div class="info-label">上市資料</div>
+          <div class="info-val">香港交易所 · 股份代號 2217</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🏪</span>
+        <div>
+          <div class="info-label">品牌</div>
+          <div class="info-val">譚仔三哥米線 · 譚仔雲南米線</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div>
+          <div class="info-label">總部</div>
+          <div class="info-val">香港</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🌐</span>
+        <div>
+          <div class="info-label">網站</div>
+          <div class="info-val"><a href="https://tamjai-intl.com" target="_blank">tamjai-intl.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">180+</div>
+      <div class="stat-label">香港分店</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-label">旗下品牌</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2021</div>
+      <div class="stat-label">港交所上市</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">GBA</div>
+      <div class="stat-label">大灣區擴張</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">湯底選擇</div>
+    </div>
+  </div>
+</div>
+
+<!-- BRANDS -->
+<section class="brands-bg" id="brands">
+  <div class="section-inner">
+    <div class="section-tag">旗下品牌</div>
+    <h2 class="section-title">兩大<span>招牌品牌</span></h2>
+    <p class="section-sub">譚仔國際旗下兩個各具特色的米線品牌，以不同風格與定位服務廣大食客，各自在港擁有深厚的忠實顧客群。</p>
+    <div class="brands-grid">
+      <div class="brand-card samgor">
+        <span class="brand-badge">旗艦品牌</span>
+        <h3>譚仔三哥米線</h3>
+        <p class="brand-sub">TamJai SamGor Mixian</p>
+        <p>由三哥（第三兄弟）創立的秘製湯底配方，以麻辣、酸辣等多層次口味著稱。顧客可自選湯底辣度（1-10辣）及多款配料，打造個人化米線體驗。濃郁的麻辣風味令品牌成為香港年輕一代的至愛。</p>
+        <div class="brand-stats">
+          <div>
+            <div class="brand-stat-num">100+</div>
+            <div class="brand-stat-label">香港分店</div>
+          </div>
+          <div>
+            <div class="brand-stat-num">10</div>
+            <div class="brand-stat-label">辣度選擇</div>
+          </div>
+          <div>
+            <div class="brand-stat-num">多款</div>
+            <div class="brand-stat-label">配料組合</div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-card tamjai">
+        <span class="brand-badge" style="background:rgba(64,128,240,0.2);border-color:rgba(64,128,240,0.4);color:#5090f0;">經典品牌</span>
+        <h3>譚仔雲南米線</h3>
+        <p class="brand-sub">TamJai Yunnan Mixian</p>
+        <p>以雲南傳統風味為基礎，精選優質米線配以清甜骨湯或濃郁酸辣湯底，傳承正宗雲南過橋米線文化。品牌以親民價格及豐富的食材選擇廣受各年齡層歡迎，是香港米線市場的先驅品牌之一。</p>
+        <div class="brand-stats">
+          <div>
+            <div class="brand-stat-num">80+</div>
+            <div class="brand-stat-label">香港分店</div>
+          </div>
+          <div>
+            <div class="brand-stat-num">雲南</div>
+            <div class="brand-stat-label">正宗風味</div>
+          </div>
+          <div>
+            <div class="brand-stat-num">多款</div>
+            <div class="brand-stat-label">湯底選擇</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOODLES -->
+<section class="noodles-bg" id="noodles">
+  <div class="section-inner">
+    <div class="section-tag">招牌米線</div>
+    <h2 class="section-title">深受歡迎的<span>米線系列</span></h2>
+    <p class="section-sub">每碗米線均以精心熬製的湯底為靈魂，配合彈牙米線及豐富配料，帶來層次豐富的味覺體驗。</p>
+    <div class="noodles-grid">
+      <div class="noodle-card">
+        <div class="noodle-icon">🌶️</div>
+        <h3>麻辣湯底米線</h3>
+        <p>以秘製麻辣醬熬製，花椒香氣濃郁，辣而不燥，層次豐富。自選辣度1至10，滿足不同口味需求。</p>
+        <div class="spice-bar">
+          <span class="spice-label">辣度</span>
+          <div class="spice-dots">
+            <div class="spice-dot on"></div><div class="spice-dot on"></div><div class="spice-dot on"></div>
+            <div class="spice-dot on"></div><div class="spice-dot on"></div><div class="spice-dot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="noodle-card">
+        <div class="noodle-icon">🍲</div>
+        <h3>酸辣湯底米線</h3>
+        <p>酸辣開胃，以醋及辣椒調製，酸度與辣度平衡，湯底清爽鮮美，配料吸收湯汁更加入味。</p>
+        <div class="spice-bar">
+          <span class="spice-label">辣度</span>
+          <div class="spice-dots">
+            <div class="spice-dot on"></div><div class="spice-dot on"></div><div class="spice-dot on"></div>
+            <div class="spice-dot"></div><div class="spice-dot"></div><div class="spice-dot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="noodle-card">
+        <div class="noodle-icon">🍜</div>
+        <h3>清湯骨湯米線</h3>
+        <p>以豬骨慢火熬製，湯色清澈，骨香濃郁，清甜滋補，適合偏好清淡口味或不嗜辣的食客。</p>
+        <div class="spice-bar">
+          <span class="spice-label">辣度</span>
+          <div class="spice-dots">
+            <div class="spice-dot on"></div><div class="spice-dot"></div><div class="spice-dot"></div>
+            <div class="spice-dot"></div><div class="spice-dot"></div><div class="spice-dot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="noodle-card">
+        <div class="noodle-icon">🥩</div>
+        <h3>牛腩湯底米線</h3>
+        <p>以新鮮牛腩慢燉熬製湯底，牛味濃郁，湯汁豐厚，配上軟腍牛腩肉，是本港食客的長年至愛。</p>
+        <div class="spice-bar">
+          <span class="spice-label">辣度</span>
+          <div class="spice-dots">
+            <div class="spice-dot on"></div><div class="spice-dot on"></div><div class="spice-dot"></div>
+            <div class="spice-dot"></div><div class="spice-dot"></div><div class="spice-dot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="noodle-card">
+        <div class="noodle-icon">🦐</div>
+        <h3>海鮮湯底米線</h3>
+        <p>以蝦殼、魚骨慢熬，鮮甜海味湯底配上新鮮海鮮配料，鮮味十足，是夏日清爽之選。</p>
+        <div class="spice-bar">
+          <span class="spice-label">辣度</span>
+          <div class="spice-dots">
+            <div class="spice-dot on"></div><div class="spice-dot on"></div><div class="spice-dot"></div>
+            <div class="spice-dot"></div><div class="spice-dot"></div><div class="spice-dot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="noodle-card">
+        <div class="noodle-icon">🥬</div>
+        <h3>素食湯底米線</h3>
+        <p>精選蔬菜及菌菇熬製素湯底，清甜健康，配豐富素食配料，滿足素食者及注重健康飲食人士。</p>
+        <div class="spice-bar">
+          <span class="spice-label">辣度</span>
+          <div class="spice-dots">
+            <div class="spice-dot on"></div><div class="spice-dot"></div><div class="spice-dot"></div>
+            <div class="spice-dot"></div><div class="spice-dot"></div><div class="spice-dot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="timeline-bg" id="history">
+  <div class="section-inner">
+    <div class="section-tag">發展歷史</div>
+    <h2 class="section-title">從街頭小店到<span>上市集團</span></h2>
+    <p class="section-sub" style="margin-bottom: 3rem;">由一碗平民米線起步，歷經數十年發展，成為香港餐飲業最具代表性的上市公司之一。</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">早</div>
+        <div class="tl-content">
+          <div class="tl-year">早期創立</div>
+          <h4>譚仔雲南米線創業</h4>
+          <p>品牌在香港起步，以雲南傳統風味米線為主打，憑藉獨特湯底及親民定價，迅速在本地食客中建立口碑。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">發</div>
+        <div class="tl-content">
+          <div class="tl-year">品牌發展</div>
+          <h4>譚仔三哥米線獨立發展</h4>
+          <p>「三哥」自立門戶，以秘製麻辣湯底配方創立譚仔三哥品牌，多達10個辣度選擇，吸引大批年輕食客，快速拓展全港分店網絡。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">合</div>
+        <div class="tl-content">
+          <div class="tl-year">業務整合</div>
+          <h4>集團化運營</h4>
+          <p>兩大品牌整合成立譚仔國際有限公司，集中管理旗下全線分店，統一採購、品控及人力資源管理，提升整體營運效率。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">市</div>
+        <div class="tl-content">
+          <div class="tl-year">2021年</div>
+          <h4>香港交易所上市（股份代號 2217）</h4>
+          <p>譚仔國際成功於香港交易所主板上市，標誌著集團邁入新發展階段，獲得更廣泛的資本支持以推動品牌擴張。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">擴</div>
+        <div class="tl-content">
+          <div class="tl-year">持續擴展</div>
+          <h4>大灣區及海外市場拓展</h4>
+          <p>集團積極拓展大灣區市場，深圳、廣州等城市開設分店，同時探索海外市場機遇，將香港米線文化帶向更廣闊的舞台。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section class="markets-bg" id="markets">
+  <div class="section-inner">
+    <div class="section-tag">業務市場</div>
+    <h2 class="section-title">拓展<span>全球市場</span></h2>
+    <p class="section-sub">以香港為根基，向大灣區及海外延伸，將獨特的香港米線文化推廣至更廣泛的市場。</p>
+    <div class="markets-grid">
+      <div class="market-card">
+        <div class="market-flag">🇭🇰</div>
+        <h3>香港（核心市場）</h3>
+        <p>180多家分店遍佈全港各區，覆蓋商場、地鐵沿線及民生商圈，是集團最重要的收入來源。</p>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇨🇳</div>
+        <h3>中國大灣區</h3>
+        <p>積極進軍深圳、廣州等大灣區城市，借助龐大的內地消費市場，實現品牌跨境擴張策略。</p>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🌏</div>
+        <h3>海外市場</h3>
+        <p>持續評估海外擴張機遇，將香港米線文化推向亞洲及更廣泛的海外市場，擴大國際品牌影響力。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-bg" id="contact">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2 class="section-title">業務<span>合作查詢</span></h2>
+    <p class="section-sub">歡迎媒體、投資者及業務夥伴與我們聯絡，了解更多集團業務資訊及合作機遇。</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-list">
+          <div class="ci-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">總部</div>
+              <div class="ci-val">香港</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🌐</div>
+            <div>
+              <div class="ci-label">官方網站</div>
+              <div class="ci-val"><a href="https://tamjai-intl.com" target="_blank" rel="noopener">tamjai-intl.com</a></div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">📈</div>
+            <div>
+              <div class="ci-label">投資者關係</div>
+              <div class="ci-val">香港交易所 · 股份代號 2217</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🤝</div>
+            <div>
+              <div class="ci-label">合作範疇</div>
+              <div class="ci-val">加盟 · 供應商 · 媒體 · 投資者</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>發送查詢</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>公司</label>
+            <input type="text" placeholder="公司名稱">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>查詢類別</label>
+          <select>
+            <option value="">請選擇查詢類別</option>
+            <option>投資者關係</option>
+            <option>加盟合作</option>
+            <option>供應商合作</option>
+            <option>媒體查詢</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea placeholder="請描述您的查詢內容。"></textarea>
+        </div>
+        <button class="form-submit">提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>譚仔國際有限公司</h3>
+        <p>香港上市米線餐廳集團（HKEX: 2217），旗下兩大品牌——譚仔三哥米線及譚仔雲南米線，在港擁有逾180家分店，積極拓展大灣區及海外市場。</p>
+      </div>
+      <div>
+        <h4>旗下品牌</h4>
+        <ul>
+          <li><a href="#brands">譚仔三哥米線</a></li>
+          <li><a href="#brands">譚仔雲南米線</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>業務市場</h4>
+        <ul>
+          <li><a href="#markets">香港</a></li>
+          <li><a href="#markets">大灣區</a></li>
+          <li><a href="#markets">海外市場</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>快速連結</h4>
+        <ul>
+          <li><a href="#history">發展歷史</a></li>
+          <li><a href="https://tamjai-intl.com" target="_blank">官方網站</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 譚仔國際有限公司 版權所有 · 香港交易所上市公司（股份代號：2217）</p>
+      <p>香港 · 米線餐廳集團</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
