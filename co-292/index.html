@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雄豐運輸有限公司 | 中港物流 | 倉儲 | 本地配送 | 凍倉服務</title>
+<meta name="description" content="雄豐運輸有限公司 — 成立2003年，45輛以上車隊，50,000呎倉儲設施，提供中港跨境貨運、本地配送、溫控倉儲、危險品運輸及冷鏈物流服務。榮獲最佳運輸服務供應商獎項。">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red:       #c0281a;
+    --red-dark:  #951f14;
+    --red-light: #e03222;
+    --navy:      #1a2740;
+    --navy-mid:  #253858;
+    --steel:     #4a6278;
+    --bg:        #f4f6f9;
+    --border:    #dde3ec;
+    --white:     #ffffff;
+    --text:      #1a1a1a;
+    --text-mid:  #484848;
+    --shadow:    0 4px 20px rgba(0,0,0,0.09);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', 'Segoe UI', sans-serif; color: var(--text); background: var(--white); line-height: 1.65; }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    position: sticky; top: 0; z-index: 100;
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.28);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo-icon {
+    width: 42px; height: 42px; background: var(--red);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 800; color: var(--white); flex-shrink: 0;
+  }
+  .nav-logo-text strong { display: block; color: var(--white); font-size: 0.96rem; font-weight: 700; line-height: 1.2; }
+  .nav-logo-text span { font-size: 0.67rem; color: rgba(255,255,255,0.45); }
+  .nav-links { display: flex; gap: 26px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.88rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--red-light); }
+  .nav-cta {
+    background: var(--red); color: var(--white);
+    border: none; border-radius: 6px; padding: 9px 20px;
+    font-size: 0.88rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--red-dark); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, #2c4570 100%);
+    padding: 90px 5% 80px; position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -80px; right: -80px;
+    width: 440px; height: 440px;
+    background: var(--red); border-radius: 50%; opacity: 0.07;
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 310px; gap: 60px; align-items: center; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(192,40,26,0.18); border: 1px solid rgba(192,40,26,0.4);
+    color: #ff7a6e; font-size: 0.79rem; font-weight: 600;
+    padding: 4px 14px; border-radius: 18px; margin-bottom: 18px; letter-spacing: 0.04em;
+  }
+  .hero h1 { font-size: 2.8rem; font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 10px; }
+  .hero h1 em { color: #ff7a6e; font-style: normal; }
+  .hero-en { font-size: 0.95rem; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+  .hero-sub { color: rgba(255,255,255,0.75); font-size: 0.97rem; margin-bottom: 32px; max-width: 540px; line-height: 1.72; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-red {
+    background: var(--red); color: var(--white);
+    padding: 13px 30px; border-radius: 7px; font-weight: 700; font-size: 0.96rem;
+    text-decoration: none; display: inline-block; transition: background .2s, transform .15s;
+  }
+  .btn-red:hover { background: var(--red-dark); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--white);
+    border: 2px solid rgba(255,255,255,0.35);
+    padding: 11px 26px; border-radius: 7px; font-weight: 600; font-size: 0.96rem;
+    text-decoration: none; display: inline-block; transition: border-color .2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.75); }
+  .hero-card {
+    background: rgba(255,255,255,0.09); backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 26px 22px;
+  }
+  .hc-title { color: #ff7a6e; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .hc-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .hc-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .hc-icon { width: 30px; height: 30px; background: rgba(192,40,26,0.18); border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 2px; }
+  .hc-lbl { font-size: 0.67rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.05em; }
+  .hc-val { font-size: 0.88rem; color: var(--white); font-weight: 600; line-height: 1.3; }
+
+  /* STATS BAR */
+  .stats-bar { background: var(--red); padding: 0 5%; display: flex; align-items: stretch; }
+  .sb-item { flex: 1; padding: 18px 16px; text-align: center; border-right: 1px solid rgba(255,255,255,0.22); }
+  .sb-item:last-child { border-right: none; }
+  .sb-num { font-size: 1.8rem; font-weight: 800; color: var(--white); line-height: 1; }
+  .sb-label { font-size: 0.73rem; color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 3px; }
+
+  /* SECTIONS */
+  section { padding: 80px 5%; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .eyebrow { font-size: 0.77rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+  .section-title { font-size: 2rem; font-weight: 800; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+  .section-title em { color: var(--navy-mid); font-style: normal; }
+  .section-lead { color: var(--text-mid); font-size: 0.97rem; max-width: 640px; line-height: 1.75; }
+  .divider { width: 48px; height: 4px; background: var(--red); border-radius: 2px; margin: 16px 0 40px; }
+
+  /* ABOUT */
+  .about { background: var(--bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .about-body p { color: var(--text-mid); margin-bottom: 15px; line-height: 1.78; font-size: 0.95rem; }
+  .award-box {
+    background: var(--navy); color: var(--white);
+    border-radius: 12px; padding: 22px 24px; margin-top: 22px;
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  .award-icon { font-size: 2.2rem; flex-shrink: 0; }
+  .award-label { font-size: 0.7rem; font-weight: 700; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px; }
+  .award-title { font-size: 0.98rem; font-weight: 700; color: #ffd580; margin-bottom: 5px; }
+  .award-by { font-size: 0.82rem; color: rgba(255,255,255,0.7); }
+  .about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .fact-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 16px;
+    border-top: 3px solid var(--red);
+  }
+  .fact-card .fi { font-size: 1.6rem; margin-bottom: 7px; }
+  .fact-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .fact-card p { font-size: 0.78rem; color: var(--text-mid); line-height: 1.5; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .service-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.12); }
+  .sc-head {
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    padding: 22px 20px 18px; position: relative;
+  }
+  .sc-num { position: absolute; top: 12px; right: 14px; font-size: 2rem; font-weight: 800; color: rgba(255,255,255,0.07); line-height: 1; }
+  .sc-icon { font-size: 2rem; margin-bottom: 8px; }
+  .sc-head h3 { font-size: 0.96rem; font-weight: 700; color: var(--white); }
+  .sc-body { padding: 17px 20px; }
+  .sc-body p { font-size: 0.83rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 12px; }
+  .sc-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .sc-tag { background: #fdf0ee; color: var(--red-dark); font-size: 0.7rem; font-weight: 600; padding: 3px 9px; border-radius: 10px; }
+
+  /* FLEET */
+  .fleet { background: var(--bg); }
+  .fleet-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .fleet-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 22px 16px; text-align: center;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .fleet-card:hover { border-color: var(--red); box-shadow: var(--shadow); }
+  .fleet-icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .fleet-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+  .fleet-card p { font-size: 0.78rem; color: var(--text-mid); line-height: 1.5; }
+  .fleet-summary {
+    background: var(--navy); border-radius: 14px; padding: 28px; margin-top: 28px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;
+  }
+  .fs-item .num { font-size: 2rem; font-weight: 800; color: #ff7a6e; line-height: 1; }
+  .fs-item .lbl { font-size: 0.78rem; color: rgba(255,255,255,0.65); margin-top: 4px; }
+
+  /* WAREHOUSE */
+  .warehouse { background: var(--white); }
+  .wh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 58px; align-items: start; }
+  .wh-intro p { color: var(--text-mid); margin-bottom: 15px; line-height: 1.75; font-size: 0.95rem; }
+  .wh-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+  .wh-feat {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 15px;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .wh-feat-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+  .wh-feat h4 { font-size: 0.84rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .wh-feat p { font-size: 0.76rem; color: var(--text-mid); line-height: 1.5; }
+  .wh-stats { display: flex; flex-direction: column; gap: 14px; }
+  .wh-stat {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 24px;
+    display: flex; align-items: center; gap: 18px;
+  }
+  .wh-stat-num { font-size: 2.2rem; font-weight: 800; color: var(--navy); min-width: 100px; text-align: center; }
+  .wh-stat-label { font-size: 0.88rem; font-weight: 600; color: var(--text-mid); line-height: 1.4; }
+  .wh-clients {
+    background: var(--navy); border-radius: 12px; padding: 20px 22px; margin-top: 14px;
+  }
+  .wh-clients h4 { color: #ff7a6e; font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .client-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .ctag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 12px; }
+
+  /* CONTACT */
+  .contact { background: var(--bg); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info h3 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 18px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .ci-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; }
+  .ci-icon { width: 38px; height: 38px; background: rgba(26,39,64,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .ci-label { font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+  .ci-value { color: var(--text); font-size: 0.9rem; font-weight: 600; }
+  .ci-value a { color: var(--red); text-decoration: none; }
+  .ci-value a:hover { text-decoration: underline; }
+  .ci-note { background: var(--bg); border: 1px solid var(--border); border-left: 3px solid var(--red); border-radius: 6px; padding: 10px 14px; margin-top: 18px; font-size: 0.82rem; color: var(--text-mid); line-height: 1.5; }
+  .contact-form {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px; box-shadow: var(--shadow);
+  }
+  .contact-form h3 { color: var(--navy); font-size: 0.96rem; font-weight: 700; margin-bottom: 20px; }
+  .form-row { margin-bottom: 14px; }
+  .form-row label { display: block; font-size: 0.78rem; color: var(--text-mid); margin-bottom: 5px; font-weight: 500; }
+  .form-row input, .form-row textarea, .form-row select {
+    width: 100%; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 7px;
+    color: var(--text); padding: 9px 13px; font-size: 0.88rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-row input:focus, .form-row textarea:focus, .form-row select:focus { border-color: var(--red); background: var(--white); }
+  .form-row textarea { height: 96px; resize: vertical; }
+  .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-submit {
+    width: 100%; background: var(--red); color: var(--white);
+    border: none; border-radius: 8px; padding: 12px; font-size: 0.96rem; font-weight: 700;
+    cursor: pointer; transition: background .2s; font-family: inherit;
+  }
+  .form-submit:hover { background: var(--red-dark); }
+
+  /* FOOTER */
+  footer { background: var(--navy); padding: 28px 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-logo-icon { width: 34px; height: 34px; background: var(--red); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 800; color: var(--white); }
+  .footer-logo-text { color: rgba(255,255,255,0.65); font-size: 0.84rem; line-height: 1.4; }
+  .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.74rem; text-align: center; }
+  .footer-contact { color: rgba(255,255,255,0.55); font-size: 0.79rem; text-align: right; }
+  .footer-contact a { color: #ff7a6e; text-decoration: none; }
+
+  @media (max-width: 920px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-card { display: none; }
+    .about-grid, .wh-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .fleet-grid { grid-template-columns: 1fr 1fr; }
+    .fleet-summary { grid-template-columns: 1fr 1fr; }
+    .about-facts { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 2rem; }
+    .nav-links { display: none; }
+    .stats-bar { flex-wrap: wrap; }
+    .sb-item { min-width: 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.18); }
+  }
+  @media (max-width: 580px) {
+    .services-grid, .fleet-grid, .about-facts, .wh-feats { grid-template-columns: 1fr; }
+    .fleet-summary { grid-template-columns: 1fr 1fr; }
+    .form-2col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">雄</div>
+    <div class="nav-logo-text">
+      <strong>雄豐運輸有限公司</strong>
+      <span>Hung Fung Transportation Limited</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#services">服務</a></li>
+    <li><a href="#fleet">車隊</a></li>
+    <li><a href="#warehouse">倉儲</a></li>
+    <li><a href="#contact">聯絡</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">電郵報價</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🏆 以客為先 · 成立2003年</div>
+      <h1>中港物流<em>專業之選</em></h1>
+      <div class="hero-en">Hung Fung Transportation Limited</div>
+      <p class="hero-sub">雄豐運輸成立於2003年，專注中港跨境貨運及本地物流，自設50,000呎倉儲設施及45輛以上車隊，提供一站式倉儲及運輸服務，榮獲最佳運輸服務供應商殊榮。</p>
+      <div class="hero-actions">
+        <a class="btn-red" href="#services">服務範圍</a>
+        <a class="btn-ghost" href="#fleet">了解車隊</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-title">聯絡資料</div>
+      <div class="hc-row">
+        <div class="hc-icon">📞</div>
+        <div>
+          <div class="hc-lbl">電話 (一般查詢)</div>
+          <div class="hc-val">(852) 2366 3931</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">✉️</div>
+        <div>
+          <div class="hc-lbl">電郵 (報價查詢)</div>
+          <div class="hc-val">info@hung-fung.com</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📅</div>
+        <div>
+          <div class="hc-lbl">成立年份</div>
+          <div class="hc-val">2003 年</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="sb-item">
+    <div class="sb-num">2003</div>
+    <div class="sb-label">年成立</div>
+  </div>
+  <div class="sb-item">
+    <div class="sb-num">45+</div>
+    <div class="sb-label">輛車隊</div>
+  </div>
+  <div class="sb-item">
+    <div class="sb-num">50,000</div>
+    <div class="sb-label">呎倉儲設施</div>
+  </div>
+  <div class="sb-item">
+    <div class="sb-num">120+</div>
+    <div class="sb-label">名物流人員</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="eyebrow">關於我們</div>
+        <h2 class="section-title">香港<em>物流運輸</em>專業團隊</h2>
+        <div class="divider"></div>
+        <p>雄豐運輸有限公司（Hung Fung Transportation Limited）於2003年成立，專注中港跨境貨運及本地物流服務，多年來發展成為集倉儲與運輸於一身的綜合一站式物流平台。</p>
+        <p>憑著超過120名物流及支援人員的專業團隊，45輛以上多噸位車隊，以及設備完善的50,000呎倉儲設施，我們服務範圍廵蓋快消品、食品、服裝及電子等多個行業，客戶由跨國企業到本地初創均有涵蓋。</p>
+        <p>我們秉承「以客為先」的服務理念，持續創新，務求為客戶提供可靠、高效的物流解決方案。</p>
+        <div class="award-box">
+          <div class="award-icon">🏆</div>
+          <div>
+            <div class="award-label">榮獲獎項</div>
+            <div class="award-title">最佳運輸服務供應商</div>
+            <div class="award-by">由豐巢物流旗下馮浩供應鏈（香港）頒授<br>Best Transportation Service Supplier — S.F. Logistics' Feng Hao Supply Chain (HK)</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-facts">
+        <div class="fact-card">
+          <div class="fi">🌏</div>
+          <h4>中港跨境專家</h4>
+          <p>中港兩地跨境貨運，熟悉清關程序，快速高效，是您中港物流的首選夥伴。</p>
+        </div>
+        <div class="fact-card">
+          <div class="fi">🚛</div>
+          <h4>45輛以上車隊</h4>
+          <p>多種噸位車輛包括5.5至24噸、危險品車、冷凍車及電動商用車，靈活配合各類需求。</p>
+        </div>
+        <div class="fact-card">
+          <div class="fi">🏭</div>
+          <h4>50,000呎倉儲</h4>
+          <p>溫控及常溫倉儲設施，面積達50,000平方呎，彈性配置，適合多元化存貨需要。</p>
+        </div>
+        <div class="fact-card">
+          <div class="fi">👥</div>
+          <h4>120名以上專業人員</h4>
+          <p>豐富經驗的物流及支援團隊，確保每個環節高效執行，為客戶提供優質服務。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="eyebrow">服務範圍</div>
+    <h2 class="section-title">一站式<em>物流服務</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">從跨境貨運到本地配送，從倉儲管理到冷鏈運輸，雄豐為您提供全方位物流解決方案。</p>
+
+    <div class="services-grid" style="margin-top:38px;">
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">01</div>
+          <div class="sc-icon">🚢</div>
+          <h3>進出口倉務及提貨</h3>
+        </div>
+        <div class="sc-body">
+          <p>處理進出口貨物的倉務接收及提貨安排，熟悉各大貨櫃碼頭及機場流程，快速提取貨物。</p>
+          <div class="sc-tags"><span class="sc-tag">進口提貨</span><span class="sc-tag">出口倉務</span><span class="sc-tag">碼頭提取</span></div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">02</div>
+          <div class="sc-icon">📦</div>
+          <h3>貨櫃拆裝箱</h3>
+        </div>
+        <div class="sc-body">
+          <p>專業貨櫃拆箱及裝箱服務，可處理整櫃（FCL）及散雜貨（LCL），靈活配合出入口需要。</p>
+          <div class="sc-tags"><span class="sc-tag">FCL 整櫃</span><span class="sc-tag">LCL 散貨</span><span class="sc-tag">拆裝箱</span></div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">03</div>
+          <div class="sc-icon">🏙️</div>
+          <h3>本地倉儲及配送</h3>
+        </div>
+        <div class="sc-body">
+          <p>香港本地倉儲及配送服務，自備車隊全港派送，靈活安排，準時交付，滿足客戶各種配送需求。</p>
+          <div class="sc-tags"><span class="sc-tag">本地倉儲</span><span class="sc-tag">全港配送</span><span class="sc-tag">靈活排程</span></div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">04</div>
+          <div class="sc-icon">❄️</div>
+          <h3>溫控倉儲</h3>
+        </div>
+        <div class="sc-body">
+          <p>提供溫控（冷藏/冷凍）及常溫倉儲設施，適合食品、藥品、化妝品等有溫度要求的貨物存放。</p>
+          <div class="sc-tags"><span class="sc-tag">冷藏倉</span><span class="sc-tag">冷凍倉</span><span class="sc-tag">常溫倉</span><span class="sc-tag">溫度監控</span></div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">05</div>
+          <div class="sc-icon">⚠️</div>
+          <h3>危險品運輸</h3>
+        </div>
+        <div class="sc-body">
+          <p>持牌危險品運輸服務，配備專用危險品車輛，符合相關法規，安全可靠地運送化學品及危険貨物。</p>
+          <div class="sc-tags"><span class="sc-tag">持牌運輸</span><span class="sc-tag">化學品</span><span class="sc-tag">合規安全</span></div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">06</div>
+          <div class="sc-icon">🌐</div>
+          <h3>中港跨境貨運</h3>
+        </div>
+        <div class="sc-body">
+          <p>中港兩地跨境物流為核心業務，熟悉兩地清關程序，提供快速、可靠的跨境貨運服務。</p>
+          <div class="sc-tags"><span class="sc-tag">中港跨境</span><span class="sc-tag">清關協助</span><span class="sc-tag">快速通關</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET -->
+<section class="fleet" id="fleet">
+  <div class="section-inner">
+    <div class="eyebrow">物流車隊</div>
+    <h2 class="section-title">45輛以上<em>多噸位車隊</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">多種噸位及類型的車輛，配合不同貨物需求，包括冷凍車、危險品車及電動商用車。</p>
+
+    <div class="fleet-grid" style="margin-top:38px;">
+      <div class="fleet-card">
+        <div class="fleet-icon">🚐</div>
+        <h4>5.5噸車</h4>
+        <p>城市小型配送，靈活穿梭香港各區，快速到達</p>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-icon">🚛</div>
+        <h4>9噸車</h4>
+        <p>中型貨物運輸，平衡容量與機動性，城市配送首選</p>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-icon">🚚</div>
+        <h4>16噸車</h4>
+        <p>大型商業貨運，適合批量配送及工業區運輸服務</p>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-icon">🏗️</div>
+        <h4>24噸車</h4>
+        <p>重型大宗貨物運輸，適合大體積及重量貨物</p>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-icon">❄️</div>
+        <h4>冷凍車</h4>
+        <p>冷鏈物流專用，溫度精準控制，保持貨物品質</p>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-icon">⚠️</div>
+        <h4>危險品車</h4>
+        <p>持牌危險品運輸車輛，符合安全法規要求</p>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-icon">🚌</div>
+        <h4>輕型商用車 ×15</h4>
+        <p>15輛輕型商用車，適合小批量及快遞配送服務</p>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-icon">⚡</div>
+        <h4>電動商用車</h4>
+        <p>最新引入電動商用車，環保綠色運輸，減少碳排放</p>
+      </div>
+    </div>
+
+    <div class="fleet-summary">
+      <div class="fs-item">
+        <div class="num">45+</div>
+        <div class="lbl">總車輛數目</div>
+      </div>
+      <div class="fs-item">
+        <div class="num">5–24噸</div>
+        <div class="lbl">噸位選擇</div>
+      </div>
+      <div class="fs-item">
+        <div class="num">120+</div>
+        <div class="lbl">物流人員</div>
+      </div>
+      <div class="fs-item">
+        <div class="num">EV</div>
+        <div class="lbl">電動車投入服務</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAREHOUSE -->
+<section class="warehouse" id="warehouse">
+  <div class="section-inner">
+    <div class="eyebrow">倉儲設施</div>
+    <h2 class="section-title">50,000呎<em>倉儲設施</em></h2>
+    <div class="divider"></div>
+    <div class="wh-grid">
+      <div class="wh-intro">
+        <p>雄豐運輸擁有面積達50,000平方呎的倉儲設施，設有溫控及常溫倉區，可靈活配置以配合客戶多元化的存貨需要。</p>
+        <p>我們倉儲服務不止存放貨物，更提供完善的物流增值服務，協助客戶管理庫存、優化供應鏈，提升整體業務效益。</p>
+        <div class="wh-feats">
+          <div class="wh-feat">
+            <div class="wh-feat-icon">❄️</div>
+            <div><h4>溫控倉</h4><p>冷藏及冷凍倉儲，適合食品及醫藥貨物</p></div>
+          </div>
+          <div class="wh-feat">
+            <div class="wh-feat-icon">📦</div>
+            <div><h4>常溫倉</h4><p>大容量常溫存倉，適合一般商品貨物</p></div>
+          </div>
+          <div class="wh-feat">
+            <div class="wh-feat-icon">🔄</div>
+            <div><h4>配送分貨</h4><p>倉內分貨、標籤及配送增值服務</p></div>
+          </div>
+          <div class="wh-feat">
+            <div class="wh-feat-icon">📊</div>
+            <div><h4>庫存管理</h4><p>系統化庫存管理，確保數據準確</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="wh-stats">
+        <div class="wh-stat">
+          <div class="wh-stat-num">50,000</div>
+          <div class="wh-stat-label">平方呎倉儲設施<br>Warehouse Capacity (sq ft)</div>
+        </div>
+        <div class="wh-stat">
+          <div class="wh-stat-num">2 區</div>
+          <div class="wh-stat-label">溫控倉及常溫倉兩大分區<br>Temperature-Controlled & Ambient</div>
+        </div>
+        <div class="wh-clients">
+          <h4>🏭 服務行業</h4>
+          <div class="client-tags">
+            <span class="ctag">快消品 FMCG</span>
+            <span class="ctag">食品</span>
+            <span class="ctag">服裝</span>
+            <span class="ctag">電子產品</span>
+            <span class="ctag">跨國企業</span>
+            <span class="ctag">本地初創</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="eyebrow">聯絡我們</div>
+    <h2 class="section-title">電郵<em>索取報價</em></h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>聯絡資料</h3>
+        <div class="ci-row">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">電話 (一般查詢)</div>
+            <div class="ci-value"><a href="tel:+85223663931">(852) 2366 3931</a></div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">電郵 (報價查詢)</div>
+            <div class="ci-value"><a href="mailto:info@hung-fung.com">info@hung-fung.com</a></div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">網址</div>
+            <div class="ci-value"><a href="https://www.hung-fung.com" target="_blank">hung-fung.com</a></div>
+          </div>
+        </div>
+        <div class="ci-note">
+          ⚠️ <strong>注意：</strong>電話只作一般查詢，報價請以電郵索取。<br>
+          ℹ️ 我們並無提供一次性搬運服務。
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>📋 電郵報價申請</h3>
+        <div class="form-2col">
+          <div class="form-row">
+            <label>公司名稱 *</label>
+            <input type="text" placeholder="你的公司">
+          </div>
+          <div class="form-row">
+            <label>聯絡人 *</label>
+            <input type="text" placeholder="聯絡人姓名">
+          </div>
+        </div>
+        <div class="form-2col">
+          <div class="form-row">
+            <label>電郵地址 *</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-row">
+            <label>聯絡電話</label>
+            <input type="tel" placeholder="電話號碼">
+          </div>
+        </div>
+        <div class="form-row">
+          <label>所需服務</label>
+          <select>
+            <option value="">請選擇服務類別</option>
+            <option>中港跨境貨運</option>
+            <option>本地倉儲及配送</option>
+            <option>溫控倉儲</option>
+            <option>進出口倉務及提貨</option>
+            <option>貨櫃拆裝箱</option>
+            <option>危險品運輸</option>
+            <option>其他 (請說明)</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>查詢詳情 *</label>
+          <textarea placeholder="請說明貨物類型、數量、服務需求及時間要求，我們的物流團隊會盡快回覆報價。"></textarea>
+        </div>
+        <button class="form-submit" type="button">發送報價申請</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-icon">雄</div>
+    <div class="footer-logo-text">雄豐運輸有限公司<br><span style="font-size:0.72rem;opacity:.5;">Hung Fung Transportation Limited · Est. 2003</span></div>
+  </div>
+  <div class="footer-copy">© 2024 Hung Fung Transportation Limited — All Rights Reserved</div>
+  <div class="footer-contact">
+    📞 <a href="tel:+85223663931">(852) 2366 3931</a><br>
+    ✉ <a href="mailto:info@hung-fung.com">info@hung-fung.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
