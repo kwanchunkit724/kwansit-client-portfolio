@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金鐘香港茶餐廳 | 台北正宗港式茶餐廳</title>
+<style>
+:root {
+  --bg: #0a0808;
+  --bg2: #120c08;
+  --bg3: #1a1008;
+  --accent: #d43020;
+  --accent2: #e84030;
+  --gold: #d4880c;
+  --gold2: #e8b020;
+  --text: #f0e8d0;
+  --muted: #907060;
+  --border: rgba(212,136,12,0.15);
+  --card: #120c08;
+  --radius: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI','Microsoft JhengHei',system-ui,sans-serif;line-height:1.6;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,8,8,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:1.15rem;font-weight:900;color:var(--gold);text-decoration:none;letter-spacing:2px;}
+.nav-logo span{color:var(--muted);font-size:0.78rem;font-weight:400;margin-left:0.5rem;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:600;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent2);}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 2rem 60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 55% 40%,rgba(212,48,32,0.1) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 10% 80%,rgba(212,136,12,0.07) 0%,transparent 60%);}
+.hero-lanterns{position:absolute;top:80px;right:5%;display:flex;gap:3rem;pointer-events:none;opacity:0.12;}
+.hero-lanterns span{font-size:6rem;animation:sway 3s ease-in-out infinite;}
+.hero-lanterns span:nth-child(2){animation-delay:0.5s;}
+.hero-lanterns span:nth-child(3){animation-delay:1s;}
+@keyframes sway{0%,100%{transform:rotate(-3deg);}50%{transform:rotate(3deg);}}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center;position:relative;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(212,136,12,0.12);border:1px solid rgba(212,136,12,0.25);color:var(--gold);padding:0.35rem 0.9rem;border-radius:20px;font-size:0.8rem;font-weight:600;margin-bottom:1.5rem;}
+.hero h1{font-size:3rem;font-weight:900;line-height:1.2;margin-bottom:0.5rem;letter-spacing:3px;}
+.hero h1 span{color:var(--gold);}
+.hero-sub-title{font-size:1rem;color:var(--muted);margin-bottom:1.2rem;letter-spacing:1px;}
+.hero-desc{font-size:0.95rem;color:var(--muted);max-width:480px;margin-bottom:2rem;line-height:1.8;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:all 0.2s;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--gold);padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;border:1px solid rgba(212,136,12,0.3);transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--gold);background:rgba(212,136,12,0.08);}
+
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));}
+.info-card-title{font-size:0.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(212,136,12,0.08);}
+.info-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.info-icon{width:32px;height:32px;background:rgba(212,136,12,0.12);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;color:var(--text);font-weight:500;line-height:1.4;}
+.info-val a{color:var(--gold);text-decoration:none;}
+.open-badge{display:inline-block;font-size:0.72rem;font-weight:700;padding:0.2rem 0.6rem;background:rgba(24,200,80,0.15);color:#18c850;border-radius:4px;}
+
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.stat-item{text-align:center;}
+.stat-num{font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1;margin-bottom:0.3rem;}
+.stat-label{font-size:0.8rem;color:var(--muted);}
+
+section{padding:5rem 2rem;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-tag{font-size:0.75rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:0.8rem;}
+.section-title{font-size:2.1rem;font-weight:800;line-height:1.2;margin-bottom:1rem;letter-spacing:1px;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.8;}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+.about-highlight{background:var(--bg3);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:1.5rem 1.8rem;margin-bottom:1.5rem;}
+.about-highlight p{color:var(--text);font-size:0.95rem;line-height:1.9;}
+.about-text{color:var(--muted);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color 0.2s;}
+.prop-card:hover{border-color:var(--gold);}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.78rem;color:var(--muted);line-height:1.5;}
+.ambiance-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.ambiance-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));}
+.ambiance-title{font-size:1rem;font-weight:800;color:var(--gold);margin-bottom:1rem;letter-spacing:1px;}
+.ambiance-text{font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+.features-list{display:flex;flex-direction:column;gap:0.5rem;margin-top:1rem;}
+.feature-item{display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:var(--text);}
+.feature-item::before{content:'✓';color:var(--gold);font-weight:800;flex-shrink:0;}
+
+.menu-bg{background:var(--bg2);}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.menu-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.menu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--c,var(--gold));opacity:0;transition:opacity 0.25s;}
+.menu-card:hover{border-color:rgba(212,136,12,0.35);transform:translateY(-3px);}
+.menu-card:hover::before{opacity:1;}
+.menu-card:nth-child(1){--c:#d43020;}
+.menu-card:nth-child(2){--c:#d4880c;}
+.menu-card:nth-child(3){--c:#18c870;}
+.menu-card:nth-child(4){--c:#0c78d0;}
+.menu-card:nth-child(5){--c:#9830d8;}
+.menu-card:nth-child(6){--c:#e84030;}
+.menu-icon{font-size:2.5rem;margin-bottom:0.8rem;text-align:center;}
+.menu-category{font-size:1rem;font-weight:800;color:var(--gold);margin-bottom:0.5rem;letter-spacing:0.5px;}
+.menu-desc{font-size:0.83rem;color:var(--muted);line-height:1.6;margin-bottom:0.8rem;}
+.menu-items{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.menu-item-tag{font-size:0.72rem;padding:0.2rem 0.6rem;background:rgba(212,136,12,0.1);color:var(--gold2);border-radius:4px;}
+
+.vibe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.vibe-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;text-align:center;transition:all 0.2s;}
+.vibe-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.vibe-icon{font-size:2rem;margin-bottom:0.8rem;}
+.vibe-title{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.vibe-desc{font-size:0.82rem;color:var(--muted);line-height:1.6;}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;}
+.contact-info{display:flex;flex-direction:column;gap:1.2rem;}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem;background:var(--card);border:1px solid var(--border);border-radius:10px;transition:border-color 0.2s;}
+.contact-item:hover{border-color:var(--gold);}
+.c-icon{width:40px;height:40px;background:rgba(212,136,12,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.3rem;}
+.c-val{font-size:0.9rem;color:var(--text);font-weight:500;line-height:1.5;}
+.c-val a{color:var(--gold);text-decoration:none;}
+.map-card{background:var(--card);border:1px solid rgba(212,136,12,0.3);border-radius:var(--radius);padding:2.5rem;position:relative;overflow:hidden;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));}
+.map-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.72rem;font-weight:700;padding:0.25rem 0.7rem;background:rgba(212,48,32,0.15);color:var(--accent2);border-radius:4px;margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.5px;}
+.map-name{font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:0.3rem;letter-spacing:1px;}
+.map-sub{font-size:0.82rem;color:var(--muted);margin-bottom:1rem;}
+.map-addr{font-size:0.95rem;color:var(--text);line-height:1.8;margin-bottom:1rem;}
+.map-mrt{display:flex;align-items:center;gap:0.8rem;padding:0.8rem 1rem;background:rgba(24,200,80,0.08);border:1px solid rgba(24,200,80,0.15);border-radius:8px;margin-top:0.8rem;}
+.map-mrt-icon{font-size:1.2rem;}
+.map-mrt-text{font-size:0.82rem;color:var(--muted);}
+.map-mrt-text strong{color:#18c870;}
+.map-hours{display:flex;align-items:center;gap:0.8rem;padding:0.8rem 1rem;background:rgba(212,136,12,0.08);border:1px solid rgba(212,136,12,0.15);border-radius:8px;margin-top:0.5rem;}
+.map-hours-icon{font-size:1.2rem;}
+.map-hours-text{font-size:0.82rem;color:var(--muted);}
+.map-hours-text strong{color:var(--gold);}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1100px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-brand p{color:var(--muted);font-size:0.85rem;line-height:1.7;margin-top:0.8rem;}
+.footer-logo{font-size:1.2rem;font-weight:900;color:var(--gold);letter-spacing:2px;}
+.footer-col h4{font-size:0.75rem;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col li a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col li a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+.footer-loc{font-size:0.8rem;color:var(--muted);}
+.footer-loc span{color:var(--gold);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero h1{font-size:2.2rem;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .menu-grid,.vibe-grid{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+  .hero-lanterns{display:none;}
+}
+@media(max-width:600px){
+  .menu-grid,.about-props{grid-template-columns:1fr;}
+  .hero h1{font-size:1.8rem;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">金鐘香港茶餐廳 <span>Admiralty HK Café</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#menu">特色菜單</a></li>
+      <li><a href="#vibe">用餐氛圍</a></li>
+      <li><a href="#contact">地址訂位</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">電話訂位</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-lanterns"><span>🏮</span><span>🏮</span><span>🏮</span></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🇭🇰 正宗港式茶餐廳 · 台北中正區</div>
+      <h1><span>金鐘</span>香港<br>茶餐廳</h1>
+      <div class="hero-sub-title">Admiralty Hong Kong Café · Taipei</div>
+      <p class="hero-desc">台北車站旁、228公園側，來自香港的地道茶餐廳風味。道地港式點心、絲襪奶茶、叉燒飯、爆漿流砂包……每一口都是純正香港味道。</p>
+      <div class="hero-btns">
+        <a href="tel:02-23881878" class="btn-primary">📞 立即訂位</a>
+        <a href="#menu" class="btn-secondary">查看菜單</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">📍 餐廳資訊</div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">地址</div>
+          <div class="info-val">台北市中正區衡陽路1號<br>(近台大醫院捷運站1號出口)</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">電話</div>
+          <div class="info-val"><a href="tel:02-23881878">02-2388 1878</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">⏰</div>
+        <div>
+          <div class="info-label">營業時間</div>
+          <div class="info-val">每日 11:00 – 21:30<br><span class="open-badge">全年無休</span></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💳</div>
+        <div>
+          <div class="info-label">刷卡 / WiFi</div>
+          <div class="info-val">信用卡：可 ✓　WiFi：有 ✓</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🚇</div>
+        <div>
+          <div class="info-label">捷運</div>
+          <div class="info-val">台大醫院站1號出口（步行約3分鐘）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">11am</div>
+      <div class="stat-label">每日開門</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">21:30</div>
+      <div class="stat-label">每日關門</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">全年</div>
+      <div class="stat-label">無休營業</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10%</div>
+      <div class="stat-label">服務費</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-tag">About Us</div>
+    <h2 class="section-title">台北的香港味道</h2>
+    <p class="section-sub">在台北車站旁228公園附近，找到那份熟悉的香港茶餐廳感覺。</p>
+    <div class="about-grid">
+      <div>
+        <div class="about-highlight">
+          <p>金鐘香港茶餐廳，座落於台北市中正區衡陽路，緊鄰台北車站及228公園。這裡承載著純正的香港茶餐廳文化——地道的港式小菜、濃郁滑順的絲襪奶茶，讓人彷彿置身香港街頭。</p>
+        </div>
+        <p class="about-text">餐廳設計充滿港式風情，每個座位都以香港地名命名，餐廳後方還設有香港地景燈箱，讓食客在台北就能感受十足的香港氛圍，成為港式飲食文化愛好者的必訪之地。</p>
+        <p class="about-text">菜單涵蓋港式各類經典：從叉燒飯、炒麵到蝦餃、流砂包，每一道菜式都堅持正宗港味，以親民的價格提供高品質的港式飲食體驗。</p>
+        <div class="about-props">
+          <div class="prop-card">
+            <div class="prop-icon">🍵</div>
+            <div class="prop-title">正宗絲襪奶茶</div>
+            <div class="prop-desc">香濃滑順的港式奶茶，每口都是真實的香港滋味</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🥟</div>
+            <div class="prop-title">港式點心</div>
+            <div class="prop-desc">蝦餃、流砂包、腸粉等正宗港式點心，道地美味</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📍</div>
+            <div class="prop-title">絕佳地理位置</div>
+            <div class="prop-desc">緊鄰台北車站228公園，捷運台大醫院站步行可達</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💰</div>
+            <div class="prop-title">親民價格</div>
+            <div class="prop-desc">好吃不貴，讓每一位食客都能享受正宗港味</div>
+          </div>
+        </div>
+      </div>
+      <div class="ambiance-box">
+        <div class="ambiance-title">🏮 港式茶餐廳氛圍</div>
+        <div class="ambiance-text">每個座位都以香港地名命名代替桌號，餐廳後方的香港地景燈箱讓人有種身在香港的錯覺。整體設計充滿港式情懷，是台北市中心難得的正宗港式飲食空間。</div>
+        <div class="ambiance-text">B1用餐區座位寬敞舒適，適合家庭聚餐、商務午餐或朋友小聚，全天供應港式菜單，全年無休。</div>
+        <div class="features-list">
+          <div class="feature-item">信用卡付款（刷卡可）</div>
+          <div class="feature-item">免費WiFi上網</div>
+          <div class="feature-item">無最低消費限制</div>
+          <div class="feature-item">10% 服務費</div>
+          <div class="feature-item">全年無休（包含假日）</div>
+          <div class="feature-item">寬敞舒適B1用餐空間</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="menu-bg">
+  <div class="section-inner">
+    <div class="section-tag">Featured Menu</div>
+    <h2 class="section-title">招牌港式美食</h2>
+    <p class="section-sub">精選正宗港式茶餐廳菜式，每一道都是香港地道滋味。</p>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-icon">🍛</div>
+        <div class="menu-category">主食飯麵</div>
+        <div class="menu-desc">招牌食神銷魂飯，香嫩叉燒配荷包蛋、青菜，淋上鹹甜開胃醬汁，簡單美味。</div>
+        <div class="menu-items">
+          <span class="menu-item-tag">食神銷魂飯 $120</span>
+          <span class="menu-item-tag">叉燒飯</span>
+          <span class="menu-item-tag">港式炒麵</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-icon">🥟</div>
+        <div class="menu-category">港式點心</div>
+        <div class="menu-desc">道地蝦餃、流砂包、腸粉等港式點心，每一口都是扎實的港廚手藝與正宗風味。</div>
+        <div class="menu-items">
+          <span class="menu-item-tag">鮮蝦腐皮捲</span>
+          <span class="menu-item-tag">爆漿流砂包</span>
+          <span class="menu-item-tag">蝦餃皇</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-icon">🍵</div>
+        <div class="menu-category">港式飲品</div>
+        <div class="menu-desc">正宗港式絲襪奶茶，香濃滑順，配以凍飲熱飲選擇，是港式餐廳不可或缺的靈魂飲品。</div>
+        <div class="menu-items">
+          <span class="menu-item-tag">絲襪奶茶</span>
+          <span class="menu-item-tag">鴛鴦</span>
+          <span class="menu-item-tag">凍檸茶</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-icon">🍞</div>
+        <div class="menu-category">港式烘焙</div>
+        <div class="menu-desc">冰火波羅油——烤得焦香的菠蘿包夾上冰涼牛油，一口咬下冷熱交融，是最地道的港式享受。</div>
+        <div class="menu-items">
+          <span class="menu-item-tag">冰火波羅油</span>
+          <span class="menu-item-tag">菠蘿包</span>
+          <span class="menu-item-tag">雞尾包</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-icon">🍜</div>
+        <div class="menu-category">港式湯麵</div>
+        <div class="menu-desc">鹹甜微辣的招牌湯麵，配料豐富，魚肉、杏鮑菇、多種食材入味，麵條充分吸收濃郁湯汁。</div>
+        <div class="menu-items">
+          <span class="menu-item-tag">招牌湯麵</span>
+          <span class="menu-item-tag">雲吞麵</span>
+          <span class="menu-item-tag">魚蛋河</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-icon">🥐</div>
+        <div class="menu-category">下午茶套餐</div>
+        <div class="menu-desc">港式茶餐廳傳統下午茶時光，精選小食配搭港式飲品，享受悠閒的港式午後時光。</div>
+        <div class="menu-items">
+          <span class="menu-item-tag">下午茶套餐</span>
+          <span class="menu-item-tag">多士</span>
+          <span class="menu-item-tag">港式小食</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIBE -->
+<section id="vibe">
+  <div class="section-inner">
+    <div class="section-tag">Dining Experience</div>
+    <h2 class="section-title">港味不用飛去香港</h2>
+    <p class="section-sub">金鐘香港茶餐廳讓台北食客在中正區就能感受最道地的香港茶餐廳體驗。</p>
+    <div class="vibe-grid">
+      <div class="vibe-card">
+        <div class="vibe-icon">🏙️</div>
+        <div class="vibe-title">香港地名桌號</div>
+        <div class="vibe-desc">餐廳每個座位以香港地名代替桌號，從「金鐘」到「銅鑼灣」，讓用餐更具港式情懷。</div>
+      </div>
+      <div class="vibe-card">
+        <div class="vibe-icon">🌃</div>
+        <div class="vibe-title">香港風景燈箱</div>
+        <div class="vibe-desc">餐廳後方設有香港地景燈箱，讓人彷彿置身香港街頭，沉浸在正宗的港式氛圍之中。</div>
+      </div>
+      <div class="vibe-card">
+        <div class="vibe-icon">💰</div>
+        <div class="vibe-title">好吃不貴</div>
+        <div class="vibe-desc">以親民的台北價格提供道地港式菜式，讓每一位食客都能負擔得起正宗的香港風味。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg2);border-top:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-tag">Location & Hours</div>
+    <h2 class="section-title">地址及訂位</h2>
+    <p class="section-sub">位於台北市中正區衡陽路，台北車站旁228公園附近，捷運台大醫院站步行可達。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">電話訂位</div>
+            <div class="c-val"><a href="tel:02-23881878">02-2388 1878</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">⏰</div>
+          <div>
+            <div class="c-label">營業時間</div>
+            <div class="c-val">每日 11:00 – 21:30<br>全年無休（包含週末及假日）</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">💳</div>
+          <div>
+            <div class="c-label">付款方式</div>
+            <div class="c-val">信用卡可（刷卡可）<br>10% 服務費 · 無最低消費</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">📡</div>
+          <div>
+            <div class="c-label">設施</div>
+            <div class="c-val">免費WiFi ✓<br>B1 寬敞用餐區</div>
+          </div>
+        </div>
+      </div>
+      <div class="map-card">
+        <span class="map-badge">📍 餐廳地址</span>
+        <div class="map-name">金鐘香港茶餐廳</div>
+        <div class="map-sub">Admiralty Hong Kong Café</div>
+        <div class="map-addr">
+          台北市中正區衡陽路1號<br>
+          (近台北車站 · 228公園旁)
+        </div>
+        <div class="map-mrt">
+          <span class="map-mrt-icon">🚇</span>
+          <div class="map-mrt-text"><strong>捷運台大醫院站</strong> 1號出口，步行約3分鐘</div>
+        </div>
+        <div class="map-hours">
+          <span class="map-hours-icon">⏰</span>
+          <div class="map-hours-text"><strong>每日 11:00 – 21:30 · 全年無休</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">金鐘香港茶餐廳</div>
+        <p>台北中正區正宗港式茶餐廳。道地港味飲食，絲襪奶茶、港式點心、叉燒飯，全年無休為您服務。</p>
+      </div>
+      <div class="footer-col">
+        <h4>特色菜式</h4>
+        <ul>
+          <li><a href="#menu">食神銷魂飯</a></li>
+          <li><a href="#menu">爆漿流砂包</a></li>
+          <li><a href="#menu">冰火波羅油</a></li>
+          <li><a href="#menu">絲襪奶茶</a></li>
+          <li><a href="#menu">鮮蝦腐皮捲</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>餐廳資訊</h4>
+        <ul>
+          <li><a href="#about">關於我們</a></li>
+          <li><a href="#vibe">用餐氛圍</a></li>
+          <li><a href="#contact">地址及訂位</a></li>
+          <li><a href="tel:02-23881878">02-2388 1878</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 金鐘香港茶餐廳。版權所有。</div>
+      <div class="footer-loc">台北市中正區 <span>衡陽路1號</span></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
