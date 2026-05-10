@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DZ International Group Limited — Hong Kong Logistics &amp; Supply Chain</title>
+<style>
+  :root {
+    --bg:       #050a08;
+    --surface:  #0a120e;
+    --card:     #101a14;
+    --border:   #1c2e22;
+    --accent1:  #0c4828;
+    --accent2:  #147040;
+    --accent3:  #1ea060;
+    --copper:   #c06820;
+    --copper2:  #e08830;
+    --text:     #e4f0e8;
+    --muted:    #5a8068;
+    --silver:   #90b0a0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.7; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(5,10,8,0.97); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .nav-logo {
+    width: 38px; height: 38px; border-radius: 6px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent3));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 1rem; color: #fff;
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent3); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 0.5rem 1.2rem; border-radius: 5px;
+    font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  .hero {
+    min-height: 100vh; padding: 100px 2.5rem 60px;
+    background:
+      radial-gradient(ellipse 80% 55% at 65% 35%, rgba(12,72,40,0.28) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(192,104,32,0.1) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(12,72,40,0.2); border: 1px solid rgba(30,160,96,0.3);
+    color: var(--accent3); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.5rem;
+  }
+  .hero h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  .hero h1 span { color: var(--accent3); }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); margin-bottom: 2rem; max-width: 520px; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 0.8rem 1.8rem; border-radius: 6px;
+    font-size: 0.95rem; font-weight: 700; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(12,72,40,0.4); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 2px solid var(--border); color: var(--text); padding: 0.75rem 1.8rem;
+    border-radius: 6px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: border-color .2s, color .2s;
+  }
+  .btn-outline:hover { border-color: var(--accent3); color: var(--accent3); }
+
+  .info-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 2rem; box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  }
+  .info-card h3 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent3); margin-bottom: 1.2rem; }
+  .info-row { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(28,46,34,0.8); }
+  .info-row:last-child { border-bottom: none; }
+  .info-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .info-label { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; }
+  .info-val { font-size: 0.9rem; color: var(--text); }
+  .info-val a { color: var(--accent3); text-decoration: none; }
+
+  .stats { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2.5rem; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { text-align: center; padding: 1.5rem 1rem; position: relative; }
+  .stat:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 25%; height: 50%; width: 1px; background: var(--border); }
+  .stat-num { font-size: 2rem; font-weight: 900; color: var(--accent3); }
+  .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.3rem; }
+
+  section { padding: 80px 2.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; background: rgba(12,72,40,0.15); border: 1px solid rgba(30,160,96,0.25);
+    color: var(--accent3); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.8rem; border-radius: 20px; margin-bottom: 0.8rem;
+  }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 1rem; }
+  .section-title span { color: var(--accent3); }
+  .section-sub { font-size: 1rem; color: var(--muted); max-width: 600px; margin-bottom: 3rem; }
+
+  .services-bg { background: var(--bg); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .svc-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 2rem; transition: border-color .25s, transform .25s;
+  }
+  .svc-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+  .svc-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .svc-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .svc-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.65; }
+
+  .solutions-bg { background: var(--surface); }
+  .solutions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .sol-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 2rem; display: flex; gap: 1.2rem; transition: border-color .25s;
+  }
+  .sol-card:hover { border-color: var(--copper); }
+  .sol-num {
+    width: 44px; height: 44px; border-radius: 8px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--copper), var(--copper2));
+    display: flex; align-items: center; justify-content: center; font-weight: 900; color: #fff;
+  }
+  .sol-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .sol-card p { font-size: 0.87rem; color: var(--muted); }
+
+  .network-bg { background: var(--bg); }
+  .network-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+  .network-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1.5rem; text-align: center; transition: border-color .25s;
+  }
+  .network-card:hover { border-color: var(--accent2); }
+  .network-flag { font-size: 2rem; margin-bottom: 0.6rem; }
+  .network-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--accent3); margin-bottom: 0.3rem; }
+  .network-card p { font-size: 0.8rem; color: var(--muted); }
+
+  .contact-bg { background: var(--surface); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .ci-list { display: flex; flex-direction: column; gap: 1.2rem; }
+  .ci-item { display: flex; gap: 0.9rem; }
+  .ci-icon {
+    width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0;
+    background: rgba(12,72,40,0.2); border: 1px solid rgba(30,160,96,0.25);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .ci-label { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
+  .ci-val { font-size: 0.9rem; color: var(--text); }
+  .ci-val a { color: var(--accent3); text-decoration: none; }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem; }
+  .contact-form h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.76rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); border-radius: 6px; padding: 0.7rem 0.9rem; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent2); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select option { background: var(--surface); }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 0.85rem; border-radius: 6px;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.85; }
+
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 60px 2.5rem 30px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+  .footer-brand h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.8rem; color: var(--accent3); }
+  .footer-brand p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; }
+  footer h4 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  footer ul li a { color: var(--text); text-decoration: none; font-size: 0.87rem; transition: color .2s; }
+  footer ul li a:hover { color: var(--accent3); }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  .footer-bottom p { font-size: 0.78rem; color: var(--muted); }
+
+  @media (max-width: 1000px) {
+    .network-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .info-card { display: none; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .solutions-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .services-grid, .network-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">DZ</div>
+    <span class="nav-name">DZ International Group</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#network">Network</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Get a Quote</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🌐 Hong Kong · International Logistics</div>
+      <h1>International Logistics<br><span>Built for Global Trade</span></h1>
+      <p class="hero-sub">DZ International Group Limited is a Hong Kong-based logistics and supply chain company delivering reliable freight, warehousing, and trade solutions across Asia and beyond. We connect your business to the world.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#services">Our Services</a>
+        <a class="btn-outline" href="#contact">Get a Quote</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>Company Profile</h3>
+      <div class="info-row">
+        <span class="info-icon">🏢</span>
+        <div>
+          <div class="info-label">Company</div>
+          <div class="info-val">DZ International Group Limited</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div>
+          <div class="info-label">Headquarters</div>
+          <div class="info-val">Hong Kong</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📞</span>
+        <div>
+          <div class="info-label">Mobile</div>
+          <div class="info-val"><a href="tel:85269466203">+852 6946 6203</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🚚</span>
+        <div>
+          <div class="info-label">Industry</div>
+          <div class="info-val">International Logistics &amp; Supply Chain</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🌏</span>
+        <div>
+          <div class="info-label">Coverage</div>
+          <div class="info-val">Asia Pacific · Global</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">Global</div>
+      <div class="stat-label">Network Reach</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Sea &amp; Air</div>
+      <div class="stat-label">Freight Modes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">Asia Hub</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">B2B</div>
+      <div class="stat-label">Trade Solutions</div>
+    </div>
+  </div>
+</div>
+
+<section class="services-bg" id="services">
+  <div class="section-inner">
+    <div class="section-tag">Core Services</div>
+    <h2 class="section-title">Comprehensive <span>Logistics Services</span></h2>
+    <p class="section-sub">From sea and air freight to warehousing and customs clearance, DZ International Group provides the full spectrum of logistics services to support your global trade operations.</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🚢</div>
+        <h3>Sea Freight</h3>
+        <p>FCL and LCL ocean freight services to and from major ports worldwide. Competitive rates, reliable schedules, and expert cargo handling through our carrier network.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">✈️</div>
+        <h3>Air Freight</h3>
+        <p>Express and standard air freight solutions for time-sensitive cargo. Direct and consolidated services from Hong Kong and major Asian gateways to global destinations.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏭</div>
+        <h3>Warehousing</h3>
+        <p>Secure warehousing and distribution facilities in Hong Kong and across the region. Inventory management, cross-docking, and value-added services available.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📋</div>
+        <h3>Customs Brokerage</h3>
+        <p>Expert customs clearance and trade compliance services for imports and exports. Licensed brokers handle all documentation, tariff classification, and regulatory requirements.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🚛</div>
+        <h3>Cross-Border Trucking</h3>
+        <p>Road freight solutions between Hong Kong and Mainland China, facilitating seamless cross-border cargo movement through designated land crossings.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔗</div>
+        <h3>Supply Chain Solutions</h3>
+        <p>Integrated supply chain management services — from origin pick-up to final delivery — with real-time tracking and dedicated account management support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="solutions-bg" id="solutions">
+  <div class="section-inner">
+    <div class="section-tag">Industry Solutions</div>
+    <h2 class="section-title">Tailored <span>Trade Solutions</span></h2>
+    <p class="section-sub">We understand that different industries have different logistics needs. Our solutions are designed to address the specific requirements of key trading sectors.</p>
+    <div class="solutions-grid">
+      <div class="sol-card">
+        <div class="sol-num">01</div>
+        <div>
+          <h3>Retail &amp; E-Commerce</h3>
+          <p>End-to-end fulfilment solutions for retail brands and online sellers — including inventory storage, order processing, last-mile delivery, and returns management across Asia Pacific.</p>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-num">02</div>
+        <div>
+          <h3>Manufacturing &amp; Industrial</h3>
+          <p>Raw material inbound logistics and finished goods export for manufacturers in China and across Asia — optimised for cost efficiency and production schedule alignment.</p>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-num">03</div>
+        <div>
+          <h3>Perishables &amp; Cold Chain</h3>
+          <p>Temperature-controlled logistics for food, pharmaceutical, and perishable cargo — maintaining cold chain integrity from origin to destination with certified handling.</p>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-num">04</div>
+        <div>
+          <h3>Project &amp; Bulk Cargo</h3>
+          <p>Specialist project logistics for heavy machinery, oversized cargo, and industrial equipment — including route survey, special transport permits, and on-site support.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="network-bg" id="network">
+  <div class="section-inner">
+    <div class="section-tag">Global Network</div>
+    <h2 class="section-title">Our <span>International Reach</span></h2>
+    <p class="section-sub">With Hong Kong as our strategic hub, DZ International Group serves clients across the major global trade corridors through our agent and partner network.</p>
+    <div class="network-grid">
+      <div class="network-card">
+        <div class="network-flag">🇭🇰</div>
+        <h3>Hong Kong</h3>
+        <p>Regional HQ and primary gateway for Asia trade operations.</p>
+      </div>
+      <div class="network-card">
+        <div class="network-flag">🇨🇳</div>
+        <h3>China</h3>
+        <p>Shenzhen, Guangzhou, Shanghai and major inland cities covered.</p>
+      </div>
+      <div class="network-card">
+        <div class="network-flag">🌏</div>
+        <h3>Southeast Asia</h3>
+        <p>Singapore, Vietnam, Thailand, Malaysia and regional ports.</p>
+      </div>
+      <div class="network-card">
+        <div class="network-flag">🇪🇺</div>
+        <h3>Europe</h3>
+        <p>Major European ports and inland destinations via sea and air.</p>
+      </div>
+      <div class="network-card">
+        <div class="network-flag">🌎</div>
+        <h3>Americas</h3>
+        <p>US, Canada and Latin America through transpacific trade lanes.</p>
+      </div>
+      <div class="network-card">
+        <div class="network-flag">🌍</div>
+        <h3>Middle East &amp; Africa</h3>
+        <p>Dubai, Saudi Arabia and key African ports via established routes.</p>
+      </div>
+      <div class="network-card">
+        <div class="network-flag">🇯🇵</div>
+        <h3>Japan &amp; Korea</h3>
+        <p>Intra-Asia services connecting Hong Kong to North Asia markets.</p>
+      </div>
+      <div class="network-card">
+        <div class="network-flag">🌐</div>
+        <h3>Global Agents</h3>
+        <p>Trusted agent network ensures coverage across 100+ countries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-bg" id="contact">
+  <div class="section-inner">
+    <div class="section-tag">Contact</div>
+    <h2 class="section-title">Get a <span>Free Quote</span></h2>
+    <p class="section-sub">Tell us about your shipment and we'll provide a competitive quote within 24 hours. Our team is ready to support your logistics needs.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="ci-list">
+          <div class="ci-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">Headquarters</div>
+              <div class="ci-val">Hong Kong</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-label">Mobile</div>
+              <div class="ci-val"><a href="tel:85269466203">+852 6946 6203</a></div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🚚</div>
+            <div>
+              <div class="ci-label">Services</div>
+              <div class="ci-val">Sea · Air · Warehousing · Customs · Cross-border</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🌏</div>
+            <div>
+              <div class="ci-label">Coverage</div>
+              <div class="ci-val">Asia Pacific · Europe · Americas · Global</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Request a Quote</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Company name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Service Type</label>
+          <select>
+            <option value="">Select service</option>
+            <option>Sea Freight (FCL)</option>
+            <option>Sea Freight (LCL)</option>
+            <option>Air Freight</option>
+            <option>Cross-border Trucking</option>
+            <option>Warehousing</option>
+            <option>Customs Brokerage</option>
+            <option>Supply Chain Solution</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Shipment Details</label>
+          <textarea placeholder="Origin, destination, cargo type, weight/volume, and any special requirements."></textarea>
+        </div>
+        <button class="form-submit">Submit Request</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>DZ International Group Limited</h3>
+        <p>A Hong Kong-based international logistics group providing sea freight, air freight, warehousing, customs brokerage, and supply chain solutions to clients across Asia and globally.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Sea Freight</a></li>
+          <li><a href="#services">Air Freight</a></li>
+          <li><a href="#services">Warehousing</a></li>
+          <li><a href="#services">Customs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="#solutions">Retail &amp; E-Commerce</a></li>
+          <li><a href="#solutions">Manufacturing</a></li>
+          <li><a href="#solutions">Cold Chain</a></li>
+          <li><a href="#solutions">Project Cargo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#network">Global Network</a></li>
+          <li><a href="#contact">Get a Quote</a></li>
+          <li><a href="tel:85269466203">+852 6946 6203</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 DZ International Group Limited. All rights reserved.</p>
+      <p>Hong Kong · International Logistics &amp; Supply Chain</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
