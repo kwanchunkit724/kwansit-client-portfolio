@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strong Harbour 昌港有限公司 | Food &amp; Beverage Wholesale Distribution | Hong Kong</title>
+<style>
+  :root {
+    --primary: #0c1a08;
+    --accent: #4a9018;
+    --accent2: #6ab030;
+    --accent3: #90cc50;
+    --gold: #c49018;
+    --light: #f2f7ee;
+    --white: #ffffff;
+    --text: #14200a;
+    --muted: #4a5840;
+    --border: #c8dcc0;
+    --card-bg: #f4f9f0;
+    --hero-overlay: rgba(12,26,8,0.76);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI',Arial,sans-serif; color:var(--text); background:#fff; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+
+  nav {
+    background:var(--primary);
+    padding:0 2rem;
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px; position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 14px rgba(0,0,0,0.35);
+    border-bottom:2px solid var(--accent);
+  }
+  .nav-brand { display:flex; align-items:center; gap:12px; }
+  .nav-logo {
+    width:44px; height:44px; background:var(--accent);
+    border-radius:6px; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:1rem; color:#fff;
+  }
+  .nav-brand-text .line1 { font-size:1.02rem; font-weight:700; color:#fff; }
+  .nav-brand-text .line2 { font-size:0.68rem; color:var(--accent3); letter-spacing:0.5px; }
+  .nav-links { display:flex; gap:1.6rem; }
+  .nav-links a { color:rgba(255,255,255,0.78); font-size:0.87rem; font-weight:500; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--accent3); text-decoration:none; }
+  .nav-cta {
+    background:var(--accent); color:#fff !important; padding:8px 18px;
+    border-radius:5px; font-size:0.85rem !important; font-weight:600 !important; transition:background 0.2s !important;
+  }
+  .nav-cta:hover { background:var(--accent2) !important; }
+
+  .hero {
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+      url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=1600&q=80') center/cover no-repeat;
+    min-height:510px; display:flex; align-items:center; padding:4rem 2rem;
+  }
+  .hero-inner { max-width:1100px; margin:0 auto; width:100%; display:flex; align-items:center; gap:3rem; }
+  .hero-text { flex:1; }
+  .hero-badge {
+    display:inline-block; background:rgba(74,144,24,0.2); border:1px solid rgba(144,204,80,0.4);
+    color:var(--accent3); font-size:0.76rem; font-weight:600; padding:5px 14px;
+    border-radius:20px; letter-spacing:1px; margin-bottom:1.2rem;
+  }
+  .hero-text h1 { font-size:2.7rem; font-weight:800; color:#fff; line-height:1.15; margin-bottom:0.5rem; }
+  .hero-text h1 span { color:var(--accent3); }
+  .hero-text .cn { font-size:1.2rem; color:rgba(255,255,255,0.65); margin-bottom:1rem; font-style:italic; }
+  .hero-text .subtitle { font-size:1rem; color:rgba(255,255,255,0.78); margin-bottom:2rem; line-height:1.7; max-width:520px; }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--accent); color:#fff; padding:12px 28px; border-radius:5px;
+    font-weight:700; font-size:0.92rem; border:2px solid var(--accent); transition:all 0.2s; display:inline-block;
+  }
+  .btn-primary:hover { background:var(--accent2); border-color:var(--accent2); text-decoration:none; }
+  .btn-outline {
+    background:transparent; color:#fff; padding:12px 28px; border-radius:5px;
+    font-weight:600; font-size:0.92rem; border:2px solid rgba(255,255,255,0.45); transition:all 0.2s; display:inline-block;
+  }
+  .btn-outline:hover { border-color:#fff; background:rgba(255,255,255,0.1); text-decoration:none; }
+  .hero-card {
+    background:rgba(255,255,255,0.08); backdrop-filter:blur(12px);
+    border:1px solid rgba(144,204,80,0.2); border-radius:12px;
+    padding:2rem 1.6rem; min-width:275px; color:#fff;
+  }
+  .hero-card h3 { font-size:0.74rem; color:var(--accent3); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:1.2rem; }
+  .info-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:0.9rem; font-size:0.88rem; color:rgba(255,255,255,0.86); line-height:1.55; }
+  .info-icon { color:var(--accent3); flex-shrink:0; }
+
+  .stats-strip { background:var(--accent); padding:1.4rem 2rem; }
+  .stats-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-around; flex-wrap:wrap; }
+  .stat-item { text-align:center; padding:0.4rem 1.2rem; }
+  .stat-num { font-size:1.9rem; font-weight:800; color:#fff; }
+  .stat-label { font-size:0.7rem; color:rgba(255,255,255,0.8); letter-spacing:0.5px; margin-top:2px; }
+
+  section { padding:4rem 2rem; }
+  .section-inner { max-width:1100px; margin:0 auto; }
+  .section-tag { font-size:0.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:0.5rem; }
+  .section-title { font-size:2rem; font-weight:800; color:var(--primary); margin-bottom:0.8rem; }
+  .section-sub { font-size:0.97rem; color:var(--muted); line-height:1.8; max-width:640px; }
+
+  .about { background:#fff; }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:start; margin-top:2.5rem; }
+  .about-text p { color:var(--muted); line-height:1.85; margin-bottom:1rem; font-size:0.97rem; }
+  .highlight-box {
+    background:var(--primary); color:#fff; border-radius:10px; padding:2rem;
+    border-left:4px solid var(--accent);
+  }
+  .highlight-box h4 { font-size:0.78rem; color:var(--accent3); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:1.2rem; }
+  .highlight-box ul { list-style:none; }
+  .highlight-box ul li { padding:0.55rem 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:0.9rem; color:rgba(255,255,255,0.86); display:flex; align-items:center; gap:10px; }
+  .highlight-box ul li:last-child { border-bottom:none; }
+  .highlight-box ul li::before { content:'✓'; color:var(--accent3); flex-shrink:0; font-weight:700; }
+
+  .products { background:var(--light); }
+  .products-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.5rem; }
+  .product-card {
+    background:#fff; border:1px solid var(--border); border-radius:10px;
+    padding:1.8rem; border-top:3px solid var(--accent); transition:all 0.2s;
+  }
+  .product-card:hover { box-shadow:0 6px 24px rgba(74,144,24,0.12); transform:translateY(-3px); }
+  .product-icon { font-size:2.2rem; margin-bottom:0.9rem; }
+  .product-card h4 { font-size:1rem; font-weight:700; color:var(--primary); margin-bottom:0.5rem; }
+  .product-card p { font-size:0.87rem; color:var(--muted); line-height:1.7; }
+
+  .brands-section { background:#fff; }
+  .brands-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:2.5rem; }
+  .brand-card { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:1.2rem 1.5rem; display:flex; align-items:center; gap:12px; }
+  .brand-dot { width:12px; height:12px; background:var(--accent); border-radius:50%; flex-shrink:0; }
+  .brand-card span { font-size:0.95rem; font-weight:600; color:var(--primary); }
+
+  .contact { background:var(--primary); }
+  .contact .section-title { color:#fff; }
+  .contact .section-sub { color:rgba(255,255,255,0.65); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; }
+  .contact-info h4 { font-size:0.76rem; color:var(--accent3); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:1.5rem; }
+  .contact-detail { display:flex; align-items:flex-start; gap:14px; margin-bottom:1.3rem; }
+  .contact-icon { width:42px; height:42px; background:rgba(74,144,24,0.2); border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+  .contact-detail-text .label { font-size:0.72rem; color:rgba(255,255,255,0.45); letter-spacing:0.5px; text-transform:uppercase; }
+  .contact-detail-text .value { font-size:0.9rem; color:#fff; font-weight:500; margin-top:2px; }
+  .contact-detail-text .value a { color:var(--accent3); }
+  .contact-form { background:rgba(255,255,255,0.07); border:1px solid rgba(144,204,80,0.15); border-radius:12px; padding:2rem; }
+  .contact-form h4 { font-size:1rem; font-weight:700; color:#fff; margin-bottom:1.5rem; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .form-group { margin-bottom:1rem; }
+  .form-group label { font-size:0.78rem; color:rgba(255,255,255,0.5); margin-bottom:5px; display:block; }
+  .form-group input, .form-group select, .form-group textarea {
+    width:100%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14);
+    border-radius:7px; padding:10px 14px; color:#fff; font-size:0.9rem; transition:border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:var(--accent3); }
+  .form-group select option { background:var(--primary); }
+  .form-group textarea { resize:vertical; min-height:90px; }
+  .form-submit {
+    width:100%; background:var(--accent); color:#fff; border:none; border-radius:7px;
+    padding:13px; font-size:0.95rem; font-weight:700; cursor:pointer; transition:background 0.2s; margin-top:0.5rem;
+  }
+  .form-submit:hover { background:var(--accent2); }
+
+  footer { background:#060e04; padding:2.5rem 2rem; text-align:center; color:rgba(255,255,255,0.38); font-size:0.8rem; border-top:1px solid rgba(74,144,24,0.15); }
+  footer a { color:var(--accent3); }
+
+  @media(max-width:900px) {
+    .hero-inner { flex-direction:column; }
+    .hero-card { min-width:unset; width:100%; }
+    .about-grid, .contact-grid { grid-template-columns:1fr; }
+    .products-grid, .brands-grid { grid-template-columns:1fr 1fr; }
+    .nav-links { display:none; }
+    .hero-text h1 { font-size:2.1rem; }
+  }
+  @media(max-width:600px) {
+    .products-grid, .brands-grid, .form-row { grid-template-columns:1fr; }
+    .stats-inner { flex-direction:column; gap:1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">SH</div>
+    <div class="nav-brand-text">
+      <div class="line1">Strong Harbour 昌港有限公司</div>
+      <div class="line2">Food &amp; Beverage Wholesale Distribution · Hong Kong</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#products">Products</a>
+    <a href="#brands">Our Brands</a>
+    <a href="#contact" class="nav-cta">Contact Us</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">🥬 Food &amp; Beverage Wholesale · Yau Tong, Hong Kong</div>
+      <h1>Strong Harbour<br><span>昌港有限公司</span></h1>
+      <p class="subtitle">A leading Hong Kong food and beverage wholesale distributor — supplying mushrooms, vegetables, fruit, meat, cooking ingredients, desserts, wine, and beverages across the region with a portfolio of trusted brands.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Contact Us</a>
+        <a href="#products" class="btn-outline">Our Products</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Contact Information</h3>
+      <div class="info-row"><span class="info-icon">📍</span><span>4/F, G Unit, Wing Shan Industrial Building<br>428 Tea Fruit Road, Yau Tong, HK</span></div>
+      <div class="info-row"><span class="info-icon">📞</span><span>+852 2544 6433 / +852 9287 6433</span></div>
+      <div class="info-row"><span class="info-icon">✉️</span><span>info@strongharbour.com</span></div>
+      <div class="info-row"><span class="info-icon">🌐</span><span>strongharbour.com</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">9</div><div class="stat-label">Product Categories</div></div>
+    <div class="stat-item"><div class="stat-num">9+</div><div class="stat-label">Trusted Brands</div></div>
+    <div class="stat-item"><div class="stat-num">F&B</div><div class="stat-label">Wholesale Focus</div></div>
+    <div class="stat-item"><div class="stat-num">HK</div><div class="stat-label">Distribution Base</div></div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-tag">About Strong Harbour</div>
+    <h2 class="section-title">Trusted Food &amp; Beverage Wholesale Distributor</h2>
+    <p class="section-sub">Strong Harbour (昌港有限公司) is a Hong Kong-based trading and wholesale distribution company specialising in food and beverage products across nine major categories.</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Strong Harbour 昌港有限公司 is an established food and beverage wholesale distributor based in Yau Tong, Hong Kong. The company trades and distributes a comprehensive range of food products — from fresh produce including vegetables, mushrooms, and fruit, to meat, cooking ingredients, desserts, wine, and beverages.</p>
+        <p>With a portfolio of trusted brands and established distribution channels, Strong Harbour serves wholesale buyers and the broader food and beverage trade throughout Hong Kong. The company offers both English and Chinese language services, facilitating access for local and international buyers alike.</p>
+        <p>Strong Harbour's nine major food categories provide buyers with a structured and comprehensive product catalogue, making it a convenient one-stop source for diverse F&B wholesale requirements.</p>
+      </div>
+      <div>
+        <div class="highlight-box">
+          <h4>Our Distribution Strengths</h4>
+          <ul>
+            <li>Nine major food &amp; beverage product categories</li>
+            <li>Portfolio of 9+ established brand names</li>
+            <li>One-stop wholesale source for diverse F&B needs</li>
+            <li>Both English and Chinese language service</li>
+            <li>Convenient Yau Tong industrial district location</li>
+            <li>Reliable supply chain and distribution network</li>
+            <li>Fresh produce alongside packaged goods</li>
+            <li>Wine and beverage distribution capability</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-tag">Product Categories</div>
+    <h2 class="section-title">Nine Major Food &amp; Beverage Categories</h2>
+    <p class="section-sub">Strong Harbour distributes a diverse range of food products across nine core categories, meeting the needs of wholesale buyers from restaurants to retailers.</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🍄</div>
+        <h4>Mushrooms</h4>
+        <p>A wide selection of fresh and dried mushroom varieties for wholesale supply to restaurants, retailers, and food processors throughout Hong Kong.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🥦</div>
+        <h4>Vegetables</h4>
+        <p>Fresh and processed vegetable products including corn and a variety of locally popular and imported vegetables for the Hong Kong food trade.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🍍</div>
+        <h4>Fruit</h4>
+        <p>Pineapple and other fresh fruit products distributed to wholesale buyers, catering to both direct consumption and food processing requirements.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🥩</div>
+        <h4>Meat Products</h4>
+        <p>Quality meat products for wholesale distribution to restaurants, caterers, and food retailers across Hong Kong's vibrant food service industry.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🧄</div>
+        <h4>Cooking Ingredients</h4>
+        <p>A comprehensive range of cooking ingredients, sauces, and condiments sourced from trusted brands — essential supplies for professional kitchens.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🍮</div>
+        <h4>Desserts</h4>
+        <p>Dessert products and sweet ingredients for the food service sector, including items suitable for Chinese and international cuisine applications.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🍷</div>
+        <h4>Wine</h4>
+        <p>Wine products for wholesale distribution, serving restaurants, hotels, and beverage retailers with a selection of wine suitable for diverse market segments.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🥤</div>
+        <h4>Beverages</h4>
+        <p>Non-alcoholic and alcoholic beverages for wholesale supply, covering the full range of beverage categories demanded by Hong Kong's hospitality and retail sectors.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">📦</div>
+        <h4>Additional Products</h4>
+        <p>Strong Harbour's product catalogue extends beyond these eight categories — contact our team to enquire about specific products and availability across our full range.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="brands-section" id="brands">
+  <div class="section-inner">
+    <div class="section-tag">Our Brand Portfolio</div>
+    <h2 class="section-title">Trusted Brand Representations</h2>
+    <p class="section-sub">Strong Harbour represents and distributes products from a curated portfolio of established food and beverage brands, ensuring quality and reliability for wholesale buyers.</p>
+    <div class="brands-grid">
+      <div class="brand-card"><div class="brand-dot"></div><span>Eman's</span></div>
+      <div class="brand-card"><div class="brand-dot"></div><span>Gulong (古龍)</span></div>
+      <div class="brand-card"><div class="brand-dot"></div><span>Excellent</span></div>
+      <div class="brand-card"><div class="brand-dot"></div><span>Victoria</span></div>
+      <div class="brand-card"><div class="brand-dot"></div><span>Copo Band</span></div>
+      <div class="brand-card"><div class="brand-dot"></div><span>Gang Zhu Qiao Pai (港主橋牌)</span></div>
+      <div class="brand-card"><div class="brand-dot"></div><span>Xianglong Brand (湘龍牌)</span></div>
+      <div class="brand-card"><div class="brand-dot"></div><span>Teh Ho</span></div>
+      <div class="brand-card"><div class="brand-dot"></div><span>Gangwei (港威)</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--accent3);">Contact Us</div>
+    <h2 class="section-title">Wholesale Enquiries Welcome</h2>
+    <p class="section-sub">Contact Strong Harbour to discuss wholesale pricing, product availability, brand distribution, or to set up a wholesale account.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h4>Our Details</h4>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail-text">
+            <div class="label">Address</div>
+            <div class="value">4/F, G Unit, Wing Shan Industrial Building<br>428 Tea Fruit Road, Yau Tong, Hong Kong</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail-text">
+            <div class="label">Telephone</div>
+            <div class="value"><a href="tel:+85225446433">+852 2544 6433</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📱</div>
+          <div class="contact-detail-text">
+            <div class="label">Mobile / WhatsApp</div>
+            <div class="value"><a href="https://wa.me/85292876433">+852 9287 6433</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-detail-text">
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:info@strongharbour.com">info@strongharbour.com</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🌐</div>
+          <div class="contact-detail-text">
+            <div class="label">Website</div>
+            <div class="value"><a href="https://www.strongharbour.com" target="_blank">strongharbour.com</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h4>Wholesale Enquiry</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" placeholder="Your company name">
+          </div>
+          <div class="form-group">
+            <label>Contact Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+852 XXXX XXXX">
+        </div>
+        <div class="form-group">
+          <label>Product Category</label>
+          <select>
+            <option>Mushrooms</option>
+            <option>Vegetables</option>
+            <option>Fruit</option>
+            <option>Meat Products</option>
+            <option>Cooking Ingredients</option>
+            <option>Desserts</option>
+            <option>Wine</option>
+            <option>Beverages</option>
+            <option>Multiple Categories</option>
+            <option>Brand Distribution Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message / Requirements</label>
+          <textarea placeholder="Tell us about your wholesale requirements, products needed, or other enquiries..."></textarea>
+        </div>
+        <button class="form-submit">Send Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="margin-bottom:0.5rem;"><strong style="color:rgba(255,255,255,0.65);">Strong Harbour 昌港有限公司</strong> · Food &amp; Beverage Wholesale Distribution · Hong Kong</p>
+  <p>
+    Tel: <a href="tel:+85225446433">+852 2544 6433</a> &nbsp;|&nbsp;
+    Mobile: <a href="https://wa.me/85292876433">+852 9287 6433</a> &nbsp;|&nbsp;
+    <a href="mailto:info@strongharbour.com">info@strongharbour.com</a> &nbsp;|&nbsp;
+    <a href="https://www.strongharbour.com" target="_blank">strongharbour.com</a>
+  </p>
+  <p style="margin-top:0.8rem; font-size:0.74rem;">© 2025 昌港有限公司 Strong Harbour. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
