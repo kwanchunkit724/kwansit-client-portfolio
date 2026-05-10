@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ever Sparkle Technologies | IT Solutions Hong Kong</title>
+<style>
+:root{
+  --dark:#0d1e38;
+  --dark2:#152644;
+  --cyan:#00c0d8;
+  --cyan2:#00e0f8;
+  --light:#f2f7fb;
+  --white:#ffffff;
+  --text:#1a2533;
+  --muted:#566880;
+  --border:#ccd8e5;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',Arial,sans-serif;color:var(--text);background:var(--white);line-height:1.65;}
+a{color:inherit;text-decoration:none;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--dark);border-bottom:2px solid var(--cyan);padding:0 6%;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
+.nav-logo{font-size:1.25rem;font-weight:900;color:var(--white);}
+.nav-logo span{color:var(--cyan2);}
+.nav-links{display:flex;gap:26px;}
+.nav-links a{color:rgba(255,255,255,0.82);font-size:0.87rem;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--cyan2);}
+.nav-cta{background:var(--cyan);color:var(--dark)!important;padding:8px 20px;border-radius:4px;font-weight:700!important;}
+
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--dark2) 55%,#0a1830 100%);padding:120px 6% 80px;min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:480px;height:480px;border-radius:50%;background:rgba(0,192,216,0.07);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1fr 390px;gap:60px;align-items:center;width:100%;max-width:1200px;margin:0 auto;}
+.hero-label{display:inline-block;background:rgba(0,192,216,0.15);color:var(--cyan2);font-size:0.78rem;font-weight:700;letter-spacing:2px;padding:5px 14px;border-radius:20px;border:1px solid rgba(0,192,216,0.3);margin-bottom:18px;text-transform:uppercase;}
+.hero h1{font-size:2.8rem;font-weight:900;color:var(--white);line-height:1.18;margin-bottom:14px;}
+.hero h1 span{color:var(--cyan2);}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.70);max-width:520px;margin-bottom:34px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-cy{background:var(--cyan);color:var(--dark);padding:13px 28px;border-radius:5px;font-weight:700;font-size:0.95rem;transition:background 0.2s,transform 0.2s;}
+.btn-cy:hover{background:var(--cyan2);transform:translateY(-2px);}
+.btn-out{border:2px solid rgba(255,255,255,0.3);color:var(--white);padding:13px 28px;border-radius:5px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s,transform 0.2s;}
+.btn-out:hover{border-color:var(--cyan2);transform:translateY(-2px);}
+.hero-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:28px 24px;}
+.hero-card h3{color:var(--cyan2);font-size:0.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;}
+.hc-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+.hc-icon{width:34px;height:34px;border-radius:8px;background:rgba(0,192,216,0.15);border:1px solid rgba(0,192,216,0.3);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.hc-label{font-size:0.73rem;color:rgba(255,255,255,0.45);margin-bottom:2px;}
+.hc-val{color:var(--white);font-size:0.88rem;font-weight:600;}
+.hc-divider{border:none;border-top:1px solid rgba(255,255,255,0.1);margin:14px 0;}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;}
+.badge{background:rgba(0,192,216,0.15);border:1px solid rgba(0,192,216,0.3);color:var(--cyan2);font-size:0.68rem;font-weight:700;padding:4px 10px;border-radius:20px;}
+
+.stats{background:var(--cyan);padding:26px 6%;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1100px;margin:0 auto;}
+.stat{text-align:center;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--dark);}
+.stat-lbl{font-size:0.78rem;font-weight:600;color:rgba(13,30,56,0.72);text-transform:uppercase;letter-spacing:0.5px;}
+
+section{padding:80px 6%;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-tag{display:inline-block;background:rgba(0,192,216,0.1);color:var(--cyan);font-size:0.75rem;font-weight:700;letter-spacing:2px;padding:4px 14px;border-radius:20px;border:1px solid rgba(0,192,216,0.25);text-transform:uppercase;margin-bottom:12px;}
+.sec-title{font-size:2rem;font-weight:800;color:var(--dark);margin-bottom:10px;}
+.sec-sub{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:44px;}
+
+.about{background:var(--light);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.about-text p{color:var(--muted);margin-bottom:16px;line-height:1.75;}
+.highlight-box{background:var(--dark);border-radius:12px;padding:26px 24px;margin-bottom:22px;}
+.highlight-box h3{color:var(--cyan2);font-size:1rem;font-weight:700;margin-bottom:8px;}
+.highlight-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.prop-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px 16px;border-top:3px solid var(--cyan);}
+.prop-card h4{color:var(--dark);font-size:0.9rem;font-weight:700;margin-bottom:6px;}
+.prop-card p{color:var(--muted);font-size:0.8rem;line-height:1.55;}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.svc-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:26px 20px;transition:box-shadow 0.2s,transform 0.2s;border-top:4px solid transparent;}
+.svc-card:hover{box-shadow:0 8px 24px rgba(0,192,216,0.12);transform:translateY(-4px);border-top-color:var(--cyan);}
+.svc-icon{width:46px;height:46px;border-radius:10px;background:rgba(0,192,216,0.08);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;}
+.svc-card h3{color:var(--dark);font-size:0.98rem;font-weight:700;margin-bottom:8px;}
+.svc-card p{color:var(--muted);font-size:0.84rem;line-height:1.6;}
+
+.why{background:var(--dark);}
+.why .sec-title{color:var(--white);}
+.why .sec-sub{color:rgba(255,255,255,0.6);}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.why-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:26px 20px;text-align:center;}
+.why-icon{font-size:2.2rem;margin-bottom:12px;}
+.why-card h3{color:var(--white);font-size:1rem;font-weight:700;margin-bottom:10px;}
+.why-card p{color:rgba(255,255,255,0.6);font-size:0.84rem;line-height:1.6;}
+
+.contact-s{background:var(--light);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.contact-info h3{color:var(--dark);font-size:1.25rem;font-weight:700;margin-bottom:6px;}
+.contact-info p{color:var(--muted);font-size:0.92rem;margin-bottom:26px;}
+.ci-block{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
+.ci-icon{width:40px;height:40px;border-radius:8px;background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ci-label{font-size:0.74rem;color:var(--muted);margin-bottom:2px;}
+.ci-val{color:var(--dark);font-size:0.93rem;font-weight:600;}
+.cform{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:32px 28px;}
+.cform h3{color:var(--dark);font-size:1.1rem;font-weight:700;margin-bottom:22px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.form-group label{font-size:0.8rem;font-weight:600;color:var(--dark);}
+.form-group input,.form-group select,.form-group textarea{border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-size:0.9rem;color:var(--text);background:var(--light);font-family:inherit;outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--cyan);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.btn-submit{width:100%;background:var(--dark);color:var(--white);border:none;border-radius:6px;padding:13px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.btn-submit:hover{background:var(--dark2);}
+
+footer{background:var(--dark);padding:50px 6% 28px;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;margin-bottom:36px;}
+.footer-brand h3{color:var(--white);font-size:1.2rem;font-weight:900;margin-bottom:8px;}
+.footer-brand h3 span{color:var(--cyan2);}
+.footer-brand p{color:rgba(255,255,255,0.5);font-size:0.84rem;line-height:1.65;}
+.footer-col h4{color:var(--cyan2);font-size:0.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-col ul li a{color:rgba(255,255,255,0.55);font-size:0.84rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--cyan2);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;align-items:center;justify-content:space-between;}
+.footer-bottom p{color:rgba(255,255,255,0.38);font-size:0.78rem;}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .stats-grid,.services-grid,.why-grid{grid-template-columns:repeat(2,1fr);}
+  .about-props{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Ever <span>Sparkle</span> Technologies</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-label">IT Solutions · Hong Kong</div>
+      <h1>Technology That<br><span>Sparkles</span> for<br>Your Business</h1>
+      <p class="hero-sub">Ever Sparkle Technologies Limited delivers innovative IT solutions and professional technology services to businesses across Hong Kong — bright, reliable, and built to last.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-cy">Get a Free Consultation</a>
+        <a href="#services" class="btn-out">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Contact Information</h3>
+      <div class="hc-row">
+        <div class="hc-icon">✉</div>
+        <div>
+          <div class="hc-label">Email</div>
+          <div class="hc-val">sales@ev-sparkle.com</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📱</div>
+        <div>
+          <div class="hc-label">Mobile / WhatsApp</div>
+          <div class="hc-val">+852 6511 0101</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">🌐</div>
+        <div>
+          <div class="hc-label">Website</div>
+          <div class="hc-val">ev-sparkle.com</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📍</div>
+        <div>
+          <div class="hc-label">Location</div>
+          <div class="hc-val">Hong Kong SAR</div>
+        </div>
+      </div>
+      <hr class="hc-divider">
+      <div class="badge-row">
+        <span class="badge">IT Services</span>
+        <span class="badge">Cloud Solutions</span>
+        <span class="badge">Cybersecurity</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num">HK</div><div class="stat-lbl">Based &amp; Local</div></div>
+    <div class="stat"><div class="stat-num">Full</div><div class="stat-lbl">IT Solution Suite</div></div>
+    <div class="stat"><div class="stat-num">Fast</div><div class="stat-lbl">Response Support</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-lbl">Client Focused</div></div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="sec-tag">About Ever Sparkle</div>
+        <h2 class="sec-title">Illuminating Technology for HK Business</h2>
+        <p>Ever Sparkle Technologies Limited is a Hong Kong-based IT services company dedicated to helping businesses shine through smart, reliable technology solutions. Our team of experienced IT professionals brings clarity, brilliance, and dependability to every engagement.</p>
+        <p>From infrastructure management and cloud migration to software development and cybersecurity, we cover the full spectrum of business IT needs — ensuring your technology works as hard as you do, every single day.</p>
+        <div class="highlight-box">
+          <h3>Our Philosophy</h3>
+          <p>Just as a sparkle reflects light in all directions, our technology solutions create ripple effects of efficiency and growth throughout your entire business. We believe great IT should be visible in its impact and invisible in its complexity.</p>
+        </div>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <h4>Hong Kong Experts</h4>
+          <p>Deep understanding of the local business environment, regulatory requirements, and technology landscape in HK.</p>
+        </div>
+        <div class="prop-card">
+          <h4>Full IT Coverage</h4>
+          <p>Infrastructure, cloud, software, security, and support — every IT need covered under one trusted partner.</p>
+        </div>
+        <div class="prop-card">
+          <h4>Rapid Response</h4>
+          <p>When IT issues arise, our responsive support team acts fast — minimising downtime and business disruption.</p>
+        </div>
+        <div class="prop-card">
+          <h4>Scalable Solutions</h4>
+          <p>Technology solutions that grow with your business — from startup to enterprise, we have the right fit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="sec-inner">
+    <div class="sec-tag">Our Services</div>
+    <h2 class="sec-title">Technology Solutions That Shine</h2>
+    <p class="sec-sub">A comprehensive range of IT services designed to keep your Hong Kong business running brilliantly.</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">💻</div>
+        <h3>Software Development</h3>
+        <p>Custom web and mobile application development, system integrations, API development, and bespoke software solutions tailored to your business processes.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">☁️</div>
+        <h3>Cloud Services</h3>
+        <p>Cloud migration, Microsoft Azure/365, Google Workspace, cloud architecture design, and hybrid cloud deployment for scalable, flexible IT operations.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🖥️</div>
+        <h3>IT Infrastructure</h3>
+        <p>Server setup and management, storage solutions, networking, virtualisation, and data centre services to build your reliable IT foundation.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔐</div>
+        <h3>Cybersecurity</h3>
+        <p>Security audits, endpoint protection, firewall management, data backup and recovery, and staff security awareness training to protect your business.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🛠️</div>
+        <h3>IT Support &amp; Maintenance</h3>
+        <p>Managed IT support, helpdesk services, preventive maintenance, and proactive monitoring — ensuring maximum uptime for your systems.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📊</div>
+        <h3>IT Consulting</h3>
+        <p>Digital transformation advisory, technology strategy, vendor selection, and IT roadmap planning to align your technology with business objectives.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="sec-inner">
+    <div class="sec-tag">Why Ever Sparkle</div>
+    <h2 class="sec-title">What Sets Us Apart</h2>
+    <p class="sec-sub">We bring something different to Hong Kong IT services — and our clients notice.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">✨</div>
+        <h3>Clarity &amp; Transparency</h3>
+        <p>We communicate in plain language, provide clear pricing, and keep you informed at every step — no hidden costs, no confusing jargon.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3>Speed &amp; Reliability</h3>
+        <p>Fast deployment, rapid support response, and reliable systems that your business can depend on — every hour of every day.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌟</div>
+        <h3>Long-Term Partnership</h3>
+        <p>We invest in understanding your business deeply to deliver solutions that grow with you — a technology partner, not just a vendor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-s" id="contact">
+  <div class="sec-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="sec-tag">Get In Touch</div>
+        <h3>Let's Talk Technology</h3>
+        <p>Whether you need IT support, a new system, or a technology strategy — Ever Sparkle Technologies is ready to help your business shine.</p>
+        <div class="ci-block">
+          <div class="ci-icon">✉</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val">sales@ev-sparkle.com</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">Mobile / WhatsApp</div>
+            <div class="ci-val">+852 6511 0101</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Website</div>
+            <div class="ci-val">ev-sparkle.com</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">⏰</div>
+          <div>
+            <div class="ci-label">Business Hours</div>
+            <div class="ci-val">Mon–Fri 9:00AM – 6:00PM HKT</div>
+          </div>
+        </div>
+      </div>
+      <div class="cform">
+        <h3>Send an Enquiry</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Company name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" placeholder="+852 xxxx xxxx">
+        </div>
+        <div class="form-group">
+          <label>Service of Interest</label>
+          <select>
+            <option value="">Select...</option>
+            <option>Software Development</option>
+            <option>Cloud Services</option>
+            <option>IT Infrastructure</option>
+            <option>Cybersecurity</option>
+            <option>IT Support &amp; Maintenance</option>
+            <option>IT Consulting</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your IT needs..."></textarea>
+        </div>
+        <button class="btn-submit">Send Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Ever <span>Sparkle</span> Technologies</h3>
+        <p>Ever Sparkle Technologies Limited — Hong Kong IT solutions company delivering innovative technology services that help businesses shine. Cloud, software, infrastructure, cybersecurity, and IT support.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Software Development</a></li>
+          <li><a href="#services">Cloud Services</a></li>
+          <li><a href="#services">IT Infrastructure</a></li>
+          <li><a href="#services">Cybersecurity</a></li>
+          <li><a href="#services">IT Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:sales@ev-sparkle.com">sales@ev-sparkle.com</a></li>
+          <li><a href="tel:+85265110101">+852 6511 0101</a></li>
+          <li><a href="https://ev-sparkle.com">ev-sparkle.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Ever Sparkle Technologies Limited. All rights reserved. Hong Kong SAR.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
