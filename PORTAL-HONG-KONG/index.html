@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Hong Kong | Business &amp; Financial Services Platform</title>
+<style>
+  :root {
+    --navy: #1a2a50;
+    --navy-dark: #0c1830;
+    --purple: #5a28c0;
+    --purple-light: #7040d8;
+    --white: #ffffff;
+    --light-bg: #f4f6fb;
+    --text: #1a1a2e;
+    --text-light: #4a5568;
+    --border: #dde2ea;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: var(--white); }
+
+  nav {
+    background: var(--navy-dark);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px; position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; }
+  .nav-logo { width: 42px; height: 42px; background: linear-gradient(135deg, var(--purple), var(--purple-light)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; color: var(--white); }
+  .nav-name .main { font-size: 17px; font-weight: 700; color: var(--white); display: block; }
+  .nav-name .sub { font-size: 11px; color: rgba(255,255,255,0.5); display: block; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--purple-light); }
+  .nav-cta { background: var(--purple); color: var(--white); padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--purple-light); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 55%, #241050 100%);
+    padding: 80px 40px; min-height: 530px;
+    display: flex; align-items: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 30%, rgba(90,40,192,0.2) 0%, transparent 55%),
+      radial-gradient(ellipse at 15% 70%, rgba(26,42,80,0.5) 0%, transparent 50%);
+  }
+  .hero-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 50px; width: 100%; position: relative; z-index: 1; }
+  .hero-text { flex: 1; }
+  .hero-badge { display: inline-block; background: rgba(90,40,192,0.2); border: 1px solid rgba(112,64,216,0.4); color: var(--purple-light); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+  .hero-text h1 { font-size: 54px; font-weight: 900; color: var(--white); line-height: 1.05; margin-bottom: 12px; }
+  .hero-text h1 span { color: var(--purple-light); }
+  .hero-text h2 { font-size: 20px; font-weight: 400; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+  .hero-text p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 490px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: var(--purple); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--purple-light); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  .hero-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(112,64,216,0.3); backdrop-filter: blur(10px); border-radius: 16px; padding: 32px 28px; min-width: 280px; flex-shrink: 0; }
+  .hero-card h3 { color: var(--purple-light); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+  .hc-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+  .hc-item:last-child { margin-bottom: 0; }
+  .hc-icon { width: 36px; height: 36px; background: rgba(90,40,192,0.25); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .hc-info .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+  .hc-info .value { font-size: 14px; color: var(--white); font-weight: 600; }
+
+  .stats-strip { background: linear-gradient(90deg, var(--purple), var(--purple-light)); padding: 22px 40px; display: flex; justify-content: center; }
+  .stat-item { text-align: center; padding: 0 48px; position: relative; }
+  .stat-item + .stat-item::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 40px; background: rgba(255,255,255,0.35); }
+  .stat-num { font-size: 32px; font-weight: 900; color: var(--white); line-height: 1; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 4px; font-weight: 500; }
+
+  section { padding: 80px 40px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
+  .section-title { font-size: 36px; font-weight: 900; color: var(--navy); margin-bottom: 16px; line-height: 1.2; }
+  .section-sub { font-size: 16px; color: var(--text-light); line-height: 1.7; max-width: 620px; }
+  .section-header { margin-bottom: 52px; }
+
+  .about { background: var(--light-bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .about-box { background: var(--navy-dark); border-radius: 16px; padding: 40px; color: var(--white); position: relative; overflow: hidden; border: 1px solid rgba(90,40,192,0.2); }
+  .about-box::after { content: '⬡'; position: absolute; right: 10px; bottom: -20px; font-size: 150px; font-weight: 900; color: rgba(90,40,192,0.08); line-height: 1; }
+  .about-box h3 { font-size: 22px; font-weight: 800; color: var(--purple-light); margin-bottom: 16px; }
+  .about-box p { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.82); margin-bottom: 14px; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .prop-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 22px; border-top: 3px solid var(--purple); }
+  .prop-icon { font-size: 28px; margin-bottom: 12px; }
+  .prop-card h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .prop-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 30px 26px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--navy), var(--purple)); }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,42,80,0.12); }
+  .service-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--navy), #2a1870); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 18px; }
+  .service-card h3 { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+  .service-card p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+  .service-tag { display: inline-block; background: rgba(90,40,192,0.1); color: var(--purple); padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-top: 12px; }
+
+  .features { background: var(--navy-dark); }
+  .features .section-title { color: var(--white); }
+  .features .section-tag { color: var(--purple-light); }
+  .features .section-sub { color: rgba(255,255,255,0.7); }
+  .feat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .feat-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(90,40,192,0.2); border-radius: 14px; padding: 28px 22px; text-align: center; transition: background 0.2s; }
+  .feat-card:hover { background: rgba(90,40,192,0.12); }
+  .feat-icon { font-size: 38px; margin-bottom: 14px; }
+  .feat-card h3 { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .feat-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .contact-info h3 { font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+  .contact-info > p { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 32px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 22px; }
+  .ci-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--navy), #2a1870); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .ci-label { font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .ci-val { font-size: 15px; font-weight: 600; color: var(--navy); }
+  .ci-val a { color: var(--navy); text-decoration: none; }
+  .ci-val a:hover { color: var(--purple); }
+
+  .contact-form { background: var(--light-bg); border-radius: 16px; padding: 36px; }
+  .contact-form h3 { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .form-group label { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .form-group input, .form-group select, .form-group textarea { padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; color: var(--text); background: var(--white); outline: none; font-family: inherit; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--purple); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit { width: 100%; background: var(--purple); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+  .form-submit:hover { background: var(--purple-light); }
+
+  footer { background: var(--navy-dark); padding: 40px; text-align: center; }
+  .footer-brand { font-size: 20px; font-weight: 900; color: var(--white); margin-bottom: 8px; }
+  .footer-brand span { color: var(--purple-light); }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 14px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  @media (max-width: 900px) {
+    .hero-content { flex-direction: column; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .feat-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">⬡</div>
+    <div class="nav-name">
+      <span class="main">Portal Hong Kong</span>
+      <span class="sub">Business &amp; Financial Services</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#features">Platform</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Get Started</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">🌐 Your Hong Kong Business Gateway</div>
+      <h1>Portal<br><span>Hong Kong</span></h1>
+      <h2>Business &amp; Financial Services Platform</h2>
+      <p>Portal Hong Kong is your gateway to comprehensive business and financial services in Hong Kong. From company formation and accounting to compliance and advisory — we connect you to the expertise you need to succeed.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#contact" class="btn-outline">Talk to Us</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>📋 Platform Info</h3>
+      <div class="hc-item">
+        <div class="hc-icon">📍</div>
+        <div class="hc-info">
+          <div class="label">Location</div>
+          <div class="value">Hong Kong</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">💼</div>
+        <div class="hc-info">
+          <div class="label">Industry</div>
+          <div class="value">Accounting &amp; Business Services</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🌐</div>
+        <div class="hc-info">
+          <div class="label">Reach</div>
+          <div class="value">Local &amp; International Clients</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🔐</div>
+        <div class="hc-info">
+          <div class="label">Approach</div>
+          <div class="value">Digital-First, Expert-Led</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">360°</div>
+    <div class="stat-label">Business Services</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">HK</div>
+    <div class="stat-label">Based &amp; Regulated</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">Digital</div>
+    <div class="stat-label">Platform Access</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">Expert</div>
+    <div class="stat-label">Advisory Team</div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-box">
+        <h3>🌐 Your HK Business Gateway</h3>
+        <p>Portal Hong Kong is a comprehensive business and financial services platform, purpose-built for entrepreneurs, SMEs, and international businesses establishing or operating in Hong Kong.</p>
+        <p>We provide a seamless digital-first experience for all your accounting, compliance, company secretarial, and advisory needs — combining expert professionals with modern technology to make business in Hong Kong straightforward and efficient.</p>
+        <p>Whether you're a startup looking to incorporate, an established business needing ongoing accounting support, or an international enterprise seeking local expertise, Portal Hong Kong is your trusted partner every step of the way.</p>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">🚀</div>
+          <h4>Fast Onboarding</h4>
+          <p>Get your business up and running quickly — streamlined processes and digital tools accelerate every step.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🔐</div>
+          <h4>Secure &amp; Compliant</h4>
+          <p>All services delivered in full compliance with HK regulations, with data security at the core of everything.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">👥</div>
+          <h4>Expert Team</h4>
+          <p>A team of qualified CPAs, company secretaries, and business advisors with deep Hong Kong market knowledge.</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">💡</div>
+          <h4>Smart Advisory</h4>
+          <p>Proactive business and financial advice — not just compliance, but strategic guidance for long-term growth.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Services</div>
+      <h2 class="section-title">Business &amp; Financial Services</h2>
+      <p class="section-sub">A complete suite of professional services to support your business at every stage of its lifecycle in Hong Kong.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3>Company Formation</h3>
+        <p>Incorporate your Hong Kong limited company quickly and efficiently. Includes name search, document preparation, business registration, and company secretary services.</p>
+        <span class="service-tag">Fast &amp; Simple</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Accounting &amp; Bookkeeping</h3>
+        <p>Professional monthly accounting, management accounts, and financial reporting to keep your business finances accurate and decision-ready at all times.</p>
+        <span class="service-tag">Monthly Service</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Audit &amp; Assurance</h3>
+        <p>Statutory audit services by HKICPA-qualified auditors, meeting all Hong Kong Companies Ordinance requirements for annual filing and third-party assurance.</p>
+        <span class="service-tag">Regulatory Compliant</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📝</div>
+        <h3>Tax Filing &amp; Planning</h3>
+        <p>Corporate profits tax, salaries tax, and property tax services. Compliant filing with proactive tax planning to optimise your tax position within the law.</p>
+        <span class="service-tag">Tax Optimisation</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏦</div>
+        <h3>Company Secretarial</h3>
+        <p>Registered office, company secretary services, annual return filing, statutory register maintenance, and all Companies Registry compliance requirements.</p>
+        <span class="service-tag">Ongoing Compliance</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Business Advisory</h3>
+        <p>Strategic business advisory for growth, restructuring, market entry, and financial planning — expert guidance tailored to your business goals.</p>
+        <span class="service-tag">Strategic Growth</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Why Portal HK</div>
+      <h2 class="section-title">The Portal Advantage</h2>
+      <p class="section-sub">A smarter, more efficient way to manage your Hong Kong business services — professional expertise with a digital-first approach.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">⚡</div>
+        <h3>Fast Turnaround</h3>
+        <p>Streamlined processes and digital tools mean faster response times and quicker delivery on all service requests.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📱</div>
+        <h3>Digital Access</h3>
+        <p>Manage your business documents, accounts, and communications through our convenient digital platform.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🎯</div>
+        <h3>Fixed, Clear Pricing</h3>
+        <p>Transparent service packages with no hidden fees — know exactly what you're paying and what you're getting.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🤝</div>
+        <h3>Dedicated Support</h3>
+        <p>A dedicated account manager who knows your business and is always available to answer questions and provide support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Contact</div>
+      <h2 class="section-title">Open the Portal</h2>
+      <p class="section-sub">Tell us what your business needs and we'll find the right service solution for you. Free initial consultation available.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <p>Our team of business and financial professionals is ready to help. Whether you're just starting out or scaling up, we have the expertise you need.</p>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Platform</div>
+            <div class="ci-val">Portal Hong Kong</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-val">Hong Kong</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">💼</div>
+          <div>
+            <div class="ci-label">Services</div>
+            <div class="ci-val">Accounting, Audit, Company Formation</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📋</div>
+          <div>
+            <div class="ci-label">Consultation</div>
+            <div class="ci-val">Free Initial Consultation</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>🚀 Start the Conversation</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name *</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Phone *</label>
+            <input type="tel" placeholder="Contact number">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select>
+            <option>-- Select Service --</option>
+            <option>Company Formation</option>
+            <option>Accounting &amp; Bookkeeping</option>
+            <option>Audit &amp; Assurance</option>
+            <option>Tax Filing &amp; Planning</option>
+            <option>Company Secretarial</option>
+            <option>Business Advisory</option>
+            <option>Full Service Package</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Business</label>
+          <textarea placeholder="Briefly describe your business and what you need help with..."></textarea>
+        </div>
+        <button class="form-submit">Send Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand"><span>Portal</span> Hong Kong</div>
+  <div class="footer-sub">Business &amp; Financial Services Platform · Accounting · Audit · Company Formation · Advisory</div>
+  <div class="footer-copy">© 2024 Portal Hong Kong. All Rights Reserved.</div>
+</footer>
+
+</body>
+</html>
