@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>亞達科技策略有限公司 | IT外判專家 · 香港銅鑼灣</title>
+<meta name="description" content="亞達科技策略有限公司 (Asian TAT) 提供企業IT外判支援、SAP B1企業管理系統、大量電郵發送及文件管理系統服務，銅鑼灣辦公室，服務中小企。"/>
+<style>
+:root{
+  --primary:#0a1628;
+  --primary-mid:#102244;
+  --primary-light:#1648b0;
+  --accent:#00a8f8;
+  --accent-light:#40c8ff;
+  --accent2:#00e8c8;
+  --dark:#060e1a;
+  --surface:#f3f7fc;
+  --surface2:#e6eff8;
+  --text:#0a1628;
+  --text-muted:#506080;
+  --white:#ffffff;
+  --radius:10px;
+  --shadow:0 4px 24px rgba(10,22,40,0.12);
+  --shadow-lg:0 8px 48px rgba(10,22,40,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.7}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,14,26,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,168,248,0.2)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--primary-light),var(--accent));border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:var(--white)}
+.nav-logo-text{font-size:15px;font-weight:700;color:var(--white);line-height:1.2}
+.nav-logo-sub{font-size:11px;color:var(--accent);font-weight:400}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent-light)}
+.nav-cta{background:linear-gradient(135deg,var(--primary-light),var(--accent))!important;color:var(--white)!important;padding:8px 20px;border-radius:6px;font-weight:700!important;font-size:13px!important}
+@media(max-width:780px){.nav-links{display:none}}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(150deg,var(--dark) 0%,var(--primary) 55%,#0a1e40 100%);display:flex;align-items:center;padding-top:64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%2300a8f8' fill-opacity='0.06'/%3E%3C/svg%3E") repeat}
+.hero-glow1{position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,168,248,0.12) 0%,transparent 70%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:-150px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(0,232,200,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;padding:80px 24px;width:100%;display:grid;grid-template-columns:1fr 420px;gap:56px;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,168,248,0.15);border:1px solid rgba(0,168,248,0.3);border-radius:20px;padding:6px 16px;margin-bottom:18px}
+.hero-badge-dot{width:7px;height:7px;background:var(--accent-light);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hero-badge-text{font-size:12px;color:var(--accent-light);font-weight:600;letter-spacing:.5px}
+.hero h1{font-size:clamp(2rem,4vw,3.1rem);font-weight:900;color:var(--white);line-height:1.12;margin-bottom:8px}
+.hero h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-en{font-size:1rem;color:rgba(255,255,255,0.45);margin-bottom:18px}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:32px;max-width:520px}
+.price-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(0,232,200,0.15);border:1px solid rgba(0,232,200,0.3);border-radius:10px;padding:8px 16px;margin-bottom:28px}
+.price-text{font-size:13px;color:var(--accent2);font-weight:700}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--primary-light),var(--accent));color:var(--white);padding:14px 28px;border-radius:var(--radius);font-weight:700;font-size:15px;text-decoration:none;transition:all .2s;box-shadow:0 4px 20px rgba(0,168,248,0.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,168,248,0.45)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(255,255,255,0.3);color:var(--white);padding:14px 28px;border-radius:var(--radius);font-weight:600;font-size:15px;text-decoration:none;transition:all .2s}
+.btn-outline:hover{border-color:var(--accent-light);color:var(--accent-light)}
+.hero-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(16px);border:1px solid rgba(0,168,248,0.15);border-radius:18px;padding:30px;color:var(--white)}
+.hero-card-title{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.hero-card-title::before{content:'';width:14px;height:2px;background:var(--accent)}
+.info-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:13px}
+.info-icon{width:34px;height:34px;min-width:34px;background:rgba(0,168,248,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.info-lbl{font-size:11px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.info-val{font-size:13.5px;color:var(--white);font-weight:500;line-height:1.45}
+.info-val a{color:var(--accent-light);text-decoration:none}
+.hero-divider{height:1px;background:rgba(255,255,255,0.08);margin:14px 0}
+@media(max-width:920px){.hero-inner{grid-template-columns:1fr}.hero-card{max-width:480px}}
+
+/* STATS */
+.stats{background:linear-gradient(90deg,var(--primary-light),#0060d0);padding:44px 24px}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.stat-item{background:rgba(255,255,255,0.06);padding:28px 20px;text-align:center;transition:background .2s}
+.stat-item:first-child{border-radius:var(--radius) 0 0 var(--radius)}
+.stat-item:last-child{border-radius:0 var(--radius) var(--radius) 0}
+.stat-item:hover{background:rgba(255,255,255,0.12)}
+.stat-num{font-size:1.9rem;font-weight:900;color:var(--white);line-height:1;margin-bottom:5px}
+.stat-label{font-size:12.5px;color:rgba(255,255,255,0.75);font-weight:500}
+@media(max-width:640px){.stats-inner{grid-template-columns:repeat(2,1fr)}}
+
+/* SECTIONS */
+section{padding:88px 24px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(10,22,40,0.07);color:var(--primary-light);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px;border:1px solid rgba(22,72,176,0.2)}
+.section-title{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;color:var(--dark);line-height:1.22;margin-bottom:14px}
+.section-title span{color:var(--primary-light)}
+.section-sub{font-size:1rem;color:var(--text-muted);max-width:580px;line-height:1.8}
+.section-header{margin-bottom:52px}
+.bg-alt{background:var(--surface)}
+.bg-dark{background:var(--primary);color:var(--white)}
+.bg-dark .section-tag{background:rgba(0,168,248,0.15);color:var(--accent-light);border-color:rgba(0,168,248,0.25)}
+.bg-dark .section-title{color:var(--white)}
+.bg-dark .section-sub{color:rgba(255,255,255,0.65)}
+.divider{width:44px;height:3px;background:linear-gradient(90deg,var(--primary-light),var(--accent));border-radius:2px;margin-bottom:18px}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{background:var(--white);border:1px solid rgba(10,22,40,0.1);border-radius:16px;padding:28px;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary-light),var(--accent))}
+.svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.svc-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(22,72,176,0.08),rgba(0,168,248,0.12));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.svc-title{font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:4px}
+.svc-en{font-size:12px;color:var(--text-muted);margin-bottom:10px}
+.svc-desc{font-size:13.5px;color:var(--text-muted);line-height:1.75}
+.svc-tag{display:inline-block;background:rgba(22,72,176,0.08);color:var(--primary-light);font-size:11px;font-weight:600;padding:3px 10px;border-radius:10px;margin-top:10px}
+.svc-price{display:inline-block;background:rgba(0,232,200,0.12);color:#008870;font-size:12px;font-weight:700;padding:4px 10px;border-radius:8px;margin-top:8px}
+@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.svc-grid{grid-template-columns:1fr}}
+
+/* SOLUTIONS */
+.solutions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.sol-card{background:rgba(255,255,255,0.06);border:1px solid rgba(0,168,248,0.15);border-radius:16px;padding:28px;transition:all .2s}
+.sol-card:hover{background:rgba(255,255,255,0.1);border-color:rgba(0,168,248,0.3);transform:translateY(-3px)}
+.sol-icon{width:52px;height:52px;background:rgba(0,168,248,0.18);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.sol-title{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:6px}
+.sol-en{font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:10px}
+.sol-desc{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.7}
+.sol-bullets{margin-top:12px;list-style:none;display:flex;flex-direction:column;gap:5px}
+.sol-bullets li{font-size:12.5px;color:rgba(0,232,200,0.85);padding-left:14px;position:relative}
+.sol-bullets li::before{content:'▸';position:absolute;left:0;color:var(--accent)}
+@media(max-width:900px){.solutions-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.solutions-grid{grid-template-columns:1fr}}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-body p{font-size:1rem;color:var(--text-muted);line-height:1.85;margin-bottom:16px}
+.about-feats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.feat-item{background:var(--surface2);border-radius:10px;padding:18px;border-left:3px solid var(--accent)}
+.feat-title{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:4px}
+.feat-desc{font-size:12.5px;color:var(--text-muted);line-height:1.6}
+.about-vis{background:linear-gradient(135deg,var(--dark),var(--primary));border-radius:18px;padding:36px}
+.about-vis-title{font-size:1rem;font-weight:700;color:var(--accent-light);margin-bottom:20px}
+.why-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:18px;padding:16px;background:rgba(255,255,255,0.05);border-radius:10px;border-left:2px solid var(--accent)}
+.why-icon{font-size:1.4rem;flex-shrink:0}
+.why-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px}
+.why-desc{font-size:12.5px;color:rgba(255,255,255,0.6);line-height:1.5}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr}.about-feats{grid-template-columns:1fr}}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:start}
+.contact-card{background:linear-gradient(135deg,var(--dark),var(--primary));border-radius:16px;padding:34px;color:var(--white)}
+.contact-title{font-size:17px;font-weight:700;color:var(--accent-light);margin-bottom:22px}
+.c-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+.c-icon{width:38px;height:38px;min-width:38px;background:rgba(0,168,248,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.c-lbl{font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:.5px;margin-bottom:3px;text-transform:uppercase}
+.c-val{font-size:13.5px;color:var(--white);font-weight:500;line-height:1.5}
+.c-val a{color:var(--accent-light);text-decoration:none}
+.wa-btn{display:flex;align-items:center;gap:8px;background:rgba(37,211,102,0.2);border:1px solid rgba(37,211,102,0.35);border-radius:10px;padding:12px 16px;margin-top:8px;text-decoration:none;transition:all .2s}
+.wa-btn:hover{background:rgba(37,211,102,0.3)}
+.wa-btn-text{font-size:14px;color:#4dda85;font-weight:700}
+.form-card{background:var(--surface);border-radius:16px;padding:34px;border:1px solid rgba(10,22,40,0.1)}
+.form-title{font-size:17px;font-weight:700;color:var(--primary);margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid rgba(10,22,40,0.15);border-radius:8px;font-size:14px;color:var(--text);background:var(--white);transition:border-color .2s;outline:none;font-family:inherit}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.submit-btn{width:100%;background:linear-gradient(135deg,var(--primary-light),var(--accent));color:var(--white);padding:14px;border:none;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s,transform .2s}
+.submit-btn:hover{opacity:.9;transform:translateY(-1px)}
+@media(max-width:800px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:var(--dark);padding:48px 24px 28px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;margin-bottom:32px}
+.footer-brand-name{font-size:16px;font-weight:800;color:var(--white);margin-bottom:4px}
+.footer-brand-en{font-size:12px;color:var(--accent);margin-bottom:12px}
+.footer-brand-desc{font-size:12.5px;color:rgba(255,255,255,0.45);line-height:1.75}
+.footer-heading{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.8px;text-transform:uppercase;margin-bottom:14px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--accent-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.35)}
+@media(max-width:800px){.footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">TAT</div>
+      <div>
+        <div class="nav-logo-text">亞達科技策略有限公司</div>
+        <div class="nav-logo-sub">Asian TAT Technology Strategy</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">服務</a></li>
+      <li><a href="#solutions">IT方案</a></li>
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#contact" class="nav-cta">即時諮詢</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow1"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        <span class="hero-badge-text">IT外判專家 · 銅鑼灣</span>
+      </div>
+      <h1>中小企<span>IT外判</span><br/>專業夥伴</h1>
+      <div class="hero-en">Asian TAT Technology Strategy Limited</div>
+      <p class="hero-desc">亞達科技策略有限公司專為香港中小企提供全方位IT外判服務，包括無限次IT技術支援、SAP B1企業管理系統、大量電郵發送及文件管理系統，助您提升業務效率。</p>
+      <div class="price-tag">
+        <span>💡</span>
+        <span class="price-text">SME IT 支援計劃 — HK$500 起</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">立即查詢 →</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">聯絡資訊</div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-lbl">辦公室</div>
+          <div class="info-val">銅鑼灣軒尼詩道438號<br/>金鵝商業大廈20樓<br/>香港</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-lbl">電話</div>
+          <div class="info-val"><a href="tel:+85228936893">+852 2893 6893</a><br/><a href="tel:+85228936863">+852 2893 6863</a></div>
+        </div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-lbl">電郵</div>
+          <div class="info-val"><a href="mailto:sales@asiantat.com">sales@asiantat.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">⏰</div>
+        <div>
+          <div class="info-lbl">辦公時間</div>
+          <div class="info-val">星期一至五 9am – 6pm<br/>星期六及公眾假期休息</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">$500</div>
+      <div class="stat-label">IT支援計劃起</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">無限次上門支援</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">SAP</div>
+      <div class="stat-label">B1 企業系統認可合作夥伴</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">SME</div>
+      <div class="stat-label">中小企 IT 外判專家</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">服務範疇</div>
+      <h2 class="section-title">全方位<span>IT外判服務</span></h2>
+      <p class="section-sub">亞達科技為香港中小企提供一站式IT外判方案，讓您專注業務發展，技術問題交給我們。</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🖥️</div>
+        <div class="svc-title">SME IT技術支援</div>
+        <div class="svc-en">SME IT Support</div>
+        <div class="svc-desc">全年無限次技術支援，涵蓋電郵、電話、遙距及上門服務，為中小企提供最全面的IT外判解決方案。</div>
+        <div class="svc-price">HK$500 起/月</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📊</div>
+        <div class="svc-title">SAP B1 企業管理系統</div>
+        <div class="svc-en">SAP Business One</div>
+        <div class="svc-desc">為中小型企業部署SAP Business One系統，整合財務、採購、銷售及庫存管理，提升業務效率及決策能力。</div>
+        <div class="svc-tag">ERP Solution</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📨</div>
+        <div class="svc-title">大量電郵發送系統</div>
+        <div class="svc-en">Mass Emailing Solution</div>
+        <div class="svc-desc">迅速低成本地發送大量自訂電郵，適用於電子直銷、內部通知、客戶通訊，有效建立及維護客戶關係。</div>
+        <div class="svc-tag">Email Marketing</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📁</div>
+        <div class="svc-title">DMS TAT 文件管理系統</div>
+        <div class="svc-en">Document Management System</div>
+        <div class="svc-desc">集中存儲、管理及追蹤電子文件，提供快速搜索、掃描整合及嚴格的存取權限控制，確保文件安全及資訊保密。</div>
+        <div class="svc-tag">DMS Solution</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📈</div>
+        <div class="svc-title">Excel 報告自動化</div>
+        <div class="svc-en">Excel Macro Solution</div>
+        <div class="svc-desc">為企業度身訂製Excel Macro報告自動化方案，大幅節省製作報表的時間及人力成本，提升數據處理效率。</div>
+        <div class="svc-tag">Automation</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔧</div>
+        <div class="svc-title">IT 專業顧問</div>
+        <div class="svc-en">IT Consultancy</div>
+        <div class="svc-desc">根據客戶公司的IT網絡架構及業務需求，提供專業的IT策略建議及系統規劃，協助企業作出最合適的IT投資決定。</div>
+        <div class="svc-tag">Consulting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section id="solutions" class="bg-dark">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">主要方案</div>
+      <h2 class="section-title">三大核心<span style="color:var(--accent-light)">IT解決方案</span></h2>
+      <p class="section-sub">亞達科技的三大核心IT方案，助中小企建立穩固的數碼業務基礎。</p>
+    </div>
+    <div class="solutions-grid">
+      <div class="sol-card">
+        <div class="sol-icon">🏢</div>
+        <div class="sol-title">SAP Business One</div>
+        <div class="sol-en">SAP B1 企業管理系統</div>
+        <div class="sol-desc">專為中小型企業設計的一體化業務管理軟件，在單一系統內管理所有關鍵業務功能，提供即時業務洞察。</div>
+        <ul class="sol-bullets">
+          <li>財務管理及會計</li>
+          <li>採購及庫存管理</li>
+          <li>銷售及客戶關係管理</li>
+          <li>生產及物料計劃</li>
+          <li>即時業務報告</li>
+        </ul>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">📧</div>
+        <div class="sol-title">Mass Emailing Solution</div>
+        <div class="sol-en">大量電郵發送系統</div>
+        <div class="sol-desc">低成本大量電郵發送方案，助企業推廣產品、傳送通知及建立客戶關係。可自訂內容，快速觸及目標客群。</div>
+        <ul class="sol-bullets">
+          <li>電子郵件行銷通訊</li>
+          <li>推廣優惠及產品更新</li>
+          <li>公司通知及文件分享</li>
+          <li>內部員工通訊</li>
+          <li>提升客戶轉化率</li>
+        </ul>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">🗂️</div>
+        <div class="sol-title">DMS TAT Solution</div>
+        <div class="sol-en">文件管理系統</div>
+        <div class="sol-desc">全面的電子文件管理方案，通過掃描儀整合將紙本文件數碼化，提供安全存儲、快速搜索及嚴格權限管理。</div>
+        <ul class="sol-bullets">
+          <li>易用的文件目錄結構</li>
+          <li>多種快速文件搜索方式</li>
+          <li>兼容各類文件掃描儀</li>
+          <li>管理員存取權限控制</li>
+          <li>確保機密文件安全</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="bg-alt">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">關於我們</div>
+        <h2 class="section-title">中小企<span>IT外判首選</span></h2>
+        <div class="divider"></div>
+        <div class="about-body">
+          <p>亞達科技策略有限公司（Asian TAT Technology Strategy Limited）是一家專注於為香港中小型企業提供IT外判服務及IT解決方案的專業公司，辦公室設於銅鑼灣。</p>
+          <p>我們深明中小企業在IT資源上的限制，因此提供靈活且具成本效益的IT外判服務計劃，讓您無需自設IT部門，亦能享有全面的IT支援及先進的業務技術方案。</p>
+          <p>我們的服務範疇涵蓋日常IT技術支援、SAP B1企業管理系統部署、大量電郵行銷系統及文件管理系統，一站式滿足中小企業的IT需求。</p>
+        </div>
+        <div class="about-feats">
+          <div class="feat-item">
+            <div class="feat-title">🏆 無限次支援</div>
+            <div class="feat-desc">一年無限次電郵、電話、遙距及上門技術支援</div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-title">💰 合理收費</div>
+            <div class="feat-desc">IT支援計劃由$500起，適合不同規模的中小企</div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-title">🏙️ 銅鑼灣辦公室</div>
+            <div class="feat-desc">位於銅鑼灣核心商業區，交通便利</div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-title">🤝 長期合作夥伴</div>
+            <div class="feat-desc">致力成為中小企業最可靠的長期IT技術夥伴</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-vis">
+        <div class="about-vis-title">為何選擇亞達科技</div>
+        <div class="why-item">
+          <div class="why-icon">⚡</div>
+          <div>
+            <div class="why-title">快速響應支援</div>
+            <div class="why-desc">電郵、電話、遙距及上門支援一應俱全，迅速解決IT問題</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">💡</div>
+          <div>
+            <div class="why-title">專業IT知識</div>
+            <div class="why-desc">團隊具備SAP、網絡架構、系統整合等多方面專業技術</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🎯</div>
+          <div>
+            <div class="why-title">度身訂製方案</div>
+            <div class="why-desc">根據客戶的業務需求及IT環境，提供最切合的IT解決方案</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">📱</div>
+          <div>
+            <div class="why-title">WhatsApp IT支援</div>
+            <div class="why-desc">提供WhatsApp即時IT支援查詢，溝通更便捷</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">即時<span>IT支援查詢</span></h2>
+      <p class="section-sub">歡迎致電、傳送電郵或填寫查詢表格，我們的IT顧問將盡快為您提供解決方案。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-title">聯絡資訊</div>
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-lbl">辦公室地址</div>
+            <div class="c-val">銅鑼灣軒尼詩道438號<br/>金鵝商業大廈20樓<br/>香港</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-lbl">電話</div>
+            <div class="c-val">
+              <a href="tel:+85228936893">+852 2893 6893</a><br/>
+              <a href="tel:+85228936863">+852 2893 6863</a>
+            </div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📧</div>
+          <div>
+            <div class="c-lbl">電郵</div>
+            <div class="c-val"><a href="mailto:sales@asiantat.com">sales@asiantat.com</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">⏰</div>
+          <div>
+            <div class="c-lbl">辦公時間</div>
+            <div class="c-val">星期一至五：9am – 6pm<br/>星期六及公眾假期：休息</div>
+          </div>
+        </div>
+        <a href="https://wa.me/85228936893" class="wa-btn" target="_blank" rel="noopener">
+          <span style="font-size:20px">💬</span>
+          <span class="wa-btn-text">WhatsApp IT 支援查詢</span>
+        </a>
+      </div>
+      <div class="form-card">
+        <div class="form-title">發送查詢</div>
+        <form onsubmit="return false">
+          <div class="form-row">
+            <div class="form-group">
+              <label>公司名稱 *</label>
+              <input type="text" placeholder="公司名稱"/>
+            </div>
+            <div class="form-group">
+              <label>聯絡人 *</label>
+              <input type="text" placeholder="您的姓名"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>聯絡電話 *</label>
+              <input type="tel" placeholder="+852 XXXX XXXX"/>
+            </div>
+            <div class="form-group">
+              <label>電郵地址 *</label>
+              <input type="email" placeholder="your@email.com"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>查詢服務</label>
+            <select>
+              <option value="">-- 請選擇服務 --</option>
+              <option>SME IT 技術支援計劃</option>
+              <option>SAP B1 企業管理系統</option>
+              <option>大量電郵發送系統</option>
+              <option>DMS TAT 文件管理系統</option>
+              <option>Excel 報告自動化</option>
+              <option>IT 專業顧問</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>查詢內容 *</label>
+            <textarea placeholder="請描述您的IT需求或問題…"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">提交查詢 →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">亞達科技策略有限公司</div>
+        <div class="footer-brand-en">Asian TAT Technology Strategy Limited</div>
+        <div class="footer-brand-desc">香港中小企IT外判專家，提供全方位IT技術支援、SAP B1企業管理系統、大量電郵發送及文件管理系統服務。<br/><br/>銅鑼灣軒尼詩道438號金鵝商業大廈20樓</div>
+      </div>
+      <div>
+        <div class="footer-heading">服務</div>
+        <ul class="footer-links">
+          <li><a href="#services">SME IT支援</a></li>
+          <li><a href="#services">SAP B1系統</a></li>
+          <li><a href="#services">大量電郵發送</a></li>
+          <li><a href="#services">文件管理系統</a></li>
+          <li><a href="#services">IT顧問</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">IT方案</div>
+        <ul class="footer-links">
+          <li><a href="#solutions">SAP Business One</a></li>
+          <li><a href="#solutions">Mass Emailing</a></li>
+          <li><a href="#solutions">DMS TAT</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">聯絡</div>
+        <ul class="footer-links">
+          <li><a href="tel:+85228936893">2893 6893</a></li>
+          <li><a href="tel:+85228936863">2893 6863</a></li>
+          <li><a href="mailto:sales@asiantat.com">sales@asiantat.com</a></li>
+          <li><a href="#about">關於我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 亞達科技策略有限公司. 版權所有。</div>
+      <div class="footer-copy">銅鑼灣軒尼詩道438號金鵝商業大廈20樓 | asiantat.com</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
