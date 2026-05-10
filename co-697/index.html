@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>嘉誠裝飾設計工程 GNS Limited | 香港室內裝修工程</title>
+<meta name="description" content="嘉誠裝飾設計工程有限公司 — 香港專業室內裝修工程公司，承接食肆、辦公室、零售商店、貨倉及住宅工程，提供一站式裝修服務，免費上門度尺報價。">
+<style>
+:root {
+  --bg:       #06080c;
+  --bg2:      #0c0f18;
+  --bg3:      #121620;
+  --orange:   #d07830;
+  --orange-lt:#f09848;
+  --gold:     #e0b040;
+  --gold-lt:  #f8cc58;
+  --text:     #eef0f4;
+  --muted:    #8090a8;
+  --border:   rgba(208,120,48,0.18);
+  --card-bg:  rgba(255,255,255,0.03);
+  --radius:   12px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans HK','PingFang HK','Microsoft JhengHei',sans-serif;line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,8,12,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1.1rem;font-weight:800;color:var(--orange-lt);letter-spacing:.02em}
+.nav-logo span{color:var(--gold);font-size:.85rem;font-weight:400;margin-left:6px}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--orange),var(--orange-lt));color:#fff;border:none;padding:9px 22px;border-radius:6px;font-size:.88rem;cursor:pointer;font-weight:700;text-decoration:none;transition:opacity .2s;white-space:nowrap}
+.nav-cta:hover{opacity:.88}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 65% 35%,rgba(208,120,48,0.12) 0%,transparent 65%),radial-gradient(ellipse 50% 50% at 15% 70%,rgba(224,176,64,0.07) 0%,transparent 55%);pointer-events:none}
+.hero-deco{position:absolute;top:12%;right:4%;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(208,120,48,0.1) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(208,120,48,0.12);border:1px solid rgba(208,120,48,0.3);border-radius:6px;padding:6px 14px;font-size:.8rem;color:var(--orange-lt);margin-bottom:20px;letter-spacing:.04em}
+.hero-tag::before{content:'🏗';font-size:.85rem}
+h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1.15;margin-bottom:12px;letter-spacing:-.01em}
+h1 .sub{display:block;font-size:clamp(.95rem,2vw,1.4rem);font-weight:400;color:var(--gold);letter-spacing:.04em;margin-top:8px}
+.hero-desc{color:var(--muted);font-size:1rem;max-width:440px;margin:18px 0 32px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--orange),var(--orange-lt));color:#fff;padding:13px 30px;border-radius:6px;font-size:.95rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}
+.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 28px;border-radius:6px;font-size:.95rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}
+.btn-outline:hover{border-color:var(--orange);color:var(--orange-lt)}
+
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:17px}
+.card-badge{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.badge-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--orange),var(--orange-lt));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.badge-label{font-size:.77rem;color:var(--muted)}
+.badge-name{font-size:.97rem;font-weight:700}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--orange);flex-shrink:0;margin-top:2px;text-align:center}
+.card-row-text{font-size:.9rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block}
+.free-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(32,200,80,0.1);border:1px solid rgba(32,200,80,0.22);border-radius:6px;padding:5px 12px;font-size:.8rem;color:#40e880;margin-top:2px;font-weight:600}
+
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.stat-item{text-align:center}
+.stat-num{font-size:2.3rem;font-weight:900;background:linear-gradient(135deg,var(--orange-lt),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.86rem;margin-top:6px}
+
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(208,120,48,0.1);border:1px solid rgba(208,120,48,0.22);border-radius:6px;padding:4px 13px;font-size:.77rem;color:var(--orange-lt);letter-spacing:.05em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--orange-lt)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-body p{color:var(--muted);font-size:.97rem;margin-bottom:16px;line-height:1.8}
+.highlight-box{background:linear-gradient(135deg,rgba(208,120,48,0.1),rgba(224,176,64,0.06));border-left:3px solid var(--orange);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:24px 0}
+.highlight-box p{color:var(--text);font-size:.97rem;line-height:1.75;margin:0}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.prop-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px;display:flex;align-items:flex-start;gap:10px}
+.prop-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
+.prop-card h4{font-size:.88rem;font-weight:700;margin-bottom:3px}
+.prop-card p{font-size:.8rem;color:var(--muted);line-height:1.5}
+
+/* Project type cards */
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.project-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s;position:relative;overflow:hidden}
+.project-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));opacity:0;transition:opacity .25s}
+.project-card:hover{border-color:var(--orange);transform:translateY(-4px)}
+.project-card:hover::after{opacity:1}
+.pc-icon{width:52px;height:52px;background:rgba(208,120,48,0.12);border:1px solid rgba(208,120,48,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:14px}
+.pc-title{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.pc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.pc-tag{display:inline-block;margin-top:12px;font-size:.78rem;color:var(--gold);font-weight:600;background:rgba(224,176,64,0.1);border:1px solid rgba(224,176,64,0.2);border-radius:6px;padding:3px 10px}
+
+/* Services cards */
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:22px;text-align:center;transition:border-color .25s,transform .25s}
+.svc-card:hover{border-color:var(--orange);transform:translateY(-3px)}
+.svc-icon{font-size:1.8rem;margin-bottom:10px}
+.svc-title{font-size:.93rem;font-weight:700;margin-bottom:6px}
+.svc-desc{font-size:.82rem;color:var(--muted);line-height:1.6}
+
+/* Coverage section */
+.coverage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cov-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:border-color .25s}
+.cov-card:hover{border-color:var(--gold)}
+.cov-flag{font-size:2.4rem;margin-bottom:12px}
+.cov-name{font-size:1.1rem;font-weight:800;margin-bottom:8px}
+.cov-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.cov-status{display:inline-block;margin-top:10px;font-size:.78rem;color:var(--orange-lt);background:rgba(208,120,48,0.1);border:1px solid rgba(208,120,48,0.2);border-radius:6px;padding:3px 10px;font-weight:600}
+
+/* Process steps */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.process-step{position:relative;text-align:center;padding:28px 20px}
+.step-num{width:52px;height:52px;background:linear-gradient(135deg,var(--orange),var(--orange-lt));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:900;color:#fff;margin:0 auto 16px;position:relative}
+.step-num::after{content:'';position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);width:calc((100vw/4) - 82px);max-width:80px;height:1px;background:linear-gradient(90deg,var(--orange),transparent)}
+.process-step:last-child .step-num::after{display:none}
+.step-title{font-size:.97rem;font-weight:700;margin-bottom:8px}
+.step-desc{font-size:.84rem;color:var(--muted);line-height:1.6}
+
+.contact-section{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(208,120,48,0.1);border:1px solid rgba(208,120,48,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.76rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.95rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--orange-lt);text-decoration:none}
+.ci-value a:hover{text-decoration:underline}
+.contact-cta{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.cta-btn{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--orange),var(--orange-lt));color:#fff;padding:14px 20px;border-radius:8px;text-decoration:none;font-weight:700;font-size:.97rem;transition:opacity .2s}
+.cta-btn:hover{opacity:.88}
+.cta-btn.wa{background:linear-gradient(135deg,#1a7a40,#28a854)}
+.cta-btn-icon{font-size:1.2rem}
+.contact-form-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:36px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.81rem;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--orange)}
+.form-group textarea{min-height:95px;resize:vertical}
+.form-group select option{background:#0c0f18}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--orange),var(--orange-lt));color:#fff;border:none;padding:13px;border-radius:8px;font-size:.97rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}
+.form-submit:hover{opacity:.88}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:1rem;font-weight:800;color:var(--orange-lt)}
+.footer-logo span{color:var(--muted);font-weight:400;font-size:.85rem;margin-left:6px}
+.footer-copy{font-size:.8rem;color:var(--muted);text-align:center}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-deco{display:none}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .project-grid,.coverage-grid{grid-template-columns:1fr 1fr}
+  .services-grid,.process-grid{grid-template-columns:repeat(2,1fr)}
+  .about-props{grid-template-columns:1fr}
+  .process-step .step-num::after{display:none}
+}
+@media(max-width:600px){
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .project-grid,.coverage-grid,.services-grid,.process-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .form-row{grid-template-columns:1fr}
+  .footer-inner{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">嘉誠裝飾設計工程<span>GNS Limited</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#projects">工程類別</a></li>
+      <li><a href="#services">服務範疇</a></li>
+      <li><a href="#coverage">服務地區</a></li>
+      <li><a href="#contact">聯絡報價</a></li>
+    </ul>
+    <a href="tel:+85292197984" class="nav-cta">免費報價</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">香港 · 澳門 · 中國內地 室內裝修工程</div>
+      <h1>
+        嘉誠裝飾設計工程
+        <span class="sub">GNS Design & Engineering · 一站式室內裝修</span>
+      </h1>
+      <p class="hero-desc">多年專業室內裝修經驗，承接食肆、辦公室、零售商店、貨倉及住宅工程。提供木工、鐵工、防水、水電、油漆及清拆等全面服務，免費上門度尺報價。</p>
+      <div class="hero-btns">
+        <a href="tel:+85292197984" class="btn-primary">致電免費報價</a>
+        <a href="#projects" class="btn-outline">了解工程類別</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-icon">🏗</div>
+        <div>
+          <div class="badge-label">香港專業裝修公司</div>
+          <div class="badge-name">嘉誠裝飾設計工程有限公司</div>
+        </div>
+      </div>
+      <div class="free-badge">✓ 免費上門度尺報價</div>
+      <hr class="card-divider">
+      <div class="card-row">
+        <div class="card-row-icon">📞</div>
+        <div class="card-row-text">
+          <strong>聯絡電話 / WhatsApp</strong>
+          92197984（黃先生）· 92265312（Jack）
+        </div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-icon">✉</div>
+        <div class="card-row-text">
+          <strong>電郵</strong>
+          gnsdesignco@gmail.com
+        </div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-icon">🌏</div>
+        <div class="card-row-text">
+          <strong>服務地區</strong>
+          香港 · 中國內地 · 澳門
+        </div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-icon">🏠</div>
+        <div class="card-row-text">
+          <strong>承接工程</strong>
+          食肆 · 辦公室 · 商店 · 貨倉 · 住宅
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">多年</div>
+      <div class="stat-label">專業裝修經驗</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">地區服務（港澳中）</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">工程類別</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">免費</div>
+      <div class="stat-label">上門度尺報價</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="section-tag">關於嘉誠</div>
+        <h2>香港<span class="accent">一站式</span>室內裝修專家</h2>
+        <p>嘉誠裝飾設計工程有限公司（GNS Limited）為一間已有多年經驗的香港室內裝修公司，主要承接食肆、辦公室、零售商店、貨倉及住宅工程。憑藉豐富的本地工程經驗，我們的服務範圍已延伸至中國內地及澳門。</p>
+        <p>我們提供從設計規劃到完工驗收的一站式室內裝修服務，涵蓋木工製作、鐵工製作、防水工程、水電工程、油漆工程、清拆工程及裝修跟進保養。以專業的工藝和負責任的態度，確保每個工程項目的品質。</p>
+        <div class="highlight-box">
+          <p>「歡迎聯絡本公司，提供免費上門度尺報價服務。我們以誠信、專業和準時完工為服務承諾，讓您的裝修工程無後顧之憂。」</p>
+        </div>
+        <div class="about-props">
+          <div class="prop-card">
+            <div class="prop-icon">🏆</div>
+            <div>
+              <h4>豐富工程經驗</h4>
+              <p>多年香港本地裝修工程經驗</p>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🔨</div>
+            <div>
+              <h4>一站式服務</h4>
+              <p>由規劃到完工，全程跟進</p>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">✅</div>
+            <div>
+              <h4>免費報價服務</h4>
+              <p>免費上門度尺，詳細報價</p>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🤝</div>
+            <div>
+              <h4>誠信可靠</h4>
+              <p>準時完工，售後保養支援</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:32px">
+          <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:20px;color:var(--orange-lt)">服務範疇一覽</h3>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:.95rem;display:flex;align-items:center;gap:8px">🪵 木工製作</span>
+              <span style="color:var(--orange-lt);font-size:.82rem">訂製傢俬 · 木板裝飾</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:.95rem;display:flex;align-items:center;gap:8px">🔩 鐵工製作</span>
+              <span style="color:var(--orange-lt);font-size:.82rem">金屬結構 · 鐵器訂製</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:.95rem;display:flex;align-items:center;gap:8px">💧 防水工程</span>
+              <span style="color:var(--orange-lt);font-size:.82rem">廚廁 · 天台 · 外牆</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:.95rem;display:flex;align-items:center;gap:8px">⚡ 水電工程</span>
+              <span style="color:var(--orange-lt);font-size:.82rem">電線 · 喉管 · 燈飾</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:.95rem;display:flex;align-items:center;gap:8px">🎨 油漆工程</span>
+              <span style="color:var(--orange-lt);font-size:.82rem">牆壁 · 天花 · 特效漆</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0">
+              <span style="font-size:.95rem;display:flex;align-items:center;gap:8px">🔨 清拆工程</span>
+              <span style="color:var(--orange-lt);font-size:.82rem">拆除 · 廢料搬運</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT TYPES -->
+<section id="projects" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="section-tag">工程類別</div>
+    <h2>承接各類<span class="accent">室內裝修</span>工程</h2>
+    <p class="section-lead">無論是商業或住宅工程，嘉誠裝飾設計工程均有豐富的承接經驗，為每個項目提供最專業的裝修方案。</p>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="pc-icon">🍽</div>
+        <div class="pc-title">食肆裝修工程</div>
+        <div class="pc-desc">承接各類型食肆裝修，包括餐廳、茶餐廳、快餐店、咖啡廳及酒吧等。熟悉食環署相關法規，確保工程符合商業食肆要求，提升用餐環境。</div>
+        <span class="pc-tag">商業餐飲</span>
+      </div>
+      <div class="project-card">
+        <div class="pc-icon">🏢</div>
+        <div class="pc-title">辦公室裝修工程</div>
+        <div class="pc-desc">為各類型辦公室提供整體翻新裝修服務，包括間隔設計、辦公桌椅訂製、會議室設計、水電佈線及資訊科技配套設施安裝，打造高效舒適的工作環境。</div>
+        <span class="pc-tag">商業辦公</span>
+      </div>
+      <div class="project-card">
+        <div class="pc-icon">🛍</div>
+        <div class="pc-title">零售商店裝修</div>
+        <div class="pc-desc">為零售商店、展覽場地及品牌旗艦店提供度身定製裝修設計，突出品牌形象，提升顧客購物體驗，吸引人流，增加銷售機會。</div>
+        <span class="pc-tag">商業零售</span>
+      </div>
+      <div class="project-card">
+        <div class="pc-icon">📦</div>
+        <div class="pc-title">貨倉裝修工程</div>
+        <div class="pc-desc">承接倉庫及貨倉裝修工程，包括地台處理、鐵架安裝、消防系統配合、照明系統及辦公區分隔，提升貨倉空間利用率及操作效率。</div>
+        <span class="pc-tag">工業倉儲</span>
+      </div>
+      <div class="project-card">
+        <div class="pc-icon">🏠</div>
+        <div class="pc-title">住宅裝修工程</div>
+        <div class="pc-desc">為住宅單位提供全面翻新裝修服務，包括廚廁翻新、木工訂製、牆身鋪貼及油漆工程。從設計概念到完工驗收，全程跟進，讓您的家居煥然一新。</div>
+        <span class="pc-tag">住宅家居</span>
+      </div>
+      <div class="project-card">
+        <div class="pc-icon">🔧</div>
+        <div class="pc-title">裝修保養維修</div>
+        <div class="pc-desc">提供完工後的裝修跟進及保養服務，處理漏水、油漆剝落、木工損壞等各類維修問題。定期保養計劃，確保您的裝修效果長久維持。</div>
+        <span class="pc-tag">售後保養</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES / TRADES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">專業工種</div>
+    <h2>一站式<span class="accent">專業工種</span>服務</h2>
+    <p class="section-lead">嘉誠裝飾設計工程提供完整的室內裝修工種服務，由清拆至完工，全程專業施工。</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🪵</div>
+        <div class="svc-title">木工製作</div>
+        <div class="svc-desc">訂製傢俬、間隔板、吊頂、地板及各類木作裝飾工程</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔩</div>
+        <div class="svc-title">鐵工製作</div>
+        <div class="svc-desc">金屬結構件、鐵閘、樓梯欄河及各類鐵器訂製安裝</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💧</div>
+        <div class="svc-title">防水工程</div>
+        <div class="svc-desc">廁所、廚房、天台及外牆防水處理，杜絕滲漏問題</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">⚡</div>
+        <div class="svc-title">水電工程</div>
+        <div class="svc-desc">電線電路安裝、水喉管道佈設及燈飾照明系統工程</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🎨</div>
+        <div class="svc-title">油漆工程</div>
+        <div class="svc-desc">牆壁、天花及各類面板的油漆批盪及特效漆工程</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">⛏</div>
+        <div class="svc-title">清拆工程</div>
+        <div class="svc-desc">室內間隔、地台及各類固定裝置的拆除及廢料搬運</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔲</div>
+        <div class="svc-title">地板鋪設</div>
+        <div class="svc-desc">地磚、石材、木地板及各類地板材料的供應及鋪設</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🛠</div>
+        <div class="svc-title">裝修保養</div>
+        <div class="svc-desc">完工後裝修跟進、定期保養及各類維修服務</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section id="coverage" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="section-tag">服務地區</div>
+    <h2>覆蓋<span class="accent">三地</span>服務範圍</h2>
+    <p class="section-lead">嘉誠裝飾設計工程除香港本地工程外，亦承接中國內地及澳門的室內裝修工程項目。</p>
+    <div class="coverage-grid">
+      <div class="cov-card">
+        <div class="cov-flag">🇭🇰</div>
+        <div class="cov-name">香港</div>
+        <div class="cov-desc">本地主要服務地區，承接各類商業及住宅裝修工程，覆蓋全港十八區。</div>
+        <span class="cov-status">主要服務地區</span>
+      </div>
+      <div class="cov-card">
+        <div class="cov-flag">🇨🇳</div>
+        <div class="cov-name">中國內地</div>
+        <div class="cov-desc">承接中國內地室內裝修工程，熟悉內地建築法規及施工標準，確保工程質量。</div>
+        <span class="cov-status">亦有承接</span>
+      </div>
+      <div class="cov-card">
+        <div class="cov-flag">🇲🇴</div>
+        <div class="cov-name">澳門</div>
+        <div class="cov-desc">提供澳門地區室內裝修工程服務，為客戶提供跨境一站式裝修解決方案。</div>
+        <span class="cov-status">亦有承接</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag">工程流程</div>
+    <h2>簡單<span class="accent">四步</span>完成裝修</h2>
+    <p class="section-lead" style="margin-bottom:48px">由初步諮詢到完工驗收，嘉誠裝飾設計工程為您提供清晰透明的工程流程。</p>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-title">免費上門諮詢</div>
+        <div class="step-desc">致電或WhatsApp聯絡，安排上門度尺量場，了解您的裝修需求及預算</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-title">詳細報價方案</div>
+        <div class="step-desc">根據場地量度及客戶要求，提供清晰詳細的裝修報價方案</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-title">專業施工執行</div>
+        <div class="step-desc">由專業工人團隊按計劃施工，全程監管工程質量及進度</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-title">驗收及售後保養</div>
+        <div class="step-desc">完工後詳細驗收，並提供裝修後跟進保養服務</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡報價</div>
+    <h2>免費<span class="accent">上門報價</span>查詢</h2>
+    <p class="section-lead">歡迎致電、WhatsApp 或電郵聯絡，我們提供免費上門度尺及詳細報價服務。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">電話 / WhatsApp（黃先生）</div>
+            <div class="ci-value"><a href="tel:+85292197984">9219 7984</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">電話 / WhatsApp（Jack）</div>
+            <div class="ci-value"><a href="tel:+85292265312">9226 5312</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉</div>
+          <div>
+            <div class="ci-label">電郵</div>
+            <div class="ci-value"><a href="mailto:gnsdesignco@gmail.com">gnsdesignco@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌏</div>
+          <div>
+            <div class="ci-label">服務地區</div>
+            <div class="ci-value">香港 · 中國內地 · 澳門</div>
+          </div>
+        </div>
+        <div class="contact-cta">
+          <a href="tel:+85292197984" class="cta-btn">
+            <span class="cta-btn-icon">📞</span>
+            立即致電黃先生：9219 7984
+          </a>
+          <a href="https://wa.me/85292197984" class="cta-btn wa">
+            <span class="cta-btn-icon">💬</span>
+            WhatsApp 查詢：9219 7984
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>免費報價查詢</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label>姓名</label>
+              <input type="text" placeholder="您的姓名">
+            </div>
+            <div class="form-group">
+              <label>聯絡電話</label>
+              <input type="tel" placeholder="9XXX XXXX">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>工程類別</label>
+            <select>
+              <option value="">請選擇工程類別</option>
+              <option>食肆裝修工程</option>
+              <option>辦公室裝修工程</option>
+              <option>零售商店裝修</option>
+              <option>貨倉裝修工程</option>
+              <option>住宅裝修工程</option>
+              <option>裝修保養維修</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>工程地點</label>
+            <input type="text" placeholder="例：香港 / 澳門 / 中國內地（城市）">
+          </div>
+          <div class="form-group">
+            <label>工程詳情 / 要求</label>
+            <textarea placeholder="請簡述工程範圍、面積、預算或任何特別要求..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">提交免費報價查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">嘉誠裝飾設計工程<span>GNS Limited · 香港</span></div>
+    <div class="footer-copy">© 2025 嘉誠裝飾設計工程有限公司 · 香港 · 澳門 · 中國內地 · gnsdesignco@gmail.com</div>
+    <div class="footer-links">
+      <a href="#about">關於</a>
+      <a href="#projects">工程</a>
+      <a href="#contact">聯絡</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
