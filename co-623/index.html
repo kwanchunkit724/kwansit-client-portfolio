@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>聯合新零售（香港）有限公司 | SUP Retail · 文化書店生活體驗</title>
+<meta name="description" content="聯合新零售（香港）有限公司（SUP Retail）— 香港文化書店零售集團，旗下設有the PLACE、the HUB、the CREDIT等文化體驗空間及中華書局門市，經營MyBookOne網上書店、Kiddyland兒童平台及SUPer Card會員計劃。"/>
+<style>
+:root{
+  --bg:#04060e;
+  --surface:#080c16;
+  --card:#0e1220;
+  --border:#181c2c;
+  --accent:#c8a030;
+  --accent2:#b02838;
+  --text:#f0eef8;
+  --muted:#888898;
+  --radius:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,6,14,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:0.75rem;}
+.nav-logo-sup{font-size:1.3rem;font-weight:900;color:var(--accent);letter-spacing:0.05em;}
+.nav-logo-cn{font-size:0.75rem;color:var(--muted);border-left:1px solid var(--border);padding-left:0.75rem;line-height:1.3;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:0.85rem;color:var(--muted);transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#000;padding:0.45rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:700;transition:opacity 0.2s;}
+.nav-cta:hover{opacity:0.85;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:64px;}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 60% at 20% 40%,rgba(200,160,48,0.10) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 50% at 80% 60%,rgba(176,40,56,0.06) 0%,transparent 60%),
+  linear-gradient(160deg,#04060e 0%,#080c18 60%,#04060e 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(200,160,48,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(200,160,48,0.03) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 400px;gap:5rem;align-items:center;position:relative;z-index:2;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(200,160,48,0.12);border:1px solid rgba(200,160,48,0.25);border-radius:20px;padding:0.3rem 1rem;font-size:0.78rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.5rem;}
+.hero h1{font-size:clamp(2rem,4vw,3.4rem);font-weight:900;line-height:1.1;margin-bottom:0.5rem;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-en{font-size:0.9rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin-bottom:2.5rem;line-height:1.7;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#000;padding:0.75rem 2rem;border-radius:8px;font-weight:800;font-size:0.95rem;transition:opacity 0.2s;}
+.btn-primary:hover{opacity:0.85;}
+.btn-secondary{border:1px solid var(--border);color:var(--text);padding:0.75rem 2rem;border-radius:8px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s;}
+.btn-secondary:hover{border-color:var(--accent);}
+.hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.72rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.7rem 0;border-bottom:1px solid var(--border);}
+.info-row:last-child{border-bottom:none;}
+.info-icon{width:32px;height:32px;border-radius:7px;background:rgba(200,160,48,0.12);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;font-weight:600;line-height:1.5;}
+.info-val a{color:var(--accent);}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stats-inner{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--accent);line-height:1;}
+.stat-label{font-size:0.78rem;color:var(--muted);margin-top:0.4rem;}
+
+/* SECTIONS */
+section{padding:5rem 0;}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.section-tag{display:inline-block;background:rgba(200,160,48,0.12);border:1px solid rgba(200,160,48,0.2);border-radius:20px;padding:0.3rem 1rem;font-size:0.75rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1rem;}
+.section-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;line-height:1.2;margin-bottom:0.75rem;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:640px;line-height:1.7;}
+.section-header{margin-bottom:3rem;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(200,160,48,0.08),rgba(176,40,56,0.06));border:1px solid rgba(200,160,48,0.18);border-radius:12px;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:1.05rem;line-height:1.8;}
+.about-body p{color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+.prop-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-name{font-size:0.82rem;font-weight:700;color:var(--accent);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+
+/* SPACES */
+.spaces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.space-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.25s;}
+.space-card:hover{border-color:rgba(200,160,48,0.35);transform:translateY(-3px);}
+.space-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.space-card:hover::after{opacity:1;}
+.space-tag{display:inline-block;background:rgba(200,160,48,0.12);border:1px solid rgba(200,160,48,0.2);border-radius:20px;padding:0.2rem 0.75rem;font-size:0.7rem;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.75rem;}
+.space-emoji{font-size:2rem;margin-bottom:0.5rem;}
+.space-name{font-size:1.2rem;font-weight:800;margin-bottom:0.4rem;}
+.space-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+.space-badge{display:inline-block;background:rgba(176,40,56,0.12);border:1px solid rgba(176,40,56,0.2);border-radius:4px;padding:0.15rem 0.5rem;font-size:0.68rem;color:var(--accent2);margin-top:0.75rem;}
+
+/* SERVICES */
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.srv-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;transition:border-color 0.25s;}
+.srv-card:hover{border-color:rgba(176,40,56,0.35);}
+.srv-icon{font-size:2rem;margin-bottom:1rem;}
+.srv-name{font-size:1.05rem;font-weight:700;margin-bottom:0.4rem;}
+.srv-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+
+/* MEMBER */
+.member-card{background:linear-gradient(135deg,rgba(200,160,48,0.10),rgba(176,40,56,0.08));border:1px solid rgba(200,160,48,0.25);border-radius:16px;padding:3rem;text-align:center;}
+.member-icon{font-size:3rem;margin-bottom:1rem;}
+.member-title{font-size:1.6rem;font-weight:800;margin-bottom:0.75rem;}
+.member-sub{color:var(--muted);max-width:500px;margin:0 auto 2rem;line-height:1.7;}
+.member-perks{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:2rem;}
+.perk{display:flex;flex-direction:column;align-items:center;gap:0.4rem;font-size:0.85rem;color:var(--muted);}
+.perk-icon{font-size:1.5rem;}
+.perk span{font-size:0.82rem;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-block{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-title{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;padding:0.9rem 0;border-bottom:1px solid var(--border);}
+.contact-item:last-child{border-bottom:none;}
+.contact-icon{width:38px;height:38px;border-radius:8px;background:rgba(200,160,48,0.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;margin-top:0.2rem;}
+.contact-type{font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;}
+.contact-val{font-size:0.9rem;font-weight:600;line-height:1.5;}
+.contact-val a{color:var(--accent);}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem 0 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-sup{font-size:1.3rem;font-weight:900;color:var(--accent);margin-bottom:0.2rem;}
+.footer-cn{font-size:0.85rem;color:var(--muted);margin-bottom:0.75rem;}
+.footer-desc{font-size:0.85rem;color:var(--muted);line-height:1.7;max-width:300px;}
+.footer-col h4{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col ul li a{font-size:0.88rem;color:var(--muted);transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.spaces-grid,.srv-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .prop-cards{grid-template-columns:1fr;}
+  .member-perks{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-sup">SUP</div>
+      <div class="nav-logo-cn">聯合新零售（香港）有限公司<br/>SUP Retail (Hong Kong) Limited</div>
+    </div>
+    <div class="nav-links">
+      <a href="#spaces">文化空間</a>
+      <a href="#services">服務</a>
+      <a href="#member">SUPer Card</a>
+      <a href="#contact">聯絡</a>
+    </div>
+    <a href="https://www.supretail.com.hk" target="_blank" class="nav-cta">探索 SUP</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">📚 文化書店 · 生活體驗 · 香港鰂魚涌</div>
+      <h1>書・文化・<em>生活</em><br/>美觀文化薈</h1>
+      <div class="hero-en">SUP Retail (Hong Kong) Limited</div>
+      <p class="hero-sub">聯合新零售（香港）有限公司（SUP Retail）是香港文化零售集團，以書籍為核心，融合多元文化體驗空間、網上書店、兒童平台及會員計劃，為香港市民提供豐富的文化閱讀生活體驗。</p>
+      <div class="hero-btns">
+        <a href="#spaces" class="btn-primary">探索文化空間</a>
+        <a href="#member" class="btn-secondary">SUPer Card會員</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">📋 聯絡資料</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">總辦事處</div>
+          <div class="info-val">鰂魚涌英皇道1065號東達中心1304-06室</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">電話</div>
+          <div class="info-val"><a href="tel:+85229635300">(852) 2963 5300</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📱</div>
+        <div>
+          <div class="info-label">手機</div>
+          <div class="info-val"><a href="tel:+85262306091">+852 6230 6091</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-val"><a href="mailto:info@supretail.com.hk">info@supretail.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網站</div>
+          <div class="info-val"><a href="https://www.supretail.com.hk" target="_blank">supretail.com.hk</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">📚</div>
+      <div class="stat-label">書籍文化零售</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">文化體驗空間</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">MyBook<br style="display:none"/>One</div>
+      <div class="stat-label">網上書店平台</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">SUPer</div>
+      <div class="stat-label">Card會員計劃</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">關於 SUP Retail</div>
+        <h2 class="section-title">文化書店與<br/>生活體驗融合</h2>
+        <div class="about-highlight">
+          <p>聯合新零售（香港）有限公司以「美觀文化薈」為品牌定位，將傳統書店零售轉化為多元文化體驗空間，以書籍為核心，結合閱讀、文創、活動和生活品味，在香港打造一系列富有文化深度的零售目的地。</p>
+        </div>
+        <div class="about-body">
+          <p>SUP Retail旗下擁有多個特色文化空間品牌，包括the PLACE、the HUB、the CREDIT及Kiddyland兒童平台，並設立中華書局門市，透過實體空間與數位平台MyBookOne雙線並進，為不同年齡層的讀者及文化愛好者提供全面的書籍及文化服務。</p>
+          <p>公司總辦事處位於鰂魚涌英皇道1065號東達中心，是香港出版及文化業界重要基地。SUP Retail深信文化閱讀是社會的重要基石，致力透過創新的零售體驗，讓閱讀文化在香港社區生根茁壯。</p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">📖</div>
+            <div class="prop-name">書籍零售</div>
+            <div class="prop-desc">精選中外書籍，涵蓋文學、學術、兒童讀物及生活品味書籍，為香港讀者提供豐富的閱讀選擇</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💻</div>
+            <div class="prop-name">MyBookOne網店</div>
+            <div class="prop-desc">網上書店平台，方便讀者隨時在線選購書籍，配合實體書店服務，提供全方位閱讀體驗</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🎪</div>
+            <div class="prop-name">文化活動</div>
+            <div class="prop-desc">定期舉辦文化沙龍、新書發布會、閱讀分享會及文創市集，豐富香港的文化生活</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🏫</div>
+            <div class="prop-name">學校機構服務</div>
+            <div class="prop-desc">為學校、圖書館及政府機構提供專業書籍採購、選書諮詢及圖書館服務解決方案</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPACES -->
+<section id="spaces" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">文化體驗空間</div>
+      <h2 class="section-title">各具特色的文化目的地</h2>
+      <p class="section-sub">SUP Retail旗下多個文化體驗空間，以不同主題和風格，為不同讀者群體創造獨特的文化相遇場所。</p>
+    </div>
+    <div class="spaces-grid">
+      <div class="space-card">
+        <div class="space-tag">文化生活空間</div>
+        <div class="space-emoji">🏛️</div>
+        <div class="space-name">the PLACE</div>
+        <div class="space-desc">以「場所」為概念的文化生活空間，融合書籍、文創及生活選品，打造一個集閱讀、發現與交流的文化樞紐，是讀者探索生活品味的理想場所。</div>
+        <div class="space-badge">📚 書籍 · 文創</div>
+      </div>
+      <div class="space-card">
+        <div class="space-tag">社群聚合空間</div>
+        <div class="space-emoji">🔆</div>
+        <div class="space-name">the HUB</div>
+        <div class="space-desc">作為文化社群的聚合點，the HUB是舉辦文化活動、讀書會及創意工作坊的理想場地，連接不同領域的文化創作者與讀書人，激發思想交流。</div>
+        <div class="space-badge">🎪 活動 · 社群</div>
+      </div>
+      <div class="space-card">
+        <div class="space-tag">精品文化空間</div>
+        <div class="space-emoji">✨</div>
+        <div class="space-name">the CREDIT</div>
+        <div class="space-desc">以精品策展為理念的文化空間，精心挑選具有品味與深度的書籍及文創作品，為追求優質文化體驗的讀者提供一個精緻的文化鑑賞空間。</div>
+        <div class="space-badge">🌟 精選策展</div>
+      </div>
+      <div class="space-card">
+        <div class="space-tag">灣仔文化生活館</div>
+        <div class="space-emoji">📝</div>
+        <div class="space-name">afterword lounge</div>
+        <div class="space-desc">設於灣仔文化生活館的文化沙龍空間，以書後語「afterword」為概念，是閱讀後的延伸空間，提供放鬆、沉思與文化對話的理想環境。</div>
+        <div class="space-badge">☕ 灣仔 · 文化沙龍</div>
+      </div>
+      <div class="space-card">
+        <div class="space-tag">兒童文化平台</div>
+        <div class="space-emoji">🦁</div>
+        <div class="space-name">Kiddyland</div>
+        <div class="space-desc">專為兒童及家庭設計的文化平台，以寓教於樂的方式培養孩子的閱讀習慣，提供豐富的兒童書籍、教育遊戲及親子活動，啟發下一代的閱讀興趣。</div>
+        <div class="space-badge">👶 兒童 · 親子</div>
+      </div>
+      <div class="space-card">
+        <div class="space-tag">百年老字號</div>
+        <div class="space-emoji">📚</div>
+        <div class="space-name">中華書局 油麻地分店</div>
+        <div class="space-desc">由SUP Retail管理的中華書局油麻地分店，傳承百年書店文化，以現代零售理念為油麻地社區讀者提供豐富的中文書籍及文化產品選擇。</div>
+        <div class="space-badge">🏮 百年書局 · 油麻地</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">服務內容</div>
+      <h2 class="section-title">多元文化服務</h2>
+      <p class="section-sub">SUP Retail提供涵蓋實體零售、數位平台、機構服務及出版分銷的全面文化服務，滿足個人讀者、學校機構及企業客戶的多元需求。</p>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card">
+        <div class="srv-icon">📱</div>
+        <div class="srv-name">MyBookOne 網上書店</div>
+        <div class="srv-desc">完善的網上書店平台，提供中英文書籍網上選購服務，結合實體門市庫存，方便讀者隨時隨地選購心儀書籍，享受便捷的送書服務。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">🏫</div>
+        <div class="srv-name">學校及機構服務</div>
+        <div class="srv-desc">為中小學、大學、公共圖書館及政府機構提供專業的書籍採購顧問服務，包括選書、訂購、送貨及圖書館系統管理等一站式解決方案。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">📦</div>
+        <div class="srv-name">出版及分銷</div>
+        <div class="srv-desc">承擔香港重要出版社的書籍分銷業務，以龐大的零售及批發網絡，確保優質出版物能廣泛觸及香港及亞洲各地的讀者。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">🎪</div>
+        <div class="srv-name">書展及文化活動</div>
+        <div class="srv-desc">積極參與香港書展等大型書業活動，並自行籌辦各類文化推廣活動，以創意形式推動香港社會的閱讀文化發展。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">🏛️</div>
+        <div class="srv-name">圖書館服務</div>
+        <div class="srv-desc">為公共及私人圖書館提供專業圖書館服務解決方案，包括書目資料庫管理、書籍分類採購及圖書館系統建設等服務。</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">💼</div>
+        <div class="srv-name">企業禮品書籍</div>
+        <div class="srv-desc">為企業及機構客戶提供大量書籍採購服務，包括企業禮品書籍定製、書籍批發採購，以及專業的選書顧問服務。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBER -->
+<section id="member" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="member-card">
+      <div class="member-icon">⭐</div>
+      <div class="member-title">SUPer Card 會員計劃</div>
+      <div class="member-sub">成為SUPer Card會員，在SUP Retail旗下所有門市及網上書店享受專屬會員福利、積分獎賞及優先活動邀請，讓您的文化閱讀生活更精彩。</div>
+      <div class="member-perks">
+        <div class="perk">
+          <div class="perk-icon">💳</div>
+          <span>積分獎賞</span>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">🏷️</div>
+          <span>會員折扣</span>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">🎪</div>
+          <span>優先活動</span>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">📱</div>
+          <span>網店優惠</span>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">🎁</div>
+          <span>生日禮遇</span>
+        </div>
+      </div>
+      <a href="https://www.supretail.com.hk" target="_blank" class="btn-primary">立即了解更多</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">與 SUP Retail 聯繫</h2>
+      <p class="section-sub">如有書籍採購、機構服務、文化合作或招聘查詢，歡迎透過以下方式與我們聯繫。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <div class="contact-title">📞 聯絡方式</div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-type">電話</div>
+            <div class="contact-val"><a href="tel:+85229635300">(852) 2963 5300</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📠</div>
+          <div>
+            <div class="contact-type">傳真</div>
+            <div class="contact-val">(852) 2565 0919</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <div class="contact-type">手機</div>
+            <div class="contact-val"><a href="tel:+85262306091">+852 6230 6091</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-type">一般查詢</div>
+            <div class="contact-val"><a href="mailto:info@supretail.com.hk">info@supretail.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div>
+            <div class="contact-type">招聘查詢</div>
+            <div class="contact-val"><a href="mailto:recruit@supretail.com.hk">recruit@supretail.com.hk</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-title">📍 地址及網站</div>
+        <div class="contact-item">
+          <div class="contact-icon">🏢</div>
+          <div>
+            <div class="contact-type">總辦事處</div>
+            <div class="contact-val">香港鰂魚涌英皇道1065號<br/>東達中心1304-06室</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-type">企業網站</div>
+            <div class="contact-val"><a href="https://www.supretail.com.hk" target="_blank">supretail.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📚</div>
+          <div>
+            <div class="contact-type">網上書店</div>
+            <div class="contact-val"><a href="https://www.mybookone.com.hk" target="_blank">MyBookOne 網上書店</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🦁</div>
+          <div>
+            <div class="contact-type">兒童平台</div>
+            <div class="contact-val">Kiddyland 兒童文化平台</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-sup">SUP Retail</div>
+        <div class="footer-cn">聯合新零售（香港）有限公司</div>
+        <p class="footer-desc">香港文化書店零售集團，以書籍為核心，融合多元文化體驗空間、網上書店MyBookOne、兒童平台Kiddyland及SUPer Card會員計劃，致力在香港推廣閱讀文化。</p>
+      </div>
+      <div class="footer-col">
+        <h4>文化空間</h4>
+        <ul>
+          <li><a href="#spaces">the PLACE</a></li>
+          <li><a href="#spaces">the HUB</a></li>
+          <li><a href="#spaces">the CREDIT</a></li>
+          <li><a href="#spaces">afterword lounge</a></li>
+          <li><a href="#spaces">Kiddyland</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡</h4>
+        <ul>
+          <li><a href="tel:+85229635300">(852) 2963 5300</a></li>
+          <li><a href="mailto:info@supretail.com.hk">info@supretail.com.hk</a></li>
+          <li><a href="https://www.supretail.com.hk" target="_blank">supretail.com.hk</a></li>
+          <li><a href="mailto:recruit@supretail.com.hk">招聘查詢</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© SUP Retail (Hong Kong) Limited · 聯合新零售（香港）有限公司 · 版權所有</div>
+      <div style="font-size:0.8rem;color:var(--accent);">美觀文化薈</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
