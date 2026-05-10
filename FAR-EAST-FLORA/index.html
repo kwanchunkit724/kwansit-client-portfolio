@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Far East Flora Hong Kong | 遠東花卉有限公司 · Premier Online Florist</title>
+<meta name="description" content="Far East Flora (遠東花卉有限公司) — Hong Kong's premier online florist. Fresh and preserved flowers, luxury bouquets, floral gift hampers, potted plants and same-day delivery across Hong Kong. Powered by #1 Online Florist in Asia."/>
+<style>
+:root{
+  --bg:#040608;
+  --surface:#080c10;
+  --card:#0e1218;
+  --border:#181e24;
+  --accent:#e05080;
+  --accent2:#30a050;
+  --text:#f0f2f0;
+  --muted:#889098;
+  --radius:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,6,8,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:0.75rem;}
+.nav-logo-name{font-size:1rem;font-weight:800;color:var(--accent);letter-spacing:0.02em;}
+.nav-logo-cn{font-size:0.68rem;color:var(--muted);border-left:1px solid var(--border);padding-left:0.75rem;letter-spacing:0.04em;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:0.85rem;color:var(--muted);transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:700;transition:opacity 0.2s;}
+.nav-cta:hover{opacity:0.85;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:64px;}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 60% at 20% 40%,rgba(224,80,128,0.10) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 50% at 80% 60%,rgba(48,160,80,0.06) 0%,transparent 60%),
+  linear-gradient(160deg,#040608 0%,#080c12 60%,#040608 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(224,80,128,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(224,80,128,0.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 400px;gap:5rem;align-items:center;position:relative;z-index:2;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(224,80,128,0.12);border:1px solid rgba(224,80,128,0.25);border-radius:20px;padding:0.3rem 1rem;font-size:0.78rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.5rem;}
+.hero h1{font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:800;line-height:1.1;margin-bottom:0.5rem;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-cn{font-size:1rem;color:var(--muted);margin-bottom:1.5rem;letter-spacing:0.06em;}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin-bottom:2.5rem;line-height:1.7;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 2rem;border-radius:8px;font-weight:700;font-size:0.95rem;transition:opacity 0.2s;}
+.btn-primary:hover{opacity:0.85;}
+.btn-secondary{border:1px solid var(--border);color:var(--text);padding:0.75rem 2rem;border-radius:8px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s;}
+.btn-secondary:hover{border-color:var(--accent);}
+.hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.72rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.7rem 0;border-bottom:1px solid var(--border);}
+.info-row:last-child{border-bottom:none;}
+.info-icon{width:32px;height:32px;border-radius:7px;background:rgba(224,80,128,0.12);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;}
+.info-val{font-size:0.9rem;font-weight:600;}
+.info-val a{color:var(--accent);}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stats-inner{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--accent);line-height:1;}
+.stat-label{font-size:0.78rem;color:var(--muted);margin-top:0.4rem;}
+
+/* SECTIONS */
+section{padding:5rem 0;}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.section-tag{display:inline-block;background:rgba(224,80,128,0.12);border:1px solid rgba(224,80,128,0.2);border-radius:20px;padding:0.3rem 1rem;font-size:0.75rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1rem;}
+.section-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;line-height:1.2;margin-bottom:0.75rem;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:640px;line-height:1.7;}
+.section-header{margin-bottom:3rem;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(224,80,128,0.08),rgba(48,160,80,0.06));border:1px solid rgba(224,80,128,0.18);border-radius:12px;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:1.05rem;line-height:1.8;}
+.about-body p{color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+.prop-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-name{font-size:0.82rem;font-weight:700;color:var(--accent);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+
+/* PRODUCTS */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.25s;}
+.prod-card:hover{border-color:rgba(224,80,128,0.35);transform:translateY(-3px);}
+.prod-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.prod-card:hover::after{opacity:1;}
+.prod-emoji{font-size:2.2rem;margin-bottom:0.75rem;}
+.prod-cat{display:inline-block;background:rgba(224,80,128,0.12);border:1px solid rgba(224,80,128,0.2);border-radius:20px;padding:0.2rem 0.75rem;font-size:0.7rem;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.75rem;}
+.prod-name{font-size:1.1rem;font-weight:700;margin-bottom:0.4rem;}
+.prod-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+.prod-items{list-style:none;display:flex;flex-direction:column;gap:0.3rem;margin-top:0.5rem;}
+.prod-items li{font-size:0.8rem;color:var(--muted);display:flex;align-items:center;gap:0.4rem;}
+.prod-items li::before{content:'🌸';font-size:0.6rem;}
+
+/* OCCASIONS */
+.occ-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.occ-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;text-align:center;transition:border-color 0.25s;}
+.occ-card:hover{border-color:rgba(224,80,128,0.35);}
+.occ-emoji{font-size:1.8rem;margin-bottom:0.5rem;}
+.occ-name{font-size:0.88rem;font-weight:700;margin-bottom:0.2rem;}
+.occ-desc{font-size:0.75rem;color:var(--muted);}
+
+/* DELIVERY */
+.delivery-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.delivery-info{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.del-title{font-size:1.05rem;font-weight:700;margin-bottom:1.2rem;}
+.del-item{display:flex;align-items:flex-start;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid var(--border);}
+.del-item:last-child{border-bottom:none;}
+.del-icon{font-size:1.2rem;flex-shrink:0;margin-top:0.1rem;}
+.del-text{font-size:0.87rem;color:var(--muted);line-height:1.5;}
+.del-text strong{color:var(--text);}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-block{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-title{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;}
+.contact-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 0;border-bottom:1px solid var(--border);}
+.contact-item:last-child{border-bottom:none;}
+.contact-icon{width:38px;height:38px;border-radius:8px;background:rgba(224,80,128,0.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.contact-type{font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;}
+.contact-val{font-size:0.95rem;font-weight:600;}
+.contact-val a{color:var(--accent);}
+.social-row{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:1rem;}
+.soc-btn{display:flex;align-items:center;gap:0.4rem;background:rgba(224,80,128,0.10);border:1px solid rgba(224,80,128,0.2);border-radius:8px;padding:0.45rem 0.9rem;font-size:0.82rem;transition:border-color 0.2s;}
+.soc-btn:hover{border-color:var(--accent);}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem 0 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-logo-name{font-size:1rem;font-weight:800;color:var(--accent);margin-bottom:0.2rem;}
+.footer-logo-cn{font-size:0.78rem;color:var(--muted);margin-bottom:0.75rem;}
+.footer-desc{font-size:0.85rem;color:var(--muted);line-height:1.7;max-width:300px;}
+.footer-col h4{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col ul li a{font-size:0.88rem;color:var(--muted);transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+.footer-tag{font-size:0.8rem;color:var(--accent);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.delivery-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .prod-grid,.occ-grid{grid-template-columns:repeat(2,1fr);}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .prop-cards{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-name">Far East Flora</div>
+      <div class="nav-logo-cn">遠東花卉有限公司 · Hong Kong</div>
+    </div>
+    <div class="nav-links">
+      <a href="#products">Flowers & Gifts</a>
+      <a href="#occasions">Occasions</a>
+      <a href="#delivery">Delivery</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="mailto:custsvc.hk@fareastflora.com" class="nav-cta">Order Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🌸 Asia's Premier Online Florist · Hong Kong</div>
+      <h1>Blooms that <em>Speak</em><br/>for the Heart</h1>
+      <div class="hero-cn">遠東花卉有限公司 · 香港</div>
+      <p class="hero-sub">Far East Flora brings Asia's finest floral artistry to Hong Kong — fresh bouquets, luxury arrangements, preserved flowers, potted plants, and gift hampers, with same-day and next-day delivery across the city for every occasion that matters.</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">Shop Flowers</a>
+        <a href="#occasions" class="btn-secondary">Browse Occasions</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">📍 Contact Us</div>
+      <div class="info-row">
+        <div class="info-icon">🌸</div>
+        <div>
+          <div class="info-label">Company</div>
+          <div class="info-val">Far East Flora (HK) · 遠東花卉有限公司</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Service Area</div>
+          <div class="info-val">Hong Kong Island · Kowloon · New Territories</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">Customer Service</div>
+          <div class="info-val"><a href="mailto:custsvc.hk@fareastflora.com">custsvc.hk@fareastflora.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">Website</div>
+          <div class="info-val"><a href="https://www.fareastflora.com" target="_blank">fareastflora.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">⏰</div>
+        <div>
+          <div class="info-label">Customer Support</div>
+          <div class="info-val">WhatsApp · Mon–Sun · 9am–6pm</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">#1</div>
+      <div class="stat-label">Online Florist in Asia</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">🌸</div>
+      <div class="stat-label">Fresh Daily Blooms</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Same</div>
+      <div class="stat-label">Day Delivery Available</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">365</div>
+      <div class="stat-label">Days a Year Service</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">About Far East Flora</div>
+        <h2 class="section-title">Asia's Premier Floral<br/>Gift Destination</h2>
+        <div class="about-highlight">
+          <p>Far East Flora is Asia's leading online florist, bringing decades of floral artistry and expertise to Hong Kong. Our Hong Kong operations — 遠東花卉有限公司 — bring the same world-class quality, freshness, and creative floral arrangements that have made Far East Flora the most trusted name in flowers across the region.</p>
+        </div>
+        <div class="about-body">
+          <p>From classic red roses and romantic bouquets to exotic tropical arrangements, luxury preserved flowers, and elegant potted orchids, our Hong Kong team carefully selects and crafts every arrangement to make your moments truly memorable — whether celebrating a birthday, expressing love, or offering condolences.</p>
+          <p>With our commitment to freshness, same-day delivery capability across Hong Kong Island, Kowloon, and the New Territories, and a dedicated local customer service team, Far East Flora Hong Kong ensures that your floral gifts always arrive beautifully and on time.</p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">🚀</div>
+            <div class="prop-name">Same-Day Delivery</div>
+            <div class="prop-desc">Order before noon for same-day delivery across Hong Kong Island, Kowloon, and select New Territories areas</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">✂️</div>
+            <div class="prop-name">Fresh Daily Blooms</div>
+            <div class="prop-desc">Sourced fresh daily from premium growers, our flowers are selected at peak freshness to maximize longevity</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🎨</div>
+            <div class="prop-name">Expert Floral Design</div>
+            <div class="prop-desc">Our skilled floral designers craft each arrangement with artistry, ensuring every bouquet is a work of beauty</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📦</div>
+            <div class="prop-name">Gift Hamper Pairings</div>
+            <div class="prop-desc">Pair flowers with curated gifts — cakes, wines, premium hampers, plush toys, and fine chocolates</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Flowers & Gifts</div>
+      <h2 class="section-title">A World of Floral Beauty</h2>
+      <p class="section-sub">From classic fresh cut flowers to long-lasting preserved arrangements and elegant potted plants — discover our curated collection of floral gifts for every occasion and every budget.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-emoji">💐</div>
+        <div class="prod-cat">Fresh Flowers</div>
+        <div class="prod-name">Signature Bouquets</div>
+        <div class="prod-desc">Hand-crafted fresh flower bouquets from premium blooms — roses, lilies, sunflowers, peonies and seasonal varieties. Available in mini, standard, giant and bespoke sizes.</div>
+        <ul class="prod-items">
+          <li>Classic Rose Bouquets</li>
+          <li>Mixed Seasonal Arrangements</li>
+          <li>Luxury Peony Collections</li>
+          <li>Sunflower & Wildflower Sets</li>
+        </ul>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🌹</div>
+        <div class="prod-cat">Preserved Flowers</div>
+        <div class="prod-name">Eternal Bloom Collection</div>
+        <div class="prod-desc">Long-lasting preserved roses and arrangements that maintain their beauty for months to years without water — the perfect luxury gift that lasts far beyond fresh flowers.</div>
+        <ul class="prod-items">
+          <li>Preserved Rose Dome & Boxes</li>
+          <li>Infinity Rose Collections</li>
+          <li>Printed & Specialty Roses</li>
+          <li>Luxury Gift Boxes</li>
+        </ul>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🌿</div>
+        <div class="prod-cat">Potted Plants</div>
+        <div class="prod-name">Living Plant Gifts</div>
+        <div class="prod-desc">Elegant potted orchids, table gardens, succulents, and tropical plants — living gifts that bring lasting beauty and a touch of nature to any home or office space.</div>
+        <ul class="prod-items">
+          <li>Phalaenopsis Orchids</li>
+          <li>Succulent Arrangements</li>
+          <li>Table Garden Sets</li>
+          <li>Tropical Office Plants</li>
+        </ul>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🎁</div>
+        <div class="prod-cat">Gift Hampers</div>
+        <div class="prod-name">Flowers + Gift Combos</div>
+        <div class="prod-desc">Elevate your gifting with flower and gift combinations — pair beautiful bouquets with premium cakes, fine wines, artisan chocolates, plush toys, and luxury candles.</div>
+        <ul class="prod-items">
+          <li>Flowers + Birthday Cakes</li>
+          <li>Flowers + Wine & Champagne</li>
+          <li>Premium Festive Hampers</li>
+          <li>Flowers + Jewellery & Scents</li>
+        </ul>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🎈</div>
+        <div class="prod-cat">Special Editions</div>
+        <div class="prod-name">Festive & Seasonal</div>
+        <div class="prod-desc">Exclusive seasonal collections for Chinese New Year, Valentine's Day, Mother's Day, graduation season, and Christmas — crafted with culturally meaningful blooms and colours.</div>
+        <ul class="prod-items">
+          <li>Chinese New Year Lucky Blooms</li>
+          <li>Valentine's Day Red Rose Specials</li>
+          <li>Mother's Day Collections</li>
+          <li>Graduation Congratulations</li>
+        </ul>
+      </div>
+      <div class="prod-card">
+        <div class="prod-emoji">🕊️</div>
+        <div class="prod-cat">Condolence</div>
+        <div class="prod-name">Sympathy Arrangements</div>
+        <div class="prod-desc">Tasteful and respectful sympathy flower arrangements and standing wreaths, crafted with care to convey heartfelt condolences during difficult times.</div>
+        <ul class="prod-items">
+          <li>Sympathy Bouquets</li>
+          <li>Condolence Wreaths</li>
+          <li>White Lily Arrangements</li>
+          <li>Memorial Floral Tributes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OCCASIONS -->
+<section id="occasions">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Occasions</div>
+      <h2 class="section-title">Flowers for Every Moment</h2>
+      <p class="section-sub">Whatever the occasion, Far East Flora Hong Kong has the perfect floral gift to mark the moment beautifully.</p>
+    </div>
+    <div class="occ-grid">
+      <div class="occ-card">
+        <div class="occ-emoji">🎂</div>
+        <div class="occ-name">Birthday</div>
+        <div class="occ-desc">Bright & joyful arrangements</div>
+      </div>
+      <div class="occ-card">
+        <div class="occ-emoji">❤️</div>
+        <div class="occ-name">Anniversary</div>
+        <div class="occ-desc">Romantic red roses & more</div>
+      </div>
+      <div class="occ-card">
+        <div class="occ-emoji">💍</div>
+        <div class="occ-name">Wedding</div>
+        <div class="occ-desc">Bridal bouquets & décor</div>
+      </div>
+      <div class="occ-card">
+        <div class="occ-emoji">🎓</div>
+        <div class="occ-name">Graduation</div>
+        <div class="occ-desc">Celebratory bouquets</div>
+      </div>
+      <div class="occ-card">
+        <div class="occ-emoji">👩</div>
+        <div class="occ-name">Mother's Day</div>
+        <div class="occ-desc">Special mum collections</div>
+      </div>
+      <div class="occ-card">
+        <div class="occ-emoji">🏮</div>
+        <div class="occ-name">Chinese New Year</div>
+        <div class="occ-desc">Lucky & auspicious blooms</div>
+      </div>
+      <div class="occ-card">
+        <div class="occ-emoji">🎄</div>
+        <div class="occ-name">Christmas</div>
+        <div class="occ-desc">Festive seasonal specials</div>
+      </div>
+      <div class="occ-card">
+        <div class="occ-emoji">🕊️</div>
+        <div class="occ-name">Condolence</div>
+        <div class="occ-desc">Tasteful sympathy tributes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY -->
+<section id="delivery" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Delivery</div>
+      <h2 class="section-title">Fast, Fresh Delivery Across Hong Kong</h2>
+      <p class="section-sub">We deliver fresh flowers and gifts across Hong Kong Island, Kowloon, and the New Territories — with same-day and next-day delivery options for your convenience.</p>
+    </div>
+    <div class="delivery-grid">
+      <div class="delivery-info">
+        <div class="del-title">🚚 Delivery Options</div>
+        <div class="del-item">
+          <div class="del-icon">⚡</div>
+          <div class="del-text"><strong>Same-Day Delivery</strong><br/>Order before noon (12pm) for same-day delivery. Available to most Hong Kong addresses Monday to Saturday.</div>
+        </div>
+        <div class="del-item">
+          <div class="del-icon">📅</div>
+          <div class="del-text"><strong>Next-Day Delivery</strong><br/>Schedule delivery for the next day or any future date. Ideal for planning ahead for birthdays, anniversaries, and special occasions.</div>
+        </div>
+        <div class="del-item">
+          <div class="del-icon">🕐</div>
+          <div class="del-text"><strong>Time-Slot Delivery</strong><br/>Choose a preferred delivery window to ensure someone is available to receive your floral gift at the right moment.</div>
+        </div>
+        <div class="del-item">
+          <div class="del-icon">📝</div>
+          <div class="del-text"><strong>Personal Message Card</strong><br/>Include a personalised message with every floral gift — handwritten on a card to make your gift even more special.</div>
+        </div>
+      </div>
+      <div class="delivery-info">
+        <div class="del-title">📍 Delivery Coverage</div>
+        <div class="del-item">
+          <div class="del-icon">🏙️</div>
+          <div class="del-text"><strong>Hong Kong Island</strong><br/>Central, Wan Chai, Causeway Bay, North Point, Quarry Bay, Sai Wan Ho, Aberdeen, Stanley and surrounding areas</div>
+        </div>
+        <div class="del-item">
+          <div class="del-icon">🌉</div>
+          <div class="del-text"><strong>Kowloon</strong><br/>Tsim Sha Tsui, Mong Kok, Yau Ma Tei, Kowloon City, Kwun Tong, Tuen Mun and surrounding districts</div>
+        </div>
+        <div class="del-item">
+          <div class="del-icon">🏞️</div>
+          <div class="del-text"><strong>New Territories</strong><br/>Sha Tin, Tai Po, Yuen Long, Tuen Mun, Sai Kung, Tseung Kwan O and other NT locations</div>
+        </div>
+        <div class="del-item">
+          <div class="del-icon">🔗</div>
+          <div class="del-text"><strong>Order Tracking</strong><br/>Track your order in real-time from preparation through to delivery confirmation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Contact Us</div>
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-sub">Our Hong Kong customer service team is ready to assist with orders, custom arrangements, corporate inquiries, and delivery questions.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <div class="contact-title">📞 Contact</div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-type">Customer Service Email (HK)</div>
+            <div class="contact-val"><a href="mailto:custsvc.hk@fareastflora.com">custsvc.hk@fareastflora.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div class="contact-type">WhatsApp Support</div>
+            <div class="contact-val">Monday – Sunday · 9am–6pm</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-type">Website</div>
+            <div class="contact-val"><a href="https://www.fareastflora.com" target="_blank">fareastflora.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-type">Delivery Area</div>
+            <div class="contact-val">Hong Kong Island · Kowloon · New Territories</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-title">🌐 Follow Us</div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <div class="contact-type">Social Media</div>
+            <div class="contact-val">Find Far East Flora on Facebook, Instagram, TikTok, Pinterest & YouTube</div>
+          </div>
+        </div>
+        <div class="social-row">
+          <div class="soc-btn">📘 Facebook</div>
+          <div class="soc-btn">📷 Instagram</div>
+          <div class="soc-btn">🎵 TikTok</div>
+          <div class="soc-btn">▶️ YouTube</div>
+        </div>
+        <div style="margin-top:1.5rem;background:rgba(224,80,128,0.08);border:1px solid rgba(224,80,128,0.15);border-radius:8px;padding:1rem;">
+          <div style="font-size:0.8rem;color:var(--accent);margin-bottom:0.4rem;">Corporate & Bulk Orders</div>
+          <div style="font-size:0.85rem;color:var(--muted);">Planning a corporate event, staff appreciation, or bulk floral gifting? Contact our HK team for customised corporate flower solutions and special pricing.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-name">Far East Flora</div>
+        <div class="footer-logo-cn">遠東花卉有限公司 · Hong Kong</div>
+        <p class="footer-desc">Asia's premier online florist, bringing fresh bouquets, preserved flowers, potted plants, and curated gift hampers to Hong Kong with same-day and next-day delivery across the city.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Our Collection</h4>
+        <ul>
+          <li><a href="#products">Fresh Bouquets</a></li>
+          <li><a href="#products">Preserved Flowers</a></li>
+          <li><a href="#products">Potted Plants</a></li>
+          <li><a href="#products">Gift Hampers</a></li>
+          <li><a href="#products">Festive Specials</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:custsvc.hk@fareastflora.com">custsvc.hk@fareastflora.com</a></li>
+          <li><a href="https://www.fareastflora.com" target="_blank">fareastflora.com</a></li>
+          <li><a href="#">WhatsApp Support</a></li>
+          <li><a href="#">Same-Day Delivery</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© Far East Flora (HK) 遠東花卉有限公司 · All Rights Reserved</div>
+      <div class="footer-tag">🌸 Asia's #1 Online Florist</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
