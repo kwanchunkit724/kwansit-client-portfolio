@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兩姊妹涼皮有限公司 | 太子四川涼皮 | Twins Liangpi</title>
+<style>
+  :root {
+    --bg:        #0e0604;
+    --surface:   #180a06;
+    --card:      #221008;
+    --accent1:   #c82010;
+    --accent2:   #f04820;
+    --accent3:   #f0b820;
+    --text:      #f8e8d8;
+    --muted:     #a07060;
+    --border:    rgba(200,32,16,0.24);
+    --glow:      rgba(200,32,16,0.22);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'PingFang HK', 'Microsoft JhengHei', sans-serif; line-height: 1.7; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(14,6,4,0.96); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; box-shadow: 0 0 18px var(--glow);
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-name span { color: var(--accent3); font-weight: 400; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent3); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 9px 22px; border-radius: 6px;
+    font-size: 0.88rem; font-weight: 800; cursor: pointer; text-decoration: none;
+    box-shadow: 0 4px 16px var(--glow); transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; padding: 120px 5% 80px;
+    background:
+      radial-gradient(ellipse 70% 55% at 85% 45%, rgba(200,32,16,0.18) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 50% at 8% 75%, rgba(240,184,32,0.09) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
+  }
+  .hero-text { flex: 1 1 480px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(200,32,16,0.12); border: 1px solid rgba(200,32,16,0.32);
+    padding: 6px 16px; border-radius: 20px; font-size: 0.82rem;
+    color: var(--accent3); margin-bottom: 24px; letter-spacing: 0.04em;
+  }
+  .hero-badge::before { content: '🌶️'; font-size: 0.9rem; }
+  .hero-title { font-size: clamp(2rem, 5.5vw, 3.4rem); font-weight: 900; line-height: 1.15; margin-bottom: 8px; }
+  .hero-title .red { color: var(--accent2); }
+  .hero-title .gold { color: var(--accent3); }
+  .hero-en { font-size: 1rem; color: var(--muted); font-weight: 500; margin-bottom: 20px; }
+  .hero-desc { font-size: 1.02rem; color: var(--muted); max-width: 520px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; padding: 13px 28px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 800; text-decoration: none;
+    box-shadow: 0 6px 24px var(--glow); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid var(--accent1); color: var(--accent3);
+    padding: 13px 28px; border-radius: 8px; font-size: 0.95rem;
+    font-weight: 600; text-decoration: none; transition: background .2s;
+  }
+  .btn-outline:hover { background: rgba(200,32,16,0.1); }
+
+  /* info card */
+  .hero-card {
+    flex: 0 0 300px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .hero-card h3 { font-size: 0.78rem; color: var(--accent3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+  .info-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .info-icon { font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+  .info-label { font-size: 0.73rem; color: var(--muted); margin-bottom: 2px; }
+  .info-val { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+  .info-val a { color: var(--accent3); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .divider-card { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+  .sold-out-note {
+    background: rgba(200,32,16,0.12); border: 1px solid var(--border);
+    border-radius: 6px; padding: 8px 12px; font-size: 0.78rem;
+    color: var(--accent2); margin-top: 4px; font-weight: 700;
+  }
+
+  /* ── STATS ── */
+  .stats-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 44px 5%;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; text-align: center;
+  }
+  .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--accent3); line-height: 1; }
+  .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 88px 5%; }
+  .section-label { font-size: 0.78rem; color: var(--accent1); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 800; margin-bottom: 14px; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 600px; margin-bottom: 48px; }
+
+  /* ── MENU ── */
+  .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+  .menu-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px 24px; transition: transform .25s, box-shadow .25s; position: relative;
+  }
+  .menu-card:hover { transform: translateY(-4px); box-shadow: 0 14px 44px rgba(200,32,16,0.18); }
+  .menu-icon { font-size: 2.4rem; margin-bottom: 14px; }
+  .menu-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--accent3); margin-bottom: 6px; }
+  .menu-card .menu-zh { font-size: 0.82rem; color: var(--muted); margin-bottom: 10px; font-style: italic; }
+  .menu-card p { font-size: 0.88rem; color: var(--muted); }
+  .spicy-tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: rgba(200,32,16,0.14); border: 1px solid var(--border);
+    padding: 3px 10px; border-radius: 4px; font-size: 0.75rem;
+    color: var(--accent2); font-weight: 700; margin-top: 10px;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
+  .about-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px 24px; display: flex; gap: 16px; align-items: flex-start;
+  }
+  .about-icon-wrap {
+    width: 48px; height: 48px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(200,32,16,0.12); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+  }
+  .about-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: var(--accent3); }
+  .about-card p { font-size: 0.87rem; color: var(--muted); }
+
+  /* ── HIGHLIGHT ── */
+  .highlight {
+    background: linear-gradient(135deg, rgba(200,32,16,0.14), rgba(240,184,32,0.08));
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 56px 48px; margin: 0 5% 80px; text-align: center;
+  }
+  .highlight h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: 14px; }
+  .highlight p { color: var(--muted); max-width: 640px; margin: 0 auto 28px; font-size: 0.98rem; }
+
+  /* ── CONTACT ── */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info { display: flex; flex-direction: column; gap: 18px; }
+  .c-item { display: flex; gap: 14px; align-items: flex-start; }
+  .c-icon {
+    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(200,32,16,0.1); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .c-item h4 { font-size: 0.8rem; color: var(--muted); margin-bottom: 2px; }
+  .c-item p, .c-item a { font-size: 0.92rem; color: var(--text); text-decoration: none; }
+  .c-item a:hover { color: var(--accent3); }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); padding: 11px 14px; border-radius: 8px; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent1); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; border: none; padding: 13px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 800; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.88; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 44px 5% 28px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center;
+  }
+  .footer-brand { font-size: 1rem; font-weight: 700; }
+  .footer-brand span { color: var(--accent3); font-weight: 400; }
+  .footer-copy { font-size: 0.8rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; }
+  .footer-links a:hover { color: var(--accent3); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero { flex-direction: column; }
+    .hero-card { flex: 1 1 100%; }
+    .highlight { padding: 36px 24px; margin: 0 0 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#home">
+    <div class="nav-logo">🌶️</div>
+    <div class="nav-name">兩姊妹涼皮 <span>| Twins Liangpi</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#menu">招牌食品</a></li>
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#contact">聯絡 / 地址</a></li>
+  </ul>
+  <a class="nav-cta" href="tel:66742862">📞 立即致電</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-badge">太子 · 正宗四川涼皮 · 2019 年開業</div>
+    <h1 class="hero-title">
+      <span class="red">兩姊妹</span>涼皮<br>
+      <span class="gold">有限公司</span>
+    </h1>
+    <p class="hero-en">Twins Liangpi Limited · Prince Edward, Hong Kong</p>
+    <p class="hero-desc">
+      太子人氣四川美食小店，主打正宗四川涼皮、苕皮、酸辣粉及黑糖五彩冰粉。
+      川味濃郁，嗜辣必試！每日限量供應，逢晚上七八點已經售完，
+      想品嚐地道四川風味，請早到早享！
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="tel:66742862">📞 6674 2862 立即致電</a>
+      <a class="btn-outline" href="#menu">查看招牌食品</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <h3>店鋪資訊</h3>
+    <div class="info-row">
+      <div class="info-icon">📍</div>
+      <div>
+        <div class="info-label">地址</div>
+        <div class="info-val">旺角黑布街 99 號<br>（太子站附近）</div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">📱</div>
+      <div>
+        <div class="info-label">電話 / WhatsApp</div>
+        <div class="info-val"><a href="tel:66742862">6674 2862</a></div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">🕐</div>
+      <div>
+        <div class="info-label">營業時間</div>
+        <div class="info-val">
+          中午 12:00 – 晚上 9:00
+          <div class="sold-out-note">⚠️ 通常 7–8 點售完提早關門</div>
+        </div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">📅</div>
+      <div>
+        <div class="info-label">開業年份</div>
+        <div class="info-val">2019 年</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div>
+    <div class="stat-num">2019</div>
+    <div class="stat-label">太子開業</div>
+  </div>
+  <div>
+    <div class="stat-num">四川</div>
+    <div class="stat-label">正宗川味配方</div>
+  </div>
+  <div>
+    <div class="stat-num">每日</div>
+    <div class="stat-label">限量供應，售完即止</div>
+  </div>
+  <div>
+    <div class="stat-num">必試</div>
+    <div class="stat-label">嗜辣者的天堂</div>
+  </div>
+</div>
+
+<!-- MENU -->
+<section id="menu">
+  <p class="section-label">招牌食品</p>
+  <h2 class="section-title">正宗四川美食</h2>
+  <p class="section-sub">每款食品均採用正宗四川配方，地道川味，濃郁麻辣，令人回味無窮。</p>
+
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-icon">🍜</div>
+      <h3>四川涼皮</h3>
+      <div class="menu-zh">Sichuan Cold Skin Noodles</div>
+      <p>招牌主打食品，彈牙爽滑的涼皮配以正宗四川麻辣汁，口感層次豐富，令人一試難忘。</p>
+      <span class="spicy-tag">🌶️🌶️🌶️ 招牌辣</span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-icon">🫙</div>
+      <h3>苕皮</h3>
+      <div class="menu-zh">Sweet Potato Starch Noodles</div>
+      <p>以紅薯粉製成的苕皮，口感比一般粉更滑更有嚼勁，配以四川麻辣汁，特別惹味。</p>
+      <span class="spicy-tag">🌶️🌶️ 辣</span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-icon">🌶️</div>
+      <h3>酸辣粉</h3>
+      <div class="menu-zh">Sour &amp; Spicy Noodles</div>
+      <p>酸辣交融的四川粉絲湯，湯底酸辣開胃，粉絲爽滑，是嗜辣一族的心頭好。</p>
+      <span class="spicy-tag">🌶️🌶️🌶️🌶️ 超辣</span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-icon">🧊</div>
+      <h3>黑糖五彩冰粉</h3>
+      <div class="menu-zh">Brown Sugar Rainbow Ice Jelly</div>
+      <p>由天然植物製成的冰粉，晶瑩剔透，口感嫩滑清涼，淋上黑糖漿，清甜消暑。</p>
+      <span class="spicy-tag" style="background:rgba(200,152,32,0.12);border-color:rgba(240,184,32,0.3);color:var(--accent3);">🍯 甜品</span>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHT -->
+<div class="highlight">
+  <h2>限量供應<br><span style="color:var(--accent3)">售完即止 · 早來早享</span></h2>
+  <p>
+    兩姊妹涼皮每日限量製作，保持最佳品質與口味。
+    由於大受歡迎，通常晚上七八點前已全部售完提早關門。
+    想品嚐正宗四川涼皮的朋友，請在下午時段前往，以免向隅！
+  </p>
+  <a class="btn-primary" href="tel:66742862">致電確認今日供應</a>
+</div>
+
+<!-- ABOUT -->
+<section id="about" style="background: var(--surface);">
+  <p class="section-label">關於我們</p>
+  <h2 class="section-title">兩姊妹的故事</h2>
+  <p class="section-sub">由兩姊妹攜手創立，以家鄉四川的正宗口味，為香港帶來最地道的川式涼皮體驗。</p>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="about-icon-wrap">👩‍👩‍</div>
+      <div>
+        <h3>兩姊妹情誼</h3>
+        <p>由一對姊妹共同創立，以家鄉四川的手藝和配方，堅持每日新鮮製作，保持最地道的川味。</p>
+      </div>
+    </div>
+    <div class="about-card">
+      <div class="about-icon-wrap">🌶️</div>
+      <div>
+        <h3>正宗四川配方</h3>
+        <p>採用正宗四川辣椒油及秘製醬料，忠於原味，帶出麻辣鮮香的地道四川風味。</p>
+      </div>
+    </div>
+    <div class="about-card">
+      <div class="about-icon-wrap">🏪</div>
+      <div>
+        <h3>太子人氣小店</h3>
+        <p>2019 年在太子開業，獨特的「美女」招牌令途人印象深刻，迅速成為區內人氣美食地標。</p>
+      </div>
+    </div>
+    <div class="about-card">
+      <div class="about-icon-wrap">⭐</div>
+      <div>
+        <h3>媒體報道推薦</h3>
+        <p>獲 Time Out Hong Kong 等本地媒體專題推介，被列為太子必試美食之一。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">聯絡及地址</p>
+  <h2 class="section-title">找到我們</h2>
+  <p class="section-sub">歡迎致電查詢今日供應情況，或直接前來太子光顧！</p>
+
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <h4>地址</h4>
+          <p>旺角黑布街 99 號<br>（太子站 B 出口步行約 5 分鐘）</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📱</div>
+        <div>
+          <h4>電話 / WhatsApp</h4>
+          <a href="tel:66742862">6674 2862</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">🕐</div>
+        <div>
+          <h4>營業時間</h4>
+          <p>每日 12:00 – 21:00<br><span style="color:var(--accent2);font-size:0.85rem;">⚠️ 通常 19:00–20:00 售完</span></p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">🚇</div>
+        <div>
+          <h4>交通</h4>
+          <p>港鐵太子站 / 旺角站<br>多路巴士可達</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>您的姓名</label>
+          <input type="text" placeholder="陳先生 / 陳小姐">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="9xxx xxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>查詢類別</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>今日供應查詢</option>
+          <option>外賣訂購</option>
+          <option>食物過敏查詢</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>留言</label>
+        <textarea placeholder="請留下您的查詢或留言…"></textarea>
+      </div>
+      <button class="form-submit">發送留言</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">兩姊妹涼皮有限公司 <span>| Twins Liangpi Limited</span></div>
+  <div class="footer-copy">© 2025 兩姊妹涼皮有限公司. 版權所有 · 旺角黑布街 99 號</div>
+  <div class="footer-links">
+    <a href="#menu">招牌食品</a>
+    <a href="#about">關於我們</a>
+    <a href="#contact">地址</a>
+  </div>
+</footer>
+
+</body>
+</html>
