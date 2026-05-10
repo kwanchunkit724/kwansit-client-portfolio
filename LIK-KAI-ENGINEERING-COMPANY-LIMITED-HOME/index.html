@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lik Kai Engineering Company Limited | Engineering Solutions in Hong Kong</title>
+<style>
+:root {
+  --bg:       #080606;
+  --surface:  #100a08;
+  --card:     #181008;
+  --border:   #2c1a10;
+  --acc1:     #602010;
+  --acc2:     #982818;
+  --acc3:     #c84020;
+  --amber:    #d89828;
+  --steel:    #8898a8;
+  --text:     #f0e8e0;
+  --muted:    #9a7060;
+  --radius:   8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;font-size:16px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,6,6,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--acc1),var(--acc3));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.logo-text{font-size:1.15rem;font-weight:700;color:var(--text)}
+.logo-sub{font-size:.7rem;color:var(--muted);letter-spacing:.05em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
+.nav-links a:hover{color:var(--acc3)}
+.nav-cta{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:9px 22px;border-radius:5px;font-size:.88rem;font-weight:600;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;background:radial-gradient(ellipse 75% 55% at 35% 50%,rgba(96,32,16,.15) 0%,transparent 65%),var(--bg)}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,64,32,.12);border:1px solid rgba(200,64,32,.32);border-radius:20px;padding:6px 16px;font-size:.8rem;color:var(--acc3);margin-bottom:24px;letter-spacing:.05em}
+.hero h1{font-size:2.9rem;font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:var(--acc3)}
+.hero-desc{font-size:1.02rem;color:var(--muted);margin-bottom:36px;max-width:540px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:13px 30px;border-radius:6px;font-size:.95rem;font-weight:700;text-decoration:none;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:13px 30px;border-radius:6px;font-size:.95rem;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--acc2);color:var(--acc2)}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hero-card h3{font-size:.9rem;color:var(--acc3);margin-bottom:18px;text-transform:uppercase;letter-spacing:.1em}
+.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.info-row:last-child{border-bottom:none}
+.info-label{color:var(--muted)}
+.info-val{color:var(--text);font-weight:600;text-align:right;max-width:60%}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-box{text-align:center}
+.stat-num{font-size:2.1rem;font-weight:800;color:var(--acc3);display:block}
+.stat-label{font-size:.83rem;color:var(--muted);margin-top:4px}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(152,40,24,.12);border:1px solid rgba(152,40,24,.3);border-radius:4px;padding:4px 12px;font-size:.76rem;color:var(--acc2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:1.9rem;font-weight:800;margin-bottom:12px}
+.section-sub{color:var(--muted);font-size:.98rem;max-width:620px}
+.section-head{margin-bottom:48px}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* SERVICES */
+.services{background:var(--bg)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .25s,transform .25s}
+.svc-card:hover{border-color:var(--acc2);transform:translateY(-3px)}
+.svc-icon{font-size:2.2rem;margin-bottom:16px}
+.svc-name{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.svc-desc{font-size:.88rem;color:var(--muted);line-height:1.7}
+.svc-tag{display:inline-block;background:rgba(152,40,24,.1);border:1px solid rgba(152,40,24,.28);border-radius:4px;padding:3px 9px;font-size:.74rem;color:var(--acc2);margin-top:12px}
+
+/* WHY US */
+.why{background:var(--surface)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;text-align:center;transition:border-color .25s,transform .25s}
+.why-card:hover{border-color:var(--acc2);transform:translateY(-3px)}
+.why-icon{font-size:2.2rem;margin-bottom:14px}
+.why-title{font-size:.98rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.why-desc{font-size:.86rem;color:var(--muted);line-height:1.65}
+
+/* SECTORS */
+.sectors{background:var(--bg)}
+.sector-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.sector-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;gap:16px;align-items:flex-start;transition:border-color .25s}
+.sector-card:hover{border-color:var(--amber)}
+.sector-icon{width:46px;height:46px;background:linear-gradient(135deg,var(--acc1),var(--acc2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.sector-body h3{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.sector-body p{font-size:.85rem;color:var(--muted);line-height:1.6}
+
+/* PROCESS */
+.process{background:var(--surface)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center}
+.step-num{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--acc1),var(--acc2));display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:800;color:#fff;margin:0 auto 14px}
+.step-title{font-size:.93rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.step-desc{font-size:.82rem;color:var(--muted);line-height:1.55}
+
+/* CONTACT */
+.contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h2{font-size:1.8rem;font-weight:800;margin-bottom:16px}
+.contact-info p{color:var(--muted);margin-bottom:28px;line-height:1.7}
+.contact-items{display:flex;flex-direction:column;gap:16px}
+.contact-item{display:flex;align-items:flex-start;gap:14px}
+.contact-icon{width:40px;height:40px;background:rgba(96,32,16,.28);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-detail strong{display:block;color:var(--text);font-size:.9rem;margin-bottom:2px}
+.contact-detail span{color:var(--muted);font-size:.85rem}
+form{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:18px}
+form label{font-size:.84rem;color:var(--muted);margin-bottom:4px;display:block}
+form input,form select,form textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.91rem;outline:none;transition:border-color .2s;font-family:inherit}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--acc2)}
+form textarea{resize:vertical;min-height:110px}
+form button{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s}
+form button:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 5% 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-top:12px}
+.footer-col h4{font-size:.87rem;font-weight:700;color:var(--text);margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col a{color:var(--muted);text-decoration:none;font-size:.86rem;transition:color .2s}
+.footer-col a:hover{color:var(--acc3)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{color:var(--muted);font-size:.82rem}
+.footer-hk{color:var(--muted);font-size:.82rem}
+
+@media(max-width:900px){
+  .hero-inner,.contact-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .hero h1{font-size:2.1rem}
+  .svc-grid,.why-grid{grid-template-columns:1fr 1fr}
+  .sector-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  .svc-grid,.why-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">⚙️</div>
+      <div>
+        <div class="logo-text">Lik Kai Engineering</div>
+        <div class="logo-sub">Lik Kai Engineering Company Limited</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#sectors">Sectors</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">⚙️ Engineering Specialists · Hong Kong</div>
+      <h1>Engineering<br><span>Built on Strength</span></h1>
+      <p class="hero-desc">
+        Lik Kai Engineering Company Limited delivers professional engineering services
+        across mechanical, electrical, civil, and structural disciplines throughout Hong Kong.
+        With a commitment to technical quality, regulatory compliance, and reliable project
+        delivery, we are the trusted engineering partner for contractors and developers alike.
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#services">Our Services</a>
+        <a class="btn-outline" href="#contact">Get a Quote</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Company Profile</h3>
+      <div class="info-row">
+        <span class="info-label">Company</span>
+        <span class="info-val">Lik Kai Engineering Co. Ltd</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Industry</span>
+        <span class="info-val">Engineering &amp; Construction</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Disciplines</span>
+        <span class="info-val">M&amp;E · Civil · Structural</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Base</span>
+        <span class="info-val">Hong Kong SAR</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Clients</span>
+        <span class="info-val">Main Contractors · Developers</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Languages</span>
+        <span class="info-val">English · 中文</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-box">
+      <span class="stat-num">Multi</span>
+      <div class="stat-label">Engineering Disciplines</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">HK</span>
+      <div class="stat-label">Island · Kowloon · NT</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">100%</span>
+      <div class="stat-label">Registered &amp; Compliant</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">Zero</span>
+      <div class="stat-label">Compromise on Safety</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Our Services</div>
+      <h2 class="section-title">Engineering Services</h2>
+      <p class="section-sub">A comprehensive range of engineering services to support construction projects of all types and scales</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🌡️</div>
+        <div class="svc-name">HVAC &amp; Ventilation</div>
+        <p class="svc-desc">
+          Design and installation of air-conditioning, ventilation, and pressurisation systems for commercial, residential, and industrial buildings. Chiller plant commissioning and maintenance.
+        </p>
+        <span class="svc-tag">HVAC</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">⚡</div>
+        <div class="svc-name">Electrical Installations</div>
+        <p class="svc-desc">
+          LV distribution boards, cable routing, lighting systems, power supply installations, and earthing arrangements in compliance with the Hong Kong Wiring Regulations.
+        </p>
+        <span class="svc-tag">Electrical</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🚿</div>
+        <div class="svc-name">Plumbing &amp; Drainage</div>
+        <p class="svc-desc">
+          Water supply pipework, foul drainage systems, stormwater drainage, and sanitary ware installation. WSD-compliant design and execution for all building types.
+        </p>
+        <span class="svc-tag">Plumbing</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔥</div>
+        <div class="svc-name">Fire Services</div>
+        <p class="svc-desc">
+          Sprinkler systems, fire hose reels, hydrant installations, and fire detection and alarm systems — all designed and installed per FSD Codes of Practice.
+        </p>
+        <span class="svc-tag">Fire Services</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏗️</div>
+        <div class="svc-name">Structural Steelwork</div>
+        <p class="svc-desc">
+          Fabrication and erection of structural steel elements — beams, columns, staircases, grating, and miscellaneous metalwork for building and industrial projects.
+        </p>
+        <span class="svc-tag">Steelwork</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔧</div>
+        <div class="svc-name">Maintenance &amp; Repair</div>
+        <p class="svc-desc">
+          Planned preventive maintenance and reactive repair services for M&amp;E systems. Annual statutory inspections, certification, and emergency callout for facilities.
+        </p>
+        <span class="svc-tag">Maintenance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Why Lik Kai</div>
+      <h2 class="section-title">Our Competitive Edge</h2>
+      <p class="section-sub">The qualities that make Lik Kai Engineering the preferred choice for main contractors and developers</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <div class="why-title">Technical Precision</div>
+        <p class="why-desc">Our engineers bring deep technical knowledge across multiple disciplines, delivering solutions that work first time, every time — no rework, no disputes.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📜</div>
+        <div class="why-title">Registered Contractors</div>
+        <p class="why-desc">All works carried out by registered contractors under the applicable Hong Kong ordinances, with fully qualified supervisory staff on every project.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⏱️</div>
+        <div class="why-title">Programme Discipline</div>
+        <p class="why-desc">We understand construction programme sensitivity. Our project managers coordinate closely with main contractors to hit milestones and avoid delays.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <div class="why-title">Competitive Pricing</div>
+        <p class="why-desc">Lean operations and strong supplier relationships allow us to deliver high-quality engineering works at pricing that keeps your project budget on track.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛡️</div>
+        <div class="why-title">Safety First</div>
+        <p class="why-desc">A robust site safety culture, documented Safe Work Procedures, and regular safety training ensure every Lik Kai site is managed to the highest standards.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <div class="why-title">Long-Term Partnerships</div>
+        <p class="why-desc">Many of our clients return project after project — a testament to the quality of our work, the reliability of our teams, and the strength of our relationships.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTORS -->
+<section class="sectors" id="sectors">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Sectors</div>
+      <h2 class="section-title">Markets We Serve</h2>
+      <p class="section-sub">Engineering expertise applied across the full spectrum of Hong Kong's built environment</p>
+    </div>
+    <div class="sector-grid">
+      <div class="sector-card">
+        <div class="sector-icon">🏢</div>
+        <div class="sector-body">
+          <h3>Commercial &amp; Office</h3>
+          <p>Grade A offices, commercial towers, and mixed-use developments — HVAC, electrical, fire services, and plumbing works from shell &amp; core to full fit-out.</p>
+        </div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏠</div>
+        <div class="sector-body">
+          <h3>Residential</h3>
+          <p>Private residential towers, public housing estates, and low-rise housing — full M&amp;E packages designed for liveability, efficiency, and long-term reliability.</p>
+        </div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏭</div>
+        <div class="sector-body">
+          <h3>Industrial &amp; Logistics</h3>
+          <p>Factories, warehouses, and logistics facilities — heavy electrical installations, industrial ventilation, fire suppression systems, and structural steelwork.</p>
+        </div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏥</div>
+        <div class="sector-body">
+          <h3>Healthcare &amp; Institutions</h3>
+          <p>Hospitals, clinics, schools, and government buildings — engineering systems meeting exacting standards of reliability, hygiene, and statutory compliance.</p>
+        </div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏨</div>
+        <div class="sector-body">
+          <h3>Hotels &amp; Hospitality</h3>
+          <p>Hotel M&amp;E installations including chiller plant, fan coil systems, kitchen ventilation, fire detection, and back-of-house engineering infrastructure.</p>
+        </div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🛒</div>
+        <div class="sector-body">
+          <h3>Retail &amp; Shopping Centres</h3>
+          <p>Retail and shopping centre engineering — large-scale central HVAC, tenant fit-out coordination, fire services, and electrical distribution systems.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Our Approach</div>
+      <h2 class="section-title">How We Deliver</h2>
+      <p class="section-sub">A structured four-stage project delivery process ensuring quality, safety, and programme compliance on every job</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Tender &amp; Design</div>
+        <p class="step-desc">Review tender documents, prepare engineering design submissions, and provide competitive pricing with full technical backing.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Pre-Construction</div>
+        <p class="step-desc">Shop drawings, materials approval, procurement, and coordination with the main contractor and other trades before site commencement.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Installation</div>
+        <p class="step-desc">Site installation by our registered teams with daily supervision, progress monitoring, quality inspections, and safety enforcement.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Testing &amp; Handover</div>
+        <p class="step-desc">System testing, commissioning, statutory inspections, as-built drawings, O&amp;M manuals, and client training for smooth handover.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-tag">Contact Us</div>
+        <h2>Enquire About Your Project</h2>
+        <p>
+          Looking for a reliable engineering subcontractor? We welcome enquiries from
+          main contractors, developers, and project managers. Submit the form and our
+          team will be in touch promptly to discuss your project requirements.
+        </p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>Service Area</strong>
+              <span>Hong Kong Island · Kowloon · New Territories</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-detail">
+              <strong>Office Hours</strong>
+              <span>Monday – Friday: 08:30 – 18:00<br>Saturday: 08:30 – 13:00</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📋</div>
+            <div class="contact-detail">
+              <strong>Tendering</strong>
+              <span>Tender documents accepted via email or in person</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div class="contact-detail">
+              <strong>Languages</strong>
+              <span>English · 廣東話 · 普通話</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form>
+        <div>
+          <label>Full Name *</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div>
+          <label>Company</label>
+          <input type="text" placeholder="Main contractor or developer name">
+        </div>
+        <div>
+          <label>Email Address *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div>
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+852 xxxx xxxx">
+        </div>
+        <div>
+          <label>Engineering Discipline</label>
+          <select>
+            <option>HVAC &amp; Ventilation</option>
+            <option>Electrical Installations</option>
+            <option>Plumbing &amp; Drainage</option>
+            <option>Fire Services</option>
+            <option>Structural Steelwork</option>
+            <option>Maintenance &amp; Repair</option>
+            <option>Multiple / Full M&amp;E Package</option>
+          </select>
+        </div>
+        <div>
+          <label>Project Details *</label>
+          <textarea placeholder="Describe the project — location, scope, tender deadline, and any technical requirements…"></textarea>
+        </div>
+        <button type="submit">Submit Enquiry →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">⚙️</div>
+          <div>
+            <div class="logo-text">Lik Kai Engineering</div>
+            <div class="logo-sub">Lik Kai Engineering Company Limited</div>
+          </div>
+        </div>
+        <p>A Hong Kong engineering company delivering M&amp;E, structural, and civil engineering services to main contractors and developers. Registered, reliable, and results-driven.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">HVAC &amp; Ventilation</a></li>
+          <li><a href="#services">Electrical Works</a></li>
+          <li><a href="#services">Plumbing &amp; Drainage</a></li>
+          <li><a href="#services">Fire Services</a></li>
+          <li><a href="#services">Structural Steelwork</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#why">Why Choose Us</a></li>
+          <li><a href="#sectors">Sectors</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Lik Kai Engineering Company Limited. All Rights Reserved.</div>
+      <div class="footer-hk">🇭🇰 Engineering Hong Kong</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
