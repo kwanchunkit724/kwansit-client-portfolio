@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>富雅髮型美容 | Elegant Beauty & Salon | 灣仔</title>
+<meta name="description" content="富雅髮型美容有限公司 — 灣仔駱克道專業髮型美容中心，提供剪染燙髮、美容護膚、美甲及睫毛服務。">
+<style>
+:root {
+  --bg:       #08060a;
+  --bg2:      #100c14;
+  --bg3:      #180f1c;
+  --rose:     #c87890;
+  --rose-lt:  #e898b0;
+  --gold:     #c8a050;
+  --gold-lt:  #e0c070;
+  --text:     #f0eaf4;
+  --muted:    #a09098;
+  --border:   rgba(200,120,144,0.18);
+  --card-bg:  rgba(255,255,255,0.035);
+  --radius:   14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans HK','PingFang HK','Microsoft JhengHei',sans-serif;line-height:1.7;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,6,10,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1.15rem;font-weight:700;color:var(--rose-lt);letter-spacing:.04em}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--rose),var(--rose-lt));color:#fff;border:none;padding:9px 22px;border-radius:50px;font-size:.88rem;cursor:pointer;font-weight:600;white-space:nowrap;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.88}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 60% 40%,rgba(200,120,144,0.12) 0%,transparent 65%),radial-gradient(ellipse 50% 50% at 20% 70%,rgba(200,160,80,0.07) 0%,transparent 55%);pointer-events:none}
+.hero-deco{position:absolute;top:15%;right:5%;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(200,120,144,0.1) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(200,120,144,0.12);border:1px solid rgba(200,120,144,0.3);border-radius:50px;padding:6px 16px;font-size:.82rem;color:var(--rose-lt);margin-bottom:20px}
+.hero-tag::before{content:'✦';font-size:.75rem}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;line-height:1.15;margin-bottom:12px;letter-spacing:-.01em}
+h1 .en{display:block;font-size:clamp(1.1rem,2.5vw,1.7rem);font-weight:400;color:var(--gold);letter-spacing:.04em;margin-top:6px}
+.hero-desc{color:var(--muted);font-size:1.05rem;max-width:440px;margin:18px 0 32px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--rose),var(--rose-lt));color:#fff;padding:13px 30px;border-radius:50px;font-size:.95rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}
+.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 28px;border-radius:50px;font-size:.95rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}
+.btn-outline:hover{border-color:var(--rose);color:var(--rose-lt)}
+
+/* info card */
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:18px}
+.card-badge{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.badge-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--rose),var(--rose-lt));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.badge-label{font-size:.8rem;color:var(--muted)}
+.badge-name{font-size:1.05rem;font-weight:700;color:var(--text)}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--rose);flex-shrink:0;margin-top:2px;text-align:center;font-size:1rem}
+.card-row-text{font-size:.9rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block}
+.open-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(72,200,80,0.12);border:1px solid rgba(72,200,80,0.25);border-radius:50px;padding:5px 12px;font-size:.8rem;color:#72e080;margin-top:4px}
+.open-dot{width:7px;height:7px;border-radius:50%;background:#72e080;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+/* ── STATS ── */
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.stat-item{text-align:center}
+.stat-num{font-size:2.4rem;font-weight:800;background:linear-gradient(135deg,var(--rose-lt),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.88rem;margin-top:6px}
+
+/* ── SECTIONS ── */
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(200,120,144,0.1);border:1px solid rgba(200,120,144,0.25);border-radius:50px;padding:4px 14px;font-size:.78rem;color:var(--rose-lt);letter-spacing:.05em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--rose-lt)}
+.section-lead{color:var(--muted);font-size:1.02rem;max-width:600px;margin-bottom:48px}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-body p{color:var(--muted);font-size:.97rem;margin-bottom:16px;line-height:1.8}
+.highlight-box{background:linear-gradient(135deg,rgba(200,120,144,0.1),rgba(200,160,80,0.06));border:1px solid rgba(200,120,144,0.2);border-radius:var(--radius);padding:24px;margin:24px 0}
+.highlight-box p{color:var(--text);font-size:.97rem;line-height:1.75;font-style:italic;margin:0}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.prop-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:flex;align-items:flex-start;gap:12px}
+.prop-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.prop-card h4{font-size:.9rem;font-weight:700;margin-bottom:4px;color:var(--text)}
+.prop-card p{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* ── CARDS GRID ── */
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .25s,transform .25s}
+.service-card:hover{border-color:var(--rose);transform:translateY(-4px)}
+.sc-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(200,120,144,0.18),rgba(200,160,80,0.12));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:16px}
+.sc-title{font-size:1.05rem;font-weight:700;margin-bottom:8px;color:var(--text)}
+.sc-desc{font-size:.88rem;color:var(--muted);line-height:1.65}
+.sc-price{display:inline-block;margin-top:12px;font-size:.82rem;color:var(--gold);font-weight:600;background:rgba(200,160,80,0.1);border:1px solid rgba(200,160,80,0.2);border-radius:50px;padding:3px 12px}
+
+/* ── TREATMENTS ── */
+.treatments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.treatment-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s}
+.treatment-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.tc-icon{font-size:1.8rem;margin-bottom:14px}
+.tc-title{font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--text)}
+.tc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.tc-badge{display:inline-block;margin-top:10px;font-size:.78rem;color:var(--rose-lt);font-weight:600;background:rgba(200,120,144,0.1);border:1px solid rgba(200,120,144,0.2);border-radius:50px;padding:3px 10px}
+
+/* ── WHY CHOOSE ── */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.why-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center}
+.why-icon{font-size:2rem;margin-bottom:12px}
+.why-card h4{font-size:.95rem;font-weight:700;margin-bottom:8px;color:var(--text)}
+.why-card p{font-size:.83rem;color:var(--muted);line-height:1.6}
+
+/* ── BOOKING INFO ── */
+.booking-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.booking-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px}
+.booking-card h4{font-size:1rem;font-weight:700;margin-bottom:16px;color:var(--rose-lt);display:flex;align-items:center;gap:8px}
+.booking-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.booking-list li{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:var(--muted)}
+.booking-list li::before{content:'▸';color:var(--rose);flex-shrink:0;margin-top:1px}
+.booking-list li strong{color:var(--text)}
+
+/* ── CONTACT ── */
+.contact-section{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.contact-item{display:flex;gap:16px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(200,120,144,0.1);border:1px solid rgba(200,120,144,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.ci-label{font-size:.78rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.97rem;color:var(--text);line-height:1.6}
+.ci-value a{color:var(--rose-lt);text-decoration:none}
+.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:36px}
+.contact-form-wrap h3{font-size:1.3rem;font-weight:700;margin-bottom:24px;color:var(--text)}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.83rem;color:var(--muted);margin-bottom:7px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-size:.93rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--rose)}
+.form-group textarea{min-height:100px;resize:vertical}
+.form-group select option{background:#1a0f20}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--rose),var(--rose-lt));color:#fff;border:none;padding:13px;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}
+.form-submit:hover{opacity:.88}
+
+/* ── FOOTER ── */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:1.05rem;font-weight:700;color:var(--rose-lt)}
+.footer-logo span{color:var(--gold)}
+.footer-copy{font-size:.82rem;color:var(--muted);text-align:center}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:.83rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-deco{display:none}
+  .stats-inner,.why-grid{grid-template-columns:repeat(2,1fr)}
+  .cards-grid,.treatments-grid,.booking-grid{grid-template-columns:1fr 1fr}
+  .about-props{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .cards-grid,.treatments-grid,.booking-grid,.why-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .form-row{grid-template-columns:1fr}
+  .footer-inner{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">富雅<span>髮型美容</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#services">髮型服務</a></li>
+      <li><a href="#beauty">美容護膚</a></li>
+      <li><a href="#why">為何選擇</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+    <a href="tel:+85228881234" class="nav-cta">立即預約</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">灣仔駱克道 髮型美容中心</div>
+      <h1>
+        富雅髮型美容
+        <span class="en">Elegant Beauty &amp; Salon</span>
+      </h1>
+      <p class="hero-desc">灣仔核心地帶的專業髮型美容中心，為您提供時尚髮型設計、深層美容護膚及精緻美甲服務，讓您由內到外展現最美一面。</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">探索服務</a>
+        <a href="#contact" class="btn-outline">預約諮詢</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-icon">💇</div>
+        <div>
+          <div class="badge-label">專業認證</div>
+          <div class="badge-name">富雅髮型美容有限公司</div>
+        </div>
+      </div>
+      <div class="open-badge">
+        <span class="open-dot"></span>
+        營業中 — 歡迎預約
+      </div>
+      <hr class="card-divider">
+      <div class="card-row">
+        <div class="card-row-icon">📍</div>
+        <div class="card-row-text">
+          <strong>地址</strong>
+          香港灣仔駱克道276-278號<br>安朗商業大廈10樓A&B室
+        </div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-icon">🏢</div>
+        <div class="card-row-text">
+          <strong>地區</strong>
+          灣仔，香港島
+        </div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-icon">📅</div>
+        <div class="card-row-text">
+          <strong>成立年份</strong>
+          2015年，超過10年專業經驗
+        </div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-icon">✦</div>
+        <div class="card-row-text">
+          <strong>服務範疇</strong>
+          髮型設計 · 染燙護髮 · 美容護膚 · 美甲睫毛
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">年專業服務</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4+</div>
+      <div class="stat-label">服務類別</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">灣仔</div>
+      <div class="stat-label">核心地段</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">專業</div>
+      <div class="stat-label">持牌美容師</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="section-tag">關於富雅</div>
+        <h2>灣仔的<span class="accent">專業美容</span>之選</h2>
+        <p>富雅髮型美容有限公司（Elegant Beauty &amp; Salon Limited）坐落於灣仔繁盛的駱克道，自2015年成立以來，以專業技術和貼心服務贏得客戶信賴，成為區內知名的一站式髮型美容中心。</p>
+        <p>我們的專業團隊擁有豐富的本地及國際美容培訓經驗，緊貼時尚潮流，為每位顧客度身設計最適合的髮型及美容方案，讓您的美麗無懈可擊。</p>
+        <div class="highlight-box">
+          <p>「富雅之名，寄於富麗與雅致並重——我們相信真正的美麗，源於專業的呵護與對細節的執著。」</p>
+        </div>
+        <div class="about-props">
+          <div class="prop-card">
+            <div class="prop-icon">🎨</div>
+            <div>
+              <h4>時尚髮型設計</h4>
+              <p>緊貼國際潮流，為您打造個性化髮型</p>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🌿</div>
+            <div>
+              <h4>優質護膚產品</h4>
+              <p>精選國際品牌，呵護您的肌膚</p>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💆</div>
+            <div>
+              <h4>全方位美容</h4>
+              <p>由髮型到面部護理，一站式服務</p>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">⭐</div>
+            <div>
+              <h4>持牌專業技師</h4>
+              <p>持牌美容師，確保服務安全專業</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:36px">
+          <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:24px;color:var(--text)">一站式服務總覽</h3>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="color:var(--text);font-size:.95rem">✂ 髮型設計</span>
+              <span style="color:var(--gold);font-size:.85rem">剪染燙 · 護髮</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="color:var(--text);font-size:.95rem">🌸 美容護膚</span>
+              <span style="color:var(--gold);font-size:.85rem">潔面 · 保濕 · 提升</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="color:var(--text);font-size:.95rem">💅 美甲服務</span>
+              <span style="color:var(--gold);font-size:.85rem">手足 · 凝膠 · 設計</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="color:var(--text);font-size:.95rem">👁 眼睫毛</span>
+              <span style="color:var(--gold);font-size:.85rem">接睫 · 燙睫 · 染眉</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="color:var(--text);font-size:.95rem">🎨 半永久妝</span>
+              <span style="color:var(--gold);font-size:.85rem">紋眉 · 紋眼線</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0">
+              <span style="color:var(--text);font-size:.95rem">💆 頭皮護理</span>
+              <span style="color:var(--gold);font-size:.85rem">頭皮診斷 · 療程</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HAIR SERVICES -->
+<section id="services" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="section-tag">髮型服務</div>
+    <h2>專業<span class="accent">髮型設計</span>服務</h2>
+    <p class="section-lead">由造型剪髮到染燙護理，我們的髮型師為您量身打造最適合的髮型，展現個人風格。</p>
+    <div class="cards-grid">
+      <div class="service-card">
+        <div class="sc-icon">✂</div>
+        <div class="sc-title">剪髮造型</div>
+        <div class="sc-desc">由資深造型師為您設計最適合臉型及個人風格的髮型，包括時尚短髮、長髮修剪、層次感設計及整體造型建議。</div>
+        <span class="sc-price">專業設計師主理</span>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">🎨</div>
+        <div class="sc-title">染髮服務</div>
+        <div class="sc-desc">採用國際品牌染髮劑，提供單色染、挑染、漸層染及全套護色護理。染前免費色彩諮詢，確保效果符合您的期望。</div>
+        <span class="sc-price">護色配方保護髮質</span>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">🌀</div>
+        <div class="sc-title">燙髮整形</div>
+        <div class="sc-desc">提供多款燙髮選擇，包括數碼燙、離子燙、冷燙及空氣燙，打造自然蓬鬆或柔順直髮效果，持久定型。</div>
+        <span class="sc-price">持久定型效果</span>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">💧</div>
+        <div class="sc-title">護髮療程</div>
+        <div class="sc-desc">針對受損、乾燥或脆弱髮絲，提供深層修復護髮療程。採用蛋白質修復、角蛋白護理及滋潤精華，由內而外恢復健康光澤。</div>
+        <span class="sc-price">深層修復</span>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">🔬</div>
+        <div class="sc-title">頭皮護理</div>
+        <div class="sc-desc">專業頭皮檢測儀分析頭皮狀況，針對性處理頭皮油脂過多、乾癢或脫髮問題，配合專業護理療程改善頭皮健康。</div>
+        <span class="sc-price">儀器分析診斷</span>
+      </div>
+      <div class="service-card">
+        <div class="sc-icon">👰</div>
+        <div class="sc-title">新娘及晚宴髮型</div>
+        <div class="sc-desc">專業新娘及晚宴造型服務，包括盤髮、編髮及整體造型配搭。預約即享免費試妝，確保最完美的出嫁造型。</div>
+        <span class="sc-price">預約免費試妝</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEAUTY TREATMENTS -->
+<section id="beauty">
+  <div class="section-inner">
+    <div class="section-tag">美容護膚</div>
+    <h2>全面<span class="accent">美容護膚</span>療程</h2>
+    <p class="section-lead">採用專業美容技術及優質產品，針對不同肌膚需求，為您打造健康透亮的完美肌膚。</p>
+    <div class="treatments-grid">
+      <div class="treatment-card">
+        <div class="tc-icon">🌸</div>
+        <div class="tc-title">深層潔面療程</div>
+        <div class="tc-desc">專業蒸面、深層清潔及去除粉刺黑頭，配合溫和去角質，令毛孔暢通，膚色均勻明亮，還原清爽肌底。</div>
+        <span class="tc-badge">適合所有膚質</span>
+      </div>
+      <div class="treatment-card">
+        <div class="tc-icon">💦</div>
+        <div class="tc-title">保濕補水療程</div>
+        <div class="tc-desc">採用高濃度透明質酸及植萃保濕精華，深層補水鎖水，改善乾燥緊繃及細紋問題，恢復肌膚豐盈彈性。</div>
+        <span class="tc-badge">即時顯效</span>
+      </div>
+      <div class="treatment-card">
+        <div class="tc-icon">✨</div>
+        <div class="tc-title">亮白提升療程</div>
+        <div class="tc-desc">針對暗啞色素及不均勻膚色，採用美白精華導入及光療技術，有效淡化色斑，提亮膚色，呈現透明感美肌。</div>
+        <span class="tc-badge">淡化色素</span>
+      </div>
+      <div class="treatment-card">
+        <div class="tc-icon">👁</div>
+        <div class="tc-title">眼部護理療程</div>
+        <div class="tc-desc">針對眼部細紋、黑眼圈及浮腫問題，採用眼部專用精華及按摩手法，促進眼周血液循環，令雙眼重煥光采。</div>
+        <span class="tc-badge">明亮雙眸</span>
+      </div>
+      <div class="treatment-card">
+        <div class="tc-icon">💅</div>
+        <div class="tc-title">美甲護理服務</div>
+        <div class="tc-desc">提供專業手足護理、凝膠甲、光療甲及手繪美甲設計。定期更換甲款，緊貼潮流，讓指尖成為您的時尚亮點。</div>
+        <span class="tc-badge">日式美甲技術</span>
+      </div>
+      <div class="treatment-card">
+        <div class="tc-icon">🦋</div>
+        <div class="tc-title">眼睫毛服務</div>
+        <div class="tc-desc">提供日式嫁接睫毛、燙睫毛及染眉服務。多種睫毛款式及長度選擇，打造深邃迷人眼神，持久自然。</div>
+        <span class="tc-badge">日式嫁接技術</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section id="why" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="section-tag">我們的優勢</div>
+    <h2>為何選擇<span class="accent">富雅</span></h2>
+    <p class="section-lead" style="margin-bottom:40px">專業、信任、品質——我們以超過10年的服務經驗，為每位顧客提供最優質的美容體驗。</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🏆</div>
+        <h4>持牌專業認可</h4>
+        <p>持有香港美容業總會認可資格，確保每項服務符合專業標準</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌿</div>
+        <h4>優質品牌產品</h4>
+        <p>只選用通過皮膚測試的國際知名品牌美容及護髮產品</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📍</div>
+        <h4>便利灣仔地點</h4>
+        <p>灣仔駱克道核心地帶，近地鐵站，交通極度方便</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">😊</div>
+        <h4>個人化服務</h4>
+        <p>每位顧客享有免費諮詢，度身設計最適合的服務方案</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING INFO -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag">預約資訊</div>
+    <h2>輕鬆<span class="accent">預約</span>服務</h2>
+    <p class="section-lead">提供多種預約方式，靈活配合您的日程，享受無等候的專屬美容體驗。</p>
+    <div class="booking-grid">
+      <div class="booking-card">
+        <h4>📞 預約方式</h4>
+        <ul class="booking-list">
+          <li><strong>電話預約</strong>致電美容中心直接預約</li>
+          <li><strong>WhatsApp預約</strong>傳訊息預約更便捷</li>
+          <li><strong>親臨預約</strong>歡迎到店了解及預約</li>
+          <li><strong>預約建議</strong>建議提前1-2天預約</li>
+        </ul>
+      </div>
+      <div class="booking-card">
+        <h4>⏰ 營業時間</h4>
+        <ul class="booking-list">
+          <li><strong>星期一至五</strong>上午10:00 – 晚上8:00</li>
+          <li><strong>星期六</strong>上午10:00 – 晚上8:00</li>
+          <li><strong>星期日及公假</strong>上午11:00 – 晚上7:00</li>
+          <li><strong>特別安排</strong>節假日服務請致電查詢</li>
+        </ul>
+      </div>
+      <div class="booking-card">
+        <h4>💳 付款方式</h4>
+        <ul class="booking-list">
+          <li><strong>現金</strong>歡迎</li>
+          <li><strong>信用卡</strong>VISA、Mastercard、銀聯</li>
+          <li><strong>電子支付</strong>PayMe、AlipayHK</li>
+          <li><strong>會員優惠</strong>辦理會員享特別折扣</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2>立即<span class="accent">預約</span>或查詢</h2>
+    <p class="section-lead">歡迎致電或親臨我們的灣仔美容中心，讓專業美容師為您提供個人化諮詢及服務建議。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">地址</div>
+            <div class="ci-value">香港灣仔駱克道276-278號<br>安朗商業大廈10樓A&B室</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🏢</div>
+          <div>
+            <div class="ci-label">地區</div>
+            <div class="ci-value">灣仔，香港島</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🚇</div>
+          <div>
+            <div class="ci-label">交通</div>
+            <div class="ci-value">港鐵灣仔站 A1出口，步行約5分鐘</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📅</div>
+          <div>
+            <div class="ci-label">成立年份</div>
+            <div class="ci-value">2015年 · 公司登記號：2288681</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">💇</div>
+          <div>
+            <div class="ci-label">服務範疇</div>
+            <div class="ci-value">髮型設計 · 染燙護髮 · 美容護膚<br>美甲服務 · 眼睫毛 · 頭皮護理</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>預約 / 查詢</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label>姓名</label>
+              <input type="text" placeholder="您的姓名">
+            </div>
+            <div class="form-group">
+              <label>聯絡電話</label>
+              <input type="tel" placeholder="例：9XXX XXXX">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>電郵地址</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>服務類別</label>
+            <select>
+              <option value="">請選擇服務</option>
+              <option>剪髮造型</option>
+              <option>染髮服務</option>
+              <option>燙髮整形</option>
+              <option>護髮療程</option>
+              <option>美容護膚</option>
+              <option>美甲服務</option>
+              <option>眼睫毛服務</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>備註 / 查詢詳情</label>
+            <textarea placeholder="請告知您的具體要求或任何問題..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">提交預約查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">富雅<span>髮型美容</span></div>
+    <div class="footer-copy">© 2025 富雅髮型美容有限公司（Elegant Beauty &amp; Salon Limited）· 香港灣仔 · 公司登記號 2288681</div>
+    <div class="footer-links">
+      <a href="#about">關於</a>
+      <a href="#services">服務</a>
+      <a href="#contact">聯絡</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
