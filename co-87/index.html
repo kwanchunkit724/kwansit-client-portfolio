@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>交通銀行（香港）有限公司 | Bank of Communications (Hong Kong)</title>
+<style>
+:root {
+  --bg:       #060608;
+  --surface:  #0a0c10;
+  --card:     #101420;
+  --border:   #182030;
+  --acc1:     #800818;
+  --acc2:     #b81020;
+  --acc3:     #e02030;
+  --gold:     #d8a020;
+  --navy:     #102060;
+  --text:     #eceaf4;
+  --muted:    #6878a0;
+  --radius:   8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI','Microsoft JhengHei',Arial,sans-serif;line-height:1.7;font-size:16px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,6,8,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--acc1),var(--acc3));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.logo-text{font-size:1.1rem;font-weight:700;color:var(--text)}
+.logo-sub{font-size:.68rem;color:var(--muted);letter-spacing:.04em}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
+.nav-links a:hover{color:var(--acc3)}
+.nav-cta{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:9px 22px;border-radius:5px;font-size:.88rem;font-weight:600;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;background:radial-gradient(ellipse 80% 55% at 30% 45%,rgba(128,8,24,.14) 0%,transparent 65%),var(--bg)}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(224,32,48,.1);border:1px solid rgba(224,32,48,.3);border-radius:20px;padding:6px 16px;font-size:.8rem;color:var(--acc3);margin-bottom:24px;letter-spacing:.04em}
+.hero h1{font-size:2.6rem;font-weight:800;line-height:1.25;margin-bottom:10px}
+.hero-en{font-size:1rem;color:var(--muted);font-weight:500;margin-bottom:16px;letter-spacing:.04em}
+.hero h1 span{color:var(--acc3)}
+.hero-desc{font-size:1rem;color:var(--muted);margin-bottom:36px;max-width:540px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:13px 30px;border-radius:6px;font-size:.95rem;font-weight:700;text-decoration:none;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:13px 30px;border-radius:6px;font-size:.95rem;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--acc2);color:var(--acc2)}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hero-card h3{font-size:.88rem;color:var(--acc3);margin-bottom:18px;text-transform:uppercase;letter-spacing:.1em}
+.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:.87rem}
+.info-row:last-child{border-bottom:none}
+.info-label{color:var(--muted)}
+.info-val{color:var(--text);font-weight:600;text-align:right;max-width:60%}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-box{text-align:center}
+.stat-num{font-size:2rem;font-weight:800;color:var(--acc3);display:block}
+.stat-label{font-size:.82rem;color:var(--muted);margin-top:4px}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(184,16,32,.12);border:1px solid rgba(184,16,32,.3);border-radius:4px;padding:4px 12px;font-size:.76rem;color:var(--acc2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:1.85rem;font-weight:800;margin-bottom:12px}
+.section-sub{color:var(--muted);font-size:.97rem;max-width:620px}
+.section-head{margin-bottom:48px}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* SERVICES */
+.services{background:var(--bg)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .25s,transform .25s}
+.svc-card:hover{border-color:var(--acc2);transform:translateY(-3px)}
+.svc-icon{font-size:2.2rem;margin-bottom:16px}
+.svc-name{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.svc-en{font-size:.76rem;color:var(--acc3);margin-bottom:10px}
+.svc-desc{font-size:.87rem;color:var(--muted);line-height:1.7}
+.svc-tag{display:inline-block;background:rgba(184,16,32,.1);border:1px solid rgba(184,16,32,.28);border-radius:4px;padding:3px 9px;font-size:.73rem;color:var(--acc2);margin-top:12px}
+
+/* PRODUCTS */
+.products{background:var(--surface)}
+.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;gap:16px;align-items:flex-start;transition:border-color .25s}
+.prod-card:hover{border-color:var(--gold)}
+.prod-icon{width:46px;height:46px;background:linear-gradient(135deg,var(--acc1),var(--acc2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.prod-body h3{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:3px}
+.prod-body .prod-en{font-size:.74rem;color:var(--gold);margin-bottom:6px}
+.prod-body p{font-size:.84rem;color:var(--muted);line-height:1.6}
+
+/* ABOUT */
+.about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-content p{color:var(--muted);line-height:1.8;margin-bottom:16px}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.a-stat{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px;text-align:center}
+.a-num{font-size:1.7rem;font-weight:800;color:var(--acc3);display:block;margin-bottom:4px}
+.a-label{font-size:.8rem;color:var(--muted)}
+
+/* DIGITAL */
+.digital{background:var(--surface)}
+.digital-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.digital-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;transition:border-color .25s,transform .25s}
+.digital-card:hover{border-color:var(--acc3);transform:translateY(-3px)}
+.digital-icon{font-size:2.2rem;margin-bottom:12px}
+.digital-name{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.digital-desc{font-size:.83rem;color:var(--muted);line-height:1.6}
+
+/* CONTACT */
+.contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h2{font-size:1.8rem;font-weight:800;margin-bottom:16px}
+.contact-info p{color:var(--muted);margin-bottom:28px;line-height:1.7}
+.contact-items{display:flex;flex-direction:column;gap:16px}
+.contact-item{display:flex;align-items:flex-start;gap:14px}
+.contact-icon{width:40px;height:40px;background:rgba(128,8,24,.28);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-detail strong{display:block;color:var(--text);font-size:.9rem;margin-bottom:2px}
+.contact-detail span{color:var(--muted);font-size:.85rem}
+form{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:18px}
+form label{font-size:.84rem;color:var(--muted);margin-bottom:4px;display:block}
+form input,form select,form textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.91rem;outline:none;transition:border-color .2s;font-family:inherit}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--acc2)}
+form textarea{resize:vertical;min-height:100px}
+form button{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s}
+form button:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 5% 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-top:12px}
+.footer-col h4{font-size:.87rem;font-weight:700;color:var(--text);margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col a{color:var(--muted);text-decoration:none;font-size:.86rem;transition:color .2s}
+.footer-col a:hover{color:var(--acc3)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{color:var(--muted);font-size:.82rem}
+.footer-hk{color:var(--muted);font-size:.82rem}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .hero h1{font-size:2rem}
+  .svc-grid,.digital-grid{grid-template-columns:1fr 1fr}
+  .prod-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  .svc-grid,.digital-grid,.about-stats{grid-template-columns:1fr}
+  .hero h1{font-size:1.7rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">🏦</div>
+      <div>
+        <div class="logo-text">交通銀行（香港）</div>
+        <div class="logo-sub">Bank of Communications (Hong Kong) Limited</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">銀行服務</a></li>
+      <li><a href="#products">產品</a></li>
+      <li><a href="#digital">網上銀行</a></li>
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">立即開戶</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🏦 交通銀行集團成員 · 香港</div>
+      <h1>您的<span>財富夥伴</span><br>盡在交銀香港</h1>
+      <div class="hero-en">Bank of Communications (Hong Kong) Limited</div>
+      <p class="hero-desc">
+        交通銀行（香港）有限公司作為交通銀行集團的重要成員，紮根香港逾百年，
+        為個人及企業客戶提供全面的銀行服務，包括零售銀行、企業融資、財富管理及跨境金融服務。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#services">探索服務</a>
+        <a class="btn-outline" href="#products">產品一覽</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>機構資料</h3>
+      <div class="info-row">
+        <span class="info-label">中文名稱</span>
+        <span class="info-val">交通銀行（香港）有限公司</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">英文名稱</span>
+        <span class="info-val">Bank of Communications (HK) Ltd</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">集團</span>
+        <span class="info-val">交通銀行集團</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">業務範疇</span>
+        <span class="info-val">零售 · 企業 · 財富管理</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">官方網站</span>
+        <span class="info-val">hk.bankcomm.com</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">服務地區</span>
+        <span class="info-val">香港 · 大灣區 · 全球</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-box">
+      <span class="stat-num">100+</span>
+      <div class="stat-label">年香港服務歷史</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">全港</span>
+      <div class="stat-label">分行及自動提款機網絡</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">GBA</span>
+      <div class="stat-label">大灣區跨境金融服務</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">24/7</span>
+      <div class="stat-label">網上銀行及客戶支援</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Banking Services</div>
+      <h2 class="section-title">全面銀行服務</h2>
+      <p class="section-sub">涵蓋個人零售、企業商業及跨境金融的一站式銀行服務平台</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">👤</div>
+        <div class="svc-name">個人銀行服務</div>
+        <div class="svc-en">Personal Banking</div>
+        <p class="svc-desc">
+          港元及外幣儲蓄存款、定期存款、個人貸款、按揭、信用卡及日常銀行需求，
+          為個人客戶提供安心可靠的金融服務。
+        </p>
+        <span class="svc-tag">個人服務</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏢</div>
+        <div class="svc-name">企業銀行服務</div>
+        <div class="svc-en">Corporate Banking</div>
+        <p class="svc-desc">
+          企業融資、貿易融資、現金管理、外匯服務及企業貸款，支援香港及跨境企業的
+          業務發展及營運資金需要。
+        </p>
+        <span class="svc-tag">企業服務</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💎</div>
+        <div class="svc-name">財富管理服務</div>
+        <div class="svc-en">Wealth Management</div>
+        <p class="svc-desc">
+          投資產品（基金、債券、股票）、保險、外匯交易及高端私人銀行服務，
+          協助客戶系統規劃及增值個人財富。
+        </p>
+        <span class="svc-tag">財富管理</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🌉</div>
+        <div class="svc-name">跨境金融服務</div>
+        <div class="svc-en">Cross-Border Finance</div>
+        <p class="svc-desc">
+          依託交通銀行集團在中國内地的廣泛網絡，提供人民幣業務、大灣區跨境開戶、
+          跨境匯款及兩地聯動金融服務。
+        </p>
+        <span class="svc-tag">跨境服務</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔄</div>
+        <div class="svc-name">外匯及資金服務</div>
+        <div class="svc-en">Foreign Exchange</div>
+        <p class="svc-desc">
+          主要貨幣即期及遠期外匯買賣、人民幣兌換、外匯期權及企業外匯風險對沖工具，
+          幫助客戶有效管理匯率風險。
+        </p>
+        <span class="svc-tag">外匯服務</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🚢</div>
+        <div class="svc-name">貿易融資服務</div>
+        <div class="svc-en">Trade Finance</div>
+        <p class="svc-desc">
+          信用證開立及保兌、出口押匯、進口代收、保函及供應鏈融資，
+          全面支援香港及跨境企業的進出口貿易需求。
+        </p>
+        <span class="svc-tag">貿易融資</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Products</div>
+      <h2 class="section-title">重點金融產品</h2>
+      <p class="section-sub">為不同需求客戶度身設計的金融產品，助您實現財富增值目標</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-icon">🏠</div>
+        <div class="prod-body">
+          <h3>物業按揭貸款</h3>
+          <div class="prod-en">Mortgage Loans</div>
+          <p>提供具競爭力的按揭利率，涵蓋香港一手及二手物業、大灣區物業按揭，靈活還款計劃配合不同需要。</p>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">💳</div>
+        <div class="prod-body">
+          <h3>交銀信用卡</h3>
+          <div class="prod-en">BoCom Credit Cards</div>
+          <p>多款信用卡配合不同消費習慣，享購物回贈、飛行里數、餐飲優惠及跨境人民幣免兌換費等特權。</p>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">📈</div>
+        <div class="prod-body">
+          <h3>結構性存款及投資</h3>
+          <div class="prod-en">Structured Deposits &amp; Investments</div>
+          <p>結構性存款、基金、債券及股票投資產品，根據客戶風險承受能力提供多元化投資組合方案。</p>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🛡️</div>
+        <div class="prod-body">
+          <h3>保險產品</h3>
+          <div class="prod-en">Insurance Products</div>
+          <p>壽險、儲蓄險、醫療險及一般保險產品，全面保障客戶人身財產安全，兼備財富傳承功能。</p>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🇨🇳</div>
+        <div class="prod-body">
+          <h3>人民幣產品</h3>
+          <div class="prod-en">RMB Products</div>
+          <p>人民幣存款、人民幣定期、人民幣債券及人民幣匯款服務，把握大灣區發展機遇及人民幣資產配置。</p>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">💰</div>
+        <div class="prod-body">
+          <h3>私人貸款</h3>
+          <div class="prod-en">Personal Loans</div>
+          <p>低息私人貸款、稅務貸款及分期貸款，審批迅速，資金靈活調動，滿足個人緊急資金需求。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- DIGITAL BANKING -->
+<section class="digital" id="digital">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Digital Banking</div>
+      <h2 class="section-title">智能數字銀行服務</h2>
+      <p class="section-sub">隨時隨地管理您的財富，享受安全便捷的數字銀行體驗</p>
+    </div>
+    <div class="digital-grid">
+      <div class="digital-card">
+        <div class="digital-icon">📱</div>
+        <div class="digital-name">手機銀行應用程式</div>
+        <p class="digital-desc">功能全面的手機銀行App，轉賬、繳費、投資、查詢一應俱全，支援Face ID及指紋登入。</p>
+      </div>
+      <div class="digital-card">
+        <div class="digital-icon">💻</div>
+        <div class="digital-name">網上銀行平台</div>
+        <p class="digital-desc">24小時網上銀行服務，輕鬆處理轉賬、繳費、外匯買賣及投資交易，安全加密保障。</p>
+      </div>
+      <div class="digital-card">
+        <div class="digital-icon">🔒</div>
+        <div class="digital-name">多重安全認證</div>
+        <p class="digital-desc">雙重因素驗證、交易通知提示及先進加密技術，全方位保護客戶賬戶及資金安全。</p>
+      </div>
+      <div class="digital-card">
+        <div class="digital-icon">⚡</div>
+        <div class="digital-name">實時轉賬服務</div>
+        <p class="digital-desc">支援香港快速支付系統（FPS）及轉數快，即時完成港元及人民幣轉賬，方便快捷。</p>
+      </div>
+      <div class="digital-card">
+        <div class="digital-icon">🌏</div>
+        <div class="digital-name">跨境網上銀行</div>
+        <p class="digital-desc">香港及內地賬戶一體化管理，跨境匯款手續簡便，大灣區雙向資金流動一鍵操作。</p>
+      </div>
+      <div class="digital-card">
+        <div class="digital-icon">🤖</div>
+        <div class="digital-name">智能客服支援</div>
+        <p class="digital-desc">全天候AI智能客服，即時解答查詢；真人客服隨時待命，提供專業金融諮詢服務。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-content">
+        <div class="section-tag">About Us</div>
+        <h2 class="section-title">關於交銀香港</h2>
+        <p>
+          交通銀行（香港）有限公司是交通銀行集團在香港的重要成員，是本港其中一家歷史悠久的持牌銀行。
+          作為連接香港與內地金融市場的橋樑，交銀香港憑藉集團強大的資金實力及廣泛的全球網絡，
+          為客戶提供具競爭力的金融服務。
+        </p>
+        <p>
+          立足香港，面向大灣區，交銀香港積極配合國家金融政策，推動人民幣國際化，
+          深耕跨境金融業務，協助客戶把握大灣區一體化發展帶來的龐大商機。
+        </p>
+        <p>
+          我們秉持「以客為先」的服務理念，不斷提升服務質素及金融科技能力，
+          致力成為客戶最值得信賴的財富夥伴及企業融資伙伴。
+        </p>
+      </div>
+      <div>
+        <div class="about-stats">
+          <div class="a-stat">
+            <span class="a-num">100+</span>
+            <div class="a-label">年品牌歷史</div>
+          </div>
+          <div class="a-stat">
+            <span class="a-num">全港</span>
+            <div class="a-label">分行網絡覆蓋</div>
+          </div>
+          <div class="a-stat">
+            <span class="a-num">GBA</span>
+            <div class="a-label">大灣區深度佈局</div>
+          </div>
+          <div class="a-stat">
+            <span class="a-num">全球</span>
+            <div class="a-label">交通銀行集團網絡</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-tag">Contact Us</div>
+        <h2>聯絡交銀香港</h2>
+        <p>
+          無論您是個人客戶、企業客戶或有意開立賬戶，我們的專業團隊樂意為您提供
+          量身定制的金融解決方案。歡迎透過以下方式與我們聯絡。
+        </p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div class="contact-detail">
+              <strong>官方網站</strong>
+              <span>hk.bankcomm.com</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🏦</div>
+            <div class="contact-detail">
+              <strong>分行服務</strong>
+              <span>香港各區均設有分行，詳情請參閱官網分行搜尋</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-detail">
+              <strong>客服熱線</strong>
+              <span>星期一至五 09:00–18:00<br>週末及公眾假期另有安排</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌏</div>
+            <div class="contact-detail">
+              <strong>大灣區服務</strong>
+              <span>跨境賬戶及金融服務請向分行職員查詢</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form>
+        <div>
+          <label>姓名 / Name *</label>
+          <input type="text" placeholder="請輸入姓名">
+        </div>
+        <div>
+          <label>公司名稱（企業客戶）</label>
+          <input type="text" placeholder="公司名稱（如適用）">
+        </div>
+        <div>
+          <label>電郵地址 *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div>
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="+852 xxxx xxxx">
+        </div>
+        <div>
+          <label>服務查詢類別</label>
+          <select>
+            <option>個人銀行服務</option>
+            <option>企業銀行服務</option>
+            <option>財富管理</option>
+            <option>按揭貸款</option>
+            <option>跨境金融服務</option>
+            <option>開立賬戶</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div>
+          <label>查詢內容 *</label>
+          <textarea placeholder="請描述您的金融服務需求或查詢……"></textarea>
+        </div>
+        <button type="submit">發送查詢 →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">🏦</div>
+          <div>
+            <div class="logo-text">交通銀行（香港）</div>
+            <div class="logo-sub">Bank of Communications (Hong Kong) Limited</div>
+          </div>
+        </div>
+        <p>交通銀行集團香港成員，提供全面個人、企業及跨境金融服務。紮根香港，連接大灣區及全球金融市場。</p>
+      </div>
+      <div class="footer-col">
+        <h4>銀行服務</h4>
+        <ul>
+          <li><a href="#services">個人銀行</a></li>
+          <li><a href="#services">企業銀行</a></li>
+          <li><a href="#services">財富管理</a></li>
+          <li><a href="#services">跨境金融</a></li>
+          <li><a href="#services">貿易融資</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>關於我們</h4>
+        <ul>
+          <li><a href="#about">機構簡介</a></li>
+          <li><a href="#digital">數字銀行</a></li>
+          <li><a href="#products">金融產品</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 交通銀行（香港）有限公司 Bank of Communications (Hong Kong) Limited. 版權所有。</div>
+      <div class="footer-hk">🇭🇰 交通銀行集團成員 · 香港</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
