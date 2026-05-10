@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1998 Media | Hong Kong Digital Media & Content Publishing</title>
+<meta name="description" content="1998 Media — Hong Kong independent digital media and content publishing. Original stories, insights and ideas from Asia's world city.">
+<style>
+  :root {
+    --primary: #0d1220;
+    --primary-mid: #131929;
+    --accent: #d62b2b;
+    --accent-light: #e85050;
+    --accent-dark: #a81f1f;
+    --accent-alt: #f0a800;
+    --text: #e4e8f0;
+    --text-muted: #8894b0;
+    --surface: #111827;
+    --surface2: #192033;
+    --card: #141c2e;
+    --border: rgba(214,43,43,0.15);
+    --border-soft: rgba(255,255,255,0.06);
+    --white: #ffffff;
+    --green: #22c55e;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Georgia', 'Times New Roman', serif; background: var(--primary); color: var(--text); line-height: 1.75; }
+  .sans { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,18,32,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-soft);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 66px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo-mark {
+    font-family: 'Georgia', serif; font-weight: 900; font-size: 1.15rem;
+    color: var(--accent); letter-spacing: -0.02em;
+  }
+  .nav-divider { width: 1px; height: 24px; background: var(--border-soft); }
+  .nav-logo-text { font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-family: 'Segoe UI', sans-serif; color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--accent); color: #fff; border: none;
+    padding: 8px 20px; border-radius: 4px; font-weight: 700; font-size: 0.85rem;
+    cursor: pointer; text-decoration: none; transition: background 0.2s; letter-spacing: 0.03em;
+  }
+  .nav-cta:hover { background: var(--accent-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    background: var(--primary);
+    padding: 100px 5% 60px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-alt), var(--accent));
+  }
+  .hero::after {
+    content: '1998'; position: absolute; right: -2%; top: 50%; transform: translateY(-50%);
+    font-size: 28vw; font-weight: 900; color: rgba(214,43,43,0.04); line-height: 1;
+    pointer-events: none; user-select: none;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: center; position: relative; z-index: 1; }
+  .hero-kicker { font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 700; line-height: 1.1; margin-bottom: 22px; color: var(--white); }
+  .hero h1 em { font-style: italic; color: var(--accent-alt); }
+  .hero-sub { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 36px; max-width: 500px; font-family: 'Segoe UI', sans-serif; line-height: 1.7; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { font-family: 'Segoe UI', sans-serif; background: var(--accent); color: #fff; padding: 13px 28px; border-radius: 4px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; display: inline-block; letter-spacing: 0.03em; }
+  .btn-primary:hover { background: var(--accent-light); }
+  .btn-outline { font-family: 'Segoe UI', sans-serif; border: 1px solid rgba(255,255,255,0.2); color: var(--text); padding: 12px 26px; border-radius: 4px; font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--white); color: var(--white); }
+
+  /* HERO CARD */
+  .hero-card { background: var(--card); border: 1px solid var(--border-soft); border-radius: 2px; padding: 28px; }
+  .hero-card-title { font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; border-bottom: 1px solid var(--border-soft); padding-bottom: 12px; }
+  .featured-article { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--border-soft); }
+  .featured-article:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .fa-tag { font-family: 'Segoe UI', sans-serif; font-size: 0.68rem; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .fa-title { font-size: 0.95rem; font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 6px; }
+  .fa-meta { font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; color: var(--text-muted); }
+
+  /* RULE LINE */
+  .rule-top { width: 60px; height: 3px; background: var(--accent); margin-bottom: 12px; }
+
+  /* STATS STRIP */
+  .stats-strip { background: var(--accent); padding: 0 5%; }
+  .stats-strip-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .strip-stat { padding: 22px 0; text-align: center; border-right: 1px solid rgba(255,255,255,0.15); }
+  .strip-stat:last-child { border-right: none; }
+  .strip-num { font-family: 'Segoe UI', sans-serif; font-size: 1.8rem; font-weight: 900; color: #fff; line-height: 1; }
+  .strip-label { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.8); margin-top: 4px; }
+
+  /* SECTIONS */
+  section { padding: 90px 5%; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag { font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; font-weight: 700; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 700; margin-bottom: 14px; color: var(--white); }
+  .section-lead { font-family: 'Segoe UI', sans-serif; font-size: 1rem; color: var(--text-muted); max-width: 600px; }
+
+  /* ABOUT */
+  .about { background: var(--surface); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .blockquote-pull { font-size: 1.3rem; font-weight: 700; color: var(--white); border-left: 4px solid var(--accent); padding-left: 20px; margin: 28px 0; line-height: 1.4; font-style: italic; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+  .prop-card { background: var(--card); border: 1px solid var(--border-soft); padding: 16px; }
+  .prop-icon { font-size: 1.4rem; margin-bottom: 6px; }
+  .prop-title { font-family: 'Segoe UI', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+  .prop-desc { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: var(--text-muted); }
+  .timeline { margin-top: 24px; }
+  .timeline-item { display: flex; gap: 16px; margin-bottom: 18px; align-items: flex-start; }
+  .timeline-year { font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--accent); min-width: 42px; margin-top: 2px; }
+  .timeline-content { font-family: 'Segoe UI', sans-serif; }
+  .timeline-title { font-size: 0.92rem; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+  .timeline-desc { font-size: 0.8rem; color: var(--text-muted); }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 46px; }
+  .service-card { background: var(--card); border: 1px solid var(--border-soft); padding: 28px 22px; transition: all 0.25s; }
+  .service-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .service-icon { font-size: 2rem; margin-bottom: 14px; }
+  .service-name { font-family: 'Segoe UI', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .service-desc { font-family: 'Segoe UI', sans-serif; font-size: 0.83rem; color: var(--text-muted); line-height: 1.65; }
+
+  /* EDITORIAL VALUES */
+  .values { background: var(--surface); }
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 46px; }
+  .value-card { border-top: 3px solid var(--accent); padding: 24px 0 0; }
+  .value-num { font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.12em; margin-bottom: 8px; }
+  .value-title { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .value-desc { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; }
+
+  /* CATEGORIES */
+  .categories-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 46px; }
+  .category-card { background: var(--card); border: 1px solid var(--border-soft); padding: 22px; text-align: center; transition: all 0.2s; cursor: pointer; }
+  .category-card:hover { border-color: var(--accent); background: var(--surface2); }
+  .cat-icon { font-size: 2rem; margin-bottom: 10px; }
+  .cat-name { font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cat-count { font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; color: var(--text-muted); }
+
+  /* CONTACT */
+  .contact { background: var(--surface); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 46px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 22px; }
+  .contact-icon { width: 40px; height: 40px; background: rgba(214,43,43,0.1); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .contact-label { font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; }
+  .contact-value { font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; color: var(--text); }
+  .contact-value a { color: var(--text); text-decoration: none; }
+  .contact-value a:hover { color: var(--accent); }
+  .contact-form-wrap { background: var(--card); border: 1px solid var(--border-soft); padding: 34px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { font-family: 'Segoe UI', sans-serif; display: block; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-bottom: 5px; }
+  .form-group input, .form-group select, .form-group textarea { font-family: 'Segoe UI', sans-serif; width: 100%; background: var(--surface2); border: 1px solid var(--border-soft); padding: 10px 13px; color: var(--text); font-size: 0.88rem; outline: none; transition: border-color 0.2s; border-radius: 2px; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
+  .form-submit { font-family: 'Segoe UI', sans-serif; width: 100%; background: var(--accent); color: #fff; border: none; padding: 12px; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: background 0.2s; letter-spacing: 0.04em; }
+  .form-submit:hover { background: var(--accent-light); }
+
+  /* FOOTER */
+  footer { background: #060b14; border-top: 2px solid var(--accent); padding: 50px 5% 28px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 36px; }
+  .footer-brand p { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; color: var(--text-muted); margin-top: 12px; max-width: 320px; line-height: 1.7; }
+  .footer-col h4 { font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+  .footer-col ul { list-style: none; display: grid; gap: 9px; }
+  .footer-col ul li a { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--white); }
+  .footer-bottom { border-top: 1px solid var(--border-soft); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: var(--text-muted); }
+
+  @media (max-width: 900px) {
+    .hero-inner, .about-grid, .contact-grid, .footer-top { grid-template-columns: 1fr; }
+    .services-grid, .values-grid { grid-template-columns: 1fr 1fr; }
+    .categories-grid { grid-template-columns: 1fr 1fr; }
+    .stats-strip-inner { grid-template-columns: 1fr 1fr; }
+    .hero-card { display: none; }
+  }
+  @media (max-width: 600px) {
+    .services-grid, .values-grid, .categories-grid, .stats-strip-inner, .about-props { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">1998</div>
+    <div class="nav-divider"></div>
+    <div class="nav-logo-text sans">Media · Hong Kong</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#coverage">Coverage</a></li>
+    <li><a href="#values">Editorial</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta sans">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-kicker sans">Hong Kong Independent Media</div>
+      <h1>Stories That<br>Matter. Ideas<br>That <em>Last.</em></h1>
+      <p class="hero-sub">1998 Media is a Hong Kong independent digital media and content company — producing original journalism, branded content, and editorial services for modern audiences.</p>
+      <div class="hero-btns">
+        <a href="#about" class="btn-primary">About Us</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title sans">Latest Coverage</div>
+      <div class="featured-article">
+        <div class="fa-tag sans">Business & Finance</div>
+        <div class="fa-title">Hong Kong's Role in Asia's Next Chapter of Growth</div>
+        <div class="fa-meta sans">Editorial · May 2025</div>
+      </div>
+      <div class="featured-article">
+        <div class="fa-tag sans">Technology</div>
+        <div class="fa-title">How Fintech Is Reshaping the HK Financial Landscape</div>
+        <div class="fa-meta sans">Feature · Apr 2025</div>
+      </div>
+      <div class="featured-article">
+        <div class="fa-tag sans">Culture & Society</div>
+        <div class="fa-title">25 Years On: Identity, Change and What Endures in HK</div>
+        <div class="fa-meta sans">Long Read · Mar 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-strip-inner">
+    <div class="strip-stat">
+      <div class="strip-num">1998</div>
+      <div class="strip-label">Founded in Hong Kong</div>
+    </div>
+    <div class="strip-stat">
+      <div class="strip-num">HK</div>
+      <div class="strip-label">Independent Voice</div>
+    </div>
+    <div class="strip-stat">
+      <div class="strip-num">360°</div>
+      <div class="strip-label">Digital & Print Coverage</div>
+    </div>
+    <div class="strip-stat">
+      <div class="strip-num">EN/中</div>
+      <div class="strip-label">Bilingual Capability</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">About 1998 Media</div>
+        <h2 class="section-title">An Independent Voice in Hong Kong's Media Landscape</h2>
+        <p class="section-lead sans">1998 Media is a Hong Kong digital media company committed to original, quality storytelling. We produce journalism, editorial content, and branded media for audiences who value depth over noise.</p>
+        <div class="blockquote-pull">"In the age of algorithms and clickbait, we believe in the enduring power of a well-told story."</div>
+        <div class="about-props">
+          <div class="prop-card">
+            <div class="prop-icon">✍️</div>
+            <div class="prop-title sans">Editorial</div>
+            <div class="prop-desc sans">Independent journalism and long-form writing</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📡</div>
+            <div class="prop-title sans">Digital First</div>
+            <div class="prop-desc sans">Built for modern, mobile-first audiences</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🎯</div>
+            <div class="prop-title sans">Content Strategy</div>
+            <div class="prop-desc sans">Brand storytelling and content marketing</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🌏</div>
+            <div class="prop-title sans">Asia Focus</div>
+            <div class="prop-desc sans">HK-based, Asia-connected perspective</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-tag">Our Story</div>
+        <h3 style="font-size:1.2rem; font-weight:700; color:var(--white); margin-bottom:18px; font-family:'Segoe UI',sans-serif;">Built in Hong Kong, Shaped by Its Times</h3>
+        <p style="font-family:'Segoe UI',sans-serif; font-size:0.88rem; color:var(--text-muted); margin-bottom:20px;">Hong Kong in 1998 was a city in transformation. A year after the handover, at the peak of the Asian financial crisis, it was also a city that understood the power of information, clarity, and credible voices. That founding spirit — of honest, careful, context-driven media — shapes everything we do today.</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">1998</div>
+            <div class="timeline-content">
+              <div class="timeline-title sans">Founded</div>
+              <div class="timeline-desc sans">1998 Media established in Hong Kong at a pivotal moment in the city's history</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2010s</div>
+            <div class="timeline-content">
+              <div class="timeline-title sans">Digital Expansion</div>
+              <div class="timeline-desc sans">Transitioned to digital-first publishing; expanded content services for brands</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2020s</div>
+            <div class="timeline-content">
+              <div class="timeline-title sans">Modern Media Studio</div>
+              <div class="timeline-desc sans">Full-service editorial and branded content production across formats</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Now</div>
+            <div class="timeline-content">
+              <div class="timeline-title sans">editor@1998.media</div>
+              <div class="timeline-desc sans">Active editorial team producing original content and client campaigns</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background: var(--primary);">
+  <div class="section-inner">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Editorial & Content Services</h2>
+    <p class="section-lead sans">From independent journalism to brand storytelling — 1998 Media offers a full range of content and editorial services for media partners, businesses and organisations.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📰</div>
+        <div class="service-name">Editorial Publishing</div>
+        <div class="service-desc">Original journalism, features, opinion and analysis published on our owned platforms. Long-form and short-form content covering Hong Kong, Asia and global affairs.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🖊️</div>
+        <div class="service-name">Branded Content</div>
+        <div class="service-desc">Content marketing and sponsored editorial for brands that want to reach an engaged, quality-conscious Hong Kong audience. Native articles, sponsored features and content campaigns.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <div class="service-name">Content Strategy</div>
+        <div class="service-desc">Strategic content planning, editorial calendars, audience development and content audits. We help organisations build media presences that attract and retain readership.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎙️</div>
+        <div class="service-name">Interviews & Profiles</div>
+        <div class="service-desc">In-depth interviews, executive profiles and thought leadership content. We connect business leaders with readers who influence decisions across Hong Kong and Asia.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <div class="service-name">Research & Analysis</div>
+        <div class="service-desc">Deep-dive reports, market analysis, sector reviews and data journalism. Combining editorial skill with research rigour to produce actionable insights.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <div class="service-name">Bilingual Content</div>
+        <div class="service-desc">English and Traditional Chinese editorial and content production. Localised storytelling that resonates with both expat and local Hong Kong audiences without losing nuance.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE CATEGORIES -->
+<section class="values" id="coverage">
+  <div class="section-inner">
+    <div class="section-tag">Coverage Areas</div>
+    <h2 class="section-title">What We Cover</h2>
+    <p class="section-lead sans">Our editorial coverage spans the topics that matter most to Hong Kong's informed, professional readership.</p>
+    <div class="categories-grid">
+      <div class="category-card">
+        <div class="cat-icon">💼</div>
+        <div class="cat-name sans">Business & Finance</div>
+        <div class="cat-count sans">Markets, deals, IPOs, banking</div>
+      </div>
+      <div class="category-card">
+        <div class="cat-icon">💻</div>
+        <div class="cat-name sans">Technology</div>
+        <div class="cat-count sans">Fintech, AI, startups, innovation</div>
+      </div>
+      <div class="category-card">
+        <div class="cat-icon">🌏</div>
+        <div class="cat-name sans">Asia & Geopolitics</div>
+        <div class="cat-count sans">Regional dynamics, HK affairs</div>
+      </div>
+      <div class="category-card">
+        <div class="cat-icon">🎭</div>
+        <div class="cat-name sans">Culture & Society</div>
+        <div class="cat-count sans">Arts, identity, social trends</div>
+      </div>
+      <div class="category-card">
+        <div class="cat-icon">🏙️</div>
+        <div class="cat-name sans">Urban Living</div>
+        <div class="cat-count sans">Property, lifestyle, environment</div>
+      </div>
+      <div class="category-card">
+        <div class="cat-icon">📚</div>
+        <div class="cat-name sans">Education</div>
+        <div class="cat-count sans">Schools, higher ed, learning</div>
+      </div>
+      <div class="category-card">
+        <div class="cat-icon">⚕️</div>
+        <div class="cat-name sans">Health</div>
+        <div class="cat-count sans">Public health, wellness, medicine</div>
+      </div>
+      <div class="category-card">
+        <div class="cat-icon">🌱</div>
+        <div class="cat-name sans">Sustainability</div>
+        <div class="cat-count sans">ESG, climate, green economy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL VALUES -->
+<section id="values" style="background: var(--primary);">
+  <div class="section-inner">
+    <div class="section-tag">Our Editorial Standards</div>
+    <h2 class="section-title">What We Stand For</h2>
+    <p class="section-lead sans">Six principles that guide every story, every article, and every word we publish or produce.</p>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-num sans">01 — ACCURACY</div>
+        <div class="value-title">Facts First</div>
+        <div class="value-desc sans">Every claim is verified. We do not publish unconfirmed information. In an era of misinformation, getting it right matters more than getting it first.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num sans">02 — INDEPENDENCE</div>
+        <div class="value-title">No Sacred Cows</div>
+        <div class="value-desc sans">Our editorial positions are independent of advertisers and commercial interests. We call it as we see it, even when it's inconvenient.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num sans">03 — DEPTH</div>
+        <div class="value-title">Context Over Clicks</div>
+        <div class="value-desc sans">We resist the race to the bottom. Our readers deserve context, nuance, and analysis — not just headlines engineered to provoke a reaction.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num sans">04 — TRANSPARENCY</div>
+        <div class="value-title">We Show Our Work</div>
+        <div class="value-desc sans">Sponsored content is labelled. Editorial is editorial. We never obscure the relationship between commerce and content from our readers.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num sans">05 — CRAFT</div>
+        <div class="value-title">Writing That Endures</div>
+        <div class="value-desc sans">Journalism is a craft. We invest in the quality of our writing — structure, voice, precision, and the kind of prose that rewards careful reading.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num sans">06 — RELEVANCE</div>
+        <div class="value-title">For Hong Kong, About Hong Kong</div>
+        <div class="value-desc sans">Everything we produce is grounded in the HK reality. We are not a wire service running global feeds — we are a local publisher that understands this city.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-tag">Contact</div>
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="section-lead sans">Editorial enquiries, advertising, branded content partnerships, or general questions — we'd like to hear from you.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label sans">Email</div>
+            <div class="contact-value sans"><a href="mailto:editor@1998.media">editor@1998.media</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label sans">Phone / WhatsApp</div>
+            <div class="contact-value sans"><a href="tel:+85260320419">+852 6032 0419</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-label sans">Website</div>
+            <div class="contact-value sans"><a href="https://1998.media" target="_blank" rel="noopener">1998.media</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label sans">Based In</div>
+            <div class="contact-value sans">Hong Kong</div>
+          </div>
+        </div>
+        <div style="border-top: 2px solid var(--accent); padding-top: 20px; margin-top: 8px;">
+          <div style="font-family:'Segoe UI',sans-serif; font-size:0.82rem; color:var(--text-muted);">
+            <div style="color:var(--white); font-weight:700; margin-bottom:8px;">Editorial Enquiries</div>
+            Story tips, press releases, interview requests and corrections: <a href="mailto:editor@1998.media" style="color:var(--accent); text-decoration:none;">editor@1998.media</a>
+          </div>
+        </div>
+        <div style="margin-top:16px; font-family:'Segoe UI',sans-serif; font-size:0.82rem; color:var(--text-muted);">
+          <div style="color:var(--white); font-weight:700; margin-bottom:8px;">Advertising & Partnerships</div>
+          Branded content, sponsorships and commercial partnerships: <a href="mailto:editor@1998.media" style="color:var(--accent); text-decoration:none;">editor@1998.media</a>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3 style="font-family:'Segoe UI',sans-serif; font-size:1rem; font-weight:700; color:var(--white); margin-bottom:6px;">Send an Enquiry</h3>
+        <p style="font-family:'Segoe UI',sans-serif; font-size:0.82rem; color:var(--text-muted); margin-bottom:20px;">We reply within 2 business days.</p>
+        <form>
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select>
+              <option value="">Select topic…</option>
+              <option>Editorial / story tip</option>
+              <option>Advertising / sponsorship</option>
+              <option>Branded content partnership</option>
+              <option>Press release</option>
+              <option>General enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="5" placeholder="Tell us more…"></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="font-family:'Georgia',serif; font-size:1.6rem; font-weight:900; color:var(--accent); letter-spacing:-0.02em;">1998 Media</div>
+        <p>Hong Kong independent digital media. Original journalism, editorial services and branded content for modern audiences in Asia's world city.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Coverage</h4>
+        <ul>
+          <li><a href="#coverage">Business & Finance</a></li>
+          <li><a href="#coverage">Technology</a></li>
+          <li><a href="#coverage">Asia & Geopolitics</a></li>
+          <li><a href="#coverage">Culture & Society</a></li>
+          <li><a href="#coverage">Education</a></li>
+          <li><a href="#coverage">Sustainability</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#values">Editorial Standards</a></li>
+          <li><a href="#contact">Advertise</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://1998.media" target="_blank" rel="noopener">Visit Website</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 1998 Media. All rights reserved. Hong Kong.</div>
+      <div style="font-family:'Segoe UI',sans-serif; font-size:0.8rem; color:var(--text-muted);">editor@1998.media</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
