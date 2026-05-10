@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>藝嘉廣告設計有限公司 | 招牌製作安裝 · LED燈箱 · 立體字 · 香港</title>
+<style>
+  :root {
+    --dark: #1a1a2e;
+    --dark2: #0e0e1c;
+    --gold: #c8920a;
+    --gold-light: #e0a800;
+    --red: #c01a20;
+    --white: #ffffff;
+    --light-bg: #f5f5f8;
+    --text: #1a1a2e;
+    --text-light: #4a5568;
+    --border: #dde2ea;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif; color: var(--text); background: var(--white); }
+
+  nav {
+    background: var(--dark2);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px; position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    border-bottom: 1px solid rgba(200,146,10,0.3);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; }
+  .nav-logo {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 900; color: var(--dark2);
+  }
+  .nav-name .zh { font-size: 17px; font-weight: 700; color: var(--white); display: block; }
+  .nav-name .en { font-size: 11px; color: rgba(255,255,255,0.45); display: block; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--dark2); padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 800; text-decoration: none; transition: opacity 0.2s; }
+  .nav-cta:hover { opacity: 0.88; }
+
+  .hero {
+    background: linear-gradient(135deg, var(--dark2) 0%, var(--dark) 60%, #1e1830 100%);
+    padding: 80px 40px; min-height: 540px;
+    display: flex; align-items: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 75% 50%, rgba(200,146,10,0.12) 0%, transparent 60%);
+  }
+  .hero-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 50px; width: 100%; position: relative; z-index: 1; }
+  .hero-text { flex: 1; }
+  .hero-badge { display: inline-block; background: rgba(200,146,10,0.18); border: 1px solid rgba(224,168,0,0.5); color: var(--gold-light); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+  .hero-text h1 { font-size: 52px; font-weight: 900; color: var(--white); line-height: 1.05; margin-bottom: 14px; }
+  .hero-text h1 span { color: var(--gold-light); }
+  .hero-text h2 { font-size: 20px; font-weight: 400; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+  .hero-motto { font-size: 15px; font-style: italic; color: var(--gold-light); margin-bottom: 18px; border-left: 3px solid var(--gold); padding-left: 14px; }
+  .hero-text p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 490px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--dark2); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 800; text-decoration: none; transition: opacity 0.2s; }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  .hero-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(200,146,10,0.3); backdrop-filter: blur(10px); border-radius: 16px; padding: 32px 28px; min-width: 280px; flex-shrink: 0; }
+  .hero-card h3 { color: var(--gold-light); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+  .hc-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .hc-item:last-child { margin-bottom: 0; }
+  .hc-icon { width: 36px; height: 36px; background: rgba(200,146,10,0.22); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .hc-info .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+  .hc-info .value { font-size: 14px; color: var(--white); font-weight: 600; }
+
+  .stats-strip { background: linear-gradient(90deg, var(--dark), var(--dark2)); padding: 22px 40px; display: flex; justify-content: center; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); }
+  .stat-item { text-align: center; padding: 0 48px; position: relative; }
+  .stat-item + .stat-item::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 40px; background: rgba(200,146,10,0.4); }
+  .stat-num { font-size: 32px; font-weight: 900; color: var(--gold-light); line-height: 1; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 4px; font-weight: 500; }
+
+  section { padding: 80px 40px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .section-title { font-size: 36px; font-weight: 900; color: var(--dark); margin-bottom: 16px; line-height: 1.2; }
+  .section-sub { font-size: 16px; color: var(--text-light); line-height: 1.7; max-width: 620px; }
+  .section-header { margin-bottom: 52px; }
+
+  .about { background: var(--light-bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .about-box { background: var(--dark); border-radius: 16px; padding: 40px; color: var(--white); position: relative; overflow: hidden; border: 1px solid rgba(200,146,10,0.2); }
+  .about-box::after { content: '藝'; position: absolute; right: -10px; bottom: -20px; font-size: 140px; font-weight: 900; color: rgba(200,146,10,0.06); line-height: 1; }
+  .about-box h3 { font-size: 22px; font-weight: 800; color: var(--gold-light); margin-bottom: 16px; }
+  .about-box p { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.82); margin-bottom: 14px; }
+  .about-box p:last-child { margin-bottom: 0; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .prop-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 22px; border-top: 3px solid var(--gold); }
+  .prop-icon { font-size: 28px; margin-bottom: 12px; }
+  .prop-card h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .prop-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .product-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 30px 26px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+  .product-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--dark), var(--gold)); }
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,26,46,0.14); }
+  .product-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--dark), #3a2a1e); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 18px; }
+  .product-card h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+  .product-card .en { font-size: 12px; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+  .product-card p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+  .product-tag { display: inline-block; background: rgba(200,146,10,0.1); color: var(--gold); padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-top: 12px; }
+
+  .craft { background: var(--dark); }
+  .craft .section-title { color: var(--white); }
+  .craft .section-tag { color: var(--gold-light); }
+  .craft .section-sub { color: rgba(255,255,255,0.7); }
+  .craft-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .craft-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(200,146,10,0.2); border-radius: 14px; padding: 26px 20px; text-align: center; transition: background 0.2s; }
+  .craft-card:hover { background: rgba(200,146,10,0.1); }
+  .craft-icon { font-size: 34px; margin-bottom: 12px; }
+  .craft-card h3 { font-size: 15px; font-weight: 700; color: var(--gold-light); margin-bottom: 8px; }
+  .craft-card p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  .process-row {
+    margin-top: 40px;
+    padding: 28px 32px;
+    background: rgba(200,146,10,0.08);
+    border: 1px solid rgba(200,146,10,0.25);
+    border-radius: 14px;
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .process-row strong { color: var(--gold-light); }
+
+  .why-us { background: var(--light-bg); }
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .why-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 30px 22px; text-align: center; transition: transform 0.2s; }
+  .why-card:hover { transform: translateY(-3px); }
+  .why-icon { font-size: 36px; margin-bottom: 14px; }
+  .why-card h3 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .why-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .contact-info h3 { font-size: 26px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+  .contact-info > p { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 32px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 22px; }
+  .ci-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--dark), #3a2a1e); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .ci-label { font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .ci-val { font-size: 15px; font-weight: 600; color: var(--dark); }
+  .ci-val a { color: var(--dark); text-decoration: none; }
+  .ci-val a:hover { color: var(--gold); }
+
+  .contact-form { background: var(--light-bg); border-radius: 16px; padding: 36px; }
+  .contact-form h3 { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .form-group label { font-size: 13px; font-weight: 600; color: var(--dark); }
+  .form-group input, .form-group select, .form-group textarea { padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; color: var(--text); background: var(--white); outline: none; font-family: inherit; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit { width: 100%; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--dark2); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 800; cursor: pointer; font-family: inherit; transition: opacity 0.2s; }
+  .form-submit:hover { opacity: 0.88; }
+
+  footer { background: var(--dark2); padding: 40px; text-align: center; border-top: 2px solid var(--gold); }
+  .footer-brand { font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+  .footer-brand span { color: var(--gold-light); }
+  .footer-motto { font-size: 14px; color: var(--gold); font-style: italic; margin-bottom: 10px; }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 14px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  @media (max-width: 900px) {
+    .hero-content { flex-direction: column; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .craft-grid, .why-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">藝</div>
+    <div class="nav-name">
+      <span class="zh">藝嘉廣告設計有限公司</span>
+      <span class="en">Ngai Ka Production · Signage &amp; Advertising</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">公司簡介</a>
+    <a href="#products">產品系列</a>
+    <a href="#craft">工藝技術</a>
+    <a href="#why">服務優勢</a>
+    <a href="#contact">免費報價</a>
+  </div>
+  <a href="#contact" class="nav-cta">即時WhatsApp報價</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">🏆 招牌製作 · 設計 · 安裝一站式</div>
+      <h1>藝嘉<span>廣告</span><br>設計有限公司</h1>
+      <h2>Ngai Ka Production · Hong Kong</h2>
+      <div class="hero-motto">精工匠心 · 藝行天下</div>
+      <p>創立於2006年，逾15年專業招牌廣告製作經驗。提供LED招牌、發光字、燈箱、立體字、霓虹燈等全線招牌製作及安裝服務，自設廠房，品質保證。</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">查看產品系列</a>
+        <a href="#contact" class="btn-outline">即時免費報價</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>📋 聯絡資訊</h3>
+      <div class="hc-item">
+        <div class="hc-icon">💬</div>
+        <div class="hc-info">
+          <div class="label">WhatsApp 即時報價</div>
+          <div class="value">63311460</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">✉️</div>
+        <div class="hc-info">
+          <div class="label">電郵 Email</div>
+          <div class="value">yijia5019@163.com</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🌐</div>
+        <div class="hc-info">
+          <div class="label">網址 Website</div>
+          <div class="value">ngaikaproduction.com</div>
+        </div>
+      </div>
+      <div class="hc-item">
+        <div class="hc-icon">🏭</div>
+        <div class="hc-info">
+          <div class="label">自設廠房</div>
+          <div class="value">香港 設計 製作 安裝</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">2006</div>
+    <div class="stat-label">創立年份</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">15+</div>
+    <div class="stat-label">年製作經驗</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">1-Stop</div>
+    <div class="stat-label">設計製作安裝</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">自設</div>
+    <div class="stat-label">廠房生產</div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-box">
+        <h3>🏆 精工匠心 · 專業招牌廣告</h3>
+        <p>藝嘉廣告設計有限公司（Ngai Ka Production）創立於2006年，專注招牌廣告製作已逾十五年，是香港具實力的一站式廣告招牌製作及安裝機構。</p>
+        <p>我們提供各類招牌的設計、製作及安裝全方位服務：LED招牌、發光字招牌、亞加力招牌、霓虹燈招牌、燈箱招牌、立體字招牌、金屬招牌及指示牌系統等。</p>
+        <p>自設廠房，擁有敬業、敏銳、高效的設計團隊、生產製作團隊及安裝團隊，以優良獨特的思維設計及精雕細磨工藝製作，為企業提供全方位品牌形象解決方案，讓企業獲得更高的商業效益。</p>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">🏭</div>
+          <h4>自設廠房生產</h4>
+          <p>擁有自設廠房，掌控生產全程品質，確保每件作品均達最高工藝標準。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🎨</div>
+          <h4>專業設計團隊</h4>
+          <p>敬業敏銳的設計師團隊，提供獨特創意設計，打造城市新形象及品牌新形象。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🔧</div>
+          <h4>專業安裝服務</h4>
+          <p>專責安裝團隊，安全高效完成各類招牌安裝工程，包括高空外牆安裝。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">💡</div>
+          <h4>全方位品牌形象</h4>
+          <p>從招牌設計到品牌形象牆，為企業提供系統性的視覺識別解決方案。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Products</div>
+      <h2 class="section-title">招牌產品系列</h2>
+      <p class="section-sub">多樣化招牌製作選擇，滿足不同行業及場所的廣告宣傳需求。</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">✨</div>
+        <h3>立體字招牌</h3>
+        <div class="en">3D Dimensional Letters</div>
+        <p>不鏽鋼、鋁合金或亞加力立體字，可內置LED燈光，外觀立體精緻，視覺衝擊力強，適合店面及企業門口。</p>
+        <span class="product-tag">高品質金屬製作</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">💡</div>
+        <h3>燈箱招牌</h3>
+        <div class="en">Lightbox Sign</div>
+        <p>LED燈箱招牌，均勻照明，色彩鮮豔，節能環保。各種尺寸及形狀訂製，適合室內外各類商業場所。</p>
+        <span class="product-tag">LED節能照明</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🔴</div>
+        <h3>發光霓虹燈招牌</h3>
+        <div class="en">Neon &amp; LED Neon Sign</div>
+        <p>傳統霓虹燈及新型LED霓虹燈，色彩豐富，裝飾效果出眾，適合餐飲、零售及創意品牌使用。</p>
+        <span class="product-tag">色彩豐富</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🏗️</div>
+        <h3>戶外牆體廣告</h3>
+        <div class="en">Outdoor Wall Advertising</div>
+        <p>大型戶外牆體廣告設計及製作，耐候材料，抗紫外線，適用於大廈外牆、施工圍板及戶外廣告位。</p>
+        <span class="product-tag">戶外耐候</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">⚙️</div>
+        <h3>金屬招牌</h3>
+        <div class="en">Metal Signage</div>
+        <p>不鏽鋼、鋁合金等金屬材料招牌，可搭配鍍金、拉絲、電鍍等精緻表面處理，彰顯企業高端形象。</p>
+        <span class="product-tag">精緻金屬工藝</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🗺️</div>
+        <h3>指示牌系統</h3>
+        <div class="en">Wayfinding &amp; Directional</div>
+        <p>室內外指示牌、導向標識及企業形象牆，系統設計確保整體視覺統一，提升空間專業感。</p>
+        <span class="product-tag">系統化設計</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="craft" id="craft">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Craftsmanship</div>
+      <h2 class="section-title">港式精工工藝</h2>
+      <p class="section-sub">精雕細磨的港式精工，多道精密工序成就每件作品，讓招牌作品成為城市藝術。</p>
+    </div>
+    <div class="craft-grid">
+      <div class="craft-card">
+        <div class="craft-icon">🔩</div>
+        <h3>金屬加工</h3>
+        <p>無縫焊接、折彎、洗槽、車床、水切割、激光線切割等精密金屬加工工序。</p>
+      </div>
+      <div class="craft-card">
+        <div class="craft-icon">✨</div>
+        <h3>表面處理</h3>
+        <p>細打磨、細拋光、拉絲、電鍍、氧化、腐蝕等多種精緻表面處理工藝。</p>
+      </div>
+      <div class="craft-card">
+        <div class="craft-icon">🎨</div>
+        <h3>噴塗烤漆</h3>
+        <p>汽車級烤漆塗裝，亞克力及玻璃表面絲印、熱變、理光UV印刷等工藝。</p>
+      </div>
+      <div class="craft-card">
+        <div class="craft-icon">🔬</div>
+        <h3>精雕工藝</h3>
+        <p>CNC雕刻、噴砂等精細工藝，根據圖紙製作各種不同造形及藝術效果。</p>
+      </div>
+    </div>
+    <div class="process-row">
+      <strong>完整工藝流程：</strong>金屬無縫焊接 → 折彎成型 → 洗槽 / 車床 → 水切割 / 激光切割 → 細打磨 / 拋光 → 拉絲 / 電鍍 / 氧化 → 烤漆 → 絲印 / UV噴印 → 雕刻 / 噴砂 → 品質檢驗 → 安裝完工
+    </div>
+  </div>
+</section>
+
+<section class="why-us" id="why">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Why Choose Us</div>
+      <h2 class="section-title">選擇藝嘉的理由</h2>
+      <p class="section-sub">15年行業積累，自設廠房，一站式服務，品質第一，客戶至上。</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🏭</div>
+        <h3>自設廠房</h3>
+        <p>自設生產廠房，全程品質掌控，從設計到成品均由我們一手負責，確保每件作品完美達標。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔄</div>
+        <h3>一站式服務</h3>
+        <p>設計、製作、安裝全程一站式處理，客戶無需協調多個供應商，省時省心省力。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <h3>即時免費報價</h3>
+        <p>WhatsApp即時查詢免費報價，透明定價，合理收費，無隱藏費用。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⭐</div>
+        <h3>品質第一</h3>
+        <p>"品質第一，客戶至上"是我們不變的經營理念，以誠信和品質服務每一位客戶。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Contact Us</div>
+      <h2 class="section-title">免費報價 · 立即查詢</h2>
+      <p class="section-sub">歡迎聯絡我們，我們提供即時WhatsApp報價，免費上門勘測，為您的招牌工程提供最佳方案。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>聯絡資訊</h3>
+        <p>即時WhatsApp報價：只需發送您的招牌需求，我們的專業顧問將盡快為您提供報價及建議方案。</p>
+        <div class="contact-item">
+          <div class="ci-icon">💬</div>
+          <div>
+            <div class="ci-label">WhatsApp 即時報價</div>
+            <div class="ci-val"><a href="tel:63311460">63311460</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">電郵 Email</div>
+            <div class="ci-val"><a href="mailto:yijia5019@163.com">yijia5019@163.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">網址 Website</div>
+            <div class="ci-val"><a href="https://www.ngaikaproduction.com/" target="_blank">ngaikaproduction.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🏢</div>
+          <div>
+            <div class="ci-label">服務地區</div>
+            <div class="ci-val">香港全境</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>📋 招牌查詢表格</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>稱呼 *</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>電話 *</label>
+            <input type="tel" placeholder="聯絡電話">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>招牌類型</label>
+          <select>
+            <option>-- 請選擇 --</option>
+            <option>立體字招牌</option>
+            <option>燈箱招牌</option>
+            <option>發光霓虹燈招牌</option>
+            <option>戶外牆體廣告</option>
+            <option>金屬招牌</option>
+            <option>指示牌 / 導向系統</option>
+            <option>企業形象牆 LOGO</option>
+            <option>其他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢內容</label>
+          <textarea placeholder="請描述您的招牌需求，包括尺寸、位置及特殊要求..."></textarea>
+        </div>
+        <button class="form-submit">提交查詢 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand"><span>藝嘉</span>廣告設計有限公司</div>
+  <div class="footer-motto">精工匠心 · 藝行天下</div>
+  <div class="footer-sub">招牌製作 · 設計 · 安裝一站式 · 香港 · 自設廠房</div>
+  <div class="footer-copy">© 2024 藝嘉廣告設計有限公司 Ngai Ka Production. All Rights Reserved.</div>
+</footer>
+
+</body>
+</html>
