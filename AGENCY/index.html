@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>安邁融資顧問有限公司 | 企業財務顧問</title>
+<meta name="description" content="安邁融資顧問有限公司為企業提供專業的融資顧問及財務諮詢服務，協助客戶實現融資目標。"/>
+<style>
+:root{
+  --primary:#1e1070;
+  --primary-mid:#2c1898;
+  --primary-light:#3a20c0;
+  --accent:#e08820;
+  --accent-light:#f0a030;
+  --dark:#0d0838;
+  --surface:#f6f5fc;
+  --surface2:#eeecf8;
+  --text:#1a1638;
+  --text-muted:#5a5880;
+  --white:#ffffff;
+  --radius:10px;
+  --shadow:0 4px 24px rgba(30,16,112,0.12);
+  --shadow-lg:0 8px 48px rgba(30,16,112,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.7}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(13,8,56,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(224,136,32,0.2)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--primary-light),var(--accent));border-radius:8px;display:flex;align-items:center;justify-content:function font-size);font-weight:900;font-size:16px;color:var(--white);align-items:center;justify-content:center}
+.nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--primary-light),var(--accent));border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:var(--white)}
+.nav-logo-text{font-size:15px;font-weight:700;color:var(--white);line-height:1.2}
+.nav-logo-sub{font-size:11px;color:var(--accent-light);font-weight:400}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent-light)}
+.nav-cta{background:linear-gradient(135deg,var(--accent),var(--accent-light));color:var(--dark)!important;padding:8px 20px;border-radius:6px;font-weight:700!important;font-size:13px!important}
+@media(max-width:768px){.nav-links{display:none}}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(150deg,var(--dark) 0%,var(--primary) 60%,#2a1880 100%);display:flex;align-items:center;padding-top:64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero::after{content:'';position:absolute;top:-150px;right:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(224,136,32,0.14) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;padding:80px 24px;width:100%;display:grid;grid-template-columns:1fr 400px;gap:56px;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(224,136,32,0.15);border:1px solid rgba(224,136,32,0.35);border-radius:20px;padding:6px 16px;margin-bottom:20px}
+.hero-badge-dot{width:8px;height:8px;background:var(--accent-light);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+.hero-badge-text{font-size:12px;color:var(--accent-light);font-weight:600;letter-spacing:.5px}
+.hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--white);line-height:1.15;margin-bottom:10px}
+.hero h1 span{color:var(--accent-light)}
+.hero-en{font-size:1.1rem;color:rgba(255,255,255,0.55);font-weight:400;margin-bottom:20px;letter-spacing:.5px}
+.hero-desc{font-size:1rem;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:36px;max-width:520px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--accent),var(--accent-light));color:var(--dark);padding:14px 28px;border-radius:var(--radius);font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(224,136,32,0.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(224,136,32,0.5)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(255,255,255,0.35);color:var(--white);padding:14px 28px;border-radius:var(--radius);font-weight:600;font-size:15px;text-decoration:none;transition:all .2s}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08)}
+.hero-card{background:rgba(255,255,255,0.06);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:30px;color:var(--white)}
+.hero-card-title{font-size:12px;color:var(--accent-light);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.hero-card-title::before{content:'';width:14px;height:2px;background:var(--accent-light)}
+.info-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.info-icon{width:34px;height:34px;min-width:34px;background:rgba(224,136,32,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.info-label{font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.info-val{font-size:14px;color:var(--white);font-weight:500;line-height:1.4}
+.info-val a{color:var(--accent-light);text-decoration:none}
+.hero-card-divider{height:1px;background:rgba(255,255,255,0.1);margin:16px 0}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-card{max-width:480px}}
+
+/* STATS */
+.stats{background:var(--primary);padding:52px 24px}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.stat-item{background:rgba(255,255,255,0.05);padding:30px 20px;text-align:center;transition:background .2s}
+.stat-item:first-child{border-radius:var(--radius) 0 0 var(--radius)}
+.stat-item:last-child{border-radius:0 var(--radius) var(--radius) 0}
+.stat-item:hover{background:rgba(255,255,255,0.1)}
+.stat-num{font-size:2rem;font-weight:800;color:var(--accent-light);line-height:1;margin-bottom:6px}
+.stat-label{font-size:13px;color:rgba(255,255,255,0.65);font-weight:500}
+@media(max-width:640px){.stats-inner{grid-template-columns:repeat(2,1fr)}}
+
+/* SECTIONS */
+section{padding:88px 24px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(30,16,112,0.08);color:var(--primary);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px;border:1px solid rgba(30,16,112,0.15)}
+.section-title{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;color:var(--dark);line-height:1.25;margin-bottom:14px}
+.section-title span{color:var(--primary-light)}
+.section-sub{font-size:1rem;color:var(--text-muted);max-width:580px;line-height:1.8}
+.section-header{margin-bottom:52px}
+.section-alt{background:var(--surface)}
+.section-dark{background:var(--primary);color:var(--white)}
+.section-dark .section-tag{background:rgba(224,136,32,0.2);color:var(--accent-light);border-color:rgba(224,136,32,0.3)}
+.section-dark .section-title{color:var(--white)}
+.section-dark .section-sub{color:rgba(255,255,255,0.7)}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc-card{background:var(--white);border:1px solid rgba(30,16,112,0.1);border-radius:16px;padding:30px;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-light))}
+.svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.svc-icon{width:50px;height:50px;background:linear-gradient(135deg,rgba(30,16,112,0.08),rgba(58,32,192,0.12));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.svc-title{font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:6px}
+.svc-en{font-size:12.5px;color:var(--text-muted);margin-bottom:10px}
+.svc-desc{font-size:13.5px;color:var(--text-muted);line-height:1.75}
+@media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.services-grid{grid-template-columns:1fr}}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-content p{font-size:1rem;color:var(--text-muted);line-height:1.85;margin-bottom:16px}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.highlight-item{background:var(--surface2);border-radius:10px;padding:18px;border-left:3px solid var(--primary-light)}
+.highlight-title{font-size:13.5px;font-weight:700;color:var(--primary);margin-bottom:4px}
+.highlight-desc{font-size:12.5px;color:var(--text-muted);line-height:1.6}
+.about-visual{background:linear-gradient(135deg,var(--dark),var(--primary));border-radius:18px;padding:36px;color:var(--white)}
+.about-visual-title{font-size:1rem;font-weight:700;color:var(--accent-light);margin-bottom:20px}
+.about-feat{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+.about-feat-icon{width:38px;height:38px;min-width:38px;background:rgba(224,136,32,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px}
+.about-feat-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px}
+.about-feat-desc{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6}
+@media(max-width:800px){.about-grid{grid-template-columns:1fr}.about-highlights{grid-template-columns:1fr}}
+
+/* PROCESS */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.process-grid::before{content:'';position:absolute;top:27px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--primary-light),var(--accent));z-index:0}
+.proc-step{text-align:center;padding:0 14px;position:relative;z-index:1}
+.proc-num{width:54px;height:54px;background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;color:var(--white);margin:0 auto 14px;border:3px solid var(--white);box-shadow:0 0 0 3px var(--primary-light)}
+.proc-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px}
+.proc-desc{font-size:12.5px;color:rgba(255,255,255,0.65);line-height:1.6}
+@media(max-width:680px){.process-grid{grid-template-columns:repeat(2,1fr)}.process-grid::before{display:none}}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.why-card{background:var(--white);border-radius:14px;padding:26px;text-align:center;border:1px solid rgba(30,16,112,0.1);transition:transform .2s,box-shadow .2s}
+.why-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.why-icon{font-size:2.2rem;margin-bottom:12px}
+.why-title{font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:7px}
+.why-desc{font-size:13.5px;color:var(--text-muted);line-height:1.7}
+@media(max-width:680px){.why-grid{grid-template-columns:1fr}}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:start}
+.contact-info-card{background:linear-gradient(135deg,var(--dark),var(--primary));border-radius:16px;padding:34px;color:var(--white)}
+.contact-info-title{font-size:17px;font-weight:700;color:var(--accent-light);margin-bottom:22px}
+.c-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+.c-icon{width:38px;height:38px;min-width:38px;background:rgba(224,136,32,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.c-label{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:.5px;margin-bottom:3px;text-transform:uppercase}
+.c-val{font-size:14px;color:var(--white);font-weight:500;line-height:1.5}
+.c-val a{color:var(--accent-light);text-decoration:none}
+.form-card{background:var(--surface);border-radius:16px;padding:34px;border:1px solid rgba(30,16,112,0.1)}
+.form-title{font-size:17px;font-weight:700;color:var(--primary);margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid rgba(30,16,112,0.15);border-radius:8px;font-size:14px;color:var(--text);background:var(--white);transition:border-color .2s;outline:none;font-family:inherit}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary-light)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.submit-btn{width:100%;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:var(--white);padding:14px;border:none;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s,transform .2s}
+.submit-btn:hover{opacity:.9;transform:translateY(-1px)}
+@media(max-width:800px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:var(--dark);padding:44px 24px 26px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:36px;margin-bottom:32px}
+.footer-brand-name{font-size:16px;font-weight:800;color:var(--white);margin-bottom:4px}
+.footer-brand-en{font-size:12px;color:var(--accent-light);margin-bottom:12px}
+.footer-brand-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.75}
+.footer-heading{font-size:12px;font-weight:700;color:var(--accent-light);letter-spacing:.8px;text-transform:uppercase;margin-bottom:14px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--accent-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.4)}
+@media(max-width:680px){.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;align-items:flex-start}}
+.divider{width:44px;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:2px;margin-bottom:18px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">安邁</div>
+      <div>
+        <div class="nav-logo-text">安邁融資顧問有限公司</div>
+        <div class="nav-logo-sub">Finance Advisory</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">服務</a></li>
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#process">服務流程</a></li>
+      <li><a href="#why">選擇理由</a></li>
+      <li><a href="#contact" class="nav-cta">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        <span class="hero-badge-text">企業融資顧問 · 香港</span>
+      </div>
+      <h1>專業融資顧問<br/><span>開拓企業新機遇</span></h1>
+      <div class="hero-en">Anmai Finance Advisory Limited</div>
+      <p class="hero-desc">安邁融資顧問有限公司為企業及個人提供專業的融資策劃、財務顧問及商業諮詢服務，以豐富的業界經驗助您突破融資瓶頸，實現商業目標。</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">免費初步諮詢 →</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">聯絡資訊</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">公司名稱</div>
+          <div class="info-val">安邁融資顧問有限公司</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📱</div>
+        <div>
+          <div class="info-label">聯絡電話</div>
+          <div class="info-val"><a href="tel:+85265110101">+852 6511 0101</a></div>
+        </div>
+      </div>
+      <div class="hero-card-divider"></div>
+      <div class="info-row">
+        <div class="info-icon">💼</div>
+        <div>
+          <div class="info-label">業務範疇</div>
+          <div class="info-val">企業融資 · 財務顧問<br/>商業諮詢 · 資本策劃</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">服務地區</div>
+          <div class="info-val">香港全港服務</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">360°</div>
+      <div class="stat-label">全方位融資服務</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">香港本地專業</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">SME</div>
+      <div class="stat-label">中小企專屬方案</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">✓</div>
+      <div class="stat-label">客製化顧問服務</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">服務範疇</div>
+      <h2 class="section-title">專業<span>融資顧問服務</span></h2>
+      <p class="section-sub">安邁融資顧問提供全面的融資及財務顧問服務，助企業突破資金限制，實現持續增長。</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">💳</div>
+        <div class="svc-title">企業融資安排</div>
+        <div class="svc-en">Corporate Financing</div>
+        <div class="svc-desc">為企業配對合適的融資方案，包括銀行貸款、過渡性融資及其他資金來源，滿足不同發展階段的融資需求。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📊</div>
+        <div class="svc-title">財務顧問諮詢</div>
+        <div class="svc-en">Financial Advisory</div>
+        <div class="svc-desc">提供企業財務策略規劃、資本結構優化及財務管理建議，協助企業建立健全的財務基礎。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏘️</div>
+        <div class="svc-title">物業按揭顧問</div>
+        <div class="svc-en">Mortgage Advisory</div>
+        <div class="svc-desc">為個人及企業客戶提供物業按揭及再融資顧問服務，比較不同方案，助您取得最佳按揭條件。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔄</div>
+        <div class="svc-title">債務重組方案</div>
+        <div class="svc-en">Debt Restructuring</div>
+        <div class="svc-desc">為面臨財務壓力的企業提供債務重組及整合方案，減輕財務負擔，改善現金流，恢復正常運營。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🌱</div>
+        <div class="svc-title">初創企業融資</div>
+        <div class="svc-en">Startup Financing</div>
+        <div class="svc-desc">協助初創企業尋找種子資金、天使投資及創業貸款，並提供商業計劃書優化建議，提高融資成功率。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🤝</div>
+        <div class="svc-title">商業諮詢服務</div>
+        <div class="svc-en">Business Consulting</div>
+        <div class="svc-desc">提供全面的商業諮詢服務，包括市場分析、業務策略規劃及營運效率優化，助企業實現可持續增長。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section-alt">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-content">
+        <div class="section-tag">關於我們</div>
+        <h2 class="section-title">以專業<span>橋接融資機遇</span></h2>
+        <div class="divider"></div>
+        <p>安邁融資顧問有限公司是一家專注於企業融資及財務顧問服務的香港公司，致力為中小型企業及個人客戶提供切實有效的融資解決方案。</p>
+        <p>我們的顧問團隊具備豐富的金融及融資業界經驗，深入了解香港的融資市場及銀行運作，能夠有效配對客戶需求與合適的融資渠道，大幅提升融資申請的成功率。</p>
+        <p>無論您是需要擴充業務資金、周轉融資，還是個人置業按揭，安邁融資顧問均能為您提供度身訂造的專業建議及全程跟進服務。</p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <div class="highlight-title">🎯 專注融資領域</div>
+            <div class="highlight-desc">深耕融資顧問專業，具備廣泛的金融機構合作網絡</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-title">⚡ 高效處理申請</div>
+            <div class="highlight-desc">迅速評估融資需求，加快申請及審批流程</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-title">🔒 客戶資料保密</div>
+            <div class="highlight-desc">嚴格保護客戶商業及財務資料的機密性</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-title">💡 靈活融資方案</div>
+            <div class="highlight-desc">根據客戶實際狀況制定彈性的融資策略</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-visual-title">我們的服務優勢</div>
+        <div class="about-feat">
+          <div class="about-feat-icon">🏦</div>
+          <div>
+            <div class="about-feat-title">廣闊金融網絡</div>
+            <div class="about-feat-desc">與多家本地及國際銀行、財務機構建立長期合作關係，為客戶提供更多融資選擇</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon">📋</div>
+          <div>
+            <div class="about-feat-title">全程申請協助</div>
+            <div class="about-feat-desc">從融資策略規劃到申請文件準備，全程提供專業指導，確保申請資料完整準確</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon">📈</div>
+          <div>
+            <div class="about-feat-title">提升成功率</div>
+            <div class="about-feat-desc">憑借業界經驗及對審批標準的深入了解，顯著提升融資申請的獲批機率</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon">🌟</div>
+          <div>
+            <div class="about-feat-title">售後跟進服務</div>
+            <div class="about-feat-desc">融資成功後持續提供財務管理建議，確保客戶有效運用資金達成業務目標</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="section-dark">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center">
+      <div class="section-tag">服務流程</div>
+      <h2 class="section-title">四步驟<span style="color:var(--accent-light)">融資顧問流程</span></h2>
+      <p class="section-sub" style="margin:0 auto">系統化的服務流程，確保每位客戶獲得最專業、最有效的融資顧問支援。</p>
+    </div>
+    <div class="process-grid">
+      <div class="proc-step">
+        <div class="proc-num">01</div>
+        <div class="proc-title">免費初步諮詢</div>
+        <div class="proc-desc">了解您的融資需求及財務狀況，評估可行方案並提供初步意見</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">02</div>
+        <div class="proc-title">制定融資策略</div>
+        <div class="proc-desc">根據評估結果制定最適合的融資方案，比較不同渠道的條件及成本</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">03</div>
+        <div class="proc-title">準備申請文件</div>
+        <div class="proc-desc">協助整理所需文件資料，確保申請材料完整，提高獲批機率</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">04</div>
+        <div class="proc-title">跟進至完成</div>
+        <div class="proc-desc">全程跟進申請進度，處理機構查詢，直至融資成功到位</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center">
+      <div class="section-tag">選擇理由</div>
+      <h2 class="section-title">為何選擇<span>安邁融資顧問</span></h2>
+      <p class="section-sub" style="margin:0 auto">我們以客戶成功為最終目標，提供誠信、專業、高效的融資顧問服務。</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <div class="why-title">度身訂造方案</div>
+        <div class="why-desc">深入了解每位客戶的獨特需求，量身設計最切合實際情況的融資策略，而非提供千篇一律的方案。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <div class="why-title">透明誠信服務</div>
+        <div class="why-desc">清晰說明各融資方案的條件、費用及風險，讓客戶充分了解後作出明智決定，建立長期互信關係。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <div class="why-title">高效迅速響應</div>
+        <div class="why-desc">明白融資時機的重要性，承諾迅速回應客戶查詢，有效縮短融資申請及批核時間。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-alt">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">立即開始<span>融資諮詢</span></h2>
+      <p class="section-sub">歡迎致電或填寫以下表格，我們的融資顧問將盡快與您聯絡，提供免費初步諮詢。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-card">
+        <div class="contact-info-title">聯絡資訊</div>
+        <div class="c-row">
+          <div class="c-icon">📱</div>
+          <div>
+            <div class="c-label">電話 / WhatsApp</div>
+            <div class="c-val"><a href="tel:+85265110101">+852 6511 0101</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">服務地區</div>
+            <div class="c-val">香港全港服務<br/>可上門或視像會面</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">⏰</div>
+          <div>
+            <div class="c-label">服務時間</div>
+            <div class="c-val">星期一至五：09:00 – 18:00<br/>星期六：09:00 – 13:00<br/>WhatsApp 可預約</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">💬</div>
+          <div>
+            <div class="c-label">免費諮詢</div>
+            <div class="c-val">初步融資評估免費<br/>歡迎隨時查詢</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <div class="form-title">發送融資查詢</div>
+        <form onsubmit="return false">
+          <div class="form-row">
+            <div class="form-group">
+              <label>姓名 *</label>
+              <input type="text" placeholder="您的姓名"/>
+            </div>
+            <div class="form-group">
+              <label>公司名稱</label>
+              <input type="text" placeholder="公司名稱（如適用）"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>電郵地址</label>
+              <input type="email" placeholder="your@email.com"/>
+            </div>
+            <div class="form-group">
+              <label>聯絡電話 *</label>
+              <input type="tel" placeholder="+852 XXXX XXXX"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>融資類型</label>
+            <select>
+              <option value="">-- 請選擇融資類型 --</option>
+              <option>企業融資（營運資金）</option>
+              <option>企業融資（業務擴充）</option>
+              <option>物業按揭 / 再融資</option>
+              <option>債務重組整合</option>
+              <option>初創企業融資</option>
+              <option>其他融資查詢</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>融資需求詳情 *</label>
+            <textarea placeholder="請描述您的融資需求，例如：融資金額、用途、時間要求等…"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">提交融資查詢 →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">安邁融資顧問有限公司</div>
+        <div class="footer-brand-en">Anmai Finance Advisory Limited</div>
+        <div class="footer-brand-desc">專業的企業融資及財務顧問服務提供商，以豐富的業界經驗及廣闊的金融網絡，協助客戶達成融資目標。<br/><br/>電話：+852 6511 0101</div>
+      </div>
+      <div>
+        <div class="footer-heading">服務</div>
+        <ul class="footer-links">
+          <li><a href="#services">企業融資安排</a></li>
+          <li><a href="#services">財務顧問諮詢</a></li>
+          <li><a href="#services">物業按揭顧問</a></li>
+          <li><a href="#services">債務重組方案</a></li>
+          <li><a href="#services">初創企業融資</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">公司</div>
+        <ul class="footer-links">
+          <li><a href="#about">關於我們</a></li>
+          <li><a href="#process">服務流程</a></li>
+          <li><a href="#why">選擇理由</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 安邁融資顧問有限公司. 版權所有。</div>
+      <div class="footer-copy">+852 6511 0101 | 香港</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
