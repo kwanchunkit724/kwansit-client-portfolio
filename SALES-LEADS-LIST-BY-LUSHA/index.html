@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SL Print Solutions | Professional Printing Services in Hong Kong</title>
+<style>
+:root {
+  --bg:       #070608;
+  --surface:  #0e0c10;
+  --card:     #161218;
+  --border:   #281c30;
+  --acc1:     #601878;
+  --acc2:     #9020a8;
+  --acc3:     #c030d8;
+  --cyan:     #10c8d8;
+  --yellow:   #e8c020;
+  --magenta:  #d82090;
+  --text:     #f0e8f8;
+  --muted:    #9070a8;
+  --radius:   8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;font-size:16px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,6,8,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--acc1),var(--acc3));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.logo-text{font-size:1.15rem;font-weight:700;color:var(--text)}
+.logo-sub{font-size:.7rem;color:var(--muted);letter-spacing:.05em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
+.nav-links a:hover{color:var(--acc3)}
+.nav-cta{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:9px 22px;border-radius:5px;font-size:.88rem;font-weight:600;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;background:radial-gradient(ellipse 75% 55% at 35% 50%,rgba(96,24,120,.15) 0%,transparent 65%),var(--bg)}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(192,48,216,.1);border:1px solid rgba(192,48,216,.3);border-radius:20px;padding:6px 16px;font-size:.8rem;color:var(--acc3);margin-bottom:24px;letter-spacing:.05em}
+.hero h1{font-size:2.9rem;font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:var(--acc3)}
+.hero-desc{font-size:1.02rem;color:var(--muted);margin-bottom:36px;max-width:540px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:13px 30px;border-radius:6px;font-size:.95rem;font-weight:700;text-decoration:none;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:13px 30px;border-radius:6px;font-size:.95rem;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--acc2);color:var(--acc2)}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hero-card h3{font-size:.9rem;color:var(--acc3);margin-bottom:18px;text-transform:uppercase;letter-spacing:.1em}
+.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.info-row:last-child{border-bottom:none}
+.info-label{color:var(--muted)}
+.info-val{color:var(--text);font-weight:600;text-align:right;max-width:60%}
+/* CMYK dots */
+.cmyk{display:flex;gap:6px;justify-content:flex-end}
+.cmyk-dot{width:14px;height:14px;border-radius:50%}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-box{text-align:center}
+.stat-num{font-size:2.1rem;font-weight:800;color:var(--acc3);display:block}
+.stat-label{font-size:.83rem;color:var(--muted);margin-top:4px}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(144,32,168,.12);border:1px solid rgba(144,32,168,.3);border-radius:4px;padding:4px 12px;font-size:.76rem;color:var(--acc2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:1.9rem;font-weight:800;margin-bottom:12px}
+.section-sub{color:var(--muted);font-size:.98rem;max-width:620px}
+.section-head{margin-bottom:48px}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* SERVICES */
+.services{background:var(--bg)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .25s,transform .25s}
+.svc-card:hover{border-color:var(--acc2);transform:translateY(-3px)}
+.svc-icon{font-size:2.2rem;margin-bottom:16px}
+.svc-name{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.svc-desc{font-size:.88rem;color:var(--muted);line-height:1.7}
+.svc-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.tag{background:rgba(144,32,168,.1);border:1px solid rgba(144,32,168,.27);border-radius:4px;padding:3px 9px;font-size:.73rem;color:var(--acc2)}
+
+/* CAPABILITIES */
+.capabilities{background:var(--surface)}
+.cap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.cap-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;display:flex;gap:16px;align-items:flex-start;transition:border-color .25s}
+.cap-card:hover{border-color:var(--acc2)}
+.cap-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--acc1),var(--acc2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.cap-body h3{font-size:.97rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.cap-body p{font-size:.86rem;color:var(--muted);line-height:1.6}
+
+/* SECTORS */
+.sectors{background:var(--bg)}
+.sector-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sector-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;text-align:center;transition:border-color .25s,transform .25s}
+.sector-card:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.sector-icon{font-size:2rem;margin-bottom:10px}
+.sector-name{font-size:.93rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.sector-desc{font-size:.82rem;color:var(--muted);line-height:1.6}
+
+/* PROCESS */
+.process{background:var(--surface)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;text-align:center}
+.step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--acc1),var(--acc2));display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:#fff;margin:0 auto 12px}
+.step-title{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.step-desc{font-size:.78rem;color:var(--muted);line-height:1.5}
+
+/* CONTACT */
+.contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h2{font-size:1.8rem;font-weight:800;margin-bottom:16px}
+.contact-info p{color:var(--muted);margin-bottom:28px;line-height:1.7}
+.contact-items{display:flex;flex-direction:column;gap:16px}
+.contact-item{display:flex;align-items:flex-start;gap:14px}
+.contact-icon{width:40px;height:40px;background:rgba(96,24,120,.3);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-detail strong{display:block;color:var(--text);font-size:.9rem;margin-bottom:2px}
+.contact-detail span{color:var(--muted);font-size:.85rem}
+form{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:18px}
+form label{font-size:.84rem;color:var(--muted);margin-bottom:4px;display:block}
+form input,form select,form textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.91rem;outline:none;transition:border-color .2s;font-family:inherit}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--acc2)}
+form textarea{resize:vertical;min-height:100px}
+form button{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s}
+form button:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 5% 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-top:12px}
+.footer-col h4{font-size:.87rem;font-weight:700;color:var(--text);margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col a{color:var(--muted);text-decoration:none;font-size:.86rem;transition:color .2s}
+.footer-col a:hover{color:var(--acc3)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{color:var(--muted);font-size:.82rem}
+.footer-hk{color:var(--muted);font-size:.82rem}
+
+@media(max-width:900px){
+  .hero-inner,.contact-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .hero h1{font-size:2.1rem}
+  .svc-grid,.sector-grid{grid-template-columns:1fr 1fr}
+  .cap-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  .svc-grid,.sector-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">🖨️</div>
+      <div>
+        <div class="logo-text">SL Print Solutions</div>
+        <div class="logo-sub">Professional Printing · Hong Kong</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#sectors">Sectors</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🖨️ Full-Service Print · Hong Kong</div>
+      <h1>Print That Makes<br><span>Your Brand Shine</span></h1>
+      <p class="hero-desc">
+        SL Print Solutions is a Hong Kong–based printing company offering commercial
+        offset printing, digital printing, large-format output, and packaging solutions.
+        From business cards to billboard posters, we deliver precision colour, fast
+        turnaround, and consistent quality on every job.
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#services">Our Services</a>
+        <a class="btn-outline" href="#contact">Request a Quote</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Company Profile</h3>
+      <div class="info-row">
+        <span class="info-label">Company</span>
+        <span class="info-val">SL Print Solutions</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Industry</span>
+        <span class="info-val">Commercial Printing</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Technology</span>
+        <span class="info-val">Offset · Digital · Large Format</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Location</span>
+        <span class="info-val">Hong Kong</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Colour Standard</span>
+        <span class="info-val">
+          <div class="cmyk">
+            <div class="cmyk-dot" style="background:#00aeef"></div>
+            <div class="cmyk-dot" style="background:#ec008c"></div>
+            <div class="cmyk-dot" style="background:#ffed00"></div>
+            <div class="cmyk-dot" style="background:#231f20"></div>
+          </div>
+        </span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Turnaround</span>
+        <span class="info-val">Express &amp; Standard Options</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-box">
+      <span class="stat-num">3</span>
+      <div class="stat-label">Print Technology Platforms</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">CMYK</span>
+      <div class="stat-label">Colour Accuracy Standard</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">Fast</span>
+      <div class="stat-label">Express Turnaround Available</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">HK</span>
+      <div class="stat-label">Local Production &amp; Delivery</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Our Services</div>
+      <h2 class="section-title">Printing Services</h2>
+      <p class="section-sub">A complete print production facility covering every format, substrate, and finishing requirement</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">📄</div>
+        <div class="svc-name">Offset Printing</div>
+        <p class="svc-desc">
+          High-volume commercial offset printing for brochures, catalogues, annual reports, magazines, and stationery. Precise CMYK and Pantone colour reproduction on a wide range of paper stocks.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">CMYK</span>
+          <span class="tag">Pantone</span>
+          <span class="tag">High Volume</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🖥️</div>
+        <div class="svc-name">Digital Printing</div>
+        <p class="svc-desc">
+          Short-run digital printing with fast turnaround — ideal for personalised mailers, variable data printing, proof runs, and on-demand print jobs from as few as one copy.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">Short Run</span>
+          <span class="tag">Variable Data</span>
+          <span class="tag">Fast Turnaround</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🖼️</div>
+        <div class="svc-name">Large Format Printing</div>
+        <p class="svc-desc">
+          Banners, posters, signage, backdrops, window graphics, and vehicle wraps. Vivid wide-format output on vinyl, canvas, fabric, and rigid substrates for indoor and outdoor use.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">Banners</span>
+          <span class="tag">Signage</span>
+          <span class="tag">Outdoor</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📦</div>
+        <div class="svc-name">Packaging &amp; Box Printing</div>
+        <p class="svc-desc">
+          Custom packaging design and production — gift boxes, product cartons, retail packaging, and luxury boxes with special finishes including foil stamping, embossing, and spot UV.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">Gift Boxes</span>
+          <span class="tag">Foil Stamping</span>
+          <span class="tag">Luxury Finish</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏷️</div>
+        <div class="svc-name">Labels &amp; Stickers</div>
+        <p class="svc-desc">
+          Roll labels, die-cut stickers, product labels, and custom adhesive materials. Available in gloss, matte, transparent, and specialty substrates for brand, retail, and industrial use.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">Die-Cut</span>
+          <span class="tag">Roll Labels</span>
+          <span class="tag">Custom Shape</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">✨</div>
+        <div class="svc-name">Finishing &amp; Binding</div>
+        <p class="svc-desc">
+          Full post-press finishing: lamination, UV coating, embossing, foil stamping, die-cutting, saddle stitching, perfect binding, hardcover bookbinding, and bespoke packaging assembly.
+        </p>
+        <div class="svc-tags">
+          <span class="tag">Lamination</span>
+          <span class="tag">UV Coating</span>
+          <span class="tag">Bookbinding</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CAPABILITIES -->
+<section class="capabilities" id="capabilities">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Technical Capabilities</div>
+      <h2 class="section-title">Production Capabilities</h2>
+      <p class="section-sub">State-of-the-art equipment and proven expertise delivering consistent, high-quality results</p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-icon">🎨</div>
+        <div class="cap-body">
+          <h3>Colour Management</h3>
+          <p>ISO-calibrated colour management workflow ensuring accurate CMYK and Pantone reproduction across all print runs. Colour proofing available before final production.</p>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">📐</div>
+        <div class="cap-body">
+          <h3>Pre-Press &amp; Design Support</h3>
+          <p>In-house pre-press team checking files for print-readiness — resolution, bleed, colour mode, and font embedding — minimising errors before press.</p>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">⚡</div>
+        <div class="cap-body">
+          <h3>Express Production</h3>
+          <p>Same-day and next-day print options for urgent requirements. Our digital presses can turn around short runs within hours for business-critical deadlines.</p>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🌿</div>
+        <div class="cap-body">
+          <h3>Eco-Friendly Options</h3>
+          <p>FSC-certified paper stocks, vegetable-based inks, and water-based laminates available for clients prioritising sustainable and environmentally responsible print production.</p>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">📦</div>
+        <div class="cap-body">
+          <h3>Fulfilment &amp; Delivery</h3>
+          <p>In-house collating, packing, and delivery across Hong Kong. We also offer direct mail fulfilment — print, personalise, address, and post in one seamless workflow.</p>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🔍</div>
+        <div class="cap-body">
+          <h3>Quality Control</h3>
+          <p>Every job inspected before despatch. Strict QC protocols covering colour accuracy, registration, cut tolerance, and finish quality to our exacting house standards.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTORS -->
+<section class="sectors" id="sectors">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Sectors</div>
+      <h2 class="section-title">Industries We Print For</h2>
+      <p class="section-sub">Experienced across Hong Kong's diverse commercial and creative sectors</p>
+    </div>
+    <div class="sector-grid">
+      <div class="sector-card">
+        <div class="sector-icon">🛍️</div>
+        <div class="sector-name">Retail &amp; FMCG</div>
+        <p class="sector-desc">Packaging, POS materials, price tags, promotional leaflets, and retail display graphics for consumer brands and retailers.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏢</div>
+        <div class="sector-name">Corporate</div>
+        <p class="sector-desc">Annual reports, corporate stationery, presentation folders, business cards, and branded collateral for professional services firms.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🎉</div>
+        <div class="sector-name">Events &amp; Exhibitions</div>
+        <p class="sector-desc">Exhibition banners, signage, backdrops, programmes, invitations, and branded event materials produced to tight event deadlines.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏨</div>
+        <div class="sector-name">Hospitality</div>
+        <p class="sector-desc">Menus, hotel stationery, loyalty card packaging, promotional collateral, and branded gift boxes for hotels and restaurants.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🎓</div>
+        <div class="sector-name">Education</div>
+        <p class="sector-desc">Textbooks, workbooks, prospectuses, certificates, and event programmes for schools, universities, and educational publishers.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">💄</div>
+        <div class="sector-name">Beauty &amp; Luxury</div>
+        <p class="sector-desc">Premium packaging, inserts, tags, and collateral for beauty brands and luxury goods — foil, embossing, and specialty substrates available.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Our Process</div>
+      <h2 class="section-title">From Brief to Delivery</h2>
+      <p class="section-sub">A streamlined five-step production process ensuring every print job is delivered correctly, on time</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Quote</div>
+        <p class="step-desc">Submit your specs and receive a competitive quote within the same business day.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Artwork</div>
+        <p class="step-desc">Supply print-ready files or work with our pre-press team to prepare your artwork.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Proof</div>
+        <p class="step-desc">Receive a digital or physical colour proof for approval before press commences.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Print</div>
+        <p class="step-desc">Production on press with quality monitoring throughout the print run.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-title">Deliver</div>
+        <p class="step-desc">QC-checked, packed, and delivered to your door anywhere in Hong Kong.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-tag">Contact Us</div>
+        <h2>Request a Print Quote</h2>
+        <p>
+          Tell us about your print project and we'll provide a competitive quote promptly.
+          Whether it's a single item or a complex multi-component job, our team is ready to
+          deliver exactly what you need.
+        </p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>Location</strong>
+              <span>Hong Kong — Delivery across HK available</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-detail">
+              <strong>Production Hours</strong>
+              <span>Monday – Saturday: 09:00 – 18:00</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">⚡</div>
+            <div class="contact-detail">
+              <strong>Express Jobs</strong>
+              <span>Same-day and next-day options available for digital print</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div class="contact-detail">
+              <strong>Languages</strong>
+              <span>English · 中文</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form>
+        <div>
+          <label>Full Name *</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div>
+          <label>Company</label>
+          <input type="text" placeholder="Your company name">
+        </div>
+        <div>
+          <label>Email Address *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div>
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+852 xxxx xxxx">
+        </div>
+        <div>
+          <label>Print Service Required</label>
+          <select>
+            <option>Offset Printing</option>
+            <option>Digital Printing</option>
+            <option>Large Format</option>
+            <option>Packaging &amp; Boxes</option>
+            <option>Labels &amp; Stickers</option>
+            <option>Finishing &amp; Binding</option>
+            <option>Multiple Services</option>
+          </select>
+        </div>
+        <div>
+          <label>Project Details *</label>
+          <textarea placeholder="Describe your print job — quantity, size, paper stock, colours, finishing, and deadline…"></textarea>
+        </div>
+        <button type="submit">Request Quote →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">🖨️</div>
+          <div>
+            <div class="logo-text">SL Print Solutions</div>
+            <div class="logo-sub">Professional Printing · Hong Kong</div>
+          </div>
+        </div>
+        <p>A Hong Kong printing company offering offset, digital, large-format, and packaging print solutions. Precise colour, reliable quality, fast turnaround — every job, every time.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Offset Printing</a></li>
+          <li><a href="#services">Digital Printing</a></li>
+          <li><a href="#services">Large Format</a></li>
+          <li><a href="#services">Packaging</a></li>
+          <li><a href="#services">Labels &amp; Stickers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#sectors">Sectors</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#contact">Get a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 SL Print Solutions. All Rights Reserved.</div>
+      <div class="footer-hk">🇭🇰 Professional Printing · Hong Kong</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
