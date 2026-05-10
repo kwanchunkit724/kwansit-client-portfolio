@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>藍海創意(香港)有限公司 | Blue Sea Idea — 一站式展活動 · 印刷 · 舞台製作</title>
+<style>
+  :root {
+    --blue: #0065a3;
+    --blue-dark: #004e82;
+    --blue-light: #e8f4ff;
+    --orange: #e85a0a;
+    --orange-dark: #c44808;
+    --orange-light: #fff3ee;
+    --navy: #0a1e3a;
+    --white: #ffffff;
+    --light: #f4f8fc;
+    --text: #2c3445;
+    --muted: #6b7280;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', '微軟正黑體', Arial, sans-serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
+  .nav-logo { width: 42px; height: 42px; border-radius: 8px; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .nav-name { color: var(--white); font-weight: 700; font-size: 15px; line-height: 1.2; }
+  .nav-name span { color: #7dd4ff; font-size: 12px; font-weight: 400; }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a { color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: #7dd4ff; }
+  .nav-cta { background: var(--orange); color: var(--white); padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 700; transition: background .2s; }
+  .nav-cta:hover { background: var(--orange-dark); }
+
+  /* HERO */
+  .hero {
+    margin-top: 64px;
+    background: linear-gradient(150deg, var(--navy) 0%, #0a2e55 55%, #0e3a6a 100%);
+    min-height: 560px; display: flex; align-items: center;
+    padding: 72px 48px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '🎪';
+    position: absolute; right: 80px; top: 40%;
+    font-size: 220px; opacity: 0.06;
+  }
+  .hero-content { max-width: 640px; z-index: 1; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,90,10,0.2); border: 1px solid rgba(232,90,10,0.4); color: #ffaa80; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; margin-bottom: 24px; }
+  .hero h1 { font-size: 44px; font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 8px; }
+  .hero h1 span { color: #7dd4ff; }
+  .hero-en { font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+  .hero-desc { font-size: 15px; color: rgba(255,255,255,0.78); line-height: 1.8; margin-bottom: 34px; max-width: 560px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-orange { background: var(--orange); color: var(--white); padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; transition: background .2s, transform .2s; }
+  .btn-orange:hover { background: var(--orange-dark); transform: translateY(-2px); }
+  .btn-blue { background: var(--blue); color: var(--white); padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; transition: background .2s, transform .2s; }
+  .btn-blue:hover { background: var(--blue-dark); transform: translateY(-2px); }
+  .hero-pricing { position: absolute; right: 56px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(12px); border-radius: 16px; padding: 28px 30px; min-width: 240px; z-index: 1; }
+  .hero-pricing-title { color: #ffaa80; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+  .price-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .price-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .price-item { font-size: 13px; color: rgba(255,255,255,0.8); }
+  .price-val { font-size: 14px; font-weight: 700; color: #7dd4ff; }
+
+  /* CAT STRIP */
+  .cat-strip { background: var(--blue); display: flex; justify-content: center; flex-wrap: wrap; }
+  .cat-item { padding: 18px 36px; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; gap: 10px; }
+  .cat-item:last-child { border-right: none; }
+  .cat-icon { font-size: 20px; }
+  .cat-label { color: var(--white); font-size: 14px; font-weight: 700; }
+  .cat-sub { color: rgba(255,255,255,0.7); font-size: 11px; }
+
+  /* SECTION */
+  section { padding: 80px 48px; }
+  .section-label { display: inline-block; color: var(--orange); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  h2 { font-size: 34px; font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 640px; margin-bottom: 48px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .mission-box { background: var(--white); border-radius: 14px; padding: 26px; border-left: 4px solid var(--blue); margin-bottom: 26px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .mission-box h3 { font-size: 14px; color: var(--blue); font-weight: 700; margin-bottom: 10px; }
+  .mission-box p { font-size: 14px; color: var(--text); line-height: 1.75; }
+  .about-desc p { font-size: 15px; color: var(--text); line-height: 1.8; margin-bottom: 16px; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .about-prop { background: var(--white); border-radius: 12px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-top: 3px solid var(--orange); }
+  .about-prop-icon { font-size: 26px; margin-bottom: 10px; }
+  .about-prop h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .about-prop p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: var(--white); border-radius: 14px; padding: 28px 22px; box-shadow: 0 4px 18px rgba(0,0,0,0.07); border-top: 4px solid var(--blue); transition: transform .25s, box-shadow .25s; }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+  .service-icon { width: 52px; height: 52px; border-radius: 12px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
+  .service-card h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .service-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .service-tag { display: inline-block; margin-top: 12px; background: var(--blue-light); color: var(--blue-dark); padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+
+  /* PRICING */
+  .pricing { background: var(--light); }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .pricing-card { background: var(--white); border-radius: 14px; padding: 28px 22px; box-shadow: 0 4px 14px rgba(0,0,0,0.07); transition: transform .25s; }
+  .pricing-card:hover { transform: translateY(-4px); }
+  .pricing-card-icon { font-size: 30px; margin-bottom: 14px; }
+  .pricing-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .pricing-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+  .price-badge { display: inline-flex; align-items: baseline; gap: 3px; }
+  .price-badge .from { font-size: 12px; color: var(--muted); }
+  .price-badge .amount { font-size: 22px; font-weight: 800; color: var(--orange); }
+  .price-badge .unit { font-size: 12px; color: var(--muted); }
+  .pricing-note { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+  /* STUDIO */
+  .studio { background: var(--navy); }
+  .studio h2 { color: var(--white); }
+  .studio .section-label { color: #7dd4ff; }
+  .studio .section-sub { color: rgba(255,255,255,0.65); }
+  .studio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .studio-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 32px; }
+  .studio-card h3 { font-size: 18px; font-weight: 700; color: #7dd4ff; margin-bottom: 12px; }
+  .studio-feature { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 14px; color: rgba(255,255,255,0.85); }
+  .studio-feature span { color: #7dd4ff; flex-shrink: 0; }
+
+  /* CONTACT */
+  .contact { background: var(--light); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+  .contact-row { display: flex; align-items: flex-start; gap: 14px; }
+  .contact-row-icon { width: 42px; height: 42px; border-radius: 10px; background: var(--blue-light); border: 1px solid rgba(0,101,163,0.2); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .contact-row-text h4 { font-size: 12px; color: var(--blue); font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .contact-row-text p, .contact-row-text a { font-size: 14px; color: var(--text); line-height: 1.55; }
+  .contact-row-text a:hover { color: var(--blue); }
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .contact-form input, .contact-form select, .contact-form textarea { background: var(--white); border: 1px solid #d0d8e4; border-radius: 8px; padding: 12px 15px; color: var(--text); font-size: 14px; font-family: inherit; outline: none; transition: border-color .2s; }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--blue); }
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+  .contact-form button { background: var(--orange); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .2s; }
+  .contact-form button:hover { background: var(--orange-dark); }
+
+  /* FOOTER */
+  footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 26px 48px; font-size: 13px; }
+  footer span { color: #7dd4ff; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 48px 24px; }
+    .hero h1 { font-size: 30px; }
+    .hero-pricing { display: none; }
+    section { padding: 56px 24px; }
+    .about-grid, .contact-grid, .studio-grid { grid-template-columns: 1fr; }
+    .services-grid, .pricing-grid { grid-template-columns: 1fr 1fr; }
+    .about-props { grid-template-columns: 1fr; }
+    .cat-item { padding: 14px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">🌊</div>
+    <div class="nav-name">藍海創意 (香港)<br><span>Blue Sea Idea (HK) Limited</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">關於我們</a>
+    <a href="#services">服務項目</a>
+    <a href="#pricing">收費參考</a>
+    <a href="#studio">直播室</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <a href="#contact" class="nav-cta">即時報價</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🎪 香港一站式展活動服務</div>
+    <h1>創意無限的<span>展活動</span>服務</h1>
+    <div class="hero-en">Blue Sea Idea (HK) Limited · 藍海創意(香港)有限公司</div>
+    <p class="hero-desc">
+      藍海創意(香港)有限公司，一站式展覽及活動服務公司，涵蓋印刷設計、舞台搭建、LED大屏、音響燈光、直播室租借、街頭推廣及禮儀服務，為您的每個活動打造完美呈現。
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-orange">即時索取報價</a>
+      <a href="#services" class="btn-blue">服務項目</a>
+    </div>
+  </div>
+  <div class="hero-pricing">
+    <div class="hero-pricing-title">💰 服務收費由</div>
+    <div class="price-row">
+      <div class="price-item">展覽招牌</div>
+      <div class="price-val">HK$300起</div>
+    </div>
+    <div class="price-row">
+      <div class="price-item">背幕搭建</div>
+      <div class="price-val">HK$3,000起</div>
+    </div>
+    <div class="price-row">
+      <div class="price-item">舞台搭建</div>
+      <div class="price-val">HK$5,000起</div>
+    </div>
+    <div class="price-row">
+      <div class="price-item">LED背幕</div>
+      <div class="price-val">HK$6,000起</div>
+    </div>
+    <div class="price-row">
+      <div class="price-item">直播室租借</div>
+      <div class="price-val">HK$800/小時</div>
+    </div>
+  </div>
+</section>
+
+<!-- CAT STRIP -->
+<div class="cat-strip">
+  <div class="cat-item">
+    <div class="cat-icon">🖨️</div>
+    <div>
+      <div class="cat-label">印刷服務</div>
+      <div class="cat-sub">Printing</div>
+    </div>
+  </div>
+  <div class="cat-item">
+    <div class="cat-icon">🎪</div>
+    <div>
+      <div class="cat-label">活動舉辦</div>
+      <div class="cat-sub">Event Management</div>
+    </div>
+  </div>
+  <div class="cat-item">
+    <div class="cat-icon">📣</div>
+    <div>
+      <div class="cat-label">線上下推廣</div>
+      <div class="cat-sub">O2O Marketing</div>
+    </div>
+  </div>
+  <div class="cat-item">
+    <div class="cat-icon">🎭</div>
+    <div>
+      <div class="cat-label">舞台製作租賃</div>
+      <div class="cat-sub">Stage Production</div>
+    </div>
+  </div>
+  <div class="cat-item">
+    <div class="cat-icon">🚶</div>
+    <div>
+      <div class="cat-label">街頭推廣</div>
+      <div class="cat-sub">Street Promotion</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">關於我們</div>
+    <h2>香港一站式展活動服務</h2>
+    <p class="section-sub" style="margin: 0 auto;">藍海創意(香港)有限公司是香港專業的展覽及活動製作公司，提供從印刷設計到舞台搭建、直播製作的全面服務，為客戶提供一站式解決方案。</p>
+  </div>
+  <div class="about-grid">
+    <div>
+      <div class="mission-box">
+        <h3>🌊 創意 · 專業 · 一站式</h3>
+        <p>藍海創意以「創意無限，服務至上」為核心理念，憑藉專業的活動製作團隊和豐富的設備資源，為客戶提供由創意設計到現場執行的一站式展活動服務，讓每個活動都能呈現最佳效果，留下深刻印象。</p>
+      </div>
+      <div class="about-desc">
+        <p>無論是大型企業活動、音樂表演、展覽、產品發佈會，還是街頭推廣活動，藍海創意均能提供專業的策劃及執行服務，滿足不同規模和預算的活動需求。</p>
+        <p>公司設有直播室供租用，為品牌直播、網上發佈及線上推廣活動提供專業的現場設備支援。</p>
+      </div>
+    </div>
+    <div class="about-props">
+      <div class="about-prop">
+        <div class="about-prop-icon">🎪</div>
+        <h4>一站式活動服務</h4>
+        <p>從策劃、設計到現場製作，全程專業支援，省時省力。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">📡</div>
+        <h4>直播製作設備</h4>
+        <p>直播室租用及直播製作服務，助您拓展線上受眾。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🎭</div>
+        <h4>舞台租賃齊全</h4>
+        <p>舞台、背幕、LED屏、音響、燈光設備一應俱全。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">💰</div>
+        <h4>靈活報價</h4>
+        <p>服務收費由HK$300起，按需選配，靈活彈性。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background: var(--white);">
+  <div class="section-label">服務項目</div>
+  <h2>全面展活動服務</h2>
+  <p class="section-sub">藍海創意提供五大服務類別，覆蓋活動策劃的每一個環節。</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🖨️</div>
+      <h3>印刷服務</h3>
+      <p>展覽招牌、橫額、背幕設計及印刷，宣傳物料、展板等各類印刷服務，色彩鮮艷，尺寸靈活，快捷製作。</p>
+      <span class="service-tag">由HK$300起</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎪</div>
+      <h3>活動舉辦</h3>
+      <p>企業活動、產品發佈、頒獎典禮、開幕儀式等各類活動策劃及執行服務，配備禮儀人員、主持及現場管理。</p>
+      <span class="service-tag">全程活動管理</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📣</div>
+      <h3>線上下推廣</h3>
+      <p>整合線上及線下推廣方案，包括社交媒體推廣、直播宣傳、實體活動推廣及流動宣傳車服務。</p>
+      <span class="service-tag">O2O推廣</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎭</div>
+      <h3>舞台製作租賃</h3>
+      <p>提供舞台搭建、LED背幕、充氣天幕、大型舞台天幕、舞台燈光及音響設備等一系列舞台製作及租賃服務。</p>
+      <span class="service-tag">舞台設備</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎤</div>
+      <h3>街頭推廣</h3>
+      <p>Busking實體音樂表演、街頭推廣活動策劃及執行，為品牌在公共場所創造互動體驗，吸引目標受眾注意。</p>
+      <span class="service-tag">由HK$3,000起</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📹</div>
+      <h3>直播室租借</h3>
+      <p>專業直播室按小時租用，配備直播所需燈光及設備，適合品牌直播、線上發佈會及網絡節目錄製。</p>
+      <span class="service-tag">HK$800/小時</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">收費參考</div>
+    <h2>透明定價 · 靈活配搭</h2>
+    <p class="section-sub" style="margin: 0 auto;">所有服務均提供詳細報價，以下為主要服務參考起價，實際報價按活動規模及需求而定。</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-card-icon">🖥️</div>
+      <h3>直播室租借</h3>
+      <p>專業直播設備，按小時計費，靈活租用。</p>
+      <div class="price-badge"><span class="from">由</span><span class="amount">HK$800</span><span class="unit">/小時</span></div>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-card-icon">🎨</div>
+      <h3>背幕搭建</h3>
+      <p>品牌背幕設計及搭建，尺寸可訂製。</p>
+      <div class="price-badge"><span class="from">由</span><span class="amount">HK$3,000</span></div>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-card-icon">🎭</div>
+      <h3>舞台搭建</h3>
+      <p>專業舞台架設，按活動規模報價。</p>
+      <div class="price-badge"><span class="from">由</span><span class="amount">HK$5,000</span></div>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-card-icon">🎤</div>
+      <h3>Busking音樂表演</h3>
+      <p>街頭實體音樂表演，為活動增添娛樂。</p>
+      <div class="price-badge"><span class="from">由</span><span class="amount">HK$3,000</span></div>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-card-icon">📺</div>
+      <h3>LED背幕製作</h3>
+      <p>大型LED顯示屏背幕，視覺震撼效果。</p>
+      <div class="price-badge"><span class="from">由</span><span class="amount">HK$6,000</span></div>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-card-icon">💡</div>
+      <h3>舞台燈光</h3>
+      <p>專業燈光設備租用及操作，烘托現場氣氛。</p>
+      <div class="price-badge"><span class="from">由</span><span class="amount">HK$5,000</span></div>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-card-icon">🚐</div>
+      <h3>流動宣傳車</h3>
+      <p>車身廣告宣傳車巡迴推廣服務。</p>
+      <div class="price-badge"><span class="from">由</span><span class="amount">HK$8,000</span></div>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-card-icon">🎵</div>
+      <h3>音響套餐</h3>
+      <p>專業音響設備及操作人員，4小時套餐。</p>
+      <div class="price-badge"><span class="from">由</span><span class="amount">HK$10,000</span></div>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-card-icon">👗</div>
+      <h3>禮儀小姐</h3>
+      <p>專業禮儀人員，活動接待及示範服務。</p>
+      <div class="price-badge"><span class="amount">HK$400</span><span class="unit">/小時</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO -->
+<section class="studio" id="studio">
+  <div class="section-label">直播室服務</div>
+  <h2>專業直播室租借</h2>
+  <p class="section-sub">配備專業直播設備的直播室，靈活按小時租用，適合品牌直播、線上發佈及網絡節目製作。</p>
+  <div class="studio-grid">
+    <div class="studio-card">
+      <h3>📹 直播室設施</h3>
+      <div class="studio-feature"><span>✅</span> 專業直播燈光設備</div>
+      <div class="studio-feature"><span>✅</span> 高清直播攝影機</div>
+      <div class="studio-feature"><span>✅</span> 專業收音設備</div>
+      <div class="studio-feature"><span>✅</span> 可自訂背景設計</div>
+      <div class="studio-feature"><span>✅</span> 多平台同步直播支援</div>
+      <div class="studio-feature"><span>✅</span> 技術支援人員協助</div>
+    </div>
+    <div class="studio-card">
+      <h3>🎯 適用場合</h3>
+      <div class="studio-feature"><span>🔴</span> 品牌產品發佈直播</div>
+      <div class="studio-feature"><span>🔴</span> KOL/網紅直播拍攝</div>
+      <div class="studio-feature"><span>🔴</span> 企業線上培訓及會議</div>
+      <div class="studio-feature"><span>🔴</span> 音樂/表演視頻拍攝</div>
+      <div class="studio-feature"><span>🔴</span> 網絡節目製作</div>
+      <div class="studio-feature"><span>🔴</span> 電商直播銷售</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">聯絡我們</div>
+  <h2>即時索取報價</h2>
+  <p class="section-sub">告訴我們您的活動需求，我們將為您提供詳細報價及服務方案建議。</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-row-icon">🏢</div>
+        <div class="contact-row-text">
+          <h4>公司</h4>
+          <p>藍海創意(香港)有限公司<br>Blue Sea Idea (HK) Limited</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📱</div>
+        <div class="contact-row-text">
+          <h4>WhatsApp</h4>
+          <a href="https://wa.me/85251090806">+852 5109 0806</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📧</div>
+        <div class="contact-row-text">
+          <h4>電郵</h4>
+          <a href="mailto:info@blueseaidea.hk">info@blueseaidea.hk</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">🌐</div>
+        <div class="contact-row-text">
+          <h4>網站</h4>
+          <a href="https://www.blueseaidea.hk" target="_blank">www.blueseaidea.hk</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">🎪</div>
+        <div class="contact-row-text">
+          <h4>服務地區</h4>
+          <p>香港全境 Hong Kong</p>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <input type="text" placeholder="您的姓名 / 公司名稱" />
+      <input type="tel" placeholder="聯絡電話 / WhatsApp" />
+      <input type="email" placeholder="電郵地址 Email" />
+      <select>
+        <option value="" disabled selected>服務類別</option>
+        <option>印刷服務 Printing</option>
+        <option>活動舉辦 Event Management</option>
+        <option>舞台搭建 Stage Setup</option>
+        <option>LED背幕 LED Backdrop</option>
+        <option>音響燈光 Audio &amp; Lighting</option>
+        <option>直播室租借 Live Studio Rental</option>
+        <option>街頭推廣 Street Promotion</option>
+        <option>禮儀服務 Hostess Service</option>
+        <option>其他查詢 General Enquiry</option>
+      </select>
+      <textarea placeholder="請描述您的活動需求（日期、地點、規模、預算等）…"></textarea>
+      <button type="submit">立即索取報價 🎪</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 <span>藍海創意(香港)有限公司 Blue Sea Idea (HK) Limited</span> · 香港一站式展活動服務 · All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
