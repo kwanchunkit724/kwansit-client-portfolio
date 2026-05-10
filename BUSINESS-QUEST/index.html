@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Quest | Osmaan Sharif | Business Performance Coaching</title>
+<style>
+:root{
+  --purple:#1e0a4a;
+  --purple2:#2d1268;
+  --amber:#e09500;
+  --amber2:#f5a800;
+  --orange:#e06000;
+  --light:#f5f2fb;
+  --white:#ffffff;
+  --text:#1a1a2e;
+  --muted:#5a5570;
+  --border:#dcd4ec;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',Arial,sans-serif;color:var(--text);background:var(--white);line-height:1.65;}
+a{color:inherit;text-decoration:none;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--purple);border-bottom:2px solid var(--amber);padding:0 6%;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
+.nav-logo{font-size:1.2rem;font-weight:800;color:var(--white);letter-spacing:0.5px;}
+.nav-logo span{color:var(--amber2);}
+.nav-links{display:flex;gap:26px;}
+.nav-links a{color:rgba(255,255,255,0.82);font-size:0.87rem;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--amber2);}
+.nav-cta{background:var(--amber);color:var(--purple)!important;padding:8px 20px;border-radius:4px;font-weight:700!important;}
+
+.hero{background:linear-gradient(135deg,var(--purple) 0%,var(--purple2) 55%,#180840 100%);padding:120px 6% 80px;min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:480px;height:480px;border-radius:50%;background:rgba(224,149,0,0.08);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-60px;left:5%;width:300px;height:300px;border-radius:50%;background:rgba(224,149,0,0.04);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1fr 390px;gap:60px;align-items:center;width:100%;max-width:1200px;margin:0 auto;}
+.hero-label{display:inline-block;background:rgba(224,149,0,0.15);color:var(--amber2);font-size:0.78rem;font-weight:700;letter-spacing:2px;padding:5px 14px;border-radius:20px;border:1px solid rgba(224,149,0,0.3);margin-bottom:18px;text-transform:uppercase;}
+.hero h1{font-size:2.9rem;font-weight:900;color:var(--white);line-height:1.18;margin-bottom:14px;}
+.hero h1 span{color:var(--amber2);}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.70);max-width:520px;margin-bottom:34px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-am{background:var(--amber);color:var(--purple);padding:13px 28px;border-radius:5px;font-weight:700;font-size:0.95rem;transition:background 0.2s,transform 0.2s;}
+.btn-am:hover{background:var(--amber2);transform:translateY(-2px);}
+.btn-out{border:2px solid rgba(255,255,255,0.3);color:var(--white);padding:13px 28px;border-radius:5px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s,transform 0.2s;}
+.btn-out:hover{border-color:var(--amber2);transform:translateY(-2px);}
+.hero-card{background:rgba(255,255,255,0.06);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:28px 24px;}
+.hero-card h3{color:var(--amber2);font-size:0.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;}
+.hc-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+.hc-icon{width:34px;height:34px;border-radius:8px;background:rgba(224,149,0,0.15);border:1px solid rgba(224,149,0,0.3);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.hc-label{font-size:0.73rem;color:rgba(255,255,255,0.45);margin-bottom:2px;}
+.hc-val{color:var(--white);font-size:0.88rem;font-weight:600;}
+.hc-divider{border:none;border-top:1px solid rgba(255,255,255,0.1);margin:14px 0;}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;}
+.badge{background:rgba(224,149,0,0.15);border:1px solid rgba(224,149,0,0.3);color:var(--amber2);font-size:0.68rem;font-weight:700;padding:4px 10px;border-radius:20px;}
+
+.stats{background:var(--amber);padding:26px 6%;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1100px;margin:0 auto;}
+.stat{text-align:center;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--purple);}
+.stat-lbl{font-size:0.78rem;font-weight:600;color:rgba(30,10,74,0.72);text-transform:uppercase;letter-spacing:0.5px;}
+
+section{padding:80px 6%;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-tag{display:inline-block;background:rgba(224,149,0,0.1);color:var(--amber);font-size:0.75rem;font-weight:700;letter-spacing:2px;padding:4px 14px;border-radius:20px;border:1px solid rgba(224,149,0,0.25);text-transform:uppercase;margin-bottom:12px;}
+.sec-title{font-size:2rem;font-weight:800;color:var(--purple);margin-bottom:10px;}
+.sec-sub{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:44px;}
+
+.about{background:var(--light);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.about-text p{color:var(--muted);margin-bottom:16px;line-height:1.75;}
+.highlight-box{background:var(--purple);border-radius:12px;padding:26px 24px;margin-bottom:22px;}
+.highlight-box h3{color:var(--amber2);font-size:1rem;font-weight:700;margin-bottom:8px;}
+.highlight-box p{color:rgba(255,255,255,0.78);font-size:0.9rem;line-height:1.7;}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.prop-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px 16px;border-top:3px solid var(--amber);}
+.prop-card h4{color:var(--purple);font-size:0.9rem;font-weight:700;margin-bottom:6px;}
+.prop-card p{color:var(--muted);font-size:0.8rem;line-height:1.55;}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.svc-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:26px 20px;transition:box-shadow 0.2s,transform 0.2s;border-top:4px solid transparent;}
+.svc-card:hover{box-shadow:0 8px 24px rgba(30,10,74,0.1);transform:translateY(-4px);border-top-color:var(--amber);}
+.svc-icon{width:46px;height:46px;border-radius:10px;background:rgba(30,10,74,0.06);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;}
+.svc-card h3{color:var(--purple);font-size:0.98rem;font-weight:700;margin-bottom:8px;}
+.svc-card p{color:var(--muted);font-size:0.84rem;line-height:1.6;}
+
+.formula{background:var(--purple);}
+.formula .sec-title{color:var(--white);}
+.formula .sec-sub{color:rgba(255,255,255,0.6);}
+.formula-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.step-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:28px 22px;text-align:center;}
+.step-num{width:48px;height:48px;border-radius:50%;background:var(--amber);color:var(--purple);font-size:1.3rem;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+.step-card h3{color:var(--white);font-size:1rem;font-weight:700;margin-bottom:10px;}
+.step-card p{color:rgba(255,255,255,0.65);font-size:0.84rem;line-height:1.6;}
+
+.podcast{background:var(--light);}
+.podcast-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.ep-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:24px 20px;}
+.ep-num{color:var(--amber);font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+.ep-card h3{color:var(--purple);font-size:0.95rem;font-weight:700;margin-bottom:10px;line-height:1.45;}
+.ep-card p{color:var(--muted);font-size:0.83rem;line-height:1.6;}
+
+.contact-s{background:var(--white);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.contact-info h3{color:var(--purple);font-size:1.25rem;font-weight:700;margin-bottom:6px;}
+.contact-info p{color:var(--muted);font-size:0.92rem;margin-bottom:26px;}
+.ci-block{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
+.ci-icon{width:40px;height:40px;border-radius:8px;background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ci-label{font-size:0.74rem;color:var(--muted);margin-bottom:2px;}
+.ci-val{color:var(--purple);font-size:0.93rem;font-weight:600;}
+.cuppa-btn{display:flex;align-items:center;gap:10px;background:var(--amber);color:var(--purple);padding:12px 22px;border-radius:8px;font-weight:700;font-size:0.92rem;width:fit-content;margin-top:8px;transition:background 0.2s;}
+.cuppa-btn:hover{background:var(--amber2);}
+.cform{background:var(--light);border:1px solid var(--border);border-radius:12px;padding:32px 28px;}
+.cform h3{color:var(--purple);font-size:1.1rem;font-weight:700;margin-bottom:22px;}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.form-group label{font-size:0.8rem;font-weight:600;color:var(--purple);}
+.form-group input,.form-group select,.form-group textarea{border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-size:0.9rem;color:var(--text);background:var(--white);font-family:inherit;outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--amber);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.btn-submit{width:100%;background:var(--purple);color:var(--white);border:none;border-radius:6px;padding:13px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.btn-submit:hover{background:var(--purple2);}
+
+footer{background:var(--purple);padding:50px 6% 28px;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;margin-bottom:36px;}
+.footer-brand h3{color:var(--white);font-size:1.2rem;font-weight:900;margin-bottom:8px;}
+.footer-brand h3 span{color:var(--amber2);}
+.footer-brand p{color:rgba(255,255,255,0.5);font-size:0.84rem;line-height:1.65;}
+.footer-col h4{color:var(--amber2);font-size:0.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-col ul li a{color:rgba(255,255,255,0.55);font-size:0.84rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--amber2);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;align-items:center;justify-content:space-between;}
+.footer-bottom p{color:rgba(255,255,255,0.38);font-size:0.78rem;}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .stats-grid,.services-grid,.formula-steps,.podcast-grid{grid-template-columns:repeat(2,1fr);}
+  .about-props{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo"><span>Business</span> Quest</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Coaching</a>
+      <a href="#formula">The Formula</a>
+      <a href="#podcast">Podcast</a>
+      <a href="#contact" class="nav-cta">Book a Cuppa</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-label">Business Performance Coaching</div>
+      <h1>Unlock Your<br><span>Entrepreneurial Superpower</span></h1>
+      <p class="hero-sub">Osmaan Sharif helps ambitious entrepreneurs and business owners experience more flow, magic and success through the Business Magic Formula™ — coaching that transforms how you think, perform and grow.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-am">Book a Free Virtual Cuppa</a>
+        <a href="#podcast" class="btn-out">Listen to the Podcast</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Get In Touch</h3>
+      <div class="hc-row">
+        <div class="hc-icon">✉</div>
+        <div>
+          <div class="hc-label">Email</div>
+          <div class="hc-val">hello@osmaansharif.com</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">🌐</div>
+        <div>
+          <div class="hc-label">Website</div>
+          <div class="hc-val">osmaansharif.com</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">🎙️</div>
+        <div>
+          <div class="hc-label">Podcast</div>
+          <div class="hc-val">Your Business Quest</div>
+        </div>
+      </div>
+      <hr class="hc-divider">
+      <div class="badge-row">
+        <span class="badge">Business Coaching</span>
+        <span class="badge">Wealth Dynamics</span>
+        <span class="badge">Podcast Host</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num">BM™</div><div class="stat-lbl">Business Magic Formula</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-lbl">Wealth Dynamics Profiles</div></div>
+    <div class="stat"><div class="stat-num">Free</div><div class="stat-lbl">Business Magic Scorecard</div></div>
+    <div class="stat"><div class="stat-num">1-on-1</div><div class="stat-lbl">Personalised Coaching</div></div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="sec-tag">About Osmaan Sharif</div>
+        <h2 class="sec-title">Your Guide on the Business Quest</h2>
+        <p>Osmaan Sharif is a business performance coach who works with ambitious entrepreneurs to help them unlock their full potential and build businesses that create flow, freedom and fulfilment.</p>
+        <p>Through his unique Business Magic Formula™ and the powerful Wealth Dynamics profiling tool, Osmaan helps entrepreneurs identify their natural strengths, overcome limiting beliefs, and grow their businesses in a way that's authentic and energising.</p>
+        <div class="highlight-box">
+          <h3>The Business Magic Formula™</h3>
+          <p>A proven framework that integrates Mindset, Strategy, and Energy to help entrepreneurs experience more magic in their business — working less hard, achieving more, and loving every step of the journey.</p>
+        </div>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <h4>Performance Coaching</h4>
+          <p>One-to-one coaching tailored to your unique business situation, goals and Wealth Dynamics profile.</p>
+        </div>
+        <div class="prop-card">
+          <h4>Wealth Dynamics</h4>
+          <p>A powerful profiling tool that reveals your Entrepreneurial Superpower and the best way for you to grow your business.</p>
+        </div>
+        <div class="prop-card">
+          <h4>Mindset Mastery</h4>
+          <p>Learn to reframe setbacks, solve problems with confidence and build the mindset of a thriving entrepreneur.</p>
+        </div>
+        <div class="prop-card">
+          <h4>Business Quest Podcast</h4>
+          <p>A library of actionable episodes sharing insights, frameworks and real conversations about growing your business.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="sec-inner">
+    <div class="sec-tag">How I Can Help</div>
+    <h2 class="sec-title">Coaching &amp; Resources</h2>
+    <p class="sec-sub">Whether you're just starting out or looking to scale, there's a way to work together that fits your stage and goals.</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🎯</div>
+        <h3>1-to-1 Business Coaching</h3>
+        <p>Personalised coaching programmes that combine mindset work, strategic planning, and Wealth Dynamics profiling to unlock your full entrepreneurial potential.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🧭</div>
+        <h3>Wealth Dynamics Profiling</h3>
+        <p>Discover your Entrepreneurial Superpower through the Wealth Dynamics profiling tool — understand your natural strengths and the best path to business success.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">☕</div>
+        <h3>Free Virtual Cuppa</h3>
+        <p>Book a complimentary virtual chat to discuss where you're at in your business, what's holding you back, and how coaching could help you move forward.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📊</div>
+        <h3>Business Magic Scorecard</h3>
+        <p>Take the free Business Magic Scorecard to assess where you are across the key dimensions of the Business Magic Formula™ and identify your priorities.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🎙️</div>
+        <h3>Business Quest Podcast</h3>
+        <p>Practical, inspiring episodes covering mindset, strategy, dealing with setbacks, growth tactics and the realities of entrepreneurship — free and on-demand.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🌱</div>
+        <h3>Group Programmes</h3>
+        <p>Group coaching and community-based programmes for entrepreneurs who want to learn alongside like-minded business owners on a similar quest.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="formula" id="formula">
+  <div class="sec-inner">
+    <div class="sec-tag">The Framework</div>
+    <h2 class="sec-title">The Business Magic Formula™</h2>
+    <p class="sec-sub">Three interconnected elements that together create the conditions for business magic to happen.</p>
+    <div class="formula-steps">
+      <div class="step-card">
+        <div class="step-num">M</div>
+        <h3>Mindset</h3>
+        <p>Build the beliefs, mental frameworks, and resilience that allow you to navigate challenges, reframe setbacks, and show up as your best self in business.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">S</div>
+        <h3>Strategy</h3>
+        <p>Develop clear, focused strategies aligned with your Wealth Dynamics profile — doing more of what works for you and less of what drains your energy.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">E</div>
+        <h3>Energy</h3>
+        <p>Protect and amplify your energy through smart working practices, delegation, and building a business that creates flow rather than friction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="podcast" id="podcast">
+  <div class="sec-inner">
+    <div class="sec-tag">Your Business Quest Podcast</div>
+    <h2 class="sec-title">Recent Episodes</h2>
+    <p class="sec-sub">Practical wisdom for the entrepreneurial journey — honest, actionable and real.</p>
+    <div class="podcast-grid">
+      <div class="ep-card">
+        <div class="ep-num">Episode 4</div>
+        <h3>How to Deal With Setbacks in Business</h3>
+        <p>Explore 3 key questions to ask yourself when facing setbacks — so you avoid attaching negative meanings and instead use challenges as fuel for growth.</p>
+      </div>
+      <div class="ep-card">
+        <div class="ep-num">Episode 3</div>
+        <h3>Unlock Your Entrepreneurial Superpower with Wealth Dynamics</h3>
+        <p>A deep dive into the 8 Wealth Dynamics profiles and how discovering yours can help you experience more flow and focus in growing your business.</p>
+      </div>
+      <div class="ep-card">
+        <div class="ep-num">Episode 2</div>
+        <h3>Are Problems Good or Bad in Business?</h3>
+        <p>A candid conversation about the role of problems in entrepreneurship — why avoiding them is actually worse, and how to use them as your competitive edge.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-s" id="contact">
+  <div class="sec-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="sec-tag">Let's Connect</div>
+        <h3>Start Your Business Quest</h3>
+        <p>Ready to unlock your Entrepreneurial Superpower and experience more magic in your business? Let's start with a conversation.</p>
+        <div class="ci-block">
+          <div class="ci-icon">✉</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val">hello@osmaansharif.com</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Website</div>
+            <div class="ci-val">osmaansharif.com</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">🎙️</div>
+          <div>
+            <div class="ci-label">Podcast</div>
+            <div class="ci-val">Your Business Quest</div>
+          </div>
+        </div>
+        <a class="cuppa-btn" href="mailto:hello@osmaansharif.com">
+          ☕ Book a Free Virtual Cuppa
+        </a>
+      </div>
+      <div class="cform">
+        <h3>Get In Touch</h3>
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>How Can I Help?</label>
+          <select>
+            <option value="">Select...</option>
+            <option>1-to-1 Business Coaching</option>
+            <option>Wealth Dynamics Profiling</option>
+            <option>Free Virtual Cuppa</option>
+            <option>Business Magic Scorecard</option>
+            <option>Group Programmes</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Me About Your Business Quest</label>
+          <textarea placeholder="Where are you now, and what would you love to achieve?"></textarea>
+        </div>
+        <button class="btn-submit">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3><span>Business</span> Quest</h3>
+        <p>Osmaan Sharif — Business Performance Coach helping ambitious entrepreneurs unlock their Entrepreneurial Superpower through the Business Magic Formula™ and Wealth Dynamics profiling.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Work With Me</h4>
+        <ul>
+          <li><a href="#services">1-to-1 Coaching</a></li>
+          <li><a href="#services">Wealth Dynamics</a></li>
+          <li><a href="#services">Free Scorecard</a></li>
+          <li><a href="#services">Virtual Cuppa</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:hello@osmaansharif.com">hello@osmaansharif.com</a></li>
+          <li><a href="https://osmaansharif.com">osmaansharif.com</a></li>
+          <li><a href="#podcast">Podcast</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Osmaan Sharif · Business Quest · Business Magic Formula™. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
