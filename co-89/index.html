@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>關鍵旅遊 Kwan Kin Tours | 香港旅行社 · 短線遊 · 長線遊 · 自由行</title>
+<style>
+:root {
+  --bg:       #040810;
+  --surface:  #081018;
+  --card:     #0c1820;
+  --border:   #142838;
+  --acc1:     #085878;
+  --acc2:     #1088a8;
+  --acc3:     #18c0d8;
+  --sun:      #e8b820;
+  --sun2:     #f8d040;
+  --coral:    #e05840;
+  --text:     #d8f0f8;
+  --muted:    #5890a8;
+  --radius:   10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI','Microsoft JhengHei',Arial,sans-serif;line-height:1.7;font-size:16px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,8,16,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--acc1),var(--acc3));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.logo-text{font-size:1.15rem;font-weight:700;color:var(--text)}
+.logo-sub{font-size:.68rem;color:var(--muted);letter-spacing:.05em}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
+.nav-links a:hover{color:var(--acc3)}
+.nav-cta{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:9px 22px;border-radius:20px;font-size:.88rem;font-weight:600;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;background:radial-gradient(ellipse 80% 60% at 40% 45%,rgba(8,88,120,.18) 0%,transparent 65%),var(--bg)}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(24,192,216,.1);border:1px solid rgba(24,192,216,.3);border-radius:20px;padding:6px 16px;font-size:.8rem;color:var(--acc3);margin-bottom:24px;letter-spacing:.04em}
+.hero h1{font-size:2.7rem;font-weight:800;line-height:1.25;margin-bottom:10px}
+.hero h1 span{color:var(--sun)}
+.hero-en{font-size:.95rem;color:var(--muted);letter-spacing:.05em;margin-bottom:16px}
+.hero-desc{font-size:1rem;color:var(--muted);margin-bottom:36px;max-width:520px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;padding:13px 28px;border-radius:25px;font-size:.95rem;font-weight:700;text-decoration:none;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:13px 28px;border-radius:25px;font-size:.95rem;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--acc2);color:var(--acc2)}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hero-card h3{font-size:.88rem;color:var(--acc3);margin-bottom:18px;text-transform:uppercase;letter-spacing:.1em}
+.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:.87rem}
+.info-row:last-child{border-bottom:none}
+.info-label{color:var(--muted)}
+.info-val{color:var(--text);font-weight:600;text-align:right;max-width:60%}
+.app-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(24,192,216,.12);border:1px solid rgba(24,192,216,.3);border-radius:4px;padding:2px 8px;font-size:.73rem;color:var(--acc3)}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-box{text-align:center}
+.stat-num{font-size:2rem;font-weight:800;color:var(--sun);display:block}
+.stat-label{font-size:.82rem;color:var(--muted);margin-top:4px}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(16,136,168,.12);border:1px solid rgba(16,136,168,.3);border-radius:20px;padding:4px 14px;font-size:.76rem;color:var(--acc2);letter-spacing:.08em;margin-bottom:12px}
+.section-title{font-size:1.85rem;font-weight:800;margin-bottom:12px}
+.section-sub{color:var(--muted);font-size:.97rem;max-width:600px}
+.section-head{margin-bottom:48px}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* TOUR TYPES */
+.tours{background:var(--bg)}
+.tour-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tour-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:border-color .25s,transform .25s;text-align:center}
+.tour-card:hover{border-color:var(--acc2);transform:translateY(-4px)}
+.tour-icon{font-size:3rem;margin-bottom:16px}
+.tour-name{font-size:1.2rem;font-weight:800;color:var(--text);margin-bottom:6px}
+.tour-en{font-size:.78rem;color:var(--acc3);margin-bottom:12px;letter-spacing:.06em}
+.tour-desc{font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.tour-highlights{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+.highlight{background:rgba(24,192,216,.1);border:1px solid rgba(24,192,216,.25);border-radius:20px;padding:3px 10px;font-size:.74rem;color:var(--acc3)}
+
+/* DESTINATIONS */
+.destinations{background:var(--surface)}
+.dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.dest-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;gap:14px;align-items:flex-start;transition:border-color .25s}
+.dest-card:hover{border-color:var(--sun)}
+.dest-flag{font-size:2rem;flex-shrink:0}
+.dest-body h3{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.dest-region{font-size:.74rem;color:var(--sun);margin-bottom:6px}
+.dest-body p{font-size:.83rem;color:var(--muted);line-height:1.55}
+
+/* APP */
+.app{background:var(--bg)}
+.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.app-content p{color:var(--muted);line-height:1.8;margin-bottom:16px}
+.app-features{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.app-feat{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;gap:12px;align-items:flex-start}
+.app-feat-icon{font-size:1.4rem;flex-shrink:0}
+.app-feat-body strong{display:block;color:var(--text);font-size:.88rem;margin-bottom:3px}
+.app-feat-body span{font-size:.8rem;color:var(--muted)}
+.app-visual{background:linear-gradient(135deg,var(--card),var(--surface));border:1px solid var(--border);border-radius:16px;padding:40px;text-align:center}
+.app-phone{font-size:5rem;margin-bottom:16px}
+.app-store-info{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.store-badge{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 20px;display:flex;align-items:center;gap:10px}
+.store-badge-icon{font-size:1.4rem}
+.store-badge-text strong{display:block;color:var(--text);font-size:.88rem}
+.store-badge-text span{font-size:.76rem;color:var(--muted)}
+.app-version{font-size:.78rem;color:var(--muted);margin-top:16px}
+
+/* WHY */
+.why{background:var(--surface)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;text-align:center;transition:border-color .25s,transform .25s}
+.why-card:hover{border-color:var(--acc2);transform:translateY(-3px)}
+.why-icon{font-size:2.2rem;margin-bottom:12px}
+.why-title{font-size:.97rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.why-desc{font-size:.85rem;color:var(--muted);line-height:1.65}
+
+/* CONTACT */
+.contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h2{font-size:1.8rem;font-weight:800;margin-bottom:16px}
+.contact-info p{color:var(--muted);margin-bottom:28px;line-height:1.7}
+.contact-items{display:flex;flex-direction:column;gap:16px}
+.contact-item{display:flex;align-items:flex-start;gap:14px}
+.contact-icon{width:40px;height:40px;background:rgba(8,88,120,.3);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-detail strong{display:block;color:var(--text);font-size:.9rem;margin-bottom:2px}
+.contact-detail span{color:var(--muted);font-size:.85rem}
+form{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:18px}
+form label{font-size:.84rem;color:var(--muted);margin-bottom:4px;display:block}
+form input,form select,form textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:11px 16px;color:var(--text);font-size:.91rem;outline:none;transition:border-color .2s;font-family:inherit}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--acc2)}
+form select{border-radius:20px}
+form textarea{resize:vertical;min-height:100px;border-radius:12px}
+form button{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;border:none;padding:13px;border-radius:25px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s}
+form button:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 5% 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-top:12px}
+.footer-col h4{font-size:.87rem;font-weight:700;color:var(--text);margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col a{color:var(--muted);text-decoration:none;font-size:.86rem;transition:color .2s}
+.footer-col a:hover{color:var(--acc3)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{color:var(--muted);font-size:.82rem}
+.footer-hk{color:var(--muted);font-size:.82rem}
+
+@media(max-width:900px){
+  .hero-inner,.app-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .hero h1{font-size:2rem}
+  .tour-grid,.dest-grid,.why-grid{grid-template-columns:1fr 1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  .tour-grid,.dest-grid,.why-grid,.app-features{grid-template-columns:1fr}
+  .hero h1{font-size:1.75rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">✈️</div>
+      <div>
+        <div class="logo-text">關鍵旅遊</div>
+        <div class="logo-sub">Kwan Kin Tours · 香港旅行社</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#tours">旅遊產品</a></li>
+      <li><a href="#destinations">熱門目的地</a></li>
+      <li><a href="#app">手機應用</a></li>
+      <li><a href="#why">為何選擇我們</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">立即預訂</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">✈️ 香港持牌旅行社 · 短線 · 長線 · 自由行</div>
+      <h1>開啟您的<span>完美旅程</span><br>從關鍵出發</h1>
+      <div class="hero-en">Kwan Kin Tours Limited · Hong Kong Travel Agency</div>
+      <p class="hero-desc">
+        關鍵旅遊（Kwan Kin Tours Limited）是一家香港旅行社，提供短線遊、長線遊及
+        自由行服務，讓您以最輕鬆的方式探索世界各地。現已推出手機應用程式，
+        隨時隨地預訂您的夢想旅程。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#tours">探索旅遊產品</a>
+        <a class="btn-outline" href="#app">下載手機App</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>公司資料</h3>
+      <div class="info-row">
+        <span class="info-label">公司名稱</span>
+        <span class="info-val">KWAN KIN TOURS LIMITED</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">中文名稱</span>
+        <span class="info-val">關鍵旅遊</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">業務類別</span>
+        <span class="info-val">旅行代理服務</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">手機應用</span>
+        <span class="info-val"><span class="app-badge">📱 iOS App Store</span></span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">服務語言</span>
+        <span class="info-val">繁體中文 · English</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">服務地區</span>
+        <span class="info-val">香港 · 全球目的地</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-box">
+      <span class="stat-num">3</span>
+      <div class="stat-label">核心旅遊產品類別</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">全球</span>
+      <div class="stat-label">熱門目的地覆蓋</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">iOS</span>
+      <div class="stat-label">手機應用程式</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">24/7</span>
+      <div class="stat-label">App 隨時預訂服務</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- TOUR TYPES -->
+<section class="tours" id="tours">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Tour Products</div>
+      <h2 class="section-title">三大旅遊產品</h2>
+      <p class="section-sub">無論您是追求輕鬆週末小旅、深度探索長途旅程，還是自由自在的個人旅遊，關鍵旅遊都能滿足您的需要</p>
+    </div>
+    <div class="tour-grid">
+      <div class="tour-card">
+        <div class="tour-icon">🚌</div>
+        <div class="tour-name">短線遊</div>
+        <div class="tour-en">Short Tours</div>
+        <p class="tour-desc">
+          三至五天精緻短線旅遊，適合繁忙都市人利用週末或短假期出發。
+          行程緊湊而豐富，由專業導遊全程帶領，輕鬆遊覽鄰近亞洲目的地。
+        </p>
+        <div class="tour-highlights">
+          <span class="highlight">3-5天行程</span>
+          <span class="highlight">週末出發</span>
+          <span class="highlight">導遊帶領</span>
+          <span class="highlight">鄰近亞洲</span>
+        </div>
+      </div>
+      <div class="tour-card">
+        <div class="tour-icon">🌍</div>
+        <div class="tour-name">長線遊</div>
+        <div class="tour-en">Long Tours</div>
+        <p class="tour-desc">
+          七天至兩週的深度長途旅遊，涵蓋歐洲、美洲、非洲等遠程目的地。
+          全包式安排包括酒店、交通及大部分膳食，輕鬆享受無憂旅程。
+        </p>
+        <div class="tour-highlights">
+          <span class="highlight">7-14天行程</span>
+          <span class="highlight">全程包辦</span>
+          <span class="highlight">深度體驗</span>
+          <span class="highlight">遠程目的地</span>
+        </div>
+      </div>
+      <div class="tour-card">
+        <div class="tour-icon">🗺️</div>
+        <div class="tour-name">自由行</div>
+        <div class="tour-en">Independent Travel</div>
+        <p class="tour-desc">
+          自主規劃、靈活出行的自由行套餐，提供機票加酒店組合，
+          讓您按個人喜好安排行程，享受最個性化的旅遊體驗。
+        </p>
+        <div class="tour-highlights">
+          <span class="highlight">機+酒套票</span>
+          <span class="highlight">彈性行程</span>
+          <span class="highlight">自主安排</span>
+          <span class="highlight">多元選擇</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- DESTINATIONS -->
+<section class="destinations" id="destinations">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Destinations</div>
+      <h2 class="section-title">熱門旅遊目的地</h2>
+      <p class="section-sub">從亞洲近鄰到歐美遠程，關鍵旅遊帶您暢遊全球精選目的地</p>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <div class="dest-flag">🇯🇵</div>
+        <div class="dest-body">
+          <h3>日本</h3>
+          <div class="dest-region">亞洲 · 短線 / 長線</div>
+          <p>東京、大阪、京都、北海道、沖繩等，四季皆宜的熱門旅遊勝地，文化美食體驗豐富。</p>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🇰🇷</div>
+        <div class="dest-body">
+          <h3>韓國</h3>
+          <div class="dest-region">亞洲 · 短線 / 自由行</div>
+          <p>首爾、釜山、濟州島，K-culture熱潮帶動的時尚旅遊目的地，購物美食娛樂一應俱全。</p>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🇹🇭</div>
+        <div class="dest-body">
+          <h3>泰國</h3>
+          <div class="dest-region">東南亞 · 短線 / 自由行</div>
+          <p>曼谷、清邁、普吉島、芭提雅，陽光沙灘與佛寺文化的完美結合，物超所值的亞洲度假首選。</p>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🇬🇧</div>
+        <div class="dest-body">
+          <h3>英國 / 歐洲</h3>
+          <div class="dest-region">歐洲 · 長線</div>
+          <p>倫敦、巴黎、羅馬、阿姆斯特丹等歐洲城市，深度人文歷史之旅，感受歐陸風情。</p>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🇦🇺</div>
+        <div class="dest-body">
+          <h3>澳洲 / 紐西蘭</h3>
+          <div class="dest-region">大洋洲 · 長線</div>
+          <p>悉尼、墨爾本、黃金海岸、奧克蘭，南半球壯觀自然風景與多元文化的精彩體驗。</p>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🇺🇸</div>
+        <div class="dest-body">
+          <h3>美國 / 加拿大</h3>
+          <div class="dest-region">北美洲 · 長線</div>
+          <p>紐約、洛杉磯、拉斯維加斯、溫哥華，橫跨北美大陸的經典旅遊路線，多元玩法無限精彩。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- APP -->
+<section class="app" id="app">
+  <div class="section-inner">
+    <div class="app-grid">
+      <div class="app-content">
+        <div class="section-tag">Mobile App</div>
+        <h2 class="section-title">關鍵旅遊<br>手機應用程式</h2>
+        <p>
+          關鍵旅遊已推出專屬 iOS 手機應用程式，讓您隨時隨地瀏覽旅遊產品、
+          查看行程詳情、輕鬆完成預訂，並接收最新旅遊優惠及出發資訊。
+        </p>
+        <p>
+          程式持續更新，介面清晰易用，支援中英文操作，是香港旅客預訂旅遊的便捷工具。
+          現可於 Apple App Store 免費下載。
+        </p>
+        <div class="app-features">
+          <div class="app-feat">
+            <div class="app-feat-icon">🔍</div>
+            <div class="app-feat-body">
+              <strong>產品瀏覽</strong>
+              <span>輕鬆搜尋短線、長線及自由行產品</span>
+            </div>
+          </div>
+          <div class="app-feat">
+            <div class="app-feat-icon">📅</div>
+            <div class="app-feat-body">
+              <strong>線上預訂</strong>
+              <span>即時確認座位及行程安排</span>
+            </div>
+          </div>
+          <div class="app-feat">
+            <div class="app-feat-icon">🔔</div>
+            <div class="app-feat-body">
+              <strong>出發通知</strong>
+              <span>行前提示及重要行程更新</span>
+            </div>
+          </div>
+          <div class="app-feat">
+            <div class="app-feat-icon">💰</div>
+            <div class="app-feat-body">
+              <strong>獨家優惠</strong>
+              <span>App專屬折扣及限時特價</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="app-visual">
+        <div class="app-phone">📱</div>
+        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:8px">立即下載</h3>
+        <p style="font-size:.85rem;color:var(--muted);margin-bottom:20px">免費下載，隨時預訂旅程</p>
+        <div class="app-store-info">
+          <div class="store-badge">
+            <div class="store-badge-icon">🍎</div>
+            <div class="store-badge-text">
+              <strong>App Store</strong>
+              <span>iPhone · iOS 12.0 或以上</span>
+            </div>
+          </div>
+        </div>
+        <div class="app-version">最新版本：1.5.3 · 更新日期：2025年9月15日<br>開發商：KWAN KIN TOURS LIMITED</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Why Choose Us</div>
+      <h2 class="section-title">為何選擇關鍵旅遊</h2>
+      <p class="section-sub">我們致力為每位旅客提供最優質、最安心的旅遊體驗</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🏆</div>
+        <div class="why-title">持牌旅行社</div>
+        <p class="why-desc">持有香港旅遊業議會旅行代理商牌照，受業界規管保障，讓旅客安心放心出遊。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💎</div>
+        <div class="why-title">精選行程</div>
+        <p class="why-desc">經驗豐富的行程設計團隊，精心規劃每條路線，確保旅客享有最佳的旅遊體驗。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📱</div>
+        <div class="why-title">科技便捷</div>
+        <p class="why-desc">獨家iOS手機App，隨時查看行程、輕鬆預訂，資訊透明，操作簡便，旅遊更智能。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <div class="why-title">物超所值</div>
+        <p class="why-desc">嚴選優質酒店及交通，以合理價格提供高品質旅遊產品，確保旅客行得開心、住得舒適。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <div class="why-title">專業服務</div>
+        <p class="why-desc">經驗豐富的導遊及客服團隊，行前行中行後全程支援，讓旅客無憂無慮盡情享受旅程。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌏</div>
+        <div class="why-title">廣闊目的地</div>
+        <p class="why-desc">涵蓋亞洲、歐洲、美洲、大洋洲等多個熱門目的地，豐富選擇滿足不同旅客的需要。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-tag">Contact Us</div>
+        <h2>聯絡關鍵旅遊</h2>
+        <p>
+          無論您想查詢旅遊產品詳情、索取報價，還是需要行程建議，
+          我們的旅遊顧問隨時為您服務。歡迎填寫查詢表格，我們將盡快回覆。
+        </p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div class="contact-detail">
+              <strong>手機應用程式</strong>
+              <span>App Store 搜尋「關鍵旅遊」免費下載</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>服務地區</strong>
+              <span>香港 · 全球旅遊目的地</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-detail">
+              <strong>辦公時間</strong>
+              <span>星期一至六 10:00–19:00</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div class="contact-detail">
+              <strong>服務語言</strong>
+              <span>繁體中文 · English</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form>
+        <div>
+          <label>姓名 / Name *</label>
+          <input type="text" placeholder="請輸入姓名">
+        </div>
+        <div>
+          <label>電郵地址 *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div>
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="+852 xxxx xxxx">
+        </div>
+        <div>
+          <label>旅遊類別</label>
+          <select>
+            <option>短線遊</option>
+            <option>長線遊</option>
+            <option>自由行</option>
+            <option>定制行程</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div>
+          <label>目的地及出發日期</label>
+          <input type="text" placeholder="例如：日本 / 2025年12月">
+        </div>
+        <div>
+          <label>查詢內容 *</label>
+          <textarea placeholder="請描述您的旅遊需求或查詢……"></textarea>
+        </div>
+        <button type="submit">發送查詢 →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">✈️</div>
+          <div>
+            <div class="logo-text">關鍵旅遊</div>
+            <div class="logo-sub">Kwan Kin Tours Limited · 香港旅行社</div>
+          </div>
+        </div>
+        <p>香港旅行社，提供短線遊、長線遊及自由行服務，並設有iOS手機應用程式，讓旅客隨時預訂夢想旅程。</p>
+      </div>
+      <div class="footer-col">
+        <h4>旅遊產品</h4>
+        <ul>
+          <li><a href="#tours">短線遊</a></li>
+          <li><a href="#tours">長線遊</a></li>
+          <li><a href="#tours">自由行</a></li>
+          <li><a href="#destinations">熱門目的地</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>關於我們</h4>
+        <ul>
+          <li><a href="#app">手機應用程式</a></li>
+          <li><a href="#why">為何選擇我們</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 KWAN KIN TOURS LIMITED (關鍵旅遊). 版權所有。</div>
+      <div class="footer-hk">🇭🇰 香港旅行社 · 全球目的地</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
