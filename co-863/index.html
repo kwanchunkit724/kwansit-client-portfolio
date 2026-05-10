@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中國環球人才發展(香港)有限公司 | 人才發展服務</title>
+<style>
+  :root {
+    --bg-primary: #070c0a;
+    --bg-secondary: #0d1410;
+    --bg-card: #121e18;
+    --bg-card2: #1a2820;
+    --accent1: #0c5e48;
+    --accent2: #128a68;
+    --accent3: #20c090;
+    --warm1: #d06028;
+    --warm2: #f08840;
+    --warm3: #ffc070;
+    --text-main: #edf8f2;
+    --text-muted: #80b898;
+    --text-dim: #406050;
+    --border: rgba(18,138,104,0.22);
+    --warm-border: rgba(208,96,40,0.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg-primary);color:var(--text-main);font-family:'Noto Sans HK','Microsoft JhengHei','Segoe UI',sans-serif;line-height:1.7;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,12,10,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+  .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--accent1),var(--accent2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#fff;}
+  .nav-logo-text{font-size:15px;font-weight:700;color:var(--text-main);}
+  .nav-logo-sub{font-size:11px;color:var(--text-dim);}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{text-decoration:none;color:var(--text-muted);font-size:14px;transition:color .2s;}
+  .nav-links a:hover{color:var(--accent3);}
+  .nav-cta{background:linear-gradient(135deg,var(--warm1),var(--warm2));color:#fff;padding:9px 22px;border-radius:6px;text-decoration:none;font-size:14px;font-weight:700;transition:opacity .2s;}
+  .nav-cta:hover{opacity:.85;}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;
+    background:radial-gradient(ellipse 60% 60% at 65% 35%,rgba(12,94,72,0.18) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 40% at 15% 75%,rgba(208,96,40,0.08) 0%,transparent 70%);}
+  .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;position:relative;z-index:1;}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(18,138,104,0.15);border:1px solid rgba(18,138,104,0.35);border-radius:20px;padding:6px 16px;font-size:13px;color:var(--accent3);margin-bottom:24px;}
+  .hero-dot{width:7px;height:7px;background:var(--warm2);border-radius:50%;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.3);}}
+  h1{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;line-height:1.22;margin-bottom:20px;}
+  h1 span{background:linear-gradient(135deg,var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  h1 span.warm{background:linear-gradient(135deg,var(--warm1),var(--warm2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero-desc{font-size:16px;color:var(--text-muted);max-width:540px;margin-bottom:36px;line-height:1.85;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-warm{background:linear-gradient(135deg,var(--warm1),var(--warm2));color:#fff;padding:13px 30px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;transition:all .2s;}
+  .btn-warm:hover{opacity:.85;transform:translateY(-2px);}
+  .btn-outline{border:1px solid var(--border);color:var(--text-muted);padding:13px 30px;border-radius:8px;text-decoration:none;font-size:15px;transition:all .2s;}
+  .btn-outline:hover{border-color:var(--accent3);color:var(--accent3);}
+
+  /* INFO CARD */
+  .info-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:0 24px 60px rgba(0,0,0,.55);}
+  .info-card-title{font-size:12px;color:var(--accent3);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;margin-bottom:20px;}
+  .info-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+  .info-row:last-child{border-bottom:none;}
+  .i-icon{width:36px;height:36px;background:rgba(18,138,104,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+  .i-label{font-size:11px;color:var(--text-dim);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;}
+  .i-val{font-size:14px;color:var(--text-main);font-weight:600;}
+
+  /* STATS */
+  .stats{background:var(--bg-secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%;}
+  .stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;}
+  .stat-item{text-align:center;}
+  .stat-num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .stat-label{font-size:13px;color:var(--text-muted);margin-top:4px;}
+
+  /* SECTION */
+  section{padding:80px 5%;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-tag{font-size:12px;color:var(--accent3);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:12px;}
+  .section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:16px;}
+  .section-title span{background:linear-gradient(135deg,var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .section-sub{color:var(--text-muted);font-size:15px;max-width:620px;margin-bottom:48px;line-height:1.8;}
+
+  /* SERVICES */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .svc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:30px;transition:all .3s;position:relative;overflow:hidden;}
+  .svc-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--accent2),var(--accent3));opacity:0;transition:opacity .3s;}
+  .svc-card:hover{border-color:rgba(18,138,104,0.45);transform:translateY(-4px);background:var(--bg-card2);}
+  .svc-card:hover::before{opacity:1;}
+  .svc-icon{font-size:36px;margin-bottom:16px;}
+  .svc-title{font-size:17px;font-weight:700;margin-bottom:10px;}
+  .svc-desc{font-size:14px;color:var(--text-muted);line-height:1.8;}
+
+  /* TWO-COL FEATURE */
+  .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  .feat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px;transition:all .3s;}
+  .feat-card:hover{border-color:rgba(18,138,104,0.4);background:var(--bg-card2);}
+  .feat-header{display:flex;align-items:center;gap:16px;margin-bottom:14px;}
+  .feat-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(12,94,72,0.3),rgba(18,138,104,0.15));border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;}
+  .feat-title{font-size:17px;font-weight:700;}
+  .feat-desc{font-size:14px;color:var(--text-muted);line-height:1.8;}
+  .feat-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .ftag{background:rgba(18,138,104,0.1);border:1px solid var(--border);border-radius:4px;padding:3px 10px;font-size:12px;color:var(--accent3);}
+
+  /* MARKETS */
+  .markets-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .market-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;transition:all .3s;}
+  .market-card:hover{border-color:rgba(208,96,40,0.35);transform:translateY(-3px);}
+  .market-flag{font-size:40px;margin-bottom:14px;}
+  .market-title{font-size:16px;font-weight:700;margin-bottom:6px;}
+  .market-desc{font-size:13px;color:var(--text-muted);line-height:1.7;}
+
+  /* PROCESS */
+  .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .pstep{text-align:center;}
+  .pstep-num{width:56px;height:56px;background:linear-gradient(135deg,var(--accent1),var(--accent2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff;margin:0 auto 14px;}
+  .pstep-title{font-size:15px;font-weight:700;margin-bottom:8px;}
+  .pstep-desc{font-size:13px;color:var(--text-muted);line-height:1.7;}
+
+  /* CONTACT */
+  .contact-section{background:var(--bg-secondary);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .c-list{display:flex;flex-direction:column;gap:20px;}
+  .c-item{display:flex;gap:14px;align-items:flex-start;}
+  .ci-icon{width:44px;height:44px;background:rgba(18,138,104,0.15);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+  .ci-label{font-size:12px;color:var(--text-dim);margin-bottom:4px;}
+  .ci-val{font-size:15px;color:var(--text-main);font-weight:600;}
+
+  /* FORM */
+  .cform{display:flex;flex-direction:column;gap:16px;}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .fg{display:flex;flex-direction:column;gap:8px;}
+  .fg label{font-size:13px;color:var(--text-muted);font-weight:600;}
+  .fg input,.fg select,.fg textarea{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text-main);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;}
+  .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--accent2);}
+  .fg textarea{resize:vertical;min-height:120px;}
+  .fg select option{background:#121e18;}
+  .fsub{background:linear-gradient(135deg,var(--warm1),var(--warm2));color:#fff;border:none;padding:13px 30px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+  .fsub:hover{opacity:.85;}
+
+  /* FOOTER */
+  footer{background:#050908;border-top:1px solid var(--border);padding:48px 5% 28px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;margin-bottom:40px;}
+  .fb-name{font-size:17px;font-weight:800;margin-bottom:6px;}
+  .fb-desc{font-size:14px;color:var(--text-dim);line-height:1.7;}
+  .fc-title{font-size:12px;color:var(--accent3);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;}
+  .fc-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .fc-links a{text-decoration:none;color:var(--text-dim);font-size:14px;transition:color .2s;}
+  .fc-links a:hover{color:var(--accent3);}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;}
+  .footer-copy{font-size:13px;color:var(--text-dim);}
+
+  @media(max-width:960px){
+    .svc-grid,.markets-grid{grid-template-columns:1fr 1fr;}
+    .process-steps{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:768px){
+    .hero-inner,.contact-grid,.footer-top{grid-template-columns:1fr;}
+    .info-card{display:none;}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .svc-grid,.feature-grid,.markets-grid,.process-steps{grid-template-columns:1fr;}
+    .frow{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon">才</div>
+      <div>
+        <div class="nav-logo-text">中國環球人才發展(香港)有限公司</div>
+        <div class="nav-logo-sub">China Global Talent Development (HK) Limited</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#markets">市場覆蓋</a></li>
+      <li><a href="#process">合作流程</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">立即查詢</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">
+        <span class="hero-dot"></span>
+        中港跨境人才發展
+      </div>
+      <h1>連結<span>頂尖人才</span><br>推動<span class="warm">環球發展</span></h1>
+      <p class="hero-desc">中國環球人才發展(香港)有限公司是專注於中港跨境人才發展的專業服務機構，為企業提供人才招募、培訓發展及人力資源顧問服務，連結大中華區與國際市場的頂尖人才。</p>
+      <div class="hero-btns">
+        <a class="btn-warm" href="#contact">立即查詢</a>
+        <a class="btn-outline" href="#services">了解服務</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">公司資料</div>
+      <div class="info-row">
+        <div class="i-icon">🏢</div>
+        <div>
+          <div class="i-label">公司名稱</div>
+          <div class="i-val">中國環球人才發展(香港)有限公司</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">📍</div>
+        <div>
+          <div class="i-label">地區</div>
+          <div class="i-val">香港</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">🌐</div>
+        <div>
+          <div class="i-label">業務覆蓋</div>
+          <div class="i-val">香港 · 中國大陸 · 國際</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">👥</div>
+        <div>
+          <div class="i-label">服務範疇</div>
+          <div class="i-val">人才招募 · 培訓發展 · HR顧問</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">成功配對人才</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100+</div>
+      <div class="stat-label">合作企業客戶</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">年行業經驗</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">全球</div>
+      <div class="stat-label">人才網絡</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務項目</div>
+    <h2 class="section-title">全面的<span>人才發展</span>服務</h2>
+    <p class="section-sub">中國環球人才發展提供一站式人力資源服務，協助企業在大中華區及國際市場尋找、培育及留住頂尖人才。</p>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🔍</div>
+        <div class="svc-title">人才招募服務</div>
+        <div class="svc-desc">提供中高層管理人員及專業人才的獵頭招募服務，憑藉廣泛的人才網絡，為企業精準配對符合需求的優質候選人。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📈</div>
+        <div class="svc-title">人才培訓發展</div>
+        <div class="svc-desc">設計及執行企業培訓計劃，涵蓋管理技能、跨文化溝通及專業發展，助員工提升能力，為企業培養本地及跨境人才。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💼</div>
+        <div class="svc-title">人力資源顧問</div>
+        <div class="svc-desc">為企業提供全面的人力資源策略顧問服務，包括組織架構設計、薪酬體系、員工保留策略及人才管理方案。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🌏</div>
+        <div class="svc-title">跨境人才配對</div>
+        <div class="svc-desc">專注大中華區與國際市場的跨境人才配對，協助企業吸引內地精英赴港發展，或協助香港人才拓展大灣區事業。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📋</div>
+        <div class="svc-title">職涯規劃輔導</div>
+        <div class="svc-desc">為個人求職者提供專業的職涯規劃輔導及求職支援，包括履歷撰寫、面試技巧訓練及職業發展建議。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🤝</div>
+        <div class="svc-title">僱主品牌建設</div>
+        <div class="svc-desc">協助企業建立吸引人才的僱主品牌，制定人才吸引策略，提升企業在求職市場的競爭力與知名度。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE -->
+<section style="background:var(--bg-secondary);">
+  <div class="section-inner">
+    <div class="section-tag">專業優勢</div>
+    <h2 class="section-title">我們的<span>核心能力</span></h2>
+    <p class="section-sub">結合本地市場深度及國際視野，為客戶提供最具策略性的人才解決方案。</p>
+    <div class="feature-grid">
+      <div class="feat-card">
+        <div class="feat-header">
+          <div class="feat-icon">🧠</div>
+          <div class="feat-title">深度行業知識</div>
+        </div>
+        <div class="feat-desc">深耕多個行業領域，對各行業人才需求、薪酬水平及職涯發展路徑有深入了解，確保人才配對精準有效。</div>
+        <div class="feat-tags">
+          <span class="ftag">金融服務</span>
+          <span class="ftag">科技資訊</span>
+          <span class="ftag">專業服務</span>
+          <span class="ftag">零售消費</span>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-header">
+          <div class="feat-icon">🌐</div>
+          <div class="feat-title">廣泛人才網絡</div>
+        </div>
+        <div class="feat-desc">建立覆蓋香港、中國大陸及海外的廣泛人才資料庫，累積大量優質候選人，縮短企業招募時間，提升配對成功率。</div>
+        <div class="feat-tags">
+          <span class="ftag">香港本地</span>
+          <span class="ftag">大灣區</span>
+          <span class="ftag">內地各省市</span>
+          <span class="ftag">海外華人</span>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-header">
+          <div class="feat-icon">📊</div>
+          <div class="feat-title">數據驅動招募</div>
+        </div>
+        <div class="feat-desc">運用數據分析工具評估候選人適配度，結合科學化的評估方法，為企業提供客觀可靠的人才評估報告。</div>
+        <div class="feat-tags">
+          <span class="ftag">人才評估</span>
+          <span class="ftag">適配分析</span>
+          <span class="ftag">薪酬調研</span>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-header">
+          <div class="feat-icon">🤲</div>
+          <div class="feat-title">全程服務支援</div>
+        </div>
+        <div class="feat-desc">從需求分析、候選人搜尋、面試安排到入職跟進，提供全程支援服務，確保人才配對過程順暢，雙方滿意。</div>
+        <div class="feat-tags">
+          <span class="ftag">需求分析</span>
+          <span class="ftag">面試安排</span>
+          <span class="ftag">入職跟進</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section id="markets">
+  <div class="section-inner">
+    <div class="section-tag">市場覆蓋</div>
+    <h2 class="section-title">跨越<span>地域界限</span></h2>
+    <p class="section-sub">中國環球人才發展的業務網絡覆蓋大中華區及主要國際市場，為客戶提供跨境人才服務。</p>
+    <div class="markets-grid">
+      <div class="market-card">
+        <div class="market-flag">🏙️</div>
+        <div class="market-title">香港</div>
+        <div class="market-desc">本部所在地，深耕香港人才市場，熟悉本地就業法規及企業文化，為跨境人才提供本地落地支援。</div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇨🇳</div>
+        <div class="market-title">中國大陸</div>
+        <div class="market-desc">覆蓋大灣區（深圳、廣州、珠海等）及全國主要城市，掌握內地人才市場動態，有效搜羅優質內地人才。</div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🌏</div>
+        <div class="market-title">國際市場</div>
+        <div class="market-desc">透過國際合作夥伴網絡，為企業搜羅海外優質人才，協助有意拓展環球業務的企業建立國際化團隊。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section style="background:var(--bg-secondary);">
+  <div class="section-inner">
+    <div class="section-tag">合作流程</div>
+    <h2 class="section-title">簡便的<span>合作步驟</span></h2>
+    <p class="section-sub">我們提供清晰透明的合作流程，讓企業客戶輕鬆獲得所需的人才服務。</p>
+    <div class="process-steps">
+      <div class="pstep">
+        <div class="pstep-num">1</div>
+        <div class="pstep-title">需求分析</div>
+        <div class="pstep-desc">深入了解企業的人才需求、企業文化及職位要求，制定精準的人才搜尋策略。</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">2</div>
+        <div class="pstep-title">人才搜尋</div>
+        <div class="pstep-desc">啟動多渠道人才搜尋，包括資料庫搜尋、獵頭接觸及推薦網絡，廣泛尋找合適候選人。</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">3</div>
+        <div class="pstep-title">篩選評估</div>
+        <div class="pstep-desc">對候選人進行嚴格篩選及多維度評估，確保推薦人選符合職位要求及企業文化。</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">4</div>
+        <div class="pstep-title">跟進入職</div>
+        <div class="pstep-desc">安排面試、協助薪酬談判及入職後跟進，確保人才成功融入企業，達到雙贏結果。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2 class="section-title">與<span>我們合作</span></h2>
+    <p class="section-sub">無論您是企業客戶尋求人才，還是求職者尋找理想職位，歡迎與我們聯絡，共探合作機會。</p>
+    <div class="contact-grid">
+      <div>
+        <div class="c-list">
+          <div class="c-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">地區</div>
+              <div class="ci-val">香港</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">⏰</div>
+            <div>
+              <div class="ci-label">辦公時間</div>
+              <div class="ci-val">星期一至五 9:00 – 18:00</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">🌏</div>
+            <div>
+              <div class="ci-label">服務範圍</div>
+              <div class="ci-val">香港 · 大灣區 · 全球</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-top:28px;">
+          <div style="font-size:13px;color:var(--accent3);font-weight:700;margin-bottom:10px;">企業客戶</div>
+          <div style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:16px;">如貴公司有人才招募、培訓或人力資源顧問需求，歡迎填寫查詢表格，我們將安排顧問盡快聯絡您。</div>
+          <div style="font-size:13px;color:var(--warm2);font-weight:700;margin-bottom:10px;">求職人才</div>
+          <div style="font-size:14px;color:var(--text-muted);line-height:1.8;">如您正尋找新的職業機會，歡迎提交個人簡歷，我們將為您配對合適的職位及提供職涯發展建議。</div>
+        </div>
+      </div>
+      <form class="cform" onsubmit="return false;">
+        <div class="frow">
+          <div class="fg">
+            <label>姓名 *</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="fg">
+            <label>聯絡電話 *</label>
+            <input type="tel" placeholder="電話號碼">
+          </div>
+        </div>
+        <div class="fg">
+          <label>電郵地址 *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="fg">
+          <label>公司名稱</label>
+          <input type="text" placeholder="您所屬公司名稱（如適用）">
+        </div>
+        <div class="fg">
+          <label>查詢類別</label>
+          <select>
+            <option>企業人才招募</option>
+            <option>培訓計劃查詢</option>
+            <option>人力資源顧問</option>
+            <option>跨境人才服務</option>
+            <option>個人求職查詢</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>查詢詳情 *</label>
+          <textarea placeholder="請說明您的需求或查詢事項..."></textarea>
+        </div>
+        <button type="submit" class="fsub">提交查詢</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="fb-name">中國環球人才發展(香港)有限公司</div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:10px;">China Global Talent Development (HK) Limited</div>
+        <div class="fb-desc">專注大中華區與國際市場的人才發展服務，為企業連結頂尖人才，助力業務持續增長。</div>
+      </div>
+      <div>
+        <div class="fc-title">服務項目</div>
+        <ul class="fc-links">
+          <li><a href="#services">人才招募服務</a></li>
+          <li><a href="#services">人才培訓發展</a></li>
+          <li><a href="#services">人力資源顧問</a></li>
+          <li><a href="#services">跨境人才配對</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fc-title">市場覆蓋</div>
+        <ul class="fc-links">
+          <li><a href="#markets">香港</a></li>
+          <li><a href="#markets">中國大陸 / 大灣區</a></li>
+          <li><a href="#markets">國際市場</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 中國環球人才發展(香港)有限公司. All rights reserved.</div>
+      <div style="font-size:12px;color:var(--text-dim);">人才發展 | 香港</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
