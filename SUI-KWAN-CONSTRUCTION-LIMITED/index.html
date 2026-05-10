@@ -3,692 +3,395 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>瑞群建築有限公司 | Sui Kwan Construction Limited</title>
+<title>瑞群建築有限公司 | Sui Kwan Construction Limited | 香港</title>
+<meta name="description" content="瑞群建築有限公司 — 香港專業建築公司，GBC 4/2007 認可承建商，ISO 9001 認證，承接土地發展、建築工程及維修保養服務。">
 <style>
-  :root {
-    --blue: #003d7a;
-    --blue-light: #005aad;
-    --blue-dark: #00285a;
-    --gold: #c9a227;
-    --gold-light: #e0b84a;
-    --light: #f4f7fc;
-    --white: #fff;
-    --text: #222;
-    --text-light: #666;
-    --border: #dbe4f0;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: var(--white); }
-
-  /* NAV */
-  nav {
-    background: var(--blue-dark);
-    padding: 0 52px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 66px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .nav-brand { text-decoration: none; display: flex; flex-direction: column; }
-  .nav-en { font-size: 16px; font-weight: 800; color: var(--white); letter-spacing: 0.5px; text-transform: uppercase; }
-  .nav-en span { color: var(--gold); }
-  .nav-zh { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 1px; margin-top: 1px; }
-  .nav-links { display: flex; gap: 24px; list-style: none; }
-  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-cta { background: var(--gold); color: var(--blue-dark) !important; padding: 8px 20px; border-radius: 3px; font-weight: 700 !important; transition: background 0.2s !important; }
-  .nav-cta:hover { background: var(--gold-light) !important; }
-
-  /* HERO */
-  .hero {
-    background: var(--blue-dark);
-    min-height: 560px;
-    display: flex;
-    align-items: center;
-    padding: 80px 70px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(to right, var(--gold), transparent 60%);
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 40%;
-    height: 100%;
-    background: linear-gradient(to left, rgba(201,162,39,0.06) 0%, transparent 100%);
-  }
-  .hero-content { max-width: 640px; position: relative; z-index: 2; }
-  .hero-reg {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(201,162,39,0.15);
-    border: 1px solid rgba(201,162,39,0.3);
-    color: var(--gold-light);
-    padding: 5px 14px;
-    border-radius: 3px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-  .hero h1 {
-    font-size: 48px;
-    font-weight: 900;
-    color: var(--white);
-    line-height: 1.15;
-    letter-spacing: -1px;
-    margin-bottom: 8px;
-  }
-  .hero h1 span { color: var(--gold); }
-  .hero-zh {
-    font-size: 20px;
-    color: rgba(255,255,255,0.55);
-    letter-spacing: 4px;
-    margin-bottom: 22px;
-    display: block;
-  }
-  .hero p {
-    font-size: 15px;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.75;
-    max-width: 520px;
-    margin-bottom: 36px;
-  }
-  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
-  .btn-gold { background: var(--gold); color: var(--blue-dark); padding: 13px 30px; border-radius: 3px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
-  .btn-gold:hover { background: var(--gold-light); }
-  .btn-ghost { background: transparent; color: var(--white); padding: 13px 30px; border-radius: 3px; font-size: 14px; font-weight: 600; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.25); transition: all 0.2s; }
-  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-  .hero-stats { display: flex; gap: 36px; flex-wrap: wrap; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); }
-  .hs-item .num { font-size: 30px; font-weight: 800; color: var(--gold); display: block; }
-  .hs-item .lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 3px; }
-
-  /* SECTION */
-  .section { padding: 72px 70px; }
-  .section-label { font-size: 11px; color: var(--gold); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
-  .section-title { font-size: 34px; font-weight: 800; color: var(--blue-dark); line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 10px; }
-  .section-zh { font-size: 15px; color: var(--text-light); letter-spacing: 3px; margin-bottom: 16px; }
-  .section-sub { font-size: 15px; color: var(--text-light); line-height: 1.75; max-width: 580px; }
-
-  /* ABOUT */
-  .about { background: var(--light); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
-  .about-content p { font-size: 14px; color: var(--text-light); line-height: 1.8; margin-bottom: 14px; }
-  .about-certs { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
-  .cert {
-    display: flex; align-items: center; gap: 12px;
-    background: var(--white); border: 1px solid var(--border);
-    border-left: 4px solid var(--gold);
-    border-radius: 3px; padding: 12px 16px;
-  }
-  .cert-icon { font-size: 18px; }
-  .cert-text { font-size: 13px; font-weight: 600; color: var(--blue-dark); }
-  .cert-sub { font-size: 11px; color: var(--text-light); }
-  .about-card {
-    background: var(--blue-dark);
-    border-radius: 6px;
-    padding: 40px 32px;
-    color: var(--white);
-    position: relative;
-    overflow: hidden;
-  }
-  .about-card::before {
-    content: '';
-    position: absolute;
-    bottom: -60px; right: -60px;
-    width: 180px; height: 180px;
-    background: radial-gradient(circle, rgba(201,162,39,0.15) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  .about-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
-  .about-card .sub-zh { font-size: 12px; color: var(--gold-light); letter-spacing: 2px; margin-bottom: 22px; }
-  .about-detail { display: flex; gap: 10px; margin-bottom: 13px; align-items: flex-start; }
-  .adl { font-size: 11px; color: rgba(255,255,255,0.4); min-width: 44px; }
-  .adv { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.5; }
-  .stats-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
-  .sr-item { text-align: center; }
-  .sr-num { font-size: 26px; font-weight: 800; color: var(--gold-light); }
-  .sr-lbl { font-size: 10px; color: rgba(255,255,255,0.45); margin-top: 3px; }
-
-  /* SERVICES */
-  .services { background: var(--white); }
-  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
-  .svc-card {
-    background: var(--light);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 28px 24px;
-    transition: all 0.3s;
-    border-top: 4px solid var(--blue);
-  }
-  .svc-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.09); transform: translateY(-3px); border-top-color: var(--gold); }
-  .svc-icon { font-size: 30px; margin-bottom: 14px; }
-  .svc-name { font-size: 16px; font-weight: 700; color: var(--blue-dark); margin-bottom: 4px; }
-  .svc-zh { font-size: 12px; color: var(--gold); letter-spacing: 1px; margin-bottom: 10px; }
-  .svc-desc { font-size: 13px; color: var(--text-light); line-height: 1.65; }
-
-  /* MANAGEMENT */
-  .management { background: var(--blue-dark); }
-  .management .section-title { color: var(--white); }
-  .management .section-zh { color: rgba(255,255,255,0.45); }
-  .management .section-sub { color: rgba(255,255,255,0.6); }
-  .mgmt-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 36px; margin-top: 40px; align-items: start; }
-  .md-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(201,162,39,0.3);
-    border-radius: 8px;
-    padding: 36px 28px;
-    text-align: center;
-  }
-  .md-avatar {
-    width: 80px; height: 80px;
-    border-radius: 50%;
-    background: rgba(201,162,39,0.15);
-    border: 2px solid var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 36px;
-    margin: 0 auto 18px;
-  }
-  .md-name { font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-  .md-name-en { font-size: 14px; color: var(--gold); margin-bottom: 4px; }
-  .md-role { font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
-  .md-bio { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7; }
-  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .tm-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 6px;
-    padding: 20px 18px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    transition: all 0.2s;
-  }
-  .tm-card:hover { background: rgba(201,162,39,0.07); border-color: rgba(201,162,39,0.2); }
-  .tm-icon { font-size: 24px; flex-shrink: 0; }
-  .tm-name { font-size: 14px; font-weight: 700; color: var(--white); }
-  .tm-role { font-size: 11px; color: var(--gold); margin-top: 3px; }
-  .tm-role-zh { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 1px; }
-
-  /* RECOGNITIONS */
-  .recognitions { background: var(--light); }
-  .rec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
-  .rec-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 20px 22px;
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    transition: all 0.2s;
-  }
-  .rec-card:hover { border-color: var(--blue); box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
-  .rec-badge {
-    width: 44px; height: 44px;
-    background: var(--blue-dark);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .rec-name { font-size: 14px; font-weight: 700; color: var(--blue-dark); margin-bottom: 3px; }
-  .rec-name-zh { font-size: 12px; color: var(--text-light); }
-
-  /* CONTACT */
-  .contact { background: var(--white); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; }
-  .contact-info h3 { font-size: 24px; font-weight: 800; color: var(--blue-dark); margin-bottom: 5px; }
-  .contact-info .sub { font-size: 12px; color: var(--text-light); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 28px; }
-  .cdet { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
-  .cdet:last-of-type { border-bottom: none; }
-  .cdet-icon { font-size: 18px; margin-top: 2px; flex-shrink: 0; }
-  .cdet-label { font-size: 11px; color: var(--text-light); letter-spacing: 0.5px; margin-bottom: 4px; }
-  .cdet-value { font-size: 15px; font-weight: 700; color: var(--blue-dark); }
-  .cdet-value a { color: var(--blue-dark); text-decoration: none; }
-  .cdet-value a:hover { color: var(--gold); }
-  .contact-form { background: var(--light); border-radius: 6px; padding: 36px 32px; border: 1px solid var(--border); }
-  .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--blue-dark); margin-bottom: 20px; }
-  .fg { margin-bottom: 16px; }
-  .fg label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-light); margin-bottom: 6px; }
-  .fg input, .fg select, .fg textarea {
-    width: 100%;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 11px 14px;
-    font-size: 14px;
-    color: var(--text);
-    background: var(--white);
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--blue); }
-  .fg textarea { min-height: 100px; resize: vertical; }
-  .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .submit-btn {
-    width: 100%;
-    background: var(--blue-dark);
-    color: var(--white);
-    border: none;
-    padding: 13px;
-    border-radius: 3px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin-top: 6px;
-  }
-  .submit-btn:hover { background: var(--gold); color: var(--blue-dark); }
-
-  /* FOOTER */
-  footer {
-    background: var(--blue-dark);
-    color: rgba(255,255,255,0.4);
-    padding: 36px 70px;
-    border-top: 3px solid var(--gold);
-  }
-  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-  .fb-en { font-size: 15px; font-weight: 700; color: var(--white); }
-  .fb-en span { color: var(--gold); }
-  .fb-zh { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 1px; margin-top: 3px; }
-  .footer-links { display: flex; gap: 22px; list-style: none; }
-  .footer-links a { color: rgba(255,255,255,0.3); text-decoration: none; font-size: 12px; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--gold); }
-  .footer-copy { font-size: 11px; }
-
-  @media (max-width: 768px) {
-    nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    .hero { padding: 60px 20px; }
-    .hero h1 { font-size: 36px; }
-    .section { padding: 56px 20px; }
-    .about-grid, .svc-grid, .mgmt-grid, .rec-grid, .contact-grid { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr; }
-    .fg-row { grid-template-columns: 1fr; }
-    footer { padding: 28px 20px; }
-    .footer-inner { flex-direction: column; align-items: flex-start; }
-  }
+:root{--bg:#04060e;--bg2:#080c18;--bg3:#0c1220;--navy:#1068c8;--navy-lt:#2888e8;--gold:#c8a030;--gold-lt:#e8be48;--text:#e8eef8;--muted:#6888a8;--border:rgba(16,104,200,0.18);--card-bg:rgba(255,255,255,0.03);--radius:10px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans HK','PingFang HK',sans-serif;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,6,14,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1.05rem;font-weight:800;color:var(--navy-lt)}
+.nav-logo span{color:var(--gold-lt);font-weight:400;font-size:.78rem;margin-left:8px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--navy),var(--navy-lt));color:#fff;padding:9px 22px;border-radius:6px;font-size:.88rem;font-weight:700;text-decoration:none;transition:opacity .2s}.nav-cta:hover{opacity:.88}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 60% 40%,rgba(16,104,200,0.12) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(16,104,200,0.1);border:1px solid rgba(16,104,200,0.28);border-radius:6px;padding:6px 14px;font-size:.8rem;color:var(--navy-lt);margin-bottom:20px}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.12;margin-bottom:12px}
+h1 .en{display:block;font-size:clamp(.88rem,1.8vw,1.15rem);font-weight:400;color:var(--navy-lt);letter-spacing:.04em;margin-top:8px}
+.hero-desc{color:var(--muted);font-size:1rem;max-width:440px;margin:18px 0 22px;line-height:1.8}
+.cert-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.cert-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(200,160,48,0.1);border:1px solid rgba(200,160,48,0.3);border-radius:6px;padding:5px 12px;font-size:.78rem;color:var(--gold-lt);font-weight:600}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--navy),var(--navy-lt));color:#fff;padding:13px 28px;border-radius:6px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 26px;border-radius:6px;font-size:.93rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}.btn-outline:hover{border-color:var(--navy-lt);color:var(--navy-lt)}
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:16px}
+.card-badge{display:flex;align-items:center;gap:12px}
+.badge-emblem{width:48px;height:48px;background:linear-gradient(135deg,var(--navy),var(--navy-lt));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:900;color:#fff;letter-spacing:.02em}
+.badge-name{font-size:.97rem;font-weight:700}.badge-label{font-size:.76rem;color:var(--muted)}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--navy-lt);flex-shrink:0;margin-top:2px;text-align:center}
+.card-row-text{font-size:.9rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block}
+.card-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:rgba(16,104,200,0.06);border:1px solid rgba(16,104,200,0.15);border-radius:8px;padding:14px}
+.cm-item{text-align:center}
+.cm-num{font-size:1.3rem;font-weight:900;color:var(--navy-lt);line-height:1}
+.cm-label{font-size:.7rem;color:var(--muted);margin-top:3px}
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:28px}
+.stat-item{text-align:center}
+.stat-num{font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--navy-lt),var(--gold-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.82rem;margin-top:6px}
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(16,104,200,0.08);border:1px solid rgba(16,104,200,0.2);border-radius:6px;padding:4px 12px;font-size:.75rem;color:var(--navy-lt);letter-spacing:.05em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--navy-lt)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.about-text p{color:var(--muted);font-size:.97rem;line-height:1.85;margin-bottom:16px}
+.about-text p:last-child{margin-bottom:0}
+.about-highlight{background:rgba(16,104,200,0.07);border:1px solid rgba(16,104,200,0.18);border-radius:8px;padding:18px 20px;margin-top:20px}
+.about-highlight h4{font-size:.88rem;color:var(--navy-lt);font-weight:700;margin-bottom:10px;letter-spacing:.04em}
+.hl-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.hl-list li{font-size:.87rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
+.hl-list li::before{content:'▸';color:var(--navy-lt);flex-shrink:0;margin-top:2px}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.team-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.tc-role{font-size:.72rem;color:var(--navy-lt);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px;font-weight:600}
+.tc-name{font-size:.97rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.tc-desc{font-size:.82rem;color:var(--muted);line-height:1.6}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s}.svc-card:hover{border-color:var(--navy-lt);transform:translateY(-4px)}
+.sc-icon{width:50px;height:50px;background:rgba(16,104,200,0.1);border:1px solid rgba(16,104,200,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.sc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.recog-section{background:var(--bg2)}
+.recog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.recog-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:22px;display:flex;gap:14px;align-items:flex-start;transition:border-color .25s}.recog-card:hover{border-color:var(--gold-lt)}
+.rc-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}
+.rc-body{}
+.rc-org{font-size:.82rem;color:var(--gold-lt);font-weight:700;margin-bottom:4px}
+.rc-desc{font-size:.83rem;color:var(--muted);line-height:1.6}
+.contact-section{background:var(--bg3)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(16,104,200,0.1);border:1px solid rgba(16,104,200,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.75rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.95rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--navy-lt);text-decoration:none}.ci-value a:hover{text-decoration:underline}
+.contact-ctas{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.cta-tel{background:linear-gradient(135deg,var(--navy),var(--navy-lt));color:#fff;padding:13px 24px;border-radius:6px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s}.cta-tel:hover{opacity:.88}
+.cta-email{border:1.5px solid var(--border);color:var(--text);padding:12px 22px;border-radius:6px;font-size:.9rem;font-weight:600;text-decoration:none;transition:all .2s}.cta-email:hover{border-color:var(--navy-lt);color:var(--navy-lt)}
+.contact-form-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:34px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--navy-lt)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#080c18}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--navy),var(--navy-lt));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}.form-submit:hover{opacity:.88}
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:.95rem;font-weight:800;color:var(--navy-lt)}
+.footer-copy{font-size:.8rem;color:var(--muted);text-align:center}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}.footer-links a:hover{color:var(--text)}
+@media(max-width:900px){.hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr}.stats-inner,.cards-grid,.recog-grid{grid-template-columns:repeat(2,1fr)}.team-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav-links{display:none}.cards-grid,.stats-inner,.recog-grid{grid-template-columns:1fr 1fr}.team-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;text-align:center}}
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
-  <a href="#" class="nav-brand">
-    <span class="nav-en"><span>SUI KWAN</span> CONSTRUCTION</span>
-    <span class="nav-zh">瑞群建築有限公司 · GBC 4/2007</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#management">Team</a></li>
-    <li><a href="#recognition">Recognition</a></li>
-    <li><a href="#contact" class="nav-cta">Contact</a></li>
-  </ul>
+  <div class="nav-inner">
+    <div class="nav-logo">瑞群建築<span>Sui Kwan Construction</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#services">服務</a></li>
+      <li><a href="#recognition">認可資格</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+    <a href="tel:+85221267278" class="nav-cta">立即致電</a>
+  </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
-    <div class="hero-reg">🏗️ General Building Contractor · GBC 4/2007 · Since 2006</div>
-    <h1>Sui Kwan<br><span>Construction</span> Ltd.</h1>
-    <span class="hero-zh">瑞群建築有限公司</span>
-    <p>A registered General Building Contractor (GBC 4/2007) and ISO9001-certified construction company in Hong Kong, with over 80 completed projects across new works, A&A, maintenance, and professional building services.</p>
-    <div class="hero-btns">
-      <a href="#services" class="btn-gold">Our Services</a>
-      <a href="#contact" class="btn-ghost">Contact Us</a>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🏗 香港認可建築承建商</div>
+      <h1>瑞群建築有限公司<span class="en">Sui Kwan Construction Limited</span></h1>
+      <div class="cert-badges">
+        <span class="cert-badge">🏛 GBC 4/2007</span>
+        <span class="cert-badge">✅ ISO 9001 認證</span>
+        <span class="cert-badge">📅 成立於 2006</span>
+      </div>
+      <p class="hero-desc">香港本地專業建築公司，由資深測量師黃群先生創辦，擁有逾35年行業經驗，獲屋宇署認可為第4類別承建商，承接土地發展、建築工程及物業維修保養。</p>
+      <div class="hero-btns">
+        <a href="tel:+85221267278" class="btn-primary">致電查詢</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div class="hs-item"><span class="num">2006</span><span class="lbl">Year Established</span></div>
-      <div class="hs-item"><span class="num">80+</span><span class="lbl">Projects Completed</span></div>
-      <div class="hs-item"><span class="num">88</span><span class="lbl">Contractors Appointed</span></div>
-      <div class="hs-item"><span class="num">ISO</span><span class="lbl">9001 Certified</span></div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-emblem">SK</div>
+        <div>
+          <div class="badge-label">香港認可建築承建商</div>
+          <div class="badge-name">瑞群建築有限公司</div>
+        </div>
+      </div>
+      <hr class="card-divider">
+      <div class="card-row"><div class="card-row-icon">📞</div><div class="card-row-text"><strong>電話</strong>+852 2126 7278</div></div>
+      <div class="card-row"><div class="card-row-icon">📧</div><div class="card-row-text"><strong>電郵</strong>enquiry@suikwan.com.hk</div></div>
+      <div class="card-row"><div class="card-row-icon">📍</div><div class="card-row-text"><strong>辦公室地址</strong>九龍新蒲崗八達街9號 Two Portside 15樓 1504-1505室</div></div>
+      <div class="card-metrics">
+        <div class="cm-item"><div class="cm-num">80+</div><div class="cm-label">完成項目</div></div>
+        <div class="cm-item"><div class="cm-num">88</div><div class="cm-label">認可分包商</div></div>
+        <div class="cm-item"><div class="cm-num">35+</div><div class="cm-label">年業界經驗</div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="section about" id="about">
-  <div class="about-grid">
-    <div class="about-content">
-      <div class="section-label">About Us</div>
-      <h2 class="section-title">A Trusted Builder Since 2006</h2>
-      <p class="section-zh">瑞群建築有限公司</p>
-      <p>瑞群建築有限公司於2006年9月12日由黃群先生成立。本公司高層管理成員曾承造過多棟大廈、別墅、廠房的新建、維修改善及加建工程。</p>
-      <p>In 2007, Managing Director Mr. Wong Kwan obtained the Buildings Department's accreditation as a Registered General Building Contractor (GBC 4/2007), cementing the company's technical expertise and professional standing. Following market demand, we later established a building maintenance division to participate actively in Hong Kong's building renovation sector.</p>
-      <p>Our quality management system has been validated through ISO9001:2008 certification — confirming our management approach and quality control systems meet the highest international standards. We remain committed to delivering excellent construction and building maintenance services with professionalism and integrity.</p>
-      <div class="about-certs">
-        <div class="cert">
-          <div class="cert-icon">🏛️</div>
-          <div>
-            <div class="cert-text">Registered General Building Contractor (GBC 4/2007)</div>
-            <div class="cert-sub">Buildings Department, Hong Kong SAR · 屋宇署認可一般建築承建商</div>
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">2006</div><div class="stat-label">公司成立年份</div></div>
+    <div class="stat-item"><div class="stat-num">80+</div><div class="stat-label">完成工程項目</div></div>
+    <div class="stat-item"><div class="stat-num">88</div><div class="stat-label">認可分包商</div></div>
+    <div class="stat-item"><div class="stat-num">35+</div><div class="stat-label">年業界資歷</div></div>
+    <div class="stat-item"><div class="stat-num">8</div><div class="stat-label">認可機構資格</div></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="section-inner">
+    <div class="section-tag">關於我們</div>
+    <h2>資深團隊 <span class="accent">專業承建</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>瑞群建築有限公司由黃群先生（常務董事）於2006年9月創辦。黃先生早於1970年代入行，由測量師做起，五年內晉升為地盤監督，積累逾35年豐富的建築業界實戰經驗。</p>
+        <p>公司獲屋宇署認可為第4類別一般建築承建商（GBC 4/2007），並持有ISO 9001品質管理體系認證，服務涵蓋土地發展、新建工程、改建擴建及物業維修保養。</p>
+        <p>公司同時獲香港房屋協會「明日計劃」、民政事務局、香港基督教女青年會、聖公會建設及發展委員會、恒益物業管理及鷹君物業等多家機構認可採用。</p>
+        <div class="about-highlight">
+          <h4>公司資質</h4>
+          <ul class="hl-list">
+            <li>屋宇署認可一般建築承建商 — 第4類別（GBC 4/2007）</li>
+            <li>ISO 9001 品質管理體系認證</li>
+            <li>香港房屋協會「明日計劃」認可承建商</li>
+            <li>民政事務局認可承建商</li>
+            <li>多家香港主要物業管理公司認可承建商</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="section-tag" style="margin-bottom:16px">管理團隊</div>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="tc-role">常務董事</div>
+            <div class="tc-name">黃群先生</div>
+            <div class="tc-desc">逾35年建築業界經驗，1970年代入行，從測量師晉升至地盤監督，公司創辦人。</div>
+          </div>
+          <div class="team-card">
+            <div class="tc-role">行政主任</div>
+            <div class="tc-name">Angel Huang</div>
+            <div class="tc-desc">負責公司日常行政及營運管理事宜。</div>
+          </div>
+          <div class="team-card">
+            <div class="tc-role">工料測量師</div>
+            <div class="tc-name">Leo Tsang</div>
+            <div class="tc-desc">負責工程成本估算及合約管理。</div>
+          </div>
+          <div class="team-card">
+            <div class="tc-role">高級項目經理</div>
+            <div class="tc-name">C.H. Chiu</div>
+            <div class="tc-desc">統籌大型工程項目推進及現場管理。</div>
+          </div>
+          <div class="team-card">
+            <div class="tc-role">項目經理</div>
+            <div class="tc-name">H.Y. Pang</div>
+            <div class="tc-desc">負責工程項目協調及進度監控。</div>
+          </div>
+          <div class="team-card">
+            <div class="tc-role">維修項目經理</div>
+            <div class="tc-name">Kenson Ng</div>
+            <div class="tc-desc">專責物業維修保養項目管理。</div>
           </div>
         </div>
-        <div class="cert">
-          <div class="cert-icon">✅</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務範疇</div>
+    <h2>全面<span class="accent">工程</span>服務</h2>
+    <p class="section-lead">從土地發展到施工完竣，提供一站式專業建築及維修服務，確保每個項目符合香港建築法規要求及最高施工標準。</p>
+    <div class="cards-grid">
+      <div class="svc-card">
+        <div class="sc-icon">🌍</div>
+        <div class="sc-title">土地發展</div>
+        <div class="sc-desc">提供專業土地發展服務，包括地盤勘查、土地整備及相關申請手續，協助業主充分善用土地資源。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📋</div>
+        <div class="sc-title">施工前規劃</div>
+        <div class="sc-desc">全面的施工前期規劃，包括工程計劃制定、預算編制、採購策略及施工時間表安排，確保工程順利推展。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🏗</div>
+        <div class="sc-title">建築工程管理</div>
+        <div class="sc-desc">專業的建築工程管理服務，統籌各持份者，確保工程按時、按預算及高質量完成。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🏢</div>
+        <div class="sc-title">新建工程</div>
+        <div class="sc-desc">承接住宅、商業及工業新建工程，嚴格遵守香港建築條例及屋宇署GBC認可標準施工。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🔨</div>
+        <div class="sc-title">改建及擴建工程</div>
+        <div class="sc-desc">各類現有建築物的改建（A&A）及擴建工程，包括結構改動、室內改裝及外牆翻新等工程。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🛠</div>
+        <div class="sc-title">維修保養</div>
+        <div class="sc-desc">為住宅、商業及工業物業提供定期維修保養計劃，獲多家主要物業管理公司認可採用。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recognition" class="recog-section">
+  <div class="section-inner">
+    <div class="section-tag">認可資格</div>
+    <h2>獲多家機構<span class="accent">認可採用</span></h2>
+    <p class="section-lead">瑞群建築獲香港多家政府部門、房屋機構及主要物業管理公司認可，是業界值得信賴的承建商。</p>
+    <div class="recog-grid">
+      <div class="recog-card">
+        <div class="rc-icon">🏛</div>
+        <div class="rc-body">
+          <div class="rc-org">屋宇署</div>
+          <div class="rc-desc">認可一般建築承建商第4類別（GBC 4/2007），符合香港最嚴格的建築資格認證要求。</div>
+        </div>
+      </div>
+      <div class="recog-card">
+        <div class="rc-icon">🏘</div>
+        <div class="rc-body">
+          <div class="rc-org">香港房屋協會</div>
+          <div class="rc-desc">「明日計劃」（Operation Building Bright）認可承建商，參與政府資助舊樓更新計劃。</div>
+        </div>
+      </div>
+      <div class="recog-card">
+        <div class="rc-icon">🏠</div>
+        <div class="rc-body">
+          <div class="rc-org">民政事務局</div>
+          <div class="rc-desc">獲民政事務局認可採用，承接政府相關工程項目。</div>
+        </div>
+      </div>
+      <div class="recog-card">
+        <div class="rc-icon">⛪</div>
+        <div class="rc-body">
+          <div class="rc-org">聖公會建設及發展委員會</div>
+          <div class="rc-desc">獲基督教聖公會轄下建設委員會認可，承接教會及其附屬機構的工程項目。</div>
+        </div>
+      </div>
+      <div class="recog-card">
+        <div class="rc-icon">🏢</div>
+        <div class="rc-body">
+          <div class="rc-org">恒益物業管理 · 鷹君物業</div>
+          <div class="rc-desc">獲本港主要物業管理公司認可，承接其管理物業的維修及改善工程。</div>
+        </div>
+      </div>
+      <div class="recog-card">
+        <div class="rc-icon">🌟</div>
+        <div class="rc-body">
+          <div class="rc-org">香港基督教女青年會 · Winland集團</div>
+          <div class="rc-desc">獲多家機構認可，提供多元化物業建築及維修保養服務。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2>工程<span class="accent">查詢報價</span></h2>
+    <p class="section-lead">歡迎致電或電郵查詢，我們將為您提供免費報價及專業工程建議。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
           <div>
-            <div class="cert-text">ISO9001:2008 Quality Management System</div>
-            <div class="cert-sub">International Quality Management Certification · 國際品質管理認證</div>
+            <div class="ci-label">電話</div>
+            <div class="ci-value"><a href="tel:+85221267278">+852 2126 7278</a></div>
           </div>
         </div>
+        <div class="contact-item">
+          <div class="ci-icon">📠</div>
+          <div>
+            <div class="ci-label">傳真</div>
+            <div class="ci-value">+852 2126 7787</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">電郵</div>
+            <div class="ci-value"><a href="mailto:enquiry@suikwan.com.hk">enquiry@suikwan.com.hk</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">辦公室地址</div>
+            <div class="ci-value">九龍新蒲崗八達街9號<br>Two Portside 15樓 1504-1505室</div>
+          </div>
+        </div>
+        <div class="contact-ctas">
+          <a href="tel:+85221267278" class="cta-tel">📞 致電查詢</a>
+          <a href="mailto:enquiry@suikwan.com.hk" class="cta-email">✉ 發送電郵</a>
+        </div>
       </div>
-    </div>
-    <div class="about-card">
-      <h3>Sui Kwan Construction</h3>
-      <p class="sub-zh">瑞群建築有限公司</p>
-      <div class="about-detail">
-        <span class="adl">地址</span>
-        <span class="adv">Room 1504-1505, 15/F, Two Portside<br>9 Pat Tat Street, San Po Kong<br>Kowloon, Hong Kong<br>香港九龍新蒲崗八達街9號宏基中心2期15樓1504-1505室</span>
-      </div>
-      <div class="about-detail">
-        <span class="adl">電話</span>
-        <span class="adv">+852 2126 7278</span>
-      </div>
-      <div class="about-detail">
-        <span class="adl">傳真</span>
-        <span class="adv">+852 2126 7787</span>
-      </div>
-      <div class="about-detail">
-        <span class="adl">Email</span>
-        <span class="adv">enquiry@suikwan.com.hk</span>
-      </div>
-      <div class="stats-row">
-        <div class="sr-item"><div class="sr-num">2006</div><div class="sr-lbl">Established</div></div>
-        <div class="sr-item"><div class="sr-num">80+</div><div class="sr-lbl">Projects</div></div>
-        <div class="sr-item"><div class="sr-num">88</div><div class="sr-lbl">Contractors</div></div>
+      <div class="contact-form-wrap">
+        <h3>工程查詢 / 報價</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group"><label>姓名</label><input type="text" placeholder="您的姓名"></div>
+            <div class="form-group"><label>聯絡電話</label><input type="tel" placeholder="9XXX XXXX"></div>
+          </div>
+          <div class="form-group"><label>工程類別</label>
+            <select>
+              <option value="">請選擇</option>
+              <option>土地發展</option>
+              <option>新建工程</option>
+              <option>改建及擴建工程</option>
+              <option>建築工程管理</option>
+              <option>維修保養</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group"><label>工程詳情</label><textarea placeholder="請描述工程範圍、地址及特別要求..."></textarea></div>
+          <button type="submit" class="form-submit">提交查詢</button>
+        </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="section services" id="services">
-  <div class="section-label">Our Services</div>
-  <h2 class="section-title">Comprehensive Construction Services</h2>
-  <p class="section-zh">全方位建築工程服務</p>
-  <p class="section-sub">From new construction to maintenance and professional planning, we provide end-to-end building services for residential, commercial, and institutional clients.</p>
-  <div class="svc-grid">
-    <div class="svc-card">
-      <div class="svc-icon">🏗️</div>
-      <div class="svc-name">New Works</div>
-      <div class="svc-zh">新建工程</div>
-      <div class="svc-desc">Full-scale construction of new buildings including residential blocks, villas, and industrial facilities. We manage all aspects from foundation to completion as the main contractor.</div>
-    </div>
-    <div class="svc-card">
-      <div class="svc-icon">🔧</div>
-      <div class="svc-name">A&A Works</div>
-      <div class="svc-zh">改建及加建工程</div>
-      <div class="svc-desc">Alteration and Addition works for existing buildings. We handle structural modifications, extensions, and improvements while ensuring compliance with all relevant ordinances and regulations.</div>
-    </div>
-    <div class="svc-card">
-      <div class="svc-icon">🏢</div>
-      <div class="svc-name">Maintenance Works</div>
-      <div class="svc-zh">樓宇維修工程</div>
-      <div class="svc-desc">Comprehensive building maintenance services for residential blocks and commercial properties. Active participant in Hong Kong Housing Society's "Operation Building Bright" programme.</div>
-    </div>
-    <div class="svc-card">
-      <div class="svc-icon">🌍</div>
-      <div class="svc-name">Land Development</div>
-      <div class="svc-zh">土地發展</div>
-      <div class="svc-desc">We collaborate with developers on property acquisition, amalgamation, redevelopment, sales, building planning, and architectural design — introducing innovative and sustainable construction solutions.</div>
-    </div>
-    <div class="svc-card">
-      <div class="svc-icon">📋</div>
-      <div class="svc-name">Pre-construction Planning</div>
-      <div class="svc-zh">施工規劃</div>
-      <div class="svc-desc">Our experienced building specialists provide project planning, construction method and sequencing, feasibility assessment, procurement and contract analysis, risk assessment, cost control, and safety/quality planning.</div>
-    </div>
-    <div class="svc-card">
-      <div class="svc-icon">🎯</div>
-      <div class="svc-name">Construction Management</div>
-      <div class="svc-zh">工程管理</div>
-      <div class="svc-desc">With years of experience as a general contractor, we provide comprehensive project analysis and supervision — ensuring every stage proceeds safely and smoothly, in full compliance with the contract.</div>
-    </div>
-  </div>
-</section>
-
-<!-- MANAGEMENT -->
-<section class="section management" id="management">
-  <div class="section-label">Our Team</div>
-  <h2 class="section-title" style="color:var(--white)">Management Team</h2>
-  <p class="section-zh">管理團隊</p>
-  <p class="section-sub">Led by a managing director with over 35 years of construction experience, our team brings deep expertise across every discipline of building construction and management.</p>
-  <div class="mgmt-grid">
-    <div class="md-card">
-      <div class="md-avatar">👷</div>
-      <div class="md-name">黃群</div>
-      <div class="md-name-en">Wong Kwan</div>
-      <div class="md-role">Managing Director · 董事總經理</div>
-      <div class="md-bio">Mr. Wong Kwan has extensive and professional construction experience spanning over 35 years since entering the industry in the 1970s. Starting as a surveyor and advancing to Site Director within five years through diligence and dedication, his hands-on approach and rich experience have attracted the interest of property developers, construction companies, the Government Architectural Services Department, Buildings Department, HKHA, architects, and surveyors — leading him to establish Sui Kwan Construction Limited.</div>
-    </div>
-    <div class="team-grid">
-      <div class="tm-card">
-        <div class="tm-icon">👩‍💼</div>
-        <div>
-          <div class="tm-name">Angel Huang</div>
-          <div class="tm-role">Administration Manager</div>
-          <div class="tm-role-zh">行政經理</div>
-        </div>
-      </div>
-      <div class="tm-card">
-        <div class="tm-icon">📐</div>
-        <div>
-          <div class="tm-name">Leo Tsang</div>
-          <div class="tm-role">Quantity Surveying Manager</div>
-          <div class="tm-role-zh">工料測量經理</div>
-        </div>
-      </div>
-      <div class="tm-card">
-        <div class="tm-icon">🏗️</div>
-        <div>
-          <div class="tm-name">C. H. Chiu</div>
-          <div class="tm-role">Senior Project Manager</div>
-          <div class="tm-role-zh">高級項目經理</div>
-        </div>
-      </div>
-      <div class="tm-card">
-        <div class="tm-icon">📋</div>
-        <div>
-          <div class="tm-name">H. Y. Pang</div>
-          <div class="tm-role">Project Manager</div>
-          <div class="tm-role-zh">項目經理</div>
-        </div>
-      </div>
-      <div class="tm-card">
-        <div class="tm-icon">🔧</div>
-        <div>
-          <div class="tm-name">Kenson Ng</div>
-          <div class="tm-role">Project Manager (Maintenance)</div>
-          <div class="tm-role-zh">項目經理（維修）</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RECOGNITIONS -->
-<section class="section recognitions" id="recognition">
-  <div class="section-label">Approvals & Recognition</div>
-  <h2 class="section-title">Recognized Contractor</h2>
-  <p class="section-zh">認可承建商</p>
-  <p class="section-sub">Sui Kwan Construction is an approved and recognized contractor for multiple Hong Kong government departments, housing bodies, and leading property management companies.</p>
-  <div class="rec-grid">
-    <div class="rec-card">
-      <div class="rec-badge">🏛️</div>
-      <div>
-        <div class="rec-name">Buildings Department (HKSAR)</div>
-        <div class="rec-name-zh">屋宇署認可註冊承建商 · GBC 4/2007</div>
-      </div>
-    </div>
-    <div class="rec-card">
-      <div class="rec-badge">🏘️</div>
-      <div>
-        <div class="rec-name">Hong Kong Housing Society</div>
-        <div class="rec-name-zh">香港房屋協會認可「樓宇更新大行動」承建商</div>
-      </div>
-    </div>
-    <div class="rec-card">
-      <div class="rec-badge">🏢</div>
-      <div>
-        <div class="rec-name">Home Affairs Department (HKSAR)</div>
-        <div class="rec-name-zh">民政事務總署認可承建商</div>
-      </div>
-    </div>
-    <div class="rec-card">
-      <div class="rec-badge">⛪</div>
-      <div>
-        <div class="rec-name">Diocesan Building & Development Commission</div>
-        <div class="rec-name-zh">教區建築及發展委員會認可承建商</div>
-      </div>
-    </div>
-    <div class="rec-card">
-      <div class="rec-badge">👩</div>
-      <div>
-        <div class="rec-name">HKYWCA</div>
-        <div class="rec-name-zh">香港基督教女青年會認可承建商</div>
-      </div>
-    </div>
-    <div class="rec-card">
-      <div class="rec-badge">🦅</div>
-      <div>
-        <div class="rec-name">Great Eagle Properties Management</div>
-        <div class="rec-name-zh">鷹君物業管理有限公司認可承建商</div>
-      </div>
-    </div>
-    <div class="rec-card">
-      <div class="rec-badge">🏠</div>
-      <div>
-        <div class="rec-name">Hang Yick Properties Management</div>
-        <div class="rec-name-zh">恒益物業管理有限公司認可承建商</div>
-      </div>
-    </div>
-    <div class="rec-card">
-      <div class="rec-badge">🌐</div>
-      <div>
-        <div class="rec-name">Winland Group Limited</div>
-        <div class="rec-name-zh">永倫集團認可承建商</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section contact" id="contact">
-  <div class="section-label">Contact Us</div>
-  <h2 class="section-title">Get in Touch</h2>
-  <p class="section-zh">聯絡我們</p>
-  <br>
-  <div class="contact-grid">
-    <div class="contact-info">
-      <h3>瑞群建築有限公司</h3>
-      <p class="sub">SUI KWAN CONSTRUCTION LIMITED</p>
-      <div class="cdet">
-        <div class="cdet-icon">📍</div>
-        <div>
-          <div class="cdet-label">Head Office 辦公室</div>
-          <div class="cdet-value">Room 1504-1505, 15/F, Two Portside<br>9 Pat Tat Street, San Po Kong, Kowloon, HK<br>九龍新蒲崗八達街9號宏基中心2期15樓1504-1505室</div>
-        </div>
-      </div>
-      <div class="cdet">
-        <div class="cdet-icon">📞</div>
-        <div>
-          <div class="cdet-label">Tel / Direct Line</div>
-          <div class="cdet-value"><a href="tel:+85221267278">+852 2126 7278</a></div>
-        </div>
-      </div>
-      <div class="cdet">
-        <div class="cdet-icon">📠</div>
-        <div>
-          <div class="cdet-label">Fax 傳真</div>
-          <div class="cdet-value">+852 2126 7787</div>
-        </div>
-      </div>
-      <div class="cdet">
-        <div class="cdet-icon">✉️</div>
-        <div>
-          <div class="cdet-label">Email 電郵</div>
-          <div class="cdet-value"><a href="mailto:enquiry@suikwan.com.hk">enquiry@suikwan.com.hk</a></div>
-        </div>
-      </div>
-      <div class="cdet">
-        <div class="cdet-icon">🌐</div>
-        <div>
-          <div class="cdet-label">Website</div>
-          <div class="cdet-value"><a href="https://www.suikwan.com.hk" target="_blank">www.suikwan.com.hk</a></div>
-        </div>
-      </div>
-    </div>
-    <div class="contact-form">
-      <h3>Send an Enquiry / 查詢</h3>
-      <div class="fg-row">
-        <div class="fg">
-          <label>Name 姓名</label>
-          <input type="text" placeholder="Your name">
-        </div>
-        <div class="fg">
-          <label>Phone 電話</label>
-          <input type="tel" placeholder="Contact number">
-        </div>
-      </div>
-      <div class="fg">
-        <label>Email 電郵</label>
-        <input type="email" placeholder="your@email.com">
-      </div>
-      <div class="fg">
-        <label>Project Type 工程類別</label>
-        <select>
-          <option>New Construction Works 新建工程</option>
-          <option>A&A Works 改建及加建</option>
-          <option>Building Maintenance 樓宇維修</option>
-          <option>Land Development 土地發展</option>
-          <option>Pre-construction Planning 施工規劃</option>
-          <option>Construction Management 工程管理</option>
-          <option>General Enquiry 一般查詢</option>
-        </select>
-      </div>
-      <div class="fg">
-        <label>Project Details 工程詳情</label>
-        <textarea placeholder="Describe your project requirements..."></textarea>
-      </div>
-      <button class="submit-btn">Send Enquiry / 提交查詢</button>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div>
-      <div class="fb-en"><span>SUI KWAN</span> CONSTRUCTION LIMITED</div>
-      <div class="fb-zh">瑞群建築有限公司 · GBC 4/2007 · ISO9001 · 九龍新蒲崗</div>
-    </div>
-    <ul class="footer-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#management">Team</a></li>
-      <li><a href="#recognition">Recognition</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="footer-copy">© 2026 Sui Kwan Construction Ltd. All rights reserved.</div>
+    <div class="footer-logo">瑞群建築有限公司 · 香港</div>
+    <div class="footer-copy">© 2025 Sui Kwan Construction Limited · GBC 4/2007 · ISO 9001 · Tel: +852 2126 7278</div>
+    <div class="footer-links"><a href="#services">服務</a><a href="#recognition">認可資格</a><a href="#contact">聯絡</a></div>
   </div>
 </footer>
-
 </body>
 </html>
