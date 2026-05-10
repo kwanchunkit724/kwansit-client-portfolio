@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港資訊網絡有限公司 HKInfo | 網頁寄存 · 域名註冊 · 伺服器托管</title>
+<style>
+:root{
+  --navy:#0c1e38;
+  --navy2:#122440;
+  --blue:#0060c0;
+  --blue2:#0075e0;
+  --light:#f2f6fb;
+  --white:#ffffff;
+  --text:#1a2533;
+  --muted:#566473;
+  --border:#ccd8e8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI','PingFang HK','Microsoft JhengHei',Arial,sans-serif;color:var(--text);background:var(--white);line-height:1.65;}
+a{color:inherit;text-decoration:none;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);border-bottom:2px solid var(--blue);padding:0 6%;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
+.nav-logo{font-size:1.2rem;font-weight:800;color:var(--white);}
+.nav-logo span{color:var(--blue2);}
+.nav-links{display:flex;gap:26px;}
+.nav-links a{color:rgba(255,255,255,0.82);font-size:0.87rem;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--blue2);}
+.nav-cta{background:var(--blue);color:var(--white)!important;padding:8px 18px;border-radius:4px;font-weight:700!important;}
+
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,#0a1a30 100%);padding:120px 6% 80px;min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:480px;height:480px;border-radius:50%;background:rgba(0,96,192,0.07);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;width:100%;max-width:1200px;margin:0 auto;}
+.hero-label{display:inline-block;background:rgba(0,96,192,0.15);color:var(--blue2);font-size:0.78rem;font-weight:700;letter-spacing:2px;padding:5px 14px;border-radius:20px;border:1px solid rgba(0,96,192,0.3);margin-bottom:18px;text-transform:uppercase;}
+.hero h1{font-size:2.5rem;font-weight:900;color:var(--white);line-height:1.2;margin-bottom:12px;}
+.hero h1 span{color:var(--blue2);}
+.hero-en{font-size:1rem;color:rgba(255,255,255,0.5);margin-bottom:14px;}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.68);max-width:520px;margin-bottom:34px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-bl{background:var(--blue);color:var(--white);padding:13px 28px;border-radius:5px;font-weight:700;font-size:0.95rem;transition:background 0.2s,transform 0.2s;}
+.btn-bl:hover{background:var(--blue2);transform:translateY(-2px);}
+.btn-out{border:2px solid rgba(255,255,255,0.3);color:var(--white);padding:13px 28px;border-radius:5px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s,transform 0.2s;}
+.btn-out:hover{border-color:var(--blue2);transform:translateY(-2px);}
+.hero-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:28px 24px;}
+.hero-card h3{color:var(--blue2);font-size:0.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;}
+.hc-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+.hc-icon{width:34px;height:34px;border-radius:8px;background:rgba(0,96,192,0.15);border:1px solid rgba(0,96,192,0.3);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.hc-label{font-size:0.73rem;color:rgba(255,255,255,0.45);margin-bottom:2px;}
+.hc-val{color:var(--white);font-size:0.88rem;font-weight:600;}
+.hc-divider{border:none;border-top:1px solid rgba(255,255,255,0.1);margin:14px 0;}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;}
+.badge{background:rgba(0,96,192,0.15);border:1px solid rgba(0,96,192,0.3);color:var(--blue2);font-size:0.68rem;font-weight:700;padding:4px 10px;border-radius:20px;}
+
+.stats{background:var(--blue);padding:26px 6%;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1100px;margin:0 auto;}
+.stat{text-align:center;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--white);}
+.stat-lbl{font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.78);text-transform:uppercase;letter-spacing:0.5px;}
+
+section{padding:80px 6%;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-tag{display:inline-block;background:rgba(0,96,192,0.1);color:var(--blue);font-size:0.75rem;font-weight:700;letter-spacing:2px;padding:4px 14px;border-radius:20px;border:1px solid rgba(0,96,192,0.25);text-transform:uppercase;margin-bottom:12px;}
+.sec-title{font-size:2rem;font-weight:800;color:var(--navy);margin-bottom:10px;}
+.sec-sub{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:44px;}
+
+.about{background:var(--light);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.about-text p{color:var(--muted);margin-bottom:16px;line-height:1.75;}
+.highlight-box{background:var(--navy);border-radius:12px;padding:26px 24px;margin-bottom:22px;}
+.highlight-box h3{color:var(--blue2);font-size:1rem;font-weight:700;margin-bottom:8px;}
+.highlight-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.prop-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px 16px;border-top:3px solid var(--blue);}
+.prop-card h4{color:var(--navy);font-size:0.9rem;font-weight:700;margin-bottom:6px;}
+.prop-card p{color:var(--muted);font-size:0.8rem;line-height:1.55;}
+
+.hosting{background:var(--white);}
+.hosting-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.host-card{background:var(--light);border:1px solid var(--border);border-radius:12px;padding:28px 22px;transition:box-shadow 0.2s,transform 0.2s;border-top:4px solid transparent;text-align:center;}
+.host-card:hover{box-shadow:0 8px 24px rgba(0,96,192,0.1);transform:translateY(-4px);border-top-color:var(--blue);}
+.host-card.featured{background:var(--navy);border-top-color:var(--blue2);}
+.host-card.featured h3,.host-card.featured .price,.host-card.featured .price-lbl{color:var(--white);}
+.host-card.featured ul li{color:rgba(255,255,255,0.78);}
+.host-icon{font-size:2rem;margin-bottom:12px;}
+.host-card h3{color:var(--navy);font-size:1rem;font-weight:700;margin-bottom:12px;}
+.price{font-size:2.2rem;font-weight:900;color:var(--blue);}
+.price sub{font-size:1rem;font-weight:400;}
+.price-lbl{color:var(--muted);font-size:0.8rem;margin-bottom:16px;}
+.host-card ul{list-style:none;text-align:left;margin:16px 0;display:flex;flex-direction:column;gap:8px;}
+.host-card ul li{display:flex;align-items:flex-start;gap:8px;color:var(--muted);font-size:0.84rem;}
+.host-card ul li::before{content:'✓';color:var(--blue);font-weight:800;flex-shrink:0;}
+.host-card.featured ul li::before{color:var(--blue2);}
+.btn-order{display:block;background:var(--blue);color:var(--white);padding:10px;border-radius:6px;font-weight:700;font-size:0.9rem;margin-top:16px;transition:background 0.2s;}
+.btn-order:hover{background:var(--blue2);}
+.btn-order-outline{display:block;border:2px solid var(--white);color:var(--white);padding:10px;border-radius:6px;font-weight:700;font-size:0.9rem;margin-top:16px;transition:border-color 0.2s;}
+.btn-order-outline:hover{border-color:var(--blue2);}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.svc-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:26px 20px;transition:box-shadow 0.2s,transform 0.2s;border-top:4px solid transparent;}
+.svc-card:hover{box-shadow:0 8px 24px rgba(0,96,192,0.1);transform:translateY(-4px);border-top-color:var(--blue);}
+.svc-icon{width:46px;height:46px;border-radius:10px;background:rgba(0,96,192,0.08);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;}
+.svc-card h3{color:var(--navy);font-size:0.98rem;font-weight:700;margin-bottom:8px;}
+.svc-card p{color:var(--muted);font-size:0.84rem;line-height:1.6;}
+
+.domains{background:var(--navy);}
+.domains .sec-title{color:var(--white);}
+.domains .sec-sub{color:rgba(255,255,255,0.6);}
+.domains-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+.domain-pill{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:14px 10px;text-align:center;}
+.domain-ext{font-size:1.1rem;font-weight:800;color:var(--blue2);}
+.domain-lbl{font-size:0.72rem;color:rgba(255,255,255,0.5);margin-top:4px;}
+
+.contact-s{background:var(--light);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.contact-info h3{color:var(--navy);font-size:1.25rem;font-weight:700;margin-bottom:6px;}
+.contact-info p{color:var(--muted);font-size:0.92rem;margin-bottom:26px;}
+.ci-block{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
+.ci-icon{width:40px;height:40px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ci-label{font-size:0.74rem;color:var(--muted);margin-bottom:2px;}
+.ci-val{color:var(--navy);font-size:0.93rem;font-weight:600;}
+.cform{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:32px 28px;}
+.cform h3{color:var(--navy);font-size:1.1rem;font-weight:700;margin-bottom:22px;}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.form-group label{font-size:0.8rem;font-weight:600;color:var(--navy);}
+.form-group input,.form-group select,.form-group textarea{border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-size:0.9rem;color:var(--text);background:var(--light);font-family:inherit;outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.btn-submit{width:100%;background:var(--navy);color:var(--white);border:none;border-radius:6px;padding:13px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.btn-submit:hover{background:var(--navy2);}
+
+footer{background:var(--navy);padding:50px 6% 28px;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;margin-bottom:36px;}
+.footer-brand h3{color:var(--white);font-size:1.1rem;font-weight:800;margin-bottom:8px;}
+.footer-brand h3 span{color:var(--blue2);}
+.footer-brand p{color:rgba(255,255,255,0.5);font-size:0.84rem;line-height:1.65;}
+.footer-col h4{color:var(--blue2);font-size:0.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-col ul li a{color:rgba(255,255,255,0.55);font-size:0.84rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--blue2);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;align-items:center;justify-content:space-between;}
+.footer-bottom p{color:rgba(255,255,255,0.38);font-size:0.78rem;}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .stats-grid,.hosting-grid,.services-grid{grid-template-columns:repeat(2,1fr);}
+  .domains-grid{grid-template-columns:repeat(3,1fr);}
+  .about-props{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">香港資訊網絡 <span>HKInfo</span></div>
+    <div class="nav-links">
+      <a href="#about">關於我們</a>
+      <a href="#hosting">網頁寄存</a>
+      <a href="#services">服務</a>
+      <a href="#contact" class="nav-cta">立即訂購</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-label">香港網絡服務供應商</div>
+      <h1>香港<span>網頁寄存</span><br>域名 · 伺服器 · 電郵</h1>
+      <p class="hero-en">Hong Kong Information Network Limited · HKInfo.com · AnyHosting.net</p>
+      <p class="hero-sub">香港本地網絡服務供應商，提供穩定可靠的網頁寄存、域名註冊、伺服器托管及電郵服務，助您的業務在線上穩健發展。</p>
+      <div class="hero-btns">
+        <a href="#hosting" class="btn-bl">查看寄存方案</a>
+        <a href="#contact" class="btn-out">聯絡我們</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>聯絡資料</h3>
+      <div class="hc-row">
+        <div class="hc-icon">✉</div>
+        <div>
+          <div class="hc-label">電郵（域名查詢）</div>
+          <div class="hc-val">domain@hkinfo.com</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">🌐</div>
+        <div>
+          <div class="hc-label">主網站</div>
+          <div class="hc-val">hkinfo.com</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">🖥️</div>
+        <div>
+          <div class="hc-label">寄存平台</div>
+          <div class="hc-val">anyhosting.net</div>
+        </div>
+      </div>
+      <hr class="hc-divider">
+      <div class="badge-row">
+        <span class="badge">.hk域名</span>
+        <span class="badge">香港伺服器</span>
+        <span class="badge">電郵服務</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num">HK</div><div class="stat-lbl">本地伺服器</div></div>
+    <div class="stat"><div class="stat-num">99%</div><div class="stat-lbl">穩定運行保證</div></div>
+    <div class="stat"><div class="stat-num">多種</div><div class="stat-lbl">寄存方案</div></div>
+    <div class="stat"><div class="stat-num">全面</div><div class="stat-lbl">域名服務</div></div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="sec-tag">關於香港資訊網絡</div>
+        <h2 class="sec-title">香港本地可靠網絡服務商</h2>
+        <p>香港資訊網絡有限公司（HKInfo）是一家立根香港的專業網絡服務供應商，旗下 AnyHosting.net 平台為香港及台灣的企業與個人用戶提供優質的網頁寄存、域名註冊、伺服器托管及電郵服務。</p>
+        <p>我們的伺服器設施位於香港，確保本地用戶享有快速、穩定的連線速度。無論是個人部落格、小型企業網站還是大型商業平台，我們都有合適的方案滿足您的需求。</p>
+        <div class="highlight-box">
+          <h3>我們的承諾</h3>
+          <p>提供穩定可靠的香港網絡服務，配合靈活的訂購方案及專業技術支援，讓客戶的網上業務穩健發展，無後顧之憂。</p>
+        </div>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <h4>香港本地伺服器</h4>
+          <p>伺服器設於香港，確保本地用戶享有低延遲、高速的網站連線體驗。</p>
+        </div>
+        <div class="prop-card">
+          <h4>多元化寄存方案</h4>
+          <p>從入門級到企業級，提供多種網頁寄存方案，按需選擇最合適的配置。</p>
+        </div>
+        <div class="prop-card">
+          <h4>域名一站式服務</h4>
+          <p>支援 .hk、.com、.net 等多種域名，一站式申請、管理及續費服務。</p>
+        </div>
+        <div class="prop-card">
+          <h4>技術支援保障</h4>
+          <p>專業技術團隊提供技術支援，確保您的網站服務全天候穩定運作。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hosting" id="hosting">
+  <div class="sec-inner">
+    <div class="sec-tag">網頁寄存方案</div>
+    <h2 class="sec-title">靈活的網頁寄存計劃</h2>
+    <p class="sec-sub">由入門到進階，多種方案滿足不同規模網站的需求。</p>
+    <div class="hosting-grid">
+      <div class="host-card">
+        <div class="host-icon">🌱</div>
+        <h3>入門方案</h3>
+        <div class="price">HK$38<sub>/月</sub></div>
+        <div class="price-lbl">適合個人及小型網站</div>
+        <ul>
+          <li>基本磁碟空間</li>
+          <li>標準頻寬</li>
+          <li>電郵帳戶</li>
+          <li>技術支援</li>
+        </ul>
+        <a href="#contact" class="btn-order">立即訂購</a>
+      </div>
+      <div class="host-card featured">
+        <div class="host-icon">⭐</div>
+        <h3>標準方案</h3>
+        <div class="price">HK$88<sub>/月</sub></div>
+        <div class="price-lbl">最受歡迎 · 中小企首選</div>
+        <ul>
+          <li>充裕磁碟空間</li>
+          <li>高速頻寬</li>
+          <li>多個電郵帳戶</li>
+          <li>FTP 存取</li>
+          <li>24/7 技術支援</li>
+        </ul>
+        <a href="#contact" class="btn-order-outline">立即訂購</a>
+      </div>
+      <div class="host-card">
+        <div class="host-icon">🚀</div>
+        <h3>商業方案</h3>
+        <div class="price">HK$300<sub>/月</sub></div>
+        <div class="price-lbl">適合大型商業網站</div>
+        <ul>
+          <li>大容量磁碟空間</li>
+          <li>高速企業頻寬</li>
+          <li>無限電郵帳戶</li>
+          <li>FTP 及 CCBoss 管理</li>
+          <li>優先技術支援</li>
+        </ul>
+        <a href="#contact" class="btn-order">立即訂購</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background:var(--light);">
+  <div class="sec-inner">
+    <div class="sec-tag">服務範疇</div>
+    <h2 class="sec-title">全方位網絡服務</h2>
+    <p class="sec-sub">除網頁寄存外，提供完整的網絡基礎設施服務。</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🌐</div>
+        <h3>域名註冊</h3>
+        <p>支援 .hk、.com.hk、.com、.net、.org、.info、.tv、.cc 等多種頂級域名的申請及管理服務。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">✉</div>
+        <h3>企業電郵服務</h3>
+        <p>從 HK$180/月起，提供穩定可靠的企業電郵帳戶服務，支援多個郵箱、防垃圾郵件功能。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏢</div>
+        <h3>伺服器托管</h3>
+        <p>提供 1U/2U/5U 及 1/4、1/2、Full Rack 不同規格的香港本地機房伺服器托管服務。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💻</div>
+        <h3>伺服器租用</h3>
+        <p>多款 Server S、Server X 及 Server B 系列伺服器可供租用，按需選擇適合的運算配置。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📁</div>
+        <h3>FTP 服務</h3>
+        <p>FTP Basic 及 FTP Standard 方案，提供安全可靠的文件傳輸及儲存服務。</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🎨</div>
+        <h3>網頁設計</h3>
+        <p>零售版及小業版網頁設計方案，為中小企業提供專業網站建設服務，助您快速建立網上形象。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="domains">
+  <div class="sec-inner">
+    <div class="sec-tag">域名服務</div>
+    <h2 class="sec-title">支援多種域名後綴</h2>
+    <p class="sec-sub">覆蓋香港及全球常用域名後綴，一站式域名申請及管理。</p>
+    <div class="domains-grid">
+      <div class="domain-pill"><div class="domain-ext">.hk</div><div class="domain-lbl">香港域名</div></div>
+      <div class="domain-pill"><div class="domain-ext">.com.hk</div><div class="domain-lbl">香港商業</div></div>
+      <div class="domain-pill"><div class="domain-ext">.net.hk</div><div class="domain-lbl">香港網絡</div></div>
+      <div class="domain-pill"><div class="domain-ext">.org.hk</div><div class="domain-lbl">香港機構</div></div>
+      <div class="domain-pill"><div class="domain-ext">.idv.hk</div><div class="domain-lbl">香港個人</div></div>
+      <div class="domain-pill"><div class="domain-ext">.com</div><div class="domain-lbl">國際商業</div></div>
+      <div class="domain-pill"><div class="domain-ext">.net</div><div class="domain-lbl">國際網絡</div></div>
+      <div class="domain-pill"><div class="domain-ext">.org</div><div class="domain-lbl">國際機構</div></div>
+      <div class="domain-pill"><div class="domain-ext">.com.cn</div><div class="domain-lbl">中國商業</div></div>
+      <div class="domain-pill"><div class="domain-ext">.tv</div><div class="domain-lbl">媒體</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-s" id="contact">
+  <div class="sec-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="sec-tag">聯絡我們</div>
+        <h3>查詢及訂購服務</h3>
+        <p>如有關於網頁寄存、域名、伺服器托管或其他服務的查詢，請隨時聯絡我們的團隊。</p>
+        <div class="ci-block">
+          <div class="ci-icon">✉</div>
+          <div>
+            <div class="ci-label">域名查詢電郵</div>
+            <div class="ci-val">domain@hkinfo.com</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">網站</div>
+            <div class="ci-val">hkinfo.com / anyhosting.net</div>
+          </div>
+        </div>
+      </div>
+      <div class="cform">
+        <h3>發送查詢</h3>
+        <div class="form-group">
+          <label>公司名稱</label>
+          <input type="text" placeholder="公司或個人名稱">
+        </div>
+        <div class="form-group">
+          <label>聯絡人姓名</label>
+          <input type="text" placeholder="您的姓名">
+        </div>
+        <div class="form-group">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>查詢服務</label>
+          <select>
+            <option value="">請選擇...</option>
+            <option>網頁寄存</option>
+            <option>域名註冊</option>
+            <option>電郵服務</option>
+            <option>伺服器托管</option>
+            <option>伺服器租用</option>
+            <option>網頁設計</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢內容</label>
+          <textarea placeholder="請描述您的需求..."></textarea>
+        </div>
+        <button class="btn-submit">發送查詢 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>香港資訊網絡 <span>HKInfo</span></h3>
+        <p>香港資訊網絡有限公司 — 提供網頁寄存、域名註冊、伺服器托管及電郵服務，旗下 AnyHosting.net 為客戶提供穩定可靠的網絡基礎設施服務。</p>
+      </div>
+      <div class="footer-col">
+        <h4>服務</h4>
+        <ul>
+          <li><a href="#hosting">網頁寄存</a></li>
+          <li><a href="#services">域名註冊</a></li>
+          <li><a href="#services">電郵服務</a></li>
+          <li><a href="#services">伺服器托管</a></li>
+          <li><a href="#services">網頁設計</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡</h4>
+        <ul>
+          <li><a href="mailto:domain@hkinfo.com">domain@hkinfo.com</a></li>
+          <li><a href="https://hkinfo.com">hkinfo.com</a></li>
+          <li><a href="https://anyhosting.net">anyhosting.net</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 香港資訊網絡有限公司 Hong Kong Information Network Limited. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
