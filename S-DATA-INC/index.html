@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S Data Inc | 香港物流服務</title>
+<meta name="description" content="S Data Inc — 香港物流服務公司，提供貨運及配送服務。">
+<style>
+:root{--bg:#04080e;--bg2:#080e18;--bg3:#0c1420;--blue:#1870d0;--blue-lt:#3090f0;--amber:#d09030;--amber-lt:#e8b048;--text:#e8eef8;--muted:#6888a8;--border:rgba(24,112,208,0.18);--card-bg:rgba(255,255,255,0.03);--radius:10px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans HK','PingFang HK',sans-serif;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,8,14,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1.1rem;font-weight:800;color:var(--blue-lt)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--blue),var(--blue-lt));color:#fff;padding:9px 22px;border-radius:6px;font-size:.88rem;font-weight:700;text-decoration:none;transition:opacity .2s}.nav-cta:hover{opacity:.88}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(24,112,208,0.1) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(24,112,208,0.1);border:1px solid rgba(24,112,208,0.25);border-radius:6px;padding:6px 14px;font-size:.8rem;color:var(--blue-lt);margin-bottom:20px}
+h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:900;line-height:1.12;margin-bottom:16px}
+.hero-desc{color:var(--muted);font-size:1rem;max-width:440px;margin-bottom:28px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--blue-lt));color:#fff;padding:13px 28px;border-radius:6px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 26px;border-radius:6px;font-size:.93rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}.btn-outline:hover{border-color:var(--blue-lt);color:var(--blue-lt)}
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:16px}
+.card-badge{display:flex;align-items:center;gap:12px}
+.badge-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--blue),var(--blue-lt));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.badge-name{font-size:.97rem;font-weight:700}.badge-label{font-size:.76rem;color:var(--muted)}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--blue-lt);flex-shrink:0;margin-top:2px;text-align:center}
+.card-row-text{font-size:.9rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block}
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.stat-item{text-align:center}
+.stat-num{font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--blue-lt),var(--amber-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.85rem;margin-top:6px}
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(24,112,208,0.08);border:1px solid rgba(24,112,208,0.2);border-radius:6px;padding:4px 12px;font-size:.75rem;color:var(--blue-lt);letter-spacing:.05em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--blue-lt)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s}.svc-card:hover{border-color:var(--blue-lt);transform:translateY(-4px)}
+.sc-icon{width:50px;height:50px;background:rgba(24,112,208,0.1);border:1px solid rgba(24,112,208,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.sc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.contact-section{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(24,112,208,0.1);border:1px solid rgba(24,112,208,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.75rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.95rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--blue-lt);text-decoration:none}.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:34px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--blue-lt)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#080e18}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--blue),var(--blue-lt));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}.form-submit:hover{opacity:.88}
+footer{background:var(--bg3);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:.95rem;font-weight:800;color:var(--blue-lt)}
+.footer-copy{font-size:.8rem;color:var(--muted);text-align:center}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}.footer-links a:hover{color:var(--text)}
+@media(max-width:900px){.hero-inner,.contact-grid{grid-template-columns:1fr}.stats-inner,.cards-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav-links{display:none}.cards-grid,.stats-inner{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">S Data Inc</div>
+    <ul class="nav-links"><li><a href="#services">服務</a></li><li><a href="#contact">聯絡</a></li></ul>
+    <a href="tel:+85265110101" class="nav-cta">立即致電</a>
+  </div>
+</nav>
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🚚 香港物流服務</div>
+      <h1>S Data Inc</h1>
+      <p class="hero-desc">香港本地物流服務公司，提供貨運、配送及相關物流服務，為客戶提供可靠高效的運輸解決方案。</p>
+      <div class="hero-btns">
+        <a href="tel:+85265110101" class="btn-primary">致電查詢</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-icon">🚚</div>
+        <div><div class="badge-label">香港物流公司</div><div class="badge-name">S Data Inc</div></div>
+      </div>
+      <hr class="card-divider">
+      <div class="card-row"><div class="card-row-icon">📞</div><div class="card-row-text"><strong>聯絡電話 / WhatsApp</strong>6511 0101</div></div>
+      <div class="card-row"><div class="card-row-icon">📍</div><div class="card-row-text"><strong>服務地區</strong>香港全港</div></div>
+      <div class="card-row"><div class="card-row-icon">🚚</div><div class="card-row-text"><strong>服務範疇</strong>貨運 · 配送 · 物流服務</div></div>
+    </div>
+  </div>
+</section>
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">專業</div><div class="stat-label">物流服務</div></div>
+    <div class="stat-item"><div class="stat-num">全港</div><div class="stat-label">服務地區</div></div>
+    <div class="stat-item"><div class="stat-num">可靠</div><div class="stat-label">貨運品質</div></div>
+    <div class="stat-item"><div class="stat-num">免費</div><div class="stat-label">報價查詢</div></div>
+  </div>
+</div>
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務範疇</div>
+    <h2>專業<span class="accent">物流</span>服務</h2>
+    <p class="section-lead">提供全面的本地及國際物流服務，確保貨物安全準時送達目的地。</p>
+    <div class="cards-grid">
+      <div class="svc-card"><div class="sc-icon">🚛</div><div class="sc-title">本地貨運配送</div><div class="sc-desc">提供香港全港的本地貨運及配送服務，靈活調配車輛，確保貨物準時到達。</div></div>
+      <div class="svc-card"><div class="sc-icon">🚢</div><div class="sc-title">海運貨代</div><div class="sc-desc">安排海運進出口貨物的貨運代理服務，處理訂艙、報關及相關文件手續。</div></div>
+      <div class="svc-card"><div class="sc-icon">✈️</div><div class="sc-title">空運貨代</div><div class="sc-desc">國際航空貨運代理服務，適合有時效要求的貨物，提供全程跟蹤服務。</div></div>
+      <div class="svc-card"><div class="sc-icon">🏭</div><div class="sc-title">倉儲服務</div><div class="sc-desc">提供貨物倉儲及整理服務，安全存放各類貨物，並按需安排配送。</div></div>
+      <div class="svc-card"><div class="sc-icon">🔗</div><div class="sc-title">中港運輸</div><div class="sc-desc">香港至中國內地的跨境陸路運輸服務，覆蓋大灣區主要城市。</div></div>
+      <div class="svc-card"><div class="sc-icon">📋</div><div class="sc-title">報關清關</div><div class="sc-desc">專業進出口報關及清關服務，熟悉香港及內地海關規定，確保順利通關。</div></div>
+    </div>
+  </div>
+</section>
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2>物流<span class="accent">查詢報價</span></h2>
+    <p class="section-lead">歡迎致電或WhatsApp查詢，我們將為您提供專業物流建議及報價。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item"><div class="ci-icon">📞</div><div><div class="ci-label">電話 / WhatsApp</div><div class="ci-value"><a href="tel:+85265110101">6511 0101</a></div></div></div>
+        <div class="contact-item"><div class="ci-icon">📍</div><div><div class="ci-label">服務地區</div><div class="ci-value">香港全港各區</div></div></div>
+        <div class="contact-item"><div class="ci-icon">🚚</div><div><div class="ci-label">服務範疇</div><div class="ci-value">貨運 · 配送 · 海運 · 空運 · 倉儲</div></div></div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>物流查詢</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group"><label>姓名</label><input type="text" placeholder="您的姓名"></div>
+            <div class="form-group"><label>聯絡電話</label><input type="tel" placeholder="9XXX XXXX"></div>
+          </div>
+          <div class="form-group"><label>服務類別</label>
+            <select><option value="">請選擇</option><option>本地貨運</option><option>海運貨代</option><option>空運貨代</option><option>倉儲服務</option><option>中港運輸</option><option>其他</option></select>
+          </div>
+          <div class="form-group"><label>查詢詳情</label><textarea placeholder="請描述您的物流需求..."></textarea></div>
+          <button type="submit" class="form-submit">提交查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">S Data Inc · 香港</div>
+    <div class="footer-copy">© 2025 S Data Inc · 香港 · Tel: 6511 0101</div>
+    <div class="footer-links"><a href="#services">服務</a><a href="#contact">聯絡</a></div>
+  </div>
+</footer>
+</body>
+</html>
