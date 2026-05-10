@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鑫誠工程有限公司 | 冷氣安裝・維修・清洗｜全港九新界</title>
+<meta name="description" content="鑫誠工程有限公司 — 2015年創立，機電工程署註冊電業承辦商（030511），專業提供全港冷氣安裝、維修及清洗服務，自設車隊，覆蓋工商住宅各區。">
+<style>
+  :root {
+    --bg:       #040c10;
+    --bg2:      #081418;
+    --bg3:      #0c1c22;
+    --accent:   #0880a0;
+    --accent2:  #18c0d8;
+    --ice:      #60e0f0;
+    --ice2:     #a0f0ff;
+    --text:     #daf4f8;
+    --muted:    #4a8090;
+    --border:   rgba(24,192,216,0.16);
+    --card:     rgba(255,255,255,0.03);
+    --radius:   12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', 'PingFang HK', 'Noto Sans HK', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(4,12,16,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo { font-size: 1.15rem; font-weight: 800; color: var(--accent2); text-decoration: none; }
+  .nav-logo span { color: var(--ice2); font-size: 0.78rem; font-weight: 500; margin-left: 0.4rem; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.92rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-cta {
+    background: var(--accent); color: #fff; border: none; padding: 0.55rem 1.3rem;
+    border-radius: 6px; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--accent2); color: #040c10; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 70% 55% at 60% 40%, rgba(8,128,160,0.15) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 40% at 5% 80%, rgba(24,192,216,0.08) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(24,192,216,0.1); border: 1px solid rgba(24,192,216,0.28);
+    color: var(--accent2); border-radius: 50px; padding: 0.38rem 1rem;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.55rem; }
+  .hero h1 { font-size: clamp(2.1rem, 4.2vw, 3.2rem); font-weight: 900; line-height: 1.25; margin-bottom: 1.4rem; }
+  .hero h1 .hl { color: var(--accent2); }
+  .hero h1 .hl-i { color: var(--ice2); }
+  .hero p { font-size: 1.05rem; color: var(--muted); max-width: 530px; margin-bottom: 2rem; line-height: 1.8; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #040c10; font-weight: 800; font-size: 1rem;
+    padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(8,128,160,0.4);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(24,192,216,0.5); }
+  .btn-outline {
+    background: transparent; color: var(--text); border: 1.5px solid rgba(255,255,255,0.2);
+    font-size: 1rem; padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent2); color: var(--ice2); }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 18px; padding: 2rem;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .info-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--accent2); margin-bottom: 1.4rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+  .info-row { display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: flex-start; }
+  .info-icon { font-size: 1.1rem; min-width: 28px; margin-top: 0.1rem; }
+  .info-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.18rem; }
+  .info-val { font-size: 0.92rem; color: var(--text); font-weight: 600; }
+  .info-val a { color: var(--accent2); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .info-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+  .cert-badge {
+    background: rgba(24,192,216,0.1); border: 1px solid rgba(24,192,216,0.25);
+    border-radius: 8px; padding: 0.8rem 1rem; margin-top: 0.8rem;
+    font-size: 0.82rem; color: var(--ice2); line-height: 1.5;
+  }
+  .cert-badge strong { display: block; font-size: 0.88rem; margin-bottom: 0.2rem; }
+
+  /* STATS */
+  .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3.5rem 5%; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 2.4rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-num sup { font-size: 1.1rem; vertical-align: super; }
+  .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+
+  /* SECTION */
+  .section { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.7rem; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; line-height: 1.25; margin-bottom: 1rem; }
+  .section-title .hl { color: var(--accent2); }
+  .section-desc { color: var(--muted); max-width: 600px; margin-bottom: 3rem; font-size: 1rem; line-height: 1.8; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .service-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2.2rem;
+    transition: border-color 0.25s, transform 0.2s; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--ice));
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .service-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon { font-size: 2.8rem; margin-bottom: 1.2rem; }
+  .service-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--accent2); margin-bottom: 0.6rem; }
+  .service-card p { color: var(--muted); font-size: 0.92rem; line-height: 1.7; }
+  .service-detail {
+    margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--border);
+    font-size: 0.84rem; color: var(--muted); line-height: 1.6;
+  }
+
+  /* CLIENTS */
+  .clients-wrap { background: var(--bg2); padding: 6rem 5%; }
+  .clients-inner { max-width: 1200px; margin: 0 auto; }
+  .clients-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem; }
+  .client-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.8rem; text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .client-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
+  .client-icon { font-size: 2.4rem; margin-bottom: 0.8rem; }
+  .client-card h4 { font-size: 0.98rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+  .client-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
+
+  /* AC TYPES */
+  .types-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .type-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.8rem;
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .type-card:hover { border-color: var(--accent2); }
+  .type-icon { font-size: 2rem; min-width: 44px; }
+  .type-card h4 { font-size: 1rem; font-weight: 700; color: var(--accent2); margin-bottom: 0.4rem; }
+  .type-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact-wrap {
+    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(8,128,160,0.08) 0%, transparent 65%), var(--bg);
+    padding: 6rem 5%;
+  }
+  .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; margin-bottom: 1rem; }
+  .contact-info p { color: var(--muted); font-size: 0.98rem; margin-bottom: 2rem; line-height: 1.8; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.1rem; }
+  .c-row { display: flex; gap: 1rem; align-items: flex-start; }
+  .c-icon { font-size: 1.3rem; min-width: 34px; }
+  .c-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.2rem; }
+  .c-val { font-size: 0.95rem; font-weight: 600; }
+  .c-val a { color: var(--accent2); text-decoration: none; }
+  .c-val a:hover { text-decoration: underline; }
+  form { display: flex; flex-direction: column; gap: 1.2rem; }
+  form label { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.3rem; display: block; }
+  form input, form textarea, form select {
+    width: 100%; background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.8rem 1rem; color: var(--text); font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s;
+  }
+  form input:focus, form textarea:focus, form select:focus { outline: none; border-color: var(--accent2); }
+  form textarea { min-height: 110px; resize: vertical; }
+  form select option { background: #081418; }
+  .form-submit {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #040c10; font-weight: 800; font-size: 1rem;
+    border: none; padding: 0.95rem; border-radius: 8px; cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(8,128,160,0.4);
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(24,192,216,0.5); }
+
+  /* FOOTER */
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4rem 5% 2rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand .logo-text { font-size: 1.1rem; font-weight: 800; color: var(--accent2); margin-bottom: 0.8rem; }
+  .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  footer h5 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  footer ul li a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  footer ul li a:hover { color: var(--accent2); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .info-card { max-width: 480px; }
+    .services-grid, .types-grid { grid-template-columns: repeat(2, 1fr); }
+    .clients-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .services-grid, .clients-grid, .types-grid, .contact-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">鑫誠工程<span>Gaam Sing Engineering</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">服務項目</a></li>
+    <li><a href="#clients">客戶範疇</a></li>
+    <li><a href="#types">冷氣類型</a></li>
+    <li><a href="#contact">聯絡報價</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">免費報價</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">機電工程署註冊電業承辦商 · 030511</div>
+      <h1>
+        專業冷氣工程<br>
+        <span class="hl">安裝・維修・清洗</span><br>
+        <span class="hl-i">全港九新界覆蓋</span>
+      </h1>
+      <p>
+        鑫誠工程有限公司，2015年創立，機電工程署註冊認可承辦商，
+        自設車隊服務全港，為工商住宅客戶提供專業可靠的冷氣安裝、
+        維修及清洗保養一站式服務。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#services">查看服務</a>
+        <a class="btn-outline" href="#contact">免費報價</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>📞 聯絡鑫誠工程</h3>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">辦事處地址</div>
+          <div class="info-val">觀塘毅力工業中心10樓P室</div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">辦公室電話</div>
+          <div class="info-val"><a href="tel:+85226509223">(852) 2650 9223</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📱</div>
+        <div>
+          <div class="info-label">手機 / WhatsApp</div>
+          <div class="info-val"><a href="https://wa.me/85262183448">6218 3448</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-val"><a href="mailto:info@gaamsing.com">info@gaamsing.com</a></div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網站</div>
+          <div class="info-val"><a href="https://www.gaamsing.com" target="_blank" rel="noopener">gaamsing.com</a></div>
+        </div>
+      </div>
+      <div class="cert-badge">
+        <strong>🏛️ 政府認可資格</strong>
+        機電工程署註冊電業承辦商<br>
+        註冊號碼：030511
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">2015</div>
+      <div class="stat-label">年創立</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">核心冷氣服務</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">18</div>
+      <div class="stat-label">區覆蓋全港九新界</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24<sup>h</sup></div>
+      <div class="stat-label">緊急維修響應</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div id="services">
+  <div class="section">
+    <div class="section-label">Our Services</div>
+    <h2 class="section-title">三大核心<span class="hl">冷氣服務</span></h2>
+    <p class="section-desc">
+      鑫誠工程以專業態度提供全面冷氣解決方案，
+      由購機到安裝、日常清洗保養至緊急維修，一站式滿足所有冷氣需求。
+    </p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">❄️</div>
+        <h3>冷氣安裝服務</h3>
+        <p>
+          專業承接大小家居、商鋪、寫字樓各式冷氣安裝工程，
+          包括冷氣代購服務，協助客戶選擇最適合的冷氣品牌及型號，
+          安裝完成後確保系統運作正常方離開。
+        </p>
+        <div class="service-detail">
+          涵蓋類型：窗口式 · 分體式 · 吊頂式 · VRV中央冷氣系統<br>
+          適用場所：家居住宅 · 商舖 · 寫字樓 · 工廠
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧹</div>
+        <h3>冷氣清洗服務</h3>
+        <p>
+          專業承接冷氣清洗保養，徹底清除冷氣濾網、蒸發器及出風口的積塵及細菌，
+          改善空氣質素，提升冷凍效率，
+          為您提供一個舒適、清新、健康的室內環境。
+        </p>
+        <div class="service-detail">
+          建議清洗周期：每3-6個月清洗一次<br>
+          可提供定期保養合約，享優惠價格
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3>冷氣維修服務</h3>
+        <p>
+          專業維修各類型冷氣問題，師傅經驗豐富，能快速診斷問題所在，
+          提供準確報價並即時修復，確保冷氣盡快恢復正常運作。
+        </p>
+        <div class="service-detail">
+          常見問題：滴水漏水 · 不能制冷 · 閃燈未能開機 · 聲響異常 · 遙控失靈<br>
+          可維修類型：VRV · 窗口式 · 分體式 · 多聯機
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENT SECTORS -->
+<div class="clients-wrap" id="clients">
+  <div class="clients-inner">
+    <div class="section-label">Client Sectors</div>
+    <h2 class="section-title" style="margin-bottom:0.8rem;">服務各類<span class="hl">客戶範疇</span></h2>
+    <p class="section-desc" style="margin-bottom: 2.5rem;">
+      多年豐富經驗，服務範圍覆蓋各行各業，是您可信賴的冷氣工程夥伴。
+    </p>
+    <div class="clients-grid">
+      <div class="client-card">
+        <div class="client-icon">🏪</div>
+        <h4>連鎖零售店舖</h4>
+        <p>為各大連鎖品牌門店提供統一標準的冷氣安裝及定期保養服務。</p>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">💻</div>
+        <h4>共享工作空間</h4>
+        <p>為共享辦公室及共享工作空間提供完善的中央冷氣系統管理服務。</p>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🏫</div>
+        <h4>學校及社福機構</h4>
+        <p>為學校、社福機構及非牟利組織提供經濟實惠的冷氣維保服務。</p>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🏠</div>
+        <h4>家居住宅及物業管理</h4>
+        <p>為私人住宅及物業管理公司提供快捷可靠的冷氣服務，讓居民安心。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AC TYPES -->
+<div id="types">
+  <div class="section">
+    <div class="section-label">AC Types We Service</div>
+    <h2 class="section-title">全面覆蓋<span class="hl">各類冷氣型號</span></h2>
+    <p class="section-desc">
+      無論您使用哪種類型的冷氣系統，鑫誠工程均有能力提供專業服務。
+    </p>
+    <div class="types-grid">
+      <div class="type-card">
+        <div class="type-icon">🪟</div>
+        <div>
+          <h4>窗口式冷氣</h4>
+          <p>香港最普及的住宅冷氣類型，安裝簡便，鑫誠提供安裝、清洗及各類維修服務。</p>
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-icon">🌬️</div>
+        <div>
+          <h4>分體式冷氣</h4>
+          <p>分離室內外機設計，噪音低，效率高，適合各類住宅及商業場所使用。</p>
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-icon">🏢</div>
+        <div>
+          <h4>VRV 中央冷氣</h4>
+          <p>商業樓宇首選的中央冷氣系統，鑫誠具備VRV系統安裝及維修的豐富經驗。</p>
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-icon">⬆️</div>
+        <div>
+          <h4>吊頂式冷氣</h4>
+          <p>適用於商業空間及餐廳，出風均勻，美觀實用，鑫誠提供全面安裝維修服務。</p>
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-icon">🏭</div>
+        <div>
+          <h4>工業用冷氣</h4>
+          <p>工廠及倉庫專用大型冷氣系統，鑫誠具備處理工業級冷氣工程的專業能力。</p>
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-icon">🔌</div>
+        <div>
+          <h4>多聯機系統</h4>
+          <p>一台室外機連接多台室內機，靈活配置，能源效益高，適合中型商業空間。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">聯絡我們<span class="hl">免費報價</span></h2>
+      <p>
+        無論是冷氣安裝、清洗保養還是緊急維修，
+        歡迎致電或 WhatsApp 聯絡鑫誠工程，
+        我們將派遣專業師傅上門評估，提供免費報價。
+      </p>
+      <div class="contact-details">
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">辦事處地址</div>
+            <div class="c-val">觀塘毅力工業中心10樓P室</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">辦公室電話</div>
+            <div class="c-val"><a href="tel:+85226509223">(852) 2650 9223</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">💬</div>
+          <div>
+            <div class="c-label">WhatsApp</div>
+            <div class="c-val"><a href="https://wa.me/85262183448">+852 6218 3448</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">電郵</div>
+            <div class="c-val"><a href="mailto:info@gaamsing.com">info@gaamsing.com</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🏛️</div>
+          <div>
+            <div class="c-label">機電工程署認可</div>
+            <div class="c-val">註冊電業承辦商 No. 030511</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form onsubmit="return false;">
+      <div>
+        <label>您的姓名 *</label>
+        <input type="text" placeholder="例：陳大文">
+      </div>
+      <div>
+        <label>聯絡電話 *</label>
+        <input type="tel" placeholder="例：9000 0000">
+      </div>
+      <div>
+        <label>電郵地址</label>
+        <input type="email" placeholder="example@email.com">
+      </div>
+      <div>
+        <label>服務類別</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>冷氣安裝</option>
+          <option>冷氣清洗 / 保養</option>
+          <option>冷氣維修</option>
+          <option>冷氣代購</option>
+          <option>定期保養合約</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div>
+        <label>服務地址 / 查詢詳情</label>
+        <textarea placeholder="請提供服務地址、冷氣類型及問題描述，方便我們安排師傅上門評估..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">📩 立即索取免費報價</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-text">鑫誠工程有限公司</div>
+      <p>
+        2015年創立，機電工程署註冊電業承辦商（030511），
+        專業提供全港冷氣安裝、維修及清洗服務，自設車隊，覆蓋全港九新界。
+      </p>
+    </div>
+    <div>
+      <h5>服務項目</h5>
+      <ul>
+        <li><a href="#services">冷氣安裝</a></li>
+        <li><a href="#services">冷氣清洗</a></li>
+        <li><a href="#services">冷氣維修</a></li>
+        <li><a href="#types">VRV系統</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>客戶類型</h5>
+      <ul>
+        <li><a href="#clients">連鎖零售店</a></li>
+        <li><a href="#clients">共享工作空間</a></li>
+        <li><a href="#clients">學校機構</a></li>
+        <li><a href="#clients">家居住宅</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>聯絡資料</h5>
+      <ul>
+        <li><a href="tel:+85226509223">(852) 2650 9223</a></li>
+        <li><a href="https://wa.me/85262183448">WhatsApp: 6218 3448</a></li>
+        <li><a href="mailto:info@gaamsing.com">info@gaamsing.com</a></li>
+        <li><a href="https://www.gaamsing.com" target="_blank" rel="noopener">gaamsing.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 鑫誠工程有限公司. All rights reserved.</span>
+    <span>機電工程署註冊電業承辦商 No. 030511</span>
+  </div>
+</footer>
+
+</body>
+</html>
