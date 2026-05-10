@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>福興地產代理有限公司 | Fortune Real Estate Agency</title>
+<meta name="description" content="福興地產代理有限公司 — 專注紅磡、何文田、尖沙咀區樓盤，提供買賣租賃、網上估價、成交紀錄、按揭計算等全面地產服務。"/>
+<style>
+:root{
+  --bg:#06060a;
+  --surface:#0a0a10;
+  --card:#10101a;
+  --border:#1a1a28;
+  --accent:#6040c0;
+  --accent2:#8060e0;
+  --gold:#c8a030;
+  --text:#e8e4f8;
+  --muted:#706880;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,10,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-size:1rem;font-weight:700;color:var(--accent2);letter-spacing:.04em;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.nav-links a:hover{color:var(--accent2);}
+
+/* HERO */
+.hero{min-height:88vh;display:flex;align-items:center;justify-content:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(96,64,192,.1) 0%,transparent 65%);}
+.hero-inner{max-width:1200px;width:100%;display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:center;position:relative;}
+.hero-badge{display:inline-block;background:rgba(96,64,192,.15);border:1px solid rgba(96,64,192,.35);color:var(--accent2);font-size:.75rem;padding:.35rem .9rem;border-radius:20px;letter-spacing:.1em;margin-bottom:1.5rem;text-transform:uppercase;}
+.hero h1{font-size:clamp(1.9rem,4.5vw,3.2rem);font-weight:800;line-height:1.2;margin-bottom:.4rem;}
+.hero h1 span{color:var(--accent2);}
+.hero-en{font-size:.9rem;color:var(--muted);margin-bottom:1rem;}
+.hero-areas{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.area-chip{background:rgba(96,64,192,.12);border:1px solid rgba(96,64,192,.25);color:var(--accent2);font-size:.78rem;padding:.3rem .9rem;border-radius:20px;font-weight:600;}
+.hero-sub{font-size:.93rem;color:var(--muted);max-width:480px;margin-bottom:2.5rem;line-height:1.7;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:#fff;padding:.85rem 2rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;transition:background .2s;}
+.hero-cta:hover{background:var(--accent2);}
+.hero-cta-out{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);color:var(--muted);padding:.85rem 2rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .2s;}
+.hero-cta-out:hover{border-color:var(--accent);color:var(--accent2);}
+
+/* INFO CARD */
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.8rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.info-card h3{font-size:.78rem;color:var(--accent2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.2rem;}
+.info-row{display:flex;gap:.8rem;margin-bottom:.85rem;align-items:flex-start;}
+.info-icon{width:20px;color:var(--accent2);flex-shrink:0;margin-top:.1rem;font-size:.9rem;}
+.info-text{font-size:.85rem;color:var(--muted);}
+.info-text strong{color:var(--text);display:block;font-size:.8rem;font-weight:600;}
+.info-text a{color:var(--muted);text-decoration:none;}
+.info-text a:hover{color:var(--accent2);}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:1.9rem;font-weight:800;color:var(--accent2);display:block;}
+.stat-label{font-size:.78rem;color:var(--muted);margin-top:.2rem;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-label{font-size:.72rem;color:var(--accent2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem;}
+.sec-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:1rem;}
+.sec-desc{color:var(--muted);max-width:620px;margin-bottom:3rem;line-height:1.7;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.about-highlight{background:linear-gradient(135deg,rgba(96,64,192,.08),rgba(96,64,192,.03));border:1px solid rgba(96,64,192,.2);border-radius:12px;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:.95rem;line-height:1.75;color:var(--text);}
+.about-highlight cite{display:block;font-size:.78rem;color:var(--accent2);margin-top:.8rem;font-style:normal;}
+.prop-cards{display:grid;gap:1rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;gap:1rem;align-items:flex-start;}
+.prop-icon{width:36px;height:36px;background:rgba(96,64,192,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.prop-card h4{font-size:.9rem;font-weight:700;margin-bottom:.2rem;}
+.prop-card p{font-size:.82rem;color:var(--muted);}
+
+/* SERVICES */
+.services{background:var(--surface);}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s,transform .2s;}
+.svc-card:hover{border-color:rgba(96,64,192,.4);transform:translateY(-4px);}
+.svc-top{background:rgba(96,64,192,.06);padding:2rem;text-align:center;font-size:2.5rem;border-bottom:1px solid var(--border);}
+.svc-body{padding:1.4rem;}
+.svc-body h3{font-size:1rem;font-weight:700;margin-bottom:.5rem;}
+.svc-body p{font-size:.83rem;color:var(--muted);line-height:1.6;}
+.svc-tag{display:inline-block;background:rgba(96,64,192,.12);color:var(--accent2);font-size:.7rem;padding:.2rem .6rem;border-radius:4px;margin-top:.8rem;}
+
+/* AREAS */
+.areas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.area-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.8rem;text-align:center;transition:border-color .2s,transform .2s;}
+.area-card:hover{border-color:rgba(96,64,192,.4);transform:translateY(-4px);}
+.area-icon{font-size:2.5rem;margin-bottom:.8rem;}
+.area-name{font-size:1.1rem;font-weight:700;color:var(--accent2);margin-bottom:.3rem;}
+.area-en{font-size:.82rem;color:var(--muted);margin-bottom:.8rem;font-style:italic;}
+.area-card p{font-size:.82rem;color:var(--muted);line-height:1.5;}
+
+/* TOOLS */
+.tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;text-align:center;}
+.tool-icon{font-size:1.6rem;margin-bottom:.5rem;}
+.tool-name{font-size:.78rem;font-weight:600;}
+
+/* CONTACT */
+.contact{background:var(--surface);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-info h3{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;}
+.c-item{display:flex;gap:1rem;margin-bottom:1.2rem;align-items:flex-start;}
+.c-icon{width:40px;height:40px;background:rgba(96,64,192,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:.75rem;color:var(--muted);margin-bottom:.1rem;}
+.c-val{font-size:.9rem;font-weight:500;}
+.c-val a{color:var(--text);text-decoration:none;}
+.c-val a:hover{color:var(--accent2);}
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;}
+.contact-card p{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;}
+.c-form-row{margin-bottom:1rem;}
+.c-form-row label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:.4rem;}
+.c-form-row input,.c-form-row textarea,.c-form-row select{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;color:var(--text);font-size:.88rem;}
+.c-form-row textarea{height:90px;resize:vertical;}
+.c-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:.85rem;border-radius:8px;font-weight:700;font-size:.95rem;cursor:pointer;transition:background .2s;}
+.c-btn:hover{background:var(--accent2);}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2rem;text-align:center;}
+.foot-logo{font-size:1rem;font-weight:700;color:var(--accent2);margin-bottom:.3rem;}
+.foot-copy{font-size:.78rem;color:var(--muted);}
+
+@media(max-width:1000px){.tools-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .grid-3,.areas-grid,.stats-inner{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .grid-3,.areas-grid,.stats-inner,.tools-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">福興地產 · Fortune Real Estate</div>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#areas">服務地區</a></li>
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#tools">網上工具</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">九龍地產代理專家 · Kowloon Property Specialist</div>
+      <h1><span>福興</span>地產代理<br/>有限公司</h1>
+      <div class="hero-en">Fortune Real Estate Agency Limited</div>
+      <div class="hero-areas">
+        <span class="area-chip">紅磡 Hung Hom</span>
+        <span class="area-chip">何文田 Ho Man Tin</span>
+        <span class="area-chip">尖沙咀 TST</span>
+      </div>
+      <p class="hero-sub">深耕紅磡、何文田及尖沙咀地段，提供本區樓盤資訊、成交紀錄、網上估價、按揭計算等全面地產服務，是您在九龍置業的可靠夥伴。</p>
+      <div class="hero-ctas">
+        <a href="#areas" class="hero-cta">瀏覽服務地區 →</a>
+        <a href="#contact" class="hero-cta-out">立即查詢</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>公司資料</h3>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div class="info-text"><strong>服務地區</strong>紅磡 · 何文田 · 尖沙咀</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🏢</span>
+        <div class="info-text"><strong>業務</strong>地產代理 · 買賣 · 租賃</div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📧</span>
+        <div class="info-text"><strong>電郵</strong><a href="mailto:joseph@property.hk">joseph@property.hk</a></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🌐</span>
+        <div class="info-text"><strong>網站</strong><a href="https://fortunereal.com.hk" target="_blank">fortunereal.com.hk</a></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🏙️</span>
+        <div class="info-text"><strong>地區</strong>香港九龍區</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num">3</span><div class="stat-label">專注服務地區</div></div>
+    <div class="stat"><span class="stat-num">買賣</span><div class="stat-label">物業買賣代理</div></div>
+    <div class="stat"><span class="stat-num">租賃</span><div class="stat-label">物業租賃代理</div></div>
+    <div class="stat"><span class="stat-num">估價</span><div class="stat-label">網上估價服務</div></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div>
+        <div class="sec-label">關於我們</div>
+        <h2 class="sec-title">九龍地產，<br/>福興為您服務</h2>
+        <div class="about-highlight">
+          <p>福興地產代理有限公司（Fortune Real Estate Agency）深耕香港九龍區多年，專注服務紅磡、何文田及尖沙咀三大核心地段。我們提供全面的樓盤資訊、成交紀錄、網上估價及按揭計算服務，以豐富的本地市場知識，協助客戶作出最明智的置業及投資決定。</p>
+          <cite>— 福興地產代理有限公司 · Fortune Real Estate Agency</cite>
+        </div>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.7;">
+          福興深信地產代理的價值在於對地區的深入了解，因此我們專注於服務特定地區，掌握每條街、每個屋苑的市場動態，為客戶提供最準確、最及時的置業資訊，讓客戶以最佳條件完成每一宗交易。
+        </p>
+      </div>
+      <div class="prop-cards">
+        <div class="prop-card">
+          <div class="prop-icon">📍</div>
+          <div>
+            <h4>地區深度專注</h4>
+            <p>專注紅磡、何文田、尖沙咀，深入了解每個地區的市場動態及物業特性。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">📊</div>
+          <div>
+            <h4>成交紀錄資料庫</h4>
+            <p>提供最新及歷史成交紀錄，讓買家及賣家掌握準確的市場價格參考。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">💻</div>
+          <div>
+            <h4>網上估價工具</h4>
+            <p>提供網上估價服務，讓業主快速了解物業市值，方便制定買賣策略。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🏫</div>
+          <div>
+            <h4>學校網資訊</h4>
+            <p>提供詳細的學校網資訊，協助有子女的家長選擇合適的置業地點。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="areas" class="services">
+  <div class="sec-inner">
+    <div class="sec-label">專注服務地區</div>
+    <h2 class="sec-title">九龍三大核心地段</h2>
+    <p class="sec-desc">福興深耕紅磡、何文田及尖沙咀，對三區的物業市場有深入的了解，為您提供最專業的地區資訊。</p>
+    <div class="areas-grid">
+      <div class="area-card">
+        <div class="area-icon">🏘️</div>
+        <div class="area-name">紅磡</div>
+        <div class="area-en">Hung Hom</div>
+        <p>紅磡站旁優質住宅區，緊鄰商業中心，交通便利，住宅及工商物業選擇豐富。</p>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">🏰</div>
+        <div class="area-name">何文田</div>
+        <div class="area-en">Ho Man Tin</div>
+        <p>九龍傳統高尚住宅區，臨近頂尖學校網絡，是追求優質生活環境的置業首選。</p>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">🌃</div>
+        <div class="area-name">尖沙咀</div>
+        <div class="area-en">Tsim Sha Tsui</div>
+        <p>香港國際商業及旅遊核心地帶，住宅、寫字樓及商鋪各類物業選擇一應俱全。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="sec-inner">
+    <div class="sec-label">服務項目</div>
+    <h2 class="sec-title">全面地產代理服務</h2>
+    <p class="sec-desc">從物業搜尋到交易完成，福興提供全方位的地產代理服務，讓您置業無憂。</p>
+    <div class="grid-3">
+      <div class="svc-card">
+        <div class="svc-top">🏠</div>
+        <div class="svc-body">
+          <h3>物業買賣代理</h3>
+          <p>一手新盤及二手物業的買賣代理服務，提供最新盤源、價格分析及買賣洽商支援，協助客戶以最佳條件完成交易。</p>
+          <span class="svc-tag">核心服務</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">🔑</div>
+        <div class="svc-body">
+          <h3>物業租賃代理</h3>
+          <p>提供住宅及商業物業的出租及租賃代理服務，為業主覓得優質租客，為租客尋找最合適的物業。</p>
+          <span class="svc-tag">租賃服務</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">📋</div>
+        <div class="svc-body">
+          <h3>樓盤資訊及放盤</h3>
+          <p>提供紅磡、何文田及尖沙咀的最新樓盤資訊，業主可網上放盤，廣泛接觸潛在買家及租客。</p>
+          <span class="svc-tag">盤源服務</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">📊</div>
+        <div class="svc-body">
+          <h3>成交紀錄查詢</h3>
+          <p>提供詳細的成交紀錄資料，包括歷史成交價格及最新市場走勢，為買賣決策提供可靠依據。</p>
+          <span class="svc-tag">市場資訊</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">🏦</div>
+        <div class="svc-body">
+          <h3>按揭計算及轉介</h3>
+          <p>提供按揭計算工具及按揭轉介服務，協助買家了解每月供款，並爭取最優惠的按揭利率。</p>
+          <span class="svc-tag">按揭服務</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-top">📰</div>
+        <div class="svc-body">
+          <h3>地產資訊及新聞</h3>
+          <p>提供最新地產消息、政策解讀及市場分析，讓客戶隨時掌握香港樓市最新動態。</p>
+          <span class="svc-tag">資訊服務</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tools" style="background:var(--surface);">
+  <div class="sec-inner">
+    <div class="sec-label">網上工具</div>
+    <h2 class="sec-title">便民置業工具</h2>
+    <p class="sec-desc">福興提供多種網上置業工具，讓您足不出戶便可掌握全面的物業市場資訊。</p>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon">💰</div>
+        <div class="tool-name">網上估價</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📈</div>
+        <div class="tool-name">價格走勢</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📋</div>
+        <div class="tool-name">成交紀錄</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🏦</div>
+        <div class="tool-name">按揭計算</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🗺️</div>
+        <div class="tool-name">衛星地圖</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🏫</div>
+        <div class="tool-name">學校網查詢</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📰</div>
+        <div class="tool-name">地產消息</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📦</div>
+        <div class="tool-name">網上放盤</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📖</div>
+        <div class="tool-name">有用資料</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🏠</div>
+        <div class="tool-name">屋苑搜尋</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="sec-inner">
+    <div class="sec-label">聯絡我們</div>
+    <h2 class="sec-title">物業查詢</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>聯絡資料</h3>
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">服務地區</div>
+            <div class="c-val">紅磡 · 何文田 · 尖沙咀</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📧</div>
+          <div>
+            <div class="c-label">電郵</div>
+            <div class="c-val"><a href="mailto:joseph@property.hk">joseph@property.hk</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">網站</div>
+            <div class="c-val"><a href="https://fortunereal.com.hk" target="_blank">fortunereal.com.hk</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🏢</div>
+          <div>
+            <div class="c-label">業務</div>
+            <div class="c-val">地產買賣 · 租賃 · 估價 · 按揭</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🏙️</div>
+          <div>
+            <div class="c-label">地區</div>
+            <div class="c-val">香港九龍區</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>立即查詢</h3>
+        <p>歡迎填寫以下資料查詢紅磡、何文田及尖沙咀的物業，我們的代理將盡快與您聯絡。</p>
+        <div class="c-form-row">
+          <label>您的姓名</label>
+          <input type="text" placeholder="請輸入姓名"/>
+        </div>
+        <div class="c-form-row">
+          <label>電郵地址</label>
+          <input type="email" placeholder="your@email.com"/>
+        </div>
+        <div class="c-form-row">
+          <label>感興趣的樓盤地區</label>
+          <select>
+            <option>請選擇地區</option>
+            <option>紅磡 Hung Hom</option>
+            <option>何文田 Ho Man Tin</option>
+            <option>尖沙咀 Tsim Sha Tsui</option>
+          </select>
+        </div>
+        <div class="c-form-row">
+          <label>查詢內容</label>
+          <textarea placeholder="請說明您的需求，例如買賣、租賃、估價等..."></textarea>
+        </div>
+        <button class="c-btn">提交查詢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">福興地產代理有限公司 · Fortune Real Estate Agency Limited</div>
+  <div class="foot-copy">© 2025 福興地產代理有限公司 · 紅磡 · 何文田 · 尖沙咀 · <a href="https://fortunereal.com.hk" target="_blank" style="color:var(--muted);text-decoration:none;">fortunereal.com.hk</a></div>
+</footer>
+
+</body>
+</html>
