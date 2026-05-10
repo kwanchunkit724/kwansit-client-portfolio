@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>環球國際旅遊有限公司 | Mundial International Travel | 澳門</title>
+<meta name="description" content="環球國際旅遊有限公司 — 澳門專業旅遊代理，澳門旅遊局「星級旅行社獎」得主，IATA認可，提供團體旅遊、學術交流、個人旅程及簽證服務。">
+<style>
+:root{--bg:#04040c;--bg2:#08081a;--bg3:#0c0c22;--purple:#6030c8;--purple-lt:#8050e8;--gold:#c8a030;--gold-lt:#e8c050;--text:#eeeef8;--muted:#7878a8;--border:rgba(96,48,200,0.2);--card-bg:rgba(255,255,255,0.03);--radius:10px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans HK','PingFang HK',sans-serif;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,4,12,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1.05rem;font-weight:800;color:var(--purple-lt)}
+.nav-logo span{color:var(--gold-lt);font-weight:400;font-size:.78rem;margin-left:8px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--purple),var(--purple-lt));color:#fff;padding:9px 22px;border-radius:6px;font-size:.88rem;font-weight:700;text-decoration:none;transition:opacity .2s}.nav-cta:hover{opacity:.88}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 60% 40%,rgba(96,48,200,0.14) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(96,48,200,0.1);border:1px solid rgba(96,48,200,0.28);border-radius:6px;padding:6px 14px;font-size:.8rem;color:var(--purple-lt);margin-bottom:20px}
+h1{font-size:clamp(1.9rem,4vw,3rem);font-weight:900;line-height:1.12;margin-bottom:12px}
+h1 .en{display:block;font-size:clamp(.85rem,1.7vw,1.05rem);font-weight:400;color:var(--purple-lt);letter-spacing:.04em;margin-top:8px}
+.hero-desc{color:var(--muted);font-size:1rem;max-width:440px;margin:18px 0 22px;line-height:1.8}
+.award-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.ab{display:inline-flex;align-items:center;gap:6px;background:rgba(200,160,48,0.1);border:1px solid rgba(200,160,48,0.3);border-radius:6px;padding:5px 12px;font-size:.78rem;color:var(--gold-lt);font-weight:600}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--purple),var(--purple-lt));color:#fff;padding:13px 28px;border-radius:6px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 26px;border-radius:6px;font-size:.93rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}.btn-outline:hover{border-color:var(--purple-lt);color:var(--purple-lt)}
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:16px}
+.card-badge{display:flex;align-items:center;gap:12px}
+.badge-emblem{width:48px;height:48px;background:linear-gradient(135deg,var(--purple),var(--purple-lt));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.badge-name{font-size:.97rem;font-weight:700}.badge-label{font-size:.76rem;color:var(--muted)}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--purple-lt);flex-shrink:0;margin-top:2px;text-align:center}
+.card-row-text{font-size:.9rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block}
+.card-award{background:rgba(200,160,48,0.08);border:1px solid rgba(200,160,48,0.25);border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:10px}
+.ca-icon{font-size:1.3rem}
+.ca-text{font-size:.84rem;color:var(--gold-lt);font-weight:600;line-height:1.4}
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+.stat-item{text-align:center}
+.stat-num{font-size:1.9rem;font-weight:900;background:linear-gradient(135deg,var(--purple-lt),var(--gold-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.82rem;margin-top:6px}
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(96,48,200,0.08);border:1px solid rgba(96,48,200,0.2);border-radius:6px;padding:4px 12px;font-size:.75rem;color:var(--purple-lt);letter-spacing:.05em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--purple-lt)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s}.svc-card:hover{border-color:var(--purple-lt);transform:translateY(-4px)}
+.sc-icon{width:50px;height:50px;background:rgba(96,48,200,0.1);border:1px solid rgba(96,48,200,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.sc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.study-section{background:var(--bg2)}
+.study-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.study-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:border-color .25s}.study-card:hover{border-color:var(--gold-lt)}
+.study-flag{font-size:1.6rem;margin-bottom:10px}
+.study-country{font-size:.75rem;color:var(--gold-lt);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-bottom:4px}
+.study-title{font-size:.95rem;font-weight:700;margin-bottom:8px}
+.study-programs{display:flex;flex-wrap:wrap;gap:6px}
+.study-prog{font-size:.72rem;background:rgba(200,160,48,0.1);border:1px solid rgba(200,160,48,0.2);border-radius:4px;padding:3px 8px;color:var(--gold-lt)}
+.dest-section{}
+.dest-pills{display:flex;flex-wrap:wrap;gap:12px}
+.dest-pill{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:12px 20px;font-size:.9rem;color:var(--text);display:flex;align-items:center;gap:10px;transition:border-color .2s}.dest-pill:hover{border-color:var(--purple-lt)}
+.contact-section{background:var(--bg3)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(96,48,200,0.1);border:1px solid rgba(96,48,200,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.75rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.95rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--purple-lt);text-decoration:none}.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:34px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--purple-lt)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#08081a}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--purple),var(--purple-lt));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}.form-submit:hover{opacity:.88}
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:.95rem;font-weight:800;color:var(--purple-lt)}
+.footer-copy{font-size:.8rem;color:var(--muted);text-align:center}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}.footer-links a:hover{color:var(--text)}
+@media(max-width:900px){.hero-inner,.contact-grid{grid-template-columns:1fr}.stats-inner,.cards-grid,.study-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav-links{display:none}.cards-grid,.stats-inner,.study-grid{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">環球國際旅遊<span>Mundial Travel</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">服務</a></li>
+      <li><a href="#study">學術交流</a></li>
+      <li><a href="#destinations">目的地</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+    <a href="mailto:mundial@macau.ctm.net" class="nav-cta">立即查詢</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">✈️ 澳門星級旅行社</div>
+      <h1>環球國際旅遊有限公司<span class="en">Mundial International Travel Service Co. Ltd.</span></h1>
+      <div class="award-badges">
+        <span class="ab">🏆 澳門旅遊局星級旅行社獎</span>
+        <span class="ab">✈️ IATA 認可</span>
+        <span class="ab">📋 執照 0276</span>
+      </div>
+      <p class="hero-desc">澳門專業旅遊代理，澳門旅遊局「星級旅行社獎」得主，擁有IATA資格，提供創新旅遊服務，包括團體旅遊、學術交流研習、個人旅程及簽證申請服務。</p>
+      <div class="hero-btns">
+        <a href="mailto:mundial@macau.ctm.net" class="btn-primary">電郵查詢</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-emblem">🌍</div>
+        <div>
+          <div class="badge-label">澳門星級旅行社</div>
+          <div class="badge-name">環球國際旅遊有限公司</div>
+        </div>
+      </div>
+      <hr class="card-divider">
+      <div class="card-row"><div class="card-row-icon">📞</div><div class="card-row-text"><strong>電話</strong>(0853) 2885 5133 / 2871 5454</div></div>
+      <div class="card-row"><div class="card-row-icon">📠</div><div class="card-row-text"><strong>傳真</strong>(0853) 2830 6789</div></div>
+      <div class="card-row"><div class="card-row-icon">📧</div><div class="card-row-text"><strong>電郵</strong>mundial@macau.ctm.net</div></div>
+      <div class="card-row"><div class="card-row-icon">📍</div><div class="card-row-text"><strong>地址</strong>澳門美麗街21-21A怡美大廈1A</div></div>
+      <div class="card-award">
+        <div class="ca-icon">🏆</div>
+        <div class="ca-text">澳門旅遊局「星級旅行社獎」得主<br>IATA 代碼：96219546</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">2018</div><div class="stat-label">公司成立年份</div></div>
+    <div class="stat-item"><div class="stat-num">IATA</div><div class="stat-label">國際航空認可</div></div>
+    <div class="stat-item"><div class="stat-num">🏆</div><div class="stat-label">旅遊局星級獎</div></div>
+    <div class="stat-item"><div class="stat-num">10+</div><div class="stat-label">學術交流目的地</div></div>
+    <div class="stat-item"><div class="stat-num">全球</div><div class="stat-label">旅遊目的地覆蓋</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務範疇</div>
+    <h2>全面<span class="accent">旅遊</span>服務</h2>
+    <p class="section-lead">環球國際旅遊提供一站式旅遊服務，無論是團體旅遊、學術研習或個人旅程，均可為您量身訂制最佳方案。</p>
+    <div class="cards-grid">
+      <div class="svc-card">
+        <div class="sc-icon">🚌</div>
+        <div class="sc-title">團體旅遊定制</div>
+        <div class="sc-desc">專業策劃及諮詢服務，為各類團體提供量身訂制旅遊方案，包括路線設計、酒店預訂、交通安排及全程導覽。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🎓</div>
+        <div class="sc-title">學術交流研習</div>
+        <div class="sc-desc">承辦學校旅行報價及策劃，與全球頂尖學府合作，提供英國、美國、澳洲、新加坡、日本等地的暑期及交流課程。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🧳</div>
+        <div class="sc-title">個人旅程策劃</div>
+        <div class="sc-desc">為個人及家庭旅客提供個人化旅程規劃，包括機票、酒店、景點門票預訂及自由行路線設計服務。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📝</div>
+        <div class="sc-title">簽證申請協助</div>
+        <div class="sc-desc">提供專業的各國簽證申請協助，熟悉各地簽證要求，確保旅客順利取得所需旅遊文件。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">✈️</div>
+        <div class="sc-title">機票及酒店預訂</div>
+        <div class="sc-desc">IATA認可代理，提供全球主要航線機票預訂，以及各地優質酒店預訂服務，確保最佳性價比。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🚐</div>
+        <div class="sc-title">旅遊巴士租賃</div>
+        <div class="sc-desc">提供專業旅遊巴士租賃服務，適合各類團體出行，包括學校旅行、企業旅遊及機場接送等需求。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="study" class="study-section">
+  <div class="section-inner">
+    <div class="section-tag">學術交流研習</div>
+    <h2>全球頂尖<span class="accent">學術交流</span>計劃</h2>
+    <p class="section-lead">與全球知名學府及教育機構合作，為學生提供拓闊視野、提升領導力的海外學術研習體驗。</p>
+    <div class="study-grid">
+      <div class="study-card">
+        <div class="study-flag">🇬🇧</div>
+        <div class="study-country">英國 United Kingdom</div>
+        <div class="study-title">英國頂尖學府暑期課程</div>
+        <div class="study-programs">
+          <span class="study-prog">劍橋大學 Cambridge</span>
+          <span class="study-prog">牛津大學 Oxford</span>
+          <span class="study-prog">倫敦 London</span>
+        </div>
+      </div>
+      <div class="study-card">
+        <div class="study-flag">🇺🇸</div>
+        <div class="study-country">美國 United States</div>
+        <div class="study-title">美國常春藤盟校暑期課程</div>
+        <div class="study-programs">
+          <span class="study-prog">耶魯大學 Yale</span>
+          <span class="study-prog">哥倫比亞大學 Columbia</span>
+        </div>
+      </div>
+      <div class="study-card">
+        <div class="study-flag">🇦🇺</div>
+        <div class="study-country">澳洲 Australia</div>
+        <div class="study-title">澳洲英語及學術課程</div>
+        <div class="study-programs">
+          <span class="study-prog">昆士蘭大學 UQ</span>
+          <span class="study-prog">英語培訓課程</span>
+        </div>
+      </div>
+      <div class="study-card">
+        <div class="study-flag">🇸🇬</div>
+        <div class="study-country">新加坡 Singapore</div>
+        <div class="study-title">新加坡青年領袖課程</div>
+        <div class="study-programs">
+          <span class="study-prog">國立大學 NUS</span>
+          <span class="study-prog">管理大學 SMU</span>
+          <span class="study-prog">領袖訓練營</span>
+        </div>
+      </div>
+      <div class="study-card">
+        <div class="study-flag">🇯🇵</div>
+        <div class="study-country">日本 Japan</div>
+        <div class="study-title">日本文化家庭遊學</div>
+        <div class="study-programs">
+          <span class="study-prog">文化體驗</span>
+          <span class="study-prog">家庭遊學團</span>
+        </div>
+      </div>
+      <div class="study-card">
+        <div class="study-flag">🇲🇾🇳🇿</div>
+        <div class="study-country">馬來西亞 · 新西蘭</div>
+        <div class="study-title">英語訓練及學校交流</div>
+        <div class="study-programs">
+          <span class="study-prog">馬來西亞英語訓練營</span>
+          <span class="study-prog">新西蘭學校交流</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="destinations" class="dest-section">
+  <div class="section-inner">
+    <div class="section-tag">旅遊目的地</div>
+    <h2>覆蓋<span class="accent">全球</span>目的地</h2>
+    <p class="section-lead">環球國際旅遊服務覆蓋中國內地、亞洲、歐洲、北美洲、澳洲及新西蘭等地，為您帶來豐富多彩的旅遊體驗。</p>
+    <div class="dest-pills">
+      <div class="dest-pill">🇨🇳 中國內地</div>
+      <div class="dest-pill">🇭🇰 香港 · 澳門</div>
+      <div class="dest-pill">🇯🇵 日本</div>
+      <div class="dest-pill">🇸🇬 新加坡</div>
+      <div class="dest-pill">🇲🇾 馬來西亞</div>
+      <div class="dest-pill">🇬🇧 英國</div>
+      <div class="dest-pill">🇺🇸 美國</div>
+      <div class="dest-pill">🇦🇺 澳洲</div>
+      <div class="dest-pill">🇳🇿 新西蘭</div>
+      <div class="dest-pill">🌍 歐洲各地</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2>旅遊<span class="accent">查詢報價</span></h2>
+    <p class="section-lead">歡迎致電或電郵查詢，我們的旅遊顧問將為您提供專業的旅遊建議及最新報價。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">電話</div>
+            <div class="ci-value">(0853) 2885 5133<br>(0853) 2871 5454</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📠</div>
+          <div>
+            <div class="ci-label">傳真</div>
+            <div class="ci-value">(0853) 2830 6789</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">電郵</div>
+            <div class="ci-value"><a href="mailto:mundial@macau.ctm.net">mundial@macau.ctm.net</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">辦公室地址</div>
+            <div class="ci-value">澳門美麗街21-21A怡美大廈1A</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">社交媒體</div>
+            <div class="ci-value">Facebook &amp; Instagram: @macaumundial</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>旅遊查詢 / 報價</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group"><label>姓名</label><input type="text" placeholder="您的姓名"></div>
+            <div class="form-group"><label>聯絡電話</label><input type="tel" placeholder="電話號碼"></div>
+          </div>
+          <div class="form-group"><label>電郵</label><input type="email" placeholder="your@email.com"></div>
+          <div class="form-group"><label>查詢類別</label>
+            <select>
+              <option value="">請選擇</option>
+              <option>團體旅遊定制</option>
+              <option>學術交流研習</option>
+              <option>個人旅程策劃</option>
+              <option>簽證申請</option>
+              <option>機票及酒店預訂</option>
+              <option>旅遊巴士租賃</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group"><label>查詢詳情</label><textarea placeholder="請描述您的旅遊需求、目的地、出發日期及人數..."></textarea></div>
+          <button type="submit" class="form-submit">提交查詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">環球國際旅遊有限公司 · 澳門</div>
+    <div class="footer-copy">© 2025 Mundial International Travel Service Co. Ltd. · 澳門旅遊局執照 0276 · IATA 96219546</div>
+    <div class="footer-links"><a href="#services">服務</a><a href="#study">學術交流</a><a href="#contact">聯絡</a></div>
+  </div>
+</footer>
+</body>
+</html>
