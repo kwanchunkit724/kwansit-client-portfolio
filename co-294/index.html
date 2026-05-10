@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DCL Global Logistics (HK) Limited | 盈達國際物流 | Air Freight | Sea Freight | Warehousing</title>
+<meta name="description" content="DCL Global Logistics (HK) Limited — ISO 9001 certified, IATA member. Air freight, sea freight, trucking, warehousing, freeze storage and dangerous goods. Kerry TC Warehouse, Kwai Chung. 200+ countries.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal:      #006d7a;
+    --teal-mid:  #008899;
+    --teal-lt:   #00aabf;
+    --navy:      #162840;
+    --navy-mid:  #1e3a58;
+    --gold:      #e8a020;
+    --bg:        #f2f7f8;
+    --border:    #cddfe3;
+    --white:     #ffffff;
+    --text:      #1a1a1a;
+    --text-mid:  #484848;
+    --shadow:    0 4px 20px rgba(0,0,0,0.09);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color: var(--text); background: var(--white); line-height: 1.65; }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    position: sticky; top: 0; z-index: 100;
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.28);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo-mark {
+    width: 42px; height: 42px; background: var(--teal-lt);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 0.88rem; font-weight: 800; color: var(--white); flex-shrink: 0; letter-spacing: -0.5px;
+  }
+  .nav-logo-text strong { display: block; color: var(--white); font-size: 0.94rem; font-weight: 700; line-height: 1.2; }
+  .nav-logo-text span { font-size: 0.67rem; color: rgba(255,255,255,0.45); }
+  .nav-links { display: flex; gap: 26px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.88rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--teal-lt); }
+  .nav-cta {
+    background: var(--teal-lt); color: var(--white);
+    border: none; border-radius: 6px; padding: 9px 20px;
+    font-size: 0.88rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--teal-mid); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, #1e4a6a 100%);
+    padding: 92px 5% 82px; position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -80px; right: -80px;
+    width: 440px; height: 440px;
+    background: var(--teal-lt); border-radius: 50%; opacity: 0.07;
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: center; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,170,191,0.18); border: 1px solid rgba(0,170,191,0.4);
+    color: var(--teal-lt); font-size: 0.79rem; font-weight: 600;
+    padding: 4px 14px; border-radius: 18px; margin-bottom: 18px; letter-spacing: 0.04em;
+  }
+  .hero h1 { font-size: 2.8rem; font-weight: 800; color: var(--white); line-height: 1.18; margin-bottom: 10px; }
+  .hero h1 em { color: var(--teal-lt); font-style: normal; }
+  .hero-cn { font-size: 0.96rem; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+  .hero-sub { color: rgba(255,255,255,0.75); font-size: 0.98rem; margin-bottom: 32px; max-width: 540px; line-height: 1.72; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-teal {
+    background: var(--teal-lt); color: var(--white);
+    padding: 13px 30px; border-radius: 7px; font-weight: 700; font-size: 0.96rem;
+    text-decoration: none; display: inline-block; transition: background .2s, transform .15s;
+  }
+  .btn-teal:hover { background: var(--teal-mid); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--white);
+    border: 2px solid rgba(255,255,255,0.35);
+    padding: 11px 26px; border-radius: 7px; font-weight: 600; font-size: 0.96rem;
+    text-decoration: none; display: inline-block; transition: border-color .2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.75); }
+  .hero-card {
+    background: rgba(255,255,255,0.09); backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; padding: 26px 22px;
+  }
+  .hc-title { color: var(--teal-lt); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .hc-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 13px; padding-bottom: 13px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .hc-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .hc-icon { width: 30px; height: 30px; background: rgba(0,170,191,0.18); border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 2px; }
+  .hc-lbl { font-size: 0.67rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.05em; }
+  .hc-val { font-size: 0.86rem; color: var(--white); font-weight: 600; line-height: 1.3; }
+
+  /* STATS BAR */
+  .stats-bar { background: var(--teal); padding: 0 5%; display: flex; align-items: stretch; }
+  .sb-item { flex: 1; padding: 18px 16px; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); }
+  .sb-item:last-child { border-right: none; }
+  .sb-num { font-size: 1.7rem; font-weight: 800; color: var(--white); line-height: 1; }
+  .sb-label { font-size: 0.72rem; color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 3px; }
+
+  /* SECTIONS */
+  section { padding: 80px 5%; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .eyebrow { font-size: 0.77rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+  .section-title { font-size: 2rem; font-weight: 800; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+  .section-title em { color: var(--teal); font-style: normal; }
+  .section-lead { color: var(--text-mid); font-size: 0.97rem; max-width: 640px; line-height: 1.75; }
+  .divider { width: 48px; height: 4px; background: var(--teal-lt); border-radius: 2px; margin: 16px 0 40px; }
+
+  /* ABOUT */
+  .about { background: var(--bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 58px; align-items: start; }
+  .about-body p { color: var(--text-mid); margin-bottom: 15px; line-height: 1.78; font-size: 0.95rem; }
+  .certs-box {
+    background: var(--navy); border-radius: 12px; padding: 22px 24px; margin-top: 22px;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  }
+  .cert-badge {
+    background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.9);
+    font-size: 0.8rem; font-weight: 700; padding: 6px 14px; border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .prop-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 16px; border-top: 3px solid var(--teal-lt);
+  }
+  .prop-card .pi { font-size: 1.7rem; margin-bottom: 8px; }
+  .prop-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+  .prop-card p { font-size: 0.78rem; color: var(--text-mid); line-height: 1.5; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .service-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.12); }
+  .sc-head {
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    padding: 22px 20px 18px; position: relative;
+  }
+  .sc-num { position: absolute; top: 12px; right: 14px; font-size: 2rem; font-weight: 800; color: rgba(255,255,255,0.07); line-height: 1; }
+  .sc-icon { font-size: 2rem; margin-bottom: 8px; }
+  .sc-head h3 { font-size: 0.96rem; font-weight: 700; color: var(--white); }
+  .sc-head .detail { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 3px; }
+  .sc-body { padding: 17px 20px; }
+  .sc-body p { font-size: 0.83rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 12px; }
+  .sc-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .sc-tag { background: #e6f6f8; color: var(--teal); font-size: 0.7rem; font-weight: 600; padding: 3px 9px; border-radius: 10px; }
+
+  /* NETWORK */
+  .network { background: var(--navy); }
+  .network .eyebrow { color: rgba(0,170,191,0.85); }
+  .network .section-title { color: var(--white); }
+  .network .divider { background: var(--teal-lt); }
+  .network .section-lead { color: rgba(255,255,255,0.75); }
+  .network-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
+  .network-card {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 12px; padding: 22px 18px; text-align: center;
+    transition: background .2s;
+  }
+  .network-card:hover { background: rgba(255,255,255,0.12); }
+  .network-icon { font-size: 2rem; margin-bottom: 10px; }
+  .network-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--teal-lt); margin-bottom: 7px; }
+  .network-card p { font-size: 0.8rem; color: rgba(255,255,255,0.7); line-height: 1.55; }
+
+  /* CONTACT */
+  .contact { background: var(--bg); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info h3 { font-size: 0.9rem; font-weight: 700; color: var(--teal); margin-bottom: 18px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .ci-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; }
+  .ci-icon { width: 38px; height: 38px; background: rgba(0,109,122,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .ci-label { font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+  .ci-value { color: var(--text); font-size: 0.9rem; font-weight: 600; }
+  .ci-value a { color: var(--teal-mid); text-decoration: none; }
+  .ci-value a:hover { text-decoration: underline; }
+  .china-offices {
+    background: var(--navy); border-radius: 10px; padding: 18px 20px; margin-top: 18px;
+  }
+  .china-offices h4 { color: var(--teal-lt); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+  .office-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .otag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 12px; }
+  .contact-form {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px; box-shadow: var(--shadow);
+  }
+  .contact-form h3 { color: var(--navy); font-size: 0.96rem; font-weight: 700; margin-bottom: 20px; }
+  .form-row { margin-bottom: 14px; }
+  .form-row label { display: block; font-size: 0.78rem; color: var(--text-mid); margin-bottom: 5px; font-weight: 500; }
+  .form-row input, .form-row textarea, .form-row select {
+    width: 100%; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 7px;
+    color: var(--text); padding: 9px 13px; font-size: 0.88rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-row input:focus, .form-row textarea:focus, .form-row select:focus { border-color: var(--teal); background: var(--white); }
+  .form-row textarea { height: 96px; resize: vertical; }
+  .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-submit {
+    width: 100%; background: var(--teal); color: var(--white);
+    border: none; border-radius: 8px; padding: 12px; font-size: 0.96rem; font-weight: 700;
+    cursor: pointer; transition: background .2s; font-family: inherit;
+  }
+  .form-submit:hover { background: var(--teal-mid); }
+
+  /* FOOTER */
+  footer { background: var(--navy); padding: 28px 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-logo-mark { width: 34px; height: 34px; background: var(--teal-lt); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 800; color: var(--white); }
+  .footer-logo-text { color: rgba(255,255,255,0.65); font-size: 0.84rem; line-height: 1.4; }
+  .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.74rem; text-align: center; }
+  .footer-contact { color: rgba(255,255,255,0.55); font-size: 0.79rem; text-align: right; }
+  .footer-contact a { color: var(--teal-lt); text-decoration: none; }
+
+  @media (max-width: 920px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-card { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .network-grid { grid-template-columns: 1fr 1fr; }
+    .about-props { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 2.1rem; }
+    .nav-links { display: none; }
+    .stats-bar { flex-wrap: wrap; }
+    .sb-item { min-width: 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
+  }
+  @media (max-width: 580px) {
+    .services-grid, .network-grid, .about-props { grid-template-columns: 1fr; }
+    .form-2col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-mark">DCL</div>
+    <div class="nav-logo-text">
+      <strong>DCL Global Logistics (HK) Limited</strong>
+      <span>盈達國際物流(香港)有限公司</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#network">Network</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:247@hkdcl.com">247 Enquiry</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🌐 ISO 9001 · IATA Member · 200+ Countries</div>
+      <h1>Global Logistics <em>Delivered</em></h1>
+      <div class="hero-cn">盈達國際物流(香港)有限公司</div>
+      <p class="hero-sub">DCL Global Logistics (HK) Limited has been delivering reliable freight solutions since 2008. With air freight, sea freight, warehousing, trucking, freeze storage and dangerous goods capabilities — we connect your business to the world.</p>
+      <div class="hero-actions">
+        <a class="btn-teal" href="#services">Our Services</a>
+        <a class="btn-ghost" href="#contact">Get a Quote</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-title">Contact 24/7</div>
+      <div class="hc-row">
+        <div class="hc-icon">📍</div>
+        <div>
+          <div class="hc-lbl">Address</div>
+          <div class="hc-val">10/F Block A, Kerry TC Warehouse 1<br>No. 3 Kin Chuen Street, Kwai Chung</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📞</div>
+        <div>
+          <div class="hc-lbl">Tel</div>
+          <div class="hc-val">852-2331 2931</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">✉️</div>
+        <div>
+          <div class="hc-lbl">Email</div>
+          <div class="hc-val">247@hkdcl.com</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">🕘</div>
+        <div>
+          <div class="hc-lbl">Office Hours</div>
+          <div class="hc-val">09:00 – 18:00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="sb-item">
+    <div class="sb-num">2008</div>
+    <div class="sb-label">Founded</div>
+  </div>
+  <div class="sb-item">
+    <div class="sb-num">50+</div>
+    <div class="sb-label">Professionals</div>
+  </div>
+  <div class="sb-item">
+    <div class="sb-num">200+</div>
+    <div class="sb-label">Countries served</div>
+  </div>
+  <div class="sb-item">
+    <div class="sb-num">28,000</div>
+    <div class="sb-label">Sq ft air freight facility</div>
+  </div>
+  <div class="sb-item">
+    <div class="sb-num">ISO</div>
+    <div class="sb-label">9001 Certified</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="eyebrow">About Us</div>
+        <h2 class="section-title">Your Trusted <em>Global Freight Partner</em></h2>
+        <div class="divider"></div>
+        <p>DCL Global Logistics (HK) Limited (盈達國際物流(香港)有限公司) was established in 2008 and is headquartered at Kerry TC Warehouse 1 in Kwai Chung, Hong Kong. Over 15+ years, we have grown into a full-service international freight forwarder with offices across mainland China.</p>
+        <p>Our team of 50+ professionals brings over 20 years of combined logistics experience, delivering comprehensive air freight, sea freight, warehousing, trucking, freeze storage and dangerous goods solutions to clients across more than 200 countries worldwide.</p>
+        <p>As an ISO 9001 certified company, IATA member, and NVOCC-qualified operator in China, we maintain the highest standards of quality, compliance and customer service across all our operations.</p>
+        <div class="certs-box">
+          <span class="cert-badge">✅ ISO 9001 Certified</span>
+          <span class="cert-badge">✈️ IATA Member (since 2014)</span>
+          <span class="cert-badge">🚢 HAFFA Member (since 2014)</span>
+          <span class="cert-badge">🇨🇳 NVOCC Qualified in China</span>
+        </div>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="pi">🌐</div>
+          <h4>200+ Countries</h4>
+          <p>Extensive global network enabling reliable freight delivery to over 200 destinations worldwide.</p>
+        </div>
+        <div class="prop-card">
+          <div class="pi">🏭</div>
+          <h4>Kerry TC Warehouse</h4>
+          <p>Based at the prestigious Kerry TC Warehouse 1 in Kwai Chung — Hong Kong's premier logistics hub.</p>
+        </div>
+        <div class="prop-card">
+          <div class="pi">🇨🇳</div>
+          <h4>5 China Offices</h4>
+          <p>Offices in Shenzhen, Guangzhou, Dongguan, Shanghai and Tianjin for seamless China-HK operations.</p>
+        </div>
+        <div class="prop-card">
+          <div class="pi">⏰</div>
+          <h4>24/7 Operations</h4>
+          <p>24-hour cargo handling and CCTV monitoring at our air freight facility, plus round-the-clock email: 247@hkdcl.com.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="eyebrow">Services</div>
+    <h2 class="section-title">Six <em>Core Services</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">End-to-end freight and logistics solutions backed by certified professionals and world-class facilities.</p>
+
+    <div class="services-grid" style="margin-top:40px;">
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">01</div>
+          <div class="sc-icon">✈️</div>
+          <h3>Air Freight</h3>
+          <div class="detail">28,000 sq ft facility · 24-hour handling · CCTV</div>
+        </div>
+        <div class="sc-body">
+          <p>Fast, reliable air freight import and export. Our 28,000 sq ft air freight facility operates 24 hours with CCTV monitoring, ensuring your cargo is handled with the highest security and efficiency.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">Import & Export</span>
+            <span class="sc-tag">24-Hour Handling</span>
+            <span class="sc-tag">Express</span>
+            <span class="sc-tag">Charter</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">02</div>
+          <div class="sc-icon">🚢</div>
+          <h3>Sea Freight</h3>
+          <div class="detail">Multi-carrier partnerships · FCL & LCL</div>
+        </div>
+        <div class="sc-body">
+          <p>Comprehensive ocean freight with partnerships across multiple shipping lines. FCL and LCL solutions for all trade routes, combining competitive rates with reliable transit times.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">FCL</span>
+            <span class="sc-tag">LCL</span>
+            <span class="sc-tag">Global Routes</span>
+            <span class="sc-tag">NVOCC</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">03</div>
+          <div class="sc-icon">🚛</div>
+          <h3>Trucking</h3>
+          <div class="detail">GPS tracking · HK–China cross-border</div>
+        </div>
+        <div class="sc-body">
+          <p>Local Hong Kong trucking and cross-border transport between China and Hong Kong. All vehicles equipped with GPS tracking for real-time visibility on your shipment's location.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">GPS Tracking</span>
+            <span class="sc-tag">HK–China</span>
+            <span class="sc-tag">Local Delivery</span>
+            <span class="sc-tag">Cross-Border</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">04</div>
+          <div class="sc-icon">🏭</div>
+          <h3>Warehousing</h3>
+          <div class="detail">25,000 sq ft distribution · 6,000 sq ft VMI</div>
+        </div>
+        <div class="sc-body">
+          <p>A 25,000 sq ft distribution centre and dedicated 6,000 sq ft VMI (Vendor-Managed Inventory) facility, providing flexible storage, inventory management and order fulfillment services.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">Distribution Centre</span>
+            <span class="sc-tag">VMI</span>
+            <span class="sc-tag">Inventory Mgmt</span>
+            <span class="sc-tag">Fulfillment</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">05</div>
+          <div class="sc-icon">❄️</div>
+          <h3>Freeze Storage</h3>
+          <div class="detail">Climate-controlled · 24-hour security</div>
+        </div>
+        <div class="sc-body">
+          <p>Specialist climate-controlled freeze and cold storage facilities with 24-hour security monitoring. Ideal for temperature-sensitive cargo including food, pharmaceuticals and cosmetics.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">Cold Storage</span>
+            <span class="sc-tag">Freeze</span>
+            <span class="sc-tag">Pharma</span>
+            <span class="sc-tag">Food Grade</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="sc-head">
+          <div class="sc-num">06</div>
+          <div class="sc-icon">⚠️</div>
+          <h3>Dangerous Goods</h3>
+          <div class="detail">Safety compliant · Specialized handling</div>
+        </div>
+        <div class="sc-body">
+          <p>Fully compliant dangerous goods transport and storage. Our specialists ensure safe handling, proper documentation and regulatory compliance for all hazardous material categories.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">IMDG</span>
+            <span class="sc-tag">IATA DGR</span>
+            <span class="sc-tag">Hazmat</span>
+            <span class="sc-tag">Compliant</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORK -->
+<section class="network" id="network">
+  <div class="section-inner">
+    <div class="eyebrow">Our Network</div>
+    <h2 class="section-title">Connecting <em>Hong Kong to the World</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">With Hong Kong headquarters and five mainland China offices, plus a global agent network spanning 200+ countries.</p>
+    <div class="network-grid">
+      <div class="network-card">
+        <div class="network-icon">🇭🇰</div>
+        <h4>Hong Kong HQ</h4>
+        <p>Kerry TC Warehouse 1, Kwai Chung — our main hub for all freight and logistics operations, with air freight facility, warehousing and VMI centre.</p>
+      </div>
+      <div class="network-card">
+        <div class="network-icon">🇨🇳</div>
+        <h4>5 China Offices</h4>
+        <p>Offices in Shenzhen, Guangzhou, Dongguan, Shanghai and Tianjin enabling seamless China-origin and destination logistics coordination.</p>
+      </div>
+      <div class="network-card">
+        <div class="network-icon">🌐</div>
+        <h4>200+ Countries</h4>
+        <p>Global agent network connecting your cargo to destinations across every continent — from major trading nations to emerging markets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="eyebrow">Contact</div>
+    <h2 class="section-title">Get a <em>Freight Quote</em></h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Our Office</h3>
+        <div class="ci-row">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Address</div>
+            <div class="ci-value">10/F Block A, Kerry TC Warehouse 1<br>No. 3 Kin Chuen Street, Kwai Chung<br>New Territories, Hong Kong</div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">Tel</div>
+            <div class="ci-value"><a href="tel:+85223312931">852-2331 2931</a></div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email (24/7)</div>
+            <div class="ci-value"><a href="mailto:247@hkdcl.com">247@hkdcl.com</a></div>
+          </div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">🕘</div>
+          <div>
+            <div class="ci-label">Office Hours</div>
+            <div class="ci-value">Monday – Friday: 09:00 – 18:00</div>
+          </div>
+        </div>
+        <div class="china-offices">
+          <h4>🇨🇳 China Offices</h4>
+          <div class="office-tags">
+            <span class="otag">深圳 Shenzhen</span>
+            <span class="otag">廣州 Guangzhou</span>
+            <span class="otag">東莞 Dongguan</span>
+            <span class="otag">上海 Shanghai</span>
+            <span class="otag">天津 Tianjin</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>📋 Freight Enquiry</h3>
+        <div class="form-2col">
+          <div class="form-row">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-row">
+            <label>Company</label>
+            <input type="text" placeholder="Company name">
+          </div>
+        </div>
+        <div class="form-2col">
+          <div class="form-row">
+            <label>Email Address *</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-row">
+            <label>Tel</label>
+            <input type="tel" placeholder="+852 xxxx xxxx">
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Service Required</label>
+          <select>
+            <option value="">Select service</option>
+            <option>Air Freight</option>
+            <option>Sea Freight (FCL)</option>
+            <option>Sea Freight (LCL)</option>
+            <option>Trucking / Cross-Border</option>
+            <option>Warehousing & Storage</option>
+            <option>Freeze / Cold Storage</option>
+            <option>Dangerous Goods</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Shipment Details *</label>
+          <textarea placeholder="Please describe your cargo, origin, destination, estimated weight/volume, and required delivery timeline."></textarea>
+        </div>
+        <button class="form-submit" type="button">Send Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark">DCL</div>
+    <div class="footer-logo-text">DCL Global Logistics (HK) Limited<br><span style="font-size:0.72rem;opacity:.5;">盈達國際物流(香港)有限公司 · Est. 2008 · Kwai Chung, HK</span></div>
+  </div>
+  <div class="footer-copy">© 2024 DCL Global Logistics (HK) Limited · ISO 9001 · IATA · HAFFA · NVOCC</div>
+  <div class="footer-contact">
+    📞 <a href="tel:+85223312931">852-2331 2931</a><br>
+    ✉ <a href="mailto:247@hkdcl.com">247@hkdcl.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
