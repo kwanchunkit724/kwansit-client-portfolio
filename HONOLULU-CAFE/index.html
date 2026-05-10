@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>檀島咖啡餅店 Honolulu Café | 創意港點 香港小廚</title>
+<style>
+:root {
+  --bg-deep: #060405;
+  --bg-card: #120a08;
+  --bg-section: #1a0e0a;
+  --accent-primary: #c84820;
+  --accent-hover: #e85c28;
+  --accent-gold: #d8920c;
+  --accent-gold-light: #f0b030;
+  --text-primary: #f5f0ea;
+  --text-secondary: #c8b8a8;
+  --text-muted: #907868;
+  --border-subtle: rgba(200,72,32,0.15);
+  --border-gold: rgba(216,146,12,0.25);
+  --shadow-warm: 0 8px 40px rgba(200,72,32,0.18);
+  --radius: 12px;
+  --font-en: 'Segoe UI', system-ui, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg-deep);color:var(--text-primary);font-family:var(--font-en);line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(6,4,5,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border-subtle)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
+.nav-logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--accent-primary),var(--accent-gold));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
+.nav-logo-zh{font-size:1rem;font-weight:700;color:var(--text-primary)}
+.nav-logo-en{font-size:0.68rem;color:var(--accent-gold);letter-spacing:0.06em;text-transform:uppercase}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.9rem;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent-gold)}
+.nav-cta{background:var(--accent-primary);color:#fff;padding:0.5rem 1.3rem;border-radius:6px;text-decoration:none;font-size:0.88rem;font-weight:600;transition:background 0.2s}
+.nav-cta:hover{background:var(--accent-hover)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:64px;position:relative;overflow:hidden;background:linear-gradient(160deg,#0d0503 0%,#1a0805 40%,#0d0a04 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(216,146,12,0.04)' stroke-width='1'%3E%3Ccircle cx='40' cy='40' r='30'/%3E%3Ccircle cx='40' cy='40' r='20'/%3E%3C/g%3E%3C/svg%3E") repeat;opacity:0.6}
+.hero::after{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(200,72,32,0.12) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(216,146,12,0.12);border:1px solid var(--border-gold);border-radius:20px;padding:0.35rem 1rem;font-size:0.78rem;color:var(--accent-gold);letter-spacing:0.04em;margin-bottom:1.5rem}
+.hero-title{font-size:3rem;font-weight:800;line-height:1.15;margin-bottom:0.5rem}
+.hero-title-zh{font-size:2.2rem;color:var(--accent-gold);font-weight:700;display:block;margin-bottom:0.8rem}
+.hero-sub{font-size:1.05rem;color:var(--text-secondary);margin-bottom:2rem;line-height:1.8}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--accent-primary),var(--accent-hover));color:#fff;padding:0.85rem 2rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:transform 0.2s,box-shadow 0.2s;box-shadow:var(--shadow-warm)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(200,72,32,0.35)}
+.btn-secondary{background:transparent;color:var(--accent-gold);padding:0.85rem 2rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;border:1px solid var(--border-gold);transition:all 0.2s}
+.btn-secondary:hover{background:rgba(216,146,12,0.08)}
+.hero-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow-warm)}
+.hero-card-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border-subtle)}
+.hero-card-icon{width:52px;height:52px;background:linear-gradient(135deg,var(--accent-primary),var(--accent-gold));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
+.hero-card-title{font-size:1.05rem;font-weight:700;color:var(--text-primary);line-height:1.3}
+.hero-card-sub{font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.65rem 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.info-row:last-child{border-bottom:none}
+.info-icon{width:28px;height:28px;background:rgba(200,72,32,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;margin-top:2px}
+.info-label{font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em}
+.info-value{font-size:0.9rem;color:var(--text-primary);margin-top:0.1rem}
+
+/* STATS */
+.stats-strip{background:linear-gradient(90deg,var(--bg-card) 0%,#1a0e0a 100%);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:2.5rem 2rem}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat-num{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--accent-primary),var(--accent-gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{font-size:0.78rem;color:var(--text-muted);margin-top:0.4rem;letter-spacing:0.04em}
+
+/* SECTIONS */
+section{padding:5rem 2rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-size:0.75rem;color:var(--accent-gold);letter-spacing:0.12em;text-transform:uppercase;font-weight:600;margin-bottom:0.75rem}
+.section-title{font-size:2.2rem;font-weight:800;margin-bottom:1rem;line-height:1.3}
+.section-desc{font-size:1rem;color:var(--text-secondary);max-width:640px;line-height:1.8;margin-bottom:3rem}
+
+/* MENU GRID */
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.menu-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:1.8rem;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;position:relative;overflow:hidden}
+.menu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent-primary),var(--accent-gold));opacity:0;transition:opacity 0.2s}
+.menu-card:hover{transform:translateY(-4px);border-color:rgba(200,72,32,0.35);box-shadow:var(--shadow-warm)}
+.menu-card:hover::before{opacity:1}
+.menu-card-icon{font-size:2rem;margin-bottom:1rem}
+.menu-card-title{font-size:1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem}
+.menu-card-desc{font-size:0.85rem;color:var(--text-secondary);line-height:1.7}
+.dish-tag{display:inline-block;background:rgba(200,72,32,0.12);border:1px solid var(--border-subtle);border-radius:4px;padding:0.2rem 0.6rem;font-size:0.75rem;color:var(--text-secondary);margin:0.2rem 0.15rem}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-text h3{font-size:1.8rem;font-weight:800;margin-bottom:1rem;line-height:1.4}
+.about-text p{color:var(--text-secondary);line-height:1.9;margin-bottom:1rem;font-size:0.95rem}
+.highlight-box{background:var(--bg-card);border-left:4px solid var(--accent-primary);border-radius:0 var(--radius) var(--radius) 0;padding:1.5rem;margin-top:1.5rem}
+.highlight-box p{color:var(--text-secondary);font-size:0.92rem;line-height:1.8;margin:0}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.feat-item{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:1.5rem}
+.feat-icon{font-size:1.5rem;margin-bottom:0.75rem}
+.feat-title{font-size:0.9rem;font-weight:700;color:var(--text-primary);margin-bottom:0.4rem}
+.feat-desc{font-size:0.8rem;color:var(--text-muted);line-height:1.6}
+
+/* SIGNATURE */
+.signature-section{background:var(--bg-section)}
+.signature-list{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.sig-item{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:1.6rem;display:flex;gap:1.2rem;align-items:flex-start;transition:border-color 0.2s}
+.sig-item:hover{border-color:rgba(216,146,12,0.3)}
+.sig-num{width:40px;height:40px;background:linear-gradient(135deg,var(--accent-primary),var(--accent-gold));border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;flex-shrink:0}
+.sig-title{font-size:0.95rem;font-weight:700;color:var(--text-primary);margin-bottom:0.4rem}
+.sig-desc{font-size:0.82rem;color:var(--text-secondary);line-height:1.7}
+
+/* POT DISHES */
+.pot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.pot-card{background:var(--bg-card);border:1px solid var(--border-gold);border-radius:var(--radius);padding:1.8rem;text-align:center}
+.pot-emoji{font-size:2.5rem;margin-bottom:0.75rem}
+.pot-name{font-size:1rem;font-weight:700;color:var(--accent-gold);margin-bottom:0.4rem}
+.pot-desc{font-size:0.83rem;color:var(--text-secondary);line-height:1.7}
+
+/* WHY US */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.why-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:1.8rem;text-align:center;transition:transform 0.2s,border-color 0.2s}
+.why-card:hover{transform:translateY(-4px);border-color:rgba(200,72,32,0.3)}
+.why-icon{font-size:2rem;margin-bottom:1rem}
+.why-title{font-size:0.95rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem}
+.why-desc{font-size:0.82rem;color:var(--text-secondary);line-height:1.7}
+
+/* HOURS */
+.hours-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.hours-table{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius);overflow:hidden}
+.hours-table-header{background:linear-gradient(135deg,var(--accent-primary),var(--accent-hover));padding:1rem 1.5rem;font-weight:700;font-size:0.9rem}
+.hours-row{display:flex;justify-content:space-between;padding:0.9rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.88rem}
+.hours-row:last-child{border-bottom:none}
+.hours-day{color:var(--text-secondary)}
+.hours-time{color:var(--accent-gold);font-weight:600}
+.contact-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:2rem}
+.contact-card h3{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border-subtle)}
+.contact-item{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.2rem}
+.contact-icon{width:36px;height:36px;background:rgba(200,72,32,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-label{font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em}
+.contact-value{font-size:0.9rem;color:var(--text-primary);margin-top:0.1rem;line-height:1.5}
+.contact-value a{color:var(--accent-primary);text-decoration:none}
+.contact-value a:hover{color:var(--accent-hover)}
+
+/* CTA BANNER */
+.cta-banner{background:linear-gradient(135deg,#1a0805 0%,#0d0503 50%,#1a0e04 100%);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);text-align:center;padding:5rem 2rem}
+.cta-banner h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
+.cta-banner p{color:var(--text-secondary);font-size:1rem;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.8}
+.cta-banner .btn-primary{font-size:1rem;padding:1rem 2.5rem}
+
+/* FOOTER */
+footer{background:var(--bg-card);border-top:1px solid var(--border-subtle);padding:3rem 2rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+.footer-brand p{color:var(--text-muted);font-size:0.85rem;line-height:1.8;margin-top:0.75rem}
+.footer-col h4{font-size:0.85rem;font-weight:700;color:var(--text-primary);margin-bottom:1rem;letter-spacing:0.04em}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:0.5rem}
+.footer-col a{color:var(--text-muted);text-decoration:none;font-size:0.83rem;transition:color 0.2s}
+.footer-col a:hover{color:var(--accent-gold)}
+.footer-bottom{border-top:1px solid var(--border-subtle);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:0.78rem;color:var(--text-muted)}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.hours-wrap{grid-template-columns:1fr}
+  .menu-grid,.why-grid{grid-template-columns:1fr 1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .hero-title{font-size:2.2rem}
+}
+@media(max-width:600px){
+  .menu-grid,.why-grid,.signature-list,.pot-grid{grid-template-columns:1fr}
+  .about-features{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .hero-title{font-size:1.8rem}
+  .stats-inner{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">🥮</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-zh">檀島咖啡餅店</span>
+        <span class="nav-logo-en">Honolulu Café · Est. 1940s</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#menu">餐牌</a></li>
+      <li><a href="#signature">招牌出品</a></li>
+      <li><a href="#claypot">煲類美食</a></li>
+      <li><a href="#about">品牌故事</a></li>
+      <li><a href="#hours">訂座資訊</a></li>
+    </ul>
+    <a href="#hours" class="nav-cta">立即訂座</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🏆 香港馳名 · 傳承八十年</div>
+      <h1 class="hero-title">
+        <span class="hero-title-zh">檀島咖啡餅店</span>
+        Honolulu Café
+      </h1>
+      <p class="hero-sub">
+        源自1940年代香港，以<strong style="color:var(--accent-gold)">極品蛋塔</strong>及<strong style="color:var(--accent-gold)">菠蘿包</strong>享譽全港。
+        傳統港式茶餐廳風味，創意港點，溫暖每一個香港胃。
+      </p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-primary">瀏覽餐牌</a>
+        <a href="#about" class="btn-secondary">品牌故事</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <div class="hero-card-icon">🍵</div>
+        <div>
+          <div class="hero-card-title">檀島香港餐廳</div>
+          <div class="hero-card-sub">Honolulu Café — 正宗港味</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">訂座電話</div>
+          <div class="info-value"><a href="tel:03-263-1861" style="color:var(--accent-primary);text-decoration:none">03-263-1861</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">門店地址</div>
+          <div class="info-value">桃園市中壢區中園路二段501號GBF</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🕐</div>
+        <div>
+          <div class="info-label">營業時間</div>
+          <div class="info-value">平日 11:00–16:00 / 17:00–21:00<br>假日 11:00–16:00 / 17:00–21:30</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">所在商場</div>
+          <div class="info-value">大江購物中心 Dajiang Mall</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🍳</div>
+        <div>
+          <div class="info-label">料理類型</div>
+          <div class="info-value">港式茶餐廳 · 創意港點 · 香港小廚</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">80+</div>
+      <div class="stat-label">年品牌傳承</div>
+    </div>
+    <div>
+      <div class="stat-num">1940s</div>
+      <div class="stat-label">香港創立</div>
+    </div>
+    <div>
+      <div class="stat-num">20+</div>
+      <div class="stat-label">招牌港式料理</div>
+    </div>
+    <div>
+      <div class="stat-num">No.1</div>
+      <div class="stat-label">極品蛋塔首選</div>
+    </div>
+  </div>
+</div>
+
+<!-- MENU SECTIONS -->
+<section id="menu">
+  <div class="section-inner">
+    <div class="section-label">Our Menu · 餐牌</div>
+    <h2 class="section-title">創意港點 · 香港小廚</h2>
+    <p class="section-desc">從經典港式早茶到地道香港家常小菜，檀島以最真實的港味，讓每一位食客感受香港飲食文化的獨特魅力。</p>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-icon">🍳</div>
+        <div class="menu-card-title">港式腸粉</div>
+        <div class="menu-card-desc">以嫩滑米漿製成，配搭多種餡料，是正宗港式早茶不可或缺的經典點心。</div>
+        <div style="margin-top:0.8rem">
+          <span class="dish-tag">脆皮腸粉</span>
+          <span class="dish-tag">油條腸粉</span>
+          <span class="dish-tag">鮮蝦腸粉</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-icon">🍗</div>
+        <div class="menu-card-title">鳳爪 · 港式滷味</div>
+        <div class="menu-card-desc">以秘製醬汁滷製，皮糯骨香，是港式飲茶中最受歡迎的點心之一，老少皆宜。</div>
+        <div style="margin-top:0.8rem">
+          <span class="dish-tag">豉汁鳳爪</span>
+          <span class="dish-tag">滷水拼盤</span>
+          <span class="dish-tag">茶香鹵味</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-icon">🥔</div>
+        <div class="menu-card-title">金沙芋香酥</div>
+        <div class="menu-card-desc">外皮酥脆，內餡以香濃芋泥製成，鹹甜交融，是檀島創意港點的代表作之一。</div>
+        <div style="margin-top:0.8rem">
+          <span class="dish-tag">芋泥餡</span>
+          <span class="dish-tag">酥炸外皮</span>
+          <span class="dish-tag">金沙塗層</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-icon">🍚</div>
+        <div class="menu-card-title">煲仔飯</div>
+        <div class="menu-card-desc">以瓦煲烹調，底部形成金黃鍋巴，配以豐富配料，是最具香港特色的家常料理。</div>
+        <div style="margin-top:0.8rem">
+          <span class="dish-tag">臘味煲仔飯</span>
+          <span class="dish-tag">排骨煲仔飯</span>
+          <span class="dish-tag">滑雞煲仔飯</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-icon">🥩</div>
+        <div class="menu-card-title">干炒牛河</div>
+        <div class="menu-card-desc">大火翻炒，鑊氣十足，以嫩滑牛肉配以粗河粉，豉油上色，是香港茶餐廳的鎮店之寶。</div>
+        <div style="margin-top:0.8rem">
+          <span class="dish-tag">嫩滑牛肉</span>
+          <span class="dish-tag">韭黃豆芽</span>
+          <span class="dish-tag">大火鑊氣</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-icon">🍵</div>
+        <div class="menu-card-title">港式飲品</div>
+        <div class="menu-card-desc">正宗港式絲襪奶茶、鴛鴦、凍檸茶，以及各款特色飲品，完整呈現香港飲食文化。</div>
+        <div style="margin-top:0.8rem">
+          <span class="dish-tag">絲襪奶茶</span>
+          <span class="dish-tag">鴛鴦</span>
+          <span class="dish-tag">凍檸茶</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE ITEMS -->
+<section id="signature" class="signature-section">
+  <div class="section-inner">
+    <div class="section-label">Signature · 招牌出品</div>
+    <h2 class="section-title">必食推介 · 鎮店之寶</h2>
+    <p class="section-desc">每一道招牌料理，都是檀島數十年來堅守的港味傳承，以最純正的技藝呈現香港飲食文化的精髓。</p>
+    <div class="signature-list">
+      <div class="sig-item">
+        <div class="sig-num">🥮</div>
+        <div>
+          <div class="sig-title">極品蛋塔</div>
+          <div class="sig-desc">檀島最負盛名的招牌點心。酥脆曲奇皮外層包裹著柔滑嫩香的蛋漿，入口即化，是80年不變的傳統配方，被譽為香港最好吃的蛋塔之一。</div>
+        </div>
+      </div>
+      <div class="sig-item">
+        <div class="sig-num">🍞</div>
+        <div>
+          <div class="sig-title">菠蘿三兄弟</div>
+          <div class="sig-desc">以正宗菠蘿包為基礎，衍生出三款不同風味的創意變奏——原味菠蘿包、菠蘿油，以及限定風味款式，每款都保留了那份熟悉的酥脆甜香。</div>
+        </div>
+      </div>
+      <div class="sig-item">
+        <div class="sig-num">🍜</div>
+        <div>
+          <div class="sig-title">脆皮腸粉</div>
+          <div class="sig-desc">以傳統拉腸技術製作，外皮油炸至金黃酥脆，內裡嫩滑米漿配以豐富餡料，淋上秘製豉油醬汁，層次豐富，是早茶時段人氣最高的點心。</div>
+        </div>
+      </div>
+      <div class="sig-item">
+        <div class="sig-num">🧆</div>
+        <div>
+          <div class="sig-title">金沙芋香酥</div>
+          <div class="sig-desc">創意港式小食，以香濃芋泥為餡，外層裹以金沙醬料後炸至酥脆。鹹香甜潤的複合口味，是檀島創意港點的代表作，深受年輕食客喜愛。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLAY POT DISHES -->
+<section id="claypot">
+  <div class="section-inner">
+    <div class="section-label">Clay Pot · 煲類美食</div>
+    <h2 class="section-title">四大精選煲 · 暖心暖胃</h2>
+    <p class="section-desc">以傳統瓦煲慢火熬製，湯底濃郁，食材鮮嫩，每一款都是最道地的香港家常味道，讓您感受家的溫暖。</p>
+    <div class="pot-grid">
+      <div class="pot-card">
+        <div class="pot-emoji">🍲</div>
+        <div class="pot-name">當歸羊腩煲</div>
+        <div class="pot-desc">以新鮮羊腩配當歸、枸杞等中藥材慢燉，湯色金黃，羊腩軟糯入味，藥香四溢。秋冬暖身首選，補血益氣，老少皆宜。</div>
+      </div>
+      <div class="pot-card">
+        <div class="pot-emoji">🥩</div>
+        <div class="pot-name">沙嗲牛肉粉絲煲</div>
+        <div class="pot-desc">以濃郁沙嗲醬汁烹調嫩滑牛肉，配以吸飽湯汁的冬粉，鹹香微辣，層次豐富。每一口都充滿東南亞香料與香港家常的完美結合。</div>
+      </div>
+      <div class="pot-card">
+        <div class="pot-emoji">🐟</div>
+        <div class="pot-name">粵式豆醬魚煲</div>
+        <div class="pot-desc">以特製廣東豆醬醃製鮮魚，煲至魚肉嫩滑入味，豆醬香氣濃郁醇厚。搭配豆腐及時令蔬菜，是最具廣東特色的家常魚煲料理。</div>
+      </div>
+      <div class="pot-card">
+        <div class="pot-emoji">🐠</div>
+        <div class="pot-name">潮汕魚丸煲</div>
+        <div class="pot-desc">以正宗潮汕手打魚丸為主角，彈牙爽口，配以清甜高湯底，加入蔬菜及豆腐，清淡鮮美。是追求清爽口味食客的最佳選擇。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:var(--bg-section)">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">Our Story · 品牌故事</div>
+        <h3>八十年香港情懷<br>傳承至今</h3>
+        <p>
+          檀島咖啡餅店（Honolulu Café）創立於1940年代的香港，是香港最具歷史的茶餐廳品牌之一。數十年來，檀島以對品質的堅持和對傳統港味的熱愛，贏得了無數香港市民的信賴與喜愛。
+        </p>
+        <p>
+          品牌最為人稱道的，是那一口口皮脆漿嫩的<strong style="color:var(--accent-gold)">極品蛋塔</strong>，以及外皮酥香的<strong style="color:var(--accent-gold)">菠蘿包</strong>。每一款出品，都承載著檀島師傅們對港式飲食文化最深厚的情感與心血。
+        </p>
+        <p>
+          如今，檀島的傳統港味已走出香港，在台灣落地生根，讓更多人得以品嚐到這份跨越時代的香港滋味。
+        </p>
+        <div class="highlight-box">
+          <p>「正宗港味，不只是一種食物——它是一種記憶，一種情感，一種連繫著每一個香港人的文化符號。」</p>
+        </div>
+      </div>
+      <div class="about-features">
+        <div class="feat-item">
+          <div class="feat-icon">🏆</div>
+          <div class="feat-title">80年品牌</div>
+          <div class="feat-desc">1940年代創立於香港，歷經數代傳承，是最具代表性的港式茶餐廳品牌</div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">🥮</div>
+          <div class="feat-title">招牌蛋塔</div>
+          <div class="feat-desc">以祖傳配方製作，曲奇酥皮加上嫩滑蛋漿，被譽為香港最正宗的蛋塔出品</div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">👨‍🍳</div>
+          <div class="feat-title">傳統工藝</div>
+          <div class="feat-desc">堅持以手工製作每一款點心，保留最道地的港式飲食技藝與口味</div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">🌏</div>
+          <div class="feat-title">跨境傳承</div>
+          <div class="feat-desc">從香港走向台灣，將正宗港式飲食文化帶給更多海外食客品嚐</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-inner">
+    <div class="section-label">Why Honolulu · 為何選擇檀島</div>
+    <h2 class="section-title">六大理由 · 值得一訪</h2>
+    <p class="section-desc">無論是家庭聚餐、朋友相聚還是商務宴客，檀島都能以最道地的港式風味，為您帶來難忘的用餐體驗。</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🥮</div>
+        <div class="why-title">極品蛋塔</div>
+        <div class="why-desc">以祖傳配方烘製，酥皮嫩漿，是香港最具代表性的伴手禮與必食點心</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🍵</div>
+        <div class="why-title">正宗港式茶飲</div>
+        <div class="why-desc">絲襪奶茶、鴛鴦、凍檸茶，以專業技法沖調，還原最真實的香港茶餐廳風味</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔥</div>
+        <div class="why-title">鑊氣料理</div>
+        <div class="why-desc">干炒牛河、炒飯等鑊氣料理，以大火翻炒，火候精準，每一口都充滿香港街頭的熱情</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🍲</div>
+        <div class="why-title">暖心煲類</div>
+        <div class="why-desc">四款特色煲料理，以慢火熬製，湯底濃郁，食材鮮嫩，最適合秋冬暖胃滋補</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🏮</div>
+        <div class="why-title">道地港式氛圍</div>
+        <div class="why-desc">以懷舊香港茶餐廳為設計靈感，重現60至80年代香港街頭飲食的獨特氣息</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">👨‍👩‍👧‍👦</div>
+        <div class="why-title">適合各類場合</div>
+        <div class="why-desc">家庭聚餐、朋友聚會、下午茶、商務宴客均宜，菜單豐富多元，老少咸宜</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & CONTACT -->
+<section id="hours" style="background:var(--bg-section)">
+  <div class="section-inner">
+    <div class="section-label">Hours &amp; Contact · 訂座資訊</div>
+    <h2 class="section-title">歡迎蒞臨 · 立即訂座</h2>
+    <p class="section-desc">歡迎來電訂座，或親臨大江購物中心（大江Mall）品嚐正宗港式風味。我們期待為您提供最美好的用餐體驗。</p>
+    <div class="hours-wrap">
+      <div>
+        <div class="hours-table" style="margin-bottom:1.5rem">
+          <div class="hours-table-header">🕐 營業時間</div>
+          <div class="hours-row">
+            <span class="hours-day">平日（週一至週五）</span>
+            <span class="hours-time">11:00–16:00<br>17:00–21:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">假日（週六至週日）</span>
+            <span class="hours-time">11:00–16:00<br>17:00–21:30</span>
+          </div>
+        </div>
+        <div class="hours-table">
+          <div class="hours-table-header">🍽️ 用餐服務</div>
+          <div class="hours-row">
+            <span class="hours-day">午市</span>
+            <span class="hours-time">11:00–16:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">晚市</span>
+            <span class="hours-time">17:00–21:00 / 21:30（假日）</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">訂座建議</span>
+            <span class="hours-time">提前電話訂座</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>📍 聯絡資訊</h3>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">訂座電話</div>
+            <div class="contact-value"><a href="tel:03-263-1861">03-263-1861</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">門店地址</div>
+            <div class="contact-value">桃園市中壢區<br>中園路二段501號GBF</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🏢</div>
+          <div>
+            <div class="contact-label">所在商場</div>
+            <div class="contact-value">大江購物中心<br>Dajiang Mall · GBF層</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🚇</div>
+          <div>
+            <div class="contact-label">交通指引</div>
+            <div class="contact-value">中壢市中心<br>交通便利，停車方便</div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem">
+          <a href="tel:03-263-1861" class="btn-primary" style="display:block;text-align:center">📞 立即來電訂座</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>品嚐正宗港味<br><span style="color:var(--accent-gold)">立即訂座</span></h2>
+  <p>無論是家庭聚餐、朋友下午茶，還是懷念香港的那一口滋味——檀島咖啡餅店，為您呈現最純正的香港飲食文化。</p>
+  <a href="tel:03-263-1861" class="btn-primary">📞 03-263-1861 立即訂座</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem">
+        <div style="width:38px;height:38px;background:linear-gradient(135deg,var(--accent-primary),var(--accent-gold));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem">🥮</div>
+        <div>
+          <div style="font-weight:700;font-size:1rem">檀島咖啡餅店</div>
+          <div style="font-size:0.72rem;color:var(--accent-gold)">Honolulu Café · Est. 1940s</div>
+        </div>
+      </div>
+      <p>源自1940年代香港，以極品蛋塔與菠蘿包享譽全港的正宗港式茶餐廳品牌。傳承八十年港味，溫暖每一個香港胃。</p>
+    </div>
+    <div class="footer-col">
+      <h4>餐牌分類</h4>
+      <ul>
+        <li><a href="#menu">港式腸粉</a></li>
+        <li><a href="#menu">鳳爪點心</a></li>
+        <li><a href="#menu">煲仔飯</a></li>
+        <li><a href="#menu">干炒牛河</a></li>
+        <li><a href="#claypot">煲類美食</a></li>
+        <li><a href="#signature">招牌出品</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>快速連結</h4>
+      <ul>
+        <li><a href="#about">品牌故事</a></li>
+        <li><a href="#why">為何選擇我們</a></li>
+        <li><a href="#hours">營業時間</a></li>
+        <li><a href="tel:03-263-1861">立即訂座</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 檀島咖啡餅店 Honolulu Café. 保留所有權利。</p>
+    <p>桃園市中壢區中園路二段501號GBF · <a href="tel:03-263-1861" style="color:var(--accent-primary);text-decoration:none">03-263-1861</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
