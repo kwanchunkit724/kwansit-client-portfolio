@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>聯訊科技 (國際) 有限公司 | IT通訊科技服務 · 香港</title>
+<meta name="description" content="聯訊科技 (國際) 有限公司提供全方位企業IT通訊科技解決方案，涵蓋網絡基建、通訊系統、資訊安全及IT顧問服務。"/>
+<style>
+:root{
+  --primary:#0a2e1c;
+  --primary-mid:#124828;
+  --primary-light:#1a6838;
+  --accent:#28c870;
+  --accent-light:#40e088;
+  --accent2:#00d4b8;
+  --dark:#050f0a;
+  --surface:#f2f8f4;
+  --surface2:#e4f2e8;
+  --text:#0a1e10;
+  --text-muted:#486058;
+  --white:#ffffff;
+  --radius:10px;
+  --shadow:0 4px 24px rgba(10,46,28,0.12);
+  --shadow-lg:0 8px 48px rgba(10,46,28,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.7}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(5,15,10,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(40,200,112,0.2)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--primary-light),var(--accent));border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:var(--white)}
+.nav-logo-text{font-size:15px;font-weight:700;color:var(--white);line-height:1.2}
+.nav-logo-sub{font-size:11px;color:var(--accent);font-weight:400}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent-light)}
+.nav-cta{background:linear-gradient(135deg,var(--primary-light),var(--accent))!important;color:var(--white)!important;padding:8px 20px;border-radius:6px;font-weight:700!important;font-size:13px!important}
+@media(max-width:768px){.nav-links{display:none}}
+
+.hero{min-height:100vh;background:linear-gradient(150deg,var(--dark) 0%,var(--primary) 55%,#0a3020 100%);display:flex;align-items:center;padding-top:64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40 L80 40 M40 0 L40 80' stroke='%2328c870' stroke-width='0.3' stroke-opacity='0.08'/%3E%3C/svg%3E") repeat}
+.hero-glow{position:absolute;top:-100px;right:-80px;width:480px;height:480px;background:radial-gradient(circle,rgba(40,200,112,0.12) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;padding:80px 24px;width:100%;display:grid;grid-template-columns:1fr 400px;gap:56px;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(40,200,112,0.15);border:1px solid rgba(40,200,112,0.3);border-radius:20px;padding:6px 16px;margin-bottom:18px}
+.hero-badge-dot{width:7px;height:7px;background:var(--accent-light);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hero-badge-text{font-size:12px;color:var(--accent-light);font-weight:600;letter-spacing:.5px}
+.hero h1{font-size:clamp(2rem,4vw,3.1rem);font-weight:900;color:var(--white);line-height:1.12;margin-bottom:8px}
+.hero h1 span{color:var(--accent-light)}
+.hero-en{font-size:.95rem;color:rgba(255,255,255,0.45);margin-bottom:18px}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:34px;max-width:520px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--primary-light),var(--accent));color:var(--white);padding:14px 28px;border-radius:var(--radius);font-weight:700;font-size:15px;text-decoration:none;transition:all .2s;box-shadow:0 4px 20px rgba(40,200,112,0.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(40,200,112,0.45)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(255,255,255,0.3);color:var(--white);padding:14px 28px;border-radius:var(--radius);font-weight:600;font-size:15px;text-decoration:none;transition:all .2s}
+.btn-outline:hover{border-color:var(--accent-light);color:var(--accent-light)}
+.hero-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(16px);border:1px solid rgba(40,200,112,0.15);border-radius:18px;padding:30px;color:var(--white)}
+.hero-card-title{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.hero-card-title::before{content:'';width:14px;height:2px;background:var(--accent)}
+.info-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:13px}
+.info-icon{width:34px;height:34px;min-width:34px;background:rgba(40,200,112,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.info-lbl{font-size:11px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.info-val{font-size:13.5px;color:var(--white);font-weight:500;line-height:1.45}
+.info-val a{color:var(--accent-light);text-decoration:none}
+.hero-divider{height:1px;background:rgba(255,255,255,0.08);margin:14px 0}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-card{max-width:480px}}
+
+.stats{background:var(--primary);padding:48px 24px}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.stat-item{background:rgba(255,255,255,0.05);padding:28px 18px;text-align:center;transition:background .2s}
+.stat-item:first-child{border-radius:var(--radius) 0 0 var(--radius)}
+.stat-item:last-child{border-radius:0 var(--radius) var(--radius) 0}
+.stat-item:hover{background:rgba(40,200,112,0.12)}
+.stat-num{font-size:1.9rem;font-weight:900;color:var(--accent-light);line-height:1;margin-bottom:5px}
+.stat-label{font-size:12.5px;color:rgba(255,255,255,0.65);font-weight:500}
+@media(max-width:640px){.stats-inner{grid-template-columns:repeat(2,1fr)}}
+
+section{padding:88px 24px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(10,46,28,0.08);color:var(--primary-light);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px;border:1px solid rgba(26,104,56,0.2)}
+.section-title{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;color:var(--dark);line-height:1.22;margin-bottom:14px}
+.section-title span{color:var(--primary-light)}
+.section-sub{font-size:1rem;color:var(--text-muted);max-width:580px;line-height:1.8}
+.section-header{margin-bottom:52px}
+.bg-alt{background:var(--surface)}
+.bg-dark{background:var(--primary);color:var(--white)}
+.bg-dark .section-tag{background:rgba(40,200,112,0.15);color:var(--accent-light);border-color:rgba(40,200,112,0.25)}
+.bg-dark .section-title{color:var(--white)}
+.bg-dark .section-sub{color:rgba(255,255,255,0.65)}
+.divider{width:44px;height:3px;background:linear-gradient(90deg,var(--primary-light),var(--accent));border-radius:2px;margin-bottom:18px}
+
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{background:var(--white);border:1px solid rgba(10,46,28,0.1);border-radius:16px;padding:28px;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary-light),var(--accent))}
+.svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.svc-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(10,46,28,0.08),rgba(40,200,112,0.1));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.svc-title{font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:4px}
+.svc-en{font-size:12px;color:var(--text-muted);margin-bottom:10px}
+.svc-desc{font-size:13.5px;color:var(--text-muted);line-height:1.75}
+@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.svc-grid{grid-template-columns:1fr}}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-body p{font-size:1rem;color:var(--text-muted);line-height:1.85;margin-bottom:16px}
+.about-feats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.feat-item{background:var(--surface2);border-radius:10px;padding:18px;border-left:3px solid var(--accent)}
+.feat-title{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:4px}
+.feat-desc{font-size:12.5px;color:var(--text-muted);line-height:1.6}
+.about-vis{background:linear-gradient(135deg,var(--dark),var(--primary));border-radius:18px;padding:36px;color:var(--white)}
+.about-vis-title{font-size:1rem;font-weight:700;color:var(--accent-light);margin-bottom:20px}
+.val-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:18px;padding:16px;background:rgba(255,255,255,0.05);border-radius:10px;border-left:2px solid var(--accent)}
+.val-icon{font-size:1.4rem;flex-shrink:0}
+.val-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px}
+.val-desc{font-size:12.5px;color:rgba(255,255,255,0.6);line-height:1.5}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr}.about-feats{grid-template-columns:1fr}}
+
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:0}
+.proc-item{text-align:center;padding:0 14px;position:relative;z-index:1}
+.proc-num{width:56px;height:56px;background:linear-gradient(135deg,var(--primary-light),var(--accent));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;color:var(--white);margin:0 auto 14px;border:3px solid var(--white);box-shadow:0 0 0 3px var(--accent)}
+.proc-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px}
+.proc-desc{font-size:12.5px;color:rgba(255,255,255,0.65);line-height:1.6}
+@media(max-width:680px){.process-steps{grid-template-columns:repeat(2,1fr)}.process-steps::before{display:none}}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:start}
+.contact-card{background:linear-gradient(135deg,var(--dark),var(--primary));border-radius:16px;padding:34px;color:var(--white)}
+.contact-title{font-size:17px;font-weight:700;color:var(--accent-light);margin-bottom:22px}
+.c-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+.c-icon{width:38px;height:38px;min-width:38px;background:rgba(40,200,112,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.c-lbl{font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:.5px;margin-bottom:3px;text-transform:uppercase}
+.c-val{font-size:13.5px;color:var(--white);font-weight:500;line-height:1.5}
+.c-val a{color:var(--accent-light);text-decoration:none}
+.form-card{background:var(--surface);border-radius:16px;padding:34px;border:1px solid rgba(10,46,28,0.1)}
+.form-title{font-size:17px;font-weight:700;color:var(--primary);margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid rgba(10,46,28,0.15);border-radius:8px;font-size:14px;color:var(--text);background:var(--white);transition:border-color .2s;outline:none;font-family:inherit}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.submit-btn{width:100%;background:linear-gradient(135deg,var(--primary-light),var(--accent));color:var(--white);padding:14px;border:none;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s,transform .2s}
+.submit-btn:hover{opacity:.9;transform:translateY(-1px)}
+@media(max-width:800px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+
+footer{background:var(--dark);padding:48px 24px 28px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:36px;margin-bottom:32px}
+.footer-brand-name{font-size:16px;font-weight:800;color:var(--white);margin-bottom:4px}
+.footer-brand-en{font-size:12px;color:var(--accent);margin-bottom:12px}
+.footer-brand-desc{font-size:12.5px;color:rgba(255,255,255,0.45);line-height:1.75}
+.footer-heading{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.8px;text-transform:uppercase;margin-bottom:14px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--accent-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.35)}
+@media(max-width:700px){.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">聯訊</div>
+      <div>
+        <div class="nav-logo-text">聯訊科技 (國際) 有限公司</div>
+        <div class="nav-logo-sub">United Communications Technology</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">服務</a></li>
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#process">服務流程</a></li>
+      <li><a href="#contact" class="nav-cta">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        <span class="hero-badge-text">企業IT通訊科技 · 香港</span>
+      </div>
+      <h1>聯繫企業<br/><span>數碼未來</span></h1>
+      <div class="hero-en">United Communications Technology (International) Limited</div>
+      <p class="hero-desc">聯訊科技 (國際) 有限公司為企業提供全方位IT通訊科技解決方案，涵蓋網絡基建、企業通訊、資訊安全及IT顧問服務，助企業建立穩固可靠的數碼基礎。</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">即時查詢 →</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">聯絡資訊</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-lbl">公司名稱</div>
+          <div class="info-val">聯訊科技 (國際) 有限公司</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-lbl">電郵</div>
+          <div class="info-val"><a href="mailto:enquiry@united.com.hk">enquiry@united.com.hk</a></div>
+        </div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-lbl">網址</div>
+          <div class="info-val"><a href="https://www.united.com.hk" target="_blank" rel="noopener">www.united.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💼</div>
+        <div>
+          <div class="info-lbl">業務</div>
+          <div class="info-val">IT通訊科技服務<br/>網絡 · 通訊 · 資安</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">360°</div>
+      <div class="stat-label">全方位IT通訊服務</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">系統監控支援</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">香港本地IT專家</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">✓</div>
+      <div class="stat-label">企業級解決方案</div>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">服務範疇</div>
+      <h2 class="section-title">企業<span>IT通訊科技服務</span></h2>
+      <p class="section-sub">聯訊科技提供全面的企業IT通訊解決方案，以豐富的業界經驗助企業建立高效、安全的數碼環境。</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🌐</div>
+        <div class="svc-title">網絡基建設計</div>
+        <div class="svc-en">Network Infrastructure</div>
+        <div class="svc-desc">為企業規劃、設計及部署有線及無線網絡基建，包括LAN、WAN、Wi-Fi及SD-WAN方案，確保網絡穩定高速。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📡</div>
+        <div class="svc-title">企業通訊系統</div>
+        <div class="svc-en">Unified Communications</div>
+        <div class="svc-desc">部署企業統一通訊平台，整合電話、視像會議、即時通訊及協作工具，提升團隊溝通效率及跨地域協作能力。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔒</div>
+        <div class="svc-title">資訊安全方案</div>
+        <div class="svc-en">Information Security</div>
+        <div class="svc-desc">提供多層次網絡安全防護，包括防火牆、端點安全、資料加密及安全稽核，全面保護企業數據資產及系統安全。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">☁️</div>
+        <div class="svc-title">雲端服務整合</div>
+        <div class="svc-en">Cloud Services</div>
+        <div class="svc-desc">協助企業遷移至雲端平台，提供混合雲架構設計、雲端服務管理及雲端安全方案，提升業務靈活性及可擴展性。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🖥️</div>
+        <div class="svc-title">IT基建管理</div>
+        <div class="svc-en">IT Infrastructure Management</div>
+        <div class="svc-desc">提供伺服器、儲存系統及虛擬化環境的部署與管理服務，確保IT基建穩定運作，最大化系統可用性。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔧</div>
+        <div class="svc-title">IT顧問及支援</div>
+        <div class="svc-en">IT Consultancy & Support</div>
+        <div class="svc-desc">提供專業IT顧問服務，包括IT策略規劃、技術評估及持續IT支援，協助企業制定符合業務目標的IT發展路線圖。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="bg-alt">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">關於我們</div>
+        <h2 class="section-title">聯繫科技<span>連通未來</span></h2>
+        <div class="divider"></div>
+        <div class="about-body">
+          <p>聯訊科技 (國際) 有限公司是一家香港IT通訊科技服務公司，專注為各行業企業提供全方位的IT通訊基建解決方案及技術支援服務。</p>
+          <p>我們的服務範疇涵蓋網絡基建規劃、企業統一通訊、資訊安全、雲端服務及IT基建管理，以豐富的本地業界經驗，為企業客戶提供度身訂製的IT解決方案。</p>
+          <p>我們致力透過科技助企業提升運作效率，加強內部及對外通訊，並確保資訊系統的安全可靠，讓企業能夠在數碼時代保持競爭優勢。</p>
+        </div>
+        <div class="about-feats">
+          <div class="feat-item">
+            <div class="feat-title">🏆 業界經驗</div>
+            <div class="feat-desc">多年企業IT通訊方案部署及管理經驗</div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-title">🎯 度身訂製</div>
+            <div class="feat-desc">根據客戶業務需求提供最適切的IT方案</div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-title">🔒 安全可靠</div>
+            <div class="feat-desc">以企業級安全標準保護客戶IT環境</div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-title">⚡ 快速響應</div>
+            <div class="feat-desc">提供及時的技術支援，減少業務中斷時間</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-vis">
+        <div class="about-vis-title">我們的核心價值</div>
+        <div class="val-item">
+          <div class="val-icon">💡</div>
+          <div>
+            <div class="val-title">創新科技應用</div>
+            <div class="val-desc">緊貼最新IT及通訊科技趨勢，為客戶引入合適的創新解決方案</div>
+          </div>
+        </div>
+        <div class="val-item">
+          <div class="val-icon">🤝</div>
+          <div>
+            <div class="val-title">長期合作夥伴</div>
+            <div class="val-desc">以長遠眼光與客戶建立互信關係，成為企業IT發展的可靠夥伴</div>
+          </div>
+        </div>
+        <div class="val-item">
+          <div class="val-icon">🎓</div>
+          <div>
+            <div class="val-title">專業認證團隊</div>
+            <div class="val-desc">技術團隊持有主要廠商的專業認證，確保服務達到最高標準</div>
+          </div>
+        </div>
+        <div class="val-item">
+          <div class="val-icon">📈</div>
+          <div>
+            <div class="val-title">以成效為本</div>
+            <div class="val-desc">以切實可行的IT方案助客戶提升業務效率及實現數碼轉型目標</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="bg-dark">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center">
+      <div class="section-tag">服務流程</div>
+      <h2 class="section-title">四步驟<span style="color:var(--accent-light)">IT服務模式</span></h2>
+      <p class="section-sub" style="margin:0 auto">系統化的服務流程，確保每個IT項目順利推行並達到預期成效。</p>
+    </div>
+    <div class="process-steps">
+      <div class="proc-item">
+        <div class="proc-num">01</div>
+        <div class="proc-title">需求評估</div>
+        <div class="proc-desc">深入了解客戶的業務需求及現有IT環境，進行全面評估</div>
+      </div>
+      <div class="proc-item">
+        <div class="proc-num">02</div>
+        <div class="proc-title">方案設計</div>
+        <div class="proc-desc">根據評估結果設計最適切的IT通訊解決方案及實施計劃</div>
+      </div>
+      <div class="proc-item">
+        <div class="proc-num">03</div>
+        <div class="proc-title">部署實施</div>
+        <div class="proc-desc">專業技術團隊執行方案部署，確保系統穩定上線運作</div>
+      </div>
+      <div class="proc-item">
+        <div class="proc-num">04</div>
+        <div class="proc-title">維護支援</div>
+        <div class="proc-desc">提供持續的系統維護及技術支援，確保IT環境長期穩定</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">與我們<span>展開合作</span></h2>
+      <p class="section-sub">如需了解我們的IT通訊科技服務，歡迎填寫查詢表格或直接發送電郵。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-title">聯絡資訊</div>
+        <div class="c-row">
+          <div class="c-icon">📧</div>
+          <div>
+            <div class="c-lbl">電郵查詢</div>
+            <div class="c-val"><a href="mailto:enquiry@united.com.hk">enquiry@united.com.hk</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-lbl">網址</div>
+            <div class="c-val"><a href="https://www.united.com.hk" target="_blank" rel="noopener">www.united.com.hk</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-lbl">服務地區</div>
+            <div class="c-val">香港全港服務<br/>企業客戶上門服務</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">⏰</div>
+          <div>
+            <div class="c-lbl">辦公時間</div>
+            <div class="c-val">星期一至五：09:00 – 18:00<br/>星期六：09:00 – 13:00</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <div class="form-title">發送查詢</div>
+        <form onsubmit="return false">
+          <div class="form-row">
+            <div class="form-group">
+              <label>公司名稱 *</label>
+              <input type="text" placeholder="公司名稱"/>
+            </div>
+            <div class="form-group">
+              <label>聯絡人 *</label>
+              <input type="text" placeholder="您的姓名"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>電郵地址 *</label>
+              <input type="email" placeholder="your@email.com"/>
+            </div>
+            <div class="form-group">
+              <label>聯絡電話</label>
+              <input type="tel" placeholder="+852 XXXX XXXX"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>查詢服務</label>
+            <select>
+              <option value="">-- 請選擇服務 --</option>
+              <option>網絡基建設計</option>
+              <option>企業通訊系統</option>
+              <option>資訊安全方案</option>
+              <option>雲端服務整合</option>
+              <option>IT基建管理</option>
+              <option>IT顧問及支援</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>查詢詳情 *</label>
+            <textarea placeholder="請描述您的IT通訊需求…"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">提交查詢 →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">聯訊科技 (國際) 有限公司</div>
+        <div class="footer-brand-en">United Communications Technology (International) Limited</div>
+        <div class="footer-brand-desc">香港企業IT通訊科技服務供應商，提供網絡基建、企業通訊、資訊安全及雲端服務，助企業建立穩固的數碼基礎。<br/><br/>enquiry@united.com.hk</div>
+      </div>
+      <div>
+        <div class="footer-heading">服務</div>
+        <ul class="footer-links">
+          <li><a href="#services">網絡基建</a></li>
+          <li><a href="#services">企業通訊</a></li>
+          <li><a href="#services">資訊安全</a></li>
+          <li><a href="#services">雲端服務</a></li>
+          <li><a href="#services">IT顧問</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">公司</div>
+        <ul class="footer-links">
+          <li><a href="#about">關於我們</a></li>
+          <li><a href="#process">服務流程</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+          <li><a href="https://www.united.com.hk" target="_blank" rel="noopener">官方網站</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 聯訊科技 (國際) 有限公司. 版權所有。</div>
+      <div class="footer-copy">enquiry@united.com.hk | www.united.com.hk</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
