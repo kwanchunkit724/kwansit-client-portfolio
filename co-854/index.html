@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>錦興國際控股有限公司 | 布業・紡織・物流 | Kam Hing International</title>
+<meta name="description" content="錦興國際控股有限公司（Kam Hing International Holdings）— 香港荃灣總部，旗下布業、紡織染整及物流業務，業務覆蓋香港、新加坡及中國廣州、恩平。">
+<style>
+  :root {
+    --bg:       #050c08;
+    --bg2:      #0a1610;
+    --bg3:      #0f2018;
+    --accent:   #0a6050;
+    --accent2:  #18a080;
+    --gold:     #c89820;
+    --gold2:    #f0c040;
+    --text:     #e0f0e8;
+    --muted:    #486858;
+    --border:   rgba(24,160,128,0.16);
+    --card:     rgba(255,255,255,0.03);
+    --radius:   12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', 'PingFang HK', 'Noto Sans HK', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(5,12,8,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo { font-size: 1.1rem; font-weight: 800; color: var(--accent2); text-decoration: none; }
+  .nav-logo span { color: var(--gold2); font-size: 0.78rem; font-weight: 400; margin-left: 0.4rem; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.92rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-cta {
+    background: var(--accent); color: #fff; border: none; padding: 0.55rem 1.3rem;
+    border-radius: 6px; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 70% 55% at 60% 40%, rgba(10,96,80,0.18) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 40% at 5% 80%, rgba(200,152,32,0.10) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(24,160,128,0.1); border: 1px solid rgba(24,160,128,0.28);
+    color: var(--accent2); border-radius: 50px; padding: 0.38rem 1rem;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.55rem; }
+  .hero h1 { font-size: clamp(2.1rem, 4.2vw, 3.2rem); font-weight: 900; line-height: 1.25; margin-bottom: 1.4rem; }
+  .hero h1 .hl { color: var(--accent2); }
+  .hero h1 .hl-g { color: var(--gold2); }
+  .hero p { font-size: 1.05rem; color: var(--muted); max-width: 530px; margin-bottom: 2rem; line-height: 1.8; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-weight: 800; font-size: 1rem;
+    padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(10,96,80,0.4);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(24,160,128,0.5); }
+  .btn-outline {
+    background: transparent; color: var(--text); border: 1.5px solid rgba(255,255,255,0.2);
+    font-size: 1rem; padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold2); }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 18px; padding: 2rem;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .info-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--accent2); margin-bottom: 1.4rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+  .info-row { display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: flex-start; }
+  .info-icon { font-size: 1.1rem; min-width: 28px; margin-top: 0.1rem; }
+  .info-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.18rem; }
+  .info-val { font-size: 0.9rem; color: var(--text); font-weight: 600; }
+  .info-val a { color: var(--accent2); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .info-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+
+  /* STATS */
+  .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3.5rem 5%; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 2.4rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-num sup { font-size: 1.1rem; vertical-align: super; }
+  .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+
+  /* SECTION */
+  .section { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.7rem; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; line-height: 1.25; margin-bottom: 1rem; }
+  .section-title .hl { color: var(--accent2); }
+  .section-title .hl-g { color: var(--gold2); }
+  .section-desc { color: var(--muted); max-width: 600px; margin-bottom: 3rem; font-size: 1rem; line-height: 1.8; }
+
+  /* SUBSIDIARIES */
+  .subs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .sub-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2.2rem;
+    transition: border-color 0.25s, transform 0.2s; position: relative; overflow: hidden;
+  }
+  .sub-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--gold));
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .sub-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+  .sub-card:hover::before { opacity: 1; }
+  .sub-icon { font-size: 2.6rem; margin-bottom: 1rem; }
+  .sub-card h3 { font-size: 1.1rem; font-weight: 800; color: var(--accent2); margin-bottom: 0.3rem; }
+  .sub-en { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.8rem; font-style: italic; }
+  .sub-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+  .sub-details { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.84rem; color: var(--muted); line-height: 1.7; }
+  .sub-details a { color: var(--accent2); text-decoration: none; }
+  .sub-details a:hover { text-decoration: underline; }
+
+  /* GLOBAL */
+  .global-wrap { background: var(--bg2); padding: 6rem 5%; }
+  .global-inner { max-width: 1200px; margin: 0 auto; }
+  .global-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem; }
+  .global-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.8rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .global-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .global-flag { font-size: 2.2rem; margin-bottom: 0.8rem; }
+  .global-card h4 { font-size: 0.98rem; font-weight: 700; color: var(--gold2); margin-bottom: 0.6rem; }
+  .global-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+  .global-contact { margin-top: 0.8rem; font-size: 0.82rem; }
+  .global-contact a { color: var(--accent2); text-decoration: none; display: block; }
+  .global-contact a:hover { text-decoration: underline; }
+
+  /* CAPABILITIES */
+  .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .cap-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.8rem; display: flex; gap: 1.2rem; align-items: flex-start; }
+  .cap-icon { font-size: 2rem; min-width: 44px; }
+  .cap-item h4 { font-size: 1rem; font-weight: 700; color: var(--accent2); margin-bottom: 0.4rem; }
+  .cap-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact-wrap {
+    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(10,96,80,0.08) 0%, transparent 65%), var(--bg);
+    padding: 6rem 5%;
+  }
+  .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; margin-bottom: 1rem; }
+  .contact-info p { color: var(--muted); font-size: 0.98rem; margin-bottom: 2rem; line-height: 1.8; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.1rem; }
+  .c-row { display: flex; gap: 1rem; align-items: flex-start; }
+  .c-icon { font-size: 1.3rem; min-width: 34px; }
+  .c-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.2rem; }
+  .c-val { font-size: 0.92rem; font-weight: 600; }
+  .c-val a { color: var(--accent2); text-decoration: none; }
+  .c-val a:hover { text-decoration: underline; }
+  form { display: flex; flex-direction: column; gap: 1.2rem; }
+  form label { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.3rem; display: block; }
+  form input, form textarea, form select {
+    width: 100%; background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.8rem 1rem; color: var(--text); font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s;
+  }
+  form input:focus, form textarea:focus, form select:focus { outline: none; border-color: var(--accent2); }
+  form textarea { min-height: 110px; resize: vertical; }
+  form select option { background: #0a1610; }
+  .form-submit {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-weight: 800; font-size: 1rem;
+    border: none; padding: 0.95rem; border-radius: 8px; cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(10,96,80,0.4);
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(24,160,128,0.5); }
+
+  /* FOOTER */
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4rem 5% 2rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand .logo-text { font-size: 1.1rem; font-weight: 800; color: var(--accent2); margin-bottom: 0.8rem; }
+  .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  footer h5 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  footer ul li a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  footer ul li a:hover { color: var(--accent2); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .info-card { max-width: 480px; }
+    .subs-grid { grid-template-columns: 1fr; }
+    .global-grid { grid-template-columns: repeat(2, 1fr); }
+    .cap-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .global-grid, .cap-grid, .contact-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">錦興國際控股<span>Kam Hing International</span></a>
+  <ul class="nav-links">
+    <li><a href="#subsidiaries">旗下業務</a></li>
+    <li><a href="#global">全球網絡</a></li>
+    <li><a href="#capabilities">業務能力</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">聯絡查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">香港荃灣總部・布業・紡織・物流集團</div>
+      <h1>
+        錦興國際控股<br>
+        <span class="hl">布業・紡織・染整</span><br>
+        <span class="hl-g">跨越香港・新加坡・中國</span>
+      </h1>
+      <p>
+        錦興國際控股有限公司（Kam Hing International Holdings）總部設於香港荃灣，
+        旗下擁有布業、紡織染整及物流業務，
+        在香港、新加坡、廣州及恩平均設有辦事處及生產基地，
+        為全球紡織業客戶提供高品質的布料及相關服務。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#subsidiaries">旗下業務</a>
+        <a class="btn-outline" href="#contact">聯絡查詢</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>🏢 香港總部</h3>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">地址</div>
+          <div class="info-val">荃灣海盛路3號TML廣場23樓A室</div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">電話（錦興布業）</div>
+          <div class="info-val"><a href="tel:+85224060080">+852 2406-0080</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📠</div>
+        <div>
+          <div class="info-label">傳真</div>
+          <div class="info-val">+852 2408-1891</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-val"><a href="mailto:info@kamhingintl.com">info@kamhingintl.com</a></div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網站</div>
+          <div class="info-val"><a href="http://www.kamhingintl.com" target="_blank" rel="noopener">kamhingintl.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-label">旗下業務實體</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">國家及地區覆蓋</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">30<sup>+</sup></div>
+      <div class="stat-label">年紡織業經驗</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">中國生產工廠</div>
+    </div>
+  </div>
+</div>
+
+<!-- SUBSIDIARIES -->
+<div id="subsidiaries">
+  <div class="section">
+    <div class="section-label">Our Business Units</div>
+    <h2 class="section-title">旗下<span class="hl">業務單位</span></h2>
+    <p class="section-desc">
+      錦興國際控股旗下擁有多個業務單位，涵蓋布料批發、紡織染整及物流服務，
+      形成完整的紡織業產業鏈。
+    </p>
+    <div class="subs-grid">
+      <div class="sub-card">
+        <div class="sub-icon">🧵</div>
+        <h3>錦興布業有限公司</h3>
+        <div class="sub-en">Kam Hing Textile Co. Ltd.</div>
+        <p>
+          香港布料批發業務旗艦，專門從事各類布料的進口、批發及分銷，
+          為香港及亞洲各地的製衣廠、時裝品牌及布料商提供優質布料供應服務。
+        </p>
+        <div class="sub-details">
+          📍 荃灣海盛路3號TML廣場23樓A室<br>
+          📞 <a href="tel:+85224060080">+852 2406-0080</a> ｜ 📠 +852 2408-1891<br>
+          ✉️ <a href="mailto:info@kamhingintl.com">info@kamhingintl.com</a>
+        </div>
+      </div>
+      <div class="sub-card">
+        <div class="sub-icon">🚚</div>
+        <h3>順興物流有限公司</h3>
+        <div class="sub-en">Sparkle Logistics Ltd.</div>
+        <p>
+          集團旗下物流服務公司，提供貨物運輸、倉儲及物流管理服務，
+          支援集團布料及紡織品的本地及跨境運輸業務，
+          確保貨物準時安全地送達目的地。
+        </p>
+        <div class="sub-details">
+          📍 荃灣海盛路3號TML廣場23樓A室<br>
+          📞 <a href="tel:+85224064983">+852 2406-4983</a> ｜ 📠 +852 2408-6733<br>
+          ✉️ <a href="mailto:sl@sparklelogistics.com.hk">sl@sparklelogistics.com.hk</a>
+        </div>
+      </div>
+      <div class="sub-card">
+        <div class="sub-icon">🏭</div>
+        <h3>廣州錦興紡織漂染有限公司</h3>
+        <div class="sub-en">Guangzhou Kam Hing Textile Bleaching & Dyeing Co. Ltd.</div>
+        <p>
+          廣州南沙區的紡織染整生產基地，提供布料漂白、染色及整理加工服務，
+          以先進設備及嚴格品質控制，為客戶提供達到國際標準的紡織染整服務。
+        </p>
+        <div class="sub-details">
+          📍 廣州市南沙區東湧鎮勵業路32號<br>
+          📞 <a href="tel:+862084903888">+86 020-8490-3888</a><br>
+          ✉️ <a href="mailto:info@py.kamhingintl.com">info@py.kamhingintl.com</a>
+        </div>
+      </div>
+      <div class="sub-card">
+        <div class="sub-icon">🏗️</div>
+        <h3>恩平錦興紡織印染企業有限公司</h3>
+        <div class="sub-en">Enping Kam Hing Textile Printing & Dyeing Enterprise Co. Ltd.</div>
+        <p>
+          廣東省恩平市的紡織印染生產基地，專業提供紡織品印花、染色加工服務，
+          擁有完善的生產設施及環保處理系統，
+          服務各類紡織品加工需求。
+        </p>
+        <div class="sub-details">
+          📍 廣東省恩平市恩洲工業大道北68號<br>
+          📞 <a href="tel:+8607507176888">+86 0750-7176888</a><br>
+          ✉️ <a href="mailto:info@ep.kamhingintl.com">info@ep.kamhingintl.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GLOBAL NETWORK -->
+<div class="global-wrap" id="global">
+  <div class="global-inner">
+    <div class="section-label">Global Network</div>
+    <h2 class="section-title" style="margin-bottom:0.8rem;">跨越<span class="hl-g">四地的全球網絡</span></h2>
+    <p class="section-desc" style="margin-bottom: 2.5rem;">
+      從香港出發，錦興國際在新加坡及中國的業務布局，形成完善的亞洲紡織業供應網絡。
+    </p>
+    <div class="global-grid">
+      <div class="global-card">
+        <div class="global-flag">🇭🇰</div>
+        <h4>香港（總部）</h4>
+        <p>集團控股總部及布料批發業務，荃灣TML廣場辦公室。</p>
+        <div class="global-contact">
+          <a href="tel:+85224060080">📞 +852 2406-0080</a>
+          <a href="mailto:info@kamhingintl.com">✉️ info@kamhingintl.com</a>
+        </div>
+      </div>
+      <div class="global-card">
+        <div class="global-flag">🇸🇬</div>
+        <h4>新加坡</h4>
+        <p>錦興布業（新加坡）私人有限公司，東南亞業務拓展基地，登納路HB大廈。</p>
+        <div class="global-contact">
+          <a href="tel:+6568426896">📞 +65 6842-6896</a>
+        </div>
+      </div>
+      <div class="global-card">
+        <div class="global-flag">🇨🇳</div>
+        <h4>廣州（生產基地）</h4>
+        <p>廣州南沙區漂染生產工廠，染整加工重要基地。</p>
+        <div class="global-contact">
+          <a href="tel:+862084903888">📞 +86 020-8490-3888</a>
+          <a href="mailto:info@py.kamhingintl.com">✉️ info@py.kamhingintl.com</a>
+        </div>
+      </div>
+      <div class="global-card">
+        <div class="global-flag">🇨🇳</div>
+        <h4>恩平（生產基地）</h4>
+        <p>廣東恩平市印染生產工廠，紡織印花染色加工中心。</p>
+        <div class="global-contact">
+          <a href="tel:+8607507176888">📞 +86 0750-7176888</a>
+          <a href="mailto:info@ep.kamhingintl.com">✉️ info@ep.kamhingintl.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAPABILITIES -->
+<div id="capabilities">
+  <div class="section">
+    <div class="section-label">Our Capabilities</div>
+    <h2 class="section-title">核心<span class="hl">業務能力</span></h2>
+    <p class="section-desc">錦興集團以完整的紡織業產業鏈，為客戶提供從布料供應到染整加工的一站式服務。</p>
+    <div class="cap-grid">
+      <div class="cap-item">
+        <div class="cap-icon">🎨</div>
+        <div>
+          <h4>布料批發分銷</h4>
+          <p>種類齊全的布料批發，涵蓋棉、滌綸、混紡等各類物料，滿足製衣業及時裝品牌的布料採購需求。</p>
+        </div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">🔵</div>
+        <div>
+          <h4>染色漂整加工</h4>
+          <p>廣州及恩平工廠提供專業染色、漂白及整理加工服務，工藝成熟，色牢度高，符合國際環保標準。</p>
+        </div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">🖨️</div>
+        <div>
+          <h4>紡織印花服務</h4>
+          <p>恩平工廠提供多種印花工藝，包括平網印花、圓網印花等，色彩鮮明，圖案精準，品質穩定。</p>
+        </div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">🚛</div>
+        <div>
+          <h4>物流及倉儲管理</h4>
+          <p>旗下順興物流提供完善的貨物運輸及倉儲服務，確保布料及紡織品安全準時地運送到目的地。</p>
+        </div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">🌏</div>
+        <div>
+          <h4>跨境貿易服務</h4>
+          <p>豐富的跨境貿易經驗，熟悉香港、中國大陸及新加坡的進出口法規，為客戶提供順暢的貿易服務。</p>
+        </div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">✅</div>
+        <div>
+          <h4>品質控制管理</h4>
+          <p>嚴格的品質管理體系，從原材料採購到成品出廠，全程品質監控，確保每批產品達到客戶標準。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">聯絡<span class="hl">錦興國際</span></h2>
+      <p>
+        如有布料採購、染整加工、物流服務或其他業務查詢，
+        歡迎聯絡我們香港總部，或直接聯絡相關業務部門。
+      </p>
+      <div class="contact-details">
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">香港總部地址</div>
+            <div class="c-val">荃灣海盛路3號TML廣場23樓A室</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">電話（錦興布業）</div>
+            <div class="c-val"><a href="tel:+85224060080">+852 2406-0080</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">電話（順興物流）</div>
+            <div class="c-val"><a href="tel:+85224064983">+852 2406-4983</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">電郵</div>
+            <div class="c-val"><a href="mailto:info@kamhingintl.com">info@kamhingintl.com</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">網站</div>
+            <div class="c-val"><a href="http://www.kamhingintl.com" target="_blank" rel="noopener">www.kamhingintl.com</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form onsubmit="return false;">
+      <div>
+        <label>姓名 / 公司名稱 *</label>
+        <input type="text" placeholder="例：陳生 / ABC Garment Ltd.">
+      </div>
+      <div>
+        <label>聯絡電話 *</label>
+        <input type="tel" placeholder="例：+852 XXXX XXXX">
+      </div>
+      <div>
+        <label>電郵地址 *</label>
+        <input type="email" placeholder="example@company.com">
+      </div>
+      <div>
+        <label>查詢業務</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>布料採購查詢（錦興布業）</option>
+          <option>紡織染整加工（廣州/恩平）</option>
+          <option>物流倉儲服務（順興物流）</option>
+          <option>新加坡業務查詢</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div>
+        <label>查詢詳情</label>
+        <textarea placeholder="請描述您的需求，例如布料種類、數量、加工要求等..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">📩 發送查詢</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-text">錦興國際控股有限公司</div>
+      <p>
+        香港荃灣總部，旗下布業、紡織染整及物流業務，
+        業務覆蓋香港、新加坡及中國廣州、恩平，為全球客戶提供優質紡織服務。
+      </p>
+    </div>
+    <div>
+      <h5>旗下業務</h5>
+      <ul>
+        <li><a href="#subsidiaries">錦興布業</a></li>
+        <li><a href="#subsidiaries">順興物流</a></li>
+        <li><a href="#subsidiaries">廣州染整廠</a></li>
+        <li><a href="#subsidiaries">恩平印染廠</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>全球網絡</h5>
+      <ul>
+        <li><a href="#global">香港總部</a></li>
+        <li><a href="#global">新加坡辦事處</a></li>
+        <li><a href="#global">中國生產基地</a></li>
+        <li><a href="#capabilities">業務能力</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>聯絡</h5>
+      <ul>
+        <li><a href="tel:+85224060080">+852 2406-0080</a></li>
+        <li><a href="mailto:info@kamhingintl.com">info@kamhingintl.com</a></li>
+        <li><a href="http://www.kamhingintl.com" target="_blank" rel="noopener">kamhingintl.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 錦興國際控股有限公司. All rights reserved.</span>
+    <span>香港・新加坡・廣州・恩平</span>
+  </div>
+</footer>
+
+</body>
+</html>
