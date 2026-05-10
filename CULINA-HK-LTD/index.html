@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culina (HK) Ltd | Fine Food &amp; Specialty Imports</title>
+<style>
+  :root {
+    --bg-primary: #060c08;
+    --bg-secondary: #0c1610;
+    --bg-card: #121f16;
+    --bg-card2: #192b1e;
+    --green1: #184828;
+    --green2: #228840;
+    --green3: #38b860;
+    --cream: #e8d8b0;
+    --gold1: #b89018;
+    --gold2: #d8b028;
+    --gold3: #f0cc50;
+    --warm: #c07828;
+    --text-main: #f0ead8;
+    --text-muted: #88a888;
+    --text-dim: #3a5840;
+    --border: rgba(34,136,64,0.2);
+    --cream-border: rgba(232,216,176,0.18);
+    --gold-border: rgba(184,144,24,0.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg-primary);color:var(--text-main);font-family:'Georgia',serif;line-height:1.7;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,12,8,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 5%;}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+  .nav-logo-leaf{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:22px;}
+  .nav-logo-text{font-size:20px;font-weight:700;color:var(--cream);letter-spacing:2px;font-style:italic;}
+  .nav-logo-sub{font-size:11px;color:var(--text-dim);letter-spacing:1px;font-family:'Segoe UI',sans-serif;}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{text-decoration:none;color:var(--text-muted);font-size:13px;transition:color .2s;font-family:'Segoe UI',sans-serif;letter-spacing:.5px;}
+  .nav-links a:hover{color:var(--cream);}
+  .nav-cta{background:transparent;border:1px solid var(--gold-border);color:var(--gold2);padding:8px 20px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:600;font-family:'Segoe UI',sans-serif;transition:all .2s;letter-spacing:.5px;}
+  .nav-cta:hover{background:rgba(184,144,24,0.15);border-color:var(--gold2);}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:130px 5% 80px;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;
+    background:radial-gradient(ellipse 60% 60% at 55% 35%,rgba(24,72,40,0.2) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 40% at 5% 80%,rgba(184,144,24,0.08) 0%,transparent 70%);}
+  .hero-pattern{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M20 0 L40 20 L20 40 L0 20 Z' fill='none' stroke='%23ffffff' stroke-width='0.5'/%3E%3C/g%3E%3C/svg%3E");}
+  .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;position:relative;z-index:1;}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(184,144,24,0.12);border:1px solid var(--gold-border);border-radius:2px;padding:5px 14px;font-size:12px;color:var(--gold2);margin-bottom:24px;font-family:'Segoe UI',sans-serif;letter-spacing:1.5px;text-transform:uppercase;}
+  h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;line-height:1.1;margin-bottom:14px;letter-spacing:1px;}
+  h1 .culina{color:var(--cream);}
+  h1 .tagline{display:block;font-size:clamp(1rem,2vw,1.4rem);color:var(--green3);font-style:italic;font-weight:400;margin-top:4px;}
+  .hero-desc{font-size:15px;color:var(--text-muted);max-width:540px;margin-bottom:36px;line-height:1.9;font-family:'Segoe UI',sans-serif;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-green{background:linear-gradient(135deg,var(--green1),var(--green2));border:1px solid rgba(34,136,64,0.4);color:var(--cream);padding:13px 30px;border-radius:4px;text-decoration:none;font-weight:600;font-size:14px;font-family:'Segoe UI',sans-serif;transition:all .2s;letter-spacing:.5px;}
+  .btn-green:hover{background:linear-gradient(135deg,var(--green2),var(--green3));transform:translateY(-2px);}
+  .btn-outline{border:1px solid var(--cream-border);color:var(--text-muted);padding:13px 30px;border-radius:4px;text-decoration:none;font-size:14px;font-family:'Segoe UI',sans-serif;transition:all .2s;}
+  .btn-outline:hover{border-color:var(--cream);color:var(--cream);}
+
+  /* INFO CARD */
+  .info-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:32px;box-shadow:0 24px 64px rgba(0,0,0,.6);}
+  .info-card-title{font-size:11px;color:var(--gold2);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:20px;font-family:'Segoe UI',sans-serif;}
+  .info-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+  .info-row:last-child{border-bottom:none;}
+  .i-icon{width:34px;height:34px;background:rgba(34,136,64,0.12);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+  .i-label{font-size:10px;color:var(--text-dim);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;font-family:'Segoe UI',sans-serif;}
+  .i-val{font-size:13px;color:var(--text-main);font-weight:600;font-family:'Segoe UI',sans-serif;}
+  .i-val a{color:var(--green3);text-decoration:none;}
+
+  /* STATS */
+  .stats{background:var(--bg-secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%;}
+  .stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;}
+  .stat-item{text-align:center;}
+  .stat-num{font-size:2rem;font-weight:700;background:linear-gradient(135deg,var(--gold1),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .stat-label{font-size:12px;color:var(--text-muted);margin-top:4px;font-family:'Segoe UI',sans-serif;letter-spacing:.3px;}
+
+  /* SECTION */
+  section{padding:80px 5%;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-tag{font-size:11px;color:var(--gold2);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;margin-bottom:12px;font-family:'Segoe UI',sans-serif;}
+  .section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:16px;}
+  .section-title span{color:var(--green3);}
+  .section-sub{color:var(--text-muted);font-size:15px;max-width:620px;margin-bottom:48px;line-height:1.85;font-family:'Segoe UI',sans-serif;}
+
+  /* CATEGORIES */
+  .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .cat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:32px;transition:all .3s;position:relative;overflow:hidden;}
+  .cat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green1),var(--green3));opacity:0;transition:opacity .3s;}
+  .cat-card:hover{border-color:rgba(56,184,96,0.3);transform:translateY(-4px);background:var(--bg-card2);}
+  .cat-card:hover::after{opacity:1;}
+  .cat-icon{font-size:40px;margin-bottom:16px;}
+  .cat-title{font-size:18px;font-weight:700;margin-bottom:10px;color:var(--cream);}
+  .cat-desc{font-size:14px;color:var(--text-muted);line-height:1.8;font-family:'Segoe UI',sans-serif;}
+  .cat-items{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+  .citem{background:rgba(34,136,64,0.1);border:1px solid var(--border);border-radius:3px;padding:3px 10px;font-size:12px;color:var(--green3);font-family:'Segoe UI',sans-serif;}
+
+  /* WHY */
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  .why-card{background:var(--bg-card);border:1px solid var(--cream-border);border-radius:8px;padding:28px;display:flex;gap:18px;transition:all .3s;}
+  .why-card:hover{border-color:rgba(232,216,176,0.3);background:var(--bg-card2);}
+  .why-icon{font-size:32px;flex-shrink:0;}
+  .why-title{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--cream);}
+  .why-desc{font-size:14px;color:var(--text-muted);line-height:1.8;font-family:'Segoe UI',sans-serif;}
+
+  /* TEAM */
+  .team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  .team-card{background:var(--bg-card);border:1px solid var(--gold-border);border-radius:8px;padding:28px;display:flex;gap:18px;align-items:flex-start;transition:all .3s;}
+  .team-card:hover{border-color:rgba(184,144,24,0.35);background:var(--bg-card2);}
+  .team-avatar{width:52px;height:52px;background:linear-gradient(135deg,var(--green1),var(--green2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+  .team-name{font-size:16px;font-weight:700;margin-bottom:4px;color:var(--cream);}
+  .team-role{font-size:12px;color:var(--gold2);font-weight:600;margin-bottom:8px;font-family:'Segoe UI',sans-serif;letter-spacing:.5px;text-transform:uppercase;}
+  .team-email{font-size:13px;font-family:'Segoe UI',sans-serif;}
+  .team-email a{color:var(--green3);text-decoration:none;}
+
+  /* CONTACT */
+  .contact-section{background:var(--bg-secondary);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .c-list{display:flex;flex-direction:column;gap:20px;}
+  .c-item{display:flex;gap:14px;align-items:flex-start;}
+  .ci-icon{width:44px;height:44px;background:rgba(34,136,64,0.12);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+  .ci-label{font-size:11px;color:var(--text-dim);margin-bottom:4px;font-family:'Segoe UI',sans-serif;letter-spacing:.5px;text-transform:uppercase;}
+  .ci-val{font-size:15px;color:var(--text-main);font-weight:600;font-family:'Segoe UI',sans-serif;}
+  .ci-val a{color:var(--green3);text-decoration:none;}
+
+  /* FORM */
+  .cform{display:flex;flex-direction:column;gap:16px;}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .fg{display:flex;flex-direction:column;gap:8px;}
+  .fg label{font-size:12px;color:var(--text-muted);font-weight:600;font-family:'Segoe UI',sans-serif;letter-spacing:.5px;text-transform:uppercase;}
+  .fg input,.fg select,.fg textarea{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:12px 16px;color:var(--text-main);font-size:14px;font-family:'Segoe UI',sans-serif;outline:none;transition:border-color .2s;}
+  .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--green2);}
+  .fg textarea{resize:vertical;min-height:110px;}
+  .fg select option{background:#121f16;}
+  .fsub{background:linear-gradient(135deg,var(--green1),var(--green2));border:1px solid rgba(34,136,64,0.4);color:var(--cream);border:none;padding:13px 30px;border-radius:4px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Segoe UI',sans-serif;letter-spacing:.5px;}
+  .fsub:hover{background:linear-gradient(135deg,var(--green2),var(--green3));}
+
+  /* FOOTER */
+  footer{background:#040809;border-top:1px solid var(--border);padding:50px 5% 28px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;margin-bottom:40px;}
+  .fb-name{font-size:20px;font-weight:700;color:var(--cream);font-style:italic;margin-bottom:4px;letter-spacing:1px;}
+  .fb-hk{font-size:12px;color:var(--text-dim);font-family:'Segoe UI',sans-serif;margin-bottom:10px;}
+  .fb-desc{font-size:13px;color:var(--text-dim);line-height:1.7;font-family:'Segoe UI',sans-serif;}
+  .fc-title{font-size:11px;color:var(--gold2);font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;font-family:'Segoe UI',sans-serif;}
+  .fc-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .fc-links a{text-decoration:none;color:var(--text-dim);font-size:13px;transition:color .2s;font-family:'Segoe UI',sans-serif;}
+  .fc-links a:hover{color:var(--green3);}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .footer-copy{font-size:12px;color:var(--text-dim);font-family:'Segoe UI',sans-serif;}
+
+  @media(max-width:768px){
+    .hero-inner,.contact-grid,.footer-top{grid-template-columns:1fr;}
+    .info-card{display:none;}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .cat-grid,.why-grid,.team-grid{grid-template-columns:1fr;}
+    .frow{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-leaf">🌿</div>
+      <div>
+        <div class="nav-logo-text">Culina</div>
+        <div class="nav-logo-sub">Fine Food Specialists · Hong Kong</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#categories">Products</a></li>
+      <li><a href="#why">About</a></li>
+      <li><a href="#team">Our Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Trade Enquiry</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Fine Food &amp; Specialty Imports · Since 1996</div>
+      <h1>
+        <span class="culina">Culina (HK) Ltd</span>
+        <span class="tagline">Where Fine Food Finds Its Place</span>
+      </h1>
+      <p class="hero-desc">Culina (HK) Ltd is Hong Kong's trusted importer and distributor of premium specialty foods — from award-winning artisan cheeses and dairy products to fine beverages and gourmet grocery essentials. We connect the world's finest producers with Hong Kong's discerning palates.</p>
+      <div class="hero-btns">
+        <a class="btn-green" href="#categories">Explore Our Range</a>
+        <a class="btn-outline" href="#contact">Trade Enquiry</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">Company Details</div>
+      <div class="info-row">
+        <div class="i-icon">📞</div>
+        <div>
+          <div class="i-label">Telephone</div>
+          <div class="i-val"><a href="tel:+85223423221">2342 3221</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">📠</div>
+        <div>
+          <div class="i-label">Fax</div>
+          <div class="i-val">2342 6063</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">✉️</div>
+        <div>
+          <div class="i-label">Email</div>
+          <div class="i-val"><a href="mailto:info@culina.com.hk">info@culina.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">📍</div>
+        <div>
+          <div class="i-label">Address</div>
+          <div class="i-val">Gee Chang Hong Centre<br>Wong Chuk Hang Road, HK</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">🌐</div>
+        <div>
+          <div class="i-label">Website</div>
+          <div class="i-val"><a href="https://www.culina.com.hk" target="_blank">www.culina.com.hk</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">1996</div>
+      <div class="stat-label">Founded</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Core Specialty Categories</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">Island-wide Distribution</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Global</div>
+      <div class="stat-label">Artisan Sourcing Network</div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="section-inner">
+    <div class="section-tag">Product Categories</div>
+    <h2 class="section-title">Curated <span>Specialty Foods</span></h2>
+    <p class="section-sub">We source the finest specialty food products from artisan producers across Europe and beyond, bringing exceptional quality to Hong Kong's finest hotels, restaurants, and retailers.</p>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-icon">🧀</div>
+        <div class="cat-title">Cheese &amp; Dairy</div>
+        <div class="cat-desc">A curated selection of artisan cheeses from renowned European producers — from aged Comté and creamy Brie to tangy chèvre and bold blues — alongside premium dairy products for professional and home use.</div>
+        <div class="cat-items">
+          <span class="citem">Artisan Cheeses</span>
+          <span class="citem">Butter &amp; Cream</span>
+          <span class="citem">Specialty Yoghurt</span>
+          <span class="citem">Crème Fraîche</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🥤</div>
+        <div class="cat-title">Fine Beverages</div>
+        <div class="cat-desc">A thoughtfully assembled range of premium bottled waters, craft juices, specialty soft drinks, and non-alcoholic fine beverages from distinguished European and global producers.</div>
+        <div class="cat-items">
+          <span class="citem">Premium Waters</span>
+          <span class="citem">Craft Juices</span>
+          <span class="citem">Specialty Drinks</span>
+          <span class="citem">Tonic &amp; Mixers</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🫙</div>
+        <div class="cat-title">Gourmet Grocery</div>
+        <div class="cat-desc">An exquisite assortment of fine grocery essentials — premium charcuterie, artisan condiments, fine oils and vinegars, preserved foods, and specialty ingredients beloved by professional chefs.</div>
+        <div class="cat-items">
+          <span class="citem">Charcuterie</span>
+          <span class="citem">Fine Oils &amp; Vinegars</span>
+          <span class="citem">Artisan Preserves</span>
+          <span class="citem">Specialty Ingredients</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" style="background:var(--bg-secondary);">
+  <div class="section-inner">
+    <div class="section-tag">Why Culina</div>
+    <h2 class="section-title">The <span>Culina Difference</span></h2>
+    <p class="section-sub">Since 1996, Culina has built its reputation on uncompromising quality, trusted relationships, and a genuine passion for extraordinary food.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🌍</div>
+        <div>
+          <div class="why-title">Direct Producer Relationships</div>
+          <div class="why-desc">We work directly with artisan producers across Europe and globally, ensuring authenticity, traceability, and the freshest possible products at every stage of the supply chain.</div>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">❄️</div>
+        <div>
+          <div class="why-title">Cold Chain Excellence</div>
+          <div class="why-desc">Our dedicated cold chain logistics ensure temperature-sensitive products — fresh cheeses, dairy, and perishables — arrive in perfect condition, maintaining the producer's intended quality.</div>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🏨</div>
+        <div>
+          <div class="why-title">Trade Partners</div>
+          <div class="why-desc">Trusted by Hong Kong's leading hotels, Michelin-starred restaurants, gourmet retailers, and specialty food outlets. Our team provides knowledgeable support for trade customers.</div>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔍</div>
+        <div>
+          <div class="why-title">Curated Selection</div>
+          <div class="why-desc">Every product in our range is carefully selected for quality, provenance, and flavour. We are passionate food lovers who taste and evaluate every item before it reaches our clients.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="section-inner">
+    <div class="section-tag">Our Team</div>
+    <h2 class="section-title">Meet the <span>Culina Team</span></h2>
+    <p class="section-sub">Our experienced team combines deep knowledge of fine foods with a genuine commitment to client service.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">👨‍💼</div>
+        <div>
+          <div class="team-name">Philippe Lalanne-Tauzia</div>
+          <div class="team-role">Managing Director</div>
+          <div class="team-email"><a href="mailto:info@culina.com.hk">info@culina.com.hk</a></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👩‍💼</div>
+        <div>
+          <div class="team-name">Marsha Gau</div>
+          <div class="team-role">Key Account Manager</div>
+          <div class="team-email"><a href="mailto:marsha@culina.com.hk">marsha@culina.com.hk</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">Get in Touch</div>
+    <h2 class="section-title">Contact <span>Culina</span></h2>
+    <p class="section-sub">For product listings, trade pricing, or to become a stockist, our team is ready to assist.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="c-list">
+          <div class="c-item">
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-label">Telephone</div>
+              <div class="ci-val"><a href="tel:+85223423221">2342 3221</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">📱</div>
+            <div>
+              <div class="ci-label">Mobile / WhatsApp</div>
+              <div class="ci-val"><a href="https://wa.me/85296392486">9639 2486</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">📠</div>
+            <div>
+              <div class="ci-label">Fax</div>
+              <div class="ci-val">2342 6063</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">✉️</div>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-val"><a href="mailto:info@culina.com.hk">info@culina.com.hk</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">Address</div>
+              <div class="ci-val">Gee Chang Hong Centre<br>Wong Chuk Hang Road, Hong Kong</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">🌐</div>
+            <div>
+              <div class="ci-label">Website</div>
+              <div class="ci-val"><a href="https://www.culina.com.hk" target="_blank">www.culina.com.hk</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="cform" onsubmit="return false;">
+        <div class="frow">
+          <div class="fg">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="fg">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="Contact number">
+          </div>
+        </div>
+        <div class="fg">
+          <label>Email Address *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="fg">
+          <label>Company / Restaurant / Hotel</label>
+          <input type="text" placeholder="Organisation name">
+        </div>
+        <div class="fg">
+          <label>Enquiry Type</label>
+          <select>
+            <option>Cheese &amp; Dairy — Trade Enquiry</option>
+            <option>Fine Beverages — Trade Enquiry</option>
+            <option>Gourmet Grocery — Trade Enquiry</option>
+            <option>New Account / Stockist Application</option>
+            <option>Product Availability</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Message *</label>
+          <textarea placeholder="Please describe your requirements or enquiry..."></textarea>
+        </div>
+        <button type="submit" class="fsub">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="fb-name">Culina (HK) Ltd</div>
+        <div class="fb-hk">Fine Food Specialists · Hong Kong · Est. 1996</div>
+        <div class="fb-desc">Importer and distributor of premium specialty foods — artisan cheeses, fine dairy, quality beverages, and gourmet grocery essentials — serving Hong Kong's finest hotels, restaurants, and retailers since 1996.</div>
+      </div>
+      <div>
+        <div class="fc-title">Products</div>
+        <ul class="fc-links">
+          <li><a href="#categories">Cheese &amp; Dairy</a></li>
+          <li><a href="#categories">Fine Beverages</a></li>
+          <li><a href="#categories">Gourmet Grocery</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fc-title">Contact</div>
+        <ul class="fc-links">
+          <li><a href="tel:+85223423221">Tel: 2342 3221</a></li>
+          <li><a href="mailto:info@culina.com.hk">info@culina.com.hk</a></li>
+          <li><a href="mailto:marsha@culina.com.hk">marsha@culina.com.hk</a></li>
+          <li><a href="https://www.culina.com.hk" target="_blank">www.culina.com.hk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Culina (HK) Ltd. All rights reserved. Hong Kong.</div>
+      <div style="font-size:12px;color:var(--text-dim);font-family:'Segoe UI',sans-serif;">Fine Food · Cheese · Dairy · Beverages · Wong Chuk Hang</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
