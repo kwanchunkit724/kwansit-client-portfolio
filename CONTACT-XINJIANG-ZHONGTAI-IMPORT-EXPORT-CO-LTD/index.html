@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zhong Tai International Development | Green Chemicals &amp; Ecological Cotton | Hong Kong</title>
+<style>
+:root {
+  --primary: #081428;
+  --primary-mid: #0c1e38;
+  --accent: #0a9070;
+  --accent-light: #12b090;
+  --gold: #c8a040;
+  --gold-light: #e0b858;
+  --white: #ffffff;
+  --off-white: #f4f7f5;
+  --light-grey: #e4ece8;
+  --mid-grey: #7a8c84;
+  --dark-grey: #3a4e44;
+  --text: #1a2820;
+  --text-light: #527060;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 24px rgba(8,20,40,0.10);
+  --shadow-md: 0 8px 40px rgba(8,20,40,0.14);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.3s ease;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(8,20,40,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(10,144,112,0.20);
+  padding: 0 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+.nav-logo { font-size: 1.25rem; font-weight: 800; color: var(--white); letter-spacing: 0.04em; }
+.nav-logo span { color: var(--accent-light); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.80); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: var(--transition); }
+.nav-links a:hover { color: var(--accent-light); }
+.nav-cta {
+  background: var(--accent); color: var(--white); padding: 0.5rem 1.3rem;
+  border-radius: 50px; font-size: 0.88rem; font-weight: 600; transition: var(--transition);
+}
+.nav-cta:hover { background: var(--accent-light); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary) 0%, #0c1e38 40%, #0e2440 70%, #102848 100%);
+  display: flex; align-items: center; padding: 100px 5% 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 50% at 80% 35%, rgba(10,144,112,0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 55% at 15% 70%, rgba(200,160,64,0.08) 0%, transparent 70%);
+}
+.hero-inner {
+  max-width: 1200px; width: 100%; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(10,144,112,0.15); border: 1px solid rgba(10,144,112,0.35);
+  color: var(--accent-light); padding: 0.4rem 1rem; border-radius: 50px;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.hero-tag::before { content: '◆'; }
+.hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem); font-weight: 800; line-height: 1.12;
+  color: var(--white); margin-bottom: 0.5rem; letter-spacing: -0.02em;
+}
+.hero h1 .accent { color: var(--accent-light); }
+.hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: rgba(255,255,255,0.70); margin-bottom: 1.8rem; font-style: italic;
+}
+.hero-desc {
+  font-size: 1.02rem; color: rgba(255,255,255,0.68); line-height: 1.78;
+  margin-bottom: 2.2rem; max-width: 520px;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--accent); color: var(--white);
+  padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem;
+  transition: var(--transition); box-shadow: 0 4px 20px rgba(10,144,112,0.35);
+}
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+.btn-outline {
+  border: 2px solid rgba(255,255,255,0.35); color: var(--white);
+  padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 600; font-size: 1rem;
+  transition: var(--transition);
+}
+.btn-outline:hover { border-color: var(--accent-light); color: var(--accent-light); }
+.hero-card {
+  background: rgba(255,255,255,0.06); backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 2rem;
+}
+.hero-card-head {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 1.8rem;
+  padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+.hero-card-icon {
+  width: 50px; height: 50px; border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+}
+.hero-card-head h3 { color: var(--white); font-size: 1rem; font-weight: 700; }
+.hero-card-head p { color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+.hero-info-row { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+.hero-info-icon {
+  width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+  background: rgba(10,144,112,0.18);
+  display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+}
+.hero-info-label { font-size: 0.70rem; color: rgba(255,255,255,0.42); text-transform: uppercase; letter-spacing: 0.06em; }
+.hero-info-val { font-size: 0.88rem; color: rgba(255,255,255,0.88); font-weight: 500; }
+
+/* STATS */
+.stats-strip {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-mid) 100%);
+  padding: 3rem 5%;
+}
+.stats-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800;
+  color: var(--accent-light); letter-spacing: -0.02em; line-height: 1;
+}
+.stat-unit { font-size: 1.3rem; }
+.stat-label { color: rgba(255,255,255,0.60); font-size: 0.85rem; margin-top: 0.4rem; }
+
+/* SHARED */
+section { padding: 90px 5%; }
+.section-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(10,144,112,0.08); border: 1px solid rgba(10,144,112,0.25);
+  color: var(--accent); padding: 0.35rem 1rem; border-radius: 50px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800;
+  color: var(--primary); line-height: 1.2; letter-spacing: -0.02em;
+}
+.section-subtitle {
+  font-size: 1.02rem; color: var(--text-light); line-height: 1.7; margin-top: 0.8rem; max-width: 620px;
+}
+.section-header { margin-bottom: 3rem; }
+.max-w { max-width: 1200px; margin: 0 auto; }
+
+/* ABOUT */
+.about { background: var(--off-white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-highlight {
+  background: linear-gradient(135deg, var(--primary) 0%, #0e2440 100%);
+  border-radius: 20px; padding: 2.2rem;
+  border-left: 4px solid var(--accent); margin-bottom: 2rem;
+}
+.about-highlight blockquote {
+  font-size: 1.2rem; font-style: italic; font-weight: 600;
+  color: var(--white); line-height: 1.6;
+}
+.about-highlight cite { display: block; margin-top: 0.8rem; font-size: 0.8rem; color: var(--accent-light); font-style: normal; letter-spacing: 0.05em; }
+.about-body p { font-size: 0.98rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.2rem; }
+.values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.value-card {
+  background: var(--white); border-radius: var(--radius);
+  padding: 1.3rem; border: 1px solid var(--light-grey); transition: var(--transition);
+}
+.value-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.value-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.value-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem; }
+.value-card p { font-size: 0.8rem; color: var(--text-light); line-height: 1.5; }
+
+/* PRODUCTS */
+.products { background: var(--white); }
+.products-tabs { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+.tab-label {
+  padding: 0.55rem 1.4rem; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 600; border: 2px solid var(--light-grey);
+  color: var(--dark-grey); cursor: default; transition: var(--transition);
+}
+.tab-label.active { background: var(--accent); border-color: var(--accent); color: var(--white); }
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; margin-bottom: 3rem; }
+.product-card {
+  background: var(--card-bg); border-radius: var(--radius);
+  padding: 1.8rem; border: 1px solid var(--light-grey); transition: var(--transition);
+  position: relative; overflow: hidden;
+}
+.product-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  transform: scaleX(0); transform-origin: left; transition: var(--transition);
+}
+.product-card:hover { border-color: rgba(10,144,112,0.3); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.product-card:hover::before { transform: scaleX(1); }
+.product-icon {
+  width: 50px; height: 50px; border-radius: 13px;
+  background: linear-gradient(135deg, rgba(10,144,112,0.12), rgba(200,160,64,0.08));
+  display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem;
+}
+.product-card h3 { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.6rem; }
+.product-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; }
+.product-card .product-tag {
+  display: inline-block; margin-top: 1rem; padding: 0.2rem 0.7rem;
+  background: rgba(10,144,112,0.08); border: 1px solid rgba(10,144,112,0.2);
+  color: var(--accent); font-size: 0.72rem; font-weight: 600; border-radius: 50px;
+  letter-spacing: 0.04em;
+}
+
+/* SUBSIDIARIES */
+.subsidiaries {
+  background: linear-gradient(135deg, var(--primary) 0%, #0c2040 60%, #102848 100%);
+  position: relative; overflow: hidden;
+}
+.subsidiaries::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 65% 55% at 75% 45%, rgba(10,144,112,0.12) 0%, transparent 70%);
+}
+.subsidiaries .section-tag { background: rgba(200,160,64,0.15); border-color: rgba(200,160,64,0.35); color: var(--gold-light); }
+.subsidiaries .section-title { color: var(--white); }
+.subsidiaries .section-subtitle { color: rgba(255,255,255,0.62); }
+.sub-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; z-index: 1; }
+.sub-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px; padding: 1.8rem 1.4rem; text-align: center; transition: var(--transition);
+}
+.sub-card:hover { background: rgba(255,255,255,0.10); border-color: rgba(10,144,112,0.4); transform: translateY(-3px); }
+.sub-card-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+.sub-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--white); line-height: 1.3; }
+.sub-card p { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 0.4rem; }
+
+/* GLOBAL OFFICES */
+.offices { background: var(--off-white); }
+.offices-desc { font-size: 1.02rem; color: var(--text-light); line-height: 1.75; margin-bottom: 2.5rem; max-width: 680px; }
+.offices-regions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.region-block h4 {
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1rem; padding-bottom: 0.6rem;
+  border-bottom: 2px solid rgba(10,144,112,0.2);
+}
+.office-pill {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.55rem 0; border-bottom: 1px solid var(--light-grey);
+  font-size: 0.88rem; color: var(--text);
+}
+.office-pill:last-child { border-bottom: none; }
+.office-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+/* CONTACT */
+.contact {
+  background: linear-gradient(135deg, var(--primary) 0%, #0e2440 100%);
+}
+.contact .section-title { color: var(--white); }
+.contact .section-subtitle { color: rgba(255,255,255,0.62); }
+.contact .section-tag { background: rgba(10,144,112,0.15); border-color: rgba(10,144,112,0.35); color: var(--accent-light); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
+.contact-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius); padding: 1.3rem;
+}
+.contact-item-icon {
+  width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0;
+  background: rgba(10,144,112,0.18);
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+}
+.contact-item-label { font-size: 0.70rem; color: rgba(255,255,255,0.42); text-transform: uppercase; letter-spacing: 0.07em; }
+.contact-item-val { font-size: 0.92rem; color: rgba(255,255,255,0.90); font-weight: 500; margin-top: 0.15rem; }
+.contact-form {
+  background: rgba(255,255,255,0.06); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.10); border-radius: 20px; padding: 2.4rem;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.58); margin-bottom: 0.4rem; font-weight: 500; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-sm); padding: 0.75rem 1rem; color: var(--white);
+  font-size: 0.9rem; transition: var(--transition); outline: none; font-family: inherit;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent-light); background: rgba(255,255,255,0.12); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.28); }
+.form-group select option { background: var(--primary); color: var(--white); }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-submit {
+  width: 100%; background: var(--accent); color: var(--white);
+  border: none; border-radius: 50px; padding: 1rem;
+  font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition);
+}
+.form-submit:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+/* FOOTER */
+footer {
+  background: #040c18; padding: 2.5rem 5%;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo { font-size: 1.1rem; font-weight: 800; color: var(--white); letter-spacing: 0.05em; }
+.footer-logo span { color: var(--accent-light); }
+.footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.38); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.42); transition: var(--transition); }
+.footer-links a:hover { color: var(--accent-light); }
+
+@media (max-width: 960px) {
+  .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero-card { display: none; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .sub-grid { grid-template-columns: repeat(2, 1fr); }
+  .offices-regions { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .products-grid, .sub-grid, .values-grid { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .offices-regions { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ZHONG TAI<span> International</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#group">Group</a></li>
+    <li><a href="#offices">Global</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get Latest Price</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">Green Chemicals · Ecological Cotton · Global Trade</div>
+      <h1>Xinjiang's Resources,<br><span class="accent">The World's Markets.</span></h1>
+      <p class="hero-sub">Enriching People. Prospering Xinjiang. Strengthening the Nation.</p>
+      <p class="hero-desc">
+        Zhong Tai International Development (HK) Limited is the global trade arm of Xinjiang Zhongtai Chemical Group — one of China's leading integrated chemical and textile conglomerates. Listed on the Shenzhen Stock Exchange since 2006, we connect Xinjiang's exceptional natural resources to buyers across the Americas, Europe, and Asia-Pacific.
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">Explore Products</a>
+        <a href="#contact" class="btn-outline">Request Pricing</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hero-card-icon">🏭</div>
+        <div>
+          <h3>Zhong Tai International (HK)</h3>
+          <p>Hong Kong · Global Trade Operations</p>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">📍</div>
+        <div>
+          <div class="hero-info-label">HQ Address</div>
+          <div class="hero-info-val">No. 39, Yangchenghu Road, E&amp;T Development Zone, Urumqi, Xinjiang, China</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">✉️</div>
+        <div>
+          <div class="hero-info-label">Trade Enquiries</div>
+          <div class="hero-info-val">wangjing@xjzhongtai-chem.com</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">📅</div>
+        <div>
+          <div class="hero-info-label">Established</div>
+          <div class="hero-info-val">2001 · Listed on SZSE 2006</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">🌐</div>
+        <div>
+          <div class="hero-info-label">Website</div>
+          <div class="hero-info-val">zhongtaiint.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">2001</div>
+      <div class="stat-label">Year Established</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7<span class="stat-unit">+</span></div>
+      <div class="stat-label">Group Subsidiaries</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">12<span class="stat-unit">+</span></div>
+      <div class="stat-label">Global Trade Offices</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">65<span class="stat-unit">yr</span></div>
+      <div class="stat-label">Industry Heritage (est. 1958)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="max-w">
+    <div class="about-grid">
+      <div>
+        <div class="section-header">
+          <div class="section-tag">About Us</div>
+          <h2 class="section-title">A Century-Old Legacy, A Global Future</h2>
+        </div>
+        <div class="about-highlight">
+          <blockquote>"Enrich the people, prosper Xinjiang, strengthen the country."</blockquote>
+          <cite>— Enterprise Mission, Xinjiang Zhongtai Chemical Group</cite>
+        </div>
+        <div class="about-body">
+          <p>
+            Xinjiang Zhongtai Chemical Co., Ltd. is one of the Xinjiang Uygur Autonomous Region's key resource-conversion enterprises. Its roots trace back to the Xinjiang Caustic Soda Plant, established in 1958 — giving the group over 65 years of deep industrial expertise.
+          </p>
+          <p>
+            The group was officially established on December 18th, 2001, and listed on the Shenzhen Stock Exchange on December 8th, 2006. Zhong Tai International Development (HK) Limited serves as the group's gateway to global markets, managing international trade, export operations, and overseas partnerships from Hong Kong.
+          </p>
+          <p>
+            With a diversified portfolio spanning green chemicals, ecological cotton textiles, and supply chain services, Zhongtai's products reach buyers across 12+ cities and regions worldwide.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="section-header">
+          <div class="section-tag">Our Values</div>
+          <h2 class="section-title">The Principles That Guide Us</h2>
+        </div>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">👥</div>
+            <h4>People-Oriented</h4>
+            <p>Every decision starts with people — our employees, partners, and communities.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">⚖️</div>
+            <h4>Fair Business</h4>
+            <p>Transparent dealings, honest pricing, and long-term relationships built on trust.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🌱</div>
+            <h4>Values Peace</h4>
+            <p>Sustainable industrial practices and social responsibility are core commitments.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">💪</div>
+            <h4>Dauntless &amp; Motivated</h4>
+            <p>Down-to-earth endeavour and dedication — the spirit that built our industrial heritage.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Products</div>
+      <h2 class="section-title">Green Chemicals &amp; Ecological Cotton</h2>
+      <p class="section-subtitle">Two flagship product lines meeting global demand for sustainable industrial materials.</p>
+    </div>
+    <div class="products-tabs">
+      <span class="tab-label active">Green Chemical Products</span>
+      <span class="tab-label">Ecological Cotton Spinning</span>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🧪</div>
+        <h3>PVC Resin &amp; Paste PVC</h3>
+        <p>High-quality suspension and paste-grade PVC resins for pipes, profiles, films, flooring, and specialty coating applications. Consistent molecular weight distribution and purity.</p>
+        <span class="product-tag">Green Chemical</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">⚗️</div>
+        <h3>Caustic Soda (NaOH)</h3>
+        <p>Industrial-grade caustic soda in flake, pearl, and liquid form. Widely used in textiles, paper, aluminium, chemicals, and water treatment industries globally.</p>
+        <span class="product-tag">Green Chemical</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🔬</div>
+        <h3>BDO (1,4-Butanediol)</h3>
+        <p>Premium BDO for use in PTMEG, GBL, NMP, and THF production. Critical feedstock for spandex fibres, polyurethanes, electronics solvents, and pharmaceutical intermediates.</p>
+        <span class="product-tag">Green Chemical</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🏗️</div>
+        <h3>CPVC &amp; Chloroether Resin</h3>
+        <p>Chlorinated PVC for high-temperature pipe systems, and chloroether resins for high-performance coatings, adhesives, and chemical-resistant surface treatments.</p>
+        <span class="product-tag">Green Chemical</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🌿</div>
+        <h3>PBAT Biodegradable Resin</h3>
+        <p>Certified biodegradable and compostable polymer. Increasingly demanded for packaging, agriculture films, and single-use items as global regulations tighten on conventional plastics.</p>
+        <span class="product-tag">Green Chemical</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🧵</div>
+        <h3>Viscose Fibre &amp; Cotton Yarn</h3>
+        <p>Ecological viscose fibre, viscose yarn, dissolving pulp, non-woven fabric, and cotton yarn from Xinjiang's superior cotton belts — traceable supply chain, sustainable production.</p>
+        <span class="product-tag">Ecological Cotton</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBSIDIARIES -->
+<section class="subsidiaries" id="group">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Our Group</div>
+      <h2 class="section-title">A Powerful Industrial Ecosystem</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">The Zhongtai Group spans energy, chemicals, textiles, and agriculture — an integrated value chain from raw material to finished product.</p>
+    </div>
+    <div class="sub-grid">
+      <div class="sub-card">
+        <div class="sub-card-icon">⚡</div>
+        <h4>Shengxiong Energy</h4>
+        <p>Power generation for the group's industrial complex</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-card-icon">🏭</div>
+        <h4>Huatai Heavy Chemical</h4>
+        <p>Heavy chemical production and processing operations</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-card-icon">⛽</div>
+        <h4>Fukang Energy</h4>
+        <p>Energy resources and coal chemical production</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-card-icon">🔩</div>
+        <h4>MarkorChem</h4>
+        <p>Specialty chemical production and R&amp;D centre</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-card-icon">🌡️</div>
+        <h4>Toksun Energy Chemical</h4>
+        <p>Energy chemicals and downstream product development</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-card-icon">🧵</div>
+        <h4>Zhongtai Textile &amp; Garment</h4>
+        <p>Integrated textile and garment manufacturing group</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-card-icon">🌾</div>
+        <h4>Xinjiang Cereals &amp; Oils</h4>
+        <p>Agricultural processing and grain/oil commodity trade</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-card-icon">🌐</div>
+        <h4>Zhong Tai Int'l (HK)</h4>
+        <p>International trade arm — your contact for global procurement</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL OFFICES -->
+<section class="offices" id="offices">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Global Presence</div>
+      <h2 class="section-title">Trade Offices Across 4 Continents</h2>
+    </div>
+    <p class="offices-desc">
+      Zhongtai's global network ensures responsive service, local market expertise, and efficient logistics coordination across Asia, the Americas, Europe, and beyond. Our trade teams are positioned in key commercial hubs to support buyers at every step.
+    </p>
+    <div class="offices-regions">
+      <div class="region-block">
+        <h4>China</h4>
+        <div class="office-pill"><span class="office-dot"></span>Shenzhen</div>
+        <div class="office-pill"><span class="office-dot"></span>Guangzhou</div>
+        <div class="office-pill"><span class="office-dot"></span>Yiwu</div>
+        <div class="office-pill"><span class="office-dot"></span>Ningbo</div>
+        <div class="office-pill"><span class="office-dot"></span>Changsha</div>
+        <div class="office-pill"><span class="office-dot"></span>Xiamen</div>
+        <div class="office-pill"><span class="office-dot"></span>Qingdao</div>
+      </div>
+      <div class="region-block">
+        <h4>Asia–Pacific</h4>
+        <div class="office-pill"><span class="office-dot"></span>Hong Kong</div>
+      </div>
+      <div class="region-block">
+        <h4>Americas</h4>
+        <div class="office-pill"><span class="office-dot"></span>Los Angeles, USA</div>
+        <div class="office-pill"><span class="office-dot"></span>New York, USA</div>
+        <div class="office-pill"><span class="office-dot"></span>Vancouver, Canada</div>
+      </div>
+      <div class="region-block">
+        <h4>Europe</h4>
+        <div class="office-pill"><span class="office-dot"></span>London, UK</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Contact Us</div>
+      <h2 class="section-title">Get the Latest Prices &amp; Details</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">
+        Our trade team responds promptly to all product inquiries. Fill in your requirements and a specialist will be in touch.
+      </p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Headquarters</div>
+              <div class="contact-item-val">No. 39, Yangchenghu Road<br>E&amp;T Development Zone<br>Urumqi, Xinjiang, China</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">Trade Email</div>
+              <div class="contact-item-val">wangjing@xjzhongtai-chem.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📧</div>
+            <div>
+              <div class="contact-item-label">General Email</div>
+              <div class="contact-item-val">zhongtaiint@xjzhongtai-chem.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🌐</div>
+            <div>
+              <div class="contact-item-label">Website</div>
+              <div class="contact-item-val">www.zhongtaiint.com</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 style="color:var(--white);font-size:1.15rem;font-weight:700;margin-bottom:1.5rem;">Product Enquiry Form</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" placeholder="Your organisation">
+          </div>
+          <div class="form-group">
+            <label>Contact Person</label>
+            <input type="text" placeholder="Full name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@company.com">
+          </div>
+          <div class="form-group">
+            <label>Phone / WhatsApp</label>
+            <input type="tel" placeholder="+1 / +44 / +852...">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Product of Interest</label>
+          <select>
+            <option value="">Select a product...</option>
+            <option>PVC Resin</option>
+            <option>Paste PVC</option>
+            <option>Caustic Soda</option>
+            <option>BDO (1,4-Butanediol)</option>
+            <option>PTA</option>
+            <option>PBAT (Biodegradable)</option>
+            <option>CPVC / Chloroether Resin</option>
+            <option>Viscose Fibre / Yarn</option>
+            <option>Non-woven Fabric</option>
+            <option>Cotton Yarn</option>
+            <option>Dissolving Pulp</option>
+            <option>Multiple Products</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Enquiry Details</label>
+          <textarea placeholder="Quantity required, destination port, delivery timeline, specifications..."></textarea>
+        </div>
+        <button class="form-submit">Submit Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">ZHONG TAI<span> International</span></div>
+    <div class="footer-copy">© 2024 Zhong Tai International Development (HK) Limited · Xinjiang Zhongtai Chemical Group. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
