@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>現恆建築控股有限公司 | In Construction Holdings (1500.HK)</title>
+<style>
+  :root {
+    --red: #c0392b;
+    --red-dark: #922b21;
+    --navy: #0a1f3c;
+    --blue: #1a3560;
+    --steel: #2c4a6e;
+    --light: #f4f7fb;
+    --white: #fff;
+    --text: #222;
+    --text-light: #666;
+    --border: #dce4ef;
+    --gold: #c9a227;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: var(--white); }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    padding: 0 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 66px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--red);
+  }
+  .nav-brand { text-decoration: none; display: flex; flex-direction: column; }
+  .nav-en { font-size: 17px; font-weight: 800; color: var(--white); letter-spacing: 0.5px; text-transform: uppercase; }
+  .nav-en span { color: var(--red); }
+  .nav-zh { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 1px; margin-top: 1px; }
+  .nav-stock { font-size: 11px; background: rgba(192,57,43,0.2); color: var(--red); border: 1px solid rgba(192,57,43,0.3); padding: 2px 8px; border-radius: 3px; margin-top: 1px; display: inline-block; }
+  .nav-links { display: flex; gap: 24px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--red); }
+  .nav-cta { background: var(--red); color: var(--white) !important; padding: 8px 20px; border-radius: 3px; font-weight: 700 !important; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--red-dark) !important; }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    padding: 80px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(192,57,43,0.07) 0%, transparent 100%);
+  }
+  .hero-grid { display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: center; width: 100%; position: relative; z-index: 2; }
+  .hero-content { }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(192,57,43,0.15);
+    border: 1px solid rgba(192,57,43,0.3);
+    color: #e06c5e;
+    padding: 5px 14px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .hero h1 span { color: var(--red); }
+  .hero-zh { font-size: 18px; color: rgba(255,255,255,0.5); letter-spacing: 4px; margin-bottom: 22px; display: block; }
+  .hero p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.75; max-width: 520px; margin-bottom: 36px; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-red { background: var(--red); color: var(--white); padding: 13px 30px; border-radius: 3px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .btn-red:hover { background: var(--red-dark); }
+  .btn-ghost { background: transparent; color: var(--white); padding: 13px 30px; border-radius: 3px; font-size: 14px; font-weight: 600; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.25); transition: all 0.2s; }
+  .btn-ghost:hover { border-color: var(--red); color: var(--red); }
+  .hero-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 28px;
+  }
+  .hero-card-title { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .hc-stat { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .hc-stat:last-child { border-bottom: none; }
+  .hc-label { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+  .hc-value { font-size: 16px; font-weight: 700; color: var(--white); }
+  .hc-value.red { color: #e06c5e; }
+
+  /* SECTION */
+  .section { padding: 72px 70px; }
+  .section-label { font-size: 11px; color: var(--red); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: 34px; font-weight: 800; color: var(--navy); line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .section-zh { font-size: 14px; color: var(--text-light); letter-spacing: 3px; margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--text-light); line-height: 1.75; max-width: 580px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .about-content p { font-size: 14px; color: var(--text-light); line-height: 1.8; margin-bottom: 14px; }
+  .about-facts { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 28px; }
+  .af-item { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 20px 16px; text-align: center; border-top: 3px solid var(--red); }
+  .af-num { font-size: 26px; font-weight: 800; color: var(--navy); }
+  .af-lbl { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+  .about-sidebar { display: flex; flex-direction: column; gap: 16px; }
+  .info-card {
+    background: var(--navy);
+    border-radius: 6px;
+    padding: 26px 24px;
+    color: var(--white);
+  }
+  .info-card h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 12px; letter-spacing: 1px; text-transform: uppercase; }
+  .info-card h4 span { color: var(--red); }
+  .info-row { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
+  .il { font-size: 11px; color: rgba(255,255,255,0.4); min-width: 44px; }
+  .iv { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+  .iv a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .stock-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(192,57,43,0.15);
+    border: 1px solid rgba(192,57,43,0.3);
+    color: #e06c5e;
+    padding: 4px 12px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 10px;
+  }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .svc-card {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px 24px;
+    transition: all 0.3s;
+    border-left: 4px solid var(--red);
+  }
+  .svc-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.09); transform: translateY(-3px); }
+  .svc-icon { font-size: 30px; margin-bottom: 14px; }
+  .svc-name { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .svc-zh { font-size: 12px; color: var(--red); letter-spacing: 1px; margin-bottom: 10px; }
+  .svc-desc { font-size: 13px; color: var(--text-light); line-height: 1.65; }
+
+  /* PROJECTS */
+  .projects { background: var(--navy); }
+  .projects .section-title { color: var(--white); }
+  .projects .section-zh { color: rgba(255,255,255,0.4); }
+  .projects .section-sub { color: rgba(255,255,255,0.6); }
+  .proj-list { display: flex; flex-direction: column; gap: 20px; margin-top: 40px; }
+  .proj-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 28px 30px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    transition: all 0.3s;
+  }
+  .proj-item:hover { background: rgba(192,57,43,0.06); border-color: rgba(192,57,43,0.25); }
+  .proj-num {
+    width: 50px; height: 50px;
+    background: rgba(192,57,43,0.15);
+    border: 1px solid rgba(192,57,43,0.3);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+    color: #e06c5e;
+    flex-shrink: 0;
+  }
+  .proj-body { }
+  .proj-title { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .proj-loc { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 10px; }
+  .proj-scope { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .ptag {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 11px;
+  }
+
+  /* EXPERTISE */
+  .expertise { background: var(--light); }
+  .exp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 40px; }
+  .exp-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .exp-card:hover { border-color: var(--red); box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+  .exp-icon { font-size: 28px; margin-bottom: 12px; }
+  .exp-name { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .exp-zh { font-size: 11px; color: var(--red); letter-spacing: 1px; margin-bottom: 8px; }
+  .exp-desc { font-size: 12px; color: var(--text-light); line-height: 1.6; }
+
+  /* CONTACT */
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; }
+  .contact-info h3 { font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 5px; }
+  .contact-info .sub { font-size: 12px; color: var(--text-light); letter-spacing: 1px; margin-bottom: 28px; }
+  .cdet { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .cdet:last-of-type { border-bottom: none; }
+  .cdet-icon { font-size: 18px; margin-top: 2px; flex-shrink: 0; }
+  .cdet-label { font-size: 11px; color: var(--text-light); letter-spacing: 0.5px; margin-bottom: 4px; }
+  .cdet-value { font-size: 15px; font-weight: 700; color: var(--navy); }
+  .cdet-value a { color: var(--navy); text-decoration: none; }
+  .cdet-value a:hover { color: var(--red); }
+  .contact-form { background: var(--light); border-radius: 6px; padding: 36px 32px; border: 1px solid var(--border); }
+  .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 20px; }
+  .fg { margin-bottom: 16px; }
+  .fg label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-light); margin-bottom: 6px; }
+  .fg input, .fg select, .fg textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 11px 14px;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--red); }
+  .fg textarea { min-height: 100px; resize: vertical; }
+  .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .submit-btn { width: 100%; background: var(--navy); color: var(--white); border: none; padding: 13px; border-radius: 3px; font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.2s; margin-top: 6px; }
+  .submit-btn:hover { background: var(--red); }
+
+  /* FOOTER */
+  footer {
+    background: #060e1a;
+    color: rgba(255,255,255,0.4);
+    padding: 36px 70px;
+    border-top: 2px solid var(--red);
+  }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .fb-en { font-size: 15px; font-weight: 700; color: var(--white); }
+  .fb-en span { color: var(--red); }
+  .fb-zh { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 1px; margin-top: 3px; }
+  .footer-links { display: flex; gap: 22px; list-style: none; }
+  .footer-links a { color: rgba(255,255,255,0.3); text-decoration: none; font-size: 12px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--red); }
+  .footer-copy { font-size: 11px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 60px 20px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 36px; }
+    .section { padding: 56px 20px; }
+    .about-grid, .svc-grid, .contact-grid { grid-template-columns: 1fr; }
+    .exp-grid { grid-template-columns: 1fr 1fr; }
+    .about-facts { grid-template-columns: 1fr 1fr; }
+    .proj-item { grid-template-columns: 1fr; }
+    .fg-row { grid-template-columns: 1fr; }
+    footer { padding: 28px 20px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <span class="nav-en"><span>IN</span>CON Holdings</span>
+    <span class="nav-zh">現恆建築控股有限公司 <span class="nav-stock">1500.HK</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-tag">📈 HKEX Listed · Stock Code: 1500 · Est. 1996</div>
+      <h1><span>In</span>Construction<br>Holdings Limited</h1>
+      <span class="hero-zh">現恆建築控股有限公司</span>
+      <p>A Hong Kong Stock Exchange listed contractor specialising in foundation, site formation, demolition, and general building works. With decades of experience on landmark projects across Hong Kong, we deliver engineering excellence on every site.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-red">View Projects</a>
+        <a href="#contact" class="btn-ghost">Contact Us</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">Company Information</div>
+      <div class="hc-stat">
+        <div class="hc-label">Stock Exchange</div>
+        <div class="hc-value red">HKEX · Stock Code 1500</div>
+      </div>
+      <div class="hc-stat">
+        <div class="hc-label">Year Founded</div>
+        <div class="hc-value">1996</div>
+      </div>
+      <div class="hc-stat">
+        <div class="hc-label">Headquarters</div>
+        <div class="hc-value">Causeway Bay, Hong Kong</div>
+      </div>
+      <div class="hc-stat">
+        <div class="hc-label">Industry</div>
+        <div class="hc-value">Foundation & Construction</div>
+      </div>
+      <div class="hc-stat">
+        <div class="hc-label">Tel</div>
+        <div class="hc-value">(852) 2576 0802</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">Hong Kong's Foundation<br>Construction Specialist</h2>
+      <p class="section-zh">現恆建築控股有限公司</p>
+      <p>In Construction Holdings Limited (現恆建築控股有限公司, Stock Code: 1500) is an investment holding company whose principal subsidiary, In Construction Limited (現恆建築有限公司), operates as a specialist contractor in the foundation and civil engineering sector in Hong Kong.</p>
+      <p>Founded in 1996 and headquartered in Causeway Bay, the company has built a strong track record across Hong Kong's demanding construction landscape — undertaking foundation, site formation, demolition, ground investigation, and general building works for major residential, commercial, and public sector developments.</p>
+      <p>As a listed entity on the Hong Kong Stock Exchange, the Group adheres to the highest standards of corporate governance, transparency, and professional service delivery — supported by experienced management and a skilled technical workforce.</p>
+      <div class="about-facts">
+        <div class="af-item"><div class="af-num">1996</div><div class="af-lbl">Year Founded</div></div>
+        <div class="af-item"><div class="af-num">1500</div><div class="af-lbl">HKEX Stock Code</div></div>
+        <div class="af-item"><div class="af-num">HK</div><div class="af-lbl">Hong Kong Listed</div></div>
+      </div>
+    </div>
+    <div class="about-sidebar">
+      <div class="info-card">
+        <h4><span>IN</span>CON Holdings</h4>
+        <div class="info-row"><span class="il">地址</span><span class="iv">26/F, Park Place, 5 Moreton Terrace, Causeway Bay, Hong Kong<br>香港銅鑼灣摩頓臺5號百富中心26樓</span></div>
+        <div class="info-row"><span class="il">電話</span><span class="iv"><a href="tel:+85225760802">(852) 2576 0802</a></span></div>
+        <div class="info-row"><span class="il">傳真</span><span class="iv">(852) 2576 4236</span></div>
+        <div class="info-row"><span class="il">Email</span><span class="iv"><a href="mailto:info@incon.hk">info@incon.hk</a></span></div>
+        <div class="info-row"><span class="il">Web</span><span class="iv"><a href="https://www.inconstruction.hk" target="_blank">inconstruction.hk</a></span></div>
+        <div class="stock-pill">📈 HKEX · 1500.HK · Listed Company</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="section-label">Our Services</div>
+  <h2 class="section-title">Foundation & Construction Services</h2>
+  <p class="section-zh">地基及建築工程服務</p>
+  <p class="section-sub">Specialist services covering the full spectrum of foundation, geotechnical, demolition, and building works for major development projects across Hong Kong.</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon">⚒️</div>
+      <div class="svc-name">Foundation Works</div>
+      <div class="svc-zh">地基工程</div>
+      <div class="svc-desc">Comprehensive piling solutions including bored piles, driven steel H-piles, minipiles, pre-bored socketted H-piles, pipe piles, and raft footing foundations for all types of development.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏔️</div>
+      <div class="svc-name">Site Formation</div>
+      <div class="svc-zh">土地平整</div>
+      <div class="svc-desc">Site formation works including slope stabilisation, soil nails, temporary working platforms, and ELS (Excavation & Lateral Support) systems for challenging terrain and level-difference sites.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">💣</div>
+      <div class="svc-name">Demolition Works</div>
+      <div class="svc-zh">拆卸工程</div>
+      <div class="svc-desc">Professional demolition of existing structures with full compliance to statutory requirements, site safety management, and environmental protection measures throughout the process.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔩</div>
+      <div class="svc-name">ELS & Retaining Works</div>
+      <div class="svc-zh">臨時支撐及擋土工程</div>
+      <div class="svc-desc">Design and construction of Excavation & Lateral Support (ELS) systems, sheet pile walls, soldier pile walls, minipile walls, and permanent retaining walls for deep excavation projects.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔬</div>
+      <div class="svc-name">Ground Investigation</div>
+      <div class="svc-zh">地質勘探</div>
+      <div class="svc-desc">Field ground investigation services including borehole drilling, soil sampling, in-situ testing, and geotechnical assessment to support foundation design and construction planning.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏗️</div>
+      <div class="svc-name">General Building Works</div>
+      <div class="svc-zh">一般建築工程</div>
+      <div class="svc-desc">General building, superstructure, and civil engineering works encompassing structural concrete, pile cap construction, superstructure to podium level, and vehicular access ramp construction.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section projects" id="projects">
+  <div class="section-label">Project Portfolio</div>
+  <h2 class="section-title" style="color:var(--white)">Selected Projects</h2>
+  <p class="section-zh">精選工程項目</p>
+  <p class="section-sub">Representative completed projects demonstrating our expertise across complex foundation and site formation works throughout Hong Kong.</p>
+  <div class="proj-list">
+    <div class="proj-item">
+      <div class="proj-num">01</div>
+      <div class="proj-body">
+        <div class="proj-title">Site Formation & Foundation Works — Seymour Road / Ying Fai Terrace</div>
+        <div class="proj-loc">📍 9A-9H Seymour Road & 1-7 Ying Fai Terrace, Hong Kong | Proposed Residential Development</div>
+        <div class="proj-scope">A technically challenging project involving over 27 metres of level difference. Works included temporary platform construction, driven steel H-piles, sheet piles, ELS and pile cap construction.</div>
+        <div class="proj-tags">
+          <span class="ptag">Driven Steel H-Piles</span>
+          <span class="ptag">Sheet Piles</span>
+          <span class="ptag">ELS</span>
+          <span class="ptag">Pile Cap</span>
+          <span class="ptag">27m Level Difference</span>
+        </div>
+      </div>
+    </div>
+    <div class="proj-item">
+      <div class="proj-num">02</div>
+      <div class="proj-body">
+        <div class="proj-title">Site Formation & Foundation Works — 350 Tai Hang Road</div>
+        <div class="proj-loc">📍 350 Tai Hang Road, Hong Kong | Proposed Residential Development</div>
+        <div class="proj-scope">Foundation and site formation works including pipe pile installation, excavation & lateral support (ELS), retaining wall construction, and raft footing foundation works.</div>
+        <div class="proj-tags">
+          <span class="ptag">Pipe Piles</span>
+          <span class="ptag">ELS</span>
+          <span class="ptag">Retaining Wall</span>
+          <span class="ptag">Raft Footing</span>
+        </div>
+      </div>
+    </div>
+    <div class="proj-item">
+      <div class="proj-num">03</div>
+      <div class="proj-body">
+        <div class="proj-title">Site Formation & Foundation Works — 1 High Street / 5 Hospital Road</div>
+        <div class="proj-loc">📍 1 High Street & 5 Hospital Road, Mid-Levels, Hong Kong | Residential Development</div>
+        <div class="proj-scope">Complex multi-discipline works including demolition of existing building, soil nail installation, temporary platforms (Contractor's T5 Endorsement), bored piles, sheet piles, ELS, retaining wall and pile cap.</div>
+        <div class="proj-tags">
+          <span class="ptag">Demolition</span>
+          <span class="ptag">Soil Nails</span>
+          <span class="ptag">Bored Piles</span>
+          <span class="ptag">T5 Endorsement</span>
+          <span class="ptag">ELS</span>
+        </div>
+      </div>
+    </div>
+    <div class="proj-item">
+      <div class="proj-num">04</div>
+      <div class="proj-body">
+        <div class="proj-title">Tanner Hill Elderly Housing Development</div>
+        <div class="proj-loc">📍 2-4 Tanner Road, North Point, Hong Kong | Elderly Housing Development</div>
+        <div class="proj-scope">Site formation and foundation works for elderly housing, including minipiles, large diameter bored piles, pre-bored socketted H-piles, raft footing and pile cap alteration works.</div>
+        <div class="proj-tags">
+          <span class="ptag">Minipiles</span>
+          <span class="ptag">Large Diameter Bored Piles</span>
+          <span class="ptag">Socketted H-Piles</span>
+          <span class="ptag">Raft Footing</span>
+        </div>
+      </div>
+    </div>
+    <div class="proj-item">
+      <div class="proj-num">05</div>
+      <div class="proj-body">
+        <div class="proj-title">Design & Construction — NKIL 4850, Tai Po Road, Shatin (ex-Carlton Hotel)</div>
+        <div class="proj-loc">📍 Tai Po Road, Shatin, New Territories | Residential Building & Dual-way Vehicular Access Ramp</div>
+        <div class="proj-scope">Design & Construction contract encompassing temporary working platform, soldier pile wall, minipiles wall, bored pile foundation, raft footing, socket H-pile foundation, soil nails, ELS pile cap, retaining wall and superstructure.</div>
+        <div class="proj-tags">
+          <span class="ptag">D&C Contract</span>
+          <span class="ptag">Soldier Pile Wall</span>
+          <span class="ptag">Bored Pile</span>
+          <span class="ptag">Superstructure</span>
+          <span class="ptag">Access Ramp</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="section expertise" id="expertise">
+  <div class="section-label">Technical Expertise</div>
+  <h2 class="section-title">Piling & Foundation Methods</h2>
+  <p class="section-zh">樁基工程技術</p>
+  <p class="section-sub">Our engineering team is experienced across the full range of piling and foundation methods used in Hong Kong's complex urban construction environment.</p>
+  <div class="exp-grid">
+    <div class="exp-card">
+      <div class="exp-icon">🔩</div>
+      <div class="exp-name">Bored Piles</div>
+      <div class="exp-zh">鑽孔樁</div>
+      <div class="exp-desc">Standard and large diameter bored pile installation for heavy structural loads.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">⚙️</div>
+      <div class="exp-name">Driven H-Piles</div>
+      <div class="exp-zh">打入型鋼樁</div>
+      <div class="exp-desc">Steel H-pile driving for sites requiring high load capacity in restricted access conditions.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">🏗️</div>
+      <div class="exp-name">Minipiles</div>
+      <div class="exp-zh">微型樁</div>
+      <div class="exp-desc">Small-diameter minipiles ideal for low headroom, restricted access or underpinning works.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">🔲</div>
+      <div class="exp-name">Sheet Piles & ELS</div>
+      <div class="exp-zh">鋼板樁及臨時支撐</div>
+      <div class="exp-desc">Temporary and permanent earth retention using sheet piles, soldier piles, and lateral support systems.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">🪝</div>
+      <div class="exp-name">Soil Nails</div>
+      <div class="exp-zh">土釘</div>
+      <div class="exp-desc">Ground stabilisation using soil nail systems for slope protection and cut face retention.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">📐</div>
+      <div class="exp-name">Raft Footings</div>
+      <div class="exp-zh">筏式基礎</div>
+      <div class="exp-desc">Continuous reinforced concrete raft foundation systems distributing structural loads across poor ground.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">🏔️</div>
+      <div class="exp-name">Site Formation</div>
+      <div class="exp-zh">土地平整</div>
+      <div class="exp-desc">Large-scale site formation including cut and fill, platforms, and slope management for hillside sites.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">📋</div>
+      <div class="exp-name">Design & Build</div>
+      <div class="exp-zh">設計及建造</div>
+      <div class="exp-desc">Full design and construction contracts offering integrated engineering solution delivery.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Get in Touch</h2>
+  <p class="section-zh">聯絡我們</p>
+  <br>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>現恆建築控股有限公司</h3>
+      <p class="sub">IN CONSTRUCTION HOLDINGS LIMITED · 1500.HK</p>
+      <div class="cdet">
+        <div class="cdet-icon">📍</div>
+        <div>
+          <div class="cdet-label">Head Office 辦公室</div>
+          <div class="cdet-value">26/F, Park Place, 5 Moreton Terrace<br>Causeway Bay, Hong Kong<br>香港銅鑼灣摩頓臺5號百富中心26樓</div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">📞</div>
+        <div>
+          <div class="cdet-label">Tel 電話</div>
+          <div class="cdet-value"><a href="tel:+85225760802">(852) 2576 0802</a></div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">📠</div>
+        <div>
+          <div class="cdet-label">Fax 傳真</div>
+          <div class="cdet-value">(852) 2576 4236</div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">✉️</div>
+        <div>
+          <div class="cdet-label">Email 電郵</div>
+          <div class="cdet-value"><a href="mailto:info@incon.hk">info@incon.hk</a></div>
+        </div>
+      </div>
+      <div class="cdet">
+        <div class="cdet-icon">🌐</div>
+        <div>
+          <div class="cdet-label">Website</div>
+          <div class="cdet-value"><a href="https://www.inconstruction.hk" target="_blank">www.inconstruction.hk</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Send Enquiry / 查詢</h3>
+      <div class="fg-row">
+        <div class="fg">
+          <label>Name 姓名</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="fg">
+          <label>Company 公司</label>
+          <input type="text" placeholder="Company name">
+        </div>
+      </div>
+      <div class="fg">
+        <label>Email 電郵</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="fg">
+        <label>Enquiry Type 查詢類別</label>
+        <select>
+          <option>Foundation Works 地基工程</option>
+          <option>Site Formation 土地平整</option>
+          <option>Demolition Works 拆卸工程</option>
+          <option>ELS & Retaining Works</option>
+          <option>Ground Investigation 地質勘探</option>
+          <option>General Building Works</option>
+          <option>Investor Relations 投資者關係</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Project Details 工程詳情</label>
+        <textarea placeholder="Please describe your project or enquiry..."></textarea>
+      </div>
+      <button class="submit-btn">Send Enquiry / 提交查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="fb-en"><span>IN</span>CONSTRUCTION Holdings Limited</div>
+      <div class="fb-zh">現恆建築控股有限公司 · 香港聯交所上市公司 · 股份代號 1500</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 In Construction Holdings Ltd. (1500.HK)</div>
+  </div>
+</footer>
+
+</body>
+</html>
