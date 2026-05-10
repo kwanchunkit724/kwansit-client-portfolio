@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>東方旅行社股份有限公司 | Orient Travel — 台灣 · 香港 · 中國</title>
+<style>
+  :root {
+    --red: #c0250e;
+    --red-dark: #9e1c08;
+    --red-light: #fef2f0;
+    --navy: #1a3558;
+    --navy-mid: #244a7a;
+    --gold: #c8a010;
+    --gold-dark: #a88008;
+    --gold-light: #fdf6e0;
+    --white: #ffffff;
+    --light: #f5f7fb;
+    --text: #2c3445;
+    --muted: #6b7280;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', '微軟正黑體', Arial, sans-serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
+  .nav-logo { width: 42px; height: 42px; border-radius: 8px; background: var(--red); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .nav-name { color: var(--white); font-weight: 700; font-size: 15px; line-height: 1.2; }
+  .nav-name span { color: var(--gold); font-size: 12px; font-weight: 400; }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a { color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--red); color: var(--white); padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 700; transition: background .2s; }
+  .nav-cta:hover { background: var(--red-dark); }
+
+  /* HERO */
+  .hero {
+    margin-top: 64px;
+    background: linear-gradient(150deg, var(--navy) 0%, var(--navy-mid) 55%, #1c4888 100%);
+    min-height: 570px; display: flex; align-items: center;
+    padding: 72px 48px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '🏯';
+    position: absolute; right: 80px; top: 40%;
+    font-size: 200px; opacity: 0.05;
+  }
+  .hero-content { max-width: 640px; z-index: 1; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(200,160,16,0.2); border: 1px solid rgba(200,160,16,0.4); color: var(--gold); padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; margin-bottom: 24px; }
+  .hero h1 { font-size: 42px; font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 8px; }
+  .hero h1 span { color: var(--gold); }
+  .hero-en { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 20px; }
+  .hero-desc { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 34px; max-width: 560px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-red { background: var(--red); color: var(--white); padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; transition: background .2s, transform .2s; }
+  .btn-red:hover { background: var(--red-dark); transform: translateY(-2px); }
+  .btn-gold { background: var(--gold); color: var(--white); padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; transition: background .2s, transform .2s; }
+  .btn-gold:hover { background: var(--gold-dark); transform: translateY(-2px); }
+  .hero-card { position: absolute; right: 56px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(12px); border-radius: 16px; padding: 28px 32px; min-width: 260px; z-index: 1; }
+  .hero-card-title { color: var(--gold); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+  .hc-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; font-size: 13px; color: rgba(255,255,255,0.9); }
+  .hc-row:last-child { margin-bottom: 0; }
+  .hc-row strong { color: var(--white); display: block; }
+
+  /* STRIP */
+  .strip { background: var(--red); display: flex; justify-content: center; flex-wrap: wrap; }
+  .strip-item { padding: 20px 44px; text-align: center; border-right: 1px solid rgba(255,255,255,0.25); }
+  .strip-item:last-child { border-right: none; }
+  .strip-num { font-size: 24px; font-weight: 800; color: var(--white); }
+  .strip-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 2px; }
+
+  /* SECTION */
+  section { padding: 80px 48px; }
+  .section-label { display: inline-block; color: var(--red); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  h2 { font-size: 34px; font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 640px; margin-bottom: 48px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .coverage-box { background: var(--white); border-radius: 14px; padding: 26px; border-left: 4px solid var(--red); margin-bottom: 26px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .coverage-box h3 { font-size: 14px; color: var(--red); font-weight: 700; margin-bottom: 10px; }
+  .coverage-box p { font-size: 14px; color: var(--text); line-height: 1.75; }
+  .about-desc p { font-size: 15px; color: var(--text); line-height: 1.8; margin-bottom: 16px; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .about-prop { background: var(--white); border-radius: 12px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-top: 3px solid var(--red); }
+  .about-prop-icon { font-size: 26px; margin-bottom: 10px; }
+  .about-prop h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .about-prop p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: var(--white); border-radius: 14px; padding: 28px 22px; box-shadow: 0 4px 18px rgba(0,0,0,0.07); border-top: 4px solid var(--red); transition: transform .25s, box-shadow .25s; }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+  .service-icon { width: 50px; height: 50px; border-radius: 12px; background: var(--red-light); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+  .service-card h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .service-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .service-tag { display: inline-block; margin-top: 12px; background: var(--red-light); color: var(--red-dark); padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+
+  /* FLEET */
+  .fleet { background: var(--light); }
+  .fleet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .fleet-card { background: var(--navy); border-radius: 14px; padding: 36px 30px; color: var(--white); }
+  .fleet-card h3 { font-size: 20px; font-weight: 800; color: var(--gold); margin-bottom: 6px; }
+  .fleet-card .sub { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 20px; }
+  .fleet-item { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .fleet-item-icon { font-size: 28px; }
+  .fleet-item-info h4 { font-size: 15px; font-weight: 700; color: var(--white); }
+  .fleet-item-info p { font-size: 12px; color: rgba(255,255,255,0.6); }
+  .fleet-amenities { margin-top: 24px; }
+  .fleet-amenities h4 { font-size: 13px; color: var(--gold); font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+  .amenity { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 13px; color: rgba(255,255,255,0.8); }
+  .amenity span { color: var(--gold); }
+  .fleet-highlights { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  .fleet-highlight { background: var(--white); border-radius: 12px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid var(--gold); }
+  .fleet-highlight-icon { font-size: 24px; margin-bottom: 10px; }
+  .fleet-highlight h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .fleet-highlight p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* GUIDE */
+  .guide-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .guide-card { background: var(--navy); border-radius: 14px; padding: 28px 20px; text-align: center; transition: transform .25s; }
+  .guide-card:hover { transform: translateY(-4px); }
+  .guide-icon { font-size: 32px; margin-bottom: 14px; }
+  .guide-card h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .guide-card p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+  /* CONTACT */
+  .contact { background: var(--navy); }
+  .contact h2 { color: var(--white); }
+  .contact .section-label { color: var(--gold); }
+  .contact .section-sub { color: rgba(255,255,255,0.65); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+  .contact-row { display: flex; align-items: flex-start; gap: 14px; }
+  .contact-row-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(200,160,16,0.15); border: 1px solid rgba(200,160,16,0.3); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .contact-row-text h4 { font-size: 12px; color: var(--gold); font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .contact-row-text p, .contact-row-text a { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.55; }
+  .contact-row-text a:hover { color: var(--gold); }
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .contact-form input, .contact-form select, .contact-form textarea { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 12px 15px; color: var(--white); font-size: 14px; font-family: inherit; outline: none; transition: border-color .2s; }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form select option { background: var(--navy); }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--gold); }
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+  .contact-form button { background: var(--red); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .2s; }
+  .contact-form button:hover { background: var(--red-dark); }
+
+  /* FOOTER */
+  footer { background: #0f1c35; color: rgba(255,255,255,0.5); text-align: center; padding: 26px 48px; font-size: 13px; }
+  footer span { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 48px 24px; }
+    .hero h1 { font-size: 30px; }
+    .hero-card { display: none; }
+    section { padding: 56px 24px; }
+    .about-grid, .contact-grid, .fleet-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .guide-grid { grid-template-columns: 1fr 1fr; }
+    .about-props { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">🌏</div>
+    <div class="nav-name">東方旅行社<br><span>Orient Travel Co., Ltd.</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">關於我們</a>
+    <a href="#services">服務項目</a>
+    <a href="#fleet">豪華車隊</a>
+    <a href="#guide">導遊服務</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <a href="#contact" class="nav-cta">立即查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🏯 台灣 · 香港 · 中國 · 三地信譽旅行社</div>
+    <h1>發現<span>台灣之美</span><br>盡在東方旅遊</h1>
+    <div class="hero-en">Orient Travel Co., Ltd. · Taiwan · Hong Kong · China</div>
+    <p class="hero-desc">
+      東方旅行社股份有限公司在台灣、香港及中國均享有優良信譽，專門為大陸商界、商業團體及個人辦理入台手續，提供全方位的台灣觀光、商務及探親旅遊服務。
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-red">立即查詢</a>
+      <a href="#services" class="btn-gold">服務項目</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-title">🏆 集團實力</div>
+    <div class="hc-row">🚌<div><strong>49台大型遊覽車</strong>豪華觀光巴士</div></div>
+    <div class="hc-row">🚐<div><strong>9台中巴</strong>小型團體接送</div></div>
+    <div class="hc-row">🗣️<div><strong>多語言</strong>普通話·廣東話·客語·閩南語</div></div>
+    <div class="hc-row">🏛️<div><strong>觀光局核准</strong>中華民國旅行業品質保障</div></div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">
+    <div class="strip-num">49台</div>
+    <div class="strip-label">大型遊覽車</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">3地</div>
+    <div class="strip-label">台灣·香港·中國</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">4種</div>
+    <div class="strip-label">語言導遊</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">觀光局</div>
+    <div class="strip-label">品質保障協會會員</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">關於我們</div>
+    <h2>三地深耕 · 信譽卓越</h2>
+    <p class="section-sub" style="margin: 0 auto;">東方旅行社股份有限公司在台灣、香港和中國均享有優良信譽，同時秉持著與內地多家知名旅行社保持著良好業務關係，及與各有關部門建立了深厚的合作友誼。</p>
+  </div>
+  <div class="about-grid">
+    <div>
+      <div class="coverage-box">
+        <h3>🌟 業務範疇</h3>
+        <p>我們具體有著豐富的落地經驗與傳承，提供旅客優質的服務建立了深厚的底蘊，所累積的口碑、商譽眾所皆知。在此同時我們也將台灣最具特色的旅遊風土人文，清晰的呈現在大陸相關合作夥伴的心中。</p>
+      </div>
+      <div class="about-desc">
+        <p>本公司乃交通部觀光局核准，榮獲中華民國旅行業品質保障協會會員，從事公司行號、機關學校團體內外旅遊。本著優良服務所有旅客，保障顧客之所有權利；服務採一條龍，讓您玩得輕鬆、住的舒適、買得更放心。</p>
+        <p>我們專門為大陸的商界、商業團體與個人辦理入台手續，提供台灣各星級的飯店住宿、豪華旅遊巴士、各式風味飲食；另有通曉普通話、廣東話、閩南語、客語的專業導遊群，安排台灣參訪交流，設計參觀考察路線，安排特殊旅遊專案等。</p>
+      </div>
+    </div>
+    <div class="about-props">
+      <div class="about-prop">
+        <div class="about-prop-icon">🏛️</div>
+        <h4>觀光局核准</h4>
+        <p>交通部觀光局核准旅行社，中華民國旅行業品質保障協會會員。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🤝</div>
+        <h4>三地業務網絡</h4>
+        <p>台灣、香港及中國三地皆享有良好的業務關係與深厚的合作夥伴。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🚌</div>
+        <h4>自有車隊</h4>
+        <p>成立金順旅運有限公司，自有49台大型遊覽車，保障車隊品質。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">⭐</div>
+        <h4>一條龍服務</h4>
+        <p>行程·酒店·車輛·證照申辦(入台證)全由專業親切人員為您服務。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background: var(--white);">
+  <div class="section-label">服務項目</div>
+  <h2>全方位旅台服務</h2>
+  <p class="section-sub">我們專注為大陸、香港旅客提供入台觀光、商務及探親等一站式旅遊服務。</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h3>入台手續辦理</h3>
+      <p>專門辦理大陸商界、商業團體及個人之入台手續，包括台灣通行證(入台證)申請，確保旅客順利入境台灣。</p>
+      <span class="service-tag">入台證辦理</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏨</div>
+      <h3>飯店住宿安排</h3>
+      <p>依觀光局規定嚴選合法住宿旅館（有花蓮旅館業專用標示），並選擇衛生可靠且符合觀光局各項安檢合格之餐廳為主。</p>
+      <span class="service-tag">星級飯店</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏖️</div>
+      <h3>觀光旅遊行程</h3>
+      <p>安排台灣參訪交流，設計參觀考察路線，以觀光局評鑑合格、合法、優良特定、具知名度之風景旅遊樂區為主。</p>
+      <span class="service-tag">景點安排</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💼</div>
+      <h3>商務考察行程</h3>
+      <p>為大陸商界及商業團體設計商務考察行程，安排工廠參觀、商業交流及會議安排，結合旅遊與商務。</p>
+      <span class="service-tag">商務考察</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👨‍👩‍👧</div>
+      <h3>探親及個人旅遊</h3>
+      <p>提供台灣個人旅行、自由行及探親旅遊等各項諮詢，免費提供寶島台灣團體旅行、個人旅行、個人自主遊等各項諮詢。</p>
+      <span class="service-tag">個人/團體</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🍽️</div>
+      <h3>特色美食安排</h3>
+      <p>搭配台灣各地不同風味美食選擇，以環境優美、單純、安全為首選，讓旅客品嘗地道台灣特色飲食文化。</p>
+      <span class="service-tag">台灣美食</span>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET -->
+<section class="fleet" id="fleet">
+  <div style="text-align: center; margin-bottom: 48px;">
+    <div class="section-label">豪華車隊</div>
+    <h2>金順旅運 · 專屬車隊</h2>
+    <p class="section-sub" style="margin: 0 auto;">本公司為保障團體車輛品質，成立金順旅運有限公司，目前大型遊覽車49台，大中巴9台，專為團體運作設置。</p>
+  </div>
+  <div class="fleet-grid">
+    <div class="fleet-card">
+      <h3>豪華遊覽車隊</h3>
+      <div class="sub">金順旅運有限公司 · 自有車隊</div>
+      <div class="fleet-item">
+        <div class="fleet-item-icon">🚌</div>
+        <div class="fleet-item-info">
+          <h4>大型遊覽車 × 49台</h4>
+          <p>全程使用檢驗合格之豪華旅遊巴士</p>
+        </div>
+      </div>
+      <div class="fleet-item">
+        <div class="fleet-item-icon">🚐</div>
+        <div class="fleet-item-info">
+          <h4>中型巴士 × 9台</h4>
+          <p>適合中小型團體使用</p>
+        </div>
+      </div>
+      <div class="fleet-amenities">
+        <h4>車廂設備</h4>
+        <div class="amenity"><span>✅</span> 舒適座椅，確保長途旅途舒適</div>
+        <div class="amenity"><span>✅</span> 好看的電視設備</div>
+        <div class="amenity"><span>✅</span> 卡拉OK設備，歡唱娛樂</div>
+        <div class="amenity"><span>✅</span> 嚴選具多年駕駛豐富經驗的司機人員</div>
+        <div class="amenity"><span>✅</span> 貼心熱誠的服務，專業、安全的技術</div>
+        <div class="amenity"><span>✅</span> 車輛均排定定期保養檢修行程並記錄</div>
+      </div>
+    </div>
+    <div class="fleet-highlights">
+      <div class="fleet-highlight">
+        <div class="fleet-highlight-icon">🔍</div>
+        <h4>嚴格司機篩選</h4>
+        <p>嚴選具有多年駕駛豐富經驗的司機人員，貼心熱誠的服務，專業、安全的技術保證讓您的旅程一路安全暢通。</p>
+      </div>
+      <div class="fleet-highlight">
+        <div class="fleet-highlight-icon">🛡️</div>
+        <h4>定期安全檢查</h4>
+        <p>本公司車輛均排定定期保養檢修行程並記錄，於出車前確實做好各項車輛每日安全檢查工作。</p>
+      </div>
+      <div class="fleet-highlight">
+        <div class="fleet-highlight-icon">✅</div>
+        <h4>交通局合格認證</h4>
+        <p>司機均為交通局審驗合格且具備多年駕駛豐富經驗，確保用車人行之安全。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUIDE SERVICES -->
+<section id="guide" style="background: var(--white);">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">導遊服務</div>
+    <h2>多語言專業導遊</h2>
+    <p class="section-sub" style="margin: 0 auto;">我們擁有通曉多種語言的專業導遊群，讓來自不同地區的旅客都能享受到親切、生動詳實的講解服務。</p>
+  </div>
+  <div class="guide-grid">
+    <div class="guide-card">
+      <div class="guide-icon">🇨🇳</div>
+      <h4>普通話導遊</h4>
+      <p>服務來自中國大陸及北方地區的旅客，以標準普通話詳盡介紹台灣風土人情。</p>
+    </div>
+    <div class="guide-card">
+      <div class="guide-icon">🇭🇰</div>
+      <h4>廣東話導遊</h4>
+      <p>專為香港及廣東旅客提供廣東話導遊服務，讓港澳旅客倍感親切。</p>
+    </div>
+    <div class="guide-card">
+      <div class="guide-icon">🗣️</div>
+      <h4>閩南語導遊</h4>
+      <p>服務閩南地區旅客，以閩南語介紹台灣深厚的閩南文化與歷史背景。</p>
+    </div>
+    <div class="guide-card">
+      <div class="guide-icon">🌿</div>
+      <h4>客語導遊</h4>
+      <p>為客家旅客提供客語導遊服務，分享台灣客家文化的獨特魅力。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">聯絡我們</div>
+  <h2>立即查詢旅台服務</h2>
+  <p class="section-sub">歡迎電郵查詢，我們的專業旅遊顧問將盡快為您提供詳細的旅台服務資訊及報價。</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-row-icon">🏢</div>
+        <div class="contact-row-text">
+          <h4>公司名稱</h4>
+          <p>東方旅行社股份有限公司<br>Orient Travel Co., Ltd.</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📧</div>
+        <div class="contact-row-text">
+          <h4>電郵</h4>
+          <a href="mailto:21829867@orienttravel.com.tw">21829867@orienttravel.com.tw</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">🌐</div>
+        <div class="contact-row-text">
+          <h4>網站</h4>
+          <a href="https://www.orienttravel.com.tw" target="_blank">www.orienttravel.com.tw</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">🗺️</div>
+        <div class="contact-row-text">
+          <h4>服務地區</h4>
+          <p>台灣 · 香港 · 中國大陸</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">🏛️</div>
+        <div class="contact-row-text">
+          <h4>資質認證</h4>
+          <p>交通部觀光局核准<br>中華民國旅行業品質保障協會會員</p>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <input type="text" placeholder="您的姓名 Your Name" />
+      <input type="tel" placeholder="聯絡電話 Phone" />
+      <input type="email" placeholder="電郵地址 Email" />
+      <select>
+        <option value="" disabled selected>查詢類別 Enquiry Type</option>
+        <option>入台手續辦理 Taiwan Entry Permit</option>
+        <option>觀光旅遊 Sightseeing Tour</option>
+        <option>商務考察 Business Visit</option>
+        <option>探親旅遊 Family Visit</option>
+        <option>個人自由行 Individual Travel</option>
+        <option>團體旅遊 Group Tour</option>
+        <option>其他查詢 General Enquiry</option>
+      </select>
+      <textarea placeholder="請描述您的旅遊需求（目的、人數、日期等）…"></textarea>
+      <button type="submit">提交查詢 / Send Enquiry 🏯</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 <span>東方旅行社股份有限公司 Orient Travel Co., Ltd.</span> · 交通部觀光局核准 · 中華民國旅行業品質保障協會會員 · All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
