@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光大藥業貿易有限公司 Kwong Tai Pharmaceutical Trading | 香港藥業批發</title>
+<style>
+:root {
+  --primary: #081830;
+  --primary-mid: #0c2040;
+  --accent: #0c60b8;
+  --accent-light: #1878d8;
+  --red: #b82020;
+  --red-light: #d83030;
+  --gold: #b89020;
+  --white: #ffffff;
+  --off-white: #f4f8fc;
+  --light-grey: #dce8f0;
+  --mid-grey: #7888a0;
+  --text: #101e30;
+  --text-light: #4a6080;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 20px rgba(8,24,48,0.10);
+  --shadow-md: 0 8px 36px rgba(8,24,48,0.14);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.3s ease;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', 'Microsoft JhengHei', 'Noto Sans TC', system-ui, sans-serif; color: var(--text); background: var(--white); line-height: 1.7; }
+a { text-decoration: none; color: inherit; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(8,24,48,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(12,96,184,0.22);
+  padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px;
+}
+.nav-logo { font-size: 1.2rem; font-weight: 800; color: var(--white); }
+.nav-logo span { color: var(--accent-light); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.78); font-size: 0.9rem; font-weight: 500; transition: var(--transition); }
+.nav-links a:hover { color: var(--accent-light); }
+.nav-cta { background: var(--accent); color: var(--white); padding: 0.5rem 1.3rem; border-radius: 50px; font-size: 0.88rem; font-weight: 700; transition: var(--transition); }
+.nav-cta:hover { background: var(--accent-light); }
+
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary) 0%, #0c2040 40%, #0e2850 70%, #0c2850 100%);
+  display: flex; align-items: center; padding: 100px 5% 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(12,96,184,0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 15% 72%, rgba(184,32,32,0.08) 0%, transparent 65%);
+}
+.hero-inner { max-width: 1200px; width: 100%; margin: 0 auto; display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+.hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(12,96,184,0.15); border: 1px solid rgba(12,96,184,0.38); color: var(--accent-light); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 1.5rem; }
+.hero h1 { font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 900; line-height: 1.2; color: var(--white); margin-bottom: 0.5rem; }
+.hero h1 .accent { color: var(--accent-light); }
+.hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.68); margin-bottom: 1.8rem; }
+.hero-desc { font-size: 1rem; color: rgba(255,255,255,0.66); line-height: 1.80; margin-bottom: 2.2rem; max-width: 520px; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary { background: var(--accent); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; transition: var(--transition); box-shadow: 0 4px 20px rgba(12,96,184,0.40); }
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+.btn-outline { border: 2px solid rgba(255,255,255,0.32); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: var(--transition); }
+.btn-outline:hover { border-color: var(--accent-light); color: var(--accent-light); }
+.hero-card { background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 2rem; }
+.hero-card-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.8rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.10); }
+.hero-card-icon { width: 50px; height: 50px; border-radius: 14px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+.hero-card-head h3 { color: var(--white); font-size: 1rem; font-weight: 700; }
+.hero-card-head p { color: rgba(255,255,255,0.50); font-size: 0.78rem; }
+.hero-info-row { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+.hero-info-icon { width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0; background: rgba(12,96,184,0.18); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+.hero-info-label { font-size: 0.70rem; color: rgba(255,255,255,0.42); text-transform: uppercase; letter-spacing: 0.06em; }
+.hero-info-val { font-size: 0.88rem; color: rgba(255,255,255,0.90); font-weight: 500; }
+
+.stats-strip { background: linear-gradient(90deg, var(--primary) 0%, var(--primary-mid) 100%); padding: 3rem 5%; }
+.stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.stat-item { text-align: center; }
+.stat-num { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--accent-light); letter-spacing: -0.02em; line-height: 1; }
+.stat-unit { font-size: 1.3rem; }
+.stat-label { color: rgba(255,255,255,0.60); font-size: 0.85rem; margin-top: 0.4rem; }
+
+section { padding: 90px 5%; }
+.section-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(12,96,184,0.08); border: 1px solid rgba(12,96,184,0.25); color: var(--accent); padding: 0.35rem 1rem; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 1rem; }
+.section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: var(--primary); line-height: 1.25; }
+.section-subtitle { font-size: 1.02rem; color: var(--text-light); line-height: 1.75; margin-top: 0.8rem; max-width: 620px; }
+.section-header { margin-bottom: 3rem; }
+.max-w { max-width: 1200px; margin: 0 auto; }
+
+.about { background: var(--off-white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-highlight { background: linear-gradient(135deg, var(--primary) 0%, #0c2040 100%); border-radius: 18px; padding: 2.2rem; border-left: 4px solid var(--red); margin-bottom: 2rem; }
+.about-highlight blockquote { font-size: 1.15rem; font-weight: 700; color: var(--white); line-height: 1.6; }
+.about-highlight cite { display: block; margin-top: 0.8rem; font-size: 0.8rem; color: var(--accent-light); font-style: normal; }
+.about-body p { font-size: 0.98rem; color: var(--text-light); line-height: 1.85; margin-bottom: 1.2rem; }
+.prop-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.prop-card { background: var(--white); border-radius: var(--radius); padding: 1.4rem; border: 1px solid var(--light-grey); transition: var(--transition); }
+.prop-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.prop-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.prop-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem; }
+.prop-card p { font-size: 0.8rem; color: var(--text-light); line-height: 1.55; }
+
+.products { background: var(--white); }
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+.product-card { background: var(--card-bg); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--light-grey); transition: var(--transition); position: relative; overflow: hidden; }
+.product-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); transform: scaleX(0); transform-origin: left; transition: var(--transition); }
+.product-card:hover { border-color: rgba(12,96,184,0.3); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.product-card:hover::before { transform: scaleX(1); }
+.product-icon { width: 54px; height: 54px; border-radius: 14px; background: linear-gradient(135deg, rgba(12,96,184,0.12), rgba(12,96,184,0.05)); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.2rem; }
+.product-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.7rem; }
+.product-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.70; }
+.product-tag { display: inline-block; margin-top: 1rem; padding: 0.22rem 0.75rem; background: rgba(12,96,184,0.08); border: 1px solid rgba(12,96,184,0.22); color: var(--accent); font-size: 0.72rem; font-weight: 700; border-radius: 50px; }
+
+.compliance {
+  background: linear-gradient(135deg, var(--primary) 0%, #0c2040 55%, #0e2848 100%);
+  position: relative; overflow: hidden;
+}
+.compliance::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 65% 55% at 78% 45%, rgba(12,96,184,0.12) 0%, transparent 70%); }
+.compliance .section-tag { background: rgba(184,144,32,0.15); border-color: rgba(184,144,32,0.35); color: #e0c040; }
+.compliance .section-title { color: var(--white); }
+.compliance .section-subtitle { color: rgba(255,255,255,0.62); }
+.comp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; z-index: 1; }
+.comp-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: 16px; padding: 2rem; transition: var(--transition); text-align: center; }
+.comp-card:hover { background: rgba(255,255,255,0.10); border-color: rgba(12,96,184,0.4); transform: translateY(-3px); }
+.comp-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.comp-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.7rem; }
+.comp-card p { font-size: 0.88rem; color: rgba(255,255,255,0.60); line-height: 1.65; }
+
+.contact { background: linear-gradient(135deg, var(--primary) 0%, #0c2040 100%); }
+.contact .section-title { color: var(--white); }
+.contact .section-subtitle { color: rgba(255,255,255,0.62); }
+.contact .section-tag { background: rgba(12,96,184,0.15); border-color: rgba(12,96,184,0.35); color: var(--accent-light); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
+.contact-item { display: flex; align-items: flex-start; gap: 1rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: var(--radius); padding: 1.3rem; }
+.contact-item-icon { width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0; background: rgba(12,96,184,0.18); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.contact-item-label { font-size: 0.70rem; color: rgba(255,255,255,0.40); text-transform: uppercase; letter-spacing: 0.07em; }
+.contact-item-val { font-size: 0.92rem; color: rgba(255,255,255,0.90); font-weight: 500; margin-top: 0.15rem; }
+.contact-form { background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.10); border-radius: 20px; padding: 2.4rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.58); margin-bottom: 0.4rem; font-weight: 500; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-sm); padding: 0.75rem 1rem; color: var(--white); font-size: 0.9rem; transition: var(--transition); outline: none; font-family: inherit; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent-light); background: rgba(255,255,255,0.12); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.28); }
+.form-group select option { background: var(--primary); color: var(--white); }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-submit { width: 100%; background: var(--accent); color: var(--white); border: none; border-radius: 50px; padding: 1rem; font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition); }
+.form-submit:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+footer { background: #050d1a; padding: 2.5rem 5%; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-size: 1.1rem; font-weight: 800; color: var(--white); }
+.footer-logo span { color: var(--accent-light); }
+.footer-copy { font-size: 0.80rem; color: rgba(255,255,255,0.38); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.80rem; color: rgba(255,255,255,0.42); transition: var(--transition); }
+.footer-links a:hover { color: var(--accent-light); }
+
+@media (max-width: 960px) {
+  .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero-card { display: none; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .products-grid, .comp-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .products-grid, .comp-grid, .prop-cards { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">光大<span>藥業</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#products">產品系列</a></li>
+    <li><a href="#compliance">品質合規</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">批發查詢</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">💊 香港藥業批發 · 中西藥品 · 保健品供應</div>
+      <h1>藥業貿易，<br><span class="accent">誠信為本。</span></h1>
+      <p class="hero-sub">光大藥業貿易有限公司 — 香港專業藥業批發商</p>
+      <p class="hero-desc">
+        光大藥業貿易有限公司（Kwong Tai Pharmaceutical Trading Co., Ltd.）是香港的專業藥業批發貿易商，為藥房、醫療機構及零售商提供中西藥品、保健品及醫療用品的批發採購服務。我們重視產品品質及合規，確保每一款供應品均符合香港藥業規管要求。
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">了解產品系列</a>
+        <a href="#contact" class="btn-outline">批發查詢</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hero-card-icon">💊</div>
+        <div>
+          <h3>光大藥業貿易有限公司</h3>
+          <p>Kwong Tai Pharmaceutical Trading Co., Ltd.</p>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">📍</div>
+        <div>
+          <div class="hero-info-label">地區</div>
+          <div class="hero-info-val">香港</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">🌐</div>
+        <div>
+          <div class="hero-info-label">網站</div>
+          <div class="hero-info-val">kwongtai-pharm.com</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">🏢</div>
+        <div>
+          <div class="hero-info-label">行業</div>
+          <div class="hero-info-val">藥業批發貿易</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">✅</div>
+        <div>
+          <div class="hero-info-label">合規</div>
+          <div class="hero-info-val">符合香港藥務監管規定</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">B2B</div>
+      <div class="stat-label">藥業批發專門</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">中西</div>
+      <div class="stat-label">中西藥品供應</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">✅</div>
+      <div class="stat-label">合規藥業產品</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">香港本地基地</div>
+    </div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="max-w">
+    <div class="about-grid">
+      <div>
+        <div class="section-header">
+          <div class="section-tag">關於我們</div>
+          <h2 class="section-title">香港藥業<br>專業批發夥伴</h2>
+        </div>
+        <div class="about-highlight">
+          <blockquote>「以嚴謹的品質標準，為香港藥業提供可靠、合規的藥品及保健品批發服務。」</blockquote>
+          <cite>— 光大藥業貿易有限公司</cite>
+        </div>
+        <div class="about-body">
+          <p>
+            光大藥業貿易有限公司是香港一家專注於藥品及健康產品批發貿易的專業公司。我們為藥房、診所、醫院及健康產品零售商提供穩定、可靠的供應服務。
+          </p>
+          <p>
+            我們嚴格遵守香港藥物監督管理局（HWFB/DH）的相關法規，確保所有批發藥品及保健品均持有適當的香港產品登記及進口許可。安全、合規，是我們對每一位客戶的承諾。
+          </p>
+          <p>
+            多年來，我們建立了廣泛的供應商及客戶網絡，覆蓋香港各區的藥房、醫療中心及保健產品零售商，是業界信賴的批發貿易夥伴。
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">🛡️</div>
+            <h4>正貨保證</h4>
+            <p>所有產品均來自正規渠道，持有完整的追溯文件及原廠證明。</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📋</div>
+            <h4>合規供應</h4>
+            <p>所有批發藥品均持有香港衛生署登記，符合相關藥物法規要求。</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🚚</div>
+            <h4>穩定供應</h4>
+            <p>充足庫存確保穩定供貨，快速處理訂單，減少客戶缺貨風險。</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💰</div>
+            <h4>批發優惠</h4>
+            <p>為長期客戶及大宗採購提供具競爭力的批發價格及付款安排。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">產品系列</div>
+      <h2 class="section-title">藥品及保健品批發供應</h2>
+      <p class="section-subtitle">涵蓋中西藥品、保健補充品及醫療用品，滿足藥房及醫療機構的多元需求。</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">💊</div>
+        <h3>西藥及處方藥品</h3>
+        <p>持牌批發各類已在香港衛生署登記的西藥製品，包括常用藥物、慢性病用藥及OTC非處方藥物，確保正貨供應。</p>
+        <span class="product-tag">持牌批發</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🌿</div>
+        <h3>中藥及中成藥</h3>
+        <p>批發各類中成藥、中藥材及中藥顆粒沖劑，包括傳統名牌中成藥及具認可的中藥製品，符合香港中醫藥條例規定。</p>
+        <span class="product-tag">中醫藥條例合規</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🧴</div>
+        <h3>保健補充品</h3>
+        <p>維他命、礦物質、魚油、益生菌等各類保健補充品，來自知名品牌及原廠授權，確保功效及安全。</p>
+        <span class="product-tag">知名品牌</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🩺</div>
+        <h3>醫療器材及用品</h3>
+        <p>血壓計、血糖機、傷口護理用品、外科口罩等醫療器材及消耗品，符合香港醫療器材規管要求。</p>
+        <span class="product-tag">醫療器材登記</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">👶</div>
+        <h3>嬰兒及母嬰用品</h3>
+        <p>嬰兒配方奶粉、嬰兒護膚品、孕婦保健品等，選用符合安全標準的知名品牌，適合藥房及母嬰店代售。</p>
+        <span class="product-tag">安全認證</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">💆</div>
+        <h3>個人護理及美容品</h3>
+        <p>藥妝護膚品、醫療級防曬品、皮膚護理藥膏等具藥效成分的個人護理產品，適合藥房作保健銷售。</p>
+        <span class="product-tag">藥妝專區</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="compliance" id="compliance">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">品質合規</div>
+      <h2 class="section-title">嚴格的藥業標準</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">藥業批發的可靠性，建立在嚴謹的合規基礎之上。</p>
+    </div>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="comp-icon">📋</div>
+        <h3>香港藥物登記</h3>
+        <p>所有批發藥品均持有香港衛生署藥物辦公室（DH）的正式產品登記，確保合法合規批發及銷售。</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🔍</div>
+        <h3>產品溯源追蹤</h3>
+        <p>完善的產品批次記錄及供應鏈追蹤系統，確保每一批貨物均可完整追溯至原廠，保障藥品安全。</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">❄️</div>
+        <h3>藥品儲存管理</h3>
+        <p>按照藥品儲存要求，維持適當溫濕度的倉儲環境，確保藥品質量不受儲運過程影響。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">批發查詢</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">
+        歡迎藥房、醫療機構及保健品零售商查詢批發事宜，我們將盡快回覆您的查詢。
+      </p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">地區</div>
+              <div class="contact-item-val">香港</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🌐</div>
+            <div>
+              <div class="contact-item-label">網站</div>
+              <div class="contact-item-val">kwongtai-pharm.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🏢</div>
+            <div>
+              <div class="contact-item-label">服務對象</div>
+              <div class="contact-item-val">藥房、診所、醫院、保健品零售商</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">⏱️</div>
+            <div>
+              <div class="contact-item-label">回覆時間</div>
+              <div class="contact-item-val">一個工作天內回覆</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 style="color:var(--white);font-size:1.15rem;font-weight:700;margin-bottom:1.5rem;">藥業批發查詢</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>聯絡人姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>機構 / 公司名稱</label>
+            <input type="text" placeholder="藥房 / 診所 / 公司名稱">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>電郵地址</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>聯絡電話</label>
+            <input type="tel" placeholder="+852">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>機構類別</label>
+          <select>
+            <option value="">請選擇...</option>
+            <option>零售藥房</option>
+            <option>私家診所</option>
+            <option>醫院 / 門診</option>
+            <option>中醫診所</option>
+            <option>保健品零售店</option>
+            <option>超市 / 便利店</option>
+            <option>其他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea placeholder="請說明所需產品類別、品牌或具體產品名稱、預計採購量等..."></textarea>
+        </div>
+        <button class="form-submit">提交查詢 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">光大<span>藥業</span></div>
+    <div class="footer-copy">© 2024 光大藥業貿易有限公司 Kwong Tai Pharmaceutical Trading Co., Ltd. 版權所有</div>
+    <div class="footer-links">
+      <a href="#about">關於</a>
+      <a href="#products">產品</a>
+      <a href="#contact">聯絡</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
