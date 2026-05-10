@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Westminster Travel Limited | 西敏旅行社 — Tsuen Wan, Hong Kong</title>
+<style>
+  :root {
+    --navy: #1a3558;
+    --navy-mid: #24497a;
+    --sky: #0070b8;
+    --sky-light: #e8f4fc;
+    --gold: #c8a010;
+    --gold-dark: #a88008;
+    --gold-light: #fdf6e0;
+    --white: #ffffff;
+    --light: #f5f8fb;
+    --text: #2c3445;
+    --muted: #6b7280;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
+  .nav-logo { width: 42px; height: 42px; border-radius: 8px; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .nav-name { color: var(--white); font-weight: 800; font-size: 16px; line-height: 1.2; }
+  .nav-name span { color: var(--gold); font-size: 12px; font-weight: 400; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--white); padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 700; transition: background .2s; }
+  .nav-cta:hover { background: var(--gold-dark); }
+
+  /* HERO */
+  .hero {
+    margin-top: 64px;
+    background: linear-gradient(155deg, var(--navy) 0%, var(--navy-mid) 55%, #1c4a8a 100%);
+    min-height: 560px; display: flex; align-items: center;
+    padding: 72px 48px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '🏛️';
+    position: absolute; right: 80px; top: 42%;
+    font-size: 200px; opacity: 0.05;
+  }
+  .hero-content { max-width: 660px; z-index: 1; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(200,160,16,0.2); border: 1px solid rgba(200,160,16,0.4); color: var(--gold); padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; margin-bottom: 24px; }
+  .hero h1 { font-size: 44px; font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 10px; }
+  .hero h1 span { color: var(--gold); }
+  .hero-zh { font-size: 18px; color: rgba(255,255,255,0.55); margin-bottom: 22px; }
+  .hero-desc { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 36px; max-width: 560px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-gold { background: var(--gold); color: var(--white); padding: 13px 30px; border-radius: 8px; font-size: 15px; font-weight: 700; transition: background .2s, transform .2s; }
+  .btn-gold:hover { background: var(--gold-dark); transform: translateY(-2px); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.35); color: var(--white); padding: 13px 30px; border-radius: 8px; font-size: 15px; font-weight: 600; transition: border-color .2s; }
+  .btn-outline:hover { border-color: var(--white); }
+  .hero-card { position: absolute; right: 56px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(12px); border-radius: 16px; padding: 28px 32px; min-width: 260px; z-index: 1; }
+  .hero-card-title { color: var(--gold); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+  .hc-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+  .hc-row:last-child { margin-bottom: 0; }
+  .hc-icon { font-size: 15px; }
+  .hc-text { font-size: 13px; color: rgba(255,255,255,0.9); }
+  .hc-text strong { color: var(--white); display: block; font-size: 14px; }
+
+  /* STRIP */
+  .strip { background: var(--sky); display: flex; justify-content: center; flex-wrap: wrap; }
+  .strip-item { padding: 20px 44px; text-align: center; border-right: 1px solid rgba(255,255,255,0.25); }
+  .strip-item:last-child { border-right: none; }
+  .strip-num { font-size: 24px; font-weight: 800; color: var(--white); }
+  .strip-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 2px; }
+
+  /* SECTION */
+  section { padding: 80px 48px; }
+  .section-label { display: inline-block; color: var(--sky); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  h2 { font-size: 34px; font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 640px; margin-bottom: 48px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .office-box { background: var(--white); border-radius: 14px; padding: 26px; border-left: 4px solid var(--sky); margin-bottom: 26px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .office-box h3 { font-size: 14px; color: var(--sky); font-weight: 700; margin-bottom: 10px; }
+  .office-box .row { display: flex; gap: 10px; margin-bottom: 7px; font-size: 14px; color: var(--text); align-items: flex-start; }
+  .office-box .row span { flex-shrink: 0; }
+  .about-desc p { font-size: 15px; color: var(--text); line-height: 1.8; margin-bottom: 16px; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .about-prop { background: var(--white); border-radius: 12px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-top: 3px solid var(--sky); }
+  .about-prop-icon { font-size: 26px; margin-bottom: 10px; }
+  .about-prop h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .about-prop p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: var(--white); border-radius: 14px; padding: 28px 22px; box-shadow: 0 4px 18px rgba(0,0,0,0.07); border-top: 4px solid var(--sky); transition: transform .25s, box-shadow .25s; }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+  .service-icon { width: 50px; height: 50px; border-radius: 12px; background: var(--sky-light); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+  .service-card h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .service-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .service-tag { display: inline-block; margin-top: 12px; background: var(--sky-light); color: var(--sky); padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+
+  /* DESTINATIONS */
+  .dest { background: var(--light); }
+  .dest-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .dest-card { background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 3px 14px rgba(0,0,0,0.07); transition: transform .25s; }
+  .dest-card:hover { transform: translateY(-4px); }
+  .dest-flag { font-size: 46px; padding: 22px; text-align: center; background: linear-gradient(135deg, var(--sky-light), var(--white)); }
+  .dest-info { padding: 14px 14px 16px; }
+  .dest-info h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .dest-info p { font-size: 12px; color: var(--muted); }
+  .dest-badge { display: inline-block; margin-top: 7px; background: var(--gold-light); color: #7a5800; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+
+  /* WHY */
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .why-card { background: var(--navy); border-radius: 14px; padding: 28px 20px; text-align: center; transition: transform .25s; }
+  .why-card:hover { transform: translateY(-4px); }
+  .why-icon { font-size: 32px; margin-bottom: 14px; }
+  .why-card h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .why-card p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+  /* CONTACT */
+  .contact { background: var(--navy); }
+  .contact h2 { color: var(--white); }
+  .contact .section-label { color: var(--gold); }
+  .contact .section-sub { color: rgba(255,255,255,0.65); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+  .contact-row { display: flex; align-items: flex-start; gap: 14px; }
+  .contact-row-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(200,160,16,0.15); border: 1px solid rgba(200,160,16,0.3); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .contact-row-text h4 { font-size: 12px; color: var(--gold); font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .contact-row-text p, .contact-row-text a { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.55; }
+  .contact-row-text a:hover { color: var(--gold); }
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .contact-form input, .contact-form select, .contact-form textarea { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 12px 15px; color: var(--white); font-size: 14px; font-family: inherit; outline: none; transition: border-color .2s; }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form select option { background: var(--navy); }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--gold); }
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+  .contact-form button { background: var(--gold); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .2s; }
+  .contact-form button:hover { background: var(--gold-dark); }
+
+  /* FOOTER */
+  footer { background: #0f1e35; color: rgba(255,255,255,0.5); text-align: center; padding: 26px 48px; font-size: 13px; }
+  footer span { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 48px 24px; }
+    .hero h1 { font-size: 30px; }
+    .hero-card { display: none; }
+    section { padding: 56px 24px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .dest-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .about-props { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">🌐</div>
+    <div class="nav-name">Westminster Travel<br><span>西敏旅行社有限公司</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#destinations">Destinations</a>
+    <a href="#why">Why Us</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✈️ Licensed Hong Kong Travel Agent · 香港持牌旅行社</div>
+    <h1>Travel the World with<br><span>Westminster</span></h1>
+    <div class="hero-zh">西敏旅行社有限公司 · 荃灣辦事處</div>
+    <p class="hero-desc">
+      Westminster Travel Limited is your trusted Hong Kong travel partner, conveniently located in Tsuen Wan. We offer comprehensive travel services — from airline tickets and holiday packages to hotel bookings, cruises, and visa assistance — ensuring every journey is seamless and memorable.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">Enquire Now</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-title">📍 Office Info</div>
+    <div class="hc-row">
+      <div class="hc-icon">📞</div>
+      <div class="hc-text"><strong>2313 9700</strong>Office Tel</div>
+    </div>
+    <div class="hc-row">
+      <div class="hc-icon">📱</div>
+      <div class="hc-text"><strong>+852 5422 5822</strong>Mobile / WhatsApp</div>
+    </div>
+    <div class="hc-row">
+      <div class="hc-icon">📧</div>
+      <div class="hc-text"><strong>itravel@hkwtl.com</strong>Email</div>
+    </div>
+    <div class="hc-row">
+      <div class="hc-icon">📍</div>
+      <div class="hc-text"><strong>CDW Building, 18/F, Unit 02</strong>388 Castle Peak Rd, Tsuen Wan</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">
+    <div class="strip-num">Worldwide</div>
+    <div class="strip-label">Destinations</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">One-Stop</div>
+    <div class="strip-label">Travel Services</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">Licensed</div>
+    <div class="strip-label">HK Travel Agent</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">Tsuen Wan</div>
+    <div class="strip-label">Hong Kong</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">About Us</div>
+    <h2>Westminster Travel Limited</h2>
+    <p class="section-sub" style="margin: 0 auto;">A trusted Hong Kong licensed travel agency based in Tsuen Wan, providing personalised travel planning and booking services for individuals, families, and corporate clients.</p>
+  </div>
+  <div class="about-grid">
+    <div>
+      <div class="office-box">
+        <h3>📍 Office Details</h3>
+        <div class="row"><span>🏢</span><span>CDW Building, Unit 02, 18/F, 388 Castle Peak Road, Tsuen Wan, Hong Kong</span></div>
+        <div class="row"><span>📞</span><span>2313 9700</span></div>
+        <div class="row"><span>📱</span><span>+852 5422 5822 (WhatsApp)</span></div>
+        <div class="row"><span>📧</span><span>itravel@hkwtl.com</span></div>
+        <div class="row"><span>🌐</span><span>westminstertravel.com</span></div>
+        <div class="row"><span>⏰</span><span>Mon–Fri: 9:00 AM – 6:00 PM | Sat–Sun: Closed</span></div>
+      </div>
+      <div class="about-desc">
+        <p>Westminster Travel Limited is located in the heart of Tsuen Wan, a well-connected hub in Hong Kong's New Territories. Our experienced travel consultants are passionate about helping clients discover the world, offering expert advice and competitive pricing across all travel services.</p>
+        <p>Whether you're planning a family holiday to Japan, a romantic European getaway, a business trip, or a dream cruise, our team is dedicated to crafting the perfect itinerary tailored to your needs and budget.</p>
+      </div>
+    </div>
+    <div class="about-props">
+      <div class="about-prop">
+        <div class="about-prop-icon">✈️</div>
+        <h4>Flight Specialists</h4>
+        <p>Access to competitive fares across global airlines, with flexible routing options to suit your schedule.</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🏨</div>
+        <h4>Hotels Worldwide</h4>
+        <p>A curated selection of hotels from budget-friendly to luxury resorts, globally.</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🗺️</div>
+        <h4>Custom Itineraries</h4>
+        <p>Bespoke travel plans designed around your preferences, budget, and travel dates.</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🛡️</div>
+        <h4>Licensed &amp; Trusted</h4>
+        <p>Fully licensed Hong Kong travel agent operating with professional standards and accountability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background: var(--white);">
+  <div class="section-label">Travel Services</div>
+  <h2>What We Offer</h2>
+  <p class="section-sub">Comprehensive travel services for every type of traveller — from leisure to business, solo to group.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✈️</div>
+      <h3>Airline Tickets</h3>
+      <p>Book flights with all major carriers departing from Hong Kong and worldwide. Economy, Business, and First Class options with competitive fares.</p>
+      <span class="service-tag">All Airlines</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏖️</div>
+      <h3>Holiday Packages</h3>
+      <p>All-inclusive packages combining flights, hotels, and sightseeing. Popular destinations across Asia, Europe, Americas, and beyond.</p>
+      <span class="service-tag">Flight + Hotel</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏨</div>
+      <h3>Hotel Bookings</h3>
+      <p>From boutique hotels to international chains, we secure the best rates at quality accommodations worldwide.</p>
+      <span class="service-tag">Global Hotels</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛳️</div>
+      <h3>Cruise Holidays</h3>
+      <p>Asia and world cruise packages with top cruise lines. Explore multiple destinations in ultimate comfort and style.</p>
+      <span class="service-tag">Cruise Packages</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h3>Visa Assistance</h3>
+      <p>Guidance and support for visa applications to popular travel destinations, ensuring your documents are in order before departure.</p>
+      <span class="service-tag">Visa Support</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👥</div>
+      <h3>Group &amp; Corporate</h3>
+      <p>Specialised group travel arrangements and corporate travel management, including incentive tours, company trips, and conference travel.</p>
+      <span class="service-tag">Group Travel</span>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section class="dest" id="destinations">
+  <div style="text-align: center; margin-bottom: 48px;">
+    <div class="section-label">Popular Destinations</div>
+    <h2>Where Would You Like to Go?</h2>
+    <p class="section-sub" style="margin: 0 auto;">From short-haul Asian escapes to long-haul adventures in Europe and beyond — we've got you covered.</p>
+  </div>
+  <div class="dest-grid">
+    <div class="dest-card">
+      <div class="dest-flag">🇯🇵</div>
+      <div class="dest-info">
+        <h4>Japan</h4>
+        <p>Tokyo · Osaka · Kyoto · Hokkaido</p>
+        <span class="dest-badge">🔥 Top Pick</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇰🇷</div>
+      <div class="dest-info">
+        <h4>Korea</h4>
+        <p>Seoul · Busan · Jeju Island</p>
+        <span class="dest-badge">⭐ Popular</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇹🇭</div>
+      <div class="dest-info">
+        <h4>Thailand</h4>
+        <p>Bangkok · Phuket · Chiang Mai</p>
+        <span class="dest-badge">🏖️ Beach Getaway</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇬🇧</div>
+      <div class="dest-info">
+        <h4>United Kingdom</h4>
+        <p>London · Edinburgh · Cotswolds</p>
+        <span class="dest-badge">🏰 European Classic</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇫🇷</div>
+      <div class="dest-info">
+        <h4>France</h4>
+        <p>Paris · Nice · Lyon</p>
+        <span class="dest-badge">🗼 Romance</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇦🇺</div>
+      <div class="dest-info">
+        <h4>Australia</h4>
+        <p>Sydney · Melbourne · Gold Coast</p>
+        <span class="dest-badge">🦘 Southern Hemisphere</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🇹🇼</div>
+      <div class="dest-info">
+        <h4>Taiwan</h4>
+        <p>Taipei · Taichung · Hualien</p>
+        <span class="dest-badge">✈️ Short Haul</span>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-flag">🌍</div>
+      <div class="dest-info">
+        <h4>More Destinations</h4>
+        <p>Anywhere you dream of going</p>
+        <span class="dest-badge">🗺️ Worldwide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" style="background: var(--white);">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">Why Westminster</div>
+    <h2>Your Trusted Travel Partner</h2>
+    <p class="section-sub" style="margin: 0 auto;">Westminster Travel delivers professional, personalised service to make every trip worry-free.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🏆</div>
+      <h4>Licensed Agent</h4>
+      <p>Fully licensed HK travel agent operating with professional standards and consumer protection.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💰</div>
+      <h4>Competitive Pricing</h4>
+      <p>We compare and negotiate to offer you the best value on flights, hotels, and packages.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🎯</div>
+      <h4>Personalised Service</h4>
+      <p>Every itinerary is crafted to your specific needs, preferences, and budget — no cookie-cutter packages.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📍</div>
+      <h4>Tsuen Wan Location</h4>
+      <p>Conveniently located in CDW Building, easily accessible from Tsuen Wan MTR and surrounding districts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2>Contact Westminster Travel</h2>
+  <p class="section-sub">Ready to plan your next adventure? Call us, WhatsApp, or send an enquiry — our team will get back to you promptly.</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-row-icon">🏢</div>
+        <div class="contact-row-text">
+          <h4>Address</h4>
+          <p>CDW Building, Unit 02, 18/F<br>388 Castle Peak Road, Tsuen Wan, HK</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📞</div>
+        <div class="contact-row-text">
+          <h4>Office Phone</h4>
+          <a href="tel:+85223139700">+852 2313 9700</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📱</div>
+        <div class="contact-row-text">
+          <h4>Mobile / WhatsApp</h4>
+          <a href="https://wa.me/85254225822">+852 5422 5822</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📧</div>
+        <div class="contact-row-text">
+          <h4>Email</h4>
+          <a href="mailto:itravel@hkwtl.com">itravel@hkwtl.com</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">⏰</div>
+        <div class="contact-row-text">
+          <h4>Office Hours</h4>
+          <p>Mon–Fri: 9:00 AM – 6:00 PM<br>Sat, Sun &amp; Public Holidays: Closed</p>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <input type="text" placeholder="Your Name" />
+      <input type="tel" placeholder="Phone / WhatsApp" />
+      <input type="email" placeholder="Email Address" />
+      <select>
+        <option value="" disabled selected>Enquiry Type</option>
+        <option>Flight Tickets</option>
+        <option>Holiday Package</option>
+        <option>Hotel Booking</option>
+        <option>Cruise Holiday</option>
+        <option>Visa Assistance</option>
+        <option>Group / Corporate Travel</option>
+        <option>General Enquiry</option>
+      </select>
+      <textarea placeholder="Tell us about your travel plans — destination, dates, number of travellers…"></textarea>
+      <button type="submit">Send Enquiry ✈️</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 <span>Westminster Travel Limited 西敏旅行社有限公司</span> · Licensed Hong Kong Travel Agent · Tsuen Wan, HK · All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
