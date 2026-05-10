@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美芯美勞有限公司 | 美術工藝批發</title>
+<style>
+  :root {
+    --bg-primary: #07050e;
+    --bg-secondary: #0e0b1a;
+    --bg-card: #160f28;
+    --bg-card2: #1e1535;
+    --accent1: #6018b0;
+    --accent2: #9038e0;
+    --accent3: #c070ff;
+    --warm: #e07820;
+    --warm2: #f8a840;
+    --text-main: #f0ecf8;
+    --text-muted: #a890c8;
+    --text-dim: #6850a0;
+    --border: rgba(144,56,224,0.22);
+    --glow: rgba(144,56,224,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg-primary);color:var(--text-main);font-family:'Noto Sans HK','Microsoft JhengHei','Segoe UI',sans-serif;line-height:1.7;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,5,14,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+  .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--accent1),var(--accent2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff;}
+  .nav-logo-text{font-size:16px;font-weight:700;color:var(--text-main);}
+  .nav-en{font-size:11px;color:var(--text-dim);font-weight:400;}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{text-decoration:none;color:var(--text-muted);font-size:14px;transition:color .2s;}
+  .nav-links a:hover{color:var(--accent3);}
+  .nav-cta{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;padding:9px 22px;border-radius:6px;text-decoration:none;font-size:14px;font-weight:700;transition:opacity .2s;}
+  .nav-cta:hover{opacity:.85;}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden;}
+  .hero-orb1{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(96,24,176,0.2) 0%,transparent 70%);top:-100px;right:5%;border-radius:50%;}
+  .hero-orb2{position:absolute;width:350px;height:350px;background:radial-gradient(circle,rgba(224,120,32,0.12) 0%,transparent 70%);bottom:50px;left:10%;border-radius:50%;}
+  .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;position:relative;z-index:1;}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(144,56,224,0.15);border:1px solid rgba(144,56,224,0.35);border-radius:20px;padding:6px 16px;font-size:13px;color:var(--accent3);margin-bottom:24px;}
+  .hero-tag-dot{width:7px;height:7px;background:var(--accent3);border-radius:50%;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.3);}}
+  h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.2;margin-bottom:20px;}
+  h1 span{background:linear-gradient(135deg,var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero-desc{font-size:16px;color:var(--text-muted);max-width:560px;margin-bottom:36px;line-height:1.8;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;transition:all .2s;}
+  .btn-primary:hover{opacity:.85;transform:translateY(-2px);}
+  .btn-outline{border:1px solid var(--border);color:var(--text-muted);padding:14px 32px;border-radius:8px;text-decoration:none;font-size:15px;transition:all .2s;}
+  .btn-outline:hover{border-color:var(--accent3);color:var(--accent3);}
+
+  /* INFO CARD */
+  .info-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:0 20px 60px rgba(0,0,0,.6);}
+  .info-card-title{font-size:13px;color:var(--accent3);letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;font-weight:600;}
+  .info-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+  .info-row:last-child{border-bottom:none;}
+  .info-icon{width:36px;height:36px;background:rgba(144,56,224,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+  .info-label{font-size:11px;color:var(--text-dim);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;}
+  .info-value{font-size:14px;color:var(--text-main);font-weight:600;}
+  .info-value a{color:var(--accent3);text-decoration:none;}
+  .info-value a:hover{text-decoration:underline;}
+
+  /* STATS */
+  .stats{background:var(--bg-secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%;}
+  .stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;}
+  .stat-item{text-align:center;}
+  .stat-num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .stat-label{font-size:13px;color:var(--text-muted);margin-top:4px;}
+
+  /* SECTION COMMON */
+  section{padding:80px 5%;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-tag{font-size:12px;color:var(--accent3);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:12px;}
+  .section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:16px;}
+  .section-title span{background:linear-gradient(135deg,var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .section-sub{color:var(--text-muted);font-size:15px;max-width:620px;margin-bottom:48px;}
+
+  /* CATEGORIES GRID */
+  .cats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .cat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px 20px;text-align:center;transition:all .3s;cursor:default;}
+  .cat-card:hover{border-color:rgba(144,56,224,0.5);transform:translateY(-4px);background:var(--bg-card2);}
+  .cat-icon{font-size:32px;margin-bottom:12px;}
+  .cat-title{font-size:15px;font-weight:700;margin-bottom:6px;}
+  .cat-en{font-size:12px;color:var(--text-dim);}
+
+  /* BRANDS */
+  .brands-section{background:var(--bg-secondary);}
+  .brands-intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:48px;}
+  .brand-highlight{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px;}
+  .bh-name{font-size:20px;font-weight:800;margin-bottom:8px;}
+  .bh-desc{font-size:14px;color:var(--text-muted);line-height:1.8;}
+  .bh-badge{display:inline-block;background:linear-gradient(135deg,rgba(144,56,224,0.2),rgba(192,112,255,0.1));border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:12px;color:var(--accent3);margin-top:12px;}
+  .brands-cloud{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .brand-tag{background:rgba(144,56,224,0.1);border:1px solid var(--border);border-radius:6px;padding:6px 14px;font-size:13px;color:var(--text-muted);transition:all .2s;}
+  .brand-tag:hover{background:rgba(144,56,224,0.2);border-color:rgba(144,56,224,0.45);color:var(--text-main);}
+  .brand-tag.featured{background:rgba(144,56,224,0.18);border-color:rgba(192,112,255,0.4);color:var(--accent3);font-weight:600;}
+
+  /* CATALOGS */
+  .catalogs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .catalog-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px;transition:all .3s;position:relative;overflow:hidden;}
+  .catalog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent1),var(--warm));opacity:0;transition:opacity .3s;}
+  .catalog-card:hover{border-color:rgba(144,56,224,0.5);transform:translateY(-4px);}
+  .catalog-card:hover::before{opacity:1;}
+  .catalog-icon{font-size:36px;margin-bottom:16px;}
+  .catalog-title{font-size:17px;font-weight:700;margin-bottom:10px;}
+  .catalog-desc{font-size:14px;color:var(--text-muted);line-height:1.7;}
+  .catalog-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--accent3);font-size:13px;font-weight:600;text-decoration:none;}
+  .catalog-link:hover{text-decoration:underline;}
+
+  /* ORDER PROCESS */
+  .order-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;}
+  .order-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--border),var(--border),transparent);}
+  .step-item{text-align:center;position:relative;z-index:1;}
+  .step-num{width:56px;height:56px;background:linear-gradient(135deg,var(--accent1),var(--accent2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff;margin:0 auto 16px;}
+  .step-title{font-size:15px;font-weight:700;margin-bottom:8px;}
+  .step-desc{font-size:13px;color:var(--text-muted);line-height:1.7;}
+
+  /* CONTACT */
+  .contact-section{background:var(--bg-secondary);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+  .contact-info-list{display:flex;flex-direction:column;gap:20px;margin-bottom:32px;}
+  .contact-item{display:flex;gap:14px;align-items:flex-start;}
+  .c-icon{width:44px;height:44px;background:rgba(144,56,224,0.15);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+  .c-label{font-size:12px;color:var(--text-dim);margin-bottom:4px;}
+  .c-val{font-size:15px;color:var(--text-main);font-weight:600;}
+  .c-val a{color:var(--accent3);text-decoration:none;}
+  .c-val a:hover{text-decoration:underline;}
+
+  /* FORM */
+  .contact-form{display:flex;flex-direction:column;gap:16px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .form-group{display:flex;flex-direction:column;gap:8px;}
+  .form-group label{font-size:13px;color:var(--text-muted);font-weight:600;}
+  .form-group input,.form-group select,.form-group textarea{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text-main);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent2);}
+  .form-group textarea{resize:vertical;min-height:120px;}
+  .form-group select option{background:#160f28;}
+  .form-submit{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;border:none;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+  .form-submit:hover{opacity:.85;}
+
+  /* FOOTER */
+  footer{background:#050309;border-top:1px solid var(--border);padding:48px 5% 28px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;margin-bottom:40px;}
+  .footer-brand-name{font-size:18px;font-weight:800;margin-bottom:4px;}
+  .footer-brand-en{font-size:13px;color:var(--text-dim);margin-bottom:10px;}
+  .footer-brand-desc{font-size:14px;color:var(--text-dim);line-height:1.7;}
+  .footer-col-title{font-size:13px;color:var(--accent3);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
+  .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .footer-links a{text-decoration:none;color:var(--text-dim);font-size:14px;transition:color .2s;}
+  .footer-links a:hover{color:var(--accent3);}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;}
+  .footer-copy{font-size:13px;color:var(--text-dim);}
+
+  @media(max-width:1000px){
+    .cats-grid{grid-template-columns:repeat(2,1fr);}
+    .brands-intro,.catalogs-grid,.order-steps{grid-template-columns:1fr 1fr;}
+    .order-steps::before{display:none;}
+  }
+  @media(max-width:768px){
+    .hero-inner,.contact-grid,.footer-top{grid-template-columns:1fr;}
+    .info-card{display:none;}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .cats-grid,.brands-intro,.catalogs-grid,.order-steps{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon">美</div>
+      <div>
+        <div class="nav-logo-text">美芯美勞有限公司</div>
+        <div class="nav-en">Mei Sum Art and Design Limited</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#categories">產品類別</a></li>
+      <li><a href="#brands">品牌代理</a></li>
+      <li><a href="#catalogs">目錄下載</a></li>
+      <li><a href="#contact">聯絡訂購</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">立即訂購</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        美術工藝批發專家
+      </div>
+      <h1>美芯美勞<br><span>專業美術</span><br>工藝批發</h1>
+      <p class="hero-desc">美芯美勞有限公司是香港領先的美術及工藝材料批發商，代理逾二十個國際知名品牌，提供紙藝、顏色、布藝、陶藝、STEAM 教材等全面產品系列，服務學校、零售商及創意工作者。</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#contact">立即訂購查詢</a>
+        <a class="btn-outline" href="#categories">瀏覽產品類別</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">公司資料</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">公司名稱</div>
+          <div class="info-value">美芯美勞有限公司</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">電話</div>
+          <div class="info-value"><a href="tel:+85224939200">+852 2493 9200</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📠</div>
+        <div>
+          <div class="info-label">傳真</div>
+          <div class="info-value">+852 2414 6266</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-value"><a href="mailto:order@meisum.com">order@meisum.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網站</div>
+          <div class="info-value"><a href="http://meisum.com" target="_blank">meisum.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">25+</div>
+      <div class="stat-label">國際品牌</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">12</div>
+      <div class="stat-label">產品大類</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1000+</div>
+      <div class="stat-label">產品項目</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">多年</div>
+      <div class="stat-label">批發經驗</div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="section-inner">
+    <div class="section-tag">目錄分類</div>
+    <h2 class="section-title">全面的<span>產品類別</span></h2>
+    <p class="section-sub">美芯美勞涵蓋多元化的美術及工藝產品，一站式滿足學校教育、零售批發及個人創作的各種需求。</p>
+    <div class="cats-grid">
+      <div class="cat-card">
+        <div class="cat-icon">📄</div>
+        <div class="cat-title">紙藝</div>
+        <div class="cat-en">Paper Arts</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🎨</div>
+        <div class="cat-title">顏色</div>
+        <div class="cat-en">Paints &amp; Colours</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🧵</div>
+        <div class="cat-title">布藝</div>
+        <div class="cat-en">Textile Arts</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">✂️</div>
+        <div class="cat-title">美勞</div>
+        <div class="cat-en">Arts &amp; Crafts</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🔬</div>
+        <div class="cat-title">科學實驗教材</div>
+        <div class="cat-en">STEAM</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🧸</div>
+        <div class="cat-title">早期教育</div>
+        <div class="cat-en">Early Childhood</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🎭</div>
+        <div class="cat-title">興趣</div>
+        <div class="cat-en">Hobby</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🏺</div>
+        <div class="cat-title">模塑</div>
+        <div class="cat-en">Modelling</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🪆</div>
+        <div class="cat-title">陶藝</div>
+        <div class="cat-en">Ceramics</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🖼️</div>
+        <div class="cat-title">版畫雕刻</div>
+        <div class="cat-en">Block Printing</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🪵</div>
+        <div class="cat-title">木藝</div>
+        <div class="cat-en">Wood Arts</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🖊️</div>
+        <div class="cat-title">文儀</div>
+        <div class="cat-en">Stationery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands" class="brands-section">
+  <div class="section-inner">
+    <div class="section-tag">品牌代理</div>
+    <h2 class="section-title">代理<span>國際知名品牌</span></h2>
+    <p class="section-sub">美芯美勞代理超過二十五個國際頂級美術及工藝品牌，提供正品保證，滿足專業及業餘創作者的需求。</p>
+
+    <div class="brands-intro">
+      <div>
+        <div class="brand-highlight">
+          <div class="bh-name">JOVI（歐洲）</div>
+          <div class="bh-desc">西班牙知名美術品牌，以兒童安全無毒的美術材料著稱，廣受學校及家長信賴，產品覆蓋顏色、紙藝、黏土及工藝材料。</div>
+          <span class="bh-badge">歐洲原裝進口</span>
+        </div>
+        <div class="brand-highlight" style="margin-top:20px;">
+          <div class="bh-name">SIMBALION 雄獅</div>
+          <div class="bh-desc">台灣老牌文具及美術用品製造商，提供書寫工具、繪圖材料及美術用品，品質穩定，廣受市場認可。</div>
+          <span class="bh-badge">台灣品牌</span>
+        </div>
+      </div>
+      <div>
+        <div class="brand-highlight">
+          <div class="bh-name">Winsor &amp; Newton 溫莎牛頓</div>
+          <div class="bh-desc">英國百年藝術用品品牌，以高品質水彩、油彩及畫具聞名於世，深受專業藝術家及藝術院校推崇。</div>
+          <span class="bh-badge">英國百年品牌</span>
+        </div>
+        <div class="brand-highlight" style="margin-top:20px;">
+          <div class="bh-name">STAEDTLER 施德樓</div>
+          <div class="bh-desc">德國精密文具及繪圖工具品牌，以工程設計鉛筆、馬克筆及專業繪圖工具享譽全球。</div>
+          <span class="bh-badge">德國工藝</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px;">
+      <div style="font-size:14px;color:var(--text-muted);margin-bottom:16px;font-weight:600;">全部代理品牌</div>
+      <div class="brands-cloud">
+        <span class="brand-tag featured">JOVI</span>
+        <span class="brand-tag featured">SIMBALION 雄獅</span>
+        <span class="brand-tag featured">Winsor &amp; Newton</span>
+        <span class="brand-tag featured">STAEDTLER 施德樓</span>
+        <span class="brand-tag">Pentel</span>
+        <span class="brand-tag">SAKURA 櫻花</span>
+        <span class="brand-tag">CANSON 康頌</span>
+        <span class="brand-tag">FABER CASTELL</span>
+        <span class="brand-tag">CARANDACHE</span>
+        <span class="brand-tag">CHROMA</span>
+        <span class="brand-tag">MUNGYO</span>
+        <span class="brand-tag">PILOT</span>
+        <span class="brand-tag">CARL</span>
+        <span class="brand-tag">Artline</span>
+        <span class="brand-tag">Mont Marte 蒙瑪特</span>
+        <span class="brand-tag">Superior 秀普</span>
+        <span class="brand-tag">Marabu</span>
+        <span class="brand-tag">Pebeo 貝碧歐</span>
+        <span class="brand-tag">COLLEEN 克麗</span>
+        <span class="brand-tag">Maped 馬培德</span>
+        <span class="brand-tag">AMOS</span>
+        <span class="brand-tag">Skyist 畫皇</span>
+        <span class="brand-tag">Royal-Art</span>
+        <span class="brand-tag">TULIP</span>
+        <span class="brand-tag">DecoArt</span>
+        <span class="brand-tag">PADICO</span>
+        <span class="brand-tag">Mayco</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOGS -->
+<section id="catalogs">
+  <div class="section-inner">
+    <div class="section-tag">產品目錄</div>
+    <h2 class="section-title">下載<span>產品目錄</span></h2>
+    <p class="section-sub">提供多本 PDF 產品目錄，涵蓋各大產品系列，方便批發商及採購人員快速選品。</p>
+    <div class="catalogs-grid">
+      <div class="catalog-card">
+        <div class="catalog-icon">📚</div>
+        <div class="catalog-title">美芯新意手藝目錄</div>
+        <div class="catalog-desc">將受歡迎的貨品重新整理及編整，訂購搜尋時可一目了然。涵蓋所有主要產品類別，是批發採購的必備參考。</div>
+        <a class="catalog-link" href="http://meisum.com/catalog.html" target="_blank">查看目錄 →</a>
+      </div>
+      <div class="catalog-card">
+        <div class="catalog-icon">🏺</div>
+        <div class="catalog-title">陶藝工具綜合目錄</div>
+        <div class="catalog-desc">專門針對陶藝製作的工具及材料目錄，包括陶泥、釉藥、燒製工具及相關配件，適合陶藝教室及愛好者。</div>
+        <a class="catalog-link" href="http://meisum.com/catalog.html" target="_blank">查看目錄 →</a>
+      </div>
+      <div class="catalog-card">
+        <div class="catalog-icon">🎨</div>
+        <div class="catalog-title">JOVI 歐洲品牌目錄</div>
+        <div class="catalog-desc">西班牙 JOVI 品牌完整產品目錄，包括兒童安全顏色、黏土、紙藝材料，適合學校及教育機構批量採購。</div>
+        <a class="catalog-link" href="http://meisum.com/catalog.html" target="_blank">查看目錄 →</a>
+      </div>
+      <div class="catalog-card">
+        <div class="catalog-icon">🖍️</div>
+        <div class="catalog-title">雄獅 SIMBALION 目錄</div>
+        <div class="catalog-desc">台灣雄獅品牌完整產品系列，包括文具、書寫工具、繪圖材料等，品質穩定，價格合理。</div>
+        <a class="catalog-link" href="http://meisum.com/catalog.html" target="_blank">查看目錄 →</a>
+      </div>
+      <div class="catalog-card">
+        <div class="catalog-icon">🖼️</div>
+        <div class="catalog-title">藝術裝置目錄</div>
+        <div class="catalog-desc">專業藝術裝置材料及工具，適合展覽佈置、環境設計及大型藝術創作項目。</div>
+        <a class="catalog-link" href="http://meisum.com/catalog.html" target="_blank">查看目錄 →</a>
+      </div>
+      <div class="catalog-card">
+        <div class="catalog-icon">🎁</div>
+        <div class="catalog-title">禮品設計目錄</div>
+        <div class="catalog-desc">創意禮品設計材料及配件，適合企業禮品定制、DIY 禮品工作坊及節日禮品採購。</div>
+        <a class="catalog-link" href="http://meisum.com/catalog.html" target="_blank">查看目錄 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER PROCESS -->
+<section style="background:var(--bg-secondary);">
+  <div class="section-inner">
+    <div class="section-tag">訂購流程</div>
+    <h2 class="section-title">簡易<span>訂購步驟</span></h2>
+    <p class="section-sub">美芯美勞提供便捷的訂購流程，讓批發商及學校可以輕鬆完成採購。</p>
+    <div class="order-steps">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-title">瀏覽目錄</div>
+        <div class="step-desc">下載最新 PDF 產品目錄，或瀏覽網站產品分類，選取所需貨品及數量。</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-title">提交訂單</div>
+        <div class="step-desc">透過電郵將訂單發送至 order@meisum.com，或致電查詢最新庫存及優惠。</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-title">確認報價</div>
+        <div class="step-desc">我們將盡快確認訂單，提供最新批發報價及預計到貨時間。</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-title">安排送貨</div>
+        <div class="step-desc">付款確認後安排出貨，提供送貨上門服務，或可安排自取。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡訂購</div>
+    <h2 class="section-title">立即<span>聯絡我們</span></h2>
+    <p class="section-sub">歡迎學校、零售商及批發商查詢訂購，我們將提供最優惠的批發價格及專業服務。</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-list">
+          <div class="contact-item">
+            <div class="c-icon">📞</div>
+            <div>
+              <div class="c-label">電話</div>
+              <div class="c-val"><a href="tel:+85224939200">+852 2493 9200</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">📠</div>
+            <div>
+              <div class="c-label">傳真</div>
+              <div class="c-val">+852 2414 6266</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">✉️</div>
+            <div>
+              <div class="c-label">一般查詢電郵</div>
+              <div class="c-val"><a href="mailto:info@meisum.com">info@meisum.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">📦</div>
+            <div>
+              <div class="c-label">訂購電郵</div>
+              <div class="c-val"><a href="mailto:order@meisum.com">order@meisum.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">🌐</div>
+            <div>
+              <div class="c-label">網站</div>
+              <div class="c-val"><a href="http://meisum.com" target="_blank">www.meisum.com</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="return false;">
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名 *</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>電話 *</label>
+            <input type="tel" placeholder="聯絡電話">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電郵地址 *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>機構／公司名稱</label>
+          <input type="text" placeholder="學校 / 公司 / 零售店名稱">
+        </div>
+        <div class="form-group">
+          <label>查詢類別</label>
+          <select>
+            <option>批發訂購查詢</option>
+            <option>產品目錄索取</option>
+            <option>品牌代理查詢</option>
+            <option>學校採購</option>
+            <option>其他查詢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢內容 *</label>
+          <textarea placeholder="請說明所需產品類別、數量或其他查詢事項..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">提交查詢</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">美芯美勞有限公司</div>
+        <div class="footer-brand-en">Mei Sum Art and Design Limited</div>
+        <div class="footer-brand-desc">香港專業美術及工藝材料批發商，代理逾二十五個國際知名品牌，服務學校、零售商及創意工作者多年。</div>
+      </div>
+      <div>
+        <div class="footer-col-title">產品類別</div>
+        <ul class="footer-links">
+          <li><a href="#categories">紙藝 / 顏色 / 布藝</a></li>
+          <li><a href="#categories">美勞 / STEAM</a></li>
+          <li><a href="#categories">陶藝 / 模塑 / 木藝</a></li>
+          <li><a href="#categories">版畫雕刻 / 文儀</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">聯絡資料</div>
+        <ul class="footer-links">
+          <li><a href="tel:+85224939200">電話: +852 2493 9200</a></li>
+          <li><a href="mailto:order@meisum.com">order@meisum.com</a></li>
+          <li><a href="mailto:info@meisum.com">info@meisum.com</a></li>
+          <li><a href="http://meisum.com" target="_blank">www.meisum.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 美芯美勞有限公司 Mei Sum Art and Design Limited. All rights reserved.</div>
+      <div style="font-size:12px;color:var(--text-dim);">美術工藝批發 | 香港</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
