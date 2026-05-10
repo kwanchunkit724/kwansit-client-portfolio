@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zegal | Legal Automation Platform for Hong Kong Businesses</title>
+<style>
+:root {
+  --bg: #060a14;
+  --bg2: #0a0f1c;
+  --bg3: #0f1828;
+  --accent: #7030d8;
+  --accent2: #9858f0;
+  --green: #18c870;
+  --text: #e8edf8;
+  --muted: #7888a8;
+  --border: rgba(112,48,216,0.18);
+  --card: #0c1220;
+  --radius: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,10,20,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:1.4rem;font-weight:900;color:var(--text);text-decoration:none;letter-spacing:-1px;}
+.nav-logo span{color:var(--accent2);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:600;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent2);}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 2rem 60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 65% 35%,rgba(112,48,216,0.14) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 15% 85%,rgba(24,200,112,0.06) 0%,transparent 60%);}
+.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.hero-particles::before{content:'';position:absolute;top:20%;right:10%;width:300px;height:300px;background:radial-gradient(circle,rgba(112,48,216,0.08),transparent 70%);border-radius:50%;}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(112,48,216,0.15);border:1px solid rgba(112,48,216,0.3);color:var(--accent2);padding:0.35rem 0.9rem;border-radius:20px;font-size:0.8rem;font-weight:600;margin-bottom:1.5rem;}
+.badge-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero h1{font-size:3.2rem;font-weight:900;line-height:1.1;margin-bottom:1.2rem;letter-spacing:-1.5px;}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent2),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:520px;margin-bottom:2rem;line-height:1.7;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:all 0.2s;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--text);padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;border:1px solid var(--border);transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent2);}
+
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--green));}
+.info-card-title{font-size:0.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(112,48,216,0.1);}
+.info-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.info-icon{width:32px;height:32px;background:rgba(112,48,216,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;color:var(--text);font-weight:500;line-height:1.4;}
+.info-val a{color:var(--accent2);text-decoration:none;}
+
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.stat-item{text-align:center;}
+.stat-num{font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent2),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:0.3rem;}
+.stat-label{font-size:0.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;}
+
+section{padding:5rem 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-tag{font-size:0.75rem;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:0.8rem;}
+.section-title{font-size:2.2rem;font-weight:800;line-height:1.2;margin-bottom:1rem;letter-spacing:-0.5px;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.7;}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+.about-highlight{background:var(--bg3);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:1.5rem 1.8rem;margin-bottom:1.5rem;}
+.about-highlight p{color:var(--text);font-size:1rem;line-height:1.7;}
+.about-text{color:var(--muted);line-height:1.8;margin-bottom:1rem;font-size:0.95rem;}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color 0.2s;}
+.prop-card:hover{border-color:var(--accent);}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.78rem;color:var(--muted);line-height:1.5;}
+.region-cards{display:flex;flex-direction:column;gap:1rem;}
+.region-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:border-color 0.2s;}
+.region-card:hover{border-color:var(--accent);}
+.region-card.active{border-color:rgba(112,48,216,0.4);position:relative;}
+.region-card.active::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:var(--radius) var(--radius) 0 0;}
+.region-header{display:flex;align-items:center;gap:0.8rem;margin-bottom:0.8rem;}
+.region-flag{font-size:1.3rem;}
+.region-name{font-size:1rem;font-weight:700;color:var(--text);}
+.region-badge{font-size:0.68rem;font-weight:700;padding:0.15rem 0.5rem;background:rgba(112,48,216,0.2);color:var(--accent2);border-radius:4px;margin-left:auto;}
+.region-addr{font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:0.5rem;}
+.region-phone{font-size:0.88rem;color:var(--accent2);font-weight:600;}
+
+.services-bg{background:var(--bg2);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--c,var(--accent));opacity:0;transition:opacity 0.25s;}
+.service-card:hover{border-color:rgba(112,48,216,0.4);transform:translateY(-3px);}
+.service-card:hover::before{opacity:1;}
+.service-card:nth-child(1){--c:#7030d8;}
+.service-card:nth-child(2){--c:#9858f0;}
+.service-card:nth-child(3){--c:#18c870;}
+.service-card:nth-child(4){--c:#0c78d0;}
+.service-card:nth-child(5){--c:#e07820;}
+.service-card:nth-child(6){--c:#e03860;}
+.svc-icon{width:44px;height:44px;border-radius:10px;background:rgba(112,48,216,0.15);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem;}
+.svc-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.svc-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+.svc-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.8rem;}
+.svc-tag{font-size:0.72rem;padding:0.2rem 0.6rem;background:rgba(112,48,216,0.12);color:var(--accent2);border-radius:4px;}
+
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;position:relative;}
+.how-grid::before{content:'';position:absolute;top:2rem;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),var(--green),transparent);}
+.how-step{text-align:center;padding:2rem 1.5rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);position:relative;transition:all 0.2s;}
+.how-step:hover{border-color:var(--accent);transform:translateY(-2px);}
+.step-num{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:#fff;margin:0 auto 1rem;position:relative;z-index:1;}
+.step-title{font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:0.4rem;}
+.step-desc{font-size:0.8rem;color:var(--muted);line-height:1.5;}
+
+.industries-bg{background:var(--bg2);}
+.industry-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem;}
+.industry-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;text-align:center;transition:all 0.2s;}
+.industry-item:hover{border-color:var(--accent);transform:translateY(-2px);}
+.ind-icon{font-size:1.8rem;margin-bottom:0.5rem;}
+.ind-name{font-size:0.82rem;font-weight:600;color:var(--text);}
+
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.plan-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:all 0.2s;position:relative;}
+.plan-card.featured{border-color:rgba(112,48,216,0.5);}
+.plan-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:var(--radius) var(--radius) 0 0;}
+.plan-badge{font-size:0.7rem;font-weight:700;padding:0.2rem 0.6rem;background:rgba(112,48,216,0.2);color:var(--accent2);border-radius:4px;margin-bottom:0.8rem;display:inline-block;}
+.plan-badge.popular{background:rgba(24,200,112,0.15);color:var(--green);}
+.plan-name{font-size:1.2rem;font-weight:800;color:var(--text);margin-bottom:0.5rem;}
+.plan-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;margin-bottom:1.2rem;}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.plan-features li{font-size:0.83rem;color:var(--muted);display:flex;align-items:center;gap:0.5rem;}
+.plan-features li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;}
+.contact-info{display:flex;flex-direction:column;gap:1.2rem;}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem;background:var(--card);border:1px solid var(--border);border-radius:10px;transition:border-color 0.2s;}
+.contact-item:hover{border-color:var(--accent);}
+.c-icon{width:40px;height:40px;background:rgba(112,48,216,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.3rem;}
+.c-val{font-size:0.9rem;color:var(--text);font-weight:500;line-height:1.5;}
+.c-val a{color:var(--accent2);text-decoration:none;}
+.contact-offices{display:flex;flex-direction:column;gap:1rem;}
+.office-block{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:border-color 0.2s;}
+.office-block:hover{border-color:var(--accent);}
+.office-block.hq{border-color:rgba(112,48,216,0.35);position:relative;}
+.office-block.hq::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:var(--radius) var(--radius) 0 0;}
+.office-header{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem;}
+.office-flag2{font-size:1.1rem;}
+.office-city2{font-size:0.9rem;font-weight:700;color:var(--text);}
+.office-entity{font-size:0.75rem;color:var(--muted);margin-bottom:0.4rem;}
+.office-addr2{font-size:0.82rem;color:var(--muted);line-height:1.5;margin-bottom:0.4rem;}
+.office-tel{font-size:0.88rem;color:var(--accent2);font-weight:600;}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-brand p{color:var(--muted);font-size:0.85rem;line-height:1.7;margin-top:0.8rem;}
+.footer-logo{font-size:1.4rem;font-weight:900;letter-spacing:-1px;}
+.footer-logo span{background:linear-gradient(135deg,var(--accent2),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.footer-col h4{font-size:0.75rem;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col li a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col li a:hover{color:var(--text);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+.footer-note{font-size:0.8rem;color:var(--muted);}
+.footer-note span{color:var(--accent2);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero h1{font-size:2.2rem;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .services-grid,.plans-grid,.how-grid{grid-template-columns:1fr 1fr;}
+  .industry-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+  .how-grid::before{display:none;}
+}
+@media(max-width:600px){
+  .services-grid,.plans-grid,.how-grid,.about-props{grid-template-columns:1fr;}
+  .hero h1{font-size:1.8rem;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Ze<span>gal</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Products</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get a Demo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-particles"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="badge-dot"></span> Legal Technology Platform · Hong Kong</div>
+      <h1>Legal Automation<br>Made <em>Simple</em></h1>
+      <p class="hero-sub">Zegal helps 20,000+ businesses across Asia and beyond automate contracts, manage legal documents, and sign deals — faster, smarter, and at a fraction of traditional legal costs.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Request a Demo</a>
+        <a href="#services" class="btn-secondary">See Products</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">📍 Contact Zegal Hong Kong</div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <div class="info-label">Hong Kong Office</div>
+          <div class="info-val">1507, 18 Tang Lung Street<br>Causeway Bay, Hong Kong</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">Phone</div>
+          <div class="info-val"><a href="tel:+85258019997">+852 5801 9997</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-val"><a href="mailto:sales@zegal.com">sales@zegal.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">Website</div>
+          <div class="info-val"><a href="https://zegal.com" target="_blank">zegal.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🏛️</div>
+        <div>
+          <div class="info-label">Legal Entity</div>
+          <div class="info-val">Dragon Law Limited (HK)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">20,000+</div>
+      <div class="stat-label">Companies Using Zegal</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Global Offices</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3 days</div>
+      <div class="stat-label">vs Months for Contract Renewal</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">SME–ENT</div>
+      <div class="stat-label">Plans for Every Business</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-tag">About Zegal</div>
+    <h2 class="section-title">Where Law Meets Technology</h2>
+    <p class="section-sub">Zegal transforms complex legal processes into automated, searchable, and manageable workflows — giving businesses the power of a legal team at a fraction of the cost.</p>
+    <div class="about-grid">
+      <div>
+        <div class="about-highlight">
+          <p>Zegal is a legal technology platform that automates contract creation, management, and signing. With lawyer-reviewed templates and an AI-powered document builder, businesses can handle legal work in minutes — not months.</p>
+        </div>
+        <p class="about-text">In Hong Kong's complex regulatory and commercial landscape, businesses face growing legal demands. Zegal democratises access to professional-grade legal tools, enabling SMEs, startups, and enterprises alike to operate with confidence and compliance.</p>
+        <p class="about-text">Founded in Hong Kong and now operating across Asia and the UK, Zegal serves over 20,000 companies — from schools and law firms to financial institutions and technology companies.</p>
+        <div class="about-props">
+          <div class="prop-card">
+            <div class="prop-icon">📋</div>
+            <div class="prop-title">Lawyer-Reviewed</div>
+            <div class="prop-desc">All templates are verified by qualified legal professionals</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🤖</div>
+            <div class="prop-title">AI-Powered</div>
+            <div class="prop-desc">Intelligent document builder generates contracts from inputs</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">✍️</div>
+            <div class="prop-title">E-Signatures</div>
+            <div class="prop-desc">Secure, audit-trailed signatures via ZegalSign</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🔗</div>
+            <div class="prop-title">Integrations</div>
+            <div class="prop-desc">Connects with CRMs, HR platforms, and cloud storage</div>
+          </div>
+        </div>
+      </div>
+      <div class="region-cards">
+        <div class="region-card active">
+          <div class="region-header">
+            <span class="region-flag">🇭🇰</span>
+            <div class="region-name">Hong Kong</div>
+            <span class="region-badge">HQ Asia</span>
+          </div>
+          <div class="region-addr">Dragon Law Limited<br>1507, 18 Tang Lung Street<br>Causeway Bay, Hong Kong</div>
+          <div class="region-phone">+852 5801 9997</div>
+        </div>
+        <div class="region-card">
+          <div class="region-header">
+            <span class="region-flag">🇸🇬</span>
+            <div class="region-name">Singapore</div>
+          </div>
+          <div class="region-addr">Dragonlaw (Singapore) Pte Ltd<br>56A Boat Quay, 049845</div>
+          <div class="region-phone">+65 6589 8923</div>
+        </div>
+        <div class="region-card">
+          <div class="region-header">
+            <span class="region-flag">🇬🇧</span>
+            <div class="region-name">United Kingdom</div>
+          </div>
+          <div class="region-addr">124-128 City Road<br>London, EC1V 2NX</div>
+          <div class="region-phone">+44 20 3617 6787</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="services" class="services-bg">
+  <div class="section-inner">
+    <div class="section-tag">Products & Features</div>
+    <h2 class="section-title">Everything You Need for Legal Automation</h2>
+    <p class="section-sub">Zegal's integrated platform covers every stage of the contract lifecycle — from creation to signature to management.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-icon">📑</div>
+        <div class="svc-title">Contract Lifecycle Management</div>
+        <div class="svc-desc">End-to-end CLM platform for creating, tracking, reviewing, and renewing contracts. Automated deadline reminders and issue flagging ensure nothing slips through.</div>
+        <div class="svc-tags"><span class="svc-tag">CLM</span><span class="svc-tag">Tracking</span><span class="svc-tag">Reminders</span></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">📚</div>
+        <div class="svc-title">Legal Templates Library</div>
+        <div class="svc-desc">Hundreds of lawyer-reviewed, customisable legal document templates for employment, commercial, corporate, IP, and compliance needs — ready to use instantly.</div>
+        <div class="svc-tags"><span class="svc-tag">Templates</span><span class="svc-tag">Lawyer-Reviewed</span><span class="svc-tag">Customisable</span></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🤖</div>
+        <div class="svc-title">AI Document Builder</div>
+        <div class="svc-desc">Generate complete, customised legal contracts based on your specific inputs using Zegal's AI-powered document builder — minutes instead of hours or days.</div>
+        <div class="svc-tags"><span class="svc-tag">AI-Powered</span><span class="svc-tag">Auto-Generate</span><span class="svc-tag">Custom</span></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">✍️</div>
+        <div class="svc-title">ZegalSign E-Signatures</div>
+        <div class="svc-desc">Legally binding, secure electronic signatures with full audit trails. Sign from anywhere, on any device — accelerating deal closure and reducing paper workflows.</div>
+        <div class="svc-tags"><span class="svc-tag">E-Signature</span><span class="svc-tag">Audit Trail</span><span class="svc-tag">Legally Binding</span></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">📊</div>
+        <div class="svc-title">Real-Time Insights</div>
+        <div class="svc-desc">Dashboards and reporting tools that give you a live view of your contract pipeline, renewal schedules, compliance status, and legal risk exposure.</div>
+        <div class="svc-tags"><span class="svc-tag">Dashboard</span><span class="svc-tag">Reporting</span><span class="svc-tag">Analytics</span></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🔗</div>
+        <div class="svc-title">Integration Hub</div>
+        <div class="svc-desc">Seamlessly connect Zegal with your existing CRM, HR platform, and cloud storage tools — creating a unified workflow across your entire business ecosystem.</div>
+        <div class="svc-tags"><span class="svc-tag">CRM</span><span class="svc-tag">HR Platforms</span><span class="svc-tag">Cloud Storage</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">From Draft to Signed in Minutes</h2>
+    <p class="section-sub">Zegal's streamlined workflow takes you from blank page to legally binding document in four simple steps.</p>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="step-num">1</div>
+        <div class="step-title">Choose a Template</div>
+        <div class="step-desc">Browse hundreds of lawyer-reviewed templates or use the AI builder to start your document instantly.</div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">2</div>
+        <div class="step-title">Customise & Automate</div>
+        <div class="step-desc">Answer guided questions and the platform automatically generates your personalised legal document.</div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">3</div>
+        <div class="step-title">Review & Collaborate</div>
+        <div class="step-desc">Share with counterparties, gather comments, and make revisions in real time — all within the platform.</div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">4</div>
+        <div class="step-title">Sign &amp; Manage</div>
+        <div class="step-desc">Execute with ZegalSign e-signatures and manage your contracts in the centralised CLM dashboard.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries" class="industries-bg">
+  <div class="section-inner">
+    <div class="section-tag">Industries</div>
+    <h2 class="section-title">Trusted Across Every Sector</h2>
+    <p class="section-sub">From startups to enterprise, Zegal serves businesses across diverse industries with tailored legal automation solutions.</p>
+    <div class="industry-grid">
+      <div class="industry-item"><div class="ind-icon">🏦</div><div class="ind-name">Finance & Banking</div></div>
+      <div class="industry-item"><div class="ind-icon">💻</div><div class="ind-name">Technology</div></div>
+      <div class="industry-item"><div class="ind-icon">🏢</div><div class="ind-name">Professional Services</div></div>
+      <div class="industry-item"><div class="ind-icon">🏠</div><div class="ind-name">Real Estate</div></div>
+      <div class="industry-item"><div class="ind-icon">🎓</div><div class="ind-name">Education</div></div>
+      <div class="industry-item"><div class="ind-icon">🏥</div><div class="ind-name">Healthcare</div></div>
+      <div class="industry-item"><div class="ind-icon">🎬</div><div class="ind-name">Entertainment</div></div>
+      <div class="industry-item"><div class="ind-icon">⚖️</div><div class="ind-name">Law Firms</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag">Pricing Plans</div>
+    <h2 class="section-title">A Plan for Every Business</h2>
+    <p class="section-sub">Whether you're an SME, school, or enterprise, Zegal has a tailored plan to fit your legal automation needs.</p>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <span class="plan-badge">For SMEs</span>
+        <div class="plan-name">Zegal SME</div>
+        <div class="plan-desc">Perfect for small and medium-sized businesses looking to automate contracts and reduce legal costs.</div>
+        <ul class="plan-features">
+          <li>Access to legal template library</li>
+          <li>AI document builder</li>
+          <li>ZegalSign e-signatures</li>
+          <li>Contract storage & management</li>
+          <li>Email support</li>
+        </ul>
+      </div>
+      <div class="plan-card featured">
+        <span class="plan-badge popular">For Education</span>
+        <div class="plan-name">Zegal Education</div>
+        <div class="plan-desc">Tailored for schools and educational institutions managing staff contracts, vendor agreements, and compliance.</div>
+        <ul class="plan-features">
+          <li>Education-specific templates</li>
+          <li>Multi-user collaboration</li>
+          <li>AI document builder</li>
+          <li>ZegalSign e-signatures</li>
+          <li>Compliance management tools</li>
+          <li>Priority support</li>
+        </ul>
+      </div>
+      <div class="plan-card">
+        <span class="plan-badge">For Enterprise</span>
+        <div class="plan-name">Zegal Enterprise</div>
+        <div class="plan-desc">Advanced CLM and integrations for large organisations with complex, high-volume legal workflow requirements.</div>
+        <ul class="plan-features">
+          <li>Full CLM platform</li>
+          <li>Custom integrations (CRM, HR, cloud)</li>
+          <li>Real-time analytics dashboards</li>
+          <li>Unlimited users</li>
+          <li>Dedicated account manager</li>
+          <li>SLA-backed support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg2);border-top:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-tag">Contact Us</div>
+    <h2 class="section-title">Get Started with Zegal</h2>
+    <p class="section-sub">Speak to our Hong Kong team about automating your legal workflows. Request a demo or get a personalised quote today.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">Phone (Hong Kong)</div>
+            <div class="c-val"><a href="tel:+85258019997">+852 5801 9997</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">Sales Email</div>
+            <div class="c-val"><a href="mailto:sales@zegal.com">sales@zegal.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">Website</div>
+            <div class="c-val"><a href="https://zegal.com" target="_blank">zegal.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">🏛️</div>
+          <div>
+            <div class="c-label">Legal Entity (HK)</div>
+            <div class="c-val">Dragon Law Limited</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-offices">
+        <div class="office-block hq">
+          <div class="office-header">
+            <span class="office-flag2">🇭🇰</span>
+            <div class="office-city2">Hong Kong — Causeway Bay</div>
+          </div>
+          <div class="office-entity">Dragon Law Limited</div>
+          <div class="office-addr2">1507, 18 Tang Lung Street<br>Causeway Bay, Hong Kong</div>
+          <div class="office-tel">+852 5801 9997</div>
+        </div>
+        <div class="office-block">
+          <div class="office-header">
+            <span class="office-flag2">🇸🇬</span>
+            <div class="office-city2">Singapore — Boat Quay</div>
+          </div>
+          <div class="office-entity">Dragonlaw (Singapore) Pte Ltd</div>
+          <div class="office-addr2">56A Boat Quay, 049845<br>Singapore</div>
+          <div class="office-tel">+65 6589 8923</div>
+        </div>
+        <div class="office-block">
+          <div class="office-header">
+            <span class="office-flag2">🇬🇧</span>
+            <div class="office-city2">London — City Road</div>
+          </div>
+          <div class="office-addr2">124-128 City Road<br>London, EC1V 2NX</div>
+          <div class="office-tel">+44 20 3617 6787</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Ze<span>gal</span></div>
+        <p>Legal automation for 20,000+ businesses. Simplifying contracts, documents, and e-signatures across Hong Kong, Singapore, and the UK.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#services">Contract Management</a></li>
+          <li><a href="#services">Legal Templates</a></li>
+          <li><a href="#services">AI Document Builder</a></li>
+          <li><a href="#services">ZegalSign</a></li>
+          <li><a href="#services">Integrations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Zegal</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Offices</h4>
+        <ul>
+          <li><a href="#contact">🇭🇰 Hong Kong</a></li>
+          <li><a href="#contact">🇸🇬 Singapore</a></li>
+          <li><a href="#contact">🇬🇧 London</a></li>
+          <li><a href="https://zegal.com" target="_blank">zegal.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 Zegal (Dragon Law Limited). All rights reserved.</div>
+      <div class="footer-note">Causeway Bay, <span>Hong Kong</span></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
