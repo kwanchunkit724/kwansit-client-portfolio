@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ming Kee Company Ltd. | Hong Kong's Leading Asphalt Specialist</title>
+<style>
+:root {
+  --primary: #0c0e0a;
+  --secondary: #111410;
+  --accent: #e06010;
+  --accent2: #d4a010;
+  --accent-yellow: #f0c820;
+  --text: #e8e4d8;
+  --text-muted: #8a8878;
+  --card-bg: #181a14;
+  --border: #222820;
+  --hero-overlay: rgba(12,14,10,0.85);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI','Arial',sans-serif;background:var(--primary);color:var(--text);line-height:1.7;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(12,14,10,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),#c04800);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;}
+.nav-logo-text{display:flex;flex-direction:column;}
+.nav-logo-en{font-size:0.95rem;font-weight:700;color:var(--text);line-height:1.2;}
+.nav-logo-cn{font-size:0.6rem;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.88rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:6px;text-decoration:none;font-size:0.88rem;font-weight:700;transition:background 0.2s;}
+.nav-cta:hover{background:#c04800;}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(160deg,#0c0e0a 0%,#141210 40%,#0e1008 100%);display:flex;align-items:center;padding-top:70px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 65%,rgba(224,96,16,0.1) 0%,transparent 55%);}
+.hero-grid{max-width:1200px;margin:0 auto;padding:5rem 2rem;display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center;position:relative;z-index:1;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(224,96,16,0.12);border:1px solid rgba(224,96,16,0.3);border-radius:4px;padding:0.4rem 1rem;margin-bottom:1.5rem;font-size:0.78rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;}
+.hero h1{font-size:3.2rem;font-weight:800;line-height:1.15;margin-bottom:0.5rem;}
+.hero h1 .orange{color:var(--accent);}
+.hero-cn{font-size:1rem;color:var(--text-muted);margin-bottom:1rem;font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;}
+.hero-desc{font-size:0.98rem;color:var(--text-muted);margin-bottom:2rem;max-width:540px;line-height:1.8;}
+.hero-achievements{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;}
+.ach-badge{background:rgba(212,160,16,0.1);border:1px solid rgba(212,160,16,0.25);border-radius:4px;padding:0.35rem 0.8rem;font-size:0.78rem;color:var(--accent2);display:flex;align-items:center;gap:5px;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.85rem 2rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:0.93rem;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{background:#c04800;transform:translateY(-2px);}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid rgba(232,228,216,0.2);padding:0.85rem 2rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:0.93rem;transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+.hero-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin-bottom:1.3rem;}
+.info-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1rem;}
+.info-row:last-child{margin-bottom:0;}
+.info-icon{width:34px;height:34px;border-radius:6px;background:rgba(224,96,16,0.1);border:1px solid rgba(224,96,16,0.2);display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;}
+.info-label{font-size:0.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:2px;}
+.info-value{font-size:0.86rem;color:var(--text);}
+.info-value a{color:var(--accent);text-decoration:none;}
+
+/* STATS */
+.stats{background:linear-gradient(90deg,#1a1008,#201408);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+.stat-num{font-size:2.4rem;font-weight:800;color:var(--accent);line-height:1;}
+.stat-label{font-size:0.82rem;color:var(--text-muted);margin-top:6px;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:0.73rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent);margin-bottom:0.6rem;}
+.section-title{font-size:2.2rem;font-weight:800;margin-bottom:1rem;line-height:1.2;}
+.section-sub{font-size:0.95rem;color:var(--text-muted);max-width:600px;margin-bottom:3rem;line-height:1.8;}
+
+/* ABOUT */
+.about{background:var(--secondary);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(224,96,16,0.1),rgba(212,160,16,0.06));border:1px solid rgba(224,96,16,0.25);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:1.8rem;margin-bottom:1.8rem;}
+.about-highlight h3{font-size:0.93rem;font-weight:700;color:var(--accent);margin-bottom:0.7rem;text-transform:uppercase;letter-spacing:0.05em;}
+.about-highlight p{color:var(--text-muted);font-size:0.92rem;line-height:1.8;}
+.about-body p{color:var(--text-muted);margin-bottom:1rem;font-size:0.92rem;line-height:1.8;}
+.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;align-items:flex-start;gap:10px;}
+.prop-icon{font-size:1.4rem;flex-shrink:0;}
+.prop-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.prop-desc{font-size:0.76rem;color:var(--text-muted);}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.service-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.service-card:hover{border-color:rgba(224,96,16,0.35);transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,0.5);}
+.service-card:hover::before{opacity:1;}
+.service-icon{font-size:2.4rem;margin-bottom:0.8rem;}
+.service-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.3rem;}
+.service-cn{font-size:0.75rem;color:var(--text-muted);margin-bottom:0.6rem;font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;}
+.service-desc{font-size:0.83rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.7;}
+.service-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.service-tag{background:rgba(224,96,16,0.1);border:1px solid rgba(224,96,16,0.2);color:var(--accent);padding:3px 9px;border-radius:20px;font-size:0.7rem;}
+
+/* PROJECTS */
+.projects{background:var(--secondary);}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.project-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;text-align:center;}
+.project-icon{font-size:2.5rem;margin-bottom:0.8rem;}
+.project-title{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.project-desc{font-size:0.82rem;color:var(--text-muted);line-height:1.7;}
+
+/* EQUIPMENT */
+.equipment{background:var(--primary);}
+.equip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.equip-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.4rem;text-align:center;}
+.equip-icon{font-size:1.8rem;margin-bottom:0.6rem;}
+.equip-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+.equip-desc{font-size:0.75rem;color:var(--text-muted);}
+
+/* CONTACT */
+.contact{background:var(--secondary);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.contact-info-block{background:var(--primary);border:1px solid var(--border);border-radius:12px;padding:2rem;}
+.contact-info-block h3{font-size:1rem;font-weight:700;margin-bottom:1.4rem;color:var(--text);}
+.cinfo-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border);}
+.cinfo-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.cinfo-icon{width:38px;height:38px;background:rgba(224,96,16,0.1);border:1px solid rgba(224,96,16,0.2);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+.cinfo-label{font-size:0.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:2px;}
+.cinfo-value{font-size:0.88rem;color:var(--text);}
+.cinfo-value a{color:var(--accent);text-decoration:none;}
+.contact-form-block{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:2rem;}
+.contact-form-block h3{font-size:1rem;font-weight:700;margin-bottom:1.4rem;color:var(--text);}
+.form-group{margin-bottom:1.1rem;}
+.form-group label{display:block;font-size:0.72rem;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em;}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--primary);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;color:var(--text);font-family:inherit;font-size:0.9rem;transition:border-color 0.2s;resize:vertical;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);}
+.form-group select option{background:var(--primary);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.submit-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:0.85rem;border-radius:6px;font-family:inherit;font-size:0.93rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.submit-btn:hover{background:#c04800;}
+
+/* FOOTER */
+footer{background:var(--primary);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:2rem;}
+.footer-brand p{font-size:0.83rem;color:var(--text-muted);line-height:1.7;margin-top:1rem;}
+.footer-col h4{font-size:0.73rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1rem;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:0.6rem;}
+.footer-col ul li a{color:var(--text-muted);text-decoration:none;font-size:0.83rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.78rem;color:var(--text-muted);}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .services-grid,.projects-grid{grid-template-columns:1fr 1fr;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .equip-grid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  nav .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">🛣️</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-en">Ming Kee Company Ltd.</span>
+        <span class="nav-logo-cn">明基服務有限公司 · 明基瀝青</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Request Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span>🏆</span>
+        <span>Hong Kong's Largest Asphalt Construction Team</span>
+      </div>
+      <h1>Ming Kee<br><span class="orange">Asphalt</span><br>Specialists</h1>
+      <p class="hero-cn">明基服務有限公司 · 明基瀝青 · Since 1993</p>
+      <p class="hero-desc">With over 30 years of experience, Ming Kee Company Ltd. has grown into Hong Kong's leading asphalt engineering company, operating the largest professional construction team and fleet of specialized machinery in the industry. From major housing estates to sports stadiums — we pave Hong Kong.</p>
+      <div class="hero-achievements">
+        <div class="ach-badge">📅 Est. 1993 · 30+ Years</div>
+        <div class="ach-badge">🏗️ Largest Asphalt Team in HK</div>
+        <div class="ach-badge">🏟️ Stadium & Estate Projects</div>
+      </div>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Explore Our Services →</a>
+        <a href="#contact" class="btn-secondary">📋 Get a Quotation</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">Company Contact</div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Address</div>
+          <div class="info-value">Room 609, 6/F, Delta House<br>3 On Yiu Street, Siu Lek Yuen<br>Shatin, N.T.</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">Phone</div>
+          <div class="info-value"><a href="tel:+85226480683">2648-0683</a> / <a href="tel:+85226370666">2637-0666</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📠</div>
+        <div>
+          <div class="info-label">Fax</div>
+          <div class="info-value">2310-2090</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:info@mingkeeco.com">info@mingkeeco.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">Website</div>
+          <div class="info-value"><a href="https://mingkeeco.com/en/" target="_blank">mingkeeco.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">30+</div>
+      <div class="stat-label">Years of Excellence</div>
+    </div>
+    <div>
+      <div class="stat-num">#1</div>
+      <div class="stat-label">Largest Asphalt Team in HK</div>
+    </div>
+    <div>
+      <div class="stat-num">6</div>
+      <div class="stat-label">Service Categories</div>
+    </div>
+    <div>
+      <div class="stat-num">1993</div>
+      <div class="stat-label">Established in Hong Kong</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">About Ming Kee</div>
+        <h2 class="section-title">Paving Hong Kong<br>Since 1993</h2>
+        <div class="about-highlight">
+          <h3>🏗️ Hong Kong's No.1 Asphalt Company</h3>
+          <p>Founded in 1993, Ming Kee Company Ltd. (明基服務有限公司) has spent over three decades building its reputation as Hong Kong's most experienced and best-equipped asphalt engineering firm. Today, we operate the largest construction team and most comprehensive fleet of professional asphalt machinery in Hong Kong.</p>
+        </div>
+        <div class="about-body">
+          <p>Over 30 years of continuous operation has given us deep expertise in all aspects of asphalt engineering — from large-scale public infrastructure and private housing estate paving to sports track construction and specialist milling works.</p>
+          <p>Our team of experienced professionals, combined with state-of-the-art paving and milling equipment, allows us to tackle projects of any scale with the precision and reliability that Hong Kong's construction industry demands.</p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-grid">
+          <div class="prop-card">
+            <div class="prop-icon">🏆</div>
+            <div>
+              <div class="prop-title">Market Leader</div>
+              <div class="prop-desc">Hong Kong's largest asphalt construction team and professional machinery fleet</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">⚙️</div>
+            <div>
+              <div class="prop-title">Advanced Equipment</div>
+              <div class="prop-desc">Full fleet of specialized paving and milling machinery for any project scale</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">📐</div>
+            <div>
+              <div class="prop-title">Precision Work</div>
+              <div class="prop-desc">30+ years of expertise ensuring quality and precision on every project</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🏗️</div>
+            <div>
+              <div class="prop-title">Large-Scale Capacity</div>
+              <div class="prop-desc">Proven track record on major housing estates and public infrastructure</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🔩</div>
+            <div>
+              <div class="prop-title">Full-Service</div>
+              <div class="prop-desc">Engineering, materials supply, and machinery hire — one-stop solution</div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🤝</div>
+            <div>
+              <div class="prop-title">Trusted Partner</div>
+              <div class="prop-desc">Long-established relationships with Hong Kong's leading developers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">Our Services</div>
+    <h2 class="section-title">Complete Asphalt Solutions</h2>
+    <p class="section-sub">From engineering works to materials supply and machinery hire — we cover every aspect of asphalt construction.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🛣️</div>
+        <div class="service-name">Asphalt Paving</div>
+        <div class="service-cn">瀝青鋪設工程</div>
+        <div class="service-desc">Professional asphalt paving for roads, carparks, housing estates, public areas, and commercial developments. Our large team ensures efficient execution on any scale.</div>
+        <div class="service-tags">
+          <span class="service-tag">Road Paving</span>
+          <span class="service-tag">Estate Paving</span>
+          <span class="service-tag">Carparks</span>
+          <span class="service-tag">Public Areas</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⛏️</div>
+        <div class="service-name">Milling Works</div>
+        <div class="service-cn">銑刨工程</div>
+        <div class="service-desc">Specialist road milling and scarification services for resurfacing, repair, and pavement rehabilitation projects. Precise depth control with modern milling equipment.</div>
+        <div class="service-tags">
+          <span class="service-tag">Road Milling</span>
+          <span class="service-tag">Pavement Removal</span>
+          <span class="service-tag">Scarification</span>
+          <span class="service-tag">Rehabilitation</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏗️</div>
+        <div class="service-name">Milling Chips Paving</div>
+        <div class="service-cn">銑刨碎料鋪設工程</div>
+        <div class="service-desc">Sustainable paving solutions using milling chips for surface dressing, base preparation, and temporary pavement applications — an economical and environmentally responsible choice.</div>
+        <div class="service-tags">
+          <span class="service-tag">Surface Dressing</span>
+          <span class="service-tag">Base Layer</span>
+          <span class="service-tag">Sustainable</span>
+          <span class="service-tag">Cost-Effective</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <div class="service-name">Milling Chips for Sale</div>
+        <div class="service-cn">銑刨碎料出售</div>
+        <div class="service-desc">Quality reclaimed asphalt milling chips available for purchase. Suitable for temporary access roads, base compaction, backfill applications, and surface dressing works.</div>
+        <div class="service-tags">
+          <span class="service-tag">Reclaimed Asphalt</span>
+          <span class="service-tag">Bulk Supply</span>
+          <span class="service-tag">Delivery Available</span>
+          <span class="service-tag">Site Pickup</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛢️</div>
+        <div class="service-name">Bituminous Material for Sale</div>
+        <div class="service-cn">瀝青物料出售</div>
+        <div class="service-desc">Supply of quality bituminous materials including asphalt mixes, bitumen emulsions, and related products for construction contractors and road maintenance works.</div>
+        <div class="service-tags">
+          <span class="service-tag">Asphalt Mix</span>
+          <span class="service-tag">Bitumen Emulsion</span>
+          <span class="service-tag">Road Materials</span>
+          <span class="service-tag">Bulk Orders</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚜</div>
+        <div class="service-name">Machinery Hire</div>
+        <div class="service-cn">機械租賃及調動</div>
+        <div class="service-desc">Hire of professional asphalt machinery including paving plants, milling machines, and special purpose vehicles. Full mobilization services for paving and milling plants.</div>
+        <div class="service-tags">
+          <span class="service-tag">Asphalt Pavers</span>
+          <span class="service-tag">Milling Machines</span>
+          <span class="service-tag">Special Vehicles</span>
+          <span class="service-tag">Plant Mobilization</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects">
+  <div class="section-inner">
+    <div class="section-label">Our Projects</div>
+    <h2 class="section-title">Track Record of Excellence</h2>
+    <p class="section-sub">Five-year history of large-scale asphalt projects across Hong Kong's most demanding construction environments.</p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-icon">🏘️</div>
+        <div class="project-title">Private Housing Estates</div>
+        <div class="project-desc">Asphalt paving and resurfacing works for large-scale private residential developments across Hong Kong and the New Territories, serving some of the city's most prominent housing projects.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">🏙️</div>
+        <div class="project-title">Public Housing Estates</div>
+        <div class="project-desc">Major asphalt engineering contracts for Hong Kong Housing Authority public housing estates, delivering quality pavement infrastructure to communities across Hong Kong.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">🏟️</div>
+        <div class="project-title">Track Field Stadiums</div>
+        <div class="project-desc">Specialist asphalt and surface works for athletic track and field facilities, requiring precision engineering to meet international performance and safety standards.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPMENT -->
+<section class="equipment">
+  <div class="section-inner">
+    <div class="section-label">Our Equipment</div>
+    <h2 class="section-title">Professional Machinery Fleet</h2>
+    <p class="section-sub">The most comprehensive fleet of asphalt construction equipment in Hong Kong.</p>
+    <div class="equip-grid">
+      <div class="equip-card">
+        <div class="equip-icon">🛣️</div>
+        <div class="equip-title">Asphalt Pavers</div>
+        <div class="equip-desc">High-capacity tracked and wheeled asphalt finishers</div>
+      </div>
+      <div class="equip-card">
+        <div class="equip-icon">⛏️</div>
+        <div class="equip-title">Milling Machines</div>
+        <div class="equip-desc">Cold planers for precision pavement removal and scarification</div>
+      </div>
+      <div class="equip-card">
+        <div class="equip-icon">🚛</div>
+        <div class="equip-title">Special Vehicles</div>
+        <div class="equip-desc">Specialized purpose vehicles for asphalt transportation and placement</div>
+      </div>
+      <div class="equip-card">
+        <div class="equip-icon">🔩</div>
+        <div class="equip-title">Compaction Equipment</div>
+        <div class="equip-desc">Steel drum and pneumatic rollers for optimal pavement compaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="section-inner">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Request a Quotation</h2>
+    <p class="section-sub">Contact our team for project enquiries, quotations, materials pricing, or machinery hire. We respond promptly to all enquiries.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-block">
+          <h3>Company Contact</h3>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📍</div>
+            <div>
+              <div class="cinfo-label">Address</div>
+              <div class="cinfo-value">Room 609, 6/F, Delta House<br>3 On Yiu Street, Siu Lek Yuen<br>Shatin, New Territories, Hong Kong</div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📞</div>
+            <div>
+              <div class="cinfo-label">Office Phone</div>
+              <div class="cinfo-value">
+                <a href="tel:+85226480683">2648-0683</a> / <a href="tel:+85226370666">2637-0666</a>
+              </div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📠</div>
+            <div>
+              <div class="cinfo-label">Fax</div>
+              <div class="cinfo-value">2310-2090</div>
+            </div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cinfo-icon">📧</div>
+            <div>
+              <div class="cinfo-label">General Enquiry</div>
+              <div class="cinfo-value"><a href="mailto:info@mingkeeco.com">info@mingkeeco.com</a></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:rgba(224,96,16,0.08);border:1px solid rgba(224,96,16,0.2);border-radius:10px;padding:1.4rem;margin-top:1.2rem;">
+          <p style="font-size:0.82rem;font-weight:700;color:var(--accent);margin-bottom:0.5rem;">📋 Quotation Contact</p>
+          <p style="font-size:0.9rem;color:var(--text);font-weight:600;">Andrew To</p>
+          <p style="font-size:0.85rem;color:var(--text-muted);">📧 <a href="mailto:andrewto@mingkeeco.com" style="color:var(--accent);">andrewto@mingkeeco.com</a><br>📱 <a href="tel:+85292212242" style="color:var(--accent);">9221-2242</a></p>
+        </div>
+      </div>
+      <div class="contact-form-block">
+        <h3>Project Enquiry</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Company name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="Contact number">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select>
+            <option value="">Select service...</option>
+            <option>Asphalt Paving Project</option>
+            <option>Milling Works</option>
+            <option>Milling Chips Paving</option>
+            <option>Milling Chips for Sale</option>
+            <option>Bituminous Material for Sale</option>
+            <option>Machinery Hire</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Project Details</label>
+          <textarea rows="4" placeholder="Please describe your project: location, area size, scope of works, and timeline requirements..."></textarea>
+        </div>
+        <button class="submit-btn">📩 Submit Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="display:inline-flex;margin-bottom:0.8rem;">
+          <div class="nav-logo-icon">🛣️</div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-en">Ming Kee Company Ltd.</span>
+            <span class="nav-logo-cn">明基服務有限公司 · 明基瀝青</span>
+          </div>
+        </a>
+        <p>Hong Kong's leading asphalt engineering company since 1993. Operating the city's largest professional construction team and machinery fleet for paving, milling, and materials supply.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Asphalt Paving</a></li>
+          <li><a href="#services">Milling Works</a></li>
+          <li><a href="#services">Milling Chips Paving</a></li>
+          <li><a href="#services">Milling Chips for Sale</a></li>
+          <li><a href="#services">Bituminous Material</a></li>
+          <li><a href="#services">Machinery Hire</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#projects">Our Projects</a></li>
+          <li><a href="#contact">Contact & Quotation</a></li>
+          <li><a href="https://mingkeeco.com/en/" target="_blank">Official Website</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 Ming Kee Company Ltd. 明基服務有限公司. All rights reserved. 版權所有 不得轉載</div>
+      <div class="footer-copy">Delta House, Siu Lek Yuen, Shatin, Hong Kong</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
