@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skin Central | Professional Skincare &amp; Beauty</title>
+<style>
+  :root {
+    --bg-primary: #0d080c;
+    --bg-secondary: #160c14;
+    --bg-card: #1e1020;
+    --bg-card2: #281630;
+    --rose1: #7a1840;
+    --rose2: #b82860;
+    --rose3: #e84880;
+    --pink: #f870a8;
+    --cream: #f8e8f0;
+    --gold1: #c08828;
+    --gold2: #e8b040;
+    --text-main: #faf0f6;
+    --text-muted: #b88098;
+    --text-dim: #6a3858;
+    --border: rgba(184,40,96,0.2);
+    --cream-border: rgba(248,232,240,0.15);
+    --gold-border: rgba(192,136,40,0.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg-primary);color:var(--text-main);font-family:'Segoe UI','Noto Sans HK',sans-serif;line-height:1.7;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,8,12,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 5%;}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+  .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-logo-mark{width:38px;height:38px;background:linear-gradient(135deg,var(--rose1),var(--rose2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;}
+  .nav-logo-text{font-size:18px;font-weight:800;color:var(--cream);letter-spacing:1px;}
+  .nav-logo-sub{font-size:11px;color:var(--text-dim);letter-spacing:.5px;}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{text-decoration:none;color:var(--text-muted);font-size:14px;transition:color .2s;}
+  .nav-links a:hover{color:var(--rose3);}
+  .nav-cta{background:linear-gradient(135deg,var(--rose1),var(--rose2));color:#fff;padding:9px 22px;border-radius:20px;text-decoration:none;font-size:14px;font-weight:600;transition:opacity .2s;}
+  .nav-cta:hover{opacity:.85;}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden;}
+  .hero-orb1{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(122,24,64,0.2) 0%,transparent 70%);top:-100px;right:-50px;border-radius:50%;}
+  .hero-orb2{position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(192,136,40,0.07) 0%,transparent 70%);bottom:50px;left:5%;border-radius:50%;}
+  .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;position:relative;z-index:1;}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(184,40,96,0.12);border:1px solid rgba(184,40,96,0.3);border-radius:20px;padding:6px 16px;font-size:12px;color:var(--rose3);margin-bottom:24px;letter-spacing:.5px;}
+  .hero-dot{width:6px;height:6px;background:var(--pink);border-radius:50%;animation:pulse 2.5s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(1.5);}}
+  h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;line-height:1.1;margin-bottom:14px;letter-spacing:-.5px;}
+  h1 .skin{color:var(--cream);}
+  h1 .central{background:linear-gradient(135deg,var(--rose2),var(--rose3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero-tagline{font-size:15px;color:var(--rose3);font-weight:600;margin-bottom:18px;letter-spacing:.5px;}
+  .hero-desc{font-size:16px;color:var(--text-muted);max-width:540px;margin-bottom:36px;line-height:1.85;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-rose{background:linear-gradient(135deg,var(--rose1),var(--rose2));color:#fff;padding:13px 30px;border-radius:24px;text-decoration:none;font-weight:700;font-size:15px;transition:all .2s;}
+  .btn-rose:hover{opacity:.85;transform:translateY(-2px);}
+  .btn-outline{border:1px solid var(--cream-border);color:var(--text-muted);padding:13px 30px;border-radius:24px;text-decoration:none;font-size:15px;transition:all .2s;}
+  .btn-outline:hover{border-color:var(--rose3);color:var(--rose3);}
+
+  /* INFO CARD */
+  .info-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:0 24px 64px rgba(0,0,0,.6);}
+  .info-card-title{font-size:11px;color:var(--rose3);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:20px;}
+  .info-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+  .info-row:last-child{border-bottom:none;}
+  .i-icon{width:34px;height:34px;background:rgba(184,40,96,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+  .i-label{font-size:10px;color:var(--text-dim);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;}
+  .i-val{font-size:13px;color:var(--text-main);font-weight:600;}
+  .i-val a{color:var(--rose3);text-decoration:none;}
+
+  /* STATS */
+  .stats{background:var(--bg-secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:38px 5%;}
+  .stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+  .stat-item{text-align:center;}
+  .stat-num{font-size:1.9rem;font-weight:800;background:linear-gradient(135deg,var(--rose2),var(--rose3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .stat-label{font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+  /* SECTION */
+  section{padding:80px 5%;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-tag{font-size:11px;color:var(--rose3);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;margin-bottom:12px;}
+  .section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:16px;}
+  .section-title span{background:linear-gradient(135deg,var(--rose2),var(--rose3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .section-sub{color:var(--text-muted);font-size:15px;max-width:620px;margin-bottom:48px;line-height:1.8;}
+
+  /* TREATMENTS */
+  .treat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .treat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px;transition:all .3s;position:relative;overflow:hidden;}
+  .treat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--rose1),var(--pink));opacity:0;transition:opacity .3s;}
+  .treat-card:hover{border-color:rgba(184,40,96,0.4);transform:translateY(-4px);background:var(--bg-card2);}
+  .treat-card:hover::after{opacity:1;}
+  .treat-icon{font-size:36px;margin-bottom:14px;}
+  .treat-title{font-size:17px;font-weight:700;margin-bottom:8px;color:var(--cream);}
+  .treat-desc{font-size:14px;color:var(--text-muted);line-height:1.8;}
+  .treat-badge{display:inline-block;background:rgba(184,40,96,0.12);border:1px solid var(--border);border-radius:12px;padding:3px 10px;font-size:11px;color:var(--rose3);margin-top:12px;}
+
+  /* PRODUCTS */
+  .prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .prod-card{background:var(--bg-card);border:1px solid var(--cream-border);border-radius:14px;padding:26px;display:flex;gap:16px;transition:all .3s;}
+  .prod-card:hover{border-color:rgba(248,232,240,0.3);background:var(--bg-card2);}
+  .prod-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(122,24,64,0.3),rgba(184,40,96,0.1));border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+  .prod-title{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--cream);}
+  .prod-desc{font-size:14px;color:var(--text-muted);line-height:1.7;}
+  .prod-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;}
+  .ptag{background:rgba(184,40,96,0.1);border:1px solid var(--border);border-radius:10px;padding:2px 9px;font-size:11px;color:var(--rose3);}
+
+  /* VALUES */
+  .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .val-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;transition:all .3s;}
+  .val-card:hover{border-color:rgba(184,40,96,0.35);transform:translateY(-3px);}
+  .val-icon{font-size:30px;margin-bottom:12px;}
+  .val-title{font-size:14px;font-weight:700;margin-bottom:6px;color:var(--cream);}
+  .val-desc{font-size:13px;color:var(--text-muted);line-height:1.6;}
+
+  /* CONTACT */
+  .contact-section{background:var(--bg-secondary);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .c-list{display:flex;flex-direction:column;gap:18px;}
+  .c-item{display:flex;gap:14px;align-items:flex-start;}
+  .ci-icon{width:42px;height:42px;background:rgba(184,40,96,0.12);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+  .ci-label{font-size:11px;color:var(--text-dim);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;}
+  .ci-val{font-size:14px;color:var(--text-main);font-weight:600;}
+  .ci-val a{color:var(--rose3);text-decoration:none;}
+
+  /* FORM */
+  .cform{display:flex;flex-direction:column;gap:14px;}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .fg{display:flex;flex-direction:column;gap:7px;}
+  .fg label{font-size:12px;color:var(--text-muted);font-weight:600;letter-spacing:.3px;}
+  .fg input,.fg select,.fg textarea{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text-main);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;}
+  .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--rose2);}
+  .fg textarea{resize:vertical;min-height:110px;}
+  .fg select option{background:#1e1020;}
+  .fsub{background:linear-gradient(135deg,var(--rose1),var(--rose2));color:#fff;border:none;padding:13px 28px;border-radius:24px;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+  .fsub:hover{opacity:.85;}
+
+  /* FOOTER */
+  footer{background:#0a0509;border-top:1px solid var(--border);padding:48px 5% 26px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:44px;margin-bottom:36px;}
+  .fb-name{font-size:20px;font-weight:900;color:var(--cream);letter-spacing:1px;margin-bottom:6px;}
+  .fb-desc{font-size:13px;color:var(--text-dim);line-height:1.7;}
+  .fc-title{font-size:11px;color:var(--rose3);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
+  .fc-links{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  .fc-links a{text-decoration:none;color:var(--text-dim);font-size:13px;transition:color .2s;}
+  .fc-links a:hover{color:var(--rose3);}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .footer-copy{font-size:12px;color:var(--text-dim);}
+
+  @media(max-width:960px){
+    .treat-grid{grid-template-columns:1fr 1fr;}
+    .values-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:768px){
+    .hero-inner,.contact-grid,.footer-top{grid-template-columns:1fr;}
+    .info-card{display:none;}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .treat-grid,.prod-grid,.values-grid{grid-template-columns:1fr;}
+    .frow{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-mark">✦</div>
+      <div>
+        <div class="nav-logo-text">Skin Central</div>
+        <div class="nav-logo-sub">Professional Skincare · Hong Kong</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#treatments">Treatments</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#values">Our Promise</a></li>
+      <li><a href="#contact">Book Now</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Book Consultation</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">
+        <span class="hero-dot"></span>
+        Professional Skincare · Hong Kong
+      </div>
+      <h1>
+        <span class="skin">Skin</span> <span class="central">Central</span>
+      </h1>
+      <div class="hero-tagline">Your Skin. Our Expertise. Real Results.</div>
+      <p class="hero-desc">Skin Central is Hong Kong's trusted destination for professional skincare treatments and premium beauty solutions. Our team of certified skincare specialists combines advanced technology with proven techniques to deliver transformative results for every skin type.</p>
+      <div class="hero-btns">
+        <a class="btn-rose" href="#contact">Book a Consultation</a>
+        <a class="btn-outline" href="#treatments">Explore Treatments</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">Contact Us</div>
+      <div class="info-row">
+        <div class="i-icon">📱</div>
+        <div>
+          <div class="i-label">WhatsApp</div>
+          <div class="i-val"><a href="https://wa.me/85267446238">6744 6238</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">✉️</div>
+        <div>
+          <div class="i-label">Email</div>
+          <div class="i-val"><a href="mailto:contact@skincentral.com">contact@skincentral.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">📍</div>
+        <div>
+          <div class="i-label">Location</div>
+          <div class="i-val">Hong Kong</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="i-icon">⏰</div>
+        <div>
+          <div class="i-label">Hours</div>
+          <div class="i-val">Mon – Sat: 10:00am – 8:00pm<br>Sun: 11:00am – 6:00pm</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">5,000+</div>
+      <div class="stat-label">Happy Clients</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Signature Treatments</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Certified Specialists</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">Premium Beauty Destination</div>
+    </div>
+  </div>
+</div>
+
+<!-- TREATMENTS -->
+<section id="treatments">
+  <div class="section-inner">
+    <div class="section-tag">Our Treatments</div>
+    <h2 class="section-title">Professional <span>Skincare Treatments</span></h2>
+    <p class="section-sub">From deep cleansing facials to advanced anti-ageing solutions, our comprehensive range of treatments is tailored to address every skin concern with visible, lasting results.</p>
+    <div class="treat-grid">
+      <div class="treat-card">
+        <div class="treat-icon">✨</div>
+        <div class="treat-title">Signature Facial</div>
+        <div class="treat-desc">Our bespoke signature facial combines deep cleansing, exfoliation, and intensive hydration, customised to your skin type for an instant glow and long-term skin health improvement.</div>
+        <span class="treat-badge">Most Popular</span>
+      </div>
+      <div class="treat-card">
+        <div class="treat-icon">⚡</div>
+        <div class="treat-title">Hydra Infusion Therapy</div>
+        <div class="treat-desc">Advanced hydradermabrasion treatment that simultaneously exfoliates and infuses skin with nourishing serums, deeply hydrating and revitalising dull, dehydrated complexions.</div>
+        <span class="treat-badge">Advanced Technology</span>
+      </div>
+      <div class="treat-card">
+        <div class="treat-icon">🌙</div>
+        <div class="treat-title">Anti-Ageing Treatment</div>
+        <div class="treat-desc">A powerful combination of peptide-rich serums, collagen-boosting technology, and specialised massage techniques to firm, lift, and reduce the visible signs of ageing.</div>
+        <span class="treat-badge">Premium</span>
+      </div>
+      <div class="treat-card">
+        <div class="treat-icon">🌿</div>
+        <div class="treat-title">Brightening &amp; Pigmentation</div>
+        <div class="treat-desc">Targeted brightening treatments using advanced active ingredients to reduce hyperpigmentation, dark spots, and uneven skin tone for a luminous, even complexion.</div>
+        <span class="treat-badge">Results-Driven</span>
+      </div>
+      <div class="treat-card">
+        <div class="treat-icon">💆</div>
+        <div class="treat-title">Acne Control Program</div>
+        <div class="treat-desc">A multi-step professional acne management programme combining deep pore cleansing, antibacterial treatments, and soothing therapies to control breakouts and prevent future blemishes.</div>
+        <span class="treat-badge">Specialist Care</span>
+      </div>
+      <div class="treat-card">
+        <div class="treat-icon">🩹</div>
+        <div class="treat-title">Sensitive Skin Therapy</div>
+        <div class="treat-desc">Gentle, calming treatments specifically formulated for sensitive and reactive skin, using hypoallergenic ingredients to strengthen the skin barrier and reduce redness and irritation.</div>
+        <span class="treat-badge">Gentle &amp; Safe</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background:var(--bg-secondary);">
+  <div class="section-inner">
+    <div class="section-tag">Skincare Products</div>
+    <h2 class="section-title">Premium <span>Product Range</span></h2>
+    <p class="section-sub">Extend your professional results at home with our carefully curated selection of high-performance skincare products, recommended by our specialists.</p>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-icon">🧴</div>
+        <div>
+          <div class="prod-title">Cleansers &amp; Toners</div>
+          <div class="prod-desc">Gentle yet effective cleansing solutions and balancing toners formulated to remove impurities, maintain the skin's natural pH, and prepare for subsequent skincare steps.</div>
+          <div class="prod-tags">
+            <span class="ptag">Gentle Cleanser</span>
+            <span class="ptag">Micellar Water</span>
+            <span class="ptag">Balancing Toner</span>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">💧</div>
+        <div>
+          <div class="prod-title">Serums &amp; Essences</div>
+          <div class="prod-desc">Concentrated treatment serums targeting specific skin concerns — from hyaluronic acid for deep hydration to vitamin C for brightening and retinol for anti-ageing.</div>
+          <div class="prod-tags">
+            <span class="ptag">Hyaluronic Acid</span>
+            <span class="ptag">Vitamin C</span>
+            <span class="ptag">Retinol</span>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🫧</div>
+        <div>
+          <div class="prod-title">Moisturisers &amp; SPF</div>
+          <div class="prod-desc">Rich, nourishing moisturisers and broad-spectrum sun protection formulas to maintain skin hydration and shield against UV-induced damage and premature ageing.</div>
+          <div class="prod-tags">
+            <span class="ptag">Day Cream</span>
+            <span class="ptag">Night Repair</span>
+            <span class="ptag">SPF 50+</span>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🌸</div>
+        <div>
+          <div class="prod-title">Masks &amp; Treatments</div>
+          <div class="prod-desc">Professional-grade face masks and intensive at-home treatments for targeted care — hydrating sheet masks, clay purifying masks, and intensive overnight repair treatments.</div>
+          <div class="prod-tags">
+            <span class="ptag">Sheet Masks</span>
+            <span class="ptag">Clay Masks</span>
+            <span class="ptag">Overnight Repair</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section id="values">
+  <div class="section-inner">
+    <div class="section-tag">Our Promise</div>
+    <h2 class="section-title">The <span>Skin Central</span> Difference</h2>
+    <p class="section-sub">We are committed to delivering exceptional skincare experiences grounded in expertise, safety, and a genuine passion for healthy, radiant skin.</p>
+    <div class="values-grid">
+      <div class="val-card">
+        <div class="val-icon">🎓</div>
+        <div class="val-title">Certified Expertise</div>
+        <div class="val-desc">All treatments performed by internationally certified skincare specialists with ongoing professional development.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">🔬</div>
+        <div class="val-title">Science-Based</div>
+        <div class="val-desc">Our treatments and products are grounded in dermatological science, using clinically proven active ingredients.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">💎</div>
+        <div class="val-title">Premium Products</div>
+        <div class="val-desc">We use only the highest quality professional-grade products and equipment from trusted global brands.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">🤍</div>
+        <div class="val-title">Personalised Care</div>
+        <div class="val-desc">Every client receives a personalised skin assessment and tailored treatment plan for optimal results.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">Book Now</div>
+    <h2 class="section-title">Start Your <span>Skin Journey</span></h2>
+    <p class="section-sub">Book a consultation or treatment today. Our specialists are ready to create your personalised skincare plan.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="c-list">
+          <div class="c-item">
+            <div class="ci-icon">📱</div>
+            <div>
+              <div class="ci-label">WhatsApp</div>
+              <div class="ci-val"><a href="https://wa.me/85267446238">6744 6238</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">✉️</div>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-val"><a href="mailto:contact@skincentral.com">contact@skincentral.com</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">Location</div>
+              <div class="ci-val">Hong Kong</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="ci-icon">⏰</div>
+            <div>
+              <div class="ci-label">Opening Hours</div>
+              <div class="ci-val">Mon – Sat: 10:00am – 8:00pm<br>Sunday: 11:00am – 6:00pm</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="cform" onsubmit="return false;">
+        <div class="frow">
+          <div class="fg">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="fg">
+            <label>Phone / WhatsApp *</label>
+            <input type="tel" placeholder="Contact number">
+          </div>
+        </div>
+        <div class="fg">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="fg">
+          <label>Skin Concern</label>
+          <select>
+            <option>General Skincare / Hydration</option>
+            <option>Acne &amp; Breakouts</option>
+            <option>Anti-Ageing &amp; Firming</option>
+            <option>Brightening &amp; Pigmentation</option>
+            <option>Sensitive / Reactive Skin</option>
+            <option>Product Enquiry</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Preferred Appointment Date</label>
+          <input type="text" placeholder="e.g. Weekday afternoons, Saturday morning...">
+        </div>
+        <div class="fg">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your skin concerns or any questions..."></textarea>
+        </div>
+        <button type="submit" class="fsub">Book Consultation</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="fb-name">Skin Central</div>
+        <div class="fb-desc" style="margin-top:6px;">Hong Kong's trusted professional skincare destination. Certified specialists, premium treatments, and personalised care for healthy, radiant skin.</div>
+      </div>
+      <div>
+        <div class="fc-title">Treatments</div>
+        <ul class="fc-links">
+          <li><a href="#treatments">Signature Facial</a></li>
+          <li><a href="#treatments">Hydra Infusion</a></li>
+          <li><a href="#treatments">Anti-Ageing</a></li>
+          <li><a href="#treatments">Acne Control</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fc-title">Contact</div>
+        <ul class="fc-links">
+          <li><a href="https://wa.me/85267446238">WhatsApp: 6744 6238</a></li>
+          <li><a href="mailto:contact@skincentral.com">contact@skincentral.com</a></li>
+          <li><a href="#contact">Book Appointment</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Skin Central. All rights reserved. Hong Kong.</div>
+      <div style="font-size:12px;color:var(--text-dim);">Professional Skincare · Beauty · Wellness</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
