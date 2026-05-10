@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>足本堂美容保健有限公司 | 中式按摩 · 藍田匯景廣場</title>
+  <meta name="description" content="足本堂美容保健有限公司 — 藍田匯景廣場5樓專業中式按摩保健中心，提供足部反射療法、全身推拿、美容護膚等服務，每日10:00-23:30營業，消費HK$101-$300。電話：2185 7724 / 5106 1112。" />
+  <style>
+    :root {
+      --bg:       #060908;
+      --bg2:      #090e0a;
+      --bg3:      #0e1610;
+      --border:   #162018;
+      --acc:      #409858;
+      --acc2:     #58c870;
+      --acc3:     #287840;
+      --acc-g:    #c8a040;
+      --text:     #d0ecd8;
+      --muted:    #507060;
+      --card:     #080d08;
+      --radius:   10px;
+      --nav-h:    64px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; line-height: 1.7; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+      background: rgba(6,9,8,0.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-mark {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--acc3), var(--acc), var(--acc2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700; color: #fff;
+    }
+    .nav-logo-text { font-size: 14px; font-weight: 600; color: var(--text); }
+    .nav-links { display: flex; gap: 26px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color .2s; }
+    .nav-links a:hover { color: var(--acc2); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 9px 20px; border-radius: 6px;
+      font-size: 12px; cursor: pointer; font-family: inherit; font-weight: 600;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    .hero {
+      min-height: 100vh; padding-top: var(--nav-h);
+      background: linear-gradient(155deg, var(--bg) 0%, #0a100c 55%, var(--bg) 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 15% 55%, rgba(64,152,88,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 85% 30%, rgba(200,160,64,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 400px; gap: 64px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(64,152,88,0.1); border: 1px solid rgba(64,152,88,0.3);
+      border-radius: 6px; padding: 6px 16px; margin-bottom: 24px;
+      font-size: 12px; color: var(--acc2); letter-spacing: 0.8px;
+    }
+    .hero h1 { font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 700; line-height: 1.25; margin-bottom: 18px; }
+    .hero h1 .hl { color: var(--acc2); }
+    .hero h1 .hl2 { color: var(--acc-g); }
+    .hero-sub { font-size: 1rem; color: var(--muted); margin-bottom: 36px; line-height: 1.8; max-width: 500px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 13px 28px; border-radius: 7px;
+      font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 600;
+      text-decoration: none; transition: opacity .2s; display: inline-block;
+    }
+    .btn-primary:hover { opacity: .85; }
+    .btn-ghost {
+      background: transparent; color: var(--acc2);
+      border: 1.5px solid rgba(64,152,88,0.4); padding: 12px 26px; border-radius: 7px;
+      font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 500;
+      text-decoration: none; transition: all .2s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--acc2); background: rgba(64,152,88,0.06); }
+    .open-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(64,152,88,0.15); border: 1px solid rgba(64,152,88,0.4);
+      border-radius: 20px; padding: 6px 14px;
+      font-size: 12px; color: var(--acc2); font-weight: 600;
+    }
+    .open-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--acc2); animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
+
+    .hero-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    .hero-card-top { background: linear-gradient(135deg, #0e1810, #0a120c); padding: 22px 26px; border-bottom: 1px solid var(--border); }
+    .hero-card-top h3 { font-size: 15px; color: var(--acc2); font-weight: 700; margin-bottom: 3px; }
+    .hero-card-top p { font-size: 12px; color: var(--muted); }
+    .tcm-badge {
+      display: inline-flex; gap: 6px; align-items: center;
+      background: rgba(64,152,88,0.12); border: 1px solid rgba(64,152,88,0.3);
+      border-radius: 6px; padding: 4px 12px; margin-top: 10px;
+      font-size: 11px; color: var(--acc); letter-spacing: 0.5px;
+    }
+    .hero-card-body { padding: 20px 26px; }
+    .info-row { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(22,32,24,0.8); align-items: flex-start; }
+    .info-row:last-child { border-bottom: none; }
+    .info-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+    .info-label { font-size: 11px; color: var(--muted); }
+    .info-val { font-size: 13px; color: var(--text); margin-top: 1px; }
+    .info-val a { color: var(--acc2); text-decoration: none; }
+
+    .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 32px 40px; }
+    .stats-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 1.9rem; font-weight: 700; color: var(--acc2); line-height: 1; margin-bottom: 5px; }
+    .stat-label { font-size: 12px; color: var(--muted); }
+
+    section { padding: 80px 40px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 11px; color: var(--acc); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+    .section-title { font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 700; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+    .section-title em { font-style: normal; color: var(--acc2); }
+    .section-desc { font-size: 1rem; color: var(--muted); max-width: 580px; line-height: 1.8; }
+
+    .about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 44px; align-items: start; }
+    .about-highlight { background: linear-gradient(135deg, rgba(64,152,88,0.07), rgba(40,120,64,0.03)); border: 1px solid rgba(64,152,88,0.18); border-radius: 14px; padding: 28px; }
+    .about-highlight h3 { font-size: 1.05rem; color: var(--acc2); margin-bottom: 12px; font-weight: 600; }
+    .about-highlight p { font-size: 0.94rem; color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
+    .about-highlight p:last-child { margin-bottom: 0; }
+    .about-highlight strong { color: var(--text); }
+    .about-props { display: flex; flex-direction: column; gap: 14px; }
+    .prop-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start; }
+    .prop-icon { font-size: 22px; flex-shrink: 0; }
+    .prop-card h4 { font-size: 14px; color: var(--acc2); margin-bottom: 5px; font-weight: 600; }
+    .prop-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    .services { background: var(--bg2); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
+    .service-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: border-color .2s, transform .2s; }
+    .service-card:hover { border-color: rgba(64,152,88,0.4); transform: translateY(-3px); }
+    .service-icon { font-size: 30px; margin-bottom: 12px; }
+    .service-cat { font-size: 11px; color: var(--acc); letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 7px; }
+    .service-card h3 { font-size: 14px; color: var(--text); margin-bottom: 8px; font-weight: 600; }
+    .service-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .price-tag {
+      display: inline-block; margin-top: 10px;
+      background: rgba(200,160,64,0.1); border: 1px solid rgba(200,160,64,0.25);
+      color: var(--acc-g); font-size: 12px; padding: 3px 10px; border-radius: 4px;
+    }
+
+    .info-section { background: var(--bg); }
+    .info-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 44px; }
+    .info-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 26px; }
+    .info-card-title { font-size: 14px; color: var(--acc2); font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .info-card-title span { font-size: 18px; }
+    .info-detail { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(22,32,24,0.6); }
+    .info-detail:last-child { border-bottom: none; }
+    .id-label { font-size: 12.5px; color: var(--muted); }
+    .id-val { font-size: 12.5px; color: var(--text); }
+    .id-val a { color: var(--acc2); text-decoration: none; }
+
+    .contact { background: var(--bg2); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 44px; }
+    .contact-info h3 { font-size: 1.05rem; color: var(--acc2); font-weight: 600; margin-bottom: 22px; }
+    .contact-item { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+    .ci-icon { font-size: 19px; flex-shrink: 0; margin-top: 2px; }
+    .ci-label { font-size: 11px; color: var(--muted); }
+    .ci-val { font-size: 14px; color: var(--text); margin-top: 2px; }
+    .ci-val a { color: var(--acc2); text-decoration: none; }
+    .ci-val a:hover { text-decoration: underline; }
+    .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+    .contact-form h3 { font-size: 1rem; color: var(--text); margin-bottom: 6px; font-weight: 600; }
+    .contact-form p { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .form-row { margin-bottom: 14px; }
+    .form-row label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 5px; }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; background: rgba(22,32,24,0.5); border: 1px solid var(--border);
+      border-radius: 7px; padding: 10px 14px; color: var(--text); font-size: 13px;
+      font-family: inherit; outline: none; transition: border-color .2s;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--acc); }
+    .form-row textarea { resize: vertical; min-height: 80px; }
+    .form-row select option { background: var(--bg2); }
+    .form-submit {
+      width: 100%; background: linear-gradient(135deg, var(--acc3), var(--acc));
+      color: #fff; border: none; padding: 12px; border-radius: 7px; font-size: 14px;
+      cursor: pointer; font-family: inherit; font-weight: 600; transition: opacity .2s;
+    }
+    .form-submit:hover { opacity: .85; }
+
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 40px 40px 26px; text-align: center; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-brand { font-size: 16px; color: var(--acc2); font-weight: 700; margin-bottom: 4px; }
+    .footer-tagline { font-size: 12px; color: var(--muted); margin-bottom: 22px; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 22px; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--acc2); }
+    .footer-copy { font-size: 12px; color: rgba(80,112,96,0.5); }
+
+    @media (max-width: 1024px) {
+      .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .info-cards { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 56px 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">足</div>
+    <span class="nav-logo-text">足本堂美容保健</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#services">服務項目</a></li>
+    <li><a href="#info">店鋪資訊</a></li>
+    <li><a href="#contact">預約聯絡</a></li>
+  </ul>
+  <a href="tel:+85221857724" class="nav-cta">立即致電</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🌿 藍田匯景廣場 · 中式按摩保健</div>
+      <h1>傳統<span class="hl">中式保健</span><br>呵護您的<span class="hl2">身心健康</span></h1>
+      <p class="hero-sub">
+        足本堂美容保健有限公司 — 位於藍田匯景廣場，提供專業中式按摩、足部反射療法及美容保健服務，以傳統中醫理念結合現代保健技術，為您帶來深度放鬆與健康調理。
+      </p>
+      <div class="hero-btns">
+        <a href="tel:+85221857724" class="btn-primary">📞 立即致電預約</a>
+        <a href="#services" class="btn-ghost">瞭解服務項目</a>
+      </div>
+      <div class="open-tag"><div class="open-dot"></div>每日 10:00 - 23:30 · 全年無休</div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-top">
+        <h3>足本堂美容保健有限公司</h3>
+        <p>中式按摩保健 · 藍田匯景廣場</p>
+        <div class="tcm-badge">🌿 傳統中式保健 · 專業護理</div>
+      </div>
+      <div class="hero-card-body">
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">地址</div>
+            <div class="info-val">藍田匯景廣場5樓585C室</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">電話</div>
+            <div class="info-val"><a href="tel:+85221857724">2185 7724</a> / <a href="tel:+85251061112">5106 1112</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">⏰</div>
+          <div>
+            <div class="info-label">營業時間</div>
+            <div class="info-val">每日 10:00 - 23:30（全年無休）</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">💰</div>
+          <div>
+            <div class="info-label">消費參考</div>
+            <div class="info-val">HK$101 - HK$300</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">💳</div>
+          <div>
+            <div class="info-label">付款方式</div>
+            <div class="info-val">現金 · PayMe · 信用卡 · 支付寶HK</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">10:00</div>
+      <div class="stat-label">每日開門時間</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">23:30</div>
+      <div class="stat-label">每日關門時間</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">全年</div>
+      <div class="stat-label">無休服務</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">$101起</div>
+      <div class="stat-label">服務收費</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">藍田</div>
+      <div class="stat-label">九龍藍田匯景廣場</div>
+    </div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">關於足本堂</div>
+    <div class="section-title">傳統保健<em>現代護理</em></div>
+    <p class="section-desc">足本堂以傳統中醫理念為根本，結合現代按摩技術，為客戶提供專業的保健及美容服務。</p>
+    <div class="about-grid">
+      <div class="about-highlight">
+        <h3>品牌理念</h3>
+        <p>
+          足本堂美容保健有限公司取名寓意「根本紮實、回歸本源」，以傳統<strong>中式按摩及足部反射療法</strong>為核心，融合現代美容保健技術，為現代都市人提供身心舒緩的健康空間。
+        </p>
+        <p>
+          我們的專業治療師精通多種中式按摩手法，包括<strong>足部反射區療法、全身推拿、穴位按壓</strong>等，根據每位客人的身體狀況及需求，提供個人化的保健方案。
+        </p>
+        <p>
+          店鋪位於藍田<strong>匯景廣場5樓</strong>，交通方便，配備舒適的私人療程室，讓您在繁忙的都市生活中找到屬於自己的放鬆空間。
+        </p>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <div class="prop-icon">🌿</div>
+          <div>
+            <h4>中醫傳統</h4>
+            <p>以傳統中醫理論為基礎，運用穴位按壓及反射療法調節氣血，達到保健養生效果。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">👐</div>
+          <div>
+            <h4>專業技術</h4>
+            <p>持牌專業治療師，精通多種按摩手法，根據您的身體狀況提供針對性療程。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🕙</div>
+          <div>
+            <h4>靈活時間</h4>
+            <p>每日10:00至23:30全年無休，方便繁忙上班族及夜班工作者隨時預約療程。</p>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">💰</div>
+          <div>
+            <h4>合理收費</h4>
+            <p>服務收費HK$101-$300，提供高性價比的專業保健服務，讓更多人受惠於傳統保健。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label">服務項目</div>
+    <div class="section-title">全面的<em>保健美容服務</em></div>
+    <p class="section-desc">足本堂提供多種傳統中式保健及現代美容服務，針對不同需求，為您量身訂制保健方案。</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🦶</div>
+        <div class="service-cat">核心服務</div>
+        <h3>足部反射療法</h3>
+        <p>根據足部反射區理論，透過按壓足底特定穴位，刺激相應臟腑器官，促進血液循環，達到全身保健效果。</p>
+        <span class="price-tag">$101起</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💆</div>
+        <div class="service-cat">全身推拿</div>
+        <h3>中式全身推拿</h3>
+        <p>傳統中式推拿手法，針對全身肌肉及穴位，舒緩肌肉緊張、消除疲勞，適合長時間工作或運動後的恢復療程。</p>
+        <span class="price-tag">$150起</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🙆</div>
+        <div class="service-cat">頭部肩頸</div>
+        <h3>頭部及肩頸按摩</h3>
+        <p>專門針對頭部、頸部及肩膀的緊張肌肉，舒緩頭痛、偏頭痛及頸椎不適，適合長期使用電腦的上班族。</p>
+        <span class="price-tag">$120起</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🫧</div>
+        <div class="service-cat">美容護膚</div>
+        <h3>臉部美容護理</h3>
+        <p>結合傳統中式美容與現代護膚技術，提供臉部清潔、補水保濕及按摩護理，令肌膚回復光澤彈性。</p>
+        <span class="price-tag">$180起</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌡️</div>
+        <div class="service-cat">保健療法</div>
+        <h3>熱石及薰香療法</h3>
+        <p>熱石結合芳香精油的舒緩療程，溫熱石頭深入肌肉層，配合薰香效果，全面放鬆身心，消除深層疲勞。</p>
+        <span class="price-tag">$200起</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💪</div>
+        <div class="service-cat">特別療程</div>
+        <h3>運動恢復療程</h3>
+        <p>專為運動員及健身愛好者設計的肌肉恢復療程，針對特定肌肉群深層按摩，加速乳酸排出，縮短恢復時間。</p>
+        <span class="price-tag">$250起</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="info-section" id="info">
+  <div class="section-inner">
+    <div class="section-label">店鋪資訊</div>
+    <div class="section-title">方便的<em>位置及時間</em></div>
+    <div class="info-cards">
+      <div class="info-card">
+        <div class="info-card-title"><span>📍</span> 店鋪地點</div>
+        <div class="info-detail"><span class="id-label">地址</span><span class="id-val">藍田匯景廣場5樓585C室</span></div>
+        <div class="info-detail"><span class="id-label">地區</span><span class="id-val">九龍 · 藍田</span></div>
+        <div class="info-detail"><span class="id-label">交通</span><span class="id-val">港鐵藍田站步行即達</span></div>
+        <div class="info-detail"><span class="id-label">停車</span><span class="id-val">匯景廣場停車場可用</span></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title"><span>⏰</span> 營業時間</div>
+        <div class="info-detail"><span class="id-label">星期一至五</span><span class="id-val">10:00 - 23:30</span></div>
+        <div class="info-detail"><span class="id-label">星期六</span><span class="id-val">10:00 - 23:30</span></div>
+        <div class="info-detail"><span class="id-label">星期日</span><span class="id-val">10:00 - 23:30</span></div>
+        <div class="info-detail"><span class="id-label">公眾假期</span><span class="id-val">照常營業</span></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title"><span>💳</span> 付款方式</div>
+        <div class="info-detail"><span class="id-label">現金</span><span class="id-val">接受</span></div>
+        <div class="info-detail"><span class="id-label">PayMe</span><span class="id-val">接受</span></div>
+        <div class="info-detail"><span class="id-label">信用卡</span><span class="id-val">接受</span></div>
+        <div class="info-detail"><span class="id-label">支付寶HK / WeChat Pay</span><span class="id-val">接受</span></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title"><span>💰</span> 消費參考</div>
+        <div class="info-detail"><span class="id-label">足部反射療法</span><span class="id-val">$101起</span></div>
+        <div class="info-detail"><span class="id-label">全身推拿</span><span class="id-val">$150起</span></div>
+        <div class="info-detail"><span class="id-label">臉部美容護理</span><span class="id-val">$180起</span></div>
+        <div class="info-detail"><span class="id-label">特別療程</span><span class="id-val">$200起</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">預約聯絡</div>
+    <div class="section-title">立即<em>預約服務</em></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>聯絡資料</h3>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">地址</div>
+            <div class="ci-val">九龍藍田匯景廣場5樓585C室</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">電話 / WhatsApp</div>
+            <div class="ci-val"><a href="tel:+85221857724">2185 7724</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-label">手機 / WhatsApp</div>
+            <div class="ci-val"><a href="https://wa.me/85251061112">5106 1112</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">⏰</div>
+          <div>
+            <div class="ci-label">營業時間</div>
+            <div class="ci-val">每日 10:00 - 23:30（全年無休）</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🚇</div>
+          <div>
+            <div class="ci-label">交通</div>
+            <div class="ci-val">港鐵藍田站，匯景廣場商場內5樓</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>預約療程</h3>
+        <p>請填寫預約資料，或直接致電 2185 7724 / 5106 1112 查詢。</p>
+        <form onsubmit="event.preventDefault()">
+          <div class="form-row">
+            <label>您的姓名</label>
+            <input type="text" placeholder="請輸入姓名" />
+          </div>
+          <div class="form-row">
+            <label>聯絡電話 / WhatsApp</label>
+            <input type="tel" placeholder="香港電話號碼" />
+          </div>
+          <div class="form-row">
+            <label>選擇服務</label>
+            <select>
+              <option>足部反射療法</option>
+              <option>中式全身推拿</option>
+              <option>頭部及肩頸按摩</option>
+              <option>臉部美容護理</option>
+              <option>熱石及薰香療法</option>
+              <option>運動恢復療程</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>希望預約時間</label>
+            <select>
+              <option>上午（10:00-13:00）</option>
+              <option>下午（13:00-18:00）</option>
+              <option>傍晚（18:00-21:00）</option>
+              <option>晚上（21:00-23:30）</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>備注</label>
+            <textarea placeholder="如有特別要求或身體狀況，請在此說明..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">提交預約</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">足本堂美容保健有限公司</div>
+    <div class="footer-tagline">中式按摩保健 · 藍田匯景廣場5樓585C室 · 每日10:00-23:30</div>
+    <div class="footer-links">
+      <a href="#about">關於我們</a>
+      <a href="#services">服務項目</a>
+      <a href="#info">店鋪資訊</a>
+      <a href="#contact">預約聯絡</a>
+    </div>
+    <div class="footer-copy">&copy; 2024 足本堂美容保健有限公司. 版權所有。中式按摩保健，藍田，九龍。</div>
+  </div>
+</footer>
+
+</body>
+</html>
