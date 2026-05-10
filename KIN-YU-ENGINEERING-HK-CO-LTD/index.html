@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kin Yu Engineering HK | Construction &amp; Consultancy | Hong Kong</title>
+<meta name="description" content="Kin Yu Engineering HK Co. Ltd. — Hong Kong construction and engineering consultancy. Specialists in slope stabilisation, drainage works, A&A projects, site formation, and design-build. Est. 2014.">
+<style>
+:root {
+  --bg:       #04060e;
+  --bg2:      #080c18;
+  --bg3:      #0c1220;
+  --steel:    #1870c8;
+  --steel-lt: #38a0e8;
+  --slate:    #58788a;
+  --slate-lt: #80a0b8;
+  --amber:    #d08030;
+  --amber-lt: #e8a048;
+  --text:     #e0eaf8;
+  --muted:    #6888a8;
+  --border:   rgba(24,112,200,0.18);
+  --card-bg:  rgba(255,255,255,0.03);
+  --radius:   10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter','Noto Sans HK',system-ui,sans-serif;line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,6,14,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;flex-direction:column;line-height:1.2}
+.nav-logo-main{font-size:1rem;font-weight:900;color:var(--steel-lt);letter-spacing:.05em}
+.nav-logo-sub{font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.87rem;transition:color .2s}.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--steel),var(--steel-lt));color:#fff;padding:9px 22px;border-radius:5px;font-size:.87rem;font-weight:700;text-decoration:none;transition:opacity .2s;white-space:nowrap;letter-spacing:.03em}.nav-cta:hover{opacity:.88}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 65% 35%,rgba(24,112,200,0.12) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 10% 75%,rgba(208,128,48,0.07) 0%,transparent 55%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-eyebrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.eyebrow-badge{font-size:.75rem;border-radius:3px;padding:4px 10px;font-weight:600;letter-spacing:.05em}
+.badge-est{background:rgba(24,112,200,0.1);border:1px solid rgba(24,112,200,0.25);color:var(--steel-lt)}
+.badge-proj{background:rgba(208,128,48,0.1);border:1px solid rgba(208,128,48,0.22);color:var(--amber-lt)}
+.badge-award{background:rgba(90,200,80,0.08);border:1px solid rgba(90,200,80,0.2);color:#60e070}
+h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.1;margin-bottom:10px;letter-spacing:-.01em}
+h1 .ky{color:var(--steel-lt)}
+h1 .tagline{display:block;font-size:clamp(.85rem,1.8vw,1.1rem);font-weight:400;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:10px}
+.hero-desc{color:var(--muted);font-size:.97rem;max-width:480px;margin:18px 0 30px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--steel),var(--steel-lt));color:#fff;padding:13px 28px;border-radius:5px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}.btn-primary:hover{opacity:.88}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:12px 26px;border-radius:5px;font-size:.93rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}.btn-outline:hover{border-color:var(--steel-lt);color:var(--steel-lt)}
+
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:30px;display:flex;flex-direction:column;gap:16px}
+.card-head{display:flex;align-items:center;gap:12px}
+.card-logo{width:46px;height:46px;background:linear-gradient(135deg,var(--steel),var(--steel-lt));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900;color:#fff;font-family:'Inter',sans-serif;letter-spacing:-.02em}
+.card-name-main{font-size:.97rem;font-weight:800;letter-spacing:.01em}
+.card-name-sub{font-size:.73rem;color:var(--muted);letter-spacing:.03em}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.cr-icon{width:18px;color:var(--steel-lt);flex-shrink:0;margin-top:3px;text-align:center;font-size:.88rem}
+.cr-text{font-size:.88rem;color:var(--muted);line-height:1.55}
+.cr-text strong{color:var(--text);display:block;margin-bottom:1px}
+.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--bg3);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:4px}
+.strip-stat{padding:12px;text-align:center;border-right:1px solid var(--border)}
+.strip-stat:last-child{border-right:none}
+.ss-num{font-size:1.5rem;font-weight:900;color:var(--steel-lt);line-height:1}
+.ss-label{font-size:.7rem;color:var(--muted);margin-top:3px;letter-spacing:.04em}
+
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:28px}
+.stat-item{text-align:center}
+.stat-num{font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,var(--steel-lt),var(--amber-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.82rem;margin-top:6px;line-height:1.4}
+
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(24,112,200,0.08);border:1px solid rgba(24,112,200,0.2);border-radius:3px;padding:4px 12px;font-size:.74rem;color:var(--steel-lt);letter-spacing:.07em;margin-bottom:14px;text-transform:uppercase}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--steel-lt)}
+h2 .amber{color:var(--amber-lt)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-body p{color:var(--muted);font-size:.97rem;margin-bottom:16px;line-height:1.8}
+.highlight-box{background:rgba(24,112,200,0.06);border-left:3px solid var(--steel);border-radius:0 var(--radius) var(--radius) 0;padding:18px 22px;margin:24px 0}
+.highlight-box p{color:var(--text);font-size:.95rem;line-height:1.75;margin:0}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.val-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px;display:flex;gap:10px;align-items:flex-start}
+.val-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+.val-card h4{font-size:.87rem;font-weight:700;margin-bottom:3px}
+.val-card p{font-size:.8rem;color:var(--muted);line-height:1.5}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s;position:relative;overflow:hidden}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--steel),var(--amber));opacity:0;transition:opacity .25s}
+.svc-card:hover{border-color:var(--steel-lt);transform:translateY(-4px)}
+.svc-card:hover::after{opacity:1}
+.sc-icon{width:48px;height:48px;background:rgba(24,112,200,0.1);border:1px solid rgba(24,112,200,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.sc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.sc-tag{display:inline-block;margin-top:12px;font-size:.75rem;color:var(--amber-lt);background:rgba(208,128,48,0.1);border:1px solid rgba(208,128,48,0.2);border-radius:3px;padding:3px 9px;font-weight:600;letter-spacing:.04em}
+
+.projects-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.proj-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:22px;text-align:center;transition:border-color .25s,transform .25s}
+.proj-card:hover{border-color:var(--steel-lt);transform:translateY(-3px)}
+.proj-icon{font-size:2rem;margin-bottom:10px}
+.proj-title{font-size:.95rem;font-weight:700;margin-bottom:6px}
+.proj-desc{font-size:.82rem;color:var(--muted);line-height:1.6}
+
+.clients-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.client-pill{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;font-size:.85rem;color:var(--muted);transition:border-color .2s,color .2s;text-align:center}
+.client-pill:hover{border-color:var(--steel-lt);color:var(--text)}
+
+.contact-section{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:42px;height:42px;background:rgba(24,112,200,0.1);border:1px solid rgba(24,112,200,0.18);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.ci-label{font-size:.72rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.07em}
+.ci-value{font-size:.93rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--steel-lt);text-decoration:none}.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:34px}
+.contact-form-wrap h3{font-size:1.15rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:5px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--steel-lt)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#080c18}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--steel),var(--steel-lt));color:#fff;border:none;padding:13px;border-radius:5px;font-size:.93rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;letter-spacing:.03em}.form-submit:hover{opacity:.88}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-brand{font-size:.92rem;font-weight:900;color:var(--steel-lt);letter-spacing:.05em}
+.footer-sub{font-size:.76rem;color:var(--muted)}
+.footer-copy{font-size:.78rem;color:var(--muted);text-align:center;line-height:1.6}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.8rem;color:var(--muted);text-decoration:none;transition:color .2s}.footer-links a:hover{color:var(--text)}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(3,1fr)}
+  .services-grid,.projects-grid{grid-template-columns:1fr 1fr}
+  .clients-grid{grid-template-columns:repeat(3,1fr)}
+  .about-values{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .services-grid,.projects-grid,.clients-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .form-row{grid-template-columns:1fr}
+  .footer-inner{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-main">KIN YU ENGINEERING HK</div>
+      <div class="nav-logo-sub">We Design · We Build · We Manage</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:+85239052050" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="eyebrow-badge badge-est">Est. 2014 · Hong Kong</span>
+        <span class="eyebrow-badge badge-proj">61 Projects Completed</span>
+        <span class="eyebrow-badge badge-award">2 Awards Won</span>
+      </div>
+      <h1>
+        <span class="ky">Kin Yu</span> Engineering HK
+        <span class="tagline">We Design · We Build · We Manage</span>
+      </h1>
+      <p class="hero-desc">A specialist engineering consultancy and construction company based in Tsuen Wan, Hong Kong. With Directors holding 15+ years of industry experience, Kin Yu delivers slope stabilisation, drainage works, A&A projects, and design-build solutions.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-head">
+        <div class="card-logo">KY</div>
+        <div>
+          <div class="card-name-main">Kin Yu Engineering HK Co. Ltd.</div>
+          <div class="card-name-sub">金宇工程(香港)有限公司</div>
+        </div>
+      </div>
+      <hr class="card-divider">
+      <div class="card-row">
+        <div class="cr-icon">📍</div>
+        <div class="cr-text">
+          <strong>Head Office</strong>
+          Unit 03, 35/F, King Palace Plaza,<br>52A Sha Tsui Road, Tsuen Wan, N.T.
+        </div>
+      </div>
+      <div class="card-row">
+        <div class="cr-icon">📞</div>
+        <div class="cr-text">
+          <strong>Tel / Fax</strong>
+          +852 3905 2050 · Fax: +852 3905 9787
+        </div>
+      </div>
+      <div class="card-row">
+        <div class="cr-icon">✉</div>
+        <div class="cr-text">
+          <strong>Email</strong>
+          info@kinyu-hk.com · info@kinyu.hk
+        </div>
+      </div>
+      <div class="stats-strip">
+        <div class="strip-stat"><div class="ss-num">2014</div><div class="ss-label">Est.</div></div>
+        <div class="strip-stat"><div class="ss-num">61</div><div class="ss-label">Projects</div></div>
+        <div class="strip-stat"><div class="ss-num">80</div><div class="ss-label">Contractors</div></div>
+        <div class="strip-stat"><div class="ss-num">2</div><div class="ss-label">Awards</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">2014</div><div class="stat-label">Year Established</div></div>
+    <div class="stat-item"><div class="stat-num">61</div><div class="stat-label">Projects Completed</div></div>
+    <div class="stat-item"><div class="stat-num">80</div><div class="stat-label">Contractors Appointed</div></div>
+    <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Awards Won</div></div>
+    <div class="stat-item"><div class="stat-num">15+</div><div class="stat-label">Years Directors'<br>Experience</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="section-tag">About Kin Yu</div>
+        <h2>Engineering Excellence<br>Since <span class="accent">2014</span></h2>
+        <p>Kin Yu Engineering HK Company Limited is a specialist engineering company involved in both consultancy and construction works. Founded by Mr Chan and Dr Lee, whose combined expertise spans more than 15 years in industry, consulting, and research.</p>
+        <p>The company's diverse project portfolio reflects its capability across building construction and consultancy works. Kin Yu's core project portfolio focuses on slope stabilisation and drainage works for proposed residential and commercial developments in Hong Kong, in partnership with Elite Trading and Engineering Company Limited and Po Hsing Construction Company Limited.</p>
+        <div class="highlight-box">
+          <p>Beyond builder works, Kin Yu provides consultancy services including ELS (Earth-retaining and Lateral-support) design and slope stability analyses — offering clients a genuine end-to-end engineering solution.</p>
+        </div>
+        <div class="about-values">
+          <div class="val-card">
+            <div class="val-icon">🔬</div>
+            <div><h4>Research-Backed</h4><p>Directors combine industry practice with academic research expertise</p></div>
+          </div>
+          <div class="val-card">
+            <div class="val-icon">🤝</div>
+            <div><h4>Strategic Partnerships</h4><p>Works alongside leading contractors for complex projects</p></div>
+          </div>
+          <div class="val-card">
+            <div class="val-icon">🏆</div>
+            <div><h4>Award-Winning</h4><p>2 industry awards recognising project excellence</p></div>
+          </div>
+          <div class="val-card">
+            <div class="val-icon">🌿</div>
+            <div><h4>Sustainable Future</h4><p>Core values centred on sustainability and long-term success</p></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:32px">
+          <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:20px;color:var(--steel-lt);text-transform:uppercase;letter-spacing:.06em">Core Capabilities</h3>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:.92rem;font-weight:600">⛰ Slope Stabilisation</span>
+              <span style="color:var(--amber-lt);font-size:.8rem">Design · Construction</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:.92rem;font-weight:600">💧 Drainage Works</span>
+              <span style="color:var(--amber-lt);font-size:.8rem">Residential · Commercial</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:.92rem;font-weight:600">🏗 A&A Projects</span>
+              <span style="color:var(--amber-lt);font-size:.8rem">Addition & Alteration</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:.92rem;font-weight:600">📐 ELS Design</span>
+              <span style="color:var(--amber-lt);font-size:.8rem">Consultancy</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:.92rem;font-weight:600">🔲 Site Formation</span>
+              <span style="color:var(--amber-lt);font-size:.8rem">Planning · Execution</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0">
+              <span style="font-size:.92rem;font-weight:600">🖥 3D Modelling / BIM</span>
+              <span style="color:var(--amber-lt);font-size:.8rem">Architectural Modelling</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="section-tag">Services</div>
+    <h2>What We <span class="accent">Deliver</span></h2>
+    <p class="section-lead">From initial planning through to construction completion, Kin Yu provides integrated engineering services across three core disciplines.</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="sc-icon">📋</div>
+        <div class="sc-title">Construction Planning &amp; Management</div>
+        <div class="sc-desc">End-to-end project management from feasibility and planning through design development to construction. KY coordinates all disciplines to deliver projects on time and within budget.</div>
+        <span class="sc-tag">PLANNING · DESIGN · BUILD</span>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🖥</div>
+        <div class="sc-title">Architectural Modelling</div>
+        <div class="sc-desc">High-quality architectural modelling services including 3D visualisation and Building Information Modelling (BIM) for residential, commercial and infrastructure projects across Hong Kong.</div>
+        <span class="sc-tag">3D · BIM</span>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🏗</div>
+        <div class="sc-title">A&amp;A and Site Formation</div>
+        <div class="sc-desc">Specialist contractor for Addition and Alteration works and site formation projects. Experienced in challenging Hong Kong terrain including slope works, cut and fill, and associated drainage systems.</div>
+        <span class="sc-tag">A&A · SLOPE WORKS</span>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">⛰</div>
+        <div class="sc-title">Slope Stabilisation</div>
+        <div class="sc-desc">Specialist slope stabilisation works for residential and commercial developments. Partners with leading contractors to deliver comprehensive geotechnical solutions compliant with Hong Kong regulations.</div>
+        <span class="sc-tag">GEOTECHNICAL</span>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">💧</div>
+        <div class="sc-title">Drainage Engineering</div>
+        <div class="sc-desc">Design and construction of drainage systems for proposed developments. Expertise in catchwater, sub-soil drainage and surface water management for sloped and urban sites.</div>
+        <span class="sc-tag">DRAINAGE DESIGN</span>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📐</div>
+        <div class="sc-title">ELS &amp; Consultancy</div>
+        <div class="sc-desc">Specialist consultancy including Earth-retaining and Lateral-support (ELS) system design and slope stability analyses. Independent technical review and support for complex geotechnical challenges.</div>
+        <span class="sc-tag">ELS · STABILITY ANALYSIS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-tag">Project Portfolio</div>
+    <h2>Project <span class="amber">Categories</span></h2>
+    <p class="section-lead">Kin Yu's 61 completed projects span four key construction categories across Hong Kong.</p>
+    <div class="projects-grid">
+      <div class="proj-card">
+        <div class="proj-icon">🔧</div>
+        <div class="proj-title">A&amp;A Works</div>
+        <div class="proj-desc">Addition and Alteration works across residential, commercial and institutional properties</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">🏔</div>
+        <div class="proj-title">Site Formation</div>
+        <div class="proj-desc">Site preparation and formation works for new developments on complex Hong Kong terrain</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">🏠</div>
+        <div class="proj-title">Renovation</div>
+        <div class="proj-desc">Interior and exterior renovation of existing buildings to the highest standards</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">📐</div>
+        <div class="proj-title">Design and Build</div>
+        <div class="proj-desc">Integrated design-build delivery combining design expertise with construction execution</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="section-tag">Clients</div>
+    <h2>Trusted by Leading <span class="accent">Organisations</span></h2>
+    <p class="section-lead" style="margin-bottom:36px">Kin Yu has built long-term working relationships with respected clients across construction, education and institutional sectors.</p>
+    <div class="clients-grid">
+      <div class="client-pill">Po Hsing Construction Co. Ltd.</div>
+      <div class="client-pill">Fine View Construction Co. Ltd.</div>
+      <div class="client-pill">Pollard Construction Co. Ltd.</div>
+      <div class="client-pill">Elite Engineering and Trading Co. Ltd.</div>
+      <div class="client-pill">Gammon Construction Limited</div>
+      <div class="client-pill">Gold Mantis Construction Decoration</div>
+      <div class="client-pill">Gold Banner Construction & Development</div>
+      <div class="client-pill">Victoria Shanghai Academy</div>
+      <div class="client-pill">HK University of Science &amp; Technology</div>
+      <div class="client-pill">Sun Fook Kong Construction Limited</div>
+      <div class="client-pill">Hong Kong Cricket Club</div>
+      <div class="client-pill">Advanced Technology Innovative System</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">Contact</div>
+    <h2>Get in <span class="accent">Touch</span></h2>
+    <p class="section-lead">For project enquiries, quotations or technical consultations, contact our Tsuen Wan office directly.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Head Office</div>
+            <div class="ci-value">Unit 03, 35/F, King Palace Plaza<br>No. 52A Sha Tsui Road, Tsuen Wan, N.T.<br>Hong Kong</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">Telephone</div>
+            <div class="ci-value"><a href="tel:+85239052050">+852 3905 2050</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📠</div>
+          <div>
+            <div class="ci-label">Fax</div>
+            <div class="ci-value">+852 3905 9787</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value">
+              <a href="mailto:info@kinyu-hk.com">info@kinyu-hk.com</a><br>
+              <a href="mailto:info@kinyu.hk">info@kinyu.hk</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Website</div>
+            <div class="ci-value"><a href="https://www.kinyu-hk.com" target="_blank" rel="noopener">www.kinyu-hk.com</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>Project Enquiry / Quotation</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label>Company</label>
+              <input type="text" placeholder="Company name">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Telephone</label>
+              <input type="tel" placeholder="+852 XXXX XXXX">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="you@company.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Service Required</label>
+            <select>
+              <option value="">Select service type...</option>
+              <option>Construction Planning &amp; Management</option>
+              <option>Architectural Modelling / BIM</option>
+              <option>A&amp;A Works</option>
+              <option>Site Formation</option>
+              <option>Slope Stabilisation</option>
+              <option>Drainage Works</option>
+              <option>ELS Design Consultancy</option>
+              <option>Design and Build</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Project Details</label>
+            <textarea placeholder="Brief description of your project, location, scope and timeline..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Submit Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">KIN YU ENGINEERING HK</div>
+      <div class="footer-sub">We Design · We Build · We Manage · Est. 2014</div>
+    </div>
+    <div class="footer-copy">
+      © 2025 Kin Yu Engineering HK Co. Ltd. · Tsuen Wan, N.T., Hong Kong<br>
+      Tel: +852 3905 2050 · info@kinyu-hk.com · www.kinyu-hk.com
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
