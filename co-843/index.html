@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天平五金零件有限公司 | 彈簧・五金零件・精密製造</title>
+<meta name="description" content="天平五金零件有限公司 — 香港觀塘總部，全球五大生產基地，專業製造彈簧、五金零件及精密硬件，服務全球工業客戶。">
+<style>
+  :root {
+    --bg:       #06080c;
+    --bg2:      #0c1018;
+    --bg3:      #101620;
+    --accent:   #2858a0;
+    --accent2:  #5090e0;
+    --steel:    #7898c0;
+    --steel2:   #a8c0e0;
+    --text:     #dce8f8;
+    --muted:    #5870a0;
+    --border:   rgba(80,144,224,0.16);
+    --card:     rgba(255,255,255,0.03);
+    --radius:   12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', 'PingFang HK', 'Noto Sans HK', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(6,8,12,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo { font-size: 1.1rem; font-weight: 800; color: var(--accent2); text-decoration: none; }
+  .nav-logo span { color: var(--steel2); font-weight: 500; font-size: 0.78rem; margin-left: 0.4rem; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.92rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-cta {
+    background: var(--accent); color: #fff; border: none; padding: 0.55rem 1.3rem;
+    border-radius: 6px; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 70% 55% at 60% 40%, rgba(40,88,160,0.15) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 40% at 5% 80%, rgba(80,144,224,0.07) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(80,144,224,0.1); border: 1px solid rgba(80,144,224,0.28);
+    color: var(--accent2); border-radius: 50px; padding: 0.38rem 1rem;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.55rem; }
+  .hero h1 { font-size: clamp(2.1rem, 4.2vw, 3.2rem); font-weight: 900; line-height: 1.25; margin-bottom: 1.4rem; }
+  .hero h1 .hl { color: var(--accent2); }
+  .hero h1 .hl-s { color: var(--steel2); }
+  .hero p { font-size: 1.05rem; color: var(--muted); max-width: 530px; margin-bottom: 2rem; line-height: 1.8; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-weight: 800; font-size: 1rem;
+    padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(40,88,160,0.4);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(80,144,224,0.5); }
+  .btn-outline {
+    background: transparent; color: var(--text); border: 1.5px solid rgba(255,255,255,0.2);
+    font-size: 1rem; padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 18px; padding: 2rem;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .info-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--accent2); margin-bottom: 1.4rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+  .info-row { display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: flex-start; }
+  .info-icon { font-size: 1.1rem; min-width: 28px; margin-top: 0.1rem; }
+  .info-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.18rem; }
+  .info-val { font-size: 0.9rem; color: var(--text); font-weight: 600; }
+  .info-val a { color: var(--accent2); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .info-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+
+  /* STATS */
+  .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3.5rem 5%; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 2.4rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-num sup { font-size: 1.1rem; vertical-align: super; }
+  .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+
+  /* SECTION */
+  .section { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.7rem; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; line-height: 1.25; margin-bottom: 1rem; }
+  .section-title .hl { color: var(--accent2); }
+  .section-title .hl-s { color: var(--steel2); }
+  .section-desc { color: var(--muted); max-width: 600px; margin-bottom: 3rem; font-size: 1rem; line-height: 1.8; }
+
+  /* PRODUCTS */
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .product-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2rem;
+    transition: border-color 0.25s, transform 0.2s; position: relative; overflow: hidden;
+  }
+  .product-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--steel2));
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .product-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+  .product-card:hover::before { opacity: 1; }
+  .product-icon { font-size: 2.6rem; margin-bottom: 1rem; }
+  .product-card h3 { font-size: 1.1rem; font-weight: 800; color: var(--accent2); margin-bottom: 0.5rem; }
+  .product-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+  .product-specs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+  .spec-tag {
+    background: rgba(80,144,224,0.1); border: 1px solid rgba(80,144,224,0.22);
+    color: var(--accent2); padding: 0.2rem 0.6rem; border-radius: 50px; font-size: 0.76rem; font-weight: 700;
+  }
+
+  /* OFFICES */
+  .offices-wrap { background: var(--bg2); padding: 6rem 5%; }
+  .offices-inner { max-width: 1200px; margin: 0 auto; }
+  .offices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+  .office-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.8rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .office-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
+  .office-flag { font-size: 2rem; margin-bottom: 0.8rem; }
+  .office-card h4 { font-size: 1rem; font-weight: 700; color: var(--accent2); margin-bottom: 0.8rem; }
+  .office-detail { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+  .office-detail strong { color: var(--steel2); font-weight: 600; }
+  .office-contact { margin-top: 1rem; font-size: 0.85rem; }
+  .office-contact a { color: var(--accent2); text-decoration: none; }
+  .office-contact a:hover { text-decoration: underline; }
+
+  /* CAPABILITIES */
+  .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .cap-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.8rem; display: flex; gap: 1.2rem; align-items: flex-start; }
+  .cap-icon { font-size: 2rem; min-width: 44px; }
+  .cap-item h4 { font-size: 1rem; font-weight: 700; color: var(--accent2); margin-bottom: 0.4rem; }
+  .cap-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact-wrap {
+    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(40,88,160,0.08) 0%, transparent 65%), var(--bg);
+    padding: 6rem 5%;
+  }
+  .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; margin-bottom: 1rem; }
+  .contact-info p { color: var(--muted); font-size: 0.98rem; margin-bottom: 2rem; line-height: 1.8; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.1rem; }
+  .c-row { display: flex; gap: 1rem; align-items: flex-start; }
+  .c-icon { font-size: 1.3rem; min-width: 34px; }
+  .c-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.2rem; }
+  .c-val { font-size: 0.92rem; font-weight: 600; }
+  .c-val a { color: var(--accent2); text-decoration: none; }
+  .c-val a:hover { text-decoration: underline; }
+  form { display: flex; flex-direction: column; gap: 1.2rem; }
+  form label { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.3rem; display: block; }
+  form input, form textarea, form select {
+    width: 100%; background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.8rem 1rem; color: var(--text); font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s;
+  }
+  form input:focus, form textarea:focus, form select:focus { outline: none; border-color: var(--accent2); }
+  form textarea { min-height: 110px; resize: vertical; }
+  form select option { background: #0c1018; }
+  .form-submit {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-weight: 800; font-size: 1rem;
+    border: none; padding: 0.95rem; border-radius: 8px; cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(40,88,160,0.4);
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(80,144,224,0.5); }
+
+  /* FOOTER */
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4rem 5% 2rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand .logo-text { font-size: 1.1rem; font-weight: 800; color: var(--accent2); margin-bottom: 0.8rem; }
+  .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  footer h5 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  footer ul li a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  footer ul li a:hover { color: var(--accent2); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .info-card { max-width: 500px; }
+    .products-grid, .cap-grid { grid-template-columns: repeat(2, 1fr); }
+    .offices-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .products-grid, .offices-grid, .cap-grid, .contact-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">天平五金零件<span>Tin Ping Hardware</span></a>
+  <ul class="nav-links">
+    <li><a href="#products">產品系列</a></li>
+    <li><a href="#offices">全球辦事處</a></li>
+    <li><a href="#capabilities">製造能力</a></li>
+    <li><a href="#contact">聯絡報價</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">索取報價</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">香港觀塘總部・全球五大生產基地</div>
+      <h1>
+        精密彈簧・五金零件<br>
+        <span class="hl">全球製造</span>專業供應<br>
+        <span class="hl-s">品質認證・快速交期</span>
+      </h1>
+      <p>
+        天平五金零件有限公司，總部設於香港觀塘，
+        在中國大陸（東莞、廣州）、台灣及越南設有生產工廠，
+        專業製造各類彈簧、五金零件及精密硬件，
+        為全球工業客戶提供高品質零件批發及採購服務。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#products">查看產品系列</a>
+        <a class="btn-outline" href="#contact">索取報價</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>🏢 香港總部</h3>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">地址</div>
+          <div class="info-val">九龍觀塘道460-470號<br>觀塘工業中心第二期5樓D-E及J室</div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">電話</div>
+          <div class="info-val"><a href="tel:+85227908591">(852) 2790-8591</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📠</div>
+        <div>
+          <div class="info-label">傳真</div>
+          <div class="info-val">(852) 2797-8600</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">電郵</div>
+          <div class="info-val"><a href="mailto:sales@tinping.com">sales@tinping.com</a></div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網站</div>
+          <div class="info-val"><a href="https://tinping.com" target="_blank" rel="noopener">tinping.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-label">全球生產基地</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">國家及地區覆蓋</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">30<sup>+</sup></div>
+      <div class="stat-label">年五金製造經驗</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1000<sup>+</sup></div>
+      <div class="stat-label">彈簧及零件規格</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div id="products">
+  <div class="section">
+    <div class="section-label">Product Range</div>
+    <h2 class="section-title">精密製造<span class="hl">產品系列</span></h2>
+    <p class="section-desc">
+      天平提供多元化的彈簧及五金零件產品，覆蓋電子、汽車、工業設備、消費品等多個應用領域，
+      全部產品均按嚴格品質標準生產。
+    </p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🔩</div>
+        <h3>壓縮彈簧</h3>
+        <p>
+          各規格圓柱形及錐形壓縮彈簧，採用碳鋼、不銹鋼及特種合金鋼線製造，
+          適用於工業設備、電子產品及汽車零件等各類應用。
+        </p>
+        <div class="product-specs">
+          <span class="spec-tag">碳鋼</span>
+          <span class="spec-tag">不銹鋼</span>
+          <span class="spec-tag">合金鋼</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🌀</div>
+        <h3>拉伸彈簧</h3>
+        <p>
+          精密拉伸彈簧，提供多種鉤形選擇，
+          廣泛應用於機械設備、農業器械及各類工業產品，
+          可按客戶規格訂制生產。
+        </p>
+        <div class="product-specs">
+          <span class="spec-tag">多種鉤型</span>
+          <span class="spec-tag">客制規格</span>
+          <span class="spec-tag">工業級</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">⚙️</div>
+        <h3>扭轉彈簧</h3>
+        <p>
+          各類扭轉彈簧，可提供不同扭力設計，
+          廣泛用於門鉸、夾具、按鈕機構及各種需要扭力復位的機械裝置。
+        </p>
+        <div class="product-specs">
+          <span class="spec-tag">左旋/右旋</span>
+          <span class="spec-tag">高精度</span>
+          <span class="spec-tag">定制扭力</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🪛</div>
+        <h3>精密五金零件</h3>
+        <p>
+          各類精密沖壓及車削五金零件，
+          包括支架、端子、接頭等各種金屬零件，
+          適合電子、電器及機械設備的精密零件需求。
+        </p>
+        <div class="product-specs">
+          <span class="spec-tag">沖壓件</span>
+          <span class="spec-tag">車削件</span>
+          <span class="spec-tag">組合件</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🔧</div>
+        <h3>線形零件</h3>
+        <p>
+          各類線形五金零件，包括U形夾、開口銷、卡扣及各種異形線材零件，
+          可按圖紙或樣品定制生產，批量靈活。
+        </p>
+        <div class="product-specs">
+          <span class="spec-tag">異形線材</span>
+          <span class="spec-tag">按圖定制</span>
+          <span class="spec-tag">多材質</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🏭</div>
+        <h3>OEM訂制生產</h3>
+        <p>
+          提供完整的OEM訂制服務，可按客戶提供的圖紙、樣品或技術要求生產，
+          工程師全程跟進，確保產品符合規格。
+        </p>
+        <div class="product-specs">
+          <span class="spec-tag">按圖生產</span>
+          <span class="spec-tag">工程支援</span>
+          <span class="spec-tag">快速打樣</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GLOBAL OFFICES -->
+<div class="offices-wrap" id="offices">
+  <div class="offices-inner">
+    <div class="section-label">Global Presence</div>
+    <h2 class="section-title" style="margin-bottom:0.8rem;">全球<span class="hl-s">辦事處及工廠</span></h2>
+    <p class="section-desc" style="margin-bottom: 2.5rem;">
+      天平在亞洲四個國家及地區設有辦事處及生產工廠，形成完善的全球供應鏈網絡。
+    </p>
+    <div class="offices-grid">
+      <div class="office-card">
+        <div class="office-flag">🇭🇰</div>
+        <h4>香港（總部）</h4>
+        <div class="office-detail">
+          <strong>天平五金零件有限公司</strong><br>
+          九龍觀塘道460-470號<br>
+          觀塘工業中心第二期5樓D-E及J室
+        </div>
+        <div class="office-contact">
+          📞 <a href="tel:+85227908591">(852) 2790-8591</a><br>
+          ✉️ <a href="mailto:sales@tinping.com">sales@tinping.com</a>
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-flag">🇨🇳</div>
+        <h4>東莞（工廠）</h4>
+        <div class="office-detail">
+          <strong>東莞天平彈簧五金制品有限公司</strong><br>
+          廣東省東莞市黃江鎮<br>
+          社貝村社貝路A10號
+        </div>
+        <div class="office-contact">
+          📞 <a href="tel:+8607698336-2296">(0769) 8336-2296</a>
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-flag">🇨🇳</div>
+        <h4>廣州（工廠）</h4>
+        <div class="office-detail">
+          <strong>廣州天銘彈簧制造有限公司</strong><br>
+          廣東省廣州市番禺<br>
+          欖核鎮鎮南路140號2樓
+        </div>
+        <div class="office-contact">
+          📞 <a href="tel:+862031174548">(020) 3117-4548</a>
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-flag">🇹🇼</div>
+        <h4>台灣</h4>
+        <div class="office-detail">
+          <strong>天平發展有限公司</strong><br>
+          台灣台中市<br>
+          篤行路408巷9號
+        </div>
+        <div class="office-contact">
+          📞 <a href="tel:+886909432046">(886) 0909-432-046</a><br>
+          ✉️ <a href="mailto:Dawnlai@tinping.com">Dawnlai@tinping.com</a>
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-flag">🇻🇳</div>
+        <h4>越南（業務中心）</h4>
+        <div class="office-detail">
+          <strong>TINPING VIETNAM TRADING CO., LTD.</strong><br>
+          Lý Thái Tổ, Ninh Xá,<br>
+          Bắc Ninh, Vietnam
+        </div>
+        <div class="office-contact">
+          📞 <a href="tel:+8402223612188">02223-612-188</a><br>
+          ✉️ <a href="mailto:vnsales@tinping.com">vnsales@tinping.com</a>
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-flag">🇻🇳</div>
+        <h4>越南（生產工廠）</h4>
+        <div class="office-detail">
+          <strong>天平越南五金零件有限公司</strong><br>
+          Thuận Thành III Industrial Zone,<br>
+          Bắc Ninh, Vietnam
+        </div>
+        <div class="office-contact">
+          📞 <a href="tel:+8402223612188">02223-612-188</a><br>
+          ✉️ <a href="mailto:vnsales@tinping.com">vnsales@tinping.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAPABILITIES -->
+<div id="capabilities">
+  <div class="section">
+    <div class="section-label">Manufacturing Capabilities</div>
+    <h2 class="section-title">核心<span class="hl">製造能力</span></h2>
+    <p class="section-desc">先進設備配合嚴格的品質管理體系，確保每批產品達到國際工業標準。</p>
+    <div class="cap-grid">
+      <div class="cap-item">
+        <div class="cap-icon">🔬</div>
+        <div>
+          <h4>精密加工技術</h4>
+          <p>配備先進CNC彈簧成型機及精密沖壓設備，可生產線徑0.1mm至20mm的各類彈簧及五金零件。</p>
+        </div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">🧪</div>
+        <div>
+          <h4>材料多樣化選擇</h4>
+          <p>可使用碳鋼、不銹鋼（SUS304/316）、磷青銅、鈹銅、鈦合金等多種材料按客戶需求生產。</p>
+        </div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">✅</div>
+        <div>
+          <h4>嚴格品質管控</h4>
+          <p>完善的品質管理體系，配備精密量測設備，全程品質追蹤，確保每批產品符合客戶規格要求。</p>
+        </div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">🚀</div>
+        <div>
+          <h4>快速打樣能力</h4>
+          <p>工程師團隊快速響應，可於短時間內完成新產品打樣，大幅縮短客戶的產品開發周期。</p>
+        </div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">🌍</div>
+        <div>
+          <h4>全球供應鏈管理</h4>
+          <p>香港、中國大陸、台灣及越南多地協同生產，靈活調配產能，確保穩定供貨及準時交期。</p>
+        </div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">🛡️</div>
+        <div>
+          <h4>表面處理服務</h4>
+          <p>提供鍍鋅、鍍鎳、電泳、噴漆等多種表面處理，提升零件的耐腐蝕性及外觀效果。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">查詢及<span class="hl">索取報價</span></h2>
+      <p>
+        如有產品查詢、報價申請或技術支援需求，
+        請聯絡香港總部或各地辦事處，我們的工程及銷售團隊將盡快回覆。
+      </p>
+      <div class="contact-details">
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">香港總部地址</div>
+            <div class="c-val">九龍觀塘道460-470號觀塘工業中心第二期5樓D-E及J室</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">電話</div>
+            <div class="c-val"><a href="tel:+85227908591">(852) 2790-8591</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📠</div>
+          <div>
+            <div class="c-label">傳真</div>
+            <div class="c-val">(852) 2797-8600</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">電郵</div>
+            <div class="c-val"><a href="mailto:sales@tinping.com">sales@tinping.com</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">網站</div>
+            <div class="c-val"><a href="https://tinping.com" target="_blank" rel="noopener">www.tinping.com</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form onsubmit="return false;">
+      <div>
+        <label>姓名 / 公司名稱 *</label>
+        <input type="text" placeholder="例：陳生 / ABC Manufacturing Ltd.">
+      </div>
+      <div>
+        <label>聯絡電話 *</label>
+        <input type="tel" placeholder="例：+852 2XXX XXXX">
+      </div>
+      <div>
+        <label>電郵地址 *</label>
+        <input type="email" placeholder="example@company.com">
+      </div>
+      <div>
+        <label>查詢產品類別</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>壓縮彈簧</option>
+          <option>拉伸彈簧</option>
+          <option>扭轉彈簧</option>
+          <option>精密五金零件</option>
+          <option>線形零件</option>
+          <option>OEM訂制生產</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div>
+        <label>查詢詳情</label>
+        <textarea placeholder="請描述您的產品規格要求，例如：材料、尺寸、數量、用途等，以便我們快速報價..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">📩 發送查詢 / 索取報價</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-text">天平五金零件有限公司</div>
+      <p>
+        香港觀塘總部，全球五大生產基地，專業製造彈簧、五金零件及精密硬件，
+        服務全球工業客戶逾三十年。
+      </p>
+    </div>
+    <div>
+      <h5>產品系列</h5>
+      <ul>
+        <li><a href="#products">壓縮彈簧</a></li>
+        <li><a href="#products">拉伸彈簧</a></li>
+        <li><a href="#products">扭轉彈簧</a></li>
+        <li><a href="#products">OEM訂制</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>全球辦事處</h5>
+      <ul>
+        <li><a href="#offices">香港總部</a></li>
+        <li><a href="#offices">東莞工廠</a></li>
+        <li><a href="#offices">台灣辦事處</a></li>
+        <li><a href="#offices">越南工廠</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>聯絡</h5>
+      <ul>
+        <li><a href="tel:+85227908591">(852) 2790-8591</a></li>
+        <li><a href="mailto:sales@tinping.com">sales@tinping.com</a></li>
+        <li><a href="https://tinping.com" target="_blank" rel="noopener">tinping.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 天平五金零件有限公司. All rights reserved.</span>
+    <span>香港・東莞・廣州・台灣・越南</span>
+  </div>
+</footer>
+
+</body>
+</html>
