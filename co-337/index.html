@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>優聯創意設計印刷有限公司 | U-Lian Creative Design Printing — 燙金 · 紅包袋 · 印刷</title>
+<style>
+  :root {
+    --red: #c00022;
+    --red-dark: #9a0018;
+    --red-light: #fff0f2;
+    --gold: #c8920a;
+    --gold-bright: #f5c842;
+    --gold-light: #fdf5e0;
+    --charcoal: #1a1a2e;
+    --white: #ffffff;
+    --light: #fdf8f0;
+    --text: #2c3445;
+    --muted: #6b7280;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', '微軟正黑體', Arial, sans-serif; color: var(--text); background: var(--white); }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--charcoal);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
+  .nav-logo { width: 42px; height: 42px; border-radius: 8px; background: var(--red); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .nav-name { color: var(--white); font-weight: 700; font-size: 15px; line-height: 1.2; }
+  .nav-name span { color: var(--gold-bright); font-size: 12px; font-weight: 400; }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a { color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--gold-bright); }
+  .nav-cta { background: var(--red); color: var(--white); padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 700; transition: background .2s; }
+  .nav-cta:hover { background: var(--red-dark); }
+
+  /* HERO */
+  .hero {
+    margin-top: 64px;
+    background: linear-gradient(150deg, var(--charcoal) 0%, #2a1a1e 55%, #1e0a10 100%);
+    min-height: 560px; display: flex; align-items: center;
+    padding: 72px 48px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '🧧';
+    position: absolute; right: 80px; top: 40%;
+    font-size: 220px; opacity: 0.08;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--gold-bright), var(--red));
+  }
+  .hero-content { max-width: 640px; z-index: 1; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(200,146,10,0.2); border: 1px solid rgba(200,146,10,0.4); color: var(--gold-bright); padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; margin-bottom: 24px; }
+  .hero h1 { font-size: 44px; font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 8px; }
+  .hero h1 span { color: var(--gold-bright); }
+  .hero-en { font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+  .hero-desc { font-size: 15px; color: rgba(255,255,255,0.78); line-height: 1.8; margin-bottom: 36px; max-width: 560px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-red { background: var(--red); color: var(--white); padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; transition: background .2s, transform .2s; }
+  .btn-red:hover { background: var(--red-dark); transform: translateY(-2px); }
+  .btn-gold { background: var(--gold); color: var(--white); padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; transition: background .2s, transform .2s; }
+  .btn-gold:hover { background: #a87808; transform: translateY(-2px); }
+  .hero-card { position: absolute; right: 56px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.06); border: 1px solid rgba(200,146,10,0.25); backdrop-filter: blur(12px); border-radius: 16px; padding: 28px 32px; min-width: 260px; z-index: 1; }
+  .hero-card-title { color: var(--gold-bright); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; }
+  .spec-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .spec-row:last-child { margin-bottom: 0; }
+  .spec-icon { font-size: 22px; }
+  .spec-text { font-size: 13px; color: rgba(255,255,255,0.9); }
+  .spec-text strong { color: var(--white); display: block; }
+
+  /* STRIP */
+  .strip { background: var(--red); display: flex; justify-content: center; flex-wrap: wrap; }
+  .strip-item { padding: 20px 44px; text-align: center; border-right: 1px solid rgba(255,255,255,0.25); }
+  .strip-item:last-child { border-right: none; }
+  .strip-num { font-size: 24px; font-weight: 800; color: var(--white); }
+  .strip-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 2px; }
+
+  /* SECTION */
+  section { padding: 80px 48px; }
+  .section-label { display: inline-block; color: var(--red); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  h2 { font-size: 34px; font-weight: 800; color: var(--charcoal); margin-bottom: 16px; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 640px; margin-bottom: 48px; }
+
+  /* ABOUT */
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .spec-box { background: var(--white); border-radius: 14px; padding: 28px; border-left: 4px solid var(--red); margin-bottom: 26px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .spec-box h3 { font-size: 14px; color: var(--red); font-weight: 700; margin-bottom: 10px; }
+  .spec-box p { font-size: 14px; color: var(--text); line-height: 1.75; }
+  .about-desc p { font-size: 15px; color: var(--text); line-height: 1.8; margin-bottom: 16px; }
+  .about-props { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .about-prop { background: var(--white); border-radius: 12px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-top: 3px solid var(--gold); }
+  .about-prop-icon { font-size: 26px; margin-bottom: 10px; }
+  .about-prop h4 { font-size: 14px; font-weight: 700; color: var(--charcoal); margin-bottom: 6px; }
+  .about-prop p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* PRODUCTS */
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .product-card { background: var(--white); border-radius: 14px; padding: 30px 24px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); border-top: 4px solid var(--red); transition: transform .25s, box-shadow .25s; }
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.14); }
+  .product-icon { width: 54px; height: 54px; border-radius: 12px; background: var(--red-light); display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 18px; }
+  .product-card h3 { font-size: 17px; font-weight: 700; color: var(--charcoal); margin-bottom: 8px; }
+  .product-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .product-tag { display: inline-block; margin-top: 12px; background: var(--red-light); color: var(--red-dark); padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+
+  /* FOIL SPEC */
+  .foil { background: var(--light); }
+  .foil-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .foil-card { background: var(--charcoal); border-radius: 14px; padding: 36px 30px; }
+  .foil-card h3 { font-size: 20px; font-weight: 800; color: var(--gold-bright); margin-bottom: 6px; }
+  .foil-card .sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 22px; }
+  .foil-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .foil-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .foil-item-icon { font-size: 22px; flex-shrink: 0; }
+  .foil-item-info h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+  .foil-item-info p { font-size: 12px; color: rgba(255,255,255,0.6); }
+  .foil-features { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .foil-feature { background: var(--white); border-radius: 12px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid var(--gold); }
+  .foil-feature-icon { font-size: 22px; margin-bottom: 8px; }
+  .foil-feature h4 { font-size: 14px; font-weight: 700; color: var(--charcoal); margin-bottom: 5px; }
+  .foil-feature p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* WHY */
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .why-card { background: var(--red); border-radius: 14px; padding: 28px 20px; text-align: center; transition: transform .25s; }
+  .why-card:hover { transform: translateY(-4px); }
+  .why-icon { font-size: 32px; margin-bottom: 14px; }
+  .why-card h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .why-card p { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.65; }
+
+  /* CONTACT */
+  .contact { background: var(--charcoal); }
+  .contact h2 { color: var(--white); }
+  .contact .section-label { color: var(--gold-bright); }
+  .contact .section-sub { color: rgba(255,255,255,0.65); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+  .contact-row { display: flex; align-items: flex-start; gap: 14px; }
+  .contact-row-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(192,0,34,0.15); border: 1px solid rgba(192,0,34,0.35); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .contact-row-text h4 { font-size: 12px; color: var(--gold-bright); font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .contact-row-text p, .contact-row-text a { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.55; }
+  .contact-row-text a:hover { color: var(--gold-bright); }
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .contact-form input, .contact-form select, .contact-form textarea { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 12px 15px; color: var(--white); font-size: 14px; font-family: inherit; outline: none; transition: border-color .2s; }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form select option { background: var(--charcoal); }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--gold-bright); }
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+  .contact-form button { background: var(--red); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .2s; }
+  .contact-form button:hover { background: var(--red-dark); }
+
+  /* FOOTER */
+  footer { background: #0d0d18; color: rgba(255,255,255,0.45); text-align: center; padding: 26px 48px; font-size: 13px; }
+  footer span { color: var(--gold-bright); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 48px 24px; }
+    .hero h1 { font-size: 30px; }
+    .hero-card { display: none; }
+    section { padding: 56px 24px; }
+    .about-grid, .contact-grid, .foil-grid { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .about-props { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">🧧</div>
+    <div class="nav-name">優聯創意設計印刷<br><span>U-Lian Creative Design Printing</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">關於我們</a>
+    <a href="#products">印刷產品</a>
+    <a href="#foil">燙金工藝</a>
+    <a href="#why">為何選擇我們</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <a href="#contact" class="nav-cta">即時報價</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✨ 創意燙金 · 精緻印刷 · 香港製造</div>
+    <h1>精緻印刷<br><span>燙金工藝</span>之選</h1>
+    <div class="hero-en">U-Lian Creative Design Printing Co., Ltd. · 優聯創意設計印刷有限公司</div>
+    <p class="hero-desc">
+      優聯創意設計印刷有限公司，香港專業印刷公司，專注於燙金紅包袋、利是封、賀卡、名片等精美印刷品，以精湛工藝和創意設計，為企業及個人提供一站式印刷解決方案。
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-red">即時報價</a>
+      <a href="#products" class="btn-gold">查看產品</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-title">✨ 核心工藝</div>
+    <div class="spec-row">
+      <div class="spec-icon">🌟</div>
+      <div class="spec-text"><strong>燙金印刷</strong>亮麗金色效果</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-icon">🧧</div>
+      <div class="spec-text"><strong>紅包袋印刷</strong>利是封訂製</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-icon">💳</div>
+      <div class="spec-text"><strong>名片設計印刷</strong>彰顯品牌</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-icon">🎁</div>
+      <div class="spec-text"><strong>包裝設計</strong>禮品盒訂製</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">
+    <div class="strip-num">燙金</div>
+    <div class="strip-label">專業金箔工藝</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">全港</div>
+    <div class="strip-label">送貨上門</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">訂製</div>
+    <div class="strip-label">尺寸顏色設計</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">快捷</div>
+    <div class="strip-label">交貨服務</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">關於我們</div>
+    <h2>創意設計 · 精工印刷</h2>
+    <p class="section-sub" style="margin: 0 auto;">優聯創意設計印刷有限公司是香港專業創意印刷公司，以精湛燙金工藝和全面印刷服務，為客戶提供獨一無二的印刷品。</p>
+  </div>
+  <div class="about-grid">
+    <div>
+      <div class="spec-box">
+        <h3>🌟 燙金紅包袋印刷專家</h3>
+        <p>公司擅長各類燙金印刷產品，尤其是農曆新年利是封（紅包袋）的設計及印刷。我們的燙金工藝採用優質金箔，配合精密燙印技術，呈現出閃亮奪目的金色效果，完美展現企業品牌形象及節日氛圍。</p>
+      </div>
+      <div class="about-desc">
+        <p>無論是企業訂製的品牌紅包袋、婚禮週年紀念卡，還是精緻的禮盒包裝，優聯均能提供專業的創意設計及高質量的印刷服務。</p>
+        <p>我們擁有豐富的印刷行業經驗，配備現代化印刷設備，結合創意設計團隊，確保每一件印刷品都達到最高品質標準，讓您的品牌在眾多競爭中脫穎而出。</p>
+      </div>
+    </div>
+    <div class="about-props">
+      <div class="about-prop">
+        <div class="about-prop-icon">✨</div>
+        <h4>燙金工藝</h4>
+        <p>優質金箔燙印，呈現奢華閃亮效果，適合各類高端印刷品。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🎨</div>
+        <h4>創意設計</h4>
+        <p>專業設計師團隊，為客戶度身設計獨特視覺方案，彰顯品牌個性。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">🏭</div>
+        <h4>自家印刷廠</h4>
+        <p>擁有自家印刷設備，品質把關嚴格，交期準時，性價比高。</p>
+      </div>
+      <div class="about-prop">
+        <div class="about-prop-icon">📦</div>
+        <h4>全港送貨</h4>
+        <p>完成印刷後提供全港送貨服務，方便快捷，節省您的時間。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background: var(--white);">
+  <div class="section-label">印刷產品</div>
+  <h2>全線印刷產品</h2>
+  <p class="section-sub">從傳統利是封到現代品牌包裝，優聯提供多元化的印刷品，滿足您的各種需要。</p>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-icon">🧧</div>
+      <h3>紅包袋 / 利是封</h3>
+      <p>農曆新年必備！企業或個人訂製燙金紅包袋，可加印公司名稱、LOGO、祝福語，尺寸及設計按需訂製，最低起訂量靈活。</p>
+      <span class="product-tag">燙金 · 訂製</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">💳</div>
+      <h3>名片印刷</h3>
+      <p>商務名片、設計師名片、特殊工藝名片（燙金、壓紋、啞面、亮面）。多種紙張選擇，彰顯您的專業形象及品牌個性。</p>
+      <span class="product-tag">燙金 · 壓紋</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🎴</div>
+      <h3>賀卡 / 邀請卡</h3>
+      <p>生日賀卡、婚禮請柬、商業賀年卡、開幕請柬等，配合燙金工藝及獨特設計，讓每一張卡片都成為難忘的珍藏。</p>
+      <span class="product-tag">婚禮 · 節日</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">📄</div>
+      <h3>宣傳品印刷</h3>
+      <p>單張、小冊子、海報、目錄、DM直郵廣告等各類宣傳印刷品，色彩鮮艷，印刷精美，有效傳達您的品牌訊息。</p>
+      <span class="product-tag">全彩印刷</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🎁</div>
+      <h3>禮品盒 / 包裝</h3>
+      <p>高端禮品包裝盒、產品禮盒、特殊包裝設計，配合燙金、UV光效等工藝，提升產品質感，增加禮品收藏價值。</p>
+      <span class="product-tag">禮品包裝</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">📋</div>
+      <h3>企業文具印刷</h3>
+      <p>信封、信紙、記事本、文件夾等企業文具印刷，統一視覺形象，加強品牌專業感，燙金LOGO更顯尊貴。</p>
+      <span class="product-tag">企業訂製</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOIL -->
+<section class="foil" id="foil">
+  <div style="text-align: center; margin-bottom: 48px;">
+    <div class="section-label">燙金工藝</div>
+    <h2>精湛燙金技術</h2>
+    <p class="section-sub" style="margin: 0 auto;">燙金工藝（燙箔印刷）為印刷品增添奢華光澤，展現與眾不同的高端質感。優聯提供多種金箔顏色及效果選擇。</p>
+  </div>
+  <div class="foil-grid">
+    <div class="foil-card">
+      <h3>燙金效果選擇</h3>
+      <div class="sub">Hot Stamping Options</div>
+      <div class="foil-item">
+        <div class="foil-item-icon">🌟</div>
+        <div class="foil-item-info"><h4>亮金 / 光金</h4><p>最經典的金色效果，閃亮奪目，適合新年利是封及禮品包裝</p></div>
+      </div>
+      <div class="foil-item">
+        <div class="foil-item-icon">✨</div>
+        <div class="foil-item-info"><h4>啞金 / 磨砂金</h4><p>低調奢華的啞光金效果，適合高端商務名片及精品包裝</p></div>
+      </div>
+      <div class="foil-item">
+        <div class="foil-item-icon">🔴</div>
+        <div class="foil-item-info"><h4>紅金 / 玫瑰金</h4><p>獨特的玫瑰金色調，適合婚禮請柬、女性品牌印刷品</p></div>
+      </div>
+      <div class="foil-item">
+        <div class="foil-item-icon">⚪</div>
+        <div class="foil-item-info"><h4>銀色燙箔</h4><p>高雅銀色效果，適合科技、企業及現代設計風格</p></div>
+      </div>
+      <div class="foil-item">
+        <div class="foil-item-icon">🌈</div>
+        <div class="foil-item-info"><h4>彩虹 / 鐳射燙箔</h4><p>七彩變色效果，適合潮流創意設計及特別活動印刷品</p></div>
+      </div>
+    </div>
+    <div class="foil-features">
+      <div class="foil-feature">
+        <div class="foil-feature-icon">🎨</div>
+        <h4>設計訂製服務</h4>
+        <p>我們的設計師團隊可根據您的品牌形象、主題及要求，設計最適合的燙金版面及排版，確保最終效果與品牌完全匹配。</p>
+      </div>
+      <div class="foil-feature">
+        <div class="foil-feature-icon">🔬</div>
+        <h4>精密燙印工藝</h4>
+        <p>採用先進的熱燙設備及高精度模板，確保燙金圖案清晰、邊緣銳利、金箔附著牢固，不易剝落褪色。</p>
+      </div>
+      <div class="foil-feature">
+        <div class="foil-feature-icon">📱</div>
+        <h4>樣版確認服務</h4>
+        <p>大批量訂單提供打樣服務，讓您在正式生產前確認設計效果，避免色差及版面問題，確保滿意度。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" style="background: var(--white);">
+  <div style="text-align:center; margin-bottom: 48px;">
+    <div class="section-label">為何選擇優聯</div>
+    <h2>我們的優勢</h2>
+    <p class="section-sub" style="margin: 0 auto;">選擇優聯創意設計印刷，享受專業品質、快捷服務和貼心的客戶支援。</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🏆</div>
+      <h4>印刷品質保證</h4>
+      <p>嚴格品質管控，每批產品均經過質量檢查，確保色彩準確、印刷精美。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <h4>快捷交貨</h4>
+      <p>明確交期承諾，急單服務可選，讓您在重要節日前準時收到訂製印刷品。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💰</div>
+      <h4>合理價格</h4>
+      <p>工廠直銷，省去中間人，提供具競爭力的印刷報價，品質與價格兼得。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🎨</div>
+      <h4>一站式服務</h4>
+      <p>從設計構思、打樣確認到最終印刷及送貨，全程一站式處理，省心省力。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">聯絡我們</div>
+  <h2>即時查詢及報價</h2>
+  <p class="section-sub">歡迎電郵查詢，提供您的印刷需求詳情，我們將盡快回覆並提供報價。</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-row-icon">🏢</div>
+        <div class="contact-row-text">
+          <h4>公司名稱</h4>
+          <p>優聯創意設計印刷有限公司<br>U-Lian Creative Design Printing Co., Ltd.</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📧</div>
+        <div class="contact-row-text">
+          <h4>電郵查詢</h4>
+          <a href="mailto:service@uu-lian.com">service@uu-lian.com</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">🌐</div>
+        <div class="contact-row-text">
+          <h4>網站</h4>
+          <a href="https://www.uu-lian.com" target="_blank">www.uu-lian.com</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">📍</div>
+        <div class="contact-row-text">
+          <h4>服務地區</h4>
+          <p>香港 Hong Kong</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-icon">🧧</div>
+        <div class="contact-row-text">
+          <h4>特色服務</h4>
+          <p>燙金紅包袋 · 利是封印刷<br>名片 · 賀卡 · 禮品包裝</p>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <input type="text" placeholder="您的姓名 / 公司名稱" />
+      <input type="tel" placeholder="聯絡電話" />
+      <input type="email" placeholder="電郵地址 Email" />
+      <select>
+        <option value="" disabled selected>印刷品類型</option>
+        <option>燙金紅包袋 / 利是封</option>
+        <option>名片印刷</option>
+        <option>賀卡 / 邀請卡</option>
+        <option>宣傳品 (單張/小冊子)</option>
+        <option>禮品盒 / 包裝</option>
+        <option>企業文具</option>
+        <option>其他印刷查詢</option>
+      </select>
+      <textarea placeholder="請描述您的印刷需求（數量、尺寸、特殊工藝要求等）…"></textarea>
+      <button type="submit">提交報價查詢 ✨</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 <span>優聯創意設計印刷有限公司 U-Lian Creative Design Printing Co., Ltd.</span> · 香港創意印刷 · All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
