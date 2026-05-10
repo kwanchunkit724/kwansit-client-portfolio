@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIXNET 優像數位媒體科技 | 社群共榮圈</title>
+<style>
+:root{
+  --dark:#0f1a27;
+  --dark2:#162436;
+  --orange:#e85a00;
+  --orange2:#ff6a10;
+  --light:#f4f7fb;
+  --white:#ffffff;
+  --text:#1a2533;
+  --muted:#566473;
+  --border:#cdd8e5;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI','PingFang TC','Microsoft JhengHei',Arial,sans-serif;color:var(--text);background:var(--white);line-height:1.65;}
+a{color:inherit;text-decoration:none;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--dark);border-bottom:2px solid var(--orange);padding:0 6%;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
+.nav-logo{font-size:1.5rem;font-weight:900;color:var(--white);letter-spacing:1px;}
+.nav-logo span{color:var(--orange2);}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{color:rgba(255,255,255,0.82);font-size:0.87rem;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--orange2);}
+.nav-cta{background:var(--orange);color:var(--white)!important;padding:8px 20px;border-radius:4px;font-weight:700!important;}
+
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--dark2) 55%,#0a1520 100%);padding:120px 6% 80px;min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:500px;height:500px;border-radius:50%;background:rgba(232,90,0,0.07);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-60px;left:8%;width:320px;height:320px;border-radius:50%;background:rgba(232,90,0,0.04);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1fr 390px;gap:60px;align-items:center;width:100%;max-width:1200px;margin:0 auto;}
+.hero-label{display:inline-block;background:rgba(232,90,0,0.15);color:var(--orange2);font-size:0.78rem;font-weight:700;letter-spacing:2px;padding:5px 14px;border-radius:20px;border:1px solid rgba(232,90,0,0.3);margin-bottom:18px;text-transform:uppercase;}
+.hero h1{font-size:2.8rem;font-weight:900;color:var(--white);line-height:1.2;margin-bottom:14px;}
+.hero h1 span{color:var(--orange2);}
+.hero-en{font-size:1.1rem;color:rgba(255,255,255,0.5);font-weight:400;margin-bottom:14px;}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.68);max-width:520px;margin-bottom:34px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-or{background:var(--orange);color:var(--white);padding:13px 30px;border-radius:5px;font-weight:700;font-size:0.95rem;transition:background 0.2s,transform 0.2s;}
+.btn-or:hover{background:var(--orange2);transform:translateY(-2px);}
+.btn-out{border:2px solid rgba(255,255,255,0.3);color:var(--white);padding:13px 30px;border-radius:5px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s,transform 0.2s;}
+.btn-out:hover{border-color:var(--orange2);transform:translateY(-2px);}
+.hero-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:28px 24px;}
+.hero-card h3{color:var(--orange2);font-size:0.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;}
+.hc-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+.hc-icon{width:34px;height:34px;border-radius:8px;background:rgba(232,90,0,0.15);border:1px solid rgba(232,90,0,0.3);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.hc-label{font-size:0.73rem;color:rgba(255,255,255,0.45);margin-bottom:2px;}
+.hc-val{color:var(--white);font-size:0.9rem;font-weight:600;}
+.hc-divider{border:none;border-top:1px solid rgba(255,255,255,0.1);margin:14px 0;}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;}
+.badge{background:rgba(232,90,0,0.15);border:1px solid rgba(232,90,0,0.3);color:var(--orange2);font-size:0.68rem;font-weight:700;padding:4px 10px;border-radius:20px;}
+
+.stats{background:var(--orange);padding:28px 6%;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1100px;margin:0 auto;}
+.stat{text-align:center;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--white);}
+.stat-lbl{font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.5px;}
+
+section{padding:80px 6%;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-tag{display:inline-block;background:rgba(232,90,0,0.1);color:var(--orange);font-size:0.75rem;font-weight:700;letter-spacing:2px;padding:4px 14px;border-radius:20px;border:1px solid rgba(232,90,0,0.25);text-transform:uppercase;margin-bottom:12px;}
+.sec-title{font-size:2rem;font-weight:800;color:var(--dark);margin-bottom:8px;}
+.sec-sub{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:44px;}
+
+.about{background:var(--light);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.about-text p{color:var(--muted);margin-bottom:16px;line-height:1.75;}
+.about-text h3{color:var(--dark);font-size:1.2rem;font-weight:700;margin:24px 0 10px;}
+.highlight-box{background:var(--dark);border-radius:12px;padding:26px 24px;margin-bottom:22px;}
+.highlight-box h3{color:var(--orange2);font-size:1rem;font-weight:700;margin-bottom:8px;}
+.highlight-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;}
+.about-props{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.prop-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px 16px;border-top:3px solid var(--orange);}
+.prop-card h4{color:var(--dark);font-size:0.92rem;font-weight:700;margin-bottom:6px;}
+.prop-card p{color:var(--muted);font-size:0.8rem;line-height:1.55;}
+
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.prod-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:28px 22px;transition:box-shadow 0.2s,transform 0.2s;border-top:4px solid transparent;}
+.prod-card:hover{box-shadow:0 8px 26px rgba(232,90,0,0.1);transform:translateY(-4px);border-top-color:var(--orange);}
+.prod-icon{width:48px;height:48px;border-radius:10px;background:rgba(232,90,0,0.08);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px;}
+.prod-name{color:var(--orange);font-size:0.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+.prod-card h3{color:var(--dark);font-size:1rem;font-weight:700;margin-bottom:8px;}
+.prod-card p{color:var(--muted);font-size:0.84rem;line-height:1.6;}
+
+.hackathon{background:var(--dark);}
+.hackathon .sec-title{color:var(--white);}
+.hackathon .sec-sub{color:rgba(255,255,255,0.6);}
+.hack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.hack-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:22px 18px;}
+.hack-year{color:var(--orange2);font-size:0.75rem;font-weight:700;margin-bottom:6px;}
+.hack-card h3{color:var(--white);font-size:0.92rem;font-weight:700;margin-bottom:8px;}
+.hack-card p{color:rgba(255,255,255,0.6);font-size:0.82rem;line-height:1.55;}
+
+.contact-s{background:var(--light);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.contact-info h3{color:var(--dark);font-size:1.25rem;font-weight:700;margin-bottom:6px;}
+.contact-info p{color:var(--muted);font-size:0.92rem;margin-bottom:26px;}
+.ci-block{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
+.ci-icon{width:40px;height:40px;border-radius:8px;background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ci-label{font-size:0.74rem;color:var(--muted);margin-bottom:2px;}
+.ci-val{color:var(--dark);font-size:0.93rem;font-weight:600;}
+.cform{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:32px 28px;}
+.cform h3{color:var(--dark);font-size:1.1rem;font-weight:700;margin-bottom:22px;}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.form-group label{font-size:0.8rem;font-weight:600;color:var(--dark);}
+.form-group input,.form-group select,.form-group textarea{border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-size:0.9rem;color:var(--text);background:var(--light);font-family:inherit;outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--orange);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.btn-submit{width:100%;background:var(--orange);color:var(--white);border:none;border-radius:6px;padding:13px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.btn-submit:hover{background:var(--orange2);}
+
+footer{background:var(--dark);padding:50px 6% 28px;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;margin-bottom:36px;}
+.footer-brand h3{color:var(--white);font-size:1.3rem;font-weight:900;margin-bottom:8px;}
+.footer-brand h3 span{color:var(--orange2);}
+.footer-brand p{color:rgba(255,255,255,0.5);font-size:0.84rem;line-height:1.65;}
+.footer-col h4{color:var(--orange2);font-size:0.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-col ul li a{color:rgba(255,255,255,0.55);font-size:0.84rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--orange2);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;align-items:center;justify-content:space-between;}
+.footer-bottom p{color:rgba(255,255,255,0.38);font-size:0.78rem;}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .stats-grid,.products-grid,.hack-grid{grid-template-columns:repeat(2,1fr);}
+  .about-props{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">PIX<span>NET</span></div>
+    <div class="nav-links">
+      <a href="#about">關於我們</a>
+      <a href="#products">核心服務</a>
+      <a href="#hackathon">黑客松</a>
+      <a href="#contact" class="nav-cta">聯絡我們</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-label">社群科技平台 Since 2003</div>
+      <h1>打造<span>社群共榮圈</span><br>智慧生活指南</h1>
+      <p class="hero-en">Guide to SMART Life</p>
+      <p class="hero-sub">PIXNET 優像數位媒體科技以社群為核心，透過創新的數據應用與多樣化社群服務，連結千萬用戶，實現智慧生活願景。</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-or">探索服務</a>
+        <a href="#contact" class="btn-out">聯絡我們</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Company Info</h3>
+      <div class="hc-row">
+        <div class="hc-icon">🏢</div>
+        <div>
+          <div class="hc-label">公司名稱</div>
+          <div class="hc-val">優像數位媒體科技股份有限公司</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">✉</div>
+        <div>
+          <div class="hc-label">Email</div>
+          <div class="hc-val">service@pixnet.tw</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">🌐</div>
+        <div>
+          <div class="hc-label">Website</div>
+          <div class="hc-val">pixnet.tw</div>
+        </div>
+      </div>
+      <hr class="hc-divider">
+      <div class="badge-row">
+        <span class="badge">城邦媒體集團</span>
+        <span class="badge">社群科技</span>
+        <span class="badge">Big Data</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num">2003</div><div class="stat-lbl">創立年份</div></div>
+    <div class="stat"><div class="stat-num">痞客邦</div><div class="stat-lbl">旗艦社群平台</div></div>
+    <div class="stat"><div class="stat-num">8屆</div><div class="stat-lbl">HACKATHON</div></div>
+    <div class="stat"><div class="stat-num">城邦</div><div class="stat-lbl">媒體控股集團</div></div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="sec-tag">關於 PIXNET</div>
+        <h2 class="sec-title">以社群為核心的科技公司</h2>
+        <p>PIXNET 創立於 2003 年，2006 年成立「優像數位媒體科技股份有限公司」，並於 2007 年加入城邦媒體控股集團，成為台灣最具規模的社群數位媒體平台之一。</p>
+        <p>我們以「Guide to SMART Life」為企業核心價值，透過創新的數據應用、多樣化社群服務，實現讓用戶生活更智慧、更美好的使命。</p>
+        <div class="highlight-box">
+          <h3>企業願景：社群共榮圈</h3>
+          <p>2018 年 PIXNET 推出「全新痞客邦」，加速興趣同好彼此凝聚及交流，並持續與產業各界結盟，踏實建構「社群共榮圈」願景，讓每一位創作者都能在這個平台茁壯成長。</p>
+        </div>
+      </div>
+      <div class="about-props">
+        <div class="prop-card">
+          <h4>社群平台</h4>
+          <p>痞客邦是台灣最大的部落格暨社群平台，連結數百萬創作者與讀者，打造豐富的興趣社群生態。</p>
+        </div>
+        <div class="prop-card">
+          <h4>數據驅動</h4>
+          <p>PIXinsight 大數據分析平台，提供深度受眾洞察與市場情報，協助品牌做出更精準的行銷決策。</p>
+        </div>
+        <div class="prop-card">
+          <h4>電商整合</h4>
+          <p>PIXgoods 社群電商服務，串接社群流量與購物行為，打通社群與商業變現的完整路徑。</p>
+        </div>
+        <div class="prop-card">
+          <h4>城邦集團</h4>
+          <p>隸屬城邦媒體控股集團，享有豐富的媒體資源與廣大的內容生態系，在業界具有強大的影響力。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products">
+  <div class="sec-inner">
+    <div class="sec-tag">核心服務</div>
+    <h2 class="sec-title">PIXNET 旗下服務</h2>
+    <p class="sec-sub">多元化的數位媒體與社群服務，滿足創作者、品牌與消費者的各種需求。</p>
+    <div class="products-grid">
+      <div class="prod-card">
+        <div class="prod-icon">✍️</div>
+        <div class="prod-name">Pixnet Blog</div>
+        <h3>痞客邦</h3>
+        <p>台灣最大的部落格社群平台，讓每一位創作者都能輕鬆分享生活、美食、旅遊、時尚等豐富內容，與志同道合的讀者建立深度連結。</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🛍️</div>
+        <div class="prod-name">PIXgoods</div>
+        <h3>社群電商平台</h3>
+        <p>結合社群影響力與電商功能的購物平台，讓優質創作者的內容直接轉化為商業價值，實現流量變現的最佳路徑。</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">📣</div>
+        <div class="prod-name">PIXmarketing</div>
+        <h3>社群行銷服務</h3>
+        <p>為品牌客戶提供完整的社群行銷解決方案，包含內容行銷、KOL 合作、原生廣告投放，精準觸及目標受眾。</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">📊</div>
+        <div class="prod-name">PIXinsight</div>
+        <h3>數據洞察分析</h3>
+        <p>運用大數據技術，深度分析社群趨勢、消費者行為與市場動態，為企業決策提供最有價值的情報支援。</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">💡</div>
+        <div class="prod-name">Content Marketing</div>
+        <h3>內容行銷生態</h3>
+        <p>完整的內容行銷生態系統，協助品牌與創作者合作，透過真實故事與優質內容建立品牌信任度與影響力。</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">🔗</div>
+        <div class="prod-name">Partner Network</div>
+        <h3>媒體合作夥伴</h3>
+        <p>城邦媒體集團旗下豐富媒體資源，串接出版、雜誌、數位內容的完整矩陣，提供跨媒體整合行銷方案。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hackathon" id="hackathon">
+  <div class="sec-inner">
+    <div class="sec-tag">Developer Community</div>
+    <h2 class="sec-title">PIXNET HACKATHON</h2>
+    <p class="sec-sub">每年舉辦的開發者競賽，匯聚台灣最頂尖的技術人才，共同打造智慧生活創新應用。</p>
+    <div class="hack-grid">
+      <div class="hack-card">
+        <div class="hack-year">2019 · 第六屆</div>
+        <h3>Taiwan Browser</h3>
+        <p>翻轉在地體驗 — 探索在地生活的全新可能，結合 PIXNET 平台數據打造智慧在地服務。</p>
+      </div>
+      <div class="hack-card">
+        <div class="hack-year">2018 · 第五屆</div>
+        <h3>智慧生活共榮圈</h3>
+        <p>打造智慧生活共榮圈 — 連結社群、數據與科技，實現 Guide to Smart Life 的核心理念。</p>
+      </div>
+      <div class="hack-card">
+        <div class="hack-year">2017 · 第四屆</div>
+        <h3>Guide to Smart Life</h3>
+        <p>以智慧生活為主題，邀請開發者運用 PIXNET API 創作生活智能化的創新應用與服務。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-s" id="contact">
+  <div class="sec-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="sec-tag">聯絡我們</div>
+        <h3>與 PIXNET 合作</h3>
+        <p>無論是行銷合作、廣告投放、API 合作或媒體詢問，歡迎與我們的團隊聯繫。</p>
+        <div class="ci-block">
+          <div class="ci-icon">✉</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val">service@pixnet.tw</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Website</div>
+            <div class="ci-val">pixnet.tw</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">🏢</div>
+          <div>
+            <div class="ci-label">集團</div>
+            <div class="ci-val">城邦媒體控股集團</div>
+          </div>
+        </div>
+      </div>
+      <div class="cform">
+        <h3>發送合作詢問</h3>
+        <div class="form-group">
+          <label>姓名</label>
+          <input type="text" placeholder="您的姓名">
+        </div>
+        <div class="form-group">
+          <label>公司名稱</label>
+          <input type="text" placeholder="公司或品牌名稱">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>合作類型</label>
+          <select>
+            <option value="">請選擇...</option>
+            <option>痞客邦內容行銷</option>
+            <option>PIXmarketing 廣告投放</option>
+            <option>PIXgoods 電商合作</option>
+            <option>PIXinsight 數據分析</option>
+            <option>HACKATHON 活動參與</option>
+            <option>媒體採訪或其他詢問</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>訊息內容</label>
+          <textarea placeholder="請描述您的合作需求..."></textarea>
+        </div>
+        <button class="btn-submit">送出詢問 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>PIX<span>NET</span></h3>
+        <p>優像數位媒體科技股份有限公司 — 以社群為核心的科技公司，透過創新數據應用與多樣化社群服務，實現「Guide to SMART Life」企業核心價值。</p>
+      </div>
+      <div class="footer-col">
+        <h4>核心服務</h4>
+        <ul>
+          <li><a href="#products">痞客邦</a></li>
+          <li><a href="#products">PIXgoods</a></li>
+          <li><a href="#products">PIXmarketing</a></li>
+          <li><a href="#products">PIXinsight</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡</h4>
+        <ul>
+          <li><a href="mailto:service@pixnet.tw">service@pixnet.tw</a></li>
+          <li><a href="https://pixnet.tw">pixnet.tw</a></li>
+          <li><a href="#contact">合作詢問</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 PIXNET 優像數位媒體科技股份有限公司. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
