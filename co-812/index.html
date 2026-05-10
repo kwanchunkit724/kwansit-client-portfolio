@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>浤富國際有限公司 | Viewfull International | 環球食品批發商</title>
+<style>
+  :root {
+    --bg:        #0c0a06;
+    --surface:   #14100a;
+    --card:      #1e1810;
+    --accent1:   #d08020;
+    --accent2:   #f0b840;
+    --accent3:   #60c870;
+    --text:      #f0e8d8;
+    --muted:     #9a8868;
+    --border:    rgba(208,128,32,0.22);
+    --glow:      rgba(208,128,32,0.2);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', 'PingFang HK', 'Microsoft JhengHei', sans-serif; line-height: 1.7; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(12,10,6,0.95); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.9rem; color: #0c0a06;
+    box-shadow: 0 0 18px var(--glow);
+  }
+  .nav-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+  .nav-name span { color: var(--accent2); font-weight: 400; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #0c0a06; border: none; padding: 9px 22px; border-radius: 6px;
+    font-size: 0.88rem; font-weight: 800; cursor: pointer; text-decoration: none;
+    box-shadow: 0 4px 16px var(--glow); transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; padding: 120px 5% 80px;
+    background:
+      radial-gradient(ellipse 70% 55% at 85% 45%, rgba(208,128,32,0.14) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 50% at 10% 75%, rgba(240,184,64,0.08) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
+  }
+  .hero-text { flex: 1 1 480px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(208,128,32,0.12); border: 1px solid rgba(208,128,32,0.3);
+    padding: 6px 16px; border-radius: 20px; font-size: 0.82rem;
+    color: var(--accent2); margin-bottom: 24px; letter-spacing: 0.04em;
+  }
+  .hero-badge::before { content: '🌏'; font-size: 0.9rem; }
+  .hero-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.18; margin-bottom: 8px; }
+  .hero-title .gold { color: var(--accent2); }
+  .hero-title .green { color: var(--accent3); }
+  .hero-en { font-size: 1.05rem; color: var(--muted); font-weight: 500; margin-bottom: 20px; }
+  .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 520px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #0c0a06; padding: 13px 28px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 800; text-decoration: none;
+    box-shadow: 0 6px 24px var(--glow); transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid var(--accent1); color: var(--accent2);
+    padding: 13px 28px; border-radius: 8px; font-size: 0.95rem;
+    font-weight: 600; text-decoration: none; transition: background .2s;
+  }
+  .btn-outline:hover { background: rgba(208,128,32,0.1); }
+
+  /* info card */
+  .hero-card {
+    flex: 0 0 300px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .hero-card h3 { font-size: 0.78rem; color: var(--accent2); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+  .cert-row { display: flex; gap: 10px; margin-bottom: 20px; }
+  .cert-badge {
+    flex: 1; background: rgba(208,128,32,0.1); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px; text-align: center;
+    font-size: 0.78rem; font-weight: 800; color: var(--accent2); letter-spacing: 0.05em;
+  }
+  .info-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .info-icon { font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+  .info-label { font-size: 0.73rem; color: var(--muted); margin-bottom: 2px; }
+  .info-val { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+  .info-val a { color: var(--accent3); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .divider-card { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+
+  /* ── STATS ── */
+  .stats-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 44px 5%;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; text-align: center;
+  }
+  .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--accent2); line-height: 1; }
+  .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 88px 5%; }
+  .section-label { font-size: 0.78rem; color: var(--accent1); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 800; margin-bottom: 14px; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 600px; margin-bottom: 48px; }
+
+  /* ── BUSINESS CHANNELS ── */
+  .channels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
+  .channel-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px 24px; transition: transform .25s, box-shadow .25s;
+  }
+  .channel-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(208,128,32,0.15); }
+  .ch-icon { font-size: 2rem; margin-bottom: 14px; }
+  .channel-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .channel-card p { font-size: 0.88rem; color: var(--muted); }
+
+  /* ── CATEGORIES ── */
+  .cat-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+  .cat-tag {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 10px 18px; font-size: 0.88rem; font-weight: 600; color: var(--text);
+    transition: border-color .2s, color .2s; cursor: default;
+  }
+  .cat-tag:hover { border-color: var(--accent2); color: var(--accent2); }
+  .cat-tag .count { font-size: 0.75rem; color: var(--muted); margin-left: 6px; }
+
+  /* ── BRANDS ── */
+  .brands-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 18px; }
+  .brand-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 22px 20px; text-align: center; transition: transform .25s;
+  }
+  .brand-card:hover { transform: translateY(-3px); border-color: var(--accent2); }
+  .brand-card .b-icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .brand-card h3 { font-size: 0.92rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .brand-card p { font-size: 0.8rem; color: var(--muted); }
+
+  /* ── CERTIFICATIONS ── */
+  .cert-section { background: var(--surface); }
+  .cert-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+  .cert-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 32px; display: flex; gap: 20px; align-items: flex-start;
+  }
+  .cert-icon-wrap {
+    width: 52px; height: 52px; border-radius: 12px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; box-shadow: 0 4px 16px var(--glow);
+  }
+  .cert-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--accent2); margin-bottom: 6px; }
+  .cert-card p { font-size: 0.88rem; color: var(--muted); }
+
+  /* ── HIGHLIGHT ── */
+  .highlight {
+    background: linear-gradient(135deg, rgba(208,128,32,0.12), rgba(240,184,64,0.08));
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 56px 48px; margin: 0 5% 80px; text-align: center;
+  }
+  .highlight h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: 14px; }
+  .highlight p { color: var(--muted); max-width: 640px; margin: 0 auto 28px; font-size: 0.98rem; }
+
+  /* ── CONTACT ── */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info { display: flex; flex-direction: column; gap: 18px; }
+  .c-item { display: flex; gap: 14px; align-items: flex-start; }
+  .c-icon {
+    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(208,128,32,0.1); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .c-item h4 { font-size: 0.8rem; color: var(--muted); margin-bottom: 2px; }
+  .c-item p, .c-item a { font-size: 0.95rem; color: var(--text); text-decoration: none; }
+  .c-item a:hover { color: var(--accent2); }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); padding: 11px 14px; border-radius: 8px; font-size: 0.9rem;
+    outline: none; transition: border-color .2s; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent1); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #0c0a06; border: none; padding: 13px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 800; cursor: pointer; transition: opacity .2s;
+  }
+  .form-submit:hover { opacity: 0.88; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 44px 5% 28px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center;
+  }
+  .footer-brand { font-size: 1rem; font-weight: 700; }
+  .footer-brand span { color: var(--accent2); font-weight: 400; }
+  .footer-copy { font-size: 0.8rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; }
+  .footer-links a:hover { color: var(--accent2); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero { flex-direction: column; }
+    .hero-card { flex: 1 1 100%; }
+    .highlight { padding: 36px 24px; margin: 0 0 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#home">
+    <div class="nav-logo">浤富</div>
+    <div class="nav-name">浤富國際 <span>| Viewfull International</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#business">業務渠道</a></li>
+    <li><a href="#products">產品分類</a></li>
+    <li><a href="#brands">代理品牌</a></li>
+    <li><a href="#cert">認證資質</a></li>
+    <li><a href="#contact">業務查詢</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">立即查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-badge">環球食品進出口批發商 · HACCP &amp; ISO 22000 認證</div>
+    <h1 class="hero-title">
+      <span class="gold">浤富國際</span>有限公司<br>
+      <span class="green">Viewfull International</span>
+    </h1>
+    <p class="hero-en">Worldwide Food Import &amp; Export Supplier · Hong Kong</p>
+    <p class="hero-desc">
+      一站式環球食品進出口批發服務，自設 HACCP 及 ISO 22000 認證食品工場。
+      代理多個國際品牌，業務涵蓋餐飲批發、零售批發、整櫃訂購及貨運物流，
+      為餐廳、食品商及零售商提供高品質食材解決方案。
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#contact">業務查詢</a>
+      <a class="btn-outline" href="https://viewfull.com.hk/en/" target="_blank" rel="noopener">瀏覽產品目錄</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <h3>認證資質</h3>
+    <div class="cert-row">
+      <div class="cert-badge">✅ HACCP</div>
+      <div class="cert-badge">✅ ISO 22000</div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">📱</div>
+      <div>
+        <div class="info-label">手機 / WhatsApp</div>
+        <div class="info-val"><a href="tel:52312621">5231 2621</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">✉️</div>
+      <div>
+        <div class="info-label">電郵</div>
+        <div class="info-val"><a href="mailto:info@viewfull.com.hk">info@viewfull.com.hk</a></div>
+      </div>
+    </div>
+    <hr class="divider-card">
+    <div class="info-row">
+      <div class="info-icon">🌐</div>
+      <div>
+        <div class="info-label">官方網站</div>
+        <div class="info-val"><a href="https://viewfull.com.hk/en/" target="_blank" rel="noopener">viewfull.com.hk</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">📍</div>
+      <div>
+        <div class="info-label">地區</div>
+        <div class="info-val">香港 Hong Kong</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div>
+    <div class="stat-num">200+</div>
+    <div class="stat-label">產品種類</div>
+  </div>
+  <div>
+    <div class="stat-num">HACCP</div>
+    <div class="stat-label">自設認證食品工場</div>
+  </div>
+  <div>
+    <div class="stat-num">ISO 22000</div>
+    <div class="stat-label">食品安全管理體系認證</div>
+  </div>
+  <div>
+    <div class="stat-num">全球</div>
+    <div class="stat-label">進出口業務覆蓋</div>
+  </div>
+</div>
+
+<!-- BUSINESS CHANNELS -->
+<section id="business">
+  <p class="section-label">業務渠道</p>
+  <h2 class="section-title">一站式食品業務服務</h2>
+  <p class="section-sub">浤富國際提供全方位食品批發業務，由本地餐飲批發至海外整櫃訂購，一站式滿足客戶需求。</p>
+
+  <div class="channels-grid">
+    <div class="channel-card">
+      <div class="ch-icon">🍽️</div>
+      <h3>餐飲食品批發</h3>
+      <p>專業為餐廳、酒樓、食肆提供穩定的食材供應，品類齊全，保持新鮮品質。</p>
+    </div>
+    <div class="channel-card">
+      <div class="ch-icon">🏪</div>
+      <h3>零售批發</h3>
+      <p>供應超市、零售商店及網上商店批發食品，靈活訂貨，快速配送。</p>
+    </div>
+    <div class="channel-card">
+      <div class="ch-icon">🌏</div>
+      <h3>出入口批發</h3>
+      <p>環球食品進出口服務，代理各國優質品牌，引入市場需求產品。</p>
+    </div>
+    <div class="channel-card">
+      <div class="ch-icon">🚢</div>
+      <h3>整櫃訂購</h3>
+      <p>提供本地及海外整櫃訂購服務，適合大型採購需求，價格更具競爭力。</p>
+    </div>
+    <div class="channel-card">
+      <div class="ch-icon">🏭</div>
+      <h3>食品加工</h3>
+      <p>自設 HACCP 及 ISO 22000 認證食品工場，提供食品加工及保鮮食品服務。</p>
+    </div>
+    <div class="channel-card">
+      <div class="ch-icon">🚚</div>
+      <h3>貨運物流</h3>
+      <p>提供本地及海外貨物運輸安排，確保食品在最佳條件下安全送達。</p>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHT -->
+<div class="highlight">
+  <h2>自設 HACCP &amp; ISO 22000<br><span style="color:var(--accent2)">認證食品工場</span></h2>
+  <p>
+    浤富國際擁有自設食品工場，並通過 HACCP（危害分析關鍵控制點）及 ISO 22000 國際食品安全管理體系認證，
+    確保每件產品均符合最嚴格的食品安全標準，為客戶提供安心可靠的食品供應。
+  </p>
+  <a class="btn-primary" href="#contact">了解更多</a>
+</div>
+
+<!-- PRODUCT CATEGORIES -->
+<section id="products" style="background: var(--surface);">
+  <p class="section-label">產品分類</p>
+  <h2 class="section-title">豐富產品類別</h2>
+  <p class="section-sub" style="margin-bottom: 32px">涵蓋肉類、海鮮、台灣特產及各類冷凍食品，滿足餐飲業及零售市場的多元需求。</p>
+
+  <div class="cat-grid">
+    <div class="cat-tag">🥩 牛肉產品 <span class="count">13+</span></div>
+    <div class="cat-tag">🍗 雞肉產品 <span class="count">13+</span></div>
+    <div class="cat-tag">🐷 豬肉產品 <span class="count">6+</span></div>
+    <div class="cat-tag">🥩 整塊生肉 <span class="count">15+</span></div>
+    <div class="cat-tag">🦐 海鮮產品 <span class="count">4+</span></div>
+    <div class="cat-tag">🧆 台灣特產 <span class="count">27+</span></div>
+    <div class="cat-tag">🥟 美食精選 <span class="count">49+</span></div>
+    <div class="cat-tag">🏷️ 代理品牌 <span class="count">73+</span></div>
+    <div class="cat-tag">🥦 蔬菜素食 <span class="count">8+</span></div>
+    <div class="cat-tag">🎉 限時推廣</div>
+  </div>
+</section>
+
+<!-- AGENT BRANDS -->
+<section id="brands">
+  <p class="section-label">代理品牌</p>
+  <h2 class="section-title">主要代理品牌</h2>
+  <p class="section-sub">代理多個本地及國際知名食品品牌，提供多元化的優質食品選擇。</p>
+
+  <div class="brands-grid">
+    <div class="brand-card">
+      <div class="b-icon">🥟</div>
+      <h3>灣仔碼頭</h3>
+      <p>Wanchai Ferry — 水餃、湯圓及速凍食品</p>
+    </div>
+    <div class="brand-card">
+      <div class="b-icon">🍗</div>
+      <h3>Farm's Best</h3>
+      <p>優質雞肉產品，包括爆谷雞等</p>
+    </div>
+    <div class="brand-card">
+      <div class="b-icon">🍕</div>
+      <h3>Japan Delsole</h3>
+      <p>日本進口比薩、法包等烘焙食品</p>
+    </div>
+    <div class="brand-card">
+      <div class="b-icon">🦑</div>
+      <h3>台灣特產系列</h3>
+      <p>台灣即食魷魚、台式燒餅等特色食品</p>
+    </div>
+    <div class="brand-card">
+      <div class="b-icon">🌏</div>
+      <h3>環球精選</h3>
+      <p>來自日本、韓國、台灣及東南亞的精選食品</p>
+    </div>
+    <div class="brand-card">
+      <div class="b-icon">🥩</div>
+      <h3>優質肉類</h3>
+      <p>泰國無激素雞腿、日本和牛等高品質肉類</p>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="cert" class="cert-section">
+  <p class="section-label">認證資質</p>
+  <h2 class="section-title">國際食品安全認證</h2>
+  <p class="section-sub">憑藉嚴格的食品安全管理，浤富國際獲得兩項重要國際認證，保障每批產品的安全與品質。</p>
+
+  <div class="cert-cards">
+    <div class="cert-card">
+      <div class="cert-icon-wrap">🛡️</div>
+      <div>
+        <h3>HACCP 認證</h3>
+        <p>危害分析關鍵控制點（Hazard Analysis and Critical Control Points）體系，全面識別及控制食品生產過程中的潛在危害，確保食品安全。</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon-wrap">✅</div>
+      <div>
+        <h3>ISO 22000 認證</h3>
+        <p>國際食品安全管理體系標準（ISO 22000），整合 HACCP 原則與 ISO 管理標準，全鏈條保障食品安全，符合國際出口要求。</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon-wrap">🏭</div>
+      <div>
+        <h3>自設食品工場</h3>
+        <p>公司自設食品加工及保鮮工場，全程自主品質控制，確保產品在最佳條件下加工、儲存及配送。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">業務查詢</p>
+  <h2 class="section-title">與我們聯絡</h2>
+  <p class="section-sub">歡迎餐廳、食品商、超市及零售商查詢批發合作，我們提供全面的業務支援服務。</p>
+
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="c-item">
+        <div class="c-icon">📱</div>
+        <div>
+          <h4>手機 / WhatsApp</h4>
+          <a href="tel:52312621">5231 2621</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">✉️</div>
+        <div>
+          <h4>電郵</h4>
+          <a href="mailto:info@viewfull.com.hk">info@viewfull.com.hk</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">🌐</div>
+        <div>
+          <h4>官方網站 / 網上商店</h4>
+          <a href="https://viewfull.com.hk/en/" target="_blank" rel="noopener">viewfull.com.hk</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <h4>地區</h4>
+          <p>香港 Hong Kong</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>公司 / 姓名</label>
+          <input type="text" placeholder="公司名稱或負責人姓名">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話</label>
+          <input type="tel" placeholder="9xxx xxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>電郵地址</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>業務類型</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>餐廳 / 食肆批發</option>
+          <option>超市 / 零售批發</option>
+          <option>海外整櫃訂購</option>
+          <option>食品加工合作</option>
+          <option>品牌代理查詢</option>
+          <option>其他業務查詢</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>查詢詳情</label>
+        <textarea placeholder="請說明您的批發需求、產品類別或合作方式…"></textarea>
+      </div>
+      <button class="form-submit">發送業務查詢</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">浤富國際有限公司 <span>| Viewfull International Company Ltd.</span></div>
+  <div class="footer-copy">© 2025 Viewfull International Company Ltd. 版權所有</div>
+  <div class="footer-links">
+    <a href="#business">業務渠道</a>
+    <a href="#products">產品分類</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+</footer>
+
+</body>
+</html>
