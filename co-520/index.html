@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>煤氣優質爐具產品 | Towngas Appliance</title>
+<style>
+:root {
+  --primary: #181818;
+  --accent: #e8480c;
+  --accent2: #c03808;
+  --warm: #f07828;
+  --light: #faf5f2;
+  --mid: #f0e0d8;
+  --text: #221810;
+  --text-light: #6a5048;
+  --white: #ffffff;
+  --card-bg: #fefaf8;
+  --border: #e8d0c4;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans TC',sans-serif;color:var(--text);background:var(--white);line-height:1.7;}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(24,24,24,0.97);backdrop-filter:blur(8px);border-bottom:2px solid var(--accent);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-logo{display:flex;align-items:center;gap:12px;}
+.nav-logo-icon{width:40px;height:40px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.nav-logo-icon svg{width:22px;height:22px;fill:var(--white);}
+.nav-brand{display:flex;flex-direction:column;}
+.nav-brand-cn{font-size:1rem;font-weight:700;color:var(--white);letter-spacing:0.04em;}
+.nav-brand-en{font-size:0.62rem;color:rgba(255,255,255,0.45);letter-spacing:0.1em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{color:rgba(255,255,255,0.78);text-decoration:none;font-size:0.9rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--warm);}
+.nav-cta{background:var(--accent);color:var(--white);padding:0.45rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent2);}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(135deg,var(--primary) 0%,#2a1008 60%,#1e0c04 100%);display:flex;align-items:center;padding-top:68px;position:relative;overflow:hidden;}
+.hero-flame{position:absolute;right:10%;top:15%;width:420px;height:420px;background:radial-gradient(ellipse,rgba(232,72,12,0.2) 0%,rgba(240,120,40,0.08) 40%,transparent 70%);border-radius:50%;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,72,12,0.15);border:1px solid rgba(232,72,12,0.4);color:var(--warm);padding:0.4rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:600;letter-spacing:0.06em;margin-bottom:1.5rem;}
+.hero h1{font-size:2.8rem;font-weight:800;color:var(--white);line-height:1.2;margin-bottom:1rem;}
+.hero h1 span{color:var(--warm);}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.65);margin-bottom:2rem;max-width:480px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2.5rem;}
+.hero-tag{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.8rem;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:var(--white);padding:0.9rem 2rem;border-radius:8px;font-size:0.95rem;font-weight:700;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);}
+.btn-outline{border:2px solid rgba(255,255,255,0.25);color:var(--white);padding:0.9rem 2rem;border-radius:8px;font-size:0.95rem;font-weight:600;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-outline:hover{border-color:var(--warm);color:var(--warm);}
+
+/* INFO CARD */
+.info-card{background:rgba(255,255,255,0.05);border:1px solid rgba(232,72,12,0.3);border-radius:16px;padding:2rem;backdrop-filter:blur(12px);}
+.info-card h3{font-size:0.85rem;color:var(--warm);font-weight:700;margin-bottom:1.2rem;letter-spacing:0.08em;text-transform:uppercase;}
+.info-item{display:flex;gap:12px;margin-bottom:1rem;align-items:flex-start;}
+.info-icon{width:36px;height:36px;background:rgba(232,72,12,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.info-icon svg{width:18px;height:18px;stroke:var(--warm);fill:none;stroke-width:2;}
+.info-label{font-size:0.68rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.06em;}
+.info-value{font-size:0.88rem;color:var(--white);font-weight:600;}
+.info-value a{color:var(--white);text-decoration:none;}
+.info-divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:1.2rem 0;}
+.towngas-badge{background:linear-gradient(135deg,var(--accent),var(--warm));border-radius:12px;padding:1.2rem;text-align:center;}
+.towngas-badge .tg-title{font-size:0.8rem;color:rgba(255,255,255,0.85);margin-bottom:4px;}
+.towngas-badge .tg-sub{font-size:0.75rem;color:rgba(255,255,255,0.7);line-height:1.5;}
+
+/* STATS */
+.stats{background:var(--primary);padding:3rem 0;}
+.stats-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.stat-item{text-align:center;padding:1.5rem;border:1px solid rgba(232,72,12,0.2);border-radius:12px;background:rgba(232,72,12,0.04);}
+.stat-num{font-size:2.2rem;font-weight:800;color:var(--accent);}
+.stat-lbl{font-size:0.8rem;color:rgba(255,255,255,0.55);margin-top:4px;}
+
+/* ABOUT */
+.about{padding:6rem 0;background:var(--light);}
+.about-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.section-label{font-size:0.75rem;font-weight:700;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.8rem;}
+.section-title{font-size:2.2rem;font-weight:800;color:var(--primary);line-height:1.25;margin-bottom:1rem;}
+.section-title span{color:var(--accent);}
+.about-text{color:var(--text-light);line-height:1.9;margin-bottom:1.5rem;}
+.highlight-box{background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:12px;padding:1.8rem;color:var(--white);margin-bottom:2rem;}
+.highlight-box h4{font-size:1rem;font-weight:700;margin-bottom:0.6rem;}
+.highlight-box p{font-size:0.88rem;opacity:0.92;line-height:1.7;}
+.prop-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prop-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color 0.2s;}
+.prop-card:hover{border-color:var(--accent);}
+.prop-icon{width:36px;height:36px;background:rgba(232,72,12,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:0.7rem;}
+.prop-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:2;}
+.prop-card h5{font-size:0.85rem;font-weight:700;color:var(--primary);margin-bottom:0.3rem;}
+.prop-card p{font-size:0.78rem;color:var(--text-light);line-height:1.5;}
+
+/* PRODUCTS */
+.products{padding:6rem 0;background:var(--white);}
+.products-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.products-header{text-align:center;margin-bottom:3.5rem;}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.prod-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.prod-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--warm));transform:scaleX(0);transition:transform 0.25s;}
+.prod-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(232,72,12,0.1);transform:translateY(-4px);}
+.prod-card:hover::before{transform:scaleX(1);}
+.prod-num{font-size:0.7rem;font-weight:700;color:var(--accent);letter-spacing:0.1em;margin-bottom:1rem;}
+.prod-icon{width:56px;height:56px;background:rgba(232,72,12,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;}
+.prod-icon svg{width:30px;height:30px;stroke:var(--accent);fill:none;stroke-width:1.7;}
+.prod-card h3{font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:0.4rem;}
+.prod-card h3 small{display:block;font-size:0.75rem;font-weight:500;color:var(--text-light);font-style:italic;}
+.prod-card p{font-size:0.85rem;color:var(--text-light);line-height:1.7;margin-bottom:1rem;}
+.prod-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.prod-tag{background:rgba(232,72,12,0.08);color:var(--accent2);font-size:0.72rem;padding:0.2rem 0.6rem;border-radius:4px;font-weight:600;}
+
+/* SMART / IOT */
+.iot{padding:5rem 0;background:linear-gradient(135deg,var(--primary),#2e1008);}
+.iot-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.iot-text h2{font-size:2rem;font-weight:800;color:var(--white);margin-bottom:1rem;}
+.iot-text h2 span{color:var(--warm);}
+.iot-text p{color:rgba(255,255,255,0.68);line-height:1.8;margin-bottom:2rem;}
+.iot-features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.iot-feat{background:rgba(255,255,255,0.04);border:1px solid rgba(232,72,12,0.25);border-radius:10px;padding:1.2rem;}
+.iot-feat h4{font-size:0.85rem;font-weight:700;color:var(--warm);margin-bottom:0.4rem;}
+.iot-feat p{font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.5;}
+.mia-box{background:rgba(255,255,255,0.05);border:1px solid rgba(240,120,40,0.3);border-radius:14px;padding:2rem;}
+.mia-box h3{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.6rem;}
+.mia-box .mia-sub{font-size:0.8rem;color:var(--warm);margin-bottom:1rem;font-style:italic;}
+.mia-box p{font-size:0.85rem;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:1rem;}
+.mia-list{list-style:none;padding:0;}
+.mia-list li{font-size:0.82rem;color:rgba(255,255,255,0.7);padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:8px;}
+.mia-list li::before{content:'✦';color:var(--warm);font-size:0.6rem;}
+
+/* CONTACT */
+.contact{padding:6rem 0;background:var(--light);}
+.contact-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
+.contact-info h2{font-size:2rem;font-weight:800;color:var(--primary);margin-bottom:1rem;}
+.contact-info p{color:var(--text-light);margin-bottom:2rem;line-height:1.8;}
+.contact-details{display:flex;flex-direction:column;gap:1.2rem;}
+.cdetail{display:flex;gap:1rem;align-items:flex-start;}
+.cdetail-icon{width:44px;height:44px;background:rgba(232,72,12,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cdetail-icon svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:2;}
+.cdetail-label{font-size:0.72rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.06em;}
+.cdetail-value{font-size:0.95rem;font-weight:600;color:var(--primary);}
+.cdetail-value a{color:var(--primary);text-decoration:none;}
+.cdetail-value a:hover{color:var(--accent);}
+.fraud-alert{background:#fff8f0;border:1px solid #f0c090;border-left:4px solid var(--accent);border-radius:8px;padding:1rem 1.2rem;margin-top:1.5rem;}
+.fraud-alert h5{font-size:0.82rem;font-weight:700;color:var(--accent2);margin-bottom:0.4rem;}
+.fraud-alert p{font-size:0.78rem;color:var(--text-light);line-height:1.6;}
+.contact-form{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2.5rem;box-shadow:0 4px 24px rgba(232,72,12,0.06);}
+.contact-form h3{font-size:1.2rem;font-weight:700;color:var(--primary);margin-bottom:1.5rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-group{margin-bottom:1rem;}
+.form-group label{display:block;font-size:0.8rem;font-weight:600;color:var(--text-light);margin-bottom:0.4rem;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:8px;font-size:0.9rem;color:var(--text);background:var(--card-bg);outline:none;transition:border-color 0.2s;font-family:inherit;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent);}
+.form-group textarea{resize:vertical;min-height:100px;}
+.form-submit{width:100%;background:var(--accent);color:var(--white);border:none;padding:0.9rem;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;font-family:inherit;}
+.form-submit:hover{background:var(--accent2);}
+
+/* FOOTER */
+footer{background:var(--primary);padding:3rem 0 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-brand-cn{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.3rem;}
+.footer-brand-en{font-size:0.72rem;color:rgba(255,255,255,0.35);margin-bottom:1rem;letter-spacing:0.06em;}
+.footer-tagline{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.7;}
+.footer-col h4{font-size:0.8rem;font-weight:700;color:var(--warm);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;}
+.footer-col ul{list-style:none;padding:0;}
+.footer-col ul li{margin-bottom:0.6rem;}
+.footer-col ul li a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--warm);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:0.78rem;color:rgba(255,255,255,0.3);}
+.footer-web{font-size:0.78rem;color:rgba(255,255,255,0.3);}
+
+@media(max-width:1024px){
+  .hero-inner,.about-inner,.iot-inner,.contact-inner{grid-template-columns:1fr;gap:2.5rem;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .hero h1{font-size:2rem;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .products-grid{grid-template-columns:1fr;}
+  .iot-features{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1 14v-4H7l5-8v4h4l-5 8z"/></svg>
+      </div>
+      <div class="nav-brand">
+        <span class="nav-brand-cn">煤氣優質爐具產品</span>
+        <span class="nav-brand-en">Towngas Appliance</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#about">關於我們</a>
+      <a href="#products">產品系列</a>
+      <a href="#iot">智能家電</a>
+      <a href="#contact">聯絡我們</a>
+    </div>
+    <a href="#contact" class="nav-cta">立即選購</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-flame"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1 14v-4H7l5-8v4h4l-5 8z"/></svg>
+        香港煤氣公司優質家電
+      </div>
+      <h1>優質廚電<br><span>智能生活體驗</span></h1>
+      <p class="hero-sub">煤氣公司旗下優質爐具及家電品牌，提供嵌入式爐具、熱水爐、抽油煙機、洗碗碟機及IoT智能產品，為香港家庭及商業客戶帶來卓越烹飪與生活體驗。</p>
+      <div class="hero-tags">
+        <span class="hero-tag">嵌入式平面爐</span>
+        <span class="hero-tag">熱水爐</span>
+        <span class="hero-tag">抽油煙機</span>
+        <span class="hero-tag">IoT智能產品</span>
+        <span class="hero-tag">Mia Cucina</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          瀏覽產品系列
+        </a>
+        <a href="#contact" class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 9.11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.01 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.11 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          客戶服務
+        </a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>聯絡資訊</h3>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 9.11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.01 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.11 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">客戶服務熱線</div>
+          <div class="info-value"><a href="tel:+85228806988">2880 6988</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">WhatsApp</div>
+          <div class="info-value"><a href="https://wa.me/85295236697">+852 9523 6697</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="info-label">電郵 Email</div>
+          <div class="info-value"><a href="mailto:towngas.cs@towngas.com">towngas.cs@towngas.com</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">官方網站</div>
+          <div class="info-value"><a href="https://www.towngasappliance.com" target="_blank">towngasappliance.com</a></div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="towngas-badge">
+        <div class="tg-title">🔒 防詐騙提示</div>
+        <div class="tg-sub">煤氣公司發出的短訊均以<strong>#Towngas</strong>、<strong>#TowngasFun</strong>、<strong>#TGCTowngas</strong>或<strong>#TowngasTGC</strong>為發送人名稱</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-lbl">產品大類</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">IoT</div>
+      <div class="stat-lbl">智能互聯產品</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">氣/電</div>
+      <div class="stat-lbl">煤氣及電能爐具</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">全港</div>
+      <div class="stat-lbl">送貨安裝服務</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="section-label">關於我們 About Us</div>
+      <h2 class="section-title">煤氣公司<span>旗下優質家電品牌</span></h2>
+      <p class="about-text">Towngas Appliance（煤氣優質爐具產品）是香港中華煤氣有限公司旗下的家電銷售及服務平台，專門為香港家庭及商業客戶提供優質廚房爐具、熱水爐、家電及智能IoT產品。</p>
+      <div class="highlight-box">
+        <h4>🔥 煤氣公司的品質承諾</h4>
+        <p>依托煤氣公司多年的家庭服務經驗，每款產品均經嚴格品質把關，並提供專業安裝及售後服務，讓您安心享受煮食及生活樂趣。</p>
+      </div>
+      <p class="about-text">產品系列涵蓋嵌入式平面爐、座枱煮食爐、熱水爐、乾衣機、抽油煙機、洗碗碟機及IoT智能家電，並代理意大利高端品牌Mia Cucina，為不同需求和預算的客戶提供全面的家電選擇。</p>
+    </div>
+    <div>
+      <div class="prop-cards">
+        <div class="prop-card">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h5>品牌信賴</h5>
+          <p>煤氣公司旗下品牌，多年來深受香港家庭信賴與支持。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h5>專業安裝</h5>
+          <p>專業技術人員安裝，確保每件產品安全運行。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h5>IoT智能連接</h5>
+          <p>最新智能家電系列，透過APP遠端控制，智慧生活輕鬆實現。</p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <h5>售後服務</h5>
+          <p>完善的售後維修及保養服務，讓您無後顧之憂。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="products-inner">
+    <div class="products-header">
+      <div class="section-label">產品系列 Product Range</div>
+      <h2 class="section-title">全面的<span>廚電及家電系列</span></h2>
+    </div>
+    <div class="products-grid">
+      <div class="prod-card">
+        <div class="prod-num">01</div>
+        <div class="prod-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="2"/><circle cx="16" cy="8" r="2"/><circle cx="8" cy="16" r="2"/><circle cx="16" cy="16" r="2"/></svg>
+        </div>
+        <h3>嵌入式平面爐
+          <small>Built-in Hobs / Flat Cookers</small>
+        </h3>
+        <p>各款嵌入式煤氣及電陶爐，現代設計易於清潔，提升廚房美觀度。多個爐頭配置，適合不同廚房尺寸及烹飪需求。</p>
+        <div class="prod-tags">
+          <span class="prod-tag">煤氣爐頭</span>
+          <span class="prod-tag">電陶爐</span>
+          <span class="prod-tag">易清潔</span>
+          <span class="prod-tag">嵌入式</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-num">02</div>
+        <div class="prod-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>座枱煮食爐
+          <small>Tabletop Cookers</small>
+        </h3>
+        <p>靈活方便的座枱式煤氣爐，無需固定安裝，適合租戶或廚房空間有限的住宅，亦有石油氣版本供選擇。</p>
+        <div class="prod-tags">
+          <span class="prod-tag">座枱式</span>
+          <span class="prod-tag">靈活安裝</span>
+          <span class="prod-tag">煤氣/石油氣</span>
+          <span class="prod-tag">節能</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-num">03</div>
+        <div class="prod-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+        </div>
+        <h3>熱水爐
+          <small>Water Heaters</small>
+        </h3>
+        <p>即熱式及儲水式燃氣熱水爐，提供穩定熱水供應，多款容量及款式選擇，適合不同家庭用量需求，並設安全自動熄火裝置。</p>
+        <div class="prod-tags">
+          <span class="prod-tag">即熱式</span>
+          <span class="prod-tag">儲水式</span>
+          <span class="prod-tag">恆溫技術</span>
+          <span class="prod-tag">安全裝置</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-num">04</div>
+        <div class="prod-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+        </div>
+        <h3>抽油煙機
+          <small>Range Hoods</small>
+        </h3>
+        <p>高效能抽油煙機，強力抽風設計，有效排除廚房油煙及異味，多款款式包括頂吸式、側吸式及島型，配合不同廚房設計。</p>
+        <div class="prod-tags">
+          <span class="prod-tag">頂吸式</span>
+          <span class="prod-tag">側吸式</span>
+          <span class="prod-tag">島型</span>
+          <span class="prod-tag">低噪音</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-num">05</div>
+        <div class="prod-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 16V8M10 16V8M14 16V8M18 16V8"/></svg>
+        </div>
+        <h3>乾衣機及洗碗碟機
+          <small>Dryers & Dishwashers</small>
+        </h3>
+        <p>燃氣乾衣機烘乾效率高於電熱款式，環保省電；全嵌式及半嵌式洗碗碟機，適合香港細小廚房空間，徹底清潔餐具。</p>
+        <div class="prod-tags">
+          <span class="prod-tag">燃氣乾衣機</span>
+          <span class="prod-tag">全嵌式洗碗機</span>
+          <span class="prod-tag">省電</span>
+          <span class="prod-tag">節水</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-num">06</div>
+        <div class="prod-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>石油氣爐具及家電
+          <small>LPG Appliances & Home Goods</small>
+        </h3>
+        <p>供未接通煤氣管道地區使用的石油氣爐具系列，以及各類家電及家品，滿足不同客戶的日常生活需要。</p>
+        <div class="prod-tags">
+          <span class="prod-tag">石油氣爐</span>
+          <span class="prod-tag">家電家品</span>
+          <span class="prod-tag">柜爐</span>
+          <span class="prod-tag">多款選擇</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IOT / MIA CUCINA -->
+<section class="iot" id="iot">
+  <div class="iot-inner">
+    <div class="iot-text">
+      <h2>IoT <span>智能家電系列</span></h2>
+      <p>Towngas Appliance最新IoT智能產品系列，讓您透過智能手機APP遠端控制廚電及熱水爐，實現智慧家居生活，提升便利性與能源效益。</p>
+      <div class="iot-features">
+        <div class="iot-feat">
+          <h4>📱 APP遠端控制</h4>
+          <p>隨時隨地透過手機APP啟動熱水爐、監控爐具用氣量。</p>
+        </div>
+        <div class="iot-feat">
+          <h4>📊 用氣量監控</h4>
+          <p>實時追蹤燃氣使用情況，助您優化能源消耗、節省費用。</p>
+        </div>
+        <div class="iot-feat">
+          <h4>🔔 安全提示</h4>
+          <p>自動偵測異常情況並即時推送通知，保障家居安全。</p>
+        </div>
+        <div class="iot-feat">
+          <h4>🏠 智能家居整合</h4>
+          <p>可與其他智能家居系統整合，打造全面智慧生活環境。</p>
+        </div>
+      </div>
+    </div>
+    <div class="mia-box">
+      <h3>✨ Mia Cucina</h3>
+      <div class="mia-sub">意大利高端廚房及爐具品牌</div>
+      <p>Mia Cucina是Towngas Appliance代理的意大利高端廚電品牌，以精緻的工藝設計與卓越性能著稱，為追求品味生活的香港家庭提供高質素的廚房解決方案。</p>
+      <ul class="mia-list">
+        <li>意大利設計美學，卓越工藝品質</li>
+        <li>高端嵌入式廚電系列</li>
+        <li>多款顏色及飾面選擇</li>
+        <li>專業廚師級烹飪性能</li>
+        <li>Towngas專業安裝及售後保障</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">聯絡我們 Contact Us</div>
+      <h2>客戶服務<br>隨時為您服務</h2>
+      <p>如有產品查詢、購買意向或安裝服務需求，歡迎通過以下方式聯絡我們的客戶服務團隊。</p>
+      <div class="contact-details">
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 9.11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.01 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.11 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">客戶服務熱線</div>
+            <div class="cdetail-value"><a href="tel:+85228806988">2880 6988</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">WhatsApp</div>
+            <div class="cdetail-value"><a href="https://wa.me/85295236697">+852 9523 6697</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">電郵 Email</div>
+            <div class="cdetail-value"><a href="mailto:towngas.cs@towngas.com">towngas.cs@towngas.com</a></div>
+          </div>
+        </div>
+        <div class="cdetail">
+          <div class="cdetail-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div>
+            <div class="cdetail-label">官方網站</div>
+            <div class="cdetail-value"><a href="https://www.towngasappliance.com" target="_blank">www.towngasappliance.com</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="fraud-alert">
+        <h5>⚠️ 防詐騙提示</h5>
+        <p>煤氣公司向客戶發送的短訊均以「#Towngas」、「#TowngasFun」、「#TGCTowngas」或「#TowngasTGC」的發送人名稱發出。如收到可疑訊息，請致電客戶服務熱線2880 6988查詢。</p>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>🔥 產品查詢 / 報價</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>姓名 Name</label>
+          <input type="text" placeholder="您的姓名">
+        </div>
+        <div class="form-group">
+          <label>聯絡電話 Phone</label>
+          <input type="tel" placeholder="+852 XXXX XXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>電郵 Email</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>查詢產品 Product Interest</label>
+        <select>
+          <option>嵌入式平面爐 Built-in Hobs</option>
+          <option>座枱煮食爐 Tabletop Cookers</option>
+          <option>熱水爐 Water Heaters</option>
+          <option>抽油煙機 Range Hoods</option>
+          <option>乾衣機 Dryers</option>
+          <option>洗碗碟機 Dishwashers</option>
+          <option>IoT 智能產品</option>
+          <option>Mia Cucina系列</option>
+          <option>石油氣爐具 LPG Appliances</option>
+          <option>其他 Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>訊息 Message</label>
+        <textarea placeholder="請描述您的查詢或安裝需求..."></textarea>
+      </div>
+      <button class="form-submit">發送查詢 Send Enquiry</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-cn">煤氣優質爐具產品</div>
+        <div class="footer-brand-en">TOWNGAS APPLIANCE · towngasappliance.com</div>
+        <p class="footer-tagline">香港中華煤氣有限公司旗下優質家電品牌。<br>爐具 · 熱水爐 · 家電 · IoT智能產品 · Mia Cucina</p>
+      </div>
+      <div class="footer-col">
+        <h4>產品系列</h4>
+        <ul>
+          <li><a href="#products">嵌入式平面爐</a></li>
+          <li><a href="#products">座枱煮食爐</a></li>
+          <li><a href="#products">熱水爐</a></li>
+          <li><a href="#products">抽油煙機</a></li>
+          <li><a href="#products">乾衣機/洗碗機</a></li>
+          <li><a href="#iot">IoT智能產品</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡資訊</h4>
+        <ul>
+          <li><a href="tel:+85228806988">客服熱線: 2880 6988</a></li>
+          <li><a href="https://wa.me/85295236697">WhatsApp: 9523 6697</a></li>
+          <li><a href="mailto:towngas.cs@towngas.com">towngas.cs@towngas.com</a></li>
+          <li><a href="https://www.towngasappliance.com" target="_blank">towngasappliance.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 煤氣優質爐具產品 Towngas Appliance. 香港中華煤氣有限公司旗下品牌.</div>
+      <div class="footer-web">towngas.cs@towngas.com</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
