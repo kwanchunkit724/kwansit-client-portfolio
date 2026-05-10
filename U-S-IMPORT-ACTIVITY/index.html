@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ImportInfo.com | U.S. Import Activity Data | Bills of Lading | Trade Intelligence</title>
+<meta name="description" content="ImportInfo.com — Comprehensive U.S. import activity data. Search bills of lading, shipper and consignee directories, vessel tracking, and trade intelligence. Covering millions of import records from U.S. Customs.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:      #0a3d7a;
+    --blue-mid:  #1055a8;
+    --blue-lt:   #1a70d4;
+    --green:     #0a7a4a;
+    --green-lt:  #12a864;
+    --bg:        #f2f5fb;
+    --border:    #d4dcea;
+    --white:     #ffffff;
+    --text:      #1a1a1a;
+    --text-mid:  #484848;
+    --shadow:    0 4px 20px rgba(0,0,0,0.09);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color: var(--text); background: var(--white); line-height: 1.65; }
+
+  nav { background: var(--blue); position: sticky; top: 0; z-index: 100; padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px; box-shadow: 0 2px 12px rgba(0,0,0,0.25); }
+  .nl { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nm { width: 40px; height: 40px; background: var(--green-lt); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; color: var(--white); flex-shrink: 0; }
+  .nt strong { display: block; color: var(--white); font-size: 0.92rem; font-weight: 700; line-height: 1.2; }
+  .nt span { font-size: 0.67rem; color: rgba(255,255,255,0.45); }
+  .nls { display: flex; gap: 24px; list-style: none; }
+  .nls a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.87rem; transition: color .2s; }
+  .nls a:hover { color: var(--green-lt); }
+  .ncta { background: var(--green-lt); color: var(--white); border: none; border-radius: 6px; padding: 9px 18px; font-size: 0.87rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background .2s; }
+  .ncta:hover { background: var(--green); }
+
+  .hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 55%, #1a65d4 100%); padding: 90px 5% 80px; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; top: -60px; right: -60px; width: 360px; height: 360px; background: var(--green-lt); border-radius: 50%; opacity: 0.07; }
+  .hi { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 1fr 300px; gap: 56px; align-items: center; position: relative; z-index: 1; }
+  .hb { display: inline-flex; align-items: center; gap: 8px; background: rgba(18,168,100,0.18); border: 1px solid rgba(18,168,100,0.4); color: var(--green-lt); font-size: 0.79rem; font-weight: 600; padding: 4px 13px; border-radius: 18px; margin-bottom: 16px; letter-spacing: 0.04em; }
+  .hero h1 { font-size: 2.7rem; font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 10px; }
+  .hero h1 em { color: var(--green-lt); font-style: normal; }
+  .hs { color: rgba(255,255,255,0.75); font-size: 0.97rem; margin-bottom: 30px; max-width: 520px; line-height: 1.72; }
+  .ha { display: flex; gap: 12px; flex-wrap: wrap; }
+  .bg { background: var(--green-lt); color: var(--white); padding: 12px 28px; border-radius: 7px; font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-block; transition: all .2s; }
+  .bg:hover { background: var(--green); transform: translateY(-1px); }
+  .bo { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.35); padding: 10px 24px; border-radius: 7px; font-weight: 600; font-size: 0.95rem; text-decoration: none; display: inline-block; transition: border-color .2s; }
+  .bo:hover { border-color: rgba(255,255,255,0.75); }
+  .hcard { background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 24px 20px; }
+  .hct { color: var(--green-lt); font-size: 0.69rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+  .hcr { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .hcr:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .hcnum { font-size: 2rem; font-weight: 800; color: var(--white); line-height: 1; }
+  .hcl { font-size: 0.75rem; color: rgba(255,255,255,0.55); margin-top: 3px; }
+
+  .strip { background: var(--green-lt); padding: 0 5%; display: flex; align-items: stretch; }
+  .si { flex: 1; padding: 16px 14px; text-align: center; border-right: 1px solid rgba(255,255,255,0.25); }
+  .si:last-child { border-right: none; }
+  .sn { font-size: 1.6rem; font-weight: 800; color: var(--white); line-height: 1; }
+  .sl2 { font-size: 0.72rem; color: rgba(255,255,255,0.85); font-weight: 500; margin-top: 3px; }
+
+  section { padding: 78px 5%; }
+  .si2 { max-width: 1060px; margin: 0 auto; }
+  .ew { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 7px; }
+  .st { font-size: 1.95rem; font-weight: 800; color: var(--text); margin-bottom: 13px; line-height: 1.3; }
+  .st em { color: var(--blue-mid); font-style: normal; }
+  .sl { color: var(--text-mid); font-size: 0.96rem; max-width: 620px; line-height: 1.74; }
+  .dv { width: 46px; height: 4px; background: var(--green-lt); border-radius: 2px; margin: 14px 0 38px; }
+
+  .about { background: var(--bg); }
+  .ag { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .ab-body p { color: var(--text-mid); margin-bottom: 14px; line-height: 1.77; font-size: 0.94rem; }
+  .abox { background: var(--blue); color: var(--white); border-radius: 12px; padding: 20px 22px; margin-top: 20px; }
+  .abox h4 { color: var(--green-lt); font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .abox p { color: rgba(255,255,255,0.82); font-size: 0.87rem; margin-bottom: 0; line-height: 1.6; }
+  .aprops { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+  .ap { background: var(--white); border: 1px solid var(--border); border-radius: 11px; padding: 17px 15px; border-top: 3px solid var(--green-lt); }
+  .ap .ai { font-size: 1.6rem; margin-bottom: 7px; }
+  .ap h4 { font-size: 0.86rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .ap p { font-size: 0.77rem; color: var(--text-mid); line-height: 1.5; }
+
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .sc { background: var(--white); border: 1px solid var(--border); border-radius: 13px; overflow: hidden; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; }
+  .sc:hover { transform: translateY(-4px); box-shadow: 0 10px 26px rgba(0,0,0,0.12); }
+  .sc-h { background: linear-gradient(135deg, var(--blue), var(--blue-mid)); padding: 21px 19px 17px; position: relative; }
+  .sc-n { position: absolute; top: 11px; right: 13px; font-size: 2rem; font-weight: 800; color: rgba(255,255,255,0.07); line-height: 1; }
+  .sico { font-size: 1.9rem; margin-bottom: 7px; }
+  .sc-h h3 { font-size: 0.94rem; font-weight: 700; color: var(--white); }
+  .sc-b { padding: 16px 19px; }
+  .sc-b p { font-size: 0.82rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 11px; }
+  .sct-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
+  .sct { background: #e6f0fd; color: var(--blue); font-size: 0.69rem; font-weight: 600; padding: 3px 9px; border-radius: 10px; }
+
+  .plans { background: var(--blue); }
+  .plans .ew { color: rgba(18,168,100,0.9); }
+  .plans .st { color: var(--white); }
+  .plans .dv { background: var(--green-lt); }
+  .plans .sl { color: rgba(255,255,255,0.75); }
+  .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .plan { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 26px 22px; text-align: center; transition: background .2s; }
+  .plan:hover { background: rgba(255,255,255,0.13); }
+  .plan.featured { background: var(--green-lt); border-color: var(--green-lt); }
+  .plan-badge { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.6); margin-bottom: 10px; }
+  .plan.featured .plan-badge { color: rgba(255,255,255,0.9); }
+  .plan-name { font-size: 1.2rem; font-weight: 800; color: var(--white); margin-bottom: 16px; }
+  .plan-features { list-style: none; text-align: left; margin-bottom: 20px; }
+  .plan-features li { font-size: 0.82rem; color: rgba(255,255,255,0.78); padding: 5px 0; display: flex; align-items: flex-start; gap: 7px; line-height: 1.4; }
+  .plan-features li::before { content: '✓'; color: var(--green-lt); font-weight: 700; flex-shrink: 0; }
+  .plan.featured .plan-features li::before { color: var(--white); }
+  .plan-btn { display: block; background: rgba(255,255,255,0.15); color: var(--white); border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; padding: 10px; font-size: 0.9rem; font-weight: 700; text-decoration: none; transition: background .2s; }
+  .plan-btn:hover { background: rgba(255,255,255,0.25); }
+  .plan.featured .plan-btn { background: var(--white); color: var(--green); }
+
+  .contact { background: var(--bg); }
+  .cg { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; }
+  .ci-wrap h3 { font-size: 0.88rem; font-weight: 700; color: var(--blue); margin-bottom: 17px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .cr { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+  .cr-ic { width: 36px; height: 36px; background: rgba(10,61,122,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .cr-l { font-size: 0.69rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+  .cr-v { color: var(--text); font-size: 0.88rem; font-weight: 600; }
+  .cr-v a { color: var(--blue-lt); text-decoration: none; }
+  .cr-v a:hover { text-decoration: underline; }
+  .cf { background: var(--white); border: 1px solid var(--border); border-radius: 13px; padding: 26px; box-shadow: var(--shadow); }
+  .cf h3 { color: var(--blue); font-size: 0.94rem; font-weight: 700; margin-bottom: 18px; }
+  .fr { margin-bottom: 13px; }
+  .fr label { display: block; font-size: 0.77rem; color: var(--text-mid); margin-bottom: 5px; font-weight: 500; }
+  .fr input, .fr textarea, .fr select { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 7px; color: var(--text); padding: 9px 12px; font-size: 0.87rem; outline: none; transition: border-color .2s; font-family: inherit; }
+  .fr input:focus, .fr textarea:focus, .fr select:focus { border-color: var(--green); background: var(--white); }
+  .fr textarea { height: 90px; resize: vertical; }
+  .f2c { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+  .fsub { width: 100%; background: var(--green-lt); color: var(--white); border: none; border-radius: 8px; padding: 12px; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: background .2s; font-family: inherit; }
+  .fsub:hover { background: var(--green); }
+
+  footer { background: #061e40; padding: 26px 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 13px; }
+  .fl { display: flex; align-items: center; gap: 10px; }
+  .fl-m { width: 32px; height: 32px; background: var(--green-lt); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 800; color: var(--white); }
+  .fl-t { color: rgba(255,255,255,0.65); font-size: 0.83rem; line-height: 1.4; }
+  .fc { color: rgba(255,255,255,0.28); font-size: 0.73rem; text-align: center; }
+  .fct { color: rgba(255,255,255,0.55); font-size: 0.78rem; text-align: right; }
+  .fct a { color: var(--green-lt); text-decoration: none; }
+
+  @media (max-width: 880px) {
+    .hi { grid-template-columns: 1fr; }
+    .hcard { display: none; }
+    .ag, .cg { grid-template-columns: 1fr; }
+    .svc-grid, .plan-grid { grid-template-columns: 1fr 1fr; }
+    .aprops { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 2rem; }
+    .nls { display: none; }
+    .strip { flex-wrap: wrap; }
+    .si { min-width: 50%; }
+  }
+  @media (max-width: 560px) {
+    .svc-grid, .plan-grid, .aprops { grid-template-columns: 1fr; }
+    .f2c { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nl" href="#">
+    <div class="nm">IMP</div>
+    <div class="nt">
+      <strong>ImportInfo.com</strong>
+      <span>U.S. Import Activity Data & Trade Intelligence</span>
+    </div>
+  </a>
+  <ul class="nls">
+    <li><a href="#about">About</a></li>
+    <li><a href="#datasets">Datasets</a></li>
+    <li><a href="#plans">Plans</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="ncta" href="#plans">Subscribe</a>
+</nav>
+
+<section class="hero">
+  <div class="hi">
+    <div>
+      <div class="hb">📦 U.S. Customs Import Data · Bills of Lading</div>
+      <h1>U.S. Import <em>Activity Data</em></h1>
+      <p class="hs">ImportInfo.com provides comprehensive access to U.S. import activity data sourced from U.S. Customs bills of lading. Search importers, shippers, consignees, vessels and ports — with millions of records updated continuously.</p>
+      <div class="ha">
+        <a class="bg" href="#datasets">Explore Datasets</a>
+        <a class="bo" href="#plans">View Plans</a>
+      </div>
+    </div>
+    <div class="hcard">
+      <div class="hct">Platform Stats</div>
+      <div class="hcr">
+        <div class="hcnum">Millions</div>
+        <div class="hcl">Bills of lading on file</div>
+      </div>
+      <div class="hcr">
+        <div class="hcnum">2012</div>
+        <div class="hcl">Records dating back to</div>
+      </div>
+      <div class="hcr">
+        <div class="hcnum">Daily</div>
+        <div class="hcl">Data updates</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="si">
+    <div class="sn">BOL</div>
+    <div class="sl2">Bills of Lading</div>
+  </div>
+  <div class="si">
+    <div class="sn">Importer</div>
+    <div class="sl2">Directory</div>
+  </div>
+  <div class="si">
+    <div class="sn">Shipper</div>
+    <div class="sl2">Directory</div>
+  </div>
+  <div class="si">
+    <div class="sn">Vessel</div>
+    <div class="sl2">Tracking</div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="si2">
+    <div class="ag">
+      <div class="ab-body">
+        <div class="ew">About ImportInfo</div>
+        <h2 class="st">U.S. Customs <em>Trade Intelligence</em></h2>
+        <div class="dv"></div>
+        <p>ImportInfo.com is a specialized trade data platform providing access to U.S. import activity records sourced from U.S. Customs and Border Protection (CBP) bills of lading. Our database covers millions of import records dating back to 2012, updated continuously as new manifests are filed.</p>
+        <p>Businesses use ImportInfo to conduct competitive intelligence, identify new suppliers, monitor competitor import activity, and research supply chain relationships. Our data covers importers, exporters, shippers, consignees, vessels, ports of entry, and commodity descriptions.</p>
+        <p>From tracking a specific company's import history to discovering which factories are supplying your competitors — ImportInfo delivers the trade transparency you need to make smarter business decisions.</p>
+        <div class="abox">
+          <h4>📊 Sample Data</h4>
+          <p>Example: BRUMATE LLC (Denver, CO) has 1,002 bills of lading on file between June 2018 and April 2026, with top associated shippers including HAERS HK LIMITED and EVERICH COMMERCE GROUP LIMITED in Hong Kong and mainland China.</p>
+        </div>
+      </div>
+      <div class="aprops">
+        <div class="ap">
+          <div class="ai">🔍</div>
+          <h4>Search Any Importer</h4>
+          <p>Find any U.S. importer's complete customs history, including all shipments, shippers, and commodity details.</p>
+        </div>
+        <div class="ap">
+          <div class="ai">🌐</div>
+          <h4>Shipper Networks</h4>
+          <p>Map the supply chain relationships between U.S. importers and their overseas suppliers worldwide.</p>
+        </div>
+        <div class="ap">
+          <div class="ai">📈</div>
+          <h4>Trend Analysis</h4>
+          <p>Track import volume trends over time — monthly, quarterly, and annual patterns by company or commodity.</p>
+        </div>
+        <div class="ap">
+          <div class="ai">🚢</div>
+          <h4>Vessel & Port Data</h4>
+          <p>Comprehensive vessel directory and U.S. port arrival data with full manifest breakdowns.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="datasets">
+  <div class="si2">
+    <div class="ew">Core Datasets</div>
+    <h2 class="st">Six <em>Key Databases</em></h2>
+    <div class="dv"></div>
+    <p class="sl">Access the full spectrum of U.S. import activity data — from individual company records to comprehensive port and vessel information.</p>
+
+    <div class="svc-grid" style="margin-top:38px;">
+      <div class="sc">
+        <div class="sc-h">
+          <div class="sc-n">01</div>
+          <div class="sico">📄</div>
+          <h3>Bills of Lading Search</h3>
+        </div>
+        <div class="sc-b">
+          <p>Full-text search across millions of U.S. Customs bills of lading. Find shipments by importer name, shipper, commodity description, port or date range.</p>
+          <div class="sct-wrap"><span class="sct">Full-Text Search</span><span class="sct">Date Filtering</span><span class="sct">Commodity Codes</span></div>
+        </div>
+      </div>
+
+      <div class="sc">
+        <div class="sc-h">
+          <div class="sc-n">02</div>
+          <div class="sico">🏢</div>
+          <h3>Importer Directory</h3>
+        </div>
+        <div class="sc-b">
+          <p>Searchable directory of U.S. companies receiving imports. View total shipment counts, first and most recent import dates, and associated shipper networks.</p>
+          <div class="sct-wrap"><span class="sct">Company Search</span><span class="sct">Import History</span><span class="sct">Shipper Links</span></div>
+        </div>
+      </div>
+
+      <div class="sc">
+        <div class="sc-h">
+          <div class="sc-n">03</div>
+          <div class="sico">🚢</div>
+          <h3>Shipper Directory</h3>
+        </div>
+        <div class="sc-b">
+          <p>Directory of overseas shippers exporting goods to the United States, with full shipment records, consignee associations and commodity histories.</p>
+          <div class="sct-wrap"><span class="sct">Global Shippers</span><span class="sct">Consignee Map</span><span class="sct">Volume Trends</span></div>
+        </div>
+      </div>
+
+      <div class="sc">
+        <div class="sc-h">
+          <div class="sc-n">04</div>
+          <div class="sico">⚓</div>
+          <h3>Vessel Directory</h3>
+        </div>
+        <div class="sc-b">
+          <p>Track all vessels arriving at U.S. ports with cargo manifests. Filter by vessel name, flag, carrier and port of arrival to monitor shipping routes.</p>
+          <div class="sct-wrap"><span class="sct">Vessel Tracking</span><span class="sct">Port Arrivals</span><span class="sct">Carrier Info</span></div>
+        </div>
+      </div>
+
+      <div class="sc">
+        <div class="sc-h">
+          <div class="sc-n">05</div>
+          <div class="sico">🗺️</div>
+          <h3>Port Directory</h3>
+        </div>
+        <div class="sc-b">
+          <p>U.S. and foreign port directories with import volume statistics, active routes, and commodity breakdowns for every major port of entry.</p>
+          <div class="sct-wrap"><span class="sct">U.S. Ports</span><span class="sct">Foreign Ports</span><span class="sct">Route Data</span></div>
+        </div>
+      </div>
+
+      <div class="sc">
+        <div class="sc-h">
+          <div class="sc-n">06</div>
+          <div class="sico">🔗</div>
+          <h3>Association Mapping</h3>
+        </div>
+        <div class="sc-b">
+          <p>Visual Sankey diagrams mapping supply chain relationships — see which shippers are linked to which importers, and explore second-degree connections.</p>
+          <div class="sct-wrap"><span class="sct">Sankey Diagrams</span><span class="sct">Supply Chain</span><span class="sct">Network Graph</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="plans" id="plans">
+  <div class="si2">
+    <div class="ew">Plans & Pricing</div>
+    <h2 class="st">Choose Your <em>Access Plan</em></h2>
+    <div class="dv"></div>
+    <p class="sl">Flexible subscription plans for individual researchers, trade professionals and enterprise teams.</p>
+    <div class="plan-grid">
+      <div class="plan">
+        <div class="plan-badge">Basic</div>
+        <div class="plan-name">Starter</div>
+        <ul class="plan-features">
+          <li>Limited database search access</li>
+          <li>Company summary pages</li>
+          <li>Basic import statistics</li>
+          <li>Recent shipment counts</li>
+        </ul>
+        <a class="plan-btn" href="#contact">Get Started</a>
+      </div>
+      <div class="plan featured">
+        <div class="plan-badge">⭐ Most Popular</div>
+        <div class="plan-name">Professional</div>
+        <ul class="plan-features">
+          <li>Unlimited database searches</li>
+          <li>Full bill of lading records</li>
+          <li>Shipper & importer directories</li>
+          <li>Vessel & port data</li>
+          <li>Association mapping</li>
+          <li>CSV data export</li>
+        </ul>
+        <a class="plan-btn" href="#contact">Subscribe Now</a>
+      </div>
+      <div class="plan">
+        <div class="plan-badge">Enterprise</div>
+        <div class="plan-name">Enterprise</div>
+        <ul class="plan-features">
+          <li>All Professional features</li>
+          <li>API data access</li>
+          <li>Bulk data downloads</li>
+          <li>Custom reporting</li>
+          <li>Dedicated account manager</li>
+          <li>Priority support</li>
+        </ul>
+        <a class="plan-btn" href="#contact">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="si2">
+    <div class="ew">Contact</div>
+    <h2 class="st">Get in <em>Touch</em></h2>
+    <div class="dv"></div>
+    <div class="cg">
+      <div class="ci-wrap">
+        <h3>Support</h3>
+        <div class="cr">
+          <div class="cr-ic">✉️</div>
+          <div>
+            <div class="cr-l">Support Email</div>
+            <div class="cr-v"><a href="mailto:support@importinfo.com">support@importinfo.com</a></div>
+          </div>
+        </div>
+        <div class="cr">
+          <div class="cr-ic">🌐</div>
+          <div>
+            <div class="cr-l">Website</div>
+            <div class="cr-v"><a href="https://www.importinfo.com" target="_blank">importinfo.com</a></div>
+          </div>
+        </div>
+        <div class="cr">
+          <div class="cr-ic">📊</div>
+          <div>
+            <div class="cr-l">Data Coverage</div>
+            <div class="cr-v">U.S. Customs Bills of Lading<br>Records from 2012 onwards</div>
+          </div>
+        </div>
+        <div class="cr">
+          <div class="cr-ic">🔄</div>
+          <div>
+            <div class="cr-l">Update Frequency</div>
+            <div class="cr-v">Continuous / Daily updates</div>
+          </div>
+        </div>
+      </div>
+      <div class="cf">
+        <h3>📋 Account Enquiry</h3>
+        <div class="f2c">
+          <div class="fr">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="fr">
+            <label>Company</label>
+            <input type="text" placeholder="Company name">
+          </div>
+        </div>
+        <div class="fr">
+          <label>Email Address *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="fr">
+          <label>Enquiry Type</label>
+          <select>
+            <option value="">Select type</option>
+            <option>Subscription / Plans</option>
+            <option>API Access</option>
+            <option>Technical Support</option>
+            <option>Data Coverage Question</option>
+            <option>Enterprise / Bulk Data</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="fr">
+          <label>Message *</label>
+          <textarea placeholder="Describe your data needs or question."></textarea>
+        </div>
+        <button class="fsub" type="button">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">
+    <div class="fl-m">II</div>
+    <div class="fl-t">ImportInfo.com<br><span style="font-size:0.72rem;opacity:.5;">U.S. Import Activity Data & Trade Intelligence</span></div>
+  </div>
+  <div class="fc">© 2024 ImportInfo.com · U.S. Customs Bills of Lading Data</div>
+  <div class="fct">
+    ✉ <a href="mailto:support@importinfo.com">support@importinfo.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
