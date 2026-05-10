@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>香港鐵路有限公司 MTR Corporation | 香港鐵路運輸</title>
+<meta name="description" content="香港鐵路有限公司（港鐵）是香港最具規模的公共交通機構，營運本港鐵路網絡、輕鐵及巴士服務，並於全球多個城市提供鐵路服務。"/>
+<style>
+:root{
+  --primary:#8a0018;
+  --primary-mid:#b00020;
+  --primary-light:#d80028;
+  --accent:#e80030;
+  --accent-light:#ff2040;
+  --accent2:#f5a000;
+  --dark:#2a0008;
+  --surface:#fdf4f5;
+  --surface2:#fae8ea;
+  --text:#1a0506;
+  --text-muted:#685058;
+  --white:#ffffff;
+  --radius:10px;
+  --shadow:0 4px 24px rgba(138,0,24,0.12);
+  --shadow-lg:0 8px 48px rgba(138,0,24,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.7}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(42,0,8,0.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--primary-light)}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-icon{width:42px;height:42px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:var(--white);letter-spacing:.5px}
+.nav-logo-text{font-size:15px;font-weight:700;color:var(--white);line-height:1.2}
+.nav-logo-sub{font-size:11px;color:rgba(255,255,255,0.5)}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--accent)!important;color:var(--white)!important;padding:8px 20px;border-radius:6px;font-weight:700!important;font-size:13px!important;transition:background .2s!important}
+.nav-cta:hover{background:var(--accent-light)!important}
+@media(max-width:780px){.nav-links{display:none}}
+
+.hero{min-height:100vh;background:linear-gradient(155deg,var(--dark) 0%,var(--primary) 50%,#a00020 100%);display:flex;align-items:center;padding-top:66px;position:relative;overflow:hidden}
+.hero-pattern{position:absolute;inset:0;opacity:.04;background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,.8) 20px,rgba(255,255,255,.8) 21px)}
+.hero-glow{position:absolute;top:-80px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(232,0,48,0.16) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1240px;margin:0 auto;padding:80px 24px;width:100%;display:grid;grid-template-columns:1fr 440px;gap:60px;align-items:center;position:relative;z-index:1}
+.listed-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,160,0,0.2);border:1px solid rgba(245,160,0,0.4);border-radius:20px;padding:5px 14px;margin-bottom:8px}
+.listed-badge-text{font-size:12px;color:#f5c030;font-weight:700;letter-spacing:.5px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,0,48,0.2);border:1px solid rgba(232,0,48,0.4);border-radius:20px;padding:6px 16px;margin-bottom:18px}
+.hero-badge-dot{width:7px;height:7px;background:var(--accent-light);border-radius:50%;animation:blink 1.8s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-badge-text2{font-size:12px;color:rgba(255,255,255,0.85);font-weight:600;letter-spacing:.5px}
+.hero h1{font-size:clamp(2rem,4vw,3.3rem);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:8px}
+.hero h1 span{color:#f5c030}
+.hero-en{font-size:1rem;color:rgba(255,255,255,0.5);margin-bottom:18px;letter-spacing:.3px}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:34px;max-width:530px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--white);padding:14px 28px;border-radius:var(--radius);font-weight:700;font-size:15px;text-decoration:none;transition:all .2s;box-shadow:0 4px 20px rgba(232,0,48,0.4)}
+.btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,0,48,0.5)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(255,255,255,0.3);color:var(--white);padding:14px 28px;border-radius:var(--radius);font-weight:600;font-size:15px;text-decoration:none;transition:all .2s}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08)}
+.hero-card{background:rgba(255,255,255,0.06);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:32px;color:var(--white)}
+.hero-card-label{font-size:12px;color:#f5c030;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.hero-card-label::before{content:'';width:14px;height:2px;background:#f5c030}
+.info-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:13px}
+.info-icon{width:34px;height:34px;min-width:34px;background:rgba(232,0,48,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.info-lbl{font-size:11px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.info-val{font-size:13.5px;color:var(--white);font-weight:500;line-height:1.45}
+.info-val a{color:#f5c030;text-decoration:none}
+.hero-divider{height:1px;background:rgba(255,255,255,0.1);margin:14px 0}
+.lines-mini{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.line-dot{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:var(--white)}
+@media(max-width:940px){.hero-inner{grid-template-columns:1fr}.hero-card{max-width:500px}}
+
+.stats{background:var(--accent);padding:0}
+.stats-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+.stat-item{padding:26px 14px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);transition:background .2s}
+.stat-item:last-child{border-right:none}
+.stat-item:hover{background:rgba(255,255,255,0.1)}
+.stat-num{font-size:1.7rem;font-weight:900;color:var(--white);line-height:1;margin-bottom:4px}
+.stat-label{font-size:12px;color:rgba(255,255,255,0.82);font-weight:500}
+@media(max-width:760px){.stats-inner{grid-template-columns:repeat(3,1fr)}.stat-item:nth-child(3){border-right:none}}
+
+section{padding:88px 24px}
+.section-inner{max-width:1240px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(138,0,24,0.08);color:var(--primary-light);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px;border:1px solid rgba(138,0,24,0.15)}
+.section-title{font-size:clamp(1.7rem,3vw,2.5rem);font-weight:800;color:var(--dark);line-height:1.2;margin-bottom:14px}
+.section-title span{color:var(--primary-light)}
+.section-sub{font-size:1rem;color:var(--text-muted);max-width:600px;line-height:1.8}
+.section-header{margin-bottom:52px}
+.bg-alt{background:var(--surface)}
+.bg-dark{background:var(--primary);color:var(--white)}
+.bg-dark .section-tag{background:rgba(245,160,0,0.2);color:#f5c030;border-color:rgba(245,160,0,0.3)}
+.bg-dark .section-title{color:var(--white)}
+.bg-dark .section-sub{color:rgba(255,255,255,0.65)}
+.divider{width:44px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;margin-bottom:18px}
+
+/* SERVICES GRID */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{background:var(--white);border:1px solid rgba(138,0,24,0.1);border-radius:16px;padding:28px;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+.svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.svc-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(138,0,24,0.08),rgba(216,0,40,0.12));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.svc-title{font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:5px}
+.svc-en{font-size:12px;color:var(--text-muted);margin-bottom:10px}
+.svc-desc{font-size:13.5px;color:var(--text-muted);line-height:1.75}
+@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.svc-grid{grid-template-columns:1fr}}
+
+/* LINES */
+.lines-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.line-item{display:flex;gap:14px;align-items:center;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px}
+.line-color{width:14px;height:48px;border-radius:6px;flex-shrink:0}
+.line-name{font-size:15px;font-weight:700;color:var(--white);margin-bottom:2px}
+.line-en{font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:4px}
+.line-stations{font-size:12.5px;color:rgba(255,255,255,0.65)}
+@media(max-width:680px){.lines-grid{grid-template-columns:1fr}}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-body p{font-size:1rem;color:var(--text-muted);line-height:1.85;margin-bottom:16px}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.hl-item{background:var(--surface2);border-radius:10px;padding:18px;border-top:3px solid var(--accent)}
+.hl-title{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:4px}
+.hl-desc{font-size:12.5px;color:var(--text-muted);line-height:1.6}
+.about-vis{background:linear-gradient(135deg,var(--dark),var(--primary));border-radius:18px;padding:36px;color:var(--white)}
+.about-vis-title{font-size:1rem;font-weight:700;color:#f5c030;margin-bottom:20px}
+.milestone{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.milestone:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.milestone-year{font-size:15px;font-weight:800;color:var(--accent-light);min-width:48px}
+.milestone-text{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr}.about-highlights{grid-template-columns:1fr}}
+
+/* INTERNATIONAL */
+.intl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.intl-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:22px;text-align:center;transition:all .2s}
+.intl-card:hover{background:rgba(255,255,255,0.1);transform:translateY(-2px)}
+.intl-flag{font-size:2rem;margin-bottom:10px}
+.intl-city{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px}
+.intl-role{font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5}
+@media(max-width:700px){.intl-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:start}
+.contact-card{background:linear-gradient(135deg,var(--dark),var(--primary));border-radius:16px;padding:34px;color:var(--white)}
+.contact-title{font-size:17px;font-weight:700;color:#f5c030;margin-bottom:22px}
+.c-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+.c-icon{width:38px;height:38px;min-width:38px;background:rgba(232,0,48,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.c-lbl{font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:.5px;margin-bottom:3px;text-transform:uppercase}
+.c-val{font-size:13.5px;color:var(--white);font-weight:500;line-height:1.5}
+.c-val a{color:#f5c030;text-decoration:none}
+.form-card{background:var(--surface);border-radius:16px;padding:34px;border:1px solid rgba(138,0,24,0.1)}
+.form-title{font-size:17px;font-weight:700;color:var(--primary);margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid rgba(138,0,24,0.15);border-radius:8px;font-size:14px;color:var(--text);background:var(--white);transition:border-color .2s;outline:none;font-family:inherit}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.submit-btn{width:100%;background:var(--accent);color:var(--white);padding:14px;border:none;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;transition:background .2s,transform .2s}
+.submit-btn:hover{background:var(--accent-light);transform:translateY(-1px)}
+@media(max-width:800px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+
+footer{background:var(--dark);padding:48px 24px 28px}
+.footer-inner{max-width:1240px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:36px;margin-bottom:32px}
+.footer-brand-name{font-size:16px;font-weight:800;color:var(--white);margin-bottom:4px}
+.footer-brand-en{font-size:12px;color:var(--accent-light);margin-bottom:12px}
+.footer-brand-desc{font-size:12.5px;color:rgba(255,255,255,0.45);line-height:1.75}
+.footer-heading{font-size:11px;font-weight:700;color:var(--accent-light);letter-spacing:.8px;text-transform:uppercase;margin-bottom:14px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.35)}
+@media(max-width:800px){.footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">MTR</div>
+      <div>
+        <div class="nav-logo-text">香港鐵路有限公司</div>
+        <div class="nav-logo-sub">MTR Corporation Limited</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">業務</a></li>
+      <li><a href="#network">路綫網絡</a></li>
+      <li><a href="#about">關於港鐵</a></li>
+      <li><a href="#international">國際業務</a></li>
+      <li><a href="#contact" class="nav-cta">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="listed-badge">
+        <span class="listed-badge-text">🏛 港交所上市 · 股份代號：00066</span>
+      </div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        <span class="hero-badge-text2">香港最大公共交通機構</span>
+      </div>
+      <h1>連繫香港<br/><span>通達全球</span></h1>
+      <div class="hero-en">MTR Corporation Limited — 香港鐵路有限公司</div>
+      <p class="hero-desc">港鐵是香港最具規模的公共交通服務機構，旗下業務涵蓋鐵路運輸、物業發展、商場管理及海外鐵路項目，以高效、安全、可靠的服務連繫香港及全球各地。</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">了解業務 →</a>
+        <a href="#contact" class="btn-outline">聯絡我們</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">公司資訊</div>
+      <div class="info-row">
+        <div class="info-icon">🚇</div>
+        <div>
+          <div class="info-lbl">全名</div>
+          <div class="info-val">香港鐵路有限公司<br/>MTR Corporation Limited</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-lbl">總部</div>
+          <div class="info-val">MTR總部<br/>九龍灣常悅道33號</div>
+        </div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-lbl">電郵</div>
+          <div class="info-val"><a href="mailto:flast@mtr.com.hk">flast@mtr.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-lbl">網址</div>
+          <div class="info-val"><a href="https://www.mtr.com.hk" target="_blank" rel="noopener">www.mtr.com.hk</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📅</div>
+        <div>
+          <div class="info-lbl">成立</div>
+          <div class="info-val">1975年（九廣鐵路合併後2007年更名）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">港鐵路綫</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">93</div>
+      <div class="stat-label">重鐵站</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">550萬</div>
+      <div class="stat-label">每日平均乘客</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1975</div>
+      <div class="stat-label">成立年份</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7+</div>
+      <div class="stat-label">海外鐵路項目</div>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">業務範疇</div>
+      <h2 class="section-title">多元化<span>核心業務</span></h2>
+      <p class="section-sub">港鐵的業務跨越鐵路運輸、物業發展、商業運營及海外業務，構建多元化的綜合業務平台。</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🚇</div>
+        <div class="svc-title">香港鐵路業務</div>
+        <div class="svc-en">Hong Kong Railway Operations</div>
+        <div class="svc-desc">營運香港重鐵、輕鐵及機場快綫，提供安全、準時、高效的城市鐵路服務，是香港最重要的公共交通骨幹。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">✈️</div>
+        <div class="svc-title">機場快綫</div>
+        <div class="svc-en">Airport Express</div>
+        <div class="svc-desc">連接香港國際機場與市區的高速鐵路服務，全程僅需24分鐘，提供市區預辦登機服務，旅客體驗卓越。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏢</div>
+        <div class="svc-title">物業發展及投資</div>
+        <div class="svc-en">Property Development & Investment</div>
+        <div class="svc-desc">採用「鐵路加物業」發展模式，於車站上蓋或附近發展住宅、商業及零售物業，推動可持續發展及提升社區價值。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🛍️</div>
+        <div class="svc-title">商場及零售管理</div>
+        <div class="svc-en">Retail & Mall Management</div>
+        <div class="svc-desc">管理多個車站商場及零售設施，包括Elements圓方及APM等大型商場，提供多元化的購物及餐飲選擇。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🌍</div>
+        <div class="svc-title">海外鐵路業務</div>
+        <div class="svc-en">International Railway Operations</div>
+        <div class="svc-desc">於英國、澳洲、瑞典等多個城市提供鐵路營運及維修服務，將香港鐵路管理的專業知識輸出至國際舞台。</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔧</div>
+        <div class="svc-title">工程及顧問服務</div>
+        <div class="svc-en">Engineering & Consultancy</div>
+        <div class="svc-desc">提供鐵路項目的規劃、設計、建造及顧問服務，協助各地城市建設及改善鐵路系統，分享豐富的鐵路工程專業。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="network" class="bg-dark">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">路綫網絡</div>
+      <h2 class="section-title">香港<span style="color:#f5c030">鐵路路綫</span></h2>
+      <p class="section-sub">港鐵連接香港各主要地區，為全港市民提供方便快捷的交通選擇。</p>
+    </div>
+    <div class="lines-grid">
+      <div class="line-item">
+        <div class="line-color" style="background:#e2231a"></div>
+        <div>
+          <div class="line-name">荃灣綫</div>
+          <div class="line-en">Tsuen Wan Line</div>
+          <div class="line-stations">中環 ↔ 荃灣 · 16個站</div>
+        </div>
+      </div>
+      <div class="line-item">
+        <div class="line-color" style="background:#009f68"></div>
+        <div>
+          <div class="line-name">港島綫</div>
+          <div class="line-en">Island Line</div>
+          <div class="line-stations">堅尼地城 ↔ 柴灣 · 17個站</div>
+        </div>
+      </div>
+      <div class="line-item">
+        <div class="line-color" style="background:#6cbfeb"></div>
+        <div>
+          <div class="line-name">東涌綫</div>
+          <div class="line-en">Tung Chung Line</div>
+          <div class="line-stations">香港 ↔ 東涌 · 10個站</div>
+        </div>
+      </div>
+      <div class="line-item">
+        <div class="line-color" style="background:#f178af"></div>
+        <div>
+          <div class="line-name">將軍澳綫</div>
+          <div class="line-en">Tseung Kwan O Line</div>
+          <div class="line-stations">北角 ↔ 寶琳/康城 · 11個站</div>
+        </div>
+      </div>
+      <div class="line-item">
+        <div class="line-color" style="background:#fe7f1d"></div>
+        <div>
+          <div class="line-name">東鐵綫</div>
+          <div class="line-en">East Rail Line</div>
+          <div class="line-stations">金鐘 ↔ 羅湖/落馬洲 · 16個站</div>
+        </div>
+      </div>
+      <div class="line-item">
+        <div class="line-color" style="background:#8b008b"></div>
+        <div>
+          <div class="line-name">觀塘綫</div>
+          <div class="line-en">Kwun Tong Line</div>
+          <div class="line-stations">黃埔 ↔ 調景嶺 · 16個站</div>
+        </div>
+      </div>
+      <div class="line-item">
+        <div class="line-color" style="background:#c0a000"></div>
+        <div>
+          <div class="line-name">屯馬綫</div>
+          <div class="line-en">Tuen Ma Line</div>
+          <div class="line-stations">屯門 ↔ 烏溪沙 · 27個站</div>
+        </div>
+      </div>
+      <div class="line-item">
+        <div class="line-color" style="background:#00888a"></div>
+        <div>
+          <div class="line-name">機場快綫</div>
+          <div class="line-en">Airport Express</div>
+          <div class="line-stations">香港 ↔ 機場 · 5個站</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="bg-alt">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">關於港鐵</div>
+        <h2 class="section-title">香港鐵路<span>發展歷程</span></h2>
+        <div class="divider"></div>
+        <div class="about-body">
+          <p>香港鐵路有限公司（港鐵）是香港最重要的公共交通服務機構，在香港特區政府擁有約75%股份的情況下於香港交易所上市（股份代號：66）。</p>
+          <p>港鐵以高效率、高準點率及卓越的安全記錄享譽全球，其獨特的「鐵路加物業」發展模式成功實現財務自給自足，並為社區創造持久價值，被視為全球最成功的鐵路運營模式之一。</p>
+          <p>近年，港鐵積極推進數碼轉型，引入人工智能及大數據技術，提升運營效率及乘客體驗，同時推進2050年前達至碳中和的可持續發展目標。</p>
+        </div>
+        <div class="about-highlights">
+          <div class="hl-item">
+            <div class="hl-title">🏆 全球最準時</div>
+            <div class="hl-desc">港鐵準點率持續保持全球最高水平，超過99.9%</div>
+          </div>
+          <div class="hl-item">
+            <div class="hl-title">🌿 可持續發展</div>
+            <div class="hl-desc">致力於2050年前達到碳中和，推廣綠色出行</div>
+          </div>
+          <div class="hl-item">
+            <div class="hl-title">💡 創新科技</div>
+            <div class="hl-desc">引入AI及大數據提升系統維護效率及乘客服務</div>
+          </div>
+          <div class="hl-item">
+            <div class="hl-title">🏘️ 物業模式</div>
+            <div class="hl-desc">「鐵路加物業」模式為全球鐵路發展典範</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-vis">
+        <div class="about-vis-title">重要發展里程碑</div>
+        <div class="milestone">
+          <div class="milestone-year">1975</div>
+          <div class="milestone-text">地下鐵路公司成立，為香港地鐵建設奠基</div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-year">1979</div>
+          <div class="milestone-text">地鐵通車，香港進入城市鐵路新時代</div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-year">2000</div>
+          <div class="milestone-text">地鐵有限公司於香港交易所上市</div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-year">2007</div>
+          <div class="milestone-text">地鐵與九廣鐵路合併，組成港鐵公司</div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-year">2022</div>
+          <div class="milestone-text">屯馬綫全綫通車，成香港最長鐵路路綫</div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-year">2024+</div>
+          <div class="milestone-text">北部都會區及多項新鐵路項目持續推進</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="international" class="bg-dark">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center">
+      <div class="section-tag">國際業務</div>
+      <h2 class="section-title">港鐵<span style="color:#f5c030">走向世界</span></h2>
+      <p class="section-sub" style="margin:0 auto">港鐵在全球多個城市提供鐵路服務，將香港的鐵路管理專業輸出國際。</p>
+    </div>
+    <div class="intl-grid">
+      <div class="intl-card">
+        <div class="intl-flag">🇬🇧</div>
+        <div class="intl-city">英國</div>
+        <div class="intl-role">伊利沙伯綫 (CrossRail) 及其他鐵路服務營運</div>
+      </div>
+      <div class="intl-card">
+        <div class="intl-flag">🇦🇺</div>
+        <div class="intl-city">澳洲</div>
+        <div class="intl-role">墨爾本地鐵鐵路特許經營服務</div>
+      </div>
+      <div class="intl-card">
+        <div class="intl-flag">🇸🇪</div>
+        <div class="intl-city">瑞典</div>
+        <div class="intl-role">斯德哥爾摩地鐵及通勤鐵路服務</div>
+      </div>
+      <div class="intl-card">
+        <div class="intl-flag">🇨🇳</div>
+        <div class="intl-city">中國內地</div>
+        <div class="intl-role">北京、深圳及杭州等城市鐵路項目</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">與港鐵<span>取得聯繫</span></h2>
+      <p class="section-sub">如需查詢港鐵服務或業務合作，歡迎填寫查詢表格或直接聯絡我們。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-title">聯絡資訊</div>
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-lbl">總部地址</div>
+            <div class="c-val">MTR總部<br/>九龍灣常悅道33號<br/>香港</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📧</div>
+          <div>
+            <div class="c-lbl">電郵</div>
+            <div class="c-val"><a href="mailto:flast@mtr.com.hk">flast@mtr.com.hk</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-lbl">網址</div>
+            <div class="c-val"><a href="https://www.mtr.com.hk" target="_blank" rel="noopener">www.mtr.com.hk</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-lbl">客戶服務熱線</div>
+            <div class="c-val"><a href="tel:+85220812111">+852 2081 2111</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <div class="form-title">發送查詢</div>
+        <form onsubmit="return false">
+          <div class="form-row">
+            <div class="form-group">
+              <label>姓名 *</label>
+              <input type="text" placeholder="您的姓名"/>
+            </div>
+            <div class="form-group">
+              <label>公司名稱</label>
+              <input type="text" placeholder="公司名稱（如適用）"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>電郵地址 *</label>
+              <input type="email" placeholder="your@email.com"/>
+            </div>
+            <div class="form-group">
+              <label>聯絡電話</label>
+              <input type="tel" placeholder="+852 XXXX XXXX"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>查詢類別</label>
+            <select>
+              <option value="">-- 請選擇 --</option>
+              <option>客戶服務查詢</option>
+              <option>物業發展合作</option>
+              <option>商場租賃查詢</option>
+              <option>海外業務合作</option>
+              <option>工程顧問服務</option>
+              <option>媒體查詢</option>
+              <option>其他查詢</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>查詢詳情 *</label>
+            <textarea placeholder="請描述您的查詢…"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">提交查詢 →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">香港鐵路有限公司</div>
+        <div class="footer-brand-en">MTR Corporation Limited</div>
+        <div class="footer-brand-desc">香港最大公共交通服務機構，提供城市鐵路、輕鐵、機場快綫及海外鐵路服務，連繫香港通達全球。<br/><br/>港交所上市 · 股份代號：00066</div>
+      </div>
+      <div>
+        <div class="footer-heading">業務</div>
+        <ul class="footer-links">
+          <li><a href="#services">香港鐵路業務</a></li>
+          <li><a href="#services">機場快綫</a></li>
+          <li><a href="#services">物業發展</a></li>
+          <li><a href="#services">商場管理</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">路綫</div>
+        <ul class="footer-links">
+          <li><a href="#network">港島綫 / 荃灣綫</a></li>
+          <li><a href="#network">觀塘綫 / 將軍澳綫</a></li>
+          <li><a href="#network">東鐵綫 / 屯馬綫</a></li>
+          <li><a href="#network">東涌綫 / 機場快綫</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">公司</div>
+        <ul class="footer-links">
+          <li><a href="#about">關於港鐵</a></li>
+          <li><a href="#international">國際業務</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+          <li><a href="https://www.mtr.com.hk" target="_blank" rel="noopener">官方網站</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 香港鐵路有限公司. 版權所有。</div>
+      <div class="footer-copy">MTR Corporation Limited · 港交所上市 00066</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
