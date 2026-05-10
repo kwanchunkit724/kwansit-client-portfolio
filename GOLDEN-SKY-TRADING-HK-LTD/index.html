@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金鋒貿易（香港）有限公司 Golden Sky Trading | Kleaner Liao 香港代理</title>
+<style>
+:root {
+  --primary: #08182e;
+  --primary-mid: #0c2238;
+  --accent: #28b050;
+  --accent-light: #38c860;
+  --teal: #18a0b8;
+  --teal-light: #22bcd8;
+  --white: #ffffff;
+  --off-white: #f3faf5;
+  --light-grey: #dceee4;
+  --mid-grey: #78908a;
+  --text: #10201a;
+  --text-light: #486858;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 20px rgba(8,24,46,0.10);
+  --shadow-md: 0 8px 36px rgba(8,24,46,0.14);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.3s ease;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', 'Microsoft JhengHei', 'Noto Sans TC', system-ui, sans-serif; color: var(--text); background: var(--white); line-height: 1.7; }
+a { text-decoration: none; color: inherit; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(8,24,46,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(40,176,80,0.22);
+  padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px;
+}
+.nav-logo { font-size: 1.2rem; font-weight: 800; color: var(--white); letter-spacing: 0.03em; }
+.nav-logo span { color: var(--accent-light); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.78); font-size: 0.9rem; font-weight: 500; transition: var(--transition); }
+.nav-links a:hover { color: var(--accent-light); }
+.nav-cta { background: var(--accent); color: var(--white); padding: 0.5rem 1.3rem; border-radius: 50px; font-size: 0.88rem; font-weight: 700; transition: var(--transition); }
+.nav-cta:hover { background: var(--accent-light); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary) 0%, #0c2238 45%, #0e2840 70%, #0c2a40 100%);
+  display: flex; align-items: center; padding: 100px 5% 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 35%, rgba(40,176,80,0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 15% 72%, rgba(24,160,184,0.10) 0%, transparent 65%);
+}
+.hero-inner {
+  max-width: 1200px; width: 100%; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(40,176,80,0.15); border: 1px solid rgba(40,176,80,0.38);
+  color: var(--accent-light); padding: 0.4rem 1rem; border-radius: 50px;
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 1.5rem;
+}
+.hero h1 { font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 900; line-height: 1.2; color: var(--white); margin-bottom: 0.5rem; }
+.hero h1 .accent { color: var(--accent-light); }
+.hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.68); margin-bottom: 1.8rem; }
+.hero-desc { font-size: 1rem; color: rgba(255,255,255,0.66); line-height: 1.80; margin-bottom: 2.2rem; max-width: 520px; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary { background: var(--accent); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; transition: var(--transition); box-shadow: 0 4px 20px rgba(40,176,80,0.40); }
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+.btn-outline { border: 2px solid rgba(255,255,255,0.32); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: var(--transition); }
+.btn-outline:hover { border-color: var(--accent-light); color: var(--accent-light); }
+.hero-card { background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 2rem; }
+.hero-card-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.8rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.10); }
+.hero-card-icon { width: 50px; height: 50px; border-radius: 14px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+.hero-card-head h3 { color: var(--white); font-size: 1rem; font-weight: 700; }
+.hero-card-head p { color: rgba(255,255,255,0.50); font-size: 0.78rem; }
+.hero-info-row { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+.hero-info-icon { width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0; background: rgba(40,176,80,0.18); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+.hero-info-label { font-size: 0.70rem; color: rgba(255,255,255,0.42); text-transform: uppercase; letter-spacing: 0.06em; }
+.hero-info-val { font-size: 0.88rem; color: rgba(255,255,255,0.90); font-weight: 500; }
+
+/* STATS */
+.stats-strip { background: linear-gradient(90deg, var(--primary) 0%, var(--primary-mid) 100%); padding: 3rem 5%; }
+.stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.stat-item { text-align: center; }
+.stat-num { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--accent-light); letter-spacing: -0.02em; line-height: 1; }
+.stat-unit { font-size: 1.3rem; }
+.stat-label { color: rgba(255,255,255,0.60); font-size: 0.85rem; margin-top: 0.4rem; }
+
+/* SHARED */
+section { padding: 90px 5%; }
+.section-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(40,176,80,0.08); border: 1px solid rgba(40,176,80,0.25); color: var(--accent); padding: 0.35rem 1rem; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 1rem; }
+.section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: var(--primary); line-height: 1.25; }
+.section-subtitle { font-size: 1.02rem; color: var(--text-light); line-height: 1.75; margin-top: 0.8rem; max-width: 620px; }
+.section-header { margin-bottom: 3rem; }
+.max-w { max-width: 1200px; margin: 0 auto; }
+
+/* BRAND HIGHLIGHT */
+.brand-highlight { background: var(--off-white); }
+.brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.brand-visual {
+  background: linear-gradient(135deg, var(--primary) 0%, #0c2238 100%);
+  border-radius: 24px; padding: 3rem; text-align: center;
+  border: 1px solid rgba(40,176,80,0.20);
+}
+.brand-logo-big { font-size: 3.5rem; font-weight: 900; color: var(--white); letter-spacing: 0.02em; }
+.brand-logo-big span { color: var(--accent-light); }
+.brand-tagline { font-size: 1rem; color: rgba(255,255,255,0.60); margin-top: 0.5rem; letter-spacing: 0.08em; }
+.brand-badges { display: flex; justify-content: center; gap: 0.8rem; margin-top: 1.8rem; flex-wrap: wrap; }
+.brand-badge { background: rgba(40,176,80,0.15); border: 1px solid rgba(40,176,80,0.35); color: var(--accent-light); font-size: 0.78rem; font-weight: 700; padding: 0.35rem 0.9rem; border-radius: 50px; }
+.brand-info h2 { font-size: clamp(1.8rem, 2.8vw, 2.4rem); font-weight: 900; color: var(--primary); line-height: 1.25; margin-bottom: 1.2rem; }
+.brand-info p { font-size: 0.98rem; color: var(--text-light); line-height: 1.85; margin-bottom: 1.2rem; }
+.brand-props { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+.brand-prop { display: flex; align-items: center; gap: 0.7rem; padding: 0.9rem 1rem; background: var(--white); border-radius: var(--radius-sm); border: 1px solid var(--light-grey); }
+.brand-prop-icon { font-size: 1.2rem; }
+.brand-prop p { font-size: 0.85rem; font-weight: 600; color: var(--primary); }
+
+/* PRODUCTS */
+.products { background: var(--white); }
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+.product-card { background: var(--card-bg); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--light-grey); transition: var(--transition); position: relative; overflow: hidden; }
+.product-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--teal)); transform: scaleX(0); transform-origin: left; transition: var(--transition); }
+.product-card:hover { border-color: rgba(40,176,80,0.35); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.product-card:hover::before { transform: scaleX(1); }
+.product-icon { width: 54px; height: 54px; border-radius: 14px; background: linear-gradient(135deg, rgba(40,176,80,0.12), rgba(24,160,184,0.08)); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.2rem; }
+.product-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.7rem; }
+.product-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.70; }
+.product-badge { display: inline-block; margin-top: 1rem; padding: 0.22rem 0.75rem; background: rgba(40,176,80,0.08); border: 1px solid rgba(40,176,80,0.22); color: var(--accent); font-size: 0.72rem; font-weight: 700; border-radius: 50px; }
+
+/* VALUES */
+.values {
+  background: linear-gradient(135deg, var(--primary) 0%, #0c2238 55%, #0e2840 100%);
+  position: relative; overflow: hidden;
+}
+.values::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 65% 55% at 78% 45%, rgba(40,176,80,0.12) 0%, transparent 70%); }
+.values .section-tag { background: rgba(24,160,184,0.15); border-color: rgba(24,160,184,0.35); color: var(--teal-light); }
+.values .section-title { color: var(--white); }
+.values .section-subtitle { color: rgba(255,255,255,0.62); }
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; z-index: 1; }
+.value-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: 16px; padding: 2rem; transition: var(--transition); }
+.value-card:hover { background: rgba(255,255,255,0.10); border-color: rgba(40,176,80,0.4); transform: translateY(-3px); }
+.value-icon { font-size: 2rem; margin-bottom: 1rem; }
+.value-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.7rem; }
+.value-card p { font-size: 0.88rem; color: rgba(255,255,255,0.62); line-height: 1.70; }
+
+/* ABOUT */
+.about { background: var(--off-white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-highlight { background: linear-gradient(135deg, var(--primary) 0%, #0c2238 100%); border-radius: 18px; padding: 2.2rem; border-left: 4px solid var(--accent); margin-bottom: 2rem; }
+.about-highlight blockquote { font-size: 1.15rem; font-weight: 700; color: var(--white); line-height: 1.6; }
+.about-highlight cite { display: block; margin-top: 0.8rem; font-size: 0.8rem; color: var(--accent-light); font-style: normal; }
+.about-body p { font-size: 0.98rem; color: var(--text-light); line-height: 1.85; margin-bottom: 1.2rem; }
+.prop-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.prop-card { background: var(--white); border-radius: var(--radius); padding: 1.3rem; border: 1px solid var(--light-grey); transition: var(--transition); }
+.prop-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.prop-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.prop-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem; }
+.prop-card p { font-size: 0.8rem; color: var(--text-light); line-height: 1.55; }
+
+/* CONTACT */
+.contact { background: linear-gradient(135deg, var(--primary) 0%, #0c2238 100%); }
+.contact .section-title { color: var(--white); }
+.contact .section-subtitle { color: rgba(255,255,255,0.62); }
+.contact .section-tag { background: rgba(40,176,80,0.15); border-color: rgba(40,176,80,0.35); color: var(--accent-light); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
+.contact-item { display: flex; align-items: flex-start; gap: 1rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: var(--radius); padding: 1.3rem; }
+.contact-item-icon { width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0; background: rgba(40,176,80,0.18); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.contact-item-label { font-size: 0.70rem; color: rgba(255,255,255,0.40); text-transform: uppercase; letter-spacing: 0.07em; }
+.contact-item-val { font-size: 0.92rem; color: rgba(255,255,255,0.90); font-weight: 500; margin-top: 0.15rem; }
+.contact-form { background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.10); border-radius: 20px; padding: 2.4rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.58); margin-bottom: 0.4rem; font-weight: 500; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-sm); padding: 0.75rem 1rem; color: var(--white); font-size: 0.9rem; transition: var(--transition); outline: none; font-family: inherit; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent-light); background: rgba(255,255,255,0.12); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.28); }
+.form-group select option { background: var(--primary); color: var(--white); }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-submit { width: 100%; background: var(--accent); color: var(--white); border: none; border-radius: 50px; padding: 1rem; font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition); }
+.form-submit:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+/* FOOTER */
+footer { background: #050d18; padding: 2.5rem 5%; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-size: 1.1rem; font-weight: 800; color: var(--white); }
+.footer-logo span { color: var(--accent-light); }
+.footer-copy { font-size: 0.80rem; color: rgba(255,255,255,0.38); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.80rem; color: rgba(255,255,255,0.42); transition: var(--transition); }
+.footer-links a:hover { color: var(--accent-light); }
+
+@media (max-width: 960px) {
+  .hero-inner, .brand-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero-card { display: none; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .products-grid, .values-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .products-grid, .values-grid, .prop-cards, .brand-props { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">金鋒<span>貿易</span></div>
+  <ul class="nav-links">
+    <li><a href="#brand">品牌介紹</a></li>
+    <li><a href="#products">產品系列</a></li>
+    <li><a href="#values">品牌理念</a></li>
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#contact">聯絡</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">聯絡我們</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">🌿 Kleaner Liao · 香港代理 · 優質清潔護理品牌</div>
+      <h1>清潔護理，<br><span class="accent">專業之選。</span></h1>
+      <p class="hero-sub">金鋒貿易 — Kleaner Liao 香港代理</p>
+      <p class="hero-desc">
+        金鋒貿易（香港）有限公司（Golden Sky Trading (HK) Ltd）是優質清潔護理品牌 Kleaner Liao 的香港代理商。我們致力為香港市場帶來高效、安全、環保的清潔護理解決方案，服務家居及商業客戶。
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">探索產品系列</a>
+        <a href="#contact" class="btn-outline">聯絡我們</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hero-card-icon">✨</div>
+        <div>
+          <h3>Golden Sky Trading (HK) Ltd</h3>
+          <p>金鋒貿易（香港）有限公司</p>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">📍</div>
+        <div>
+          <div class="hero-info-label">地區</div>
+          <div class="hero-info-val">香港</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">📞</div>
+        <div>
+          <div class="hero-info-label">WhatsApp / 電話</div>
+          <div class="hero-info-val">+852 6056 5688</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">✉️</div>
+        <div>
+          <div class="hero-info-label">電郵</div>
+          <div class="hero-info-val">info@goldensky.com.hk</div>
+        </div>
+      </div>
+      <div class="hero-info-row">
+        <div class="hero-info-icon">🌐</div>
+        <div>
+          <div class="hero-info-label">網站</div>
+          <div class="hero-info-val">goldensky.com.hk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">HK</div>
+      <div class="stat-label">香港授權代理</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100<span class="stat-unit">%</span></div>
+      <div class="stat-label">正貨品質保證</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">🌿</div>
+      <div class="stat-label">環保配方</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">B2B</div>
+      <div class="stat-label">企業批發供應</div>
+    </div>
+  </div>
+</div>
+
+<!-- BRAND HIGHLIGHT -->
+<section class="brand-highlight" id="brand">
+  <div class="max-w">
+    <div class="brand-grid">
+      <div class="brand-visual">
+        <div class="brand-logo-big">Kleaner<span>Liao</span></div>
+        <div class="brand-tagline">Clean Smart. Live Better.</div>
+        <div class="brand-badges">
+          <span class="brand-badge">🌿 環保配方</span>
+          <span class="brand-badge">✅ 安全認證</span>
+          <span class="brand-badge">🏠 家居友善</span>
+          <span class="brand-badge">💼 商業適用</span>
+        </div>
+      </div>
+      <div class="brand-info">
+        <div class="section-tag">代理品牌</div>
+        <h2>Kleaner Liao —<br>高效清潔護理品牌</h2>
+        <p>
+          Kleaner Liao 是一個專注於高效清潔護理的品牌，以配方精良、安全環保見稱。產品涵蓋家居清潔、個人護理及商業用途，適合不同需求的用家。
+        </p>
+        <p>
+          金鋒貿易作為香港代理，確保本地消費者能夠便利地獲得正品，並享有完善的售後服務支援。
+        </p>
+        <div class="brand-props">
+          <div class="brand-prop"><div class="brand-prop-icon">🌱</div><p>天然環保成分</p></div>
+          <div class="brand-prop"><div class="brand-prop-icon">💧</div><p>深層清潔效能</p></div>
+          <div class="brand-prop"><div class="brand-prop-icon">🛡️</div><p>溫和不刺激</p></div>
+          <div class="brand-prop"><div class="brand-prop-icon">✨</div><p>持久清新感</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">產品系列</div>
+      <h2 class="section-title">全方位清潔護理解決方案</h2>
+      <p class="section-subtitle">Kleaner Liao 產品涵蓋家居、個人護理及商業清潔各個需求。</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🧴</div>
+        <h3>家居清潔系列</h3>
+        <p>廚房油污清潔劑、浴室消毒清潔液、全能地板清潔劑。高效去污，配方安全，適合每日使用。</p>
+        <span class="product-badge">家居日用</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🫧</div>
+        <h3>廚房護理系列</h3>
+        <p>洗碗液、廚具去油劑、廚房表面清潔噴霧。有效分解油脂，保護廚房設備，確保食品安全衛生。</p>
+        <span class="product-badge">廚房專用</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🛁</div>
+        <h3>浴室清潔系列</h3>
+        <p>水垢清除劑、磁磚縫清潔凝膠、廁所消毒劑。深層清潔，持久除菌，恢復浴室光潔亮麗。</p>
+        <span class="product-badge">浴室專用</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🏢</div>
+        <h3>商業清潔系列</h3>
+        <p>餐廳廚房重型油污清潔劑、辦公室地板護理液、大型場所消毒噴霧，適合商業高頻使用環境。</p>
+        <span class="product-badge">商業用途</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🧼</div>
+        <h3>個人護理系列</h3>
+        <p>溫和洗手液、護手霜、個人衛生護理品。添加保濕成分，清潔同時呵護肌膚，全家適用。</p>
+        <span class="product-badge">個人護理</span>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🚗</div>
+        <h3>汽車護理系列</h3>
+        <p>汽車內飾清潔劑、擋風玻璃清洗液、車身護理產品。讓您的愛車隨時保持清潔靚麗狀態。</p>
+        <span class="product-badge">汽車護理</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values" id="values">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">品牌理念</div>
+      <h2 class="section-title">為何選擇 Kleaner Liao</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">每一款產品背後，都承載著我們對清潔、安全與環保的承諾。</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🌱</div>
+        <h3>環保可持續</h3>
+        <p>採用環保配方，減少化學物質對環境的影響。可生物降解成分，為地球可持續發展出一分力。</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔬</div>
+        <h3>科學配方</h3>
+        <p>結合先進清潔科技與天然成分，達到最佳清潔效果。每款產品均經過嚴格測試，確保效能與安全並重。</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🛡️</div>
+        <h3>安全放心</h3>
+        <p>配方溫和，不含有害刺激物。通過安全認證，家有小孩及寵物亦可安心使用。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="max-w">
+    <div class="about-grid">
+      <div>
+        <div class="section-header">
+          <div class="section-tag">關於金鋒貿易</div>
+          <h2 class="section-title">香港優質品牌代理專家</h2>
+        </div>
+        <div class="about-highlight">
+          <blockquote>「以負責任的態度引進優質品牌，為香港市民提供安全、有效的清潔護理選擇。」</blockquote>
+          <cite>— 金鋒貿易（香港）有限公司</cite>
+        </div>
+        <div class="about-body">
+          <p>
+            金鋒貿易（香港）有限公司（Golden Sky Trading (HK) Ltd）是一家專注於引進及代理優質消費品牌的香港公司。我們嚴選具質素、可靠品牌，為本地零售商、分銷商及最終用家提供正品保證及完善服務。
+          </p>
+          <p>
+            作為 Kleaner Liao 的香港代理，我們除了負責正貨供應外，更提供品牌推廣、客戶服務及售後支援，確保每一位用家都有最佳的品牌體驗。
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">✅</div>
+            <h4>正貨保證</h4>
+            <p>直接從品牌授權進貨，確保每件產品均為原廠正品。</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🚚</div>
+            <h4>本地配送</h4>
+            <p>香港本地倉存，快速出貨，支援大量批發採購。</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">💼</div>
+            <h4>企業批發</h4>
+            <p>為企業、零售商及機構提供優惠批發價格及定期供應服務。</p>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🎯</div>
+            <h4>專業建議</h4>
+            <p>了解您的業務需求，推薦最合適的清潔護理產品方案。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">聯絡我們</div>
+      <h2 class="section-title">查詢產品及批發報價</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.62)">
+        無論是個人購買或企業批發查詢，歡迎與我們聯絡，我們將盡快回覆。
+      </p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label">電話 / WhatsApp</div>
+              <div class="contact-item-val">+852 6056 5688</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">電郵</div>
+              <div class="contact-item-val">info@goldensky.com.hk</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🌐</div>
+            <div>
+              <div class="contact-item-label">網站</div>
+              <div class="contact-item-val">goldensky.com.hk</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🏪</div>
+            <div>
+              <div class="contact-item-label">代理品牌</div>
+              <div class="contact-item-val">Kleaner Liao — 香港代理</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 style="color:var(--white);font-size:1.15rem;font-weight:700;margin-bottom:1.5rem;">產品查詢 / 批發報價</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>公司名稱（如適用）</label>
+            <input type="text" placeholder="公司 / 商號名稱">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>電郵地址</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>聯絡電話</label>
+            <input type="tel" placeholder="+852">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>查詢產品系列</label>
+          <select>
+            <option value="">請選擇...</option>
+            <option>家居清潔系列</option>
+            <option>廚房護理系列</option>
+            <option>浴室清潔系列</option>
+            <option>商業清潔系列</option>
+            <option>個人護理系列</option>
+            <option>汽車護理系列</option>
+            <option>企業批發（多款）</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>查詢詳情</label>
+          <textarea placeholder="請說明您的需求，包括產品用途、預計數量等，以便我們為您提供最合適的報價..."></textarea>
+        </div>
+        <button class="form-submit">提交查詢 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">金鋒<span>貿易</span></div>
+    <div class="footer-copy">© 2024 金鋒貿易（香港）有限公司 Golden Sky Trading (HK) Ltd. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#brand">品牌</a>
+      <a href="#products">產品</a>
+      <a href="#contact">聯絡</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
