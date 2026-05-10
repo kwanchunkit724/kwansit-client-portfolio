@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研達企業有限公司 NOVSN | 文件管理・工作流程・打印管理</title>
+<meta name="description" content="研達企業有限公司（NOVSN）— 香港觀塘總部，專業提供文件管理服務（DMS）、文件處理服務（DPS）、工作流程解決方案及打印管理，助企業提升效率。">
+<style>
+  :root {
+    --bg:       #050810;
+    --bg2:      #0a1020;
+    --bg3:      #0f1830;
+    --accent:   #1448b8;
+    --accent2:  #2870e8;
+    --light:    #60a8f8;
+    --light2:   #a0ccff;
+    --text:     #d8e8ff;
+    --muted:    #4868a8;
+    --border:   rgba(40,112,232,0.16);
+    --card:     rgba(255,255,255,0.03);
+    --radius:   12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', 'PingFang HK', 'Noto Sans HK', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(5,8,16,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo { font-size: 1.3rem; font-weight: 900; color: var(--light); text-decoration: none; letter-spacing: 0.06em; }
+  .nav-logo span { color: var(--light2); font-size: 0.78rem; font-weight: 400; margin-left: 0.4rem; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.92rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--light); }
+  .nav-cta {
+    background: var(--accent); color: #fff; border: none; padding: 0.55rem 1.3rem;
+    border-radius: 6px; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 70% 55% at 60% 40%, rgba(20,72,184,0.18) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 40% at 5% 80%, rgba(40,112,232,0.08) 0%, transparent 60%),
+      var(--bg);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(40,112,232,0.1); border: 1px solid rgba(40,112,232,0.28);
+    color: var(--light); border-radius: 50px; padding: 0.38rem 1rem;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.55rem; }
+  .hero h1 { font-size: clamp(2.1rem, 4.2vw, 3.2rem); font-weight: 900; line-height: 1.25; margin-bottom: 1.4rem; }
+  .hero h1 .hl { color: var(--light); }
+  .hero h1 .hl2 { color: var(--light2); }
+  .hero p { font-size: 1.05rem; color: var(--muted); max-width: 530px; margin-bottom: 2rem; line-height: 1.8; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-weight: 800; font-size: 1rem;
+    padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(20,72,184,0.4);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(40,112,232,0.5); }
+  .btn-outline {
+    background: transparent; color: var(--text); border: 1.5px solid rgba(255,255,255,0.2);
+    font-size: 1rem; padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--light); color: var(--light2); }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 18px; padding: 2rem;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .info-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--light); margin-bottom: 1.4rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+  .info-row { display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: flex-start; }
+  .info-icon { font-size: 1.1rem; min-width: 28px; margin-top: 0.1rem; }
+  .info-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.18rem; }
+  .info-val { font-size: 0.9rem; color: var(--text); font-weight: 600; }
+  .info-val a { color: var(--light); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .info-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+
+  /* STATS */
+  .stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3.5rem 5%; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 2.4rem; font-weight: 900; color: var(--light); line-height: 1; }
+  .stat-num sup { font-size: 1.1rem; vertical-align: super; }
+  .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+
+  /* SECTION */
+  .section { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; color: var(--accent2); text-transform: uppercase; margin-bottom: 0.7rem; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; line-height: 1.25; margin-bottom: 1rem; }
+  .section-title .hl { color: var(--light); }
+  .section-desc { color: var(--muted); max-width: 600px; margin-bottom: 3rem; font-size: 1rem; line-height: 1.8; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .service-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2.2rem;
+    transition: border-color 0.25s, transform 0.2s; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--light));
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .service-card:hover { border-color: var(--light); transform: translateY(-4px); }
+  .service-card:hover::before { opacity: 1; }
+  .service-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+  .service-icon { font-size: 2.4rem; }
+  .service-label {
+    background: rgba(40,112,232,0.12); border: 1px solid rgba(40,112,232,0.25);
+    color: var(--light); padding: 0.22rem 0.7rem; border-radius: 6px;
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 0.06em;
+  }
+  .service-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--light); margin-bottom: 0.6rem; }
+  .service-card p { color: var(--muted); font-size: 0.92rem; line-height: 1.7; }
+  .feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.2rem; }
+  .feature-list li { font-size: 0.88rem; color: var(--text); display: flex; gap: 0.5rem; align-items: flex-start; }
+  .feature-list li::before { content: '›'; color: var(--light); font-weight: 700; flex-shrink: 0; font-size: 1rem; }
+
+  /* OFFICES */
+  .offices-wrap { background: var(--bg2); padding: 6rem 5%; }
+  .offices-inner { max-width: 1200px; margin: 0 auto; }
+  .offices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .office-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.8rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .office-card:hover { border-color: var(--light); transform: translateY(-3px); }
+  .office-tag {
+    font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; color: var(--light);
+    background: rgba(40,112,232,0.1); padding: 0.2rem 0.6rem; border-radius: 4px;
+    display: inline-block; margin-bottom: 0.8rem;
+  }
+  .office-card h4 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.8rem; }
+  .office-addr { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.8rem; }
+  .office-contact a { font-size: 0.85rem; color: var(--light); text-decoration: none; display: block; }
+  .office-contact a:hover { text-decoration: underline; }
+
+  /* WHY */
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .why-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.8rem; display: flex; gap: 1.2rem; align-items: flex-start; }
+  .why-icon { font-size: 2rem; min-width: 44px; }
+  .why-item h4 { font-size: 1rem; font-weight: 700; color: var(--light); margin-bottom: 0.4rem; }
+  .why-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact-wrap {
+    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(20,72,184,0.08) 0%, transparent 65%), var(--bg);
+    padding: 6rem 5%;
+  }
+  .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; margin-bottom: 1rem; }
+  .contact-info p { color: var(--muted); font-size: 0.98rem; margin-bottom: 2rem; line-height: 1.8; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.1rem; }
+  .c-row { display: flex; gap: 1rem; align-items: flex-start; }
+  .c-icon { font-size: 1.3rem; min-width: 34px; }
+  .c-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.2rem; }
+  .c-val { font-size: 0.92rem; font-weight: 600; }
+  .c-val a { color: var(--light); text-decoration: none; }
+  .c-val a:hover { text-decoration: underline; }
+  form { display: flex; flex-direction: column; gap: 1.2rem; }
+  form label { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.3rem; display: block; }
+  form input, form textarea, form select {
+    width: 100%; background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.8rem 1rem; color: var(--text); font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s;
+  }
+  form input:focus, form textarea:focus, form select:focus { outline: none; border-color: var(--light); }
+  form textarea { min-height: 110px; resize: vertical; }
+  form select option { background: #0a1020; }
+  .form-submit {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-weight: 800; font-size: 1rem;
+    border: none; padding: 0.95rem; border-radius: 8px; cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(20,72,184,0.4);
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(40,112,232,0.5); }
+
+  /* FOOTER */
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4rem 5% 2rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand .logo-text { font-size: 1.2rem; font-weight: 900; color: var(--light); margin-bottom: 0.8rem; }
+  .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  footer h5 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  footer ul li a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  footer ul li a:hover { color: var(--light); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .info-card { max-width: 480px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .offices-grid, .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .offices-grid, .why-grid, .contact-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">NOVSN<span>研達企業有限公司</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">服務方案</a></li>
+    <li><a href="#offices">辦事處</a></li>
+    <li><a href="#why">為何選擇</a></li>
+    <li><a href="#contact">聯絡查詢</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">銷售查詢</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">香港觀塘總部・文件管理・工作流程解決方案</div>
+      <h1>
+        智能文件管理<br>
+        <span class="hl">工作流程優化</span><br>
+        <span class="hl2">讓企業效率倍增</span>
+      </h1>
+      <p>
+        研達企業有限公司（NOVSN），香港領先的企業文件管理及工作流程解決方案供應商，
+        為各行各業提供文件管理服務（DMS）、文件處理服務（DPS）、
+        工作流程解決方案及打印管理，助企業數碼化轉型，提升運作效率。
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#services">查看服務方案</a>
+        <a class="btn-outline" href="#contact">銷售查詢</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>🏢 香港總部</h3>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">總部地址</div>
+          <div class="info-val">九龍觀塘鴻圖道23號<br>利登中心22樓</div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">銷售查詢電話</div>
+          <div class="info-val"><a href="tel:+85236993127">+852 3699 3127</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">銷售電郵</div>
+          <div class="info-val"><a href="mailto:sales@novsn.com">sales@novsn.com</a></div>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">網站</div>
+          <div class="info-val"><a href="https://novsn.com" target="_blank" rel="noopener">novsn.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💼</div>
+        <div>
+          <div class="info-label">招聘查詢</div>
+          <div class="info-val"><a href="mailto:recruit@novsn.com">recruit@novsn.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">香港服務中心</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">核心服務方案</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">500<sup>+</sup></div>
+      <div class="stat-label">企業服務客戶</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">20<sup>+</sup></div>
+      <div class="stat-label">年行業經驗</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div id="services">
+  <div class="section">
+    <div class="section-label">Service Solutions</div>
+    <h2 class="section-title">四大核心<span class="hl">企業服務方案</span></h2>
+    <p class="section-desc">
+      NOVSN 提供全面的文件管理及工作流程解決方案，
+      涵蓋從文件數碼化到自動化工作流程的完整服務，
+      助企業實現高效率的無紙化辦公環境。
+    </p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-icon">📂</div>
+          <span class="service-label">DMS</span>
+        </div>
+        <h3>文件管理服務</h3>
+        <p>
+          Document Management Services（DMS）— 為企業提供全面的文件數碼化及管理解決方案，
+          將紙質文件轉化為結構化的數碼資料，實現高效檢索、安全存取及合規管理。
+        </p>
+        <ul class="feature-list">
+          <li>文件掃描及數碼化服務</li>
+          <li>電子文件管理系統部署</li>
+          <li>文件索引及分類架構設計</li>
+          <li>安全存取權限管理</li>
+          <li>文件保留政策管理</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-icon">⚙️</div>
+          <span class="service-label">DPS</span>
+        </div>
+        <h3>文件處理服務</h3>
+        <p>
+          Document Processing Services（DPS）— 提供高效的外判文件處理服務，
+          包括大量文件掃描、資料輸入、驗證及轉換，
+          讓企業聚焦核心業務，將文件處理交由專業團隊負責。
+        </p>
+        <ul class="feature-list">
+          <li>大批量文件掃描及處理</li>
+          <li>OCR 光學字元識別轉換</li>
+          <li>資料擷取及驗證</li>
+          <li>格式轉換及標準化</li>
+          <li>保密文件安全銷毀</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-icon">🔄</div>
+          <span class="service-label">Workflow</span>
+        </div>
+        <h3>工作流程解決方案</h3>
+        <p>
+          Workflow Solutions — 透過自動化技術優化企業內部工作流程，
+          減少人手處理、提高審批速度、降低出錯率，
+          實現業務流程的智能化及自動化。
+        </p>
+        <ul class="feature-list">
+          <li>業務流程分析及優化</li>
+          <li>工作流程自動化系統</li>
+          <li>電子審批及簽核流程</li>
+          <li>系統整合及 API 對接</li>
+          <li>流程監控及報告</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-icon">🖨️</div>
+          <span class="service-label">Print Mgmt</span>
+        </div>
+        <h3>打印管理</h3>
+        <p>
+          Print Management — 全面的企業打印管理解決方案，
+          優化打印設備使用效率，監控打印成本，
+          實現打印環境的集中管理及成本節省。
+        </p>
+        <ul class="feature-list">
+          <li>打印設備評估及優化</li>
+          <li>集中打印管理系統</li>
+          <li>打印成本分析及控制</li>
+          <li>保密打印及安全釋放</li>
+          <li>設備維護及耗材管理</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OFFICES -->
+<div class="offices-wrap" id="offices">
+  <div class="offices-inner">
+    <div class="section-label">Our Offices</div>
+    <h2 class="section-title" style="margin-bottom:0.8rem;">香港<span class="hl">三大服務中心</span></h2>
+    <p class="section-desc" style="margin-bottom: 2.5rem;">
+      研達企業在香港設有三個服務中心，提供全面的文件管理及打印服務支援。
+    </p>
+    <div class="offices-grid">
+      <div class="office-card">
+        <span class="office-tag">總部</span>
+        <h4>研達企業有限公司（香港總部）</h4>
+        <div class="office-addr">
+          九龍觀塘鴻圖道23號<br>利登中心22樓
+        </div>
+        <div class="office-contact">
+          <a href="tel:+85236993127">📞 +852 3699 3127</a>
+          <a href="mailto:sales@novsn.com">✉️ sales@novsn.com</a>
+        </div>
+      </div>
+      <div class="office-card">
+        <span class="office-tag">營運中心</span>
+        <h4>研達企業營運中心<br>工作流程及文件管理服務</h4>
+        <div class="office-addr">
+          九龍觀塘鴻圖道23號<br>利登中心23樓
+        </div>
+        <div class="office-contact">
+          <a href="tel:+85236993127">📞 +852 3699 3127</a>
+        </div>
+      </div>
+      <div class="office-card">
+        <span class="office-tag">服務中心</span>
+        <h4>打印管理及文件處理服務中心</h4>
+        <div class="office-addr">
+          九龍油塘高輝道17號<br>油塘工業城B座5樓
+        </div>
+        <div class="office-contact">
+          <a href="tel:+85236993127">📞 +852 3699 3127</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY -->
+<div id="why">
+  <div class="section">
+    <div class="section-label">Why NOVSN</div>
+    <h2 class="section-title">為何選擇<span class="hl">NOVSN 研達</span></h2>
+    <p class="section-desc">二十年以上的文件管理行業經驗，以專業和可靠為企業客戶創造實質價值。</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🏆</div>
+        <div>
+          <h4>豐富行業經驗</h4>
+          <p>二十年以上深耕香港文件管理市場，服務過500+企業客戶，積累大量行業實踐經驗。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔒</div>
+        <div>
+          <h4>嚴格數據保護</h4>
+          <p>嚴格遵守個人資料（私隱）條例（PDPO），所有客戶文件資料安全處理，確保數據私隱。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🏗️</div>
+        <div>
+          <h4>完整基礎設施</h4>
+          <p>三大服務中心各自具備專業設備，能處理大批量文件掃描、打印管理及工作流程自動化需求。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <div>
+          <h4>快速響應支援</h4>
+          <p>專業客戶服務團隊提供快速技術支援，確保服務中斷時間最短，業務連續性最高。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🎯</div>
+        <div>
+          <h4>度身訂制方案</h4>
+          <p>深入了解每個客戶的業務需求，提供度身訂制的文件管理及工作流程解決方案，而非一刀切服務。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📊</div>
+        <div>
+          <h4>可量化的效益</h4>
+          <p>服務帶來實質的效率提升及成本節省，為客戶提供清晰的ROI分析，確保投資物有所值。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">聯絡<span class="hl">銷售團隊</span></h2>
+      <p>
+        如有服務查詢、方案報價或技術咨詢需求，
+        請聯絡我們的銷售團隊，我們將安排專業顧問與您詳細溝通，
+        了解您的業務需求並提供最合適的解決方案。
+      </p>
+      <div class="contact-details">
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">香港總部</div>
+            <div class="c-val">九龍觀塘鴻圖道23號利登中心22樓</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">銷售查詢電話</div>
+            <div class="c-val"><a href="tel:+85236993127">+852 3699 3127</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">銷售電郵</div>
+            <div class="c-val"><a href="mailto:sales@novsn.com">sales@novsn.com</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">💼</div>
+          <div>
+            <div class="c-label">招聘查詢</div>
+            <div class="c-val"><a href="mailto:recruit@novsn.com">recruit@novsn.com</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🌐</div>
+          <div>
+            <div class="c-label">網站</div>
+            <div class="c-val"><a href="https://novsn.com" target="_blank" rel="noopener">www.novsn.com</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form onsubmit="return false;">
+      <div>
+        <label>姓氏 *</label>
+        <input type="text" placeholder="例：陳">
+      </div>
+      <div>
+        <label>名字 *</label>
+        <input type="text" placeholder="例：大文">
+      </div>
+      <div>
+        <label>公司名稱</label>
+        <input type="text" placeholder="例：ABC Limited">
+      </div>
+      <div>
+        <label>聯絡電話 *</label>
+        <input type="tel" placeholder="例：+852 3XXX XXXX">
+      </div>
+      <div>
+        <label>電郵地址 *</label>
+        <input type="email" placeholder="example@company.com">
+      </div>
+      <div>
+        <label>查詢範圍</label>
+        <select>
+          <option value="">請選擇</option>
+          <option>文件管理服務（DMS）</option>
+          <option>文件處理服務（DPS）</option>
+          <option>工作流程解決方案</option>
+          <option>打印管理</option>
+          <option>其他查詢</option>
+        </select>
+      </div>
+      <div>
+        <label>查詢詳情</label>
+        <textarea placeholder="請簡述您的業務需求及查詢內容..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">📩 發送查詢</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-text">NOVSN 研達企業有限公司</div>
+      <p>
+        香港觀塘總部，三大服務中心，專業提供文件管理服務（DMS）、文件處理服務（DPS）、
+        工作流程解決方案及打印管理，服務500+企業客戶。
+      </p>
+    </div>
+    <div>
+      <h5>服務方案</h5>
+      <ul>
+        <li><a href="#services">文件管理（DMS）</a></li>
+        <li><a href="#services">文件處理（DPS）</a></li>
+        <li><a href="#services">工作流程解決方案</a></li>
+        <li><a href="#services">打印管理</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>關於我們</h5>
+      <ul>
+        <li><a href="#offices">香港辦事處</a></li>
+        <li><a href="#why">為何選擇NOVSN</a></li>
+        <li><a href="https://novsn.com" target="_blank" rel="noopener">官方網站</a></li>
+        <li><a href="mailto:recruit@novsn.com">加入我們</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>聯絡</h5>
+      <ul>
+        <li><a href="tel:+85236993127">+852 3699 3127</a></li>
+        <li><a href="mailto:sales@novsn.com">sales@novsn.com</a></li>
+        <li><a href="https://novsn.com" target="_blank" rel="noopener">novsn.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 研達企業有限公司 (NOVSN). All rights reserved.</span>
+    <span>香港觀塘・油塘・文件管理解決方案</span>
+  </div>
+</footer>
+
+</body>
+</html>
