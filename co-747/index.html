@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金語廣告有限公司 | Jinyu Design | 網頁設計 · 品牌規劃 · 新北板橋</title>
+<meta name="description" content="金語廣告有限公司 Jinyu Design — 新北市板橋區網站設計推薦公司，提供RWD響應式網頁設計、品牌規劃、LOGO設計、CIS企業識別、Google廣告、SEO優化及商業攝影。電話：02-6605-7030">
+<style>
+:root{--bg:#040608;--bg2:#060810;--bg3:#080c18;--blue:#1858c8;--blue-lt:#2878e8;--cyan:#18a8c8;--cyan-lt:#20c8e8;--text:#e8eef8;--muted:#6880a8;--border:rgba(24,88,200,0.2);--card-bg:rgba(255,255,255,0.03);--radius:10px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC','PingFang TC',sans-serif;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,6,8,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1.05rem;font-weight:800;color:var(--blue-lt)}
+.nav-logo span{color:var(--cyan-lt);font-weight:400;font-size:.78rem;margin-left:8px}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--blue),var(--blue-lt));color:#fff;padding:9px 22px;border-radius:6px;font-size:.88rem;font-weight:700;text-decoration:none;transition:opacity .2s}.nav-cta:hover{opacity:.88}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 60% 40%,rgba(24,88,200,0.12) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(24,88,200,0.1);border:1px solid rgba(24,88,200,0.28);border-radius:6px;padding:6px 14px;font-size:.8rem;color:var(--blue-lt);margin-bottom:20px}
+h1{font-size:clamp(1.9rem,4vw,3rem);font-weight:900;line-height:1.12;margin-bottom:12px}
+h1 .sub{display:block;font-size:clamp(.85rem,1.7vw,1.05rem);font-weight:400;color:var(--blue-lt);letter-spacing:.04em;margin-top:8px}
+.tagline{background:linear-gradient(135deg,rgba(24,88,200,0.12),rgba(24,200,232,0.08));border:1px solid rgba(24,88,200,0.22);border-radius:8px;padding:12px 16px;font-size:.92rem;color:var(--text);margin:16px 0 20px;line-height:1.7}
+.tagline strong{color:var(--cyan-lt)}
+.svc-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.st{display:inline-flex;align-items:center;gap:5px;background:rgba(24,200,232,0.08);border:1px solid rgba(24,200,232,0.25);border-radius:6px;padding:4px 10px;font-size:.75rem;color:var(--cyan-lt);font-weight:600}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--blue-lt));color:#fff;padding:13px 28px;border-radius:6px;font-size:.93rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}.btn-primary:hover{opacity:.88}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 26px;border-radius:6px;font-size:.93rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}.btn-outline:hover{border-color:var(--blue-lt);color:var(--blue-lt)}
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:15px}
+.card-badge{display:flex;align-items:center;gap:12px}
+.badge-emblem{width:48px;height:48px;background:linear-gradient(135deg,var(--blue),var(--blue-lt));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:#fff;text-align:center;line-height:1.3}
+.badge-name{font-size:.95rem;font-weight:700}.badge-label{font-size:.76rem;color:var(--muted)}
+.card-divider{border:none;border-top:1px solid var(--border)}
+.card-row{display:flex;gap:12px;align-items:flex-start}
+.card-row-icon{width:20px;color:var(--blue-lt);flex-shrink:0;margin-top:2px;text-align:center}
+.card-row-text{font-size:.88rem;color:var(--muted);line-height:1.55}
+.card-row-text strong{color:var(--text);display:block;font-size:.9rem}
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px clamp(16px,4vw,64px)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.stat-item{text-align:center}
+.stat-num{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,var(--blue-lt),var(--cyan-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{color:var(--muted);font-size:.82rem;margin-top:6px}
+section{padding:80px clamp(16px,4vw,64px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(24,88,200,0.08);border:1px solid rgba(24,88,200,0.2);border-radius:6px;padding:4px 12px;font-size:.75rem;color:var(--blue-lt);letter-spacing:.05em;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
+h2 .accent{color:var(--blue-lt)}
+.section-lead{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:48px;line-height:1.8}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:border-color .25s,transform .25s}.svc-card:hover{border-color:var(--blue-lt);transform:translateY(-4px)}
+.sc-icon{width:50px;height:50px;background:rgba(24,88,200,0.1);border:1px solid rgba(24,88,200,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.sc-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.contact-section{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{width:44px;height:44px;background:rgba(24,88,200,0.1);border:1px solid rgba(24,88,200,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.75rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.ci-value{font-size:.93rem;color:var(--text);line-height:1.65}
+.ci-value a{color:var(--blue-lt);text-decoration:none}.ci-value a:hover{text-decoration:underline}
+.contact-form-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:34px}
+.contact-form-wrap h3{font-size:1.2rem;font-weight:700;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:.92rem;font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--blue-lt)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-group select option{background:#060810}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--blue),var(--blue-lt));color:#fff;border:none;padding:13px;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}.form-submit:hover{opacity:.88}
+footer{background:var(--bg3);border-top:1px solid var(--border);padding:36px clamp(16px,4vw,64px)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:.95rem;font-weight:800;color:var(--blue-lt)}
+.footer-copy{font-size:.8rem;color:var(--muted);text-align:center}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}.footer-links a:hover{color:var(--text)}
+@media(max-width:900px){.hero-inner,.contact-grid{grid-template-columns:1fr}.stats-inner,.cards-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav-links{display:none}.cards-grid,.stats-inner{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">金語廣告有限公司<span>Jinyu Design</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <a href="tel:+886266057030" class="nav-cta">來電洽詢</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">💻 網頁設計 · 品牌規劃 · 新北板橋</div>
+      <h1>金語廣告有限公司<span class="sub">Jinyu Design · 台北 &amp; 新北推薦網站設計</span></h1>
+      <div class="tagline">用<strong>最低的價格</strong>與<strong>最快的服務</strong>幫您規劃官方網站。從網站設計、品牌規劃、LOGO設計到企業識別，一站式完成您的品牌建設需求。</div>
+      <div class="svc-tags">
+        <span class="st">💻 RWD網頁設計</span>
+        <span class="st">🎨 品牌 &amp; LOGO</span>
+        <span class="st">📣 Google廣告</span>
+        <span class="st">🔍 SEO優化</span>
+        <span class="st">📸 商業攝影</span>
+      </div>
+      <div class="hero-btns">
+        <a href="tel:+886266057030" class="btn-primary">☎ 02-6605-7030</a>
+        <a href="#services" class="btn-outline">了解服務</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-badge">
+        <div class="badge-emblem">金語<br>設計</div>
+        <div>
+          <div class="badge-label">新北板橋網站設計公司</div>
+          <div class="badge-name">金語廣告有限公司</div>
+        </div>
+      </div>
+      <hr class="card-divider">
+      <div class="card-row"><div class="card-row-icon">📞</div><div class="card-row-text"><strong>服務電話</strong>02-6605-7030</div></div>
+      <div class="card-row"><div class="card-row-icon">📧</div><div class="card-row-text"><strong>服務信箱</strong>jinyuservice@gmail.com</div></div>
+      <div class="card-row"><div class="card-row-icon">📍</div><div class="card-row-text"><strong>公司地址</strong>新北市板橋區大同街8巷43號</div></div>
+      <div class="card-row"><div class="card-row-icon">🕐</div><div class="card-row-text"><strong>營業時間</strong>週一至週五 09:00–18:30</div></div>
+      <div class="card-row"><div class="card-row-icon">🏢</div><div class="card-row-text"><strong>統一編號</strong>83410846</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">RWD</div><div class="stat-label">響應式網頁設計</div></div>
+    <div class="stat-item"><div class="stat-num">全方位</div><div class="stat-label">品牌設計服務</div></div>
+    <div class="stat-item"><div class="stat-num">Google</div><div class="stat-label">廣告 &amp; SEO 優化</div></div>
+    <div class="stat-item"><div class="stat-num">免費</div><div class="stat-label">報價洽詢</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">服務項目</div>
+    <h2>一站式<span class="accent">網站 &amp; 品牌</span>服務</h2>
+    <p class="section-lead">金語廣告提供從網站建置到品牌視覺的全套服務，無論是微型創業或中小企業，都能以合理的預算打造專業的品牌形象與網路存在。</p>
+    <div class="cards-grid">
+      <div class="svc-card">
+        <div class="sc-icon">💻</div>
+        <div class="sc-title">RWD 響應式網頁設計</div>
+        <div class="sc-desc">設計兼顧電腦、平板及手機的響應式官方網站，頁面自動適配各種螢幕尺寸，提升使用者體驗並有利 SEO 搜尋排名。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🎨</div>
+        <div class="sc-title">品牌規劃 &amp; LOGO 設計</div>
+        <div class="sc-desc">從品牌定位、LOGO設計到色彩計畫，協助企業建立統一的品牌識別系統，打造令人印象深刻的品牌視覺形象。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🏢</div>
+        <div class="sc-title">CIS 企業識別設計</div>
+        <div class="sc-desc">企業識別系統（CIS）規劃設計，包括名片、信封信紙、制服、辦公室裝潢等，確保品牌形象在各種場合保持一致。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📣</div>
+        <div class="sc-title">Google 關鍵字廣告</div>
+        <div class="sc-desc">Google Ads 關鍵字廣告策略規劃與管理，精準投放廣告至目標客群，提升曝光率與轉換率，最大化廣告投資回報。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">🔍</div>
+        <div class="sc-title">SEO 關鍵字優化</div>
+        <div class="sc-desc">網站 SEO 搜尋引擎優化服務，透過關鍵字研究、內容優化及技術改善，提升網站在 Google 搜尋結果中的自然排名。</div>
+      </div>
+      <div class="svc-card">
+        <div class="sc-icon">📸</div>
+        <div class="sc-title">商業攝影</div>
+        <div class="sc-desc">專業商業攝影服務，包括公司形象攝影、產品攝影及環境攝影，為企業網站及行銷素材提供高品質的視覺內容。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-tag">聯絡我們</div>
+    <h2>網站設計<span class="accent">洽詢報價</span></h2>
+    <p class="section-lead">歡迎來電或電郵洽詢，金語設計團隊將為您提供免費諮詢及專屬報價，協助您以最佳方案建立品牌網站。</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">服務電話</div>
+            <div class="ci-value"><a href="tel:+886266057030">02-6605-7030</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">服務信箱</div>
+            <div class="ci-value"><a href="mailto:jinyuservice@gmail.com">jinyuservice@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">公司地址</div>
+            <div class="ci-value">新北市板橋區大同街8巷43號</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🕐</div>
+          <div>
+            <div class="ci-label">營業時間</div>
+            <div class="ci-value">週一至週五 09:00–18:30</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>網站設計洽詢</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group"><label>公司 / 姓名</label><input type="text" placeholder="貴公司名稱或姓名"></div>
+            <div class="form-group"><label>聯絡電話</label><input type="tel" placeholder="02-XXXX XXXX"></div>
+          </div>
+          <div class="form-group"><label>電子信箱</label><input type="email" placeholder="your@email.com"></div>
+          <div class="form-group"><label>服務類別</label>
+            <select>
+              <option value="">請選擇</option>
+              <option>RWD響應式網頁設計</option>
+              <option>品牌規劃 / LOGO設計</option>
+              <option>CIS企業識別設計</option>
+              <option>Google關鍵字廣告</option>
+              <option>SEO關鍵字優化</option>
+              <option>商業攝影</option>
+              <option>虛擬主機管理</option>
+              <option>其他洽詢</option>
+            </select>
+          </div>
+          <div class="form-group"><label>需求說明</label><textarea placeholder="請描述您的網站或品牌設計需求、預算及時程，我們將盡快回覆..."></textarea></div>
+          <button type="submit" class="form-submit">送出洽詢</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">金語廣告有限公司 · 新北市板橋</div>
+    <div class="footer-copy">© 2025 金語廣告有限公司 · 統編：83410846 · Tel: 02-6605-7030</div>
+    <div class="footer-links"><a href="#services">服務</a><a href="#contact">聯絡</a></div>
+  </div>
+</footer>
+</body>
+</html>
