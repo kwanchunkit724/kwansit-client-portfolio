@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Grand Hyatt Hong Kong | Dining & Restaurants</title>
+<meta name="description" content="Experience extraordinary dining at Grand Hyatt Hong Kong — from Michelin-recognised Cantonese cuisine to Italian, international, and signature cocktail experiences in the heart of Wan Chai."/>
+<style>
+:root{
+  --bg:#050608;
+  --surface:#0c0e12;
+  --card:#111318;
+  --border:#1e2128;
+  --accent:#c8902a;
+  --accent2:#2a70c8;
+  --text:#f0f0ee;
+  --muted:#8a8c90;
+  --radius:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,6,8,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:1.1rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);}
+.nav-logo span{color:var(--text);}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:600;letter-spacing:0.06em;transition:opacity 0.2s;}
+.nav-cta:hover{opacity:0.85;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:64px;}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 60% at 20% 40%,rgba(200,144,42,0.10) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 50% at 80% 60%,rgba(42,112,200,0.08) 0%,transparent 60%),
+  linear-gradient(160deg,#050608 0%,#080a10 60%,#050608 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(200,144,42,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,144,42,0.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center;position:relative;z-index:2;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(200,144,42,0.12);border:1px solid rgba(200,144,42,0.25);border-radius:20px;padding:0.3rem 1rem;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;}
+.hero h1{font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:800;line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.5rem;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:520px;margin-bottom:2.5rem;line-height:1.7;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 2rem;border-radius:8px;font-weight:700;font-size:0.95rem;letter-spacing:0.04em;transition:opacity 0.2s;}
+.btn-primary:hover{opacity:0.85;}
+.btn-secondary{border:1px solid var(--border);color:var(--text);padding:0.75rem 2rem;border-radius:8px;font-weight:600;font-size:0.95rem;transition:border-color 0.2s;}
+.btn-secondary:hover{border-color:var(--accent);}
+.hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.hero-card-title{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.7rem 0;border-bottom:1px solid var(--border);}
+.info-row:last-child{border-bottom:none;}
+.info-icon{width:32px;height:32px;border-radius:7px;background:rgba(200,144,42,0.12);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.info-label{font-size:0.72rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.2rem;}
+.info-val{font-size:0.9rem;font-weight:600;}
+.info-val a{color:var(--accent);}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stats-inner{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
+.stat{text-align:center;padding:1rem;}
+.stat-num{font-size:2rem;font-weight:800;color:var(--accent);line-height:1;}
+.stat-label{font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.4rem;}
+
+/* SECTIONS */
+section{padding:5rem 0;}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.section-tag{display:inline-block;background:rgba(200,144,42,0.12);border:1px solid rgba(200,144,42,0.2);border-radius:20px;padding:0.3rem 1rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.section-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;line-height:1.2;margin-bottom:0.75rem;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.7;}
+.section-header{margin-bottom:3rem;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-highlight{background:linear-gradient(135deg,rgba(200,144,42,0.08),rgba(42,112,200,0.06));border:1px solid rgba(200,144,42,0.18);border-radius:12px;padding:1.8rem;margin-bottom:2rem;}
+.about-highlight p{font-size:1.05rem;line-height:1.8;color:var(--text);}
+.about-body p{color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+.prop-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;}
+.prop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;}
+.prop-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.prop-name{font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;}
+.prop-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+.about-awards{margin-top:1.5rem;}
+.award-item{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid var(--border);}
+.award-item:last-child{border-bottom:none;}
+.award-badge{width:28px;height:28px;border-radius:50%;background:rgba(200,144,42,0.15);display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;}
+.award-text{font-size:0.85rem;color:var(--muted);}
+.award-text strong{color:var(--text);}
+
+/* DINING CARDS */
+.dining-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.dining-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.25s;}
+.dining-card:hover{border-color:rgba(200,144,42,0.35);transform:translateY(-3px);}
+.dining-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s;}
+.dining-card:hover::after{opacity:1;}
+.dining-type{display:inline-block;background:rgba(200,144,42,0.12);border:1px solid rgba(200,144,42,0.2);border-radius:20px;padding:0.2rem 0.75rem;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.dining-name{font-size:1.2rem;font-weight:700;margin-bottom:0.5rem;}
+.dining-desc{font-size:0.87rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;}
+.dining-meta{display:flex;flex-direction:column;gap:0.3rem;}
+.dining-meta span{font-size:0.78rem;color:var(--muted);}
+.dining-meta span strong{color:var(--text);}
+.dining-badge{display:inline-block;background:rgba(42,112,200,0.12);border:1px solid rgba(42,112,200,0.2);border-radius:4px;padding:0.15rem 0.5rem;font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);margin-top:0.5rem;}
+
+/* EXPERIENCES */
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.exp-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;transition:border-color 0.25s;}
+.exp-card:hover{border-color:rgba(42,112,200,0.35);}
+.exp-icon{font-size:2rem;margin-bottom:1rem;}
+.exp-name{font-size:1.05rem;font-weight:700;margin-bottom:0.4rem;}
+.exp-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+
+/* LOCATION */
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.location-info{}
+.location-block{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-bottom:1rem;}
+.loc-label{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;}
+.loc-val{font-size:0.95rem;line-height:1.6;}
+.loc-val a{color:var(--accent2);}
+.transport-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-top:0.5rem;}
+.transport-list li{display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--muted);}
+.transport-list li::before{content:'→';color:var(--accent);}
+.map-placeholder{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:3rem 2rem;text-align:center;}
+.map-pin{font-size:3rem;margin-bottom:1rem;}
+.map-address{font-size:0.9rem;color:var(--muted);line-height:1.6;}
+.map-address strong{color:var(--text);display:block;font-size:1rem;margin-bottom:0.3rem;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-block{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-title{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.5rem;}
+.contact-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 0;border-bottom:1px solid var(--border);}
+.contact-item:last-child{border-bottom:none;}
+.contact-icon{width:38px;height:38px;border-radius:8px;background:rgba(200,144,42,0.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.contact-detail{}
+.contact-type{font-size:0.72rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.2rem;}
+.contact-val{font-size:0.95rem;font-weight:600;}
+.contact-val a{color:var(--accent);}
+.hrs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:0.5rem;}
+.hrs-item{background:rgba(200,144,42,0.06);border:1px solid rgba(200,144,42,0.12);border-radius:6px;padding:0.6rem 0.8rem;}
+.hrs-venue{font-size:0.75rem;font-weight:700;color:var(--accent);margin-bottom:0.2rem;}
+.hrs-time{font-size:0.75rem;color:var(--muted);}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem 0 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-brand{}
+.footer-logo{font-size:1.1rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+.footer-logo span{color:var(--text);}
+.footer-desc{font-size:0.85rem;color:var(--muted);line-height:1.7;max-width:300px;}
+.footer-col h4{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col ul li a{font-size:0.88rem;color:var(--muted);transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--accent);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+.footer-brand-tag{font-size:0.8rem;color:var(--muted);}
+.footer-brand-tag span{color:var(--accent);}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.dining-grid,.exp-grid,.contact-grid,.location-grid,.footer-top{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:repeat(3,1fr);}
+  .prop-cards{grid-template-columns:1fr;}
+  .hrs-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Grand Hyatt <span>Hong Kong</span></div>
+    <div class="nav-links">
+      <a href="#dining">Dining</a>
+      <a href="#experiences">Experiences</a>
+      <a href="#location">Location</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="mailto:fbsc.hkggh@hyatt.com" class="nav-cta">Reserve a Table</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">⭐ Iconic Harbour-View Dining · Wan Chai</div>
+      <h1>Extraordinary <em>Dining</em> in the Heart of Hong Kong</h1>
+      <p class="hero-sub">From Michelin-recognised Cantonese cuisine to Italian fine dining and vibrant international fare — Grand Hyatt Hong Kong offers an unparalleled collection of restaurants, bars, and private dining experiences overlooking Victoria Harbour.</p>
+      <div class="hero-btns">
+        <a href="mailto:fbsc.hkggh@hyatt.com" class="btn-primary">Reserve a Table</a>
+        <a href="#dining" class="btn-secondary">Explore Restaurants</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">📍 Venue Information</div>
+      <div class="info-row">
+        <div class="info-icon">🏨</div>
+        <div>
+          <div class="info-label">Hotel</div>
+          <div class="info-val">Grand Hyatt Hong Kong</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Address</div>
+          <div class="info-val">1 Harbour Road, Wan Chai, Hong Kong</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">Phone</div>
+          <div class="info-val"><a href="tel:+85225881234">+852 2588 1234</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">F&B Reservations</div>
+          <div class="info-val"><a href="mailto:fbsc.hkggh@hyatt.com">fbsc.hkggh@hyatt.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">Website</div>
+          <div class="info-val"><a href="https://www.hyatt.com/grand-hyatt/en-US/hkggh" target="_blank">hyatt.com/grand-hyatt/hkggh</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">6+</div>
+      <div class="stat-label">Restaurants & Bars</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">572</div>
+      <div class="stat-label">Rooms & Suites</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">Years in Hong Kong</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">⭐</div>
+      <div class="stat-label">Michelin-Recognised</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">180°</div>
+      <div class="stat-label">Harbour View</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">About</div>
+        <h2 class="section-title">Hong Kong's Premier Hotel Dining Destination</h2>
+        <div class="about-highlight">
+          <p>Grand Hyatt Hong Kong stands as one of the city's most iconic luxury hotels, located on the Wan Chai waterfront with sweeping views of Victoria Harbour. Its collection of restaurants and bars has long been a destination in its own right — drawing discerning diners, business travellers, and food lovers from across Asia and beyond.</p>
+        </div>
+        <div class="about-body">
+          <p>Opened in 1989, Grand Hyatt Hong Kong has built a reputation for culinary excellence across multiple dining concepts under one roof. From the refined Cantonese artistry of One Harbour Road to the convivial energy of the Grand Café and the sophistication of its iconic Champagne Bar, every venue offers a distinctive experience.</p>
+          <p>The hotel's Food & Beverage team specialises in tailored private dining, corporate events, and celebratory occasions — with dedicated event spaces ranging from intimate private rooms to grand ballroom experiences overlooking the harbour.</p>
+        </div>
+      </div>
+      <div>
+        <div class="prop-cards">
+          <div class="prop-card">
+            <div class="prop-icon">🍽️</div>
+            <div class="prop-name">Fine Dining</div>
+            <div class="prop-desc">Michelin-recognised restaurants with exceptional cuisine and harbour views</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🥂</div>
+            <div class="prop-name">Champagne Bar</div>
+            <div class="prop-desc">Iconic cocktail and champagne lounge — a Hong Kong institution since 1989</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🎪</div>
+            <div class="prop-name">Private Events</div>
+            <div class="prop-desc">Bespoke banqueting and corporate dining for up to hundreds of guests</div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-icon">🌅</div>
+            <div class="prop-name">Harbour Views</div>
+            <div class="prop-desc">Unobstructed 180° vistas of Victoria Harbour and the Kowloon skyline</div>
+          </div>
+        </div>
+        <div class="about-awards">
+          <div class="award-item">
+            <div class="award-badge">⭐</div>
+            <div class="award-text"><strong>Michelin Guide Hong Kong</strong> — One Harbour Road recognised for Cantonese excellence</div>
+          </div>
+          <div class="award-item">
+            <div class="award-badge">🏆</div>
+            <div class="award-text"><strong>Forbes Travel Guide</strong> — Five-Star hotel with distinguished F&B programme</div>
+          </div>
+          <div class="award-item">
+            <div class="award-badge">🌟</div>
+            <div class="award-text"><strong>AAA Five Diamond</strong> — Consistently rated among Asia's finest luxury hotels</div>
+          </div>
+          <div class="award-item">
+            <div class="award-badge">🏅</div>
+            <div class="award-text"><strong>Condé Nast Traveller</strong> — Perennial listing in Gold List and Readers' Choice</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DINING -->
+<section id="dining" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Restaurants & Bars</div>
+      <h2 class="section-title">Six Distinctive Dining Experiences</h2>
+      <p class="section-sub">Every restaurant at Grand Hyatt Hong Kong has been crafted to deliver a unique culinary journey — whether you're seeking classic Cantonese dim sum, Italian pasta, or a nightcap with panoramic harbour views.</p>
+    </div>
+    <div class="dining-grid">
+      <div class="dining-card">
+        <div class="dining-type">Cantonese Fine Dining</div>
+        <div class="dining-name">One Harbour Road</div>
+        <div class="dining-desc">Grand Hyatt Hong Kong's flagship Cantonese restaurant, celebrated for its refined dim sum, masterful Cantonese roast dishes, and sweeping Victoria Harbour views from the 8th floor. A perennial Michelin-recognised institution in the city's dining scene.</div>
+        <div class="dining-meta">
+          <span><strong>Signature:</strong> Dim Sum, Cantonese Roast, Seafood</span>
+          <span><strong>Location:</strong> 8/F, Grand Hyatt Hong Kong</span>
+        </div>
+        <div class="dining-badge">Michelin Recognised</div>
+      </div>
+      <div class="dining-card">
+        <div class="dining-type">Italian Fine Dining</div>
+        <div class="dining-name">Grissini</div>
+        <div class="dining-desc">Hong Kong's long-standing Italian fine dining favourite, featuring authentic regional Italian cuisine in an elegant, art-filled dining room. Known for its handmade pasta, premium imported ingredients, and extensive Italian wine cellar.</div>
+        <div class="dining-meta">
+          <span><strong>Signature:</strong> Handmade Pasta, Risotto, Tiramisu</span>
+          <span><strong>Location:</strong> 2/F, Grand Hyatt Hong Kong</span>
+        </div>
+        <div class="dining-badge">Awarded Wine List</div>
+      </div>
+      <div class="dining-card">
+        <div class="dining-type">All-Day International</div>
+        <div class="dining-name">Grand Café</div>
+        <div class="dining-desc">A beloved all-day dining destination offering a lavish international buffet spread alongside à la carte options. Grand Café is known for its legendary Sunday brunch — an indulgent spread of fresh seafood, live cooking stations, and desserts.</div>
+        <div class="dining-meta">
+          <span><strong>Signature:</strong> Sunday Brunch, Seafood, Live Stations</span>
+          <span><strong>Location:</strong> Lobby Level, Grand Hyatt Hong Kong</span>
+        </div>
+        <div class="dining-badge">Famous Sunday Brunch</div>
+      </div>
+      <div class="dining-card">
+        <div class="dining-type">Steakhouse</div>
+        <div class="dining-name">The Grill by Hyatt</div>
+        <div class="dining-desc">A classic steakhouse experience featuring premium dry-aged and wagyu cuts, grilled to perfection over open flame. Complemented by an extensive whisky and wine programme and intimate, club-like atmosphere.</div>
+        <div class="dining-meta">
+          <span><strong>Signature:</strong> Wagyu, Dry-Aged Beef, Seafood Tower</span>
+          <span><strong>Location:</strong> Grand Hyatt Hong Kong</span>
+        </div>
+        <div class="dining-badge">Premium Steaks</div>
+      </div>
+      <div class="dining-card">
+        <div class="dining-type">Champagne & Cocktail Bar</div>
+        <div class="dining-name">Champagne Bar</div>
+        <div class="dining-desc">One of Hong Kong's most iconic bars, celebrated for its unrivalled champagne selection — over 80 champagne labels — alongside signature cocktails and live entertainment. A favourite after-work and evening destination since the hotel's opening in 1989.</div>
+        <div class="dining-meta">
+          <span><strong>Signature:</strong> Champagne, Classic Cocktails, Live Music</span>
+          <span><strong>Location:</strong> Lobby Level, Grand Hyatt Hong Kong</span>
+        </div>
+        <div class="dining-badge">80+ Champagnes</div>
+      </div>
+      <div class="dining-card">
+        <div class="dining-type">Wellness Café</div>
+        <div class="dining-name">Plateau Spa Café</div>
+        <div class="dining-desc">Adjacent to the award-winning Plateau Spa, this serene café offers health-conscious cuisine, cold-pressed juices, herbal teas, and light bites designed to complement the wellness experience. Perfect for post-spa refreshment or a peaceful morning retreat.</div>
+        <div class="dining-meta">
+          <span><strong>Signature:</strong> Healthy Bowls, Juices, Herbal Infusions</span>
+          <span><strong>Location:</strong> Plateau Spa, Grand Hyatt Hong Kong</span>
+        </div>
+        <div class="dining-badge">Spa & Wellness</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section id="experiences">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Dining Experiences</div>
+      <h2 class="section-title">Beyond the Restaurant</h2>
+      <p class="section-sub">Grand Hyatt Hong Kong's F&B team creates bespoke experiences for every occasion — from intimate private dinners to large-scale corporate galas.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="exp-icon">🎂</div>
+        <div class="exp-name">Private Dining</div>
+        <div class="exp-desc">Exclusive private dining rooms available at One Harbour Road and Grissini, accommodating from 8 to 60 guests for intimate celebrations, corporate dinners, and milestone events with personalised menus.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🥂</div>
+        <div class="exp-name">Champagne Brunches</div>
+        <div class="exp-desc">Grand Café's legendary Sunday champagne brunch features unlimited champagne, fresh oysters, live carving stations, and artisanal desserts — a weekly celebration loved by Hong Kong families and visitors alike.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🌸</div>
+        <div class="exp-name">Seasonal & Festive Menus</div>
+        <div class="exp-desc">Special menus crafted for Chinese New Year, Mid-Autumn Festival, Christmas, and Valentine's Day — highlighting seasonal ingredients and traditional recipes reimagined by the hotel's executive chefs.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🏢</div>
+        <div class="exp-name">Corporate Events</div>
+        <div class="exp-desc">Full-service catering for business functions from boardroom lunches to gala dinners, with dedicated event coordinators, audiovisual support, and customised menus for groups of 20 to 1,000.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🍷</div>
+        <div class="exp-name">Wine & Sake Dinners</div>
+        <div class="exp-desc">Curated wine pairing dinners hosted throughout the year, featuring visiting winemakers, sommelier-led tastings, and exclusive multi-course menus designed to complement fine wine and sake selections.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🎁</div>
+        <div class="exp-name">Takeaway & Gift Hampers</div>
+        <div class="exp-desc">Signature mooncake collections, Chinese New Year gift sets, premium festive hampers, and takeaway delicacies from One Harbour Road — available seasonally and for corporate gifting year-round.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Location</div>
+      <h2 class="section-title">Perfectly Situated in Wan Chai</h2>
+      <p class="section-sub">Grand Hyatt Hong Kong enjoys a prime waterfront address in the heart of Wan Chai, steps from the Hong Kong Convention and Exhibition Centre and easily accessible from across the city.</p>
+    </div>
+    <div class="location-grid">
+      <div class="location-info">
+        <div class="location-block">
+          <div class="loc-label">📍 Address</div>
+          <div class="loc-val">1 Harbour Road, Wan Chai<br/>Hong Kong SAR, China</div>
+        </div>
+        <div class="location-block">
+          <div class="loc-label">🚇 Getting Here</div>
+          <ul class="transport-list">
+            <li>MTR: Wan Chai Station (Exit A5) — 5-min walk</li>
+            <li>Airport Express: Hong Kong Station → taxi (15 min)</li>
+            <li>Kowloon: Star Ferry to Wan Chai or cross-harbour taxi</li>
+            <li>Complimentary hotel shuttle from major transit hubs</li>
+          </ul>
+        </div>
+        <div class="location-block">
+          <div class="loc-label">🏙️ Nearby</div>
+          <div class="loc-val">Hong Kong Convention & Exhibition Centre (adjacent), Golden Bauhinia Square, Wan Chai Arts Hub, Victoria Harbour Promenade</div>
+        </div>
+      </div>
+      <div class="map-placeholder">
+        <div class="map-pin">📍</div>
+        <div class="map-address">
+          <strong>Grand Hyatt Hong Kong</strong>
+          1 Harbour Road, Wan Chai<br/>
+          Hong Kong SAR, China<br/><br/>
+          Tel: +852 2588 1234<br/>
+          Reservations: fbsc.hkggh@hyatt.com
+        </div>
+        <br/>
+        <div class="hrs-grid">
+          <div class="hrs-item">
+            <div class="hrs-venue">One Harbour Road</div>
+            <div class="hrs-time">Lunch: 12:00–14:30<br/>Dinner: 18:30–22:30</div>
+          </div>
+          <div class="hrs-item">
+            <div class="hrs-venue">Grissini</div>
+            <div class="hrs-time">Dinner: 18:30–22:30<br/>Mon–Sat</div>
+          </div>
+          <div class="hrs-item">
+            <div class="hrs-venue">Grand Café</div>
+            <div class="hrs-time">06:30–22:30<br/>Daily</div>
+          </div>
+          <div class="hrs-item">
+            <div class="hrs-venue">Champagne Bar</div>
+            <div class="hrs-time">17:00–01:00<br/>Daily</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Contact & Reservations</div>
+      <h2 class="section-title">Make a Reservation</h2>
+      <p class="section-sub">Contact our Food & Beverage team directly for restaurant reservations, private dining enquiries, and event planning.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <div class="contact-title">🍽️ Dining Reservations</div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-detail">
+            <div class="contact-type">F&B Reservations Email</div>
+            <div class="contact-val"><a href="mailto:fbsc.hkggh@hyatt.com">fbsc.hkggh@hyatt.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail">
+            <div class="contact-type">Hotel Main Line</div>
+            <div class="contact-val"><a href="tel:+85225881234">+852 2588 1234</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div class="contact-detail">
+            <div class="contact-type">Website</div>
+            <div class="contact-val"><a href="https://www.hyatt.com/grand-hyatt/en-US/hkggh" target="_blank">hyatt.com · Grand Hyatt Hong Kong</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail">
+            <div class="contact-type">Address</div>
+            <div class="contact-val">1 Harbour Road, Wan Chai, Hong Kong</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-title">🎪 Events & Private Dining</div>
+        <div class="contact-item">
+          <div class="contact-icon">🏢</div>
+          <div class="contact-detail">
+            <div class="contact-type">Corporate Events</div>
+            <div class="contact-val">Contact F&B Sales & Catering team for group enquiries</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🥂</div>
+          <div class="contact-detail">
+            <div class="contact-type">Private Dining</div>
+            <div class="contact-val">One Harbour Road private rooms — seats 8 to 60 guests</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🎁</div>
+          <div class="contact-detail">
+            <div class="contact-type">Festive & Gift Orders</div>
+            <div class="contact-val">Mooncakes, hampers, and festive sets via hotel directly</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌟</div>
+          <div class="contact-detail">
+            <div class="contact-type">Hyatt World Rewards</div>
+            <div class="contact-val">World of Hyatt members enjoy dining benefits and points</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Grand Hyatt <span>Hong Kong</span></div>
+        <p class="footer-desc">An iconic luxury hotel at the heart of Hong Kong's Wan Chai waterfront, offering an extraordinary collection of restaurants, bars, and dining experiences celebrating Cantonese, Italian, and international cuisine.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Dining</h4>
+        <ul>
+          <li><a href="#dining">One Harbour Road</a></li>
+          <li><a href="#dining">Grissini</a></li>
+          <li><a href="#dining">Grand Café</a></li>
+          <li><a href="#dining">The Grill</a></li>
+          <li><a href="#dining">Champagne Bar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+85225881234">+852 2588 1234</a></li>
+          <li><a href="mailto:fbsc.hkggh@hyatt.com">fbsc.hkggh@hyatt.com</a></li>
+          <li><a href="#">1 Harbour Road, Wan Chai</a></li>
+          <li><a href="https://www.hyatt.com/grand-hyatt/en-US/hkggh" target="_blank">hyatt.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Grand Hyatt Hong Kong · Hyatt Hotels Corporation</div>
+      <div class="footer-brand-tag">Part of <span>World of Hyatt</span></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
