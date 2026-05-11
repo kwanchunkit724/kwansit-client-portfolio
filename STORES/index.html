@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stores | Retail | Hong Kong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;400;500;700;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#1A3A6B;
+  --secondary:#E8631A;
+  --accent:#F0F4FF;
+  --text:#1A2840;
+  --gradient:linear-gradient(135deg,#1A3A6B 0%,#2D6AA0 100%);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans HK',sans-serif;color:var(--text);background:#fff;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.08);padding:0 5%}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1200px;margin:0 auto}
+.nav-logo{font-size:1.15rem;font-weight:700;color:var(--primary);letter-spacing:-.5px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text);font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--secondary)}
+.nav-cta{background:var(--gradient);color:#fff;padding:10px 24px;border-radius:25px;font-size:.9rem;font-weight:600;text-decoration:none;transition:opacity .2s;white-space:nowrap}
+.nav-cta:hover{opacity:.88}
+@media(max-width:768px){.nav-links{display:none}}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--gradient);position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 5% 60px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:50px;padding:7px 20px;font-size:.82rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:clamp(2rem,5vw,3.8rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:16px;text-shadow:0 2px 20px rgba(0,0,0,.25)}
+.hero-tagline{font-size:clamp(.95rem,2vw,1.2rem);color:rgba(255,255,255,.88);margin-bottom:12px;font-weight:400}
+.hero-tagline-en{font-size:.9rem;color:rgba(255,255,255,.65);margin-bottom:36px;font-style:italic}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:#fff;color:var(--primary);padding:15px 36px;border-radius:50px;font-size:1rem;font-weight:700;text-decoration:none;transition:all .25s;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.2)}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.7);padding:14px 36px;border-radius:50px;font-size:1rem;font-weight:600;text-decoration:none;transition:all .25s}
+.btn-outline:hover{background:rgba(255,255,255,.15)}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-size:.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--secondary);margin-bottom:12px}
+.section-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--primary);margin-bottom:12px;line-height:1.25}
+.section-title-en{font-size:clamp(1rem,2vw,1.4rem);font-weight:600;color:var(--secondary);margin-bottom:40px}
+.divider{width:60px;height:4px;background:var(--gradient);border-radius:2px;margin:16px 0 40px}
+
+/* SERVICES */
+#services{background:var(--accent)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:28px}
+.service-card{background:#fff;border-radius:16px;padding:32px 28px;box-shadow:0 4px 24px rgba(0,0,0,.06);transition:all .3s;border-top:4px solid var(--secondary)}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.12)}
+.service-icon{font-size:2.4rem;margin-bottom:16px}
+.service-card h3{font-size:1.1rem;font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.3}
+.en-sub{display:block;font-size:.78rem;font-weight:500;color:var(--secondary);margin-top:3px}
+.service-card p{font-size:.88rem;color:#555;line-height:1.65;margin-bottom:8px}
+.en-text{color:#888;font-size:.8rem;font-style:italic}
+
+/* ABOUT */
+#about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:40px}}
+.about-visual{background:var(--gradient);border-radius:20px;min-height:320px;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden}
+.about-visual::after{content:'';position:absolute;bottom:-20px;right:-20px;width:160px;height:160px;background:rgba(255,255,255,.1);border-radius:50%}
+.about-text h2{font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;color:var(--primary);margin-bottom:8px}
+.about-text h2 span{color:var(--secondary)}
+.about-text p{font-size:.92rem;color:#555;line-height:1.8;margin-bottom:16px}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.stat{text-align:center;background:var(--accent);border-radius:12px;padding:16px 8px}
+.stat-num{font-size:1.6rem;font-weight:900;color:var(--secondary);display:block}
+.stat-label{font-size:.75rem;color:#666;margin-top:4px}
+
+/* ADVANTAGES */
+#advantages{background:var(--accent)}
+.adv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px}
+.adv-item{background:#fff;border-radius:14px;padding:24px 20px;display:flex;align-items:flex-start;gap:16px;box-shadow:0 3px 18px rgba(0,0,0,.05)}
+.adv-icon{font-size:1.8rem;flex-shrink:0}
+.adv-item strong{font-size:.95rem;color:var(--primary);display:block;margin-bottom:4px}
+.adv-item small{color:#666;font-size:.8rem}
+
+/* CONTACT */
+#contact{background:var(--gradient)}
+#contact .section-label{color:rgba(255,255,255,.7)}
+#contact .section-title{color:#fff}
+#contact .section-title-en{color:rgba(255,255,255,.75)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:40px}}
+.contact-info p{color:rgba(255,255,255,.85);font-size:.92rem;line-height:1.8;margin-bottom:24px}
+.contact-btns{display:flex;flex-direction:column;gap:14px}
+.contact-btn{display:flex;align-items:center;gap:12px;padding:16px 24px;border-radius:12px;font-size:.95rem;font-weight:600;text-decoration:none;transition:all .25s}
+.wa-btn{background:#25D366;color:#fff}
+.wa-btn:hover{background:#1ebe5d;transform:translateX(4px)}
+.phone-btn{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.phone-btn:hover{background:rgba(255,255,255,.28)}
+.email-btn{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.email-btn:hover{background:rgba(255,255,255,.28)}
+.contact-map{background:rgba(255,255,255,.12);border-radius:16px;padding:32px;color:#fff}
+.contact-map h3{font-size:1.1rem;font-weight:700;margin-bottom:20px}
+.contact-map ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.contact-map li{display:flex;align-items:flex-start;gap:12px;font-size:.88rem;color:rgba(255,255,255,.85)}
+
+/* FOOTER */
+footer{background:rgba(0,0,0,.85);color:rgba(255,255,255,.6);text-align:center;padding:32px 5%;font-size:.82rem}
+footer strong{color:rgba(255,255,255,.85)}
+footer a{color:var(--secondary);text-decoration:none}
+
+/* SCROLL ANIMATION */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Stores</div>
+    <ul class="nav-links">
+      <li><a href="#services">服務</a></li>
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#advantages">優勢</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">立即聯絡</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content fade-in">
+    <div class="hero-badge">Retail · Hong Kong, Hong Kong</div>
+    <h1>Stores</h1>
+    <p class="hero-tagline">品質生活，從選擇開始</p>
+    <p class="hero-tagline-en">Quality Life Starts with the Right Choice</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary">了解我們的服務</a>
+      <a href="#contact" class="btn-outline">立即聯絡我們</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label fade-in">Our Services · 我們的服務</p>
+    <h2 class="section-title fade-in">專業服務一覽</h2>
+    <h3 class="section-title-en fade-in">What We Offer</h3>
+    <div class="divider fade-in"></div>
+    <div class="services-grid">
+      
+        <div class="service-card">
+            <div class="service-icon">🛍️</div>
+            <h3>精品選購<span class="en-sub">Premium Selection</span></h3>
+            <p>匯聚本地及國際知名品牌，精心策展，為您呈現多元化的優質商品選擇。</p>
+            <p class="en-text">Curating local and international brands to offer you a diverse range of quality products.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🎁</div>
+            <h3>禮品訂製<span class="en-sub">Custom Gifts</span></h3>
+            <p>提供個人化禮品訂製服務，為您的重要時刻留下獨一無二的美好記憶。</p>
+            <p class="en-text">Personalised gift customisation for your special moments and corporate needs.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🚚</div>
+            <h3>送貨服務<span class="en-sub">Delivery Service</span></h3>
+            <p>提供本地及海外送貨服務，方便快捷，讓您安坐家中輕鬆購物。</p>
+            <p class="en-text">Local and international delivery services for convenient shopping from home.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">💎</div>
+            <h3>VIP 會員<span class="en-sub">VIP Membership</span></h3>
+            <p>尊享會員計劃，提供專屬折扣、優先服務及限定優惠，寵愛每位貴賓。</p>
+            <p class="en-text">Exclusive membership with special discounts, priority service, and member-only offers.</p>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual fade-in">🏢</div>
+      <div class="about-text fade-in">
+        <p class="section-label">About Us · 關於我們</p>
+        <h2>關於 <span>Stores</span></h2>
+        <div class="divider"></div>
+        <p>
+          Stores 於香港成立，致力為客戶提供高水準的Retail服務。
+          我們的專業團隊憑藉多年豐富經驗，深入了解香港市場動態，為客戶度身定製最合適的解決方案。
+        </p>
+        <p>
+          Founded in Hong Kong, Stores is dedicated to delivering premium Retail services.
+          Our experienced team understands the local market and crafts tailored solutions for each client.
+        </p>
+        <div class="about-stats">
+          <div class="stat"><span class="stat-num">10+</span><div class="stat-label">年行業經驗<br>Years Experience</div></div>
+          <div class="stat"><span class="stat-num">500+</span><div class="stat-label">服務客戶<br>Clients Served</div></div>
+          <div class="stat"><span class="stat-num">98%</span><div class="stat-label">客戶滿意度<br>Satisfaction Rate</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="advantages">
+  <div class="section-inner">
+    <p class="section-label fade-in">Why Choose Us · 為何選擇我們</p>
+    <h2 class="section-title fade-in">我們的優勢</h2>
+    <h3 class="section-title-en fade-in">Our Competitive Advantages</h3>
+    <div class="divider fade-in"></div>
+    <div class="adv-grid fade-in">
+      <div class="adv-item"><span class="adv-icon">🏆</span><div><strong>豐富行業經驗</strong><br><small>Extensive Industry Experience</small></div></div>
+<div class="adv-item"><span class="adv-icon">👥</span><div><strong>專業服務團隊</strong><br><small>Professional Service Team</small></div></div>
+<div class="adv-item"><span class="adv-icon">💯</span><div><strong>客戶至上理念</strong><br><small>Customer-First Philosophy</small></div></div>
+<div class="adv-item"><span class="adv-icon">🌟</span><div><strong>品質卓越保證</strong><br><small>Excellence Quality Guarantee</small></div></div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label fade-in">Contact Us · 聯絡我們</p>
+    <h2 class="section-title fade-in">立即聯絡</h2>
+    <h3 class="section-title-en fade-in">Get in Touch Today</h3>
+    <div class="divider fade-in"></div>
+    <div class="contact-grid">
+      <div class="contact-info fade-in">
+        <p>歡迎透過以下方式與我們聯繫。我們的專業團隊將盡快回覆您的查詢，為您提供最優質的服務。</p>
+        <p>Please feel free to reach out through any of the following channels. Our professional team will respond promptly to assist you.</p>
+        <div class="contact-btns">
+          <a href="tel:+85260282297" class="contact-btn phone-btn">📞 +852 60282297</a><a href="mailto:kck980724@gmail.com" class="contact-btn email-btn">✉️ kck980724@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-map fade-in">
+        <h3>📍 聯絡資料 Contact Information</h3>
+        <ul>
+          <li>🏢 <span>Stores<br><small>Retail · Hong Kong, Hong Kong</small></span></li>
+          <li>📞 <span>電話 Phone: +852 60282297</span></li>
+          <li>✉️ <span>電郵 Email: kck980724@gmail.com</span></li>
+          <li>🕐 <span>辦公時間 Office Hours:<br>Mon–Fri 9:00–18:00 | Sat 9:00–13:00</span></li>
+          <li>💬 <span>我們亦提供 WhatsApp 查詢服務<br>WhatsApp enquiries welcome</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <strong>Stores</strong> · Hong Kong, Hong Kong · All Rights Reserved</p>
+  <p style="margin-top:8px">Website designed by <a href="mailto:kck980724@gmail.com">Kwan's Information Technology</a> · +852 60282297</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
