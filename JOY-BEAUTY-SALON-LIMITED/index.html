@@ -3,567 +3,262 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joy Beauty Salon | 悅澤美容 | 香港</title>
-<meta name="description" content="Joy Beauty Salon Limited — 香港專業美容沙龍，提供護膚療程、美甲、眼睫毛及全身護理服務，讓您重拾肌膚光采。">
+<title>Joy Beauty Salon Limited | Beauty | Hong Kong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;400;500;700;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:       #080608;
-  --bg2:      #100810;
-  --bg3:      #180f18;
-  --pink:     #d87898;
-  --pink-lt:  #f098b8;
-  --amber:    #d4a840;
-  --amber-lt: #eccc60;
-  --text:     #f4eaf0;
-  --muted:    #a090a0;
-  --border:   rgba(216,120,152,0.18);
-  --card-bg:  rgba(255,255,255,0.035);
-  --radius:   14px;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#8B3A62;
+  --secondary:#D4A0B5;
+  --accent:#FFF5F8;
+  --text:#3D1A2A;
+  --gradient:linear-gradient(135deg,#8B3A62 0%,#C06080 100%);
 }
-*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Noto Sans HK','PingFang HK','Microsoft JhengHei',sans-serif;line-height:1.7;overflow-x:hidden}
+body{font-family:'Noto Sans HK',sans-serif;color:var(--text);background:#fff;overflow-x:hidden}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,6,8,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,64px)}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
-.nav-logo{font-size:1.15rem;font-weight:700;color:var(--pink-lt);letter-spacing:.04em}
-.nav-logo span{color:var(--amber)}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.08);padding:0 5%}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1200px;margin:0 auto}
+.nav-logo{font-size:1.15rem;font-weight:700;color:var(--primary);letter-spacing:-.5px}
 .nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
-.nav-links a:hover{color:var(--text)}
-.nav-cta{background:linear-gradient(135deg,var(--pink),var(--pink-lt));color:#fff;border:none;padding:9px 22px;border-radius:50px;font-size:.88rem;cursor:pointer;font-weight:600;text-decoration:none;white-space:nowrap;transition:opacity .2s}
+.nav-links a{text-decoration:none;color:var(--text);font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--secondary)}
+.nav-cta{background:var(--gradient);color:#fff;padding:10px 24px;border-radius:25px;font-size:.9rem;font-weight:600;text-decoration:none;transition:opacity .2s;white-space:nowrap}
 .nav-cta:hover{opacity:.88}
+@media(max-width:768px){.nav-links{display:none}}
 
-.hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(16px,4vw,64px) 60px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 65% 40%,rgba(216,120,152,0.12) 0%,transparent 65%),radial-gradient(ellipse 50% 50% at 20% 70%,rgba(212,168,64,0.07) 0%,transparent 55%);pointer-events:none}
-.hero-deco{position:absolute;top:20%;right:4%;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(216,120,152,0.1) 0%,transparent 70%);pointer-events:none}
-.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(216,120,152,0.12);border:1px solid rgba(216,120,152,0.3);border-radius:50px;padding:6px 16px;font-size:.82rem;color:var(--pink-lt);margin-bottom:20px}
-.hero-tag::before{content:'✿';font-size:.8rem}
-h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;line-height:1.15;margin-bottom:12px}
-h1 .en{display:block;font-size:clamp(1.1rem,2.5vw,1.7rem);font-weight:400;color:var(--amber);letter-spacing:.05em;margin-top:6px}
-.hero-desc{color:var(--muted);font-size:1.05rem;max-width:440px;margin:18px 0 32px}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
-.btn-primary{background:linear-gradient(135deg,var(--pink),var(--pink-lt));color:#fff;padding:13px 30px;border-radius:50px;font-size:.95rem;font-weight:700;text-decoration:none;transition:opacity .2s;display:inline-block}
-.btn-primary:hover{opacity:.88}
-.btn-outline{border:1.5px solid var(--border);color:var(--text);padding:12px 28px;border-radius:50px;font-size:.95rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}
-.btn-outline:hover{border-color:var(--pink);color:var(--pink-lt)}
+/* HERO */
+.hero{min-height:100vh;background:var(--gradient);position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 5% 60px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:50px;padding:7px 20px;font-size:.82rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:clamp(2rem,5vw,3.8rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:16px;text-shadow:0 2px 20px rgba(0,0,0,.25)}
+.hero-tagline{font-size:clamp(.95rem,2vw,1.2rem);color:rgba(255,255,255,.88);margin-bottom:12px;font-weight:400}
+.hero-tagline-en{font-size:.9rem;color:rgba(255,255,255,.65);margin-bottom:36px;font-style:italic}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:#fff;color:var(--primary);padding:15px 36px;border-radius:50px;font-size:1rem;font-weight:700;text-decoration:none;transition:all .25s;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.2)}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.7);padding:14px 36px;border-radius:50px;font-size:1rem;font-weight:600;text-decoration:none;transition:all .25s}
+.btn-outline:hover{background:rgba(255,255,255,.15)}
 
-.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:18px}
-.card-badge{display:flex;align-items:center;gap:10px;margin-bottom:4px}
-.badge-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--pink),var(--pink-lt));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
-.badge-label{font-size:.78rem;color:var(--muted)}
-.badge-name{font-size:1rem;font-weight:700}
-.card-divider{border:none;border-top:1px solid var(--border)}
-.card-row{display:flex;gap:12px;align-items:flex-start}
-.card-row-icon{width:20px;color:var(--pink);flex-shrink:0;margin-top:2px;text-align:center}
-.card-row-text{font-size:.9rem;color:var(--muted);line-height:1.55}
-.card-row-text strong{color:var(--text);display:block}
-.open-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(72,200,80,0.12);border:1px solid rgba(72,200,80,0.25);border-radius:50px;padding:5px 12px;font-size:.8rem;color:#72e080;margin-top:4px}
-.open-dot{width:7px;height:7px;border-radius:50%;background:#72e080;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-
-.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px clamp(16px,4vw,64px)}
-.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
-.stat-item{text-align:center}
-.stat-num{font-size:2.4rem;font-weight:800;background:linear-gradient(135deg,var(--pink-lt),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.stat-label{color:var(--muted);font-size:.88rem;margin-top:6px}
-
-section{padding:80px clamp(16px,4vw,64px)}
+/* SECTIONS */
+section{padding:80px 5%}
 .section-inner{max-width:1200px;margin:0 auto}
-.section-tag{display:inline-block;background:rgba(216,120,152,0.1);border:1px solid rgba(216,120,152,0.25);border-radius:50px;padding:4px 14px;font-size:.78rem;color:var(--pink-lt);letter-spacing:.05em;margin-bottom:14px}
-h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:16px;line-height:1.2}
-h2 .accent{color:var(--pink-lt)}
-.section-lead{color:var(--muted);font-size:1.02rem;max-width:600px;margin-bottom:48px}
+.section-label{font-size:.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--secondary);margin-bottom:12px}
+.section-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--primary);margin-bottom:12px;line-height:1.25}
+.section-title-en{font-size:clamp(1rem,2vw,1.4rem);font-weight:600;color:var(--secondary);margin-bottom:40px}
+.divider{width:60px;height:4px;background:var(--gradient);border-radius:2px;margin:16px 0 40px}
 
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.about-body p{color:var(--muted);font-size:.97rem;margin-bottom:16px;line-height:1.8}
-.highlight-box{background:linear-gradient(135deg,rgba(216,120,152,0.1),rgba(212,168,64,0.06));border:1px solid rgba(216,120,152,0.2);border-radius:var(--radius);padding:24px;margin:24px 0}
-.highlight-box p{color:var(--text);font-size:.97rem;line-height:1.75;font-style:italic;margin:0}
-.about-props{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.prop-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:flex;align-items:flex-start;gap:12px}
-.prop-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
-.prop-card h4{font-size:.9rem;font-weight:700;margin-bottom:4px}
-.prop-card p{font-size:.82rem;color:var(--muted);line-height:1.5}
+/* SERVICES */
+#services{background:var(--accent)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:28px}
+.service-card{background:#fff;border-radius:16px;padding:32px 28px;box-shadow:0 4px 24px rgba(0,0,0,.06);transition:all .3s;border-top:4px solid var(--secondary)}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.12)}
+.service-icon{font-size:2.4rem;margin-bottom:16px}
+.service-card h3{font-size:1.1rem;font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.3}
+.en-sub{display:block;font-size:.78rem;font-weight:500;color:var(--secondary);margin-top:3px}
+.service-card p{font-size:.88rem;color:#555;line-height:1.65;margin-bottom:8px}
+.en-text{color:#888;font-size:.8rem;font-style:italic}
 
-.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.service-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .25s,transform .25s}
-.service-card:hover{border-color:var(--pink);transform:translateY(-4px)}
-.sc-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(216,120,152,0.18),rgba(212,168,64,0.1));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:16px}
-.sc-title{font-size:1.05rem;font-weight:700;margin-bottom:8px}
-.sc-desc{font-size:.88rem;color:var(--muted);line-height:1.65}
-.sc-price{display:inline-block;margin-top:12px;font-size:.82rem;color:var(--amber);font-weight:600;background:rgba(212,168,64,0.1);border:1px solid rgba(212,168,64,0.2);border-radius:50px;padding:3px 12px}
+/* ABOUT */
+#about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:40px}}
+.about-visual{background:var(--gradient);border-radius:20px;min-height:320px;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden}
+.about-visual::after{content:'';position:absolute;bottom:-20px;right:-20px;width:160px;height:160px;background:rgba(255,255,255,.1);border-radius:50%}
+.about-text h2{font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;color:var(--primary);margin-bottom:8px}
+.about-text h2 span{color:var(--secondary)}
+.about-text p{font-size:.92rem;color:#555;line-height:1.8;margin-bottom:16px}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.stat{text-align:center;background:var(--accent);border-radius:12px;padding:16px 8px}
+.stat-num{font-size:1.6rem;font-weight:900;color:var(--secondary);display:block}
+.stat-label{font-size:.75rem;color:#666;margin-top:4px}
 
-.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.pkg-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:border-color .25s,transform .25s;position:relative}
-.pkg-card.featured{border-color:var(--pink);background:rgba(216,120,152,0.06)}
-.pkg-card:hover{border-color:var(--pink);transform:translateY(-4px)}
-.pkg-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--pink),var(--pink-lt));color:#fff;font-size:.75rem;font-weight:700;padding:4px 14px;border-radius:50px;white-space:nowrap}
-.pkg-icon{font-size:2.2rem;margin-bottom:12px}
-.pkg-name{font-size:1.1rem;font-weight:800;margin-bottom:6px}
-.pkg-price{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--pink-lt),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:10px 0}
-.pkg-price span{font-size:1rem;-webkit-text-fill-color:var(--muted);color:var(--muted)}
-.pkg-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin:16px 0;text-align:left}
-.pkg-features li{display:flex;align-items:center;gap:8px;font-size:.88rem;color:var(--muted)}
-.pkg-features li::before{content:'✓';color:var(--pink);font-weight:700;flex-shrink:0}
-.pkg-btn{display:inline-block;margin-top:8px;width:100%;background:linear-gradient(135deg,var(--pink),var(--pink-lt));color:#fff;padding:11px;border-radius:50px;font-size:.9rem;font-weight:700;text-decoration:none;transition:opacity .2s}
-.pkg-btn:hover{opacity:.88}
-.pkg-btn.outline{background:transparent;border:1.5px solid var(--border);color:var(--text)}
-.pkg-btn.outline:hover{border-color:var(--pink)}
+/* ADVANTAGES */
+#advantages{background:var(--accent)}
+.adv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px}
+.adv-item{background:#fff;border-radius:14px;padding:24px 20px;display:flex;align-items:flex-start;gap:16px;box-shadow:0 3px 18px rgba(0,0,0,.05)}
+.adv-icon{font-size:1.8rem;flex-shrink:0}
+.adv-item strong{font-size:.95rem;color:var(--primary);display:block;margin-bottom:4px}
+.adv-item small{color:#666;font-size:.8rem}
 
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.why-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center}
-.why-icon{font-size:2rem;margin-bottom:12px}
-.why-card h4{font-size:.95rem;font-weight:700;margin-bottom:8px}
-.why-card p{font-size:.83rem;color:var(--muted);line-height:1.6}
-
-.contact-section{background:var(--bg2)}
+/* CONTACT */
+#contact{background:var(--gradient)}
+#contact .section-label{color:rgba(255,255,255,.7)}
+#contact .section-title{color:#fff}
+#contact .section-title-en{color:rgba(255,255,255,.75)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-.contact-info{display:flex;flex-direction:column;gap:20px}
-.contact-item{display:flex;gap:16px;align-items:flex-start}
-.ci-icon{width:44px;height:44px;background:rgba(216,120,152,0.1);border:1px solid rgba(216,120,152,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
-.ci-label{font-size:.78rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
-.ci-value{font-size:.97rem;color:var(--text);line-height:1.6}
-.ci-value a{color:var(--pink-lt);text-decoration:none}
-.ci-value a:hover{text-decoration:underline}
-.contact-form-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:36px}
-.contact-form-wrap h3{font-size:1.3rem;font-weight:700;margin-bottom:24px}
-.form-group{margin-bottom:18px}
-.form-group label{display:block;font-size:.83rem;color:var(--muted);margin-bottom:7px}
-.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-size:.93rem;font-family:inherit;transition:border-color .2s}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--pink)}
-.form-group textarea{min-height:100px;resize:vertical}
-.form-group select option{background:#180f18}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.form-submit{width:100%;background:linear-gradient(135deg,var(--pink),var(--pink-lt));color:#fff;border:none;padding:13px;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}
-.form-submit:hover{opacity:.88}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:40px}}
+.contact-info p{color:rgba(255,255,255,.85);font-size:.92rem;line-height:1.8;margin-bottom:24px}
+.contact-btns{display:flex;flex-direction:column;gap:14px}
+.contact-btn{display:flex;align-items:center;gap:12px;padding:16px 24px;border-radius:12px;font-size:.95rem;font-weight:600;text-decoration:none;transition:all .25s}
+.wa-btn{background:#25D366;color:#fff}
+.wa-btn:hover{background:#1ebe5d;transform:translateX(4px)}
+.phone-btn{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.phone-btn:hover{background:rgba(255,255,255,.28)}
+.email-btn{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.email-btn:hover{background:rgba(255,255,255,.28)}
+.contact-map{background:rgba(255,255,255,.12);border-radius:16px;padding:32px;color:#fff}
+.contact-map h3{font-size:1.1rem;font-weight:700;margin-bottom:20px}
+.contact-map ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.contact-map li{display:flex;align-items:flex-start;gap:12px;font-size:.88rem;color:rgba(255,255,255,.85)}
 
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px clamp(16px,4vw,64px)}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
-.footer-logo{font-size:1.05rem;font-weight:700;color:var(--pink-lt)}
-.footer-logo span{color:var(--amber)}
-.footer-copy{font-size:.82rem;color:var(--muted);text-align:center}
-.footer-links{display:flex;gap:20px}
-.footer-links a{font-size:.83rem;color:var(--muted);text-decoration:none;transition:color .2s}
-.footer-links a:hover{color:var(--text)}
+/* FOOTER */
+footer{background:rgba(0,0,0,.85);color:rgba(255,255,255,.6);text-align:center;padding:32px 5%;font-size:.82rem}
+footer strong{color:rgba(255,255,255,.85)}
+footer a{color:var(--secondary);text-decoration:none}
 
-@media(max-width:900px){
-  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr}
-  .hero-deco{display:none}
-  .stats-inner,.why-grid{grid-template-columns:repeat(2,1fr)}
-  .cards-grid,.pkg-grid{grid-template-columns:1fr 1fr}
-  .about-props{grid-template-columns:1fr}
-}
-@media(max-width:600px){
-  .stats-inner{grid-template-columns:repeat(2,1fr)}
-  .cards-grid,.pkg-grid,.why-grid{grid-template-columns:1fr}
-  .nav-links{display:none}
-  .form-row{grid-template-columns:1fr}
-  .footer-inner{flex-direction:column;text-align:center}
-}
+/* SCROLL ANIMATION */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <div class="nav-logo">Joy<span> Beauty Salon</span></div>
+    <div class="nav-logo">Joy Beauty Salon Limited</div>
     <ul class="nav-links">
-      <li><a href="#about">關於</a></li>
       <li><a href="#services">服務</a></li>
-      <li><a href="#packages">套票</a></li>
-      <li><a href="#why">優勢</a></li>
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#advantages">優勢</a></li>
       <li><a href="#contact">聯絡</a></li>
     </ul>
-    <a href="tel:+85260116473" class="nav-cta">立即預約</a>
+    <a href="#contact" class="nav-cta">立即聯絡</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-deco"></div>
-  <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-tag">香港專業美容沙龍</div>
-      <h1>
-        悅澤美容
-        <span class="en">Joy Beauty Salon</span>
-      </h1>
-      <p class="hero-desc">讓每一次到訪都成為愉悅的放鬆旅程。我們提供專業護膚、美甲、眼睫毛及全身療程，為您帶來由內而外的美麗蛻變。</p>
-      <div class="hero-btns">
-        <a href="#services" class="btn-primary">探索服務</a>
-        <a href="#contact" class="btn-outline">預約查詢</a>
-      </div>
-    </div>
-    <div class="hero-card">
-      <div class="card-badge">
-        <div class="badge-icon">🌸</div>
-        <div>
-          <div class="badge-label">正式登記</div>
-          <div class="badge-name">Joy Beauty Salon Limited</div>
-        </div>
-      </div>
-      <div class="open-badge">
-        <span class="open-dot"></span>
-        歡迎預約 — 即日有位
-      </div>
-      <hr class="card-divider">
-      <div class="card-row">
-        <div class="card-row-icon">📍</div>
-        <div class="card-row-text">
-          <strong>地區</strong>
-          香港
-        </div>
-      </div>
-      <div class="card-row">
-        <div class="card-row-icon">📞</div>
-        <div class="card-row-text">
-          <strong>預約電話</strong>
-          6011 6473
-        </div>
-      </div>
-      <div class="card-row">
-        <div class="card-row-icon">✦</div>
-        <div class="card-row-text">
-          <strong>服務範疇</strong>
-          護膚療程 · 美甲 · 眼睫毛 · 美體
-        </div>
-      </div>
-      <div class="card-row">
-        <div class="card-row-icon">💎</div>
-        <div class="card-row-text">
-          <strong>品牌理念</strong>
-          悅澤於心，美麗於外
-        </div>
-      </div>
+  <div class="hero-content fade-in">
+    <div class="hero-badge">Beauty · Hong Kong, Hong Kong</div>
+    <h1>Joy Beauty Salon Limited</h1>
+    <p class="hero-tagline">綻放美麗，由內而外</p>
+    <p class="hero-tagline-en">Radiate Beauty from Within</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary">了解我們的服務</a>
+      <a href="#contact" class="btn-outline">立即聯絡我們</a>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stats-inner">
-    <div class="stat-item">
-      <div class="stat-num">6+</div>
-      <div class="stat-label">服務類別</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">專業</div>
-      <div class="stat-label">持牌美容師</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">優質</div>
-      <div class="stat-label">護膚品牌</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">香港</div>
-      <div class="stat-label">登記服務</div>
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label fade-in">Our Services · 我們的服務</p>
+    <h2 class="section-title fade-in">專業服務一覽</h2>
+    <h3 class="section-title-en fade-in">What We Offer</h3>
+    <div class="divider fade-in"></div>
+    <div class="services-grid">
+      
+        <div class="service-card">
+            <div class="service-icon">💆</div>
+            <h3>美容護理<span class="en-sub">Facial Treatments</span></h3>
+            <p>專業美容師提供全面面部護理，採用頂級護膚品牌，讓肌膚煥發自然光彩。</p>
+            <p class="en-text">Professional facials using premium skincare brands to restore your skin's natural radiance.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">💅</div>
+            <h3>美甲服務<span class="en-sub">Nail Services</span></h3>
+            <p>精緻美甲設計，結合流行趨勢與個人風格，讓您的指尖散發迷人魅力。</p>
+            <p class="en-text">Exquisite nail art designs blending current trends with personal style for stunning fingertips.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🧖</div>
+            <h3>身體護理<span class="en-sub">Body Treatments</span></h3>
+            <p>全身深層護理療程，舒緩疲勞，促進血液循環，重拾年輕活力。</p>
+            <p class="en-text">Deep body treatment programs to relieve fatigue, boost circulation, and restore vitality.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">✨</div>
+            <h3>美妝造型<span class="en-sub">Makeup Styling</span></h3>
+            <p>專業彩妝造型服務，適合婚禮、派對及各類重要場合，打造完美形象。</p>
+            <p class="en-text">Professional makeup for weddings, parties, and special occasions creating your perfect look.</p>
+        </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
     <div class="about-grid">
-      <div class="about-body">
-        <div class="section-tag">關於 Joy Beauty</div>
-        <h2>帶給您<span class="accent">愉悅</span>的美容體驗</h2>
-        <p>Joy Beauty Salon Limited 是一家在香港正式登記的專業美容沙龍，以「悅澤」為服務核心——讓每位顧客在享受專業美容服務的同時，感受到由心而生的愉悅感。</p>
-        <p>我們的專業美容師緊貼最新美容潮流與技術，定期接受培訓，確保每項服務都達到最高專業水準。無論是日常護膚、特別場合造型，還是定期美容保養，Joy Beauty Salon 都是您的最佳選擇。</p>
-        <div class="highlight-box">
-          <p>「Joy（喜悅）不只是一個名字，更是我們對每位顧客的承諾——走入我們的沙龍，帶著喜悅和美麗離開。」</p>
-        </div>
-        <div class="about-props">
-          <div class="prop-card">
-            <div class="prop-icon">🌸</div>
-            <div>
-              <h4>專業護膚技術</h4>
-              <p>採用最新護膚技術與優質產品</p>
-            </div>
-          </div>
-          <div class="prop-card">
-            <div class="prop-icon">✨</div>
-            <div>
-              <h4>個人化方案</h4>
-              <p>針對個人膚質設計專屬療程</p>
-            </div>
-          </div>
-          <div class="prop-card">
-            <div class="prop-icon">💅</div>
-            <div>
-              <h4>全面美容服務</h4>
-              <p>一站式美容，由面至全身</p>
-            </div>
-          </div>
-          <div class="prop-card">
-            <div class="prop-icon">😊</div>
-            <div>
-              <h4>輕鬆愉快環境</h4>
-              <p>舒適放鬆的沙龍環境</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:36px">
-          <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:22px">服務一覽</h3>
-          <div style="display:flex;flex-direction:column;gap:0">
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid var(--border)">
-              <span style="font-size:.95rem">🌿 面部護理療程</span>
-              <span style="color:var(--pink-lt);font-size:.82rem">潔面 · 保濕 · 提升</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid var(--border)">
-              <span style="font-size:.95rem">✨ 美白亮膚療程</span>
-              <span style="color:var(--pink-lt);font-size:.82rem">淡斑 · 均勻膚色</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid var(--border)">
-              <span style="font-size:.95rem">💅 美甲服務</span>
-              <span style="color:var(--pink-lt);font-size:.82rem">手足 · 凝膠 · 設計</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid var(--border)">
-              <span style="font-size:.95rem">🦋 眼睫毛服務</span>
-              <span style="color:var(--pink-lt);font-size:.82rem">接睫 · 燙睫 · 染眉</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid var(--border)">
-              <span style="font-size:.95rem">🕯 芳療美體護理</span>
-              <span style="color:var(--pink-lt);font-size:.82rem">精油 · 淋巴引流</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0">
-              <span style="font-size:.95rem">🎀 半永久妝容</span>
-              <span style="color:var(--pink-lt);font-size:.82rem">紋眉 · 眼線</span>
-            </div>
-          </div>
+      <div class="about-visual fade-in">🏢</div>
+      <div class="about-text fade-in">
+        <p class="section-label">About Us · 關於我們</p>
+        <h2>關於 <span>Joy Beauty Salon Limited</span></h2>
+        <div class="divider"></div>
+        <p>
+          Joy Beauty Salon Limited 於香港成立，致力為客戶提供高水準的Beauty服務。
+          我們的專業團隊憑藉多年豐富經驗，深入了解香港市場動態，為客戶度身定製最合適的解決方案。
+        </p>
+        <p>
+          Founded in Hong Kong, Joy Beauty Salon Limited is dedicated to delivering premium Beauty services.
+          Our experienced team understands the local market and crafts tailored solutions for each client.
+        </p>
+        <div class="about-stats">
+          <div class="stat"><span class="stat-num">10+</span><div class="stat-label">年行業經驗<br>Years Experience</div></div>
+          <div class="stat"><span class="stat-num">500+</span><div class="stat-label">服務客戶<br>Clients Served</div></div>
+          <div class="stat"><span class="stat-num">98%</span><div class="stat-label">客戶滿意度<br>Satisfaction Rate</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section id="services" style="background:var(--bg2)">
+<section id="advantages">
   <div class="section-inner">
-    <div class="section-tag">美容服務</div>
-    <h2>專業<span class="accent">美容</span>服務項目</h2>
-    <p class="section-lead">從基礎護理到高階美容療程，Joy Beauty Salon 為您提供全方位的專業美容服務。</p>
-    <div class="cards-grid">
-      <div class="service-card">
-        <div class="sc-icon">🌿</div>
-        <div class="sc-title">深層潔面護理</div>
-        <div class="sc-desc">專業蒸面、深層清潔毛孔、溫和去角質及去除粉刺黑頭，配合鎮靜面膜，令肌膚細緻通透，煥發自然光彩。</div>
-        <span class="sc-price">60-75分鐘療程</span>
-      </div>
-      <div class="service-card">
-        <div class="sc-icon">💦</div>
-        <div class="sc-title">極緻保濕補水</div>
-        <div class="sc-desc">採用高濃度透明質酸及海洋膠原蛋白精華，深層滋潤修護乾燥肌膚，改善細紋及緊繃感，令肌膚豐盈有彈性。</div>
-        <span class="sc-price">即時顯效</span>
-      </div>
-      <div class="service-card">
-        <div class="sc-icon">✨</div>
-        <div class="sc-title">美白亮採療程</div>
-        <div class="sc-desc">結合維他命C導入及果酸換膚技術，有效淡化色素、均勻膚色，改善暗啞問題，重現肌膚明亮透澤感。</div>
-        <span class="sc-price">淡化色素</span>
-      </div>
-      <div class="service-card">
-        <div class="sc-icon">💅</div>
-        <div class="sc-title">日式美甲服務</div>
-        <div class="sc-desc">提供基本手足護理、凝膠光療甲及精緻美甲設計，定期更新時尚甲款，讓指尖成為您最亮眼的時尚細節。</div>
-        <span class="sc-price">日式技術</span>
-      </div>
-      <div class="service-card">
-        <div class="sc-icon">🦋</div>
-        <div class="sc-title">眼睫毛嫁接</div>
-        <div class="sc-desc">採用韓式及日式睫毛嫁接技術，多款睫毛長度及彎度選擇，打造自然迷人或濃密誇張的不同眼神效果，持效4-6週。</div>
-        <span class="sc-price">持效4-6週</span>
-      </div>
-      <div class="service-card">
-        <div class="sc-icon">🕯</div>
-        <div class="sc-title">芳療放鬆美體</div>
-        <div class="sc-desc">採用天然植萃精油，配合專業按摩手法疏通淋巴、促進血液循環，消除疲勞及浮腫，讓身心同時得到深度放鬆。</div>
-        <span class="sc-price">90分鐘深度放鬆</span>
-      </div>
+    <p class="section-label fade-in">Why Choose Us · 為何選擇我們</p>
+    <h2 class="section-title fade-in">我們的優勢</h2>
+    <h3 class="section-title-en fade-in">Our Competitive Advantages</h3>
+    <div class="divider fade-in"></div>
+    <div class="adv-grid fade-in">
+      <div class="adv-item"><span class="adv-icon">💎</span><div><strong>頂級美容品牌</strong><br><small>Premium Beauty Brands</small></div></div>
+<div class="adv-item"><span class="adv-icon">👩‍🔬</span><div><strong>專業認證技師</strong><br><small>Certified Professional Therapists</small></div></div>
+<div class="adv-item"><span class="adv-icon">🌸</span><div><strong>舒適優雅環境</strong><br><small>Comfortable & Elegant Environment</small></div></div>
+<div class="adv-item"><span class="adv-icon">✨</span><div><strong>個人化護理方案</strong><br><small>Personalised Treatment Plans</small></div></div>
+
     </div>
   </div>
 </section>
 
-<!-- PACKAGES -->
-<section id="packages">
+<section id="contact">
   <div class="section-inner">
-    <div class="section-tag">美容套票</div>
-    <h2>超值<span class="accent">會員套票</span></h2>
-    <p class="section-lead">辦理套票享更優惠的服務價格，定期護膚令美麗持續更新。</p>
-    <div class="pkg-grid">
-      <div class="pkg-card">
-        <div class="pkg-icon">🌸</div>
-        <div class="pkg-name">輕盈套票</div>
-        <div class="pkg-price">5 <span>次</span></div>
-        <ul class="pkg-features">
-          <li>選一項面部護理療程</li>
-          <li>每次60分鐘</li>
-          <li>免費護膚諮詢</li>
-          <li>自由排期預約</li>
-          <li>可與親友共用</li>
-        </ul>
-        <a href="#contact" class="pkg-btn outline">了解詳情</a>
-      </div>
-      <div class="pkg-card featured">
-        <div class="pkg-badge">最受歡迎</div>
-        <div class="pkg-icon">✨</div>
-        <div class="pkg-name">精緻套票</div>
-        <div class="pkg-price">10 <span>次</span></div>
-        <ul class="pkg-features">
-          <li>任選面部 / 美甲 / 眼睫毛</li>
-          <li>每次60-90分鐘</li>
-          <li>免費護膚及美容諮詢</li>
-          <li>生日月份特別禮遇</li>
-          <li>可與親友共用</li>
-        </ul>
-        <a href="#contact" class="pkg-btn">立即查詢</a>
-      </div>
-      <div class="pkg-card">
-        <div class="pkg-icon">👑</div>
-        <div class="pkg-name">尊享套票</div>
-        <div class="pkg-price">20 <span>次</span></div>
-        <ul class="pkg-features">
-          <li>全線服務任意選擇</li>
-          <li>優先預約安排</li>
-          <li>免費產品試用</li>
-          <li>專屬護膚計劃</li>
-          <li>全年生日及節慶禮遇</li>
-        </ul>
-        <a href="#contact" class="pkg-btn outline">了解詳情</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY -->
-<section id="why" style="background:var(--bg2)">
-  <div class="section-inner">
-    <div class="section-tag">我們的優勢</div>
-    <h2>選擇<span class="accent">Joy Beauty</span>的理由</h2>
-    <p class="section-lead" style="margin-bottom:40px">專業、舒適、貼心——我們以真誠的服務態度，讓每位顧客都感受到被重視的體驗。</p>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-icon">🎓</div>
-        <h4>專業認可美容師</h4>
-        <p>全部美容師持有認可資格，定期進修最新美容技術</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">🌿</div>
-        <h4>優質安全產品</h4>
-        <p>只採用通過皮膚敏感測試的正規品牌護膚及美容產品</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">💆</div>
-        <h4>舒適放鬆環境</h4>
-        <p>精心設計的沙龍環境，讓您在服務過程中全心放鬆</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">📱</div>
-        <h4>便捷預約服務</h4>
-        <p>電話、WhatsApp均可預約，靈活配合您的繁忙日程</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <div class="section-inner">
-    <div class="section-tag">聯絡我們</div>
-    <h2>預約<span class="accent">美容</span>服務</h2>
-    <p class="section-lead">歡迎致電或 WhatsApp 查詢及預約，讓我們為您設計最適合的美容方案。</p>
+    <p class="section-label fade-in">Contact Us · 聯絡我們</p>
+    <h2 class="section-title fade-in">立即聯絡</h2>
+    <h3 class="section-title-en fade-in">Get in Touch Today</h3>
+    <div class="divider fade-in"></div>
     <div class="contact-grid">
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="ci-icon">📞</div>
-          <div>
-            <div class="ci-label">預約電話 / WhatsApp</div>
-            <div class="ci-value"><a href="tel:+85260116473">6011 6473</a></div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="ci-icon">📍</div>
-          <div>
-            <div class="ci-label">服務地區</div>
-            <div class="ci-value">香港</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="ci-icon">🕐</div>
-          <div>
-            <div class="ci-label">預約安排</div>
-            <div class="ci-value">歡迎致電或 WhatsApp 查詢<br>建議提前預約以確保服務時間</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="ci-icon">💎</div>
-          <div>
-            <div class="ci-label">服務項目</div>
-            <div class="ci-value">面部護理 · 美白療程 · 美甲<br>眼睫毛嫁接 · 芳療美體 · 半永久妝</div>
-          </div>
-        </div>
-        <div style="background:rgba(216,120,152,0.08);border:1px solid rgba(216,120,152,0.2);border-radius:var(--radius);padding:20px;margin-top:8px">
-          <p style="font-size:.9rem;color:var(--muted);line-height:1.7">💬 <strong style="color:var(--text)">WhatsApp 預約快捷方式：</strong><br>致電或傳送 WhatsApp 至 <strong style="color:var(--pink-lt)">6011 6473</strong>，告知您心儀的服務及方便時間，我們將盡快為您確認預約。</p>
+      <div class="contact-info fade-in">
+        <p>歡迎透過以下方式與我們聯繫。我們的專業團隊將盡快回覆您的查詢，為您提供最優質的服務。</p>
+        <p>Please feel free to reach out through any of the following channels. Our professional team will respond promptly to assist you.</p>
+        <div class="contact-btns">
+          <a href="https://wa.me/85260116473" class="contact-btn wa-btn">📱 WhatsApp: +852 60116473</a><a href="tel:+85260282297" class="contact-btn phone-btn">📞 +852 60282297</a><a href="mailto:kck980724@gmail.com" class="contact-btn email-btn">✉️ kck980724@gmail.com</a>
         </div>
       </div>
-      <div class="contact-form-wrap">
-        <h3>填寫預約查詢</h3>
-        <form>
-          <div class="form-row">
-            <div class="form-group">
-              <label>姓名</label>
-              <input type="text" placeholder="您的姓名">
-            </div>
-            <div class="form-group">
-              <label>聯絡電話</label>
-              <input type="tel" placeholder="9XXX XXXX">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>服務類別</label>
-            <select>
-              <option value="">請選擇服務</option>
-              <option>面部護理療程</option>
-              <option>美白亮採療程</option>
-              <option>保濕補水療程</option>
-              <option>美甲服務</option>
-              <option>眼睫毛嫁接</option>
-              <option>芳療美體護理</option>
-              <option>套票查詢</option>
-              <option>其他查詢</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>預約日期及時間（參考）</label>
-            <input type="text" placeholder="例：2025年6月15日 下午3時">
-          </div>
-          <div class="form-group">
-            <label>備註</label>
-            <textarea placeholder="請告知任何特別要求或皮膚敏感情況..."></textarea>
-          </div>
-          <button type="submit" class="form-submit">提交預約查詢</button>
-        </form>
+      <div class="contact-map fade-in">
+        <h3>📍 聯絡資料 Contact Information</h3>
+        <ul>
+          <li>🏢 <span>Joy Beauty Salon Limited<br><small>Beauty · Hong Kong, Hong Kong</small></span></li>
+          <li>📞 <span>電話 Phone: +852 60282297</span></li>
+          <li>✉️ <span>電郵 Email: kck980724@gmail.com</span></li>
+          <li>🕐 <span>辦公時間 Office Hours:<br>Mon–Fri 9:00–18:00 | Sat 9:00–13:00</span></li>
+          <li>💬 <span>我們亦提供 WhatsApp 查詢服務<br>WhatsApp enquiries welcome</span></li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-logo">Joy <span>Beauty Salon</span></div>
-    <div class="footer-copy">© 2025 Joy Beauty Salon Limited · 香港 · 悅澤美容</div>
-    <div class="footer-links">
-      <a href="#about">關於</a>
-      <a href="#services">服務</a>
-      <a href="#contact">聯絡</a>
-    </div>
-  </div>
+  <p>© 2026 <strong>Joy Beauty Salon Limited</strong> · Hong Kong, Hong Kong · All Rights Reserved</p>
+  <p style="margin-top:8px">Website designed by <a href="mailto:kck980724@gmail.com">Kwan's Information Technology</a> · +852 60282297</p>
 </footer>
 
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
